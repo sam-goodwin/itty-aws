@@ -115,7 +115,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -124,6 +124,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 

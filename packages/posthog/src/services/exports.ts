@@ -68,7 +68,7 @@ export const ExportsContentRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportsContentRetrieveResponse>;
 
 /** * `image/png` - image/png * `application/pdf` - application/pdf * `text/csv` - text/csv * `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet * `video/webm` - video/webm * `video/mp4` - video/mp4 * `image/gif` - image/gif * `application/json` - application/json */
-export type ExportFormatEnum =
+export type ExportedAssetCreateExportFormatEnum =
   | "image/png"
   | "application/pdf"
   | "text/csv"
@@ -77,14 +77,15 @@ export type ExportFormatEnum =
   | "video/mp4"
   | "image/gif"
   | "application/json";
-export const ExportFormatEnum = /*@__PURE__*/ S.String;
+export const ExportedAssetCreateExportFormatEnum = /*@__PURE__*/ S.String;
 
 export interface ExportsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   dashboard?: number | null;
   insight?: number | null;
-  export_format?: ExportFormatEnum | (string & {});
+  /** File format to generate. Dataset JSONL exports use the dataset export endpoint. * `image/png` - image/png * `application/pdf` - application/pdf * `text/csv` - text/csv * `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet * `video/webm` - video/webm * `video/mp4` - video/mp4 * `image/gif` - image/gif * `application/json` - application/json */
+  export_format: ExportedAssetCreateExportFormatEnum | (string & {});
   export_context?: unknown;
 }
 export const ExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -92,7 +93,7 @@ export const ExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     project_id: S.String.pipe(T.Label()),
     dashboard: S.optional(S.NullOr(S.Number)),
     insight: S.optional(S.NullOr(S.Number)),
-    export_format: S.optional(ExportFormatEnum),
+    export_format: ExportedAssetCreateExportFormatEnum,
     export_context: S.optional(S.Unknown),
   }).pipe(
     T.Http({
@@ -106,35 +107,38 @@ export const ExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportsCreateRequest>;
 
 /** Standard ExportedAsset serializer that doesn't return content. */
-export interface ExportedAsset {
-  id?: number;
+export interface ExportedAssetCreate {
+  id: number;
   dashboard?: number | null;
   insight?: number | null;
-  export_format?: ExportFormatEnum;
-  created_at?: string;
-  has_content?: boolean;
+  /** File format to generate. Dataset JSONL exports use the dataset export endpoint. * `image/png` - image/png * `application/pdf` - application/pdf * `text/csv` - text/csv * `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet * `video/webm` - video/webm * `video/mp4` - video/mp4 * `image/gif` - image/gif * `application/json` - application/json */
+  export_format: ExportedAssetCreateExportFormatEnum;
+  created_at: string;
+  has_content: boolean;
   export_context?: unknown;
-  filename?: string;
-  expires_after?: string | null;
-  exception?: string | null;
+  filename: string;
+  expires_after: string | null;
+  exception: string | null;
   /** The effective access level the user has for this object */
-  user_access_level?: string | null;
+  user_access_level: string | null;
 }
-export const ExportedAsset = /*@__PURE__*/ S.suspend(() =>
+export const ExportedAssetCreate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
+    id: S.Number,
     dashboard: S.optional(S.NullOr(S.Number)),
     insight: S.optional(S.NullOr(S.Number)),
-    export_format: S.optional(ExportFormatEnum),
-    created_at: S.optional(S.String),
-    has_content: S.optional(S.Boolean),
+    export_format: ExportedAssetCreateExportFormatEnum,
+    created_at: S.String,
+    has_content: S.Boolean,
     export_context: S.optional(S.Unknown),
-    filename: S.optional(S.String),
-    expires_after: S.optional(S.NullOr(S.String)),
-    exception: S.optional(S.NullOr(S.String)),
-    user_access_level: S.optional(S.NullOr(S.String)),
+    filename: S.String,
+    expires_after: S.NullOr(S.String),
+    exception: S.NullOr(S.String),
+    user_access_level: S.NullOr(S.String),
   }),
-).annotate({ identifier: "ExportedAsset" }) as any as S.Schema<ExportedAsset>;
+).annotate({
+  identifier: "ExportedAssetCreate",
+}) as any as S.Schema<ExportedAssetCreate>;
 
 export interface ExportsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -159,6 +163,51 @@ export const ExportsListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportsListRequest",
 }) as any as S.Schema<ExportsListRequest>;
+
+/** * `image/png` - image/png * `application/pdf` - application/pdf * `text/csv` - text/csv * `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet * `video/webm` - video/webm * `video/mp4` - video/mp4 * `image/gif` - image/gif * `application/json` - application/json * `application/x-ndjson` - application/x-ndjson */
+export type ExportedAssetExportFormatEnum =
+  | "image/png"
+  | "application/pdf"
+  | "text/csv"
+  | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  | "video/webm"
+  | "video/mp4"
+  | "image/gif"
+  | "application/json"
+  | "application/x-ndjson";
+export const ExportedAssetExportFormatEnum = /*@__PURE__*/ S.String;
+
+/** Standard ExportedAsset serializer that doesn't return content. */
+export interface ExportedAsset {
+  id?: number;
+  dashboard?: number | null;
+  insight?: number | null;
+  /** File format of the generated export. * `image/png` - image/png * `application/pdf` - application/pdf * `text/csv` - text/csv * `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet * `video/webm` - video/webm * `video/mp4` - video/mp4 * `image/gif` - image/gif * `application/json` - application/json * `application/x-ndjson` - application/x-ndjson */
+  export_format?: ExportedAssetExportFormatEnum;
+  created_at?: string;
+  has_content?: boolean;
+  export_context?: unknown;
+  filename?: string;
+  expires_after?: string | null;
+  exception?: string | null;
+  /** The effective access level the user has for this object */
+  user_access_level?: string | null;
+}
+export const ExportedAsset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    dashboard: S.optional(S.NullOr(S.Number)),
+    insight: S.optional(S.NullOr(S.Number)),
+    export_format: S.optional(ExportedAssetExportFormatEnum),
+    created_at: S.optional(S.String),
+    has_content: S.optional(S.Boolean),
+    export_context: S.optional(S.Unknown),
+    filename: S.optional(S.String),
+    expires_after: S.optional(S.NullOr(S.String)),
+    exception: S.optional(S.NullOr(S.String)),
+    user_access_level: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({ identifier: "ExportedAsset" }) as any as S.Schema<ExportedAsset>;
 
 export type PaginatedExportedAssetListResultsList = Array<ExportedAsset>;
 export const PaginatedExportedAssetListResultsList = /*@__PURE__*/ S.Array(
@@ -224,12 +273,12 @@ export type ExportsCreateError =
   | PosthogOpError;
 export const exportsCreate: API.OperationMethod<
   ExportsCreateRequest,
-  ExportedAsset,
+  ExportedAssetCreate,
   ExportsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportsCreateRequest,
-  output: ExportedAsset,
+  output: ExportedAssetCreate,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

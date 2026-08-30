@@ -30,10 +30,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the price sheet for a subscription. Price sheet is available via this API only for May 1, 2014 or later.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#PriceSheetGetResponse": {
@@ -447,10 +447,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get the price sheet for a scope by subscriptionId and billing period. Price sheet is available via this API only for May 1, 2014 or later.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#PriceSheetGetByBillingPeriodResponse": {
@@ -573,10 +573,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Provides the aggregate cost of a management group and all child management groups by current billing period.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#AggregatedCostGetByManagementGroupResponse": {
@@ -834,10 +834,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Provides the aggregate cost of a management group and all child management groups by specified billing period",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#AggregatedCostGetForBillingPeriodByManagementGroupResponse": {
@@ -939,10 +939,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Consumption/operations",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#OperationListResult": {
@@ -1045,10 +1045,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationSummaries",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationSummariesListResult": {
@@ -1310,10 +1310,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationDetailsListResult": {
@@ -1526,10 +1526,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationSummaries",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationsSummariesListByReservationOrderRequest": {
@@ -1594,10 +1594,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationsDetailsListByReservationOrderRequest": {
@@ -1637,10 +1637,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List of transactions for reserved instances on billing account scope. Note: The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationTransactionsListResult": {
@@ -1921,10 +1921,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/lots",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all Microsoft Azure consumption commitments for a billing account. The API is only supported for Microsoft Customer Agreements (MCA) and Direct Enterprise Agreement (EA)  billing accounts.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#Lots": {
@@ -2308,10 +2308,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/events",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#Events": {
@@ -2643,10 +2643,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the balances for a scope by billingAccountId. Balances are available via this API only for May 1, 2014 or later.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#BalancesGetByBillingAccountResponse": {
@@ -2924,10 +2924,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}/providers/Microsoft.Consumption/lots",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all Azure credits for a customer. The API is only supported for Microsoft Partner  Agreements (MPA) billing accounts.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#LotsListByCustomerRequest": {
@@ -2974,10 +2974,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/reservationTransactions",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List of transactions for reserved instances on billing profile scope. The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ModernReservationTransactionsListResult": {
@@ -3235,10 +3235,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/lots",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all Azure credits for a billing account or a billing profile. The API is only supported for Microsoft Customer Agreements (MCA) billing accounts.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#LotsListByBillingProfileRequest": {
@@ -3278,10 +3278,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/events",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#EventsListByBillingProfileRequest": {
@@ -3337,10 +3337,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/credits/balanceSummary",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The credit summary by billingAccountId and billingProfileId.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#CreditsGetResponse": {
@@ -3530,10 +3530,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Generates the pricesheet for the provided billing period asynchronously based on the enrollment id",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#OperationStatus": {
@@ -3639,10 +3639,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the balances for a scope by billing period and billingAccountId. Balances are available via this API only for May 1, 2014 or later.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#BalancesGetForBillingPeriodByBillingAccountResponse": {
@@ -3744,10 +3744,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/usageDetails",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the usage details for the defined scope. Usage details are available via this API only for May 1, 2014 or later.\n\n**Note:Microsoft will be retiring the Consumption Usage Details API at some point in the future. We do not recommend that you take a new dependency on this API. Please use the Cost Details API instead. We will notify customers once a date for retirement has been determined.For Learn more,see [Generate Cost Details Report - Create Operation](https://learn.microsoft.com/en-us/rest/api/cost-management/generate-cost-details-report/create-operation?tabs=HTTP)**",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#UsageDetailsListResult": {
@@ -3950,10 +3950,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/tags",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get all available tag keys for the defined scope",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#TagsGetResponse": {
@@ -4093,10 +4093,10 @@
           "method": "GET",
           "uri": "/{resourceScope}/providers/Microsoft.Consumption/reservationSummaries",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the reservations summaries for the defined scope daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationsSummariesListRequest": {
@@ -4189,10 +4189,10 @@
           "method": "GET",
           "uri": "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendations",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List of recommendations for purchasing reserved instances.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationRecommendationsListResult": {
@@ -4469,10 +4469,10 @@
           "method": "GET",
           "uri": "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendationDetails",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Details of a reservation recommendation for what-if analysis of reserved instances.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationRecommendationDetailsGetResponse": {
@@ -4587,10 +4587,42 @@
           "traits": {
             "smithy.api#documentation": "Historical usage details used to calculate the estimated savings."
           }
+        },
+        "managementGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Management group id associated with management group scoped recommendation."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant ID associated with the management group. Populated only when managementGroupId is populated."
+          }
+        },
+        "projectedUsage": {
+          "target": "com.azure.consumption#ReservationRecommendationDetailsProjectedUsageProperties",
+          "traits": {
+            "smithy.api#documentation": "Projected usage details used for generating the recommendation."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "The properties of the reservation recommendation."
+      }
+    },
+    "com.azure.consumption#ReservationRecommendationDetailsProjectedUsageProperties": {
+      "type": "structure",
+      "members": {
+        "totalRetailUsageInCUs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total projected retail usage in commitment units (CUs)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details about projected usage data that has been used for computing the recommendation."
       }
     },
     "com.azure.consumption#ReservationRecommendationDetailsUsageProperties": {
@@ -4853,6 +4885,13 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Used to filter reservation recommendation details by: properties/subscriptionId can be specified for billing account and billing profile paths."
           }
+        },
+        "managementGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "managementGroupId",
+            "smithy.api#documentation": "Specify the management group ID. Required when recommendation scope is 'ManagementGroup'."
+          }
         }
       },
       "traits": {
@@ -4921,6 +4960,12 @@
           "traits": {
             "smithy.api#enumValue": "Shared"
           }
+        },
+        "MANAGEMENTGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManagementGroup"
+          }
         }
       },
       "traits": {}
@@ -4938,10 +4983,10 @@
           "method": "GET",
           "uri": "/{resourceScope}/providers/Microsoft.Consumption/reservationDetails",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ReservationsDetailsListRequest": {
@@ -5008,10 +5053,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/marketplaces",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the marketplaces for a scope at the defined scope. Marketplaces are available via this API only for May 1, 2014 or later.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#MarketplacesListResult": {
@@ -5319,10 +5364,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/charges",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the charges based for the defined scope.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#ChargesListResult": {
@@ -5470,10 +5515,10 @@
           "method": "DELETE",
           "uri": "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to delete a budget.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#BudgetsDeleteRequest": {
@@ -5513,10 +5558,10 @@
           "method": "PUT",
           "uri": "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to create or update a budget. You can optionally provide an eTag if desired as a form of concurrency control. To obtain the latest eTag for a given budget, perform a get operation prior to your put operation.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#BudgetsCreateOrUpdateResponse": {
@@ -6237,10 +6282,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the budget for the scope by budget name.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#BudgetsGetResponse": {
@@ -6324,10 +6369,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/budgets",
           "code": 200,
-          "apiVersion": "2024-08-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all budgets for the defined scope.",
-        "com.distilled.openapi#apiVersion": "2024-08-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.consumption#BudgetsListResult": {

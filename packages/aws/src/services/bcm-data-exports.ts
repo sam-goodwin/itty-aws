@@ -211,7 +211,7 @@ export const S3OutputType = /*@__PURE__*/ S.String;
 export type FormatOption = "TEXT_OR_CSV" | "PARQUET" | (string & {});
 export const FormatOption = /*@__PURE__*/ S.String;
 
-export type CompressionOption = "GZIP" | "PARQUET" | (string & {});
+export type CompressionOption = "GZIP" | "PARQUET" | "ZIP" | (string & {});
 export const CompressionOption = /*@__PURE__*/ S.String;
 
 export type OverwriteOption =
@@ -361,6 +361,7 @@ export type ExecutionStatusReason =
   | "INSUFFICIENT_PERMISSION"
   | "BILL_OWNER_CHANGED"
   | "INTERNAL_FAILURE"
+  | "DEPRECATED"
   | (string & {});
 export const ExecutionStatusReason = /*@__PURE__*/ S.String;
 

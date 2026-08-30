@@ -653,7 +653,10 @@ export const InstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
-  "None" | "SystemAssigned" | "UserAssigned" | "SystemAssigned,UserAssigned";
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
 export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
   /*@__PURE__*/ S.String;
 

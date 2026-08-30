@@ -1029,6 +1029,11 @@ export class TooManyTagsException
     "TooManyTagsException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
+    "ValidationException",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+  ) {}
 export type ApprovalRuleTemplateName = string;
 export type RepositoryName = string;
 export interface AssociateApprovalRuleTemplateWithRepositoryInput {
@@ -2790,6 +2795,98 @@ export interface GetBlobOutput {
 export const GetBlobOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: T.Blob }).pipe(ns),
 ).annotate({ identifier: "GetBlobOutput" }) as any as S.Schema<GetBlobOutput>;
+export type DiffContext = number;
+export type IgnoreWhiteSpaces = boolean;
+export type Limit = number;
+export interface GetBlobDifferencesInput {
+  repositoryName: string;
+  afterBlobId: string;
+  beforeBlobId?: string;
+  contextLines?: number;
+  ignoreWhitespace?: boolean;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const GetBlobDifferencesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repositoryName: S.String,
+    afterBlobId: S.String,
+    beforeBlobId: S.optional(S.String),
+    contextLines: S.optional(S.Number),
+    ignoreWhitespace: S.optional(S.Boolean),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetBlobDifferencesInput",
+}) as any as S.Schema<GetBlobDifferencesInput>;
+export type DiffChangeType = "CONTEXT" | "ADD" | "DELETE" | (string & {});
+export const DiffChangeType = /*@__PURE__*/ S.String;
+
+export type LineContent = string;
+export interface DiffChange {
+  type?: DiffChangeType;
+  beforeLineNumber?: number;
+  afterLineNumber?: number;
+  content?: string;
+}
+export const DiffChange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(DiffChangeType),
+    beforeLineNumber: S.optional(S.Number),
+    afterLineNumber: S.optional(S.Number),
+    content: S.optional(S.String),
+  }),
+).annotate({ identifier: "DiffChange" }) as any as S.Schema<DiffChange>;
+export type DiffChangeList = DiffChange[];
+export const DiffChangeList = /*@__PURE__*/ S.Array(DiffChange);
+export interface DiffHunk {
+  beforeStartLine?: number;
+  beforeLineCount?: number;
+  afterStartLine?: number;
+  afterLineCount?: number;
+  changes?: DiffChange[];
+}
+export const DiffHunk = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    beforeStartLine: S.optional(S.Number),
+    beforeLineCount: S.optional(S.Number),
+    afterStartLine: S.optional(S.Number),
+    afterLineCount: S.optional(S.Number),
+    changes: S.optional(DiffChangeList),
+  }),
+).annotate({ identifier: "DiffHunk" }) as any as S.Schema<DiffHunk>;
+export type DiffHunkList = DiffHunk[];
+export const DiffHunkList = /*@__PURE__*/ S.Array(DiffHunk);
+export type ObjectSize = number;
+export interface GetBlobDifferencesOutput {
+  hunks: DiffHunk[];
+  isBinary: boolean;
+  beforeBlobSize?: number;
+  afterBlobSize: number;
+  NextToken?: string;
+}
+export const GetBlobDifferencesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hunks: DiffHunkList,
+    isBinary: S.Boolean,
+    beforeBlobSize: S.optional(S.Number),
+    afterBlobSize: S.Number,
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetBlobDifferencesOutput",
+}) as any as S.Schema<GetBlobDifferencesOutput>;
 export interface GetBranchInput {
   repositoryName?: string;
   branchName?: string;
@@ -3097,7 +3194,6 @@ export const GetCommitOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCommitOutput",
 }) as any as S.Schema<GetCommitOutput>;
-export type Limit = number;
 export interface GetDifferencesInput {
   repositoryName: string;
   beforeCommitSpecifier?: string;
@@ -3191,7 +3287,6 @@ export const GetFileInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetFileInput" }) as any as S.Schema<GetFileInput>;
-export type ObjectSize = number;
 export interface GetFileOutput {
   commitId: string;
   blobId: string;
@@ -6256,6 +6351,70 @@ export const getBlob: API.OperationMethod<
   operationName: "GetBlob",
 }));
 
+export type GetBlobDifferencesError =
+  | BlobIdDoesNotExistException
+  | BlobIdRequiredException
+  | EncryptionIntegrityChecksFailedException
+  | EncryptionKeyAccessDeniedException
+  | EncryptionKeyDisabledException
+  | EncryptionKeyNotFoundException
+  | EncryptionKeyUnavailableException
+  | FileTooLargeException
+  | InvalidBlobIdException
+  | InvalidContinuationTokenException
+  | InvalidMaxResultsException
+  | InvalidRepositoryNameException
+  | RepositoryDoesNotExistException
+  | RepositoryNameRequiredException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a structured, line-level diff between two blob versions in a repository. The
+ * diff is returned as an ordered list of hunks, where each hunk represents a contiguous
+ * run of changed lines together with any surrounding unchanged context lines.
+ *
+ * Results are paginated. Use `MaxResults` and `NextToken` to
+ * retrieve additional pages.
+ *
+ * For the typical usage workflow, see GetDifferences.
+ */
+export const getBlobDifferences: API.PaginatedOperationMethod<
+  GetBlobDifferencesInput,
+  GetBlobDifferencesOutput,
+  GetBlobDifferencesError,
+  Credentials | HttpClient.HttpClient,
+  DiffHunk
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: GetBlobDifferencesInput,
+  output: GetBlobDifferencesOutput,
+  errors: [
+    BlobIdDoesNotExistException,
+    BlobIdRequiredException,
+    EncryptionIntegrityChecksFailedException,
+    EncryptionKeyAccessDeniedException,
+    EncryptionKeyDisabledException,
+    EncryptionKeyNotFoundException,
+    EncryptionKeyUnavailableException,
+    FileTooLargeException,
+    InvalidBlobIdException,
+    InvalidContinuationTokenException,
+    InvalidMaxResultsException,
+    InvalidRepositoryNameException,
+    RepositoryDoesNotExistException,
+    RepositoryNameRequiredException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetBlobDifferences",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "hunks",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
+
 export type GetBranchError =
   | BranchDoesNotExistException
   | BranchNameRequiredException
@@ -6561,6 +6720,9 @@ export type GetDifferencesError =
  * Returns information about the differences in a valid commit specifier (such as a
  * branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be
  * limited to a specified path.
+ *
+ * For line-level diff details, pass the `beforeBlob.blobId` and
+ * `afterBlob.blobId` values from a `Difference` object to GetBlobDifferences.
  */
 export const getDifferences: API.PaginatedOperationMethod<
   GetDifferencesInput,

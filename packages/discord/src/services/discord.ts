@@ -8973,13 +8973,13 @@ export const IncomingWebhookUpdateForInteractionCallbackRequestPartialEmbedsList
   ) as any as S.Schema<IncomingWebhookUpdateForInteractionCallbackRequestPartialEmbedsList>;
 
 export type IncomingWebhookUpdateForInteractionCallbackRequestPartialComponentsItem =
-    | ActionRowComponentForMessageRequest
-    | ContainerComponentForMessageRequest
-    | FileComponentForMessageRequest
-    | MediaGalleryComponentForMessageRequest
-    | SectionComponentForMessageRequest
-    | SeparatorComponentForMessageRequest
-    | TextDisplayComponentForMessageRequest;
+  | ActionRowComponentForMessageRequest
+  | ContainerComponentForMessageRequest
+  | FileComponentForMessageRequest
+  | MediaGalleryComponentForMessageRequest
+  | SectionComponentForMessageRequest
+  | SeparatorComponentForMessageRequest
+  | TextDisplayComponentForMessageRequest;
 export const IncomingWebhookUpdateForInteractionCallbackRequestPartialComponentsItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -10841,8 +10841,8 @@ export const ModalSubmitInteractionMetadataResponseAuthorizingIntegrationOwnersM
   ) as any as S.Schema<ModalSubmitInteractionMetadataResponseAuthorizingIntegrationOwnersMap>;
 
 export type ModalSubmitInteractionMetadataResponseTriggeringInteractionMetadata =
-    | ApplicationCommandInteractionMetadataResponse
-    | MessageComponentInteractionMetadataResponse;
+  | ApplicationCommandInteractionMetadataResponse
+  | MessageComponentInteractionMetadataResponse;
 export const ModalSubmitInteractionMetadataResponseTriggeringInteractionMetadata =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -19184,13 +19184,13 @@ export const ListGuildInvitesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListGuildMembersRequest {
   guild_id: string;
   limit?: number;
-  after?: number;
+  after?: string;
 }
 export const ListGuildMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guild_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
-    after: S.optional(S.Number.pipe(T.Query())),
+    after: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({ method: "GET", uri: "/guilds/{guild_id}/members", code: 200 }),
   ),

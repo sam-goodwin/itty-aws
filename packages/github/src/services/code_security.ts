@@ -293,13 +293,15 @@ export const CreateConfigurationRequestSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -638,7 +640,9 @@ export const CodeSecurityConfigurationCodeScanningDefaultSetup =
 
 /** Whether to use labeled runners or standard GitHub runners. */
 export type CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType =
-  "standard" | "labeled" | "not_set";
+  | "standard"
+  | "labeled"
+  | "not_set";
 export const CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType =
   /*@__PURE__*/ S.String;
 
@@ -696,13 +700,15 @@ export const CodeSecurityConfigurationSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -965,7 +971,9 @@ export const CreateConfigurationForEnterpriseRequestDependencyGraph =
 
 /** The enablement status of Automatic dependency submission */
 export type CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitAction =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitAction =
   /*@__PURE__*/ S.String;
 
@@ -1001,7 +1009,9 @@ export const CreateConfigurationForEnterpriseRequestCodeScanningDefaultSetup =
 
 /** The enablement status of code scanning delegated alert dismissal */
 export type CreateConfigurationForEnterpriseRequestCodeScanningDelegatedAlertDismissal =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestCodeScanningDelegatedAlertDismissal =
   /*@__PURE__*/ S.String;
 
@@ -1023,43 +1033,57 @@ export const CreateConfigurationForEnterpriseRequestSecretScanning =
 
 /** The enablement status of secret scanning push protection */
 export type CreateConfigurationForEnterpriseRequestSecretScanningPushProtection =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestSecretScanningPushProtection =
   /*@__PURE__*/ S.String;
 
 /** The enablement status of secret scanning validity checks */
 export type CreateConfigurationForEnterpriseRequestSecretScanningValidityChecks =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestSecretScanningValidityChecks =
   /*@__PURE__*/ S.String;
 
 /** The enablement status of secret scanning non provider patterns */
 export type CreateConfigurationForEnterpriseRequestSecretScanningNonProviderPatterns =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestSecretScanningNonProviderPatterns =
   /*@__PURE__*/ S.String;
 
 /** The enablement status of Copilot secret scanning */
 export type CreateConfigurationForEnterpriseRequestSecretScanningGenericSecrets =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestSecretScanningGenericSecrets =
   /*@__PURE__*/ S.String;
 
 /** The enablement status of secret scanning delegated alert dismissal */
 export type CreateConfigurationForEnterpriseRequestSecretScanningDelegatedAlertDismissal =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestSecretScanningDelegatedAlertDismissal =
   /*@__PURE__*/ S.String;
 
 /** The enablement status of secret scanning extended metadata */
 export type CreateConfigurationForEnterpriseRequestSecretScanningExtendedMetadata =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestSecretScanningExtendedMetadata =
   /*@__PURE__*/ S.String;
 
 /** The enablement status of private vulnerability reporting */
 export type CreateConfigurationForEnterpriseRequestPrivateVulnerabilityReporting =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const CreateConfigurationForEnterpriseRequestPrivateVulnerabilityReporting =
   /*@__PURE__*/ S.String;
 
@@ -2164,13 +2188,15 @@ export const UpdateConfigurationRequestSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -2466,7 +2492,9 @@ export const UpdateEnterpriseConfigurationRequestDependencyGraph =
 
 /** The enablement status of Automatic dependency submission */
 export type UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitAction =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitAction =
   /*@__PURE__*/ S.String;
 
@@ -2502,7 +2530,9 @@ export const UpdateEnterpriseConfigurationRequestCodeScanningDefaultSetup =
 
 /** The enablement status of code scanning delegated alert dismissal */
 export type UpdateEnterpriseConfigurationRequestCodeScanningDelegatedAlertDismissal =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const UpdateEnterpriseConfigurationRequestCodeScanningDelegatedAlertDismissal =
   /*@__PURE__*/ S.String;
 
@@ -2540,7 +2570,9 @@ export const UpdateEnterpriseConfigurationRequestSecretScanningValidityChecks =
 
 /** The enablement status of secret scanning non-provider patterns */
 export type UpdateEnterpriseConfigurationRequestSecretScanningNonProviderPatterns =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const UpdateEnterpriseConfigurationRequestSecretScanningNonProviderPatterns =
   /*@__PURE__*/ S.String;
 
@@ -2554,13 +2586,17 @@ export const UpdateEnterpriseConfigurationRequestSecretScanningGenericSecrets =
 
 /** The enablement status of secret scanning delegated alert dismissal */
 export type UpdateEnterpriseConfigurationRequestSecretScanningDelegatedAlertDismissal =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const UpdateEnterpriseConfigurationRequestSecretScanningDelegatedAlertDismissal =
   /*@__PURE__*/ S.String;
 
 /** The enablement status of secret scanning extended metadata */
 export type UpdateEnterpriseConfigurationRequestSecretScanningExtendedMetadata =
-  "enabled" | "disabled" | "not_set";
+  | "enabled"
+  | "disabled"
+  | "not_set";
 export const UpdateEnterpriseConfigurationRequestSecretScanningExtendedMetadata =
   /*@__PURE__*/ S.String;
 

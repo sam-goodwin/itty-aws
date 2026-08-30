@@ -2176,7 +2176,7 @@ export const ProductDetailsOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductDetailsOperatingSystemsList>;
 
-/** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
+/** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type ProductDetailsPricingTypesList = Array<string>;
 export const ProductDetailsPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2428,7 +2428,7 @@ export const PlanDetailsCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanDetailsCategoryIdsList>;
 
-/** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
+/** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type PlanDetailsPricingTypesList = Array<string>;
 export const PlanDetailsPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2657,6 +2657,139 @@ export const AvailabilityTermsList = /*@__PURE__*/ S.Array(
   Term_2,
 ) as any as S.Schema<AvailabilityTermsList>;
 
+/** A prerequisite product */
+export interface PrerequisiteProduct {
+  /** Base plan id */
+  basePlanId?: string;
+  /** Minimum seats */
+  minSeats?: number;
+  /** Maximum seats */
+  maxSeats?: number;
+}
+export const PrerequisiteProduct = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    basePlanId: S.optional(S.String),
+    minSeats: S.optional(S.Number),
+    maxSeats: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PrerequisiteProduct",
+}) as any as S.Schema<PrerequisiteProduct>;
+
+/** Prerequisite products */
+export type PrerequisiteConstraintProductsList = Array<PrerequisiteProduct>;
+export const PrerequisiteConstraintProductsList = /*@__PURE__*/ S.Array(
+  PrerequisiteProduct,
+) as any as S.Schema<PrerequisiteConstraintProductsList>;
+
+/** Defines minimum and maximum seat limits for a specific constraint type */
+export interface MinMaxSeatsConstraint {
+  /** Constraint type */
+  type?: string;
+  /** Minimum seats */
+  minSeats?: number;
+  /** Maximum seats */
+  maxSeats?: number;
+}
+export const MinMaxSeatsConstraint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    minSeats: S.optional(S.Number),
+    maxSeats: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MinMaxSeatsConstraint",
+}) as any as S.Schema<MinMaxSeatsConstraint>;
+
+/** Lookback window for a prerequisite constraint */
+export interface LookbackWindow {
+  /** Lookback window type */
+  type?: string;
+  /** Lookback window period */
+  period?: string;
+}
+export const LookbackWindow = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    period: S.optional(S.String),
+  }),
+).annotate({ identifier: "LookbackWindow" }) as any as S.Schema<LookbackWindow>;
+
+/** A single prerequisite constraint */
+export interface PrerequisiteConstraint {
+  /** Prerequisite products */
+  products?: PrerequisiteConstraintProductsList;
+  /** Seat constraint */
+  seatConstraint?: MinMaxSeatsConstraint;
+  /** Lookback window */
+  lookbackWindow?: LookbackWindow;
+}
+export const PrerequisiteConstraint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    products: S.optional(PrerequisiteConstraintProductsList),
+    seatConstraint: S.optional(MinMaxSeatsConstraint),
+    lookbackWindow: S.optional(LookbackWindow),
+  }),
+).annotate({
+  identifier: "PrerequisiteConstraint",
+}) as any as S.Schema<PrerequisiteConstraint>;
+
+/** Prerequisite constraints for the availability */
+export interface PrerequisiteConstraints {
+  /** Constraint requiring all of the specified prerequisites to be met */
+  mustHaveAll?: PrerequisiteConstraint;
+  /** Constraint requiring any of the specified prerequisites to be met */
+  mustHaveAny?: PrerequisiteConstraint;
+  /** Constraint requiring none of the specified prerequisites to be met */
+  mustHaveNone?: PrerequisiteConstraint;
+}
+export const PrerequisiteConstraints = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mustHaveAll: S.optional(PrerequisiteConstraint),
+    mustHaveAny: S.optional(PrerequisiteConstraint),
+    mustHaveNone: S.optional(PrerequisiteConstraint),
+  }),
+).annotate({
+  identifier: "PrerequisiteConstraints",
+}) as any as S.Schema<PrerequisiteConstraints>;
+
+/** List of subscription statuses of which any must be satisfied */
+export type SubscriptionStatusConstraintsRequireAnyOfList = Array<string>;
+export const SubscriptionStatusConstraintsRequireAnyOfList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SubscriptionStatusConstraintsRequireAnyOfList>;
+
+/** Subscription status eligibility constraints for the availability */
+export interface SubscriptionStatusConstraints {
+  /** List of subscription statuses of which any must be satisfied */
+  requireAnyOf?: SubscriptionStatusConstraintsRequireAnyOfList;
+}
+export const SubscriptionStatusConstraints = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requireAnyOf: S.optional(SubscriptionStatusConstraintsRequireAnyOfList),
+  }),
+).annotate({
+  identifier: "SubscriptionStatusConstraints",
+}) as any as S.Schema<SubscriptionStatusConstraints>;
+
+/** Pricing benefit applicable to the availability (e.g. percent discounts) */
+export interface PricingBenefit {
+  /** Rank of the pricing benefit */
+  rank?: number;
+  /** Type of the pricing benefit (e.g. PercentDiscount) */
+  type?: string;
+  /** Value of the pricing benefit (e.g. 0.2 for a 20% discount) */
+  value?: number;
+}
+export const PricingBenefit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rank: S.optional(S.Number),
+    type: S.optional(S.String),
+    value: S.optional(S.Number),
+  }),
+).annotate({ identifier: "PricingBenefit" }) as any as S.Schema<PricingBenefit>;
+
 /** Availability for a given plan */
 export interface Availability {
   /** The document id */
@@ -2675,6 +2808,12 @@ export interface Availability {
   consumptionUnitType?: string;
   /** Display rank */
   displayRank: number;
+  /** Prerequisite constraints for the availability */
+  prerequisiteConstraints?: PrerequisiteConstraints;
+  /** Subscription status eligibility constraints for the availability */
+  subscriptionStatusConstraints?: SubscriptionStatusConstraints;
+  /** Pricing benefit applicable to the availability (e.g. percent discounts) */
+  pricingBenefit?: PricingBenefit;
 }
 export const Availability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2686,6 +2825,9 @@ export const Availability = /*@__PURE__*/ S.suspend(() =>
     hasFreeTrials: S.Boolean,
     consumptionUnitType: S.optional(S.String),
     displayRank: S.Number,
+    prerequisiteConstraints: S.optional(PrerequisiteConstraints),
+    subscriptionStatusConstraints: S.optional(SubscriptionStatusConstraints),
+    pricingBenefit: S.optional(PricingBenefit),
   }),
 ).annotate({ identifier: "Availability" }) as any as S.Schema<Availability>;
 
@@ -2895,6 +3037,10 @@ export interface Benefit {
   billingPlan?: string;
   /** Term duration. Examples: 'P1M' (1 month), 'P30D' (30 days) */
   termDuration?: string;
+  /** Meter type */
+  meterType?: string;
+  /** Base product code */
+  baseProductCode?: string;
 }
 export const Benefit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2902,6 +3048,8 @@ export const Benefit = /*@__PURE__*/ S.suspend(() =>
     basePlanId: S.optional(S.String),
     billingPlan: S.optional(S.String),
     termDuration: S.optional(S.String),
+    meterType: S.optional(S.String),
+    baseProductCode: S.optional(S.String),
   }),
 ).annotate({ identifier: "Benefit" }) as any as S.Schema<Benefit>;
 
@@ -2910,25 +3058,6 @@ export type PlanDetailsBenefitsList = Array<Benefit>;
 export const PlanDetailsBenefitsList = /*@__PURE__*/ S.Array(
   Benefit,
 ) as any as S.Schema<PlanDetailsBenefitsList>;
-
-/** Defines minimum and maximum seat limits for a specific constraint type */
-export interface MinMaxSeatsConstraint {
-  /** Constraint type */
-  type?: string;
-  /** Minimum seats */
-  minSeats?: number;
-  /** Maximum seats */
-  maxSeats?: number;
-}
-export const MinMaxSeatsConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    minSeats: S.optional(S.Number),
-    maxSeats: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MinMaxSeatsConstraint",
-}) as any as S.Schema<MinMaxSeatsConstraint>;
 
 /** Seat constraint configurations defining minimum and maximum seat limits */
 export type ConstraintsDataSeatConstraintsList = Array<MinMaxSeatsConstraint>;
@@ -3120,7 +3249,7 @@ export interface PlanDetails {
   categoryIds?: PlanDetailsCategoryIdsList;
   /** Set to true if plan has artifacts that are to be hidden for non authenticated users */
   hasProtectedArtifacts?: boolean;
-  /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
+  /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
   pricingTypes?: PlanDetailsPricingTypesList;
   /** Defines the security enhancement level for virtual machine deployments. Applies exclusively to Virtual Machine product types. - `None` - Standard virtual machine security without additional protection features - `Trusted` - Trusted Launch security with secure boot and virtual Trusted Platform Module capabilities - `Confidential` - Confidential computing with memory encryption and attestation for sensitive workloads */
   vmSecuritytypes?: PlanDetailsVmSecuritytypesList;
@@ -3331,7 +3460,7 @@ export interface ProductDetails {
   productFamily?: string;
   /** Operating system info for this product */
   operatingSystems?: ProductDetailsOperatingSystemsList;
-  /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
+  /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
   pricingTypes?: ProductDetailsPricingTypesList;
   /** Publisher display name */
   publisherDisplayName?: string;
@@ -3373,6 +3502,8 @@ export interface ProductDetails {
   hasMarketplaceFootprint?: boolean;
   /** Set of products attributes */
   attributes?: ProductDetailsAttributesList;
+  /** Offering type of product family Offers */
+  offeringType?: string;
   /** List of product videos */
   videos?: ProductDetailsVideosList;
   /** List of Images */
@@ -3431,6 +3562,8 @@ export interface ProductDetails {
   plans?: ProductDetailsPlansList;
   /** Indicates that the SKU has add-ons */
   hasAddOns?: boolean;
+  /** The product code */
+  productCode?: string;
 }
 export const ProductDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3469,6 +3602,7 @@ export const ProductDetails = /*@__PURE__*/ S.suspend(() =>
     hasRiPlans: S.optional(S.Boolean),
     hasMarketplaceFootprint: S.optional(S.Boolean),
     attributes: S.optional(ProductDetailsAttributesList),
+    offeringType: S.optional(S.String),
     videos: S.optional(ProductDetailsVideosList),
     images: S.optional(ProductDetailsImagesList),
     linkedAddIns: S.optional(ProductDetailsLinkedAddInsList),
@@ -3498,6 +3632,7 @@ export const ProductDetails = /*@__PURE__*/ S.suspend(() =>
     artifacts: S.optional(ProductDetailsArtifactsList),
     plans: S.optional(ProductDetailsPlansList),
     hasAddOns: S.optional(S.Boolean),
+    productCode: S.optional(S.String),
   }),
 ).annotate({ identifier: "ProductDetails" }) as any as S.Schema<ProductDetails>;
 
@@ -3699,7 +3834,7 @@ export const ProductSummaryOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductSummaryOperatingSystemsList>;
 
-/** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
+/** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type ProductSummaryPricingTypesList = Array<string>;
 export const ProductSummaryPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -3741,7 +3876,7 @@ export const PlanSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PlanSummaryCategoryIdsList>;
 
-/** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
+/** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type PlanSummaryPricingTypesList = Array<string>;
 export const PlanSummaryPricingTypesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -3777,7 +3912,7 @@ export interface PlanSummary {
   categoryIds?: PlanSummaryCategoryIdsList;
   /** Set to true if plan has artifacts that are to be hidden for non authenticated users */
   hasProtectedArtifacts?: boolean;
-  /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
+  /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
   pricingTypes?: PlanSummaryPricingTypesList;
   /** Defines the security enhancement level for virtual machine deployments. Applies exclusively to Virtual Machine product types. - `None` - Standard virtual machine security without additional protection features - `Trusted` - Trusted Launch security with secure boot and virtual Trusted Platform Module capabilities - `Confidential` - Confidential computing with memory encryption and attestation for sensitive workloads */
   vmSecuritytypes?: PlanSummaryVmSecuritytypesList;
@@ -3857,7 +3992,7 @@ export interface ProductSummary {
   productFamily?: string;
   /** Operating system info for this product */
   operatingSystems?: ProductSummaryOperatingSystemsList;
-  /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing */
+  /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
   pricingTypes?: ProductSummaryPricingTypesList;
   /** Publisher display name */
   publisherDisplayName?: string;
@@ -3899,6 +4034,8 @@ export interface ProductSummary {
   hasMarketplaceFootprint?: boolean;
   /** Set of products attributes */
   attributes?: ProductSummaryAttributesList;
+  /** Offering type of product family Offers */
+  offeringType?: string;
   /** Full set of plan/SKU attributes */
   plans?: ProductSummaryPlansList;
 }
@@ -3939,6 +4076,7 @@ export const ProductSummary = /*@__PURE__*/ S.suspend(() =>
     hasRiPlans: S.optional(S.Boolean),
     hasMarketplaceFootprint: S.optional(S.Boolean),
     attributes: S.optional(ProductSummaryAttributesList),
+    offeringType: S.optional(S.String),
     plans: S.optional(ProductSummaryPlansList),
   }),
 ).annotate({ identifier: "ProductSummary" }) as any as S.Schema<ProductSummary>;
@@ -4826,6 +4964,13 @@ export const SkusGetByBillingAccountResponseCategoryIdsList =
     S.String,
   ) as any as S.Schema<SkusGetByBillingAccountResponseCategoryIdsList>;
 
+/** Pricing audiences for the SKU. */
+export type SkusGetByBillingAccountResponsePricingAudiencesList = Array<string>;
+export const SkusGetByBillingAccountResponsePricingAudiencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkusGetByBillingAccountResponsePricingAudiencesList>;
+
 /** Retail price with currency */
 export type Price_3 = Price_2;
 export const Price_3 = Price_2;
@@ -5066,6 +5211,8 @@ export interface SkusGetByBillingAccountResponse {
   offeringType?: string;
   /** Category IDs for this SKU. */
   categoryIds?: SkusGetByBillingAccountResponseCategoryIdsList;
+  /** Pricing audiences for the SKU. */
+  pricingAudiences?: SkusGetByBillingAccountResponsePricingAudiencesList;
   /** Availabilities for this SKU. */
   availabilities?: SkusGetByBillingAccountResponseAvailabilitiesList;
 }
@@ -5112,6 +5259,9 @@ export const SkusGetByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
     alternateIds: S.optional(SkuAlternateIds),
     offeringType: S.optional(S.String),
     categoryIds: S.optional(SkusGetByBillingAccountResponseCategoryIdsList),
+    pricingAudiences: S.optional(
+      SkusGetByBillingAccountResponsePricingAudiencesList,
+    ),
     availabilities: S.optional(
       SkusGetByBillingAccountResponseAvailabilitiesList,
     ),
@@ -5184,6 +5334,13 @@ export const SkusGetByBillingProfileResponseCategoryIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SkusGetByBillingProfileResponseCategoryIdsList>;
+
+/** Pricing audiences for the SKU. */
+export type SkusGetByBillingProfileResponsePricingAudiencesList = Array<string>;
+export const SkusGetByBillingProfileResponsePricingAudiencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SkusGetByBillingProfileResponsePricingAudiencesList>;
 
 /** Availabilities for this SKU. */
 export type SkusGetByBillingProfileResponseAvailabilitiesList =
@@ -5268,6 +5425,8 @@ export interface SkusGetByBillingProfileResponse {
   offeringType?: string;
   /** Category IDs for this SKU. */
   categoryIds?: SkusGetByBillingProfileResponseCategoryIdsList;
+  /** Pricing audiences for the SKU. */
+  pricingAudiences?: SkusGetByBillingProfileResponsePricingAudiencesList;
   /** Availabilities for this SKU. */
   availabilities?: SkusGetByBillingProfileResponseAvailabilitiesList;
 }
@@ -5314,6 +5473,9 @@ export const SkusGetByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
     alternateIds: S.optional(SkuAlternateIds),
     offeringType: S.optional(S.String),
     categoryIds: S.optional(SkusGetByBillingProfileResponseCategoryIdsList),
+    pricingAudiences: S.optional(
+      SkusGetByBillingProfileResponsePricingAudiencesList,
+    ),
     availabilities: S.optional(
       SkusGetByBillingProfileResponseAvailabilitiesList,
     ),
@@ -5397,6 +5559,12 @@ export const SkuSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuSummaryCategoryIdsList>;
 
+/** Pricing audiences for the SKU. */
+export type SkuSummaryPricingAudiencesList = Array<string>;
+export const SkuSummaryPricingAudiencesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuSummaryPricingAudiencesList>;
+
 /** Summary description of the SKU. */
 export interface SkuSummary {
   /** The unique id of the product. */
@@ -5473,6 +5641,8 @@ export interface SkuSummary {
   offeringType?: string;
   /** Category IDs for this SKU. */
   categoryIds?: SkuSummaryCategoryIdsList;
+  /** Pricing audiences for the SKU. */
+  pricingAudiences?: SkuSummaryPricingAudiencesList;
 }
 export const SkuSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5513,6 +5683,7 @@ export const SkuSummary = /*@__PURE__*/ S.suspend(() =>
     alternateIds: S.optional(SkuAlternateIds),
     offeringType: S.optional(S.String),
     categoryIds: S.optional(SkuSummaryCategoryIdsList),
+    pricingAudiences: S.optional(SkuSummaryPricingAudiencesList),
   }),
 ).annotate({ identifier: "SkuSummary" }) as any as S.Schema<SkuSummary>;
 

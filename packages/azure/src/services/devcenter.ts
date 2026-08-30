@@ -2268,9 +2268,9 @@ export const DevCentersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** Values can be systemAssignedIdentity or userAssignedIdentity */
 export type EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
-    | "systemAssignedIdentity"
-    | "userAssignedIdentity"
-    | "delegatedResourceIdentity";
+  | "systemAssignedIdentity"
+  | "userAssignedIdentity"
+  | "delegatedResourceIdentity";
 export const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -4553,9 +4553,23 @@ export const NetworkConnectionsCreateOrUpdateRequestTagsMap =
     S.String,
   ) as any as S.Schema<NetworkConnectionsCreateOrUpdateRequestTagsMap>;
 
+/** Health check status values */
+export type NetworkPropertiesInputHealthCheckStatus =
+  | "Unknown"
+  | "Pending"
+  | "Running"
+  | "Passed"
+  | "Warning"
+  | "Failed"
+  | "Informational";
+export const NetworkPropertiesInputHealthCheckStatus = /*@__PURE__*/ S.String;
+
 /** Active Directory join type */
-export type DomainJoinType = "HybridAzureADJoin" | "AzureADJoin" | "None";
-export const DomainJoinType = /*@__PURE__*/ S.String;
+export type NetworkPropertiesInputDomainJoinType =
+  | "HybridAzureADJoin"
+  | "AzureADJoin"
+  | "None";
+export const NetworkPropertiesInputDomainJoinType = /*@__PURE__*/ S.String;
 
 /** Network properties */
 export interface NetworkPropertiesInput {
@@ -4569,10 +4583,12 @@ export interface NetworkPropertiesInput {
   domainUsername?: string;
   /** The password for the account used to join domain */
   domainPassword?: string | Redacted.Redacted<string>;
+  /** Health check status values */
+  healthCheckStatus?: NetworkPropertiesInputHealthCheckStatus | (string & {});
   /** The name for resource group where NICs will be placed. */
   networkingResourceGroupName?: string;
-  /** AAD Join type. */
-  domainJoinType: DomainJoinType | (string & {});
+  /** Active Directory join type */
+  domainJoinType: NetworkPropertiesInputDomainJoinType | (string & {});
 }
 export const NetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4581,8 +4597,9 @@ export const NetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     organizationUnit: S.optional(S.String),
     domainUsername: S.optional(S.String),
     domainPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    healthCheckStatus: S.optional(NetworkPropertiesInputHealthCheckStatus),
     networkingResourceGroupName: S.optional(S.String),
-    domainJoinType: DomainJoinType,
+    domainJoinType: NetworkPropertiesInputDomainJoinType,
   }),
 ).annotate({
   identifier: "NetworkPropertiesInput",
@@ -4654,7 +4671,7 @@ export type NetworkPropertiesProvisioningState =
 export const NetworkPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Health check status values */
-export type HealthCheckStatus =
+export type NetworkPropertiesHealthCheckStatus =
   | "Unknown"
   | "Pending"
   | "Running"
@@ -4662,7 +4679,14 @@ export type HealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
-export const HealthCheckStatus = /*@__PURE__*/ S.String;
+export const NetworkPropertiesHealthCheckStatus = /*@__PURE__*/ S.String;
+
+/** Active Directory join type */
+export type NetworkPropertiesDomainJoinType =
+  | "HybridAzureADJoin"
+  | "AzureADJoin"
+  | "None";
+export const NetworkPropertiesDomainJoinType = /*@__PURE__*/ S.String;
 
 /** Network properties */
 export interface NetworkProperties {
@@ -4678,12 +4702,12 @@ export interface NetworkProperties {
   domainPassword?: string | Redacted.Redacted<string>;
   /** Provisioning state of the resource. */
   provisioningState?: NetworkPropertiesProvisioningState;
-  /** Overall health status of the network connection. Health checks are run on creation, update, and periodically to validate the network connection. */
-  healthCheckStatus?: HealthCheckStatus;
+  /** Health check status values */
+  healthCheckStatus?: NetworkPropertiesHealthCheckStatus;
   /** The name for resource group where NICs will be placed. */
   networkingResourceGroupName?: string;
-  /** AAD Join type. */
-  domainJoinType: DomainJoinType;
+  /** Active Directory join type */
+  domainJoinType: NetworkPropertiesDomainJoinType;
 }
 export const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4693,9 +4717,9 @@ export const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
     domainUsername: S.optional(S.String),
     domainPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     provisioningState: S.optional(NetworkPropertiesProvisioningState),
-    healthCheckStatus: S.optional(HealthCheckStatus),
+    healthCheckStatus: S.optional(NetworkPropertiesHealthCheckStatus),
     networkingResourceGroupName: S.optional(S.String),
-    domainJoinType: DomainJoinType,
+    domainJoinType: NetworkPropertiesDomainJoinType,
   }),
 ).annotate({
   identifier: "NetworkProperties",
@@ -4854,9 +4878,20 @@ export const NetworkConnectionsGetHealthDetailsRequest =
     identifier: "NetworkConnectionsGetHealthDetailsRequest",
   }) as any as S.Schema<NetworkConnectionsGetHealthDetailsRequest>;
 
+/** Health check status values */
+export type HealthCheckStatus =
+  | "Unknown"
+  | "Pending"
+  | "Running"
+  | "Passed"
+  | "Warning"
+  | "Failed"
+  | "Informational";
+export const HealthCheckStatus = /*@__PURE__*/ S.String;
+
 /** An individual health check item */
 export interface HealthCheck {
-  /** The status of the health check item. */
+  /** Health check status values */
   status?: HealthCheckStatus;
   /** The display name of this health check item. */
   displayName?: string;
@@ -5635,25 +5670,37 @@ export type PoolDevBoxDefinitionType = "Reference" | "Value";
 export const PoolDevBoxDefinitionType = /*@__PURE__*/ S.String;
 
 /** Image reference information */
-export type ImageReferenceInput = DevBoxDefinitionPropertiesInputImageReference;
-export const ImageReferenceInput =
+export type PoolDevBoxDefinitionInputImageReference =
+  DevBoxDefinitionPropertiesInputImageReference;
+export const PoolDevBoxDefinitionInputImageReference =
   DevBoxDefinitionPropertiesInputImageReference;
 
 /** The resource model definition representing SKU */
 export type PoolDevBoxDefinitionInputSku = DevBoxDefinitionPropertiesInputSku;
 export const PoolDevBoxDefinitionInputSku = DevBoxDefinitionPropertiesInputSku;
 
+/** Image reference information */
+export type PoolDevBoxDefinitionInputActiveImageReference =
+  DevBoxDefinitionPropertiesInputImageReference;
+export const PoolDevBoxDefinitionInputActiveImageReference =
+  DevBoxDefinitionPropertiesInputImageReference;
+
 /** Represents a definition for a Developer Machine. */
 export interface PoolDevBoxDefinitionInput {
-  /** Image reference information. */
+  /** Image reference information */
   imageReference?: DevBoxDefinitionPropertiesInputImageReference;
   /** The resource model definition representing SKU */
   sku?: DevBoxDefinitionPropertiesInputSku;
+  /** Image reference information */
+  activeImageReference?: DevBoxDefinitionPropertiesInputImageReference;
 }
 export const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
     sku: S.optional(DevBoxDefinitionPropertiesInputSku),
+    activeImageReference: S.optional(
+      DevBoxDefinitionPropertiesInputImageReference,
+    ),
   }),
 ).annotate({
   identifier: "PoolDevBoxDefinitionInput",
@@ -5817,20 +5864,28 @@ export const PoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
 
 /** Image reference information */
-export type ImageReference = DevBoxDefinitionPropertiesImageReference;
-export const ImageReference = DevBoxDefinitionPropertiesImageReference;
+export type PoolDevBoxDefinitionImageReference =
+  DevBoxDefinitionPropertiesImageReference;
+export const PoolDevBoxDefinitionImageReference =
+  DevBoxDefinitionPropertiesImageReference;
 
 /** The resource model definition representing SKU */
 export type PoolDevBoxDefinitionSku = DevBoxDefinitionPropertiesSku;
 export const PoolDevBoxDefinitionSku = DevBoxDefinitionPropertiesSku;
 
+/** Image reference information */
+export type PoolDevBoxDefinitionActiveImageReference =
+  DevBoxDefinitionPropertiesImageReference;
+export const PoolDevBoxDefinitionActiveImageReference =
+  DevBoxDefinitionPropertiesImageReference;
+
 /** Represents a definition for a Developer Machine. */
 export interface PoolDevBoxDefinition {
-  /** Image reference information. */
+  /** Image reference information */
   imageReference?: DevBoxDefinitionPropertiesImageReference;
   /** The resource model definition representing SKU */
   sku?: DevBoxDefinitionPropertiesSku;
-  /** Image reference information for the currently active image (only populated during updates). */
+  /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesImageReference;
 }
 export const PoolDevBoxDefinition = /*@__PURE__*/ S.suspend(() =>

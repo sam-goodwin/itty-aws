@@ -194,6 +194,8 @@ export type RelatedEntityType =
   | "AwsProducts"
   | "AwsMarketplaceOffers"
   | "AwsMarketplaceOfferSets"
+  | "AwsMarketplaceSolutions"
+  | "AwsMarketplaceProducts"
   | (string & {});
 export const RelatedEntityType = /*@__PURE__*/ S.String;
 
@@ -579,47 +581,41 @@ export const LeadInsights = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LeadReadinessScore: S.optional(S.String) }),
 ).annotate({ identifier: "LeadInsights" }) as any as S.Schema<LeadInsights>;
 export type LeadQualificationStatus = string;
-export type AddressPart = string | redacted.Redacted<string>;
-export interface AddressSummary {
-  City?: string | redacted.Redacted<string>;
-  PostalCode?: string | redacted.Redacted<string>;
-  StateOrRegion?: string | redacted.Redacted<string>;
-  CountryCode?: CountryCode;
+export type LeadIndustry = string;
+export type LeadWebsiteUrl = string | redacted.Redacted<string>;
+export type LeadCountryCode = string | redacted.Redacted<string>;
+export interface LeadAddress {
+  City?: string;
+  PostalCode?: string;
+  StateOrRegion?: string;
+  CountryCode?: string | redacted.Redacted<string>;
 }
-export const AddressSummary = /*@__PURE__*/ S.suspend(() =>
+export const LeadAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    City: S.optional(SensitiveString),
-    PostalCode: S.optional(SensitiveString),
-    StateOrRegion: S.optional(SensitiveString),
-    CountryCode: S.optional(CountryCode),
+    City: S.optional(S.String),
+    PostalCode: S.optional(S.String),
+    StateOrRegion: S.optional(S.String),
+    CountryCode: S.optional(SensitiveString),
   }),
-).annotate({ identifier: "AddressSummary" }) as any as S.Schema<AddressSummary>;
+).annotate({ identifier: "LeadAddress" }) as any as S.Schema<LeadAddress>;
 export type AwsMaturity = string;
-export type MarketSegment =
-  | "Enterprise"
-  | "Large"
-  | "Medium"
-  | "Small"
-  | "Micro"
-  | (string & {});
-export const MarketSegment = /*@__PURE__*/ S.String;
-
+export type LeadMarketSegment = string;
 export interface LeadCustomer {
-  Industry?: Industry;
+  Industry?: string;
   CompanyName: string | redacted.Redacted<string>;
   WebsiteUrl?: string | redacted.Redacted<string>;
-  Address: AddressSummary;
+  Address?: LeadAddress;
   AwsMaturity?: string;
-  MarketSegment?: MarketSegment;
+  MarketSegment?: string;
 }
 export const LeadCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Industry: S.optional(Industry),
+    Industry: S.optional(S.String),
     CompanyName: SensitiveString,
     WebsiteUrl: S.optional(SensitiveString),
-    Address: AddressSummary,
+    Address: S.optional(LeadAddress),
     AwsMaturity: S.optional(S.String),
-    MarketSegment: S.optional(MarketSegment),
+    MarketSegment: S.optional(S.String),
   }),
 ).annotate({ identifier: "LeadCustomer" }) as any as S.Schema<LeadCustomer>;
 export type LeadSourceType = string;
@@ -627,6 +623,10 @@ export type LeadSourceId = string;
 export type LeadSourceName = string;
 export type EngagementUseCase = string;
 export type CustomerAction = string;
+export type LeadBusinessProblem = string | redacted.Redacted<string>;
+export type LeadJobTitle = string | redacted.Redacted<string>;
+export type LeadEmail = string | redacted.Redacted<string>;
+export type LeadPhoneNumber = string | redacted.Redacted<string>;
 export interface LeadContact {
   BusinessTitle: string | redacted.Redacted<string>;
   Email: string | redacted.Redacted<string>;
@@ -644,25 +644,25 @@ export const LeadContact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LeadContact" }) as any as S.Schema<LeadContact>;
 export interface LeadInteraction {
-  SourceType: string;
-  SourceId: string;
-  SourceName: string;
+  SourceType?: string;
+  SourceId?: string;
+  SourceName?: string;
   Usecase?: string;
   InteractionDate?: Date;
-  CustomerAction: string;
+  CustomerAction?: string;
   BusinessProblem?: string | redacted.Redacted<string>;
   Contact: LeadContact;
 }
 export const LeadInteraction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SourceType: S.String,
-    SourceId: S.String,
-    SourceName: S.String,
+    SourceType: S.optional(S.String),
+    SourceId: S.optional(S.String),
+    SourceName: S.optional(S.String),
     Usecase: S.optional(S.String),
     InteractionDate: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
-    CustomerAction: S.String,
+    CustomerAction: S.optional(S.String),
     BusinessProblem: S.optional(SensitiveString),
     Contact: LeadContact,
   }),
@@ -685,9 +685,6 @@ export const LeadContext = /*@__PURE__*/ S.suspend(() =>
     Interactions: LeadInteractionList,
   }),
 ).annotate({ identifier: "LeadContext" }) as any as S.Schema<LeadContext>;
-export type ProspectingTaskIdentifier = string;
-export type TaskArn = string;
-export type TaskName = string;
 export type ProspectingAccountName = string;
 export type ProspectingGeo = string;
 export type ProspectingRegion = string;
@@ -745,17 +742,22 @@ export const ProspectingInsights = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProspectingInsights",
 }) as any as S.Schema<ProspectingInsights>;
+export type ProspectingTaskIdentifier = string;
+export type TaskArn = string;
+export type TaskName = string;
 export interface ProspectingResultAws {
+  Customer?: ProspectingResultCustomer;
+  Insights?: ProspectingInsights;
   StartTime?: Date;
   EndTime?: Date;
   TaskId?: string;
   TaskArn?: string;
   TaskName?: string;
-  Customer?: ProspectingResultCustomer;
-  Insights?: ProspectingInsights;
 }
 export const ProspectingResultAws = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    Customer: S.optional(ProspectingResultCustomer),
+    Insights: S.optional(ProspectingInsights),
     StartTime: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -763,8 +765,6 @@ export const ProspectingResultAws = /*@__PURE__*/ S.suspend(() =>
     TaskId: S.optional(S.String),
     TaskArn: S.optional(S.String),
     TaskName: S.optional(S.String),
-    Customer: S.optional(ProspectingResultCustomer),
-    Insights: S.optional(ProspectingInsights),
   }),
 ).annotate({
   identifier: "ProspectingResultAws",
@@ -815,16 +815,16 @@ export const EngagementContexts = /*@__PURE__*/ S.Array(
 export interface CreateEngagementRequest {
   Catalog: string;
   ClientToken: string;
-  Title: string;
-  Description: string;
+  Title?: string;
+  Description?: string;
   Contexts?: EngagementContextDetails[];
 }
 export const CreateEngagementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Catalog: S.String,
     ClientToken: S.String.pipe(T.IdempotencyToken()),
-    Title: S.String,
-    Description: S.String,
+    Title: S.optional(S.String),
+    Description: S.optional(S.String),
     Contexts: S.optional(EngagementContexts),
   }).pipe(
     T.all(
@@ -1188,37 +1188,37 @@ export const OpportunityInvitationPayload = /*@__PURE__*/ S.suspend(() =>
   identifier: "OpportunityInvitationPayload",
 }) as any as S.Schema<OpportunityInvitationPayload>;
 export interface LeadInvitationCustomer {
-  Industry?: Industry;
+  Industry?: string;
   CompanyName: string | redacted.Redacted<string>;
   WebsiteUrl?: string | redacted.Redacted<string>;
-  CountryCode: CountryCode;
+  CountryCode?: string | redacted.Redacted<string>;
   AwsMaturity?: string;
-  MarketSegment?: MarketSegment;
+  MarketSegment?: string;
 }
 export const LeadInvitationCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Industry: S.optional(Industry),
+    Industry: S.optional(S.String),
     CompanyName: SensitiveString,
     WebsiteUrl: S.optional(SensitiveString),
-    CountryCode: CountryCode,
+    CountryCode: S.optional(SensitiveString),
     AwsMaturity: S.optional(S.String),
-    MarketSegment: S.optional(MarketSegment),
+    MarketSegment: S.optional(S.String),
   }),
 ).annotate({
   identifier: "LeadInvitationCustomer",
 }) as any as S.Schema<LeadInvitationCustomer>;
 export interface LeadInvitationInteraction {
-  SourceType: string;
-  SourceId: string;
-  SourceName: string;
+  SourceType?: string;
+  SourceId?: string;
+  SourceName?: string;
   Usecase?: string;
   ContactBusinessTitle: string | redacted.Redacted<string>;
 }
 export const LeadInvitationInteraction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SourceType: S.String,
-    SourceId: S.String,
-    SourceName: S.String,
+    SourceType: S.optional(S.String),
+    SourceId: S.optional(S.String),
+    SourceName: S.optional(S.String),
     Usecase: S.optional(S.String),
     ContactBusinessTitle: SensitiveString,
   }),
@@ -1309,6 +1309,7 @@ export type NationalSecurity = "Yes" | "No" | (string & {});
 export const NationalSecurity = /*@__PURE__*/ S.String;
 
 export type WebsiteUrl = string | redacted.Redacted<string>;
+export type AddressPart = string | redacted.Redacted<string>;
 export interface Address {
   City?: string | redacted.Redacted<string>;
   PostalCode?: string | redacted.Redacted<string>;
@@ -1997,6 +1998,7 @@ export type AwsMemberBusinessTitle =
   | "PDM"
   | "PSM"
   | "ISVSM"
+  | "Signatory"
   | (string & {});
 export const AwsMemberBusinessTitle = /*@__PURE__*/ S.String;
 
@@ -2166,14 +2168,26 @@ export const AwsProductIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export type SolutionIdentifier = string;
 export type SolutionIdentifiers = string[];
 export const SolutionIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export type AwsMarketplaceSolutionIdentifier = string;
+export type AwsMarketplaceSolutionIdentifiers = string[];
+export const AwsMarketplaceSolutionIdentifiers = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export type AwsMarketplaceProductArn = string;
+export type AwsMarketplaceProductIdentifiers = string[];
+export const AwsMarketplaceProductIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export interface AwsOpportunityRelatedEntities {
   AwsProducts?: string[];
   Solutions?: string[];
+  AwsMarketplaceSolutions?: string[];
+  AwsMarketplaceProducts?: string[];
 }
 export const AwsOpportunityRelatedEntities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AwsProducts: S.optional(AwsProductIdentifiers),
     Solutions: S.optional(SolutionIdentifiers),
+    AwsMarketplaceSolutions: S.optional(AwsMarketplaceSolutionIdentifiers),
+    AwsMarketplaceProducts: S.optional(AwsMarketplaceProductIdentifiers),
   }),
 ).annotate({
   identifier: "AwsOpportunityRelatedEntities",
@@ -2198,6 +2212,22 @@ export const AwsOpportunityProject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AwsOpportunityProject",
 }) as any as S.Schema<AwsOpportunityProject>;
+export interface AwsSoftwareRevenue {
+  Value?: MonetaryValue;
+  Discount?: string;
+  EffectiveDate?: string;
+  ExpirationDate?: string;
+}
+export const AwsSoftwareRevenue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Value: S.optional(MonetaryValue),
+    Discount: S.optional(S.String),
+    EffectiveDate: S.optional(S.String),
+    ExpirationDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AwsSoftwareRevenue",
+}) as any as S.Schema<AwsSoftwareRevenue>;
 export interface GetAwsOpportunitySummaryResponse {
   RelatedOpportunityId?: string;
   Origin?: OpportunityOrigin;
@@ -2211,6 +2241,7 @@ export interface GetAwsOpportunitySummaryResponse {
   Customer?: AwsOpportunityCustomer;
   Project?: AwsOpportunityProject;
   CosellMotion?: string;
+  SoftwareRevenue?: AwsSoftwareRevenue;
   Catalog: string;
 }
 export const GetAwsOpportunitySummaryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2227,6 +2258,7 @@ export const GetAwsOpportunitySummaryResponse = /*@__PURE__*/ S.suspend(() =>
     Customer: S.optional(AwsOpportunityCustomer),
     Project: S.optional(AwsOpportunityProject),
     CosellMotion: S.optional(S.String),
+    SoftwareRevenue: S.optional(AwsSoftwareRevenue),
     Catalog: S.String,
   }),
 ).annotate({
@@ -2332,6 +2364,30 @@ export type EngagementMemberSummaries = EngagementMemberSummary[];
 export const EngagementMemberSummaries = /*@__PURE__*/ S.Array(
   EngagementMemberSummary,
 );
+export interface InvitationProspectingResultAws {
+  Customer?: ProspectingResultCustomer;
+  Insights?: ProspectingInsights;
+}
+export const InvitationProspectingResultAws = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Customer: S.optional(ProspectingResultCustomer),
+    Insights: S.optional(ProspectingInsights),
+  }),
+).annotate({
+  identifier: "InvitationProspectingResultAws",
+}) as any as S.Schema<InvitationProspectingResultAws>;
+export interface EnrichmentContext {
+  ProspectingResultAws?: InvitationProspectingResultAws;
+  LeadInsights?: LeadInsights;
+}
+export const EnrichmentContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProspectingResultAws: S.optional(InvitationProspectingResultAws),
+    LeadInsights: S.optional(LeadInsights),
+  }),
+).annotate({
+  identifier: "EnrichmentContext",
+}) as any as S.Schema<EnrichmentContext>;
 export interface GetEngagementInvitationResponse {
   Arn?: string;
   PayloadType?: EngagementInvitationPayloadType;
@@ -2350,6 +2406,7 @@ export interface GetEngagementInvitationResponse {
   InvitationMessage?: string | redacted.Redacted<string>;
   EngagementDescription?: string;
   ExistingMembers?: EngagementMemberSummary[];
+  EnrichmentContext?: EnrichmentContext;
 }
 export const GetEngagementInvitationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2374,6 +2431,7 @@ export const GetEngagementInvitationResponse = /*@__PURE__*/ S.suspend(() =>
     InvitationMessage: S.optional(SensitiveString),
     EngagementDescription: S.optional(S.String),
     ExistingMembers: S.optional(EngagementMemberSummaries),
+    EnrichmentContext: S.optional(EnrichmentContext),
   }),
 ).annotate({
   identifier: "GetEngagementInvitationResponse",
@@ -2410,6 +2468,8 @@ export interface RelatedEntityIdentifiers {
   AwsMarketplaceOfferSets?: string[];
   Solutions?: string[];
   AwsProducts?: string[];
+  AwsMarketplaceSolutions?: string[];
+  AwsMarketplaceProducts?: string[];
 }
 export const RelatedEntityIdentifiers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2417,6 +2477,8 @@ export const RelatedEntityIdentifiers = /*@__PURE__*/ S.suspend(() =>
     AwsMarketplaceOfferSets: S.optional(AwsMarketplaceOfferSetIdentifiers),
     Solutions: S.optional(SolutionIdentifiers),
     AwsProducts: S.optional(AwsProductIdentifiers),
+    AwsMarketplaceSolutions: S.optional(AwsMarketplaceSolutionIdentifiers),
+    AwsMarketplaceProducts: S.optional(AwsMarketplaceProductIdentifiers),
   }),
 ).annotate({
   identifier: "RelatedEntityIdentifiers",
@@ -2632,6 +2694,7 @@ export interface AwsOpportunitySummaryFullView {
   Customer?: AwsOpportunityCustomer;
   Project?: AwsOpportunityProject;
   CosellMotion?: string;
+  SoftwareRevenue?: AwsSoftwareRevenue;
 }
 export const AwsOpportunitySummaryFullView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2647,6 +2710,7 @@ export const AwsOpportunitySummaryFullView = /*@__PURE__*/ S.suspend(() =>
     Customer: S.optional(AwsOpportunityCustomer),
     Project: S.optional(AwsOpportunityProject),
     CosellMotion: S.optional(S.String),
+    SoftwareRevenue: S.optional(AwsSoftwareRevenue),
   }),
 ).annotate({
   identifier: "AwsOpportunitySummaryFullView",
@@ -3477,6 +3541,20 @@ export const LifeCycleSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifeCycleSummary",
 }) as any as S.Schema<LifeCycleSummary>;
+export interface AddressSummary {
+  City?: string | redacted.Redacted<string>;
+  PostalCode?: string | redacted.Redacted<string>;
+  StateOrRegion?: string | redacted.Redacted<string>;
+  CountryCode?: CountryCode;
+}
+export const AddressSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    City: S.optional(SensitiveString),
+    PostalCode: S.optional(SensitiveString),
+    StateOrRegion: S.optional(SensitiveString),
+    CountryCode: S.optional(CountryCode),
+  }),
+).annotate({ identifier: "AddressSummary" }) as any as S.Schema<AddressSummary>;
 export interface AccountSummary {
   Industry?: Industry;
   OtherIndustry?: string;
@@ -3911,6 +3989,9 @@ export const SolutionStatus = /*@__PURE__*/ S.String;
 
 export type FilterStatus = SolutionStatus[];
 export const FilterStatus = /*@__PURE__*/ S.Array(SolutionStatus);
+export type AwsMarketplaceSolutionArn = string;
+export type AwsMarketplaceSolutionArnList = string[];
+export const AwsMarketplaceSolutionArnList = /*@__PURE__*/ S.Array(S.String);
 export interface ListSolutionsRequest {
   Catalog: string;
   MaxResults?: number;
@@ -3919,6 +4000,7 @@ export interface ListSolutionsRequest {
   Status?: SolutionStatus[];
   Identifier?: string[];
   Category?: string[];
+  AwsMarketplaceSolutionArn?: string[];
 }
 export const ListSolutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3929,6 +4011,7 @@ export const ListSolutionsRequest = /*@__PURE__*/ S.suspend(() =>
     Status: S.optional(FilterStatus),
     Identifier: S.optional(SolutionIdentifiers),
     Category: S.optional(StringList),
+    AwsMarketplaceSolutionArn: S.optional(AwsMarketplaceSolutionArnList),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/ListSolutions" }),
@@ -3951,6 +4034,7 @@ export interface SolutionBase {
   Status: SolutionStatus;
   Category: string;
   CreatedDate: Date;
+  AwsMarketplaceSolutionArn?: string;
 }
 export const SolutionBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3961,6 +4045,7 @@ export const SolutionBase = /*@__PURE__*/ S.suspend(() =>
     Status: SolutionStatus,
     Category: S.String,
     CreatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    AwsMarketplaceSolutionArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "SolutionBase" }) as any as S.Schema<SolutionBase>;
 export type SolutionList = SolutionBase[];

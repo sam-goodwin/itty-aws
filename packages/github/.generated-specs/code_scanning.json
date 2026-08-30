@@ -521,6 +521,12 @@
           "traits": {
             "smithy.api#enumValue": "used in tests"
           }
+        },
+        "MITIGATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mitigated"
+          }
         }
       },
       "traits": {

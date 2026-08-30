@@ -2268,13 +2268,19 @@ export const EventSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2788,7 +2794,10 @@ export const DomainEventSubscriptionsUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type DomainEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DomainEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3900,13 +3909,19 @@ export const DomainTopicEventSubscriptionsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4051,7 +4066,10 @@ export const DomainTopicEventSubscriptionsGetResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type DomainTopicEventSubscriptionsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DomainTopicEventSubscriptionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4297,13 +4315,19 @@ export const DomainTopicEventSubscriptionsUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type DomainTopicEventSubscriptionsUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DomainTopicEventSubscriptionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type DomainTopicEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DomainTopicEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4785,7 +4809,10 @@ export const EventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type EventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const EventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -7119,13 +7146,19 @@ export const SubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -7262,13 +7295,19 @@ export const NamespaceTopicEventSubscriptionsGetRequest =
 
 /** The type of identity that created the resource. */
 export type NamespaceTopicEventSubscriptionsGetResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const NamespaceTopicEventSubscriptionsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type NamespaceTopicEventSubscriptionsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const NamespaceTopicEventSubscriptionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -7602,13 +7641,19 @@ export const NamespaceTopicEventSubscriptionsUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type NamespaceTopicEventSubscriptionsUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const NamespaceTopicEventSubscriptionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type NamespaceTopicEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const NamespaceTopicEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -8491,13 +8536,19 @@ export const PartnerConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type PartnerConfigurationsAuthorizePartnerResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerConfigurationsAuthorizePartnerResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PartnerConfigurationsAuthorizePartnerResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerConfigurationsAuthorizePartnerResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -8621,13 +8672,19 @@ export const PartnerConfigurationsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type PartnerConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PartnerConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -9040,13 +9097,19 @@ export const PartnerConfigurationsUnauthorizePartnerRequest =
 
 /** The type of identity that created the resource. */
 export type PartnerConfigurationsUnauthorizePartnerResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerConfigurationsUnauthorizePartnerResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PartnerConfigurationsUnauthorizePartnerResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerConfigurationsUnauthorizePartnerResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -9499,7 +9562,10 @@ export const PartnerNamespacesCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type PartnerNamespacesCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerNamespacesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -10158,7 +10224,10 @@ export const PartnerRegistrationsCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type PartnerRegistrationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerRegistrationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -10617,13 +10686,19 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -10763,7 +10838,10 @@ export const PartnerTopicEventSubscriptionsGetResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type PartnerTopicEventSubscriptionsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerTopicEventSubscriptionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -10997,13 +11075,19 @@ export const PartnerTopicEventSubscriptionsUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type PartnerTopicEventSubscriptionsUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerTopicEventSubscriptionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PartnerTopicEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PartnerTopicEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -12001,7 +12085,10 @@ export const PermissionBindingsCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type PermissionBindingsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PermissionBindingsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -12759,13 +12846,19 @@ export const SystemTopicEventSubscriptionsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -12904,7 +12997,10 @@ export const SystemTopicEventSubscriptionsGetResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type SystemTopicEventSubscriptionsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const SystemTopicEventSubscriptionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -13138,13 +13234,19 @@ export const SystemTopicEventSubscriptionsUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type SystemTopicEventSubscriptionsUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const SystemTopicEventSubscriptionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemTopicEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const SystemTopicEventSubscriptionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -13869,13 +13971,19 @@ export const TopicEventSubscriptionsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type TopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const TopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type TopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const TopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

@@ -339,17 +339,21 @@ export const GetResultSuperBotFightModeDefinitelyConfigurationCfRobotsVariant =
   /*@__PURE__*/ S.String;
 
 export type GetResultSuperBotFightModeDefinitelyConfigurationContentBotsProtection =
-  "block" | "disabled";
+  | "block"
+  | "disabled";
 export const GetResultSuperBotFightModeDefinitelyConfigurationContentBotsProtection =
   /*@__PURE__*/ S.String;
 
 export type GetResultSuperBotFightModeDefinitelyConfigurationCrawlerProtection =
-  "enabled" | "disabled";
+  | "enabled"
+  | "disabled";
 export const GetResultSuperBotFightModeDefinitelyConfigurationCrawlerProtection =
   /*@__PURE__*/ S.String;
 
 export type GetResultSuperBotFightModeDefinitelyConfigurationSbfmDefinitelyAutomated =
-  "allow" | "block" | "managed_challenge";
+  | "allow"
+  | "block"
+  | "managed_challenge";
 export const GetResultSuperBotFightModeDefinitelyConfigurationSbfmDefinitelyAutomated =
   /*@__PURE__*/ S.String;
 
@@ -474,7 +478,8 @@ export const GetResultSuperBotFightModeLikelyConfigurationCfRobotsVariant =
   /*@__PURE__*/ S.String;
 
 export type GetResultSuperBotFightModeLikelyConfigurationContentBotsProtection =
-  "block" | "disabled";
+  | "block"
+  | "disabled";
 export const GetResultSuperBotFightModeLikelyConfigurationContentBotsProtection =
   /*@__PURE__*/ S.String;
 
@@ -485,7 +490,9 @@ export const GetResultSuperBotFightModeLikelyConfigurationCrawlerProtection =
   /*@__PURE__*/ S.String;
 
 export type GetResultSuperBotFightModeLikelyConfigurationSbfmDefinitelyAutomated =
-  "allow" | "block" | "managed_challenge";
+  | "allow"
+  | "block"
+  | "managed_challenge";
 export const GetResultSuperBotFightModeLikelyConfigurationSbfmDefinitelyAutomated =
   /*@__PURE__*/ S.String;
 
@@ -1168,32 +1175,40 @@ export const UpdateResultBotFightModeConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateResultBotFightModeConfiguration>;
 
 export type UpdateResultSuperBotFightModeDefinitelyConfigurationAiBotsProtection =
-  "block" | "disabled" | "only_on_ad_pages";
+  | "block"
+  | "disabled"
+  | "only_on_ad_pages";
 export const UpdateResultSuperBotFightModeDefinitelyConfigurationAiBotsProtection =
   /*@__PURE__*/ S.String;
 
 export type UpdateResultSuperBotFightModeDefinitelyConfigurationCfRobotsVariant =
-  "off" | "policy_only";
+  | "off"
+  | "policy_only";
 export const UpdateResultSuperBotFightModeDefinitelyConfigurationCfRobotsVariant =
   /*@__PURE__*/ S.String;
 
 export type UpdateResultSuperBotFightModeDefinitelyConfigurationContentBotsProtection =
-  "block" | "disabled";
+  | "block"
+  | "disabled";
 export const UpdateResultSuperBotFightModeDefinitelyConfigurationContentBotsProtection =
   /*@__PURE__*/ S.String;
 
 export type UpdateResultSuperBotFightModeDefinitelyConfigurationCrawlerProtection =
-  "enabled" | "disabled";
+  | "enabled"
+  | "disabled";
 export const UpdateResultSuperBotFightModeDefinitelyConfigurationCrawlerProtection =
   /*@__PURE__*/ S.String;
 
 export type UpdateResultSuperBotFightModeDefinitelyConfigurationSbfmDefinitelyAutomated =
-  "allow" | "block" | "managed_challenge";
+  | "allow"
+  | "block"
+  | "managed_challenge";
 export const UpdateResultSuperBotFightModeDefinitelyConfigurationSbfmDefinitelyAutomated =
   /*@__PURE__*/ S.String;
 
 export type UpdateResultSuperBotFightModeDefinitelyConfigurationSbfmVerifiedBots =
-  "allow" | "block";
+  | "allow"
+  | "block";
 export const UpdateResultSuperBotFightModeDefinitelyConfigurationSbfmVerifiedBots =
   /*@__PURE__*/ S.String;
 
@@ -1298,7 +1313,8 @@ export const UpdateResultSuperBotFightModeLikelyConfigurationCfRobotsVariant =
   /*@__PURE__*/ S.String;
 
 export type UpdateResultSuperBotFightModeLikelyConfigurationContentBotsProtection =
-  "block" | "disabled";
+  | "block"
+  | "disabled";
 export const UpdateResultSuperBotFightModeLikelyConfigurationContentBotsProtection =
   /*@__PURE__*/ S.String;
 
@@ -1309,12 +1325,16 @@ export const UpdateResultSuperBotFightModeLikelyConfigurationCrawlerProtection =
   /*@__PURE__*/ S.String;
 
 export type UpdateResultSuperBotFightModeLikelyConfigurationSbfmDefinitelyAutomated =
-  "allow" | "block" | "managed_challenge";
+  | "allow"
+  | "block"
+  | "managed_challenge";
 export const UpdateResultSuperBotFightModeLikelyConfigurationSbfmDefinitelyAutomated =
   /*@__PURE__*/ S.String;
 
 export type UpdateResultSuperBotFightModeLikelyConfigurationSbfmLikelyAutomated =
-  "allow" | "block" | "managed_challenge";
+  | "allow"
+  | "block"
+  | "managed_challenge";
 export const UpdateResultSuperBotFightModeLikelyConfigurationSbfmLikelyAutomated =
   /*@__PURE__*/ S.String;
 

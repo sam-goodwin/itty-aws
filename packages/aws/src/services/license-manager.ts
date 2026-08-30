@@ -1284,6 +1284,7 @@ export interface CreateLicenseVersionRequest {
   Status: LicenseStatus;
   ClientToken: string;
   SourceVersion?: string;
+  ResetUsage?: boolean;
 }
 export const CreateLicenseVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1299,6 +1300,7 @@ export const CreateLicenseVersionRequest = /*@__PURE__*/ S.suspend(() =>
     Status: LicenseStatus,
     ClientToken: S.String,
     SourceVersion: S.optional(S.String),
+    ResetUsage: S.optional(S.Boolean),
   }).pipe(
     T.all(
       ns,

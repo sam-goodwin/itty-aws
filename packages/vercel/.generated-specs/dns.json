@@ -607,10 +607,7 @@
       "type": "structure",
       "members": {
         "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
+          "target": "smithy.api#String"
         },
         "updated": {
           "target": "smithy.api#Double",

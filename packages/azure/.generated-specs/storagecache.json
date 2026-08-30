@@ -30,10 +30,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Upgrade a cache's firmware if a new version is available. Otherwise, this operation has no effect.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesUpgradeFirmwareRequest": {
@@ -81,10 +81,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Suspends client access to a storage target.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetSuspendRequest": {
@@ -140,10 +140,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Resumes client access to a previously suspended storage target.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetResumeRequest": {
@@ -199,10 +199,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/restoreDefaults",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Tells a storage target to restore its settings to their default values.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetsRestoreDefaultsRequest": {
@@ -258,10 +258,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Invalidate all cached data for a storage target. Cached files are discarded and fetched from the back end on the next request.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetInvalidateRequest": {
@@ -317,10 +317,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Tells the cache to write all dirty data to the Storage Target's backend storage. Client requests to this storage target's namespace will return errors until the flush operation completes.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetFlushRequest": {
@@ -376,10 +376,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Tells a storage target to refresh its DNS information.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetsDnsRefreshRequest": {
@@ -435,10 +435,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Removes a Storage Target from a cache. This operation is allowed at any time, but if the cache is down or unhealthy, the actual removal of the Storage Target may be delayed until the cache is healthy again. Note that if the cache has data to flush to the Storage Target, the data will be flushed before the Storage Target will be deleted.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetsDeleteRequest": {
@@ -501,10 +501,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create or update a Storage Target. This operation is allowed at any time, but if the cache is down or unhealthy, the actual creation/modification of the Storage Target may be delayed until the cache is healthy again.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetsCreateOrUpdateResponse": {
@@ -1094,10 +1094,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns a Storage Target from a cache.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetsGetResponse": {
@@ -1197,10 +1197,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns a list of Storage Targets for the specified cache.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#StorageTargetsResult": {
@@ -1321,10 +1321,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stopPrimingJob",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Schedule a priming job for deletion.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesStopPrimingJobRequest": {
@@ -1379,10 +1379,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stop",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Tells an Active cache to transition to Stopped state.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesStopRequest": {
@@ -1430,10 +1430,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create a priming job. This operation is only allowed when the cache is healthy.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesStartPrimingJobRequest": {
@@ -1495,10 +1495,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/start",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Tells a Stopped state cache to transition to Active state.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesStartRequest": {
@@ -1546,10 +1546,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Update cache space allocation.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesSpaceAllocationRequest": {
@@ -1630,10 +1630,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/resumePrimingJob",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Resumes a paused priming job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesResumePrimingJobRequest": {
@@ -1688,10 +1688,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/pausePrimingJob",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Schedule a priming job to be paused.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesPausePrimingJobRequest": {
@@ -1746,10 +1746,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/flush",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Tells a cache to write all dirty data to the Storage Target(s). During the flush, clients will see errors returned until the flush is complete.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesFlushRequest": {
@@ -1797,10 +1797,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Tells a cache to write generate debug info for support to process.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesDebugInfoRequest": {
@@ -1848,10 +1848,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Schedules a cache for deletion.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesDeleteRequest": {
@@ -1899,10 +1899,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Update a cache instance.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesUpdateResponse": {
@@ -2041,7 +2041,9 @@
           }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "User-assigned identity properties."
+      }
     },
     "com.azure.storagecache#CacheIdentityType": {
       "type": "enum",
@@ -3166,7 +3168,9 @@
     "com.azure.storagecache#UserAssignedIdentitiesValueInput": {
       "type": "structure",
       "members": {},
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "User-assigned identity properties."
+      }
     },
     "com.azure.storagecache#CachesUpdateRequestTagsMap": {
       "type": "map",
@@ -3336,10 +3340,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create or update a cache.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesCreateOrUpdateResponse": {
@@ -3503,10 +3507,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns a cache.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesGetResponse": {
@@ -3628,10 +3632,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns all caches the user has access to under a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesListResult": {
@@ -3761,6 +3765,641 @@
         "smithy.api#input": {}
       }
     },
+    "com.azure.storagecache#RebalanceJobsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storagecache#RebalanceJobsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs/{rebalanceJobName}",
+          "code": 200,
+          "apiVersion": "2026-08-01"
+        },
+        "smithy.api#documentation": "Schedules a rebalance job for deletion.",
+        "com.distilled.openapi#apiVersion": "2026-08-01"
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "amlFilesystemName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "rebalanceJobName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name for the rebalance job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storagecache#RebalanceJobsUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.storagecache#RebalanceJobsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs/{rebalanceJobName}",
+          "code": 200,
+          "apiVersion": "2026-08-01"
+        },
+        "smithy.api#documentation": "Update a rebalance job instance.",
+        "com.distilled.openapi#apiVersion": "2026-08-01"
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.storagecache#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagecache#RebalanceJobProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the rebalance job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storagecache#RebalanceJobProperties": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.storagecache#RebalanceJobPropertiesProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property"
+          }
+        },
+        "adminStatus": {
+          "target": "com.azure.storagecache#RebalanceJobAdminStatus",
+          "traits": {
+            "smithy.api#documentation": "The current administrative status of the rebalance job. 'Active' indicates the job is running normally; 'Cancel' indicates cancellation has been requested."
+          }
+        },
+        "expansionJobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified ARM resource ID of the parent expansion job that initiated this rebalance. Populated when the rebalance was created as part of an expansion."
+          }
+        },
+        "status": {
+          "target": "com.azure.storagecache#RebalanceJobPropertiesStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the rebalance job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the rebalance job."
+      }
+    },
+    "com.azure.storagecache#RebalanceJobPropertiesStatus": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.storagecache#RebalanceJobStatusType",
+          "traits": {
+            "smithy.api#documentation": "The operational state of the rebalance job. InProgress indicates the rebalance is running on the cluster. Cancelling indicates a cancel has been requested. Canceled indicates the rebalance was cancelled. Completed indicates the rebalance finished successfully. Failed indicates the rebalance was unable to complete due to a fatal error. Deleting indicates the job is being cleaned up during deletion. RollingBack indicates the orchestrator is rolling back provisioned resources after a failure."
+          }
+        },
+        "statusCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Server-defined status code for rebalance job."
+          }
+        },
+        "statusMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Server-defined status message for rebalance job."
+          }
+        },
+        "percentComplete": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The percentage of rebalance job completion."
+          }
+        },
+        "balancePercent": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The balance percentage (0-100). Represents cumulative progress since the rebalance started. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts."
+          }
+        },
+        "estimatedRemainingSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Estimated remaining time in seconds. Omitted during initial assessment before the rebalancer has enough data to estimate."
+          }
+        },
+        "filesMigrated": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of files migrated since the rebalance started. Counts OST-phase (data) work items. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts."
+          }
+        },
+        "dirsMigrated": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of directories migrated since the rebalance started. Counts MDT-phase (metadata) work items, reported separately from filesMigrated (OST-phase data migrations). Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts."
+          }
+        },
+        "bytesMoved": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of bytes moved since the rebalance started. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts."
+          }
+        },
+        "filesMovedPerSecond": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Average files moved per second over the most recent reporting interval."
+          }
+        },
+        "throughputMiBps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Average throughput in mebibytes per second (1024x1024 bytes per second) over the most recent reporting interval."
+          }
+        },
+        "totalErrors": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total cumulative non-skip errors since the rebalance started. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts."
+          }
+        },
+        "totalSkipped": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total cumulative benign skips since the rebalance started: files intentionally not migrated (for example, a lost migration lease or a stale layout), as distinct from the hard failures counted in totalErrors. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts."
+          }
+        },
+        "startTimeUTC": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time (in UTC) the rebalance job started."
+          }
+        },
+        "completionTimeUTC": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time (in UTC) when the rebalance job completed. Only populated when the job reaches a terminal state (Completed, Failed, or Canceled)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the rebalance job."
+      }
+    },
+    "com.azure.storagecache#RebalanceJobStatusType": {
+      "type": "enum",
+      "members": {
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InProgress"
+          }
+        },
+        "CANCELLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cancelling"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Completed"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleting"
+          }
+        },
+        "ROLLINGBACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RollingBack"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operational state of the rebalance job. InProgress indicates the rebalance is running on the cluster. Cancelling indicates a cancel has been requested. Canceled indicates the rebalance was cancelled. Completed indicates the rebalance finished successfully (imbalance below low watermark). Failed indicates the rebalance was unable to complete due to a fatal error. Deleting indicates the job is being cleaned up during deletion. RollingBack indicates the orchestrator is rolling back provisioned resources after a failure."
+      }
+    },
+    "com.azure.storagecache#RebalanceJobAdminStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "CANCEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cancel"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The administrative status of the rebalance job. Active means the job is running normally. Cancel requests the job to stop."
+      }
+    },
+    "com.azure.storagecache#RebalanceJobPropertiesProvisioningState": {
+      "type": "enum",
+      "members": {
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        },
+        "CREATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Creating"
+          }
+        },
+        "UPDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updating"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleting"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ARM provisioning state for the rebalance job."
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "amlFilesystemName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "rebalanceJobName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name for the rebalance job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagecache#RebalanceJobUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for the rebalance job update."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagecache#RebalanceJobUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "adminStatus": {
+          "target": "com.azure.storagecache#RebalanceJobAdminStatus",
+          "traits": {
+            "smithy.api#documentation": "The administrative status of the rebalance job. Passing in a value of 'Cancel' will cancel the current active rebalance job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for updating a rebalance job."
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storagecache#RebalanceJobsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.storagecache#RebalanceJobsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs/{rebalanceJobName}",
+          "code": 200,
+          "apiVersion": "2026-08-01"
+        },
+        "smithy.api#documentation": "Returns a rebalance job.",
+        "com.distilled.openapi#apiVersion": "2026-08-01"
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.storagecache#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagecache#RebalanceJobProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the rebalance job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsGetRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "amlFilesystemName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "rebalanceJobName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name for the rebalance job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsListByAmlFilesystem": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storagecache#RebalanceJobsListByAmlFilesystemRequest"
+      },
+      "output": {
+        "target": "com.azure.storagecache#RebalanceJobsListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs",
+          "code": 200,
+          "apiVersion": "2026-08-01"
+        },
+        "smithy.api#documentation": "Returns all the rebalance jobs the user has access to under an AML File System.",
+        "com.distilled.openapi#apiVersion": "2026-08-01"
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.storagecache#RebalanceJobsListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "List of rebalance jobs."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to get the next set of rebalance job list results, if there are any."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Result of the request to list rebalance jobs. It contains a list of rebalance jobs and a URL link to get the next set of results."
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagecache#RebalanceJob"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of rebalance jobs."
+      }
+    },
+    "com.azure.storagecache#RebalanceJob": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.storagecache#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagecache#RebalanceJobProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the rebalance job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A rebalance job instance. Rebalances OST data across storage targets after a cluster expansion.\nFollows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md"
+      }
+    },
+    "com.azure.storagecache#RebalanceJobsListByAmlFilesystemRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "amlFilesystemName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.storagecache#ImportJobsDelete": {
       "type": "operation",
       "input": {
@@ -3774,10 +4413,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Schedules an import job for deletion.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ImportJobsDeleteRequest": {
@@ -3833,10 +4472,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Update an import job instance.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ImportJobsUpdateResponse": {
@@ -4258,7 +4897,9 @@
           }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Properties for updating an import job."
+      }
     },
     "com.azure.storagecache#ImportJobAdminStatus": {
       "type": "enum",
@@ -4305,10 +4946,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create or update an import job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ImportJobsCreateOrUpdateResponse": {
@@ -4551,10 +5192,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns an import job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ImportJobsGetResponse": {
@@ -4673,10 +5314,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns all import jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ImportJobsListResult": {
@@ -4816,10 +5457,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Schedules an expansion job for deletion.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ExpansionJobsDeleteRequest": {
@@ -4875,10 +5516,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Update an expansion job instance.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ExpansionJobsUpdateResponse": {
@@ -4951,6 +5592,18 @@
           "target": "com.azure.storagecache#ExpansionJobPropertiesStatus",
           "traits": {
             "smithy.api#documentation": "The status of the expansion job."
+          }
+        },
+        "runRebalanceJob": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, expansion creates a RebalanceJob after completing. Optional, defaults to true."
+          }
+        },
+        "rebalanceJobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified ARM resource ID of the child rebalance job created by this expansion. Populated after RebalanceJob is created."
           }
         }
       },
@@ -5167,10 +5820,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create or update an expansion job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ExpansionJobsCreateOrUpdateResponse": {
@@ -5303,6 +5956,12 @@
           "traits": {
             "smithy.api#documentation": "The new storage capacity in TiB for the AML file system after expansion. This must be a multiple of the Sku step size, and greater than the current storage capacity of the AML file system."
           }
+        },
+        "runRebalanceJob": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, expansion creates a RebalanceJob after completing. Optional, defaults to true."
+          }
         }
       },
       "traits": {
@@ -5334,10 +5993,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns an expansion job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ExpansionJobsGetResponse": {
@@ -5456,10 +6115,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns all the expansion jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ExpansionJobsListResult": {
@@ -5599,10 +6258,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/cancelArchive",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Cancel archiving data from the AML file system.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AmlFilesystemsCancelArchiveRequest": {
@@ -5650,10 +6309,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Schedules an auto import job for deletion.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoImportJobsDeleteRequest": {
@@ -5709,10 +6368,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Update an auto import job instance.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoImportJobsUpdateResponse": {
@@ -6238,7 +6897,9 @@
           }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Properties for updating an auto import job."
+      }
     },
     "com.azure.storagecache#AutoImportJobUpdatePropertiesAdminStatus": {
       "type": "enum",
@@ -6285,10 +6946,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create or update an auto import job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoImportJobsCreateOrUpdateResponse": {
@@ -6537,10 +7198,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns an auto import job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoImportJobsGetResponse": {
@@ -6659,10 +7320,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns all the auto import jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoImportJobsListResult": {
@@ -6802,10 +7463,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Schedules an auto export job for deletion.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoExportJobsDeleteRequest": {
@@ -6861,10 +7522,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Update an auto export job instance.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoExportJobsUpdateResponse": {
@@ -7230,7 +7891,9 @@
           }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Properties for updating an auto export job."
+      }
     },
     "com.azure.storagecache#AutoExportJobAdminStatus": {
       "type": "enum",
@@ -7277,10 +7940,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create or update an auto export job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoExportJobsCreateOrUpdateResponse": {
@@ -7479,10 +8142,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns an auto export job.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoExportJobsGetResponse": {
@@ -7601,10 +8264,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns all the auto export jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AutoExportJobsListResult": {
@@ -7744,10 +8407,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Archive data from the AML file system.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AmlFilesystemsArchiveRequest": {
@@ -7801,10 +8464,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Schedules an AML file system for deletion.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AmlFilesystemsDeleteRequest": {
@@ -7852,10 +8515,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Update an AML file system instance.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AmlFilesystemsUpdateResponse": {
@@ -8768,10 +9431,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create or update an AML file system.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AmlFilesystemsCreateOrUpdateResponse": {
@@ -9060,10 +9723,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns an AML file system.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AmlFilesystemsGetResponse": {
@@ -9201,10 +9864,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns all AML file systems the user has access to under a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AmlFilesystemsListResult": {
@@ -9363,10 +10026,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/usageModels",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Get the list of cache usage models available to this subscription.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#UsageModelsResult": {
@@ -9467,10 +10130,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/skus",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Get the list of StorageCache.Cache SKUs available to this subscription.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ResourceSkusResult": {
@@ -9715,10 +10378,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Gets the quantity used and quota limit for resources",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ResourceUsagesListResult": {
@@ -9839,10 +10502,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/locations/{location}/ascOperations/{operationId}",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Gets the status of an asynchronous operation for the Azure HPC Cache",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AscOperation": {
@@ -9986,10 +10649,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Get the number of available IP addresses needed for the AML file system information provided.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#RequiredAmlFilesystemSubnetsSize": {
@@ -10047,10 +10710,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Check that subnets will be valid for AML file system create calls.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CheckAmlFSSubnetsRequest": {
@@ -10106,10 +10769,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/caches",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns all caches the user has access to under a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#CachesListRequest": {
@@ -10141,10 +10804,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/amlFilesystems",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Returns all AML file systems the user has access to under a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#AmlFilesystemsListRequest": {
@@ -10176,10 +10839,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.StorageCache/operations",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Lists all of the available Resource Provider operations.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.storagecache#ApiOperationListResult": {
@@ -10473,7 +11136,9 @@
           }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Metric aggregation type."
+      }
     },
     "com.azure.storagecache#ApiOperationDisplay": {
       "type": "structure",
@@ -10585,6 +11250,18 @@
         },
         {
           "target": "com.azure.storagecache#CachesListByResourceGroup"
+        },
+        {
+          "target": "com.azure.storagecache#RebalanceJobsDelete"
+        },
+        {
+          "target": "com.azure.storagecache#RebalanceJobsUpdate"
+        },
+        {
+          "target": "com.azure.storagecache#RebalanceJobsGet"
+        },
+        {
+          "target": "com.azure.storagecache#RebalanceJobsListByAmlFilesystem"
         },
         {
           "target": "com.azure.storagecache#ImportJobsDelete"

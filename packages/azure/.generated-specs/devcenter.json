@@ -15526,7 +15526,7 @@
         "status": {
           "target": "com.azure.devcenter#HealthCheckStatus",
           "traits": {
-            "smithy.api#documentation": "The status of the health check item."
+            "smithy.api#documentation": "Health check status values"
           }
         },
         "displayName": {
@@ -15940,9 +15940,9 @@
           }
         },
         "healthCheckStatus": {
-          "target": "com.azure.devcenter#HealthCheckStatus",
+          "target": "com.azure.devcenter#NetworkPropertiesHealthCheckStatus",
           "traits": {
-            "smithy.api#documentation": "Overall health status of the network connection. Health checks are run on creation, update, and periodically to validate the network connection."
+            "smithy.api#documentation": "Health check status values"
           }
         },
         "networkingResourceGroupName": {
@@ -15952,9 +15952,9 @@
           }
         },
         "domainJoinType": {
-          "target": "com.azure.devcenter#DomainJoinType",
+          "target": "com.azure.devcenter#NetworkPropertiesDomainJoinType",
           "traits": {
-            "smithy.api#documentation": "AAD Join type.",
+            "smithy.api#documentation": "Active Directory join type",
             "smithy.api#required": {}
           }
         }
@@ -15963,7 +15963,7 @@
         "smithy.api#documentation": "Network properties"
       }
     },
-    "com.azure.devcenter#DomainJoinType": {
+    "com.azure.devcenter#NetworkPropertiesDomainJoinType": {
       "type": "enum",
       "members": {
         "HYBRIDAZUREADJOIN": {
@@ -15987,6 +15987,56 @@
       },
       "traits": {
         "smithy.api#documentation": "Active Directory join type"
+      }
+    },
+    "com.azure.devcenter#NetworkPropertiesHealthCheckStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "PASSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Passed"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warning"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "INFORMATIONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Informational"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Health check status values"
       }
     },
     "com.azure.devcenter#NetworkPropertiesProvisioningState": {
@@ -16362,6 +16412,12 @@
             "smithy.api#sensitive": {}
           }
         },
+        "healthCheckStatus": {
+          "target": "com.azure.devcenter#NetworkPropertiesInputHealthCheckStatus",
+          "traits": {
+            "smithy.api#documentation": "Health check status values"
+          }
+        },
         "networkingResourceGroupName": {
           "target": "smithy.api#String",
           "traits": {
@@ -16369,15 +16425,91 @@
           }
         },
         "domainJoinType": {
-          "target": "com.azure.devcenter#DomainJoinType",
+          "target": "com.azure.devcenter#NetworkPropertiesInputDomainJoinType",
           "traits": {
-            "smithy.api#documentation": "AAD Join type.",
+            "smithy.api#documentation": "Active Directory join type",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#documentation": "Network properties"
+      }
+    },
+    "com.azure.devcenter#NetworkPropertiesInputDomainJoinType": {
+      "type": "enum",
+      "members": {
+        "HYBRIDAZUREADJOIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HybridAzureADJoin"
+          }
+        },
+        "AZUREADJOIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureADJoin"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Active Directory join type"
+      }
+    },
+    "com.azure.devcenter#NetworkPropertiesInputHealthCheckStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "PASSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Passed"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warning"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "INFORMATIONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Informational"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Health check status values"
       }
     },
     "com.azure.devcenter#NetworkConnectionsCreateOrUpdateRequestTagsMap": {
@@ -18195,9 +18327,9 @@
       "type": "structure",
       "members": {
         "imageReference": {
-          "target": "com.azure.devcenter#ImageReference",
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionImageReference",
           "traits": {
-            "smithy.api#documentation": "Image reference information."
+            "smithy.api#documentation": "Image reference information"
           }
         },
         "sku": {
@@ -18207,9 +18339,9 @@
           }
         },
         "activeImageReference": {
-          "target": "com.azure.devcenter#ImageReference",
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionActiveImageReference",
           "traits": {
-            "smithy.api#documentation": "Image reference information for the currently active image (only populated during updates)."
+            "smithy.api#documentation": "Image reference information"
           }
         }
       },
@@ -18217,7 +18349,7 @@
         "smithy.api#documentation": "Represents a definition for a Developer Machine."
       }
     },
-    "com.azure.devcenter#ImageReference": {
+    "com.azure.devcenter#PoolDevBoxDefinitionActiveImageReference": {
       "type": "structure",
       "members": {
         "id": {
@@ -18271,6 +18403,26 @@
       },
       "traits": {
         "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.devcenter#PoolDevBoxDefinitionImageReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image ID, or Image version ID. When Image ID is provided, its latest version will be used."
+          }
+        },
+        "exactVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image reference information"
       }
     },
     "com.azure.devcenter#PoolDevBoxDefinitionType": {
@@ -18456,9 +18608,9 @@
       "type": "structure",
       "members": {
         "imageReference": {
-          "target": "com.azure.devcenter#ImageReferenceInput",
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionInputImageReference",
           "traits": {
-            "smithy.api#documentation": "Image reference information."
+            "smithy.api#documentation": "Image reference information"
           }
         },
         "sku": {
@@ -18466,10 +18618,30 @@
           "traits": {
             "smithy.api#documentation": "The resource model definition representing SKU"
           }
+        },
+        "activeImageReference": {
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionInputActiveImageReference",
+          "traits": {
+            "smithy.api#documentation": "Image reference information"
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Represents a definition for a Developer Machine."
+      }
+    },
+    "com.azure.devcenter#PoolDevBoxDefinitionInputActiveImageReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image ID, or Image version ID. When Image ID is provided, its latest version will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image reference information"
       }
     },
     "com.azure.devcenter#PoolDevBoxDefinitionInputSku": {
@@ -18508,7 +18680,7 @@
         "smithy.api#documentation": "The resource model definition representing SKU"
       }
     },
-    "com.azure.devcenter#ImageReferenceInput": {
+    "com.azure.devcenter#PoolDevBoxDefinitionInputImageReference": {
       "type": "structure",
       "members": {
         "id": {

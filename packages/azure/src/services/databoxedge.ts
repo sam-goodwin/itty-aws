@@ -3376,7 +3376,10 @@ export const DevicesUpdateExtendedInformationResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type DevicesUpdateExtendedInformationResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const DevicesUpdateExtendedInformationResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

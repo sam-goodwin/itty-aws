@@ -296,12 +296,18 @@ export const DeletePackageVersionForUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageVersionForUserResponse>;
 
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType =
-  "npm" | "maven" | "rubygems" | "docker" | "nuget" | "container";
+  | "npm"
+  | "maven"
+  | "rubygems"
+  | "docker"
+  | "nuget"
+  | "container";
 export const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType =
   /*@__PURE__*/ S.String;
 
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState =
-  "active" | "deleted";
+  | "active"
+  | "deleted";
 export const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState =
   /*@__PURE__*/ S.String;
 
@@ -925,13 +931,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 

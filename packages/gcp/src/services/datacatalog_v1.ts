@@ -112,12 +112,12 @@ export const GoogleCloudDatacatalogV1SystemTimestamps = /*@__PURE__*/ S.suspend(
 
 /** Entry group metadata. An `EntryGroup` resource represents a logical grouping of zero or more Data Catalog Entry resources. */
 export interface GoogleCloudDatacatalogV1EntryGroup {
-  /** Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. */
-  name?: string;
   /** A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string. */
   displayName?: string;
   /** Entry group description. Can consist of several sentences or paragraphs that describe the entry group contents. Default value is an empty string. */
   description?: string;
+  /** Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. */
+  name?: string;
   /** Output only. Timestamps of the entry group. Default value is empty. */
   dataCatalogTimestamps?: GoogleCloudDatacatalogV1SystemTimestamps;
   /** Optional. When set to [true], it means DataCatalog EntryGroup was transferred to Dataplex Universal Catalog. It makes EntryGroup and its Entries to be read-only in DataCatalog. However, new Tags on EntryGroup and its Entries can be created. After setting the flag to [true] it cannot be unset. */
@@ -125,9 +125,9 @@ export interface GoogleCloudDatacatalogV1EntryGroup {
 }
 export const GoogleCloudDatacatalogV1EntryGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     displayName: S.optional(S.String),
     description: S.optional(S.String),
+    name: S.optional(S.String),
     dataCatalogTimestamps: S.optional(GoogleCloudDatacatalogV1SystemTimestamps),
     transferredToDataplex: S.optional(S.Boolean),
   }),
@@ -136,18 +136,18 @@ export const GoogleCloudDatacatalogV1EntryGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDatacatalogV1EntryGroup>;
 
 export interface CreateProjectsLocationsEntryGroupsRequest {
-  /** Required. The names of the project and location that the new entry group belongs to. Note: The entry group itself and its child resources might not be stored in the location specified in its name. */
-  parent: string;
   /** Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8. */
   entryGroupId?: string;
+  /** Required. The names of the project and location that the new entry group belongs to. Note: The entry group itself and its child resources might not be stored in the location specified in its name. */
+  parent: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1EntryGroup;
 }
 export const CreateProjectsLocationsEntryGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       entryGroupId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDatacatalogV1EntryGroup.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -160,233 +160,84 @@ export const CreateProjectsLocationsEntryGroupsRequest =
     identifier: "CreateProjectsLocationsEntryGroupsRequest",
   }) as any as S.Schema<CreateProjectsLocationsEntryGroupsRequest>;
 
-export type GoogleCloudDatacatalogV1EntryTypeEnum =
-  | "ENTRY_TYPE_UNSPECIFIED"
-  | "TABLE"
-  | "MODEL"
-  | "DATA_STREAM"
-  | "FILESET"
-  | "CLUSTER"
-  | "DATABASE"
-  | "DATA_SOURCE_CONNECTION"
-  | "ROUTINE"
-  | "LAKE"
-  | "ZONE"
-  | "SERVICE"
-  | "DATABASE_SCHEMA"
-  | "DASHBOARD"
-  | "EXPLORE"
-  | "LOOK"
-  | "FEATURE_ONLINE_STORE"
-  | "FEATURE_VIEW"
-  | "FEATURE_GROUP"
-  | "GRAPH";
-export const GoogleCloudDatacatalogV1EntryTypeEnum = /*@__PURE__*/ S.String;
-
-export type GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
-  | "INTEGRATED_SYSTEM_UNSPECIFIED"
-  | "BIGQUERY"
-  | "CLOUD_PUBSUB"
-  | "DATAPROC_METASTORE"
-  | "DATAPLEX"
-  | "CLOUD_SPANNER"
-  | "CLOUD_BIGTABLE"
-  | "CLOUD_SQL"
-  | "LOOKER"
-  | "VERTEX_AI";
-export const GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
-  /*@__PURE__*/ S.String;
-
-/** Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type) */
-export interface GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
-  /** SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance. */
-  sqlEngine?: string;
-  /** Version of the database engine. */
-  databaseVersion?: string;
-  /** Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance. */
-  instanceHost?: string;
-}
-export const GoogleCloudDatacatalogV1SqlDatabaseSystemSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sqlEngine: S.optional(S.String),
-      databaseVersion: S.optional(S.String),
-      instanceHost: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1SqlDatabaseSystemSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1SqlDatabaseSystemSpec>;
-
-/** Specification that applies to entries that are part `LOOKER` system (user_specified_type) */
-export interface GoogleCloudDatacatalogV1LookerSystemSpec {
-  /** ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com` */
-  parentInstanceId?: string;
-  /** Name of the parent Looker Instance. Empty if it does not exist. */
-  parentInstanceDisplayName?: string;
-  /** ID of the parent Model. Empty if it does not exist. */
-  parentModelId?: string;
-  /** Name of the parent Model. Empty if it does not exist. */
-  parentModelDisplayName?: string;
-  /** ID of the parent View. Empty if it does not exist. */
-  parentViewId?: string;
-  /** Name of the parent View. Empty if it does not exist. */
-  parentViewDisplayName?: string;
-}
-export const GoogleCloudDatacatalogV1LookerSystemSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parentInstanceId: S.optional(S.String),
-      parentInstanceDisplayName: S.optional(S.String),
-      parentModelId: S.optional(S.String),
-      parentModelDisplayName: S.optional(S.String),
-      parentViewId: S.optional(S.String),
-      parentViewDisplayName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1LookerSystemSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1LookerSystemSpec>;
-
-/** Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type) */
-export interface GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
-  /** Display name of the Instance. This is user specified and different from the resource name. */
-  instanceDisplayName?: string;
-}
-export const GoogleCloudDatacatalogV1CloudBigtableSystemSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceDisplayName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1CloudBigtableSystemSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableSystemSpec>;
-
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-/** Specification of a single file in Cloud Storage. */
-export interface GoogleCloudDatacatalogV1GcsFileSpec {
-  /** Required. Full file path. Example: `gs://bucket_name/a/b.txt`. */
-  filePath?: string;
-  /** Output only. Creation, modification, and expiration timestamps of a Cloud Storage file. */
-  gcsTimestamps?: GoogleCloudDatacatalogV1SystemTimestamps;
-  /** Output only. File size in bytes. */
-  sizeBytes?: string;
-}
-export const GoogleCloudDatacatalogV1GcsFileSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filePath: S.optional(S.String),
-    gcsTimestamps: S.optional(GoogleCloudDatacatalogV1SystemTimestamps),
-    sizeBytes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1GcsFileSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1GcsFileSpec>;
-
-export type GoogleCloudDatacatalogV1GcsFileSpecList =
-  Array<GoogleCloudDatacatalogV1GcsFileSpec>;
-export const GoogleCloudDatacatalogV1GcsFileSpecList = /*@__PURE__*/ S.Array(
-  GoogleCloudDatacatalogV1GcsFileSpec,
-) as any as S.Schema<GoogleCloudDatacatalogV1GcsFileSpecList>;
-
-/** Describes a Cloud Storage fileset entry. */
-export interface GoogleCloudDatacatalogV1GcsFilesetSpec {
-  /** Required. Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/wildcards). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*\/b`: matches all files in `bucket_name` that match the `a/*\/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g` */
-  filePatterns?: StringList;
-  /** Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here. */
-  sampleGcsFileSpecs?: GoogleCloudDatacatalogV1GcsFileSpecList;
-}
-export const GoogleCloudDatacatalogV1GcsFilesetSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filePatterns: S.optional(StringList),
-      sampleGcsFileSpecs: S.optional(GoogleCloudDatacatalogV1GcsFileSpecList),
-    }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1GcsFilesetSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1GcsFilesetSpec>;
-
-export type GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum =
-  | "TABLE_SOURCE_TYPE_UNSPECIFIED"
-  | "BIGQUERY_VIEW"
-  | "BIGQUERY_TABLE"
-  | "BIGQUERY_MATERIALIZED_VIEW";
-export const GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum =
+export type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
+  | "MODEL_SOURCE_TYPE_UNSPECIFIED"
+  | "AUTOML"
+  | "CUSTOM"
+  | "BQML"
+  | "MODEL_GARDEN"
+  | "GENIE"
+  | "CUSTOM_TEXT_EMBEDDING"
+  | "MARKETPLACE";
+export const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
-/** Table view specification. */
-export interface GoogleCloudDatacatalogV1ViewSpec {
-  /** Output only. The query that defines the table view. */
-  viewQuery?: string;
-}
-export const GoogleCloudDatacatalogV1ViewSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    viewQuery: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1ViewSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1ViewSpec>;
-
-/** Normal BigQuery table specification. */
-export interface GoogleCloudDatacatalogV1TableSpec {
-  /** Output only. If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource name of the date-sharded grouped entry. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise, `grouped_entry` is empty. */
-  groupedEntry?: string;
-}
-export const GoogleCloudDatacatalogV1TableSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupedEntry: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1TableSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1TableSpec>;
-
-/** Describes a BigQuery table. */
-export interface GoogleCloudDatacatalogV1BigQueryTableSpec {
-  /** Output only. The table source type. */
-  tableSourceType?:
-    | GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum
+/** Detail description of the source information of a Vertex model. */
+export interface GoogleCloudDatacatalogV1VertexModelSourceInfo {
+  /** Type of the model source. */
+  sourceType?:
+    | GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum
     | (string & {});
-  /** Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`. */
-  viewSpec?: GoogleCloudDatacatalogV1ViewSpec;
-  /** Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`. */
-  tableSpec?: GoogleCloudDatacatalogV1TableSpec;
+  /** If this Model is copy of another Model. If true then source_type pertains to the original. */
+  copy?: boolean;
 }
-export const GoogleCloudDatacatalogV1BigQueryTableSpec =
+export const GoogleCloudDatacatalogV1VertexModelSourceInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      tableSourceType: S.optional(
-        GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum,
+      sourceType: S.optional(
+        GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum,
       ),
-      viewSpec: S.optional(GoogleCloudDatacatalogV1ViewSpec),
-      tableSpec: S.optional(GoogleCloudDatacatalogV1TableSpec),
+      copy: S.optional(S.Boolean),
     }),
   ).annotate({
-    identifier: "GoogleCloudDatacatalogV1BigQueryTableSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1BigQueryTableSpec>;
+    identifier: "GoogleCloudDatacatalogV1VertexModelSourceInfo",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1VertexModelSourceInfo>;
 
-/** Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding). */
-export interface GoogleCloudDatacatalogV1BigQueryDateShardedSpec {
-  /** Output only. The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. */
-  dataset?: string;
-  /** Output only. The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`. */
-  tablePrefix?: string;
-  /** Output only. Total number of shards. */
-  shardCount?: string;
-  /** Output only. BigQuery resource name of the latest shard. */
-  latestShardResource?: string;
+/** Specification for vertex model resources. */
+export interface GoogleCloudDatacatalogV1VertexModelSpec {
+  /** The version ID of the model. */
+  versionId?: string;
+  /** User provided version aliases so that a model version can be referenced via alias */
+  versionAliases?: StringList;
+  /** Source of a Vertex model. */
+  vertexModelSourceInfo?: GoogleCloudDatacatalogV1VertexModelSourceInfo;
+  /** URI of the Docker image to be used as the custom container for serving predictions. */
+  containerImageUri?: string;
+  /** The description of this version. */
+  versionDescription?: string;
 }
-export const GoogleCloudDatacatalogV1BigQueryDateShardedSpec =
-  /*@__PURE__*/ S.suspend(() =>
+export const GoogleCloudDatacatalogV1VertexModelSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      dataset: S.optional(S.String),
-      tablePrefix: S.optional(S.String),
-      shardCount: S.optional(S.String),
-      latestShardResource: S.optional(S.String),
+      versionId: S.optional(S.String),
+      versionAliases: S.optional(StringList),
+      vertexModelSourceInfo: S.optional(
+        GoogleCloudDatacatalogV1VertexModelSourceInfo,
+      ),
+      containerImageUri: S.optional(S.String),
+      versionDescription: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1BigQueryDateShardedSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1BigQueryDateShardedSpec>;
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1VertexModelSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1VertexModelSpec>;
+
+/** Specification that applies to a model. Valid only for entries with the `MODEL` type. */
+export interface GoogleCloudDatacatalogV1ModelSpec {
+  /** Specification for vertex model resources. */
+  vertexModelSpec?: GoogleCloudDatacatalogV1VertexModelSpec;
+}
+export const GoogleCloudDatacatalogV1ModelSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vertexModelSpec: S.optional(GoogleCloudDatacatalogV1VertexModelSpec),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1ModelSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1ModelSpec>;
 
 export type GoogleCloudDatacatalogV1DatabaseTableSpecTypeEnum =
   | "TABLE_TYPE_UNSPECIFIED"
@@ -443,6 +294,13 @@ export const GoogleCloudDatacatalogV1DataplexExternalTableList =
     GoogleCloudDatacatalogV1DataplexExternalTable,
   ) as any as S.Schema<GoogleCloudDatacatalogV1DataplexExternalTableList>;
 
+/** Marks a CSV-encoded data source. */
+export interface GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema {}
+export const GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema>;
+
 /** Schema in Avro JSON format. */
 export interface GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
   /** JSON source of the Avro schema. */
@@ -456,6 +314,18 @@ export const GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema =
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema",
   }) as any as S.Schema<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema>;
+
+/** Marks an ORC-encoded data source. */
+export type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema =
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
+export const GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema =
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
+
+/** Marks a Parquet-encoded data source. */
+export type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema =
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
+export const GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema =
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 
 /** Schema in Thrift format. */
 export interface GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
@@ -485,51 +355,32 @@ export const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema =
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema",
   }) as any as S.Schema<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema>;
 
-/** Marks a Parquet-encoded data source. */
-export interface GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema {}
-export const GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema>;
-
-/** Marks an ORC-encoded data source. */
-export type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema =
-  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
-export const GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema =
-  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
-
-/** Marks a CSV-encoded data source. */
-export type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema =
-  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
-export const GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema =
-  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
-
 /** Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data. */
 export interface GoogleCloudDatacatalogV1PhysicalSchema {
+  /** Marks a CSV-encoded data source. */
+  csv?: GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
   /** Schema in Avro JSON format. */
   avro?: GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema;
+  /** Marks an ORC-encoded data source. */
+  orc?: GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
+  /** Marks a Parquet-encoded data source. */
+  parquet?: GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
   /** Schema in Thrift format. */
   thrift?: GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema;
   /** Schema in protocol buffer format. */
   protobuf?: GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema;
-  /** Marks a Parquet-encoded data source. */
-  parquet?: GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
-  /** Marks an ORC-encoded data source. */
-  orc?: GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
-  /** Marks a CSV-encoded data source. */
-  csv?: GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
 }
 export const GoogleCloudDatacatalogV1PhysicalSchema = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      csv: S.optional(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema),
       avro: S.optional(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema),
+      orc: S.optional(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema),
+      parquet: S.optional(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema),
       thrift: S.optional(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema),
       protobuf: S.optional(
         GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema,
       ),
-      parquet: S.optional(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema),
-      orc: S.optional(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema),
-      csv: S.optional(GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema),
     }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1PhysicalSchema",
@@ -537,21 +388,21 @@ export const GoogleCloudDatacatalogV1PhysicalSchema = /*@__PURE__*/ S.suspend(
 
 /** Common Dataplex Universal Catalog fields. */
 export interface GoogleCloudDatacatalogV1DataplexSpec {
-  /** Fully qualified resource name of an asset in Dataplex Universal Catalog, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached. */
-  asset?: string;
   /** Format of the data. */
   dataFormat?: GoogleCloudDatacatalogV1PhysicalSchema;
   /** Compression format of the data, e.g., zip, gzip etc. */
   compressionFormat?: string;
+  /** Fully qualified resource name of an asset in Dataplex Universal Catalog, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached. */
+  asset?: string;
   /** Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the corresponding Dataplex Universal Catalog lake / zone / asset. */
   projectId?: string;
 }
 export const GoogleCloudDatacatalogV1DataplexSpec = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      asset: S.optional(S.String),
       dataFormat: S.optional(GoogleCloudDatacatalogV1PhysicalSchema),
       compressionFormat: S.optional(S.String),
+      asset: S.optional(S.String),
       projectId: S.optional(S.String),
     }),
 ).annotate({
@@ -581,7 +432,9 @@ export const GoogleCloudDatacatalogV1DataplexTableSpec =
   }) as any as S.Schema<GoogleCloudDatacatalogV1DataplexTableSpec>;
 
 export type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum =
-  "VIEW_TYPE_UNSPECIFIED" | "STANDARD_VIEW" | "MATERIALIZED_VIEW";
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "STANDARD_VIEW"
+  | "MATERIALIZED_VIEW";
 export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -591,10 +444,10 @@ export interface GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
   viewType?:
     | GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum
     | (string & {});
-  /** Name of a singular table this view reflects one to one. */
-  baseTable?: string;
   /** SQL query used to generate this view. */
   sqlQuery?: string;
+  /** Name of a singular table this view reflects one to one. */
+  baseTable?: string;
 }
 export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec =
   /*@__PURE__*/ S.suspend(() =>
@@ -602,8 +455,8 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec =
       viewType: S.optional(
         GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum,
       ),
-      baseTable: S.optional(S.String),
       sqlQuery: S.optional(S.String),
+      baseTable: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec",
@@ -631,91 +484,65 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpec =
     identifier: "GoogleCloudDatacatalogV1DatabaseTableSpec",
   }) as any as S.Schema<GoogleCloudDatacatalogV1DatabaseTableSpec>;
 
-export type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum =
-  | "CONNECTION_TYPE_UNSPECIFIED"
-  | "CLOUD_SQL";
-export const GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum =
-  | "DATABASE_TYPE_UNSPECIFIED"
-  | "POSTGRES"
-  | "MYSQL";
-export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Specification for the BigQuery connection to a Cloud SQL instance. */
-export interface GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
-  /** Cloud SQL instance ID in the format of `project:location:instance`. */
-  instanceId?: string;
-  /** Database name. */
-  database?: string;
-  /** Type of the Cloud SQL database. */
-  type?:
-    | GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum
-    | (string & {});
+/** Details the properties of the underlying storage. */
+export interface GoogleCloudDatacatalogV1StorageProperties {
+  /** Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*\/b`: matches all files in `bucket_name` that match the `a/*\/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` */
+  filePattern?: StringList;
+  /** File type in MIME format, for example, `text/plain`. */
+  fileType?: string;
 }
-export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec =
+export const GoogleCloudDatacatalogV1StorageProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      instanceId: S.optional(S.String),
-      database: S.optional(S.String),
-      type: S.optional(
-        GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum,
-      ),
+      filePattern: S.optional(StringList),
+      fileType: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec>;
+    identifier: "GoogleCloudDatacatalogV1StorageProperties",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1StorageProperties>;
 
-/** Specification for the BigQuery connection. */
-export interface GoogleCloudDatacatalogV1BigQueryConnectionSpec {
-  /** The type of the BigQuery connection. */
-  connectionType?:
-    | GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum
-    | (string & {});
-  /** Specification for the BigQuery connection to a Cloud SQL instance. */
-  cloudSql?: GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec;
-  /** True if there are credentials attached to the BigQuery connection; false otherwise. */
-  hasCredential?: boolean;
-}
-export const GoogleCloudDatacatalogV1BigQueryConnectionSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectionType: S.optional(
-        GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum,
-      ),
-      cloudSql: S.optional(
-        GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec,
-      ),
-      hasCredential: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1BigQueryConnectionSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1BigQueryConnectionSpec>;
-
-/** Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later. */
-export interface GoogleCloudDatacatalogV1DataSourceConnectionSpec {
-  /** Output only. Fields specific to BigQuery connections. */
-  bigqueryConnectionSpec?: GoogleCloudDatacatalogV1BigQueryConnectionSpec;
-}
-export const GoogleCloudDatacatalogV1DataSourceConnectionSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bigqueryConnectionSpec: S.optional(
-        GoogleCloudDatacatalogV1BigQueryConnectionSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DataSourceConnectionSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1DataSourceConnectionSpec>;
-
-export type GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum =
-  | "ROUTINE_TYPE_UNSPECIFIED"
-  | "SCALAR_FUNCTION"
-  | "PROCEDURE";
-export const GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum =
+export type GoogleCloudDatacatalogV1DataSourceServiceEnum =
+  | "SERVICE_UNSPECIFIED"
+  | "CLOUD_STORAGE"
+  | "BIGQUERY";
+export const GoogleCloudDatacatalogV1DataSourceServiceEnum =
   /*@__PURE__*/ S.String;
+
+/** Physical location of an entry. */
+export interface GoogleCloudDatacatalogV1DataSource {
+  /** Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}` */
+  resource?: string;
+  /** Output only. Data Catalog entry name, if applicable. */
+  sourceEntry?: string;
+  /** Detailed properties of the underlying storage. */
+  storageProperties?: GoogleCloudDatacatalogV1StorageProperties;
+  /** Service that physically stores the data. */
+  service?: GoogleCloudDatacatalogV1DataSourceServiceEnum | (string & {});
+}
+export const GoogleCloudDatacatalogV1DataSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.optional(S.String),
+    sourceEntry: S.optional(S.String),
+    storageProperties: S.optional(GoogleCloudDatacatalogV1StorageProperties),
+    service: S.optional(GoogleCloudDatacatalogV1DataSourceServiceEnum),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1DataSource",
+}) as any as S.Schema<GoogleCloudDatacatalogV1DataSource>;
+
+/** Fields specific for BigQuery routines. */
+export interface GoogleCloudDatacatalogV1BigQueryRoutineSpec {
+  /** Paths of the imported libraries. */
+  importedLibraries?: StringList;
+}
+export const GoogleCloudDatacatalogV1BigQueryRoutineSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      importedLibraries: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1BigQueryRoutineSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1BigQueryRoutineSpec>;
 
 export type GoogleCloudDatacatalogV1RoutineSpecArgumentModeEnum =
   | "MODE_UNSPECIFIED"
@@ -752,292 +579,92 @@ export const GoogleCloudDatacatalogV1RoutineSpecArgumentList =
     GoogleCloudDatacatalogV1RoutineSpecArgument,
   ) as any as S.Schema<GoogleCloudDatacatalogV1RoutineSpecArgumentList>;
 
-/** Fields specific for BigQuery routines. */
-export interface GoogleCloudDatacatalogV1BigQueryRoutineSpec {
-  /** Paths of the imported libraries. */
-  importedLibraries?: StringList;
-}
-export const GoogleCloudDatacatalogV1BigQueryRoutineSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      importedLibraries: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1BigQueryRoutineSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1BigQueryRoutineSpec>;
+export type GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum =
+  | "ROUTINE_TYPE_UNSPECIFIED"
+  | "SCALAR_FUNCTION"
+  | "PROCEDURE";
+export const GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Specification that applies to a routine. Valid only for entries with the `ROUTINE` type. */
 export interface GoogleCloudDatacatalogV1RoutineSpec {
-  /** The type of the routine. */
-  routineType?:
-    | GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum
-    | (string & {});
-  /** The language the routine is written in. The exact value depends on the source system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT` */
-  language?: string;
-  /** Arguments of the routine. */
-  routineArguments?: GoogleCloudDatacatalogV1RoutineSpecArgumentList;
-  /** Return type of the argument. The exact value depends on the source system and the language. */
-  returnType?: string;
   /** The body of the routine. */
   definitionBody?: string;
   /** Fields specific for BigQuery routines. */
   bigqueryRoutineSpec?: GoogleCloudDatacatalogV1BigQueryRoutineSpec;
+  /** The language the routine is written in. The exact value depends on the source system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT` */
+  language?: string;
+  /** Arguments of the routine. */
+  routineArguments?: GoogleCloudDatacatalogV1RoutineSpecArgumentList;
+  /** The type of the routine. */
+  routineType?:
+    | GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum
+    | (string & {});
+  /** Return type of the argument. The exact value depends on the source system and the language. */
+  returnType?: string;
 }
 export const GoogleCloudDatacatalogV1RoutineSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    routineType: S.optional(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum),
-    language: S.optional(S.String),
-    routineArguments: S.optional(
-      GoogleCloudDatacatalogV1RoutineSpecArgumentList,
-    ),
-    returnType: S.optional(S.String),
     definitionBody: S.optional(S.String),
     bigqueryRoutineSpec: S.optional(
       GoogleCloudDatacatalogV1BigQueryRoutineSpec,
     ),
+    language: S.optional(S.String),
+    routineArguments: S.optional(
+      GoogleCloudDatacatalogV1RoutineSpecArgumentList,
+    ),
+    routineType: S.optional(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum),
+    returnType: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1RoutineSpec",
 }) as any as S.Schema<GoogleCloudDatacatalogV1RoutineSpec>;
 
-export type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
+export type GoogleCloudDatacatalogV1EntryTypeEnum =
+  | "ENTRY_TYPE_UNSPECIFIED"
   | "TABLE"
-  | "IMAGE"
-  | "TEXT"
-  | "VIDEO"
-  | "CONVERSATION"
-  | "TIME_SERIES"
-  | "DOCUMENT"
-  | "TEXT_TO_SPEECH"
-  | "TRANSLATION"
-  | "STORE_VISION"
-  | "ENTERPRISE_KNOWLEDGE_GRAPH"
-  | "TEXT_PROMPT";
-export const GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum =
-  /*@__PURE__*/ S.String;
+  | "MODEL"
+  | "DATA_STREAM"
+  | "FILESET"
+  | "CLUSTER"
+  | "DATABASE"
+  | "DATA_SOURCE_CONNECTION"
+  | "ROUTINE"
+  | "LAKE"
+  | "ZONE"
+  | "SERVICE"
+  | "DATABASE_SCHEMA"
+  | "DASHBOARD"
+  | "EXPLORE"
+  | "LOOK"
+  | "FEATURE_ONLINE_STORE"
+  | "FEATURE_VIEW"
+  | "FEATURE_GROUP"
+  | "GRAPH"
+  | "NODE"
+  | "EDGE";
+export const GoogleCloudDatacatalogV1EntryTypeEnum = /*@__PURE__*/ S.String;
 
-/** Specification for vertex dataset resources. */
-export interface GoogleCloudDatacatalogV1VertexDatasetSpec {
-  /** The number of DataItems in this Dataset. Only apply for non-structured Dataset. */
-  dataItemCount?: string;
-  /** Type of the dataset. */
-  dataType?:
-    | GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum
-    | (string & {});
+/** A reference to a source or destination node in a graph edge. */
+export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference {
+  /** Required. The reference to the source/destination node of the edge. This name must be a valid `alias` of a node element in the same graph. Example, `Person` node can be a source node name of an edge element `Person_to_Address`. */
+  nodeAlias?: string;
+  /** Required. The referencing columns in the edge table. The size of `edge_table_columns` must be equal to the size of `node_table_columns`. */
+  edgeTableColumns?: StringList;
+  /** Required. The referenced columns of the source node table. */
+  nodeTableColumns?: StringList;
 }
-export const GoogleCloudDatacatalogV1VertexDatasetSpec =
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      dataItemCount: S.optional(S.String),
-      dataType: S.optional(
-        GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1VertexDatasetSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1VertexDatasetSpec>;
-
-/** Specification that applies to a dataset. Valid only for entries with the `DATASET` type. */
-export interface GoogleCloudDatacatalogV1DatasetSpec {
-  /** Vertex AI Dataset specific fields */
-  vertexDatasetSpec?: GoogleCloudDatacatalogV1VertexDatasetSpec;
-}
-export const GoogleCloudDatacatalogV1DatasetSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vertexDatasetSpec: S.optional(GoogleCloudDatacatalogV1VertexDatasetSpec),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1DatasetSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1DatasetSpec>;
-
-/** Entry specification for a Dataplex Universal Catalog fileset. */
-export interface GoogleCloudDatacatalogV1DataplexFilesetSpec {
-  /** Common Dataplex Universal Catalog fields. */
-  dataplexSpec?: GoogleCloudDatacatalogV1DataplexSpec;
-}
-export const GoogleCloudDatacatalogV1DataplexFilesetSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataplexSpec: S.optional(GoogleCloudDatacatalogV1DataplexSpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DataplexFilesetSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1DataplexFilesetSpec>;
-
-/** Specification that applies to a fileset. Valid only for entries with the 'FILESET' type. */
-export interface GoogleCloudDatacatalogV1FilesetSpec {
-  /** Fields specific to a Dataplex Universal Catalog fileset and present only in the Dataplex Universal Catalog fileset entries. */
-  dataplexFileset?: GoogleCloudDatacatalogV1DataplexFilesetSpec;
-}
-export const GoogleCloudDatacatalogV1FilesetSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataplexFileset: S.optional(GoogleCloudDatacatalogV1DataplexFilesetSpec),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1FilesetSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1FilesetSpec>;
-
-/** Spec that applies to clusters of an Instance of Cloud Bigtable. */
-export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
-  /** Name of the cluster. */
-  displayName?: string;
-  /** Location of the cluster, typically a Cloud zone. */
-  location?: string;
-  /** Type of the resource. For a cluster this would be "CLUSTER". */
-  type?: string;
-  /** A link back to the parent resource, in this case Instance. */
-  linkedResource?: string;
-}
-export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      location: S.optional(S.String),
-      type: S.optional(S.String),
-      linkedResource: S.optional(S.String),
+      nodeAlias: S.optional(S.String),
+      edgeTableColumns: S.optional(StringList),
+      nodeTableColumns: S.optional(StringList),
     }),
   ).annotate({
     identifier:
-      "GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
-
-export type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList =
-  Array<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
-export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec,
-  ) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList>;
-
-/** Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type) */
-export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
-  /** The list of clusters for the Instance. */
-  cloudBigtableClusterSpecs?: GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList;
-}
-export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cloudBigtableClusterSpecs: S.optional(
-        GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1CloudBigtableInstanceSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpec>;
-
-/** Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type. */
-export interface GoogleCloudDatacatalogV1ServiceSpec {
-  /** Specification that applies to Instance entries of `CLOUD_BIGTABLE` system. */
-  cloudBigtableInstanceSpec?: GoogleCloudDatacatalogV1CloudBigtableInstanceSpec;
-}
-export const GoogleCloudDatacatalogV1ServiceSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudBigtableInstanceSpec: S.optional(
-      GoogleCloudDatacatalogV1CloudBigtableInstanceSpec,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1ServiceSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1ServiceSpec>;
-
-export type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
-  | "MODEL_SOURCE_TYPE_UNSPECIFIED"
-  | "AUTOML"
-  | "CUSTOM"
-  | "BQML"
-  | "MODEL_GARDEN"
-  | "GENIE"
-  | "CUSTOM_TEXT_EMBEDDING"
-  | "MARKETPLACE";
-export const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Detail description of the source information of a Vertex model. */
-export interface GoogleCloudDatacatalogV1VertexModelSourceInfo {
-  /** Type of the model source. */
-  sourceType?:
-    | GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum
-    | (string & {});
-  /** If this Model is copy of another Model. If true then source_type pertains to the original. */
-  copy?: boolean;
-}
-export const GoogleCloudDatacatalogV1VertexModelSourceInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sourceType: S.optional(
-        GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum,
-      ),
-      copy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1VertexModelSourceInfo",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1VertexModelSourceInfo>;
-
-/** Specification for vertex model resources. */
-export interface GoogleCloudDatacatalogV1VertexModelSpec {
-  /** The version ID of the model. */
-  versionId?: string;
-  /** User provided version aliases so that a model version can be referenced via alias */
-  versionAliases?: StringList;
-  /** The description of this version. */
-  versionDescription?: string;
-  /** Source of a Vertex model. */
-  vertexModelSourceInfo?: GoogleCloudDatacatalogV1VertexModelSourceInfo;
-  /** URI of the Docker image to be used as the custom container for serving predictions. */
-  containerImageUri?: string;
-}
-export const GoogleCloudDatacatalogV1VertexModelSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      versionId: S.optional(S.String),
-      versionAliases: S.optional(StringList),
-      versionDescription: S.optional(S.String),
-      vertexModelSourceInfo: S.optional(
-        GoogleCloudDatacatalogV1VertexModelSourceInfo,
-      ),
-      containerImageUri: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1VertexModelSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1VertexModelSpec>;
-
-/** Specification that applies to a model. Valid only for entries with the `MODEL` type. */
-export interface GoogleCloudDatacatalogV1ModelSpec {
-  /** Specification for vertex model resources. */
-  vertexModelSpec?: GoogleCloudDatacatalogV1VertexModelSpec;
-}
-export const GoogleCloudDatacatalogV1ModelSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vertexModelSpec: S.optional(GoogleCloudDatacatalogV1VertexModelSpec),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1ModelSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1ModelSpec>;
-
-export type GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
-  | "STORAGE_TYPE_UNSPECIFIED"
-  | "BIGTABLE"
-  | "OPTIMIZED";
-export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Detail description of the source information of a Vertex Feature Online Store. */
-export interface GoogleCloudDatacatalogV1FeatureOnlineStoreSpec {
-  /** Output only. Type of underlying storage for the FeatureOnlineStore. */
-  storageType?:
-    | GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum
-    | (string & {});
-}
-export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storageType: S.optional(
-        GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1FeatureOnlineStoreSpec",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1FeatureOnlineStoreSpec>;
+      "GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference>;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum =
   | "KIND_UNSPECIFIED"
@@ -1104,33 +731,18 @@ export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertie
     GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties,
   ) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertiesList>;
 
-/** A reference to a source or destination node in a graph edge. */
-export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference {
-  /** Required. The reference to the source/destination node of the edge. This name must be a valid `alias` of a node element in the same graph. Example, `Person` node can be a source node name of an edge element `Person_to_Address`. */
-  nodeAlias?: string;
-  /** Required. The referencing columns in the edge table. The size of `edge_table_columns` must be equal to the size of `node_table_columns`. */
-  edgeTableColumns?: StringList;
-  /** Required. The referenced columns of the source node table. */
-  nodeTableColumns?: StringList;
-}
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nodeAlias: S.optional(S.String),
-      edgeTableColumns: S.optional(StringList),
-      nodeTableColumns: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference>;
-
 /** Element table definition. */
 export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
-  /** Required. The name of the data source. This is either a table name or a view name that is used for graph element input source. E.g. `Person` table or `PersonView` view. */
-  dataSource?: string;
   /** Required. The alias name of the graph element. */
   alias?: string;
+  /** Required. The name of the data source. This is either a table name or a view name that is used for graph element input source. E.g. `Person` table or `PersonView` view. */
+  dataSource?: string;
+  /** Optional. If set, this is the input column for dynamic properties in schemaless data model. */
+  dynamicPropertiesColumn?: string;
+  /** Optional. The source node reference of the edge. */
+  sourceNodeReference?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference;
+  /** Optional. The destination node reference of the edge. */
+  destinationNodeReference?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference;
   /** Required. The kind of the graph element. */
   kind?:
     | GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum
@@ -1141,22 +753,23 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
     | (string & {});
   /** Required. The name of the keys of the elements in the table. */
   elementKeys?: StringList;
-  /** Required. The labels and their properties for the graph element. */
-  labelAndProperties?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertiesList;
   /** Optional. If set, this is the input column for dynamic label in schemaless data model. */
   dynamicLabelColumn?: string;
-  /** Optional. If set, this is the input column for dynamic properties in schemaless data model. */
-  dynamicPropertiesColumn?: string;
-  /** Optional. The source node reference of the edge. */
-  sourceNodeReference?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference;
-  /** Optional. The destination node reference of the edge. */
-  destinationNodeReference?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference;
+  /** Required. The labels and their properties for the graph element. */
+  labelAndProperties?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertiesList;
 }
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTable =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      dataSource: S.optional(S.String),
       alias: S.optional(S.String),
+      dataSource: S.optional(S.String),
+      dynamicPropertiesColumn: S.optional(S.String),
+      sourceNodeReference: S.optional(
+        GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference,
+      ),
+      destinationNodeReference: S.optional(
+        GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference,
+      ),
       kind: S.optional(
         GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum,
       ),
@@ -1164,16 +777,9 @@ export const GoogleCloudDatacatalogV1GraphSpecGraphElementTable =
         GoogleCloudDatacatalogV1GraphSpecGraphElementTableInputSourceEnum,
       ),
       elementKeys: S.optional(StringList),
+      dynamicLabelColumn: S.optional(S.String),
       labelAndProperties: S.optional(
         GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertiesList,
-      ),
-      dynamicLabelColumn: S.optional(S.String),
-      dynamicPropertiesColumn: S.optional(S.String),
-      sourceNodeReference: S.optional(
-        GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference,
-      ),
-      destinationNodeReference: S.optional(
-        GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference,
       ),
     }),
   ).annotate({
@@ -1210,94 +816,54 @@ export const GoogleCloudDatacatalogV1GraphSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudDatacatalogV1GraphSpec",
 }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpec>;
 
-/** Specification of a Spanner primary key. */
-export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey {
-  /** Output only. Column names of the primary key. */
-  columns?: StringList;
+/** Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type) */
+export interface GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
+  /** SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance. */
+  sqlEngine?: string;
+  /** Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance. */
+  instanceHost?: string;
+  /** Version of the database engine. */
+  databaseVersion?: string;
 }
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey =
+export const GoogleCloudDatacatalogV1SqlDatabaseSystemSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      columns: S.optional(StringList),
+      sqlEngine: S.optional(S.String),
+      instanceHost: S.optional(S.String),
+      databaseVersion: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey>;
+    identifier: "GoogleCloudDatacatalogV1SqlDatabaseSystemSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1SqlDatabaseSystemSpec>;
 
-/** Column mapping for a Spanner foreign key. */
-export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping {
-  /** Output only. The column in the current table that is part of the foreign key. */
-  column?: string;
-  /** Output only. The column in the referenced table that is part of the foreign key. */
-  referenceColumn?: string;
+/** Specification that applies to entries that are part `LOOKER` system (user_specified_type) */
+export interface GoogleCloudDatacatalogV1LookerSystemSpec {
+  /** Name of the parent Looker Instance. Empty if it does not exist. */
+  parentInstanceDisplayName?: string;
+  /** Name of the parent Model. Empty if it does not exist. */
+  parentModelDisplayName?: string;
+  /** ID of the parent View. Empty if it does not exist. */
+  parentViewId?: string;
+  /** Name of the parent View. Empty if it does not exist. */
+  parentViewDisplayName?: string;
+  /** ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com` */
+  parentInstanceId?: string;
+  /** ID of the parent Model. Empty if it does not exist. */
+  parentModelId?: string;
 }
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      column: S.optional(S.String),
-      referenceColumn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
-
-export type GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList =
-  Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping,
-  ) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList>;
-
-/** Specification of a Spanner foreign key. */
-export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey {
-  /** Output only. The constraint_name of the foreign key, for example, FK_CustomerOrder. */
-  name?: string;
-  /** Output only. The table name this foreign key referenced to. Format: `projects/{PROJECT_ID}/locations/{LOCATION}/entryGroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}` */
-  entry?: string;
-  /** Output only. The ordered list of column mappings for this foreign key. */
-  columnMappings?: GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList;
-}
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      entry: S.optional(S.String),
-      columnMappings: S.optional(
-        GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
-
-export type GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList =
-  Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey,
-  ) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList>;
-
-/** Specification of a Spanner table. */
-export interface GoogleCloudDatacatalogV1SpannerTableSpec {
-  /** Output only. The primary key of the table. */
-  primaryKey?: GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey;
-  /** Output only. The foreign keys of the table. */
-  foreignKeys?: GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList;
-}
-export const GoogleCloudDatacatalogV1SpannerTableSpec = /*@__PURE__*/ S.suspend(
+export const GoogleCloudDatacatalogV1LookerSystemSpec = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      primaryKey: S.optional(
-        GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey,
-      ),
-      foreignKeys: S.optional(
-        GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList,
-      ),
+      parentInstanceDisplayName: S.optional(S.String),
+      parentModelDisplayName: S.optional(S.String),
+      parentViewId: S.optional(S.String),
+      parentViewDisplayName: S.optional(S.String),
+      parentInstanceId: S.optional(S.String),
+      parentModelId: S.optional(S.String),
     }),
 ).annotate({
-  identifier: "GoogleCloudDatacatalogV1SpannerTableSpec",
-}) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpec>;
+  identifier: "GoogleCloudDatacatalogV1LookerSystemSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1LookerSystemSpec>;
 
 /** Entry overview fields for rich text descriptions of entries. */
 export interface GoogleCloudDatacatalogV1EntryOverview {
@@ -1419,53 +985,53 @@ export const GoogleCloudDatacatalogV1ColumnSchemaFieldElementType =
 
 /** A column within a schema. Columns can be nested inside other columns. */
 export interface GoogleCloudDatacatalogV1ColumnSchema {
-  /** Required. Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes. */
-  column?: string;
-  /** Required. Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes. */
-  type?: string;
-  /** Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes. */
-  description?: string;
   /** Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`. */
   mode?: string;
-  /** Optional. Default value for the column. */
-  defaultValue?: string;
+  /** Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable. */
+  gcRule?: string;
   /** Optional. Ordinal position */
   ordinalPosition?: number;
   /** Optional. Most important inclusion of this column. */
   highestIndexingType?:
     | GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeEnum
     | (string & {});
-  /** Optional. Schema of sub-columns. A column can have zero or more sub-columns. */
-  subcolumns?: GoogleCloudDatacatalogV1ColumnSchemaList;
+  /** Required. Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes. */
+  column?: string;
   /** Looker specific column info of this column. */
   lookerColumnSpec?: GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec;
+  /** Required. Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes. */
+  type?: string;
   /** Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: * DATE * DATETIME * TIMESTAMP */
   rangeElementType?: GoogleCloudDatacatalogV1ColumnSchemaFieldElementType;
-  /** Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable. */
-  gcRule?: string;
+  /** Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes. */
+  description?: string;
+  /** Optional. Schema of sub-columns. A column can have zero or more sub-columns. */
+  subcolumns?: GoogleCloudDatacatalogV1ColumnSchemaList;
+  /** Optional. Default value for the column. */
+  defaultValue?: string;
 }
 export const GoogleCloudDatacatalogV1ColumnSchema = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      column: S.optional(S.String),
-      type: S.optional(S.String),
-      description: S.optional(S.String),
       mode: S.optional(S.String),
-      defaultValue: S.optional(S.String),
+      gcRule: S.optional(S.String),
       ordinalPosition: S.optional(S.Number),
       highestIndexingType: S.optional(
         GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeEnum,
       ),
-      subcolumns: S.optional(
-        S.suspend(() => GoogleCloudDatacatalogV1ColumnSchemaList),
-      ),
+      column: S.optional(S.String),
       lookerColumnSpec: S.optional(
         GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec,
       ),
+      type: S.optional(S.String),
       rangeElementType: S.optional(
         GoogleCloudDatacatalogV1ColumnSchemaFieldElementType,
       ),
-      gcRule: S.optional(S.String),
+      description: S.optional(S.String),
+      subcolumns: S.optional(
+        S.suspend(() => GoogleCloudDatacatalogV1ColumnSchemaList),
+      ),
+      defaultValue: S.optional(S.String),
     }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1ColumnSchema",
@@ -1490,35 +1056,347 @@ export const GoogleCloudDatacatalogV1Schema = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudDatacatalogV1Schema",
 }) as any as S.Schema<GoogleCloudDatacatalogV1Schema>;
 
-/** Detailed statistics on the entry's usage. Usage statistics have the following limitations: - Only BigQuery tables have them. - They only include BigQuery query jobs. - They might be underestimated because wildcard table references are not yet counted. For more information, see [Querying multiple tables using a wildcard table] (https://cloud.google.com/bigquery/docs/querying-wildcard-tables) */
-export interface GoogleCloudDatacatalogV1UsageStats {
-  /** The number of successful uses of the underlying entry. */
-  totalCompletions?: number;
-  /** The number of failed attempts to use the underlying entry. */
-  totalFailures?: number;
-  /** The number of cancelled attempts to use the underlying entry. */
-  totalCancellations?: number;
-  /** Total time spent only on successful uses, in milliseconds. */
-  totalExecutionTimeForCompletionsMillis?: number;
+/** Entry specification for a Dataplex Universal Catalog fileset. */
+export interface GoogleCloudDatacatalogV1DataplexFilesetSpec {
+  /** Common Dataplex Universal Catalog fields. */
+  dataplexSpec?: GoogleCloudDatacatalogV1DataplexSpec;
 }
-export const GoogleCloudDatacatalogV1UsageStats = /*@__PURE__*/ S.suspend(() =>
+export const GoogleCloudDatacatalogV1DataplexFilesetSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dataplexSpec: S.optional(GoogleCloudDatacatalogV1DataplexSpec),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1DataplexFilesetSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1DataplexFilesetSpec>;
+
+/** Specification that applies to a fileset. Valid only for entries with the 'FILESET' type. */
+export interface GoogleCloudDatacatalogV1FilesetSpec {
+  /** Fields specific to a Dataplex Universal Catalog fileset and present only in the Dataplex Universal Catalog fileset entries. */
+  dataplexFileset?: GoogleCloudDatacatalogV1DataplexFilesetSpec;
+}
+export const GoogleCloudDatacatalogV1FilesetSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    totalCompletions: S.optional(S.Number),
-    totalFailures: S.optional(S.Number),
-    totalCancellations: S.optional(S.Number),
-    totalExecutionTimeForCompletionsMillis: S.optional(S.Number),
+    dataplexFileset: S.optional(GoogleCloudDatacatalogV1DataplexFilesetSpec),
   }),
 ).annotate({
-  identifier: "GoogleCloudDatacatalogV1UsageStats",
-}) as any as S.Schema<GoogleCloudDatacatalogV1UsageStats>;
+  identifier: "GoogleCloudDatacatalogV1FilesetSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1FilesetSpec>;
 
-export type GoogleCloudDatacatalogV1UsageStatsMap = {
-  [key: string]: GoogleCloudDatacatalogV1UsageStats | undefined;
-};
-export const GoogleCloudDatacatalogV1UsageStatsMap = /*@__PURE__*/ S.Record(
+/** Specification of a single file in Cloud Storage. */
+export interface GoogleCloudDatacatalogV1GcsFileSpec {
+  /** Output only. File size in bytes. */
+  sizeBytes?: string;
+  /** Required. Full file path. Example: `gs://bucket_name/a/b.txt`. */
+  filePath?: string;
+  /** Output only. Creation, modification, and expiration timestamps of a Cloud Storage file. */
+  gcsTimestamps?: GoogleCloudDatacatalogV1SystemTimestamps;
+}
+export const GoogleCloudDatacatalogV1GcsFileSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sizeBytes: S.optional(S.String),
+    filePath: S.optional(S.String),
+    gcsTimestamps: S.optional(GoogleCloudDatacatalogV1SystemTimestamps),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1GcsFileSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1GcsFileSpec>;
+
+export type GoogleCloudDatacatalogV1GcsFileSpecList =
+  Array<GoogleCloudDatacatalogV1GcsFileSpec>;
+export const GoogleCloudDatacatalogV1GcsFileSpecList = /*@__PURE__*/ S.Array(
+  GoogleCloudDatacatalogV1GcsFileSpec,
+) as any as S.Schema<GoogleCloudDatacatalogV1GcsFileSpecList>;
+
+/** Describes a Cloud Storage fileset entry. */
+export interface GoogleCloudDatacatalogV1GcsFilesetSpec {
+  /** Required. Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/wildcards). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*\/b`: matches all files in `bucket_name` that match the `a/*\/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g` */
+  filePatterns?: StringList;
+  /** Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here. */
+  sampleGcsFileSpecs?: GoogleCloudDatacatalogV1GcsFileSpecList;
+}
+export const GoogleCloudDatacatalogV1GcsFilesetSpec = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filePatterns: S.optional(StringList),
+      sampleGcsFileSpecs: S.optional(GoogleCloudDatacatalogV1GcsFileSpecList),
+    }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1GcsFilesetSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1GcsFilesetSpec>;
+
+export type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum =
+  | "CONNECTION_TYPE_UNSPECIFIED"
+  | "CLOUD_SQL";
+export const GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum =
+  | "DATABASE_TYPE_UNSPECIFIED"
+  | "POSTGRES"
+  | "MYSQL";
+export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Specification for the BigQuery connection to a Cloud SQL instance. */
+export interface GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
+  /** Database name. */
+  database?: string;
+  /** Cloud SQL instance ID in the format of `project:location:instance`. */
+  instanceId?: string;
+  /** Type of the Cloud SQL database. */
+  type?:
+    | GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum
+    | (string & {});
+}
+export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      database: S.optional(S.String),
+      instanceId: S.optional(S.String),
+      type: S.optional(
+        GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec>;
+
+/** Specification for the BigQuery connection. */
+export interface GoogleCloudDatacatalogV1BigQueryConnectionSpec {
+  /** The type of the BigQuery connection. */
+  connectionType?:
+    | GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum
+    | (string & {});
+  /** Specification for the BigQuery connection to a Cloud SQL instance. */
+  cloudSql?: GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec;
+  /** True if there are credentials attached to the BigQuery connection; false otherwise. */
+  hasCredential?: boolean;
+}
+export const GoogleCloudDatacatalogV1BigQueryConnectionSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      connectionType: S.optional(
+        GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum,
+      ),
+      cloudSql: S.optional(
+        GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec,
+      ),
+      hasCredential: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1BigQueryConnectionSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1BigQueryConnectionSpec>;
+
+/** Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later. */
+export interface GoogleCloudDatacatalogV1DataSourceConnectionSpec {
+  /** Output only. Fields specific to BigQuery connections. */
+  bigqueryConnectionSpec?: GoogleCloudDatacatalogV1BigQueryConnectionSpec;
+}
+export const GoogleCloudDatacatalogV1DataSourceConnectionSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bigqueryConnectionSpec: S.optional(
+        GoogleCloudDatacatalogV1BigQueryConnectionSpec,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1DataSourceConnectionSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1DataSourceConnectionSpec>;
+
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
-  GoogleCloudDatacatalogV1UsageStats,
-) as any as S.Schema<GoogleCloudDatacatalogV1UsageStatsMap>;
+  S.String,
+) as any as S.Schema<StringMap>;
+
+export type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "TABLE"
+  | "IMAGE"
+  | "TEXT"
+  | "VIDEO"
+  | "CONVERSATION"
+  | "TIME_SERIES"
+  | "DOCUMENT"
+  | "TEXT_TO_SPEECH"
+  | "TRANSLATION"
+  | "STORE_VISION"
+  | "ENTERPRISE_KNOWLEDGE_GRAPH"
+  | "TEXT_PROMPT";
+export const GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Specification for vertex dataset resources. */
+export interface GoogleCloudDatacatalogV1VertexDatasetSpec {
+  /** The number of DataItems in this Dataset. Only apply for non-structured Dataset. */
+  dataItemCount?: string;
+  /** Type of the dataset. */
+  dataType?:
+    | GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum
+    | (string & {});
+}
+export const GoogleCloudDatacatalogV1VertexDatasetSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dataItemCount: S.optional(S.String),
+      dataType: S.optional(
+        GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1VertexDatasetSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1VertexDatasetSpec>;
+
+/** Specification that applies to a dataset. Valid only for entries with the `DATASET` type. */
+export interface GoogleCloudDatacatalogV1DatasetSpec {
+  /** Vertex AI Dataset specific fields */
+  vertexDatasetSpec?: GoogleCloudDatacatalogV1VertexDatasetSpec;
+}
+export const GoogleCloudDatacatalogV1DatasetSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vertexDatasetSpec: S.optional(GoogleCloudDatacatalogV1VertexDatasetSpec),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1DatasetSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1DatasetSpec>;
+
+/** Spec that applies to clusters of an Instance of Cloud Bigtable. */
+export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
+  /** Location of the cluster, typically a Cloud zone. */
+  location?: string;
+  /** A link back to the parent resource, in this case Instance. */
+  linkedResource?: string;
+  /** Name of the cluster. */
+  displayName?: string;
+  /** Type of the resource. For a cluster this would be "CLUSTER". */
+  type?: string;
+}
+export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      location: S.optional(S.String),
+      linkedResource: S.optional(S.String),
+      displayName: S.optional(S.String),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
+
+export type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList =
+  Array<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
+export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec,
+  ) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList>;
+
+/** Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type) */
+export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
+  /** The list of clusters for the Instance. */
+  cloudBigtableClusterSpecs?: GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList;
+}
+export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cloudBigtableClusterSpecs: S.optional(
+        GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1CloudBigtableInstanceSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpec>;
+
+/** Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type. */
+export interface GoogleCloudDatacatalogV1ServiceSpec {
+  /** Specification that applies to Instance entries of `CLOUD_BIGTABLE` system. */
+  cloudBigtableInstanceSpec?: GoogleCloudDatacatalogV1CloudBigtableInstanceSpec;
+}
+export const GoogleCloudDatacatalogV1ServiceSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudBigtableInstanceSpec: S.optional(
+      GoogleCloudDatacatalogV1CloudBigtableInstanceSpec,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1ServiceSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1ServiceSpec>;
+
+/** Entry metadata relevant only to the user and private to them. */
+export interface GoogleCloudDatacatalogV1PersonalDetails {
+  /** Set if the entry is starred; unset otherwise. */
+  starTime?: string;
+  /** True if the entry is starred by the user; false otherwise. */
+  starred?: boolean;
+}
+export const GoogleCloudDatacatalogV1PersonalDetails = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      starTime: S.optional(S.String),
+      starred: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1PersonalDetails",
+}) as any as S.Schema<GoogleCloudDatacatalogV1PersonalDetails>;
+
+export type GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum =
+  | "TABLE_SOURCE_TYPE_UNSPECIFIED"
+  | "BIGQUERY_VIEW"
+  | "BIGQUERY_TABLE"
+  | "BIGQUERY_MATERIALIZED_VIEW";
+export const GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Normal BigQuery table specification. */
+export interface GoogleCloudDatacatalogV1TableSpec {
+  /** Output only. If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource name of the date-sharded grouped entry. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise, `grouped_entry` is empty. */
+  groupedEntry?: string;
+}
+export const GoogleCloudDatacatalogV1TableSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupedEntry: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1TableSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1TableSpec>;
+
+/** Table view specification. */
+export interface GoogleCloudDatacatalogV1ViewSpec {
+  /** Output only. The query that defines the table view. */
+  viewQuery?: string;
+}
+export const GoogleCloudDatacatalogV1ViewSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    viewQuery: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1ViewSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1ViewSpec>;
+
+/** Describes a BigQuery table. */
+export interface GoogleCloudDatacatalogV1BigQueryTableSpec {
+  /** Output only. The table source type. */
+  tableSourceType?:
+    | GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum
+    | (string & {});
+  /** Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`. */
+  tableSpec?: GoogleCloudDatacatalogV1TableSpec;
+  /** Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`. */
+  viewSpec?: GoogleCloudDatacatalogV1ViewSpec;
+}
+export const GoogleCloudDatacatalogV1BigQueryTableSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tableSourceType: S.optional(
+        GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum,
+      ),
+      tableSpec: S.optional(GoogleCloudDatacatalogV1TableSpec),
+      viewSpec: S.optional(GoogleCloudDatacatalogV1ViewSpec),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1BigQueryTableSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1BigQueryTableSpec>;
 
 /** Common statistics on the entry's usage. They can be set on any system. */
 export interface GoogleCloudDatacatalogV1CommonUsageStats {
@@ -1543,234 +1421,360 @@ export const GoogleCloudDatacatalogV1CommonUsageStatsMap =
     GoogleCloudDatacatalogV1CommonUsageStats,
   ) as any as S.Schema<GoogleCloudDatacatalogV1CommonUsageStatsMap>;
 
+/** Detailed statistics on the entry's usage. Usage statistics have the following limitations: - Only BigQuery tables have them. - They only include BigQuery query jobs. - They might be underestimated because wildcard table references are not yet counted. For more information, see [Querying multiple tables using a wildcard table] (https://cloud.google.com/bigquery/docs/querying-wildcard-tables) */
+export interface GoogleCloudDatacatalogV1UsageStats {
+  /** The number of successful uses of the underlying entry. */
+  totalCompletions?: number;
+  /** Total time spent only on successful uses, in milliseconds. */
+  totalExecutionTimeForCompletionsMillis?: number;
+  /** The number of failed attempts to use the underlying entry. */
+  totalFailures?: number;
+  /** The number of cancelled attempts to use the underlying entry. */
+  totalCancellations?: number;
+}
+export const GoogleCloudDatacatalogV1UsageStats = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalCompletions: S.optional(S.Number),
+    totalExecutionTimeForCompletionsMillis: S.optional(S.Number),
+    totalFailures: S.optional(S.Number),
+    totalCancellations: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatacatalogV1UsageStats",
+}) as any as S.Schema<GoogleCloudDatacatalogV1UsageStats>;
+
+export type GoogleCloudDatacatalogV1UsageStatsMap = {
+  [key: string]: GoogleCloudDatacatalogV1UsageStats | undefined;
+};
+export const GoogleCloudDatacatalogV1UsageStatsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  GoogleCloudDatacatalogV1UsageStats,
+) as any as S.Schema<GoogleCloudDatacatalogV1UsageStatsMap>;
+
 /** The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day. */
 export interface GoogleCloudDatacatalogV1UsageSignal {
   /** The end timestamp of the duration of usage statistics. */
   updateTime?: string;
-  /** Output only. BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`. */
-  usageWithinTimeRange?: GoogleCloudDatacatalogV1UsageStatsMap;
   /** Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`. */
   commonUsageWithinTimeRange?: GoogleCloudDatacatalogV1CommonUsageStatsMap;
+  /** Output only. BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`. */
+  usageWithinTimeRange?: GoogleCloudDatacatalogV1UsageStatsMap;
   /** Favorite count in the source system. */
   favoriteCount?: string;
 }
 export const GoogleCloudDatacatalogV1UsageSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
-    usageWithinTimeRange: S.optional(GoogleCloudDatacatalogV1UsageStatsMap),
     commonUsageWithinTimeRange: S.optional(
       GoogleCloudDatacatalogV1CommonUsageStatsMap,
     ),
+    usageWithinTimeRange: S.optional(GoogleCloudDatacatalogV1UsageStatsMap),
     favoriteCount: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1UsageSignal",
 }) as any as S.Schema<GoogleCloudDatacatalogV1UsageSignal>;
 
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-export type GoogleCloudDatacatalogV1DataSourceServiceEnum =
-  | "SERVICE_UNSPECIFIED"
-  | "CLOUD_STORAGE"
-  | "BIGQUERY";
-export const GoogleCloudDatacatalogV1DataSourceServiceEnum =
+export type GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
+  | "INTEGRATED_SYSTEM_UNSPECIFIED"
+  | "BIGQUERY"
+  | "CLOUD_PUBSUB"
+  | "DATAPROC_METASTORE"
+  | "DATAPLEX"
+  | "CLOUD_SPANNER"
+  | "CLOUD_BIGTABLE"
+  | "CLOUD_SQL"
+  | "LOOKER"
+  | "VERTEX_AI";
+export const GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
   /*@__PURE__*/ S.String;
 
-/** Details the properties of the underlying storage. */
-export interface GoogleCloudDatacatalogV1StorageProperties {
-  /** Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*\/b`: matches all files in `bucket_name` that match the `a/*\/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` */
-  filePattern?: StringList;
-  /** File type in MIME format, for example, `text/plain`. */
-  fileType?: string;
+/** Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type) */
+export interface GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
+  /** Display name of the Instance. This is user specified and different from the resource name. */
+  instanceDisplayName?: string;
 }
-export const GoogleCloudDatacatalogV1StorageProperties =
+export const GoogleCloudDatacatalogV1CloudBigtableSystemSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      filePattern: S.optional(StringList),
-      fileType: S.optional(S.String),
+      instanceDisplayName: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "GoogleCloudDatacatalogV1StorageProperties",
-  }) as any as S.Schema<GoogleCloudDatacatalogV1StorageProperties>;
+    identifier: "GoogleCloudDatacatalogV1CloudBigtableSystemSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableSystemSpec>;
 
-/** Physical location of an entry. */
-export interface GoogleCloudDatacatalogV1DataSource {
-  /** Service that physically stores the data. */
-  service?: GoogleCloudDatacatalogV1DataSourceServiceEnum | (string & {});
-  /** Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}` */
-  resource?: string;
-  /** Output only. Data Catalog entry name, if applicable. */
-  sourceEntry?: string;
-  /** Detailed properties of the underlying storage. */
-  storageProperties?: GoogleCloudDatacatalogV1StorageProperties;
+/** Column mapping for a Spanner foreign key. */
+export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping {
+  /** Output only. The column in the referenced table that is part of the foreign key. */
+  referenceColumn?: string;
+  /** Output only. The column in the current table that is part of the foreign key. */
+  column?: string;
 }
-export const GoogleCloudDatacatalogV1DataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(GoogleCloudDatacatalogV1DataSourceServiceEnum),
-    resource: S.optional(S.String),
-    sourceEntry: S.optional(S.String),
-    storageProperties: S.optional(GoogleCloudDatacatalogV1StorageProperties),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1DataSource",
-}) as any as S.Schema<GoogleCloudDatacatalogV1DataSource>;
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      referenceColumn: S.optional(S.String),
+      column: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
 
-/** Entry metadata relevant only to the user and private to them. */
-export interface GoogleCloudDatacatalogV1PersonalDetails {
-  /** True if the entry is starred by the user; false otherwise. */
-  starred?: boolean;
-  /** Set if the entry is starred; unset otherwise. */
-  starTime?: string;
+export type GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList =
+  Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping,
+  ) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList>;
+
+/** Specification of a Spanner foreign key. */
+export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey {
+  /** Output only. The table name this foreign key referenced to. Format: `projects/{PROJECT_ID}/locations/{LOCATION}/entryGroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}` */
+  entry?: string;
+  /** Output only. The constraint_name of the foreign key, for example, FK_CustomerOrder. */
+  name?: string;
+  /** Output only. The ordered list of column mappings for this foreign key. */
+  columnMappings?: GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList;
 }
-export const GoogleCloudDatacatalogV1PersonalDetails = /*@__PURE__*/ S.suspend(
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      entry: S.optional(S.String),
+      name: S.optional(S.String),
+      columnMappings: S.optional(
+        GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
+
+export type GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList =
+  Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey,
+  ) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList>;
+
+/** Specification of a Spanner primary key. */
+export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey {
+  /** Output only. Column names of the primary key. */
+  columns?: StringList;
+}
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      columns: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey>;
+
+/** Specification of a Spanner table. */
+export interface GoogleCloudDatacatalogV1SpannerTableSpec {
+  /** Output only. The foreign keys of the table. */
+  foreignKeys?: GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList;
+  /** Output only. The primary key of the table. */
+  primaryKey?: GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey;
+}
+export const GoogleCloudDatacatalogV1SpannerTableSpec = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      starred: S.optional(S.Boolean),
-      starTime: S.optional(S.String),
+      foreignKeys: S.optional(
+        GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList,
+      ),
+      primaryKey: S.optional(
+        GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey,
+      ),
     }),
 ).annotate({
-  identifier: "GoogleCloudDatacatalogV1PersonalDetails",
-}) as any as S.Schema<GoogleCloudDatacatalogV1PersonalDetails>;
+  identifier: "GoogleCloudDatacatalogV1SpannerTableSpec",
+}) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpec>;
+
+/** Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding). */
+export interface GoogleCloudDatacatalogV1BigQueryDateShardedSpec {
+  /** Output only. Total number of shards. */
+  shardCount?: string;
+  /** Output only. BigQuery resource name of the latest shard. */
+  latestShardResource?: string;
+  /** Output only. The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. */
+  dataset?: string;
+  /** Output only. The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`. */
+  tablePrefix?: string;
+}
+export const GoogleCloudDatacatalogV1BigQueryDateShardedSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      shardCount: S.optional(S.String),
+      latestShardResource: S.optional(S.String),
+      dataset: S.optional(S.String),
+      tablePrefix: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1BigQueryDateShardedSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1BigQueryDateShardedSpec>;
+
+export type GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
+  | "STORAGE_TYPE_UNSPECIFIED"
+  | "BIGTABLE"
+  | "OPTIMIZED";
+export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Detail description of the source information of a Vertex Feature Online Store. */
+export interface GoogleCloudDatacatalogV1FeatureOnlineStoreSpec {
+  /** Output only. Type of underlying storage for the FeatureOnlineStore. */
+  storageType?:
+    | GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum
+    | (string & {});
+}
+export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      storageType: S.optional(
+        GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDatacatalogV1FeatureOnlineStoreSpec",
+  }) as any as S.Schema<GoogleCloudDatacatalogV1FeatureOnlineStoreSpec>;
 
 /** Entry metadata. A Data Catalog entry represents another resource in Google Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic) or outside of it. You can use the `linked_resource` field in the entry resource to refer to the original resource ID of the source system. An entry resource contains resource details, for example, its schema. Additionally, you can attach flexible metadata to an entry in the form of a Tag. */
 export interface GoogleCloudDatacatalogV1Entry {
-  /** Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. */
-  name?: string;
-  /** The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8. */
-  linkedResource?: string;
-  /** [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries. */
-  fullyQualifiedName?: string;
-  /** The type of the entry. For details, see [`EntryType`](#entrytype). */
-  type?: GoogleCloudDatacatalogV1EntryTypeEnum | (string & {});
   /** Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long. */
   userSpecifiedType?: string;
-  /** Output only. Indicates the entry's source system that Data Catalog integrates with, such as BigQuery, Pub/Sub, or Dataproc Metastore. */
-  integratedSystem?:
-    | GoogleCloudDatacatalogV1EntryIntegratedSystemEnum
-    | (string & {});
-  /** Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long. */
-  userSpecifiedSystem?: string;
+  /** Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string. */
+  displayName?: string;
+  /** Model specification. */
+  modelSpec?: GoogleCloudDatacatalogV1ModelSpec;
+  /** Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type. */
+  databaseTableSpec?: GoogleCloudDatacatalogV1DatabaseTableSpec;
+  /** Output only. Physical location of the entry. */
+  dataSource?: GoogleCloudDatacatalogV1DataSource;
+  /** Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string. */
+  description?: string;
+  /** Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type. */
+  routineSpec?: GoogleCloudDatacatalogV1RoutineSpec;
+  /** The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8. */
+  linkedResource?: string;
+  /** The type of the entry. For details, see [`EntryType`](#entrytype). */
+  type?: GoogleCloudDatacatalogV1EntryTypeEnum | (string & {});
+  /** Spec for graph. */
+  graphSpec?: GoogleCloudDatacatalogV1GraphSpec;
   /** Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE` */
   sqlDatabaseSystemSpec?: GoogleCloudDatacatalogV1SqlDatabaseSystemSpec;
   /** Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER` */
   lookerSystemSpec?: GoogleCloudDatacatalogV1LookerSystemSpec;
-  /** Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE` */
-  cloudBigtableSystemSpec?: GoogleCloudDatacatalogV1CloudBigtableSystemSpec;
-  /** Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type. */
-  gcsFilesetSpec?: GoogleCloudDatacatalogV1GcsFilesetSpec;
-  /** Output only. Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type. */
-  bigqueryTableSpec?: GoogleCloudDatacatalogV1BigQueryTableSpec;
-  /** Output only. Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding). */
-  bigqueryDateShardedSpec?: GoogleCloudDatacatalogV1BigQueryDateShardedSpec;
-  /** Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type. */
-  databaseTableSpec?: GoogleCloudDatacatalogV1DatabaseTableSpec;
-  /** Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. */
-  dataSourceConnectionSpec?: GoogleCloudDatacatalogV1DataSourceConnectionSpec;
-  /** Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type. */
-  routineSpec?: GoogleCloudDatacatalogV1RoutineSpec;
-  /** Specification that applies to a dataset. */
-  datasetSpec?: GoogleCloudDatacatalogV1DatasetSpec;
-  /** Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type. */
-  filesetSpec?: GoogleCloudDatacatalogV1FilesetSpec;
-  /** Specification that applies to a Service resource. */
-  serviceSpec?: GoogleCloudDatacatalogV1ServiceSpec;
-  /** Model specification. */
-  modelSpec?: GoogleCloudDatacatalogV1ModelSpec;
-  /** FeatureonlineStore spec for Vertex AI Feature Store. */
-  featureOnlineStoreSpec?: GoogleCloudDatacatalogV1FeatureOnlineStoreSpec;
-  /** Spec for graph. */
-  graphSpec?: GoogleCloudDatacatalogV1GraphSpec;
-  /** Specification of a Spanner table. */
-  spannerTableSpec?: GoogleCloudDatacatalogV1SpannerTableSpec;
-  /** Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string. */
-  displayName?: string;
-  /** Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string. */
-  description?: string;
   /** Business Context of the entry. Not supported for BigQuery datasets */
   businessContext?: GoogleCloudDatacatalogV1BusinessContext;
   /** Schema of the entry. An entry might not have any schema attached to it. */
   schema?: GoogleCloudDatacatalogV1Schema;
-  /** Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp. */
-  sourceSystemTimestamps?: GoogleCloudDatacatalogV1SystemTimestamps;
-  /** Resource usage statistics. */
-  usageSignal?: GoogleCloudDatacatalogV1UsageSignal;
+  /** Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type. */
+  filesetSpec?: GoogleCloudDatacatalogV1FilesetSpec;
+  /** Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type. */
+  gcsFilesetSpec?: GoogleCloudDatacatalogV1GcsFilesetSpec;
+  /** Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. */
+  dataSourceConnectionSpec?: GoogleCloudDatacatalogV1DataSourceConnectionSpec;
   /** Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to custom entries. Synced entries have unmodifiable labels that come from the source system. */
   labels?: StringMap;
-  /** Output only. Physical location of the entry. */
-  dataSource?: GoogleCloudDatacatalogV1DataSource;
+  /** Specification that applies to a dataset. */
+  datasetSpec?: GoogleCloudDatacatalogV1DatasetSpec;
+  /** Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long. */
+  userSpecifiedSystem?: string;
+  /** Specification that applies to a Service resource. */
+  serviceSpec?: GoogleCloudDatacatalogV1ServiceSpec;
+  /** [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries. */
+  fullyQualifiedName?: string;
   /** Output only. Additional information related to the entry. Private to the current user. */
   personalDetails?: GoogleCloudDatacatalogV1PersonalDetails;
+  /** Output only. Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type. */
+  bigqueryTableSpec?: GoogleCloudDatacatalogV1BigQueryTableSpec;
+  /** Resource usage statistics. */
+  usageSignal?: GoogleCloudDatacatalogV1UsageSignal;
+  /** Output only. Indicates the entry's source system that Data Catalog integrates with, such as BigQuery, Pub/Sub, or Dataproc Metastore. */
+  integratedSystem?:
+    | GoogleCloudDatacatalogV1EntryIntegratedSystemEnum
+    | (string & {});
+  /** Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE` */
+  cloudBigtableSystemSpec?: GoogleCloudDatacatalogV1CloudBigtableSystemSpec;
+  /** Specification of a Spanner table. */
+  spannerTableSpec?: GoogleCloudDatacatalogV1SpannerTableSpec;
+  /** Output only. Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding). */
+  bigqueryDateShardedSpec?: GoogleCloudDatacatalogV1BigQueryDateShardedSpec;
+  /** Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp. */
+  sourceSystemTimestamps?: GoogleCloudDatacatalogV1SystemTimestamps;
+  /** FeatureonlineStore spec for Vertex AI Feature Store. */
+  featureOnlineStoreSpec?: GoogleCloudDatacatalogV1FeatureOnlineStoreSpec;
+  /** Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. */
+  name?: string;
 }
 export const GoogleCloudDatacatalogV1Entry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    linkedResource: S.optional(S.String),
-    fullyQualifiedName: S.optional(S.String),
-    type: S.optional(GoogleCloudDatacatalogV1EntryTypeEnum),
     userSpecifiedType: S.optional(S.String),
-    integratedSystem: S.optional(
-      GoogleCloudDatacatalogV1EntryIntegratedSystemEnum,
-    ),
-    userSpecifiedSystem: S.optional(S.String),
+    displayName: S.optional(S.String),
+    modelSpec: S.optional(GoogleCloudDatacatalogV1ModelSpec),
+    databaseTableSpec: S.optional(GoogleCloudDatacatalogV1DatabaseTableSpec),
+    dataSource: S.optional(GoogleCloudDatacatalogV1DataSource),
+    description: S.optional(S.String),
+    routineSpec: S.optional(GoogleCloudDatacatalogV1RoutineSpec),
+    linkedResource: S.optional(S.String),
+    type: S.optional(GoogleCloudDatacatalogV1EntryTypeEnum),
+    graphSpec: S.optional(GoogleCloudDatacatalogV1GraphSpec),
     sqlDatabaseSystemSpec: S.optional(
       GoogleCloudDatacatalogV1SqlDatabaseSystemSpec,
     ),
     lookerSystemSpec: S.optional(GoogleCloudDatacatalogV1LookerSystemSpec),
-    cloudBigtableSystemSpec: S.optional(
-      GoogleCloudDatacatalogV1CloudBigtableSystemSpec,
-    ),
+    businessContext: S.optional(GoogleCloudDatacatalogV1BusinessContext),
+    schema: S.optional(GoogleCloudDatacatalogV1Schema),
+    filesetSpec: S.optional(GoogleCloudDatacatalogV1FilesetSpec),
     gcsFilesetSpec: S.optional(GoogleCloudDatacatalogV1GcsFilesetSpec),
-    bigqueryTableSpec: S.optional(GoogleCloudDatacatalogV1BigQueryTableSpec),
-    bigqueryDateShardedSpec: S.optional(
-      GoogleCloudDatacatalogV1BigQueryDateShardedSpec,
-    ),
-    databaseTableSpec: S.optional(GoogleCloudDatacatalogV1DatabaseTableSpec),
     dataSourceConnectionSpec: S.optional(
       GoogleCloudDatacatalogV1DataSourceConnectionSpec,
     ),
-    routineSpec: S.optional(GoogleCloudDatacatalogV1RoutineSpec),
+    labels: S.optional(StringMap),
     datasetSpec: S.optional(GoogleCloudDatacatalogV1DatasetSpec),
-    filesetSpec: S.optional(GoogleCloudDatacatalogV1FilesetSpec),
+    userSpecifiedSystem: S.optional(S.String),
     serviceSpec: S.optional(GoogleCloudDatacatalogV1ServiceSpec),
-    modelSpec: S.optional(GoogleCloudDatacatalogV1ModelSpec),
-    featureOnlineStoreSpec: S.optional(
-      GoogleCloudDatacatalogV1FeatureOnlineStoreSpec,
+    fullyQualifiedName: S.optional(S.String),
+    personalDetails: S.optional(GoogleCloudDatacatalogV1PersonalDetails),
+    bigqueryTableSpec: S.optional(GoogleCloudDatacatalogV1BigQueryTableSpec),
+    usageSignal: S.optional(GoogleCloudDatacatalogV1UsageSignal),
+    integratedSystem: S.optional(
+      GoogleCloudDatacatalogV1EntryIntegratedSystemEnum,
     ),
-    graphSpec: S.optional(GoogleCloudDatacatalogV1GraphSpec),
+    cloudBigtableSystemSpec: S.optional(
+      GoogleCloudDatacatalogV1CloudBigtableSystemSpec,
+    ),
     spannerTableSpec: S.optional(GoogleCloudDatacatalogV1SpannerTableSpec),
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
-    businessContext: S.optional(GoogleCloudDatacatalogV1BusinessContext),
-    schema: S.optional(GoogleCloudDatacatalogV1Schema),
+    bigqueryDateShardedSpec: S.optional(
+      GoogleCloudDatacatalogV1BigQueryDateShardedSpec,
+    ),
     sourceSystemTimestamps: S.optional(
       GoogleCloudDatacatalogV1SystemTimestamps,
     ),
-    usageSignal: S.optional(GoogleCloudDatacatalogV1UsageSignal),
-    labels: S.optional(StringMap),
-    dataSource: S.optional(GoogleCloudDatacatalogV1DataSource),
-    personalDetails: S.optional(GoogleCloudDatacatalogV1PersonalDetails),
+    featureOnlineStoreSpec: S.optional(
+      GoogleCloudDatacatalogV1FeatureOnlineStoreSpec,
+    ),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1Entry",
 }) as any as S.Schema<GoogleCloudDatacatalogV1Entry>;
 
 export interface CreateProjectsLocationsEntryGroupsEntriesRequest {
-  /** Required. The name of the entry group this entry belongs to. Note: The entry itself and its child resources might not be stored in the location specified in its name. */
-  parent: string;
   /** Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8. */
   entryId?: string;
+  /** Required. The name of the entry group this entry belongs to. Note: The entry itself and its child resources might not be stored in the location specified in its name. */
+  parent: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1Entry;
 }
 export const CreateProjectsLocationsEntryGroupsEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       entryId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDatacatalogV1Entry.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1799,33 +1803,33 @@ export const GoogleCloudDatacatalogV1TagFieldEnumValue =
 
 /** Contains the value and additional information on a field within a Tag. */
 export interface GoogleCloudDatacatalogV1TagField {
+  /** Output only. The order of this field with respect to other fields in this tag. Can be set by Tag. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag don't have to be sequential. */
+  order?: number;
+  /** The value of a tag field with a timestamp type. */
+  timestampValue?: string;
+  /** The value of a tag field with a boolean type. */
+  boolValue?: boolean;
   /** Output only. The display name of this field. */
   displayName?: string;
   /** The value of a tag field with a double type. */
   doubleValue?: number;
   /** The value of a tag field with a string type. The maximum length is 2000 UTF-8 characters. */
   stringValue?: string;
-  /** The value of a tag field with a boolean type. */
-  boolValue?: boolean;
-  /** The value of a tag field with a timestamp type. */
-  timestampValue?: string;
-  /** The value of a tag field with an enum type. This value must be one of the allowed values listed in this enum. */
-  enumValue?: GoogleCloudDatacatalogV1TagFieldEnumValue;
   /** The value of a tag field with a rich text type. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB. */
   richtextValue?: string;
-  /** Output only. The order of this field with respect to other fields in this tag. Can be set by Tag. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag don't have to be sequential. */
-  order?: number;
+  /** The value of a tag field with an enum type. This value must be one of the allowed values listed in this enum. */
+  enumValue?: GoogleCloudDatacatalogV1TagFieldEnumValue;
 }
 export const GoogleCloudDatacatalogV1TagField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    order: S.optional(S.Number),
+    timestampValue: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
     displayName: S.optional(S.String),
     doubleValue: S.optional(S.Number),
     stringValue: S.optional(S.String),
-    boolValue: S.optional(S.Boolean),
-    timestampValue: S.optional(S.String),
-    enumValue: S.optional(GoogleCloudDatacatalogV1TagFieldEnumValue),
     richtextValue: S.optional(S.String),
-    order: S.optional(S.Number),
+    enumValue: S.optional(GoogleCloudDatacatalogV1TagFieldEnumValue),
   }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1TagField",
@@ -1848,31 +1852,31 @@ export const GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum =
 
 /** Tags contain custom metadata and are attached to Data Catalog resources. Tags conform with the specification of their tag template. See [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information on the permissions needed to create or view tags. */
 export interface GoogleCloudDatacatalogV1Tag {
-  /** Identifier. The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name. */
-  name?: string;
-  /** Required. The resource name of the tag template this tag uses. Example: `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE_ID}` This field cannot be modified after creation. */
-  template?: string;
   /** Output only. The display name of the tag template. */
   templateDisplayName?: string;
-  /** Resources like entry can have schemas associated with them. This scope allows you to attach tags to an individual column based on that schema. To attach a tag to a nested column, separate column names with a dot (`.`). Example: `column.nested_column`. */
-  column?: string;
   /** Required. Maps the ID of a tag field to its value and additional information about that field. Tag template defines valid field IDs. A tag must have at least 1 field and at most 500 fields. */
   fields?: GoogleCloudDatacatalogV1TagFieldMap;
+  /** Identifier. The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name. */
+  name?: string;
   /** Output only. Denotes the transfer status of the Tag Template. */
   dataplexTransferStatus?:
     | GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum
     | (string & {});
+  /** Resources like entry can have schemas associated with them. This scope allows you to attach tags to an individual column based on that schema. To attach a tag to a nested column, separate column names with a dot (`.`). Example: `column.nested_column`. */
+  column?: string;
+  /** Required. The resource name of the tag template this tag uses. Example: `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE_ID}` This field cannot be modified after creation. */
+  template?: string;
 }
 export const GoogleCloudDatacatalogV1Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    template: S.optional(S.String),
     templateDisplayName: S.optional(S.String),
-    column: S.optional(S.String),
     fields: S.optional(GoogleCloudDatacatalogV1TagFieldMap),
+    name: S.optional(S.String),
     dataplexTransferStatus: S.optional(
       GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum,
     ),
+    column: S.optional(S.String),
+    template: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1Tag",
@@ -1990,26 +1994,26 @@ export const GoogleCloudDatacatalogV1FieldType = /*@__PURE__*/ S.suspend(() =>
 export interface GoogleCloudDatacatalogV1TagTemplateField {
   /** Identifier. The resource name of the tag template field in URL format. Example: `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE}/fields/{FIELD}` Note: The tag template field itself might not be stored in the location specified in its name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 64 characters. */
   name?: string;
-  /** The display name for this field. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters. */
-  displayName?: string;
   /** Required. The type of value this tag field can contain. */
   type?: GoogleCloudDatacatalogV1FieldType;
+  /** The order of this field with respect to other fields in this tag template. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order and field orders within a tag don't have to be sequential. */
+  order?: number;
+  /** The display name for this field. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters. */
+  displayName?: string;
   /** If true, this field is required. Defaults to false. */
   isRequired?: boolean;
   /** The description for this field. Defaults to an empty string. */
   description?: string;
-  /** The order of this field with respect to other fields in this tag template. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order and field orders within a tag don't have to be sequential. */
-  order?: number;
 }
 export const GoogleCloudDatacatalogV1TagTemplateField = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.optional(S.String),
-      displayName: S.optional(S.String),
       type: S.optional(GoogleCloudDatacatalogV1FieldType),
+      order: S.optional(S.Number),
+      displayName: S.optional(S.String),
       isRequired: S.optional(S.Boolean),
       description: S.optional(S.String),
-      order: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1TagTemplateField",
@@ -2035,12 +2039,12 @@ export const GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum =
 export interface GoogleCloudDatacatalogV1TagTemplate {
   /** Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. */
   name?: string;
+  /** Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore. */
+  fields?: GoogleCloudDatacatalogV1TagTemplateFieldMap;
   /** Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters. */
   displayName?: string;
   /** Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate. */
   isPubliclyReadable?: boolean;
-  /** Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore. */
-  fields?: GoogleCloudDatacatalogV1TagTemplateFieldMap;
   /** Optional. Transfer status of the TagTemplate */
   dataplexTransferStatus?:
     | GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum
@@ -2049,9 +2053,9 @@ export interface GoogleCloudDatacatalogV1TagTemplate {
 export const GoogleCloudDatacatalogV1TagTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
+    fields: S.optional(GoogleCloudDatacatalogV1TagTemplateFieldMap),
     displayName: S.optional(S.String),
     isPubliclyReadable: S.optional(S.Boolean),
-    fields: S.optional(GoogleCloudDatacatalogV1TagTemplateFieldMap),
     dataplexTransferStatus: S.optional(
       GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum,
     ),
@@ -2112,21 +2116,6 @@ export const CreateProjectsLocationsTagTemplatesFieldsRequest =
     identifier: "CreateProjectsLocationsTagTemplatesFieldsRequest",
   }) as any as S.Schema<CreateProjectsLocationsTagTemplatesFieldsRequest>;
 
-export type GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
-  | "POLICY_TYPE_UNSPECIFIED"
-  | "FINE_GRAINED_ACCESS_CONTROL";
-export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
-  Array<
-    GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum | (string & {})
-  >;
-export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList>;
-
 export type GoogleCloudDatacatalogV1TaxonomyServiceNameEnum =
   | "MANAGING_SYSTEM_UNSPECIFIED"
   | "MANAGING_SYSTEM_DATAPLEX"
@@ -2151,34 +2140,49 @@ export const GoogleCloudDatacatalogV1TaxonomyService = /*@__PURE__*/ S.suspend(
   identifier: "GoogleCloudDatacatalogV1TaxonomyService",
 }) as any as S.Schema<GoogleCloudDatacatalogV1TaxonomyService>;
 
+export type GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
+  | "POLICY_TYPE_UNSPECIFIED"
+  | "FINE_GRAINED_ACCESS_CONTROL";
+export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
+  Array<
+    GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum | (string & {})
+  >;
+export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum,
+  ) as any as S.Schema<GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList>;
+
 /** A taxonomy is a collection of hierarchical policy tags that classify data along a common axis. For example, a "data sensitivity" taxonomy might contain the following policy tags: ``` + PII + Account number + Age + SSN + Zipcode + Financials + Revenue ``` A "data origin" taxonomy might contain the following policy tags: ``` + User data + Employee data + Partner data + Public data ``` */
 export interface GoogleCloudDatacatalogV1Taxonomy {
   /** Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. */
   name?: string;
+  /** Output only. Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a Google Cloud service. Currently only 'DATAPLEX' is supported. */
+  service?: GoogleCloudDatacatalogV1TaxonomyService;
+  /** Output only. Number of policy tags in this taxonomy. */
+  policyTagCount?: number;
+  /** Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list. */
+  activatedPolicyTypes?: GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList;
   /** Required. User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization. */
   displayName?: string;
   /** Optional. Description of this taxonomy. If not set, defaults to empty. The description must contain only Unicode characters, tabs, newlines, carriage returns, and page breaks, and be at most 2000 bytes long when encoded in UTF-8. */
   description?: string;
-  /** Output only. Number of policy tags in this taxonomy. */
-  policyTagCount?: number;
   /** Output only. Creation and modification timestamps of this taxonomy. */
   taxonomyTimestamps?: GoogleCloudDatacatalogV1SystemTimestamps;
-  /** Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list. */
-  activatedPolicyTypes?: GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList;
-  /** Output only. Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a Google Cloud service. Currently only 'DATAPLEX' is supported. */
-  service?: GoogleCloudDatacatalogV1TaxonomyService;
 }
 export const GoogleCloudDatacatalogV1Taxonomy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
+    service: S.optional(GoogleCloudDatacatalogV1TaxonomyService),
     policyTagCount: S.optional(S.Number),
-    taxonomyTimestamps: S.optional(GoogleCloudDatacatalogV1SystemTimestamps),
     activatedPolicyTypes: S.optional(
       GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList,
     ),
-    service: S.optional(GoogleCloudDatacatalogV1TaxonomyService),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    taxonomyTimestamps: S.optional(GoogleCloudDatacatalogV1SystemTimestamps),
   }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1Taxonomy",
@@ -2210,22 +2214,22 @@ export const CreateProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ S.suspend(
 export interface GoogleCloudDatacatalogV1PolicyTag {
   /** Identifier. Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs. */
   name?: string;
-  /** Required. User-defined name of this policy tag. The name can't start or end with spaces and must be unique within the parent taxonomy, contain only Unicode letters, numbers, underscores, dashes and spaces, and be at most 200 bytes long when encoded in UTF-8. */
-  displayName?: string;
-  /** Description of this policy tag. If not set, defaults to empty. The description must contain only Unicode characters, tabs, newlines, carriage returns and page breaks, and be at most 2000 bytes long when encoded in UTF-8. */
-  description?: string;
   /** Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty. */
   parentPolicyTag?: string;
   /** Output only. Resource names of child policy tags of this policy tag. */
   childPolicyTags?: StringList;
+  /** Required. User-defined name of this policy tag. The name can't start or end with spaces and must be unique within the parent taxonomy, contain only Unicode letters, numbers, underscores, dashes and spaces, and be at most 200 bytes long when encoded in UTF-8. */
+  displayName?: string;
+  /** Description of this policy tag. If not set, defaults to empty. The description must contain only Unicode characters, tabs, newlines, carriage returns and page breaks, and be at most 2000 bytes long when encoded in UTF-8. */
+  description?: string;
 }
 export const GoogleCloudDatacatalogV1PolicyTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
     parentPolicyTag: S.optional(S.String),
     childPolicyTags: S.optional(StringList),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GoogleCloudDatacatalogV1PolicyTag",
@@ -2436,17 +2440,17 @@ export const DeleteProjectsLocationsTaxonomiesPolicyTagsRequest =
 export interface ExportProjectsLocationsTaxonomiesRequest {
   /** Required. Resource name of the project that the exported taxonomies belong to. */
   parent: string;
-  /** Required. Resource names of the taxonomies to export. */
-  taxonomies?: StringList;
   /** Serialized export taxonomies that contain all the policy tags as nested protocol buffers. */
   serializedTaxonomies?: boolean;
+  /** Required. Resource names of the taxonomies to export. */
+  taxonomies?: StringList;
 }
 export const ExportProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      taxonomies: S.optional(StringList.pipe(T.Query())),
       serializedTaxonomies: S.optional(S.Boolean.pipe(T.Query())),
+      taxonomies: S.optional(StringList.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2491,7 +2495,8 @@ export const GoogleCloudDatacatalogV1SerializedPolicyTagList =
   ) as any as S.Schema<GoogleCloudDatacatalogV1SerializedPolicyTagList>;
 
 export type GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum =
-  "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL";
+  | "POLICY_TYPE_UNSPECIFIED"
+  | "FINE_GRAINED_ACCESS_CONTROL";
 export const GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
@@ -2507,24 +2512,24 @@ export const GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemE
 
 /** A nested protocol buffer that represents a taxonomy and the hierarchy of its policy tags. Used for taxonomy replacement, import, and export. */
 export interface GoogleCloudDatacatalogV1SerializedTaxonomy {
-  /** Required. Display name of the taxonomy. At most 200 bytes when encoded in UTF-8. */
-  displayName?: string;
-  /** Description of the serialized taxonomy. At most 2000 bytes when encoded in UTF-8. If not set, defaults to an empty description. */
-  description?: string;
   /** Top level policy tags associated with the taxonomy, if any. */
   policyTags?: GoogleCloudDatacatalogV1SerializedPolicyTagList;
   /** A list of policy types that are activated per taxonomy. */
   activatedPolicyTypes?: GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList;
+  /** Required. Display name of the taxonomy. At most 200 bytes when encoded in UTF-8. */
+  displayName?: string;
+  /** Description of the serialized taxonomy. At most 2000 bytes when encoded in UTF-8. If not set, defaults to an empty description. */
+  description?: string;
 }
 export const GoogleCloudDatacatalogV1SerializedTaxonomy =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      displayName: S.optional(S.String),
-      description: S.optional(S.String),
       policyTags: S.optional(GoogleCloudDatacatalogV1SerializedPolicyTagList),
       activatedPolicyTypes: S.optional(
         GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList,
       ),
+      displayName: S.optional(S.String),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1SerializedTaxonomy",
@@ -2601,37 +2606,37 @@ export const GetIamPolicyProjectsLocationsEntryGroupsRequest =
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    expression: S.optional(S.String),
     title: S.optional(S.String),
-    description: S.optional(S.String),
     location: S.optional(S.String),
+    expression: S.optional(S.String),
+    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    role: S.optional(S.String),
     members: S.optional(StringList),
+    role: S.optional(S.String),
     condition: S.optional(Expr),
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
@@ -2643,17 +2648,17 @@ export const BindingList = /*@__PURE__*/ S.Array(
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    version: S.optional(S.Number),
     bindings: S.optional(BindingList),
+    version: S.optional(S.Number),
     etag: S.optional(S.String),
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
@@ -2747,16 +2752,16 @@ export const GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest =
   }) as any as S.Schema<GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export interface GetProjectsLocationsEntryGroupsRequest {
-  /** Required. The name of the entry group to get. */
-  name: string;
   /** The fields to return. If empty or omitted, all fields are returned. */
   readMask?: string;
+  /** Required. The name of the entry group to get. */
+  name: string;
 }
 export const GetProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       readMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2819,29 +2824,29 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    code: S.optional(S.Number),
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -2849,9 +2854,9 @@ export interface Operation {
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    done: S.optional(S.Boolean),
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
     error: S.optional(Status),
     response: S.optional(DocumentMap),
   }),
@@ -3047,19 +3052,19 @@ export const GoogleCloudDatacatalogV1ImportTaxonomiesResponse =
   }) as any as S.Schema<GoogleCloudDatacatalogV1ImportTaxonomiesResponse>;
 
 export interface ListProjectsLocationsEntryGroupsRequest {
-  /** Required. The name of the location that contains the entry groups to list. Can be provided as a URL. */
-  parent: string;
   /** Optional. The maximum number of items to return. Default is 10. Maximum limit is 1000. Throws an invalid argument if `page_size` is greater than 1000. */
   pageSize?: number;
   /** Optional. Pagination token that specifies the next page to return. If empty, returns the first page. */
   pageToken?: string;
+  /** Required. The name of the location that contains the entry groups to list. Can be provided as a URL. */
+  parent: string;
 }
 export const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3130,16 +3135,16 @@ export const GoogleCloudDatacatalogV1EntryList = /*@__PURE__*/ S.Array(
 
 /** Response message for ListEntries. */
 export interface GoogleCloudDatacatalogV1ListEntriesResponse {
-  /** Entry details. */
-  entries?: GoogleCloudDatacatalogV1EntryList;
   /** Pagination token of the next results page. Empty if there are no more items in results. */
   nextPageToken?: string;
+  /** Entry details. */
+  entries?: GoogleCloudDatacatalogV1EntryList;
 }
 export const GoogleCloudDatacatalogV1ListEntriesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      entries: S.optional(GoogleCloudDatacatalogV1EntryList),
       nextPageToken: S.optional(S.String),
+      entries: S.optional(GoogleCloudDatacatalogV1EntryList),
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1ListEntriesResponse",
@@ -3194,19 +3199,19 @@ export const GoogleCloudDatacatalogV1ListTagsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatacatalogV1ListTagsResponse>;
 
 export interface ListProjectsLocationsEntryGroupsTagsRequest {
-  /** Required. The name of the Data Catalog resource to list the tags of. The resource can be an Entry or an EntryGroup (without `/entries/{entries}` at the end). */
-  parent: string;
   /** The maximum number of tags to return. Default is 10. Maximum limit is 1000. */
   pageSize?: number;
   /** Pagination token that specifies the next page to return. If empty, the first page is returned. */
   pageToken?: string;
+  /** Required. The name of the Data Catalog resource to list the tags of. The resource can be an Entry or an EntryGroup (without `/entries/{entries}` at the end). */
+  parent: string;
 }
 export const ListProjectsLocationsEntryGroupsTagsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3219,25 +3224,25 @@ export const ListProjectsLocationsEntryGroupsTagsRequest =
   }) as any as S.Schema<ListProjectsLocationsEntryGroupsTagsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
   /** The standard list filter. */
   filter?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3256,17 +3261,17 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: OperationList;
   /** The standard List next-page token. */
   nextPageToken?: string;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: OperationList;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
     unreachable: S.optional(StringList),
   }),
 ).annotate({
@@ -3276,20 +3281,20 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsTaxonomiesRequest {
   /** Required. Resource name of the project to list the taxonomies of. */
   parent: string;
+  /** Supported field for filter is 'service' and value is 'dataplex'. Eg: service=dataplex. */
+  filter?: string;
   /** The maximum number of items to return. Must be a value between 1 and 1000 inclusively. If not set, defaults to 50. */
   pageSize?: number;
   /** The pagination token of the next results page. If not set, the first page is returned. The token is returned in the response to a previous list request. */
   pageToken?: string;
-  /** Supported field for filter is 'service' and value is 'dataplex'. Eg: service=dataplex. */
-  filter?: string;
 }
 export const ListProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3319,19 +3324,19 @@ export const GoogleCloudDatacatalogV1ListTaxonomiesResponse =
   }) as any as S.Schema<GoogleCloudDatacatalogV1ListTaxonomiesResponse>;
 
 export interface ListProjectsLocationsTaxonomiesPolicyTagsRequest {
-  /** Required. Resource name of the taxonomy to list the policy tags of. */
-  parent: string;
   /** The maximum number of items to return. Must be a value between 1 and 1000 inclusively. If not set, defaults to 50. */
   pageSize?: number;
   /** The pagination token of the next results page. If not set, returns the first page. The token is returned in the response to a previous list request. */
   pageToken?: string;
+  /** Required. Resource name of the taxonomy to list the policy tags of. */
+  parent: string;
 }
 export const ListProjectsLocationsTaxonomiesPolicyTagsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3367,12 +3372,12 @@ export const GoogleCloudDatacatalogV1ListPolicyTagsResponse =
   }) as any as S.Schema<GoogleCloudDatacatalogV1ListPolicyTagsResponse>;
 
 export interface LookupEntriesRequest {
+  /** [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}` */
+  fullyQualifiedName?: string;
   /** The full name of the Google Cloud Platform resource the Data Catalog entry represents. For more information, see [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). Full names are case-sensitive. For example: * `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` * `//pubsub.googleapis.com/projects/{PROJECT_ID}/topics/{TOPIC_ID}` */
   linkedResource?: string;
   /** The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.topic.{PROJECT_ID}.{TOPIC_ID}` * `pubsub.topic.{PROJECT_ID}.`\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\` * `bigquery.table.{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}` * `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` * `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}` Identifiers (`*_ID`) should comply with the [Lexical structure in GoogleSQL] (https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical). */
   sqlResource?: string;
-  /** [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}` */
-  fullyQualifiedName?: string;
   /** Project where the lookup should be performed. Required to lookup entry that is not a part of `DPMS` or `DATAPLEX` `integrated_system` using its `fully_qualified_name`. Ignored in other cases. */
   project?: string;
   /** Location where the lookup should be performed. Required to lookup entry that is not a part of `DPMS` or `DATAPLEX` `integrated_system` using its `fully_qualified_name`. Ignored in other cases. */
@@ -3380,9 +3385,9 @@ export interface LookupEntriesRequest {
 }
 export const LookupEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    fullyQualifiedName: S.optional(S.String.pipe(T.Query())),
     linkedResource: S.optional(S.String.pipe(T.Query())),
     sqlResource: S.optional(S.String.pipe(T.Query())),
-    fullyQualifiedName: S.optional(S.String.pipe(T.Query())),
     project: S.optional(S.String.pipe(T.Query())),
     location: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -3473,18 +3478,18 @@ export const ModifyEntryOverviewProjectsLocationsEntryGroupsEntriesRequest =
   }) as any as S.Schema<ModifyEntryOverviewProjectsLocationsEntryGroupsEntriesRequest>;
 
 export interface PatchProjectsLocationsEntryGroupsRequest {
-  /** Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. */
-  name: string;
   /** Names of fields whose values to overwrite on an entry group. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. */
   updateMask?: string;
+  /** Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. */
+  name: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1EntryGroup;
 }
 export const PatchProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDatacatalogV1EntryGroup.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -3498,18 +3503,18 @@ export const PatchProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchProjectsLocationsEntryGroupsRequest>;
 
 export interface PatchProjectsLocationsEntryGroupsEntriesRequest {
-  /** Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. */
-  name: string;
   /** Names of fields whose values to overwrite on an entry. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. You can modify only the fields listed below. For entries with type `DATA_STREAM`: * `schema` For entries with type `FILESET`: * `schema` * `display_name` * `description` * `gcs_fileset_spec` * `gcs_fileset_spec.file_patterns` For entries with `user_specified_type`: * `schema` * `display_name` * `description` * `user_specified_type` * `user_specified_system` * `linked_resource` * `source_system_timestamps` */
   updateMask?: string;
+  /** Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. */
+  name: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1Entry;
 }
 export const PatchProjectsLocationsEntryGroupsEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDatacatalogV1Entry.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -3548,18 +3553,18 @@ export const PatchProjectsLocationsEntryGroupsEntriesTagsRequest =
   }) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
 export interface PatchProjectsLocationsEntryGroupsTagsRequest {
-  /** Identifier. The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name. */
-  name: string;
   /** Names of fields whose values to overwrite on a tag. Currently, a tag has the only modifiable field with the name `fields`. In general, if this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. */
   updateMask?: string;
+  /** Identifier. The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name. */
+  name: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1Tag;
 }
 export const PatchProjectsLocationsEntryGroupsTagsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDatacatalogV1Tag.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -3625,18 +3630,18 @@ export const PatchProjectsLocationsTagTemplatesFieldsRequest =
   }) as any as S.Schema<PatchProjectsLocationsTagTemplatesFieldsRequest>;
 
 export interface PatchProjectsLocationsTaxonomiesRequest {
-  /** Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. */
-  name: string;
   /** Specifies fields to update. If not set, defaults to all fields you can update. For more information, see [FieldMask] (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask). */
   updateMask?: string;
+  /** Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. */
+  name: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1Taxonomy;
 }
 export const PatchProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDatacatalogV1Taxonomy.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -3676,18 +3681,18 @@ export const PatchProjectsLocationsTaxonomiesPolicyTagsRequest =
 
 /** Request message for ReconcileTags. */
 export interface GoogleCloudDatacatalogV1ReconcileTagsRequest {
+  /** A list of tags to apply to an entry. A tag can specify a tag template, which must be the template specified in the `ReconcileTagsRequest`. The sole entry and each of its columns must be mentioned at most once. */
+  tags?: GoogleCloudDatacatalogV1TagList;
   /** Required. The name of the tag template, which is used for reconciliation. */
   tagTemplate?: string;
   forceDeleteMissing?: boolean;
-  /** A list of tags to apply to an entry. A tag can specify a tag template, which must be the template specified in the `ReconcileTagsRequest`. The sole entry and each of its columns must be mentioned at most once. */
-  tags?: GoogleCloudDatacatalogV1TagList;
 }
 export const GoogleCloudDatacatalogV1ReconcileTagsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      tags: S.optional(GoogleCloudDatacatalogV1TagList),
       tagTemplate: S.optional(S.String),
       forceDeleteMissing: S.optional(S.Boolean),
-      tags: S.optional(GoogleCloudDatacatalogV1TagList),
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1ReconcileTagsRequest",
@@ -3958,28 +3963,28 @@ export const RetrieveEffectiveConfigProjectsLocationsRequest =
 
 /** The criteria that select the subspace used for query matching. */
 export interface GoogleCloudDatacatalogV1SearchCatalogRequestScope {
-  /** The list of organization IDs to search within. To find your organization ID, follow the steps from [Creating and managing organizations] (/resource-manager/docs/creating-managing-organization). */
-  includeOrgIds?: StringList;
-  /** The list of project IDs to search within. For more information on the distinction between project names, IDs, and numbers, see [Projects](/docs/overview/#projects). */
-  includeProjectIds?: StringList;
+  /** Optional. This field is deprecated. The search mechanism for public and private tag templates is the same. */
+  includePublicTagTemplates?: boolean;
   /** If `true`, include Google Cloud public datasets in search results. By default, they are excluded. See [Google Cloud Public Datasets](/public-datasets) for more information. */
   includeGcpPublicDatasets?: boolean;
   /** Optional. The list of locations to search within. If empty, all locations are searched. Returns an error if any location in the list isn't one of the [Supported regions](https://cloud.google.com/data-catalog/docs/concepts/regions#supported_regions). If a location is unreachable, its name is returned in the `SearchCatalogResponse.unreachable` field. To get additional information on the error, repeat the search request and set the location name as the value of this parameter. */
   restrictedLocations?: StringList;
+  /** The list of organization IDs to search within. To find your organization ID, follow the steps from [Creating and managing organizations] (/resource-manager/docs/creating-managing-organization). */
+  includeOrgIds?: StringList;
+  /** The list of project IDs to search within. For more information on the distinction between project names, IDs, and numbers, see [Projects](/docs/overview/#projects). */
+  includeProjectIds?: StringList;
   /** Optional. If `true`, search only among starred entries. By default, all results are returned, starred or not. */
   starredOnly?: boolean;
-  /** Optional. This field is deprecated. The search mechanism for public and private tag templates is the same. */
-  includePublicTagTemplates?: boolean;
 }
 export const GoogleCloudDatacatalogV1SearchCatalogRequestScope =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      includeOrgIds: S.optional(StringList),
-      includeProjectIds: S.optional(StringList),
+      includePublicTagTemplates: S.optional(S.Boolean),
       includeGcpPublicDatasets: S.optional(S.Boolean),
       restrictedLocations: S.optional(StringList),
+      includeOrgIds: S.optional(StringList),
+      includeProjectIds: S.optional(StringList),
       starredOnly: S.optional(S.Boolean),
-      includePublicTagTemplates: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1SearchCatalogRequestScope",
@@ -3987,27 +3992,27 @@ export const GoogleCloudDatacatalogV1SearchCatalogRequestScope =
 
 /** Request message for SearchCatalog. */
 export interface GoogleCloudDatacatalogV1SearchCatalogRequest {
-  /** Required. The scope of this search request. The `scope` is invalid if `include_org_ids`, `include_project_ids` are empty AND `include_gcp_public_datasets` is set to `false`. In this case, the request returns an error. */
-  scope?: GoogleCloudDatacatalogV1SearchCatalogRequestScope;
+  /** Specifies the order of results. Currently supported case-sensitive values are: * `relevance` that can only be descending * `last_modified_timestamp [asc|desc]` with descending (`desc`) as default * `default` that can only be descending Search queries don't guarantee full recall. Results that match your query might not be returned, even in subsequent result pages. Additionally, returned (and not returned) results can vary if you repeat search queries. If you are experiencing recall issues and you don't have to fetch the results in any specific order, consider setting this parameter to `default`. If this parameter is omitted, it defaults to the descending `relevance`. */
+  orderBy?: string;
   /** Optional. The query string with a minimum of 3 characters and specific syntax. For more information, see [Data Catalog search syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference). An empty query string returns all data assets (in the specified scope) that you have access to. A query string can be a simple `xyz` or qualified by predicates: * `name:x` * `column:y` * `description:z` */
   query?: string;
   /** Upper bound on the number of results you can get in a single response. Can't be negative or 0, defaults to 10 in this case. The maximum number is 1000. If exceeded, throws an "invalid argument" exception. */
   pageSize?: number;
   /** Optional. Pagination token that, if specified, returns the next page of search results. If empty, returns the first page. This token is returned in the SearchCatalogResponse.next_page_token field of the response to a previous SearchCatalogRequest call. */
   pageToken?: string;
-  /** Specifies the order of results. Currently supported case-sensitive values are: * `relevance` that can only be descending * `last_modified_timestamp [asc|desc]` with descending (`desc`) as default * `default` that can only be descending Search queries don't guarantee full recall. Results that match your query might not be returned, even in subsequent result pages. Additionally, returned (and not returned) results can vary if you repeat search queries. If you are experiencing recall issues and you don't have to fetch the results in any specific order, consider setting this parameter to `default`. If this parameter is omitted, it defaults to the descending `relevance`. */
-  orderBy?: string;
+  /** Required. The scope of this search request. The `scope` is invalid if `include_org_ids`, `include_project_ids` are empty AND `include_gcp_public_datasets` is set to `false`. In this case, the request returns an error. */
+  scope?: GoogleCloudDatacatalogV1SearchCatalogRequestScope;
   /** Optional. If set, use searchAll permission granted on organizations from `include_org_ids` and projects from `include_project_ids` instead of the fine grained per resource permissions when filtering the search results. The only allowed `order_by` criteria for admin_search mode is `default`. Using this flags guarantees a full recall of the search results. */
   adminSearch?: boolean;
 }
 export const GoogleCloudDatacatalogV1SearchCatalogRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      scope: S.optional(GoogleCloudDatacatalogV1SearchCatalogRequestScope),
+      orderBy: S.optional(S.String),
       query: S.optional(S.String),
       pageSize: S.optional(S.Number),
       pageToken: S.optional(S.String),
-      orderBy: S.optional(S.String),
+      scope: S.optional(GoogleCloudDatacatalogV1SearchCatalogRequestScope),
       adminSearch: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -4060,24 +4065,24 @@ export const GoogleCloudDatacatalogV1SearchCatalogResultIntegratedSystemEnum =
 export interface GoogleCloudDatacatalogV1SearchCatalogResult {
   /** Type of the search result. You can use this field to determine which get method to call to fetch the full resource. */
   searchResultType?: GoogleCloudDatacatalogV1SearchCatalogResultSearchResultTypeEnum;
-  /** Sub-type of the search result. A dot-delimited full type of the resource. The same type you specify in the `type` search predicate. Examples: `entry.table`, `entry.dataStream`, `tagTemplate`. */
-  searchResultSubtype?: string;
-  /** The relative name of the resource in URL format. Examples: * `projects/{PROJECT_ID}/locations/{LOCATION_ID}/entryGroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}` * `projects/{PROJECT_ID}/tagTemplates/{TAG_TEMPLATE_ID}` */
-  relativeResourceName?: string;
   /** The full name of the Google Cloud resource the entry belongs to. For more information, see [Full Resource Name] (/apis/design/resource_names#full_resource_name). Example: `//bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID` */
   linkedResource?: string;
+  /** The relative name of the resource in URL format. Examples: * `projects/{PROJECT_ID}/locations/{LOCATION_ID}/entryGroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}` * `projects/{PROJECT_ID}/tagTemplates/{TAG_TEMPLATE_ID}` */
+  relativeResourceName?: string;
+  /** Fully qualified name (FQN) of the resource. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:PROJECT_ID.LOCATION_ID.INSTANCE_ID.DATABASE_ID.TABLE_ID` */
+  fullyQualifiedName?: string;
+  /** Entry description that can consist of several sentences or paragraphs that describe entry contents. */
+  description?: string;
   /** The last modification timestamp of the entry in the source system. */
   modifyTime?: string;
+  /** Sub-type of the search result. A dot-delimited full type of the resource. The same type you specify in the `type` search predicate. Examples: `entry.table`, `entry.dataStream`, `tagTemplate`. */
+  searchResultSubtype?: string;
   /** Output only. The source system that Data Catalog automatically integrates with, such as BigQuery, Cloud Pub/Sub, or Dataproc Metastore. */
   integratedSystem?: GoogleCloudDatacatalogV1SearchCatalogResultIntegratedSystemEnum;
   /** Custom source system that you can manually integrate Data Catalog with. */
   userSpecifiedSystem?: string;
-  /** Fully qualified name (FQN) of the resource. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:PROJECT_ID.LOCATION_ID.INSTANCE_ID.DATABASE_ID.TABLE_ID` */
-  fullyQualifiedName?: string;
   /** The display name of the result. */
   displayName?: string;
-  /** Entry description that can consist of several sentences or paragraphs that describe entry contents. */
-  description?: string;
 }
 export const GoogleCloudDatacatalogV1SearchCatalogResult =
   /*@__PURE__*/ S.suspend(() =>
@@ -4085,17 +4090,17 @@ export const GoogleCloudDatacatalogV1SearchCatalogResult =
       searchResultType: S.optional(
         GoogleCloudDatacatalogV1SearchCatalogResultSearchResultTypeEnum,
       ),
-      searchResultSubtype: S.optional(S.String),
-      relativeResourceName: S.optional(S.String),
       linkedResource: S.optional(S.String),
+      relativeResourceName: S.optional(S.String),
+      fullyQualifiedName: S.optional(S.String),
+      description: S.optional(S.String),
       modifyTime: S.optional(S.String),
+      searchResultSubtype: S.optional(S.String),
       integratedSystem: S.optional(
         GoogleCloudDatacatalogV1SearchCatalogResultIntegratedSystemEnum,
       ),
       userSpecifiedSystem: S.optional(S.String),
-      fullyQualifiedName: S.optional(S.String),
       displayName: S.optional(S.String),
-      description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1SearchCatalogResult",
@@ -4112,10 +4117,10 @@ export const GoogleCloudDatacatalogV1SearchCatalogResultList =
 export interface GoogleCloudDatacatalogV1SearchCatalogResponse {
   /** Search results. */
   results?: GoogleCloudDatacatalogV1SearchCatalogResultList;
-  /** The approximate total number of entries matched by the query. */
-  totalSize?: number;
   /** Pagination token that can be used in subsequent calls to retrieve the next page of results. */
   nextPageToken?: string;
+  /** The approximate total number of entries matched by the query. */
+  totalSize?: number;
   /** Unreachable locations. Search results don't include data from those locations. To get additional information on an error, repeat the search request and restrict it to specific locations by setting the `SearchCatalogRequest.scope.restricted_locations` parameter. */
   unreachable?: StringList;
 }
@@ -4123,8 +4128,8 @@ export const GoogleCloudDatacatalogV1SearchCatalogResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       results: S.optional(GoogleCloudDatacatalogV1SearchCatalogResultList),
-      totalSize: S.optional(S.Number),
       nextPageToken: S.optional(S.String),
+      totalSize: S.optional(S.Number),
       unreachable: S.optional(StringList),
     }),
   ).annotate({
@@ -4320,22 +4325,22 @@ export const SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest =
 
 /** Request message for StarEntry. */
 export type GoogleCloudDatacatalogV1StarEntryRequest =
-  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 export const GoogleCloudDatacatalogV1StarEntryRequest =
-  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 
 export interface StarProjectsLocationsEntryGroupsEntriesRequest {
   /** Required. The name of the entry to mark as starred. */
   name: string;
   /** Request body */
-  body?: GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
+  body?: GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 }
 export const StarProjectsLocationsEntryGroupsEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema.pipe(T.HttpBody()),
+        GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -4494,22 +4499,22 @@ export const TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest =
 
 /** Request message for UnstarEntry. */
 export type GoogleCloudDatacatalogV1UnstarEntryRequest =
-  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 export const GoogleCloudDatacatalogV1UnstarEntryRequest =
-  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 
 export interface UnstarProjectsLocationsEntryGroupsEntriesRequest {
   /** Required. The name of the entry to mark as **not** starred. */
   name: string;
   /** Request body */
-  body?: GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema;
+  body?: GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 }
 export const UnstarProjectsLocationsEntryGroupsEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema.pipe(T.HttpBody()),
+        GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({

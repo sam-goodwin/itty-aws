@@ -17,6 +17,24 @@
     ]
   },
   "shapes": {
+    "com.posthog.activity_logs#ActivityLogListRequestOrdering": {
+      "type": "enum",
+      "members": {
+        "CREATED_AT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-created_at"
+          }
+        },
+        "CREATED_AT_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_at"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.activity_logs#ActivityLogListRequestScope": {
       "type": "enum",
       "members": {
@@ -96,6 +114,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Notebook"
+          }
+        },
+        "CANVAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canvas"
           }
         },
         "ENDPOINT": {
@@ -182,6 +206,12 @@
             "smithy.api#enumValue": "ErrorTrackingIssue"
           }
         },
+        "DATAWAREHOUSEEXPRESSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataWarehouseExpression"
+          }
+        },
         "DATAWAREHOUSESAVEDQUERY": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -204,6 +234,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "OrganizationDomain"
+          }
+        },
+        "IDENTITYPROVIDERCONFIG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IdentityProviderConfig"
           }
         },
         "ORGANIZATIONMEMBERSHIP": {
@@ -338,10 +374,34 @@
             "smithy.api#enumValue": "Evaluation"
           }
         },
+        "EVALUATIONDIRECTORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EvaluationDirectory"
+          }
+        },
+        "LLMPROMPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LLMPrompt"
+          }
+        },
+        "LLMPROMPTLABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LLMPromptLabel"
+          }
+        },
         "LLMTRACE": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "LLMTrace"
+          }
+        },
+        "AIGATEWAYCREDIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AIGatewayCredit"
           }
         },
         "WEBANALYTICSFILTERPRESET": {
@@ -374,6 +434,12 @@
             "smithy.api#enumValue": "LogsExclusionRule"
           }
         },
+        "LOGSRETENTIONRULE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LogsRetentionRule"
+          }
+        },
         "DASHBOARDWIDGET": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -398,10 +464,58 @@
             "smithy.api#enumValue": "InstanceSetting"
           }
         },
+        "SIGNALREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SignalReport"
+          }
+        },
         "SIGNALSCOUTCONFIG": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SignalScoutConfig"
+          }
+        },
+        "SIGNALTEAMCONFIG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SignalTeamConfig"
+          }
+        },
+        "STREAMLITAPP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StreamlitApp"
+          }
+        },
+        "METRIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Metric"
+          }
+        },
+        "TABLECERTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TableCertification"
+          }
+        },
+        "DATAQUALITYCHECK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataQualityCheck"
+          }
+        },
+        "BILLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Billing"
+          }
+        },
+        "LOOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Loop"
           }
         }
       },
@@ -488,6 +602,12 @@
             "smithy.api#enumValue": "Notebook"
           }
         },
+        "CANVAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canvas"
+          }
+        },
         "ENDPOINT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -572,6 +692,12 @@
             "smithy.api#enumValue": "ErrorTrackingIssue"
           }
         },
+        "DATAWAREHOUSEEXPRESSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataWarehouseExpression"
+          }
+        },
         "DATAWAREHOUSESAVEDQUERY": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -594,6 +720,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "OrganizationDomain"
+          }
+        },
+        "IDENTITYPROVIDERCONFIG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IdentityProviderConfig"
           }
         },
         "ORGANIZATIONMEMBERSHIP": {
@@ -728,10 +860,34 @@
             "smithy.api#enumValue": "Evaluation"
           }
         },
+        "EVALUATIONDIRECTORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EvaluationDirectory"
+          }
+        },
+        "LLMPROMPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LLMPrompt"
+          }
+        },
+        "LLMPROMPTLABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LLMPromptLabel"
+          }
+        },
         "LLMTRACE": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "LLMTrace"
+          }
+        },
+        "AIGATEWAYCREDIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AIGatewayCredit"
           }
         },
         "WEBANALYTICSFILTERPRESET": {
@@ -764,6 +920,12 @@
             "smithy.api#enumValue": "LogsExclusionRule"
           }
         },
+        "LOGSRETENTIONRULE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LogsRetentionRule"
+          }
+        },
         "DASHBOARDWIDGET": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -788,15 +950,63 @@
             "smithy.api#enumValue": "InstanceSetting"
           }
         },
+        "SIGNALREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SignalReport"
+          }
+        },
         "SIGNALSCOUTCONFIG": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SignalScoutConfig"
           }
+        },
+        "SIGNALTEAMCONFIG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SignalTeamConfig"
+          }
+        },
+        "STREAMLITAPP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StreamlitApp"
+          }
+        },
+        "METRIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Metric"
+          }
+        },
+        "TABLECERTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TableCertification"
+          }
+        },
+        "DATAQUALITYCHECK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataQualityCheck"
+          }
+        },
+        "BILLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Billing"
+          }
+        },
+        "LOOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Loop"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `Cohort` - Cohort\n* `FeatureFlag` - FeatureFlag\n* `Person` - Person\n* `Group` - Group\n* `Insight` - Insight\n* `Plugin` - Plugin\n* `PluginConfig` - PluginConfig\n* `HogFunction` - HogFunction\n* `HogFlow` - HogFlow\n* `DataManagement` - DataManagement\n* `EventDefinition` - EventDefinition\n* `PropertyDefinition` - PropertyDefinition\n* `Notebook` - Notebook\n* `Endpoint` - Endpoint\n* `EndpointVersion` - EndpointVersion\n* `Dashboard` - Dashboard\n* `Replay` - Replay\n* `Experiment` - Experiment\n* `ExperimentHoldout` - ExperimentHoldout\n* `ExperimentSavedMetric` - ExperimentSavedMetric\n* `Survey` - Survey\n* `EarlyAccessFeature` - EarlyAccessFeature\n* `SessionRecordingPlaylist` - SessionRecordingPlaylist\n* `Comment` - Comment\n* `Team` - Team\n* `Project` - Project\n* `ErrorTrackingIssue` - ErrorTrackingIssue\n* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery\n* `LegalDocument` - LegalDocument\n* `Organization` - Organization\n* `OrganizationDomain` - OrganizationDomain\n* `OrganizationMembership` - OrganizationMembership\n* `Role` - Role\n* `UserGroup` - UserGroup\n* `BatchExport` - BatchExport\n* `BatchImport` - BatchImport\n* `ExportedAsset` - ExportedAsset\n* `Integration` - Integration\n* `Annotation` - Annotation\n* `Tag` - Tag\n* `TaggedItem` - TaggedItem\n* `Subscription` - Subscription\n* `PersonalAPIKey` - PersonalAPIKey\n* `ProjectSecretAPIKey` - ProjectSecretAPIKey\n* `OAuthApplication` - OAuthApplication\n* `User` - User\n* `Action` - Action\n* `AlertConfiguration` - AlertConfiguration\n* `Threshold` - Threshold\n* `AlertSubscription` - AlertSubscription\n* `ExternalDataSource` - ExternalDataSource\n* `ExternalDataSchema` - ExternalDataSchema\n* `Evaluation` - Evaluation\n* `LLMTrace` - LLMTrace\n* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset\n* `CustomerProfileConfig` - CustomerProfileConfig\n* `Log` - Log\n* `LogsAlertConfiguration` - LogsAlertConfiguration\n* `LogsExclusionRule` - LogsExclusionRule\n* `DashboardWidget` - DashboardWidget\n* `ProductTour` - ProductTour\n* `Ticket` - Ticket\n* `InstanceSetting` - InstanceSetting\n* `SignalScoutConfig` - SignalScoutConfig"
+        "smithy.api#documentation": "* `Cohort` - Cohort\n* `FeatureFlag` - FeatureFlag\n* `Person` - Person\n* `Group` - Group\n* `Insight` - Insight\n* `Plugin` - Plugin\n* `PluginConfig` - PluginConfig\n* `HogFunction` - HogFunction\n* `HogFlow` - HogFlow\n* `DataManagement` - DataManagement\n* `EventDefinition` - EventDefinition\n* `PropertyDefinition` - PropertyDefinition\n* `Notebook` - Notebook\n* `Canvas` - Canvas\n* `Endpoint` - Endpoint\n* `EndpointVersion` - EndpointVersion\n* `Dashboard` - Dashboard\n* `Replay` - Replay\n* `Experiment` - Experiment\n* `ExperimentHoldout` - ExperimentHoldout\n* `ExperimentSavedMetric` - ExperimentSavedMetric\n* `Survey` - Survey\n* `EarlyAccessFeature` - EarlyAccessFeature\n* `SessionRecordingPlaylist` - SessionRecordingPlaylist\n* `Comment` - Comment\n* `Team` - Team\n* `Project` - Project\n* `ErrorTrackingIssue` - ErrorTrackingIssue\n* `DataWarehouseExpression` - DataWarehouseExpression\n* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery\n* `LegalDocument` - LegalDocument\n* `Organization` - Organization\n* `OrganizationDomain` - OrganizationDomain\n* `IdentityProviderConfig` - IdentityProviderConfig\n* `OrganizationMembership` - OrganizationMembership\n* `Role` - Role\n* `UserGroup` - UserGroup\n* `BatchExport` - BatchExport\n* `BatchImport` - BatchImport\n* `ExportedAsset` - ExportedAsset\n* `Integration` - Integration\n* `Annotation` - Annotation\n* `Tag` - Tag\n* `TaggedItem` - TaggedItem\n* `Subscription` - Subscription\n* `PersonalAPIKey` - PersonalAPIKey\n* `ProjectSecretAPIKey` - ProjectSecretAPIKey\n* `OAuthApplication` - OAuthApplication\n* `User` - User\n* `Action` - Action\n* `AlertConfiguration` - AlertConfiguration\n* `Threshold` - Threshold\n* `AlertSubscription` - AlertSubscription\n* `ExternalDataSource` - ExternalDataSource\n* `ExternalDataSchema` - ExternalDataSchema\n* `Evaluation` - Evaluation\n* `EvaluationDirectory` - EvaluationDirectory\n* `LLMPrompt` - LLMPrompt\n* `LLMPromptLabel` - LLMPromptLabel\n* `LLMTrace` - LLMTrace\n* `AIGatewayCredit` - AIGatewayCredit\n* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset\n* `CustomerProfileConfig` - CustomerProfileConfig\n* `Log` - Log\n* `LogsAlertConfiguration` - LogsAlertConfiguration\n* `LogsExclusionRule` - LogsExclusionRule\n* `LogsRetentionRule` - LogsRetentionRule\n* `DashboardWidget` - DashboardWidget\n* `ProductTour` - ProductTour\n* `Ticket` - Ticket\n* `InstanceSetting` - InstanceSetting\n* `SignalReport` - SignalReport\n* `SignalScoutConfig` - SignalScoutConfig\n* `SignalTeamConfig` - SignalTeamConfig\n* `StreamlitApp` - StreamlitApp\n* `Metric` - Metric\n* `TableCertification` - TableCertification\n* `DataQualityCheck` - DataQualityCheck\n* `Billing` - Billing\n* `Loop` - Loop"
       }
     },
     "com.posthog.activity_logs#ActivityLogListRequestScopesList": {
@@ -824,6 +1034,13 @@
             "smithy.api#documentation": "Filter by the ID of the affected resource."
           }
         },
+        "ordering": {
+          "target": "com.posthog.activity_logs#ActivityLogListRequestOrdering",
+          "traits": {
+            "smithy.api#httpQuery": "ordering",
+            "smithy.api#documentation": "Sort by when the entry was created. Defaults to newest first. Use created_at for oldest first when polling for new entries, so a saved cursor picks up where the last request stopped.\n\n* `-created_at` - -created_at\n* `created_at` - created_at"
+          }
+        },
         "page": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -835,14 +1052,14 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#httpQuery": "page_size",
-            "smithy.api#documentation": "Number of results per page (default: 100, max: 1000). Only used with page-based pagination."
+            "smithy.api#documentation": "Number of results per page (default: 100, max: 1000)."
           }
         },
         "scope": {
           "target": "com.posthog.activity_logs#ActivityLogListRequestScope",
           "traits": {
             "smithy.api#httpQuery": "scope",
-            "smithy.api#documentation": "Filter by a single activity scope, e.g. \"FeatureFlag\", \"Insight\", \"Dashboard\", \"Experiment\".\n\n* `Cohort` - Cohort\n* `FeatureFlag` - FeatureFlag\n* `Person` - Person\n* `Group` - Group\n* `Insight` - Insight\n* `Plugin` - Plugin\n* `PluginConfig` - PluginConfig\n* `HogFunction` - HogFunction\n* `HogFlow` - HogFlow\n* `DataManagement` - DataManagement\n* `EventDefinition` - EventDefinition\n* `PropertyDefinition` - PropertyDefinition\n* `Notebook` - Notebook\n* `Endpoint` - Endpoint\n* `EndpointVersion` - EndpointVersion\n* `Dashboard` - Dashboard\n* `Replay` - Replay\n* `Experiment` - Experiment\n* `ExperimentHoldout` - ExperimentHoldout\n* `ExperimentSavedMetric` - ExperimentSavedMetric\n* `Survey` - Survey\n* `EarlyAccessFeature` - EarlyAccessFeature\n* `SessionRecordingPlaylist` - SessionRecordingPlaylist\n* `Comment` - Comment\n* `Team` - Team\n* `Project` - Project\n* `ErrorTrackingIssue` - ErrorTrackingIssue\n* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery\n* `LegalDocument` - LegalDocument\n* `Organization` - Organization\n* `OrganizationDomain` - OrganizationDomain\n* `OrganizationMembership` - OrganizationMembership\n* `Role` - Role\n* `UserGroup` - UserGroup\n* `BatchExport` - BatchExport\n* `BatchImport` - BatchImport\n* `ExportedAsset` - ExportedAsset\n* `Integration` - Integration\n* `Annotation` - Annotation\n* `Tag` - Tag\n* `TaggedItem` - TaggedItem\n* `Subscription` - Subscription\n* `PersonalAPIKey` - PersonalAPIKey\n* `ProjectSecretAPIKey` - ProjectSecretAPIKey\n* `OAuthApplication` - OAuthApplication\n* `User` - User\n* `Action` - Action\n* `AlertConfiguration` - AlertConfiguration\n* `Threshold` - Threshold\n* `AlertSubscription` - AlertSubscription\n* `ExternalDataSource` - ExternalDataSource\n* `ExternalDataSchema` - ExternalDataSchema\n* `Evaluation` - Evaluation\n* `LLMTrace` - LLMTrace\n* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset\n* `CustomerProfileConfig` - CustomerProfileConfig\n* `Log` - Log\n* `LogsAlertConfiguration` - LogsAlertConfiguration\n* `LogsExclusionRule` - LogsExclusionRule\n* `DashboardWidget` - DashboardWidget\n* `ProductTour` - ProductTour\n* `Ticket` - Ticket\n* `InstanceSetting` - InstanceSetting\n* `SignalScoutConfig` - SignalScoutConfig"
+            "smithy.api#documentation": "Filter by a single activity scope, e.g. \"FeatureFlag\", \"Insight\", \"Dashboard\", \"Experiment\".\n\n* `Cohort` - Cohort\n* `FeatureFlag` - FeatureFlag\n* `Person` - Person\n* `Group` - Group\n* `Insight` - Insight\n* `Plugin` - Plugin\n* `PluginConfig` - PluginConfig\n* `HogFunction` - HogFunction\n* `HogFlow` - HogFlow\n* `DataManagement` - DataManagement\n* `EventDefinition` - EventDefinition\n* `PropertyDefinition` - PropertyDefinition\n* `Notebook` - Notebook\n* `Canvas` - Canvas\n* `Endpoint` - Endpoint\n* `EndpointVersion` - EndpointVersion\n* `Dashboard` - Dashboard\n* `Replay` - Replay\n* `Experiment` - Experiment\n* `ExperimentHoldout` - ExperimentHoldout\n* `ExperimentSavedMetric` - ExperimentSavedMetric\n* `Survey` - Survey\n* `EarlyAccessFeature` - EarlyAccessFeature\n* `SessionRecordingPlaylist` - SessionRecordingPlaylist\n* `Comment` - Comment\n* `Team` - Team\n* `Project` - Project\n* `ErrorTrackingIssue` - ErrorTrackingIssue\n* `DataWarehouseExpression` - DataWarehouseExpression\n* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery\n* `LegalDocument` - LegalDocument\n* `Organization` - Organization\n* `OrganizationDomain` - OrganizationDomain\n* `IdentityProviderConfig` - IdentityProviderConfig\n* `OrganizationMembership` - OrganizationMembership\n* `Role` - Role\n* `UserGroup` - UserGroup\n* `BatchExport` - BatchExport\n* `BatchImport` - BatchImport\n* `ExportedAsset` - ExportedAsset\n* `Integration` - Integration\n* `Annotation` - Annotation\n* `Tag` - Tag\n* `TaggedItem` - TaggedItem\n* `Subscription` - Subscription\n* `PersonalAPIKey` - PersonalAPIKey\n* `ProjectSecretAPIKey` - ProjectSecretAPIKey\n* `OAuthApplication` - OAuthApplication\n* `User` - User\n* `Action` - Action\n* `AlertConfiguration` - AlertConfiguration\n* `Threshold` - Threshold\n* `AlertSubscription` - AlertSubscription\n* `ExternalDataSource` - ExternalDataSource\n* `ExternalDataSchema` - ExternalDataSchema\n* `Evaluation` - Evaluation\n* `EvaluationDirectory` - EvaluationDirectory\n* `LLMPrompt` - LLMPrompt\n* `LLMPromptLabel` - LLMPromptLabel\n* `LLMTrace` - LLMTrace\n* `AIGatewayCredit` - AIGatewayCredit\n* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset\n* `CustomerProfileConfig` - CustomerProfileConfig\n* `Log` - Log\n* `LogsAlertConfiguration` - LogsAlertConfiguration\n* `LogsExclusionRule` - LogsExclusionRule\n* `LogsRetentionRule` - LogsRetentionRule\n* `DashboardWidget` - DashboardWidget\n* `ProductTour` - ProductTour\n* `Ticket` - Ticket\n* `InstanceSetting` - InstanceSetting\n* `SignalReport` - SignalReport\n* `SignalScoutConfig` - SignalScoutConfig\n* `SignalTeamConfig` - SignalTeamConfig\n* `StreamlitApp` - StreamlitApp\n* `Metric` - Metric\n* `TableCertification` - TableCertification\n* `DataQualityCheck` - DataQualityCheck\n* `Billing` - Billing\n* `Loop` - Loop"
           }
         },
         "scopes": {
@@ -867,9 +1084,6 @@
     "com.posthog.activity_logs#PaginatedActivityLogList": {
       "type": "structure",
       "members": {
-        "count": {
-          "target": "smithy.api#Integer"
-        },
         "next": {
           "target": "smithy.api#String",
           "traits": {
@@ -884,6 +1098,9 @@
         },
         "results": {
           "target": "com.posthog.activity_logs#PaginatedActivityLogListResultsList"
+        },
+        "count": {
+          "target": "smithy.api#Integer"
         }
       },
       "traits": {}
@@ -1063,6 +1280,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1071,7 +1294,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.activity_logs#BlankEnum": {

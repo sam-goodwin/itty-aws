@@ -410,41 +410,41 @@ export const AiTimeseriesGroupsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiTimeseriesGroupsSummaryRequest>;
 
 export type AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiTimeseriesGroupsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -852,41 +852,41 @@ export const AiTimeseriesGroupsTimeseriesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiTimeseriesGroupsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -1324,41 +1324,41 @@ export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiTimeseriesGroupsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -1661,41 +1661,41 @@ export const ArcEmailRoutingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArcEmailRoutingSummaryRequest>;
 
 export type EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingSummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -2048,41 +2048,41 @@ export const EmailRoutingTimeseriesGroupsArcResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -2396,41 +2396,41 @@ export const ArcEmailSecuritySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArcEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummaryArcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -2757,41 +2757,41 @@ export const EmailSecurityTimeseriesGroupsArcResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsArcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -3774,31 +3774,31 @@ export const AsesNetflowTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AsesNetflowTopRequest>;
 
 export type NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const NetflowsTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -4040,41 +4040,41 @@ export const AsesQualitySpeedTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AsesQualitySpeedTopRequest>;
 
 export type QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const QualitySpeedTopAsesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -4509,41 +4509,41 @@ export const AttacksAttackLayer3TopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttacksAttackLayer3TopRequest>;
 
 export type AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -4851,41 +4851,41 @@ export const AttacksAttackLayer7TopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttacksAttackLayer7TopRequest>;
 
 export type AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TopAttacksResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -5192,41 +5192,41 @@ export const BitrateAttackLayer3SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BitrateAttackLayer3SummaryRequest>;
 
 export type AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3SummaryBitrateResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -5594,41 +5594,41 @@ export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesGroupsBitrateResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -6077,41 +6077,41 @@ export const BotClassHttpSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BotClassHttpSummaryRequest>;
 
 export type HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -6536,41 +6536,41 @@ export const HttpTimeseriesGroupsBotClassResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -6845,41 +6845,41 @@ export const BotClassLeakedCredentialSummaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BotClassLeakedCredentialSummaryRequest>;
 
 export type LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const LeakedCredentialsSummaryBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -7166,41 +7166,41 @@ export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -7284,14 +7284,14 @@ export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeList 
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsBotClassResponseMetaDateRangeList>;
 
 export type LeakedCredentialsTimeseriesGroupsBotClassResponseMetaNormalization =
-    | "PERCENTAGE"
-    | "MIN0_MAX"
-    | "MIN_MAX"
-    | "RAW_VALUES"
-    | "PERCENTAGE_CHANGE"
-    | "ROLLING_AVERAGE"
-    | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+  | "PERCENTAGE"
+  | "MIN0_MAX"
+  | "MIN_MAX"
+  | "RAW_VALUES"
+  | "PERCENTAGE_CHANGE"
+  | "ROLLING_AVERAGE"
+  | "OVERLAPPED_PERCENTAGE"
+  | "RATIO";
 export const LeakedCredentialsTimeseriesGroupsBotClassResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -7606,41 +7606,41 @@ export const BotsVerifiedBotTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BotsVerifiedBotTopRequest>;
 
 export type VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const VerifiedBotsTopBotsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -8094,41 +8094,41 @@ export const HttpTimeseriesGroupsBrowserFamilyResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -8519,41 +8519,41 @@ export const BrowserFamilyHttpTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrowserFamilyHttpTopRequest>;
 
 export type HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTopBrowserFamilyResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -8996,41 +8996,41 @@ export const HttpTimeseriesGroupsBrowserResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsBrowserResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -9838,41 +9838,41 @@ export const CacheHitDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheHitDnsSummaryRequest>;
 
 export type DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -10329,41 +10329,41 @@ export const DnsTimeseriesGroupsCacheHitResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsCacheHitResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -10724,41 +10724,41 @@ export const CategoriesVerifiedBotTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CategoriesVerifiedBotTopRequest>;
 
 export type VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const VerifiedBotsTopCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -11184,41 +11184,41 @@ export const CompromisedLeakedCredentialSummaryRequest =
   }) as any as S.Schema<CompromisedLeakedCredentialSummaryRequest>;
 
 export type LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const LeakedCredentialsSummaryCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -11510,46 +11510,50 @@ export const CompromisedLeakedCredentialTimeseriesGroupRequest =
   }) as any as S.Schema<CompromisedLeakedCredentialTimeseriesGroupRequest>;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaAggInterval =
-  "FIFTEEN_MINUTES" | "ONE_HOUR" | "ONE_DAY" | "ONE_WEEK" | "ONE_MONTH";
+  | "FIFTEEN_MINUTES"
+  | "ONE_HOUR"
+  | "ONE_DAY"
+  | "ONE_WEEK"
+  | "ONE_MONTH";
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -11633,14 +11637,14 @@ export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeLi
   ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaDateRangeList>;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaNormalization =
-    | "PERCENTAGE"
-    | "MIN0_MAX"
-    | "MIN_MAX"
-    | "RAW_VALUES"
-    | "PERCENTAGE_CHANGE"
-    | "ROLLING_AVERAGE"
-    | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+  | "PERCENTAGE"
+  | "MIN0_MAX"
+  | "MIN_MAX"
+  | "RAW_VALUES"
+  | "PERCENTAGE_CHANGE"
+  | "ROLLING_AVERAGE"
+  | "OVERLAPPED_PERCENTAGE"
+  | "RATIO";
 export const LeakedCredentialsTimeseriesGroupsCompromisedResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -11971,41 +11975,41 @@ export const DeviceTypeHttpSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeviceTypeHttpSummaryRequest>;
 
 export type HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpSummaryDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -12447,41 +12451,41 @@ export const HttpTimeseriesGroupsDeviceTypeResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsDeviceTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -12764,41 +12768,41 @@ export const DirectiveRobotsTxtTopUserAgentRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DirectiveRobotsTxtTopUserAgentRequest>;
 
 export type RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const RobotsTxtTopUserAgentsDirectiveResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -13105,41 +13109,41 @@ export const DkimEmailRoutingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DkimEmailRoutingSummaryRequest>;
 
 export type EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingSummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -13481,41 +13485,41 @@ export const EmailRoutingTimeseriesGroupsDkimResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -13830,41 +13834,41 @@ export const DkimEmailSecuritySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DkimEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummaryDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -14192,41 +14196,41 @@ export const EmailSecurityTimeseriesGroupsDkimResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsDkimResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -14555,41 +14559,41 @@ export const DmarcEmailRoutingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DmarcEmailRoutingSummaryRequest>;
 
 export type EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingSummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -14932,41 +14936,41 @@ export const EmailRoutingTimeseriesGroupsDmarcResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -15283,41 +15287,41 @@ export const DmarcEmailSecuritySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DmarcEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummaryDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -15646,41 +15650,41 @@ export const EmailSecurityTimeseriesGroupsDmarcResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsDmarcResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -16097,41 +16101,41 @@ export const DnssecAs112SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnssecAs112SummaryRequest>;
 
 export type As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112SummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -16561,41 +16565,41 @@ export const As112TimeseriesGroupsDnssecResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -17313,41 +17317,41 @@ export const DnssecAwareDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnssecAwareDnsSummaryRequest>;
 
 export type DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -17807,41 +17811,41 @@ export const DnsTimeseriesGroupsDnssecAwareResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsDnssecAwareResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -18262,41 +18266,41 @@ export const DnssecDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnssecDnsSummaryRequest>;
 
 export type DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -18750,41 +18754,41 @@ export const DnsTimeseriesGroupsDnssecResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsDnssecResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -19241,41 +19245,41 @@ export const DnssecE2EDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnssecE2EDnsSummaryRequest>;
 
 export type DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -19723,41 +19727,41 @@ export const DnsTimeseriesGroupsDnssecE2eResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsDnssecE2eResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -19998,41 +20002,41 @@ export const DomainCategoriesRobotsTxtTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainCategoriesRobotsTxtTopRequest>;
 
 export type RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const RobotsTxtTopDomainCategoriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -20381,41 +20385,41 @@ export const DurationAttackLayer3SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DurationAttackLayer3SummaryRequest>;
 
 export type AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3SummaryDurationResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -20791,41 +20795,41 @@ export const AttacksLayer3TimeseriesGroupsDurationResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesGroupsDurationResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -21280,41 +21284,41 @@ export const EdnsAs112SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EdnsAs112SummaryRequest>;
 
 export type As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112SummaryEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -21726,41 +21730,41 @@ export const As112TimeseriesGroupsEdnsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TimeseriesGroupsEdnsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -22344,41 +22348,41 @@ export const EncryptedEmailRoutingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptedEmailRoutingSummaryRequest>;
 
 export type EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingSummaryEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -22744,41 +22748,41 @@ export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingTimeseriesGroupsEncryptedResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -23469,12 +23473,15 @@ export const CtAuthoritiesGetResponseCertificateAuthorityMozillaStatus =
   /*@__PURE__*/ S.String;
 
 export type CtAuthoritiesGetResponseCertificateAuthorityRelatedItemCertificateRecordType =
-  "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE";
+  | "ROOT_CERTIFICATE"
+  | "INTERMEDIATE_CERTIFICATE";
 export const CtAuthoritiesGetResponseCertificateAuthorityRelatedItemCertificateRecordType =
   /*@__PURE__*/ S.String;
 
 export type CtAuthoritiesGetResponseCertificateAuthorityRelatedItemRevocationStatus =
-  "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED";
+  | "NOT_REVOKED"
+  | "REVOKED"
+  | "PARENT_CERT_REVOKED";
 export const CtAuthoritiesGetResponseCertificateAuthorityRelatedItemRevocationStatus =
   /*@__PURE__*/ S.String;
 
@@ -23955,41 +23962,41 @@ export const GetEmailSecurityTopTldRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmailSecurityTopTldRequest>;
 
 export type EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTopTldsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -24355,41 +24362,41 @@ export const GetEmailSecurityTopTldMaliciousRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetEmailSecurityTopTldMaliciousRequest>;
 
 export type EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTopTldsMaliciousGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -24714,41 +24721,41 @@ export const GetEmailSecurityTopTldSpamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmailSecurityTopTldSpamRequest>;
 
 export type EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTopTldsSpamGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -25073,41 +25080,41 @@ export const GetEmailSecurityTopTldSpoofRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmailSecurityTopTldSpoofRequest>;
 
 export type EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTopTldsSpoofGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -26276,41 +26283,41 @@ export const GetHttpAsBotClassRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpAsBotClassRequest>;
 
 export type HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpAsesBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -26708,41 +26715,41 @@ export const GetHttpAsBrowserFamilyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpAsBrowserFamilyRequest>;
 
 export type HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpAsesBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -27136,41 +27143,41 @@ export const GetHttpAsDeviceTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpAsDeviceTypeRequest>;
 
 export type HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpAsesDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -27559,41 +27566,41 @@ export const GetHttpAsHttpMethodRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpAsHttpMethodRequest>;
 
 export type HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpAsesHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -27990,41 +27997,41 @@ export const GetHttpAsHttpProtocolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpAsHttpProtocolRequest>;
 
 export type HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpAsesHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -28412,41 +28419,41 @@ export const GetHttpAsIpVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpAsIpVersionRequest>;
 
 export type HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpAsesIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -29221,41 +29228,41 @@ export const GetHttpAsTlsVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpAsTlsVersionRequest>;
 
 export type HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpAsesTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -29625,41 +29632,41 @@ export const GetHttpLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationRequest>;
 
 export type HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -30055,41 +30062,41 @@ export const GetHttpLocationBotClassRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationBotClassRequest>;
 
 export type HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsBotClassGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -30512,41 +30519,41 @@ export const GetHttpLocationBrowserFamilyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationBrowserFamilyRequest>;
 
 export type HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsBrowserFamilyGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -30958,41 +30965,41 @@ export const GetHttpLocationDeviceTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationDeviceTypeRequest>;
 
 export type HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsDeviceTypeGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -31402,41 +31409,41 @@ export const GetHttpLocationHttpMethodRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationHttpMethodRequest>;
 
 export type HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsHttpMethodGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -31853,41 +31860,41 @@ export const GetHttpLocationHttpProtocolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationHttpProtocolRequest>;
 
 export type HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsHttpProtocolGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -32297,41 +32304,41 @@ export const GetHttpLocationIpVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationIpVersionRequest>;
 
 export type HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsIpVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -32716,41 +32723,41 @@ export const GetHttpLocationOsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationOsRequest>;
 
 export type HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsOsGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -33155,41 +33162,41 @@ export const GetHttpLocationTlsVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHttpLocationTlsVersionRequest>;
 
 export type HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpLocationsTlsVersionGetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -33954,41 +33961,41 @@ export const QualitySpeedHistogramResponseHistogram0 = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<QualitySpeedHistogramResponseHistogram0>;
 
 export type QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const QualitySpeedHistogramResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -34312,41 +34319,41 @@ export const HttpMethodAttackLayer7SummaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HttpMethodAttackLayer7SummaryRequest>;
 
 export type AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7SummaryHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -34740,41 +34747,41 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesGroupsHttpMethodResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -35181,41 +35188,41 @@ export const HttpProtocolHttpSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpProtocolHttpSummaryRequest>;
 
 export type HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpSummaryHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -35661,41 +35668,41 @@ export const HttpTimeseriesGroupsHttpProtocolResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsHttpProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -36092,41 +36099,41 @@ export const HttpVersionAttackLayer7SummaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HttpVersionAttackLayer7SummaryRequest>;
 
 export type AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7SummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -36570,41 +36577,41 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -37040,41 +37047,41 @@ export const HttpVersionHttpSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpVersionHttpSummaryRequest>;
 
 export type HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpSummaryHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -37517,41 +37524,41 @@ export const HttpTimeseriesGroupsHttpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsHttpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -37893,41 +37900,41 @@ export const IndustryAttackLayer3SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndustryAttackLayer3SummaryRequest>;
 
 export type AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -38287,41 +38294,41 @@ export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -38617,41 +38624,41 @@ export const IndustryAttackLayer3TopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndustryAttackLayer3TopRequest>;
 
 export type AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -39033,41 +39040,41 @@ export const IndustryAttackLayer7SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndustryAttackLayer7SummaryRequest>;
 
 export type AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7SummaryIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -39517,41 +39524,41 @@ export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesGroupsIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -39941,41 +39948,41 @@ export const IndustryAttackLayer7TopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndustryAttackLayer7TopRequest>;
 
 export type AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TopIndustryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -40469,41 +40476,41 @@ export const IpVersionAs112SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpVersionAs112SummaryRequest>;
 
 export type As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -40941,41 +40948,41 @@ export const As112TimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -41242,41 +41249,41 @@ export const IpVersionAs112TopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpVersionAs112TopRequest>;
 
 export type As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TopIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -41547,41 +41554,41 @@ export const IpVersionAttackLayer3SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpVersionAttackLayer3SummaryRequest>;
 
 export type AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -41920,41 +41927,41 @@ export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -42360,41 +42367,41 @@ export const IpVersionAttackLayer7SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpVersionAttackLayer7SummaryRequest>;
 
 export type AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7SummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -42834,41 +42841,41 @@ export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -43323,41 +43330,41 @@ export const IpVersionDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpVersionDnsSummaryRequest>;
 
 export type DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -43805,41 +43812,41 @@ export const DnsTimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -44163,41 +44170,41 @@ export const IpVersionEmailRoutingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpVersionEmailRoutingSummaryRequest>;
 
 export type EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -44552,41 +44559,41 @@ export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -44994,41 +45001,41 @@ export const IpVersionHttpSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpVersionHttpSummaryRequest>;
 
 export type HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpSummaryIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -45450,41 +45457,41 @@ export const HttpTimeseriesGroupsIpVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsIpVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -46372,12 +46379,15 @@ export const ListCtAuthoritiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCtAuthoritiesRequest>;
 
 export type CtAuthoritiesListResponseCertificateAuthoritiesItemCertificateRecordType =
-  "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE";
+  | "ROOT_CERTIFICATE"
+  | "INTERMEDIATE_CERTIFICATE";
 export const CtAuthoritiesListResponseCertificateAuthoritiesItemCertificateRecordType =
   /*@__PURE__*/ S.String;
 
 export type CtAuthoritiesListResponseCertificateAuthoritiesItemRevocationStatus =
-  "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED";
+  | "NOT_REVOKED"
+  | "REVOKED"
+  | "PARENT_CERT_REVOKED";
 export const CtAuthoritiesListResponseCertificateAuthoritiesItemRevocationStatus =
   /*@__PURE__*/ S.String;
 
@@ -47083,41 +47093,41 @@ export const LocationsAs112TopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsAs112TopRequest>;
 
 export type As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -47607,31 +47617,31 @@ export const LocationsDnsTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsDnsTopRequest>;
 
 export type DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -47887,41 +47897,41 @@ export const LocationsNetflowTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsNetflowTopRequest>;
 
 export type NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const NetflowsTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -48163,41 +48173,41 @@ export const LocationsQualitySpeedTopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsQualitySpeedTopRequest>;
 
 export type QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const QualitySpeedTopLocationsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -48537,41 +48547,41 @@ export const MaliciousEmailSecuritySummaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MaliciousEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummaryMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -48945,41 +48955,41 @@ export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsMaliciousResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -49404,41 +49414,41 @@ export const ManagedRulesAttackLayer7SummaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedRulesAttackLayer7SummaryRequest>;
 
 export type AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7SummaryManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -49904,41 +49914,41 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -50022,14 +50032,14 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeList 
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaNormalization =
-    | "PERCENTAGE"
-    | "MIN0_MAX"
-    | "MIN_MAX"
-    | "RAW_VALUES"
-    | "PERCENTAGE_CHANGE"
-    | "ROLLING_AVERAGE"
-    | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+  | "PERCENTAGE"
+  | "MIN0_MAX"
+  | "MIN_MAX"
+  | "RAW_VALUES"
+  | "PERCENTAGE_CHANGE"
+  | "ROLLING_AVERAGE"
+  | "OVERLAPPED_PERCENTAGE"
+  | "RATIO";
 export const AttacksLayer7TimeseriesGroupsManagedRulesResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -50383,41 +50393,41 @@ export const MatchingAnswerDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MatchingAnswerDnsSummaryRequest>;
 
 export type DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -50885,41 +50895,41 @@ export const DnsTimeseriesGroupsMatchingAnswerResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsMatchingAnswerResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -51332,41 +51342,41 @@ export const MitigationProductAttackLayer7SummaryRequest =
   }) as any as S.Schema<MitigationProductAttackLayer7SummaryRequest>;
 
 export type AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7SummaryMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -51680,7 +51690,8 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductRequestNameList =
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductRequestNameList>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductRequestNormalization =
-  "PERCENTAGE" | "MIN0_MAX";
+  | "PERCENTAGE"
+  | "MIN0_MAX";
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestNormalization =
   /*@__PURE__*/ S.String;
 
@@ -51803,46 +51814,50 @@ export const MitigationProductAttackLayer7TimeseriesGroupRequest =
   }) as any as S.Schema<MitigationProductAttackLayer7TimeseriesGroupRequest>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaAggInterval =
-  "FIFTEEN_MINUTES" | "ONE_HOUR" | "ONE_DAY" | "ONE_WEEK" | "ONE_MONTH";
+  | "FIFTEEN_MINUTES"
+  | "ONE_HOUR"
+  | "ONE_DAY"
+  | "ONE_WEEK"
+  | "ONE_MONTH";
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -51926,14 +51941,14 @@ export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRange
   ) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaDateRangeList>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaNormalization =
-    | "PERCENTAGE"
-    | "MIN0_MAX"
-    | "MIN_MAX"
-    | "RAW_VALUES"
-    | "PERCENTAGE_CHANGE"
-    | "ROLLING_AVERAGE"
-    | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+  | "PERCENTAGE"
+  | "MIN0_MAX"
+  | "MIN_MAX"
+  | "RAW_VALUES"
+  | "PERCENTAGE_CHANGE"
+  | "ROLLING_AVERAGE"
+  | "OVERLAPPED_PERCENTAGE"
+  | "RATIO";
 export const AttacksLayer7TimeseriesGroupsMitigationProductResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -52178,41 +52193,41 @@ export const ModelAiInferenceSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelAiInferenceSummaryRequest>;
 
 export type AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiInferenceSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -52477,41 +52492,41 @@ export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiInferenceTimeseriesGroupsSummaryModelResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -52819,41 +52834,41 @@ export const OriginAttackLayer3TopLocationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OriginAttackLayer3TopLocationRequest>;
 
 export type AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -53237,41 +53252,41 @@ export const OriginAttackLayer7TopAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginAttackLayer7TopAsRequest>;
 
 export type AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TopAsesOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -53662,41 +53677,41 @@ export const OriginAttackLayer7TopLocationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OriginAttackLayer7TopLocationRequest>;
 
 export type AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TopLocationsOriginResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -54385,41 +54400,41 @@ export type OriginsTimeseriesResponseMetaAggInterval =
 export const OriginsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const OriginsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -54709,41 +54724,41 @@ export const OriginsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const OriginsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -55529,41 +55544,41 @@ export const HttpTimeseriesGroupsOsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsOsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -56047,41 +56062,41 @@ export const PostQuantumHttpSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostQuantumHttpSummaryRequest>;
 
 export type HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpSummaryPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -56530,41 +56545,41 @@ export const HttpTimeseriesGroupsPostQuantumResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsPostQuantumResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -57167,41 +57182,41 @@ export const ProtocolAs112SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtocolAs112SummaryRequest>;
 
 export type As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -57620,41 +57635,41 @@ export const As112TimeseriesGroupsProtocolResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -57971,41 +57986,41 @@ export const ProtocolAttackLayer3SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtocolAttackLayer3SummaryRequest>;
 
 export type AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3SummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -58352,41 +58367,41 @@ export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -58836,41 +58851,41 @@ export const ProtocolDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtocolDnsSummaryRequest>;
 
 export type DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -59296,41 +59311,41 @@ export const DnsTimeseriesGroupsProtocolResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsProtocolResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -59660,41 +59675,41 @@ export const QueryTypeAs112SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryTypeAs112SummaryRequest>;
 
 export type As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112SummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -60022,41 +60037,41 @@ export const As112TimeseriesGroupsQueryTypeResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -60383,41 +60398,41 @@ export const QueryTypeDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryTypeDnsSummaryRequest>;
 
 export type DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -60766,41 +60781,41 @@ export const DnsTimeseriesGroupsQueryTypeResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsQueryTypeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -61478,41 +61493,41 @@ export const ResponseCodeDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponseCodeDnsSummaryRequest>;
 
 export type DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -61943,41 +61958,41 @@ export const DnsTimeseriesGroupsResponseCodeResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsResponseCodeResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -62358,41 +62373,41 @@ export const ResponseCodesAs112SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponseCodesAs112SummaryRequest>;
 
 export type As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112SummaryResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -62797,41 +62812,41 @@ export const As112TimeseriesGroupsResponseCodesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TimeseriesGroupsResponseCodesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -63264,41 +63279,41 @@ export const ResponseTTLDnsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponseTTLDnsSummaryRequest>;
 
 export type DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsSummaryResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -63784,41 +63799,41 @@ export const DnsTimeseriesGroupsResponseTtlResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsResponseTtlResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -64282,41 +64297,41 @@ export const SpamEmailSecuritySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpamEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummarySpamResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -64675,41 +64690,41 @@ export const EmailSecurityTimeseriesGroupsSpamResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsSpamResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -65023,41 +65038,41 @@ export const SpfEmailRoutingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpfEmailRoutingSummaryRequest>;
 
 export type EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingSummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -65396,41 +65411,41 @@ export const EmailRoutingTimeseriesGroupsSpfResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -65744,41 +65759,41 @@ export const SpfEmailSecuritySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpfEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummarySpfResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -66105,41 +66120,41 @@ export const EmailSecurityTimeseriesGroupsSpfResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsSpfResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -66471,41 +66486,41 @@ export const SpoofEmailSecuritySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpoofEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummarySpoofResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -66865,41 +66880,41 @@ export const EmailSecurityTimeseriesGroupsSpoofResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsSpoofResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -67381,41 +67396,41 @@ export const SummaryAiMarkdownForAgentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryAiMarkdownForAgentRequest>;
 
 export type AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiMarkdownForAgentsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -67765,31 +67780,31 @@ export const SummaryAiTimeseriesGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryAiTimeseriesGroupRequest>;
 
 export type AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiBotsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -68452,41 +68467,41 @@ export const SummaryBotWebCrawlerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryBotWebCrawlerRequest>;
 
 export type BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const BotsWebCrawlersSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -69308,31 +69323,31 @@ export const SummaryNetflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryNetflowRequest>;
 
 export type NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const NetflowsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -69565,41 +69580,41 @@ export const SummaryPostQuantumOriginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryPostQuantumOriginRequest>;
 
 export type PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const PostQuantumOriginSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -69840,41 +69855,41 @@ export const SummaryQualityIqiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryQualityIqiRequest>;
 
 export type QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const QualityIqiSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -70092,41 +70107,41 @@ export const SummaryQualitySpeedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryQualitySpeedRequest>;
 
 export type QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const QualitySpeedSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -70383,41 +70398,41 @@ export const SummaryTcpResetsTimeoutRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryTcpResetsTimeoutRequest>;
 
 export type TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const TcpResetsTimeoutsSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -70683,41 +70698,41 @@ export const SummaryV2AiInferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryV2AiInferenceRequest>;
 
 export type AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiInferenceSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -71421,41 +71436,41 @@ export const SummaryV2AttackLayer3Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryV2AttackLayer3Request>;
 
 export type AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -71832,41 +71847,41 @@ export const SummaryV2AttackLayer7Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryV2AttackLayer7Request>;
 
 export type AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7SummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -72711,41 +72726,41 @@ export const SummaryV2EmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryV2EmailRoutingRequest>;
 
 export type EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -73047,41 +73062,41 @@ export const SummaryV2EmailSecurityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryV2EmailSecurityRequest>;
 
 export type EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -73819,41 +73834,41 @@ export const SummaryV2LeakedCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryV2LeakedCredentialRequest>;
 
 export type LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const LeakedCredentialsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -74126,41 +74141,41 @@ export const SummaryV2NetflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryV2NetflowRequest>;
 
 export type NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const NetflowsSummaryV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -74504,41 +74519,41 @@ export const TargetAttackLayer3TopLocationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetAttackLayer3TopLocationRequest>;
 
 export type AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -74820,41 +74835,41 @@ export const TargetAttackLayer7TopLocationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetAttackLayer7TopLocationRequest>;
 
 export type AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TopLocationsTargetResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -75076,41 +75091,41 @@ export const TaskAiInferenceSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskAiInferenceSummaryRequest>;
 
 export type AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiInferenceSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -75374,41 +75389,41 @@ export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiInferenceTimeseriesGroupsSummaryTaskResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -75757,41 +75772,41 @@ export const ThreatCategoryEmailSecuritySummaryRequest =
   }) as any as S.Schema<ThreatCategoryEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummaryThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -76179,46 +76194,50 @@ export const ThreatCategoryEmailSecurityTimeseriesGroupRequest =
   }) as any as S.Schema<ThreatCategoryEmailSecurityTimeseriesGroupRequest>;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaAggInterval =
-  "FIFTEEN_MINUTES" | "ONE_HOUR" | "ONE_DAY" | "ONE_WEEK" | "ONE_MONTH";
+  | "FIFTEEN_MINUTES"
+  | "ONE_HOUR"
+  | "ONE_DAY"
+  | "ONE_WEEK"
+  | "ONE_MONTH";
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -76302,14 +76321,14 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeLis
   ) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaDateRangeList>;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaNormalization =
-    | "PERCENTAGE"
-    | "MIN0_MAX"
-    | "MIN_MAX"
-    | "RAW_VALUES"
-    | "PERCENTAGE_CHANGE"
-    | "ROLLING_AVERAGE"
-    | "OVERLAPPED_PERCENTAGE"
-    | "RATIO";
+  | "PERCENTAGE"
+  | "MIN0_MAX"
+  | "MIN_MAX"
+  | "RAW_VALUES"
+  | "PERCENTAGE_CHANGE"
+  | "ROLLING_AVERAGE"
+  | "OVERLAPPED_PERCENTAGE"
+  | "RATIO";
 export const EmailSecurityTimeseriesGroupsThreatCategoryResponseMetaNormalization =
   /*@__PURE__*/ S.String;
 
@@ -76618,41 +76637,41 @@ export type AiBotsTimeseriesResponseMetaAggInterval =
 export const AiBotsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiBotsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -76884,41 +76903,41 @@ export const AiMarkdownForAgentsTimeseriesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiMarkdownForAgentsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -77292,31 +77311,31 @@ export type As112TimeseriesResponseMetaAggInterval =
 export const As112TimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
@@ -77639,41 +77658,41 @@ export const AttacksLayer3TimeseriesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -78063,41 +78082,41 @@ export const AttacksLayer7TimeseriesResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -78616,41 +78635,41 @@ export type BgpIpsTimeseriesResponseMetaAggInterval =
 export const BgpIpsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const BgpIpsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -80659,41 +80678,41 @@ export const AiBotsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiBotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -81054,41 +81073,41 @@ export const BotsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const BotsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -81473,41 +81492,41 @@ export const BotsWebCrawlersTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const BotsWebCrawlersTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -81995,41 +82014,41 @@ export type CtTimeseriesGroupsResponseMetaAggInterval =
 export const CtTimeseriesGroupsResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const CtTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -82645,41 +82664,41 @@ export const NetflowsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const NetflowsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -82937,41 +82956,41 @@ export const PostQuantumOriginTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const PostQuantumOriginTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -83268,41 +83287,41 @@ export const QualityIqiTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const QualityIqiTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -83586,41 +83605,41 @@ export const RankingTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const RankingTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -83894,41 +83913,41 @@ export const RankingInternetServicesTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const RankingInternetServicesTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -84234,41 +84253,41 @@ export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const TcpResetsTimeoutsTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -84642,41 +84661,41 @@ export const AiInferenceTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiInferenceTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -85123,41 +85142,41 @@ export const As112TimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const As112TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -85520,41 +85539,41 @@ export const AttacksLayer3TimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -86008,41 +86027,41 @@ export const AttacksLayer7TimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -86631,41 +86650,41 @@ export const DnsTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const DnsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -87046,41 +87065,41 @@ export const EmailRoutingTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailRoutingTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -87463,41 +87482,41 @@ export const EmailSecurityTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -87993,41 +88012,41 @@ export const HttpTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -88418,41 +88437,41 @@ export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const LeakedCredentialsTimeseriesGroupsV2ResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -89200,41 +89219,41 @@ export type NetflowsTimeseriesResponseMetaAggInterval =
 export const NetflowsTimeseriesResponseMetaAggInterval = /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const NetflowsTimeseriesResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -89614,41 +89633,41 @@ export const TldsPerformanceSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TldsPerformanceSummaryRequest>;
 
 export type TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const TldsPerformanceSummaryResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -89946,41 +89965,41 @@ export const TldsPerformanceTimeseriesGroupsResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const TldsPerformanceTimeseriesGroupsResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -90290,41 +90309,41 @@ export const TlsVersionEmailSecuritySummaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TlsVersionEmailSecuritySummaryRequest>;
 
 export type EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecuritySummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -90681,41 +90700,41 @@ export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const EmailSecurityTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -91149,41 +91168,41 @@ export const TlsVersionHttpSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TlsVersionHttpSummaryRequest>;
 
 export type HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpSummaryTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -91629,41 +91648,41 @@ export const HttpTimeseriesGroupsTlsVersionResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const HttpTimeseriesGroupsTlsVersionResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -92205,41 +92224,41 @@ export const TopRankingInternetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopRankingInternetServiceRequest>;
 
 export type RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const RankingInternetServicesTopResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -92548,41 +92567,41 @@ export const UserAgentAiBotSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserAgentAiBotSummaryRequest>;
 
 export type AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiBotsSummaryUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -92857,41 +92876,41 @@ export const AiTimeseriesGroupsUserAgentResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AiTimeseriesGroupsUserAgentResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -93193,41 +93212,41 @@ export const VectorAttackLayer3SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VectorAttackLayer3SummaryRequest>;
 
 export type AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3SummaryVectorResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -93572,41 +93591,41 @@ export const AttacksLayer3TimeseriesGroupsVectorResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesGroupsVectorResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -93918,41 +93937,41 @@ export const VerticalAttackLayer3SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerticalAttackLayer3SummaryRequest>;
 
 export type AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -94312,41 +94331,41 @@ export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -94642,41 +94661,41 @@ export const VerticalAttackLayer3TopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerticalAttackLayer3TopRequest>;
 
 export type AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer3TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -95058,41 +95077,41 @@ export const VerticalAttackLayer7SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerticalAttackLayer7SummaryRequest>;
 
 export type AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7SummaryVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -95542,41 +95561,41 @@ export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaAggInterval =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TimeseriesGroupsVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 
@@ -95966,41 +95985,41 @@ export const VerticalAttackLayer7TopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerticalAttackLayer7TopRequest>;
 
 export type AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
-    | "ALL"
-    | "AI_BOTS"
-    | "AI_GATEWAY"
-    | "BGP"
-    | "BOTS"
-    | "CONNECTION_ANOMALY"
-    | "CT"
-    | "DNS"
-    | "DNS_MAGNITUDE"
-    | "DNS_AS112"
-    | "DOS"
-    | "EMAIL_ROUTING"
-    | "EMAIL_SECURITY"
-    | "FW"
-    | "FW_PG"
-    | "HTTP"
-    | "HTTP_CONTROL"
-    | "HTTP_CRAWLER_REFERER"
-    | "HTTP_ORIGINS"
-    | "IQI"
-    | "LEAKED_CREDENTIALS"
-    | "NET"
-    | "ROBOTS_TXT"
-    | "SPEED"
-    | "WORKERS_AI";
+  | "ALL"
+  | "AI_BOTS"
+  | "AI_GATEWAY"
+  | "BGP"
+  | "BOTS"
+  | "CONNECTION_ANOMALY"
+  | "CT"
+  | "DNS"
+  | "DNS_MAGNITUDE"
+  | "DNS_AS112"
+  | "DOS"
+  | "EMAIL_ROUTING"
+  | "EMAIL_SECURITY"
+  | "FW"
+  | "FW_PG"
+  | "HTTP"
+  | "HTTP_CONTROL"
+  | "HTTP_CRAWLER_REFERER"
+  | "HTTP_ORIGINS"
+  | "IQI"
+  | "LEAKED_CREDENTIALS"
+  | "NET"
+  | "ROBOTS_TXT"
+  | "SPEED"
+  | "WORKERS_AI";
 export const AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemDataSource =
   /*@__PURE__*/ S.String;
 
 export type AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
-    | "EVENT"
-    | "GENERAL"
-    | "OUTAGE"
-    | "PARTIAL_PROJECTION"
-    | "PIPELINE"
-    | "TRAFFIC_ANOMALY";
+  | "EVENT"
+  | "GENERAL"
+  | "OUTAGE"
+  | "PARTIAL_PROJECTION"
+  | "PIPELINE"
+  | "TRAFFIC_ANOMALY";
 export const AttacksLayer7TopVerticalResponseMetaConfidenceInfoAnnotationsItemEventType =
   /*@__PURE__*/ S.String;
 

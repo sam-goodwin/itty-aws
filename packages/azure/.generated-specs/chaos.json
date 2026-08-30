@@ -886,7 +886,7 @@
           "code": 200,
           "apiVersion": "2025-01-01"
         },
-        "smithy.api#documentation": "The operation to update an experiment.",
+        "smithy.api#documentation": "Update an experiment.",
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },

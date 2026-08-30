@@ -474,6 +474,90 @@ export type ClusterInstanceType =
   | "ml.g7e.24xlarge"
   | "ml.g7e.48xlarge"
   | "ml.p6-b300.48xlarge"
+  | "ml.g4dn.xlarge"
+  | "ml.g4dn.2xlarge"
+  | "ml.g4dn.4xlarge"
+  | "ml.g4dn.8xlarge"
+  | "ml.g4dn.12xlarge"
+  | "ml.g4dn.16xlarge"
+  | "ml.c6g.medium"
+  | "ml.c6g.large"
+  | "ml.c6g.xlarge"
+  | "ml.c6g.2xlarge"
+  | "ml.c6g.4xlarge"
+  | "ml.c6g.8xlarge"
+  | "ml.c6g.12xlarge"
+  | "ml.c6g.16xlarge"
+  | "ml.c7g.medium"
+  | "ml.c7g.large"
+  | "ml.c7g.xlarge"
+  | "ml.c7g.2xlarge"
+  | "ml.c7g.4xlarge"
+  | "ml.c7g.8xlarge"
+  | "ml.c7g.12xlarge"
+  | "ml.c7g.16xlarge"
+  | "ml.c8g.medium"
+  | "ml.c8g.large"
+  | "ml.c8g.xlarge"
+  | "ml.c8g.2xlarge"
+  | "ml.c8g.4xlarge"
+  | "ml.c8g.8xlarge"
+  | "ml.c8g.12xlarge"
+  | "ml.c8g.16xlarge"
+  | "ml.c8g.24xlarge"
+  | "ml.c8g.48xlarge"
+  | "ml.c6a.large"
+  | "ml.c6a.xlarge"
+  | "ml.c6a.2xlarge"
+  | "ml.c6a.4xlarge"
+  | "ml.c6a.8xlarge"
+  | "ml.c6a.12xlarge"
+  | "ml.c6a.16xlarge"
+  | "ml.c6a.24xlarge"
+  | "ml.c6a.32xlarge"
+  | "ml.c6a.48xlarge"
+  | "ml.m6a.large"
+  | "ml.m6a.xlarge"
+  | "ml.m6a.2xlarge"
+  | "ml.m6a.4xlarge"
+  | "ml.m6a.8xlarge"
+  | "ml.m6a.12xlarge"
+  | "ml.m6a.16xlarge"
+  | "ml.m6a.24xlarge"
+  | "ml.m6a.32xlarge"
+  | "ml.m6a.48xlarge"
+  | "ml.m6g.medium"
+  | "ml.m6g.large"
+  | "ml.m6g.xlarge"
+  | "ml.m6g.2xlarge"
+  | "ml.m6g.4xlarge"
+  | "ml.m6g.8xlarge"
+  | "ml.m6g.12xlarge"
+  | "ml.m6g.16xlarge"
+  | "ml.m7g.medium"
+  | "ml.m7g.large"
+  | "ml.m7g.xlarge"
+  | "ml.m7g.2xlarge"
+  | "ml.m7g.4xlarge"
+  | "ml.m7g.8xlarge"
+  | "ml.m7g.12xlarge"
+  | "ml.m7g.16xlarge"
+  | "ml.m8g.medium"
+  | "ml.m8g.large"
+  | "ml.m8g.xlarge"
+  | "ml.m8g.2xlarge"
+  | "ml.m8g.4xlarge"
+  | "ml.m8g.8xlarge"
+  | "ml.m8g.12xlarge"
+  | "ml.m8g.16xlarge"
+  | "ml.m8g.24xlarge"
+  | "ml.m8g.48xlarge"
+  | "ml.g7.2xlarge"
+  | "ml.g7.4xlarge"
+  | "ml.g7.8xlarge"
+  | "ml.g7.12xlarge"
+  | "ml.g7.24xlarge"
+  | "ml.g7.48xlarge"
   | (string & {});
 export const ClusterInstanceType = /*@__PURE__*/ S.String;
 
@@ -1154,6 +1238,12 @@ export type ProductionVariantInstanceType =
   | "ml.g7e.12xlarge"
   | "ml.g7e.24xlarge"
   | "ml.g7e.48xlarge"
+  | "ml.g7.2xlarge"
+  | "ml.g7.4xlarge"
+  | "ml.g7.8xlarge"
+  | "ml.g7.12xlarge"
+  | "ml.g7.24xlarge"
+  | "ml.g7.48xlarge"
   | "ml.p4d.24xlarge"
   | "ml.c7g.large"
   | "ml.c7g.xlarge"
@@ -1958,6 +2048,12 @@ export type AIRecommendationInstanceType =
   | "ml.g6e.16xlarge"
   | "ml.g6e.24xlarge"
   | "ml.g6e.48xlarge"
+  | "ml.g7.2xlarge"
+  | "ml.g7.4xlarge"
+  | "ml.g7.8xlarge"
+  | "ml.g7.12xlarge"
+  | "ml.g7.24xlarge"
+  | "ml.g7.48xlarge"
   | "ml.g7e.2xlarge"
   | "ml.g7e.4xlarge"
   | "ml.g7e.8xlarge"
@@ -2013,6 +2109,41 @@ export const AIRecommendationComputeSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AIRecommendationComputeSpec",
 }) as any as S.Schema<AIRecommendationComputeSpec>;
+export type AIAdapterId = string;
+export interface AIAdapterModelPackageEntry {
+  AdapterId?: string;
+  ModelPackageArn?: string;
+}
+export const AIAdapterModelPackageEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AdapterId: S.optional(S.String),
+    ModelPackageArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AIAdapterModelPackageEntry",
+}) as any as S.Schema<AIAdapterModelPackageEntry>;
+export type AIAdapterModelPackageEntryList = AIAdapterModelPackageEntry[];
+export const AIAdapterModelPackageEntryList = /*@__PURE__*/ S.Array(
+  AIAdapterModelPackageEntry,
+);
+export interface AIAdapterS3Entry {
+  AdapterId?: string;
+  S3Uri?: string;
+}
+export const AIAdapterS3Entry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AdapterId: S.optional(S.String), S3Uri: S.optional(S.String) }),
+).annotate({
+  identifier: "AIAdapterS3Entry",
+}) as any as S.Schema<AIAdapterS3Entry>;
+export type AIAdapterS3EntryList = AIAdapterS3Entry[];
+export const AIAdapterS3EntryList = /*@__PURE__*/ S.Array(AIAdapterS3Entry);
+export type AIAdapterSource =
+  | { ModelPackageArns: AIAdapterModelPackageEntry[]; S3Uris?: never }
+  | { ModelPackageArns?: never; S3Uris: AIAdapterS3Entry[] };
+export const AIAdapterSource = /*@__PURE__*/ S.Union([
+  S.Struct({ ModelPackageArns: AIAdapterModelPackageEntryList }),
+  S.Struct({ S3Uris: AIAdapterS3EntryList }),
+]);
 export interface CreateAIRecommendationJobRequest {
   AIRecommendationJobName?: string;
   ModelSource?: AIModelSource;
@@ -2023,6 +2154,7 @@ export interface CreateAIRecommendationJobRequest {
   InferenceSpecification?: AIRecommendationInferenceSpecification;
   OptimizeModel?: boolean;
   ComputeSpec?: AIRecommendationComputeSpec;
+  AdapterSource?: AIAdapterSource;
   Tags?: Tag[];
 }
 export const CreateAIRecommendationJobRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2036,6 +2168,7 @@ export const CreateAIRecommendationJobRequest = /*@__PURE__*/ S.suspend(() =>
     InferenceSpecification: S.optional(AIRecommendationInferenceSpecification),
     OptimizeModel: S.optional(S.Boolean),
     ComputeSpec: S.optional(AIRecommendationComputeSpec),
+    AdapterSource: S.optional(AIAdapterSource),
     Tags: S.optional(TagList),
   }).pipe(
     T.all(
@@ -2377,6 +2510,12 @@ export type TrainingInstanceType =
   | "ml.g7e.12xlarge"
   | "ml.g7e.24xlarge"
   | "ml.g7e.48xlarge"
+  | "ml.g7.2xlarge"
+  | "ml.g7.4xlarge"
+  | "ml.g7.8xlarge"
+  | "ml.g7.12xlarge"
+  | "ml.g7.24xlarge"
+  | "ml.g7.48xlarge"
   | (string & {});
 export const TrainingInstanceType = /*@__PURE__*/ S.String;
 
@@ -3097,6 +3236,12 @@ export type AppInstanceType =
   | "ml.r6id.24xlarge"
   | "ml.r6id.32xlarge"
   | "ml.p5.4xlarge"
+  | "ml.g7.2xlarge"
+  | "ml.g7.4xlarge"
+  | "ml.g7.8xlarge"
+  | "ml.g7.12xlarge"
+  | "ml.g7.24xlarge"
+  | "ml.g7.48xlarge"
   | "ml.g7e.2xlarge"
   | "ml.g7e.4xlarge"
   | "ml.g7e.8xlarge"
@@ -5434,6 +5579,12 @@ export type ProcessingInstanceType =
   | "ml.g7e.12xlarge"
   | "ml.g7e.24xlarge"
   | "ml.g7e.48xlarge"
+  | "ml.g7.2xlarge"
+  | "ml.g7.4xlarge"
+  | "ml.g7.8xlarge"
+  | "ml.g7.12xlarge"
+  | "ml.g7.24xlarge"
+  | "ml.g7.48xlarge"
   | (string & {});
 export const ProcessingInstanceType = /*@__PURE__*/ S.String;
 
@@ -6787,14 +6938,33 @@ export const ProductionVariantManagedInstanceScaling = /*@__PURE__*/ S.suspend(
 export type RoutingStrategy =
   | "LEAST_OUTSTANDING_REQUESTS"
   | "RANDOM"
+  | "PREFIX_AWARE"
   | (string & {});
 export const RoutingStrategy = /*@__PURE__*/ S.String;
 
+export type PrefixAwareRoutingPrefixLength = number;
+export type PrefixAwareRoutingConcurrencyThreshold = number;
+export interface PrefixAwareRoutingConfig {
+  PrefixLength?: number;
+  ConcurrencyThreshold?: number;
+}
+export const PrefixAwareRoutingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrefixLength: S.optional(S.Number),
+    ConcurrencyThreshold: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PrefixAwareRoutingConfig",
+}) as any as S.Schema<PrefixAwareRoutingConfig>;
 export interface ProductionVariantRoutingConfig {
   RoutingStrategy?: RoutingStrategy;
+  PrefixAwareRoutingConfig?: PrefixAwareRoutingConfig;
 }
 export const ProductionVariantRoutingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RoutingStrategy: S.optional(RoutingStrategy) }),
+  S.Struct({
+    RoutingStrategy: S.optional(RoutingStrategy),
+    PrefixAwareRoutingConfig: S.optional(PrefixAwareRoutingConfig),
+  }),
 ).annotate({
   identifier: "ProductionVariantRoutingConfig",
 }) as any as S.Schema<ProductionVariantRoutingConfig>;
@@ -9368,6 +9538,7 @@ export interface CreateMlflowAppRequest {
   Name?: string;
   ArtifactStoreUri?: string;
   RoleArn?: string;
+  KmsKeyId?: string;
   ModelRegistrationMode?: ModelRegistrationMode;
   WeeklyMaintenanceWindowStart?: string;
   AccountDefaultStatus?: AccountDefaultStatus;
@@ -9379,6 +9550,7 @@ export const CreateMlflowAppRequest = /*@__PURE__*/ S.suspend(() =>
     Name: S.optional(S.String),
     ArtifactStoreUri: S.optional(S.String),
     RoleArn: S.optional(S.String),
+    KmsKeyId: S.optional(S.String),
     ModelRegistrationMode: S.optional(ModelRegistrationMode),
     WeeklyMaintenanceWindowStart: S.optional(S.String),
     AccountDefaultStatus: S.optional(AccountDefaultStatus),
@@ -10693,6 +10865,12 @@ export type InstanceType =
   | "ml.g6.16xlarge"
   | "ml.g6.24xlarge"
   | "ml.g6.48xlarge"
+  | "ml.g7e.2xlarge"
+  | "ml.g7e.4xlarge"
+  | "ml.g7e.8xlarge"
+  | "ml.g7e.12xlarge"
+  | "ml.g7e.24xlarge"
+  | "ml.g7e.48xlarge"
   | "ml.p5.4xlarge"
   | "ml.p5en.48xlarge"
   | "ml.g6e.xlarge"
@@ -10945,6 +11123,19 @@ export type OptimizationJobDeploymentInstanceType =
   | "ml.trn1.2xlarge"
   | "ml.trn1.32xlarge"
   | "ml.trn1n.32xlarge"
+  | "ml.p6-b200.48xlarge"
+  | "ml.g7e.2xlarge"
+  | "ml.g7e.4xlarge"
+  | "ml.g7e.8xlarge"
+  | "ml.g7e.12xlarge"
+  | "ml.g7e.24xlarge"
+  | "ml.g7e.48xlarge"
+  | "ml.g7.2xlarge"
+  | "ml.g7.4xlarge"
+  | "ml.g7.8xlarge"
+  | "ml.g7.12xlarge"
+  | "ml.g7.24xlarge"
+  | "ml.g7.48xlarge"
   | (string & {});
 export const OptimizationJobDeploymentInstanceType = /*@__PURE__*/ S.String;
 
@@ -11092,6 +11283,8 @@ export const OptimizationVpcConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OptimizationVpcConfig",
 }) as any as S.Schema<OptimizationVpcConfig>;
+export type OptimizationJobTrainingPlanArns = string[];
+export const OptimizationJobTrainingPlanArns = /*@__PURE__*/ S.Array(S.String);
 export interface CreateOptimizationJobRequest {
   OptimizationJobName?: string;
   RoleArn?: string;
@@ -11104,6 +11297,7 @@ export interface CreateOptimizationJobRequest {
   StoppingCondition?: StoppingCondition;
   Tags?: Tag[];
   VpcConfig?: OptimizationVpcConfig;
+  TrainingPlanArns?: string[];
 }
 export const CreateOptimizationJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11118,6 +11312,7 @@ export const CreateOptimizationJobRequest = /*@__PURE__*/ S.suspend(() =>
     StoppingCondition: S.optional(StoppingCondition),
     Tags: S.optional(TagList),
     VpcConfig: S.optional(OptimizationVpcConfig),
+    TrainingPlanArns: S.optional(OptimizationJobTrainingPlanArns),
   }).pipe(
     T.all(
       ns,
@@ -11199,7 +11394,14 @@ export const PartnerAppConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PartnerAppConfig",
 }) as any as S.Schema<PartnerAppConfig>;
-export type PartnerAppAuthType = "IAM" | (string & {});
+export type InstanceArn = string;
+export interface IdcConfigInput {
+  InstanceArn: string;
+}
+export const IdcConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InstanceArn: S.String }),
+).annotate({ identifier: "IdcConfigInput" }) as any as S.Schema<IdcConfigInput>;
+export type PartnerAppAuthType = "IAM" | "IDC" | (string & {});
 export const PartnerAppAuthType = /*@__PURE__*/ S.String;
 
 export interface CreatePartnerAppRequest {
@@ -11210,6 +11412,7 @@ export interface CreatePartnerAppRequest {
   MaintenanceConfig?: PartnerAppMaintenanceConfig;
   Tier?: string;
   ApplicationConfig?: PartnerAppConfig;
+  IdcConfig?: IdcConfigInput;
   AuthType?: PartnerAppAuthType;
   EnableIamSessionBasedIdentity?: boolean;
   EnableAutoMinorVersionUpgrade?: boolean;
@@ -11225,6 +11428,7 @@ export const CreatePartnerAppRequest = /*@__PURE__*/ S.suspend(() =>
     MaintenanceConfig: S.optional(PartnerAppMaintenanceConfig),
     Tier: S.optional(S.String),
     ApplicationConfig: S.optional(PartnerAppConfig),
+    IdcConfig: S.optional(IdcConfigInput),
     AuthType: S.optional(PartnerAppAuthType),
     EnableIamSessionBasedIdentity: S.optional(S.Boolean),
     EnableAutoMinorVersionUpgrade: S.optional(S.Boolean),
@@ -12430,6 +12634,7 @@ export type EvaluationType =
 export const EvaluationType = /*@__PURE__*/ S.String;
 
 export type EvaluatorArn = string;
+export type SequenceLength = string;
 export interface ServerlessJobConfig {
   BaseModelArn: string;
   AcceptEula?: boolean;
@@ -12438,6 +12643,7 @@ export interface ServerlessJobConfig {
   Peft?: Peft;
   EvaluationType?: EvaluationType;
   EvaluatorArn?: string;
+  SequenceLength?: string;
 }
 export const ServerlessJobConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12448,6 +12654,7 @@ export const ServerlessJobConfig = /*@__PURE__*/ S.suspend(() =>
     Peft: S.optional(Peft),
     EvaluationType: S.optional(EvaluationType),
     EvaluatorArn: S.optional(S.String),
+    SequenceLength: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ServerlessJobConfig",
@@ -15066,6 +15273,7 @@ export type AIRecommendationDeploymentS3ChannelList =
 export const AIRecommendationDeploymentS3ChannelList = /*@__PURE__*/ S.Array(
   AIRecommendationDeploymentS3Channel,
 );
+export type AIRecommendationMinCpuMemoryRequiredInMb = number;
 export interface AIRecommendationDeploymentConfiguration {
   S3?: AIRecommendationDeploymentS3Channel[];
   ImageUri?: string;
@@ -15073,6 +15281,7 @@ export interface AIRecommendationDeploymentConfiguration {
   InstanceCount?: number;
   CopyCountPerInstance?: number;
   EnvironmentVariables?: { [key: string]: string | undefined };
+  MinCpuMemoryRequiredInMb?: number;
 }
 export const AIRecommendationDeploymentConfiguration = /*@__PURE__*/ S.suspend(
   () =>
@@ -15083,6 +15292,7 @@ export const AIRecommendationDeploymentConfiguration = /*@__PURE__*/ S.suspend(
       InstanceCount: S.optional(S.Number),
       CopyCountPerInstance: S.optional(S.Number),
       EnvironmentVariables: S.optional(EnvironmentMap),
+      MinCpuMemoryRequiredInMb: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "AIRecommendationDeploymentConfiguration",
@@ -15107,6 +15317,18 @@ export type ExpectedPerformanceList = AIRecommendationPerformanceMetric[];
 export const ExpectedPerformanceList = /*@__PURE__*/ S.Array(
   AIRecommendationPerformanceMetric,
 );
+export interface AIRecommendationAdapterDetails {
+  ModelPackageArns?: AIAdapterModelPackageEntry[];
+  S3Uris?: AIAdapterS3Entry[];
+}
+export const AIRecommendationAdapterDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ModelPackageArns: S.optional(AIAdapterModelPackageEntryList),
+    S3Uris: S.optional(AIAdapterS3EntryList),
+  }),
+).annotate({
+  identifier: "AIRecommendationAdapterDetails",
+}) as any as S.Schema<AIRecommendationAdapterDetails>;
 export interface AIRecommendation {
   RecommendationDescription?: string;
   OptimizationDetails?: AIRecommendationOptimizationDetail[];
@@ -15114,6 +15336,7 @@ export interface AIRecommendation {
   DeploymentConfiguration?: AIRecommendationDeploymentConfiguration;
   AIBenchmarkJobArn?: string;
   ExpectedPerformance?: AIRecommendationPerformanceMetric[];
+  AdapterDetails?: AIRecommendationAdapterDetails;
 }
 export const AIRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15125,6 +15348,7 @@ export const AIRecommendation = /*@__PURE__*/ S.suspend(() =>
     ),
     AIBenchmarkJobArn: S.optional(S.String),
     ExpectedPerformance: S.optional(ExpectedPerformanceList),
+    AdapterDetails: S.optional(AIRecommendationAdapterDetails),
   }),
 ).annotate({
   identifier: "AIRecommendation",
@@ -15157,9 +15381,17 @@ export interface DescribeAIRecommendationJobResponse {
       Metric: string;
       Value: string;
     })[];
+    AdapterDetails: AIRecommendationAdapterDetails & {
+      ModelPackageArns: (AIAdapterModelPackageEntry & {
+        AdapterId: AIAdapterId;
+        ModelPackageArn: ModelPackageArn;
+      })[];
+      S3Uris: (AIAdapterS3Entry & { AdapterId: AIAdapterId; S3Uri: S3Uri })[];
+    };
   })[];
   RoleArn: string;
   ComputeSpec?: AIRecommendationComputeSpec;
+  AdapterSource?: AIAdapterSource;
   CreationTime: Date;
   StartTime?: Date;
   EndTime?: Date;
@@ -15180,6 +15412,7 @@ export const DescribeAIRecommendationJobResponse = /*@__PURE__*/ S.suspend(() =>
     Recommendations: S.optional(AIRecommendationList),
     RoleArn: S.optional(S.String),
     ComputeSpec: S.optional(AIRecommendationComputeSpec),
+    AdapterSource: S.optional(AIAdapterSource),
     CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -20697,6 +20930,7 @@ export interface DescribeMlflowAppResponse {
   ArtifactStoreUri?: string;
   MlflowVersion?: string;
   RoleArn?: string;
+  KmsKeyId?: string;
   Status?: MlflowAppStatus;
   ModelRegistrationMode?: ModelRegistrationMode;
   AccountDefaultStatus?: AccountDefaultStatus;
@@ -20715,6 +20949,7 @@ export const DescribeMlflowAppResponse = /*@__PURE__*/ S.suspend(() =>
     ArtifactStoreUri: S.optional(S.String),
     MlflowVersion: S.optional(S.String),
     RoleArn: S.optional(S.String),
+    KmsKeyId: S.optional(S.String),
     Status: S.optional(MlflowAppStatus),
     ModelRegistrationMode: S.optional(ModelRegistrationMode),
     AccountDefaultStatus: S.optional(AccountDefaultStatus),
@@ -21897,6 +22132,8 @@ export type NotebookInstanceStatus =
   | "Failed"
   | "Deleting"
   | "Updating"
+  | "PendingMaintenance"
+  | "InMaintenance"
   | (string & {});
 export const NotebookInstanceStatus = /*@__PURE__*/ S.String;
 
@@ -22069,6 +22306,7 @@ export interface DescribeOptimizationJobResponse {
     SecurityGroupIds: OptimizationVpcSecurityGroupIds;
     Subnets: OptimizationVpcSubnets;
   };
+  TrainingPlanArns?: string[];
 }
 export const DescribeOptimizationJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22096,6 +22334,7 @@ export const DescribeOptimizationJobResponse = /*@__PURE__*/ S.suspend(() =>
     RoleArn: S.optional(S.String),
     StoppingCondition: S.optional(StoppingCondition),
     VpcConfig: S.optional(OptimizationVpcConfig),
+    TrainingPlanArns: S.optional(OptimizationJobTrainingPlanArns),
   }).pipe(ns),
 ).annotate({
   identifier: "DescribeOptimizationJobResponse",
@@ -22155,6 +22394,16 @@ export const AvailableUpgrade = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AvailableUpgrade",
 }) as any as S.Schema<AvailableUpgrade>;
+export type ApplicationArn = string;
+export interface IdcConfigOutput {
+  InstanceArn: string;
+  ApplicationArn?: string;
+}
+export const IdcConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InstanceArn: S.String, ApplicationArn: S.optional(S.String) }),
+).annotate({
+  identifier: "IdcConfigOutput",
+}) as any as S.Schema<IdcConfigOutput>;
 export interface DescribePartnerAppResponse {
   Arn?: string;
   Name?: string;
@@ -22175,6 +22424,7 @@ export interface DescribePartnerAppResponse {
   EnableAutoMinorVersionUpgrade?: boolean;
   CurrentVersionEolDate?: Date;
   AvailableUpgrade?: AvailableUpgrade;
+  IdcConfig?: IdcConfigOutput;
 }
 export const DescribePartnerAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22201,6 +22451,7 @@ export const DescribePartnerAppResponse = /*@__PURE__*/ S.suspend(() =>
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
     AvailableUpgrade: S.optional(AvailableUpgrade),
+    IdcConfig: S.optional(IdcConfigOutput),
   }).pipe(ns),
 ).annotate({
   identifier: "DescribePartnerAppResponse",
@@ -22498,8 +22749,6 @@ export interface DescribeProcessingJobResponse {
   ProcessingJobName: string;
   ProcessingResources: ProcessingResources & {
     ClusterConfig: ProcessingClusterConfig & {
-      InstanceCount: ProcessingInstanceCount;
-      InstanceType: ProcessingInstanceType;
       VolumeSizeInGB: ProcessingVolumeSizeInGB;
     };
   };
@@ -34474,8 +34723,6 @@ export interface SearchResponse {
           };
           ProcessingResources: ProcessingResources & {
             ClusterConfig: ProcessingClusterConfig & {
-              InstanceCount: ProcessingInstanceCount;
-              InstanceType: ProcessingInstanceType;
               VolumeSizeInGB: ProcessingVolumeSizeInGB;
             };
           };
@@ -37721,6 +37968,8 @@ export interface UpdatePartnerAppRequest {
   MaintenanceConfig?: PartnerAppMaintenanceConfig;
   Tier?: string;
   ApplicationConfig?: PartnerAppConfig;
+  IdcConfig?: IdcConfigInput;
+  AuthType?: PartnerAppAuthType;
   EnableIamSessionBasedIdentity?: boolean;
   EnableAutoMinorVersionUpgrade?: boolean;
   AppVersion?: string;
@@ -37733,6 +37982,8 @@ export const UpdatePartnerAppRequest = /*@__PURE__*/ S.suspend(() =>
     MaintenanceConfig: S.optional(PartnerAppMaintenanceConfig),
     Tier: S.optional(S.String),
     ApplicationConfig: S.optional(PartnerAppConfig),
+    IdcConfig: S.optional(IdcConfigInput),
+    AuthType: S.optional(PartnerAppAuthType),
     EnableIamSessionBasedIdentity: S.optional(S.Boolean),
     EnableAutoMinorVersionUpgrade: S.optional(S.Boolean),
     AppVersion: S.optional(S.String),

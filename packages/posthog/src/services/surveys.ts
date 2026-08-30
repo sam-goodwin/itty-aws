@@ -132,12 +132,16 @@ export const ScheduleEnum = /*@__PURE__*/ S.String;
 export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
 export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
 
-/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
 export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "exact"
   | "is_not"
   | "icontains"
   | "not_icontains"
+  | "starts_with"
+  | "not_starts_with"
+  | "ends_with"
+  | "not_ends_with"
   | "regex"
   | "not_regex"
   | "gt"
@@ -150,15 +154,15 @@ export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
 export interface FeatureFlagFilterPropertyGenericSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
   value?: unknown;
-  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
   operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum | (string & {});
 }
 export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
@@ -182,11 +186,11 @@ export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 export interface FeatureFlagFilterPropertyExistsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Existence operator. * `is_set` - is_set * `is_not_set` - is_not_set */
   operator?: ExistenceOperatorEnum | (string & {});
@@ -217,11 +221,11 @@ export const DateOperatorEnum = /*@__PURE__*/ S.String;
 export interface FeatureFlagFilterPropertyDateSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before */
   operator?: DateOperatorEnum | (string & {});
@@ -258,11 +262,11 @@ export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
 export interface FeatureFlagFilterPropertySemverSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Semantic version comparison operator. * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
   operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum | (string & {});
@@ -301,11 +305,11 @@ export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
 export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Multi-contains operator. * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
   operator?:
@@ -349,7 +353,7 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Membership operator for cohort properties. * `in` - in * `not_in` - not_in */
   operator?:
@@ -390,7 +394,7 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Operator for feature flag dependency evaluation. * `flag_evaluates_to` - flag_evaluates_to */
   operator?:
@@ -875,15 +879,15 @@ export const SurveysCreateRequestQuestionsList = /*@__PURE__*/ S.Array(
   SurveyQuestionInputSchema,
 ) as any as S.Schema<SurveysCreateRequestQuestionsList>;
 
-/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex */
-export type StringMatchOperatorEnum =
+/** * `regex` - regex * `not_regex` - not_regex * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains */
+export type SurveyMatchTypeEnum =
+  | "regex"
+  | "not_regex"
   | "exact"
   | "is_not"
   | "icontains"
-  | "not_icontains"
-  | "regex"
-  | "not_regex";
-export const StringMatchOperatorEnum = /*@__PURE__*/ S.String;
+  | "not_icontains";
+export const SurveyMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SurveyConditionEventValueSchema {
   /** Event name that triggers the survey. */
@@ -937,12 +941,12 @@ export interface SurveyConditionsSchema {
   /** Don't show this survey to users who saw any survey in the last x days. */
   seenSurveyWaitPeriodInDays?: number;
   /** URL/device matching types: 'regex' (matches regex pattern), 'not_regex' (does not match regex pattern), 'exact' (exact string match), 'is_not' (not exact match), 'icontains' (case-insensitive contains), 'not_icontains' (case-insensitive does not contain). * `regex` - regex * `not_regex` - not_regex * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains */
-  urlMatchType?: StringMatchOperatorEnum | (string & {});
+  urlMatchType?: SurveyMatchTypeEnum | (string & {});
   events?: SurveyEventsConditionSchema;
   /** Device types that should match for this survey to be shown. */
   deviceTypes?: SurveyConditionsSchemaDeviceTypesList;
   /** URL/device matching types: 'regex' (matches regex pattern), 'not_regex' (does not match regex pattern), 'exact' (exact string match), 'is_not' (not exact match), 'icontains' (case-insensitive contains), 'not_icontains' (case-insensitive does not contain). * `regex` - regex * `not_regex` - not_regex * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains */
-  deviceTypesMatchType?: StringMatchOperatorEnum | (string & {});
+  deviceTypesMatchType?: SurveyMatchTypeEnum | (string & {});
   /** The variant of the feature flag linked to this survey. */
   linkedFlagVariant?: string;
 }
@@ -951,10 +955,10 @@ export const SurveyConditionsSchema = /*@__PURE__*/ S.suspend(() =>
     url: S.optional(S.String),
     selector: S.optional(S.String),
     seenSurveyWaitPeriodInDays: S.optional(S.Number),
-    urlMatchType: S.optional(StringMatchOperatorEnum),
+    urlMatchType: S.optional(SurveyMatchTypeEnum),
     events: S.optional(SurveyEventsConditionSchema),
     deviceTypes: S.optional(SurveyConditionsSchemaDeviceTypesList),
-    deviceTypesMatchType: S.optional(StringMatchOperatorEnum),
+    deviceTypesMatchType: S.optional(SurveyMatchTypeEnum),
     linkedFlagVariant: S.optional(S.String),
   }),
 ).annotate({
@@ -1064,9 +1068,9 @@ export const SurveysCreateRequestResponseSamplingIntervalType =
 export interface SurveysCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Survey name. */
+  /** Survey name. Anyone can read it. In-app surveys send it to every visitor's browser alongside the questions and appearance text, and a hosted survey shows it on its public page. Keep customer names and other private details out of it. */
   name?: string;
-  /** Survey description. */
+  /** Survey description. Internal only: unlike the name and questions, it is never delivered to visitors. */
   description?: string;
   /** Survey type. * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
   type?: SurveyType | (string & {});
@@ -1246,7 +1250,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -1255,6 +1259,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -1295,7 +1300,8 @@ export const SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList =
   ) as any as S.Schema<SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList>;
 
 export type SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType =
-  ResponseSamplingIntervalTypeEnum | BlankEnum;
+  | ResponseSamplingIntervalTypeEnum
+  | BlankEnum;
 export const SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType>;
 
@@ -1417,7 +1423,8 @@ export const SurveysDuplicateToProjectsCreateRequestIterationStartDatesList =
   ) as any as S.Schema<SurveysDuplicateToProjectsCreateRequestIterationStartDatesList>;
 
 export type SurveysDuplicateToProjectsCreateRequestResponseSamplingIntervalType =
-  ResponseSamplingIntervalTypeEnum | BlankEnum;
+  | ResponseSamplingIntervalTypeEnum
+  | BlankEnum;
 export const SurveysDuplicateToProjectsCreateRequestResponseSamplingIntervalType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SurveysDuplicateToProjectsCreateRequestResponseSamplingIntervalType>;
 
@@ -1852,7 +1859,7 @@ export interface Survey {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
   form_content?: unknown;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const Survey = /*@__PURE__*/ S.suspend(() =>
@@ -1904,6 +1911,9 @@ export const SurveysListRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SurveysListRequestIdsList>;
 
+export type SurveysListRequestStatus = "complete" | "draft" | "running";
+export const SurveysListRequestStatus = /*@__PURE__*/ S.String;
+
 export type SurveysListRequestType =
   | "api"
   | "external_survey"
@@ -1915,14 +1925,18 @@ export interface SurveysListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   archived?: boolean;
+  /** Filter surveys by the ID of the user who created them. */
+  created_by?: number;
   /** Multiple values may be separated by commas. */
   ids?: SurveysListRequestIdsList;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
-  /** Fuzzy match against survey `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type. */
+  /** Match against survey `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
   search?: string;
+  /** Filter surveys by their current status. * `draft` - Draft * `running` - Running * `complete` - Complete */
+  status?: SurveysListRequestStatus | (string & {});
   /** * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
   type?: SurveysListRequestType | (string & {});
 }
@@ -1930,10 +1944,12 @@ export const SurveysListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     archived: S.optional(S.Boolean.pipe(T.Query())),
+    created_by: S.optional(S.Number.pipe(T.Query())),
     ids: S.optional(SurveysListRequestIdsList.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
+    status: S.optional(SurveysListRequestStatus.pipe(T.Query())),
     type: S.optional(SurveysListRequestType.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1992,9 +2008,9 @@ export interface SurveysPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this survey. */
   id: string;
-  /** Survey name. */
+  /** Survey name. Anyone can read it. In-app surveys send it to every visitor's browser alongside the questions and appearance text, and a hosted survey shows it on its public page. Keep customer names and other private details out of it. */
   name?: string;
-  /** Survey description. */
+  /** Survey description. Internal only: unlike the name and questions, it is never delivered to visitors. */
   description?: string;
   /** Survey type. * `popover` - popover * `widget` - widget * `external_survey` - external survey * `api` - api */
   type?: SurveyType | (string & {});
@@ -2467,7 +2483,8 @@ export const SurveysResponsesUnarchiveCreateRequestIterationStartDatesList =
   ) as any as S.Schema<SurveysResponsesUnarchiveCreateRequestIterationStartDatesList>;
 
 export type SurveysResponsesUnarchiveCreateRequestResponseSamplingIntervalType =
-  ResponseSamplingIntervalTypeEnum | BlankEnum;
+  | ResponseSamplingIntervalTypeEnum
+  | BlankEnum;
 export const SurveysResponsesUnarchiveCreateRequestResponseSamplingIntervalType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SurveysResponsesUnarchiveCreateRequestResponseSamplingIntervalType>;
 

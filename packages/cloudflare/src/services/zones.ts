@@ -6619,7 +6619,8 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesId
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesValue =
-  "on" | "off";
+  | "on"
+  | "off";
 export const SettingsBulkEditRequestBodyItemZonesSchemasAutomaticHTTPSRewritesValue =
   /*@__PURE__*/ S.String;
 
@@ -7450,7 +7451,8 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionI
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionValue =
-  "on" | "off";
+  | "on"
+  | "off";
 export const SettingsBulkEditRequestBodyItemZonesSchemasOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -7550,7 +7552,8 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruI
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruValue =
-  "on" | "off";
+  | "on"
+  | "off";
 export const SettingsBulkEditRequestBodyItemZonesSchemasOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -7611,7 +7614,8 @@ export const SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionI
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionValue =
-  "2" | "1";
+  | "2"
+  | "1";
 export const SettingsBulkEditRequestBodyItemZonesCacheRulesOriginMaxHTTPVersionValue =
   /*@__PURE__*/ S.String;
 
@@ -8214,7 +8218,8 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheI
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheValue =
-  "on" | "off";
+  | "on"
+  | "off";
 export const SettingsBulkEditRequestBodyItemZonesSchemasSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 
@@ -8392,7 +8397,8 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderId =
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderValue =
-  "on" | "off";
+  | "on"
+  | "off";
 export const SettingsBulkEditRequestBodyItemZonesSchemasTrueClientIPHeaderValue =
   /*@__PURE__*/ S.String;
 
@@ -9594,7 +9600,8 @@ export const SettingsBulkEditResultItemZonesSchemasOpportunisticEncryptionId =
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditResultItemZonesSchemasOpportunisticEncryptionValue =
-  "on" | "off";
+  | "on"
+  | "off";
 export const SettingsBulkEditResultItemZonesSchemasOpportunisticEncryptionValue =
   /*@__PURE__*/ S.String;
 
@@ -9687,7 +9694,8 @@ export const SettingsBulkEditResultItemZonesSchemasOriginErrorPagePassThruId =
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditResultItemZonesSchemasOriginErrorPagePassThruValue =
-  "on" | "off";
+  | "on"
+  | "off";
 export const SettingsBulkEditResultItemZonesSchemasOriginErrorPagePassThruValue =
   /*@__PURE__*/ S.String;
 
@@ -9743,7 +9751,8 @@ export const SettingsBulkEditResultItemZonesCacheRulesOriginMaxHTTPVersionId =
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditResultItemZonesCacheRulesOriginMaxHTTPVersionValue =
-  "2" | "1";
+  | "2"
+  | "1";
 export const SettingsBulkEditResultItemZonesCacheRulesOriginMaxHTTPVersionValue =
   /*@__PURE__*/ S.String;
 
@@ -10289,7 +10298,8 @@ export const SettingsBulkEditResultItemZonesSchemasSortQueryStringForCacheId =
   /*@__PURE__*/ S.String;
 
 export type SettingsBulkEditResultItemZonesSchemasSortQueryStringForCacheValue =
-  "on" | "off";
+  | "on"
+  | "off";
 export const SettingsBulkEditResultItemZonesSchemasSortQueryStringForCacheValue =
   /*@__PURE__*/ S.String;
 

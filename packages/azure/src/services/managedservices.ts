@@ -479,18 +479,18 @@ export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEli
 
 /** The current provisioning state of the registration definition. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProvisioningState =
-    | "NotSpecified"
-    | "Accepted"
-    | "Running"
-    | "Ready"
-    | "Creating"
-    | "Created"
-    | "Deleting"
-    | "Deleted"
-    | "Canceled"
-    | "Failed"
-    | "Succeeded"
-    | "Updating";
+  | "NotSpecified"
+  | "Accepted"
+  | "Running"
+  | "Ready"
+  | "Creating"
+  | "Created"
+  | "Deleting"
+  | "Deleted"
+  | "Canceled"
+  | "Failed"
+  | "Succeeded"
+  | "Updating";
 export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -541,13 +541,19 @@ export const RegistrationAssignmentPropertiesRegistrationDefinitionProperties =
 
 /** The type of identity that created the resource. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

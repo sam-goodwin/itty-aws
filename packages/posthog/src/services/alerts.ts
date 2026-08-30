@@ -151,6 +151,8 @@ export type FunnelConversionMetric =
 export const FunnelConversionMetric = /*@__PURE__*/ S.String;
 
 export interface FunnelsAlertConfig {
+  /** When true, evaluate the current (still in-progress) period; by default only completed periods are used. */
+  check_ongoing_interval?: boolean | null;
   /** Zero-based step index to evaluate. Null = the last step (overall conversion). */
   funnel_step?: number | null;
   metric: FunnelConversionMetric | (string & {});
@@ -158,6 +160,7 @@ export interface FunnelsAlertConfig {
 }
 export const FunnelsAlertConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    check_ongoing_interval: S.optional(S.NullOr(S.Boolean)),
     funnel_step: S.optional(S.NullOr(S.Number)),
     metric: FunnelConversionMetric,
     type: S.optional(S.String),
@@ -166,11 +169,26 @@ export const FunnelsAlertConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelsAlertConfig",
 }) as any as S.Schema<FunnelsAlertConfig>;
 
+export interface MetricsAlertConfig {
+  /** When true, anchor on the trailing (possibly still accumulating) bucket instead of the last complete one. */
+  check_ongoing_interval?: boolean | null;
+  type?: string;
+}
+export const MetricsAlertConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    check_ongoing_interval: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MetricsAlertConfig",
+}) as any as S.Schema<MetricsAlertConfig>;
+
 /** Per-insight-kind alert config, discriminated by ``type`` — keeps the OpenAPI (and the generated frontend types and MCP tool schemas) in sync with every kind alerts support. */
 export type AlertConfigUnion =
   | TrendsAlertConfig
   | HogQLAlertConfig
-  | FunnelsAlertConfig;
+  | FunnelsAlertConfig
+  | MetricsAlertConfig;
 export const AlertConfigUnion =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AlertConfigUnion>;
 
@@ -483,8 +501,9 @@ export type DetectorConfig =
 export const DetectorConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DetectorConfig>;
 
-/** * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+/** * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
 export type CalculationIntervalEnum =
+  | "real_time"
   | "every_15_minutes"
   | "hourly"
   | "daily"
@@ -545,10 +564,10 @@ export interface AlertsCreateRequest {
   condition?: AlertCondition | null;
   /** Whether the alert is actively being evaluated. */
   enabled?: boolean;
-  /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step) and metric ('conversion_from_start' or 'conversion_from_previous'); funnel alerts only support absolute_value conditions. */
+  /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric ('conversion_from_start' or 'conversion_from_previous'), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period). */
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
-  /** How often the alert is checked: every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  /** How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
   calculation_interval?: CalculationIntervalEnum | (string & {});
   /** Snooze the alert until this time. Pass a relative date string (e.g. '2h', '1d') or null to unsnooze. */
   snoozed_until?: string | null;
@@ -560,7 +579,7 @@ export interface AlertsCreateRequest {
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
-  /** How to handle an 'inconclusive' verdict when notifications are gated. 'notify' is the safe default — an agent that can't be sure is itself useful signal. * `notify` - Notify * `suppress` - Suppress */
+  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?:
     | InvestigationInconclusiveActionEnum
     | (string & {});
@@ -602,7 +621,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -611,6 +630,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -677,6 +697,12 @@ export type AlertCheckStateEnum =
   | "Snoozed";
 export const AlertCheckStateEnum = /*@__PURE__*/ S.String;
 
+export type AlertCheckErrorMap = { [key: string]: string | undefined };
+export const AlertCheckErrorMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AlertCheckErrorMap>;
+
 /** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
 export type InvestigationStatusEnum =
   | "pending"
@@ -693,11 +719,46 @@ export type InvestigationVerdictEnum =
   | "inconclusive";
 export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
 
+export interface AlertDelivery {
+  /** Delivery channel: 'email' or 'hog_function' (destinations). */
+  channel: string;
+  /** Email address, or destination name, that received the notification. */
+  target: string;
+  /** Hog function ID, for destination deliveries. Null for email. */
+  target_id?: string | null;
+  /** Destination template: 'slack', 'discord', 'webhook', or 'teams'. Null for email. */
+  template?: string | null;
+  /** Delivery status. Always 'accepted', for a confirmed send. */
+  status: string;
+  /** When the delivery was recorded. */
+  at: string | null;
+  /** Ready-to-display description of the delivery, e.g. 'Email: a@example.com' or 'Slack #eng-alerts'. */
+  display_label: string;
+}
+export const AlertDelivery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    channel: S.String,
+    target: S.String,
+    target_id: S.optional(S.NullOr(S.String)),
+    template: S.optional(S.NullOr(S.String)),
+    status: S.String,
+    at: S.NullOr(S.String),
+    display_label: S.String,
+  }),
+).annotate({ identifier: "AlertDelivery" }) as any as S.Schema<AlertDelivery>;
+
+/** Destinations that accepted this check's notification, one record per destination (channel, target, status, at). Null when no delivery receipt was recorded, which covers checks that notified nobody and checks predating delivery receipts. */
+export type AlertCheckDeliveriesList = Array<AlertDelivery>;
+export const AlertCheckDeliveriesList = /*@__PURE__*/ S.Array(
+  AlertDelivery,
+) as any as S.Schema<AlertCheckDeliveriesList>;
+
 export interface AlertCheck {
   id?: string;
   created_at?: string;
   calculated_value?: number | null;
   state?: AlertCheckStateEnum;
+  error?: AlertCheckErrorMap | null;
   targets_notified?: boolean;
   anomaly_scores?: unknown;
   triggered_points?: unknown;
@@ -711,6 +772,8 @@ export interface AlertCheck {
   investigation_notebook_short_id?: string | null;
   notification_sent_at?: string | null;
   notification_suppressed_by_agent?: boolean;
+  /** Destinations that accepted this check's notification, one record per destination (channel, target, status, at). Null when no delivery receipt was recorded, which covers checks that notified nobody and checks predating delivery receipts. */
+  deliveries?: AlertCheckDeliveriesList | null;
 }
 export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -718,6 +781,7 @@ export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
     created_at: S.optional(S.String),
     calculated_value: S.optional(S.NullOr(S.Number)),
     state: S.optional(AlertCheckStateEnum),
+    error: S.optional(S.NullOr(AlertCheckErrorMap)),
     targets_notified: S.optional(S.Boolean),
     anomaly_scores: S.optional(S.Unknown),
     triggered_points: S.optional(S.Unknown),
@@ -730,6 +794,7 @@ export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
     investigation_notebook_short_id: S.optional(S.NullOr(S.String)),
     notification_sent_at: S.optional(S.NullOr(S.String)),
     notification_suppressed_by_agent: S.optional(S.Boolean),
+    deliveries: S.optional(S.NullOr(AlertCheckDeliveriesList)),
   }),
 ).annotate({ identifier: "AlertCheck" }) as any as S.Schema<AlertCheck>;
 
@@ -748,6 +813,10 @@ export interface Alert {
   created_at?: string;
   /** Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object. */
   insight?: number;
+  /** Short ID of the insight monitored by this alert. */
+  insight_short_id?: string;
+  /** Display name of the insight monitored by this alert. */
+  insight_display_name?: string;
   /** Human-readable name for the alert. */
   name?: string;
   /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
@@ -767,10 +836,10 @@ export interface Alert {
   checks?: AlertChecksList;
   /** Total alert checks matching the retrieve filters (date window). Only set on alert retrieve; omitted otherwise. */
   checks_total?: number | null;
-  /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step) and metric ('conversion_from_start' or 'conversion_from_previous'); funnel alerts only support absolute_value conditions. */
+  /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric ('conversion_from_start' or 'conversion_from_previous'), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period). */
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
-  /** How often the alert is checked: every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  /** How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
   calculation_interval?: CalculationIntervalEnum;
   /** Snooze the alert until this time. Pass a relative date string (e.g. '2h', '1d') or null to unsnooze. */
   snoozed_until?: string | null;
@@ -784,9 +853,9 @@ export interface Alert {
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
-  /** How to handle an 'inconclusive' verdict when notifications are gated. 'notify' is the safe default — an agent that can't be sure is itself useful signal. * `notify` - Notify * `suppress` - Suppress */
+  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const Alert = /*@__PURE__*/ S.suspend(() =>
@@ -795,6 +864,8 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
     created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     insight: S.optional(S.Number),
+    insight_short_id: S.optional(S.String),
+    insight_display_name: S.optional(S.String),
     name: S.optional(S.String),
     subscribed_users: S.optional(AlertSubscribedUsersList),
     threshold: S.optional(Threshold),
@@ -855,8 +926,12 @@ export interface AlertsListRequest {
   project_id: string;
   /** Optional. Restrict results to alerts created by the user with this UUID. */
   created_by?: string;
+  /** Optional. Restrict results by whether the alert uses anomaly detection. */
+  has_detector?: boolean;
   /** Optional. Restrict results to alerts on this insight ID. */
   insight_id?: number;
+  /** Optional. Restrict results to alerts whose insight has this tag. */
+  insight_tag?: string;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -868,7 +943,9 @@ export const AlertsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_by: S.optional(S.String.pipe(T.Query())),
+    has_detector: S.optional(S.Boolean.pipe(T.Query())),
     insight_id: S.optional(S.Number.pipe(T.Query())),
+    insight_tag: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
@@ -929,10 +1006,10 @@ export interface AlertsPartialUpdateRequest {
   condition?: AlertCondition | null;
   /** Whether the alert is actively being evaluated. */
   enabled?: boolean;
-  /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step) and metric ('conversion_from_start' or 'conversion_from_previous'); funnel alerts only support absolute_value conditions. */
+  /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric ('conversion_from_start' or 'conversion_from_previous'), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period). */
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
-  /** How often the alert is checked: every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  /** How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
   calculation_interval?: CalculationIntervalEnum | (string & {});
   /** Snooze the alert until this time. Pass a relative date string (e.g. '2h', '1d') or null to unsnooze. */
   snoozed_until?: string | null;
@@ -944,7 +1021,7 @@ export interface AlertsPartialUpdateRequest {
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
-  /** How to handle an 'inconclusive' verdict when notifications are gated. 'notify' is the safe default — an agent that can't be sure is itself useful signal. * `notify` - Notify * `suppress` - Suppress */
+  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?:
     | InvestigationInconclusiveActionEnum
     | (string & {});
@@ -1228,6 +1305,34 @@ export const AlertSimulateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertSimulateResponse",
 }) as any as S.Schema<AlertSimulateResponse>;
 
+export interface AlertsTestDeliveryCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this alert configuration. */
+  id: string;
+}
+export const AlertsTestDeliveryCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/alerts/{id}/test-delivery/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "AlertsTestDeliveryCreateRequest",
+}) as any as S.Schema<AlertsTestDeliveryCreateRequest>;
+
+export interface AlertsTestDeliveryCreateResponse {}
+export const AlertsTestDeliveryCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AlertsTestDeliveryCreateResponse",
+}) as any as S.Schema<AlertsTestDeliveryCreateResponse>;
+
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type AlertsUpdateRequestSubscribedUsersList = Array<number>;
 export const AlertsUpdateRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
@@ -1251,10 +1356,10 @@ export interface AlertsUpdateRequest {
   condition?: AlertCondition | null;
   /** Whether the alert is actively being evaluated. */
   enabled?: boolean;
-  /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step) and metric ('conversion_from_start' or 'conversion_from_previous'); funnel alerts only support absolute_value conditions. */
+  /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric ('conversion_from_start' or 'conversion_from_previous'), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period). */
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
-  /** How often the alert is checked: every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  /** How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly. * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
   calculation_interval?: CalculationIntervalEnum | (string & {});
   /** Snooze the alert until this time. Pass a relative date string (e.g. '2h', '1d') or null to unsnooze. */
   snoozed_until?: string | null;
@@ -1266,7 +1371,7 @@ export interface AlertsUpdateRequest {
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
-  /** How to handle an 'inconclusive' verdict when notifications are gated. 'notify' is the safe default — an agent that can't be sure is itself useful signal. * `notify` - Notify * `suppress` - Suppress */
+  /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?:
     | InvestigationInconclusiveActionEnum
     | (string & {});
@@ -1404,6 +1509,21 @@ export const alertsSimulateCreate: API.OperationMethod<
   input: AlertsSimulateCreateRequest,
   output: AlertSimulateResponse,
   errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type AlertsTestDeliveryCreateError = PosthogOpError;
+/** Send a synthetic test notification to subscribed users and every active destination on this alert. */
+export const alertsTestDeliveryCreate: API.OperationMethod<
+  AlertsTestDeliveryCreateRequest,
+  AlertsTestDeliveryCreateResponse,
+  AlertsTestDeliveryCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AlertsTestDeliveryCreateRequest,
+  output: AlertsTestDeliveryCreateResponse,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

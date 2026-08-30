@@ -32,6 +32,12 @@
             "smithy.api#enumValue": "apns"
           }
         },
+        "AWS_REDSHIFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws-redshift"
+          }
+        },
         "AWS_S3": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -116,6 +122,12 @@
             "smithy.api#enumValue": "google-analytics"
           }
         },
+        "GOOGLE_CALENDAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google-calendar"
+          }
+        },
         "GOOGLE_CLOUD_SERVICE_ACCOUNT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -152,6 +164,12 @@
             "smithy.api#enumValue": "hubspot"
           }
         },
+        "INSTAGRAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "instagram"
+          }
+        },
         "INTERCOM": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -182,6 +200,12 @@
             "smithy.api#enumValue": "meta-ads"
           }
         },
+        "PARDOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pardot"
+          }
+        },
         "PINTEREST_ADS": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -194,10 +218,22 @@
             "smithy.api#enumValue": "postgresql"
           }
         },
+        "POSTHOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "posthog"
+          }
+        },
         "REDDIT_ADS": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "reddit-ads"
+          }
+        },
+        "RESEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resend"
           }
         },
         "S3_COMPATIBLE": {
@@ -230,6 +266,12 @@
             "smithy.api#enumValue": "snapchat"
           }
         },
+        "SNOWFLAKE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snowflake"
+          }
+        },
         "STRIPE": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -253,6 +295,12 @@
           "traits": {
             "smithy.api#enumValue": "vercel"
           }
+        },
+        "YOUTUBE_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "youtube-analytics"
+          }
         }
       },
       "traits": {}
@@ -272,7 +320,7 @@
           "target": "com.posthog.integrations#IntegrationsListRequestKind",
           "traits": {
             "smithy.api#httpQuery": "kind",
-            "smithy.api#documentation": "* `anthropic` - Anthropic\n* `apns` - Apple Push\n* `aws-s3` - Aws S3\n* `azure-blob` - Azure Blob\n* `bing-ads` - Bing Ads\n* `clickup` - Clickup\n* `customerio-app` - Customerio App\n* `customerio-track` - Customerio Track\n* `customerio-webhook` - Customerio Webhook\n* `databricks` - Databricks\n* `email` - Email\n* `firebase` - Firebase\n* `github` - Github\n* `gitlab` - Gitlab\n* `google-ads` - Google Ads\n* `google-analytics` - Google Analytics\n* `google-cloud-service-account` - Google Cloud Service Account\n* `google-cloud-storage` - Google Cloud Storage\n* `google-pubsub` - Google Pubsub\n* `google-search-console` - Google Search Console\n* `google-sheets` - Google Sheets\n* `hubspot` - Hubspot\n* `intercom` - Intercom\n* `jira` - Jira\n* `linear` - Linear\n* `linkedin-ads` - Linkedin Ads\n* `meta-ads` - Meta Ads\n* `pinterest-ads` - Pinterest Ads\n* `postgresql` - Postgresql\n* `reddit-ads` - Reddit Ads\n* `s3-compatible` - S3 Compatible\n* `salesforce` - Salesforce\n* `slack` - Slack\n* `slack-posthog-code` - Slack Posthog Code\n* `snapchat` - Snapchat\n* `stripe` - Stripe\n* `tiktok-ads` - Tiktok Ads\n* `twilio` - Twilio\n* `vercel` - Vercel"
+            "smithy.api#documentation": "* `anthropic` - Anthropic\n* `apns` - Apple Push\n* `aws-redshift` - Aws Redshift\n* `aws-s3` - Aws S3\n* `azure-blob` - Azure Blob\n* `bing-ads` - Bing Ads\n* `clickup` - Clickup\n* `customerio-app` - Customerio App\n* `customerio-track` - Customerio Track\n* `customerio-webhook` - Customerio Webhook\n* `databricks` - Databricks\n* `email` - Email\n* `firebase` - Firebase\n* `github` - Github\n* `gitlab` - Gitlab\n* `google-ads` - Google Ads\n* `google-analytics` - Google Analytics\n* `google-calendar` - Google Calendar\n* `google-cloud-service-account` - Google Cloud Service Account\n* `google-cloud-storage` - Google Cloud Storage\n* `google-pubsub` - Google Pubsub\n* `google-search-console` - Google Search Console\n* `google-sheets` - Google Sheets\n* `hubspot` - Hubspot\n* `instagram` - Instagram\n* `intercom` - Intercom\n* `jira` - Jira\n* `linear` - Linear\n* `linkedin-ads` - Linkedin Ads\n* `meta-ads` - Meta Ads\n* `pardot` - Pardot\n* `pinterest-ads` - Pinterest Ads\n* `postgresql` - Postgresql\n* `posthog` - Posthog\n* `reddit-ads` - Reddit Ads\n* `resend` - Resend\n* `s3-compatible` - S3 Compatible\n* `salesforce` - Salesforce\n* `slack` - Slack\n* `slack-posthog-code` - Slack Posthog Code\n* `snapchat` - Snapchat\n* `snowflake` - Snowflake\n* `stripe` - Stripe\n* `tiktok-ads` - Tiktok Ads\n* `twilio` - Twilio\n* `vercel` - Vercel\n* `youtube-analytics` - Youtube Analytics"
           }
         },
         "limit": {
@@ -344,6 +392,20 @@
         },
         "display_name": {
           "target": "smithy.api#String"
+        },
+        "installation_shared": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "GitHub only, null otherwise. Whether another project's GitHub integration references the same App installation. When false, disconnecting this integration also uninstalls the GitHub App from the connected account or organization and removes personal GitHub connections that share it.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "installation_status": {
+          "target": "com.posthog.integrations#InstallationStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {
@@ -363,6 +425,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "apns"
+          }
+        },
+        "AWS_REDSHIFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws-redshift"
           }
         },
         "AWS_S3": {
@@ -449,6 +517,12 @@
             "smithy.api#enumValue": "google-analytics"
           }
         },
+        "GOOGLE_CALENDAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google-calendar"
+          }
+        },
         "GOOGLE_CLOUD_SERVICE_ACCOUNT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -485,6 +559,12 @@
             "smithy.api#enumValue": "hubspot"
           }
         },
+        "INSTAGRAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "instagram"
+          }
+        },
         "INTERCOM": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -515,6 +595,12 @@
             "smithy.api#enumValue": "meta-ads"
           }
         },
+        "PARDOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pardot"
+          }
+        },
         "PINTEREST_ADS": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -527,10 +613,22 @@
             "smithy.api#enumValue": "postgresql"
           }
         },
+        "POSTHOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "posthog"
+          }
+        },
         "REDDIT_ADS": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "reddit-ads"
+          }
+        },
+        "RESEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resend"
           }
         },
         "S3_COMPATIBLE": {
@@ -563,6 +661,12 @@
             "smithy.api#enumValue": "snapchat"
           }
         },
+        "SNOWFLAKE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snowflake"
+          }
+        },
         "STRIPE": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -586,10 +690,16 @@
           "traits": {
             "smithy.api#enumValue": "vercel"
           }
+        },
+        "YOUTUBE_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "youtube-analytics"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `anthropic` - Anthropic\n* `apns` - Apple Push\n* `aws-s3` - Aws S3\n* `azure-blob` - Azure Blob\n* `bing-ads` - Bing Ads\n* `clickup` - Clickup\n* `customerio-app` - Customerio App\n* `customerio-track` - Customerio Track\n* `customerio-webhook` - Customerio Webhook\n* `databricks` - Databricks\n* `email` - Email\n* `firebase` - Firebase\n* `github` - Github\n* `gitlab` - Gitlab\n* `google-ads` - Google Ads\n* `google-analytics` - Google Analytics\n* `google-cloud-service-account` - Google Cloud Service Account\n* `google-cloud-storage` - Google Cloud Storage\n* `google-pubsub` - Google Pubsub\n* `google-search-console` - Google Search Console\n* `google-sheets` - Google Sheets\n* `hubspot` - Hubspot\n* `intercom` - Intercom\n* `jira` - Jira\n* `linear` - Linear\n* `linkedin-ads` - Linkedin Ads\n* `meta-ads` - Meta Ads\n* `pinterest-ads` - Pinterest Ads\n* `postgresql` - Postgresql\n* `reddit-ads` - Reddit Ads\n* `s3-compatible` - S3 Compatible\n* `salesforce` - Salesforce\n* `slack` - Slack\n* `slack-posthog-code` - Slack Posthog Code\n* `snapchat` - Snapchat\n* `stripe` - Stripe\n* `tiktok-ads` - Tiktok Ads\n* `twilio` - Twilio\n* `vercel` - Vercel"
+        "smithy.api#documentation": "* `anthropic` - Anthropic\n* `apns` - Apple Push\n* `aws-redshift` - Aws Redshift\n* `aws-s3` - Aws S3\n* `azure-blob` - Azure Blob\n* `bing-ads` - Bing Ads\n* `clickup` - Clickup\n* `customerio-app` - Customerio App\n* `customerio-track` - Customerio Track\n* `customerio-webhook` - Customerio Webhook\n* `databricks` - Databricks\n* `email` - Email\n* `firebase` - Firebase\n* `github` - Github\n* `gitlab` - Gitlab\n* `google-ads` - Google Ads\n* `google-analytics` - Google Analytics\n* `google-calendar` - Google Calendar\n* `google-cloud-service-account` - Google Cloud Service Account\n* `google-cloud-storage` - Google Cloud Storage\n* `google-pubsub` - Google Pubsub\n* `google-search-console` - Google Search Console\n* `google-sheets` - Google Sheets\n* `hubspot` - Hubspot\n* `instagram` - Instagram\n* `intercom` - Intercom\n* `jira` - Jira\n* `linear` - Linear\n* `linkedin-ads` - Linkedin Ads\n* `meta-ads` - Meta Ads\n* `pardot` - Pardot\n* `pinterest-ads` - Pinterest Ads\n* `postgresql` - Postgresql\n* `posthog` - Posthog\n* `reddit-ads` - Reddit Ads\n* `resend` - Resend\n* `s3-compatible` - S3 Compatible\n* `salesforce` - Salesforce\n* `slack` - Slack\n* `slack-posthog-code` - Slack Posthog Code\n* `snapchat` - Snapchat\n* `snowflake` - Snowflake\n* `stripe` - Stripe\n* `tiktok-ads` - Tiktok Ads\n* `twilio` - Twilio\n* `vercel` - Vercel\n* `youtube-analytics` - Youtube Analytics"
       }
     },
     "com.posthog.integrations#UserBasic": {
@@ -692,6 +802,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -700,7 +816,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.integrations#BlankEnum": {
@@ -726,6 +842,26 @@
         }
       },
       "traits": {}
+    },
+    "com.posthog.integrations#InstallationStatusEnum": {
+      "type": "enum",
+      "members": {
+        "CONNECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connected"
+          }
+        },
+        "UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unavailable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `connected` - connected\n* `unavailable` - unavailable"
+      }
     },
     "com.posthog.integrations#PaginatedIntegrationConfigListResultsList": {
       "type": "list",
@@ -1606,6 +1742,12 @@
           "traits": {
             "smithy.api#documentation": "Whether more repositories are available beyond this page."
           }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of repositories matching the search query, across all pages."
+          }
         }
       },
       "traits": {}
@@ -1614,13 +1756,58 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Integer"
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "GitHub repository numeric identifier."
+          }
         },
         "name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Repository short name (without the owner prefix)."
+          }
         },
         "full_name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified repository name as 'owner/repo'."
+          }
+        },
+        "private": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the repository is private."
+          }
+        },
+        "default_branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The repository's default branch (e.g. 'main')."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Primary programming language GitHub detected for the repository."
+          }
+        },
+        "pushed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 timestamp of the most recent push, useful for sorting by recent activity."
+          }
+        },
+        "archived": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the repository is archived."
+          }
+        },
+        "can_push": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the PostHog GitHub App has write access — required to open pull requests."
+          }
         }
       },
       "traits": {}
@@ -1690,6 +1877,12 @@
           "target": "com.posthog.integrations#GitHubReposRefreshResponseRepositoriesList",
           "traits": {
             "smithy.api#documentation": "The refreshed repository cache."
+          }
+        },
+        "installation_status": {
+          "target": "com.posthog.integrations#InstallationStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "`unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one.\n\n* `connected` - connected\n* `unavailable` - unavailable"
           }
         }
       },
@@ -1939,86 +2132,6 @@
           "uri": "/api/projects/{project_id}/integrations/{id}/google_conversion_actions/",
           "code": 200
         }
-      }
-    },
-    "com.posthog.integrations#IntegrationsGoogleSearchConsoleSitesRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A unique integer value identifying this integration."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.integrations#GoogleSearchConsoleSitesResponse": {
-      "type": "structure",
-      "members": {
-        "sites": {
-          "target": "com.posthog.integrations#GoogleSearchConsoleSitesResponseSitesList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.integrations#GoogleSearchConsoleSite": {
-      "type": "structure",
-      "members": {
-        "siteUrl": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Site URL in canonical Google format — `https://example.com/` for URL-prefix properties (trailing slash mandatory) or `sc-domain:example.com` for Domain properties.",
-            "smithy.api#required": {}
-          }
-        },
-        "permissionLevel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The connected user's permission level for this site. One of `siteOwner`, `siteFullUser`, `siteRestrictedUser`, `siteUnverifiedUser`.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.integrations#GoogleSearchConsoleSitesResponseSitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.integrations#GoogleSearchConsoleSite"
-      },
-      "traits": {}
-    },
-    "com.posthog.integrations#IntegrationsGoogleSearchConsoleSitesRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.integrations#IntegrationsGoogleSearchConsoleSitesRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.integrations#GoogleSearchConsoleSitesResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/integrations/{id}/google_search_console_sites/",
-          "code": 200
-        },
-        "smithy.api#documentation": "List the Search Console properties the connected Google account has access to."
       }
     },
     "com.posthog.integrations#IntegrationsJiraProjectsRetrieveRequest": {
@@ -2482,6 +2595,105 @@
         }
       }
     },
+    "com.posthog.integrations#IntegrationsGithubAvailableInstallationsRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.integrations#GitHubAvailableInstallationsResponse": {
+      "type": "structure",
+      "members": {
+        "installations": {
+          "target": "com.posthog.integrations#GitHubAvailableInstallationsResponseInstallationsList",
+          "traits": {
+            "smithy.api#documentation": "GitHub installations available to link to this project: the organization's existing installations plus any the user's personal GitHub link can see but that aren't linked to any project yet.",
+            "smithy.api#required": {}
+          }
+        },
+        "personal_github_connected": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the requesting user has a personal GitHub account linked (via Linked Accounts). Used to prompt for that link when it would surface more installations to adopt.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.integrations#GitHubAvailableInstallation": {
+      "type": "structure",
+      "members": {
+        "installation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub installation ID to pass to github/link_existing when linking this installation.",
+            "smithy.api#required": {}
+          }
+        },
+        "account_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub account (organization or user) the installation belongs to, for display in the picker.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "account_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub account type, e.g. 'Organization' or 'User'.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "source_team_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A project in the organization that already has this installation linked. Null when the installation isn't linked to any project yet — it was found via the user's personal GitHub link and can be adopted by linking it here.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.integrations#GitHubAvailableInstallationsResponseInstallationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.integrations#GitHubAvailableInstallation"
+      },
+      "traits": {
+        "smithy.api#documentation": "GitHub installations available to link to this project: the organization's existing installations plus any the user's personal GitHub link can see but that aren't linked to any project yet."
+      }
+    },
+    "com.posthog.integrations#IntegrationsGithubAvailableInstallationsRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.integrations#IntegrationsGithubAvailableInstallationsRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.integrations#GitHubAvailableInstallationsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/integrations/github/available_installations/",
+          "code": 200
+        },
+        "smithy.api#documentation": "List GitHub installations this project can link.\n\nA GitHub App installs once per organization, so a second project links an existing\ninstallation rather than reinstalling. This backs the picker: when more than one option\nexists, the client passes the chosen installation_id to github/link_existing. The list also\nincludes installations the user's personal GitHub link can see but that aren't linked to any\nproject yet (``source_team_id: null``) — orphan installations approved on GitHub outside\nPostHog's callback, which ``github/link_existing`` can adopt."
+      }
+    },
     "com.posthog.integrations#IntegrationsGithubLinkExistingCreateRequest": {
       "type": "structure",
       "members": {
@@ -2620,7 +2832,7 @@
         "next": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Relative URL to redirect to after GitHub setup completes (e.g. account-connected for PostHog Code)."
+            "smithy.api#documentation": "Relative URL to redirect to after GitHub setup completes (e.g. account-connected for PostHog Desktop)."
           }
         },
         "installation_id": {
@@ -2665,7 +2877,7 @@
         "kind": {
           "target": "com.posthog.integrations#IntegrationKindEnum",
           "traits": {
-            "smithy.api#documentation": "The kind of integration the member is requesting be connected (e.g. 'slack', 'github').\n\n* `anthropic` - Anthropic\n* `apns` - Apple Push\n* `aws-s3` - Aws S3\n* `azure-blob` - Azure Blob\n* `bing-ads` - Bing Ads\n* `clickup` - Clickup\n* `customerio-app` - Customerio App\n* `customerio-track` - Customerio Track\n* `customerio-webhook` - Customerio Webhook\n* `databricks` - Databricks\n* `email` - Email\n* `firebase` - Firebase\n* `github` - Github\n* `gitlab` - Gitlab\n* `google-ads` - Google Ads\n* `google-analytics` - Google Analytics\n* `google-cloud-service-account` - Google Cloud Service Account\n* `google-cloud-storage` - Google Cloud Storage\n* `google-pubsub` - Google Pubsub\n* `google-search-console` - Google Search Console\n* `google-sheets` - Google Sheets\n* `hubspot` - Hubspot\n* `intercom` - Intercom\n* `jira` - Jira\n* `linear` - Linear\n* `linkedin-ads` - Linkedin Ads\n* `meta-ads` - Meta Ads\n* `pinterest-ads` - Pinterest Ads\n* `postgresql` - Postgresql\n* `reddit-ads` - Reddit Ads\n* `s3-compatible` - S3 Compatible\n* `salesforce` - Salesforce\n* `slack` - Slack\n* `slack-posthog-code` - Slack Posthog Code\n* `snapchat` - Snapchat\n* `stripe` - Stripe\n* `tiktok-ads` - Tiktok Ads\n* `twilio` - Twilio\n* `vercel` - Vercel",
+            "smithy.api#documentation": "The kind of integration the member is requesting be connected (e.g. 'slack', 'github').\n\n* `anthropic` - Anthropic\n* `apns` - Apple Push\n* `aws-redshift` - Aws Redshift\n* `aws-s3` - Aws S3\n* `azure-blob` - Azure Blob\n* `bing-ads` - Bing Ads\n* `clickup` - Clickup\n* `customerio-app` - Customerio App\n* `customerio-track` - Customerio Track\n* `customerio-webhook` - Customerio Webhook\n* `databricks` - Databricks\n* `email` - Email\n* `firebase` - Firebase\n* `github` - Github\n* `gitlab` - Gitlab\n* `google-ads` - Google Ads\n* `google-analytics` - Google Analytics\n* `google-calendar` - Google Calendar\n* `google-cloud-service-account` - Google Cloud Service Account\n* `google-cloud-storage` - Google Cloud Storage\n* `google-pubsub` - Google Pubsub\n* `google-search-console` - Google Search Console\n* `google-sheets` - Google Sheets\n* `hubspot` - Hubspot\n* `instagram` - Instagram\n* `intercom` - Intercom\n* `jira` - Jira\n* `linear` - Linear\n* `linkedin-ads` - Linkedin Ads\n* `meta-ads` - Meta Ads\n* `pardot` - Pardot\n* `pinterest-ads` - Pinterest Ads\n* `postgresql` - Postgresql\n* `posthog` - Posthog\n* `reddit-ads` - Reddit Ads\n* `resend` - Resend\n* `s3-compatible` - S3 Compatible\n* `salesforce` - Salesforce\n* `slack` - Slack\n* `slack-posthog-code` - Slack Posthog Code\n* `snapchat` - Snapchat\n* `snowflake` - Snowflake\n* `stripe` - Stripe\n* `tiktok-ads` - Tiktok Ads\n* `twilio` - Twilio\n* `vercel` - Vercel\n* `youtube-analytics` - Youtube Analytics",
             "smithy.api#required": {}
           }
         },
@@ -2812,9 +3024,6 @@
           "target": "com.posthog.integrations#IntegrationsGoogleConversionActionsRetrieve"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsGoogleSearchConsoleSitesRetrieve"
-        },
-        {
           "target": "com.posthog.integrations#IntegrationsJiraProjectsRetrieve"
         },
         {
@@ -2837,6 +3046,9 @@
         },
         {
           "target": "com.posthog.integrations#IntegrationsDomainConnectCheckRetrieve"
+        },
+        {
+          "target": "com.posthog.integrations#IntegrationsGithubAvailableInstallationsRetrieve"
         },
         {
           "target": "com.posthog.integrations#IntegrationsGithubLinkExistingCreate"

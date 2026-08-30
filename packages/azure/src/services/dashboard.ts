@@ -1356,7 +1356,8 @@ export const ManagedGrafanaPropertiesUpdateParametersInputApiKey =
 
 /** Whether a Grafana instance uses deterministic outbound IPs. */
 export type ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP =
-  "Disabled" | "Enabled";
+  | "Disabled"
+  | "Enabled";
 export const ManagedGrafanaPropertiesUpdateParametersInputDeterministicOutboundIP =
   /*@__PURE__*/ S.String;
 

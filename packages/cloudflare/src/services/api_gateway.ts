@@ -792,7 +792,9 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSche
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block";
+  | "none"
+  | "log"
+  | "block";
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -1636,7 +1638,9 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
 
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block";
+  | "none"
+  | "log"
+  | "block";
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -2316,7 +2320,8 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConfigurationRequest>;
 
 export type ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
-  "header" | "cookie";
+  | "header"
+  | "cookie";
 export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
@@ -2734,7 +2739,9 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSch
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
 
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block";
+  | "none"
+  | "log"
+  | "block";
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -3599,7 +3606,9 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
 
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block";
+  | "none"
+  | "log"
+  | "block";
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4067,7 +4076,9 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
 
 export type UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block";
+  | "none"
+  | "log"
+  | "block";
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4370,7 +4381,9 @@ export const PatchLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchLabelUserResponse>;
 
 export type OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction =
-  "log" | "block" | "none";
+  | "log"
+  | "block"
+  | "none";
 export const OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4445,12 +4458,15 @@ export const PatchOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchOperationSchemaValidationResponse>;
 
 export type SettingsSchemaValidationEditRequestValidationDefaultMitigationAction =
-  "none" | "log" | "block";
+  | "none"
+  | "log"
+  | "block";
 export const SettingsSchemaValidationEditRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
 export type SettingsSchemaValidationEditRequestValidationOverrideMitigationAction =
-  "none" | "disable_override";
+  | "none"
+  | "disable_override";
 export const SettingsSchemaValidationEditRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4558,7 +4574,8 @@ export const PatchUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchUserSchemaResponse>;
 
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
-  "header" | "cookie";
+  | "header"
+  | "cookie";
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
@@ -4650,7 +4667,8 @@ export const PutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigurationRequest>;
 
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
-  "header" | "cookie";
+  | "header"
+  | "cookie";
 export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
@@ -5050,12 +5068,15 @@ export const PutOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutOperationSchemaValidationResponse>;
 
 export type SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction =
-  "none" | "log" | "block";
+  | "none"
+  | "log"
+  | "block";
 export const SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
 export type SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction =
-  "none" | "disable_override";
+  | "none"
+  | "disable_override";
 export const SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 

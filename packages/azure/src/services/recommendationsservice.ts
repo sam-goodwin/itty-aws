@@ -2089,7 +2089,10 @@ export const ServiceEndpointsCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

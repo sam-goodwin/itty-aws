@@ -1147,10 +1147,10 @@ export const CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap =
   ) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap>;
 
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem =
-    | "critical-resource"
-    | "internet-exposed"
-    | "lateral-movement"
-    | "sensitive-data";
+  | "critical-resource"
+  | "internet-exposed"
+  | "lateral-movement"
+  | "sensitive-data";
 export const CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem =
   /*@__PURE__*/ S.String;
 
@@ -1748,7 +1748,11 @@ export const OrgHook = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the value for the property */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValueType =
-  "string" | "single_select" | "multi_select" | "true_false" | "url";
+  | "string"
+  | "single_select"
+  | "multi_select"
+  | "true_false"
+  | "url";
 export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValueType =
   /*@__PURE__*/ S.String;
 
@@ -1761,8 +1765,8 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest
 
 /** Default value of the property */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue =
-    | string
-    | CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List;
+  | string
+  | CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List;
 export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue>;
 
@@ -1776,7 +1780,8 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest
 
 /** Who can edit the values of the property */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy =
-  "org_actors" | "org_and_repo_actors";
+  | "org_actors"
+  | "org_and_repo_actors";
 export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy =
   /*@__PURE__*/ S.String;
 
@@ -2534,10 +2539,10 @@ export interface OrganizationFull {
   avatar_url: string;
   description: string | null;
   name?: string;
-  company?: string;
-  blog?: string;
-  location?: string;
-  email?: string;
+  company?: string | null;
+  blog?: string | null;
+  location?: string | null;
+  email?: string | null;
   twitter_username?: string | null;
   is_verified?: boolean;
   has_organization_projects: boolean;
@@ -2615,10 +2620,10 @@ export const OrganizationFull = /*@__PURE__*/ S.suspend(() =>
     avatar_url: S.String,
     description: S.NullOr(S.String),
     name: S.optional(S.String),
-    company: S.optional(S.String),
-    blog: S.optional(S.String),
-    location: S.optional(S.String),
-    email: S.optional(S.String),
+    company: S.optional(S.NullOr(S.String)),
+    blog: S.optional(S.NullOr(S.String)),
+    location: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
     twitter_username: S.optional(S.NullOr(S.String)),
     is_verified: S.optional(S.Boolean),
     has_organization_projects: S.Boolean,
@@ -3043,13 +3048,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -7914,7 +7921,9 @@ export const customPropertiesForReposCreateOrUpdateOrganizationDefinition: API.O
 }));
 
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsError =
-  Forbidden | NotFound | GithubOpError;
+  | Forbidden
+  | NotFound
+  | GithubOpError;
 /** Create or update custom properties for an organization Creates new or updates existing custom properties defined for an organization in a batch. If the property already exists, the existing property will be replaced with the new values. Missing optional values will fall back to default values, previous values will be overwritten. E.g. if a property exists with `values_editable_by: org_and_repo_actors` and it's updated without specifying `values_editable_by`, it will be updated to default value `org_actors`. To use this endpoint, the authenticated user must be one of: - An administrator for the organization. - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization. */
 export const customPropertiesForReposCreateOrUpdateOrganizationDefinitions: API.OperationMethod<
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest,

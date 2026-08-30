@@ -30,6 +30,17 @@ import { awsSpec } from "./spec.ts";
 
 const AWS_MODELS_PATH = "specs/spec-mirror-aws/specs";
 
+/**
+ * Services skipped because the compiler has no protocol for them.
+ *
+ * `smithy.protocols#rpcv2Cbor` is a CBOR-framed RPC protocol with no
+ * implementation in `@distilled.cloud/core`. Sixteen AWS services declare it,
+ * but fifteen also declare `restJson1`/`awsJson1_x` and are compiled through
+ * that instead — this is the only CBOR-only one. Skipping the single service
+ * beats failing the run for the other 431.
+ */
+const UNSUPPORTED_SERVICES = new Set(["partnercentral-revenue-measurement"]);
+
 /** The service shape and its sdkId — every AWS model has exactly one. */
 const serviceOf = (model: any): ServiceShape => {
   const shape = Object.values(model.shapes ?? {}).find(
@@ -55,6 +66,28 @@ runGeneratorCli({
   // `spec` below, not the RFC-6902 chain the other packages use.
   patchesDir: false,
 
+  // Some models ship shapes from a namespace other than the service's own —
+  // leftovers from an internal service that shares the file. Nothing reaches
+  // them from the service shape (verified across every model: 4 files carry
+  // such shapes, 0 of them reachable), but the compiler emits by SHORT name,
+  // so healthlake's second namespace redeclares ListTagsForResource,
+  // TagResource and UntagResource and the module stops parsing.
+  transformModel: (model) => {
+    const service = Object.keys(model.shapes).find(
+      (name: string) => model.shapes[name]?.type === "service",
+    );
+    if (service === undefined) return;
+    const namespace = `${service.split("#")[0]}#`;
+    const foreign = Object.keys(model.shapes).filter(
+      (name: string) =>
+        !name.startsWith(namespace) && !name.startsWith("smithy."),
+    );
+    for (const name of foreign) delete model.shapes[name];
+    if (foreign.length > 0) {
+      return `dropped ${foreign.length} shape(s) outside ${namespace.slice(0, -1)}`;
+    }
+  },
+
   // Amazon's repo nests each model under
   // `models/<service>/service/<version>/<service>-<version>.json`.
   discoverModels: ({ smithyDir }) =>
@@ -65,6 +98,7 @@ runGeneratorCli({
       const services = yield* fs.readDirectory(modelsRoot);
       const found: Array<{ file: string; dir: string }> = [];
       for (const service of services) {
+        if (UNSUPPORTED_SERVICES.has(service)) continue;
         const base = p.join(modelsRoot, service, "service");
         const versions = yield* fs
           .readDirectory(base)

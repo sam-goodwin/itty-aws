@@ -75,7 +75,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -84,6 +84,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -119,6 +120,32 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
+/** * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
+export type ChangeRequestStateEnum =
+  | "pending"
+  | "approved"
+  | "applied"
+  | "rejected"
+  | "expired"
+  | "failed";
+export const ChangeRequestStateEnum = /*@__PURE__*/ S.String;
+
+/** Minimal read-only ChangeRequest shape for embedding on resources gated by an approval, e.g. the scheduled change that carries it. Exposes just enough to show the approval state and link to the change request. */
+export interface ChangeRequestSummary {
+  /** ID of the approval change request. Use it to link to the change request in the UI. */
+  id: string;
+  /** Current approval state: 'pending' (awaiting approval), 'approved' (awaiting application), 'applied', 'rejected', 'expired', or 'failed'. * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
+  state: ChangeRequestStateEnum;
+}
+export const ChangeRequestSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    state: ChangeRequestStateEnum,
+  }),
+).annotate({
+  identifier: "ChangeRequestSummary",
+}) as any as S.Schema<ChangeRequestSummary>;
+
 export interface ScheduledChange {
   id: number;
   team_id: number;
@@ -145,6 +172,8 @@ export interface ScheduledChange {
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
   timezone: string | null;
+  /** Summary of the approval change request gating this scheduled change. Null when no approval policy applies. The change only applies at its scheduled time if the request is approved by then. */
+  change_request: ChangeRequestSummary | null;
 }
 export const ScheduledChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -167,6 +196,7 @@ export const ScheduledChange = /*@__PURE__*/ S.suspend(() =>
     last_executed_at: S.NullOr(S.String),
     end_date: S.optional(S.NullOr(S.String)),
     timezone: S.NullOr(S.String),
+    change_request: S.NullOr(ChangeRequestSummary),
   }),
 ).annotate({
   identifier: "ScheduledChange",

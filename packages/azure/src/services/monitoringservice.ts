@@ -2823,6 +2823,7 @@ export interface PipelineGroupsCreateOrUpdateRequest {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PipelineGroupPropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const PipelineGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2942,6 +2943,7 @@ export interface PipelineGroupsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PipelineGroupProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const PipelineGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
@@ -3043,6 +3045,7 @@ export interface PipelineGroupsGetResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PipelineGroupProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const PipelineGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3108,6 +3111,7 @@ export interface PipelineGroup {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PipelineGroupProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const PipelineGroup = /*@__PURE__*/ S.suspend(() =>
@@ -3324,6 +3328,7 @@ export interface PipelineGroupsUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PipelineGroupProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const PipelineGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>

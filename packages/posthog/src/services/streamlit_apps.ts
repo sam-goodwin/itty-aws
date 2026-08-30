@@ -170,9 +170,34 @@ export const StreamlitAppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamlitAppsCreateRequest",
 }) as any as S.Schema<StreamlitAppsCreateRequest>;
 
+export interface AppSandboxContract {
+  status: string;
+  restart_count: number;
+  last_error: string;
+  started_at: string | null;
+  last_activity_at: string | null;
+  version_number: number | null;
+}
+export const AppSandboxContract = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.String,
+    restart_count: S.Number,
+    last_error: S.String,
+    started_at: S.NullOr(S.String),
+    last_activity_at: S.NullOr(S.String),
+    version_number: S.NullOr(S.Number),
+  }),
+).annotate({
+  identifier: "AppSandboxContract",
+}) as any as S.Schema<AppSandboxContract>;
+
 export interface AppContract {
   /** User who created this app. */
   created_by?: StreamlitAppUserInfo | null;
+  /** Currently active version, or null if none uploaded yet. */
+  active_version?: AppVersionContract | null;
+  /** Current sandbox state, or null if the app has never started. */
+  sandbox?: AppSandboxContract | null;
   id: string;
   short_id: string;
   name: string;
@@ -186,6 +211,8 @@ export interface AppContract {
 export const AppContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_by: S.optional(S.NullOr(StreamlitAppUserInfo)),
+    active_version: S.optional(S.NullOr(AppVersionContract)),
+    sandbox: S.optional(S.NullOr(AppSandboxContract)),
     id: S.String,
     short_id: S.String,
     name: S.String,
@@ -197,6 +224,30 @@ export const AppContract = /*@__PURE__*/ S.suspend(() =>
     updated_at: S.String,
   }),
 ).annotate({ identifier: "AppContract" }) as any as S.Schema<AppContract>;
+
+export interface StreamlitAppsCreateVersionFromSourceCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** Full Python source for the Streamlit app's root app.py file, as free text (max 1 MB). Becomes a new version and is set as the active version. */
+  source: string;
+}
+export const StreamlitAppsCreateVersionFromSourceCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+      source: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/streamlit_apps/{short_id}/create_version_from_source/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "StreamlitAppsCreateVersionFromSourceCreateRequest",
+  }) as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequest>;
 
 export interface StreamlitAppsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -249,27 +300,58 @@ export const StreamlitAppsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamlitAppsListRequest",
 }) as any as S.Schema<StreamlitAppsListRequest>;
 
-export type PaginatedAppContractListResultsList = Array<AppContract>;
-export const PaginatedAppContractListResultsList = /*@__PURE__*/ S.Array(
-  AppContract,
-) as any as S.Schema<PaginatedAppContractListResultsList>;
+export interface AppSummaryContract {
+  /** User who created this app. */
+  created_by?: StreamlitAppUserInfo | null;
+  id: string;
+  short_id: string;
+  name: string;
+  description: string;
+  cpu_cores: number;
+  memory_gb: number;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+export const AppSummaryContract = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created_by: S.optional(S.NullOr(StreamlitAppUserInfo)),
+    id: S.String,
+    short_id: S.String,
+    name: S.String,
+    description: S.String,
+    cpu_cores: S.Number,
+    memory_gb: S.Number,
+    status: S.String,
+    created_at: S.String,
+    updated_at: S.String,
+  }),
+).annotate({
+  identifier: "AppSummaryContract",
+}) as any as S.Schema<AppSummaryContract>;
 
-export interface PaginatedAppContractList {
+export type PaginatedAppSummaryContractListResultsList =
+  Array<AppSummaryContract>;
+export const PaginatedAppSummaryContractListResultsList = /*@__PURE__*/ S.Array(
+  AppSummaryContract,
+) as any as S.Schema<PaginatedAppSummaryContractListResultsList>;
+
+export interface PaginatedAppSummaryContractList {
   count: number;
   next?: string | null;
   previous?: string | null;
-  results: PaginatedAppContractListResultsList;
+  results: PaginatedAppSummaryContractListResultsList;
 }
-export const PaginatedAppContractList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedAppSummaryContractList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedAppContractListResultsList,
+    results: PaginatedAppSummaryContractListResultsList,
   }),
 ).annotate({
-  identifier: "PaginatedAppContractList",
-}) as any as S.Schema<PaginatedAppContractList>;
+  identifier: "PaginatedAppSummaryContractList",
+}) as any as S.Schema<PaginatedAppSummaryContractList>;
 
 export interface StreamlitAppsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -577,6 +659,21 @@ export const streamlitAppsCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type StreamlitAppsCreateVersionFromSourceCreateError = PosthogOpError;
+/** Create an app version from source code */
+export const streamlitAppsCreateVersionFromSourceCreate: API.OperationMethod<
+  StreamlitAppsCreateVersionFromSourceCreateRequest,
+  AppVersionContract,
+  StreamlitAppsCreateVersionFromSourceCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StreamlitAppsCreateVersionFromSourceCreateRequest,
+  output: AppVersionContract,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type StreamlitAppsDestroyError = PosthogOpError;
 /** Delete a streamlit app */
 export const streamlitAppsDestroy: API.OperationMethod<
@@ -596,12 +693,12 @@ export type StreamlitAppsListError = PosthogOpError;
 /** List streamlit apps */
 export const streamlitAppsList: API.OperationMethod<
   StreamlitAppsListRequest,
-  PaginatedAppContractList,
+  PaginatedAppSummaryContractList,
   StreamlitAppsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StreamlitAppsListRequest,
-  output: PaginatedAppContractList,
+  output: PaginatedAppSummaryContractList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

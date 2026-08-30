@@ -130,18 +130,18 @@ export const NotificationSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationSetting>;
 
 export interface UpdateNotificationSettingAccountsRequest {
-  /** Required. The specific fields that should be updated. The only editable field is notification_setting. */
-  updateMask?: string;
   /** Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. */
   name: string;
+  /** Required. The specific fields that should be updated. The only editable field is notification_setting. */
+  updateMask?: string;
   /** Request body */
   body?: NotificationSetting;
 }
 export const UpdateNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(NotificationSetting.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

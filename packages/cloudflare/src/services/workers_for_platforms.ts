@@ -264,7 +264,10 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretText 
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretText>;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk";
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk";
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
@@ -274,14 +277,14 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyTy
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -428,14 +431,14 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyType =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -998,7 +1001,8 @@ export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestin
   ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  | "authenticated"
+  | "accept";
 export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1366,9 +1370,9 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemH
   }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost>;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem =
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([["region"], ["hostname"], ["host"]]),
@@ -2271,7 +2275,9 @@ export const DispatchNamespacesScriptsBindingsGetResultItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  | "eu"
+  | "fedramp"
+  | "fedramp-high";
 export const DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3610,7 +3616,9 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketTyp
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  | "eu"
+  | "fedramp"
+  | "fedramp-high";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3878,7 +3886,10 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk";
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
@@ -3888,14 +3899,14 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyTy
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -4529,7 +4540,8 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDest
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  | "authenticated"
+  | "accept";
 export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -4732,9 +4744,9 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetIte
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem =
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([["region"], ["hostname"], ["host"]]),
@@ -5794,7 +5806,9 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketTy
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  | "eu"
+  | "fedramp"
+  | "fedramp-high";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -6062,7 +6076,10 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk";
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
@@ -6072,14 +6089,14 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyT
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -6673,7 +6690,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDes
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  | "authenticated"
+  | "accept";
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -6862,9 +6880,9 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetIt
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem =
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([["region"], ["hostname"], ["host"]]),
@@ -8384,7 +8402,8 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinati
   ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  | "authenticated"
+  | "accept";
 export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -9072,7 +9091,8 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDe
   ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  | "authenticated"
+  | "accept";
 export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -9150,7 +9170,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS";
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status =
   /*@__PURE__*/ S.String;
 
@@ -9180,7 +9202,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase0>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS";
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status =
   /*@__PURE__*/ S.String;
 
@@ -9210,7 +9234,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase1 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase1>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS";
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status =
   /*@__PURE__*/ S.String;
 
@@ -9240,7 +9266,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase2 =
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase2>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS";
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status =
   /*@__PURE__*/ S.String;
 
@@ -9275,7 +9303,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS";
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status =
   /*@__PURE__*/ S.String;
 
@@ -9313,7 +9343,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS";
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status =
   /*@__PURE__*/ S.String;
 
@@ -9351,7 +9383,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode =
   /*@__PURE__*/ S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS";
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status =
   /*@__PURE__*/ S.String;
 
@@ -9404,9 +9438,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetI
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem =
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
-    | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
+  | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([["region"], ["hostname"], ["host"]]),
@@ -9420,7 +9454,9 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetL
   ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status =
-  "SUCCESS" | "UNSUPPORTED_APPLICATION" | "INSUFFICIENT_INVOCATIONS";
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS";
 export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status =
   /*@__PURE__*/ S.String;
 

@@ -715,7 +715,9 @@ export const CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  | "none"
+  | "temporary"
+  | "sticky";
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -1192,7 +1194,9 @@ export const CreateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  | "none"
+  | "temporary"
+  | "sticky";
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -2798,7 +2802,9 @@ export const GetResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  | "none"
+  | "temporary"
+  | "sticky";
 export const GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -4144,7 +4150,9 @@ export const ListResultItemRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  | "none"
+  | "temporary"
+  | "sticky";
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -5237,7 +5245,9 @@ export const EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  | "none"
+  | "temporary"
+  | "sticky";
 export const EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -5680,7 +5690,9 @@ export const EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  | "none"
+  | "temporary"
+  | "sticky";
 export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -6831,7 +6843,9 @@ export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  | "none"
+  | "temporary"
+  | "sticky";
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -7285,7 +7299,9 @@ export const UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky";
+  | "none"
+  | "temporary"
+  | "sticky";
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 

@@ -665,6 +665,7 @@ export const TestEnvPreference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TestEnvPreference>;
 export type ProcurementPortalPreferenceStatus =
   | "PENDING_VERIFICATION"
+  | "VALIDATED"
   | "TEST_INITIALIZED"
   | "TEST_INITIALIZATION_FAILED"
   | "TEST_FAILED"
@@ -1251,6 +1252,29 @@ export const PutProcurementPortalPreferenceResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PutProcurementPortalPreferenceResponse",
 }) as any as S.Schema<PutProcurementPortalPreferenceResponse>;
+export interface SendProcurementPortalValidationRequest {
+  ProcurementPortalPreferenceArn: string;
+  ClientToken?: string;
+}
+export const SendProcurementPortalValidationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ProcurementPortalPreferenceArn: S.String,
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "SendProcurementPortalValidationRequest",
+}) as any as S.Schema<SendProcurementPortalValidationRequest>;
+export interface SendProcurementPortalValidationResponse {
+  ProcurementPortalPreferenceArn: string;
+}
+export const SendProcurementPortalValidationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ ProcurementPortalPreferenceArn: S.String }),
+).annotate({
+  identifier: "SendProcurementPortalValidationResponse",
+}) as any as S.Schema<SendProcurementPortalValidationResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   ResourceTags: ResourceTag[];
@@ -1351,6 +1375,32 @@ export const UpdateProcurementPortalPreferenceStatusResponse =
   ).annotate({
     identifier: "UpdateProcurementPortalPreferenceStatusResponse",
   }) as any as S.Schema<UpdateProcurementPortalPreferenceStatusResponse>;
+export interface VerifyProcurementPortalValidationRequest {
+  ProcurementPortalPreferenceArn: string;
+  Code: string;
+  ClientToken?: string;
+}
+export const VerifyProcurementPortalValidationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ProcurementPortalPreferenceArn: S.String,
+      Code: S.String,
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "VerifyProcurementPortalValidationRequest",
+}) as any as S.Schema<VerifyProcurementPortalValidationRequest>;
+export interface VerifyProcurementPortalValidationResponse {
+  ProcurementPortalPreferenceArn: string;
+}
+export const VerifyProcurementPortalValidationResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ ProcurementPortalPreferenceArn: S.String }),
+  ).annotate({
+    identifier: "VerifyProcurementPortalValidationResponse",
+  }) as any as S.Schema<VerifyProcurementPortalValidationResponse>;
 export type ValidationExceptionReason =
   | "nonMemberPresent"
   | "maxAccountsExceeded"
@@ -1813,6 +1863,38 @@ export const putProcurementPortalPreference: API.OperationMethod<
   operationName: "PutProcurementPortalPreference",
 }));
 
+export type SendProcurementPortalValidationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * * **This feature API is subject to changing at any time. For more information, see the Amazon Web Services Service Terms (Betas and Previews).** *
+ *
+ * Sends a validation request for a procurement portal preference. This operation initiates the validation process by issuing a validation code that confirms ownership and connectivity of the configured procurement portal endpoint. Use `VerifyProcurementPortalValidation` to submit the received code and complete validation.
+ */
+export const sendProcurementPortalValidation: API.OperationMethod<
+  SendProcurementPortalValidationRequest,
+  SendProcurementPortalValidationResponse,
+  SendProcurementPortalValidationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SendProcurementPortalValidationRequest,
+  output: SendProcurementPortalValidationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SendProcurementPortalValidation",
+}));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1939,4 +2021,36 @@ export const updateProcurementPortalPreferenceStatus: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateProcurementPortalPreferenceStatus",
+}));
+
+export type VerifyProcurementPortalValidationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * * **This feature API is subject to changing at any time. For more information, see the Amazon Web Services Service Terms (Betas and Previews).** *
+ *
+ * Submits a validation code to complete the validation of a procurement portal preference. Use this operation after calling `SendProcurementPortalValidation` to confirm ownership and connectivity of the configured procurement portal endpoint.
+ */
+export const verifyProcurementPortalValidation: API.OperationMethod<
+  VerifyProcurementPortalValidationRequest,
+  VerifyProcurementPortalValidationResponse,
+  VerifyProcurementPortalValidationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: VerifyProcurementPortalValidationRequest,
+  output: VerifyProcurementPortalValidationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "VerifyProcurementPortalValidation",
 }));

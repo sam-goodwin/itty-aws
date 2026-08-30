@@ -1526,7 +1526,6 @@ export interface GetResponderGatewayResponse {
   tags?: { [key: string]: string | undefined };
   activeLinksCount?: number;
   totalLinksCount?: number;
-  inboundLinksCount?: number;
   linksRequestedCount?: number;
   gatewayType?: GatewayType;
   externalInboundEndpoint?: string;
@@ -1550,7 +1549,6 @@ export const GetResponderGatewayResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(TagsMap),
     activeLinksCount: S.optional(S.Number),
     totalLinksCount: S.optional(S.Number),
-    inboundLinksCount: S.optional(S.Number),
     linksRequestedCount: S.optional(S.Number),
     gatewayType: S.optional(GatewayType),
     externalInboundEndpoint: S.optional(S.String),

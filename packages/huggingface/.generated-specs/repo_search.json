@@ -1370,6 +1370,12 @@
             "smithy.api#enumValue": "comet"
           }
         },
+        "CORTIQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cortiq"
+          }
+        },
         "COSMOS": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1874,6 +1880,12 @@
             "smithy.api#enumValue": "matanyone"
           }
         },
+        "MEMRA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "memra"
+          }
+        },
         "MESH_ANYTHING": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1946,6 +1958,12 @@
             "smithy.api#enumValue": "mobilint"
           }
         },
+        "MONTREAL_FORCED_ALIGNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "montreal-forced-aligner"
+          }
+        },
         "MOSHI": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2006,6 +2024,12 @@
             "smithy.api#enumValue": "openasr"
           }
         },
+        "OPENDDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "opendde"
+          }
+        },
         "OPENPEERLLM": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2052,6 +2076,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "phantom-wan"
+          }
+        },
+        "PIPER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "piper"
           }
         },
         "POCKET_TTS": {
@@ -2142,6 +2172,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "robo-orchard-lab"
+          }
+        },
+        "ROUTEE_POWERTRAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "routee-powertrain"
           }
         },
         "RWKV": {
@@ -5131,6 +5167,12 @@
             "smithy.api#enumValue": "comet"
           }
         },
+        "CORTIQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cortiq"
+          }
+        },
         "COSMOS": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -5635,6 +5677,12 @@
             "smithy.api#enumValue": "matanyone"
           }
         },
+        "MEMRA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "memra"
+          }
+        },
         "MESH_ANYTHING": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -5707,6 +5755,12 @@
             "smithy.api#enumValue": "mobilint"
           }
         },
+        "MONTREAL_FORCED_ALIGNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "montreal-forced-aligner"
+          }
+        },
         "MOSHI": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -5767,6 +5821,12 @@
             "smithy.api#enumValue": "openasr"
           }
         },
+        "OPENDDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "opendde"
+          }
+        },
         "OPENPEERLLM": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -5813,6 +5873,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "phantom-wan"
+          }
+        },
+        "PIPER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "piper"
           }
         },
         "POCKET_TTS": {
@@ -5903,6 +5969,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "robo-orchard-lab"
+          }
+        },
+        "ROUTEE_POWERTRAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "routee-powertrain"
           }
         },
         "RWKV": {
@@ -8367,6 +8439,12 @@
             "smithy.api#enumValue": "comet"
           }
         },
+        "CORTIQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cortiq"
+          }
+        },
         "COSMOS": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -8871,6 +8949,12 @@
             "smithy.api#enumValue": "matanyone"
           }
         },
+        "MEMRA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "memra"
+          }
+        },
         "MESH_ANYTHING": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -8943,6 +9027,12 @@
             "smithy.api#enumValue": "mobilint"
           }
         },
+        "MONTREAL_FORCED_ALIGNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "montreal-forced-aligner"
+          }
+        },
         "MOSHI": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -9003,6 +9093,12 @@
             "smithy.api#enumValue": "openasr"
           }
         },
+        "OPENDDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "opendde"
+          }
+        },
         "OPENPEERLLM": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -9049,6 +9145,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "phantom-wan"
+          }
+        },
+        "PIPER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "piper"
           }
         },
         "POCKET_TTS": {
@@ -9139,6 +9241,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "robo-orchard-lab"
+          }
+        },
+        "ROUTEE_POWERTRAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "routee-powertrain"
           }
         },
         "RWKV": {

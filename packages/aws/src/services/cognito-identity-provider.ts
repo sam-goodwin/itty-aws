@@ -300,6 +300,12 @@ export class ScopeDoesNotExistException
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException
+  extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
+    "ServiceQuotaExceededException",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export class SoftwareTokenMFANotFoundException
   extends /*@__PURE__*/ S.TaggedError<SoftwareTokenMFANotFoundException>()(
     "SoftwareTokenMFANotFoundException",
@@ -766,6 +772,31 @@ export const AdminCreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminCreateUserResponse",
 }) as any as S.Schema<AdminCreateUserResponse>;
+export interface AdminDeleteSoftwareTokenRequest {
+  UserPoolId: string;
+  Username: string | redacted.Redacted<string>;
+}
+export const AdminDeleteSoftwareTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AdminDeleteSoftwareTokenRequest",
+}) as any as S.Schema<AdminDeleteSoftwareTokenRequest>;
+export interface AdminDeleteSoftwareTokenResponse {}
+export const AdminDeleteSoftwareTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "AdminDeleteSoftwareTokenResponse",
+}) as any as S.Schema<AdminDeleteSoftwareTokenResponse>;
 export interface AdminDeleteUserRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1047,6 +1078,53 @@ export const AdminGetUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminGetUserResponse",
 }) as any as S.Schema<AdminGetUserResponse>;
+export interface AdminGetUserAuthFactorsRequest {
+  UserPoolId: string;
+  Username: string | redacted.Redacted<string>;
+}
+export const AdminGetUserAuthFactorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AdminGetUserAuthFactorsRequest",
+}) as any as S.Schema<AdminGetUserAuthFactorsRequest>;
+export type AuthFactorType =
+  | "PASSWORD"
+  | "EMAIL_OTP"
+  | "SMS_OTP"
+  | "WEB_AUTHN"
+  | "SOFTWARE_TOKEN"
+  | (string & {});
+export const AuthFactorType = /*@__PURE__*/ S.String;
+
+export type ConfiguredUserAuthFactorsListType = AuthFactorType[];
+export const ConfiguredUserAuthFactorsListType =
+  /*@__PURE__*/ S.Array(AuthFactorType);
+export interface AdminGetUserAuthFactorsResponse {
+  Username: string | redacted.Redacted<string>;
+  PreferredMfaSetting?: string;
+  UserMFASettingList?: string[];
+  ConfiguredUserAuthFactors?: AuthFactorType[];
+}
+export const AdminGetUserAuthFactorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Username: SensitiveString,
+    PreferredMfaSetting: S.optional(S.String),
+    UserMFASettingList: S.optional(UserMFASettingListType),
+    ConfiguredUserAuthFactors: S.optional(ConfiguredUserAuthFactorsListType),
+  }).pipe(ns),
+).annotate({
+  identifier: "AdminGetUserAuthFactorsResponse",
+}) as any as S.Schema<AdminGetUserAuthFactorsResponse>;
 export type AuthFlowType =
   | "USER_SRP_AUTH"
   | "REFRESH_TOKEN_AUTH"
@@ -2514,16 +2592,26 @@ export const CreateTermsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTermsResponse",
 }) as any as S.Schema<CreateTermsResponse>;
 export type UserImportJobNameType = string;
+export type PasswordHashingAlgorithmType =
+  | "BCRYPT"
+  | "SCRYPT"
+  | "ARGON2ID"
+  | "PBKDF2_SHA256"
+  | (string & {});
+export const PasswordHashingAlgorithmType = /*@__PURE__*/ S.String;
+
 export interface CreateUserImportJobRequest {
   JobName: string;
   UserPoolId: string;
   CloudWatchLogsRoleArn: string;
+  PasswordHashingAlgorithm?: PasswordHashingAlgorithmType;
 }
 export const CreateUserImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobName: S.String,
     UserPoolId: S.String,
     CloudWatchLogsRoleArn: S.String,
+    PasswordHashingAlgorithm: S.optional(PasswordHashingAlgorithmType),
   }).pipe(
     T.all(
       ns,
@@ -2568,6 +2656,7 @@ export interface UserImportJobType {
   SkippedUsers?: number;
   FailedUsers?: number;
   CompletionMessage?: string;
+  PasswordHashingAlgorithm?: PasswordHashingAlgorithmType;
 }
 export const UserImportJobType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2584,6 +2673,7 @@ export const UserImportJobType = /*@__PURE__*/ S.suspend(() =>
     SkippedUsers: S.optional(S.Number),
     FailedUsers: S.optional(S.Number),
     CompletionMessage: S.optional(S.String),
+    PasswordHashingAlgorithm: S.optional(PasswordHashingAlgorithmType),
   }),
 ).annotate({
   identifier: "UserImportJobType",
@@ -2622,14 +2712,6 @@ export const PasswordPolicyType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PasswordPolicyType",
 }) as any as S.Schema<PasswordPolicyType>;
-export type AuthFactorType =
-  | "PASSWORD"
-  | "EMAIL_OTP"
-  | "SMS_OTP"
-  | "WEB_AUTHN"
-  | (string & {});
-export const AuthFactorType = /*@__PURE__*/ S.String;
-
 export type AllowedFirstAuthFactorsListType = AuthFactorType[];
 export const AllowedFirstAuthFactorsListType =
   /*@__PURE__*/ S.Array(AuthFactorType);
@@ -2872,17 +2954,42 @@ export const EmailConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EmailConfigurationType",
 }) as any as S.Schema<EmailConfigurationType>;
+export type OptionalArnType = string;
 export type RegionCodeType = string;
+export interface EumsSmsConfigurationType {
+  CallerArn: string;
+  ExternalId?: string;
+  OriginationIdentity?: string;
+  ConfigurationSetName?: string;
+  InEntityId?: string;
+  InTemplateId?: string;
+  Region?: string;
+}
+export const EumsSmsConfigurationType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CallerArn: S.String,
+    ExternalId: S.optional(S.String),
+    OriginationIdentity: S.optional(S.String),
+    ConfigurationSetName: S.optional(S.String),
+    InEntityId: S.optional(S.String),
+    InTemplateId: S.optional(S.String),
+    Region: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EumsSmsConfigurationType",
+}) as any as S.Schema<EumsSmsConfigurationType>;
 export interface SmsConfigurationType {
-  SnsCallerArn: string;
+  SnsCallerArn?: string;
   ExternalId?: string;
   SnsRegion?: string;
+  EumsSms?: EumsSmsConfigurationType;
 }
 export const SmsConfigurationType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SnsCallerArn: S.String,
+    SnsCallerArn: S.optional(S.String),
     ExternalId: S.optional(S.String),
     SnsRegion: S.optional(S.String),
+    EumsSms: S.optional(EumsSmsConfigurationType),
   }),
 ).annotate({
   identifier: "SmsConfigurationType",
@@ -4252,6 +4359,38 @@ export const DescribeTermsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTermsResponse",
 }) as any as S.Schema<DescribeTermsResponse>;
+export interface DescribeTermsByClientRequest {
+  ClientId: string | redacted.Redacted<string>;
+  UserPoolId: string;
+  TermsName: string;
+}
+export const DescribeTermsByClientRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientId: SensitiveString,
+    UserPoolId: S.String,
+    TermsName: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeTermsByClientRequest",
+}) as any as S.Schema<DescribeTermsByClientRequest>;
+export interface DescribeTermsByClientResponse {
+  Terms?: TermsType;
+}
+export const DescribeTermsByClientResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Terms: S.optional(TermsType) }).pipe(ns),
+).annotate({
+  identifier: "DescribeTermsByClientResponse",
+}) as any as S.Schema<DescribeTermsByClientResponse>;
 export interface DescribeUserImportJobRequest {
   UserPoolId: string;
   JobId: string;
@@ -4480,6 +4619,56 @@ export const ForgotPasswordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ForgotPasswordResponse",
 }) as any as S.Schema<ForgotPasswordResponse>;
+export interface GetClientTokenRequest {
+  ClientId: string | redacted.Redacted<string>;
+  Secret: string | redacted.Redacted<string>;
+  Scopes?: string[];
+  ClientMetadata?: { [key: string]: string | undefined };
+}
+export const GetClientTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientId: SensitiveString,
+    Secret: SensitiveString,
+    Scopes: S.optional(ScopeListType),
+    ClientMetadata: S.optional(ClientMetadataType),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetClientTokenRequest",
+}) as any as S.Schema<GetClientTokenRequest>;
+export interface ClientAuthenticationResultType {
+  AccessToken?: string | redacted.Redacted<string>;
+  ExpiresIn?: number;
+  TokenType?: string;
+}
+export const ClientAuthenticationResultType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccessToken: S.optional(SensitiveString),
+    ExpiresIn: S.optional(S.Number),
+    TokenType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClientAuthenticationResultType",
+}) as any as S.Schema<ClientAuthenticationResultType>;
+export interface GetClientTokenResponse {
+  ClientAuthenticationResult?: ClientAuthenticationResultType;
+}
+export const GetClientTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientAuthenticationResult: S.optional(ClientAuthenticationResultType),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetClientTokenResponse",
+}) as any as S.Schema<GetClientTokenResponse>;
 export interface GetCSVHeaderRequest {
   UserPoolId: string;
 }
@@ -4692,6 +4881,61 @@ export const GetLogDeliveryConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogDeliveryConfigurationResponse",
 }) as any as S.Schema<GetLogDeliveryConfigurationResponse>;
+export type LimitClass = "API_CATEGORY" | (string & {});
+export const LimitClass = /*@__PURE__*/ S.String;
+
+export type StringToStringMapType = { [key: string]: string | undefined };
+export const StringToStringMapType = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface LimitDefinitionType {
+  LimitClass: LimitClass;
+  Attributes: { [key: string]: string | undefined };
+}
+export const LimitDefinitionType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LimitClass: LimitClass, Attributes: StringToStringMapType }),
+).annotate({
+  identifier: "LimitDefinitionType",
+}) as any as S.Schema<LimitDefinitionType>;
+export interface GetProvisionedLimitRequest {
+  LimitDefinition: LimitDefinitionType;
+}
+export const GetProvisionedLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LimitDefinition: LimitDefinitionType }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetProvisionedLimitRequest",
+}) as any as S.Schema<GetProvisionedLimitRequest>;
+export interface LimitType {
+  LimitDefinition: LimitDefinitionType;
+  ProvisionedLimitValue: number;
+  FreeLimitValue: number;
+}
+export const LimitType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LimitDefinition: LimitDefinitionType,
+    ProvisionedLimitValue: S.Number,
+    FreeLimitValue: S.Number,
+  }),
+).annotate({ identifier: "LimitType" }) as any as S.Schema<LimitType>;
+export interface GetProvisionedLimitResponse {
+  Limit: LimitType;
+}
+export const GetProvisionedLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Limit: LimitType }).pipe(ns),
+).annotate({
+  identifier: "GetProvisionedLimitResponse",
+}) as any as S.Schema<GetProvisionedLimitResponse>;
 export interface GetSigningCertificateRequest {
   UserPoolId: string;
 }
@@ -4901,9 +5145,6 @@ export const GetUserAuthFactorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUserAuthFactorsRequest",
 }) as any as S.Schema<GetUserAuthFactorsRequest>;
-export type ConfiguredUserAuthFactorsListType = AuthFactorType[];
-export const ConfiguredUserAuthFactorsListType =
-  /*@__PURE__*/ S.Array(AuthFactorType);
 export interface GetUserAuthFactorsResponse {
   Username: string | redacted.Redacted<string>;
   PreferredMfaSetting?: string;
@@ -6406,6 +6647,36 @@ export const UpdateManagedLoginBrandingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateManagedLoginBrandingResponse",
 }) as any as S.Schema<UpdateManagedLoginBrandingResponse>;
+export interface UpdateProvisionedLimitRequest {
+  LimitDefinition: LimitDefinitionType;
+  RequestedLimitValue: number;
+}
+export const UpdateProvisionedLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LimitDefinition: LimitDefinitionType,
+    RequestedLimitValue: S.Number,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateProvisionedLimitRequest",
+}) as any as S.Schema<UpdateProvisionedLimitRequest>;
+export interface UpdateProvisionedLimitResponse {
+  Limit: LimitType;
+}
+export const UpdateProvisionedLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Limit: LimitType }).pipe(ns),
+).annotate({
+  identifier: "UpdateProvisionedLimitResponse",
+}) as any as S.Schema<UpdateProvisionedLimitResponse>;
 export interface UpdateResourceServerRequest {
   UserPoolId: string;
   Identifier: string;
@@ -7097,6 +7368,57 @@ export const adminCreateUser: API.OperationMethod<
   operationName: "AdminCreateUser",
 }));
 
+export type AdminDeleteSoftwareTokenError =
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | OperationNotEnabledException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | UserNotConfirmedException
+  | UserNotFoundException
+  | CommonErrors;
+/**
+ * Deletes a user's registered time-based one-time password (TOTP) multi-factor
+ * authentication (MFA) factor, also known as a software token. After this operation, the
+ * user can no longer sign in with TOTP MFA, and can register a new TOTP factor with
+ * `AssociateSoftwareToken`. Use this operation when a user loses access to
+ * their TOTP-generating device, for example, a lost or reset phone, and needs to register
+ * a new one.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const adminDeleteSoftwareToken: API.OperationMethod<
+  AdminDeleteSoftwareTokenRequest,
+  AdminDeleteSoftwareTokenResponse,
+  AdminDeleteSoftwareTokenError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: AdminDeleteSoftwareTokenRequest,
+  output: AdminDeleteSoftwareTokenResponse,
+  errors: [
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    OperationNotEnabledException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+    UserNotConfirmedException,
+    UserNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "AdminDeleteSoftwareToken",
+}));
+
 export type AdminDeleteUserError =
   | InternalErrorException
   | InvalidParameterException
@@ -7489,6 +7811,56 @@ export const adminGetUser: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "AdminGetUser",
+}));
+
+export type AdminGetUserAuthFactorsError =
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | OperationNotEnabledException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | UserNotFoundException
+  | CommonErrors;
+/**
+ * Lists the authentication options for a user in a user pool. Returns the
+ * following:
+ *
+ * - The user's multi-factor authentication (MFA) preferences.
+ *
+ * - The user's options for choice-based authentication with the
+ * `USER_AUTH` flow.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const adminGetUserAuthFactors: API.OperationMethod<
+  AdminGetUserAuthFactorsRequest,
+  AdminGetUserAuthFactorsResponse,
+  AdminGetUserAuthFactorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: AdminGetUserAuthFactorsRequest,
+  output: AdminGetUserAuthFactorsResponse,
+  errors: [
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    OperationNotEnabledException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+    UserNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "AdminGetUserAuthFactors",
 }));
 
 export type AdminInitiateAuthError =
@@ -10102,6 +10474,57 @@ export const describeTerms: API.OperationMethod<
   operationName: "DescribeTerms",
 }));
 
+export type DescribeTermsByClientError =
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | OperationNotEnabledException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns details for the terms documents that are associated with an app client,
+ * identified by the app client ID, user pool ID, and terms name. For
+ * more information, see Terms documents.
+ *
+ * To call `DescribeTermsByClient`, you must have the
+ * `cognito-idp:DescribeTermsByClient` Identity and Access Management (IAM) permission. This
+ * operation additionally validates your permission for
+ * `cognito-idp:DescribeTerms`, the action for . As a result, an IAM policy that denies
+ * `cognito-idp:DescribeTerms` also denies requests to
+ * `DescribeTermsByClient`.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const describeTermsByClient: API.OperationMethod<
+  DescribeTermsByClientRequest,
+  DescribeTermsByClientResponse,
+  DescribeTermsByClientError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeTermsByClientRequest,
+  output: DescribeTermsByClientResponse,
+  errors: [
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    OperationNotEnabledException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeTermsByClient",
+}));
+
 export type DescribeUserImportJobError =
   | InternalErrorException
   | InvalidParameterException
@@ -10234,6 +10657,11 @@ export type DescribeUserPoolDomainError =
 /**
  * Given a user pool domain name, returns information about the domain
  * configuration.
+ *
+ * This operation doesn't return results when you query a prefix domain in a
+ * secondary Region. Prefix domains are Region-specific and can only be described in
+ * the Region where they were created. To describe a prefix domain for a replica user
+ * pool, make the request to the primary Region's endpoint.
  *
  * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
  * this operation, you must use IAM credentials to authorize requests, and you must
@@ -10398,6 +10826,54 @@ export const forgotPassword: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ForgotPassword",
+}));
+
+export type GetClientTokenError =
+  | ForbiddenException
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | OperationNotEnabledException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Issues an access token for machine-to-machine (M2M) authorization. Your app client
+ * provides its client ID and secret, and receives an access token that authorizes requests
+ * to your resource servers. `GetClientToken` provides the same functionality as
+ * the OAuth2 client-credentials grant; both authorize an application rather than a user.
+ *
+ * To use this operation, you must configure the app client with a client secret and
+ * enable the `ALLOW_CLIENT_TOKEN_AUTH` authentication flow. The
+ * `ALLOW_CLIENT_TOKEN_AUTH` flow is mutually exclusive with user authentication
+ * flows. It must be the only authentication flow that you configure for the app client. For
+ * more information, see Scopes, M2M, and resource servers.
+ *
+ * Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you can't use IAM credentials to authorize requests, and you can't
+ * grant IAM permissions in policies. For more information about authorization models in
+ * Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.
+ */
+export const getClientToken: API.OperationMethod<
+  GetClientTokenRequest,
+  GetClientTokenResponse,
+  GetClientTokenError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetClientTokenRequest,
+  output: GetClientTokenResponse,
+  errors: [
+    ForbiddenException,
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    OperationNotEnabledException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetClientToken",
 }));
 
 export type GetCSVHeaderError =
@@ -10613,6 +11089,46 @@ export const getLogDeliveryConfiguration: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetLogDeliveryConfiguration",
+}));
+
+export type GetProvisionedLimitError =
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns the current provisioned limit for a specific API category.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const getProvisionedLimit: API.OperationMethod<
+  GetProvisionedLimitRequest,
+  GetProvisionedLimitResponse,
+  GetProvisionedLimitError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProvisionedLimitRequest,
+  output: GetProvisionedLimitResponse,
+  errors: [
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetProvisionedLimit",
 }));
 
 export type GetSigningCertificateError =
@@ -12812,6 +13328,53 @@ export const updateManagedLoginBranding: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateManagedLoginBranding",
+}));
+
+export type UpdateProvisionedLimitError =
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Sets the provisioned limit for a specific API category. The value must be between the
+ * default limit and your account-level maximum limit in Service Quotas.
+ *
+ * Managed login user pools don't support adjustments to the
+ * `UserAuthentication` or `UserFederation` categories. To
+ * increase these limits, submit a Service Quotas increase request.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const updateProvisionedLimit: API.OperationMethod<
+  UpdateProvisionedLimitRequest,
+  UpdateProvisionedLimitResponse,
+  UpdateProvisionedLimitError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateProvisionedLimitRequest,
+  output: UpdateProvisionedLimitResponse,
+  errors: [
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateProvisionedLimit",
 }));
 
 export type UpdateResourceServerError =

@@ -30,10 +30,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/validateSecret",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Validate a Secret in the profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ValidateSecretOutput": {
@@ -180,6 +180,12 @@
           "traits": {
             "smithy.api#enumValue": "AzureFirstPartyManagedCertificate"
           }
+        },
+        "MTLSCERTIFICATECHAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MtlsCertificateChain"
+          }
         }
       },
       "traits": {
@@ -199,10 +205,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/usages",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#UsagesListResult": {
@@ -356,10 +362,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/upgrade",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDProfilesUpgradeResponse": {
@@ -1130,10 +1136,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing security policy within profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecurityPoliciesDeleteRequest": {
@@ -1189,10 +1195,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing security policy within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecurityPoliciesPatchResponse": {
@@ -1432,10 +1438,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new security policy within the specified profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecurityPoliciesCreateResponse": {
@@ -1549,10 +1555,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing security policy within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecurityPoliciesGetResponse": {
@@ -1646,10 +1652,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists security policies associated with the profile",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecurityPolicyListResult": {
@@ -1765,10 +1771,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing Secret within profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecretsDeleteRequest": {
@@ -1824,10 +1830,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new Secret within the specified profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecretsCreateResponse": {
@@ -1985,10 +1991,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing Secret within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecretsGetResponse": {
@@ -2082,10 +2088,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists existing AzureFrontDoor secrets.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SecretListResult": {
@@ -2201,10 +2207,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/usages",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RuleSetsListResourceUsageRequest": {
@@ -2260,10 +2266,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing delivery rule within a rule set.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RulesDeleteRequest": {
@@ -2327,10 +2333,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing delivery rule within a rule set.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RulesUpdateResponse": {
@@ -2517,6 +2523,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "RouteConfigurationOverride"
+          }
+        },
+        "EDGEACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EdgeAction"
+          }
+        },
+        "AFDURLSIGNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AfdUrlSigning"
           }
         }
       },
@@ -2807,10 +2825,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new delivery rule within the specified rule set.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RulesCreateResponse": {
@@ -2988,10 +3006,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing delivery rule within a rule set.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RulesGetResponse": {
@@ -3093,10 +3111,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the existing delivery rules within a rule set.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RuleListResult": {
@@ -3220,10 +3238,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RuleSetsDeleteRequest": {
@@ -3279,10 +3297,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates or update a batch rule set within the specified profile along with the rules associate to it.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RuleSetsCreateResponse": {
@@ -3615,10 +3633,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RuleSetsGetResponse": {
@@ -3712,10 +3730,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists existing AzureFrontDoor rule sets within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RuleSetListResult": {
@@ -3831,10 +3849,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/usages",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginGroupsListResourceUsageRequest": {
@@ -3890,10 +3908,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing origin within an origin group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginsDeleteRequest": {
@@ -3957,10 +3975,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing origin within an origin group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginsUpdateResponse": {
@@ -4070,6 +4088,18 @@
             "smithy.api#documentation": "Whether to enable certificate name check at origin level"
           }
         },
+        "certificateNameCheckValidationMode": {
+          "target": "com.azure.cdn#CertificateNameCheckValidationMode",
+          "traits": {
+            "smithy.api#documentation": "The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true."
+          }
+        },
+        "customCertificateSubjects": {
+          "target": "com.azure.cdn#AFDOriginPropertiesCustomCertificateSubjectsList",
+          "traits": {
+            "smithy.api#documentation": "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries."
+          }
+        },
         "provisioningState": {
           "target": "com.azure.cdn#AfdProvisioningState",
           "traits": {
@@ -4082,6 +4112,41 @@
       },
       "traits": {
         "smithy.api#documentation": "The JSON object that contains the properties of the origin."
+      }
+    },
+    "com.azure.cdn#AFDOriginPropertiesCustomCertificateSubjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries."
+      }
+    },
+    "com.azure.cdn#CertificateNameCheckValidationMode": {
+      "type": "enum",
+      "members": {
+        "ORIGINHOSTNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OriginHostname"
+          }
+        },
+        "CUSTOMCERTIFICATESUBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomCertificateSubject"
+          }
+        },
+        "INCOMINGHOSTHEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IncomingHostHeader"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The validation mode for certificate name check at origin level. Only applicable when enforceCertificateNameCheck is true."
       }
     },
     "com.azure.cdn#EnabledState": {
@@ -4296,10 +4361,31 @@
           "traits": {
             "smithy.api#documentation": "Whether to enable certificate name check at origin level"
           }
+        },
+        "certificateNameCheckValidationMode": {
+          "target": "com.azure.cdn#CertificateNameCheckValidationMode",
+          "traits": {
+            "smithy.api#documentation": "The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true."
+          }
+        },
+        "customCertificateSubjects": {
+          "target": "com.azure.cdn#AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList",
+          "traits": {
+            "smithy.api#documentation": "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "The JSON object that contains the properties of the origin."
+      }
+    },
+    "com.azure.cdn#AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries."
       }
     },
     "com.azure.cdn#AFDOriginsCreate": {
@@ -4315,10 +4401,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new origin within the specified origin group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginsCreateResponse": {
@@ -4475,10 +4561,31 @@
           "traits": {
             "smithy.api#documentation": "Whether to enable certificate name check at origin level"
           }
+        },
+        "certificateNameCheckValidationMode": {
+          "target": "com.azure.cdn#CertificateNameCheckValidationMode",
+          "traits": {
+            "smithy.api#documentation": "The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true."
+          }
+        },
+        "customCertificateSubjects": {
+          "target": "com.azure.cdn#AFDOriginPropertiesInputCustomCertificateSubjectsList",
+          "traits": {
+            "smithy.api#documentation": "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "The JSON object that contains the properties of the origin."
+      }
+    },
+    "com.azure.cdn#AFDOriginPropertiesInputCustomCertificateSubjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries."
       }
     },
     "com.azure.cdn#AFDOriginsGet": {
@@ -4494,10 +4601,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing origin within an origin group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginsGetResponse": {
@@ -4599,10 +4706,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the existing origins within an origin group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginListResult": {
@@ -4726,10 +4833,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing origin group within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginGroupsDeleteRequest": {
@@ -4785,10 +4892,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing origin group within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginGroupsUpdateResponse": {
@@ -4902,10 +5009,36 @@
           "traits": {
             "smithy.api#documentation": "The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be \"https://storage.azure.com/.default\"."
           }
+        },
+        "tokenDestinationHeader": {
+          "target": "com.azure.cdn#OriginAuthenticationTokenDestinationHeader",
+          "traits": {
+            "smithy.api#documentation": "The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "The JSON object that contains the properties of the origin authentication settings."
+      }
+    },
+    "com.azure.cdn#OriginAuthenticationTokenDestinationHeader": {
+      "type": "enum",
+      "members": {
+        "AUTHORIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Authorization"
+          }
+        },
+        "X_AZURE_AUTHORIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X-Azure-Authorization"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The HTTP request header where the origin authentication token is placed when forwarding the request to the origin."
       }
     },
     "com.azure.cdn#OriginAuthenticationType": {
@@ -5135,10 +5268,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new origin group within the specified profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginGroupsCreateResponse": {
@@ -5276,10 +5409,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing origin group within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginGroupsGetResponse": {
@@ -5373,10 +5506,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the existing origin groups within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDOriginGroupListResult": {
@@ -5492,10 +5625,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationCommit",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Commit the migrated Azure Frontdoor(Standard/Premium) profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesMigrationCommitRequest": {
@@ -5543,10 +5676,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationAbort",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Abort the migration to Azure Frontdoor Premium/Standard.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesMigrationAbortRequest": {
@@ -5594,10 +5727,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Get WAF log analytics charts for AFD profile",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#WafRankingsResponse": {
@@ -5915,10 +6048,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Get Waf related log analytics report for AFD profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#WafMetricsResponse": {
@@ -6267,10 +6400,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getSupportedOptimizationTypes",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SupportedOptimizationTypesListResult": {
@@ -6379,10 +6512,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsResources",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Get all endpoints and custom domains available for AFD log report",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ResourcesResponse": {
@@ -6519,10 +6652,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Get log analytics ranking report for AFD profile",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RankingsResponse": {
@@ -6787,10 +6920,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Get log report for AFD profile",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#MetricsResponse": {
@@ -7179,10 +7312,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsLocations",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Get all available location names for AFD log analytics report.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ContinentsResponse": {
@@ -7279,10 +7412,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/generateSsoUri",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Generates a dynamic SSO URI used to sign in to the CDN supplemental portal. Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile. The SSO URI changes approximately every 10 minutes.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#SsoUri": {
@@ -7344,10 +7477,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/validateCustomDomain",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ValidateCustomDomainOutput": {
@@ -7436,10 +7569,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Stops an existing running CDN endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointsStopResponse": {
@@ -8418,10 +8551,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Starts an existing CDN endpoint that is on a stopped state.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointsStartResponse": {
@@ -8540,10 +8673,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Removes a content from CDN.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointsPurgeContentRequest": {
@@ -8615,10 +8748,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing origin within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginsDeleteRequest": {
@@ -8682,10 +8815,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing origin within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginsUpdateResponse": {
@@ -9024,10 +9157,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new origin within the specified endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginsCreateResponse": {
@@ -9135,10 +9268,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing origin within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginsGetResponse": {
@@ -9240,10 +9373,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the existing origins within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginListResult": {
@@ -9367,10 +9500,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing origin group within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginGroupsDeleteRequest": {
@@ -9434,10 +9567,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing origin group within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginGroupsUpdateResponse": {
@@ -9703,10 +9836,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new origin group within the specified endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginGroupsCreateResponse": {
@@ -9814,10 +9947,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing origin group within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginGroupsGetResponse": {
@@ -9919,10 +10052,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the existing origin groups within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OriginGroupListResult": {
@@ -10046,10 +10179,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Pre-loads a content to CDN. Available for Verizon Profiles.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointsLoadContentRequest": {
@@ -10121,10 +10254,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Enable https delivery of the custom domain.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CustomDomainsEnableCustomHttpsResponse": {
@@ -10523,10 +10656,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Disable https delivery of the custom domain.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CustomDomainsDisableCustomHttpsResponse": {
@@ -10628,10 +10761,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing custom domain within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CustomDomainsDeleteRequest": {
@@ -10695,10 +10828,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new custom domain within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CustomDomainsCreateResponse": {
@@ -10821,10 +10954,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing custom domain within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CustomDomainsGetResponse": {
@@ -10926,10 +11059,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the existing custom domains within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CustomDomainListResult": {
@@ -11053,10 +11186,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks the quota and usage of geo filters and custom domains under the given endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ResourceUsageListResult": {
@@ -11188,10 +11321,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointsDeleteRequest": {
@@ -11247,10 +11380,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile. Only tags can be updated after creating an endpoint. To update origins, use the Update Origin operation. To update origin groups, use the Update Origin group operation. To update custom domains, use the Update Custom Domain operation.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointsUpdateResponse": {
@@ -11544,10 +11677,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointsCreateResponse": {
@@ -11879,10 +12012,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointsGetResponse": {
@@ -12001,10 +12134,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists existing CDN endpoints.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EndpointListResult": {
@@ -12145,10 +12278,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}/refreshValidationToken",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates the domain validation token.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDCustomDomainsRefreshValidationTokenRequest": {
@@ -12204,10 +12337,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDCustomDomainsDeleteRequest": {
@@ -12263,10 +12396,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing domain within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDCustomDomainsUpdateResponse": {
@@ -12320,6 +12453,12 @@
           "target": "com.azure.cdn#AFDDomainHttpsParameters",
           "traits": {
             "smithy.api#documentation": "The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default."
+          }
+        },
+        "mtlsSettings": {
+          "target": "com.azure.cdn#AFDDomainMtlsParameters",
+          "traits": {
+            "smithy.api#documentation": "The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use."
           }
         },
         "azureDnsZone": {
@@ -12467,6 +12606,53 @@
         "smithy.api#documentation": "Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation."
       }
     },
+    "com.azure.cdn#AFDDomainMtlsParameters": {
+      "type": "structure",
+      "members": {
+        "scenario": {
+          "target": "com.azure.cdn#MtlsScenarioType",
+          "traits": {
+            "smithy.api#documentation": "Supported scenarios for establishing mTLS connection.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the properties to configure mutual TLS for a custom domain with FQDN. Mutual TLS cannot be configured for custom domains with wildcard host names."
+      }
+    },
+    "com.azure.cdn#MtlsScenarioType": {
+      "type": "enum",
+      "members": {
+        "CLIENTCERTIFICATEREQUIREDANDVALIDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ClientCertificateRequiredAndValidated"
+          }
+        },
+        "CLIENTCERTIFICATEREQUIREDANDORIGINVALIDATES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ClientCertificateRequiredAndOriginValidates"
+          }
+        },
+        "CLIENTCERTIFICATEVALIDATEDIFPRESENTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ClientCertificateValidatedIfPresented"
+          }
+        },
+        "COMPLETEMTLSPASSTHROUGHTOORIGIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CompleteMtlsPassthroughToOrigin"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported scenarios for establishing mTLS connection."
+      }
+    },
     "com.azure.cdn#AFDDomainHttpsParameters": {
       "type": "structure",
       "members": {
@@ -12495,6 +12681,18 @@
             "smithy.api#documentation": "Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized."
           }
         },
+        "serverTlsGroupPolicy": {
+          "target": "com.azure.cdn#AfdServerTlsGroupPolicy",
+          "traits": {
+            "smithy.api#documentation": "Server TLS group policy that will be used for Https."
+          }
+        },
+        "serverTlsGroups": {
+          "target": "com.azure.cdn#AFDDomainHttpsParametersServerTlsGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom."
+          }
+        },
         "secret": {
           "target": "com.azure.cdn#ResourceReference",
           "traits": {
@@ -12504,6 +12702,91 @@
       },
       "traits": {
         "smithy.api#documentation": "The JSON object that contains the properties to secure a domain."
+      }
+    },
+    "com.azure.cdn#AFDDomainHttpsParametersServerTlsGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#AfdServerTlsGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom."
+      }
+    },
+    "com.azure.cdn#AfdServerTlsGroup": {
+      "type": "enum",
+      "members": {
+        "SECP256R1MLKEM768": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecP256r1MLKEM768"
+          }
+        },
+        "SECP384R1MLKEM1024": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecP384r1MLKEM1024"
+          }
+        },
+        "X25519MLKEM768": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X25519MLKEM768"
+          }
+        },
+        "PRIME256V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "prime256v1"
+          }
+        },
+        "X25519": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X25519"
+          }
+        },
+        "SECP384R1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secp384r1"
+          }
+        },
+        "SECP521R1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secp521r1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported key-exchange groups and curves. The ML-KEM groups are hybrid post-quantum groups."
+      }
+    },
+    "com.azure.cdn#AfdServerTlsGroupPolicy": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "ENHANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enhanced"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Custom"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Server TLS group policy that will be used for Https. Standard and Enhanced are service-managed sets; Custom allows specifying serverTlsGroups explicitly."
       }
     },
     "com.azure.cdn#AFDDomainHttpsCustomizedCipherSuiteSet": {
@@ -12743,6 +13026,12 @@
             "smithy.api#documentation": "The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default."
           }
         },
+        "mtlsSettings": {
+          "target": "com.azure.cdn#AFDDomainMtlsParameters",
+          "traits": {
+            "smithy.api#documentation": "The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use."
+          }
+        },
         "azureDnsZone": {
           "target": "com.azure.cdn#ResourceReference",
           "traits": {
@@ -12773,10 +13062,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new domain within the specified profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDCustomDomainsCreateResponse": {
@@ -12872,6 +13161,12 @@
             "smithy.api#documentation": "The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default."
           }
         },
+        "mtlsSettings": {
+          "target": "com.azure.cdn#AFDDomainMtlsParameters",
+          "traits": {
+            "smithy.api#documentation": "The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use."
+          }
+        },
         "azureDnsZone": {
           "target": "com.azure.cdn#ResourceReference",
           "traits": {
@@ -12927,10 +13222,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDCustomDomainsGetResponse": {
@@ -13024,10 +13319,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists existing AzureFrontDoor domains.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDDomainListResult": {
@@ -13143,10 +13438,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesListResourceUsageRequest": {
@@ -13194,10 +13489,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkHostNameAvailability",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CheckNameAvailabilityOutput": {
@@ -13278,10 +13573,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkEndpointNameAvailability",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Check the availability of an afdx endpoint name, and return the globally unique endpoint host name.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CheckEndpointNameAvailabilityOutput": {
@@ -13433,10 +13728,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnMigrateToAfd",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. This step prepares the profile for migration and will be followed by Commit to finalize the migration.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#MigrateResult": {
@@ -13561,10 +13856,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnCanMigrateToAfd",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CanMigrateResult": {
@@ -13715,10 +14010,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/validateCustomDomain",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDEndpointsValidateCustomDomainRequest": {
@@ -13781,10 +14076,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/usages",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDEndpointsListResourceUsageRequest": {
@@ -13840,10 +14135,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RoutesDeleteRequest": {
@@ -13907,10 +14202,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RoutesUpdateResponse": {
@@ -14526,10 +14821,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RoutesCreateResponse": {
@@ -14813,10 +15108,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RoutesGetResponse": {
@@ -14918,10 +15213,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the existing origins within a profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#RouteListResult": {
@@ -15045,10 +15340,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/purge",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Removes a content from AzureFrontDoor.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDEndpointsPurgeContentRequest": {
@@ -15135,10 +15430,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDEndpointsDeleteRequest": {
@@ -15194,10 +15489,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. Only tags can be updated after creating an endpoint. To update origins, use the Update Origin operation. To update origin groups, use the Update Origin group operation. To update domains, use the Update Custom Domain operation.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDEndpointsUpdateResponse": {
@@ -15266,6 +15561,12 @@
             "smithy.api#documentation": "Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'"
           }
         },
+        "enforceMtls": {
+          "target": "com.azure.cdn#EnforceMtlsEnabledState",
+          "traits": {
+            "smithy.api#documentation": "Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources."
+          }
+        },
         "provisioningState": {
           "target": "com.azure.cdn#AfdProvisioningState",
           "traits": {
@@ -15290,6 +15591,26 @@
       },
       "traits": {
         "smithy.api#documentation": "The JSON object that contains the properties required to create an endpoint."
+      }
+    },
+    "com.azure.cdn#EnforceMtlsEnabledState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources."
       }
     },
     "com.azure.cdn#AFDEndpointsUpdateResponseTagsMap": {
@@ -15364,6 +15685,12 @@
           "traits": {
             "smithy.api#documentation": "Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'"
           }
+        },
+        "enforceMtls": {
+          "target": "com.azure.cdn#EnforceMtlsEnabledState",
+          "traits": {
+            "smithy.api#documentation": "Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources."
+          }
         }
       },
       "traits": {
@@ -15395,10 +15722,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDEndpointsCreateResponse": {
@@ -15532,6 +15859,12 @@
             "smithy.api#documentation": "Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'"
           }
         },
+        "enforceMtls": {
+          "target": "com.azure.cdn#EnforceMtlsEnabledState",
+          "traits": {
+            "smithy.api#documentation": "Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources."
+          }
+        },
         "autoGeneratedDomainNameLabelScope": {
           "target": "com.azure.cdn#AutoGeneratedDomainNameLabelScope",
           "traits": {
@@ -15568,10 +15901,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDEndpointsGetResponse": {
@@ -15690,10 +16023,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists existing AzureFrontDoor endpoints.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#AFDEndpointListResult": {
@@ -15834,10 +16167,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters. Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesDeleteRequest": {
@@ -15885,10 +16218,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesUpdateResponse": {
@@ -16151,10 +16484,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesCreateResponse": {
@@ -16424,10 +16757,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesGetResponse": {
@@ -16601,10 +16934,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfileListResult": {
@@ -16800,10 +17133,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/migrate",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesMigrateRequest": {
@@ -16899,10 +17232,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/checkEndpointNameAvailability",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Check the availability of a resource name. This is needed for resources where name is globally unique, such as a afdx endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CheckEndpointNameAvailabilityRequest": {
@@ -16962,10 +17295,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes Policy",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#PoliciesDeleteRequest": {
@@ -17013,10 +17346,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#PoliciesUpdateResponse": {
@@ -18043,10 +18376,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Create or update policy with specified rule set name within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#PoliciesCreateOrUpdateResponse": {
@@ -18264,10 +18597,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Retrieve protection policy with specified name within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#PoliciesGetResponse": {
@@ -18391,10 +18724,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the protection policies within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CdnWebApplicationFirewallPolicyList": {
@@ -18540,10 +18873,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/canMigrate",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesCanMigrateRequest": {
@@ -18590,10 +18923,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/validateProbe",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Check if the probe path is a valid path and the file can be accessed. Probe path is the path to a file hosted on the origin server to help accelerate the delivery of dynamic content via the CDN endpoint. This path is relative to the origin path specified in the endpoint configuration.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ValidateProbeOutput": {
@@ -18658,10 +18991,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within an Azure subscription.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ProfilesListRequest": {
@@ -18693,10 +19026,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Check the quota and actual usage of the CDN profiles under the given subscription.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ResourceUsageListRequest": {
@@ -18728,10 +19061,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Check the availability of a resource name. This is needed for resources where name is globally unique, such as a CDN endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CheckNameAvailabilityWithSubscriptionRequest": {
@@ -18777,10 +19110,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/cdnWebApplicationFirewallManagedRuleSets",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all available managed rule sets.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#ManagedRuleSetDefinitionList": {
@@ -18982,10 +19315,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Cdn/operations",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#OperationsListResult": {
@@ -19326,10 +19659,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Cdn/edgenodes",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#EdgenodeResult": {
@@ -19501,10 +19834,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Cdn/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Check the availability of a resource name. This is needed for resources where name is globally unique, such as a CDN endpoint.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.cdn#CheckNameAvailabilityRequest": {

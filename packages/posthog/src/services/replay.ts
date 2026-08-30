@@ -39,62 +39,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** List of session IDs to summarize (max 300) */
-export type CreateSessionSummariesIndividuallyRequestSessionIdsList =
-  Array<string>;
-export const CreateSessionSummariesIndividuallyRequestSessionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateSessionSummariesIndividuallyRequestSessionIdsList>;
-
-export interface CreateSessionSummariesIndividuallyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** List of session IDs to summarize (max 300) */
-  session_ids?: CreateSessionSummariesIndividuallyRequestSessionIdsList;
-  /** Optional focus area for the summarization */
-  focus_area?: string;
-}
-export const CreateSessionSummariesIndividuallyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      session_ids: S.optional(
-        CreateSessionSummariesIndividuallyRequestSessionIdsList,
-      ),
-      focus_area: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/session_summaries/create_session_summaries_individually/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateSessionSummariesIndividuallyRequest",
-  }) as any as S.Schema<CreateSessionSummariesIndividuallyRequest>;
-
-/** List of session IDs to summarize (max 300) */
-export type SessionSummariesSessionIdsList = Array<string>;
-export const SessionSummariesSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionSummariesSessionIdsList>;
-
-export interface SessionSummaries {
-  /** List of session IDs to summarize (max 300) */
-  session_ids?: SessionSummariesSessionIdsList;
-  /** Optional focus area for the summarization */
-  focus_area?: string;
-}
-export const SessionSummaries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session_ids: S.optional(SessionSummariesSessionIdsList),
-    focus_area: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SessionSummaries",
-}) as any as S.Schema<SessionSummaries>;
-
 /** * `collection` - Collection * `filters` - Filters */
 export type SessionRecordingPlaylistTypeEnum = "collection" | "filters";
 export const SessionRecordingPlaylistTypeEnum = /*@__PURE__*/ S.String;
@@ -146,7 +90,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -155,6 +99,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -564,6 +509,68 @@ export const SessionRecordingPlaylistsUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "SessionRecordingPlaylistsUpdateRequest",
 }) as any as S.Schema<SessionRecordingPlaylistsUpdateRequest>;
 
+/** Session IDs of the recordings to delete (max 100 per call). */
+export type SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList =
+  Array<string>;
+export const SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList>;
+
+export interface SessionRecordingsBulkDeleteCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Session IDs of the recordings to delete (max 100 per call). */
+  session_recording_ids: SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList;
+  /** Earliest start time of the recordings, as an ISO date or a relative offset like '-30d'. Providing this narrows the lookup and speeds up the request; defaults to the project's recording retention period. */
+  date_from?: string | null;
+}
+export const SessionRecordingsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      session_recording_ids:
+        SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList,
+      date_from: S.optional(S.NullOr(S.String)),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/session_recordings/bulk_delete/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "SessionRecordingsBulkDeleteCreateRequest",
+}) as any as S.Schema<SessionRecordingsBulkDeleteCreateRequest>;
+
+/** Session IDs that were found but could not be deleted. These can be retried. */
+export type SessionRecordingBulkDeleteResponseFailedIdsList = Array<string>;
+export const SessionRecordingBulkDeleteResponseFailedIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SessionRecordingBulkDeleteResponseFailedIdsList>;
+
+export interface SessionRecordingBulkDeleteResponse {
+  /** True when no deletion attempt failed. IDs that were not found, or that the caller lacks edit access to, are skipped rather than failed — compare deleted_count to total_requested to detect skips. */
+  success: boolean;
+  /** Number of recordings that were deleted. */
+  deleted_count: number;
+  /** Number of session recording IDs in the request. */
+  total_requested: number;
+  /** Session IDs that were found but could not be deleted. These can be retried. */
+  failed_ids: SessionRecordingBulkDeleteResponseFailedIdsList;
+}
+export const SessionRecordingBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    success: S.Boolean,
+    deleted_count: S.Number,
+    total_requested: S.Number,
+    failed_ids: SessionRecordingBulkDeleteResponseFailedIdsList,
+  }),
+).annotate({
+  identifier: "SessionRecordingBulkDeleteResponse",
+}) as any as S.Schema<SessionRecordingBulkDeleteResponse>;
+
 export interface SessionRecordingsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -653,18 +660,6 @@ export const MinimalPerson = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MinimalPerson" }) as any as S.Schema<MinimalPerson>;
 
-/** Initial goal and session outcome coming from LLM. */
-export interface Outcome {
-  description?: string | null;
-  success?: boolean | null;
-}
-export const Outcome = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    success: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "Outcome" }) as any as S.Schema<Outcome>;
-
 export type SessionRecordingExternalReferencesItemMap = {
   [key: string]: unknown | undefined;
 };
@@ -705,12 +700,14 @@ export interface SessionRecording {
   snapshot_library?: string | null;
   ongoing?: boolean;
   activity_score?: number | null;
-  has_summary?: boolean;
-  summary_outcome?: Outcome | null;
   /** Load external references (linked issues) for this recording */
   external_references?: SessionRecordingExternalReferencesList;
   /** Whether this recording matched the filters of the listing query that returned it. False only when a recording requested via session_recording_id was included despite not matching the filters. */
   matches_filters?: boolean;
+  /** Total stored size of the recording's snapshot data in bytes. Only populated when the recording's metadata is loaded, e.g. on retrieve; null in list responses. */
+  total_size?: number | null;
+  /** Number of captured rrweb events in the recording. Only populated when the recording's metadata is loaded, e.g. on retrieve; null in list responses. */
+  event_count?: number | null;
 }
 export const SessionRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -738,10 +735,10 @@ export const SessionRecording = /*@__PURE__*/ S.suspend(() =>
     snapshot_library: S.optional(S.NullOr(S.String)),
     ongoing: S.optional(S.Boolean),
     activity_score: S.optional(S.NullOr(S.Number)),
-    has_summary: S.optional(S.Boolean),
-    summary_outcome: S.optional(S.NullOr(Outcome)),
     external_references: S.optional(SessionRecordingExternalReferencesList),
     matches_filters: S.optional(S.Boolean),
+    total_size: S.optional(S.NullOr(S.Number)),
+    event_count: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
   identifier: "SessionRecording",
@@ -848,21 +845,6 @@ export const SessionRecordingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SessionRecordingsUpdateRequest",
 }) as any as S.Schema<SessionRecordingsUpdateRequest>;
-
-export type CreateSessionSummariesIndividuallyError = PosthogOpError;
-/** Generate AI individual summary for each session, without grouping. */
-export const createSessionSummariesIndividually: API.OperationMethod<
-  CreateSessionSummariesIndividuallyRequest,
-  SessionSummaries,
-  CreateSessionSummariesIndividuallyError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionSummariesIndividuallyRequest,
-  output: SessionSummaries,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
 
 export type SessionRecordingPlaylistsCreateError =
   | BadRequest
@@ -1020,6 +1002,21 @@ export const sessionRecordingPlaylistsUpdate: API.OperationMethod<
   input: SessionRecordingPlaylistsUpdateRequest,
   output: SessionRecordingPlaylistOutput,
   errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SessionRecordingsBulkDeleteCreateError = PosthogOpError;
+/** Delete a batch of session recordings by session ID. Deletion is permanent and cannot be undone. IDs that don't match an existing recording are skipped and counted in `total_requested` but not `deleted_count`. */
+export const sessionRecordingsBulkDeleteCreate: API.OperationMethod<
+  SessionRecordingsBulkDeleteCreateRequest,
+  SessionRecordingBulkDeleteResponse,
+  SessionRecordingsBulkDeleteCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SessionRecordingsBulkDeleteCreateRequest,
+  output: SessionRecordingBulkDeleteResponse,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

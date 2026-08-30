@@ -30,7 +30,7 @@ export const ChatTranscriptsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -171,7 +171,7 @@ export const ChatTranscriptsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -241,7 +241,7 @@ export const ChatTranscriptsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
 ).annotate({
@@ -286,7 +286,7 @@ export const ChatTranscriptsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
 ).annotate({
@@ -321,7 +321,7 @@ export const CommunicationsCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
   ).annotate({
@@ -387,7 +387,7 @@ export const CommunicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -468,7 +468,7 @@ export const CommunicationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -520,7 +520,7 @@ export const CommunicationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -593,7 +593,7 @@ export const CommunicationsNoSubscriptionCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
   ).annotate({
@@ -619,7 +619,7 @@ export const CommunicationsNoSubscriptionCreateRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
   ).annotate({
@@ -667,7 +667,7 @@ export const CommunicationsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
 ).annotate({
@@ -718,7 +718,7 @@ export const CommunicationsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
 ).annotate({
@@ -765,7 +765,7 @@ export const FilesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -836,7 +836,7 @@ export const FilesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -882,7 +882,7 @@ export const FilesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -952,7 +952,7 @@ export const FilesNoSubscriptionCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -998,7 +998,7 @@ export const FilesNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1041,7 +1041,7 @@ export const FilesNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1069,7 +1069,7 @@ export const FilesNoSubscriptionUploadRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1107,7 +1107,7 @@ export const FilesUploadRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1136,7 +1136,7 @@ export const FileWorkspacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1198,7 +1198,7 @@ export const FileWorkspacesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1242,7 +1242,7 @@ export const FileWorkspacesNoSubscriptionCreateRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
   ).annotate({
@@ -1287,7 +1287,7 @@ export const FileWorkspacesNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
 ).annotate({
@@ -1319,46 +1319,6 @@ export const FileWorkspacesNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(
   identifier: "FileWorkspacesNoSubscriptionGetResponse",
 }) as any as S.Schema<FileWorkspacesNoSubscriptionGetResponse>;
 
-/** The type of resource. */
-export type LookUpResourceIdPostRequestType =
-  "Microsoft.Support/supportTickets";
-export const LookUpResourceIdPostRequestType = /*@__PURE__*/ S.String;
-
-export interface LookUpResourceIdPostRequest {
-  /** The System generated Id that is unique. Use supportTicketId property for Microsoft.Support/supportTickets resource type. */
-  identifier?: string;
-  /** The type of resource. */
-  type?: LookUpResourceIdPostRequestType | (string & {});
-}
-export const LookUpResourceIdPostRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.optional(S.String),
-    type: S.optional(LookUpResourceIdPostRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/providers/Microsoft.Support/lookUpResourceId",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "LookUpResourceIdPostRequest",
-}) as any as S.Schema<LookUpResourceIdPostRequest>;
-
-/** The look up resource id response */
-export interface LookUpResourceIdResponse {
-  /** The resource Id of support resource type. */
-  resourceId?: string;
-}
-export const LookUpResourceIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LookUpResourceIdResponse",
-}) as any as S.Schema<LookUpResourceIdResponse>;
-
 export interface OperationsListRequest {}
 export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1366,7 +1326,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/operations",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1447,113 +1407,6 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
-export interface ProblemClassificationsClassifyProblemsRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** Name of the Azure service for which the problem classifications need to be retrieved. */
-  problemServiceName: string;
-  /** Natural language description of the customer’s issue. */
-  issueSummary: string;
-  /** ARM resource Id of the resource that is having the issue. */
-  resourceId?: string;
-}
-export const ProblemClassificationsClassifyProblemsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      problemServiceName: S.String.pipe(T.Label()),
-      issueSummary: S.String,
-      resourceId: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/services/{problemServiceName}/classifyProblems",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ProblemClassificationsClassifyProblemsRequest",
-  }) as any as S.Schema<ProblemClassificationsClassifyProblemsRequest>;
-
-/** List of applicable ARM resource types for this service. */
-export type ClassificationServiceResourceTypesList = Array<string>;
-export const ClassificationServiceResourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClassificationServiceResourceTypesList>;
-
-/** Service Classification result object. */
-export interface ClassificationService {
-  /** Azure resource Id of the service. */
-  serviceId?: string;
-  /** Localized name of the azure service. */
-  displayName?: string;
-  /** List of applicable ARM resource types for this service. */
-  resourceTypes?: ClassificationServiceResourceTypesList;
-}
-export const ClassificationService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    resourceTypes: S.optional(ClassificationServiceResourceTypesList),
-  }),
-).annotate({
-  identifier: "ClassificationService",
-}) as any as S.Schema<ClassificationService>;
-
-/** ProblemClassification Classification result object. */
-export interface ProblemClassificationsClassificationResult {
-  /** Identifier that may be used for solution discovery or some other purposes. */
-  problemId?: string;
-  /** Title of the problem classification result. */
-  title?: string;
-  /** Description of the problem classification result. */
-  description?: string;
-  /** Identifier of the service associated with this problem classification result. */
-  serviceId?: string;
-  /** Identifier that may be used for support ticket creation. */
-  problemClassificationId?: string;
-  /** Related service. */
-  relatedService?: ClassificationService;
-}
-export const ProblemClassificationsClassificationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      problemId: S.optional(S.String),
-      title: S.optional(S.String),
-      description: S.optional(S.String),
-      serviceId: S.optional(S.String),
-      problemClassificationId: S.optional(S.String),
-      relatedService: S.optional(ClassificationService),
-    }),
-  ).annotate({
-    identifier: "ProblemClassificationsClassificationResult",
-  }) as any as S.Schema<ProblemClassificationsClassificationResult>;
-
-/** Set of problem classification objects classified. */
-export type ProblemClassificationsClassificationOutputProblemClassificationResultsList =
-  Array<ProblemClassificationsClassificationResult>;
-export const ProblemClassificationsClassificationOutputProblemClassificationResultsList =
-  /*@__PURE__*/ S.Array(
-    ProblemClassificationsClassificationResult,
-  ) as any as S.Schema<ProblemClassificationsClassificationOutputProblemClassificationResultsList>;
-
-/** Output of the problem classification Classification API. */
-export interface ProblemClassificationsClassificationOutput {
-  /** Set of problem classification objects classified. */
-  problemClassificationResults?: ProblemClassificationsClassificationOutputProblemClassificationResultsList;
-}
-export const ProblemClassificationsClassificationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      problemClassificationResults: S.optional(
-        ProblemClassificationsClassificationOutputProblemClassificationResultsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ProblemClassificationsClassificationOutput",
-  }) as any as S.Schema<ProblemClassificationsClassificationOutput>;
-
 export interface ProblemClassificationsGetRequest {
   /** Name of the Azure service. */
   serviceName: string;
@@ -1569,7 +1422,7 @@ export const ProblemClassificationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications/{problemClassificationName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1654,7 +1507,7 @@ export const ProblemClassificationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1709,139 +1562,6 @@ export const ProblemClassificationsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProblemClassificationsListResult",
 }) as any as S.Schema<ProblemClassificationsListResult>;
 
-export interface ProblemClassificationsNoSubscriptionClassifyProblemsRequest {
-  /** Name of the Azure service for which the problem classifications need to be retrieved. */
-  problemServiceName: string;
-  /** Natural language description of the customer’s issue. */
-  issueSummary: string;
-  /** ARM resource Id of the resource that is having the issue. */
-  resourceId?: string;
-}
-export const ProblemClassificationsNoSubscriptionClassifyProblemsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      problemServiceName: S.String.pipe(T.Label()),
-      issueSummary: S.String,
-      resourceId: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Support/services/{problemServiceName}/classifyProblems",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ProblemClassificationsNoSubscriptionClassifyProblemsRequest",
-  }) as any as S.Schema<ProblemClassificationsNoSubscriptionClassifyProblemsRequest>;
-
-export interface ServiceClassificationsClassifyServicesRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** Natural language description of the customer’s issue. */
-  issueSummary?: string;
-  /** ARM resource Id of the resource that is having the issue. */
-  resourceId?: string;
-  /** Additional information in the form of a string. */
-  additionalContext?: string;
-}
-export const ServiceClassificationsClassifyServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      issueSummary: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      additionalContext: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/classifyServices",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ServiceClassificationsClassifyServicesRequest",
-  }) as any as S.Schema<ServiceClassificationsClassifyServicesRequest>;
-
-/** List of applicable ARM resource types for this service. */
-export type ServiceClassificationAnswerResourceTypesList = Array<string>;
-export const ServiceClassificationAnswerResourceTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ServiceClassificationAnswerResourceTypesList>;
-
-/** Service Classification result object. */
-export interface ServiceClassificationAnswer {
-  /** Azure resource Id of the service. */
-  serviceId?: string;
-  /** Localized name of the azure service. */
-  displayName?: string;
-  /** List of applicable ARM resource types for this service. */
-  resourceTypes?: ServiceClassificationAnswerResourceTypesList;
-  /** Child service. */
-  childService?: ClassificationService;
-}
-export const ServiceClassificationAnswer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    resourceTypes: S.optional(ServiceClassificationAnswerResourceTypesList),
-    childService: S.optional(ClassificationService),
-  }),
-).annotate({
-  identifier: "ServiceClassificationAnswer",
-}) as any as S.Schema<ServiceClassificationAnswer>;
-
-/** Set of problem classification objects classified. */
-export type ServiceClassificationOutputServiceClassificationResultsList =
-  Array<ServiceClassificationAnswer>;
-export const ServiceClassificationOutputServiceClassificationResultsList =
-  /*@__PURE__*/ S.Array(
-    ServiceClassificationAnswer,
-  ) as any as S.Schema<ServiceClassificationOutputServiceClassificationResultsList>;
-
-/** Output of the service classification API. */
-export interface ServiceClassificationOutput {
-  /** Set of problem classification objects classified. */
-  serviceClassificationResults?: ServiceClassificationOutputServiceClassificationResultsList;
-}
-export const ServiceClassificationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceClassificationResults: S.optional(
-      ServiceClassificationOutputServiceClassificationResultsList,
-    ),
-  }),
-).annotate({
-  identifier: "ServiceClassificationOutput",
-}) as any as S.Schema<ServiceClassificationOutput>;
-
-export interface ServiceClassificationsNoSubscriptionClassifyServicesRequest {
-  /** Natural language description of the customer’s issue. */
-  issueSummary?: string;
-  /** ARM resource Id of the resource that is having the issue. */
-  resourceId?: string;
-  /** Additional information in the form of a string. */
-  additionalContext?: string;
-}
-export const ServiceClassificationsNoSubscriptionClassifyServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      issueSummary: S.optional(S.String),
-      resourceId: S.optional(S.String),
-      additionalContext: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Support/classifyServices",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ServiceClassificationsNoSubscriptionClassifyServicesRequest",
-  }) as any as S.Schema<ServiceClassificationsNoSubscriptionClassifyServicesRequest>;
-
 export interface ServicesGetRequest {
   /** Name of the Azure service. */
   serviceName: string;
@@ -1854,7 +1574,7 @@ export const ServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/services/{serviceName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1914,7 +1634,7 @@ export const ServicesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/services",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -1985,7 +1705,7 @@ export const SupportTicketsCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
   ).annotate({
@@ -2146,43 +1866,6 @@ export const SupportTicketDetailsPropertiesInputSecondaryConsentList =
     SecondaryConsent,
   ) as any as S.Schema<SupportTicketDetailsPropertiesInputSecondaryConsentList>;
 
-/** Status of Direct Connect Escalation. */
-export type EscalationStatus =
-  | "EscalationAvailable"
-  | "EscalationInitiated"
-  | "EscalationProcessed"
-  | "EscalationUnsupported"
-  | "EscalationUnavailable";
-export const EscalationStatus = /*@__PURE__*/ S.String;
-
-/** An array containing the allowed severities for direct connect escalation. */
-export type DirectConnectEscalationAllowedSeveritiesList = Array<
-  SeverityLevel | (string & {})
->;
-export const DirectConnectEscalationAllowedSeveritiesList =
-  /*@__PURE__*/ S.Array(
-    SeverityLevel,
-  ) as any as S.Schema<DirectConnectEscalationAllowedSeveritiesList>;
-
-/** Direct Connect Escalation details for a support ticket. */
-export interface DirectConnectEscalation {
-  /** Status of Direct Connect Escalation. */
-  azureEEStatus?: EscalationStatus | (string & {});
-  /** An array containing the allowed severities for direct connect escalation. */
-  allowedSeverities?: DirectConnectEscalationAllowedSeveritiesList;
-  /** Reason for escalation / business impact. */
-  reasonForEscalation?: string;
-}
-export const DirectConnectEscalation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    azureEEStatus: S.optional(EscalationStatus),
-    allowedSeverities: S.optional(DirectConnectEscalationAllowedSeveritiesList),
-    reasonForEscalation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DirectConnectEscalation",
-}) as any as S.Schema<DirectConnectEscalation>;
-
 /** Describes the properties of a support ticket. */
 export interface SupportTicketDetailsPropertiesInput {
   /** System generated support ticket Id that is unique. */
@@ -2223,10 +1906,6 @@ export interface SupportTicketDetailsPropertiesInput {
   quotaTicketDetails?: QuotaTicketDetails;
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketDetailsPropertiesInputSecondaryConsentList;
-  /** Direct Connect Escalation details for a support ticket. */
-  directConnectEscalation?: DirectConnectEscalation;
-  /** Contains a link to the post on the community forum. */
-  communityForumPost?: string;
 }
 export const SupportTicketDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2251,8 +1930,6 @@ export const SupportTicketDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     secondaryConsent: S.optional(
       SupportTicketDetailsPropertiesInputSecondaryConsentList,
     ),
-    directConnectEscalation: S.optional(DirectConnectEscalation),
-    communityForumPost: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SupportTicketDetailsPropertiesInput",
@@ -2276,7 +1953,7 @@ export const SupportTicketsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -2326,14 +2003,6 @@ export const SupportTicketDetailsPropertiesSecondaryConsentList =
   /*@__PURE__*/ S.Array(
     SecondaryConsent,
   ) as any as S.Schema<SupportTicketDetailsPropertiesSecondaryConsentList>;
-
-/** Support channel type for the support ticket. */
-export type SupportChannel = "Chat" | "Web";
-export const SupportChannel = /*@__PURE__*/ S.String;
-
-/** Status of the chat conversation associated with the support ticket. */
-export type ChatConversationStatus = "Active" | "Closed";
-export const ChatConversationStatus = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a support ticket. */
 export interface SupportTicketDetailsProperties {
@@ -2391,14 +2060,6 @@ export interface SupportTicketDetailsProperties {
   quotaTicketDetails?: QuotaTicketDetails;
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketDetailsPropertiesSecondaryConsentList;
-  /** Direct Connect Escalation details for a support ticket. */
-  directConnectEscalation?: DirectConnectEscalation;
-  /** Contains a link to the post on the community forum. */
-  communityForumPost?: string;
-  /** Support channel type for the support ticket. */
-  supportChannel?: SupportChannel;
-  /** Status of the chat conversation associated with the support ticket. */
-  chatConversationStatus?: ChatConversationStatus;
 }
 export const SupportTicketDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2431,10 +2092,6 @@ export const SupportTicketDetailsProperties = /*@__PURE__*/ S.suspend(() =>
     secondaryConsent: S.optional(
       SupportTicketDetailsPropertiesSecondaryConsentList,
     ),
-    directConnectEscalation: S.optional(DirectConnectEscalation),
-    communityForumPost: S.optional(S.String),
-    supportChannel: S.optional(SupportChannel),
-    chatConversationStatus: S.optional(ChatConversationStatus),
   }),
 ).annotate({
   identifier: "SupportTicketDetailsProperties",
@@ -2479,7 +2136,7 @@ export const SupportTicketsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -2528,7 +2185,7 @@ export const SupportTicketsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -2598,7 +2255,7 @@ export const SupportTicketsNoSubscriptionCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/providers/Microsoft.Support/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
   ).annotate({
@@ -2621,7 +2278,7 @@ export const SupportTicketsNoSubscriptionCreateRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
   ).annotate({
@@ -2666,7 +2323,7 @@ export const SupportTicketsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
 ).annotate({
@@ -2714,7 +2371,7 @@ export const SupportTicketsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
 ).annotate({
@@ -2792,8 +2449,6 @@ export interface SupportTicketsNoSubscriptionUpdateRequest {
   advancedDiagnosticConsent?: Consent | (string & {});
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList;
-  /** Direct Connect Escalation details for a support ticket. */
-  directConnectEscalation?: DirectConnectEscalation;
 }
 export const SupportTicketsNoSubscriptionUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2806,13 +2461,12 @@ export const SupportTicketsNoSubscriptionUpdateRequest =
       secondaryConsent: S.optional(
         SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList,
       ),
-      directConnectEscalation: S.optional(DirectConnectEscalation),
     }).pipe(
       T.Http({
         method: "PATCH",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2024-04-01",
       }),
     ),
   ).annotate({
@@ -2867,8 +2521,6 @@ export interface SupportTicketsUpdateRequest {
   advancedDiagnosticConsent?: Consent | (string & {});
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketsUpdateRequestSecondaryConsentList;
-  /** Direct Connect Escalation details for a support ticket. */
-  directConnectEscalation?: DirectConnectEscalation;
 }
 export const SupportTicketsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2881,13 +2533,12 @@ export const SupportTicketsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     secondaryConsent: S.optional(
       SupportTicketsUpdateRequestSecondaryConsentList,
     ),
-    directConnectEscalation: S.optional(DirectConnectEscalation),
   }).pipe(
     T.Http({
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
@@ -3279,21 +2930,6 @@ export const FileWorkspacesNoSubscriptionGet: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LookUpResourceIdPostError = AzureOpError;
-/** This operation fetches ARM resource id of support resource type. */
-export const LookUpResourceIdPost: API.OperationMethod<
-  LookUpResourceIdPostRequest,
-  LookUpResourceIdResponse,
-  LookUpResourceIdPostError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LookUpResourceIdPostRequest,
-  output: LookUpResourceIdResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type OperationsListError = AzureOpError;
 /** List the operations for the provider */
 export const OperationsList: API.OperationMethod<
@@ -3304,21 +2940,6 @@ export const OperationsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: OperationsListRequest,
   output: OperationsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProblemClassificationsClassifyProblemsError = AzureOpError;
-/** Classify the right problem classifications (categories) available for a specific Azure service. */
-export const ProblemClassificationsClassifyProblems: API.OperationMethod<
-  ProblemClassificationsClassifyProblemsRequest,
-  ProblemClassificationsClassificationOutput,
-  ProblemClassificationsClassifyProblemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProblemClassificationsClassifyProblemsRequest,
-  output: ProblemClassificationsClassificationOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3349,53 +2970,6 @@ export const ProblemClassificationsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProblemClassificationsListRequest,
   output: ProblemClassificationsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProblemClassificationsNoSubscriptionClassifyProblemsError =
-  AzureOpError;
-/** Classify the right problem classifications (categories) available for a specific Azure service. */
-export const ProblemClassificationsNoSubscriptionClassifyProblems: API.OperationMethod<
-  ProblemClassificationsNoSubscriptionClassifyProblemsRequest,
-  ProblemClassificationsClassificationOutput,
-  ProblemClassificationsNoSubscriptionClassifyProblemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProblemClassificationsNoSubscriptionClassifyProblemsRequest,
-  output: ProblemClassificationsClassificationOutput,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceClassificationsClassifyServicesError = AzureOpError;
-/** Classify the list of right Azure services. */
-export const ServiceClassificationsClassifyServices: API.OperationMethod<
-  ServiceClassificationsClassifyServicesRequest,
-  ServiceClassificationOutput,
-  ServiceClassificationsClassifyServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceClassificationsClassifyServicesRequest,
-  output: ServiceClassificationOutput,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceClassificationsNoSubscriptionClassifyServicesError =
-  AzureOpError;
-/** Classify the list of right Azure services. */
-export const ServiceClassificationsNoSubscriptionClassifyServices: API.OperationMethod<
-  ServiceClassificationsNoSubscriptionClassifyServicesRequest,
-  ServiceClassificationOutput,
-  ServiceClassificationsNoSubscriptionClassifyServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceClassificationsNoSubscriptionClassifyServicesRequest,
-  output: ServiceClassificationOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

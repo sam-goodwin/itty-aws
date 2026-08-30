@@ -72,6 +72,8 @@ export interface SandboxCreateRequest {
   environment_variables?: unknown;
   /** If true, only the creator can see this environment; otherwise the whole team can. */
   private?: boolean;
+  /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
+  custom_image_id?: string | null;
 }
 export const SandboxCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -83,6 +85,7 @@ export const SandboxCreateRequest = /*@__PURE__*/ S.suspend(() =>
     repositories: S.optional(SandboxCreateRequestRepositoriesList),
     environment_variables: S.optional(S.Unknown),
     private: S.optional(S.Boolean),
+    custom_image_id: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -103,6 +106,18 @@ export type SandboxEnvironmentDTORepositoriesList = Array<string>;
 export const SandboxEnvironmentDTORepositoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SandboxEnvironmentDTORepositoriesList>;
+
+/** Names of the environment variables that are set, sorted. Values are write-only and never returned. */
+export type SandboxEnvironmentDTOEnvironmentVariableKeysList = Array<string>;
+export const SandboxEnvironmentDTOEnvironmentVariableKeysList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SandboxEnvironmentDTOEnvironmentVariableKeysList>;
+
+export type SandboxEnvironmentDTOEffectiveDomainsList = Array<string>;
+export const SandboxEnvironmentDTOEffectiveDomainsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SandboxEnvironmentDTOEffectiveDomainsList>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = {
   [key: string]: unknown | undefined;
@@ -140,18 +155,27 @@ export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskUserBasicInfo",
 }) as any as S.Schema<TaskUserBasicInfo>;
 
-/** List response for sandbox environments (subset of fields). */
+/** A sandbox environment, as returned by list, detail, create and update. */
 export interface SandboxEnvironmentDTO {
   id: string;
   name: string;
   network_access_level: string;
   allowed_domains?: SandboxEnvironmentDTOAllowedDomainsList;
+  include_default_domains: boolean;
   repositories?: SandboxEnvironmentDTORepositoriesList;
+  /** Whether any environment variables are set on this environment. */
+  has_environment_variables?: boolean;
+  /** Names of the environment variables that are set, sorted. Values are write-only and never returned. */
+  environment_variable_keys?: SandboxEnvironmentDTOEnvironmentVariableKeysList;
   private: boolean;
   internal: boolean;
+  effective_domains?: SandboxEnvironmentDTOEffectiveDomainsList;
   created_by?: TaskUserBasicInfo | null;
   created_at?: string | null;
   updated_at?: string | null;
+  custom_image_id?: string | null;
+  custom_image_name?: string | null;
+  custom_image_status?: string | null;
 }
 export const SandboxEnvironmentDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -159,12 +183,21 @@ export const SandboxEnvironmentDTO = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     network_access_level: S.String,
     allowed_domains: S.optional(SandboxEnvironmentDTOAllowedDomainsList),
+    include_default_domains: S.Boolean,
     repositories: S.optional(SandboxEnvironmentDTORepositoriesList),
+    has_environment_variables: S.optional(S.Boolean),
+    environment_variable_keys: S.optional(
+      SandboxEnvironmentDTOEnvironmentVariableKeysList,
+    ),
     private: S.Boolean,
     internal: S.Boolean,
+    effective_domains: S.optional(SandboxEnvironmentDTOEffectiveDomainsList),
     created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
     created_at: S.optional(S.NullOr(S.String)),
     updated_at: S.optional(S.NullOr(S.String)),
+    custom_image_id: S.optional(S.NullOr(S.String)),
+    custom_image_name: S.optional(S.NullOr(S.String)),
+    custom_image_status: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SandboxEnvironmentDTO",
@@ -277,6 +310,8 @@ export interface SandboxPartialUpdateRequest {
   environment_variables?: unknown;
   /** If true, only the creator can see this environment; otherwise the whole team can. */
   private?: boolean;
+  /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
+  custom_image_id?: string | null;
 }
 export const SandboxPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -289,6 +324,7 @@ export const SandboxPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     repositories: S.optional(SandboxPartialUpdateRequestRepositoriesList),
     environment_variables: S.optional(S.Unknown),
     private: S.optional(S.Boolean),
+    custom_image_id: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",

@@ -687,7 +687,7 @@ export const ProtectedQuerySQLParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProtectedQuerySQLParameters",
 }) as any as S.Schema<ProtectedQuerySQLParameters>;
-export type WorkerComputeType = "CR.1X" | "CR.4X" | (string & {});
+export type WorkerComputeType = "CR.1X" | "CR.4X" | "CR.8X" | (string & {});
 export const WorkerComputeType = /*@__PURE__*/ S.String;
 
 export type SparkPropertyKey = string;
@@ -4442,6 +4442,7 @@ export type CreateAudienceModelError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4460,6 +4461,7 @@ export const createAudienceModel: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4472,6 +4474,7 @@ export type CreateConfiguredAudienceModelError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4490,6 +4493,7 @@ export const createConfiguredAudienceModel: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4501,6 +4505,7 @@ export type CreateConfiguredModelAlgorithmError =
   | AccessDeniedException
   | ConflictException
   | ServiceQuotaExceededException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4518,6 +4523,7 @@ export const createConfiguredModelAlgorithm: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     ServiceQuotaExceededException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4626,6 +4632,7 @@ export const createTrainedModel: API.OperationMethod<
 export type CreateTrainingDatasetError =
   | AccessDeniedException
   | ConflictException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4639,7 +4646,12 @@ export const createTrainingDataset: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrainingDatasetRequest,
   output: CreateTrainingDatasetResponse,
-  errors: [AccessDeniedException, ConflictException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ThrottlingException,
+    ValidationException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateTrainingDataset",
@@ -4649,6 +4661,7 @@ export type DeleteAudienceGenerationJobError =
   | AccessDeniedException
   | ConflictException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4666,6 +4679,7 @@ export const deleteAudienceGenerationJob: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4677,6 +4691,7 @@ export type DeleteAudienceModelError =
   | AccessDeniedException
   | ConflictException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4694,6 +4709,7 @@ export const deleteAudienceModel: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4705,6 +4721,7 @@ export type DeleteConfiguredAudienceModelError =
   | AccessDeniedException
   | ConflictException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4722,6 +4739,7 @@ export const deleteConfiguredAudienceModel: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4732,6 +4750,7 @@ export const deleteConfiguredAudienceModel: API.OperationMethod<
 export type DeleteConfiguredAudienceModelPolicyError =
   | AccessDeniedException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4748,6 +4767,7 @@ export const deleteConfiguredAudienceModelPolicy: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4759,6 +4779,7 @@ export type DeleteConfiguredModelAlgorithmError =
   | AccessDeniedException
   | ConflictException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4776,6 +4797,7 @@ export const deleteConfiguredModelAlgorithm: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4905,6 +4927,7 @@ export type DeleteTrainingDatasetError =
   | AccessDeniedException
   | ConflictException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4922,6 +4945,7 @@ export const deleteTrainingDataset: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4932,6 +4956,7 @@ export const deleteTrainingDataset: API.OperationMethod<
 export type GetAudienceGenerationJobError =
   | AccessDeniedException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4948,6 +4973,7 @@ export const getAudienceGenerationJob: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -4958,6 +4984,7 @@ export const getAudienceGenerationJob: API.OperationMethod<
 export type GetAudienceModelError =
   | AccessDeniedException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -4974,6 +5001,7 @@ export const getAudienceModel: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -5068,6 +5096,7 @@ export const getCollaborationTrainedModel: API.OperationMethod<
 export type GetConfiguredAudienceModelError =
   | AccessDeniedException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5084,6 +5113,7 @@ export const getConfiguredAudienceModel: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -5094,6 +5124,7 @@ export const getConfiguredAudienceModel: API.OperationMethod<
 export type GetConfiguredAudienceModelPolicyError =
   | AccessDeniedException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5110,6 +5141,7 @@ export const getConfiguredAudienceModelPolicy: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -5120,6 +5152,7 @@ export const getConfiguredAudienceModelPolicy: API.OperationMethod<
 export type GetConfiguredModelAlgorithmError =
   | AccessDeniedException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5136,6 +5169,7 @@ export const getConfiguredModelAlgorithm: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -5286,6 +5320,7 @@ export const getTrainedModelInferenceJob: API.OperationMethod<
 export type GetTrainingDatasetError =
   | AccessDeniedException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5302,6 +5337,7 @@ export const getTrainingDataset: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -5311,6 +5347,7 @@ export const getTrainingDataset: API.OperationMethod<
 
 export type ListAudienceExportJobsError =
   | AccessDeniedException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5325,7 +5362,7 @@ export const listAudienceExportJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceExportJobsRequest,
   output: ListAudienceExportJobsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListAudienceExportJobs",
@@ -5339,6 +5376,7 @@ export const listAudienceExportJobs: API.PaginatedOperationMethod<
 
 export type ListAudienceGenerationJobsError =
   | AccessDeniedException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5353,7 +5391,7 @@ export const listAudienceGenerationJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceGenerationJobsRequest,
   output: ListAudienceGenerationJobsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListAudienceGenerationJobs",
@@ -5367,6 +5405,7 @@ export const listAudienceGenerationJobs: API.PaginatedOperationMethod<
 
 export type ListAudienceModelsError =
   | AccessDeniedException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5381,7 +5420,7 @@ export const listAudienceModels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceModelsRequest,
   output: ListAudienceModelsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListAudienceModels",
@@ -5540,6 +5579,7 @@ export const listCollaborationTrainedModels: API.PaginatedOperationMethod<
 
 export type ListConfiguredAudienceModelsError =
   | AccessDeniedException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5554,7 +5594,7 @@ export const listConfiguredAudienceModels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredAudienceModelsRequest,
   output: ListConfiguredAudienceModelsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListConfiguredAudienceModels",
@@ -5597,6 +5637,7 @@ export const listConfiguredModelAlgorithmAssociations: API.PaginatedOperationMet
 
 export type ListConfiguredModelAlgorithmsError =
   | AccessDeniedException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5611,7 +5652,7 @@ export const listConfiguredModelAlgorithms: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredModelAlgorithmsRequest,
   output: ListConfiguredModelAlgorithmsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListConfiguredModelAlgorithms",
@@ -5773,6 +5814,7 @@ export const listTrainedModelVersions: API.PaginatedOperationMethod<
 
 export type ListTrainingDatasetsError =
   | AccessDeniedException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5787,7 +5829,7 @@ export const listTrainingDatasets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainingDatasetsRequest,
   output: ListTrainingDatasetsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListTrainingDatasets",
@@ -5802,6 +5844,7 @@ export const listTrainingDatasets: API.PaginatedOperationMethod<
 export type PutConfiguredAudienceModelPolicyError =
   | AccessDeniedException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5818,6 +5861,7 @@ export const putConfiguredAudienceModelPolicy: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -5852,6 +5896,7 @@ export type StartAudienceExportJobError =
   | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -5870,6 +5915,7 @@ export const startAudienceExportJob: API.OperationMethod<
     ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
@@ -6027,6 +6073,7 @@ export type UpdateConfiguredAudienceModelError =
   | AccessDeniedException
   | ConflictException
   | ResourceNotFoundException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -6044,6 +6091,7 @@ export const updateConfiguredAudienceModel: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     ResourceNotFoundException,
+    ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,

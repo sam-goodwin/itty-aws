@@ -1337,6 +1337,7 @@ export type ResourceType =
   | "ipam-prefix-list-resolver"
   | "ipam-policy"
   | "ipam-prefix-list-resolver-target"
+  | "ipam-internet-registry-association"
   | "secondary-interface"
   | "secondary-network"
   | "secondary-subnet"
@@ -1344,6 +1345,7 @@ export type ResourceType =
   | "vpn-concentrator"
   | "ipam-pool-allocation"
   | "capacity-reservation-cancellation-quote"
+  | "application-status-check"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
@@ -2468,6 +2470,7 @@ export type ByoipCidrState =
   | (string & {});
 export const ByoipCidrState = /*@__PURE__*/ S.String;
 
+export type IpamPoolId = string;
 export interface ByoipCidr {
   Cidr?: string;
   Description?: string;
@@ -2476,6 +2479,8 @@ export interface ByoipCidr {
   State?: ByoipCidrState;
   NetworkBorderGroup?: string;
   AdvertisementType?: string;
+  PoolId?: string;
+  IpamPoolId?: string;
 }
 export const ByoipCidr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2504,6 +2509,14 @@ export const ByoipCidr = /*@__PURE__*/ S.suspend(() =>
       T.XmlName("advertisementType"),
       T.Ec2QueryName("AdvertisementType"),
     ),
+    PoolId: S.optional(S.String).pipe(
+      T.XmlName("poolId"),
+      T.Ec2QueryName("PoolId"),
+    ),
+    IpamPoolId: S.optional(S.String).pipe(
+      T.XmlName("ipamPoolId"),
+      T.Ec2QueryName("IpamPoolId"),
+    ),
   }),
 ).annotate({ identifier: "ByoipCidr" }) as any as S.Schema<ByoipCidr>;
 export interface AdvertiseByoipCidrResult {
@@ -2523,7 +2536,6 @@ export const DomainType = /*@__PURE__*/ S.String;
 
 export type PublicIpAddress = string;
 export type Ipv4PoolEc2Id = string;
-export type IpamPoolId = string;
 export interface AllocateAddressRequest {
   Domain?: DomainType;
   Address?: string;
@@ -2621,6 +2633,17 @@ export type AssetId = string;
 export type AssetIdList = string[];
 export const AssetIdList = /*@__PURE__*/ S.Array(S.String);
 export type AvailabilityZoneId = string;
+export type AmdSevSnp = "enabled" | "disabled" | (string & {});
+export const AmdSevSnp = /*@__PURE__*/ S.String;
+
+export interface HostCpuOptionsRequest {
+  AmdSevSnp?: AmdSevSnp;
+}
+export const HostCpuOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AmdSevSnp: S.optional(AmdSevSnp) }),
+).annotate({
+  identifier: "HostCpuOptionsRequest",
+}) as any as S.Schema<HostCpuOptionsRequest>;
 export type AutoPlacement = "on" | "off" | (string & {});
 export const AutoPlacement = /*@__PURE__*/ S.String;
 
@@ -2633,6 +2656,7 @@ export interface AllocateHostsRequest {
   HostMaintenance?: HostMaintenance;
   AssetIds?: string[];
   AvailabilityZoneId?: string;
+  CpuOptions?: HostCpuOptionsRequest;
   AutoPlacement?: AutoPlacement;
   ClientToken?: string;
   InstanceType?: string;
@@ -2650,6 +2674,7 @@ export const AllocateHostsRequest = /*@__PURE__*/ S.suspend(() =>
     HostMaintenance: S.optional(HostMaintenance),
     AssetIds: S.optional(AssetIdList).pipe(T.XmlName("AssetId")),
     AvailabilityZoneId: S.optional(S.String),
+    CpuOptions: S.optional(HostCpuOptionsRequest),
     AutoPlacement: S.optional(AutoPlacement).pipe(
       T.XmlName("autoPlacement"),
       T.Ec2QueryName("AutoPlacement"),
@@ -3236,6 +3261,142 @@ export const AssociateAddressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateAddressResult",
 }) as any as S.Schema<AssociateAddressResult>;
+export type ApplicationStatusCheckId = string;
+export interface CustomTagKeyValueRequestPair {
+  Key?: string;
+  Value?: string;
+}
+export const CustomTagKeyValueRequestPair = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+).annotate({
+  identifier: "CustomTagKeyValueRequestPair",
+}) as any as S.Schema<CustomTagKeyValueRequestPair>;
+export type CustomKeyValuePairRequestSet = CustomTagKeyValueRequestPair[];
+export const CustomKeyValuePairRequestSet = /*@__PURE__*/ S.Array(
+  CustomTagKeyValueRequestPair.pipe(T.XmlName("item")).annotate({
+    identifier: "CustomTagKeyValueRequestPair",
+  }),
+);
+export type InstanceIdList = string[];
+export const InstanceIdList = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("item")),
+);
+export interface AssociateApplicationStatusCheckRequest {
+  ApplicationStatusCheckId?: string;
+  TargetTagAssociations?: CustomTagKeyValueRequestPair[];
+  InstanceIds?: string[];
+  ClientToken?: string;
+  DryRun?: boolean;
+}
+export const AssociateApplicationStatusCheckRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ApplicationStatusCheckId: S.optional(S.String),
+      TargetTagAssociations: S.optional(CustomKeyValuePairRequestSet).pipe(
+        T.XmlName("TargetTagAssociation"),
+      ),
+      InstanceIds: S.optional(InstanceIdList).pipe(T.XmlName("InstanceId")),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "AssociateApplicationStatusCheckRequest",
+}) as any as S.Schema<AssociateApplicationStatusCheckRequest>;
+export interface SuccessfulAssociationResponseObject {
+  ApplicationStatusCheckId?: string;
+  AssociationType?: string;
+  AssociationValue?: string;
+}
+export const SuccessfulAssociationResponseObject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationStatusCheckId: S.optional(S.String).pipe(
+      T.XmlName("applicationStatusCheckId"),
+      T.Ec2QueryName("ApplicationStatusCheckId"),
+    ),
+    AssociationType: S.optional(S.String).pipe(
+      T.XmlName("associationType"),
+      T.Ec2QueryName("AssociationType"),
+    ),
+    AssociationValue: S.optional(S.String).pipe(
+      T.XmlName("associationValue"),
+      T.Ec2QueryName("AssociationValue"),
+    ),
+  }),
+).annotate({
+  identifier: "SuccessfulAssociationResponseObject",
+}) as any as S.Schema<SuccessfulAssociationResponseObject>;
+export type SuccessfulAssociationResponseSet =
+  SuccessfulAssociationResponseObject[];
+export const SuccessfulAssociationResponseSet = /*@__PURE__*/ S.Array(
+  SuccessfulAssociationResponseObject.pipe(T.XmlName("item")).annotate({
+    identifier: "SuccessfulAssociationResponseObject",
+  }),
+);
+export interface UnsuccessfulAssociationResponseObject {
+  ApplicationStatusCheckId?: string;
+  AssociationType?: string;
+  AssociationValue?: string;
+  Reason?: string;
+}
+export const UnsuccessfulAssociationResponseObject = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ApplicationStatusCheckId: S.optional(S.String).pipe(
+        T.XmlName("applicationStatusCheckId"),
+        T.Ec2QueryName("ApplicationStatusCheckId"),
+      ),
+      AssociationType: S.optional(S.String).pipe(
+        T.XmlName("associationType"),
+        T.Ec2QueryName("AssociationType"),
+      ),
+      AssociationValue: S.optional(S.String).pipe(
+        T.XmlName("associationValue"),
+        T.Ec2QueryName("AssociationValue"),
+      ),
+      Reason: S.optional(S.String).pipe(
+        T.XmlName("reason"),
+        T.Ec2QueryName("Reason"),
+      ),
+    }),
+).annotate({
+  identifier: "UnsuccessfulAssociationResponseObject",
+}) as any as S.Schema<UnsuccessfulAssociationResponseObject>;
+export type UnsuccessfulAssociationResponseSet =
+  UnsuccessfulAssociationResponseObject[];
+export const UnsuccessfulAssociationResponseSet = /*@__PURE__*/ S.Array(
+  UnsuccessfulAssociationResponseObject.pipe(T.XmlName("item")).annotate({
+    identifier: "UnsuccessfulAssociationResponseObject",
+  }),
+);
+export interface AssociateApplicationStatusCheckResult {
+  SuccessfulResults?: SuccessfulAssociationResponseObject[];
+  UnsuccessfulResults?: UnsuccessfulAssociationResponseObject[];
+}
+export const AssociateApplicationStatusCheckResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      SuccessfulResults: S.optional(SuccessfulAssociationResponseSet).pipe(
+        T.XmlName("successfulResultSet"),
+        T.Ec2QueryName("SuccessfulResultSet"),
+      ),
+      UnsuccessfulResults: S.optional(UnsuccessfulAssociationResponseSet).pipe(
+        T.XmlName("unsuccessfulResultSet"),
+        T.Ec2QueryName("UnsuccessfulResultSet"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "AssociateApplicationStatusCheckResult",
+}) as any as S.Schema<AssociateApplicationStatusCheckResult>;
 export type AccountID = string;
 export interface AssociateCapacityReservationBillingOwnerRequest {
   DryRun?: boolean;
@@ -3542,10 +3703,6 @@ export const AssociateIamInstanceProfileResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateIamInstanceProfileResult",
 }) as any as S.Schema<AssociateIamInstanceProfileResult>;
 export type InstanceEventWindowId = string;
-export type InstanceIdList = string[];
-export const InstanceIdList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
-);
 export type DedicatedHostId = string;
 export type DedicatedHostIdList = string[];
 export const DedicatedHostIdList = /*@__PURE__*/ S.Array(
@@ -5976,6 +6133,90 @@ export const AuthorizeSecurityGroupIngressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizeSecurityGroupIngressResult",
 }) as any as S.Schema<AuthorizeSecurityGroupIngressResult>;
+export type IpamInternetRegistryAssociationId = string;
+export type BoxedBoolean = boolean;
+export interface BatchModifyIpamRoutingPolicyRegistrationsRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  DeltaJson?: string;
+  Force?: boolean;
+  ClientToken?: string;
+}
+export const BatchModifyIpamRoutingPolicyRegistrationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      DeltaJson: S.optional(S.String),
+      Force: S.optional(S.Boolean),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "BatchModifyIpamRoutingPolicyRegistrationsRequest",
+  }) as any as S.Schema<BatchModifyIpamRoutingPolicyRegistrationsRequest>;
+export type IpamRoutingPolicyRegistrationDeltaState =
+  | "pending"
+  | "published"
+  | "failed"
+  | (string & {});
+export const IpamRoutingPolicyRegistrationDeltaState = /*@__PURE__*/ S.String;
+
+export interface IpamRoutingPolicyRegistrationDelta {
+  DeltaId?: string;
+  DeltaJson?: string;
+  State?: IpamRoutingPolicyRegistrationDeltaState;
+  StateMessage?: string;
+}
+export const IpamRoutingPolicyRegistrationDelta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DeltaId: S.optional(S.String).pipe(
+      T.XmlName("deltaId"),
+      T.Ec2QueryName("DeltaId"),
+    ),
+    DeltaJson: S.optional(S.String).pipe(
+      T.XmlName("deltaJson"),
+      T.Ec2QueryName("DeltaJson"),
+    ),
+    State: S.optional(IpamRoutingPolicyRegistrationDeltaState).pipe(
+      T.XmlName("state"),
+      T.Ec2QueryName("State"),
+    ),
+    StateMessage: S.optional(S.String).pipe(
+      T.XmlName("stateMessage"),
+      T.Ec2QueryName("StateMessage"),
+    ),
+  }),
+).annotate({
+  identifier: "IpamRoutingPolicyRegistrationDelta",
+}) as any as S.Schema<IpamRoutingPolicyRegistrationDelta>;
+export interface BatchModifyIpamRoutingPolicyRegistrationsResult {
+  IpamRoutingPolicyRegistrationDelta?: IpamRoutingPolicyRegistrationDelta;
+}
+export const BatchModifyIpamRoutingPolicyRegistrationsResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamRoutingPolicyRegistrationDelta: S.optional(
+        IpamRoutingPolicyRegistrationDelta,
+      )
+        .pipe(
+          T.XmlName("ipamRoutingPolicyRegistrationDelta"),
+          T.Ec2QueryName("IpamRoutingPolicyRegistrationDelta"),
+        )
+        .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "BatchModifyIpamRoutingPolicyRegistrationsResult",
+  }) as any as S.Schema<BatchModifyIpamRoutingPolicyRegistrationsResult>;
 export type S3StorageUploadPolicySignature = string | redacted.Redacted<string>;
 export interface S3Storage {
   AWSAccessKeyId?: string;
@@ -7398,6 +7639,341 @@ export const CopyVolumesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyVolumesResult",
 }) as any as S.Schema<CopyVolumesResult>;
+export interface HealthCheckPathSourceRequestObject {
+  SubnetId?: string;
+  SecurityGroupId?: string;
+}
+export const HealthCheckPathSourceRequestObject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetId: S.optional(S.String),
+    SecurityGroupId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HealthCheckPathSourceRequestObject",
+}) as any as S.Schema<HealthCheckPathSourceRequestObject>;
+export interface HealthCheckPathDestinationRequestObject {
+  SubnetId?: string;
+  SecurityGroupId?: string;
+}
+export const HealthCheckPathDestinationRequestObject = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      SubnetId: S.optional(S.String),
+      SecurityGroupId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "HealthCheckPathDestinationRequestObject",
+}) as any as S.Schema<HealthCheckPathDestinationRequestObject>;
+export type HealthCheckPathDestinationRequestSet =
+  HealthCheckPathDestinationRequestObject[];
+export const HealthCheckPathDestinationRequestSet = /*@__PURE__*/ S.Array(
+  HealthCheckPathDestinationRequestObject.pipe(T.XmlName("item")).annotate({
+    identifier: "HealthCheckPathDestinationRequestObject",
+  }),
+);
+export interface HealthCheckPathRequestObject {
+  Source?: HealthCheckPathSourceRequestObject;
+  Destinations?: HealthCheckPathDestinationRequestObject[];
+}
+export const HealthCheckPathRequestObject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Source: S.optional(HealthCheckPathSourceRequestObject),
+    Destinations: S.optional(HealthCheckPathDestinationRequestSet).pipe(
+      T.XmlName("Destination"),
+    ),
+  }),
+).annotate({
+  identifier: "HealthCheckPathRequestObject",
+}) as any as S.Schema<HealthCheckPathRequestObject>;
+export type HealthCheckPathRequestList = HealthCheckPathRequestObject[];
+export const HealthCheckPathRequestList = /*@__PURE__*/ S.Array(
+  HealthCheckPathRequestObject.pipe(T.XmlName("item")).annotate({
+    identifier: "HealthCheckPathRequestObject",
+  }),
+);
+export type AggregationStatusEnum = "included" | "excluded" | (string & {});
+export const AggregationStatusEnum = /*@__PURE__*/ S.String;
+
+export type NetworkProtocolEnum = "http" | "https" | (string & {});
+export const NetworkProtocolEnum = /*@__PURE__*/ S.String;
+
+export type PortNumber = number;
+export type IpVersionEnum = "ipv4" | "ipv6" | (string & {});
+export const IpVersionEnum = /*@__PURE__*/ S.String;
+
+export type IpScopeEnum = "private" | (string & {});
+export const IpScopeEnum = /*@__PURE__*/ S.String;
+
+export type InitializationGracePeriodSeconds = number;
+export interface CreateApplicationStatusCheckRequest {
+  HealthCheckPaths?: HealthCheckPathRequestObject[];
+  Aggregation?: AggregationStatusEnum;
+  Protocol?: NetworkProtocolEnum;
+  Port?: number;
+  Path?: string;
+  DeviceIndex?: number;
+  IpVersion?: IpVersionEnum;
+  IpScope?: IpScopeEnum;
+  Interval?: number;
+  Timeout?: number;
+  FailureThreshold?: number;
+  SuccessThreshold?: number;
+  StatusCodeMatcher?: string;
+  InitializationGracePeriodSeconds?: number;
+  TagSpecifications?: TagSpecification[];
+  ClientToken?: string;
+  DryRun?: boolean;
+}
+export const CreateApplicationStatusCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HealthCheckPaths: S.optional(HealthCheckPathRequestList).pipe(
+      T.XmlName("HealthCheckPath"),
+    ),
+    Aggregation: S.optional(AggregationStatusEnum),
+    Protocol: S.optional(NetworkProtocolEnum),
+    Port: S.optional(S.Number),
+    Path: S.optional(S.String),
+    DeviceIndex: S.optional(S.Number),
+    IpVersion: S.optional(IpVersionEnum),
+    IpScope: S.optional(IpScopeEnum),
+    Interval: S.optional(S.Number),
+    Timeout: S.optional(S.Number),
+    FailureThreshold: S.optional(S.Number),
+    SuccessThreshold: S.optional(S.Number),
+    StatusCodeMatcher: S.optional(S.String),
+    InitializationGracePeriodSeconds: S.optional(S.Number),
+    TagSpecifications: S.optional(TagSpecificationList).pipe(
+      T.XmlName("TagSpecification"),
+    ),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    DryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateApplicationStatusCheckRequest",
+}) as any as S.Schema<CreateApplicationStatusCheckRequest>;
+export interface HealthCheckPathSourceResponseObject {
+  SubnetId?: string;
+  SecurityGroupId?: string;
+}
+export const HealthCheckPathSourceResponseObject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetId: S.optional(S.String).pipe(
+      T.XmlName("subnetId"),
+      T.Ec2QueryName("SubnetId"),
+    ),
+    SecurityGroupId: S.optional(S.String).pipe(
+      T.XmlName("securityGroupId"),
+      T.Ec2QueryName("SecurityGroupId"),
+    ),
+  }),
+).annotate({
+  identifier: "HealthCheckPathSourceResponseObject",
+}) as any as S.Schema<HealthCheckPathSourceResponseObject>;
+export interface HealthCheckPathDestinationResponseObject {
+  SubnetId?: string;
+  SecurityGroupId?: string;
+}
+export const HealthCheckPathDestinationResponseObject = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      SubnetId: S.optional(S.String).pipe(
+        T.XmlName("subnetId"),
+        T.Ec2QueryName("SubnetId"),
+      ),
+      SecurityGroupId: S.optional(S.String).pipe(
+        T.XmlName("securityGroupId"),
+        T.Ec2QueryName("SecurityGroupId"),
+      ),
+    }),
+).annotate({
+  identifier: "HealthCheckPathDestinationResponseObject",
+}) as any as S.Schema<HealthCheckPathDestinationResponseObject>;
+export type HealthCheckPathDestinationResponseList =
+  HealthCheckPathDestinationResponseObject[];
+export const HealthCheckPathDestinationResponseList = /*@__PURE__*/ S.Array(
+  HealthCheckPathDestinationResponseObject.pipe(T.XmlName("item")).annotate({
+    identifier: "HealthCheckPathDestinationResponseObject",
+  }),
+);
+export interface HealthCheckPathResponseObject {
+  Source?: HealthCheckPathSourceResponseObject;
+  Destinations?: HealthCheckPathDestinationResponseObject[];
+}
+export const HealthCheckPathResponseObject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Source: S.optional(HealthCheckPathSourceResponseObject)
+      .pipe(T.XmlName("source"), T.Ec2QueryName("Source"))
+      .annotate({ identifier: "HealthCheckPathSourceResponseObject" }),
+    Destinations: S.optional(HealthCheckPathDestinationResponseList).pipe(
+      T.XmlName("destinationSet"),
+      T.Ec2QueryName("DestinationSet"),
+    ),
+  }),
+).annotate({
+  identifier: "HealthCheckPathResponseObject",
+}) as any as S.Schema<HealthCheckPathResponseObject>;
+export type HealthCheckPathResponseList = HealthCheckPathResponseObject[];
+export const HealthCheckPathResponseList = /*@__PURE__*/ S.Array(
+  HealthCheckPathResponseObject.pipe(T.XmlName("item")).annotate({
+    identifier: "HealthCheckPathResponseObject",
+  }),
+);
+export interface CustomTagKeyValueResponsePair {
+  Key?: string;
+  Value?: string;
+}
+export const CustomTagKeyValueResponsePair = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Key: S.optional(S.String).pipe(T.XmlName("key"), T.Ec2QueryName("Key")),
+    Value: S.optional(S.String).pipe(
+      T.XmlName("value"),
+      T.Ec2QueryName("Value"),
+    ),
+  }),
+).annotate({
+  identifier: "CustomTagKeyValueResponsePair",
+}) as any as S.Schema<CustomTagKeyValueResponsePair>;
+export type CustomKeyValuePairResponseSet = CustomTagKeyValueResponsePair[];
+export const CustomKeyValuePairResponseSet = /*@__PURE__*/ S.Array(
+  CustomTagKeyValueResponsePair.pipe(T.XmlName("item")).annotate({
+    identifier: "CustomTagKeyValueResponsePair",
+  }),
+);
+export interface ApplicationStatusCheckResponseObject {
+  ApplicationStatusCheckId?: string;
+  Aggregation?: AggregationStatusEnum;
+  HealthCheckPaths?: HealthCheckPathResponseObject[];
+  Protocol?: NetworkProtocolEnum;
+  Port?: number;
+  Path?: string;
+  DeviceIndex?: number;
+  IpVersion?: IpVersionEnum;
+  IpScope?: IpScopeEnum;
+  Interval?: number;
+  Timeout?: number;
+  FailureThreshold?: number;
+  SuccessThreshold?: number;
+  StatusCodeMatcher?: string;
+  InitializationGracePeriodSeconds?: number;
+  LastUpdatedAt?: Date;
+  TargetTagAssociations?: CustomTagKeyValueResponsePair[];
+  Tags?: Tag[];
+  CreationTime?: Date;
+  ModifyTime?: Date;
+  DeletionTime?: Date;
+}
+export const ApplicationStatusCheckResponseObject = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ApplicationStatusCheckId: S.optional(S.String).pipe(
+        T.XmlName("applicationStatusCheckId"),
+        T.Ec2QueryName("ApplicationStatusCheckId"),
+      ),
+      Aggregation: S.optional(AggregationStatusEnum).pipe(
+        T.XmlName("aggregation"),
+        T.Ec2QueryName("Aggregation"),
+      ),
+      HealthCheckPaths: S.optional(HealthCheckPathResponseList).pipe(
+        T.XmlName("healthCheckPathSet"),
+        T.Ec2QueryName("HealthCheckPathSet"),
+      ),
+      Protocol: S.optional(NetworkProtocolEnum).pipe(
+        T.XmlName("protocol"),
+        T.Ec2QueryName("Protocol"),
+      ),
+      Port: S.optional(S.Number).pipe(
+        T.XmlName("port"),
+        T.Ec2QueryName("Port"),
+      ),
+      Path: S.optional(S.String).pipe(
+        T.XmlName("path"),
+        T.Ec2QueryName("Path"),
+      ),
+      DeviceIndex: S.optional(S.Number).pipe(
+        T.XmlName("deviceIndex"),
+        T.Ec2QueryName("DeviceIndex"),
+      ),
+      IpVersion: S.optional(IpVersionEnum).pipe(
+        T.XmlName("ipVersion"),
+        T.Ec2QueryName("IpVersion"),
+      ),
+      IpScope: S.optional(IpScopeEnum).pipe(
+        T.XmlName("ipScope"),
+        T.Ec2QueryName("IpScope"),
+      ),
+      Interval: S.optional(S.Number).pipe(
+        T.XmlName("interval"),
+        T.Ec2QueryName("Interval"),
+      ),
+      Timeout: S.optional(S.Number).pipe(
+        T.XmlName("timeout"),
+        T.Ec2QueryName("Timeout"),
+      ),
+      FailureThreshold: S.optional(S.Number).pipe(
+        T.XmlName("failureThreshold"),
+        T.Ec2QueryName("FailureThreshold"),
+      ),
+      SuccessThreshold: S.optional(S.Number).pipe(
+        T.XmlName("successThreshold"),
+        T.Ec2QueryName("SuccessThreshold"),
+      ),
+      StatusCodeMatcher: S.optional(S.String).pipe(
+        T.XmlName("statusCodeMatcher"),
+        T.Ec2QueryName("StatusCodeMatcher"),
+      ),
+      InitializationGracePeriodSeconds: S.optional(S.Number).pipe(
+        T.XmlName("initializationGracePeriodSeconds"),
+        T.Ec2QueryName("InitializationGracePeriodSeconds"),
+      ),
+      LastUpdatedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(T.XmlName("lastUpdatedAt"), T.Ec2QueryName("LastUpdatedAt")),
+      TargetTagAssociations: S.optional(CustomKeyValuePairResponseSet).pipe(
+        T.XmlName("targetTagAssociationSet"),
+        T.Ec2QueryName("TargetTagAssociationSet"),
+      ),
+      Tags: S.optional(TagList).pipe(
+        T.XmlName("tagSet"),
+        T.Ec2QueryName("TagSet"),
+      ),
+      CreationTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(T.XmlName("creationTime"), T.Ec2QueryName("CreationTime")),
+      ModifyTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(T.XmlName("modifyTime"), T.Ec2QueryName("ModifyTime")),
+      DeletionTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(T.XmlName("deletionTime"), T.Ec2QueryName("DeletionTime")),
+    }),
+).annotate({
+  identifier: "ApplicationStatusCheckResponseObject",
+}) as any as S.Schema<ApplicationStatusCheckResponseObject>;
+export interface CreateApplicationStatusCheckResult {
+  ApplicationStatusCheck?: ApplicationStatusCheckResponseObject;
+}
+export const CreateApplicationStatusCheckResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationStatusCheck: S.optional(ApplicationStatusCheckResponseObject)
+      .pipe(
+        T.XmlName("applicationStatusCheck"),
+        T.Ec2QueryName("ApplicationStatusCheck"),
+      )
+      .annotate({ identifier: "ApplicationStatusCheckResponseObject" }),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateApplicationStatusCheckResult",
+}) as any as S.Schema<CreateApplicationStatusCheckResult>;
 export type Schedule = "hourly" | (string & {});
 export const Schedule = /*@__PURE__*/ S.String;
 
@@ -7649,7 +8225,6 @@ export const CapacityReservationCommitmentInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "CapacityReservationCommitmentInfo",
 }) as any as S.Schema<CapacityReservationCommitmentInfo>;
 export type CapacityBlockId = string;
-export type BoxedBoolean = boolean;
 export type InterruptibleCapacityReservationAllocationStatus =
   | "pending"
   | "active"
@@ -9322,6 +9897,199 @@ export type InstanceType =
   | "m8id.metal-48xl"
   | "m8id.metal-96xl"
   | "hpc8a.96xlarge"
+  | "c8in.large"
+  | "c8in.xlarge"
+  | "c8in.2xlarge"
+  | "c8in.4xlarge"
+  | "c8in.8xlarge"
+  | "c8in.12xlarge"
+  | "c8in.16xlarge"
+  | "c8in.24xlarge"
+  | "c8in.32xlarge"
+  | "c8in.48xlarge"
+  | "c8in.96xlarge"
+  | "c8in.metal-48xl"
+  | "c8in.metal-96xl"
+  | "c8ib.large"
+  | "c8ib.xlarge"
+  | "c8ib.2xlarge"
+  | "c8ib.4xlarge"
+  | "c8ib.8xlarge"
+  | "c8ib.12xlarge"
+  | "c8ib.16xlarge"
+  | "c8ib.24xlarge"
+  | "c8ib.32xlarge"
+  | "c8ib.48xlarge"
+  | "c8ib.96xlarge"
+  | "c8ib.metal-48xl"
+  | "c8ib.metal-96xl"
+  | "r8in.large"
+  | "r8in.xlarge"
+  | "r8in.2xlarge"
+  | "r8in.4xlarge"
+  | "r8in.8xlarge"
+  | "r8in.12xlarge"
+  | "r8in.16xlarge"
+  | "r8in.24xlarge"
+  | "r8in.32xlarge"
+  | "r8in.48xlarge"
+  | "r8in.96xlarge"
+  | "r8ib.large"
+  | "r8ib.xlarge"
+  | "r8ib.2xlarge"
+  | "r8ib.4xlarge"
+  | "r8ib.8xlarge"
+  | "r8ib.12xlarge"
+  | "r8ib.16xlarge"
+  | "r8ib.24xlarge"
+  | "r8ib.32xlarge"
+  | "r8ib.48xlarge"
+  | "r8ib.96xlarge"
+  | "m8in.large"
+  | "m8in.xlarge"
+  | "m8in.2xlarge"
+  | "m8in.4xlarge"
+  | "m8in.8xlarge"
+  | "m8in.12xlarge"
+  | "m8in.16xlarge"
+  | "m8in.24xlarge"
+  | "m8in.32xlarge"
+  | "m8in.48xlarge"
+  | "m8in.96xlarge"
+  | "m8ib.large"
+  | "m8ib.xlarge"
+  | "m8ib.2xlarge"
+  | "m8ib.4xlarge"
+  | "m8ib.8xlarge"
+  | "m8ib.12xlarge"
+  | "m8ib.16xlarge"
+  | "m8ib.24xlarge"
+  | "m8ib.32xlarge"
+  | "m8ib.48xlarge"
+  | "m8ib.96xlarge"
+  | "m8ine.large"
+  | "m8ine.xlarge"
+  | "m8ine.2xlarge"
+  | "m8ine.4xlarge"
+  | "m8ine.8xlarge"
+  | "m8ine.12xlarge"
+  | "c8ine.large"
+  | "c8ine.xlarge"
+  | "c8ine.2xlarge"
+  | "c8ine.4xlarge"
+  | "c8ine.8xlarge"
+  | "c8ine.12xlarge"
+  | "m8idn.large"
+  | "m8idn.xlarge"
+  | "m8idn.2xlarge"
+  | "m8idn.4xlarge"
+  | "m8idn.8xlarge"
+  | "m8idn.12xlarge"
+  | "m8idn.16xlarge"
+  | "m8idn.24xlarge"
+  | "m8idn.32xlarge"
+  | "m8idn.48xlarge"
+  | "m8idn.96xlarge"
+  | "r8idn.large"
+  | "r8idn.xlarge"
+  | "r8idn.2xlarge"
+  | "r8idn.4xlarge"
+  | "r8idn.8xlarge"
+  | "r8idn.12xlarge"
+  | "r8idn.16xlarge"
+  | "r8idn.24xlarge"
+  | "r8idn.32xlarge"
+  | "r8idn.48xlarge"
+  | "r8idn.96xlarge"
+  | "m8idb.large"
+  | "m8idb.xlarge"
+  | "m8idb.2xlarge"
+  | "m8idb.4xlarge"
+  | "m8idb.8xlarge"
+  | "m8idb.12xlarge"
+  | "m8idb.16xlarge"
+  | "m8idb.24xlarge"
+  | "m8idb.32xlarge"
+  | "m8idb.48xlarge"
+  | "m8idb.96xlarge"
+  | "r8idb.large"
+  | "r8idb.xlarge"
+  | "r8idb.2xlarge"
+  | "r8idb.4xlarge"
+  | "r8idb.8xlarge"
+  | "r8idb.12xlarge"
+  | "r8idb.16xlarge"
+  | "r8idb.24xlarge"
+  | "r8idb.32xlarge"
+  | "r8idb.48xlarge"
+  | "r8idb.96xlarge"
+  | "mac-m3ultra.metal"
+  | "m9g.large"
+  | "m9g.xlarge"
+  | "m9g.2xlarge"
+  | "m9g.4xlarge"
+  | "m9g.8xlarge"
+  | "m9g.12xlarge"
+  | "m9g.16xlarge"
+  | "m9g.24xlarge"
+  | "m9g.48xlarge"
+  | "m9g.metal-24xl"
+  | "m9g.metal-48xl"
+  | "m9gd.large"
+  | "m9gd.xlarge"
+  | "m9gd.2xlarge"
+  | "m9gd.4xlarge"
+  | "m9gd.8xlarge"
+  | "m9gd.12xlarge"
+  | "m9gd.16xlarge"
+  | "m9gd.24xlarge"
+  | "m9gd.48xlarge"
+  | "m9gd.metal-24xl"
+  | "m9gd.metal-48xl"
+  | "r8in.metal-48xl"
+  | "r8in.metal-96xl"
+  | "r8ib.metal-48xl"
+  | "r8ib.metal-96xl"
+  | "r8idn.metal-48xl"
+  | "r8idn.metal-96xl"
+  | "r8idb.metal-48xl"
+  | "r8idb.metal-96xl"
+  | "m8in.metal-48xl"
+  | "m8in.metal-96xl"
+  | "m8ib.metal-48xl"
+  | "m8ib.metal-96xl"
+  | "m8idn.metal-48xl"
+  | "m8idn.metal-96xl"
+  | "m8idb.metal-48xl"
+  | "m8idb.metal-96xl"
+  | "g7.2xlarge"
+  | "g7.4xlarge"
+  | "g7.8xlarge"
+  | "g7.12xlarge"
+  | "g7.24xlarge"
+  | "g7.48xlarge"
+  | "c9g.medium"
+  | "c9g.large"
+  | "c9g.xlarge"
+  | "c9g.2xlarge"
+  | "c9g.4xlarge"
+  | "c9g.8xlarge"
+  | "c9g.12xlarge"
+  | "c9g.16xlarge"
+  | "c9g.24xlarge"
+  | "c9g.48xlarge"
+  | "c9g.metal-48xl"
+  | "c9gd.medium"
+  | "c9gd.large"
+  | "c9gd.xlarge"
+  | "c9gd.2xlarge"
+  | "c9gd.4xlarge"
+  | "c9gd.8xlarge"
+  | "c9gd.12xlarge"
+  | "c9gd.16xlarge"
+  | "c9gd.24xlarge"
+  | "c9gd.48xlarge"
+  | "c9gd.metal-48xl"
   | "c8gb.12xlarge"
   | "c8gb.16xlarge"
   | "c8gb.24xlarge"
@@ -10604,7 +11372,7 @@ export const VpcEncryptionControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcEncryptionControl",
 }) as any as S.Schema<VpcEncryptionControl>;
-export type VpcState = "pending" | "available" | (string & {});
+export type VpcState = "pending" | "available" | "deleting" | (string & {});
 export const VpcState = /*@__PURE__*/ S.String;
 
 export interface Vpc {
@@ -11191,7 +11959,12 @@ export const OnDemandOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OnDemandOptionsRequest",
 }) as any as S.Schema<OnDemandOptionsRequest>;
+export type ReservedCapacityAllocationStrategy = "prioritized" | (string & {});
+export const ReservedCapacityAllocationStrategy = /*@__PURE__*/ S.String;
+
 export type FleetReservationType =
+  | "on-demand-capacity-reservation"
+  | "capacity-block"
   | "interruptible-capacity-reservation"
   | (string & {});
 export const FleetReservationType = /*@__PURE__*/ S.String;
@@ -11200,13 +11973,70 @@ export type ReservationTypeListRequest = FleetReservationType[];
 export const ReservationTypeListRequest = /*@__PURE__*/ S.Array(
   FleetReservationType.pipe(T.XmlName("ReservationType")),
 );
+export type CapacityReservationIdSet = string[];
+export const CapacityReservationIdSet = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("item")),
+);
+export type ResourceGroupName = string;
+export type CapacityReservationResourceGroupArnSet = string[];
+export const CapacityReservationResourceGroupArnSet = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("item")),
+);
+export interface FleetCapacityReservationTargetRequest {
+  CapacityReservationIds?: string[];
+  CapacityReservationResourceGroupArns?: string[];
+}
+export const FleetCapacityReservationTargetRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      CapacityReservationIds: S.optional(CapacityReservationIdSet).pipe(
+        T.XmlName("CapacityReservationId"),
+      ),
+      CapacityReservationResourceGroupArns: S.optional(
+        CapacityReservationResourceGroupArnSet,
+      ).pipe(T.XmlName("CapacityReservationResourceGroupArn")),
+    }),
+).annotate({
+  identifier: "FleetCapacityReservationTargetRequest",
+}) as any as S.Schema<FleetCapacityReservationTargetRequest>;
+export type ReservedCapacityFallbackMarketType = "on-demand" | (string & {});
+export const ReservedCapacityFallbackMarketType = /*@__PURE__*/ S.String;
+
+export type ReservedCapacityFallbackMarketTypeList =
+  ReservedCapacityFallbackMarketType[];
+export const ReservedCapacityFallbackMarketTypeList = /*@__PURE__*/ S.Array(
+  ReservedCapacityFallbackMarketType.pipe(T.XmlName("item")),
+);
+export interface ReservedCapacityFallbackOptionsRequest {
+  MarketTypes?: ReservedCapacityFallbackMarketType[];
+}
+export const ReservedCapacityFallbackOptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      MarketTypes: S.optional(ReservedCapacityFallbackMarketTypeList).pipe(
+        T.XmlName("MarketType"),
+      ),
+    }),
+).annotate({
+  identifier: "ReservedCapacityFallbackOptionsRequest",
+}) as any as S.Schema<ReservedCapacityFallbackOptionsRequest>;
 export interface ReservedCapacityOptionsRequest {
+  AllocationStrategy?: ReservedCapacityAllocationStrategy;
   ReservationTypes?: FleetReservationType[];
+  CapacityReservationTarget?: FleetCapacityReservationTargetRequest;
+  ReservedCapacityFallbackOptions?: ReservedCapacityFallbackOptionsRequest;
 }
 export const ReservedCapacityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    AllocationStrategy: S.optional(ReservedCapacityAllocationStrategy),
     ReservationTypes: S.optional(ReservationTypeListRequest).pipe(
       T.XmlName("ReservationType"),
+    ),
+    CapacityReservationTarget: S.optional(
+      FleetCapacityReservationTargetRequest,
+    ),
+    ReservedCapacityFallbackOptions: S.optional(
+      ReservedCapacityFallbackOptionsRequest,
     ),
   }),
 ).annotate({
@@ -11220,10 +12050,12 @@ export const FleetExcessCapacityTerminationPolicy = /*@__PURE__*/ S.String;
 
 export type LaunchTemplateId = string;
 export type LaunchTemplateName = string;
+export type SensitiveUserData = string | redacted.Redacted<string>;
 export interface FleetLaunchTemplateSpecificationRequest {
   LaunchTemplateId?: string;
   LaunchTemplateName?: string;
   Version?: string;
+  LaunchTemplateSpecificationUserData?: string | redacted.Redacted<string>;
 }
 export const FleetLaunchTemplateSpecificationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11231,6 +12063,7 @@ export const FleetLaunchTemplateSpecificationRequest = /*@__PURE__*/ S.suspend(
       LaunchTemplateId: S.optional(S.String),
       LaunchTemplateName: S.optional(S.String),
       Version: S.optional(S.String),
+      LaunchTemplateSpecificationUserData: S.optional(SensitiveString),
     }),
 ).annotate({
   identifier: "FleetLaunchTemplateSpecificationRequest",
@@ -11341,6 +12174,39 @@ export const FleetBlockDeviceMappingRequestList = /*@__PURE__*/ S.Array(
     { identifier: "FleetBlockDeviceMappingRequest" },
   ),
 );
+export interface FleetIamInstanceProfileSpecificationRequest {
+  Arn?: string;
+  Name?: string;
+}
+export const FleetIamInstanceProfileSpecificationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
+  ).annotate({
+    identifier: "FleetIamInstanceProfileSpecificationRequest",
+  }) as any as S.Schema<FleetIamInstanceProfileSpecificationRequest>;
+export type FleetHttpTokensState = "optional" | "required" | (string & {});
+export const FleetHttpTokensState = /*@__PURE__*/ S.String;
+
+export type FleetInstanceMetadataEndpointState =
+  | "disabled"
+  | "enabled"
+  | (string & {});
+export const FleetInstanceMetadataEndpointState = /*@__PURE__*/ S.String;
+
+export interface FleetInstanceMetadataOptionsRequest {
+  HttpTokens?: FleetHttpTokensState;
+  HttpPutResponseHopLimit?: number;
+  HttpEndpoint?: FleetInstanceMetadataEndpointState;
+}
+export const FleetInstanceMetadataOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HttpTokens: S.optional(FleetHttpTokensState),
+    HttpPutResponseHopLimit: S.optional(S.Number),
+    HttpEndpoint: S.optional(FleetInstanceMetadataEndpointState),
+  }),
+).annotate({
+  identifier: "FleetInstanceMetadataOptionsRequest",
+}) as any as S.Schema<FleetInstanceMetadataOptionsRequest>;
 export interface VCpuCountRangeRequest {
   Min?: number;
   Max?: number;
@@ -11642,7 +12508,10 @@ export interface FleetLaunchTemplateOverridesRequest {
   WeightedCapacity?: number;
   Priority?: number;
   Placement?: Placement;
+  KeyName?: string;
   BlockDeviceMappings?: FleetBlockDeviceMappingRequest[];
+  IamInstanceProfile?: FleetIamInstanceProfileSpecificationRequest;
+  MetadataOptions?: FleetInstanceMetadataOptionsRequest;
   InstanceRequirements?: InstanceRequirementsRequest;
   ImageId?: string;
   AvailabilityZoneId?: string;
@@ -11656,9 +12525,12 @@ export const FleetLaunchTemplateOverridesRequest = /*@__PURE__*/ S.suspend(() =>
     WeightedCapacity: S.optional(S.Number),
     Priority: S.optional(S.Number),
     Placement: S.optional(Placement),
+    KeyName: S.optional(S.String),
     BlockDeviceMappings: S.optional(FleetBlockDeviceMappingRequestList).pipe(
       T.XmlName("BlockDeviceMapping"),
     ),
+    IamInstanceProfile: S.optional(FleetIamInstanceProfileSpecificationRequest),
+    MetadataOptions: S.optional(FleetInstanceMetadataOptionsRequest),
     InstanceRequirements: S.optional(InstanceRequirementsRequest),
     ImageId: S.optional(S.String),
     AvailabilityZoneId: S.optional(S.String),
@@ -12282,6 +13154,7 @@ export type InstanceLifecycle =
   | "spot"
   | "on-demand"
   | "interruptible-capacity-reservation"
+  | "capacity-block"
   | (string & {});
 export const InstanceLifecycle = /*@__PURE__*/ S.String;
 
@@ -12334,6 +13207,9 @@ export interface CreateFleetInstance {
   InstanceIds?: string[];
   InstanceType?: InstanceType;
   Platform?: PlatformValues;
+  AvailabilityZoneId?: string;
+  AvailabilityZone?: string;
+  SubnetId?: string;
 }
 export const CreateFleetInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12358,6 +13234,18 @@ export const CreateFleetInstance = /*@__PURE__*/ S.suspend(() =>
     Platform: S.optional(PlatformValues).pipe(
       T.XmlName("platform"),
       T.Ec2QueryName("Platform"),
+    ),
+    AvailabilityZoneId: S.optional(S.String).pipe(
+      T.XmlName("availabilityZoneId"),
+      T.Ec2QueryName("AvailabilityZoneId"),
+    ),
+    AvailabilityZone: S.optional(S.String).pipe(
+      T.XmlName("availabilityZone"),
+      T.Ec2QueryName("AvailabilityZone"),
+    ),
+    SubnetId: S.optional(S.String).pipe(
+      T.XmlName("subnetId"),
+      T.Ec2QueryName("SubnetId"),
     ),
   }),
 ).annotate({
@@ -13779,6 +14667,135 @@ export const CreateIpamExternalResourceVerificationTokenResult =
   ).annotate({
     identifier: "CreateIpamExternalResourceVerificationTokenResult",
   }) as any as S.Schema<CreateIpamExternalResourceVerificationTokenResult>;
+export type Rir = "ripe" | "apnic" | "arin" | "lacnic" | (string & {});
+export const Rir = /*@__PURE__*/ S.String;
+
+export interface CreateIpamInternetRegistryAssociationRequest {
+  DryRun?: boolean;
+  IpamId?: string;
+  Rir?: Rir;
+  OrganizationHandle?: string;
+  Description?: string;
+  TagSpecifications?: TagSpecification[];
+  ClientToken?: string;
+}
+export const CreateIpamInternetRegistryAssociationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamId: S.optional(S.String),
+      Rir: S.optional(Rir),
+      OrganizationHandle: S.optional(S.String),
+      Description: S.optional(S.String),
+      TagSpecifications: S.optional(TagSpecificationList).pipe(
+        T.XmlName("TagSpecification"),
+      ),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateIpamInternetRegistryAssociationRequest",
+  }) as any as S.Schema<CreateIpamInternetRegistryAssociationRequest>;
+export type IpamInternetRegistryAssociationState =
+  | "pending-enable"
+  | "create-in-progress"
+  | "create-failed"
+  | "enable-in-progress"
+  | "enable-complete"
+  | "enable-failed"
+  | "delete-in-progress"
+  | "delete-complete"
+  | "delete-failed"
+  | (string & {});
+export const IpamInternetRegistryAssociationState = /*@__PURE__*/ S.String;
+
+export interface IpamInternetRegistryAssociation {
+  OwnerId?: string;
+  IpamInternetRegistryAssociationId?: string;
+  IpamInternetRegistryAssociationArn?: string;
+  IpamId?: string;
+  IpamRegion?: string;
+  Rir?: Rir;
+  OrganizationHandle?: string;
+  Description?: string;
+  State?: IpamInternetRegistryAssociationState;
+  ChildRequestXml?: string;
+  Tags?: Tag[];
+}
+export const IpamInternetRegistryAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OwnerId: S.optional(S.String).pipe(
+      T.XmlName("ownerId"),
+      T.Ec2QueryName("OwnerId"),
+    ),
+    IpamInternetRegistryAssociationId: S.optional(S.String).pipe(
+      T.XmlName("ipamInternetRegistryAssociationId"),
+      T.Ec2QueryName("IpamInternetRegistryAssociationId"),
+    ),
+    IpamInternetRegistryAssociationArn: S.optional(S.String).pipe(
+      T.XmlName("ipamInternetRegistryAssociationArn"),
+      T.Ec2QueryName("IpamInternetRegistryAssociationArn"),
+    ),
+    IpamId: S.optional(S.String).pipe(
+      T.XmlName("ipamId"),
+      T.Ec2QueryName("IpamId"),
+    ),
+    IpamRegion: S.optional(S.String).pipe(
+      T.XmlName("ipamRegion"),
+      T.Ec2QueryName("IpamRegion"),
+    ),
+    Rir: S.optional(Rir).pipe(T.XmlName("rir"), T.Ec2QueryName("Rir")),
+    OrganizationHandle: S.optional(S.String).pipe(
+      T.XmlName("organizationHandle"),
+      T.Ec2QueryName("OrganizationHandle"),
+    ),
+    Description: S.optional(S.String).pipe(
+      T.XmlName("description"),
+      T.Ec2QueryName("Description"),
+    ),
+    State: S.optional(IpamInternetRegistryAssociationState).pipe(
+      T.XmlName("state"),
+      T.Ec2QueryName("State"),
+    ),
+    ChildRequestXml: S.optional(S.String).pipe(
+      T.XmlName("childRequestXml"),
+      T.Ec2QueryName("ChildRequestXml"),
+    ),
+    Tags: S.optional(TagList).pipe(
+      T.XmlName("tagSet"),
+      T.Ec2QueryName("TagSet"),
+    ),
+  }),
+).annotate({
+  identifier: "IpamInternetRegistryAssociation",
+}) as any as S.Schema<IpamInternetRegistryAssociation>;
+export interface CreateIpamInternetRegistryAssociationResult {
+  IpamInternetRegistryAssociation?: IpamInternetRegistryAssociation;
+}
+export const CreateIpamInternetRegistryAssociationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamInternetRegistryAssociation: S.optional(
+        IpamInternetRegistryAssociation,
+      )
+        .pipe(
+          T.XmlName("ipamInternetRegistryAssociation"),
+          T.Ec2QueryName("IpamInternetRegistryAssociation"),
+        )
+        .annotate({ identifier: "IpamInternetRegistryAssociation" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "CreateIpamInternetRegistryAssociationResult",
+  }) as any as S.Schema<CreateIpamInternetRegistryAssociationResult>;
 export interface CreateIpamPolicyRequest {
   DryRun?: boolean;
   TagSpecifications?: TagSpecification[];
@@ -14696,6 +15713,64 @@ export const CreateIpamResourceDiscoveryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpamResourceDiscoveryResult",
 }) as any as S.Schema<CreateIpamResourceDiscoveryResult>;
+export type AsnList = string[];
+export const AsnList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export type IpamRoutingPolicyRegistrationMaxLength = number;
+export interface CreateIpamRoutingPolicyRegistrationRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  Cidr?: string;
+  Asns?: string[];
+  PermitMoreSpecificAnnouncements?: boolean;
+  MaxLength?: number;
+  Description?: string;
+  Force?: boolean;
+  ClientToken?: string;
+}
+export const CreateIpamRoutingPolicyRegistrationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      Cidr: S.optional(S.String),
+      Asns: S.optional(AsnList).pipe(T.XmlName("Asn")),
+      PermitMoreSpecificAnnouncements: S.optional(S.Boolean),
+      MaxLength: S.optional(S.Number),
+      Description: S.optional(S.String),
+      Force: S.optional(S.Boolean),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateIpamRoutingPolicyRegistrationRequest",
+  }) as any as S.Schema<CreateIpamRoutingPolicyRegistrationRequest>;
+export interface CreateIpamRoutingPolicyRegistrationResult {
+  IpamRoutingPolicyRegistrationDelta?: IpamRoutingPolicyRegistrationDelta;
+}
+export const CreateIpamRoutingPolicyRegistrationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamRoutingPolicyRegistrationDelta: S.optional(
+        IpamRoutingPolicyRegistrationDelta,
+      )
+        .pipe(
+          T.XmlName("ipamRoutingPolicyRegistrationDelta"),
+          T.Ec2QueryName("IpamRoutingPolicyRegistrationDelta"),
+        )
+        .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "CreateIpamRoutingPolicyRegistrationResult",
+  }) as any as S.Schema<CreateIpamRoutingPolicyRegistrationResult>;
 export type IpamScopeExternalAuthorityType = "infoblox" | (string & {});
 export const IpamScopeExternalAuthorityType = /*@__PURE__*/ S.String;
 
@@ -14899,7 +15974,6 @@ export const CreateKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyPairRequest",
 }) as any as S.Schema<CreateKeyPairRequest>;
-export type SensitiveUserData = string | redacted.Redacted<string>;
 export interface KeyPair {
   KeyPairId?: string;
   Tags?: Tag[];
@@ -15272,6 +16346,7 @@ export type MarketType =
   | "spot"
   | "capacity-block"
   | "interruptible-capacity-reservation"
+  | "on-demand"
   | (string & {});
 export const MarketType = /*@__PURE__*/ S.String;
 
@@ -19929,6 +21004,7 @@ export interface CreateReplaceRootVolumeTaskRequest {
   ImageId?: string;
   DeleteReplacedRootVolume?: boolean;
   VolumeInitializationRate?: number;
+  VolumeId?: string;
 }
 export const CreateReplaceRootVolumeTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19942,6 +21018,7 @@ export const CreateReplaceRootVolumeTaskRequest = /*@__PURE__*/ S.suspend(() =>
     ImageId: S.optional(S.String),
     DeleteReplacedRootVolume: S.optional(S.Boolean),
     VolumeInitializationRate: S.optional(S.Number),
+    VolumeId: S.optional(S.String),
   }).pipe(
     T.all(
       ns,
@@ -23602,6 +24679,172 @@ export const CreateTransitGatewayPolicyTableResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateTransitGatewayPolicyTableResult",
 }) as any as S.Schema<CreateTransitGatewayPolicyTableResult>;
+export interface TransitGatewayRequestPolicyRuleMetaData {
+  MetaDataKey?: string;
+  MetaDataValue?: string;
+}
+export const TransitGatewayRequestPolicyRuleMetaData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      MetaDataKey: S.optional(S.String),
+      MetaDataValue: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "TransitGatewayRequestPolicyRuleMetaData",
+}) as any as S.Schema<TransitGatewayRequestPolicyRuleMetaData>;
+export interface TransitGatewayRequestPolicyRule {
+  SourceCidrBlock?: string;
+  SourcePortRange?: string;
+  DestinationCidrBlock?: string;
+  DestinationPortRange?: string;
+  Protocol?: string;
+  MetaData?: TransitGatewayRequestPolicyRuleMetaData;
+}
+export const TransitGatewayRequestPolicyRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceCidrBlock: S.optional(S.String),
+    SourcePortRange: S.optional(S.String),
+    DestinationCidrBlock: S.optional(S.String),
+    DestinationPortRange: S.optional(S.String),
+    Protocol: S.optional(S.String),
+    MetaData: S.optional(TransitGatewayRequestPolicyRuleMetaData),
+  }),
+).annotate({
+  identifier: "TransitGatewayRequestPolicyRule",
+}) as any as S.Schema<TransitGatewayRequestPolicyRule>;
+export interface CreateTransitGatewayPolicyTableEntryRequest {
+  TransitGatewayPolicyTableId?: string;
+  PolicyRuleNumber?: string;
+  PolicyRule?: TransitGatewayRequestPolicyRule;
+  TargetRouteTableId?: string;
+  DryRun?: boolean;
+}
+export const CreateTransitGatewayPolicyTableEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayPolicyTableId: S.optional(S.String),
+      PolicyRuleNumber: S.optional(S.String),
+      PolicyRule: S.optional(TransitGatewayRequestPolicyRule),
+      TargetRouteTableId: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateTransitGatewayPolicyTableEntryRequest",
+  }) as any as S.Schema<CreateTransitGatewayPolicyTableEntryRequest>;
+export interface TransitGatewayPolicyRuleMetaData {
+  MetaDataKey?: string;
+  MetaDataValue?: string;
+}
+export const TransitGatewayPolicyRuleMetaData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MetaDataKey: S.optional(S.String).pipe(
+      T.XmlName("metaDataKey"),
+      T.Ec2QueryName("MetaDataKey"),
+    ),
+    MetaDataValue: S.optional(S.String).pipe(
+      T.XmlName("metaDataValue"),
+      T.Ec2QueryName("MetaDataValue"),
+    ),
+  }),
+).annotate({
+  identifier: "TransitGatewayPolicyRuleMetaData",
+}) as any as S.Schema<TransitGatewayPolicyRuleMetaData>;
+export interface TransitGatewayPolicyRule {
+  SourceCidrBlock?: string;
+  SourcePortRange?: string;
+  DestinationCidrBlock?: string;
+  DestinationPortRange?: string;
+  Protocol?: string;
+  MetaData?: TransitGatewayPolicyRuleMetaData;
+}
+export const TransitGatewayPolicyRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceCidrBlock: S.optional(S.String).pipe(
+      T.XmlName("sourceCidrBlock"),
+      T.Ec2QueryName("SourceCidrBlock"),
+    ),
+    SourcePortRange: S.optional(S.String).pipe(
+      T.XmlName("sourcePortRange"),
+      T.Ec2QueryName("SourcePortRange"),
+    ),
+    DestinationCidrBlock: S.optional(S.String).pipe(
+      T.XmlName("destinationCidrBlock"),
+      T.Ec2QueryName("DestinationCidrBlock"),
+    ),
+    DestinationPortRange: S.optional(S.String).pipe(
+      T.XmlName("destinationPortRange"),
+      T.Ec2QueryName("DestinationPortRange"),
+    ),
+    Protocol: S.optional(S.String).pipe(
+      T.XmlName("protocol"),
+      T.Ec2QueryName("Protocol"),
+    ),
+    MetaData: S.optional(TransitGatewayPolicyRuleMetaData)
+      .pipe(T.XmlName("metaData"), T.Ec2QueryName("MetaData"))
+      .annotate({ identifier: "TransitGatewayPolicyRuleMetaData" }),
+  }),
+).annotate({
+  identifier: "TransitGatewayPolicyRule",
+}) as any as S.Schema<TransitGatewayPolicyRule>;
+export type TransitGatewayPolicyTableEntryState =
+  | "active"
+  | "deleted"
+  | (string & {});
+export const TransitGatewayPolicyTableEntryState = /*@__PURE__*/ S.String;
+
+export interface TransitGatewayPolicyTableEntry {
+  PolicyRuleNumber?: string;
+  PolicyRule?: TransitGatewayPolicyRule;
+  TargetRouteTableId?: string;
+  State?: TransitGatewayPolicyTableEntryState;
+}
+export const TransitGatewayPolicyTableEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyRuleNumber: S.optional(S.String).pipe(
+      T.XmlName("policyRuleNumber"),
+      T.Ec2QueryName("PolicyRuleNumber"),
+    ),
+    PolicyRule: S.optional(TransitGatewayPolicyRule)
+      .pipe(T.XmlName("policyRule"), T.Ec2QueryName("PolicyRule"))
+      .annotate({ identifier: "TransitGatewayPolicyRule" }),
+    TargetRouteTableId: S.optional(S.String).pipe(
+      T.XmlName("targetRouteTableId"),
+      T.Ec2QueryName("TargetRouteTableId"),
+    ),
+    State: S.optional(TransitGatewayPolicyTableEntryState).pipe(
+      T.XmlName("state"),
+      T.Ec2QueryName("State"),
+    ),
+  }),
+).annotate({
+  identifier: "TransitGatewayPolicyTableEntry",
+}) as any as S.Schema<TransitGatewayPolicyTableEntry>;
+export interface CreateTransitGatewayPolicyTableEntryResult {
+  TransitGatewayPolicyTableEntry?: TransitGatewayPolicyTableEntry;
+}
+export const CreateTransitGatewayPolicyTableEntryResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayPolicyTableEntry: S.optional(TransitGatewayPolicyTableEntry)
+        .pipe(
+          T.XmlName("transitGatewayPolicyTableEntry"),
+          T.Ec2QueryName("TransitGatewayPolicyTableEntry"),
+        )
+        .annotate({ identifier: "TransitGatewayPolicyTableEntry" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "CreateTransitGatewayPolicyTableEntryResult",
+  }) as any as S.Schema<CreateTransitGatewayPolicyTableEntryResult>;
 export interface CreateTransitGatewayPrefixListReferenceRequest {
   TransitGatewayRouteTableId?: string;
   PrefixListId?: string;
@@ -25502,6 +26745,39 @@ export const SubnetIpPrefixesList = /*@__PURE__*/ S.Array(
     identifier: "SubnetIpPrefixes",
   }),
 );
+export type PayerResponsibilityScope = "vpc-endpoint-charges" | (string & {});
+export const PayerResponsibilityScope = /*@__PURE__*/ S.String;
+
+export type PayerResponsibilityType =
+  | "vpc-endpoint-account"
+  | "vpc-endpoint-service-account"
+  | (string & {});
+export const PayerResponsibilityType = /*@__PURE__*/ S.String;
+
+export interface PayerResponsibilityEntry {
+  Scope?: PayerResponsibilityScope;
+  PayerResponsibilityType?: PayerResponsibilityType;
+}
+export const PayerResponsibilityEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Scope: S.optional(PayerResponsibilityScope).pipe(
+      T.XmlName("scope"),
+      T.Ec2QueryName("Scope"),
+    ),
+    PayerResponsibilityType: S.optional(PayerResponsibilityType).pipe(
+      T.XmlName("payerResponsibilityType"),
+      T.Ec2QueryName("PayerResponsibilityType"),
+    ),
+  }),
+).annotate({
+  identifier: "PayerResponsibilityEntry",
+}) as any as S.Schema<PayerResponsibilityEntry>;
+export type PayerResponsibilitySet = PayerResponsibilityEntry[];
+export const PayerResponsibilitySet = /*@__PURE__*/ S.Array(
+  PayerResponsibilityEntry.pipe(T.XmlName("item")).annotate({
+    identifier: "PayerResponsibilityEntry",
+  }),
+);
 export interface VpcEndpoint {
   VpcEndpointId?: string;
   VpcEndpointType?: VpcEndpointType;
@@ -25528,6 +26804,7 @@ export interface VpcEndpoint {
   ServiceNetworkArn?: string;
   ResourceConfigurationArn?: string;
   ServiceRegion?: string;
+  PayerResponsibilities?: PayerResponsibilityEntry[];
 }
 export const VpcEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -25624,6 +26901,10 @@ export const VpcEndpoint = /*@__PURE__*/ S.suspend(() =>
     ServiceRegion: S.optional(S.String).pipe(
       T.XmlName("serviceRegion"),
       T.Ec2QueryName("ServiceRegion"),
+    ),
+    PayerResponsibilities: S.optional(PayerResponsibilitySet).pipe(
+      T.XmlName("payerResponsibilitySet"),
+      T.Ec2QueryName("PayerResponsibilitySet"),
     ),
   }),
 ).annotate({ identifier: "VpcEndpoint" }) as any as S.Schema<VpcEndpoint>;
@@ -27126,6 +28407,45 @@ export const CreateVpnGatewayResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVpnGatewayResult",
 }) as any as S.Schema<CreateVpnGatewayResult>;
+export interface DeleteApplicationStatusCheckRequest {
+  ApplicationStatusCheckId?: string;
+  ClientToken?: string;
+  DryRun?: boolean;
+}
+export const DeleteApplicationStatusCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationStatusCheckId: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    DryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteApplicationStatusCheckRequest",
+}) as any as S.Schema<DeleteApplicationStatusCheckRequest>;
+export interface DeleteApplicationStatusCheckResult {
+  ApplicationStatusCheck?: ApplicationStatusCheckResponseObject;
+}
+export const DeleteApplicationStatusCheckResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationStatusCheck: S.optional(ApplicationStatusCheckResponseObject)
+      .pipe(
+        T.XmlName("applicationStatusCheck"),
+        T.Ec2QueryName("ApplicationStatusCheck"),
+      )
+      .annotate({ identifier: "ApplicationStatusCheckResponseObject" }),
+  }).pipe(ns),
+).annotate({
+  identifier: "DeleteApplicationStatusCheckResult",
+}) as any as S.Schema<DeleteApplicationStatusCheckResult>;
 export interface DeleteCapacityManagerDataExportRequest {
   CapacityManagerDataExportId?: string;
   DryRun?: boolean;
@@ -27891,6 +29211,47 @@ export const DeleteIpamExternalResourceVerificationTokenResult =
   ).annotate({
     identifier: "DeleteIpamExternalResourceVerificationTokenResult",
   }) as any as S.Schema<DeleteIpamExternalResourceVerificationTokenResult>;
+export interface DeleteIpamInternetRegistryAssociationRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+}
+export const DeleteIpamInternetRegistryAssociationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteIpamInternetRegistryAssociationRequest",
+  }) as any as S.Schema<DeleteIpamInternetRegistryAssociationRequest>;
+export interface DeleteIpamInternetRegistryAssociationResult {
+  IpamInternetRegistryAssociation?: IpamInternetRegistryAssociation;
+}
+export const DeleteIpamInternetRegistryAssociationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamInternetRegistryAssociation: S.optional(
+        IpamInternetRegistryAssociation,
+      )
+        .pipe(
+          T.XmlName("ipamInternetRegistryAssociation"),
+          T.Ec2QueryName("IpamInternetRegistryAssociation"),
+        )
+        .annotate({ identifier: "IpamInternetRegistryAssociation" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DeleteIpamInternetRegistryAssociationResult",
+  }) as any as S.Schema<DeleteIpamInternetRegistryAssociationResult>;
 export interface DeleteIpamPolicyRequest {
   DryRun?: boolean;
   IpamPolicyId?: string;
@@ -28074,6 +29435,53 @@ export const DeleteIpamResourceDiscoveryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIpamResourceDiscoveryResult",
 }) as any as S.Schema<DeleteIpamResourceDiscoveryResult>;
+export interface DeleteIpamRoutingPolicyRegistrationRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  Cidr?: string;
+  Force?: boolean;
+  ClientToken?: string;
+}
+export const DeleteIpamRoutingPolicyRegistrationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      Cidr: S.optional(S.String),
+      Force: S.optional(S.Boolean),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteIpamRoutingPolicyRegistrationRequest",
+  }) as any as S.Schema<DeleteIpamRoutingPolicyRegistrationRequest>;
+export interface DeleteIpamRoutingPolicyRegistrationResult {
+  IpamRoutingPolicyRegistrationDelta?: IpamRoutingPolicyRegistrationDelta;
+}
+export const DeleteIpamRoutingPolicyRegistrationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamRoutingPolicyRegistrationDelta: S.optional(
+        IpamRoutingPolicyRegistrationDelta,
+      )
+        .pipe(
+          T.XmlName("ipamRoutingPolicyRegistrationDelta"),
+          T.Ec2QueryName("IpamRoutingPolicyRegistrationDelta"),
+        )
+        .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DeleteIpamRoutingPolicyRegistrationResult",
+  }) as any as S.Schema<DeleteIpamRoutingPolicyRegistrationResult>;
 export interface DeleteIpamScopeRequest {
   DryRun?: boolean;
   IpamScopeId?: string;
@@ -30117,6 +31525,47 @@ export const DeleteTransitGatewayPolicyTableResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteTransitGatewayPolicyTableResult",
 }) as any as S.Schema<DeleteTransitGatewayPolicyTableResult>;
+export interface DeleteTransitGatewayPolicyTableEntryRequest {
+  TransitGatewayPolicyTableId?: string;
+  PolicyRuleNumber?: string;
+  DryRun?: boolean;
+}
+export const DeleteTransitGatewayPolicyTableEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayPolicyTableId: S.optional(S.String),
+      PolicyRuleNumber: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteTransitGatewayPolicyTableEntryRequest",
+  }) as any as S.Schema<DeleteTransitGatewayPolicyTableEntryRequest>;
+export interface DeleteTransitGatewayPolicyTableEntryResult {
+  TransitGatewayPolicyTableEntry?: TransitGatewayPolicyTableEntry;
+}
+export const DeleteTransitGatewayPolicyTableEntryResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayPolicyTableEntry: S.optional(TransitGatewayPolicyTableEntry)
+        .pipe(
+          T.XmlName("transitGatewayPolicyTableEntry"),
+          T.Ec2QueryName("TransitGatewayPolicyTableEntry"),
+        )
+        .annotate({ identifier: "TransitGatewayPolicyTableEntry" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DeleteTransitGatewayPolicyTableEntryResult",
+  }) as any as S.Schema<DeleteTransitGatewayPolicyTableEntryResult>;
 export interface DeleteTransitGatewayPrefixListReferenceRequest {
   TransitGatewayRouteTableId?: string;
   PrefixListId?: string;
@@ -31543,6 +32992,147 @@ export const DescribeAccountAttributesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountAttributesResult",
 }) as any as S.Schema<DescribeAccountAttributesResult>;
+export interface DescribeAccountVpcEncryptionControlRequest {
+  DryRun?: boolean;
+}
+export const DescribeAccountVpcEncryptionControlRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeAccountVpcEncryptionControlRequest",
+  }) as any as S.Schema<DescribeAccountVpcEncryptionControlRequest>;
+export type AccountVpcEncryptionControlState =
+  | "default-state"
+  | "transitions-in-progress"
+  | "transitions-partially-successful"
+  | "transitions-successful"
+  | "transitions-failed"
+  | (string & {});
+export const AccountVpcEncryptionControlState = /*@__PURE__*/ S.String;
+
+export type AccountVpcEncryptionControlMode =
+  | "unmanaged"
+  | "attempt-monitor"
+  | "attempt-enforce"
+  | (string & {});
+export const AccountVpcEncryptionControlMode = /*@__PURE__*/ S.String;
+
+export interface AccountVpcEncryptionControlExclusions {
+  InternetGateway?: VpcEncryptionControlExclusionState;
+  EgressOnlyInternetGateway?: VpcEncryptionControlExclusionState;
+  NatGateway?: VpcEncryptionControlExclusionState;
+  VirtualPrivateGateway?: VpcEncryptionControlExclusionState;
+  VpcPeering?: VpcEncryptionControlExclusionState;
+  Lambda?: VpcEncryptionControlExclusionState;
+  VpcLattice?: VpcEncryptionControlExclusionState;
+  ElasticFileSystem?: VpcEncryptionControlExclusionState;
+}
+export const AccountVpcEncryptionControlExclusions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      InternetGateway: S.optional(VpcEncryptionControlExclusionState).pipe(
+        T.XmlName("internetGateway"),
+        T.Ec2QueryName("InternetGateway"),
+      ),
+      EgressOnlyInternetGateway: S.optional(
+        VpcEncryptionControlExclusionState,
+      ).pipe(
+        T.XmlName("egressOnlyInternetGateway"),
+        T.Ec2QueryName("EgressOnlyInternetGateway"),
+      ),
+      NatGateway: S.optional(VpcEncryptionControlExclusionState).pipe(
+        T.XmlName("natGateway"),
+        T.Ec2QueryName("NatGateway"),
+      ),
+      VirtualPrivateGateway: S.optional(
+        VpcEncryptionControlExclusionState,
+      ).pipe(
+        T.XmlName("virtualPrivateGateway"),
+        T.Ec2QueryName("VirtualPrivateGateway"),
+      ),
+      VpcPeering: S.optional(VpcEncryptionControlExclusionState).pipe(
+        T.XmlName("vpcPeering"),
+        T.Ec2QueryName("VpcPeering"),
+      ),
+      Lambda: S.optional(VpcEncryptionControlExclusionState).pipe(
+        T.XmlName("lambda"),
+        T.Ec2QueryName("Lambda"),
+      ),
+      VpcLattice: S.optional(VpcEncryptionControlExclusionState).pipe(
+        T.XmlName("vpcLattice"),
+        T.Ec2QueryName("VpcLattice"),
+      ),
+      ElasticFileSystem: S.optional(VpcEncryptionControlExclusionState).pipe(
+        T.XmlName("elasticFileSystem"),
+        T.Ec2QueryName("ElasticFileSystem"),
+      ),
+    }),
+).annotate({
+  identifier: "AccountVpcEncryptionControlExclusions",
+}) as any as S.Schema<AccountVpcEncryptionControlExclusions>;
+export type ManagedBy = "account" | "declarative-policy" | (string & {});
+export const ManagedBy = /*@__PURE__*/ S.String;
+
+export interface AccountVpcEncryptionControl {
+  State?: AccountVpcEncryptionControlState;
+  Mode?: AccountVpcEncryptionControlMode;
+  Exclusions?: AccountVpcEncryptionControlExclusions;
+  ManagedBy?: ManagedBy;
+  LastUpdateTimestamp?: Date;
+}
+export const AccountVpcEncryptionControl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    State: S.optional(AccountVpcEncryptionControlState).pipe(
+      T.XmlName("state"),
+      T.Ec2QueryName("State"),
+    ),
+    Mode: S.optional(AccountVpcEncryptionControlMode).pipe(
+      T.XmlName("mode"),
+      T.Ec2QueryName("Mode"),
+    ),
+    Exclusions: S.optional(AccountVpcEncryptionControlExclusions)
+      .pipe(T.XmlName("exclusions"), T.Ec2QueryName("Exclusions"))
+      .annotate({ identifier: "AccountVpcEncryptionControlExclusions" }),
+    ManagedBy: S.optional(ManagedBy).pipe(
+      T.XmlName("managedBy"),
+      T.Ec2QueryName("ManagedBy"),
+    ),
+    LastUpdateTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(
+      T.XmlName("lastUpdateTimestamp"),
+      T.Ec2QueryName("LastUpdateTimestamp"),
+    ),
+  }),
+).annotate({
+  identifier: "AccountVpcEncryptionControl",
+}) as any as S.Schema<AccountVpcEncryptionControl>;
+export interface DescribeAccountVpcEncryptionControlResult {
+  AccountVpcEncryptionControl?: AccountVpcEncryptionControl;
+}
+export const DescribeAccountVpcEncryptionControlResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AccountVpcEncryptionControl: S.optional(AccountVpcEncryptionControl)
+        .pipe(
+          T.XmlName("accountVpcEncryptionControl"),
+          T.Ec2QueryName("AccountVpcEncryptionControl"),
+        )
+        .annotate({ identifier: "AccountVpcEncryptionControl" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeAccountVpcEncryptionControlResult",
+  }) as any as S.Schema<DescribeAccountVpcEncryptionControlResult>;
 export type PublicIpStringList = string[];
 export const PublicIpStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("PublicIp")),
@@ -31918,6 +33508,378 @@ export const DescribeAggregateIdFormatResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAggregateIdFormatResult",
 }) as any as S.Schema<DescribeAggregateIdFormatResult>;
+export type DescribeApplicationStatusMaxResults = number;
+export interface DescribeApplicationStatusRequest {
+  InstanceIds?: string[];
+  Filters?: Filter[];
+  MaxResults?: number;
+  NextToken?: string;
+  DryRun?: boolean;
+}
+export const DescribeApplicationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceIds: S.optional(InstanceIdList).pipe(T.XmlName("InstanceId")),
+    Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    DryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeApplicationStatusRequest",
+}) as any as S.Schema<DescribeApplicationStatusRequest>;
+export type ApplicationStatusEnum =
+  | "ok"
+  | "impaired"
+  | "initializing"
+  | "insufficient-data"
+  | "not-applicable"
+  | "suppressed"
+  | (string & {});
+export const ApplicationStatusEnum = /*@__PURE__*/ S.String;
+
+export type ApplicationStatusCheckEnum =
+  | "passed"
+  | "failed"
+  | "initializing"
+  | "insufficient-data"
+  | "not-applicable"
+  | (string & {});
+export const ApplicationStatusCheckEnum = /*@__PURE__*/ S.String;
+
+export interface ApplicationStatusReason {
+  Code?: string;
+  StatusCode?: number;
+  Protocol?: string;
+}
+export const ApplicationStatusReason = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
+    StatusCode: S.optional(S.Number).pipe(
+      T.XmlName("statusCode"),
+      T.Ec2QueryName("StatusCode"),
+    ),
+    Protocol: S.optional(S.String).pipe(
+      T.XmlName("protocol"),
+      T.Ec2QueryName("Protocol"),
+    ),
+  }),
+).annotate({
+  identifier: "ApplicationStatusReason",
+}) as any as S.Schema<ApplicationStatusReason>;
+export interface ApplicationStatusDetail {
+  ApplicationStatusCheckId?: string;
+  CheckUpdateTime?: Date;
+  Aggregation?: AggregationStatusEnum;
+  Status?: ApplicationStatusCheckEnum;
+  StatusTimeStamp?: Date;
+  StatusSince?: Date;
+  Reason?: ApplicationStatusReason;
+}
+export const ApplicationStatusDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationStatusCheckId: S.optional(S.String).pipe(
+      T.XmlName("applicationStatusCheckId"),
+      T.Ec2QueryName("ApplicationStatusCheckId"),
+    ),
+    CheckUpdateTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("checkUpdateTime"), T.Ec2QueryName("CheckUpdateTime")),
+    Aggregation: S.optional(AggregationStatusEnum).pipe(
+      T.XmlName("aggregation"),
+      T.Ec2QueryName("Aggregation"),
+    ),
+    Status: S.optional(ApplicationStatusCheckEnum).pipe(
+      T.XmlName("status"),
+      T.Ec2QueryName("Status"),
+    ),
+    StatusTimeStamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("statusTimeStamp"), T.Ec2QueryName("StatusTimeStamp")),
+    StatusSince: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("statusSince"), T.Ec2QueryName("StatusSince")),
+    Reason: S.optional(ApplicationStatusReason)
+      .pipe(T.XmlName("reason"), T.Ec2QueryName("Reason"))
+      .annotate({ identifier: "ApplicationStatusReason" }),
+  }),
+).annotate({
+  identifier: "ApplicationStatusDetail",
+}) as any as S.Schema<ApplicationStatusDetail>;
+export type ApplicationStatusDetailSet = ApplicationStatusDetail[];
+export const ApplicationStatusDetailSet = /*@__PURE__*/ S.Array(
+  ApplicationStatusDetail.pipe(T.XmlName("item")).annotate({
+    identifier: "ApplicationStatusDetail",
+  }),
+);
+export interface ApplicationStatus {
+  Status?: ApplicationStatusEnum;
+  StatusTimeStamp?: Date;
+  StatusSince?: Date;
+  ResumeAt?: Date;
+  Details?: ApplicationStatusDetail[];
+}
+export const ApplicationStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Status: S.optional(ApplicationStatusEnum).pipe(
+      T.XmlName("status"),
+      T.Ec2QueryName("Status"),
+    ),
+    StatusTimeStamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("statusTimeStamp"), T.Ec2QueryName("StatusTimeStamp")),
+    StatusSince: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("statusSince"), T.Ec2QueryName("StatusSince")),
+    ResumeAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("resumeAt"), T.Ec2QueryName("ResumeAt")),
+    Details: S.optional(ApplicationStatusDetailSet).pipe(
+      T.XmlName("detailSet"),
+      T.Ec2QueryName("DetailSet"),
+    ),
+  }),
+).annotate({
+  identifier: "ApplicationStatus",
+}) as any as S.Schema<ApplicationStatus>;
+export interface InstanceApplicationStatus {
+  InstanceId?: string;
+  AvailabilityZone?: string;
+  AvailabilityZoneId?: string;
+  ApplicationStatus?: ApplicationStatus;
+  Tags?: Tag[];
+}
+export const InstanceApplicationStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceId: S.optional(S.String).pipe(
+      T.XmlName("instanceId"),
+      T.Ec2QueryName("InstanceId"),
+    ),
+    AvailabilityZone: S.optional(S.String).pipe(
+      T.XmlName("availabilityZone"),
+      T.Ec2QueryName("AvailabilityZone"),
+    ),
+    AvailabilityZoneId: S.optional(S.String).pipe(
+      T.XmlName("availabilityZoneId"),
+      T.Ec2QueryName("AvailabilityZoneId"),
+    ),
+    ApplicationStatus: S.optional(ApplicationStatus)
+      .pipe(T.XmlName("applicationStatus"), T.Ec2QueryName("ApplicationStatus"))
+      .annotate({ identifier: "ApplicationStatus" }),
+    Tags: S.optional(TagList).pipe(
+      T.XmlName("tagSet"),
+      T.Ec2QueryName("TagSet"),
+    ),
+  }),
+).annotate({
+  identifier: "InstanceApplicationStatus",
+}) as any as S.Schema<InstanceApplicationStatus>;
+export type InstanceApplicationStatusSet = InstanceApplicationStatus[];
+export const InstanceApplicationStatusSet = /*@__PURE__*/ S.Array(
+  InstanceApplicationStatus.pipe(T.XmlName("item")).annotate({
+    identifier: "InstanceApplicationStatus",
+  }),
+);
+export interface ApplicationStatusesResponseType {
+  Instances?: InstanceApplicationStatus[];
+}
+export const ApplicationStatusesResponseType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Instances: S.optional(InstanceApplicationStatusSet).pipe(
+      T.XmlName("instanceSet"),
+      T.Ec2QueryName("InstanceSet"),
+    ),
+  }),
+).annotate({
+  identifier: "ApplicationStatusesResponseType",
+}) as any as S.Schema<ApplicationStatusesResponseType>;
+export interface DescribeApplicationStatusResult {
+  ApplicationStatuses?: ApplicationStatusesResponseType;
+  NextToken?: string;
+}
+export const DescribeApplicationStatusResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationStatuses: S.optional(ApplicationStatusesResponseType)
+      .pipe(
+        T.XmlName("applicationStatusesResponseType"),
+        T.Ec2QueryName("ApplicationStatusesResponseType"),
+      )
+      .annotate({ identifier: "ApplicationStatusesResponseType" }),
+    NextToken: S.optional(S.String).pipe(
+      T.XmlName("nextToken"),
+      T.Ec2QueryName("NextToken"),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeApplicationStatusResult",
+}) as any as S.Schema<DescribeApplicationStatusResult>;
+export type ApplicationStatusCheckIdList = string[];
+export const ApplicationStatusCheckIdList = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("item")),
+);
+export type DescribeApplicationStatusCheckAssociationsMaxResults = number;
+export interface DescribeApplicationStatusCheckAssociationsRequest {
+  ApplicationStatusCheckIds?: string[];
+  Filters?: Filter[];
+  MaxResults?: number;
+  NextToken?: string;
+  DryRun?: boolean;
+}
+export const DescribeApplicationStatusCheckAssociationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ApplicationStatusCheckIds: S.optional(ApplicationStatusCheckIdList).pipe(
+        T.XmlName("ApplicationStatusCheckId"),
+      ),
+      Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeApplicationStatusCheckAssociationsRequest",
+  }) as any as S.Schema<DescribeApplicationStatusCheckAssociationsRequest>;
+export type AssociationTypeEnum = "tag" | "instance-id" | (string & {});
+export const AssociationTypeEnum = /*@__PURE__*/ S.String;
+
+export interface ApplicationStatusCheckAssociationObject {
+  ApplicationStatusCheckId?: string;
+  AssociationType?: AssociationTypeEnum;
+  Key?: string;
+  Value?: string;
+}
+export const ApplicationStatusCheckAssociationObject = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ApplicationStatusCheckId: S.optional(S.String).pipe(
+        T.XmlName("applicationStatusCheckId"),
+        T.Ec2QueryName("ApplicationStatusCheckId"),
+      ),
+      AssociationType: S.optional(AssociationTypeEnum).pipe(
+        T.XmlName("associationType"),
+        T.Ec2QueryName("AssociationType"),
+      ),
+      Key: S.optional(S.String).pipe(T.XmlName("key"), T.Ec2QueryName("Key")),
+      Value: S.optional(S.String).pipe(
+        T.XmlName("value"),
+        T.Ec2QueryName("Value"),
+      ),
+    }),
+).annotate({
+  identifier: "ApplicationStatusCheckAssociationObject",
+}) as any as S.Schema<ApplicationStatusCheckAssociationObject>;
+export type ApplicationStatusCheckAssociationSet =
+  ApplicationStatusCheckAssociationObject[];
+export const ApplicationStatusCheckAssociationSet = /*@__PURE__*/ S.Array(
+  ApplicationStatusCheckAssociationObject.pipe(T.XmlName("item")).annotate({
+    identifier: "ApplicationStatusCheckAssociationObject",
+  }),
+);
+export interface DescribeApplicationStatusCheckAssociationsResult {
+  Associations?: ApplicationStatusCheckAssociationObject[];
+  NextToken?: string;
+  Tags?: Tag[];
+}
+export const DescribeApplicationStatusCheckAssociationsResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Associations: S.optional(ApplicationStatusCheckAssociationSet).pipe(
+        T.XmlName("associationSet"),
+        T.Ec2QueryName("AssociationSet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+      Tags: S.optional(TagList).pipe(
+        T.XmlName("tagSet"),
+        T.Ec2QueryName("TagSet"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeApplicationStatusCheckAssociationsResult",
+  }) as any as S.Schema<DescribeApplicationStatusCheckAssociationsResult>;
+export type DescribeApplicationStatusChecksMaxResults = number;
+export interface DescribeApplicationStatusChecksRequest {
+  ApplicationStatusCheckIds?: string[];
+  Filters?: Filter[];
+  MaxResults?: number;
+  NextToken?: string;
+  IncludeAll?: boolean;
+  DryRun?: boolean;
+}
+export const DescribeApplicationStatusChecksRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ApplicationStatusCheckIds: S.optional(ApplicationStatusCheckIdList).pipe(
+        T.XmlName("ApplicationStatusCheckId"),
+      ),
+      Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      IncludeAll: S.optional(S.Boolean),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DescribeApplicationStatusChecksRequest",
+}) as any as S.Schema<DescribeApplicationStatusChecksRequest>;
+export type ApplicationStatusCheckResponseSet =
+  ApplicationStatusCheckResponseObject[];
+export const ApplicationStatusCheckResponseSet = /*@__PURE__*/ S.Array(
+  ApplicationStatusCheckResponseObject.pipe(T.XmlName("item")).annotate({
+    identifier: "ApplicationStatusCheckResponseObject",
+  }),
+);
+export interface DescribeApplicationStatusChecksResult {
+  ApplicationStatusChecks?: ApplicationStatusCheckResponseObject[];
+  NextToken?: string;
+}
+export const DescribeApplicationStatusChecksResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ApplicationStatusChecks: S.optional(
+        ApplicationStatusCheckResponseSet,
+      ).pipe(
+        T.XmlName("applicationStatusCheckSet"),
+        T.Ec2QueryName("ApplicationStatusCheckSet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "DescribeApplicationStatusChecksResult",
+}) as any as S.Schema<DescribeApplicationStatusChecksResult>;
 export type ZoneNameStringList = string[];
 export const ZoneNameStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ZoneName")),
@@ -32314,10 +34276,6 @@ export const DescribeByoipCidrsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeByoipCidrsResult",
 }) as any as S.Schema<DescribeByoipCidrsResult>;
-export type CapacityReservationIdSet = string[];
-export const CapacityReservationIdSet = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("item")),
-);
 export type DescribeFutureCapacityMaxResults = number;
 export interface DescribeCapacityBlockExtensionHistoryRequest {
   CapacityReservationIds?: string[];
@@ -36320,15 +38278,40 @@ export type ReservationTypeList = FleetReservationType[];
 export const ReservationTypeList = /*@__PURE__*/ S.Array(
   FleetReservationType.pipe(T.XmlName("item")),
 );
+export interface ReservedCapacityFallbackOptions {
+  MarketTypes?: ReservedCapacityFallbackMarketType[];
+}
+export const ReservedCapacityFallbackOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MarketTypes: S.optional(ReservedCapacityFallbackMarketTypeList).pipe(
+      T.XmlName("marketTypeSet"),
+      T.Ec2QueryName("MarketTypeSet"),
+    ),
+  }),
+).annotate({
+  identifier: "ReservedCapacityFallbackOptions",
+}) as any as S.Schema<ReservedCapacityFallbackOptions>;
 export interface ReservedCapacityOptions {
+  AllocationStrategy?: ReservedCapacityAllocationStrategy;
   ReservationTypes?: FleetReservationType[];
+  ReservedCapacityFallbackOptions?: ReservedCapacityFallbackOptions;
 }
 export const ReservedCapacityOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    AllocationStrategy: S.optional(ReservedCapacityAllocationStrategy).pipe(
+      T.XmlName("allocationStrategy"),
+      T.Ec2QueryName("AllocationStrategy"),
+    ),
     ReservationTypes: S.optional(ReservationTypeList).pipe(
       T.XmlName("reservationTypeSet"),
       T.Ec2QueryName("ReservationTypeSet"),
     ),
+    ReservedCapacityFallbackOptions: S.optional(ReservedCapacityFallbackOptions)
+      .pipe(
+        T.XmlName("reservedCapacityFallbackOptions"),
+        T.Ec2QueryName("ReservedCapacityFallbackOptions"),
+      )
+      .annotate({ identifier: "ReservedCapacityFallbackOptions" }),
   }),
 ).annotate({
   identifier: "ReservedCapacityOptions",
@@ -37445,12 +39428,24 @@ export type AllocationState =
   | "released"
   | "released-permanent-failure"
   | "pending"
+  | "configuring"
   | (string & {});
 export const AllocationState = /*@__PURE__*/ S.String;
 
 export type AllowsMultipleInstanceTypes = "on" | "off" | (string & {});
 export const AllowsMultipleInstanceTypes = /*@__PURE__*/ S.String;
 
+export interface HostCpuOptions {
+  AmdSevSnp?: AmdSevSnp;
+}
+export const HostCpuOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AmdSevSnp: S.optional(AmdSevSnp).pipe(
+      T.XmlName("amdSevSnp"),
+      T.Ec2QueryName("AmdSevSnp"),
+    ),
+  }),
+).annotate({ identifier: "HostCpuOptions" }) as any as S.Schema<HostCpuOptions>;
 export interface Host {
   AutoPlacement?: AutoPlacement;
   AvailabilityZone?: string;
@@ -37472,6 +39467,7 @@ export interface Host {
   OutpostArn?: string;
   HostMaintenance?: HostMaintenance;
   AssetId?: string;
+  CpuOptions?: HostCpuOptions;
 }
 export const Host = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -37551,6 +39547,9 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
       T.XmlName("assetId"),
       T.Ec2QueryName("AssetId"),
     ),
+    CpuOptions: S.optional(HostCpuOptions)
+      .pipe(T.XmlName("cpuOptions"), T.Ec2QueryName("CpuOptions"))
+      .annotate({ identifier: "HostCpuOptions" }),
   }),
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 export type HostList = Host[];
@@ -38110,6 +40109,49 @@ export const ImageWatermarkList = /*@__PURE__*/ S.Array(
     identifier: "ImageWatermark",
   }),
 );
+export interface InstanceTypeItem {
+  InstanceType?: string;
+}
+export const InstanceTypeItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceType: S.optional(S.String).pipe(
+      T.XmlName("instanceType"),
+      T.Ec2QueryName("InstanceType"),
+    ),
+  }),
+).annotate({
+  identifier: "InstanceTypeItem",
+}) as any as S.Schema<InstanceTypeItem>;
+export type SupportedInstanceTypeSet = InstanceTypeItem[];
+export const SupportedInstanceTypeSet = /*@__PURE__*/ S.Array(
+  InstanceTypeItem.pipe(T.XmlName("item")).annotate({
+    identifier: "InstanceTypeItem",
+  }),
+);
+export type UnsupportedInstanceTypeSet = InstanceTypeItem[];
+export const UnsupportedInstanceTypeSet = /*@__PURE__*/ S.Array(
+  InstanceTypeItem.pipe(T.XmlName("item")).annotate({
+    identifier: "InstanceTypeItem",
+  }),
+);
+export interface InstanceTypeSpecification {
+  SupportedInstanceTypes?: InstanceTypeItem[];
+  UnsupportedInstanceTypes?: InstanceTypeItem[];
+}
+export const InstanceTypeSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SupportedInstanceTypes: S.optional(SupportedInstanceTypeSet).pipe(
+      T.XmlName("supportedInstanceTypeSet"),
+      T.Ec2QueryName("SupportedInstanceTypeSet"),
+    ),
+    UnsupportedInstanceTypes: S.optional(UnsupportedInstanceTypeSet).pipe(
+      T.XmlName("unsupportedInstanceTypeSet"),
+      T.Ec2QueryName("UnsupportedInstanceTypeSet"),
+    ),
+  }),
+).annotate({
+  identifier: "InstanceTypeSpecification",
+}) as any as S.Schema<InstanceTypeSpecification>;
 export type ImageState =
   | "pending"
   | "available"
@@ -38160,7 +40202,9 @@ export interface Image {
   SourceImageId?: string;
   SourceImageRegion?: string;
   FreeTierEligible?: boolean;
+  PublicSsmParameterName?: string;
   ImageWatermarks?: ImageWatermark[];
+  InstanceTypeSpecification?: InstanceTypeSpecification;
   ImageId?: string;
   ImageLocation?: string;
   State?: ImageState;
@@ -38272,10 +40316,20 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
       T.XmlName("freeTierEligible"),
       T.Ec2QueryName("FreeTierEligible"),
     ),
+    PublicSsmParameterName: S.optional(S.String).pipe(
+      T.XmlName("publicSsmParameterName"),
+      T.Ec2QueryName("PublicSsmParameterName"),
+    ),
     ImageWatermarks: S.optional(ImageWatermarkList).pipe(
       T.XmlName("imageWatermarkSet"),
       T.Ec2QueryName("ImageWatermarkSet"),
     ),
+    InstanceTypeSpecification: S.optional(InstanceTypeSpecification)
+      .pipe(
+        T.XmlName("instanceTypeSpecification"),
+        T.Ec2QueryName("InstanceTypeSpecification"),
+      )
+      .annotate({ identifier: "InstanceTypeSpecification" }),
     ImageId: S.optional(S.String).pipe(
       T.XmlName("imageId"),
       T.Ec2QueryName("ImageId"),
@@ -41214,6 +43268,23 @@ export const EbsStatusSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EbsStatusSummary",
 }) as any as S.Schema<EbsStatusSummary>;
+export interface ApplicationStatusSummary {
+  Status?: SummaryStatus;
+  ImpairedSince?: Date;
+}
+export const ApplicationStatusSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Status: S.optional(SummaryStatus).pipe(
+      T.XmlName("status"),
+      T.Ec2QueryName("Status"),
+    ),
+    ImpairedSince: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("impairedSince"), T.Ec2QueryName("ImpairedSince")),
+  }),
+).annotate({
+  identifier: "ApplicationStatusSummary",
+}) as any as S.Schema<ApplicationStatusSummary>;
 export interface InstanceStatus {
   AvailabilityZone?: string;
   AvailabilityZoneId?: string;
@@ -41225,6 +43296,7 @@ export interface InstanceStatus {
   InstanceStatus?: InstanceStatusSummary;
   SystemStatus?: InstanceStatusSummary;
   AttachedEbsStatus?: EbsStatusSummary;
+  ApplicationStatus?: ApplicationStatusSummary;
 }
 export const InstanceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41263,6 +43335,9 @@ export const InstanceStatus = /*@__PURE__*/ S.suspend(() =>
     AttachedEbsStatus: S.optional(EbsStatusSummary)
       .pipe(T.XmlName("attachedEbsStatus"), T.Ec2QueryName("AttachedEbsStatus"))
       .annotate({ identifier: "EbsStatusSummary" }),
+    ApplicationStatus: S.optional(ApplicationStatusSummary)
+      .pipe(T.XmlName("applicationStatus"), T.Ec2QueryName("ApplicationStatus"))
+      .annotate({ identifier: "ApplicationStatusSummary" }),
   }),
 ).annotate({ identifier: "InstanceStatus" }) as any as S.Schema<InstanceStatus>;
 export type InstanceStatusList = InstanceStatus[];
@@ -42916,6 +44991,65 @@ export const DescribeIpamExternalResourceVerificationTokensResult =
   ).annotate({
     identifier: "DescribeIpamExternalResourceVerificationTokensResult",
   }) as any as S.Schema<DescribeIpamExternalResourceVerificationTokensResult>;
+export interface DescribeIpamInternetRegistryAssociationsRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationIds?: string[];
+  MaxResults?: number;
+  NextToken?: string;
+  Filters?: Filter[];
+}
+export const DescribeIpamInternetRegistryAssociationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationIds: S.optional(ValueStringList).pipe(
+        T.XmlName("IpamInternetRegistryAssociationId"),
+      ),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeIpamInternetRegistryAssociationsRequest",
+  }) as any as S.Schema<DescribeIpamInternetRegistryAssociationsRequest>;
+export type IpamInternetRegistryAssociationSet =
+  IpamInternetRegistryAssociation[];
+export const IpamInternetRegistryAssociationSet = /*@__PURE__*/ S.Array(
+  IpamInternetRegistryAssociation.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamInternetRegistryAssociation",
+  }),
+);
+export interface DescribeIpamInternetRegistryAssociationsResult {
+  NextToken?: string;
+  IpamInternetRegistryAssociations?: IpamInternetRegistryAssociation[];
+}
+export const DescribeIpamInternetRegistryAssociationsResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+      IpamInternetRegistryAssociations: S.optional(
+        IpamInternetRegistryAssociationSet,
+      ).pipe(
+        T.XmlName("ipamInternetRegistryAssociationSet"),
+        T.Ec2QueryName("IpamInternetRegistryAssociationSet"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeIpamInternetRegistryAssociationsResult",
+  }) as any as S.Schema<DescribeIpamInternetRegistryAssociationsResult>;
 export interface DescribeIpamPoliciesRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -51160,6 +53294,7 @@ export const DescribeTransitGatewayAttachmentsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeTransitGatewayAttachmentsRequest>;
 export interface TransitGatewayAttachmentAssociation {
   TransitGatewayRouteTableId?: string;
+  TransitGatewayPolicyTableId?: string;
   State?: TransitGatewayAssociationState;
 }
 export const TransitGatewayAttachmentAssociation = /*@__PURE__*/ S.suspend(() =>
@@ -51167,6 +53302,10 @@ export const TransitGatewayAttachmentAssociation = /*@__PURE__*/ S.suspend(() =>
     TransitGatewayRouteTableId: S.optional(S.String).pipe(
       T.XmlName("transitGatewayRouteTableId"),
       T.Ec2QueryName("TransitGatewayRouteTableId"),
+    ),
+    TransitGatewayPolicyTableId: S.optional(S.String).pipe(
+      T.XmlName("transitGatewayPolicyTableId"),
+      T.Ec2QueryName("TransitGatewayPolicyTableId"),
     ),
     State: S.optional(TransitGatewayAssociationState).pipe(
       T.XmlName("state"),
@@ -52504,6 +54643,7 @@ export interface DescribeVolumesModificationsRequest {
   Filters?: Filter[];
   NextToken?: string;
   MaxResults?: number;
+  IncludeManagedResources?: boolean;
 }
 export const DescribeVolumesModificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -52512,6 +54652,7 @@ export const DescribeVolumesModificationsRequest = /*@__PURE__*/ S.suspend(() =>
     Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
+    IncludeManagedResources: S.optional(S.Boolean),
   }).pipe(
     T.all(
       ns,
@@ -52551,6 +54692,7 @@ export interface VolumeModification {
   Progress?: number;
   StartTime?: Date;
   EndTime?: Date;
+  Operator?: OperatorResponse;
 }
 export const VolumeModification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -52616,6 +54758,9 @@ export const VolumeModification = /*@__PURE__*/ S.suspend(() =>
     EndTime: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ).pipe(T.XmlName("endTime"), T.Ec2QueryName("EndTime")),
+    Operator: S.optional(OperatorResponse)
+      .pipe(T.XmlName("operator"), T.Ec2QueryName("Operator"))
+      .annotate({ identifier: "OperatorResponse" }),
   }),
 ).annotate({
   identifier: "VolumeModification",
@@ -53103,9 +55248,6 @@ export type InternetGatewayBlockMode =
   | "block-ingress"
   | (string & {});
 export const InternetGatewayBlockMode = /*@__PURE__*/ S.String;
-
-export type ManagedBy = "account" | "declarative-policy" | (string & {});
-export const ManagedBy = /*@__PURE__*/ S.String;
 
 export type VpcBlockPublicAccessExclusionsAllowed =
   | "allowed"
@@ -53606,6 +55748,7 @@ export interface VpcEndpointConnection {
   VpcEndpointConnectionId?: string;
   Tags?: Tag[];
   VpcEndpointRegion?: string;
+  PayerResponsibilities?: PayerResponsibilityEntry[];
 }
 export const VpcEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -53655,6 +55798,10 @@ export const VpcEndpointConnection = /*@__PURE__*/ S.suspend(() =>
     VpcEndpointRegion: S.optional(S.String).pipe(
       T.XmlName("vpcEndpointRegion"),
       T.Ec2QueryName("VpcEndpointRegion"),
+    ),
+    PayerResponsibilities: S.optional(PayerResponsibilitySet).pipe(
+      T.XmlName("payerResponsibilitySet"),
+      T.Ec2QueryName("PayerResponsibilitySet"),
     ),
   }),
 ).annotate({
@@ -54687,6 +56834,112 @@ export const DisableAllowedImagesSettingsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisableAllowedImagesSettingsResult",
 }) as any as S.Schema<DisableAllowedImagesSettingsResult>;
+export interface DisableApplicationStatusCheckSuppressionRequest {
+  InstanceIds?: string[];
+  ClientToken?: string;
+  DryRun?: boolean;
+}
+export const DisableApplicationStatusCheckSuppressionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceIds: S.optional(InstanceIdList).pipe(T.XmlName("InstanceId")),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DisableApplicationStatusCheckSuppressionRequest",
+  }) as any as S.Schema<DisableApplicationStatusCheckSuppressionRequest>;
+export interface SuccessfulSuppressionResponseObject {
+  InstanceId?: string;
+  SuppressAt?: Date;
+  ResumeAt?: Date;
+}
+export const SuccessfulSuppressionResponseObject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceId: S.optional(S.String).pipe(
+      T.XmlName("instanceId"),
+      T.Ec2QueryName("InstanceId"),
+    ),
+    SuppressAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("suppressAt"), T.Ec2QueryName("SuppressAt")),
+    ResumeAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("resumeAt"), T.Ec2QueryName("ResumeAt")),
+  }),
+).annotate({
+  identifier: "SuccessfulSuppressionResponseObject",
+}) as any as S.Schema<SuccessfulSuppressionResponseObject>;
+export type SuccessfulSuppressionResponseSet =
+  SuccessfulSuppressionResponseObject[];
+export const SuccessfulSuppressionResponseSet = /*@__PURE__*/ S.Array(
+  SuccessfulSuppressionResponseObject.pipe(T.XmlName("item")).annotate({
+    identifier: "SuccessfulSuppressionResponseObject",
+  }),
+);
+export interface UnsuccessfulSuppressionResponseObject {
+  InstanceId?: string;
+  SuppressAt?: Date;
+  ResumeAt?: Date;
+  Reason?: string;
+}
+export const UnsuccessfulSuppressionResponseObject = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      InstanceId: S.optional(S.String).pipe(
+        T.XmlName("instanceId"),
+        T.Ec2QueryName("InstanceId"),
+      ),
+      SuppressAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(T.XmlName("suppressAt"), T.Ec2QueryName("SuppressAt")),
+      ResumeAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(T.XmlName("resumeAt"), T.Ec2QueryName("ResumeAt")),
+      Reason: S.optional(S.String).pipe(
+        T.XmlName("reason"),
+        T.Ec2QueryName("Reason"),
+      ),
+    }),
+).annotate({
+  identifier: "UnsuccessfulSuppressionResponseObject",
+}) as any as S.Schema<UnsuccessfulSuppressionResponseObject>;
+export type UnsuccessfulSuppressionResponseSet =
+  UnsuccessfulSuppressionResponseObject[];
+export const UnsuccessfulSuppressionResponseSet = /*@__PURE__*/ S.Array(
+  UnsuccessfulSuppressionResponseObject.pipe(T.XmlName("item")).annotate({
+    identifier: "UnsuccessfulSuppressionResponseObject",
+  }),
+);
+export interface DisableApplicationStatusCheckSuppressionResult {
+  SuccessfulResults?: SuccessfulSuppressionResponseObject[];
+  UnsuccessfulResults?: UnsuccessfulSuppressionResponseObject[];
+}
+export const DisableApplicationStatusCheckSuppressionResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SuccessfulResults: S.optional(SuccessfulSuppressionResponseSet).pipe(
+        T.XmlName("successfulResultSet"),
+        T.Ec2QueryName("SuccessfulResultSet"),
+      ),
+      UnsuccessfulResults: S.optional(UnsuccessfulSuppressionResponseSet).pipe(
+        T.XmlName("unsuccessfulResultSet"),
+        T.Ec2QueryName("UnsuccessfulResultSet"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DisableApplicationStatusCheckSuppressionResult",
+  }) as any as S.Schema<DisableApplicationStatusCheckSuppressionResult>;
 export interface DisableAwsNetworkPerformanceMetricSubscriptionRequest {
   Source?: string;
   Destination?: string;
@@ -55718,6 +57971,56 @@ export const DisassociateAddressResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateAddressResponse",
 }) as any as S.Schema<DisassociateAddressResponse>;
+export interface DisassociateApplicationStatusCheckRequest {
+  ApplicationStatusCheckId?: string;
+  TargetTagAssociations?: CustomTagKeyValueRequestPair[];
+  InstanceIds?: string[];
+  ClientToken?: string;
+  DryRun?: boolean;
+}
+export const DisassociateApplicationStatusCheckRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ApplicationStatusCheckId: S.optional(S.String),
+      TargetTagAssociations: S.optional(CustomKeyValuePairRequestSet).pipe(
+        T.XmlName("TargetTagAssociation"),
+      ),
+      InstanceIds: S.optional(InstanceIdList).pipe(T.XmlName("InstanceId")),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DisassociateApplicationStatusCheckRequest",
+  }) as any as S.Schema<DisassociateApplicationStatusCheckRequest>;
+export interface DisassociateApplicationStatusCheckResult {
+  SuccessfulResults?: SuccessfulAssociationResponseObject[];
+  UnsuccessfulResults?: UnsuccessfulAssociationResponseObject[];
+}
+export const DisassociateApplicationStatusCheckResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      SuccessfulResults: S.optional(SuccessfulAssociationResponseSet).pipe(
+        T.XmlName("successfulResultSet"),
+        T.Ec2QueryName("SuccessfulResultSet"),
+      ),
+      UnsuccessfulResults: S.optional(UnsuccessfulAssociationResponseSet).pipe(
+        T.XmlName("unsuccessfulResultSet"),
+        T.Ec2QueryName("UnsuccessfulResultSet"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "DisassociateApplicationStatusCheckResult",
+}) as any as S.Schema<DisassociateApplicationStatusCheckResult>;
 export interface DisassociateCapacityReservationBillingOwnerRequest {
   DryRun?: boolean;
   CapacityReservationId?: string;
@@ -56504,6 +58807,52 @@ export const EnableAllowedImagesSettingsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnableAllowedImagesSettingsResult",
 }) as any as S.Schema<EnableAllowedImagesSettingsResult>;
+export interface EnableApplicationStatusCheckSuppressionRequest {
+  InstanceIds?: string[];
+  DurationSeconds?: number;
+  ClientToken?: string;
+  DryRun?: boolean;
+}
+export const EnableApplicationStatusCheckSuppressionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceIds: S.optional(InstanceIdList).pipe(T.XmlName("InstanceId")),
+      DurationSeconds: S.optional(S.Number),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "EnableApplicationStatusCheckSuppressionRequest",
+  }) as any as S.Schema<EnableApplicationStatusCheckSuppressionRequest>;
+export interface EnableApplicationStatusCheckSuppressionResult {
+  SuccessfulResults?: SuccessfulSuppressionResponseObject[];
+  UnsuccessfulResults?: UnsuccessfulSuppressionResponseObject[];
+}
+export const EnableApplicationStatusCheckSuppressionResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SuccessfulResults: S.optional(SuccessfulSuppressionResponseSet).pipe(
+        T.XmlName("successfulResultSet"),
+        T.Ec2QueryName("SuccessfulResultSet"),
+      ),
+      UnsuccessfulResults: S.optional(UnsuccessfulSuppressionResponseSet).pipe(
+        T.XmlName("unsuccessfulResultSet"),
+        T.Ec2QueryName("UnsuccessfulResultSet"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "EnableApplicationStatusCheckSuppressionResult",
+  }) as any as S.Schema<EnableApplicationStatusCheckSuppressionResult>;
 export interface EnableAwsNetworkPerformanceMetricSubscriptionRequest {
   Source?: string;
   Destination?: string;
@@ -57121,6 +59470,59 @@ export const EnableInstanceSqlHaStandbyDetectionsResult =
   ).annotate({
     identifier: "EnableInstanceSqlHaStandbyDetectionsResult",
   }) as any as S.Schema<EnableInstanceSqlHaStandbyDetectionsResult>;
+export interface EnableIpamInternetRegistryAssociationRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  RpkiVersion?: string;
+  ServiceUri?: string;
+  ChildHandle?: string;
+  ParentHandle?: string;
+  ParentBpkiTa?: string;
+  ClientToken?: string;
+}
+export const EnableIpamInternetRegistryAssociationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      RpkiVersion: S.optional(S.String),
+      ServiceUri: S.optional(S.String),
+      ChildHandle: S.optional(S.String),
+      ParentHandle: S.optional(S.String),
+      ParentBpkiTa: S.optional(S.String),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "EnableIpamInternetRegistryAssociationRequest",
+  }) as any as S.Schema<EnableIpamInternetRegistryAssociationRequest>;
+export interface EnableIpamInternetRegistryAssociationResult {
+  IpamInternetRegistryAssociation?: IpamInternetRegistryAssociation;
+}
+export const EnableIpamInternetRegistryAssociationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamInternetRegistryAssociation: S.optional(
+        IpamInternetRegistryAssociation,
+      )
+        .pipe(
+          T.XmlName("ipamInternetRegistryAssociation"),
+          T.Ec2QueryName("IpamInternetRegistryAssociation"),
+        )
+        .annotate({ identifier: "IpamInternetRegistryAssociation" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "EnableIpamInternetRegistryAssociationResult",
+  }) as any as S.Schema<EnableIpamInternetRegistryAssociationResult>;
 export interface EnableIpamOrganizationAdminAccountRequest {
   DryRun?: boolean;
   DelegatedAdminAccountId?: string;
@@ -60329,9 +62731,10 @@ export const GetInstanceUefiDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceUefiDataRequest",
 }) as any as S.Schema<GetInstanceUefiDataRequest>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface GetInstanceUefiDataResult {
   InstanceId?: string;
-  UefiData?: string;
+  UefiData?: string | redacted.Redacted<string>;
 }
 export const GetInstanceUefiDataResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -60339,7 +62742,7 @@ export const GetInstanceUefiDataResult = /*@__PURE__*/ S.suspend(() =>
       T.XmlName("instanceId"),
       T.Ec2QueryName("InstanceId"),
     ),
-    UefiData: S.optional(S.String).pipe(
+    UefiData: S.optional(SensitiveString).pipe(
       T.XmlName("uefiData"),
       T.Ec2QueryName("UefiData"),
     ),
@@ -61017,6 +63420,275 @@ export const GetIpamDiscoveredResourceCidrsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetIpamDiscoveredResourceCidrsResult",
 }) as any as S.Schema<GetIpamDiscoveredResourceCidrsResult>;
+export interface GetIpamDiscoveredRoutesRequest {
+  DryRun?: boolean;
+  IpamResourceDiscoveryId?: string;
+  ResourceRegion?: string;
+  Filters?: Filter[];
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const GetIpamDiscoveredRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DryRun: S.optional(S.Boolean),
+    IpamResourceDiscoveryId: S.optional(S.String),
+    ResourceRegion: S.optional(S.String),
+    Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetIpamDiscoveredRoutesRequest",
+}) as any as S.Schema<GetIpamDiscoveredRoutesRequest>;
+export type IpamByoipCidrState =
+  | "advertised"
+  | "deprovisioned"
+  | "failed-deprovision"
+  | "failed-provision"
+  | "pending-advertising"
+  | "pending-deprovision"
+  | "pending-provision"
+  | "pending-withdrawal"
+  | "provisioned"
+  | "provisioned-not-publicly-advertisable"
+  | (string & {});
+export const IpamByoipCidrState = /*@__PURE__*/ S.String;
+
+export type IpamByoipAdvertisementType = "regional" | "global" | (string & {});
+export const IpamByoipAdvertisementType = /*@__PURE__*/ S.String;
+
+export interface IpamDiscoveredRoute {
+  IpamResourceDiscoveryId?: string;
+  ResourceRegion?: string;
+  ResourceOwnerId?: string;
+  Cidr?: string;
+  Asn?: string;
+  State?: IpamByoipCidrState;
+  AdvertisementType?: IpamByoipAdvertisementType;
+  NetworkBorderGroup?: string;
+  PoolId?: string;
+  IpamPoolId?: string;
+  SampleTime?: Date;
+}
+export const IpamDiscoveredRoute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IpamResourceDiscoveryId: S.optional(S.String).pipe(
+      T.XmlName("ipamResourceDiscoveryId"),
+      T.Ec2QueryName("IpamResourceDiscoveryId"),
+    ),
+    ResourceRegion: S.optional(S.String).pipe(
+      T.XmlName("resourceRegion"),
+      T.Ec2QueryName("ResourceRegion"),
+    ),
+    ResourceOwnerId: S.optional(S.String).pipe(
+      T.XmlName("resourceOwnerId"),
+      T.Ec2QueryName("ResourceOwnerId"),
+    ),
+    Cidr: S.optional(S.String).pipe(T.XmlName("cidr"), T.Ec2QueryName("Cidr")),
+    Asn: S.optional(S.String).pipe(T.XmlName("asn"), T.Ec2QueryName("Asn")),
+    State: S.optional(IpamByoipCidrState).pipe(
+      T.XmlName("state"),
+      T.Ec2QueryName("State"),
+    ),
+    AdvertisementType: S.optional(IpamByoipAdvertisementType).pipe(
+      T.XmlName("advertisementType"),
+      T.Ec2QueryName("AdvertisementType"),
+    ),
+    NetworkBorderGroup: S.optional(S.String).pipe(
+      T.XmlName("networkBorderGroup"),
+      T.Ec2QueryName("NetworkBorderGroup"),
+    ),
+    PoolId: S.optional(S.String).pipe(
+      T.XmlName("poolId"),
+      T.Ec2QueryName("PoolId"),
+    ),
+    IpamPoolId: S.optional(S.String).pipe(
+      T.XmlName("ipamPoolId"),
+      T.Ec2QueryName("IpamPoolId"),
+    ),
+    SampleTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("sampleTime"), T.Ec2QueryName("SampleTime")),
+  }),
+).annotate({
+  identifier: "IpamDiscoveredRoute",
+}) as any as S.Schema<IpamDiscoveredRoute>;
+export type IpamDiscoveredRouteSet = IpamDiscoveredRoute[];
+export const IpamDiscoveredRouteSet = /*@__PURE__*/ S.Array(
+  IpamDiscoveredRoute.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamDiscoveredRoute",
+  }),
+);
+export interface GetIpamDiscoveredRoutesResult {
+  IpamDiscoveredRoutes?: IpamDiscoveredRoute[];
+  NextToken?: string;
+}
+export const GetIpamDiscoveredRoutesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IpamDiscoveredRoutes: S.optional(IpamDiscoveredRouteSet).pipe(
+      T.XmlName("ipamDiscoveredRouteSet"),
+      T.Ec2QueryName("IpamDiscoveredRouteSet"),
+    ),
+    NextToken: S.optional(S.String).pipe(
+      T.XmlName("nextToken"),
+      T.Ec2QueryName("NextToken"),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetIpamDiscoveredRoutesResult",
+}) as any as S.Schema<GetIpamDiscoveredRoutesResult>;
+export interface GetIpamInternetRegistryAssociationAsnsRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  MaxResults?: number;
+  NextToken?: string;
+  Filters?: Filter[];
+}
+export const GetIpamInternetRegistryAssociationAsnsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetIpamInternetRegistryAssociationAsnsRequest",
+  }) as any as S.Schema<GetIpamInternetRegistryAssociationAsnsRequest>;
+export interface IpamInternetRegistryAssociationAsn {
+  Asn?: string;
+  LastObservedAt?: Date;
+}
+export const IpamInternetRegistryAssociationAsn = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Asn: S.optional(S.String).pipe(T.XmlName("asn"), T.Ec2QueryName("Asn")),
+    LastObservedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("lastObservedAt"), T.Ec2QueryName("LastObservedAt")),
+  }),
+).annotate({
+  identifier: "IpamInternetRegistryAssociationAsn",
+}) as any as S.Schema<IpamInternetRegistryAssociationAsn>;
+export type IpamInternetRegistryAssociationAsnSet =
+  IpamInternetRegistryAssociationAsn[];
+export const IpamInternetRegistryAssociationAsnSet = /*@__PURE__*/ S.Array(
+  IpamInternetRegistryAssociationAsn.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamInternetRegistryAssociationAsn",
+  }),
+);
+export interface GetIpamInternetRegistryAssociationAsnsResult {
+  NextToken?: string;
+  IpamInternetRegistryAssociationAsns?: IpamInternetRegistryAssociationAsn[];
+}
+export const GetIpamInternetRegistryAssociationAsnsResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+      IpamInternetRegistryAssociationAsns: S.optional(
+        IpamInternetRegistryAssociationAsnSet,
+      ).pipe(
+        T.XmlName("ipamInternetRegistryAssociationAsnSet"),
+        T.Ec2QueryName("IpamInternetRegistryAssociationAsnSet"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "GetIpamInternetRegistryAssociationAsnsResult",
+  }) as any as S.Schema<GetIpamInternetRegistryAssociationAsnsResult>;
+export interface GetIpamInternetRegistryAssociationCidrsRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  MaxResults?: number;
+  NextToken?: string;
+  Filters?: Filter[];
+}
+export const GetIpamInternetRegistryAssociationCidrsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetIpamInternetRegistryAssociationCidrsRequest",
+  }) as any as S.Schema<GetIpamInternetRegistryAssociationCidrsRequest>;
+export interface IpamInternetRegistryAssociationCidr {
+  Cidr?: string;
+  LastObservedAt?: Date;
+}
+export const IpamInternetRegistryAssociationCidr = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Cidr: S.optional(S.String).pipe(T.XmlName("cidr"), T.Ec2QueryName("Cidr")),
+    LastObservedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("lastObservedAt"), T.Ec2QueryName("LastObservedAt")),
+  }),
+).annotate({
+  identifier: "IpamInternetRegistryAssociationCidr",
+}) as any as S.Schema<IpamInternetRegistryAssociationCidr>;
+export type IpamInternetRegistryAssociationCidrSet =
+  IpamInternetRegistryAssociationCidr[];
+export const IpamInternetRegistryAssociationCidrSet = /*@__PURE__*/ S.Array(
+  IpamInternetRegistryAssociationCidr.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamInternetRegistryAssociationCidr",
+  }),
+);
+export interface GetIpamInternetRegistryAssociationCidrsResult {
+  NextToken?: string;
+  IpamInternetRegistryAssociationCidrs?: IpamInternetRegistryAssociationCidr[];
+}
+export const GetIpamInternetRegistryAssociationCidrsResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+      IpamInternetRegistryAssociationCidrs: S.optional(
+        IpamInternetRegistryAssociationCidrSet,
+      ).pipe(
+        T.XmlName("ipamInternetRegistryAssociationCidrSet"),
+        T.Ec2QueryName("IpamInternetRegistryAssociationCidrSet"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "GetIpamInternetRegistryAssociationCidrsResult",
+  }) as any as S.Schema<GetIpamInternetRegistryAssociationCidrsResult>;
 export type IpamPolicyResourceType =
   | "alb"
   | "eip"
@@ -61726,6 +64398,458 @@ export const GetIpamResourceCidrsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIpamResourceCidrsResult",
 }) as any as S.Schema<GetIpamResourceCidrsResult>;
+export interface GetIpamRouteOriginAuthorizationsRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  Cidr?: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const GetIpamRouteOriginAuthorizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      Cidr: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetIpamRouteOriginAuthorizationsRequest",
+}) as any as S.Schema<GetIpamRouteOriginAuthorizationsRequest>;
+export interface IpamRouteOriginAuthorizationInfo {
+  Cidr?: string;
+  Asn?: string;
+  MaxLength?: number;
+}
+export const IpamRouteOriginAuthorizationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Cidr: S.optional(S.String).pipe(T.XmlName("cidr"), T.Ec2QueryName("Cidr")),
+    Asn: S.optional(S.String).pipe(T.XmlName("asn"), T.Ec2QueryName("Asn")),
+    MaxLength: S.optional(S.Number).pipe(
+      T.XmlName("maxLength"),
+      T.Ec2QueryName("MaxLength"),
+    ),
+  }),
+).annotate({
+  identifier: "IpamRouteOriginAuthorizationInfo",
+}) as any as S.Schema<IpamRouteOriginAuthorizationInfo>;
+export type IpamRouteOriginAuthorizationInfoSet =
+  IpamRouteOriginAuthorizationInfo[];
+export const IpamRouteOriginAuthorizationInfoSet = /*@__PURE__*/ S.Array(
+  IpamRouteOriginAuthorizationInfo.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamRouteOriginAuthorizationInfo",
+  }),
+);
+export interface GetIpamRouteOriginAuthorizationsResult {
+  IpamRouteOriginAuthorizations?: IpamRouteOriginAuthorizationInfo[];
+  NextToken?: string;
+}
+export const GetIpamRouteOriginAuthorizationsResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      IpamRouteOriginAuthorizations: S.optional(
+        IpamRouteOriginAuthorizationInfoSet,
+      ).pipe(
+        T.XmlName("ipamRouteOriginAuthorizationSet"),
+        T.Ec2QueryName("IpamRouteOriginAuthorizationSet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "GetIpamRouteOriginAuthorizationsResult",
+}) as any as S.Schema<GetIpamRouteOriginAuthorizationsResult>;
+export interface GetIpamRouteProtectionFindingsRequest {
+  DryRun?: boolean;
+  IpamId?: string;
+  Filters?: Filter[];
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const GetIpamRouteProtectionFindingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamId: S.optional(S.String),
+      Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+      NextToken: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetIpamRouteProtectionFindingsRequest",
+}) as any as S.Schema<GetIpamRouteProtectionFindingsRequest>;
+export type IpamRpkiStatus = "valid" | "invalid" | "unknown" | (string & {});
+export const IpamRpkiStatus = /*@__PURE__*/ S.String;
+
+export type IpamRpkiStrength = "strict" | "permissive" | (string & {});
+export const IpamRpkiStrength = /*@__PURE__*/ S.String;
+
+export interface IpamRouteOriginAuthorization {
+  Asn?: string;
+  Prefix?: string;
+  MaxLength?: number;
+  Match?: boolean;
+  Expiration?: Date;
+}
+export const IpamRouteOriginAuthorization = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Asn: S.optional(S.String).pipe(T.XmlName("asn"), T.Ec2QueryName("Asn")),
+    Prefix: S.optional(S.String).pipe(
+      T.XmlName("prefix"),
+      T.Ec2QueryName("Prefix"),
+    ),
+    MaxLength: S.optional(S.Number).pipe(
+      T.XmlName("maxLength"),
+      T.Ec2QueryName("MaxLength"),
+    ),
+    Match: S.optional(S.Boolean).pipe(
+      T.XmlName("match"),
+      T.Ec2QueryName("Match"),
+    ),
+    Expiration: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("expiration"), T.Ec2QueryName("Expiration")),
+  }),
+).annotate({
+  identifier: "IpamRouteOriginAuthorization",
+}) as any as S.Schema<IpamRouteOriginAuthorization>;
+export type IpamRouteOriginAuthorizationSet = IpamRouteOriginAuthorization[];
+export const IpamRouteOriginAuthorizationSet = /*@__PURE__*/ S.Array(
+  IpamRouteOriginAuthorization.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamRouteOriginAuthorization",
+  }),
+);
+export interface IpamRouteOverlap {
+  Prefix?: string;
+  Asn?: string;
+  DetectedAt?: Date;
+}
+export const IpamRouteOverlap = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Prefix: S.optional(S.String).pipe(
+      T.XmlName("prefix"),
+      T.Ec2QueryName("Prefix"),
+    ),
+    Asn: S.optional(S.String).pipe(T.XmlName("asn"), T.Ec2QueryName("Asn")),
+    DetectedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("detectedAt"), T.Ec2QueryName("DetectedAt")),
+  }),
+).annotate({
+  identifier: "IpamRouteOverlap",
+}) as any as S.Schema<IpamRouteOverlap>;
+export type IpamRouteOverlapSet = IpamRouteOverlap[];
+export const IpamRouteOverlapSet = /*@__PURE__*/ S.Array(
+  IpamRouteOverlap.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamRouteOverlap",
+  }),
+);
+export interface IpamRouteProtectionFinding {
+  ResourceOwnerId?: string;
+  ResourceRegion?: string;
+  IpamPoolId?: string;
+  Cidr?: string;
+  State?: IpamByoipCidrState;
+  AdvertisementType?: IpamByoipAdvertisementType;
+  NetworkBorderGroup?: string;
+  PoolId?: string;
+  Asn?: string;
+  RpkiStatus?: IpamRpkiStatus;
+  RpkiStrength?: IpamRpkiStrength;
+  Roas?: IpamRouteOriginAuthorization[];
+  RouteOverlaps?: IpamRouteOverlap[];
+  SampleTime?: Date;
+  RoaSampleTime?: Date;
+}
+export const IpamRouteProtectionFinding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceOwnerId: S.optional(S.String).pipe(
+      T.XmlName("resourceOwnerId"),
+      T.Ec2QueryName("ResourceOwnerId"),
+    ),
+    ResourceRegion: S.optional(S.String).pipe(
+      T.XmlName("resourceRegion"),
+      T.Ec2QueryName("ResourceRegion"),
+    ),
+    IpamPoolId: S.optional(S.String).pipe(
+      T.XmlName("ipamPoolId"),
+      T.Ec2QueryName("IpamPoolId"),
+    ),
+    Cidr: S.optional(S.String).pipe(T.XmlName("cidr"), T.Ec2QueryName("Cidr")),
+    State: S.optional(IpamByoipCidrState).pipe(
+      T.XmlName("state"),
+      T.Ec2QueryName("State"),
+    ),
+    AdvertisementType: S.optional(IpamByoipAdvertisementType).pipe(
+      T.XmlName("advertisementType"),
+      T.Ec2QueryName("AdvertisementType"),
+    ),
+    NetworkBorderGroup: S.optional(S.String).pipe(
+      T.XmlName("networkBorderGroup"),
+      T.Ec2QueryName("NetworkBorderGroup"),
+    ),
+    PoolId: S.optional(S.String).pipe(
+      T.XmlName("poolId"),
+      T.Ec2QueryName("PoolId"),
+    ),
+    Asn: S.optional(S.String).pipe(T.XmlName("asn"), T.Ec2QueryName("Asn")),
+    RpkiStatus: S.optional(IpamRpkiStatus).pipe(
+      T.XmlName("rpkiStatus"),
+      T.Ec2QueryName("RpkiStatus"),
+    ),
+    RpkiStrength: S.optional(IpamRpkiStrength).pipe(
+      T.XmlName("rpkiStrength"),
+      T.Ec2QueryName("RpkiStrength"),
+    ),
+    Roas: S.optional(IpamRouteOriginAuthorizationSet).pipe(
+      T.XmlName("roaSet"),
+      T.Ec2QueryName("RoaSet"),
+    ),
+    RouteOverlaps: S.optional(IpamRouteOverlapSet).pipe(
+      T.XmlName("routeOverlapSet"),
+      T.Ec2QueryName("RouteOverlapSet"),
+    ),
+    SampleTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("sampleTime"), T.Ec2QueryName("SampleTime")),
+    RoaSampleTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("roaSampleTime"), T.Ec2QueryName("RoaSampleTime")),
+  }),
+).annotate({
+  identifier: "IpamRouteProtectionFinding",
+}) as any as S.Schema<IpamRouteProtectionFinding>;
+export type IpamRouteProtectionFindingSet = IpamRouteProtectionFinding[];
+export const IpamRouteProtectionFindingSet = /*@__PURE__*/ S.Array(
+  IpamRouteProtectionFinding.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamRouteProtectionFinding",
+  }),
+);
+export interface GetIpamRouteProtectionFindingsResult {
+  IpamId?: string;
+  RouteProtectionFindings?: IpamRouteProtectionFinding[];
+  NextToken?: string;
+}
+export const GetIpamRouteProtectionFindingsResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      IpamId: S.optional(S.String).pipe(
+        T.XmlName("ipamId"),
+        T.Ec2QueryName("IpamId"),
+      ),
+      RouteProtectionFindings: S.optional(IpamRouteProtectionFindingSet).pipe(
+        T.XmlName("routeProtectionFindingSet"),
+        T.Ec2QueryName("RouteProtectionFindingSet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "GetIpamRouteProtectionFindingsResult",
+}) as any as S.Schema<GetIpamRouteProtectionFindingsResult>;
+export type ChronologicalOrder = "forward" | "reverse" | (string & {});
+export const ChronologicalOrder = /*@__PURE__*/ S.String;
+
+export interface GetIpamRoutingPolicyRegistrationDeltasRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  DeltaId?: string;
+  StartTime?: Date;
+  EndTime?: Date;
+  ChronologicalOrder?: ChronologicalOrder;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const GetIpamRoutingPolicyRegistrationDeltasRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      DeltaId: S.optional(S.String),
+      StartTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      EndTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      ChronologicalOrder: S.optional(ChronologicalOrder),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetIpamRoutingPolicyRegistrationDeltasRequest",
+  }) as any as S.Schema<GetIpamRoutingPolicyRegistrationDeltasRequest>;
+export type IpamRoutingPolicyRegistrationDeltaSet =
+  IpamRoutingPolicyRegistrationDelta[];
+export const IpamRoutingPolicyRegistrationDeltaSet = /*@__PURE__*/ S.Array(
+  IpamRoutingPolicyRegistrationDelta.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamRoutingPolicyRegistrationDelta",
+  }),
+);
+export interface GetIpamRoutingPolicyRegistrationDeltasResult {
+  IpamRoutingPolicyRegistrationDeltas?: IpamRoutingPolicyRegistrationDelta[];
+  NextToken?: string;
+}
+export const GetIpamRoutingPolicyRegistrationDeltasResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamRoutingPolicyRegistrationDeltas: S.optional(
+        IpamRoutingPolicyRegistrationDeltaSet,
+      ).pipe(
+        T.XmlName("ipamRoutingPolicyRegistrationDeltaSet"),
+        T.Ec2QueryName("IpamRoutingPolicyRegistrationDeltaSet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "GetIpamRoutingPolicyRegistrationDeltasResult",
+  }) as any as S.Schema<GetIpamRoutingPolicyRegistrationDeltasResult>;
+export interface GetIpamRoutingPolicyRegistrationsRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  Cidr?: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const GetIpamRoutingPolicyRegistrationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      Cidr: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetIpamRoutingPolicyRegistrationsRequest",
+}) as any as S.Schema<GetIpamRoutingPolicyRegistrationsRequest>;
+export type IpamRoutingPolicyRegistrationState =
+  | "pending-activate"
+  | "activate-failed"
+  | "create-in-progress"
+  | "create-complete"
+  | "update-in-progress"
+  | "update-complete"
+  | "delete-in-progress"
+  | "delete-complete"
+  | (string & {});
+export const IpamRoutingPolicyRegistrationState = /*@__PURE__*/ S.String;
+
+export interface IpamRoutingPolicyRegistration {
+  Cidr?: string;
+  Asns?: string[];
+  PermitMoreSpecificAnnouncements?: boolean;
+  MaxLength?: number;
+  Description?: string;
+  LatestDeltaId?: string;
+  State?: IpamRoutingPolicyRegistrationState;
+}
+export const IpamRoutingPolicyRegistration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Cidr: S.optional(S.String).pipe(T.XmlName("cidr"), T.Ec2QueryName("Cidr")),
+    Asns: S.optional(AsnList).pipe(
+      T.XmlName("asnSet"),
+      T.Ec2QueryName("AsnSet"),
+    ),
+    PermitMoreSpecificAnnouncements: S.optional(S.Boolean).pipe(
+      T.XmlName("permitMoreSpecificAnnouncements"),
+      T.Ec2QueryName("PermitMoreSpecificAnnouncements"),
+    ),
+    MaxLength: S.optional(S.Number).pipe(
+      T.XmlName("maxLength"),
+      T.Ec2QueryName("MaxLength"),
+    ),
+    Description: S.optional(S.String).pipe(
+      T.XmlName("description"),
+      T.Ec2QueryName("Description"),
+    ),
+    LatestDeltaId: S.optional(S.String).pipe(
+      T.XmlName("latestDeltaId"),
+      T.Ec2QueryName("LatestDeltaId"),
+    ),
+    State: S.optional(IpamRoutingPolicyRegistrationState).pipe(
+      T.XmlName("state"),
+      T.Ec2QueryName("State"),
+    ),
+  }),
+).annotate({
+  identifier: "IpamRoutingPolicyRegistration",
+}) as any as S.Schema<IpamRoutingPolicyRegistration>;
+export type IpamRoutingPolicyRegistrationSet = IpamRoutingPolicyRegistration[];
+export const IpamRoutingPolicyRegistrationSet = /*@__PURE__*/ S.Array(
+  IpamRoutingPolicyRegistration.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamRoutingPolicyRegistration",
+  }),
+);
+export interface GetIpamRoutingPolicyRegistrationsResult {
+  IpamRoutingPolicyRegistrations?: IpamRoutingPolicyRegistration[];
+  NextToken?: string;
+}
+export const GetIpamRoutingPolicyRegistrationsResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      IpamRoutingPolicyRegistrations: S.optional(
+        IpamRoutingPolicyRegistrationSet,
+      ).pipe(
+        T.XmlName("ipamRoutingPolicyRegistrationSet"),
+        T.Ec2QueryName("IpamRoutingPolicyRegistrationSet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "GetIpamRoutingPolicyRegistrationsResult",
+}) as any as S.Schema<GetIpamRoutingPolicyRegistrationsResult>;
 export interface GetLaunchTemplateDataRequest {
   DryRun?: boolean;
   InstanceId?: string;
@@ -62743,6 +65867,7 @@ export interface GetSpotPlacementScoresRequest {
   DryRun?: boolean;
   MaxResults?: number;
   NextToken?: string;
+  IncludeLocalZones?: boolean;
 }
 export const GetSpotPlacementScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -62757,6 +65882,7 @@ export const GetSpotPlacementScoresRequest = /*@__PURE__*/ S.suspend(() =>
     DryRun: S.optional(S.Boolean),
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
+    IncludeLocalZones: S.optional(S.Boolean),
   }).pipe(
     T.all(
       ns,
@@ -63183,83 +66309,6 @@ export const GetTransitGatewayPolicyTableEntriesRequest =
   ).annotate({
     identifier: "GetTransitGatewayPolicyTableEntriesRequest",
   }) as any as S.Schema<GetTransitGatewayPolicyTableEntriesRequest>;
-export interface TransitGatewayPolicyRuleMetaData {
-  MetaDataKey?: string;
-  MetaDataValue?: string;
-}
-export const TransitGatewayPolicyRuleMetaData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MetaDataKey: S.optional(S.String).pipe(
-      T.XmlName("metaDataKey"),
-      T.Ec2QueryName("MetaDataKey"),
-    ),
-    MetaDataValue: S.optional(S.String).pipe(
-      T.XmlName("metaDataValue"),
-      T.Ec2QueryName("MetaDataValue"),
-    ),
-  }),
-).annotate({
-  identifier: "TransitGatewayPolicyRuleMetaData",
-}) as any as S.Schema<TransitGatewayPolicyRuleMetaData>;
-export interface TransitGatewayPolicyRule {
-  SourceCidrBlock?: string;
-  SourcePortRange?: string;
-  DestinationCidrBlock?: string;
-  DestinationPortRange?: string;
-  Protocol?: string;
-  MetaData?: TransitGatewayPolicyRuleMetaData;
-}
-export const TransitGatewayPolicyRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SourceCidrBlock: S.optional(S.String).pipe(
-      T.XmlName("sourceCidrBlock"),
-      T.Ec2QueryName("SourceCidrBlock"),
-    ),
-    SourcePortRange: S.optional(S.String).pipe(
-      T.XmlName("sourcePortRange"),
-      T.Ec2QueryName("SourcePortRange"),
-    ),
-    DestinationCidrBlock: S.optional(S.String).pipe(
-      T.XmlName("destinationCidrBlock"),
-      T.Ec2QueryName("DestinationCidrBlock"),
-    ),
-    DestinationPortRange: S.optional(S.String).pipe(
-      T.XmlName("destinationPortRange"),
-      T.Ec2QueryName("DestinationPortRange"),
-    ),
-    Protocol: S.optional(S.String).pipe(
-      T.XmlName("protocol"),
-      T.Ec2QueryName("Protocol"),
-    ),
-    MetaData: S.optional(TransitGatewayPolicyRuleMetaData)
-      .pipe(T.XmlName("metaData"), T.Ec2QueryName("MetaData"))
-      .annotate({ identifier: "TransitGatewayPolicyRuleMetaData" }),
-  }),
-).annotate({
-  identifier: "TransitGatewayPolicyRule",
-}) as any as S.Schema<TransitGatewayPolicyRule>;
-export interface TransitGatewayPolicyTableEntry {
-  PolicyRuleNumber?: string;
-  PolicyRule?: TransitGatewayPolicyRule;
-  TargetRouteTableId?: string;
-}
-export const TransitGatewayPolicyTableEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PolicyRuleNumber: S.optional(S.String).pipe(
-      T.XmlName("policyRuleNumber"),
-      T.Ec2QueryName("PolicyRuleNumber"),
-    ),
-    PolicyRule: S.optional(TransitGatewayPolicyRule)
-      .pipe(T.XmlName("policyRule"), T.Ec2QueryName("PolicyRule"))
-      .annotate({ identifier: "TransitGatewayPolicyRule" }),
-    TargetRouteTableId: S.optional(S.String).pipe(
-      T.XmlName("targetRouteTableId"),
-      T.Ec2QueryName("TargetRouteTableId"),
-    ),
-  }),
-).annotate({
-  identifier: "TransitGatewayPolicyTableEntry",
-}) as any as S.Schema<TransitGatewayPolicyTableEntry>;
 export type TransitGatewayPolicyTableEntryList =
   TransitGatewayPolicyTableEntry[];
 export const TransitGatewayPolicyTableEntryList = /*@__PURE__*/ S.Array(
@@ -63269,6 +66318,7 @@ export const TransitGatewayPolicyTableEntryList = /*@__PURE__*/ S.Array(
 );
 export interface GetTransitGatewayPolicyTableEntriesResult {
   TransitGatewayPolicyTableEntries?: TransitGatewayPolicyTableEntry[];
+  NextToken?: string;
 }
 export const GetTransitGatewayPolicyTableEntriesResult =
   /*@__PURE__*/ S.suspend(() =>
@@ -63278,6 +66328,10 @@ export const GetTransitGatewayPolicyTableEntriesResult =
       ).pipe(
         T.XmlName("transitGatewayPolicyTableEntries"),
         T.Ec2QueryName("TransitGatewayPolicyTableEntries"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
       ),
     }).pipe(ns),
   ).annotate({
@@ -64979,6 +68033,65 @@ export const LockSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LockSnapshotResult",
 }) as any as S.Schema<LockSnapshotResult>;
+export interface ModifyAccountVpcEncryptionControlRequest {
+  DryRun?: boolean;
+  Mode?: AccountVpcEncryptionControlMode;
+  InternetGateway?: VpcEncryptionControlExclusionStateInput;
+  EgressOnlyInternetGateway?: VpcEncryptionControlExclusionStateInput;
+  NatGateway?: VpcEncryptionControlExclusionStateInput;
+  VirtualPrivateGateway?: VpcEncryptionControlExclusionStateInput;
+  VpcPeering?: VpcEncryptionControlExclusionStateInput;
+  Lambda?: VpcEncryptionControlExclusionStateInput;
+  VpcLattice?: VpcEncryptionControlExclusionStateInput;
+  ElasticFileSystem?: VpcEncryptionControlExclusionStateInput;
+}
+export const ModifyAccountVpcEncryptionControlRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      Mode: S.optional(AccountVpcEncryptionControlMode),
+      InternetGateway: S.optional(VpcEncryptionControlExclusionStateInput),
+      EgressOnlyInternetGateway: S.optional(
+        VpcEncryptionControlExclusionStateInput,
+      ),
+      NatGateway: S.optional(VpcEncryptionControlExclusionStateInput),
+      VirtualPrivateGateway: S.optional(
+        VpcEncryptionControlExclusionStateInput,
+      ),
+      VpcPeering: S.optional(VpcEncryptionControlExclusionStateInput),
+      Lambda: S.optional(VpcEncryptionControlExclusionStateInput),
+      VpcLattice: S.optional(VpcEncryptionControlExclusionStateInput),
+      ElasticFileSystem: S.optional(VpcEncryptionControlExclusionStateInput),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ModifyAccountVpcEncryptionControlRequest",
+}) as any as S.Schema<ModifyAccountVpcEncryptionControlRequest>;
+export interface ModifyAccountVpcEncryptionControlResult {
+  AccountVpcEncryptionControl?: AccountVpcEncryptionControl;
+}
+export const ModifyAccountVpcEncryptionControlResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AccountVpcEncryptionControl: S.optional(AccountVpcEncryptionControl)
+        .pipe(
+          T.XmlName("accountVpcEncryptionControl"),
+          T.Ec2QueryName("AccountVpcEncryptionControl"),
+        )
+        .annotate({ identifier: "AccountVpcEncryptionControl" }),
+    }).pipe(ns),
+).annotate({
+  identifier: "ModifyAccountVpcEncryptionControlResult",
+}) as any as S.Schema<ModifyAccountVpcEncryptionControlResult>;
 export interface ModifyAddressAttributeRequest {
   AllocationId?: string;
   DomainName?: string;
@@ -65015,6 +68128,75 @@ export const ModifyAddressAttributeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifyAddressAttributeResult",
 }) as any as S.Schema<ModifyAddressAttributeResult>;
+export interface ModifyApplicationStatusCheckRequest {
+  ApplicationStatusCheckId?: string;
+  Aggregation?: AggregationStatusEnum;
+  HealthCheckPaths?: HealthCheckPathRequestObject[];
+  Protocol?: NetworkProtocolEnum;
+  Port?: number;
+  Path?: string;
+  DeviceIndex?: number;
+  IpVersion?: IpVersionEnum;
+  IpScope?: IpScopeEnum;
+  Interval?: number;
+  Timeout?: number;
+  FailureThreshold?: number;
+  SuccessThreshold?: number;
+  StatusCodeMatcher?: string;
+  InitializationGracePeriodSeconds?: number;
+  ClientToken?: string;
+  DryRun?: boolean;
+}
+export const ModifyApplicationStatusCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationStatusCheckId: S.optional(S.String),
+    Aggregation: S.optional(AggregationStatusEnum),
+    HealthCheckPaths: S.optional(HealthCheckPathRequestList).pipe(
+      T.XmlName("HealthCheckPath"),
+    ),
+    Protocol: S.optional(NetworkProtocolEnum),
+    Port: S.optional(S.Number),
+    Path: S.optional(S.String),
+    DeviceIndex: S.optional(S.Number),
+    IpVersion: S.optional(IpVersionEnum),
+    IpScope: S.optional(IpScopeEnum),
+    Interval: S.optional(S.Number),
+    Timeout: S.optional(S.Number),
+    FailureThreshold: S.optional(S.Number),
+    SuccessThreshold: S.optional(S.Number),
+    StatusCodeMatcher: S.optional(S.String),
+    InitializationGracePeriodSeconds: S.optional(S.Number),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    DryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ModifyApplicationStatusCheckRequest",
+}) as any as S.Schema<ModifyApplicationStatusCheckRequest>;
+export interface ModifyApplicationStatusCheckResult {
+  ApplicationStatusCheck?: ApplicationStatusCheckResponseObject;
+}
+export const ModifyApplicationStatusCheckResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationStatusCheck: S.optional(ApplicationStatusCheckResponseObject)
+      .pipe(
+        T.XmlName("applicationStatusCheck"),
+        T.Ec2QueryName("ApplicationStatusCheck"),
+      )
+      .annotate({ identifier: "ApplicationStatusCheckResponseObject" }),
+  }).pipe(ns),
+).annotate({
+  identifier: "ModifyApplicationStatusCheckResult",
+}) as any as S.Schema<ModifyApplicationStatusCheckResult>;
 export type ModifyAvailabilityZoneOptInStatus =
   | "opted-in"
   | "not-opted-in"
@@ -66935,6 +70117,61 @@ export const ModifyIpamResourceDiscoveryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifyIpamResourceDiscoveryResult",
 }) as any as S.Schema<ModifyIpamResourceDiscoveryResult>;
+export interface ModifyIpamRoutingPolicyRegistrationRequest {
+  DryRun?: boolean;
+  IpamInternetRegistryAssociationId?: string;
+  Cidr?: string;
+  Asns?: string[];
+  PermitMoreSpecificAnnouncements?: boolean;
+  MaxLength?: number;
+  Description?: string;
+  Force?: boolean;
+  ClientToken?: string;
+}
+export const ModifyIpamRoutingPolicyRegistrationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamInternetRegistryAssociationId: S.optional(S.String),
+      Cidr: S.optional(S.String),
+      Asns: S.optional(AsnList).pipe(T.XmlName("Asn")),
+      PermitMoreSpecificAnnouncements: S.optional(S.Boolean),
+      MaxLength: S.optional(S.Number),
+      Description: S.optional(S.String),
+      Force: S.optional(S.Boolean),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ModifyIpamRoutingPolicyRegistrationRequest",
+  }) as any as S.Schema<ModifyIpamRoutingPolicyRegistrationRequest>;
+export interface ModifyIpamRoutingPolicyRegistrationResult {
+  IpamRoutingPolicyRegistrationDelta?: IpamRoutingPolicyRegistrationDelta;
+}
+export const ModifyIpamRoutingPolicyRegistrationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamRoutingPolicyRegistrationDelta: S.optional(
+        IpamRoutingPolicyRegistrationDelta,
+      )
+        .pipe(
+          T.XmlName("ipamRoutingPolicyRegistrationDelta"),
+          T.Ec2QueryName("IpamRoutingPolicyRegistrationDelta"),
+        )
+        .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ModifyIpamRoutingPolicyRegistrationResult",
+  }) as any as S.Schema<ModifyIpamRoutingPolicyRegistrationResult>;
 export interface ModifyIpamScopeRequest {
   DryRun?: boolean;
   IpamScopeId?: string;
@@ -68010,6 +71247,51 @@ export const ModifyTransitGatewayMeteringPolicyResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ModifyTransitGatewayMeteringPolicyResult",
 }) as any as S.Schema<ModifyTransitGatewayMeteringPolicyResult>;
+export interface ModifyTransitGatewayPolicyTableEntryRequest {
+  TransitGatewayPolicyTableId?: string;
+  PolicyRuleNumber?: string;
+  PolicyRule?: TransitGatewayRequestPolicyRule;
+  TargetRouteTableId?: string;
+  DryRun?: boolean;
+}
+export const ModifyTransitGatewayPolicyTableEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayPolicyTableId: S.optional(S.String),
+      PolicyRuleNumber: S.optional(S.String),
+      PolicyRule: S.optional(TransitGatewayRequestPolicyRule),
+      TargetRouteTableId: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ModifyTransitGatewayPolicyTableEntryRequest",
+  }) as any as S.Schema<ModifyTransitGatewayPolicyTableEntryRequest>;
+export interface ModifyTransitGatewayPolicyTableEntryResult {
+  TransitGatewayPolicyTableEntry?: TransitGatewayPolicyTableEntry;
+}
+export const ModifyTransitGatewayPolicyTableEntryResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayPolicyTableEntry: S.optional(TransitGatewayPolicyTableEntry)
+        .pipe(
+          T.XmlName("transitGatewayPolicyTableEntry"),
+          T.Ec2QueryName("TransitGatewayPolicyTableEntry"),
+        )
+        .annotate({ identifier: "TransitGatewayPolicyTableEntry" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ModifyTransitGatewayPolicyTableEntryResult",
+  }) as any as S.Schema<ModifyTransitGatewayPolicyTableEntryResult>;
 export interface ModifyTransitGatewayPrefixListReferenceRequest {
   TransitGatewayRouteTableId?: string;
   PrefixListId?: string;
@@ -69049,6 +72331,54 @@ export const ModifyVpcEndpointConnectionNotificationResult =
   ).annotate({
     identifier: "ModifyVpcEndpointConnectionNotificationResult",
   }) as any as S.Schema<ModifyVpcEndpointConnectionNotificationResult>;
+export interface ModifyVpcEndpointPayerResponsibilityRequest {
+  DryRun?: boolean;
+  ServiceId?: string;
+  VpcEndpointId?: string;
+  PayerResponsibility?: PayerResponsibilityType;
+  Scope?: PayerResponsibilityScope;
+}
+export const ModifyVpcEndpointPayerResponsibilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      ServiceId: S.optional(S.String),
+      VpcEndpointId: S.optional(S.String),
+      PayerResponsibility: S.optional(PayerResponsibilityType),
+      Scope: S.optional(PayerResponsibilityScope),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ModifyVpcEndpointPayerResponsibilityRequest",
+  }) as any as S.Schema<ModifyVpcEndpointPayerResponsibilityRequest>;
+export interface ModifyVpcEndpointPayerResponsibilityResult {
+  VpcEndpointId?: string;
+  PayerResponsibilities?: PayerResponsibilityEntry[];
+}
+export const ModifyVpcEndpointPayerResponsibilityResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      VpcEndpointId: S.optional(S.String).pipe(
+        T.XmlName("vpcEndpointId"),
+        T.Ec2QueryName("VpcEndpointId"),
+      ),
+      PayerResponsibilities: S.optional(PayerResponsibilitySet).pipe(
+        T.XmlName("payerResponsibilitySet"),
+        T.Ec2QueryName("PayerResponsibilitySet"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ModifyVpcEndpointPayerResponsibilityResult",
+  }) as any as S.Schema<ModifyVpcEndpointPayerResponsibilityResult>;
 export interface ModifyVpcEndpointServiceConfigurationRequest {
   DryRun?: boolean;
   ServiceId?: string;
@@ -70326,13 +73656,13 @@ export type BillingProductList = string[];
 export const BillingProductList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
-export type ImageUefiDataRequest = string;
+export type ImageUefiDataRequest = string | redacted.Redacted<string>;
 export interface RegisterImageRequest {
   ImageLocation?: string;
   BillingProducts?: string[];
   BootMode?: BootModeValues;
   TpmSupport?: TpmSupportValues;
-  UefiData?: string;
+  UefiData?: string | redacted.Redacted<string>;
   ImdsSupport?: ImdsSupportValues;
   TagSpecifications?: TagSpecification[];
   DryRun?: boolean;
@@ -70355,7 +73685,7 @@ export const RegisterImageRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     BootMode: S.optional(BootModeValues),
     TpmSupport: S.optional(TpmSupportValues),
-    UefiData: S.optional(S.String),
+    UefiData: S.optional(SensitiveString),
     ImdsSupport: S.optional(ImdsSupportValues),
     TagSpecifications: S.optional(TagSpecificationList).pipe(
       T.XmlName("TagSpecification"),
@@ -71180,6 +74510,70 @@ export const ReplaceImageCriteriaInAllowedImagesSettingsResult =
   ).annotate({
     identifier: "ReplaceImageCriteriaInAllowedImagesSettingsResult",
   }) as any as S.Schema<ReplaceImageCriteriaInAllowedImagesSettingsResult>;
+export type InstanceTypeItemRequest = string;
+export type SupportedInstanceTypeRequestSet = string[];
+export const SupportedInstanceTypeRequestSet = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("Item")),
+);
+export type UnsupportedInstanceTypeRequestSet = string[];
+export const UnsupportedInstanceTypeRequestSet = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("Item")),
+);
+export interface InstanceTypeSpecificationRequest {
+  SupportedInstanceTypes?: string[];
+  UnsupportedInstanceTypes?: string[];
+}
+export const InstanceTypeSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SupportedInstanceTypes: S.optional(SupportedInstanceTypeRequestSet).pipe(
+      T.XmlName("SupportedInstanceType"),
+    ),
+    UnsupportedInstanceTypes: S.optional(
+      UnsupportedInstanceTypeRequestSet,
+    ).pipe(T.XmlName("UnsupportedInstanceType")),
+  }),
+).annotate({
+  identifier: "InstanceTypeSpecificationRequest",
+}) as any as S.Schema<InstanceTypeSpecificationRequest>;
+export interface ReplaceImageInstanceTypeSpecificationRequest {
+  ImageId?: string;
+  InstanceTypeSpecification?: InstanceTypeSpecificationRequest;
+  DryRun?: boolean;
+}
+export const ReplaceImageInstanceTypeSpecificationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ImageId: S.optional(S.String),
+      InstanceTypeSpecification: S.optional(InstanceTypeSpecificationRequest),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ReplaceImageInstanceTypeSpecificationRequest",
+  }) as any as S.Schema<ReplaceImageInstanceTypeSpecificationRequest>;
+export interface ReplaceImageInstanceTypeSpecificationResult {
+  ReturnValue?: boolean;
+}
+export const ReplaceImageInstanceTypeSpecificationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ReturnValue: S.optional(S.Boolean).pipe(
+        T.XmlName("returnValue"),
+        T.Ec2QueryName("ReturnValue"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ReplaceImageInstanceTypeSpecificationResult",
+  }) as any as S.Schema<ReplaceImageInstanceTypeSpecificationResult>;
 export type NetworkAclAssociationId = string;
 export interface ReplaceNetworkAclAssociationRequest {
   DryRun?: boolean;
@@ -74996,6 +78390,36 @@ export const associateAddress: API.OperationMethod<
   operationName: "AssociateAddress",
 }));
 
+export type AssociateApplicationStatusCheckError = CommonErrors;
+/**
+ * Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply:
+ *
+ * - You must specify either `TargetTagAssociations` or `InstanceIds`, but not both. Specifying both results in an `InvalidParameterCombination` error.
+ *
+ * - You must own the application status check. The check must already exist in your account.
+ *
+ * - You must not leave tag keys blank.
+ *
+ * - You can create a maximum of 50 tag associations for each application status check.
+ *
+ * - You can use `DisassociateApplicationStatusCheck` to remove associations.
+ *
+ * - You can associate tags so that the application status check automatically monitors all current and future instances that have the specified tags.
+ */
+export const associateApplicationStatusCheck: API.OperationMethod<
+  AssociateApplicationStatusCheckRequest,
+  AssociateApplicationStatusCheckResult,
+  AssociateApplicationStatusCheckError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: AssociateApplicationStatusCheckRequest,
+  output: AssociateApplicationStatusCheckResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "AssociateApplicationStatusCheck",
+}));
+
 export type AssociateCapacityReservationBillingOwnerError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -75939,6 +79363,24 @@ export const authorizeSecurityGroupIngress: API.OperationMethod<
   operationName: "AuthorizeSecurityGroupIngress",
 }));
 
+export type BatchModifyIpamRoutingPolicyRegistrationsError = CommonErrors;
+/**
+ * Modifies multiple routing policy registrations in a single operation. You can create, update, or delete Route Origin Authorizations (ROAs) in batch.
+ */
+export const batchModifyIpamRoutingPolicyRegistrations: API.OperationMethod<
+  BatchModifyIpamRoutingPolicyRegistrationsRequest,
+  BatchModifyIpamRoutingPolicyRegistrationsResult,
+  BatchModifyIpamRoutingPolicyRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchModifyIpamRoutingPolicyRegistrationsRequest,
+  output: BatchModifyIpamRoutingPolicyRegistrationsResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "BatchModifyIpamRoutingPolicyRegistrations",
+}));
+
 export type BundleInstanceError =
   | RequestLimitExceeded
   | MissingParameter
@@ -75950,9 +79392,9 @@ export type BundleInstanceError =
  * During bundling, only the root device volume (C:\) is bundled. Data on other instance
  * store volumes is not preserved.
  *
- * This action is no longer supported. To create an AMI, use
- * CreateImage.
- * For more information, see
+ * BundleInstance is no longer supported. To create an AMI, use
+ * CreateImage instead.
+ * For more information about creating an Amazon EBS-backed AMI, see
  * Create an Amazon EBS-backed AMI in the *Amazon EC2 User Guide*.
  */
 export const bundleInstance: API.OperationMethod<
@@ -75977,6 +79419,9 @@ export type CancelBundleTaskError =
   | CommonErrors;
 /**
  * Cancels a bundling operation for an instance store-backed Windows instance.
+ *
+ * CancelBundleTask is no longer supported because BundleInstance,
+ * the operation it cancels, is no longer supported.
  */
 export const cancelBundleTask: API.OperationMethod<
   CancelBundleTaskRequest,
@@ -76011,22 +79456,26 @@ export type CancelCapacityReservationError =
  *
  * - `assessing`
  *
- * - `scheduled`
+ * - `scheduled` — requires a cancellation quote. Use
+ * `CreateCapacityReservationCancellationQuote` to generate a quote,
+ * then pass the quote ID with `ApplyCancellationCharges` set to
+ * `commitment-wind-down`. The cancellation charge depends on how
+ * close the reservation is to its start date.
  *
  * - `active` and there is no commitment duration or the commitment
  * duration has elapsed.
  *
- * - `active` during the commitment duration, if you provide a
- * cancellation quote ID and accept the cancellation charges. Use
- * `CreateCapacityReservationCancellationQuote` to generate a quote.
- * The Capacity Reservation transitions to `cancelling` while charges
- * are applied.
+ * - `active` during the commitment duration — requires a
+ * cancellation quote. Use
+ * `CreateCapacityReservationCancellationQuote` to generate a quote,
+ * then pass the quote ID with `ApplyCancellationCharges` set to
+ * `commitment-wind-down`. The Capacity Reservation transitions to
+ * `cancelling` while charges are applied.
+ *
+ * - `delayed` — the commitment duration is waived, so no
+ * cancellation charge applies.
  *
  * You can't modify or cancel a Capacity Block. For more information, see Capacity Blocks for ML.
- *
- * If a future-dated Capacity Reservation enters the `delayed` state, the
- * commitment duration is waived, and you can cancel it as soon as it enters the
- * `active` state.
  *
  * Instances running in the reserved capacity continue running until you stop them.
  * Stopped instances that target the Capacity Reservation can no longer launch. Modify
@@ -76556,6 +80005,38 @@ export const copyVolumes: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CopyVolumes",
+}));
+
+export type CreateApplicationStatusCheckError = CommonErrors;
+/**
+ * Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply:
+ *
+ * - You can create a maximum of 50 application status checks for each account.
+ *
+ * - You must associate the check with instances or tags using `AssociateApplicationStatusCheck` before health checks start.
+ *
+ * - You must set the `Timeout` value to less than the `Interval` value.
+ *
+ * - You must start the `Path` with a forward slash (`/`). Default: `/`.
+ *
+ * - You can specify `Aggregation` as `included` or `excluded`. If you do not specify a value, it defaults to `included`, which means the check contributes to the instance-level application status.
+ *
+ * - You can use the following default values: `Interval` is 60 seconds, `Timeout` is 6 seconds, `FailureThreshold` is 2, `SuccessThreshold` is 2, `StatusCodeMatcher` is `200`, `InitializationGracePeriodSeconds` is 300 seconds.
+ *
+ * - You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources.
+ */
+export const createApplicationStatusCheck: API.OperationMethod<
+  CreateApplicationStatusCheckRequest,
+  CreateApplicationStatusCheckResult,
+  CreateApplicationStatusCheckError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateApplicationStatusCheckRequest,
+  output: CreateApplicationStatusCheckResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateApplicationStatusCheck",
 }));
 
 export type CreateCapacityManagerDataExportError =
@@ -77200,6 +80681,11 @@ export type CreateImageError =
  * - If the source instance is in a Local Zone, you can create the snapshots in the same
  * Local Zone or in its parent Region.
  *
+ * - If the source instance is on an Outpost that supports local snapshots, you can create
+ * the snapshots on the same Outpost or in the parent Region of that Outpost. In this case,
+ * you must use the `SnapshotLocation` parameter to specify where to create the
+ * snapshots.
+ *
  * For more information, see Create an Amazon EBS-backed AMI in
  * the *Amazon Elastic Compute Cloud User Guide*.
  */
@@ -77477,6 +80963,24 @@ export const createIpamExternalResourceVerificationToken: API.OperationMethod<
   operationName: "CreateIpamExternalResourceVerificationToken",
 }));
 
+export type CreateIpamInternetRegistryAssociationError = CommonErrors;
+/**
+ * Creates an association between an IPAM and a Regional Internet Registry (RIR) for Resource Public Key Infrastructure (RPKI) management. You can use this association to create Route Origin Authorizations (ROAs) for IP address prefixes registered with the internet registry. Your IPAM must be in the Advanced tier to use this feature.
+ */
+export const createIpamInternetRegistryAssociation: API.OperationMethod<
+  CreateIpamInternetRegistryAssociationRequest,
+  CreateIpamInternetRegistryAssociationResult,
+  CreateIpamInternetRegistryAssociationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateIpamInternetRegistryAssociationRequest,
+  output: CreateIpamInternetRegistryAssociationResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateIpamInternetRegistryAssociation",
+}));
+
 export type CreateIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
@@ -77619,6 +81123,24 @@ export const createIpamResourceDiscovery: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateIpamResourceDiscovery",
+}));
+
+export type CreateIpamRoutingPolicyRegistrationError = CommonErrors;
+/**
+ * Creates a routing policy registration and publishes Route Origin Authorizations (ROAs) to the RPKI for the specified CIDR prefix and ASNs.
+ */
+export const createIpamRoutingPolicyRegistration: API.OperationMethod<
+  CreateIpamRoutingPolicyRegistrationRequest,
+  CreateIpamRoutingPolicyRegistrationResult,
+  CreateIpamRoutingPolicyRegistrationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateIpamRoutingPolicyRegistrationRequest,
+  output: CreateIpamRoutingPolicyRegistrationResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateIpamRoutingPolicyRegistration",
 }));
 
 export type CreateIpamScopeError =
@@ -78277,7 +81799,7 @@ export type CreatePlacementGroupError =
  * partitions, where instances in one partition do not share the same hardware with
  * instances in another partition. A `precision-time` placement group places
  * instances on supported hardware with direct access to high-precision time sources in
- * AWS infrastructure.
+ * Amazon Web Services infrastructure.
  *
  * For more information, see Placement groups in the
  * *Amazon EC2 User Guide*.
@@ -78327,8 +81849,9 @@ export type CreateReplaceRootVolumeTaskError =
 /**
  * Replaces the EBS-backed root volume for a `running` instance with a new
  * volume that is restored to the original root volume's launch state, that is restored to a
- * specific snapshot taken from the original root volume, or that is restored from an AMI
- * that has the same key characteristics as that of the instance.
+ * specific snapshot taken from the original root volume, that is restored from an AMI
+ * that has the same key characteristics as that of the instance, or that is replaced by
+ * a specified volume.
  *
  * For more information, see Replace a root volume in the *Amazon EC2 User Guide*.
  */
@@ -79376,6 +82899,24 @@ export const createTransitGatewayPolicyTable: API.OperationMethod<
   operationName: "CreateTransitGatewayPolicyTable",
 }));
 
+export type CreateTransitGatewayPolicyTableEntryError = CommonErrors;
+/**
+ * Creates an entry in a transit gateway policy table to route matching traffic to a specified route table.
+ */
+export const createTransitGatewayPolicyTableEntry: API.OperationMethod<
+  CreateTransitGatewayPolicyTableEntryRequest,
+  CreateTransitGatewayPolicyTableEntryResult,
+  CreateTransitGatewayPolicyTableEntryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTransitGatewayPolicyTableEntryRequest,
+  output: CreateTransitGatewayPolicyTableEntryResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateTransitGatewayPolicyTableEntry",
+}));
+
 export type CreateTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | MissingParameter
@@ -80064,6 +83605,28 @@ export const createVpnGateway: API.OperationMethod<
   operationName: "CreateVpnGateway",
 }));
 
+export type DeleteApplicationStatusCheckError = CommonErrors;
+/**
+ * Deletes an application status check. The following rules apply:
+ *
+ * - Deleting a check automatically removes all of its associations.
+ *
+ * - Use `DescribeApplicationStatusChecks` to view existing checks before deleting.
+ */
+export const deleteApplicationStatusCheck: API.OperationMethod<
+  DeleteApplicationStatusCheckRequest,
+  DeleteApplicationStatusCheckResult,
+  DeleteApplicationStatusCheckError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteApplicationStatusCheckRequest,
+  output: DeleteApplicationStatusCheckResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteApplicationStatusCheck",
+}));
+
 export type DeleteCapacityManagerDataExportError =
   | RequestLimitExceeded
   | InvalidCapacityManagerDataExportIdMalformed
@@ -80650,6 +84213,24 @@ export const deleteIpamExternalResourceVerificationToken: API.OperationMethod<
   operationName: "DeleteIpamExternalResourceVerificationToken",
 }));
 
+export type DeleteIpamInternetRegistryAssociationError = CommonErrors;
+/**
+ * Deletes an IPAM internet registry association. Before deleting, you must remove all routing policy registrations associated with the internet registry.
+ */
+export const deleteIpamInternetRegistryAssociation: API.OperationMethod<
+  DeleteIpamInternetRegistryAssociationRequest,
+  DeleteIpamInternetRegistryAssociationResult,
+  DeleteIpamInternetRegistryAssociationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteIpamInternetRegistryAssociationRequest,
+  output: DeleteIpamInternetRegistryAssociationResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteIpamInternetRegistryAssociation",
+}));
+
 export type DeleteIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
@@ -80804,6 +84385,24 @@ export const deleteIpamResourceDiscovery: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteIpamResourceDiscovery",
+}));
+
+export type DeleteIpamRoutingPolicyRegistrationError = CommonErrors;
+/**
+ * Deletes a routing policy registration for a specified CIDR prefix.
+ */
+export const deleteIpamRoutingPolicyRegistration: API.OperationMethod<
+  DeleteIpamRoutingPolicyRegistrationRequest,
+  DeleteIpamRoutingPolicyRegistrationResult,
+  DeleteIpamRoutingPolicyRegistrationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteIpamRoutingPolicyRegistrationRequest,
+  output: DeleteIpamRoutingPolicyRegistrationResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteIpamRoutingPolicyRegistration",
 }));
 
 export type DeleteIpamScopeError =
@@ -82275,6 +85874,24 @@ export const deleteTransitGatewayPolicyTable: API.OperationMethod<
   operationName: "DeleteTransitGatewayPolicyTable",
 }));
 
+export type DeleteTransitGatewayPolicyTableEntryError = CommonErrors;
+/**
+ * Deletes the specified transit gateway policy table entry.
+ */
+export const deleteTransitGatewayPolicyTableEntry: API.OperationMethod<
+  DeleteTransitGatewayPolicyTableEntryRequest,
+  DeleteTransitGatewayPolicyTableEntryResult,
+  DeleteTransitGatewayPolicyTableEntryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTransitGatewayPolicyTableEntryRequest,
+  output: DeleteTransitGatewayPolicyTableEntryResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteTransitGatewayPolicyTableEntry",
+}));
+
 export type DeleteTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -83178,6 +86795,26 @@ export const describeAccountAttributes: API.OperationMethod<
   operationName: "DescribeAccountAttributes",
 }));
 
+export type DescribeAccountVpcEncryptionControlError = CommonErrors;
+/**
+ * Describes the account-level VPC Encryption Control configuration for your account. VPC Encryption Control enables you to enforce encryption for all data in transit within and between VPCs to meet compliance requirements.
+ *
+ * For more information, see Enforce VPC encryption in transit in the *Amazon VPC User Guide*.
+ */
+export const describeAccountVpcEncryptionControl: API.OperationMethod<
+  DescribeAccountVpcEncryptionControlRequest,
+  DescribeAccountVpcEncryptionControlResult,
+  DescribeAccountVpcEncryptionControlError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeAccountVpcEncryptionControlRequest,
+  output: DescribeAccountVpcEncryptionControlResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeAccountVpcEncryptionControl",
+}));
+
 export type DescribeAddressesError =
   | RequestLimitExceeded
   | InvalidAllocationIDNotFound
@@ -83306,6 +86943,76 @@ export const describeAggregateIdFormat: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeAggregateIdFormat",
+}));
+
+export type DescribeApplicationStatusError = CommonErrors;
+/**
+ * Describes the aggregated application health status for the specified instances. The following rules apply:
+ *
+ * - The instance-level status is derived from all application status checks with the aggregation setting set to `included`.
+ *
+ * - Use `DescribeApplicationStatusChecks` to view the configuration of individual checks.
+ *
+ * - Use `EnableApplicationStatusCheckSuppression` to temporarily suppress health check results from affecting the instance-level status.
+ */
+export const describeApplicationStatus: API.OperationMethod<
+  DescribeApplicationStatusRequest,
+  DescribeApplicationStatusResult,
+  DescribeApplicationStatusError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeApplicationStatusRequest,
+  output: DescribeApplicationStatusResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeApplicationStatus",
+}));
+
+export type DescribeApplicationStatusCheckAssociationsError = CommonErrors;
+/**
+ * Describes the associations for one or more application status checks. For more
+ * information, see Application
+ * status checks. To avoid timeouts and retrieve complete results, use the
+ * pagination parameters.
+ *
+ * The order of the elements in the response, including those within nested
+ * structures, might vary.
+ */
+export const describeApplicationStatusCheckAssociations: API.OperationMethod<
+  DescribeApplicationStatusCheckAssociationsRequest,
+  DescribeApplicationStatusCheckAssociationsResult,
+  DescribeApplicationStatusCheckAssociationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeApplicationStatusCheckAssociationsRequest,
+  output: DescribeApplicationStatusCheckAssociationsResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeApplicationStatusCheckAssociations",
+}));
+
+export type DescribeApplicationStatusChecksError = CommonErrors;
+/**
+ * Describes application status checks, including configuration details such as protocol, port, path, thresholds, and associations. Results are paginated. Use the `NextToken` parameter to retrieve additional results. The following rules apply:
+ *
+ * - If you do not specify any application status check IDs, all checks in your account are returned.
+ *
+ * - Use `DescribeApplicationStatus` to see the actual health status of instances.
+ */
+export const describeApplicationStatusChecks: API.OperationMethod<
+  DescribeApplicationStatusChecksRequest,
+  DescribeApplicationStatusChecksResult,
+  DescribeApplicationStatusChecksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeApplicationStatusChecksRequest,
+  output: DescribeApplicationStatusChecksResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeApplicationStatusChecks",
 }));
 
 export type DescribeAvailabilityZonesError =
@@ -85428,6 +89135,10 @@ export type DescribeInstanceStatusError =
  * instances with failed status checks in the Amazon EC2 User
  * Guide.
  *
+ * - **Application status checks** - Amazon EC2 reports
+ * application-level health status for instances, indicating whether applications
+ * running on the instance are functioning properly.
+ *
  * - **Scheduled events** - Amazon EC2 can schedule
  * events (such as reboot, stop, or terminate) for your instances related to
  * hardware issues, software updates, or system maintenance. For more information,
@@ -85657,6 +89368,24 @@ export const describeIpamExternalResourceVerificationTokens: API.OperationMethod
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeIpamExternalResourceVerificationTokens",
+}));
+
+export type DescribeIpamInternetRegistryAssociationsError = CommonErrors;
+/**
+ * Describes one or more IPAM internet registry associations. We recommend using pagination to ensure that the operation returns quickly and successfully.
+ */
+export const describeIpamInternetRegistryAssociations: API.OperationMethod<
+  DescribeIpamInternetRegistryAssociationsRequest,
+  DescribeIpamInternetRegistryAssociationsResult,
+  DescribeIpamInternetRegistryAssociationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeIpamInternetRegistryAssociationsRequest,
+  output: DescribeIpamInternetRegistryAssociationsResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeIpamInternetRegistryAssociations",
 }));
 
 export type DescribeIpamPoliciesError =
@@ -89733,6 +93462,24 @@ export const disableAllowedImagesSettings: API.OperationMethod<
   operationName: "DisableAllowedImagesSettings",
 }));
 
+export type DisableApplicationStatusCheckSuppressionError = CommonErrors;
+/**
+ * Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs for each request.
+ */
+export const disableApplicationStatusCheckSuppression: API.OperationMethod<
+  DisableApplicationStatusCheckSuppressionRequest,
+  DisableApplicationStatusCheckSuppressionResult,
+  DisableApplicationStatusCheckSuppressionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DisableApplicationStatusCheckSuppressionRequest,
+  output: DisableApplicationStatusCheckSuppressionResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DisableApplicationStatusCheckSuppression",
+}));
+
 export type DisableAwsNetworkPerformanceMetricSubscriptionError =
   | RequestLimitExceeded
   | MissingParameter
@@ -90303,6 +94050,30 @@ export const disassociateAddress: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DisassociateAddress",
+}));
+
+export type DisassociateApplicationStatusCheckError = CommonErrors;
+/**
+ * Disassociates an application status check from instances or tags. After disassociation, health monitoring stops for the affected instances. The following rules apply:
+ *
+ * - You must specify either `TargetTagAssociations` or `InstanceIds`, but not both. Specifying both results in an `InvalidParameterCombination` error.
+ *
+ * - The application status check must already exist and belong to your account.
+ *
+ * - Tag keys must not be blank.
+ */
+export const disassociateApplicationStatusCheck: API.OperationMethod<
+  DisassociateApplicationStatusCheckRequest,
+  DisassociateApplicationStatusCheckResult,
+  DisassociateApplicationStatusCheckError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DisassociateApplicationStatusCheckRequest,
+  output: DisassociateApplicationStatusCheckResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DisassociateApplicationStatusCheck",
 }));
 
 export type DisassociateCapacityReservationBillingOwnerError =
@@ -90887,6 +94658,30 @@ export const enableAllowedImagesSettings: API.OperationMethod<
   operationName: "EnableAllowedImagesSettings",
 }));
 
+export type EnableApplicationStatusCheckSuppressionError = CommonErrors;
+/**
+ * Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply:
+ *
+ * - You can specify a maximum of 100 instance IDs for each request.
+ *
+ * - Use `DisableApplicationStatusCheckSuppression` to resume normal health check reporting.
+ *
+ * - If you do not specify `DurationSeconds`, suppression continues indefinitely until you call `DisableApplicationStatusCheckSuppression`.
+ */
+export const enableApplicationStatusCheckSuppression: API.OperationMethod<
+  EnableApplicationStatusCheckSuppressionRequest,
+  EnableApplicationStatusCheckSuppressionResult,
+  EnableApplicationStatusCheckSuppressionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: EnableApplicationStatusCheckSuppressionRequest,
+  output: EnableApplicationStatusCheckSuppressionResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "EnableApplicationStatusCheckSuppression",
+}));
+
 export type EnableAwsNetworkPerformanceMetricSubscriptionError =
   | RequestLimitExceeded
   | MissingParameter
@@ -91165,6 +94960,24 @@ export const enableInstanceSqlHaStandbyDetections: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "EnableInstanceSqlHaStandbyDetections",
+}));
+
+export type EnableIpamInternetRegistryAssociationError = CommonErrors;
+/**
+ * Enables Resource Public Key Infrastructure (RPKI) on an existing IPAM internet registry association by providing BGP Public Key Infrastructure (BPKI) certificate details. After enabling, you can create Route Origin Authorizations (ROAs) for prefixes registered with the internet registry.
+ */
+export const enableIpamInternetRegistryAssociation: API.OperationMethod<
+  EnableIpamInternetRegistryAssociationRequest,
+  EnableIpamInternetRegistryAssociationResult,
+  EnableIpamInternetRegistryAssociationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: EnableIpamInternetRegistryAssociationRequest,
+  output: EnableIpamInternetRegistryAssociationResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "EnableIpamInternetRegistryAssociation",
 }));
 
 export type EnableIpamOrganizationAdminAccountError =
@@ -92486,6 +96299,60 @@ export const getIpamDiscoveredResourceCidrs: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
+export type GetIpamDiscoveredRoutesError = CommonErrors;
+/**
+ * Retrieves Border Gateway Protocol (BGP) routes discovered by IPAM resource discovery for a specified Region. Use this operation to view the Bring Your Own IP (BYOIP) address ranges that are currently advertised through BGP. We recommend using pagination to ensure that the operation returns quickly and successfully.
+ */
+export const getIpamDiscoveredRoutes: API.OperationMethod<
+  GetIpamDiscoveredRoutesRequest,
+  GetIpamDiscoveredRoutesResult,
+  GetIpamDiscoveredRoutesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIpamDiscoveredRoutesRequest,
+  output: GetIpamDiscoveredRoutesResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetIpamDiscoveredRoutes",
+}));
+
+export type GetIpamInternetRegistryAssociationAsnsError = CommonErrors;
+/**
+ * Retrieves Autonomous System Numbers (ASNs) registered with an internet registry for an IPAM internet registry association. We recommend using pagination to ensure that the operation returns quickly and successfully.
+ */
+export const getIpamInternetRegistryAssociationAsns: API.OperationMethod<
+  GetIpamInternetRegistryAssociationAsnsRequest,
+  GetIpamInternetRegistryAssociationAsnsResult,
+  GetIpamInternetRegistryAssociationAsnsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIpamInternetRegistryAssociationAsnsRequest,
+  output: GetIpamInternetRegistryAssociationAsnsResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetIpamInternetRegistryAssociationAsns",
+}));
+
+export type GetIpamInternetRegistryAssociationCidrsError = CommonErrors;
+/**
+ * Retrieves IP address CIDRs registered with an internet registry for an IPAM internet registry association. We recommend using pagination to ensure that the operation returns quickly and successfully.
+ */
+export const getIpamInternetRegistryAssociationCidrs: API.OperationMethod<
+  GetIpamInternetRegistryAssociationCidrsRequest,
+  GetIpamInternetRegistryAssociationCidrsResult,
+  GetIpamInternetRegistryAssociationCidrsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIpamInternetRegistryAssociationCidrsRequest,
+  output: GetIpamInternetRegistryAssociationCidrsResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetIpamInternetRegistryAssociationCidrs",
+}));
+
 export type GetIpamPolicyAllocationRulesError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
@@ -92782,6 +96649,78 @@ export const getIpamResourceCidrs: API.PaginatedOperationMethod<
     pageSize: "MaxResults",
   } as const,
 })) as any;
+
+export type GetIpamRouteOriginAuthorizationsError = CommonErrors;
+/**
+ * Retrieves the current Route Origin Authorizations (ROAs) published to the RPKI for an IPAM internet registry association. We recommend using pagination to ensure that the operation returns quickly and successfully.
+ */
+export const getIpamRouteOriginAuthorizations: API.OperationMethod<
+  GetIpamRouteOriginAuthorizationsRequest,
+  GetIpamRouteOriginAuthorizationsResult,
+  GetIpamRouteOriginAuthorizationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIpamRouteOriginAuthorizationsRequest,
+  output: GetIpamRouteOriginAuthorizationsResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetIpamRouteOriginAuthorizations",
+}));
+
+export type GetIpamRouteProtectionFindingsError = CommonErrors;
+/**
+ * Retrieves route protection findings for an IPAM. Route protection findings show the Resource Public Key Infrastructure (RPKI) validation status of your Bring Your Own IP (BYOIP) routes. Findings identify routes that have valid, invalid, or unknown validation states. We recommend using pagination to ensure that the operation returns quickly and successfully.
+ */
+export const getIpamRouteProtectionFindings: API.OperationMethod<
+  GetIpamRouteProtectionFindingsRequest,
+  GetIpamRouteProtectionFindingsResult,
+  GetIpamRouteProtectionFindingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIpamRouteProtectionFindingsRequest,
+  output: GetIpamRouteProtectionFindingsResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetIpamRouteProtectionFindings",
+}));
+
+export type GetIpamRoutingPolicyRegistrationDeltasError = CommonErrors;
+/**
+ * Retrieves the history of routing policy registration changes for an IPAM internet registry association. We recommend using pagination to ensure that the operation returns quickly and successfully.
+ */
+export const getIpamRoutingPolicyRegistrationDeltas: API.OperationMethod<
+  GetIpamRoutingPolicyRegistrationDeltasRequest,
+  GetIpamRoutingPolicyRegistrationDeltasResult,
+  GetIpamRoutingPolicyRegistrationDeltasError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIpamRoutingPolicyRegistrationDeltasRequest,
+  output: GetIpamRoutingPolicyRegistrationDeltasResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetIpamRoutingPolicyRegistrationDeltas",
+}));
+
+export type GetIpamRoutingPolicyRegistrationsError = CommonErrors;
+/**
+ * Retrieves routing policy registrations for an IPAM internet registry association. Each registration represents a Route Origin Authorization (ROA) that has been created or is pending publication to the RPKI. We recommend using pagination to ensure that the operation returns quickly and successfully.
+ */
+export const getIpamRoutingPolicyRegistrations: API.OperationMethod<
+  GetIpamRoutingPolicyRegistrationsRequest,
+  GetIpamRoutingPolicyRegistrationsResult,
+  GetIpamRoutingPolicyRegistrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIpamRoutingPolicyRegistrationsRequest,
+  output: GetIpamRoutingPolicyRegistrationsResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetIpamRoutingPolicyRegistrations",
+}));
 
 export type GetLaunchTemplateDataError =
   | RequestLimitExceeded
@@ -93423,12 +97362,13 @@ export type GetTransitGatewayPolicyTableEntriesError =
 /**
  * Returns a list of transit gateway policy table entries.
  */
-export const getTransitGatewayPolicyTableEntries: API.OperationMethod<
+export const getTransitGatewayPolicyTableEntries: API.PaginatedOperationMethod<
   GetTransitGatewayPolicyTableEntriesRequest,
   GetTransitGatewayPolicyTableEntriesResult,
   GetTransitGatewayPolicyTableEntriesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
+  Credentials | HttpClient.HttpClient,
+  TransitGatewayPolicyTableEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayPolicyTableEntriesRequest,
   output: GetTransitGatewayPolicyTableEntriesResult,
   errors: [
@@ -93440,7 +97380,13 @@ export const getTransitGatewayPolicyTableEntries: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetTransitGatewayPolicyTableEntries",
-}));
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "TransitGatewayPolicyTableEntries",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
 
 export type GetTransitGatewayPrefixListReferencesError =
   | RequestLimitExceeded
@@ -94033,6 +97979,26 @@ export const lockSnapshot: API.OperationMethod<
   operationName: "LockSnapshot",
 }));
 
+export type ModifyAccountVpcEncryptionControlError = CommonErrors;
+/**
+ * Modifies the account-level VPC Encryption Control configuration. This sets the encryption control mode and resource exclusions that apply to the VPCs in your account. VPC Encryption Control enables you to enforce encryption for all data in transit within and between VPCs to meet compliance requirements.
+ *
+ * For more information, see Enforce VPC encryption in transit in the *Amazon VPC User Guide*.
+ */
+export const modifyAccountVpcEncryptionControl: API.OperationMethod<
+  ModifyAccountVpcEncryptionControlRequest,
+  ModifyAccountVpcEncryptionControlResult,
+  ModifyAccountVpcEncryptionControlError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ModifyAccountVpcEncryptionControlRequest,
+  output: ModifyAccountVpcEncryptionControlResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ModifyAccountVpcEncryptionControl",
+}));
+
 export type ModifyAddressAttributeError =
   | RequestLimitExceeded
   | InvalidAllocationIDNotFound
@@ -94059,6 +98025,28 @@ export const modifyAddressAttribute: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ModifyAddressAttribute",
+}));
+
+export type ModifyApplicationStatusCheckError = CommonErrors;
+/**
+ * Modifies an existing application status check. You can update the protocol, port, path, thresholds, and other configuration settings. The following rules apply:
+ *
+ * - The application status check must exist and belong to your account.
+ *
+ * - Changes take effect on the next health check interval.
+ */
+export const modifyApplicationStatusCheck: API.OperationMethod<
+  ModifyApplicationStatusCheckRequest,
+  ModifyApplicationStatusCheckResult,
+  ModifyApplicationStatusCheckError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ModifyApplicationStatusCheckRequest,
+  output: ModifyApplicationStatusCheckResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ModifyApplicationStatusCheck",
 }));
 
 export type ModifyAvailabilityZoneGroupError =
@@ -95083,6 +99071,24 @@ export const modifyIpamResourceDiscovery: API.OperationMethod<
   operationName: "ModifyIpamResourceDiscovery",
 }));
 
+export type ModifyIpamRoutingPolicyRegistrationError = CommonErrors;
+/**
+ * Modifies an existing routing policy registration. You can update the authorized ASNs, maximum prefix length, and other properties of a Route Origin Authorization (ROA).
+ */
+export const modifyIpamRoutingPolicyRegistration: API.OperationMethod<
+  ModifyIpamRoutingPolicyRegistrationRequest,
+  ModifyIpamRoutingPolicyRegistrationResult,
+  ModifyIpamRoutingPolicyRegistrationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ModifyIpamRoutingPolicyRegistrationRequest,
+  output: ModifyIpamRoutingPolicyRegistrationResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ModifyIpamRoutingPolicyRegistration",
+}));
+
 export type ModifyIpamScopeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -95665,6 +99671,24 @@ export const modifyTransitGatewayMeteringPolicy: API.OperationMethod<
   operationName: "ModifyTransitGatewayMeteringPolicy",
 }));
 
+export type ModifyTransitGatewayPolicyTableEntryError = CommonErrors;
+/**
+ * Modifies the specified transit gateway policy table entry.
+ */
+export const modifyTransitGatewayPolicyTableEntry: API.OperationMethod<
+  ModifyTransitGatewayPolicyTableEntryRequest,
+  ModifyTransitGatewayPolicyTableEntryResult,
+  ModifyTransitGatewayPolicyTableEntryError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ModifyTransitGatewayPolicyTableEntryRequest,
+  output: ModifyTransitGatewayPolicyTableEntryResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ModifyTransitGatewayPolicyTableEntry",
+}));
+
 export type ModifyTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | MissingParameter
@@ -96132,6 +100156,24 @@ export const modifyVpcEndpointConnectionNotification: API.OperationMethod<
   operationName: "ModifyVpcEndpointConnectionNotification",
 }));
 
+export type ModifyVpcEndpointPayerResponsibilityError = CommonErrors;
+/**
+ * Modifies the billing account for VPC endpoint usage/charges.
+ */
+export const modifyVpcEndpointPayerResponsibility: API.OperationMethod<
+  ModifyVpcEndpointPayerResponsibilityRequest,
+  ModifyVpcEndpointPayerResponsibilityResult,
+  ModifyVpcEndpointPayerResponsibilityError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ModifyVpcEndpointPayerResponsibilityRequest,
+  output: ModifyVpcEndpointPayerResponsibilityResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ModifyVpcEndpointPayerResponsibility",
+}));
+
 export type ModifyVpcEndpointServiceConfigurationError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
@@ -96574,6 +100616,8 @@ export type ProvisionByoipCidrError =
  * Amazon Web Services verifies that you own the address range and are authorized to advertise it.
  * You must ensure that the address range is registered to you and that you created an
  * RPKI ROA to authorize Amazon ASNs 16509 and 14618 to advertise the address range.
+ * For the Amazon Web Services GovCloud (US) Regions, authorize only ASN 8987. For the Amazon Web Services
+ * European Sovereign Cloud, authorize ASNs 16509 and 214101.
  * For more information, see Bring your own IP addresses (BYOIP) in the *Amazon EC2 User Guide*.
  *
  * Provisioning an address range is an asynchronous operation, so the call returns immediately,
@@ -97374,6 +101418,51 @@ export const replaceImageCriteriaInAllowedImagesSettings: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ReplaceImageCriteriaInAllowedImagesSettings",
+}));
+
+export type ReplaceImageInstanceTypeSpecificationError = CommonErrors;
+/**
+ * Replaces or removes the instance type specification for an AMI. The instance type
+ * specification defines which instance types are compatible with the AMI.
+ *
+ * When you launch an instance using
+ * RunInstances, Amazon EC2 validates the requested instance type against the AMI's
+ * instance type specification. If the instance type is not compatible, the request fails with an
+ * `InvalidParameterCombination` error.
+ *
+ * You can specify supported instance types, unsupported instance types, or both. The
+ * evaluation logic is as follows:
+ *
+ * - No specification set – all instance types are allowed.
+ *
+ * - Only `UnsupportedInstanceTypes` set – All instance types are allowed
+ * except those that match the unsupported list.
+ *
+ * - `SupportedInstanceTypes` set – The instance type must match the
+ * supported list and must not match the unsupported list.
+ *
+ * Instance type entries support wildcard patterns using `*` (for example,
+ * `t3.*` matches all t3 sizes).
+ *
+ * To remove an existing instance type specification, omit the
+ * `InstanceTypeSpecification` parameter or set it to `null`.
+ *
+ * To set the instance type specification, you must be the AMI owner. You cannot set an instance
+ * type specification on an AMI that is listed in Amazon Web Services Marketplace, and you cannot list an AMI
+ * in Amazon Web Services Marketplace if it has an instance type specification set.
+ */
+export const replaceImageInstanceTypeSpecification: API.OperationMethod<
+  ReplaceImageInstanceTypeSpecificationRequest,
+  ReplaceImageInstanceTypeSpecificationResult,
+  ReplaceImageInstanceTypeSpecificationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ReplaceImageInstanceTypeSpecificationRequest,
+  output: ReplaceImageInstanceTypeSpecificationResult,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ReplaceImageInstanceTypeSpecification",
 }));
 
 export type ReplaceNetworkAclAssociationError =

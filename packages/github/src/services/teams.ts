@@ -632,10 +632,10 @@ export interface TeamOrganization {
   avatar_url: string;
   description: string | null;
   name?: string;
-  company?: string;
-  blog?: string;
-  location?: string;
-  email?: string;
+  company?: string | null;
+  blog?: string | null;
+  location?: string | null;
+  email?: string | null;
   twitter_username?: string | null;
   is_verified?: boolean;
   has_organization_projects: boolean;
@@ -684,10 +684,10 @@ export const TeamOrganization = /*@__PURE__*/ S.suspend(() =>
     avatar_url: S.String,
     description: S.NullOr(S.String),
     name: S.optional(S.String),
-    company: S.optional(S.String),
-    blog: S.optional(S.String),
-    location: S.optional(S.String),
-    email: S.optional(S.String),
+    company: S.optional(S.NullOr(S.String)),
+    blog: S.optional(S.NullOr(S.String)),
+    location: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
     twitter_username: S.optional(S.NullOr(S.String)),
     is_verified: S.optional(S.Boolean),
     has_organization_projects: S.Boolean,
@@ -1477,13 +1477,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -2072,7 +2074,7 @@ export const listForAuthenticatedUser: API.OperationMethod<
 }));
 
 export type ListMembersInOrgError = GithubOpError;
-/** List team members Team members will include the members of child teams. Each member includes their `role` on the team (`member` or `maintainer`) and an `inherited` flag indicating whether the membership is inherited from a child team (`true`) or is a direct membership (`false`). These fields let you read a member's role and direct/inherited status without additional requests. To list members in a team, the team must be visible to the authenticated user. */
+/** List team members Team members will include the members of child teams. Each member includes their `role` on the team (`member` or `maintainer`) and an `inherited` flag indicating whether the membership is inherited from a child team (`true`) or is a direct membership (`false`). These fields let you read a member's role and direct/inherited status without additional requests. To list members in a team, the team must be visible to the authenticated user. > [!NOTE] > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/members`. */
 export const listMembersInOrg: API.OperationMethod<
   ListMembersInOrgRequest,
   ListMembersInOrgResponse,

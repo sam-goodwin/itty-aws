@@ -280,8 +280,8 @@ export const BatchExportsBackfillsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "BatchExportsBackfillsRetrieveRequest",
 }) as any as S.Schema<BatchExportsBackfillsRetrieveRequest>;
 
-/** * `events` - Events * `persons` - Persons * `sessions` - Sessions */
-export type ModelEnum = "events" | "persons" | "sessions";
+/** * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
+export type ModelEnum = "events" | "persons" | "sessions" | "hogql";
 export const ModelEnum = /*@__PURE__*/ S.String;
 
 /** * `Databricks` - Databricks */
@@ -511,14 +511,14 @@ export const AwsS3DestinationConfig = /*@__PURE__*/ S.suspend(() =>
 /** Request shape for creating or updating an AWS S3 batch-export destination. */
 export interface AwsS3DestinationRequest {
   type: AwsS3DestinationRequestTypeEnum;
-  /** ID of an aws-s3-kind Integration providing AWS credentials. Preferred over inline credentials. Use the integrations-list MCP tool to find one. */
-  integration_id?: number;
+  /** ID of an aws-s3-kind Integration providing AWS credentials. Required when creating a batch export. Use the integrations-list MCP tool to find one. */
+  integration_id: number;
   config: AwsS3DestinationConfig;
 }
 export const AwsS3DestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AwsS3DestinationRequestTypeEnum,
-    integration_id: S.optional(S.Number),
+    integration_id: S.Number,
     config: AwsS3DestinationConfig,
   }),
 ).annotate({
@@ -563,19 +563,187 @@ export const S3CompatibleDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 /** Request shape for creating or updating an S3-compatible batch-export destination. */
 export interface S3CompatibleDestinationRequest {
   type: S3CompatibleDestinationRequestTypeEnum;
-  /** ID of an s3-compatible-kind Integration providing credentials and the provider endpoint URL. Preferred over inline credentials. Use the integrations-list MCP tool to find one. */
-  integration_id?: number;
+  /** ID of an s3-compatible-kind Integration providing credentials and the provider endpoint URL. Required when creating a batch export. Use the integrations-list MCP tool to find one. */
+  integration_id: number;
   config: S3CompatibleDestinationConfig;
 }
 export const S3CompatibleDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S3CompatibleDestinationRequestTypeEnum,
-    integration_id: S.optional(S.Number),
+    integration_id: S.Number,
     config: S3CompatibleDestinationConfig,
   }),
 ).annotate({
   identifier: "S3CompatibleDestinationRequest",
 }) as any as S.Schema<S3CompatibleDestinationRequest>;
+
+/** * `Snowflake` - Snowflake */
+export type SnowflakeDestinationRequestTypeEnum = "Snowflake";
+export const SnowflakeDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
+
+/** Typed configuration for a Snowflake batch-export destination. Account, user, authentication type and credentials may live in a linked Integration (when one is provided) or inline in this config (legacy). Mirrors the non-credential fields of `SnowflakeBatchExportInputs` in `products/batch_exports/backend/service.py`. */
+export interface SnowflakeDestinationConfig {
+  /** Snowflake database to write to. */
+  database: string;
+  /** Snowflake compute warehouse to use. */
+  warehouse: string;
+  /** Schema inside the database containing the destination table. */
+  schema: string;
+  /** Destination table name. */
+  table_name?: string;
+  /** Optional Snowflake role to assume for the session. */
+  role?: string | null;
+}
+export const SnowflakeDestinationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    database: S.String,
+    warehouse: S.String,
+    schema: S.String,
+    table_name: S.optional(S.String),
+    role: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "SnowflakeDestinationConfig",
+}) as any as S.Schema<SnowflakeDestinationConfig>;
+
+/** Request shape for creating or updating a Snowflake batch-export destination. */
+export interface SnowflakeDestinationRequest {
+  type: SnowflakeDestinationRequestTypeEnum;
+  /** ID of a snowflake-kind Integration providing the account, user and credentials. Preferred over inline credentials. Use the integrations-list MCP tool to find one. */
+  integration_id?: number;
+  config: SnowflakeDestinationConfig;
+}
+export const SnowflakeDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SnowflakeDestinationRequestTypeEnum,
+    integration_id: S.optional(S.Number),
+    config: SnowflakeDestinationConfig,
+  }),
+).annotate({
+  identifier: "SnowflakeDestinationRequest",
+}) as any as S.Schema<SnowflakeDestinationRequest>;
+
+/** * `Redshift` - Redshift */
+export type RedshiftDestinationRequestTypeEnum = "Redshift";
+export const RedshiftDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
+
+/** * `varchar` - varchar * `super` - super */
+export type PropertiesDataTypeEnum = "varchar" | "super";
+export const PropertiesDataTypeEnum = /*@__PURE__*/ S.String;
+
+/** * `INSERT` - INSERT * `COPY` - COPY */
+export type RedshiftExportModeEnum = "INSERT" | "COPY";
+export const RedshiftExportModeEnum = /*@__PURE__*/ S.String;
+
+export interface RedshiftCopyInputsAuthorizationCase2 {
+  aws_access_key_id: string;
+  aws_secret_access_key: string;
+}
+export const RedshiftCopyInputsAuthorizationCase2 = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      aws_access_key_id: S.String,
+      aws_secret_access_key: S.String,
+    }),
+).annotate({
+  identifier: "RedshiftCopyInputsAuthorizationCase2",
+}) as any as S.Schema<RedshiftCopyInputsAuthorizationCase2>;
+
+/** Authorization for Redshift to read staged files during COPY: the ARN of an IAM role attached to the cluster, inline AWS credentials, or the id of an aws-s3-kind Integration. */
+export type RedshiftCopyInputsAuthorization =
+  | number
+  | string
+  | RedshiftCopyInputsAuthorizationCase2;
+export const RedshiftCopyInputsAuthorization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RedshiftCopyInputsAuthorization>;
+
+export type RedshiftCopyInputsBucketCredentialsCase1 =
+  RedshiftCopyInputsAuthorizationCase2;
+export const RedshiftCopyInputsBucketCredentialsCase1 =
+  RedshiftCopyInputsAuthorizationCase2;
+
+/** Credentials used to stage files in the S3 bucket: inline AWS credentials or the id of an aws-s3-kind Integration. */
+export type RedshiftCopyInputsBucketCredentials =
+  | number
+  | RedshiftCopyInputsAuthorizationCase2;
+export const RedshiftCopyInputsBucketCredentials =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RedshiftCopyInputsBucketCredentials>;
+
+/** S3 staging configuration for a Redshift batch export running in COPY mode. */
+export interface RedshiftCopyInputs {
+  /** S3 bucket where files are staged before the Redshift COPY. */
+  s3_bucket: string;
+  /** AWS region of the staging S3 bucket. */
+  region_name: string;
+  /** Key prefix for staged files in the S3 bucket. */
+  s3_key_prefix: string;
+  /** Authorization for Redshift to read staged files during COPY: the ARN of an IAM role attached to the cluster, inline AWS credentials, or the id of an aws-s3-kind Integration. */
+  authorization: RedshiftCopyInputsAuthorization;
+  /** Credentials used to stage files in the S3 bucket: inline AWS credentials or the id of an aws-s3-kind Integration. */
+  bucket_credentials: RedshiftCopyInputsBucketCredentials;
+}
+export const RedshiftCopyInputs = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    s3_bucket: S.String,
+    region_name: S.String,
+    s3_key_prefix: S.String,
+    authorization: RedshiftCopyInputsAuthorization,
+    bucket_credentials: RedshiftCopyInputsBucketCredentials,
+  }),
+).annotate({
+  identifier: "RedshiftCopyInputs",
+}) as any as S.Schema<RedshiftCopyInputs>;
+
+/** Typed configuration for a Redshift batch-export destination. Connection credentials may live in a linked Integration (when one is provided) or inline in this config (legacy). Mirrors the non-credential fields of `RedshiftBatchExportInputs` in `products/batch_exports/backend/service.py`. */
+export interface RedshiftDestinationConfig {
+  /** Redshift database name to connect to. */
+  database: string;
+  /** Redshift cluster or Serverless workgroup endpoint. Required when using an AWS Redshift integration; plain Redshift integrations store the host themselves. */
+  host?: string;
+  /** Redshift schema name containing the destination table. */
+  schema?: string;
+  /** Redshift table name to write exported rows into. */
+  table_name?: string;
+  /** Port the Redshift server listens on. */
+  port?: number;
+  /** Data type used for JSON-like columns such as event properties. * `varchar` - varchar * `super` - super */
+  properties_data_type?: PropertiesDataTypeEnum | (string & {});
+  /** How rows reach Redshift: batched INSERT statements, or COPY from files staged in S3. * `INSERT` - INSERT * `COPY` - COPY */
+  mode?: RedshiftExportModeEnum | (string & {});
+  /** S3 staging configuration, required when mode is 'COPY'. */
+  copy_inputs?: RedshiftCopyInputs;
+}
+export const RedshiftDestinationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    database: S.String,
+    host: S.optional(S.String),
+    schema: S.optional(S.String),
+    table_name: S.optional(S.String),
+    port: S.optional(S.Number),
+    properties_data_type: S.optional(PropertiesDataTypeEnum),
+    mode: S.optional(RedshiftExportModeEnum),
+    copy_inputs: S.optional(RedshiftCopyInputs),
+  }),
+).annotate({
+  identifier: "RedshiftDestinationConfig",
+}) as any as S.Schema<RedshiftDestinationConfig>;
+
+/** Request shape for creating or updating a Redshift batch-export destination. */
+export interface RedshiftDestinationRequest {
+  type: RedshiftDestinationRequestTypeEnum;
+  /** ID of an aws-redshift-kind Integration providing connection credentials. Preferred over inline credentials. Use the integrations-list MCP tool to find one. */
+  integration_id?: number;
+  config: RedshiftDestinationConfig;
+}
+export const RedshiftDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: RedshiftDestinationRequestTypeEnum,
+    integration_id: S.optional(S.Number),
+    config: RedshiftDestinationConfig,
+  }),
+).annotate({
+  identifier: "RedshiftDestinationRequest",
+}) as any as S.Schema<RedshiftDestinationRequest>;
 
 export type BatchExportDestinationRequest =
   | DatabricksDestinationRequest
@@ -583,7 +751,9 @@ export type BatchExportDestinationRequest =
   | BigQueryDestinationRequest
   | PostgresDestinationRequest
   | AwsS3DestinationRequest
-  | S3CompatibleDestinationRequest;
+  | S3CompatibleDestinationRequest
+  | SnowflakeDestinationRequest
+  | RedshiftDestinationRequest;
 export const BatchExportDestinationRequest =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportDestinationRequest>;
 
@@ -601,7 +771,7 @@ export interface BatchExportsCreateRequest {
   project_id: string;
   /** Human-readable name for the batch export. */
   name: string;
-  /** Which data model to export (events, persons, sessions). * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+  /** Which data model to export (events, persons, sessions). * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
   model?: ModelEnum | (string & {});
   /** Destination configuration. Required integration_id is enforced per destination type. */
   destination: BatchExportDestinationRequest;
@@ -611,6 +781,7 @@ export interface BatchExportsCreateRequest {
   paused?: boolean;
   /** Optional HogQL SELECT defining a custom model schema. Only recommended in advanced use cases. */
   hogql_query?: string;
+  /** Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {"key": "$browser", "operator": "exact", "type": "event", "value": ["Firefox"]}). */
   filters?: unknown;
   /** IANA timezone name (e.g. 'America/New_York', 'Europe/London', 'UTC') controlling daily and weekly interval boundaries. */
   timezone?: string | null;
@@ -646,7 +817,7 @@ export const BatchExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
-/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportOutputModel = ModelEnum | BlankEnum;
 export const BatchExportOutputModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportOutputModel>;
@@ -674,15 +845,17 @@ export type BatchExportDestinationConfig =
   | BigQueryDestinationConfig
   | PostgresDestinationConfig
   | AwsS3DestinationConfig
-  | S3CompatibleDestinationConfig;
+  | S3CompatibleDestinationConfig
+  | SnowflakeDestinationConfig
+  | RedshiftDestinationConfig;
 export const BatchExportDestinationConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportDestinationConfig>;
 
-/** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
+/** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
 export interface BatchExportDestinationOutput {
   /** A choice of supported BatchExportDestination types. * `S3` - S3 * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
   type?: BatchExportDestinationTypeEnum;
-  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
+  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
   config?: BatchExportDestinationConfig;
   /** The integration for this destination. */
   integration?: number | null;
@@ -1379,7 +1552,7 @@ export interface BatchExportOutput {
   team_id?: number;
   /** A human-readable name for this BatchExport. */
   name?: string;
-  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
   model?: BatchExportOutputModel | null;
   /** Destination configuration (type, config, and optional integration). */
   destination?: BatchExportDestinationOutput;
@@ -1517,7 +1690,7 @@ export interface BatchExportsLogsRetrieveRequest {
   project_id: string;
   /** A UUID string identifying this batch export. */
   id: string;
-  /** Only return entries after this ISO 8601 timestamp. */
+  /** Only return entries after this ISO 8601 timestamp. Defaults to 7 days ago; pass an explicit value to read further back. */
   after?: string;
   /** Only return entries before this ISO 8601 timestamp. */
   before?: string;
@@ -1565,7 +1738,7 @@ export interface BatchExportsPartialUpdateRequest {
   id: string;
   /** Human-readable name for the batch export. */
   name?: string;
-  /** Which data model to export (events, persons, sessions). * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+  /** Which data model to export (events, persons, sessions). * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
   model?: ModelEnum | (string & {});
   /** Destination configuration. Required integration_id is enforced per destination type. */
   destination?: BatchExportDestinationRequest;
@@ -1575,6 +1748,7 @@ export interface BatchExportsPartialUpdateRequest {
   paused?: boolean;
   /** Optional HogQL SELECT defining a custom model schema. Only recommended in advanced use cases. */
   hogql_query?: string;
+  /** Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {"key": "$browser", "operator": "exact", "type": "event", "value": ["Firefox"]}). */
   filters?: unknown;
   /** IANA timezone name (e.g. 'America/New_York', 'Europe/London', 'UTC') controlling daily and weekly interval boundaries. */
   timezone?: string | null;
@@ -1608,20 +1782,20 @@ export const BatchExportsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchExportsPartialUpdateRequest",
 }) as any as S.Schema<BatchExportsPartialUpdateRequest>;
 
-/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportsPauseCreateRequestModel = ModelEnum | BlankEnum;
 export const BatchExportsPauseCreateRequestModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportsPauseCreateRequestModel>;
 
-/** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
+/** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
 export interface BatchExportDestination {
   /** A choice of supported BatchExportDestination types. * `S3` - S3 * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
   type?: BatchExportDestinationTypeEnum | (string & {});
-  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
+  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
   config?: BatchExportDestinationConfig;
   /** The integration for this destination. */
   integration?: number | null;
-  /** ID of a team-scoped Integration providing credentials. Required when creating Databricks, AzureBlob, and BigQuery destinations; optional for AwsS3 and S3Compatible (inline credentials remain supported); unused for other types. */
+  /** ID of a team-scoped Integration providing credentials. Required when creating Databricks, AzureBlob, BigQuery, Postgres, AwsS3, and S3Compatible destinations; optional for Snowflake and Redshift (inline credentials remain supported); unused for other types. */
   integration_id?: number | null;
 }
 export const BatchExportDestination = /*@__PURE__*/ S.suspend(() =>
@@ -1642,7 +1816,7 @@ export interface BatchExportsPauseCreateRequest {
   id: string;
   /** A human-readable name for this BatchExport. */
   name?: string;
-  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
   model?: BatchExportsPauseCreateRequestModel | null;
   /** Destination configuration (type, config, and optional integration). */
   destination?: BatchExportDestination;
@@ -1788,21 +1962,57 @@ export const BatchExportsRunsCancelCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "BatchExportsRunsCancelCreateResponse",
 }) as any as S.Schema<BatchExportsRunsCancelCreateResponse>;
 
+/** * `Cancelled` - Cancelled * `Completed` - Completed * `ContinuedAsNew` - Continued As New * `Failed` - Failed * `FailedRetryable` - Failed Retryable * `FailedBilling` - Failed Billing * `Terminated` - Terminated * `TimedOut` - Timedout * `Running` - Running * `Starting` - Starting */
+export type BatchExportsRunsListRequestStatusItem =
+  | "Cancelled"
+  | "Completed"
+  | "ContinuedAsNew"
+  | "Failed"
+  | "FailedRetryable"
+  | "FailedBilling"
+  | "Terminated"
+  | "TimedOut"
+  | "Running"
+  | "Starting";
+export const BatchExportsRunsListRequestStatusItem = /*@__PURE__*/ S.String;
+
+export type BatchExportsRunsListRequestStatusList = Array<
+  BatchExportsRunsListRequestStatusItem | (string & {})
+>;
+export const BatchExportsRunsListRequestStatusList = /*@__PURE__*/ S.Array(
+  BatchExportsRunsListRequestStatusItem,
+) as any as S.Schema<BatchExportsRunsListRequestStatusList>;
+
 export interface BatchExportsRunsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   batch_export_id: string;
+  /** Only return runs created at or after this point. Accepts an ISO-8601 datetime or a relative value like `-7d`. Defaults to `-7d`. Ignored when ordering by `data_interval_start`. */
+  after?: string;
+  /** Only return runs created at or before this point. Accepts an ISO-8601 datetime or a relative value like `-1d`. Defaults to now. Ignored when ordering by `data_interval_start`. */
+  before?: string;
   /** The pagination cursor value. */
   cursor?: string;
+  /** Only return runs whose data interval ends at or before this point. Accepts an ISO-8601 datetime or a relative value like `-1d`. Defaults to now. Only applies when ordering by `data_interval_start`. */
+  end?: string;
   /** Which field to use when ordering the results. */
   ordering?: string;
+  /** Only return runs whose data interval starts at or after this point. Accepts an ISO-8601 datetime or a relative value like `-7d`. Defaults to `-7d`. Only applies when ordering by `data_interval_start`. */
+  start?: string;
+  /** Only return runs in these statuses. Repeat the parameter to pass more than one status. */
+  status?: BatchExportsRunsListRequestStatusList;
 }
 export const BatchExportsRunsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
+    after: S.optional(S.String.pipe(T.Query())),
+    before: S.optional(S.String.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
+    end: S.optional(S.String.pipe(T.Query())),
     ordering: S.optional(S.String.pipe(T.Query())),
+    start: S.optional(S.String.pipe(T.Query())),
+    status: S.optional(BatchExportsRunsListRequestStatusList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1840,7 +2050,7 @@ export interface BatchExportsRunsLogsRetrieveRequest {
   batch_export_id: string;
   /** A UUID string identifying this batch export run. */
   id: string;
-  /** Only return entries after this ISO 8601 timestamp. */
+  /** Only return entries after this ISO 8601 timestamp. Defaults to 7 days ago; pass an explicit value to read further back. */
   after?: string;
   /** Only return entries before this ISO 8601 timestamp. */
   before?: string;
@@ -1971,7 +2181,7 @@ export const BatchExportsRunsRetryCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchExportsRunsRetryCreateResponse",
 }) as any as S.Schema<BatchExportsRunsRetryCreateResponse>;
 
-/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportsRunTestStepCreateRequestModel = ModelEnum | BlankEnum;
 export const BatchExportsRunTestStepCreateRequestModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportsRunTestStepCreateRequestModel>;
@@ -1983,7 +2193,7 @@ export interface BatchExportsRunTestStepCreateRequest {
   id: string;
   /** A human-readable name for this BatchExport. */
   name?: string;
-  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
   model?: BatchExportsRunTestStepCreateRequestModel | null;
   /** Destination configuration (type, config, and optional integration). */
   destination?: BatchExportDestination;
@@ -2043,7 +2253,7 @@ export const BatchExportsRunTestStepCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "BatchExportsRunTestStepCreateResponse",
 }) as any as S.Schema<BatchExportsRunTestStepCreateResponse>;
 
-/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportsRunTestStepNewCreateRequestModel =
   | ModelEnum
   | BlankEnum;
@@ -2055,7 +2265,7 @@ export interface BatchExportsRunTestStepNewCreateRequest {
   project_id: string;
   /** A human-readable name for this BatchExport. */
   name?: string;
-  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
   model?: BatchExportsRunTestStepNewCreateRequestModel | null;
   /** Destination configuration (type, config, and optional integration). */
   destination?: BatchExportDestination;
@@ -2139,7 +2349,7 @@ export const BatchExportsTestRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchExportsTestRetrieveResponse",
 }) as any as S.Schema<BatchExportsTestRetrieveResponse>;
 
-/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+/** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportsUnpauseCreateRequestModel = ModelEnum | BlankEnum;
 export const BatchExportsUnpauseCreateRequestModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportsUnpauseCreateRequestModel>;
@@ -2151,7 +2361,7 @@ export interface BatchExportsUnpauseCreateRequest {
   id: string;
   /** A human-readable name for this BatchExport. */
   name?: string;
-  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+  /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
   model?: BatchExportsUnpauseCreateRequestModel | null;
   /** Destination configuration (type, config, and optional integration). */
   destination?: BatchExportDestination;
@@ -2217,7 +2427,7 @@ export interface BatchExportsUpdateRequest {
   id: string;
   /** Human-readable name for the batch export. */
   name: string;
-  /** Which data model to export (events, persons, sessions). * `events` - Events * `persons` - Persons * `sessions` - Sessions */
+  /** Which data model to export (events, persons, sessions). * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
   model?: ModelEnum | (string & {});
   /** Destination configuration. Required integration_id is enforced per destination type. */
   destination: BatchExportDestinationRequest;
@@ -2227,6 +2437,7 @@ export interface BatchExportsUpdateRequest {
   paused?: boolean;
   /** Optional HogQL SELECT defining a custom model schema. Only recommended in advanced use cases. */
   hogql_query?: string;
+  /** Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {"key": "$browser", "operator": "exact", "type": "event", "value": ["Firefox"]}). */
   filters?: unknown;
   /** IANA timezone name (e.g. 'America/New_York', 'Europe/London', 'UTC') controlling daily and weekly interval boundaries. */
   timezone?: string | null;
@@ -2279,11 +2490,12 @@ export const FileDownloadDestinationFileConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileDownloadDestinationFileConfig",
 }) as any as S.Schema<FileDownloadDestinationFileConfig>;
 
-/** * `events` - events * `persons` - persons * `sessions` - sessions */
+/** * `events` - events * `persons` - persons * `sessions` - sessions * `hogql` - hogql */
 export type FileDownloadBatchExportOnDemandModelEnum =
   | "events"
   | "persons"
-  | "sessions";
+  | "sessions"
+  | "hogql";
 export const FileDownloadBatchExportOnDemandModelEnum = /*@__PURE__*/ S.String;
 
 export type FileDownloadBatchExportsCancelCreateRequestIncludeList =
@@ -2309,8 +2521,12 @@ export interface FileDownloadBatchExportsCancelCreateRequest {
   model: FileDownloadBatchExportOnDemandModelEnum | (string & {});
   include?: FileDownloadBatchExportsCancelCreateRequestIncludeList;
   exclude?: FileDownloadBatchExportsCancelCreateRequestExcludeList;
-  data_interval_start: string;
-  data_interval_end: string;
+  /** HogQL SELECT query whose results are exported. This model is in closed beta and is enabled per team; when it is not enabled, the request fails with a permission error that names HogQL batch exports. Contact PostHog support to request access. Placeholders are not currently supported, and every column in the SELECT clause must be a field or have an alias. It is recommended to limit the query with a WHERE clause, for example bounding timestamp on the events table, both to avoid exporting more rows than expected and because user queries run under stricter resource limits than the other models. */
+  hogql_query?: string;
+  /** Start of the data interval to export */
+  data_interval_start?: string;
+  /** End of the data interval to export */
+  data_interval_end?: string;
 }
 export const FileDownloadBatchExportsCancelCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2325,8 +2541,9 @@ export const FileDownloadBatchExportsCancelCreateRequest =
       exclude: S.optional(
         FileDownloadBatchExportsCancelCreateRequestExcludeList,
       ),
-      data_interval_start: S.String,
-      data_interval_end: S.String,
+      hogql_query: S.optional(S.String),
+      data_interval_start: S.optional(S.String),
+      data_interval_end: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2424,10 +2641,32 @@ export const FileDownloadSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileDownloadSessionsRequest",
 }) as any as S.Schema<FileDownloadSessionsRequest>;
 
+/** * `hogql` - hogql */
+export type FileDownloadHogQLRequestModelEnum = "hogql";
+export const FileDownloadHogQLRequestModelEnum = /*@__PURE__*/ S.String;
+
+/** Typed configuration for the hogql model. */
+export interface FileDownloadHogQLRequest {
+  file: FileDownloadDestinationFileConfig;
+  model: FileDownloadHogQLRequestModelEnum;
+  /** HogQL SELECT query whose results are exported. This model is in closed beta and is enabled per team; when it is not enabled, the request fails with a permission error that names HogQL batch exports. Contact PostHog support to request access. Placeholders are not currently supported, and every column in the SELECT clause must be a field or have an alias. It is recommended to limit the query with a WHERE clause, for example bounding timestamp on the events table, both to avoid exporting more rows than expected and because user queries run under stricter resource limits than the other models. */
+  hogql_query: string;
+}
+export const FileDownloadHogQLRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    file: FileDownloadDestinationFileConfig,
+    model: FileDownloadHogQLRequestModelEnum,
+    hogql_query: S.String,
+  }),
+).annotate({
+  identifier: "FileDownloadHogQLRequest",
+}) as any as S.Schema<FileDownloadHogQLRequest>;
+
 export type CreateFileDownloadRequest =
   | FileDownloadEventsRequest
   | FileDownloadPersonsRequest
-  | FileDownloadSessionsRequest;
+  | FileDownloadSessionsRequest
+  | FileDownloadHogQLRequest;
 export const CreateFileDownloadRequest =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateFileDownloadRequest>;
 
@@ -2552,7 +2791,7 @@ export interface FileDownloadBatchExportsLogsRetrieveRequest {
   project_id: string;
   /** A UUID string identifying this batch export run. */
   id: string;
-  /** Only return entries after this ISO 8601 timestamp. */
+  /** Only return entries after this ISO 8601 timestamp. Defaults to 7 days ago; pass an explicit value to read further back. */
   after?: string;
   /** Only return entries before this ISO 8601 timestamp. */
   before?: string;

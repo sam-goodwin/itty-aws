@@ -93,16 +93,16 @@ export const UrlNotificationTypeEnum = /*@__PURE__*/ S.String;
 export interface UrlNotification {
   /** Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time. */
   notifyTime?: string;
-  /** The URL life cycle event that Google is being notified about. */
-  type?: UrlNotificationTypeEnum | (string & {});
   /** The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google. */
   url?: string;
+  /** The URL life cycle event that Google is being notified about. */
+  type?: UrlNotificationTypeEnum | (string & {});
 }
 export const UrlNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notifyTime: S.optional(S.String),
-    type: S.optional(UrlNotificationTypeEnum),
     url: S.optional(S.String),
+    type: S.optional(UrlNotificationTypeEnum),
   }),
 ).annotate({
   identifier: "UrlNotification",
@@ -110,17 +110,17 @@ export const UrlNotification = /*@__PURE__*/ S.suspend(() =>
 
 /** Summary of the most recent Indexing API notifications successfully received, for a given URL. */
 export interface UrlNotificationMetadata {
-  /** Latest notification received with type `URL_UPDATED`. */
-  latestUpdate?: UrlNotification;
   /** URL to which this metadata refers. */
   url?: string;
+  /** Latest notification received with type `URL_UPDATED`. */
+  latestUpdate?: UrlNotification;
   /** Latest notification received with type `URL_REMOVED`. */
   latestRemove?: UrlNotification;
 }
 export const UrlNotificationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    latestUpdate: S.optional(UrlNotification),
     url: S.optional(S.String),
+    latestUpdate: S.optional(UrlNotification),
     latestRemove: S.optional(UrlNotification),
   }),
 ).annotate({

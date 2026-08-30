@@ -621,7 +621,7 @@ export interface ComposeObjectsRequest {
   destinationPredefinedAcl?:
     | ComposeObjectsDestinationPredefinedAclEnum
     | (string & {});
-  /** Specifies which groups of Object Contexts from the source object(s) should be dropped from the destination object. */
+  /** Specifies which object context groups to drop from the source object(s) during a compose operation. The accepted value is 'custom'. Destination contexts behave as follows: - When request body contexts are provided, they override all source contexts. - When no request body contexts are provided, source contexts are preserved unless 'dropContextGroups' contains 'custom', in which case all contexts are dropped. */
   dropContextGroups?: StringList;
   /** Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. */
   ifGenerationMatch?: string;
@@ -1231,6 +1231,27 @@ export const AnywhereCache = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AnywhereCache" }) as any as S.Schema<AnywhereCache>;
 
+export interface DisableRapidCachesRequest {
+  /** Name of the parent bucket. */
+  bucket: string;
+  /** The ID of the requested Rapid Cache instance. */
+  rapidCacheId: string;
+}
+export const DisableRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    rapidCacheId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/rapidCaches/{rapidCacheId}/disable",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DisableRapidCachesRequest",
+}) as any as S.Schema<DisableRapidCachesRequest>;
+
 export interface GetAnywhereCachesRequest {
   /** Name of the parent bucket. */
   bucket: string;
@@ -1413,7 +1434,8 @@ export const BucketCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketCustomPlacementConfig>;
 
 export type BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum =
-  "NotRestricted" | "FullyRestricted";
+  | "NotRestricted"
+  | "FullyRestricted";
 export const BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1438,7 +1460,8 @@ export const BucketEncryptionGoogleManagedEncryptionEnforcementConfig =
   }) as any as S.Schema<BucketEncryptionGoogleManagedEncryptionEnforcementConfig>;
 
 export type BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum =
-  "NotRestricted" | "FullyRestricted";
+  | "NotRestricted"
+  | "FullyRestricted";
 export const BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1463,7 +1486,8 @@ export const BucketEncryptionCustomerManagedEncryptionEnforcementConfig =
   }) as any as S.Schema<BucketEncryptionCustomerManagedEncryptionEnforcementConfig>;
 
 export type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
-  "NotRestricted" | "FullyRestricted";
+  | "NotRestricted"
+  | "FullyRestricted";
 export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2240,6 +2264,46 @@ export const GetManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetManagedFoldersRequest",
 }) as any as S.Schema<GetManagedFoldersRequest>;
 
+export type RapidCachePolicyIngestOnWriteEnum = "enabled" | "unspecified";
+export const RapidCachePolicyIngestOnWriteEnum = /*@__PURE__*/ S.String;
+
+/** The rapid cache policy configuration for a managed folder. */
+export interface RapidCachePolicy {
+  /** The unique identifier of the rapid cache. */
+  rapidCacheId?: string;
+  /** The ingest-on-write policy for objects in the managed folder. When set to `enabled`, objects are automatically ingested into the cache when they are written to the managed folder. */
+  ingestOnWrite?: RapidCachePolicyIngestOnWriteEnum | (string & {});
+}
+export const RapidCachePolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rapidCacheId: S.optional(S.String),
+    ingestOnWrite: S.optional(RapidCachePolicyIngestOnWriteEnum),
+  }),
+).annotate({
+  identifier: "RapidCachePolicy",
+}) as any as S.Schema<RapidCachePolicy>;
+
+export type RapidCachePolicyMap = {
+  [key: string]: RapidCachePolicy | undefined;
+};
+export const RapidCachePolicyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  RapidCachePolicy,
+) as any as S.Schema<RapidCachePolicyMap>;
+
+/** Configuration options for the rapid cache of a managed folder. */
+export interface RapidCacheConfig {
+  /** A map of rapid cache IDs to the corresponding `RapidCachePolicy` configurations for a managed folder. */
+  policies?: RapidCachePolicyMap;
+}
+export const RapidCacheConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policies: S.optional(RapidCachePolicyMap),
+  }),
+).annotate({
+  identifier: "RapidCacheConfig",
+}) as any as S.Schema<RapidCacheConfig>;
+
 /** A managed folder. */
 export interface ManagedFolder {
   /** The name of the bucket containing this managed folder. */
@@ -2258,6 +2322,8 @@ export interface ManagedFolder {
   createTime?: string;
   /** The last update time of the managed folder metadata in RFC 3339 format. */
   updateTime?: string;
+  /** The rapid cache configuration for the managed folder. */
+  rapidCacheConfig?: RapidCacheConfig;
 }
 export const ManagedFolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2269,6 +2335,7 @@ export const ManagedFolder = /*@__PURE__*/ S.suspend(() =>
     selfLink: S.optional(S.String),
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
+    rapidCacheConfig: S.optional(RapidCacheConfig),
   }),
 ).annotate({ identifier: "ManagedFolder" }) as any as S.Schema<ManagedFolder>;
 
@@ -2491,6 +2558,77 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
     kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
+
+export interface GetRapidCachesRequest {
+  /** Name of the parent bucket. */
+  bucket: string;
+  /** The ID of the requested Rapid Cache instance. */
+  rapidCacheId: string;
+}
+export const GetRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    rapidCacheId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/rapidCaches/{rapidCacheId}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetRapidCachesRequest",
+}) as any as S.Schema<GetRapidCachesRequest>;
+
+/** A Rapid Cache instance. */
+export interface RapidCache {
+  /** The kind of item this is. For Rapid Cache, this is always storage#rapidCache. */
+  kind?: string;
+  /** The ID of the resource, including the project number, bucket name and rapid cache ID. */
+  id?: string;
+  /** The link to this cache instance. */
+  selfLink?: string;
+  /** The name of the bucket containing this cache instance. */
+  bucket?: string;
+  /** The ID of the Rapid cache instance. */
+  rapidCacheId?: string;
+  /** The zone in which the cache instance is running. For example, us-central1-a. */
+  zone?: string;
+  /** The current state of the cache instance. */
+  state?: string;
+  /** The creation time of the cache instance in RFC 3339 format. */
+  createTime?: string;
+  /** The modification time of the cache instance metadata in RFC 3339 format. */
+  updateTime?: string;
+  /** The TTL of all cache entries in whole seconds. e.g., "7200s". */
+  ttl?: string;
+  /** The cache-level entry admission policy. */
+  admissionPolicy?: string;
+  /** True if the cache instance has an active Update long-running operation. */
+  pendingUpdate?: boolean;
+  /** Specifies whether objects are ingested into the cache upon write. */
+  ingestOnWrite?: boolean;
+  /** The type of Rapid Cache this represents. Valid values include: "rapid-cache" and "rapid-cache-ultra". */
+  cacheType?: string;
+}
+export const RapidCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    bucket: S.optional(S.String),
+    rapidCacheId: S.optional(S.String),
+    zone: S.optional(S.String),
+    state: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    ttl: S.optional(S.String),
+    admissionPolicy: S.optional(S.String),
+    pendingUpdate: S.optional(S.Boolean),
+    ingestOnWrite: S.optional(S.Boolean),
+    cacheType: S.optional(S.String),
+  }),
+).annotate({ identifier: "RapidCache" }) as any as S.Schema<RapidCache>;
 
 export interface GetStorageLayoutBucketsRequest {
   /** Name of a bucket. */
@@ -2843,6 +2981,27 @@ export const InsertObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InsertObjectsRequest",
 }) as any as S.Schema<InsertObjectsRequest>;
+
+export interface InsertRapidCachesRequest {
+  /** Name of the parent bucket. */
+  bucket: string;
+  /** Request body */
+  body?: RapidCache;
+}
+export const InsertRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    body: S.optional(RapidCache.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/rapidCaches",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertRapidCachesRequest",
+}) as any as S.Schema<InsertRapidCachesRequest>;
 
 export interface ListAnywhereCachesRequest {
   /** Name of the parent bucket. */
@@ -3409,6 +3568,52 @@ export const HmacKeysMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "HmacKeysMetadata",
 }) as any as S.Schema<HmacKeysMetadata>;
 
+export interface ListRapidCachesRequest {
+  /** Name of the parent bucket. */
+  bucket: string;
+  /** Maximum number of items to return in a single page of responses. */
+  pageSize?: number;
+  /** A previously-returned page token representing part of the larger set of results to view. */
+  pageToken?: string;
+}
+export const ListRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/rapidCaches",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListRapidCachesRequest",
+}) as any as S.Schema<ListRapidCachesRequest>;
+
+export type RapidCacheList = Array<RapidCache>;
+export const RapidCacheList = /*@__PURE__*/ S.Array(
+  RapidCache,
+) as any as S.Schema<RapidCacheList>;
+
+/** A list of Rapid Caches. */
+export interface RapidCaches {
+  /** The kind of item this is. For lists of Rapid Caches, this is always storage#rapidCaches. */
+  kind?: string;
+  /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
+  nextPageToken?: string;
+  /** The list of items. */
+  items: RapidCacheList;
+}
+export const RapidCaches = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    items: RapidCacheList,
+  }),
+).annotate({ identifier: "RapidCaches" }) as any as S.Schema<RapidCaches>;
+
 export interface LockRetentionPolicyBucketsRequest {
   /** Name of a bucket. */
   bucket: string;
@@ -3930,7 +4135,7 @@ export interface RewriteObjectsRequest {
   destinationPredefinedAcl?:
     | RewriteObjectsDestinationPredefinedAclEnum
     | (string & {});
-  /** Specifies which groups of Object Contexts from the source object should be dropped from the destination object. */
+  /** Specifies which object context groups to drop from the source object during a copy operation. The accepted value is 'custom'. Destination contexts behave as follows: - When request body contexts are provided, they override all source contexts. - When no request body contexts are provided, source contexts are preserved unless 'dropContextGroups' contains 'custom', in which case all contexts are dropped. */
   dropContextGroups?: StringList;
   /** Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. */
   ifGenerationMatch?: string;
@@ -4414,6 +4619,36 @@ export const UpdateDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
   identifier: "UpdateDefaultObjectAccessControlsRequest",
 }) as any as S.Schema<UpdateDefaultObjectAccessControlsRequest>;
 
+export interface UpdateManagedFoldersRequest {
+  /** The name of the bucket containing the managed folder. */
+  bucket: string;
+  /** The name of the managed folder. */
+  managedFolder: string;
+  /** Makes the operation conditional on whether the metageneration of the managed folder matches the specified value. */
+  ifMetagenerationMatch?: string;
+  /** Makes the operation conditional on whether the metageneration of the managed folder doesn't match the specified value. */
+  ifMetagenerationNotMatch?: string;
+  /** Request body */
+  body?: ManagedFolder;
+}
+export const UpdateManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    managedFolder: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(ManagedFolder.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "b/{bucket}/managedFolders/{managedFolder}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateManagedFoldersRequest",
+}) as any as S.Schema<UpdateManagedFoldersRequest>;
+
 export interface UpdateObjectAccessControlsRequest {
   /** Name of a bucket. */
   bucket: string;
@@ -4536,6 +4771,30 @@ export const UpdateProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateProjectsHmacKeysRequest",
 }) as any as S.Schema<UpdateProjectsHmacKeysRequest>;
+
+export interface UpdateRapidCachesRequest {
+  /** Name of the parent bucket. */
+  bucket: string;
+  /** The ID of the requested Rapid Cache instance. */
+  rapidCacheId: string;
+  /** Request body */
+  body?: RapidCache;
+}
+export const UpdateRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    rapidCacheId: S.String.pipe(T.Label()),
+    body: S.optional(RapidCache.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "b/{bucket}/rapidCaches/{rapidCacheId}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateRapidCachesRequest",
+}) as any as S.Schema<UpdateRapidCachesRequest>;
 
 export type AdvanceRelocateBucketOperationsError =
   | NotFound
@@ -4877,6 +5136,26 @@ export const disableAnywhereCaches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type DisableRapidCachesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Disables a Rapid Cache instance. */
+export const disableRapidCaches: API.OperationMethod<
+  DisableRapidCachesRequest,
+  GoogleLongrunningOperation,
+  DisableRapidCachesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DisableRapidCachesRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetAnywhereCachesError = NotFound | Forbidden | GcpOpError;
 /** Returns the metadata of an Anywhere Cache instance. */
 export const getAnywhereCaches: API.OperationMethod<
@@ -5105,6 +5384,21 @@ export const getProjectsServiceAccount: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetRapidCachesError = NotFound | Forbidden | GcpOpError;
+/** Returns the metadata of a Rapid Cache instance. */
+export const getRapidCaches: API.OperationMethod<
+  GetRapidCachesRequest,
+  RapidCache,
+  GetRapidCachesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRapidCachesRequest,
+  output: RapidCache,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetStorageLayoutBucketsError = NotFound | Forbidden | GcpOpError;
 /** Returns the storage layout configuration for the specified bucket. Note that this operation requires storage.objects.list permission. */
 export const getStorageLayoutBuckets: API.OperationMethod<
@@ -5295,6 +5589,26 @@ export const insertObjects: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: InsertObjectsRequest,
   output: Storage_Object,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type InsertRapidCachesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates a Rapid Cache instance. */
+export const insertRapidCaches: API.OperationMethod<
+  InsertRapidCachesRequest,
+  GoogleLongrunningOperation,
+  InsertRapidCachesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InsertRapidCachesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5499,6 +5813,27 @@ export const listProjectsHmacKeys: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHmacKeysRequest,
   output: HmacKeysMetadata,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
+})) as any;
+
+export type ListRapidCachesError = NotFound | Forbidden | GcpOpError;
+/** Returns a list of Rapid Cache instances of the bucket. */
+export const listRapidCaches: API.PaginatedOperationMethod<
+  ListRapidCachesRequest,
+  RapidCaches,
+  ListRapidCachesError,
+  GcpOpContext,
+  RapidCache
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListRapidCachesRequest,
+  output: RapidCaches,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5997,6 +6332,26 @@ export const updateDefaultObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type UpdateManagedFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Updates a managed folder using patch semantics. */
+export const updateManagedFolders: API.OperationMethod<
+  UpdateManagedFoldersRequest,
+  ManagedFolder,
+  UpdateManagedFoldersError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateManagedFoldersRequest,
+  output: ManagedFolder,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UpdateObjectAccessControlsError =
   | NotFound
   | Forbidden
@@ -6052,6 +6407,26 @@ export const updateProjectsHmacKeys: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsHmacKeysRequest,
   output: HmacKeyMetadata,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateRapidCachesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Updates the configuration of a Rapid Cache instance. */
+export const updateRapidCaches: API.OperationMethod<
+  UpdateRapidCachesRequest,
+  GoogleLongrunningOperation,
+  UpdateRapidCachesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRapidCachesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

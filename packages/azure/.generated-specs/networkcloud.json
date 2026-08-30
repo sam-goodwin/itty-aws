@@ -11243,7 +11243,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -12046,7 +12049,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -12121,7 +12127,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -12311,7 +12320,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -12473,7 +12485,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.networkcloud#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {

@@ -50,7 +50,32 @@ const rules = T.EndpointResolver((p, _) => {
           if (Endpoint != null) {
             return e(Endpoint, _p0(), {});
           }
-          if (UseDualStack === true) {
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseDualStack === true
+          ) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(
+                `https://${EndpointId}.endpoints.email.us-gov.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+                _p0(),
+                {},
+              );
+            }
+            return err(
+              "DualStack is enabled but this partition does not support DualStack",
+            );
+          }
+          if (_.getAttr(PartitionResult, "name") === "aws-us-gov") {
+            return e(
+              `https://${EndpointId}.endpoints.email.us-gov.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+              _p0(),
+              {},
+            );
+          }
+          if (
+            !(_.getAttr(PartitionResult, "name") === "aws-us-gov") &&
+            UseDualStack === true
+          ) {
             if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
               return e(
                 `https://${EndpointId}.endpoints.email.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
@@ -62,11 +87,13 @@ const rules = T.EndpointResolver((p, _) => {
               "DualStack is enabled but this partition does not support DualStack",
             );
           }
-          return e(
-            `https://${EndpointId}.endpoints.email.${_.getAttr(PartitionResult, "dnsSuffix")}`,
-            _p0(),
-            {},
-          );
+          if (!(_.getAttr(PartitionResult, "name") === "aws-us-gov")) {
+            return e(
+              `https://${EndpointId}.endpoints.email.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+              _p0(),
+              {},
+            );
+          }
         }
         return err(
           "Invalid Configuration: FIPS is not supported with multi-region endpoints",
@@ -1121,6 +1148,8 @@ export type DkimSigningAttributesOrigin =
   | "AWS_SES_EU_CENTRAL_2"
   | "AWS_SES_AP_SOUTHEAST_5"
   | "AWS_SES_CA_WEST_1"
+  | "AWS_SES_US_GOV_EAST_1"
+  | "AWS_SES_US_GOV_WEST_1"
   | (string & {});
 export const DkimSigningAttributesOrigin = /*@__PURE__*/ S.String;
 
@@ -2152,6 +2181,26 @@ export const VdmAttributes = /*@__PURE__*/ S.suspend(() =>
     GuardianAttributes: S.optional(GuardianAttributes),
   }),
 ).annotate({ identifier: "VdmAttributes" }) as any as S.Schema<VdmAttributes>;
+export type PricingPlan =
+  | "NONE"
+  | "ESSENTIALS"
+  | "PRO"
+  | "ENTERPRISE"
+  | (string & {});
+export const PricingPlan = /*@__PURE__*/ S.String;
+
+export interface PricingAttributes {
+  CurrentPlan?: PricingPlan;
+  NextPlan?: PricingPlan;
+}
+export const PricingAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CurrentPlan: S.optional(PricingPlan),
+    NextPlan: S.optional(PricingPlan),
+  }),
+).annotate({
+  identifier: "PricingAttributes",
+}) as any as S.Schema<PricingAttributes>;
 export interface GetAccountResponse {
   DedicatedIpAutoWarmupEnabled?: boolean;
   EnforcementStatus?: string;
@@ -2161,6 +2210,7 @@ export interface GetAccountResponse {
   SuppressionAttributes?: SuppressionAttributes;
   Details?: AccountDetails;
   VdmAttributes?: VdmAttributes;
+  PricingAttributes?: PricingAttributes;
 }
 export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2172,6 +2222,7 @@ export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
     SuppressionAttributes: S.optional(SuppressionAttributes),
     Details: S.optional(AccountDetails),
     VdmAttributes: S.optional(VdmAttributes),
+    PricingAttributes: S.optional(PricingAttributes),
   }),
 ).annotate({
   identifier: "GetAccountResponse",
@@ -4839,6 +4890,29 @@ export const PutAccountDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutAccountDetailsResponse",
 }) as any as S.Schema<PutAccountDetailsResponse>;
+export interface PutAccountPricingAttributesRequest {
+  Plan: PricingPlan;
+}
+export const PutAccountPricingAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Plan: PricingPlan }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/v2/email/account/pricing-attributes" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutAccountPricingAttributesRequest",
+}) as any as S.Schema<PutAccountPricingAttributesRequest>;
+export interface PutAccountPricingAttributesResponse {}
+export const PutAccountPricingAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutAccountPricingAttributesResponse",
+}) as any as S.Schema<PutAccountPricingAttributesResponse>;
 export interface PutAccountSendingAttributesRequest {
   SendingEnabled?: boolean;
 }
@@ -5526,6 +5600,26 @@ export const BulkEmailEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkEmailEntry" }) as any as S.Schema<BulkEmailEntry>;
 export type BulkEmailEntryList = BulkEmailEntry[];
 export const BulkEmailEntryList = /*@__PURE__*/ S.Array(BulkEmailEntry);
+export interface TrackingConfigurationOverrides {
+  OpenTrackingEnabled?: FeatureStatus;
+  ClickTrackingEnabled?: FeatureStatus;
+}
+export const TrackingConfigurationOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OpenTrackingEnabled: S.optional(FeatureStatus),
+    ClickTrackingEnabled: S.optional(FeatureStatus),
+  }),
+).annotate({
+  identifier: "TrackingConfigurationOverrides",
+}) as any as S.Schema<TrackingConfigurationOverrides>;
+export interface ConfigurationOverrides {
+  Tracking?: TrackingConfigurationOverrides;
+}
+export const ConfigurationOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tracking: S.optional(TrackingConfigurationOverrides) }),
+).annotate({
+  identifier: "ConfigurationOverrides",
+}) as any as S.Schema<ConfigurationOverrides>;
 export interface SendBulkEmailRequest {
   FromEmailAddress?: string;
   FromEmailAddressIdentityArn?: string;
@@ -5538,6 +5632,7 @@ export interface SendBulkEmailRequest {
   ConfigurationSetName?: string;
   EndpointId?: string;
   TenantName?: string;
+  ConfigurationOverrides?: ConfigurationOverrides;
 }
 export const SendBulkEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5552,6 +5647,7 @@ export const SendBulkEmailRequest = /*@__PURE__*/ S.suspend(() =>
     ConfigurationSetName: S.optional(S.String),
     EndpointId: S.optional(S.String).pipe(T.ContextParam("EndpointId")),
     TenantName: S.optional(S.String),
+    ConfigurationOverrides: S.optional(ConfigurationOverrides),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/email/outbound-bulk-emails" }),
@@ -5664,6 +5760,7 @@ export interface SendEmailRequest {
   EndpointId?: string;
   TenantName?: string;
   ListManagementOptions?: ListManagementOptions;
+  ConfigurationOverrides?: ConfigurationOverrides;
 }
 export const SendEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5679,6 +5776,7 @@ export const SendEmailRequest = /*@__PURE__*/ S.suspend(() =>
     EndpointId: S.optional(S.String).pipe(T.ContextParam("EndpointId")),
     TenantName: S.optional(S.String),
     ListManagementOptions: S.optional(ListManagementOptions),
+    ConfigurationOverrides: S.optional(ConfigurationOverrides),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/email/outbound-emails" }),
@@ -6551,7 +6649,7 @@ export type CreateMultiRegionEndpointError =
  * The primary region is going to be the AWS-Region where the operation is executed.
  * The secondary region has to be provided in request's parameters.
  * From the data flow standpoint there is no difference between primary
- * and secondary regions - sending traffic will be split equally between the two.
+ * and secondary regions - sending traffic is divided between the two.
  * The primary region is the region where the resource has been created and where it can be managed.
  */
 export const createMultiRegionEndpoint: API.OperationMethod<
@@ -8256,6 +8354,28 @@ export const putAccountDetails: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "PutAccountDetails",
+}));
+
+export type PutAccountPricingAttributesError =
+  | BadRequestException
+  | ConflictException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Set the pricing plan for your Amazon SES account.
+ */
+export const putAccountPricingAttributes: API.OperationMethod<
+  PutAccountPricingAttributesRequest,
+  PutAccountPricingAttributesResponse,
+  PutAccountPricingAttributesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutAccountPricingAttributesRequest,
+  output: PutAccountPricingAttributesResponse,
+  errors: [BadRequestException, ConflictException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutAccountPricingAttributes",
 }));
 
 export type PutAccountSendingAttributesError =

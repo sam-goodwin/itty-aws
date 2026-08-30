@@ -7,89 +7,13 @@
     "baseUrl": "https://merchantapi.googleapis.com/"
   },
   "shapes": {
-    "com.gcp.merchantapi_lfp_v1beta#Price": {
-      "type": "structure",
-      "members": {
-        "currencyCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217)."
-          }
-        },
-        "amountMicros": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros)."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The price represented as a number and currency."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#ListLfpStoresResponse": {
-      "type": "structure",
-      "members": {
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages."
-          }
-        },
-        "lfpStores": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#LfpStoreList",
-          "traits": {
-            "smithy.api#documentation": "The stores from the specified merchant."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response message for the ListLfpStores method."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#LfpStoreList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.merchantapi_lfp_v1beta#LfpStore"
-      }
-    },
     "com.gcp.merchantapi_lfp_v1beta#LfpSale": {
       "type": "structure",
       "members": {
-        "contentLanguage": {
+        "regionCode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The two-letter ISO 639-1 language code for the item."
-          }
-        },
-        "uid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. System generated globally unique ID for the `LfpSale`."
-          }
-        },
-        "targetAccount": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The Merchant Center ID of the merchant to submit the sale for."
-          }
-        },
-        "storeCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in the Business Profile."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Identifier. The name of the `LfpSale` resource. Format: `accounts/{account}/lfpSales/{sale}`"
-          }
-        },
-        "gtin": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The Global Trade Item Number of the sold product."
+            "smithy.api#documentation": "Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold."
           }
         },
         "saleTime": {
@@ -104,16 +28,22 @@
             "smithy.api#documentation": "Required. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs."
           }
         },
-        "price": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#Price",
-          "traits": {
-            "smithy.api#documentation": "Required. The unit price of the product."
-          }
-        },
-        "regionCode": {
+        "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold."
+            "smithy.api#documentation": "Output only. Identifier. The name of the `LfpSale` resource. Format: `accounts/{account}/lfpSales/{sale}`"
+          }
+        },
+        "targetAccount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The Merchant Center ID of the merchant to submit the sale for."
+          }
+        },
+        "gtin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The Global Trade Item Number of the sold product."
           }
         },
         "quantity": {
@@ -122,333 +52,22 @@
             "smithy.api#documentation": "Required. The relative change of the available quantity. Negative for items returned."
           }
         },
-        "feedLabel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A sale for the merchant."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#LfpStore": {
-      "type": "structure",
-      "members": {
-        "storeName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The merchant or store name."
-          }
-        },
-        "matchingState": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#LfpStoreMatchingStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Optional. Output only. The state of matching to a Google Business Profile. See matchingStateHint for further details if no match is found."
-          }
-        },
-        "matchingStateHint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Output only. The hint of why the matching has failed. This is only set when matchingState=`STORE_MATCHING_STATE_FAILED`. Possible values are: - \"`linked-store-not-found`\": There aren't any Google Business Profile stores available for matching. - \"`store-match-not-found`\": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores. Merchant Center account is connected correctly and stores are available on Google Business Profile, but the `LfpStore` location address does not match with Google Business Profile stores' addresses. Update the `LfpStore` address or Google Business Profile store address to match correctly. - \"`store-match-unverified`\": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores, as the matched Google Business Profile store is unverified. Go through the Google Business Profile verification process to match correctly."
-          }
-        },
-        "storeCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Immutable. A store identifier that is unique for the target merchant."
-          }
-        },
-        "targetAccount": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The Merchant Center id of the merchant to submit the store for."
-          }
-        },
-        "gcidCategory": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#StringList",
-          "traits": {
-            "smithy.api#documentation": "Optional. [Google My Business category id](https://support.google.com/business/answer/7249669)."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Identifier. The name of the `LfpStore` resource. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`"
-          }
-        },
-        "phoneNumber": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The store phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Example: `+15556767888`"
-          }
-        },
-        "storeAddress": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The street address of the store. Example: 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA."
-          }
-        },
-        "websiteUri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The website URL for the store or merchant."
-          }
-        },
-        "placeId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The [Google Place Id](https://developers.google.com/maps/documentation/places/web-service/place-id#id-overview) of the store location."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A store for the merchant. This will be used to match to a store under the Google Business Profile of the target merchant. If a matching store can't be found, the inventories or sales submitted with the store code will not be used."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#LfpStoreMatchingStateEnum": {
-      "type": "enum",
-      "members": {
-        "STORE_MATCHING_STATE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STORE_MATCHING_STATE_UNSPECIFIED"
-          }
-        },
-        "STORE_MATCHING_STATE_MATCHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STORE_MATCHING_STATE_MATCHED"
-          }
-        },
-        "STORE_MATCHING_STATE_FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STORE_MATCHING_STATE_FAILED"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#StringList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessage": {
-      "type": "structure",
-      "members": {
-        "eventTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications."
-          }
-        },
-        "resourceType": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessageResourceTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "The resource that changed, in this case it will always be `Product`."
-          }
-        },
-        "resource": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The product name. Format: `accounts/{account}/products/{product}`"
-          }
-        },
-        "account": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The target account that owns the entity that changed. Format : `accounts/{merchant_id}`"
-          }
-        },
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The product id."
-          }
-        },
-        "expirationTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event."
-          }
-        },
-        "managingAccount": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}`"
-          }
-        },
-        "attribute": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessageAttributeEnum",
-          "traits": {
-            "smithy.api#documentation": "The attribute in the resource that changed, in this case it will be always `Status`."
-          }
-        },
-        "changes": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#ProductChangeList",
-          "traits": {
-            "smithy.api#documentation": "A message to describe the change that happened to the product"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The message that the merchant will receive to notify about product status change event"
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessageResourceTypeEnum": {
-      "type": "enum",
-      "members": {
-        "RESOURCE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "RESOURCE_UNSPECIFIED"
-          }
-        },
-        "PRODUCT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PRODUCT"
-          }
-        },
-        "ACCOUNT_SERVICE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACCOUNT_SERVICE"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessageAttributeEnum": {
-      "type": "enum",
-      "members": {
-        "ATTRIBUTE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ATTRIBUTE_UNSPECIFIED"
-          }
-        },
-        "STATUS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STATUS"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#ProductChangeList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.merchantapi_lfp_v1beta#ProductChange"
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#InventoryStats": {
-      "type": "structure",
-      "members": {
-        "submittedEntries": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Number of entries (understanding entry as a pair of product and store) that were built based on provided inventories/sales and submitted to Google."
-          }
-        },
-        "submittedInStockEntries": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Number of submitted in stock entries."
-          }
-        },
-        "submittedProducts": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Number of products from provided inventories/sales that were created from matches to existing online products provided by the merchant or to the Google catalog."
-          }
-        },
-        "unsubmittedEntries": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Number of entries that were built based on provided inventories/sales and couldn't be submitted to Google due to errors like missing product."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The inventory statistics for a merchant."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#LfpInventory": {
-      "type": "structure",
-      "members": {
-        "regionCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold."
-          }
-        },
-        "availability": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Availability of the product at this store. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342)"
-          }
-        },
-        "feedLabel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`."
-          }
-        },
-        "collectionTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The time when the inventory is collected. If not set, it will be set to the time when the inventory is submitted."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Identifier. The name for the `LfpInventory` resource. Format: `accounts/{account}/lfpInventories/{target_merchant}~{store_code}~{offer}`"
-          }
-        },
-        "pickupMethod": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Supported pickup method for this offer. Unless the value is \"not supported\", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342)."
-          }
-        },
-        "targetAccount": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The Merchant Center ID of the merchant to submit the inventory for."
-          }
-        },
-        "quantity": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Quantity of the product available at this store. Must be greater than or equal to zero."
-          }
-        },
         "price": {
           "target": "com.gcp.merchantapi_lfp_v1beta#Price",
           "traits": {
-            "smithy.api#documentation": "Optional. The current price of the product."
+            "smithy.api#documentation": "Required. The unit price of the product."
           }
         },
-        "offerId": {
+        "uid": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. Immutable. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs."
+            "smithy.api#documentation": "Output only. System generated globally unique ID for the `LfpSale`."
           }
         },
-        "gtin": {
+        "feedLabel": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional. The Global Trade Item Number of the product."
-          }
-        },
-        "storeCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The identifier of the merchant's store. Either the store code inserted through `InsertLfpStore` or the store code in the Business Profile."
+            "smithy.api#documentation": "Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`."
           }
         },
         "contentLanguage": {
@@ -457,258 +76,30 @@
             "smithy.api#documentation": "Required. The two-letter ISO 639-1 language code for the item."
           }
         },
-        "pickupSla": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342)."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Local Inventory for the merchant."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#LfpStoreState": {
-      "type": "structure",
-      "members": {
         "storeCode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. Immutable. The identifier of this store."
-          }
-        },
-        "matchingState": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#LfpStoreStateMatchingStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The store matching state."
-          }
-        },
-        "matchingStateHint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The hint of why the matching has failed (only set if matching_state is FAILED)."
+            "smithy.api#documentation": "Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in the Business Profile."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "The state of a specific merchant's store."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#LfpStoreStateMatchingStateEnum": {
-      "type": "enum",
-      "members": {
-        "STORE_MATCHING_STATE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STORE_MATCHING_STATE_UNSPECIFIED"
-          }
-        },
-        "STORE_MATCHING_STATE_MATCHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STORE_MATCHING_STATE_MATCHED"
-          }
-        },
-        "STORE_MATCHING_STATE_FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STORE_MATCHING_STATE_FAILED"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#CountrySettings": {
-      "type": "structure",
-      "members": {
-        "productPageType": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsProductPageTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The product page type selected by this merchant."
-          }
-        },
-        "pickupServingVerificationState": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsPickupServingVerificationStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The verification state of this merchant's pickup serving feature."
-          }
-        },
-        "localInventoryAdsEnabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if this merchant has enabled local inventory ads in MC."
-          }
-        },
-        "instockServingVerificationState": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsInstockServingVerificationStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The verification state of this merchant's instock serving feature."
-          }
-        },
-        "regionCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country for which these settings are defined."
-          }
-        },
-        "inventoryVerificationState": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsInventoryVerificationStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The verification state of this merchant's inventory check."
-          }
-        },
-        "freeLocalListingsEnabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if this merchant has enabled free local listings in MC."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Country-specific settings for the merchant."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#CountrySettingsProductPageTypeEnum": {
-      "type": "enum",
-      "members": {
-        "PRODUCT_PAGE_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PRODUCT_PAGE_TYPE_UNSPECIFIED"
-          }
-        },
-        "GOOGLE_HOSTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "GOOGLE_HOSTED"
-          }
-        },
-        "MERCHANT_HOSTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "MERCHANT_HOSTED"
-          }
-        },
-        "MERCHANT_HOSTED_STORE_SPECIFIC": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "MERCHANT_HOSTED_STORE_SPECIFIC"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#CountrySettingsPickupServingVerificationStateEnum": {
-      "type": "enum",
-      "members": {
-        "VERIFICATION_STATE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_UNSPECIFIED"
-          }
-        },
-        "VERIFICATION_STATE_NOT_APPROVED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_NOT_APPROVED"
-          }
-        },
-        "VERIFICATION_STATE_IN_PROGRESS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_IN_PROGRESS"
-          }
-        },
-        "VERIFICATION_STATE_APPROVED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_APPROVED"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#CountrySettingsInstockServingVerificationStateEnum": {
-      "type": "enum",
-      "members": {
-        "VERIFICATION_STATE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_UNSPECIFIED"
-          }
-        },
-        "VERIFICATION_STATE_NOT_APPROVED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_NOT_APPROVED"
-          }
-        },
-        "VERIFICATION_STATE_IN_PROGRESS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_IN_PROGRESS"
-          }
-        },
-        "VERIFICATION_STATE_APPROVED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_APPROVED"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#CountrySettingsInventoryVerificationStateEnum": {
-      "type": "enum",
-      "members": {
-        "VERIFICATION_STATE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_UNSPECIFIED"
-          }
-        },
-        "VERIFICATION_STATE_NOT_APPROVED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_NOT_APPROVED"
-          }
-        },
-        "VERIFICATION_STATE_IN_PROGRESS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_IN_PROGRESS"
-          }
-        },
-        "VERIFICATION_STATE_APPROVED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERIFICATION_STATE_APPROVED"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#Empty": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
+        "smithy.api#documentation": "A sale for the merchant."
       }
     },
     "com.gcp.merchantapi_lfp_v1beta#LfpMerchantState": {
       "type": "structure",
       "members": {
-        "linkedGbps": {
-          "target": "smithy.api#String",
+        "countrySettings": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsList",
           "traits": {
-            "smithy.api#documentation": "Number of [GBPs](https://www.google.com/business/) this merchant has access to."
+            "smithy.api#documentation": "Country-specific settings for the merchant."
           }
         },
         "inventoryStats": {
           "target": "com.gcp.merchantapi_lfp_v1beta#InventoryStats",
           "traits": {
             "smithy.api#documentation": "The inventory statistics for the merchant. The field will be absent if the merchant has no inventory submitted through LFP."
-          }
-        },
-        "countrySettings": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsList",
-          "traits": {
-            "smithy.api#documentation": "Country-specific settings for the merchant."
           }
         },
         "name": {
@@ -721,6 +112,12 @@
           "target": "com.gcp.merchantapi_lfp_v1beta#LfpStoreStateList",
           "traits": {
             "smithy.api#documentation": "Output only. The state per store from the specified merchant. The field will be absent if the merchant has no stores submitted through LFP."
+          }
+        },
+        "linkedGbps": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Number of [GBPs](https://www.google.com/business/) this merchant has access to."
           }
         }
       },
@@ -743,12 +140,6 @@
     "com.gcp.merchantapi_lfp_v1beta#ProductChange": {
       "type": "structure",
       "members": {
-        "regionCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Countries that have the change (if applicable). Represented in the ISO 3166 format."
-          }
-        },
         "oldValue": {
           "target": "smithy.api#String",
           "traits": {
@@ -765,6 +156,12 @@
           "target": "com.gcp.merchantapi_lfp_v1beta#ProductChangeReportingContextEnum",
           "traits": {
             "smithy.api#documentation": "Reporting contexts that have the change (if applicable). Currently this field supports only (`SHOPPING_ADS`, `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value [ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/ReportingContextEnum)"
+          }
+        },
+        "regionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Countries that have the change (if applicable). Represented in the ISO 3166 format."
           }
         }
       },
@@ -897,13 +294,616 @@
         }
       }
     },
-    "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpStoresRequest": {
+    "com.gcp.merchantapi_lfp_v1beta#CountrySettings": {
+      "type": "structure",
+      "members": {
+        "freeLocalListingsEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if this merchant has enabled free local listings in MC."
+          }
+        },
+        "pickupServingVerificationState": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsPickupServingVerificationStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The verification state of this merchant's pickup serving feature."
+          }
+        },
+        "inventoryVerificationState": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsInventoryVerificationStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The verification state of this merchant's inventory check."
+          }
+        },
+        "regionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country for which these settings are defined."
+          }
+        },
+        "localInventoryAdsEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if this merchant has enabled local inventory ads in MC."
+          }
+        },
+        "instockServingVerificationState": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsInstockServingVerificationStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The verification state of this merchant's instock serving feature."
+          }
+        },
+        "productPageType": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#CountrySettingsProductPageTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The product page type selected by this merchant."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Country-specific settings for the merchant."
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#CountrySettingsPickupServingVerificationStateEnum": {
+      "type": "enum",
+      "members": {
+        "VERIFICATION_STATE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_UNSPECIFIED"
+          }
+        },
+        "VERIFICATION_STATE_NOT_APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_NOT_APPROVED"
+          }
+        },
+        "VERIFICATION_STATE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_IN_PROGRESS"
+          }
+        },
+        "VERIFICATION_STATE_APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_APPROVED"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#CountrySettingsInventoryVerificationStateEnum": {
+      "type": "enum",
+      "members": {
+        "VERIFICATION_STATE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_UNSPECIFIED"
+          }
+        },
+        "VERIFICATION_STATE_NOT_APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_NOT_APPROVED"
+          }
+        },
+        "VERIFICATION_STATE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_IN_PROGRESS"
+          }
+        },
+        "VERIFICATION_STATE_APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_APPROVED"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#CountrySettingsInstockServingVerificationStateEnum": {
+      "type": "enum",
+      "members": {
+        "VERIFICATION_STATE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_UNSPECIFIED"
+          }
+        },
+        "VERIFICATION_STATE_NOT_APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_NOT_APPROVED"
+          }
+        },
+        "VERIFICATION_STATE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_IN_PROGRESS"
+          }
+        },
+        "VERIFICATION_STATE_APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERIFICATION_STATE_APPROVED"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#CountrySettingsProductPageTypeEnum": {
+      "type": "enum",
+      "members": {
+        "PRODUCT_PAGE_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PRODUCT_PAGE_TYPE_UNSPECIFIED"
+          }
+        },
+        "GOOGLE_HOSTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE_HOSTED"
+          }
+        },
+        "MERCHANT_HOSTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MERCHANT_HOSTED"
+          }
+        },
+        "MERCHANT_HOSTED_STORE_SPECIFIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MERCHANT_HOSTED_STORE_SPECIFIC"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#ListLfpStoresResponse": {
+      "type": "structure",
+      "members": {
+        "lfpStores": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#LfpStoreList",
+          "traits": {
+            "smithy.api#documentation": "The stores from the specified merchant."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response message for the ListLfpStores method."
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#LfpStoreList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.merchantapi_lfp_v1beta#LfpStore"
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#Empty": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#LfpStore": {
+      "type": "structure",
+      "members": {
+        "targetAccount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The Merchant Center id of the merchant to submit the store for."
+          }
+        },
+        "placeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The [Google Place Id](https://developers.google.com/maps/documentation/places/web-service/place-id#id-overview) of the store location."
+          }
+        },
+        "gcidCategory": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#StringList",
+          "traits": {
+            "smithy.api#documentation": "Optional. [Google My Business category id](https://support.google.com/business/answer/7249669)."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Identifier. The name of the `LfpStore` resource. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`"
+          }
+        },
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The store phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Example: `+15556767888`"
+          }
+        },
+        "websiteUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The website URL for the store or merchant."
+          }
+        },
+        "storeCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. A store identifier that is unique for the target merchant."
+          }
+        },
+        "matchingStateHint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Output only. The hint of why the matching has failed. This is only set when matchingState=`STORE_MATCHING_STATE_FAILED`. Possible values are: - \"`linked-store-not-found`\": There aren't any Google Business Profile stores available for matching. - \"`store-match-not-found`\": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores. Merchant Center account is connected correctly and stores are available on Google Business Profile, but the `LfpStore` location address does not match with Google Business Profile stores' addresses. Update the `LfpStore` address or Google Business Profile store address to match correctly. - \"`store-match-unverified`\": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores, as the matched Google Business Profile store is unverified. Go through the Google Business Profile verification process to match correctly."
+          }
+        },
+        "storeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The merchant or store name."
+          }
+        },
+        "matchingState": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#LfpStoreMatchingStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Optional. Output only. The state of matching to a Google Business Profile. See matchingStateHint for further details if no match is found."
+          }
+        },
+        "storeAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The street address of the store. Example: 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A store for the merchant. This will be used to match to a store under the Google Business Profile of the target merchant. If a matching store can't be found, the inventories or sales submitted with the store code will not be used."
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#LfpStoreMatchingStateEnum": {
+      "type": "enum",
+      "members": {
+        "STORE_MATCHING_STATE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STORE_MATCHING_STATE_UNSPECIFIED"
+          }
+        },
+        "STORE_MATCHING_STATE_MATCHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STORE_MATCHING_STATE_MATCHED"
+          }
+        },
+        "STORE_MATCHING_STATE_FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STORE_MATCHING_STATE_FAILED"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#Price": {
+      "type": "structure",
+      "members": {
+        "amountMicros": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros)."
+          }
+        },
+        "currencyCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The price represented as a number and currency."
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#LfpStoreState": {
+      "type": "structure",
+      "members": {
+        "matchingState": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#LfpStoreStateMatchingStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The store matching state."
+          }
+        },
+        "matchingStateHint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hint of why the matching has failed (only set if matching_state is FAILED)."
+          }
+        },
+        "storeCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. The identifier of this store."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of a specific merchant's store."
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#LfpStoreStateMatchingStateEnum": {
+      "type": "enum",
+      "members": {
+        "STORE_MATCHING_STATE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STORE_MATCHING_STATE_UNSPECIFIED"
+          }
+        },
+        "STORE_MATCHING_STATE_MATCHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STORE_MATCHING_STATE_MATCHED"
+          }
+        },
+        "STORE_MATCHING_STATE_FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STORE_MATCHING_STATE_FAILED"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#InventoryStats": {
+      "type": "structure",
+      "members": {
+        "submittedProducts": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Number of products from provided inventories/sales that were created from matches to existing online products provided by the merchant or to the Google catalog."
+          }
+        },
+        "submittedEntries": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Number of entries (understanding entry as a pair of product and store) that were built based on provided inventories/sales and submitted to Google."
+          }
+        },
+        "submittedInStockEntries": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Number of submitted in stock entries."
+          }
+        },
+        "unsubmittedEntries": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Number of entries that were built based on provided inventories/sales and couldn't be submitted to Google due to errors like missing product."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The inventory statistics for a merchant."
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessage": {
+      "type": "structure",
+      "members": {
+        "account": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target account that owns the entity that changed. Format : `accounts/{merchant_id}`"
+          }
+        },
+        "managingAccount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}`"
+          }
+        },
+        "changes": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#ProductChangeList",
+          "traits": {
+            "smithy.api#documentation": "A message to describe the change that happened to the product"
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The product id."
+          }
+        },
+        "resourceType": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessageResourceTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The resource that changed, in this case it will always be `Product`."
+          }
+        },
+        "expirationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event."
+          }
+        },
+        "eventTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications."
+          }
+        },
+        "attribute": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessageAttributeEnum",
+          "traits": {
+            "smithy.api#documentation": "The attribute in the resource that changed, in this case it will be always `Status`."
+          }
+        },
+        "resource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The product name. Format: `accounts/{account}/products/{product}`"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The message that the merchant will receive to notify about product status change event"
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#ProductChangeList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.merchantapi_lfp_v1beta#ProductChange"
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessageResourceTypeEnum": {
+      "type": "enum",
+      "members": {
+        "RESOURCE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RESOURCE_UNSPECIFIED"
+          }
+        },
+        "PRODUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PRODUCT"
+          }
+        },
+        "ACCOUNT_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ACCOUNT_SERVICE"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#ProductStatusChangeMessageAttributeEnum": {
+      "type": "enum",
+      "members": {
+        "ATTRIBUTE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ATTRIBUTE_UNSPECIFIED"
+          }
+        },
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STATUS"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#LfpInventory": {
+      "type": "structure",
+      "members": {
+        "contentLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The two-letter ISO 639-1 language code for the item."
+          }
+        },
+        "pickupSla": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342)."
+          }
+        },
+        "offerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs."
+          }
+        },
+        "availability": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Availability of the product at this store. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342)"
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Quantity of the product available at this store. Must be greater than or equal to zero."
+          }
+        },
+        "targetAccount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The Merchant Center ID of the merchant to submit the inventory for."
+          }
+        },
+        "storeCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The identifier of the merchant's store. Either the store code inserted through `InsertLfpStore` or the store code in the Business Profile."
+          }
+        },
+        "price": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#Price",
+          "traits": {
+            "smithy.api#documentation": "Optional. The current price of the product."
+          }
+        },
+        "pickupMethod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Supported pickup method for this offer. Unless the value is \"not supported\", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342)."
+          }
+        },
+        "collectionTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The time when the inventory is collected. If not set, it will be set to the time when the inventory is submitted."
+          }
+        },
+        "gtin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The Global Trade Item Number of the product."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Identifier. The name for the `LfpInventory` resource. Format: `accounts/{account}/lfpInventories/{target_merchant}~{store_code}~{offer}`"
+          }
+        },
+        "regionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold."
+          }
+        },
+        "feedLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Local Inventory for the merchant."
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpMerchantStatesRequest": {
       "type": "structure",
       "members": {
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`",
+            "smithy.api#documentation": "Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -936,13 +936,13 @@
         ]
       }
     },
-    "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpStores": {
+    "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpMerchantStates": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpStoresRequest"
+        "target": "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpMerchantStatesRequest"
       },
       "output": {
-        "target": "com.gcp.merchantapi_lfp_v1beta#LfpStore"
+        "target": "com.gcp.merchantapi_lfp_v1beta#LfpMerchantState"
       },
       "errors": [
         {
@@ -957,22 +957,22 @@
           "method": "GET",
           "uri": "lfp/v1beta/{+name}"
         },
-        "smithy.api#documentation": "Retrieves information about a store."
+        "smithy.api#documentation": "Gets the LFP state of a merchant"
       }
     },
-    "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpStoresRequest": {
+    "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpSalesRequest": {
       "type": "structure",
       "members": {
         "parent": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The LFP provider account Format: `accounts/{account}`",
+            "smithy.api#documentation": "Required. The LFP provider account. Format: `accounts/{lfp_partner}`",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
         },
         "body": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#LfpStore",
+          "target": "com.gcp.merchantapi_lfp_v1beta#LfpSale",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -1004,6 +1004,56 @@
             "status": 409
           }
         ]
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpSales": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpSalesRequest"
+      },
+      "output": {
+        "target": "com.gcp.merchantapi_lfp_v1beta#LfpSale"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.merchantapi_lfp_v1beta#NotFound"
+        },
+        {
+          "target": "com.gcp.merchantapi_lfp_v1beta#Forbidden"
+        },
+        {
+          "target": "com.gcp.merchantapi_lfp_v1beta#BadRequest"
+        },
+        {
+          "target": "com.gcp.merchantapi_lfp_v1beta#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "lfp/v1beta/{+parent}/lfpSales:insert"
+        },
+        "smithy.api#documentation": "Inserts a `LfpSale` for the given merchant."
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpStoresRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The LFP provider account Format: `accounts/{account}`",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.merchantapi_lfp_v1beta#LfpStore",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
       }
     },
     "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpStores": {
@@ -1082,14 +1132,6 @@
     "com.gcp.merchantapi_lfp_v1beta#ListAccountsLfpStoresRequest": {
       "type": "structure",
       "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The LFP partner. Format: `accounts/{account}`",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
         "targetAccount": {
           "target": "smithy.api#String",
           "traits": {
@@ -1109,6 +1151,14 @@
           "traits": {
             "smithy.api#documentation": "Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request.",
             "smithy.api#httpQuery": "pageToken"
+          }
+        },
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The LFP partner. Format: `accounts/{account}`",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
           }
         }
       }
@@ -1139,6 +1189,43 @@
           "inputToken": "pageToken",
           "outputToken": "nextPageToken"
         }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpStoresRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpStores": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpStoresRequest"
+      },
+      "output": {
+        "target": "com.gcp.merchantapi_lfp_v1beta#LfpStore"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.merchantapi_lfp_v1beta#NotFound"
+        },
+        {
+          "target": "com.gcp.merchantapi_lfp_v1beta#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "lfp/v1beta/{+name}"
+        },
+        "smithy.api#documentation": "Retrieves information about a store."
       }
     },
     "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpInventoriesRequest": {
@@ -1189,93 +1276,6 @@
           "uri": "lfp/v1beta/{+parent}/lfpInventories:insert"
         },
         "smithy.api#documentation": "Inserts a `LfpInventory` resource for the given target merchant account. If the resource already exists, it will be replaced. The inventory automatically expires after 30 days."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpSalesRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The LFP provider account. Format: `accounts/{lfp_partner}`",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.merchantapi_lfp_v1beta#LfpSale",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpSales": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.merchantapi_lfp_v1beta#InsertAccountsLfpSalesRequest"
-      },
-      "output": {
-        "target": "com.gcp.merchantapi_lfp_v1beta#LfpSale"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.merchantapi_lfp_v1beta#NotFound"
-        },
-        {
-          "target": "com.gcp.merchantapi_lfp_v1beta#Forbidden"
-        },
-        {
-          "target": "com.gcp.merchantapi_lfp_v1beta#BadRequest"
-        },
-        {
-          "target": "com.gcp.merchantapi_lfp_v1beta#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "lfp/v1beta/{+parent}/lfpSales:insert"
-        },
-        "smithy.api#documentation": "Inserts a `LfpSale` for the given merchant."
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpMerchantStatesRequest": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpMerchantStates": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.merchantapi_lfp_v1beta#GetAccountsLfpMerchantStatesRequest"
-      },
-      "output": {
-        "target": "com.gcp.merchantapi_lfp_v1beta#LfpMerchantState"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.merchantapi_lfp_v1beta#NotFound"
-        },
-        {
-          "target": "com.gcp.merchantapi_lfp_v1beta#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "lfp/v1beta/{+name}"
-        },
-        "smithy.api#documentation": "Gets the LFP state of a merchant"
       }
     }
   }

@@ -1758,7 +1758,8 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdateResponse =
   }) as any as S.Schema<TimeSeriesDatabaseConnectionsCreateOrUpdateResponse>;
 
 export type TimeSeriesDatabaseConnectionsDeleteRequestCleanupConnectionArtifacts =
-  "true" | "false";
+  | "true"
+  | "false";
 export const TimeSeriesDatabaseConnectionsDeleteRequestCleanupConnectionArtifacts =
   /*@__PURE__*/ S.String;
 

@@ -78,6 +78,10 @@ export interface ProxyRecord {
   domain?: string;
   /** The CNAME target to add as a DNS record for your domain. Point your domain's CNAME to this value. */
   target_cname?: string;
+  /** HTTPS URL that requests to the proxy domain root redirect to, or null when disabled. */
+  root_redirect_url?: string | null;
+  /** Whether this managed proxy supports a redirect from its root URL. */
+  root_redirect_supported?: boolean;
   /** Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out). * `waiting` - Waiting * `issuing` - Issuing * `valid` - Valid * `warning` - Warning * `erroring` - Erroring * `deleting` - Deleting * `timed_out` - Timed Out */
   status?: ProxyRecordStatusEnum;
   /** Human-readable status message with details about errors or warnings, if any. */
@@ -94,6 +98,8 @@ export const ProxyRecord = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     domain: S.optional(S.String),
     target_cname: S.optional(S.String),
+    root_redirect_url: S.optional(S.NullOr(S.String)),
+    root_redirect_supported: S.optional(S.Boolean),
     status: S.optional(ProxyRecordStatusEnum),
     message: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
@@ -312,17 +318,29 @@ export const ProxyRecordListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyRecordListResponse",
 }) as any as S.Schema<ProxyRecordListResponse>;
 
-export type ProxyRecordsListResponseBodyList = Array<ProxyRecordListResponse>;
-export const ProxyRecordsListResponseBodyList = /*@__PURE__*/ S.Array(
-  ProxyRecordListResponse,
-) as any as S.Schema<ProxyRecordsListResponseBodyList>;
-
-export type ProxyRecordsListResponse = ProxyRecordsListResponseBodyList;
-export const ProxyRecordsListResponse = /*@__PURE__*/ S.suspend(() =>
-  ProxyRecordsListResponseBodyList.pipe(T.RawResponseRoot()),
+export interface ProxyRecordsPartialUpdateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A UUID string identifying this proxy record. */
+  id: string;
+  /** HTTPS URL that requests to the proxy domain root redirect to, or null to disable the redirect. The URL must use the same registrable domain as the managed proxy. */
+  root_redirect_url?: string | null;
+}
+export const ProxyRecordsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    root_redirect_url: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/organizations/{organization_id}/proxy_records/{id}/",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "ProxyRecordsListResponse",
-}) as any as S.Schema<ProxyRecordsListResponse>;
+  identifier: "ProxyRecordsPartialUpdateRequest",
+}) as any as S.Schema<ProxyRecordsPartialUpdateRequest>;
 
 export interface ProxyRecordsRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -419,13 +437,28 @@ export type ProxyRecordsListError = Forbidden | NotFound | PosthogOpError;
 /** List all reverse proxies configured for the organization. Returns proxy records along with the maximum number allowed by the current plan. */
 export const proxyRecordsList: API.OperationMethod<
   ProxyRecordsListRequest,
-  ProxyRecordsListResponse,
+  ProxyRecordListResponse,
   ProxyRecordsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ProxyRecordsListRequest,
-  output: ProxyRecordsListResponse,
+  output: ProxyRecordListResponse,
   errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ProxyRecordsPartialUpdateError = PosthogOpError;
+/** Set or clear the HTTPS redirect for requests to the managed proxy domain root. */
+export const proxyRecordsPartialUpdate: API.OperationMethod<
+  ProxyRecordsPartialUpdateRequest,
+  ProxyRecord,
+  ProxyRecordsPartialUpdateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ProxyRecordsPartialUpdateRequest,
+  output: ProxyRecord,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

@@ -1724,7 +1724,7 @@ export type __stringMin1Max50PatternAZAZ09 = string;
 export type __stringMin1Max2048PatternArnAZSecretsmanagerWD12SecretAZAZ09 =
   string;
 export type __doubleMin0 = number;
-export type __stringPatternHttpsKantarmedia = string;
+export type __stringPatternHttpsKantarmedia55Prod = string;
 export type __stringPatternS3 = string;
 export type __stringMin1Max50 = string;
 export interface KantarWatermarkSettings {
@@ -2153,6 +2153,7 @@ export type S3StorageClass =
   | "INTELLIGENT_TIERING"
   | "GLACIER"
   | "DEEP_ARCHIVE"
+  | "GLACIER_IR"
   | (string & {});
 export const S3StorageClass = /*@__PURE__*/ S.String;
 
@@ -5539,6 +5540,7 @@ export type MovReference = "SELF_CONTAINED" | "EXTERNAL" | (string & {});
 export const MovReference = /*@__PURE__*/ S.String;
 
 export interface MovSettings {
+  AudioDuration?: CmfcAudioDuration;
   ClapAtom?: MovClapAtom;
   CslgAtom?: MovCslgAtom;
   Mpeg2FourCCControl?: MovMpeg2FourCCControl;
@@ -5547,6 +5549,7 @@ export interface MovSettings {
 }
 export const MovSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    AudioDuration: S.optional(CmfcAudioDuration),
     ClapAtom: S.optional(MovClapAtom),
     CslgAtom: S.optional(MovCslgAtom),
     Mpeg2FourCCControl: S.optional(MovMpeg2FourCCControl),
@@ -5554,6 +5557,7 @@ export const MovSettings = /*@__PURE__*/ S.suspend(() =>
     Reference: S.optional(MovReference),
   }).pipe(
     S.encodeKeys({
+      AudioDuration: "audioDuration",
       ClapAtom: "clapAtom",
       CslgAtom: "cslgAtom",
       Mpeg2FourCCControl: "mpeg2FourCCControl",
@@ -6258,6 +6262,12 @@ export const H264EndOfStreamMarkers = /*@__PURE__*/ S.String;
 export type H264EntropyEncoding = "CABAC" | "CAVLC" | (string & {});
 export const H264EntropyEncoding = /*@__PURE__*/ S.String;
 
+export type H264ExplicitWeightedPrediction =
+  | "DISABLED"
+  | "ENABLED"
+  | (string & {});
+export const H264ExplicitWeightedPrediction = /*@__PURE__*/ S.String;
+
 export type H264FieldEncoding =
   | "PAFF"
   | "FORCE_FIELD"
@@ -6401,6 +6411,7 @@ export interface H264Settings {
   DynamicSubGop?: H264DynamicSubGop;
   EndOfStreamMarkers?: H264EndOfStreamMarkers;
   EntropyEncoding?: H264EntropyEncoding;
+  ExplicitWeightedPrediction?: H264ExplicitWeightedPrediction;
   FieldEncoding?: H264FieldEncoding;
   FlickerAdaptiveQuantization?: H264FlickerAdaptiveQuantization;
   FramerateControl?: H264FramerateControl;
@@ -6450,6 +6461,7 @@ export const H264Settings = /*@__PURE__*/ S.suspend(() =>
     DynamicSubGop: S.optional(H264DynamicSubGop),
     EndOfStreamMarkers: S.optional(H264EndOfStreamMarkers),
     EntropyEncoding: S.optional(H264EntropyEncoding),
+    ExplicitWeightedPrediction: S.optional(H264ExplicitWeightedPrediction),
     FieldEncoding: S.optional(H264FieldEncoding),
     FlickerAdaptiveQuantization: S.optional(H264FlickerAdaptiveQuantization),
     FramerateControl: S.optional(H264FramerateControl),
@@ -6498,6 +6510,7 @@ export const H264Settings = /*@__PURE__*/ S.suspend(() =>
       DynamicSubGop: "dynamicSubGop",
       EndOfStreamMarkers: "endOfStreamMarkers",
       EntropyEncoding: "entropyEncoding",
+      ExplicitWeightedPrediction: "explicitWeightedPrediction",
       FieldEncoding: "fieldEncoding",
       FlickerAdaptiveQuantization: "flickerAdaptiveQuantization",
       FramerateControl: "framerateControl",
@@ -8111,6 +8124,29 @@ export const DolbyVision = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "DolbyVision" }) as any as S.Schema<DolbyVision>;
+export interface DurationControl {
+  IntegerDurationMaximumCompressionDenominator?: number;
+  IntegerDurationMaximumCompressionNumerator?: number;
+  IntegerDurationTrimThresholdMilliseconds?: number;
+}
+export const DurationControl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IntegerDurationMaximumCompressionDenominator: S.optional(S.Number),
+    IntegerDurationMaximumCompressionNumerator: S.optional(S.Number),
+    IntegerDurationTrimThresholdMilliseconds: S.optional(S.Number),
+  }).pipe(
+    S.encodeKeys({
+      IntegerDurationMaximumCompressionDenominator:
+        "integerDurationMaximumCompressionDenominator",
+      IntegerDurationMaximumCompressionNumerator:
+        "integerDurationMaximumCompressionNumerator",
+      IntegerDurationTrimThresholdMilliseconds:
+        "integerDurationTrimThresholdMilliseconds",
+    }),
+  ),
+).annotate({
+  identifier: "DurationControl",
+}) as any as S.Schema<DurationControl>;
 export type __integerMin0Max4000 = number;
 export interface Hdr10Plus {
   MasteringMonitorNits?: number;
@@ -8320,6 +8356,7 @@ export interface VideoPreprocessor {
   ColorCorrector?: ColorCorrector;
   Deinterlacer?: Deinterlacer;
   DolbyVision?: DolbyVision;
+  DurationControl?: DurationControl;
   Hdr10Plus?: Hdr10Plus;
   ImageInserter?: ImageInserter;
   NoiseReducer?: NoiseReducer;
@@ -8331,6 +8368,7 @@ export const VideoPreprocessor = /*@__PURE__*/ S.suspend(() =>
     ColorCorrector: S.optional(ColorCorrector),
     Deinterlacer: S.optional(Deinterlacer),
     DolbyVision: S.optional(DolbyVision),
+    DurationControl: S.optional(DurationControl),
     Hdr10Plus: S.optional(Hdr10Plus),
     ImageInserter: S.optional(ImageInserter),
     NoiseReducer: S.optional(NoiseReducer),
@@ -8341,6 +8379,7 @@ export const VideoPreprocessor = /*@__PURE__*/ S.suspend(() =>
       ColorCorrector: "colorCorrector",
       Deinterlacer: "deinterlacer",
       DolbyVision: "dolbyVision",
+      DurationControl: "durationControl",
       Hdr10Plus: "hdr10Plus",
       ImageInserter: "imageInserter",
       NoiseReducer: "noiseReducer",
@@ -10253,6 +10292,7 @@ export type Format =
   | "avi"
   | "mpegts"
   | "mpegps"
+  | "mp3"
   | (string & {});
 export const Format = /*@__PURE__*/ S.String;
 
@@ -10429,6 +10469,7 @@ export interface CodecMetadata {
   CodedFrameRate?: FrameRate;
   ColorPrimaries?: ColorPrimaries;
   ContentLightLevel?: ContentLightLevel;
+  FieldOrder?: string;
   Height?: number;
   Level?: string;
   MatrixCoefficients?: MatrixCoefficients;
@@ -10445,6 +10486,7 @@ export const CodecMetadata = /*@__PURE__*/ S.suspend(() =>
     CodedFrameRate: S.optional(FrameRate),
     ColorPrimaries: S.optional(ColorPrimaries),
     ContentLightLevel: S.optional(ContentLightLevel),
+    FieldOrder: S.optional(S.String),
     Height: S.optional(S.Number),
     Level: S.optional(S.String),
     MatrixCoefficients: S.optional(MatrixCoefficients),
@@ -10460,6 +10502,7 @@ export const CodecMetadata = /*@__PURE__*/ S.suspend(() =>
       CodedFrameRate: "codedFrameRate",
       ColorPrimaries: "colorPrimaries",
       ContentLightLevel: "contentLightLevel",
+      FieldOrder: "fieldOrder",
       Height: "height",
       Level: "level",
       MatrixCoefficients: "matrixCoefficients",
@@ -10604,6 +10647,7 @@ export const Track = /*@__PURE__*/ S.suspend(() =>
 export type __listOfTrack = Track[];
 export const __listOfTrack = /*@__PURE__*/ S.Array(Track);
 export interface Container {
+  BitRate?: number;
   Duration?: number;
   Format?: Format;
   StartTimecode?: string;
@@ -10611,12 +10655,14 @@ export interface Container {
 }
 export const Container = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    BitRate: S.optional(S.Number),
     Duration: S.optional(S.Number),
     Format: S.optional(Format),
     StartTimecode: S.optional(S.String),
     Tracks: S.optional(__listOfTrack),
   }).pipe(
     S.encodeKeys({
+      BitRate: "bitRate",
       Duration: "duration",
       Format: "format",
       StartTimecode: "startTimecode",

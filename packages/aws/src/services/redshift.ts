@@ -1175,6 +1175,30 @@ export class PartnerNotFoundFault
       T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
+export class Qev2IdcApplicationAlreadyExistsFault
+  extends /*@__PURE__*/ S.TaggedError<Qev2IdcApplicationAlreadyExistsFault>()(
+    "Qev2IdcApplicationAlreadyExistsFault",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.all(
+      T.AwsQueryError({
+        code: "Qev2IdcApplicationAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class Qev2IdcApplicationNotExistsFault
+  extends /*@__PURE__*/ S.TaggedError<Qev2IdcApplicationNotExistsFault>()(
+    "Qev2IdcApplicationNotExistsFault",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.all(
+      T.AwsQueryError({
+        code: "Qev2IdcApplicationNotExists",
+        httpResponseCode: 404,
+      }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export class RedshiftIdcApplicationAlreadyExistsFault
   extends /*@__PURE__*/ S.TaggedError<RedshiftIdcApplicationAlreadyExistsFault>()(
     "RedshiftIdcApplicationAlreadyExistsFault",
@@ -2992,6 +3016,39 @@ export const SecondaryClusterInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SecondaryClusterInfo",
 }) as any as S.Schema<SecondaryClusterInfo>;
+export type LogTypeList = string[];
+export const LogTypeList = /*@__PURE__*/ S.Array(S.String);
+export type S3TableLastIngestionTimeMap = { [key: string]: string | undefined };
+export const S3TableLastIngestionTimeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface S3TablePublishStatus {
+  S3Tables?: string[];
+  S3TableNamespace?: string;
+  S3TableGranularity?: string;
+  EnabledAll?: boolean;
+  LastIngestionTimes?: { [key: string]: string | undefined };
+}
+export const S3TablePublishStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    S3Tables: S.optional(LogTypeList),
+    S3TableNamespace: S.optional(S.String),
+    S3TableGranularity: S.optional(S.String),
+    EnabledAll: S.optional(S.Boolean),
+    LastIngestionTimes: S.optional(S3TableLastIngestionTimeMap),
+  }),
+).annotate({
+  identifier: "S3TablePublishStatus",
+}) as any as S.Schema<S3TablePublishStatus>;
+export interface LoggingPublishStatus {
+  S3Tables?: S3TablePublishStatus;
+}
+export const LoggingPublishStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ S3Tables: S.optional(S3TablePublishStatus) }),
+).annotate({
+  identifier: "LoggingPublishStatus",
+}) as any as S.Schema<LoggingPublishStatus>;
 export interface Cluster {
   ClusterIdentifier?: string;
   NodeType?: string;
@@ -3056,6 +3113,7 @@ export interface Cluster {
   LakehouseRegistrationStatus?: string;
   CatalogArn?: string;
   ExtraComputeForAutomaticOptimization?: string;
+  LoggingPublishStatus?: LoggingPublishStatus;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3130,6 +3188,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
     LakehouseRegistrationStatus: S.optional(S.String),
     CatalogArn: S.optional(S.String),
     ExtraComputeForAutomaticOptimization: S.optional(S.String),
+    LoggingPublishStatus: S.optional(LoggingPublishStatus),
   }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 export interface CreateClusterResult {
@@ -3749,9 +3808,66 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
     Tags: S.optional(TagList),
   }).pipe(ns),
 ).annotate({ identifier: "Integration" }) as any as S.Schema<Integration>;
+export type Qev2IdcApplicationName = string;
+export type IdcDisplayNameString = string;
+export interface CreateQev2IdcApplicationMessage {
+  IdcInstanceArn?: string;
+  Qev2IdcApplicationName?: string;
+  IdcDisplayName?: string;
+  Tags?: Tag[];
+}
+export const CreateQev2IdcApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdcInstanceArn: S.optional(S.String),
+    Qev2IdcApplicationName: S.optional(S.String),
+    IdcDisplayName: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateQev2IdcApplicationMessage",
+}) as any as S.Schema<CreateQev2IdcApplicationMessage>;
+export interface Qev2IdcApplication {
+  IdcInstanceArn?: string;
+  Qev2IdcApplicationName?: string;
+  Qev2IdcApplicationArn?: string;
+  IdcManagedApplicationArn?: string;
+  IdcOnboardStatus?: string;
+  IdcDisplayName?: string;
+  Tags?: Tag[];
+}
+export const Qev2IdcApplication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdcInstanceArn: S.optional(S.String),
+    Qev2IdcApplicationName: S.optional(S.String),
+    Qev2IdcApplicationArn: S.optional(S.String),
+    IdcManagedApplicationArn: S.optional(S.String),
+    IdcOnboardStatus: S.optional(S.String),
+    IdcDisplayName: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "Qev2IdcApplication",
+}) as any as S.Schema<Qev2IdcApplication>;
+export interface CreateQev2IdcApplicationResult {
+  Qev2IdcApplication?: Qev2IdcApplication;
+}
+export const CreateQev2IdcApplicationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Qev2IdcApplication: S.optional(Qev2IdcApplication) }).pipe(ns),
+).annotate({
+  identifier: "CreateQev2IdcApplicationResult",
+}) as any as S.Schema<CreateQev2IdcApplicationResult>;
 export type RedshiftIdcApplicationName = string;
 export type IdentityNamespaceString = string;
-export type IdcDisplayNameString = string;
 export type AuthorizedAudienceList = string[];
 export const AuthorizedAudienceList = /*@__PURE__*/ S.Array(S.String);
 export interface AuthorizedTokenIssuer {
@@ -4621,6 +4737,30 @@ export const DeleteIntegrationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIntegrationMessage",
 }) as any as S.Schema<DeleteIntegrationMessage>;
+export interface DeleteQev2IdcApplicationMessage {
+  Qev2IdcApplicationArn?: string;
+}
+export const DeleteQev2IdcApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Qev2IdcApplicationArn: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteQev2IdcApplicationMessage",
+}) as any as S.Schema<DeleteQev2IdcApplicationMessage>;
+export interface DeleteQev2IdcApplicationResponse {}
+export const DeleteQev2IdcApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteQev2IdcApplicationResponse",
+}) as any as S.Schema<DeleteQev2IdcApplicationResponse>;
 export interface DeleteRedshiftIdcApplicationMessage {
   RedshiftIdcApplicationArn?: string;
 }
@@ -6333,11 +6473,13 @@ export const DescribeLoggingStatusMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeLoggingStatusMessage",
 }) as any as S.Schema<DescribeLoggingStatusMessage>;
 export type S3KeyPrefixValue = string;
-export type LogDestinationType = "s3" | "cloudwatch" | (string & {});
+export type LogDestinationType =
+  | "s3"
+  | "cloudwatch"
+  | "s3table"
+  | (string & {});
 export const LogDestinationType = /*@__PURE__*/ S.String;
 
-export type LogTypeList = string[];
-export const LogTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface LoggingStatus {
   LoggingEnabled?: boolean;
   BucketName?: string;
@@ -6347,6 +6489,7 @@ export interface LoggingStatus {
   LastFailureMessage?: string;
   LogDestinationType?: LogDestinationType;
   LogExports?: string[];
+  S3Tables?: S3TablePublishStatus;
 }
 export const LoggingStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6362,6 +6505,7 @@ export const LoggingStatus = /*@__PURE__*/ S.suspend(() =>
     LastFailureMessage: S.optional(S.String),
     LogDestinationType: S.optional(LogDestinationType),
     LogExports: S.optional(LogTypeList),
+    S3Tables: S.optional(S3TablePublishStatus),
   }).pipe(ns),
 ).annotate({ identifier: "LoggingStatus" }) as any as S.Schema<LoggingStatus>;
 export type ActionType =
@@ -6627,6 +6771,44 @@ export const DescribePartnersOutputMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePartnersOutputMessage",
 }) as any as S.Schema<DescribePartnersOutputMessage>;
+export interface DescribeQev2IdcApplicationsMessage {
+  Qev2IdcApplicationArn?: string;
+  MaxRecords?: number;
+  Marker?: string;
+}
+export const DescribeQev2IdcApplicationsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Qev2IdcApplicationArn: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeQev2IdcApplicationsMessage",
+}) as any as S.Schema<DescribeQev2IdcApplicationsMessage>;
+export type Qev2IdcApplicationList = Qev2IdcApplication[];
+export const Qev2IdcApplicationList = /*@__PURE__*/ S.Array(Qev2IdcApplication);
+export interface DescribeQev2IdcApplicationsResult {
+  Qev2IdcApplications?: Qev2IdcApplication[];
+  Marker?: string;
+}
+export const DescribeQev2IdcApplicationsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Qev2IdcApplications: S.optional(Qev2IdcApplicationList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeQev2IdcApplicationsResult",
+}) as any as S.Schema<DescribeQev2IdcApplicationsResult>;
 export interface DescribeRedshiftIdcApplicationsMessage {
   RedshiftIdcApplicationArn?: string;
   MaxRecords?: number;
@@ -7257,9 +7439,15 @@ export const UsageLimitList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageLimitList" }) as any as S.Schema<UsageLimitList>;
 export interface DisableLoggingMessage {
   ClusterIdentifier?: string;
+  LogDestinationType?: LogDestinationType;
+  LogExports?: string[];
 }
 export const DisableLoggingMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    LogDestinationType: S.optional(LogDestinationType),
+    LogExports: S.optional(LogTypeList),
+  }).pipe(
     T.all(
       ns,
       T.Http({ method: "POST", uri: "/" }),
@@ -7332,6 +7520,8 @@ export interface EnableLoggingMessage {
   S3KeyPrefix?: string;
   LogDestinationType?: LogDestinationType;
   LogExports?: string[];
+  S3TableKmsKeyId?: string;
+  S3TableGranularity?: string;
 }
 export const EnableLoggingMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7340,6 +7530,8 @@ export const EnableLoggingMessage = /*@__PURE__*/ S.suspend(() =>
     S3KeyPrefix: S.optional(S.String),
     LogDestinationType: S.optional(LogDestinationType),
     LogExports: S.optional(LogTypeList),
+    S3TableKmsKeyId: S.optional(S.String),
+    S3TableGranularity: S.optional(S.String),
   }).pipe(
     T.all(
       ns,
@@ -8376,6 +8568,36 @@ export const LakehouseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LakehouseConfiguration",
 }) as any as S.Schema<LakehouseConfiguration>;
+export interface ModifyQev2IdcApplicationMessage {
+  Qev2IdcApplicationArn?: string;
+  IdcDisplayName?: string;
+}
+export const ModifyQev2IdcApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Qev2IdcApplicationArn: S.optional(S.String),
+    IdcDisplayName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ModifyQev2IdcApplicationMessage",
+}) as any as S.Schema<ModifyQev2IdcApplicationMessage>;
+export interface ModifyQev2IdcApplicationResult {
+  Qev2IdcApplication?: Qev2IdcApplication;
+}
+export const ModifyQev2IdcApplicationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Qev2IdcApplication: S.optional(Qev2IdcApplication) }).pipe(ns),
+).annotate({
+  identifier: "ModifyQev2IdcApplicationResult",
+}) as any as S.Schema<ModifyQev2IdcApplicationResult>;
 export interface ModifyRedshiftIdcApplicationMessage {
   RedshiftIdcApplicationArn?: string;
   IdentityNamespace?: string;
@@ -9872,6 +10094,34 @@ export const createIntegration: API.OperationMethod<
   operationName: "CreateIntegration",
 }));
 
+export type CreateQev2IdcApplicationError =
+  | DependentServiceAccessDeniedFault
+  | DependentServiceUnavailableFault
+  | Qev2IdcApplicationAlreadyExistsFault
+  | UnsupportedOperationFault
+  | CommonErrors;
+/**
+ * Creates an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+ */
+export const createQev2IdcApplication: API.OperationMethod<
+  CreateQev2IdcApplicationMessage,
+  CreateQev2IdcApplicationResult,
+  CreateQev2IdcApplicationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateQev2IdcApplicationMessage,
+  output: CreateQev2IdcApplicationResult,
+  errors: [
+    DependentServiceAccessDeniedFault,
+    DependentServiceUnavailableFault,
+    Qev2IdcApplicationAlreadyExistsFault,
+    UnsupportedOperationFault,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateQev2IdcApplication",
+}));
+
 export type CreateRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -10460,6 +10710,34 @@ export const deletePartner: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeletePartner",
+}));
+
+export type DeleteQev2IdcApplicationError =
+  | DependentServiceAccessDeniedFault
+  | DependentServiceUnavailableFault
+  | Qev2IdcApplicationNotExistsFault
+  | UnsupportedOperationFault
+  | CommonErrors;
+/**
+ * Deletes an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+ */
+export const deleteQev2IdcApplication: API.OperationMethod<
+  DeleteQev2IdcApplicationMessage,
+  DeleteQev2IdcApplicationResponse,
+  DeleteQev2IdcApplicationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteQev2IdcApplicationMessage,
+  output: DeleteQev2IdcApplicationResponse,
+  errors: [
+    DependentServiceAccessDeniedFault,
+    DependentServiceUnavailableFault,
+    Qev2IdcApplicationNotExistsFault,
+    UnsupportedOperationFault,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteQev2IdcApplication",
 }));
 
 export type DeleteRedshiftIdcApplicationError =
@@ -11579,6 +11857,41 @@ export const describePartners: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePartners",
 }));
+
+export type DescribeQev2IdcApplicationsError =
+  | DependentServiceAccessDeniedFault
+  | DependentServiceUnavailableFault
+  | Qev2IdcApplicationNotExistsFault
+  | UnsupportedOperationFault
+  | CommonErrors;
+/**
+ * Lists the Amazon Redshift Query Editor (QEV2) IAM Identity Center applications. To retrieve additional results, use the MaxRecords and Marker parameters.
+ */
+export const describeQev2IdcApplications: API.PaginatedOperationMethod<
+  DescribeQev2IdcApplicationsMessage,
+  DescribeQev2IdcApplicationsResult,
+  DescribeQev2IdcApplicationsError,
+  Credentials | HttpClient.HttpClient,
+  Qev2IdcApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: DescribeQev2IdcApplicationsMessage,
+  output: DescribeQev2IdcApplicationsResult,
+  errors: [
+    DependentServiceAccessDeniedFault,
+    DependentServiceUnavailableFault,
+    Qev2IdcApplicationNotExistsFault,
+    UnsupportedOperationFault,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeQev2IdcApplications",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "Marker",
+    items: "Qev2IdcApplications",
+    pageSize: "MaxRecords",
+  } as const,
+})) as any;
 
 export type DescribeRedshiftIdcApplicationsError =
   | DependentServiceAccessDeniedFault
@@ -12937,6 +13250,34 @@ export const modifyLakehouseConfiguration: API.OperationMethod<
   operationName: "ModifyLakehouseConfiguration",
 }));
 
+export type ModifyQev2IdcApplicationError =
+  | DependentServiceAccessDeniedFault
+  | DependentServiceUnavailableFault
+  | Qev2IdcApplicationNotExistsFault
+  | UnsupportedOperationFault
+  | CommonErrors;
+/**
+ * Modifies an Amazon Redshift Query Editor (QEV2) IAM Identity Center application.
+ */
+export const modifyQev2IdcApplication: API.OperationMethod<
+  ModifyQev2IdcApplicationMessage,
+  ModifyQev2IdcApplicationResult,
+  ModifyQev2IdcApplicationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ModifyQev2IdcApplicationMessage,
+  output: ModifyQev2IdcApplicationResult,
+  errors: [
+    DependentServiceAccessDeniedFault,
+    DependentServiceUnavailableFault,
+    Qev2IdcApplicationNotExistsFault,
+    UnsupportedOperationFault,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ModifyQev2IdcApplication",
+}));
+
 export type ModifyRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -13309,9 +13650,13 @@ export type ResizeClusterError =
  *
  * - dc2.8xlarge
  *
+ * - rg.large
+ *
  * - rg.xlarge
  *
  * - rg.4xlarge
+ *
+ * - rg.12xlarge
  *
  * - ra3.large
  *

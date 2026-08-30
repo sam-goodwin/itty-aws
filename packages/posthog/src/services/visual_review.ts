@@ -97,6 +97,7 @@ export interface BaselineQuarantineSummary {
   source_run?: QuarantineSourceRun | null;
   id: string;
   reason: string;
+  source: string;
   expires_at: string | null;
   created_at: string;
 }
@@ -106,6 +107,7 @@ export const BaselineQuarantineSummary = /*@__PURE__*/ S.suspend(() =>
     source_run: S.optional(S.NullOr(QuarantineSourceRun)),
     id: S.String,
     reason: S.String,
+    source: S.String,
     expires_at: S.NullOr(S.String),
     created_at: S.String,
   }),
@@ -241,6 +243,186 @@ export const Repo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Repo" }) as any as S.Schema<Repo>;
 
+export interface VisualReviewReposFlakinessRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  id: string;
+}
+export const VisualReviewReposFlakinessRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/visual_review/repos/{id}/flakiness/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "VisualReviewReposFlakinessRetrieveRequest",
+  }) as any as S.Schema<VisualReviewReposFlakinessRetrieveRequest>;
+
+/** Gate-failing runs per day over the last 30 days, oldest first. Always that length, so a fixed time axis can be rendered. */
+export type FlakinessEntryDailyHardCountsList = Array<number>;
+export const FlakinessEntryDailyHardCountsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<FlakinessEntryDailyHardCountsList>;
+
+/** Absorbed runs per day over the same 30 days, oldest first. */
+export type FlakinessEntryDailySoftCountsList = Array<number>;
+export const FlakinessEntryDailySoftCountsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<FlakinessEntryDailySoftCountsList>;
+
+/** * `broken` - broken * `unstable` - unstable * `at_risk` - at_risk * `noisy` - noisy * `clean` - clean */
+export type FlakinessStateEnum =
+  | "broken"
+  | "unstable"
+  | "at_risk"
+  | "noisy"
+  | "clean";
+export const FlakinessStateEnum = /*@__PURE__*/ S.String;
+
+export interface FlakinessEntry {
+  /** Distinct alternate hashes the classifier can still match for this snapshot's current baseline. Reads as how many different images this snapshot is currently allowed to produce. Resets when the baseline moves, because tolerations recorded against an old baseline hash can never match again. */
+  variant_count: number;
+  /** Default-branch runs in the last 7 days where this snapshot failed the gate, so somebody could not merge until it was resolved. Counts every result that is not `unchanged`: a diff over a threshold, a baseline that was never committed or was dropped, and a baseline whose story no longer renders. */
+  hard_count: number;
+  /** Default-branch runs in the last 7 days where this snapshot rendered differently from its baseline and a toleration absorbed it, blocking nobody. */
+  soft_count: number;
+  /** Completed default-branch runs of this run type in the last 7 days. The rate denominator, so a reader can tell 2 failures out of 3 runs from 2 out of 300. */
+  window_runs: number;
+  /** `hard_count` over `window_runs`. The denominator counts every run of this run type, so a snapshot that only started rendering partway through the window reads lower than it is. */
+  hard_rate: number;
+  /** `soft_count` over `window_runs`. */
+  soft_rate: number;
+  /** Last default-branch run in the last 30 days that rendered this snapshot differently from its baseline, whether the gate failed or a toleration absorbed it. Reads over the full window rather than the rate span, so a snapshot that stopped failing still reports when it last did. Null when nothing happened at all. */
+  last_flaked_at?: string | null;
+  /** Mean fraction of pixels that differed across the live variants. Separates sub-pixel noise from a small but real rendering change. */
+  avg_diff_percentage?: number | null;
+  /** Largest pixel diff any absorbed run in the last 30 days produced. Reads the full window rather than the rate span, because it asks for the worst case a snapshot can produce and more days are better evidence of that. Null when nothing was absorbed. */
+  worst_soft_diff_percentage?: number | null;
+  /** Fraction of the 2.5% pixel threshold that `worst_soft_diff_percentage` leaves free. A snapshot is absorbed only while it stays under the threshold, so this is what says whether it will keep doing so: 1.0 means it rendered identically every time it was absorbed, 0.0 means it reached the line and only luck kept it on the passing side. Null when nothing was absorbed, which is not the same as full headroom. */
+  headroom?: number | null;
+  /** Days since the first default-branch run that compared against the current baseline, which is when that baseline took effect. Reads too new for a `broken` snapshot, which records a change against an unmoved baseline on every run. */
+  baseline_age_days?: number | null;
+  /** Gate-failing runs per day over the last 30 days, oldest first. Always that length, so a fixed time axis can be rendered. */
+  daily_hard_counts: FlakinessEntryDailyHardCountsList;
+  /** Absorbed runs per day over the same 30 days, oldest first. */
+  daily_soft_counts: FlakinessEntryDailySoftCountsList;
+  /** Index into the daily series where the baseline moved. Null when it moved before the window opened, which is the common case. */
+  baseline_moved_day_index?: number | null;
+  /** An urgency ladder, where each rung asks for a different fix. `broken` fails nearly every run, so its baseline is wrong and quarantining it only hides that. `unstable` fails some runs and not others, the classic flake. `at_risk` never fails, but its worst absorbed diff is already touching the threshold, so the next unrelated change turns it red. `noisy` renders variants and absorbs them with room to spare. `clean` matched its baseline on every run in the window. * `broken` - broken * `unstable` - unstable * `at_risk` - at_risk * `noisy` - noisy * `clean` - clean */
+  flakiness_state: FlakinessStateEnum;
+  /** True when an active quarantine has run out, is about to, or covers a snapshot that has stopped failing the gate. All three mean a human has to extend it or lift it. */
+  needs_decision: boolean;
+  /** Active quarantine details when `is_quarantined` is true. Null otherwise. */
+  quarantine?: BaselineQuarantineSummary | null;
+  identifier: string;
+  run_type: string;
+  browser: string | null;
+  thumbnail_hash: string | null;
+  width: number | null;
+  height: number | null;
+  is_quarantined: boolean;
+}
+export const FlakinessEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    variant_count: S.Number,
+    hard_count: S.Number,
+    soft_count: S.Number,
+    window_runs: S.Number,
+    hard_rate: S.Number,
+    soft_rate: S.Number,
+    last_flaked_at: S.optional(S.NullOr(S.String)),
+    avg_diff_percentage: S.optional(S.NullOr(S.Number)),
+    worst_soft_diff_percentage: S.optional(S.NullOr(S.Number)),
+    headroom: S.optional(S.NullOr(S.Number)),
+    baseline_age_days: S.optional(S.NullOr(S.Number)),
+    daily_hard_counts: FlakinessEntryDailyHardCountsList,
+    daily_soft_counts: FlakinessEntryDailySoftCountsList,
+    baseline_moved_day_index: S.optional(S.NullOr(S.Number)),
+    flakiness_state: FlakinessStateEnum,
+    needs_decision: S.Boolean,
+    quarantine: S.optional(S.NullOr(BaselineQuarantineSummary)),
+    identifier: S.String,
+    run_type: S.String,
+    browser: S.NullOr(S.String),
+    thumbnail_hash: S.NullOr(S.String),
+    width: S.NullOr(S.Number),
+    height: S.NullOr(S.Number),
+    is_quarantined: S.Boolean,
+  }),
+).annotate({ identifier: "FlakinessEntry" }) as any as S.Schema<FlakinessEntry>;
+
+export type FlakinessOverviewEntriesList = Array<FlakinessEntry>;
+export const FlakinessOverviewEntriesList = /*@__PURE__*/ S.Array(
+  FlakinessEntry,
+) as any as S.Schema<FlakinessOverviewEntriesList>;
+
+/** Listed identifiers per run type, so one suite's noise can be told from another's. */
+export type FlakinessTotalsByRunTypeMap = { [key: string]: number | undefined };
+export const FlakinessTotalsByRunTypeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<FlakinessTotalsByRunTypeMap>;
+
+export interface FlakinessTotals {
+  /** Identifiers with an entry in `entries`. */
+  listed: number;
+  /** Identifiers with a current baseline, listed or not. The denominator that says how much of the repo renders consistently. */
+  tracked: number;
+  /** Identifiers whose `flakiness_state` is `broken`. */
+  broken: number;
+  /** Identifiers whose `flakiness_state` is `unstable`. */
+  unstable: number;
+  /** Identifiers whose `flakiness_state` is `at_risk`. */
+  at_risk: number;
+  /** Identifiers whose `flakiness_state` is `noisy`. */
+  noisy: number;
+  /** Identifiers whose `flakiness_state` is `clean`. They are listed because they carry live variants or older history, and reported here so every listed entry is reachable. */
+  clean: number;
+  /** Listed identifiers per run type, so one suite's noise can be told from another's. */
+  by_run_type: FlakinessTotalsByRunTypeMap;
+  quarantined: number;
+  needs_decision: number;
+}
+export const FlakinessTotals = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    listed: S.Number,
+    tracked: S.Number,
+    broken: S.Number,
+    unstable: S.Number,
+    at_risk: S.Number,
+    noisy: S.Number,
+    clean: S.Number,
+    by_run_type: FlakinessTotalsByRunTypeMap,
+    quarantined: S.Number,
+    needs_decision: S.Number,
+  }),
+).annotate({
+  identifier: "FlakinessTotals",
+}) as any as S.Schema<FlakinessTotals>;
+
+export interface FlakinessOverview {
+  entries: FlakinessOverviewEntriesList;
+  totals: FlakinessTotals;
+  truncated: boolean;
+  generated_at: string;
+}
+export const FlakinessOverview = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entries: FlakinessOverviewEntriesList,
+    totals: FlakinessTotals,
+    truncated: S.Boolean,
+    generated_at: S.String,
+  }),
+).annotate({
+  identifier: "FlakinessOverview",
+}) as any as S.Schema<FlakinessOverview>;
+
 export interface VisualReviewReposListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -365,6 +547,7 @@ export interface QuarantinedIdentifierEntry {
   identifier?: string;
   run_type?: string;
   reason?: string;
+  source?: string;
   expires_at?: string | null;
   created_at?: string;
   updated_at?: string;
@@ -377,6 +560,7 @@ export const QuarantinedIdentifierEntry = /*@__PURE__*/ S.suspend(() =>
     identifier: S.optional(S.String),
     run_type: S.optional(S.String),
     reason: S.optional(S.String),
+    source: S.optional(S.String),
     expires_at: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
@@ -390,13 +574,8 @@ export interface VisualReviewReposQuarantineExpireCreateRequest {
   project_id: string;
   id: string;
   run_type: string;
-  /** Snapshot identifier to quarantine. */
-  identifier?: string;
-  /** Why this snapshot is being quarantined. */
-  reason?: string;
-  /** Optional pointer to the run whose failing snapshot prompted this quarantine — used to surface a 'view the failing run' link later. */
-  source_run_id?: string | null;
-  expires_at?: string | null;
+  /** Snapshot identifier to unquarantine */
+  identifier: string;
 }
 export const VisualReviewReposQuarantineExpireCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -404,10 +583,7 @@ export const VisualReviewReposQuarantineExpireCreateRequest =
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       run_type: S.String.pipe(T.Label()),
-      identifier: S.optional(S.String),
-      reason: S.optional(S.String),
-      source_run_id: S.optional(S.NullOr(S.String)),
-      expires_at: S.optional(S.NullOr(S.String)),
+      identifier: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -605,7 +781,7 @@ export const RunMetadataMap = /*@__PURE__*/ S.Record(
 
 export interface Run {
   approved_by?: UserBasicInfo | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of branch/run type, a commit SHA prefix, or an exact PR number) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. * `exact` - exact * `similar` - similar */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of branch/run type, a commit SHA prefix, or an exact PR number) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. * `exact` - exact * `similar` - similar */
   search_match_type?: SearchMatchTypeEnum | null;
   id?: string;
   repo_id?: string;
@@ -783,6 +959,8 @@ export interface VisualReviewReposThumbnailsRetrieveRequest {
   project_id: string;
   id: string;
   identifier: string;
+  /** Narrow the lookup to one run type. The same identifier under two run types is two different images, so omit this only when the caller shows one run type. */
+  run_type?: string;
 }
 export const VisualReviewReposThumbnailsRetrieveRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -790,6 +968,7 @@ export const VisualReviewReposThumbnailsRetrieveRequest =
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       identifier: S.String.pipe(T.Label()),
+      run_type: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1547,6 +1726,21 @@ export const visualReviewReposCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type VisualReviewReposFlakinessRetrieveError = PosthogOpError;
+/** Snapshots in a repo whose rendering cannot be trusted: those that failed the gate or were absorbed by a toleration on a recent default-branch run, and those under an active quarantine. Everything else is omitted, so this is far smaller than the baselines universe; `totals.tracked` gives the full denominator. Each entry carries the share of the last 7 days of default-branch runs that failed the gate (`hard_rate`) and the share a toleration absorbed (`soft_rate`), plus `headroom`, the fraction of the diff threshold its worst absorbed run leaves free. Capped at 2000 entries, which sets `truncated`. Filtering, faceting and search are done client-side; this endpoint takes no filter query params. */
+export const visualReviewReposFlakinessRetrieve: API.OperationMethod<
+  VisualReviewReposFlakinessRetrieveRequest,
+  FlakinessOverview,
+  VisualReviewReposFlakinessRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: VisualReviewReposFlakinessRetrieveRequest,
+  output: FlakinessOverview,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type VisualReviewReposListError =
   | BadRequest
   | Forbidden
@@ -1744,7 +1938,7 @@ export type VisualReviewRunsApproveCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Mark snapshots reviewed (DB only). Records the per-snapshot "Accept change" decision. Does not commit the baseline or change the GitHub gate — call finalize to ship the run. */
+/** Mark snapshots reviewed (DB only). Records the per-snapshot "Accept change" decision. Does not commit the baseline or change the GitHub gate — call finalize to ship the run. Works on a quarantined snapshot too: a quarantined NEW snapshot approved here is committed by finalize, which gives a quarantined story a baseline entry without lifting the quarantine. */
 export const visualReviewRunsApproveCreate: API.OperationMethod<
   VisualReviewRunsApproveCreateRequest,
   Run,
@@ -1814,7 +2008,7 @@ export const visualReviewRunsCreate: API.OperationMethod<
 }));
 
 export type VisualReviewRunsFinalizeCreateError = PosthogOpError;
-/** Finalize a fully-reviewed run: commit the approved baseline and green the gate. Commits exactly the snapshots approved in the DB (tolerated ones keep their baseline) and only succeeds once every changed/new snapshot is resolved. With approve_all=true, any still-pending changed/new snapshot is approved first. With commit_to_github=false the server returns the signed baseline YAML instead of committing it. */
+/** Finalize a fully-reviewed run: commit the approved baseline and green the gate. Commits exactly the snapshots approved in the DB (tolerated ones keep their baseline) and only succeeds once every changed/new snapshot is resolved. With approve_all=true, any still-pending changed/new snapshot is approved first; quarantined snapshots are skipped, but a quarantined NEW snapshot approved by identifier is still committed. With commit_to_github=false the server returns the signed baseline YAML instead of committing it. */
 export const visualReviewRunsFinalizeCreate: API.OperationMethod<
   VisualReviewRunsFinalizeCreateRequest,
   FinalizeResult,

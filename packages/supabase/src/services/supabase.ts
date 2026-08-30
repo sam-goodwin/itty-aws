@@ -174,15 +174,48 @@ export type UpdateCustomHostnameResponseStatus =
   | "5_services_reconfigured";
 export const UpdateCustomHostnameResponseStatus = /*@__PURE__*/ S.String;
 
-export type UpdateCustomHostnameResponseDataErrorsList = Array<unknown>;
+export type UpdateCustomHostnameResponseJsonValueCase0 =
+  | string
+  | number
+  | boolean;
+export const UpdateCustomHostnameResponseJsonValueCase0 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+
+export type UpdateCustomHostnameResponseJsonValueCase1List =
+  Array<UpdateCustomHostnameResponseJsonValue>;
+export const UpdateCustomHostnameResponseJsonValueCase1List =
+  /*@__PURE__*/ S.Array(
+    S.suspend(() => UpdateCustomHostnameResponseJsonValue),
+  ) as any as S.Schema<UpdateCustomHostnameResponseJsonValueCase1List>;
+
+export type UpdateCustomHostnameResponseJsonValueCase2Map = {
+  [key: string]: UpdateCustomHostnameResponseJsonValue | undefined;
+};
+export const UpdateCustomHostnameResponseJsonValueCase2Map =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.suspend(() => UpdateCustomHostnameResponseJsonValue),
+  ) as any as S.Schema<UpdateCustomHostnameResponseJsonValueCase2Map>;
+
+/** Any JSON-serializable value */
+export type UpdateCustomHostnameResponseJsonValue =
+  | UpdateCustomHostnameResponseJsonValueCase0
+  | UpdateCustomHostnameResponseJsonValueCase1List
+  | UpdateCustomHostnameResponseJsonValueCase2Map;
+export const UpdateCustomHostnameResponseJsonValue =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+
+export type UpdateCustomHostnameResponseDataErrorsList =
+  Array<UpdateCustomHostnameResponseJsonValue>;
 export const UpdateCustomHostnameResponseDataErrorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  UpdateCustomHostnameResponseJsonValue,
 ) as any as S.Schema<UpdateCustomHostnameResponseDataErrorsList>;
 
-export type UpdateCustomHostnameResponseDataMessagesList = Array<unknown>;
+export type UpdateCustomHostnameResponseDataMessagesList =
+  Array<UpdateCustomHostnameResponseJsonValue>;
 export const UpdateCustomHostnameResponseDataMessagesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    UpdateCustomHostnameResponseJsonValue,
   ) as any as S.Schema<UpdateCustomHostnameResponseDataMessagesList>;
 
 export interface UpdateCustomHostnameResponseDataResultSslValidationRecordsItem {
@@ -1243,6 +1276,8 @@ export interface V1CreateAProjectRequest {
     | (string & {});
   /** Template URL used to create the project from the CLI. */
   template_url?: string;
+  release_channel?: unknown | null;
+  postgres_engine?: unknown | null;
   /** [Experimental] Whether to enable high availability for the project. */
   high_availability?: boolean;
 }
@@ -1260,6 +1295,8 @@ export const V1CreateAProjectRequest = /*@__PURE__*/ S.suspend(() =>
       V1CreateAProjectRequestDesiredInstanceSize,
     ),
     template_url: S.optional(S.String),
+    release_channel: S.optional(S.NullOr(S.Unknown)),
+    postgres_engine: S.optional(S.NullOr(S.Unknown)),
     high_availability: S.optional(S.Boolean),
   }).pipe(T.Http({ method: "POST", uri: "/v1/projects", code: 200 })),
 ).annotate({
@@ -1491,7 +1528,6 @@ export type CreateProviderResponseSamlNameIdFormat =
 export const CreateProviderResponseSamlNameIdFormat = /*@__PURE__*/ S.String;
 
 export interface CreateProviderResponseSaml {
-  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -1500,7 +1536,6 @@ export interface CreateProviderResponseSaml {
 }
 export const CreateProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -1512,14 +1547,12 @@ export const CreateProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProviderResponseSaml>;
 
 export interface CreateProviderResponseDomainsItem {
-  id: string;
   domain?: string;
   created_at?: string;
   updated_at?: string;
 }
 export const CreateProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     domain: S.optional(S.String),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
@@ -1585,7 +1618,7 @@ export interface SigningKeyResponse {
   id: string;
   algorithm: SigningKeyResponseAlgorithm;
   status: SigningKeyResponseStatus;
-  public_jwk?: unknown | null;
+  public_jwk: unknown | null;
   created_at: string;
   updated_at: string;
 }
@@ -1594,7 +1627,7 @@ export const SigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     algorithm: SigningKeyResponseAlgorithm,
     status: SigningKeyResponseStatus,
-    public_jwk: S.optional(S.NullOr(S.Unknown)),
+    public_jwk: S.NullOr(S.Unknown),
     created_at: S.String,
     updated_at: S.String,
   }),
@@ -1652,8 +1685,8 @@ export const V1CreateProjectApiKeyRequestSecretJwtTemplateMap =
 export interface V1CreateProjectApiKeyRequest {
   /** Project ref */
   ref: string;
-  /** Boolean string, true or false */
-  reveal?: boolean;
+  /** Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
+  reveal?: string;
   type: V1CreateProjectApiKeyRequestType | (string & {});
   name: string;
   description?: string | null;
@@ -1662,7 +1695,7 @@ export interface V1CreateProjectApiKeyRequest {
 export const V1CreateProjectApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
-    reveal: S.optional(S.Boolean.pipe(T.Query())),
+    reveal: S.optional(S.String.pipe(T.Query())),
     type: V1CreateProjectApiKeyRequestType,
     name: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -2182,12 +2215,12 @@ export interface V1DeleteABranchRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
   /** If set to false, schedule deletion with 1-hour grace period (only when soft deletion is enabled). */
-  force?: boolean;
+  force?: string;
 }
 export const V1DeleteABranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch_id_or_ref: S.String.pipe(T.Label()),
-    force: S.optional(S.Boolean.pipe(T.Query())),
+    force: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2356,7 +2389,6 @@ export type DeleteProviderResponseSamlNameIdFormat =
 export const DeleteProviderResponseSamlNameIdFormat = /*@__PURE__*/ S.String;
 
 export interface DeleteProviderResponseSaml {
-  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -2365,7 +2397,6 @@ export interface DeleteProviderResponseSaml {
 }
 export const DeleteProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -2410,12 +2441,12 @@ export interface V1DeleteHostnameConfigRequest {
   /** Project ref */
   ref: string;
   /** If true, also removes the custom domain add-on from the project subscription. */
-  remove_addon?: boolean;
+  remove_addon?: string;
 }
 export const V1DeleteHostnameConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
-    remove_addon: S.optional(S.Boolean.pipe(T.Query())),
+    remove_addon: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2566,17 +2597,17 @@ export interface V1DeleteProjectApiKeyRequest {
   ref: string;
   id: string;
   /** Boolean string, true or false */
-  reveal?: boolean;
+  reveal?: string;
   /** Boolean string, true or false */
-  was_compromised?: boolean;
+  was_compromised?: string;
   reason?: string;
 }
 export const V1DeleteProjectApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    reveal: S.optional(S.Boolean.pipe(T.Query())),
-    was_compromised: S.optional(S.Boolean.pipe(T.Query())),
+    reveal: S.optional(S.String.pipe(T.Query())),
+    was_compromised: S.optional(S.String.pipe(T.Query())),
     reason: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -2671,17 +2702,16 @@ export interface V1DeployAFunctionRequest {
   /** Project ref */
   ref: string;
   slug?: string;
-  /** Boolean string, true or false */
-  bundleOnly?: boolean;
-  file?: V1DeployAFunctionRequestFileList;
+  bundleOnly?: string;
+  file: V1DeployAFunctionRequestFileList;
   metadata: V1DeployAFunctionRequestMetadata;
 }
 export const V1DeployAFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
     slug: S.optional(S.String.pipe(T.Query())),
-    bundleOnly: S.optional(S.Boolean.pipe(T.Query())),
-    file: S.optional(V1DeployAFunctionRequestFileList),
+    bundleOnly: S.optional(S.String.pipe(T.Query())),
+    file: V1DeployAFunctionRequestFileList,
     metadata: V1DeployAFunctionRequestMetadata,
   }).pipe(
     T.Http({
@@ -2735,14 +2765,14 @@ export interface V1DiffABranchRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
   included_schemas?: string;
-  /** Use pg-delta instead of Migra for diffing when true */
-  pgdelta?: boolean;
+  /** Use pg-delta instead of Migra for diffing when true. Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
+  pgdelta?: string;
 }
 export const V1DiffABranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch_id_or_ref: S.String.pipe(T.Label()),
     included_schemas: S.optional(S.String.pipe(T.Query())),
-    pgdelta: S.optional(S.Boolean.pipe(T.Query())),
+    pgdelta: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3280,26 +3310,26 @@ export const OrganizationProjectsResponseProjectsItemStatus =
   /*@__PURE__*/ S.String;
 
 export type OrganizationProjectsResponseProjectsItemDatabasesItemInfraComputeSize =
-    | "pico"
-    | "nano"
-    | "micro"
-    | "small"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "2xlarge"
-    | "4xlarge"
-    | "8xlarge"
-    | "12xlarge"
-    | "16xlarge"
-    | "24xlarge"
-    | "24xlarge_optimized_memory"
-    | "24xlarge_optimized_cpu"
-    | "24xlarge_high_memory"
-    | "48xlarge"
-    | "48xlarge_optimized_memory"
-    | "48xlarge_optimized_cpu"
-    | "48xlarge_high_memory";
+  | "pico"
+  | "nano"
+  | "micro"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "2xlarge"
+  | "4xlarge"
+  | "8xlarge"
+  | "12xlarge"
+  | "16xlarge"
+  | "24xlarge"
+  | "24xlarge_optimized_memory"
+  | "24xlarge_optimized_cpu"
+  | "24xlarge_high_memory"
+  | "48xlarge"
+  | "48xlarge_optimized_memory"
+  | "48xlarge_optimized_cpu"
+  | "48xlarge_high_memory";
 export const OrganizationProjectsResponseProjectsItemDatabasesItemInfraComputeSize =
   /*@__PURE__*/ S.String;
 
@@ -3739,7 +3769,6 @@ export type GetProviderResponseSamlNameIdFormat =
 export const GetProviderResponseSamlNameIdFormat = /*@__PURE__*/ S.String;
 
 export interface GetProviderResponseSaml {
-  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -3748,7 +3777,6 @@ export interface GetProviderResponseSaml {
 }
 export const GetProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -4438,7 +4466,6 @@ export const RegionsInfoRecommendationsSpecificItemType =
 
 export type RegionsInfoRecommendationsSpecificItemProvider =
   | "AWS"
-  | "FLY"
   | "AWS_K8S"
   | "AWS_NIMBUS";
 export const RegionsInfoRecommendationsSpecificItemProvider =
@@ -4539,7 +4566,6 @@ export const RegionsInfoAllSpecificItemType = /*@__PURE__*/ S.String;
 
 export type RegionsInfoAllSpecificItemProvider =
   | "AWS"
-  | "FLY"
   | "AWS_K8S"
   | "AWS_NIMBUS";
 export const RegionsInfoAllSpecificItemProvider = /*@__PURE__*/ S.String;
@@ -4823,54 +4849,58 @@ export const V1GetJitAccessConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1GetJitAccessConfigRequest",
 }) as any as S.Schema<V1GetJitAccessConfigRequest>;
 
-export type JitStateResponseCase0State = "enabled" | "disabled";
-export const JitStateResponseCase0State = /*@__PURE__*/ S.String;
+export type V1GetJitAccessConfigResponseBodyCase0State = "enabled" | "disabled";
+export const V1GetJitAccessConfigResponseBodyCase0State =
+  /*@__PURE__*/ S.String;
 
-export interface JitStateResponseCase0 {
-  state: JitStateResponseCase0State;
+export interface V1GetJitAccessConfigResponseBodyCase0 {
+  state: V1GetJitAccessConfigResponseBodyCase0State;
   appliedSuccessfully?: boolean;
 }
-export const JitStateResponseCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: JitStateResponseCase0State,
-    appliedSuccessfully: S.optional(S.Boolean),
-  }),
+export const V1GetJitAccessConfigResponseBodyCase0 = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: V1GetJitAccessConfigResponseBodyCase0State,
+      appliedSuccessfully: S.optional(S.Boolean),
+    }),
 ).annotate({
-  identifier: "JitStateResponseCase0",
-}) as any as S.Schema<JitStateResponseCase0>;
+  identifier: "V1GetJitAccessConfigResponseBodyCase0",
+}) as any as S.Schema<V1GetJitAccessConfigResponseBodyCase0>;
 
-export type JitStateResponseCase1State = "unavailable";
-export const JitStateResponseCase1State = /*@__PURE__*/ S.String;
-
-export type JitStateResponseCase1UnavailableReason =
+export type V1GetJitAccessConfigResponseBodyCase1UnavailableReason =
   | "postgres_upgrade_required"
+  | "ssl_enforcement_required"
   | "temporarily_unavailable";
-export const JitStateResponseCase1UnavailableReason = /*@__PURE__*/ S.String;
+export const V1GetJitAccessConfigResponseBodyCase1UnavailableReason =
+  /*@__PURE__*/ S.String;
 
-export interface JitStateResponseCase1 {
-  state: JitStateResponseCase1State;
-  unavailableReason: JitStateResponseCase1UnavailableReason;
+export interface V1GetJitAccessConfigResponseBodyCase1 {
+  state: string;
+  unavailableReason: V1GetJitAccessConfigResponseBodyCase1UnavailableReason;
 }
-export const JitStateResponseCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: JitStateResponseCase1State,
-    unavailableReason: JitStateResponseCase1UnavailableReason,
-  }),
+export const V1GetJitAccessConfigResponseBodyCase1 = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: S.String,
+      unavailableReason: V1GetJitAccessConfigResponseBodyCase1UnavailableReason,
+    }),
 ).annotate({
-  identifier: "JitStateResponseCase1",
-}) as any as S.Schema<JitStateResponseCase1>;
+  identifier: "V1GetJitAccessConfigResponseBodyCase1",
+}) as any as S.Schema<V1GetJitAccessConfigResponseBodyCase1>;
 
-export type JitStateResponse = JitStateResponseCase0 | JitStateResponseCase1;
-export const JitStateResponse = /*@__PURE__*/ S.Unknown.pipe(
+export type V1GetJitAccessConfigResponseBody =
+  | V1GetJitAccessConfigResponseBodyCase0
+  | V1GetJitAccessConfigResponseBodyCase1;
+export const V1GetJitAccessConfigResponseBody = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["state", "appliedSuccessfully"],
     ["state", "unavailableReason"],
   ]),
 );
 
-export type V1GetJitAccessConfigResponse = JitStateResponse;
+export type V1GetJitAccessConfigResponse = V1GetJitAccessConfigResponseBody;
 export const V1GetJitAccessConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  JitStateResponse.pipe(T.RawResponseRoot()),
+  V1GetJitAccessConfigResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "V1GetJitAccessConfigResponse",
 }) as any as S.Schema<V1GetJitAccessConfigResponse>;
@@ -5083,8 +5113,10 @@ export type V1ListEntitlementsResponseEntitlementsItemFeatureKey =
   | "project_restore_after_expiry"
   | "assistant.advance_model"
   | "integrations.github_connections"
+  | "integrations.github_push_webhooks_limit"
   | "dedicated_pooler"
   | "observability.dashboard_advanced_metrics"
+  | "api.members.invitations"
   | "api.members.roles";
 export const V1ListEntitlementsResponseEntitlementsItemFeatureKey =
   /*@__PURE__*/ S.String;
@@ -5398,6 +5430,7 @@ export const V1GetPgsodiumConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1GetPgsodiumConfigRequest>;
 
 export interface PgsodiumConfigResponse {
+  /** The pgsodium root key: 32 bytes, hex-encoded (64 characters). */
   root_key: string;
 }
 export const PgsodiumConfigResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5523,6 +5556,7 @@ export interface PostgresConfigResponse {
   track_activity_query_size?: string;
   max_connections?: number;
   max_locks_per_transaction?: number;
+  max_logical_replication_workers?: number;
   max_parallel_maintenance_workers?: number;
   max_parallel_workers?: number;
   max_parallel_workers_per_gather?: number;
@@ -5530,6 +5564,7 @@ export interface PostgresConfigResponse {
   max_slot_wal_keep_size?: string;
   max_standby_archive_delay?: string;
   max_standby_streaming_delay?: string;
+  max_sync_workers_per_subscription?: number;
   max_wal_size?: string;
   max_wal_senders?: number;
   max_worker_processes?: number;
@@ -5567,6 +5602,7 @@ export const PostgresConfigResponse = /*@__PURE__*/ S.suspend(() =>
     track_activity_query_size: S.optional(S.String),
     max_connections: S.optional(S.Number),
     max_locks_per_transaction: S.optional(S.Number),
+    max_logical_replication_workers: S.optional(S.Number),
     max_parallel_maintenance_workers: S.optional(S.Number),
     max_parallel_workers: S.optional(S.Number),
     max_parallel_workers_per_gather: S.optional(S.Number),
@@ -5574,6 +5610,7 @@ export const PostgresConfigResponse = /*@__PURE__*/ S.suspend(() =>
     max_slot_wal_keep_size: S.optional(S.String),
     max_standby_archive_delay: S.optional(S.String),
     max_standby_streaming_delay: S.optional(S.String),
+    max_sync_workers_per_subscription: S.optional(S.Number),
     max_wal_size: S.optional(S.String),
     max_wal_senders: S.optional(S.Number),
     max_worker_processes: S.optional(S.Number),
@@ -5613,6 +5650,8 @@ export interface PostgrestConfigWithJWTSecretResponse {
   db_extra_search_path: string;
   /** If `null`, the value is automatically configured based on compute size. */
   db_pool: number | null;
+  /** If `null`, the value is automatically configured to 10. */
+  db_pool_acquisition_timeout: number | null;
   jwt_secret?: T.Sensitive;
 }
 export const PostgrestConfigWithJWTSecretResponse = /*@__PURE__*/ S.suspend(
@@ -5622,6 +5661,7 @@ export const PostgrestConfigWithJWTSecretResponse = /*@__PURE__*/ S.suspend(
       max_rows: S.Number,
       db_extra_search_path: S.String,
       db_pool: S.NullOr(S.Number),
+      db_pool_acquisition_timeout: S.NullOr(S.Number),
       jwt_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
     }),
 ).annotate({
@@ -5658,12 +5698,21 @@ export const ProjectUpgradeEligibilityResponseCurrentAppVersionReleaseChannel =
   /*@__PURE__*/ S.String;
 
 export type ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItemPostgresVersion =
-  "13" | "14" | "15" | "17" | "17-oriole";
+  | "13"
+  | "14"
+  | "15"
+  | "17"
+  | "17-oriole";
 export const ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItemPostgresVersion =
   /*@__PURE__*/ S.String;
 
 export type ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItemReleaseChannel =
-  "internal" | "alpha" | "beta" | "ga" | "withdrawn" | "preview";
+  | "internal"
+  | "alpha"
+  | "beta"
+  | "ga"
+  | "withdrawn"
+  | "preview";
 export const ProjectUpgradeEligibilityResponseTargetUpgradeVersionsItemReleaseChannel =
   /*@__PURE__*/ S.String;
 
@@ -5864,11 +5913,21 @@ export type ProjectUpgradeEligibilityResponseValidationErrorsItemCase6Type =
 export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase6Type =
   /*@__PURE__*/ S.String;
 
-export type ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType =
-  | "table"
-  | "function";
-export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType =
+export type ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase0 =
+  "table";
+export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase0 =
   /*@__PURE__*/ S.String;
+
+export type ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase1 =
+  "function";
+export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase1 =
+  /*@__PURE__*/ S.String;
+
+export type ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType =
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase0
+  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase1;
+export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export interface ProjectUpgradeEligibilityResponseValidationErrorsItemCase6 {
   type: ProjectUpgradeEligibilityResponseValidationErrorsItemCase6Type;
@@ -6282,14 +6341,14 @@ export interface V1GetProjectApiKeyRequest {
   /** Project ref */
   ref: string;
   id: string;
-  /** Boolean string, true or false */
-  reveal?: boolean;
+  /** Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
+  reveal?: string;
 }
 export const V1GetProjectApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    reveal: S.optional(S.Boolean.pipe(T.Query())),
+    reveal: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6304,13 +6363,13 @@ export const V1GetProjectApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface V1GetProjectApiKeysRequest {
   /** Project ref */
   ref: string;
-  /** Boolean string, true or false */
-  reveal?: boolean;
+  /** Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
+  reveal?: string;
 }
 export const V1GetProjectApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
-    reveal: S.optional(S.Boolean.pipe(T.Query())),
+    reveal: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({ method: "GET", uri: "/v1/projects/{ref}/api-keys", code: 200 }),
   ),
@@ -6529,7 +6588,7 @@ export const LegacyApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
 export interface V1GetProjectLogsRequest {
   /** Project ref */
   ref: string;
-  /** Custom SQL query to execute on the logs. See [querying logs](/docs/guides/telemetry/logs?queryGroups=product&product=postgres&queryGroups=source&source=edge_logs#querying-with-the-logs-explorer) for more details. */
+  /** Custom SQL query to execute on the logs. See [querying logs](https://supabase.com/docs/guides/monitoring-and-debugging/logs#querying-with-the-logs-explorer) for more details. */
   sql?: string;
   iso_timestamp_start?: string;
   iso_timestamp_end?: string;
@@ -6658,7 +6717,7 @@ export interface SigningKeysResponseKeysItem {
   id: string;
   algorithm: SigningKeysResponseKeysItemAlgorithm;
   status: SigningKeysResponseKeysItemStatus;
-  public_jwk?: unknown | null;
+  public_jwk: unknown | null;
   created_at: string;
   updated_at: string;
 }
@@ -6667,7 +6726,7 @@ export const SigningKeysResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     algorithm: SigningKeysResponseKeysItemAlgorithm,
     status: SigningKeysResponseKeysItemStatus,
-    public_jwk: S.optional(S.NullOr(S.Unknown)),
+    public_jwk: S.NullOr(S.Unknown),
     created_at: S.String,
     updated_at: S.String,
   }),
@@ -6960,6 +7019,8 @@ export interface RealtimeConfigResponse {
   private_only: boolean | null;
   /** Sets connection pool size for Realtime Authorization */
   connection_pool: number | null;
+  /** Sets connection pool size used to create Postgres Changes subscriptions */
+  postgres_changes_pool: number | null;
   /** Sets maximum number of concurrent users rate limit */
   max_concurrent_users: number | null;
   /** Sets maximum number of events per second rate per channel limit */
@@ -6983,6 +7044,7 @@ export const RealtimeConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     private_only: S.NullOr(S.Boolean),
     connection_pool: S.NullOr(S.Number),
+    postgres_changes_pool: S.NullOr(S.Number),
     max_concurrent_users: S.NullOr(S.Number),
     max_events_per_second: S.NullOr(S.Number),
     max_bytes_per_second: S.NullOr(S.Number),
@@ -7017,7 +7079,7 @@ export const V1GetRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1GetRestorePointRequest",
 }) as any as S.Schema<V1GetRestorePointRequest>;
 
-export type V1GetServicesHealthRequestServicesItem =
+export type V1GetServicesHealthRequestServicesCase1Item =
   | "auth"
   | "db"
   | "db_postgres_user"
@@ -7026,25 +7088,36 @@ export type V1GetServicesHealthRequestServicesItem =
   | "rest"
   | "storage"
   | "pg_bouncer";
-export const V1GetServicesHealthRequestServicesItem = /*@__PURE__*/ S.String;
+export const V1GetServicesHealthRequestServicesCase1Item =
+  /*@__PURE__*/ S.String;
 
-export type V1GetServicesHealthRequestServicesList = Array<
-  V1GetServicesHealthRequestServicesItem | (string & {})
+/** Array of enums. */
+export type V1GetServicesHealthRequestServicesCase1List = Array<
+  V1GetServicesHealthRequestServicesCase1Item | (string & {})
 >;
-export const V1GetServicesHealthRequestServicesList = /*@__PURE__*/ S.Array(
-  V1GetServicesHealthRequestServicesItem,
-) as any as S.Schema<V1GetServicesHealthRequestServicesList>;
+export const V1GetServicesHealthRequestServicesCase1List =
+  /*@__PURE__*/ S.Array(
+    V1GetServicesHealthRequestServicesCase1Item,
+  ) as any as S.Schema<V1GetServicesHealthRequestServicesCase1List>;
+
+export type V1GetServicesHealthRequestServices =
+  | string
+  | V1GetServicesHealthRequestServicesCase1List;
+export const V1GetServicesHealthRequestServices = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
 
 export interface V1GetServicesHealthRequest {
   /** Project ref */
   ref: string;
-  services: V1GetServicesHealthRequestServicesList;
+  /** Comma-separated list of enums or array of enums. */
+  services: V1GetServicesHealthRequestServices;
   timeout_ms?: number;
 }
 export const V1GetServicesHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
-    services: V1GetServicesHealthRequestServicesList.pipe(T.Query()),
+    services: V1GetServicesHealthRequestServices.pipe(T.Query()),
     timeout_ms: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({ method: "GET", uri: "/v1/projects/{ref}/health", code: 200 }),
@@ -8155,7 +8228,10 @@ export const ListProvidersResponseItemsItemSamlAttributeMappingKeysValueNamesLis
   ) as any as S.Schema<ListProvidersResponseItemsItemSamlAttributeMappingKeysValueNamesList>;
 
 export type ListProvidersResponseItemsItemSamlAttributeMappingKeysValueDefault =
-  unknown | number | string | boolean;
+  | unknown
+  | number
+  | string
+  | boolean;
 export const ListProvidersResponseItemsItemSamlAttributeMappingKeysValueDefault =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
 
@@ -8213,7 +8289,6 @@ export const ListProvidersResponseItemsItemSamlNameIdFormat =
   /*@__PURE__*/ S.String;
 
 export interface ListProvidersResponseItemsItemSaml {
-  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -8222,7 +8297,6 @@ export interface ListProvidersResponseItemsItemSaml {
 }
 export const ListProvidersResponseItemsItemSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -8298,12 +8372,21 @@ export const V1ListAvailableRestoreVersionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1ListAvailableRestoreVersionsRequest>;
 
 export type GetProjectAvailableRestoreVersionsResponseAvailableVersionsItemReleaseChannel =
-  "internal" | "alpha" | "beta" | "ga" | "withdrawn" | "preview";
+  | "internal"
+  | "alpha"
+  | "beta"
+  | "ga"
+  | "withdrawn"
+  | "preview";
 export const GetProjectAvailableRestoreVersionsResponseAvailableVersionsItemReleaseChannel =
   /*@__PURE__*/ S.String;
 
 export type GetProjectAvailableRestoreVersionsResponseAvailableVersionsItemPostgresEngine =
-  "13" | "14" | "15" | "17" | "17-oriole";
+  | "13"
+  | "14"
+  | "15"
+  | "17"
+  | "17-oriole";
 export const GetProjectAvailableRestoreVersionsResponseAvailableVersionsItemPostgresEngine =
   /*@__PURE__*/ S.String;
 
@@ -8796,12 +8879,40 @@ export const ListProjectAddonsResponseSelectedAddonsItemVariantPrice =
     identifier: "ListProjectAddonsResponseSelectedAddonsItemVariantPrice",
   }) as any as S.Schema<ListProjectAddonsResponseSelectedAddonsItemVariantPrice>;
 
+export type ListProjectAddonsResponseJsonValueCase0 = string | number | boolean;
+export const ListProjectAddonsResponseJsonValueCase0 =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
+
+export type ListProjectAddonsResponseJsonValueCase1List =
+  Array<ListProjectAddonsResponseJsonValue>;
+export const ListProjectAddonsResponseJsonValueCase1List =
+  /*@__PURE__*/ S.Array(
+    S.suspend(() => ListProjectAddonsResponseJsonValue),
+  ) as any as S.Schema<ListProjectAddonsResponseJsonValueCase1List>;
+
+export type ListProjectAddonsResponseJsonValueCase2Map = {
+  [key: string]: ListProjectAddonsResponseJsonValue | undefined;
+};
+export const ListProjectAddonsResponseJsonValueCase2Map =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.suspend(() => ListProjectAddonsResponseJsonValue),
+  ) as any as S.Schema<ListProjectAddonsResponseJsonValueCase2Map>;
+
+/** Any JSON-serializable value */
+export type ListProjectAddonsResponseJsonValue =
+  | ListProjectAddonsResponseJsonValueCase0
+  | ListProjectAddonsResponseJsonValueCase1List
+  | ListProjectAddonsResponseJsonValueCase2Map;
+export const ListProjectAddonsResponseJsonValue = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], [], []]),
+);
+
 export interface ListProjectAddonsResponseSelectedAddonsItemVariant {
   id: ListProjectAddonsResponseSelectedAddonsItemVariantId;
   name: string;
   price: ListProjectAddonsResponseSelectedAddonsItemVariantPrice;
-  /** Any JSON-serializable value */
-  meta?: unknown;
+  meta?: ListProjectAddonsResponseJsonValue;
 }
 export const ListProjectAddonsResponseSelectedAddonsItemVariant =
   /*@__PURE__*/ S.suspend(() =>
@@ -8809,7 +8920,7 @@ export const ListProjectAddonsResponseSelectedAddonsItemVariant =
       id: ListProjectAddonsResponseSelectedAddonsItemVariantId,
       name: S.String,
       price: ListProjectAddonsResponseSelectedAddonsItemVariantPrice,
-      meta: S.optional(S.Unknown),
+      meta: S.optional(ListProjectAddonsResponseJsonValue),
     }),
   ).annotate({
     identifier: "ListProjectAddonsResponseSelectedAddonsItemVariant",
@@ -8926,7 +9037,8 @@ export const ListProjectAddonsResponseAvailableAddonsItemVariantsItemPriceType =
   /*@__PURE__*/ S.String;
 
 export type ListProjectAddonsResponseAvailableAddonsItemVariantsItemPriceInterval =
-  "monthly" | "hourly";
+  | "monthly"
+  | "hourly";
 export const ListProjectAddonsResponseAvailableAddonsItemVariantsItemPriceInterval =
   /*@__PURE__*/ S.String;
 
@@ -8953,8 +9065,7 @@ export interface ListProjectAddonsResponseAvailableAddonsItemVariantsItem {
   id: ListProjectAddonsResponseAvailableAddonsItemVariantsItemId;
   name: string;
   price: ListProjectAddonsResponseAvailableAddonsItemVariantsItemPrice;
-  /** Any JSON-serializable value */
-  meta?: unknown;
+  meta?: ListProjectAddonsResponseJsonValue;
 }
 export const ListProjectAddonsResponseAvailableAddonsItemVariantsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -8962,7 +9073,7 @@ export const ListProjectAddonsResponseAvailableAddonsItemVariantsItem =
       id: ListProjectAddonsResponseAvailableAddonsItemVariantsItemId,
       name: S.String,
       price: ListProjectAddonsResponseAvailableAddonsItemVariantsItemPrice,
-      meta: S.optional(S.Unknown),
+      meta: S.optional(ListProjectAddonsResponseJsonValue),
     }),
   ).annotate({
     identifier: "ListProjectAddonsResponseAvailableAddonsItemVariantsItem",
@@ -9833,6 +9944,31 @@ export const V1RunAQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1RunAQueryResponse",
 }) as any as S.Schema<V1RunAQueryResponse>;
 
+export interface V1ScrapeProjectMetricsRequest {
+  /** Project ref */
+  ref: string;
+}
+export const V1ScrapeProjectMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ref: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/v1/projects/{ref}/analytics/endpoints/metrics",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "V1ScrapeProjectMetricsRequest",
+}) as any as S.Schema<V1ScrapeProjectMetricsRequest>;
+
+export interface V1ScrapeProjectMetricsResponse {}
+export const V1ScrapeProjectMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "V1ScrapeProjectMetricsResponse",
+}) as any as S.Schema<V1ScrapeProjectMetricsResponse>;
+
 /** Region you want your read replica to reside in */
 export type V1SetupAReadReplicaRequestReadReplicaRegion =
   | "us-east-1"
@@ -10103,10 +10239,8 @@ export interface V1UpdateAFunctionRequest {
   function_slug: string;
   slug?: string;
   name?: string;
-  /** Boolean string, true or false */
-  verify_jwt?: boolean;
-  /** Boolean string, true or false */
-  import_map?: boolean;
+  verify_jwt?: string;
+  import_map?: string;
   entrypoint_path?: string;
   import_map_path?: string;
   ezbr_sha256?: string;
@@ -10118,8 +10252,8 @@ export const V1UpdateAFunctionRequest = /*@__PURE__*/ S.suspend(() =>
     function_slug: S.String.pipe(T.Label()),
     slug: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
-    verify_jwt: S.optional(S.Boolean.pipe(T.Query())),
-    import_map: S.optional(S.Boolean.pipe(T.Query())),
+    verify_jwt: S.optional(S.String.pipe(T.Query())),
+    import_map: S.optional(S.String.pipe(T.Query())),
     entrypoint_path: S.optional(S.String.pipe(T.Query())),
     import_map_path: S.optional(S.String.pipe(T.Query())),
     ezbr_sha256: S.optional(S.String.pipe(T.Query())),
@@ -10319,7 +10453,6 @@ export type UpdateProviderResponseSamlNameIdFormat =
 export const UpdateProviderResponseSamlNameIdFormat = /*@__PURE__*/ S.String;
 
 export interface UpdateProviderResponseSaml {
-  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -10328,7 +10461,6 @@ export interface UpdateProviderResponseSaml {
 }
 export const UpdateProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -11172,9 +11304,62 @@ export const V1UpdateJitAccessConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1UpdateJitAccessConfigRequest",
 }) as any as S.Schema<V1UpdateJitAccessConfigRequest>;
 
-export type V1UpdateJitAccessConfigResponse = JitStateResponse;
+export type V1UpdateJitAccessConfigResponseBodyCase0State =
+  | "enabled"
+  | "disabled";
+export const V1UpdateJitAccessConfigResponseBodyCase0State =
+  /*@__PURE__*/ S.String;
+
+export interface V1UpdateJitAccessConfigResponseBodyCase0 {
+  state: V1UpdateJitAccessConfigResponseBodyCase0State;
+  appliedSuccessfully?: boolean;
+}
+export const V1UpdateJitAccessConfigResponseBodyCase0 = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: V1UpdateJitAccessConfigResponseBodyCase0State,
+      appliedSuccessfully: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "V1UpdateJitAccessConfigResponseBodyCase0",
+}) as any as S.Schema<V1UpdateJitAccessConfigResponseBodyCase0>;
+
+export type V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason =
+  | "postgres_upgrade_required"
+  | "ssl_enforcement_required"
+  | "temporarily_unavailable";
+export const V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason =
+  /*@__PURE__*/ S.String;
+
+export interface V1UpdateJitAccessConfigResponseBodyCase1 {
+  state: string;
+  unavailableReason: V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason;
+}
+export const V1UpdateJitAccessConfigResponseBodyCase1 = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: S.String,
+      unavailableReason:
+        V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason,
+    }),
+).annotate({
+  identifier: "V1UpdateJitAccessConfigResponseBodyCase1",
+}) as any as S.Schema<V1UpdateJitAccessConfigResponseBodyCase1>;
+
+export type V1UpdateJitAccessConfigResponseBody =
+  | V1UpdateJitAccessConfigResponseBodyCase0
+  | V1UpdateJitAccessConfigResponseBodyCase1;
+export const V1UpdateJitAccessConfigResponseBody = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["state", "appliedSuccessfully"],
+    ["state", "unavailableReason"],
+  ]),
+);
+
+export type V1UpdateJitAccessConfigResponse =
+  V1UpdateJitAccessConfigResponseBody;
 export const V1UpdateJitAccessConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  JitStateResponse.pipe(T.RawResponseRoot()),
+  V1UpdateJitAccessConfigResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "V1UpdateJitAccessConfigResponse",
 }) as any as S.Schema<V1UpdateJitAccessConfigResponse>;
@@ -11222,6 +11407,7 @@ export const V1UpdateNetworkRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface V1UpdatePgsodiumConfigRequest {
   /** Project ref */
   ref: string;
+  /** The pgsodium root key: 32 bytes, hex-encoded (64 characters). */
   root_key: string;
 }
 export const V1UpdatePgsodiumConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11304,6 +11490,7 @@ export interface V1UpdatePostgresConfigRequest {
   track_activity_query_size?: string;
   max_connections?: number;
   max_locks_per_transaction?: number;
+  max_logical_replication_workers?: number;
   max_parallel_maintenance_workers?: number;
   max_parallel_workers?: number;
   max_parallel_workers_per_gather?: number;
@@ -11311,6 +11498,7 @@ export interface V1UpdatePostgresConfigRequest {
   max_slot_wal_keep_size?: string;
   max_standby_archive_delay?: string;
   max_standby_streaming_delay?: string;
+  max_sync_workers_per_subscription?: number;
   max_wal_size?: string;
   max_wal_senders?: number;
   max_worker_processes?: number;
@@ -11352,6 +11540,7 @@ export const V1UpdatePostgresConfigRequest = /*@__PURE__*/ S.suspend(() =>
     track_activity_query_size: S.optional(S.String),
     max_connections: S.optional(S.Number),
     max_locks_per_transaction: S.optional(S.Number),
+    max_logical_replication_workers: S.optional(S.Number),
     max_parallel_maintenance_workers: S.optional(S.Number),
     max_parallel_workers: S.optional(S.Number),
     max_parallel_workers_per_gather: S.optional(S.Number),
@@ -11359,6 +11548,7 @@ export const V1UpdatePostgresConfigRequest = /*@__PURE__*/ S.suspend(() =>
     max_slot_wal_keep_size: S.optional(S.String),
     max_standby_archive_delay: S.optional(S.String),
     max_standby_streaming_delay: S.optional(S.String),
+    max_sync_workers_per_subscription: S.optional(S.Number),
     max_wal_size: S.optional(S.String),
     max_wal_senders: S.optional(S.Number),
     max_worker_processes: S.optional(S.Number),
@@ -11392,6 +11582,7 @@ export interface V1UpdatePostgrestServiceConfigRequest {
   db_schema?: string;
   max_rows?: number;
   db_pool?: number;
+  db_pool_acquisition_timeout?: number;
 }
 export const V1UpdatePostgrestServiceConfigRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11401,6 +11592,7 @@ export const V1UpdatePostgrestServiceConfigRequest = /*@__PURE__*/ S.suspend(
       db_schema: S.optional(S.String),
       max_rows: S.optional(S.Number),
       db_pool: S.optional(S.Number),
+      db_pool_acquisition_timeout: S.optional(S.Number),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -11418,6 +11610,8 @@ export interface V1PostgrestConfigResponse {
   db_extra_search_path: string;
   /** If `null`, the value is automatically configured based on compute size. */
   db_pool: number | null;
+  /** If `null`, the value is automatically configured to 10. */
+  db_pool_acquisition_timeout: number | null;
 }
 export const V1PostgrestConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11425,6 +11619,7 @@ export const V1PostgrestConfigResponse = /*@__PURE__*/ S.suspend(() =>
     max_rows: S.Number,
     db_extra_search_path: S.String,
     db_pool: S.NullOr(S.Number),
+    db_pool_acquisition_timeout: S.NullOr(S.Number),
   }),
 ).annotate({
   identifier: "V1PostgrestConfigResponse",
@@ -11443,8 +11638,8 @@ export interface V1UpdateProjectApiKeyRequest {
   /** Project ref */
   ref: string;
   id: string;
-  /** Boolean string, true or false */
-  reveal?: boolean;
+  /** Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
+  reveal?: string;
   name?: string;
   description?: string | null;
   secret_jwt_template?: V1UpdateProjectApiKeyRequestSecretJwtTemplateMap | null;
@@ -11453,7 +11648,7 @@ export const V1UpdateProjectApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    reveal: S.optional(S.Boolean.pipe(T.Query())),
+    reveal: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
     secret_jwt_template: S.optional(
@@ -11473,13 +11668,13 @@ export const V1UpdateProjectApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface V1UpdateProjectLegacyApiKeysRequest {
   /** Project ref */
   ref: string;
-  /** Boolean string, true or false */
-  enabled: boolean;
+  /** Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
+  enabled: string;
 }
 export const V1UpdateProjectLegacyApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String.pipe(T.Label()),
-    enabled: S.Boolean.pipe(T.Query()),
+    enabled: S.String.pipe(T.Query()),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -11527,6 +11722,8 @@ export interface V1UpdateRealtimeConfigRequest {
   private_only?: boolean;
   /** Sets connection pool size for Realtime Authorization */
   connection_pool?: number;
+  /** Sets connection pool size used to create Postgres Changes subscriptions */
+  postgres_changes_pool?: number;
   /** Sets maximum number of concurrent users rate limit */
   max_concurrent_users?: number;
   /** Sets maximum number of events per second rate per channel limit */
@@ -11551,6 +11748,7 @@ export const V1UpdateRealtimeConfigRequest = /*@__PURE__*/ S.suspend(() =>
     ref: S.String.pipe(T.Label()),
     private_only: S.optional(S.Boolean),
     connection_pool: S.optional(S.Number),
+    postgres_changes_pool: S.optional(S.Number),
     max_concurrent_users: S.optional(S.Number),
     max_events_per_second: S.optional(S.Number),
     max_bytes_per_second: S.optional(S.Number),
@@ -11847,7 +12045,7 @@ export const v1ActivateVanitySubdomainConfig: API.OperationMethod<
 }));
 
 export type V1ApplyAMigrationError = BadRequest | Forbidden | SupabaseOpError;
-/** Apply a database migration Only available to selected partner OAuth apps */
+/** Apply a database migration */
 export const v1ApplyAMigration: API.OperationMethod<
   V1ApplyAMigrationRequest,
   V1ApplyAMigrationResponse,
@@ -12689,7 +12887,7 @@ export type V1GetAMigrationError =
   | Forbidden
   | NotFound
   | SupabaseOpError;
-/** Fetch an existing entry from migration history Only available to selected partner OAuth apps */
+/** Fetch an existing entry from migration history */
 export const v1GetAMigration: API.OperationMethod<
   V1GetAMigrationRequest,
   V1GetMigrationResponse,
@@ -13690,7 +13888,7 @@ export type V1ListMigrationHistoryError =
   | BadRequest
   | Forbidden
   | SupabaseOpError;
-/** List applied migration versions Only available to selected partner OAuth apps */
+/** List applied migration versions */
 export const v1ListMigrationHistory: API.OperationMethod<
   V1ListMigrationHistoryRequest,
   V1ListMigrationHistoryResponse,
@@ -13813,7 +14011,7 @@ export type V1PatchAMigrationError =
   | Forbidden
   | NotFound
   | SupabaseOpError;
-/** Patch an existing entry in migration history Only available to selected partner OAuth apps */
+/** Patch an existing entry in migration history */
 export const v1PatchAMigration: API.OperationMethod<
   V1PatchAMigrationRequest,
   V1PatchAMigrationResponse,
@@ -14067,7 +14265,7 @@ export type V1RollbackMigrationsError =
   | BadRequest
   | Forbidden
   | SupabaseOpError;
-/** Rollback database migrations and remove them from history table Only available to selected partner OAuth apps */
+/** Rollback database migrations and remove them from history table */
 export const v1RollbackMigrations: API.OperationMethod<
   V1RollbackMigrationsRequest,
   V1RollbackMigrationsResponse,
@@ -14091,6 +14289,24 @@ export const v1RunAQuery: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: V1RunAQueryRequest,
   output: V1RunAQueryResponse,
+  errors: [BadRequest, Forbidden],
+  protocol: SupabaseProtocol,
+  retry: Retry.Retry,
+}));
+
+export type V1ScrapeProjectMetricsError =
+  | BadRequest
+  | Forbidden
+  | SupabaseOpError;
+/** Scrape a project's metrics Prometheus scrape endpoint. Returns metrics of a customer project in the Prometheus open exposition format. */
+export const v1ScrapeProjectMetrics: API.OperationMethod<
+  V1ScrapeProjectMetricsRequest,
+  V1ScrapeProjectMetricsResponse,
+  V1ScrapeProjectMetricsError,
+  SupabaseOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: V1ScrapeProjectMetricsRequest,
+  output: V1ScrapeProjectMetricsResponse,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -14561,7 +14777,7 @@ export const v1UpgradePostgresVersion: API.OperationMethod<
 }));
 
 export type V1UpsertAMigrationError = BadRequest | Forbidden | SupabaseOpError;
-/** Upsert a database migration without applying Only available to selected partner OAuth apps */
+/** Upsert a database migration without applying */
 export const v1UpsertAMigration: API.OperationMethod<
   V1UpsertAMigrationRequest,
   V1UpsertAMigrationResponse,

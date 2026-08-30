@@ -589,6 +589,146 @@ export interface UserContext {
 export const UserContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userId: S.String }),
 ).annotate({ identifier: "UserContext" }) as any as S.Schema<UserContext>;
+export type AgentCoreMemoryId = string;
+export type AgentCoreMemoryActorId = string;
+export type AgentCoreMemorySessionId = string;
+export interface AgenticRetrieveMemorySessionBinding {
+  actorId: string;
+  sessionId: string;
+}
+export const AgenticRetrieveMemorySessionBinding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ actorId: S.String, sessionId: S.String }),
+).annotate({
+  identifier: "AgenticRetrieveMemorySessionBinding",
+}) as any as S.Schema<AgenticRetrieveMemorySessionBinding>;
+export type MemoryNamespace = string;
+export type MemoryStrategyId = string;
+export type AgenticRetrieveMemoryMetadataKey = string;
+export type AgenticRetrieveMemoryMetadataFilterLeft = { metadataKey: string };
+export const AgenticRetrieveMemoryMetadataFilterLeft = /*@__PURE__*/ S.Union([
+  S.Struct({ metadataKey: S.String }),
+]);
+export type AgenticRetrieveMemoryMetadataFilterOperator =
+  | "EQUALS_TO"
+  | "EXISTS"
+  | "NOT_EXISTS"
+  | "BEFORE"
+  | "AFTER"
+  | "CONTAINS"
+  | "GREATER_THAN"
+  | "GREATER_THAN_OR_EQUALS"
+  | "LESS_THAN"
+  | "LESS_THAN_OR_EQUALS"
+  | (string & {});
+export const AgenticRetrieveMemoryMetadataFilterOperator =
+  /*@__PURE__*/ S.String;
+
+export type AgenticRetrieveMemoryMetadataStringValue = string;
+export type AgenticRetrieveMemoryMetadataStringListItem = string;
+export type AgenticRetrieveMemoryMetadataStringList = string[];
+export const AgenticRetrieveMemoryMetadataStringList = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export type AgenticRetrieveMemoryMetadataValue =
+  | {
+      stringValue: string;
+      numberValue?: never;
+      stringListValue?: never;
+      dateTimeValue?: never;
+    }
+  | {
+      stringValue?: never;
+      numberValue: number;
+      stringListValue?: never;
+      dateTimeValue?: never;
+    }
+  | {
+      stringValue?: never;
+      numberValue?: never;
+      stringListValue: string[];
+      dateTimeValue?: never;
+    }
+  | {
+      stringValue?: never;
+      numberValue?: never;
+      stringListValue?: never;
+      dateTimeValue: Date;
+    };
+export const AgenticRetrieveMemoryMetadataValue = /*@__PURE__*/ S.Union([
+  S.Struct({ stringValue: S.String }),
+  S.Struct({ numberValue: S.Number }),
+  S.Struct({ stringListValue: AgenticRetrieveMemoryMetadataStringList }),
+  S.Struct({ dateTimeValue: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
+]);
+export type AgenticRetrieveMemoryMetadataFilterRight = {
+  metadataValue: AgenticRetrieveMemoryMetadataValue;
+};
+export const AgenticRetrieveMemoryMetadataFilterRight = /*@__PURE__*/ S.Union([
+  S.Struct({ metadataValue: AgenticRetrieveMemoryMetadataValue }),
+]);
+export interface AgenticRetrieveMemoryMetadataFilter {
+  left: AgenticRetrieveMemoryMetadataFilterLeft;
+  operator: AgenticRetrieveMemoryMetadataFilterOperator;
+  right?: AgenticRetrieveMemoryMetadataFilterRight;
+}
+export const AgenticRetrieveMemoryMetadataFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    left: AgenticRetrieveMemoryMetadataFilterLeft,
+    operator: AgenticRetrieveMemoryMetadataFilterOperator,
+    right: S.optional(AgenticRetrieveMemoryMetadataFilterRight),
+  }),
+).annotate({
+  identifier: "AgenticRetrieveMemoryMetadataFilter",
+}) as any as S.Schema<AgenticRetrieveMemoryMetadataFilter>;
+export type AgenticRetrieveMemoryMetadataFilterList =
+  AgenticRetrieveMemoryMetadataFilter[];
+export const AgenticRetrieveMemoryMetadataFilterList = /*@__PURE__*/ S.Array(
+  AgenticRetrieveMemoryMetadataFilter,
+);
+export interface AgenticRetrieveMemoryRetrievalConfig {
+  namespace?: string;
+  namespacePath?: string;
+  strategyId?: string;
+  metadataFilters?: AgenticRetrieveMemoryMetadataFilter[];
+}
+export const AgenticRetrieveMemoryRetrievalConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      namespace: S.optional(S.String),
+      namespacePath: S.optional(S.String),
+      strategyId: S.optional(S.String),
+      metadataFilters: S.optional(AgenticRetrieveMemoryMetadataFilterList),
+    }),
+).annotate({
+  identifier: "AgenticRetrieveMemoryRetrievalConfig",
+}) as any as S.Schema<AgenticRetrieveMemoryRetrievalConfig>;
+export type AgenticRetrieveMemoryRetrievalConfigList =
+  AgenticRetrieveMemoryRetrievalConfig[];
+export const AgenticRetrieveMemoryRetrievalConfigList = /*@__PURE__*/ S.Array(
+  AgenticRetrieveMemoryRetrievalConfig,
+);
+export type AgenticRetrieveMemoryPersistenceMode =
+  | "DEFAULT"
+  | "NONE"
+  | (string & {});
+export const AgenticRetrieveMemoryPersistenceMode = /*@__PURE__*/ S.String;
+
+export interface AgenticRetrieveMemoryConfiguration {
+  memoryId: string;
+  sessionBinding?: AgenticRetrieveMemorySessionBinding;
+  retrievalConfigs?: AgenticRetrieveMemoryRetrievalConfig[];
+  persistenceMode?: AgenticRetrieveMemoryPersistenceMode;
+}
+export const AgenticRetrieveMemoryConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    memoryId: S.String,
+    sessionBinding: S.optional(AgenticRetrieveMemorySessionBinding),
+    retrievalConfigs: S.optional(AgenticRetrieveMemoryRetrievalConfigList),
+    persistenceMode: S.optional(AgenticRetrieveMemoryPersistenceMode),
+  }),
+).annotate({
+  identifier: "AgenticRetrieveMemoryConfiguration",
+}) as any as S.Schema<AgenticRetrieveMemoryConfiguration>;
 export interface AgenticRetrieveStreamRequest {
   messages: AgenticRetrieveMessage[];
   retrievers: AgenticRetriever[];
@@ -596,6 +736,7 @@ export interface AgenticRetrieveStreamRequest {
   policyConfiguration?: AgenticRetrievePolicyConfiguration;
   nextToken?: string;
   userContext?: UserContext;
+  memoryConfiguration?: AgenticRetrieveMemoryConfiguration;
   generateResponse?: boolean;
 }
 export const AgenticRetrieveStreamRequest = /*@__PURE__*/ S.suspend(() =>
@@ -606,6 +747,7 @@ export const AgenticRetrieveStreamRequest = /*@__PURE__*/ S.suspend(() =>
     policyConfiguration: S.optional(AgenticRetrievePolicyConfiguration),
     nextToken: S.optional(S.String),
     userContext: S.optional(UserContext),
+    memoryConfiguration: S.optional(AgenticRetrieveMemoryConfiguration),
     generateResponse: S.optional(S.Boolean),
   }).pipe(
     T.all(
@@ -728,6 +870,7 @@ export type AgenticRetrieveStep =
   | "Retrieval"
   | "SpeculativeRetrieval"
   | "FullDocumentExpansion"
+  | "SessionHistoryLoad"
   | (string & {});
 export const AgenticRetrieveStep = /*@__PURE__*/ S.String;
 
@@ -768,14 +911,35 @@ export const AgenticRetrieveFullDocExpansionDetails = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AgenticRetrieveFullDocExpansionDetails",
 }) as any as S.Schema<AgenticRetrieveFullDocExpansionDetails>;
+export interface AgenticRetrieveMemoryRetrieveDetails {
+  inputQuery: AgenticRetrieveMessageContent;
+  memoryId: string;
+  namespace?: string;
+  namespacePath?: string;
+  strategyId?: string;
+}
+export const AgenticRetrieveMemoryRetrieveDetails = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      inputQuery: AgenticRetrieveMessageContent,
+      memoryId: S.String,
+      namespace: S.optional(S.String),
+      namespacePath: S.optional(S.String),
+      strategyId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AgenticRetrieveMemoryRetrieveDetails",
+}) as any as S.Schema<AgenticRetrieveMemoryRetrieveDetails>;
 export interface AgenticRetrieveAction {
   retrieve?: AgenticRetrieveActionDetails;
   fullDocumentExpansion?: AgenticRetrieveFullDocExpansionDetails;
+  memoryRetrieve?: AgenticRetrieveMemoryRetrieveDetails;
 }
 export const AgenticRetrieveAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retrieve: S.optional(AgenticRetrieveActionDetails),
     fullDocumentExpansion: S.optional(AgenticRetrieveFullDocExpansionDetails),
+    memoryRetrieve: S.optional(AgenticRetrieveMemoryRetrieveDetails),
   }),
 ).annotate({
   identifier: "AgenticRetrieveAction",
@@ -834,7 +998,10 @@ export type AgenticRetrieveFailures = AgenticRetrieveFailure[];
 export const AgenticRetrieveFailures = /*@__PURE__*/ S.Array(
   AgenticRetrieveFailure,
 );
-export type AgenticRetrieveType = "BedrockKnowledgeBase" | (string & {});
+export type AgenticRetrieveType =
+  | "BedrockKnowledgeBase"
+  | "BedrockAgentCoreMemory"
+  | (string & {});
 export const AgenticRetrieveType = /*@__PURE__*/ S.String;
 
 export interface AgenticRetrieveSourceMetadata {
@@ -1151,6 +1318,45 @@ export const AgenticRetrieveStreamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AgenticRetrieveStreamResponse",
 }) as any as S.Schema<AgenticRetrieveStreamResponse>;
+export type KnowledgeBaseIdentifier = string;
+export type DataSourceId = string;
+export type DocumentId = string;
+export interface CheckIngestedDocumentAclRequest {
+  knowledgeBaseId: string;
+  dataSourceId: string;
+  documentId: string;
+  userContext: UserContext;
+}
+export const CheckIngestedDocumentAclRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+    dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
+    documentId: S.String,
+    userContext: UserContext,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/check-ingested-document-acl",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CheckIngestedDocumentAclRequest",
+}) as any as S.Schema<CheckIngestedDocumentAclRequest>;
+export interface CheckIngestedDocumentAclResponse {
+  hasAccess: boolean;
+}
+export const CheckIngestedDocumentAclResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ hasAccess: S.Boolean }),
+).annotate({
+  identifier: "CheckIngestedDocumentAclResponse",
+}) as any as S.Schema<CheckIngestedDocumentAclResponse>;
 export type Uuid = string;
 export type InvocationDescription = string;
 export type SessionIdentifier = string;
@@ -1517,9 +1723,6 @@ export const GetAgentMemoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAgentMemoryResponse",
 }) as any as S.Schema<GetAgentMemoryResponse>;
-export type KnowledgeBaseIdentifier = string;
-export type DataSourceId = string;
-export type DocumentId = string;
 export type DocumentOutputFormat = "RAW" | "EXTRACTED" | (string & {});
 export const DocumentOutputFormat = /*@__PURE__*/ S.String;
 
@@ -1698,6 +1901,110 @@ export const GetFlowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFlowExecutionResponse",
 }) as any as S.Schema<GetFlowExecutionResponse>;
+export interface GetIngestedDocumentAclRequest {
+  knowledgeBaseId: string;
+  dataSourceId: string;
+  documentId: string;
+}
+export const GetIngestedDocumentAclRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+    dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
+    documentId: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/get-ingested-document-acl",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetIngestedDocumentAclRequest",
+}) as any as S.Schema<GetIngestedDocumentAclRequest>;
+export type DocumentAclMemberRelation = "AND" | "OR" | (string & {});
+export const DocumentAclMemberRelation = /*@__PURE__*/ S.String;
+
+export type DocumentAclMembershipType =
+  | "KNOWLEDGE_BASE"
+  | "DATA_SOURCE"
+  | (string & {});
+export const DocumentAclMembershipType = /*@__PURE__*/ S.String;
+
+export interface DocumentAclUser {
+  id: string;
+  type: DocumentAclMembershipType;
+}
+export const DocumentAclUser = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String, type: DocumentAclMembershipType }),
+).annotate({
+  identifier: "DocumentAclUser",
+}) as any as S.Schema<DocumentAclUser>;
+export type DocumentAclUserList = DocumentAclUser[];
+export const DocumentAclUserList = /*@__PURE__*/ S.Array(DocumentAclUser);
+export interface DocumentAclGroup {
+  id: string;
+  type: DocumentAclMembershipType;
+}
+export const DocumentAclGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String, type: DocumentAclMembershipType }),
+).annotate({
+  identifier: "DocumentAclGroup",
+}) as any as S.Schema<DocumentAclGroup>;
+export type DocumentAclGroupList = DocumentAclGroup[];
+export const DocumentAclGroupList = /*@__PURE__*/ S.Array(DocumentAclGroup);
+export interface DocumentAclCondition {
+  conditionOperator?: DocumentAclMemberRelation;
+  users?: DocumentAclUser[];
+  groups?: DocumentAclGroup[];
+}
+export const DocumentAclCondition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conditionOperator: S.optional(DocumentAclMemberRelation),
+    users: S.optional(DocumentAclUserList),
+    groups: S.optional(DocumentAclGroupList),
+  }),
+).annotate({
+  identifier: "DocumentAclCondition",
+}) as any as S.Schema<DocumentAclCondition>;
+export type DocumentAclConditionList = DocumentAclCondition[];
+export const DocumentAclConditionList =
+  /*@__PURE__*/ S.Array(DocumentAclCondition);
+export interface DocumentAclMembership {
+  memberRelation?: DocumentAclMemberRelation;
+  conditions?: DocumentAclCondition[];
+}
+export const DocumentAclMembership = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    memberRelation: S.optional(DocumentAclMemberRelation),
+    conditions: S.optional(DocumentAclConditionList),
+  }),
+).annotate({
+  identifier: "DocumentAclMembership",
+}) as any as S.Schema<DocumentAclMembership>;
+export interface DocumentAcl {
+  allowList?: DocumentAclMembership;
+  denyList?: DocumentAclMembership;
+}
+export const DocumentAcl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowList: S.optional(DocumentAclMembership),
+    denyList: S.optional(DocumentAclMembership),
+  }),
+).annotate({ identifier: "DocumentAcl" }) as any as S.Schema<DocumentAcl>;
+export interface GetIngestedDocumentAclResponse {
+  documentAcl: DocumentAcl;
+}
+export const GetIngestedDocumentAclResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ documentAcl: DocumentAcl }),
+).annotate({
+  identifier: "GetIngestedDocumentAclResponse",
+}) as any as S.Schema<GetIngestedDocumentAclResponse>;
 export type InvocationIdentifier = string;
 export interface GetInvocationStepRequest {
   invocationIdentifier: string;
@@ -7307,6 +7614,36 @@ export const agenticRetrieveStream: API.OperationMethod<
   operationName: "AgenticRetrieveStream",
 }));
 
+export type CheckIngestedDocumentAclError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Checks whether a user has access to a specific document by verifying against the ingested access control list (ACL) in a knowledge base. Use this operation to validate that document-level access control is working as expected after ingestion. To use this operation, you must have the `bedrock:CheckIngestedDocumentAcl` permission.
+ */
+export const checkIngestedDocumentAcl: API.OperationMethod<
+  CheckIngestedDocumentAclRequest,
+  CheckIngestedDocumentAclResponse,
+  CheckIngestedDocumentAclError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckIngestedDocumentAclRequest,
+  output: CheckIngestedDocumentAclResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CheckIngestedDocumentAcl",
+}));
+
 export type CreateInvocationError =
   | AccessDeniedException
   | ConflictException
@@ -7672,6 +8009,36 @@ export const getFlowExecution: API.OperationMethod<
   operationName: "GetFlowExecution",
 }));
 
+export type GetIngestedDocumentAclError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the ingested access control list (ACL) for a specific document in a knowledge base. Use this operation to inspect the allow and deny lists that were ingested for a document to troubleshoot access control issues. To use this operation, you must have the `bedrock:GetIngestedDocumentAcl` permission.
+ */
+export const getIngestedDocumentAcl: API.OperationMethod<
+  GetIngestedDocumentAclRequest,
+  GetIngestedDocumentAclResponse,
+  GetIngestedDocumentAclError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIngestedDocumentAclRequest,
+  output: GetIngestedDocumentAclResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetIngestedDocumentAcl",
+}));
+
 export type GetInvocationStepError =
   | AccessDeniedException
   | InternalServerException
@@ -7745,6 +8112,8 @@ export type InvokeAgentError =
   | ValidationException
   | CommonErrors;
 /**
+ * Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service as normal. For more information, see Amazon Bedrock Agents Classic availability change.
+ *
  * Sends a prompt for the agent to process and respond to. Note the following fields for the request:
  *
  * - To continue the same conversation with an agent, use the same `sessionId` value in the request.

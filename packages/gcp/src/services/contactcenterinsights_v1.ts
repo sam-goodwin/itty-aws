@@ -99,6 +99,75 @@ export const AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
       "AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest",
   }) as any as S.Schema<AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
+  | "ROLE_UNSPECIFIED"
+  | "HUMAN_AGENT"
+  | "AUTOMATED_AGENT"
+  | "END_USER"
+  | "ANY_AGENT";
+export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Information about an agent involved in the conversation. */
+export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
+  /** A user-provided string indicating the outcome of the agent's segment of the call. */
+  dispositionCode?: string;
+  /** User-specified strings representing the agent's teams. */
+  teams?: StringList;
+  /** The agent's name. */
+  displayName?: string;
+  /** A user-specified string representing the agent's team. Deprecated in favor of the `teams` field. */
+  team?: string;
+  /** The agent's version display name. Only applicable to automated agents. */
+  versionDisplayName?: string;
+  /** The agent's location. */
+  location?: string;
+  /** The agent's deployment display name. Only applicable to automated agents. */
+  deploymentDisplayName?: string;
+  /** The entry subagent's ID. */
+  entrySubagentId?: string;
+  /** The agent's version ID. Only applicable to automated agents. */
+  versionId?: string;
+  /** A user-specified string representing the agent. */
+  agentId?: string;
+  /** The entry subagent's display name. */
+  entrySubagentDisplayName?: string;
+  /** The agent's deployment ID. Only applicable to automated agents. */
+  deploymentId?: string;
+  /** The agent type, e.g. HUMAN_AGENT. */
+  agentType?:
+    | GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum
+    | (string & {});
+}
+export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dispositionCode: S.optional(S.String),
+      teams: S.optional(StringList),
+      displayName: S.optional(S.String),
+      team: S.optional(S.String),
+      versionDisplayName: S.optional(S.String),
+      location: S.optional(S.String),
+      deploymentDisplayName: S.optional(S.String),
+      entrySubagentId: S.optional(S.String),
+      versionId: S.optional(S.String),
+      agentId: S.optional(S.String),
+      entrySubagentDisplayName: S.optional(S.String),
+      deploymentId: S.optional(S.String),
+      agentType: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
+
 export type GoogleCloudContactcenterinsightsV1AssessmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
@@ -108,98 +177,29 @@ export type GoogleCloudContactcenterinsightsV1AssessmentStateEnum =
 export const GoogleCloudContactcenterinsightsV1AssessmentStateEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
-    | "ROLE_UNSPECIFIED"
-    | "HUMAN_AGENT"
-    | "AUTOMATED_AGENT"
-    | "END_USER"
-    | "ANY_AGENT";
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Information about an agent involved in the conversation. */
-export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
-  /** User-specified strings representing the agent's teams. */
-  teams?: StringList;
-  /** The agent's deployment ID. Only applicable to automated agents. */
-  deploymentId?: string;
-  /** The agent's version display name. Only applicable to automated agents. */
-  versionDisplayName?: string;
-  /** The agent's version ID. Only applicable to automated agents. */
-  versionId?: string;
-  /** The entry subagent's display name. */
-  entrySubagentDisplayName?: string;
-  /** The agent's location. */
-  location?: string;
-  /** The agent type, e.g. HUMAN_AGENT. */
-  agentType?:
-    | GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum
-    | (string & {});
-  /** A user-specified string representing the agent. */
-  agentId?: string;
-  /** The agent's name. */
-  displayName?: string;
-  /** A user-provided string indicating the outcome of the agent's segment of the call. */
-  dispositionCode?: string;
-  /** The entry subagent's ID. */
-  entrySubagentId?: string;
-  /** A user-specified string representing the agent's team. Deprecated in favor of the `teams` field. */
-  team?: string;
-  /** The agent's deployment display name. Only applicable to automated agents. */
-  deploymentDisplayName?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      teams: S.optional(StringList),
-      deploymentId: S.optional(S.String),
-      versionDisplayName: S.optional(S.String),
-      versionId: S.optional(S.String),
-      entrySubagentDisplayName: S.optional(S.String),
-      location: S.optional(S.String),
-      agentType: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum,
-      ),
-      agentId: S.optional(S.String),
-      displayName: S.optional(S.String),
-      dispositionCode: S.optional(S.String),
-      entrySubagentId: S.optional(S.String),
-      team: S.optional(S.String),
-      deploymentDisplayName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
-
 /** The assessment resource. */
 export interface GoogleCloudContactcenterinsightsV1Assessment {
   /** Identifier. The resource name of the assessment. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment} */
   name?: string;
-  /** Output only. The time at which the assessment was last updated. */
-  updateTime?: string;
-  /** Output only. The state of the assessment. */
-  state?: GoogleCloudContactcenterinsightsV1AssessmentStateEnum | (string & {});
-  /** Information about the agent the assessment is for. */
-  agentInfo?: GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo;
   /** Output only. The time at which the assessment was created. */
   createTime?: string;
+  /** Output only. The time at which the assessment was last updated. */
+  updateTime?: string;
+  /** Information about the agent the assessment is for. */
+  agentInfo?: GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo;
+  /** Output only. The state of the assessment. */
+  state?: GoogleCloudContactcenterinsightsV1AssessmentStateEnum | (string & {});
 }
 export const GoogleCloudContactcenterinsightsV1Assessment =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
+      createTime: S.optional(S.String),
       updateTime: S.optional(S.String),
-      state: S.optional(GoogleCloudContactcenterinsightsV1AssessmentStateEnum),
       agentInfo: S.optional(
         GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
       ),
-      createTime: S.optional(S.String),
+      state: S.optional(GoogleCloudContactcenterinsightsV1AssessmentStateEnum),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Assessment",
@@ -230,36 +230,6 @@ export const AppealProjectsLocationsConversationsAssessmentsRequest =
   ).annotate({
     identifier: "AppealProjectsLocationsConversationsAssessmentsRequest",
   }) as any as S.Schema<AppealProjectsLocationsConversationsAssessmentsRequest>;
-
-export type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
-  "SUMMARIZATION_MODEL_UNSPECIFIED" | "BASELINE_MODEL" | "BASELINE_MODEL_V2_0";
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
-  /*@__PURE__*/ S.String;
-
-/** Configuration for summarization. */
-export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
-  /** Default summarization model to be used. */
-  summarizationModel?:
-    | GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum
-    | (string & {});
-  /** The resource name of the existing created generator. Format: projects//locations//generators/ */
-  generator?: string;
-  /** Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile} */
-  conversationProfile?: string;
-}
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summarizationModel: S.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum,
-      ),
-      generator: S.optional(S.String),
-      conversationProfile: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig>;
 
 /** Container for a list of scorecards. */
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList {
@@ -292,58 +262,90 @@ export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig =
     identifier: "GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig>;
 
+export type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
+  | "SUMMARIZATION_MODEL_UNSPECIFIED"
+  | "BASELINE_MODEL"
+  | "BASELINE_MODEL_V2_0";
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
+  /*@__PURE__*/ S.String;
+
+/** Configuration for summarization. */
+export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
+  /** Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile} */
+  conversationProfile?: string;
+  /** The resource name of the existing created generator. Format: projects//locations//generators/ */
+  generator?: string;
+  /** Default summarization model to be used. */
+  summarizationModel?:
+    | GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum
+    | (string & {});
+}
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conversationProfile: S.optional(S.String),
+      generator: S.optional(S.String),
+      summarizationModel: S.optional(
+        GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig>;
+
 /** Selector of all available annotators and phrase matchers to run. */
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
-  /** Whether to run the sentiment annotator. */
-  runSentimentAnnotator?: boolean;
-  /** Whether to run the summarization annotator. */
-  runSummarizationAnnotator?: boolean;
-  /** Whether to run the QA annotator. */
-  runQaAnnotator?: boolean;
-  /** The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference. */
-  issueModels?: StringList;
   /** Optional. Whether to run the auto-labeling annotator. If true, the auto-labeling annotator will be run. This is a non-billable operation designed for fixing or backfilling custom labels. */
   runAutoLabelingAnnotator?: boolean;
-  /** The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
-  phraseMatchers?: StringList;
-  /** Whether to run the issue model annotator. A model should have already been deployed for this to take effect. */
-  runIssueModelAnnotator?: boolean;
-  /** Whether to run the silence annotator. */
-  runSilenceAnnotator?: boolean;
-  /** Whether to run the active phrase matcher annotator(s). */
-  runPhraseMatcherAnnotator?: boolean;
-  /** Whether to run the entity annotator. */
-  runEntityAnnotator?: boolean;
-  /** Whether to run the intent annotator. */
-  runIntentAnnotator?: boolean;
-  /** Configuration for the summarization annotator. */
-  summarizationConfig?: GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig;
   /** Whether to run the interruption annotator. */
   runInterruptionAnnotator?: boolean;
+  /** Whether to run the summarization annotator. */
+  runSummarizationAnnotator?: boolean;
+  /** Whether to run the entity annotator. */
+  runEntityAnnotator?: boolean;
+  /** Whether to run the issue model annotator. A model should have already been deployed for this to take effect. */
+  runIssueModelAnnotator?: boolean;
+  /** Whether to run the sentiment annotator. */
+  runSentimentAnnotator?: boolean;
+  /** Whether to run the active phrase matcher annotator(s). */
+  runPhraseMatcherAnnotator?: boolean;
   /** Configuration for the QA annotator. */
   qaConfig?: GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig;
+  /** Whether to run the silence annotator. */
+  runSilenceAnnotator?: boolean;
+  /** Configuration for the summarization annotator. */
+  summarizationConfig?: GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig;
+  /** Whether to run the intent annotator. */
+  runIntentAnnotator?: boolean;
+  /** The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference. */
+  issueModels?: StringList;
+  /** The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
+  phraseMatchers?: StringList;
+  /** Whether to run the QA annotator. */
+  runQaAnnotator?: boolean;
 }
 export const GoogleCloudContactcenterinsightsV1AnnotatorSelector =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      runSentimentAnnotator: S.optional(S.Boolean),
-      runSummarizationAnnotator: S.optional(S.Boolean),
-      runQaAnnotator: S.optional(S.Boolean),
-      issueModels: S.optional(StringList),
       runAutoLabelingAnnotator: S.optional(S.Boolean),
-      phraseMatchers: S.optional(StringList),
-      runIssueModelAnnotator: S.optional(S.Boolean),
-      runSilenceAnnotator: S.optional(S.Boolean),
-      runPhraseMatcherAnnotator: S.optional(S.Boolean),
-      runEntityAnnotator: S.optional(S.Boolean),
-      runIntentAnnotator: S.optional(S.Boolean),
-      summarizationConfig: S.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig,
-      ),
       runInterruptionAnnotator: S.optional(S.Boolean),
+      runSummarizationAnnotator: S.optional(S.Boolean),
+      runEntityAnnotator: S.optional(S.Boolean),
+      runIssueModelAnnotator: S.optional(S.Boolean),
+      runSentimentAnnotator: S.optional(S.Boolean),
+      runPhraseMatcherAnnotator: S.optional(S.Boolean),
       qaConfig: S.optional(
         GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig,
       ),
+      runSilenceAnnotator: S.optional(S.Boolean),
+      summarizationConfig: S.optional(
+        GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig,
+      ),
+      runIntentAnnotator: S.optional(S.Boolean),
+      issueModels: S.optional(StringList),
+      phraseMatchers: S.optional(StringList),
+      runQaAnnotator: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AnnotatorSelector",
@@ -351,27 +353,27 @@ export const GoogleCloudContactcenterinsightsV1AnnotatorSelector =
 
 /** The request to analyze conversations in bulk. */
 export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
+  /** Required. Percentage of selected conversation to analyze, between [0, 100]. */
+  analysisPercentage?: number;
   /** To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run. */
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
   /** Required. Filter used to select the subset of conversations to analyze. */
   filter?: string;
-  /** Optional. If true, the labeling rules will be re-evaluated for the conversations. */
-  relabel?: boolean;
   /** Required. The parent resource to create analyses in. */
   parent?: string;
-  /** Required. Percentage of selected conversation to analyze, between [0, 100]. */
-  analysisPercentage?: number;
+  /** Optional. If true, the labeling rules will be re-evaluated for the conversations. */
+  relabel?: boolean;
 }
 export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      analysisPercentage: S.optional(S.Number),
       annotatorSelector: S.optional(
         GoogleCloudContactcenterinsightsV1AnnotatorSelector,
       ),
       filter: S.optional(S.String),
-      relabel: S.optional(S.Boolean),
       parent: S.optional(S.String),
-      analysisPercentage: S.optional(S.Number),
+      relabel: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -417,18 +419,18 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: DocumentMapList;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: DocumentMapList;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
     message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
   }),
 ).annotate({
   identifier: "GoogleRpcStatus",
@@ -436,24 +438,24 @@ export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: GoogleRpcStatus;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: GoogleRpcStatus;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    error: S.optional(GoogleRpcStatus),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-    error: S.optional(GoogleRpcStatus),
   }),
 ).annotate({
   identifier: "GoogleLongrunningOperation",
@@ -557,22 +559,22 @@ export const BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest =
 
 /** The request to delete conversations in bulk. */
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
-  /** Maximum number of conversations to delete. */
-  maxDeleteCount?: number;
   /** Filter used to select the subset of conversations to delete. */
   filter?: string;
-  /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
-  parent?: string;
   /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
   force?: boolean;
+  /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
+  parent?: string;
+  /** Maximum number of conversations to delete. */
+  maxDeleteCount?: number;
 }
 export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      maxDeleteCount: S.optional(S.Number),
       filter: S.optional(S.String),
-      parent: S.optional(S.String),
       force: S.optional(S.Boolean),
+      parent: S.optional(S.String),
+      maxDeleteCount: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -631,62 +633,64 @@ export const BulkDeleteProjectsLocationsDatasetsConversationsRequest =
     identifier: "BulkDeleteProjectsLocationsDatasetsConversationsRequest",
   }) as any as S.Schema<BulkDeleteProjectsLocationsDatasetsConversationsRequest>;
 
+export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
+  | "FEEDBACK_LABEL_TYPE_UNSPECIFIED"
+  | "QUALITY_AI"
+  | "TOPIC_MODELING"
+  | "AGENT_ASSIST_SUMMARY";
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
+  /*@__PURE__*/ S.String;
+
 export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
-  "FORMAT_UNSPECIFIED" | "CSV" | "JSON";
+  | "FORMAT_UNSPECIFIED"
+  | "CSV"
+  | "JSON";
 export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
   /*@__PURE__*/ S.String;
 
 /** Google Cloud Storage Object details to write the feedback labels to. */
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination {
+  /** Optional. Always print fields with no presence. This is useful for printing fields that are not set, like implicit 0 value or empty lists/maps. Only applicable for JSON format. */
+  alwaysPrintEmptyFields?: boolean;
+  /** Optional. Add whitespace to the JSON file. Makes easier to read, but increases file size. Only applicable for JSON format. */
+  addWhitespace?: boolean;
+  /** Optional. The number of records per file. Applicable for either format. */
+  recordsPerFileCount?: string;
+  /** Required. The Google Cloud Storage URI to write the feedback labels to. The file name will be used as a prefix for the files written to the bucket if the output needs to be split across multiple files, otherwise it will be used as is. The file extension will be appended to the file name based on the format selected. E.g. `gs://bucket_name/object_uri_prefix` */
+  objectUri?: string;
   /** Required. File format in which the labels will be exported. */
   format?:
     | GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum
     | (string & {});
-  /** Optional. Add whitespace to the JSON file. Makes easier to read, but increases file size. Only applicable for JSON format. */
-  addWhitespace?: boolean;
-  /** Required. The Google Cloud Storage URI to write the feedback labels to. The file name will be used as a prefix for the files written to the bucket if the output needs to be split across multiple files, otherwise it will be used as is. The file extension will be appended to the file name based on the format selected. E.g. `gs://bucket_name/object_uri_prefix` */
-  objectUri?: string;
-  /** Optional. Always print fields with no presence. This is useful for printing fields that are not set, like implicit 0 value or empty lists/maps. Only applicable for JSON format. */
-  alwaysPrintEmptyFields?: boolean;
-  /** Optional. The number of records per file. Applicable for either format. */
-  recordsPerFileCount?: string;
 }
 export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      alwaysPrintEmptyFields: S.optional(S.Boolean),
+      addWhitespace: S.optional(S.Boolean),
+      recordsPerFileCount: S.optional(S.String),
+      objectUri: S.optional(S.String),
       format: S.optional(
         GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum,
       ),
-      addWhitespace: S.optional(S.Boolean),
-      objectUri: S.optional(S.String),
-      alwaysPrintEmptyFields: S.optional(S.Boolean),
-      recordsPerFileCount: S.optional(S.String),
     }),
   ).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination>;
 
-export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
-    | "FEEDBACK_LABEL_TYPE_UNSPECIFIED"
-    | "QUALITY_AI"
-    | "TOPIC_MODELING"
-    | "AGENT_ASSIST_SUMMARY";
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
-  /*@__PURE__*/ S.String;
-
 /** Google Sheets document details to write the feedback labels to. */
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination {
-  /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. The spreadsheet ID written to will be returned as `file_names` in the BulkDownloadFeedbackLabelsMetadata. */
-  spreadsheetUri?: string;
   /** Optional. The title of the new sheet to write the feedback labels to. */
   sheetTitle?: string;
+  /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. The spreadsheet ID written to will be returned as `file_names` in the BulkDownloadFeedbackLabelsMetadata. */
+  spreadsheetUri?: string;
 }
 export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      spreadsheetUri: S.optional(S.String),
       sheetTitle: S.optional(S.String),
+      spreadsheetUri: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -695,42 +699,42 @@ export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest
 
 /** Request for the BulkDownloadFeedbackLabel endpoint. */
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest {
-  /** Optional. Limits the maximum number of feedback labels that will be downloaded. The first `N` feedback labels will be downloaded. */
-  maxDownloadCount?: number;
-  /** A cloud storage bucket destination. */
-  gcsDestination?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination;
+  /** Required. The parent resource for new feedback labels. */
+  parent?: string;
   /** Optional. Filter parent conversations to download feedback labels for. When specified, the feedback labels will be downloaded for the conversations that match the filter. If `template_qa_scorecard_id` is set, all the conversations that match the filter will be paired with the questions under the scorecard for labeling. */
   conversationFilter?: string;
+  /** Optional. If set, a template for labeling conversations and scorecard questions will be created from the conversation_filter and the questions under the scorecard(s). The feedback label `filter` will be ignored. */
+  templateQaScorecardId?: StringList;
+  /** Optional. Limits the maximum number of feedback labels that will be downloaded. The first `N` feedback labels will be downloaded. */
+  maxDownloadCount?: number;
   /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
   /** Optional. The type of feedback labels that will be downloaded. */
   feedbackLabelType?:
     | GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum
     | (string & {});
+  /** A cloud storage bucket destination. */
+  gcsDestination?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination;
   /** A sheets document destination. */
   sheetsDestination?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination;
-  /** Required. The parent resource for new feedback labels. */
-  parent?: string;
-  /** Optional. If set, a template for labeling conversations and scorecard questions will be created from the conversation_filter and the questions under the scorecard(s). The feedback label `filter` will be ignored. */
-  templateQaScorecardId?: StringList;
 }
 export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      maxDownloadCount: S.optional(S.Number),
-      gcsDestination: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination,
-      ),
+      parent: S.optional(S.String),
       conversationFilter: S.optional(S.String),
+      templateQaScorecardId: S.optional(StringList),
+      maxDownloadCount: S.optional(S.Number),
       filter: S.optional(S.String),
       feedbackLabelType: S.optional(
         GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum,
       ),
+      gcsDestination: S.optional(
+        GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination,
+      ),
       sheetsDestination: S.optional(
         GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination,
       ),
-      parent: S.optional(S.String),
-      templateQaScorecardId: S.optional(StringList),
     }),
   ).annotate({
     identifier:
@@ -789,8 +793,25 @@ export const BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest =
     identifier: "BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest",
   }) as any as S.Schema<BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest>;
 
+/** Google Sheets document details to get the feedback label file from. */
+export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource {
+  /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. */
+  spreadsheetUri?: string;
+}
+export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      spreadsheetUri: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource>;
+
 export type GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum =
-  "FORMAT_UNSPECIFIED" | "CSV" | "JSON";
+  | "FORMAT_UNSPECIFIED"
+  | "CSV"
+  | "JSON";
 export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -816,40 +837,25 @@ export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGc
       "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource>;
 
-/** Google Sheets document details to get the feedback label file from. */
-export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource {
-  /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. */
-  spreadsheetUri?: string;
-}
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      spreadsheetUri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource>;
-
 /** The request for bulk uploading feedback labels. */
 export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest {
+  /** A sheets document source. */
+  sheetsSource?: GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource;
   /** A cloud storage bucket source. */
   gcsSource?: GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource;
   /** Optional. If set, upload will not happen and the labels will be validated. If not set, then default behavior will be to upload the labels after validation is complete. */
   validateOnly?: boolean;
-  /** A sheets document source. */
-  sheetsSource?: GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource;
 }
 export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      sheetsSource: S.optional(
+        GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource,
+      ),
       gcsSource: S.optional(
         GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource,
       ),
       validateOnly: S.optional(S.Boolean),
-      sheetsSource: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource,
-      ),
     }),
   ).annotate({
     identifier:
@@ -1030,16 +1036,16 @@ export const IntegerMap = /*@__PURE__*/ S.Record(
 
 /** A single interval in a time series. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval {
-  /** The start time of this interval. */
-  startTime?: string;
   /** The number of conversations created in this interval. */
   conversationCount?: number;
+  /** The start time of this interval. */
+  startTime?: string;
 }
 export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      startTime: S.optional(S.String),
       conversationCount: S.optional(S.Number),
+      startTime: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -1055,18 +1061,18 @@ export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesI
 
 /** A time series representing conversations over time. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries {
-  /** An ordered list of intervals from earliest to latest, where each interval represents the number of conversations that transpired during the time window. */
-  points?: GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList;
   /** The duration of each interval. */
   intervalDuration?: string;
+  /** An ordered list of intervals from earliest to latest, where each interval represents the number of conversations that transpired during the time window. */
+  points?: GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList;
 }
 export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      intervalDuration: S.optional(S.String),
       points: S.optional(
         GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList,
       ),
-      intervalDuration: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -1075,54 +1081,54 @@ export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries 
 
 /** The response for calculating conversation statistics. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
-  /** A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` Deprecated, use `issue_matches_stats` field instead. */
-  issueMatches?: IntegerMap;
-  /** A map associating each smart highlighter display name with its respective number of matches in the set of conversations. */
-  smartHighlighterMatches?: IntegerMap;
-  /** A time series representing the count of conversations created over time that match that requested filter criteria. */
-  conversationCountTimeSeries?: GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries;
-  /** The average duration of all conversations. The average is calculated using only conversations that have a time duration. */
-  averageDuration?: string;
-  /** A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` */
-  issueMatchesStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap;
   /** The total number of conversations. */
   conversationCount?: number;
+  /** The average duration of all conversations. The average is calculated using only conversations that have a time duration. */
+  averageDuration?: string;
+  /** A map associating each smart highlighter display name with its respective number of matches in the set of conversations. */
+  smartHighlighterMatches?: IntegerMap;
   /** The average number of turns per conversation. */
   averageTurnCount?: number;
+  /** A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` */
+  issueMatchesStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap;
+  /** A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` Deprecated, use `issue_matches_stats` field instead. */
+  issueMatches?: IntegerMap;
   /** A map associating each custom highlighter resource name with its respective number of matches in the set of conversations. */
   customHighlighterMatches?: IntegerMap;
+  /** A time series representing the count of conversations created over time that match that requested filter criteria. */
+  conversationCountTimeSeries?: GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries;
 }
 export const GoogleCloudContactcenterinsightsV1CalculateStatsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      issueMatches: S.optional(IntegerMap),
-      smartHighlighterMatches: S.optional(IntegerMap),
-      conversationCountTimeSeries: S.optional(
-        GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries,
-      ),
+      conversationCount: S.optional(S.Number),
       averageDuration: S.optional(S.String),
+      smartHighlighterMatches: S.optional(IntegerMap),
+      averageTurnCount: S.optional(S.Number),
       issueMatchesStats: S.optional(
         GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap,
       ),
-      conversationCount: S.optional(S.Number),
-      averageTurnCount: S.optional(S.Number),
+      issueMatches: S.optional(IntegerMap),
       customHighlighterMatches: S.optional(IntegerMap),
+      conversationCountTimeSeries: S.optional(
+        GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries,
+      ),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CalculateStatsResponse",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>;
 
 export interface CalculateStatsProjectsLocationsConversationsRequest {
-  /** Required. The location of the conversations. */
-  location: string;
   /** A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. */
   filter?: string;
+  /** Required. The location of the conversations. */
+  location: string;
 }
 export const CalculateStatsProjectsLocationsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      location: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
+      location: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1223,36 +1229,36 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** The CCAI Insights project wide analysis rule. This rule will be applied to all conversations that match the filter defined in the rule. For a conversation matches the filter, the annotators specified in the rule will be run. If a conversation matches multiple rules, a union of all the annotators will be run. One project can have multiple analysis rules. */
 export interface GoogleCloudContactcenterinsightsV1AnalysisRule {
-  /** Selector of annotators to run and the phrase matchers to use for conversations that matches the conversation_filter. If not specified, NO annotators will be run. */
-  annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
   /** Filter for the conversations that should apply this analysis rule. An empty filter means this analysis rule applies to all conversations. Refer to https://cloud.google.com/contact-center/insights/docs/filtering for details. */
   conversationFilter?: string;
-  /** Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} */
-  name?: string;
-  /** Output only. The most recent time at which this analysis rule was updated. */
-  updateTime?: string;
-  /** Display Name of the analysis rule. */
-  displayName?: string;
-  /** If true, apply this rule to conversations. Otherwise, this rule is inactive and saved as a draft. */
-  active?: boolean;
-  /** Output only. The time at which this analysis rule was created. */
-  createTime?: string;
   /** Percentage of conversations that we should apply this analysis setting automatically, between [0, 1]. For example, 0.1 means 10%. Conversations are sampled in a determenestic way. The original runtime_percentage & upload percentage will be replaced by defining filters on the conversation. */
   analysisPercentage?: number;
+  /** Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} */
+  name?: string;
+  /** Output only. The time at which this analysis rule was created. */
+  createTime?: string;
+  /** Output only. The most recent time at which this analysis rule was updated. */
+  updateTime?: string;
+  /** If true, apply this rule to conversations. Otherwise, this rule is inactive and saved as a draft. */
+  active?: boolean;
+  /** Display Name of the analysis rule. */
+  displayName?: string;
+  /** Selector of annotators to run and the phrase matchers to use for conversations that matches the conversation_filter. If not specified, NO annotators will be run. */
+  annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
 }
 export const GoogleCloudContactcenterinsightsV1AnalysisRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      conversationFilter: S.optional(S.String),
+      analysisPercentage: S.optional(S.Number),
+      name: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      active: S.optional(S.Boolean),
+      displayName: S.optional(S.String),
       annotatorSelector: S.optional(
         GoogleCloudContactcenterinsightsV1AnnotatorSelector,
       ),
-      conversationFilter: S.optional(S.String),
-      name: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      displayName: S.optional(S.String),
-      active: S.optional(S.Boolean),
-      createTime: S.optional(S.String),
-      analysisPercentage: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AnalysisRule",
@@ -1282,79 +1288,79 @@ export const CreateProjectsLocationsAnalysisRulesRequest =
     identifier: "CreateProjectsLocationsAnalysisRulesRequest",
   }) as any as S.Schema<CreateProjectsLocationsAnalysisRulesRequest>;
 
-/** Message for schedule info. */
-export interface GoogleCloudContactcenterinsightsV1ScheduleInfo {
-  /** The timezone to use for the groc expression. If not specified, defaults to UTC. */
-  timeZone?: string;
-  /** Start time of the schedule. If not specified, will start as soon as the schedule is created. */
-  startTime?: string;
-  /** End time of the schedule. If not specified, will keep scheduling new pipelines for execution util the schedule is no longer active or deleted. */
-  endTime?: string;
-  /** The groc expression. Format: `every number [synchronized]` Time units can be: minutes, hours Synchronized is optional and indicates that the schedule should be synchronized to the start of the interval: every 5 minutes synchronized means 00:00, 00:05 ... Otherwise the start time is random within the interval. Example: `every 5 minutes` could be 00:02, 00:07, 00:12, ... */
-  schedule?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ScheduleInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timeZone: S.optional(S.String),
-      startTime: S.optional(S.String),
-      endTime: S.optional(S.String),
-      schedule: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ScheduleInfo",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ScheduleInfo>;
-
 /** Message for sampling conversations. */
 export interface GoogleCloudContactcenterinsightsV1SampleRule {
-  /** Optional. Group by dimension to sample the conversation. If no dimension is provided, the sampling will be applied to the project level. Current supported dimensions is 'quality_metadata.agent_info.agent_id'. */
-  dimension?: string;
   /** To specify the filter for the conversions that should apply this sample rule. An empty filter means this sample rule applies to all conversations. */
   conversationFilter?: string;
   /** Percentage of conversations that we should sample based on the dimension between [0, 100]. */
   samplePercentage?: number;
   /** Number of the conversations that we should sample based on the dimension. */
   sampleRow?: string;
+  /** Optional. Group by dimension to sample the conversation. If no dimension is provided, the sampling will be applied to the project level. Current supported dimensions is 'quality_metadata.agent_info.agent_id'. */
+  dimension?: string;
 }
 export const GoogleCloudContactcenterinsightsV1SampleRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      dimension: S.optional(S.String),
       conversationFilter: S.optional(S.String),
       samplePercentage: S.optional(S.Number),
       sampleRow: S.optional(S.String),
+      dimension: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SampleRule",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SampleRule>;
 
+/** Message for schedule info. */
+export interface GoogleCloudContactcenterinsightsV1ScheduleInfo {
+  /** Start time of the schedule. If not specified, will start as soon as the schedule is created. */
+  startTime?: string;
+  /** End time of the schedule. If not specified, will keep scheduling new pipelines for execution util the schedule is no longer active or deleted. */
+  endTime?: string;
+  /** The groc expression. Format: `every number [synchronized]` Time units can be: minutes, hours Synchronized is optional and indicates that the schedule should be synchronized to the start of the interval: every 5 minutes synchronized means 00:00, 00:05 ... Otherwise the start time is random within the interval. Example: `every 5 minutes` could be 00:02, 00:07, 00:12, ... */
+  schedule?: string;
+  /** The timezone to use for the groc expression. If not specified, defaults to UTC. */
+  timeZone?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ScheduleInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      startTime: S.optional(S.String),
+      endTime: S.optional(S.String),
+      schedule: S.optional(S.String),
+      timeZone: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1ScheduleInfo",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ScheduleInfo>;
+
 /** The CCAI Insights project wide assessment rule. This assessment rule will be applied to all conversations from the previous sampling cycle that match the sample rule defined in the assessment rule. One project can have multiple assessment rules. */
 export interface GoogleCloudContactcenterinsightsV1AssessmentRule {
-  /** Output only. The time at which this assessment rule was created. */
-  createTime?: string;
+  /** The sample rule for the assessment rule. */
+  sampleRule?: GoogleCloudContactcenterinsightsV1SampleRule;
   /** Schedule info for the assessment rule. */
   scheduleInfo?: GoogleCloudContactcenterinsightsV1ScheduleInfo;
   /** If true, apply this rule to conversations. Otherwise, this rule is inactive. */
   active?: boolean;
-  /** The sample rule for the assessment rule. */
-  sampleRule?: GoogleCloudContactcenterinsightsV1SampleRule;
-  /** Identifier. The resource name of the assessment rule. Format: projects/{project}/locations/{location}/assessmentRules/{assessment_rule} */
-  name?: string;
-  /** Output only. The most recent time at which this assessment rule was updated. */
-  updateTime?: string;
   /** Display Name of the assessment rule. */
   displayName?: string;
+  /** Identifier. The resource name of the assessment rule. Format: projects/{project}/locations/{location}/assessmentRules/{assessment_rule} */
+  name?: string;
+  /** Output only. The time at which this assessment rule was created. */
+  createTime?: string;
+  /** Output only. The most recent time at which this assessment rule was updated. */
+  updateTime?: string;
 }
 export const GoogleCloudContactcenterinsightsV1AssessmentRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      createTime: S.optional(S.String),
+      sampleRule: S.optional(GoogleCloudContactcenterinsightsV1SampleRule),
       scheduleInfo: S.optional(GoogleCloudContactcenterinsightsV1ScheduleInfo),
       active: S.optional(S.Boolean),
-      sampleRule: S.optional(GoogleCloudContactcenterinsightsV1SampleRule),
-      name: S.optional(S.String),
-      updateTime: S.optional(S.String),
       displayName: S.optional(S.String),
+      name: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AssessmentRule",
@@ -1387,42 +1393,173 @@ export const CreateProjectsLocationsAssessmentRulesRequest =
     identifier: "CreateProjectsLocationsAssessmentRulesRequest",
   }) as any as S.Schema<CreateProjectsLocationsAssessmentRulesRequest>;
 
+export type GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PROCESSING"
+  | "IDLE";
+export const GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum =
+  /*@__PURE__*/ S.String;
+
+/** A chunk of data in an assistant message. */
+export interface GoogleCloudContactcenterinsightsV1AssistantChunk {
+  /** Optional. Text data. */
+  text?: string;
+}
+export const GoogleCloudContactcenterinsightsV1AssistantChunk =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1AssistantChunk",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantChunk>;
+
+export type GoogleCloudContactcenterinsightsV1AssistantChunkList =
+  Array<GoogleCloudContactcenterinsightsV1AssistantChunk>;
+export const GoogleCloudContactcenterinsightsV1AssistantChunkList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1AssistantChunk,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantChunkList>;
+
+export type GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "USER"
+  | "MODEL";
+export const GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum =
+  /*@__PURE__*/ S.String;
+
+/** A message in an assistant session. */
+export interface GoogleCloudContactcenterinsightsV1AssistantMessage {
+  /** Required. Content of the message. */
+  chunks?: GoogleCloudContactcenterinsightsV1AssistantChunkList;
+  /** Required. Role within the conversation. */
+  role?:
+    | GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum
+    | (string & {});
+  /** Required. Timestamp when the message was sent or received. */
+  eventTime?: string;
+}
+export const GoogleCloudContactcenterinsightsV1AssistantMessage =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      chunks: S.optional(GoogleCloudContactcenterinsightsV1AssistantChunkList),
+      role: S.optional(
+        GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum,
+      ),
+      eventTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1AssistantMessage",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantMessage>;
+
+export type GoogleCloudContactcenterinsightsV1AssistantMessageList =
+  Array<GoogleCloudContactcenterinsightsV1AssistantMessage>;
+export const GoogleCloudContactcenterinsightsV1AssistantMessageList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1AssistantMessage,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantMessageList>;
+
+/** Represents a conversation session with the Assistant Agent. */
+export interface GoogleCloudContactcenterinsightsV1AssistantSession {
+  /** Output only. The status of the session. */
+  state?:
+    | GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum
+    | (string & {});
+  /** Optional. History of messages in the session. */
+  messages?: GoogleCloudContactcenterinsightsV1AssistantMessageList;
+  /** Optional. The display name of the session. */
+  displayName?: string;
+  /** Output only. The user who initiated the session. */
+  requester?: string;
+  /** Output only. The time the session was created. */
+  createTime?: string;
+  /** Output only. The time the session was last updated. */
+  updateTime?: string;
+  /** Identifier. Resource name of the session. Format: projects/{project}/locations/{location}/assistantSessions/{assistant_session} */
+  name?: string;
+}
+export const GoogleCloudContactcenterinsightsV1AssistantSession =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(
+        GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum,
+      ),
+      messages: S.optional(
+        GoogleCloudContactcenterinsightsV1AssistantMessageList,
+      ),
+      displayName: S.optional(S.String),
+      requester: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1AssistantSession",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantSession>;
+
+export interface CreateProjectsLocationsAssistantSessionsRequest {
+  /** Required. The parent resource where this assistant session will be created. Format: projects/{project}/locations/{location} */
+  parent: string;
+  /** Optional. The ID to use for the assistant session, which will become the final component of the assistant session's resource name. If not provided, a random UUID will be generated by the server. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. */
+  assistantSessionId?: string;
+  /** Request body */
+  body?: GoogleCloudContactcenterinsightsV1AssistantSession;
+}
+export const CreateProjectsLocationsAssistantSessionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      assistantSessionId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudContactcenterinsightsV1AssistantSession.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/assistantSessions",
+        baseUrl: "https://contactcenterinsights.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsAssistantSessionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsAssistantSessionsRequest>;
+
 /** An AuthorizedViewSet contains a set of AuthorizedView resources. */
 export interface GoogleCloudContactcenterinsightsV1AuthorizedViewSet {
   /** Output only. Create time. */
   createTime?: string;
+  /** Output only. Update time. */
+  updateTime?: string;
   /** Identifier. The resource name of the AuthorizedViewSet. Format: projects/{project}/locations/{location}/authorizedViewSets/{authorized_view_set} */
   name?: string;
   /** Display Name. Limit 64 characters. */
   displayName?: string;
-  /** Output only. Update time. */
-  updateTime?: string;
 }
 export const GoogleCloudContactcenterinsightsV1AuthorizedViewSet =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
       name: S.optional(S.String),
       displayName: S.optional(S.String),
-      updateTime: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AuthorizedViewSet",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>;
 
 export interface CreateProjectsLocationsAuthorizedViewSetsRequest {
-  /** Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments */
-  authorizedViewSetId?: string;
   /** Required. The parent resource of the AuthorizedViewSet. */
   parent: string;
+  /** Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments */
+  authorizedViewSetId?: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedViewSet;
 }
 export const CreateProjectsLocationsAuthorizedViewSetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      authorizedViewSetId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      authorizedViewSetId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1AuthorizedViewSet.pipe(T.HttpBody()),
       ),
@@ -1439,43 +1576,43 @@ export const CreateProjectsLocationsAuthorizedViewSetsRequest =
 
 /** An AuthorizedView represents a view of accessible Insights resources (for example, Conversation and Scorecard). Who have read access to the AuthorizedView resource will have access to these Insight resources as well. */
 export interface GoogleCloudContactcenterinsightsV1AuthorizedView {
-  /** Output only. The time at which the authorized view was created. */
-  createTime?: string;
-  /** A filter to reduce conversation results to a specific subset. The AuthorizedView's assigned permission (read/write) could be applied to the subset of conversations. If conversation_filter is empty, there is no restriction on the conversations that the AuthorizedView can access. Having *authorizedViews.get* access to the AuthorizedView means having the same read/write access to the Conversations (as well as metadata/annotations linked to the conversation) that this AuthorizedView has. */
-  conversationFilter?: string;
   /** Identifier. The resource name of the AuthorizedView. Format: projects/{project}/locations/{location}/authorizedViewSets/{authorized_view_set}/authorizedViews/{authorized_view} */
   name?: string;
   /** Display Name. Limit 64 characters. */
   displayName?: string;
+  /** Output only. The time at which the authorized view was created. */
+  createTime?: string;
   /** Output only. The most recent time at which the authorized view was updated. */
   updateTime?: string;
+  /** A filter to reduce conversation results to a specific subset. The AuthorizedView's assigned permission (read/write) could be applied to the subset of conversations. If conversation_filter is empty, there is no restriction on the conversations that the AuthorizedView can access. Having *authorizedViews.get* access to the AuthorizedView means having the same read/write access to the Conversations (as well as metadata/annotations linked to the conversation) that this AuthorizedView has. */
+  conversationFilter?: string;
 }
 export const GoogleCloudContactcenterinsightsV1AuthorizedView =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      createTime: S.optional(S.String),
-      conversationFilter: S.optional(S.String),
       name: S.optional(S.String),
       displayName: S.optional(S.String),
+      createTime: S.optional(S.String),
       updateTime: S.optional(S.String),
+      conversationFilter: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AuthorizedView",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedView>;
 
 export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
-  /** Required. The parent resource of the AuthorizedView. */
-  parent: string;
   /** Optional. A unique ID for the new AuthorizedView. This ID will become the final component of the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments */
   authorizedViewId?: string;
+  /** Required. The parent resource of the AuthorizedView. */
+  parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedView;
 }
 export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       authorizedViewId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1AuthorizedView.pipe(T.HttpBody()),
       ),
@@ -1530,6 +1667,20 @@ export const GoogleCloudContactcenterinsightsV1NoteQaQuestionNote =
     identifier: "GoogleCloudContactcenterinsightsV1NoteQaQuestionNote",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1NoteQaQuestionNote>;
 
+/** Information about a user. */
+export interface GoogleCloudContactcenterinsightsV1UserInfo {
+  /** The user's username. */
+  username?: string;
+}
+export const GoogleCloudContactcenterinsightsV1UserInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1UserInfo",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1UserInfo>;
+
 /** A note about a conversation turn. */
 export interface GoogleCloudContactcenterinsightsV1NoteConversationTurnNote {
   /** The conversation turn index that the note is associated with. */
@@ -1550,38 +1701,24 @@ export type GoogleCloudContactcenterinsightsV1NoteAssessmentNote =
 export const GoogleCloudContactcenterinsightsV1NoteAssessmentNote =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 
-/** Information about a user. */
-export interface GoogleCloudContactcenterinsightsV1UserInfo {
-  /** The user's username. */
-  username?: string;
-}
-export const GoogleCloudContactcenterinsightsV1UserInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1UserInfo",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1UserInfo>;
-
 /** The conversation assessment note resource. */
 export interface GoogleCloudContactcenterinsightsV1Note {
   /** The note is associated with a QA question in one of the conversation's scorecard results. */
   qaQuestionNote?: GoogleCloudContactcenterinsightsV1NoteQaQuestionNote;
-  /** Output only. The time at which the note was created. */
-  createTime?: string;
   /** The note content. */
   content?: string;
-  /** The note is associated with a conversation turn. */
-  conversationTurnNote?: GoogleCloudContactcenterinsightsV1NoteConversationTurnNote;
-  /** Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} */
-  name?: string;
-  /** Output only. The time at which the note was last updated. */
-  updateTime?: string;
-  /** The note is associated to the entire parent assessment. */
-  assessmentNote?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
   /** Output only. The user that created the note. */
   noteCreator?: GoogleCloudContactcenterinsightsV1UserInfo;
+  /** Output only. The time at which the note was created. */
+  createTime?: string;
+  /** Output only. The time at which the note was last updated. */
+  updateTime?: string;
+  /** The note is associated with a conversation turn. */
+  conversationTurnNote?: GoogleCloudContactcenterinsightsV1NoteConversationTurnNote;
+  /** The note is associated to the entire parent assessment. */
+  assessmentNote?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
+  /** Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} */
+  name?: string;
 }
 export const GoogleCloudContactcenterinsightsV1Note = /*@__PURE__*/ S.suspend(
   () =>
@@ -1589,17 +1726,17 @@ export const GoogleCloudContactcenterinsightsV1Note = /*@__PURE__*/ S.suspend(
       qaQuestionNote: S.optional(
         GoogleCloudContactcenterinsightsV1NoteQaQuestionNote,
       ),
-      createTime: S.optional(S.String),
       content: S.optional(S.String),
+      noteCreator: S.optional(GoogleCloudContactcenterinsightsV1UserInfo),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
       conversationTurnNote: S.optional(
         GoogleCloudContactcenterinsightsV1NoteConversationTurnNote,
       ),
-      name: S.optional(S.String),
-      updateTime: S.optional(S.String),
       assessmentNote: S.optional(
         GoogleCloudContactcenterinsightsV1AppealAssessmentRequest,
       ),
-      noteCreator: S.optional(GoogleCloudContactcenterinsightsV1UserInfo),
+      name: S.optional(S.String),
     }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1Note",
@@ -1632,37 +1769,37 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
 
 /** Message for holding the value of a QaAnswer. QaQuestion.AnswerChoice defines the possible answer values for a question. */
 export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
-  /** Output only. A value of "Skip". If provided, this field may only be set to `true`. If a question receives this answer, it will be excluded from any score calculations. This would mean that the question was not evaluated. */
-  skipValue?: boolean;
-  /** Output only. Numerical score of the answer. */
-  score?: number;
-  /** A value of "Not Applicable (N/A)". Should only ever be `true`. */
-  naValue?: boolean;
-  /** A short string used as an identifier. Matches the value used in QaQuestion.AnswerChoice.key. */
-  key?: string;
-  /** Numerical value. */
-  numValue?: number;
-  /** Boolean value. */
-  boolValue?: boolean;
-  /** Output only. Normalized score of the questions. Calculated as score / potential_score. */
-  normalizedScore?: number;
   /** Output only. The maximum potential score of the question. */
   potentialScore?: number;
+  /** Output only. Normalized score of the questions. Calculated as score / potential_score. */
+  normalizedScore?: number;
+  /** Numerical value. */
+  numValue?: number;
   /** String value. */
   strValue?: string;
+  /** A short string used as an identifier. Matches the value used in QaQuestion.AnswerChoice.key. */
+  key?: string;
+  /** Output only. Numerical score of the answer. */
+  score?: number;
+  /** Boolean value. */
+  boolValue?: boolean;
+  /** Output only. A value of "Skip". If provided, this field may only be set to `true`. If a question receives this answer, it will be excluded from any score calculations. This would mean that the question was not evaluated. */
+  skipValue?: boolean;
+  /** A value of "Not Applicable (N/A)". Should only ever be `true`. */
+  naValue?: boolean;
 }
 export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      skipValue: S.optional(S.Boolean),
-      score: S.optional(S.Number),
-      naValue: S.optional(S.Boolean),
-      key: S.optional(S.String),
-      numValue: S.optional(S.Number),
-      boolValue: S.optional(S.Boolean),
-      normalizedScore: S.optional(S.Number),
       potentialScore: S.optional(S.Number),
+      normalizedScore: S.optional(S.Number),
+      numValue: S.optional(S.Number),
       strValue: S.optional(S.String),
+      key: S.optional(S.String),
+      score: S.optional(S.Number),
+      boolValue: S.optional(S.Boolean),
+      skipValue: S.optional(S.Boolean),
+      naValue: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue",
@@ -1670,29 +1807,29 @@ export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue =
 
 /** Represents a conversation, resource, and label provided by the user. Can take the form of a string label or a QaAnswer label. QaAnswer labels are used for Quality AI example conversations. String labels are used for Topic Modeling. AgentAssistSummary labels are used for Agent Assist Summarization. */
 export interface GoogleCloudContactcenterinsightsV1FeedbackLabel {
-  /** String label used for Topic Modeling. */
-  label?: string;
-  /** Output only. Create time of the label. */
-  createTime?: string;
+  /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
+  name?: string;
   /** Name of the resource to be labeled. Supported resources are: * `projects/{project}/locations/{location}/qaScorecards/{scorecard}/revisions/{revision}/qaQuestions/{question}` * `projects/{project}/locations/{location}/issueModels/{issue_model}` * `projects/{project}/locations/{location}/generators/{generator_id}` */
   labeledResource?: string;
   /** QaAnswer label used for Quality AI example conversations. */
   qaAnswerLabel?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue;
-  /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
-  name?: string;
+  /** String label used for Topic Modeling. */
+  label?: string;
+  /** Output only. Create time of the label. */
+  createTime?: string;
   /** Output only. Update time of the label. */
   updateTime?: string;
 }
 export const GoogleCloudContactcenterinsightsV1FeedbackLabel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      label: S.optional(S.String),
-      createTime: S.optional(S.String),
+      name: S.optional(S.String),
       labeledResource: S.optional(S.String),
       qaAnswerLabel: S.optional(
         GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue,
       ),
-      name: S.optional(S.String),
+      label: S.optional(S.String),
+      createTime: S.optional(S.String),
       updateTime: S.optional(S.String),
     }),
   ).annotate({
@@ -1700,18 +1837,18 @@ export const GoogleCloudContactcenterinsightsV1FeedbackLabel =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
 
 export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest {
-  /** Required. The parent resource of the feedback label. */
-  parent: string;
   /** Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. */
   feedbackLabelId?: string;
+  /** Required. The parent resource of the feedback label. */
+  parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
 export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       feedbackLabelId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody()),
       ),
@@ -1729,16 +1866,16 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
 
 /** Condition for auto-labeling conversations. */
 export interface GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition {
-  /** CEL expression to be evaluated as the value. */
-  value?: string;
   /** A optional CEL expression to be evaluated as a boolean value. Once evaluated as true, then we will proceed with the value evaluation. An empty condition will be auto evaluated as true. */
   condition?: string;
+  /** CEL expression to be evaluated as the value. */
+  value?: string;
 }
 export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.optional(S.String),
       condition: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -1753,49 +1890,50 @@ export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList>;
 
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum =
-  "LABEL_KEY_TYPE_UNSPECIFIED" | "LABEL_KEY_TYPE_CUSTOM";
+  | "LABEL_KEY_TYPE_UNSPECIFIED"
+  | "LABEL_KEY_TYPE_CUSTOM";
 export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** Rule for auto-labeling conversations. */
 export interface GoogleCloudContactcenterinsightsV1AutoLabelingRule {
-  /** The label key. This is also the {auto_labeling_rule} in the resource name. Only settable if label_key_type is LABEL_KEY_TYPE_CUSTOM. */
-  labelKey?: string;
-  /** Conditions to apply for auto-labeling the label_key. Representing sequential block of if .. else if .. else statements. The value of the first matching condition will be used. */
-  conditions?: GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList;
-  /** The description of the rule. */
-  description?: string;
-  /** Output only. The most recent time at which the rule was updated. */
-  updateTime?: string;
-  /** Output only. The time at which this rule was created. */
-  createTime?: string;
   /** Whether the rule is active. */
   active?: boolean;
-  /** Identifier. The resource name of the auto-labeling rule. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} */
-  name?: string;
-  /** The user-provided display name of the rule. */
-  displayName?: string;
+  /** Conditions to apply for auto-labeling the label_key. Representing sequential block of if .. else if .. else statements. The value of the first matching condition will be used. */
+  conditions?: GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList;
   /** The type of the label key. */
   labelKeyType?:
     | GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum
     | (string & {});
+  /** Identifier. The resource name of the auto-labeling rule. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} */
+  name?: string;
+  /** The user-provided display name of the rule. */
+  displayName?: string;
+  /** Output only. The time at which this rule was created. */
+  createTime?: string;
+  /** Output only. The most recent time at which the rule was updated. */
+  updateTime?: string;
+  /** The description of the rule. */
+  description?: string;
+  /** The label key. This is also the {auto_labeling_rule} in the resource name. Only settable if label_key_type is LABEL_KEY_TYPE_CUSTOM. */
+  labelKey?: string;
 }
 export const GoogleCloudContactcenterinsightsV1AutoLabelingRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      labelKey: S.optional(S.String),
+      active: S.optional(S.Boolean),
       conditions: S.optional(
         GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList,
       ),
-      description: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      createTime: S.optional(S.String),
-      active: S.optional(S.Boolean),
-      name: S.optional(S.String),
-      displayName: S.optional(S.String),
       labelKeyType: S.optional(
         GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum,
       ),
+      name: S.optional(S.String),
+      displayName: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      description: S.optional(S.String),
+      labelKey: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AutoLabelingRule",
@@ -1828,244 +1966,60 @@ export const CreateProjectsLocationsAutoLabelingRulesRequest =
     identifier: "CreateProjectsLocationsAutoLabelingRulesRequest",
   }) as any as S.Schema<CreateProjectsLocationsAutoLabelingRulesRequest>;
 
-/** Call-specific metadata. */
-export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
-  /** The audio channel that contains the customer. */
-  customerChannel?: number;
-  /** The audio channel that contains the agent. */
-  agentChannel?: number;
+/** The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE. */
+export interface GoogleCloudContactcenterinsightsV1DialogflowIntent {
+  /** The human-readable name of the intent. */
+  displayName?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationCallMetadata =
+export const GoogleCloudContactcenterinsightsV1DialogflowIntent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      customerChannel: S.optional(S.Number),
-      agentChannel: S.optional(S.Number),
+      displayName: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationCallMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>;
+    identifier: "GoogleCloudContactcenterinsightsV1DialogflowIntent",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntent>;
 
-export type GoogleCloudContactcenterinsightsV1ConversationMediumEnum =
-  | "MEDIUM_UNSPECIFIED"
-  | "PHONE_CALL"
-  | "CHAT";
-export const GoogleCloudContactcenterinsightsV1ConversationMediumEnum =
+export type GoogleCloudContactcenterinsightsV1DialogflowIntentMap = {
+  [key: string]: GoogleCloudContactcenterinsightsV1DialogflowIntent | undefined;
+};
+export const GoogleCloudContactcenterinsightsV1DialogflowIntentMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    GoogleCloudContactcenterinsightsV1DialogflowIntent,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntentMap>;
+
+export type GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum =
+  | "CORRECTNESS_LEVEL_UNSPECIFIED"
+  | "NOT_CORRECT"
+  | "PARTIALLY_CORRECT"
+  | "FULLY_CORRECT";
+export const GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleCloudContactcenterinsightsV1FeedbackLabelList =
-  Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
-export const GoogleCloudContactcenterinsightsV1FeedbackLabelList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1FeedbackLabel,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabelList>;
-
-export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
-  Array<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList>;
-
-/** Conversation metadata related to quality management. */
-export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
-  /** Input only. The feedback labels associated with the conversation. */
-  feedbackLabels?: GoogleCloudContactcenterinsightsV1FeedbackLabelList;
-  /** The amount of time the customer waited to connect with an agent. */
-  waitDuration?: string;
-  /** An arbitrary integer value indicating the customer's satisfaction rating. */
-  customerSatisfactionRating?: number;
-  /** An arbitrary string value specifying the menu path the customer took. */
-  menuPath?: string;
-  /** Information about agents involved in the call. */
-  agentInfo?: GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList;
+/** The feedback that the customer has about a certain answer in the conversation. */
+export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
+  /** Indicates whether an answer or item was clicked by the human agent. */
+  clicked?: boolean;
+  /** Indicates whether an answer or item was displayed to the human agent in the agent desktop UI. */
+  displayed?: boolean;
+  /** The correctness level of an answer. */
+  correctnessLevel?:
+    | GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum
+    | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata =
+export const GoogleCloudContactcenterinsightsV1AnswerFeedback =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      feedbackLabels: S.optional(
-        GoogleCloudContactcenterinsightsV1FeedbackLabelList,
-      ),
-      waitDuration: S.optional(S.String),
-      customerSatisfactionRating: S.optional(S.Number),
-      menuPath: S.optional(S.String),
-      agentInfo: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList,
+      clicked: S.optional(S.Boolean),
+      displayed: S.optional(S.Boolean),
+      correctnessLevel: S.optional(
+        GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum,
       ),
     }),
   ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationQualityMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata>;
-
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-/** Conversation summarization suggestion data. */
-export interface GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData {
-  /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
-  answerRecord?: string;
-  /** The confidence score of the summarization. */
-  confidence?: number;
-  /** A map that contains metadata about the summarization and the document from which it originates. */
-  metadata?: StringMap;
-  /** Agent Assist generator ID. */
-  generatorId?: string;
-  /** The summarization content that is concatenated into one string. */
-  text?: string;
-  /** The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value. */
-  textSections?: StringMap;
-  /** The name of the model that generates this summary. Format: projects/{project}/locations/{location}/conversationModels/{conversation_model} */
-  conversationModel?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      answerRecord: S.optional(S.String),
-      confidence: S.optional(S.Number),
-      metadata: S.optional(StringMap),
-      generatorId: S.optional(S.String),
-      text: S.optional(S.String),
-      textSections: S.optional(StringMap),
-      conversationModel: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData>;
-
-/** A Dialogflow source of conversation data. */
-export interface GoogleCloudContactcenterinsightsV1DialogflowSource {
-  /** Output only. The name of the Dialogflow conversation that this conversation resource is derived from. Format: projects/{project}/locations/{location}/conversations/{conversation} */
-  dialogflowConversation?: string;
-  /** Cloud Storage URI that points to a file that contains the conversation audio. */
-  audioUri?: string;
-}
-export const GoogleCloudContactcenterinsightsV1DialogflowSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dialogflowConversation: S.optional(S.String),
-      audioUri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1DialogflowSource",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowSource>;
-
-/** A wrapper for holding the audio for any given turn. */
-export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio {
-  /** The duration of the audio. */
-  audioDuration?: string;
-  /** The Cloud Storage URI of the audio for any given turn. */
-  audioGcsUri?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioDuration: S.optional(S.String),
-      audioGcsUri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
-
-export type GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
-  Array<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
-export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList>;
-
-/** A Cloud Storage source of conversation data. */
-export interface GoogleCloudContactcenterinsightsV1GcsSource {
-  /** Cloud Storage URI that points to a file that contains the conversation audio. */
-  audioUri?: string;
-  /** Immutable. Cloud Storage URI that points to a file that contains the conversation transcript. */
-  transcriptUri?: string;
-}
-export const GoogleCloudContactcenterinsightsV1GcsSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioUri: S.optional(S.String),
-      transcriptUri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1GcsSource",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GcsSource>;
-
-/** The conversation source, which is a combination of transcript and audio. */
-export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
-  /** The source when the conversation comes from Dialogflow. */
-  dialogflowSource?: GoogleCloudContactcenterinsightsV1DialogflowSource;
-  /** Cloud Storage URI that points to a file that contains the conversation metadata. */
-  metadataUri?: string;
-  /** Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order of the URIs is the same as the order of the transcript turns. */
-  turnLevelAudios?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList;
-  /** A Cloud Storage location specification for the audio and transcript. */
-  gcsSource?: GoogleCloudContactcenterinsightsV1GcsSource;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationDataSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dialogflowSource: S.optional(
-        GoogleCloudContactcenterinsightsV1DialogflowSource,
-      ),
-      metadataUri: S.optional(S.String),
-      turnLevelAudios: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList,
-      ),
-      gcsSource: S.optional(GoogleCloudContactcenterinsightsV1GcsSource),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationDataSource",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSource>;
-
-/** Dialogflow interaction data. */
-export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
-  /** The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent} */
-  dialogflowIntentId?: string;
-  /** The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
-  confidence?: number;
-}
-export const GoogleCloudContactcenterinsightsV1DialogflowInteractionData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dialogflowIntentId: S.optional(S.String),
-      confidence: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1DialogflowInteractionData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowInteractionData>;
-
-/** Agent Assist frequently-asked-question answer data. */
-export interface GoogleCloudContactcenterinsightsV1FaqAnswerData {
-  /** The piece of text from the `source` knowledge base document. */
-  answer?: string;
-  /** The corresponding FAQ question. */
-  question?: string;
-  /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
-  queryRecord?: string;
-  /** Map that contains metadata about the FAQ answer and the document that it originates from. */
-  metadata?: StringMap;
-  /** The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}. */
-  source?: string;
-  /** The system's confidence score that this answer is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
-  confidenceScore?: number;
-}
-export const GoogleCloudContactcenterinsightsV1FaqAnswerData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      answer: S.optional(S.String),
-      question: S.optional(S.String),
-      queryRecord: S.optional(S.String),
-      metadata: S.optional(StringMap),
-      source: S.optional(S.String),
-      confidenceScore: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1FaqAnswerData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1FaqAnswerData>;
+    identifier: "GoogleCloudContactcenterinsightsV1AnswerFeedback",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnswerFeedback>;
 
 /** A point in a conversation that marks the start or the end of an annotation. */
 export interface GoogleCloudContactcenterinsightsV1AnnotationBoundary {
@@ -2084,28 +2038,396 @@ export const GoogleCloudContactcenterinsightsV1AnnotationBoundary =
     identifier: "GoogleCloudContactcenterinsightsV1AnnotationBoundary",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotationBoundary>;
 
-/** Agent Assist Smart Compose suggestion data. */
-export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
-  /** The content of the suggestion. */
-  suggestion?: string;
-  /** The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
+/** A tool that is created from a toolset. */
+export interface GoogleCloudCesV1mainToolsetTool {
+  /** Optional. The tool ID to filter the tools to retrieve the schema for. */
+  toolId?: string;
+  /** Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
+  toolset?: string;
+}
+export const GoogleCloudCesV1mainToolsetTool = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    toolId: S.optional(S.String),
+    toolset: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainToolsetTool",
+}) as any as S.Schema<GoogleCloudCesV1mainToolsetTool>;
+
+/** Request for the client or the agent to execute the specified tool. */
+export interface GoogleCloudCesV1mainToolCall {
+  /** Optional. The name of the tool to execute. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
+  tool?: string;
+  /** Optional. The toolset tool to execute. */
+  toolsetTool?: GoogleCloudCesV1mainToolsetTool;
+  /** Output only. Display name of the tool. */
+  displayName?: string;
+  /** Optional. The input parameters and values for the tool in JSON object format. */
+  args?: DocumentMap;
+  /** Optional. The unique identifier of the tool call. If populated, the client should return the execution result with the matching ID in ToolResponse. */
+  id?: string;
+  /** Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call that started it instead of rendering every step as a sibling. */
+  parentToolCallId?: string;
+  /** Output only. Human-readable name of the agent that issued this call, e.g. "Contract Architect". Empty when the root agent issued it. */
+  agentName?: string;
+}
+export const GoogleCloudCesV1mainToolCall = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tool: S.optional(S.String),
+    toolsetTool: S.optional(GoogleCloudCesV1mainToolsetTool),
+    displayName: S.optional(S.String),
+    args: S.optional(DocumentMap),
+    id: S.optional(S.String),
+    parentToolCallId: S.optional(S.String),
+    agentName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainToolCall",
+}) as any as S.Schema<GoogleCloudCesV1mainToolCall>;
+
+/** The execution result of a specific tool from the client or the agent. */
+export interface GoogleCloudCesV1mainToolResponse {
+  /** Required. The tool execution result in JSON object format. Use "output" key to specify tool response and "error" key to specify error details (if any). If "output" and "error" keys are not specified, then whole "response" is treated as tool execution result. */
+  response?: DocumentMap;
+  /** Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call that started it instead of rendering every step as a sibling. */
+  parentToolCallId?: string;
+  /** Optional. The name of the tool to execute. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
+  tool?: string;
+  /** Optional. The matching ID of the tool call the response is for. */
+  id?: string;
+  /** Optional. The toolset tool that got executed. */
+  toolsetTool?: GoogleCloudCesV1mainToolsetTool;
+  /** Output only. Display name of the tool. */
+  displayName?: string;
+  /** Output only. Human-readable name of the agent that issued this call, e.g. "Contract Architect". Empty when the root agent issued it. */
+  agentName?: string;
+}
+export const GoogleCloudCesV1mainToolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    response: S.optional(DocumentMap),
+    parentToolCallId: S.optional(S.String),
+    tool: S.optional(S.String),
+    id: S.optional(S.String),
+    toolsetTool: S.optional(GoogleCloudCesV1mainToolsetTool),
+    displayName: S.optional(S.String),
+    agentName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainToolResponse",
+}) as any as S.Schema<GoogleCloudCesV1mainToolResponse>;
+
+/** Represents a blob input or output in the conversation. */
+export interface GoogleCloudCesV1mainBlob {
+  /** Required. The IANA standard MIME type of the source data. */
+  mimeType?: string;
+  /** Required. Raw bytes of the blob. */
+  data?: string;
+}
+export const GoogleCloudCesV1mainBlob = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mimeType: S.optional(S.String),
+    data: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainBlob",
+}) as any as S.Schema<GoogleCloudCesV1mainBlob>;
+
+/** Represents an event indicating the transfer of a conversation to a different agent. */
+export interface GoogleCloudCesV1mainAgentTransfer {
+  /** Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
+  targetAgent?: string;
+  /** Output only. Display name of the agent. */
+  displayName?: string;
+}
+export const GoogleCloudCesV1mainAgentTransfer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetAgent: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainAgentTransfer",
+}) as any as S.Schema<GoogleCloudCesV1mainAgentTransfer>;
+
+/** Represents an image input or output in the conversation. */
+export interface GoogleCloudCesV1mainImage {
+  /** Required. Raw bytes of the image. */
+  data?: string;
+  /** Required. The IANA standard MIME type of the source data. Supported image types includes: * image/png * image/jpeg * image/webp */
+  mimeType?: string;
+}
+export const GoogleCloudCesV1mainImage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(S.String),
+    mimeType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainImage",
+}) as any as S.Schema<GoogleCloudCesV1mainImage>;
+
+/** A chunk of content within a message. */
+export interface GoogleCloudCesV1mainChunk {
+  /** Optional. Custom payload data. */
+  payload?: DocumentMap;
+  /** Optional. Text data. */
+  text?: string;
+  /** A struct represents variables that were updated in the conversation, keyed by variable names. */
+  updatedVariables?: DocumentMap;
+  /** Optional. Transcript associated with the audio. */
+  transcript?: string;
+  /** Optional. Tool execution request. */
+  toolCall?: GoogleCloudCesV1mainToolCall;
+  /** Optional. Tool execution response. */
+  toolResponse?: GoogleCloudCesV1mainToolResponse;
+  /** Optional. Blob data. */
+  blob?: GoogleCloudCesV1mainBlob;
+  /** A struct represents default variables at the start of the conversation, keyed by variable names. */
+  defaultVariables?: DocumentMap;
+  /** Optional. Agent transfer event. */
+  agentTransfer?: GoogleCloudCesV1mainAgentTransfer;
+  /** Optional. Image data. */
+  image?: GoogleCloudCesV1mainImage;
+}
+export const GoogleCloudCesV1mainChunk = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    payload: S.optional(DocumentMap),
+    text: S.optional(S.String),
+    updatedVariables: S.optional(DocumentMap),
+    transcript: S.optional(S.String),
+    toolCall: S.optional(GoogleCloudCesV1mainToolCall),
+    toolResponse: S.optional(GoogleCloudCesV1mainToolResponse),
+    blob: S.optional(GoogleCloudCesV1mainBlob),
+    defaultVariables: S.optional(DocumentMap),
+    agentTransfer: S.optional(GoogleCloudCesV1mainAgentTransfer),
+    image: S.optional(GoogleCloudCesV1mainImage),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainChunk",
+}) as any as S.Schema<GoogleCloudCesV1mainChunk>;
+
+export type GoogleCloudCesV1mainChunkList = Array<GoogleCloudCesV1mainChunk>;
+export const GoogleCloudCesV1mainChunkList = /*@__PURE__*/ S.Array(
+  GoogleCloudCesV1mainChunk,
+) as any as S.Schema<GoogleCloudCesV1mainChunkList>;
+
+/** A message within a conversation. */
+export interface GoogleCloudCesV1mainMessage {
+  /** Optional. Content of the message as a series of chunks. */
+  chunks?: GoogleCloudCesV1mainChunkList;
+  /** Optional. The role within the conversation, e.g., user, agent. */
+  role?: string;
+  /** Optional. Timestamp when the message was sent or received. Should not be used if the message is part of an example. */
+  eventTime?: string;
+}
+export const GoogleCloudCesV1mainMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    chunks: S.optional(GoogleCloudCesV1mainChunkList),
+    role: S.optional(S.String),
+    eventTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainMessage",
+}) as any as S.Schema<GoogleCloudCesV1mainMessage>;
+
+export type GoogleCloudCesV1mainMessageList =
+  Array<GoogleCloudCesV1mainMessage>;
+export const GoogleCloudCesV1mainMessageList = /*@__PURE__*/ S.Array(
+  GoogleCloudCesV1mainMessage,
+) as any as S.Schema<GoogleCloudCesV1mainMessageList>;
+
+export type GoogleCloudCesV1mainSpanList = Array<GoogleCloudCesV1mainSpan>;
+export const GoogleCloudCesV1mainSpanList = /*@__PURE__*/ S.Array(
+  S.suspend(() => GoogleCloudCesV1mainSpan),
+) as any as S.Schema<GoogleCloudCesV1mainSpanList>;
+
+/** A span is a unit of work or a single operation during the request processing. */
+export interface GoogleCloudCesV1mainSpan {
+  /** Output only. The end time of the span. */
+  endTime?: string;
+  /** Output only. The start time of the span. */
+  startTime?: string;
+  /** Output only. Key-value attributes associated with the span. */
+  attributes?: DocumentMap;
+  /** Output only. The duration of the span. */
+  duration?: string;
+  /** Output only. The child spans that are nested under this span. */
+  childSpans?: GoogleCloudCesV1mainSpanList;
+  /** Output only. The name of the span. */
+  name?: string;
+}
+export const GoogleCloudCesV1mainSpan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+    attributes: S.optional(DocumentMap),
+    duration: S.optional(S.String),
+    childSpans: S.optional(GoogleCloudCesV1mainSpanList),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudCesV1mainSpan",
+}) as any as S.Schema<GoogleCloudCesV1mainSpan>;
+
+/** The CES diagnostic information. */
+export interface GoogleCloudContactcenterinsightsV1CesTurnAnnotation {
+  /** The messages in the turn. */
+  messages?: GoogleCloudCesV1mainMessageList;
+  /** The root span of the action processing. */
+  rootSpan?: GoogleCloudCesV1mainSpan;
+}
+export const GoogleCloudContactcenterinsightsV1CesTurnAnnotation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      messages: S.optional(GoogleCloudCesV1mainMessageList),
+      rootSpan: S.optional(GoogleCloudCesV1mainSpan),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1CesTurnAnnotation",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CesTurnAnnotation>;
+
+/** Dialogflow interaction data. */
+export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
+  /** The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent} */
+  dialogflowIntentId?: string;
+  /** The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
+  confidence?: number;
+}
+export const GoogleCloudContactcenterinsightsV1DialogflowInteractionData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dialogflowIntentId: S.optional(S.String),
+      confidence: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1DialogflowInteractionData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowInteractionData>;
+
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
+/** Agent Assist frequently-asked-question answer data. */
+export interface GoogleCloudContactcenterinsightsV1FaqAnswerData {
+  /** Map that contains metadata about the FAQ answer and the document that it originates from. */
+  metadata?: StringMap;
+  /** The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}. */
+  source?: string;
+  /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
+  queryRecord?: string;
+  /** The piece of text from the `source` knowledge base document. */
+  answer?: string;
+  /** The corresponding FAQ question. */
+  question?: string;
+  /** The system's confidence score that this answer is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
   confidenceScore?: number;
-  /** Map that contains metadata about the Smart Compose suggestion and the document from which it originates. */
+}
+export const GoogleCloudContactcenterinsightsV1FaqAnswerData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      metadata: S.optional(StringMap),
+      source: S.optional(S.String),
+      queryRecord: S.optional(S.String),
+      answer: S.optional(S.String),
+      question: S.optional(S.String),
+      confidenceScore: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1FaqAnswerData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1FaqAnswerData>;
+
+export type GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum =
+  | "QUERY_SOURCE_UNSPECIFIED"
+  | "AGENT_QUERY"
+  | "SUGGESTED_QUERY";
+export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum =
+  /*@__PURE__*/ S.String;
+
+/** Explicit input used for generating the answer */
+export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
+  /** Query source for the answer. */
+  querySource?:
+    | GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum
+    | (string & {});
+  /** The resource name of associated generator. Format: `projects//locations//generators/` */
+  generatorName?: string;
+  /** Query text. Article Search uses this to store the input query used to generate the search results. */
+  query?: string;
+}
+export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      querySource: S.optional(
+        GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum,
+      ),
+      generatorName: S.optional(S.String),
+      query: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput>;
+
+/** Agent Assist Article Suggestion data. */
+export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
+  /** Map that contains metadata about the Article Suggestion and the document that it originates from. */
   metadata?: StringMap;
   /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
   queryRecord?: string;
+  /** Article title. */
+  title?: string;
+  /** The system's confidence score that this article is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
+  confidenceScore?: number;
+  /** The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document} */
+  source?: string;
+  /** Article URI. */
+  uri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData =
+export const GoogleCloudContactcenterinsightsV1ArticleSuggestionData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      suggestion: S.optional(S.String),
-      confidenceScore: S.optional(S.Number),
       metadata: S.optional(StringMap),
       queryRecord: S.optional(S.String),
+      title: S.optional(S.String),
+      confidenceScore: S.optional(S.Number),
+      source: S.optional(S.String),
+      uri: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData>;
+    identifier: "GoogleCloudContactcenterinsightsV1ArticleSuggestionData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ArticleSuggestionData>;
+
+/** Conversation summarization suggestion data. */
+export interface GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData {
+  /** Agent Assist generator ID. */
+  generatorId?: string;
+  /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
+  answerRecord?: string;
+  /** A map that contains metadata about the summarization and the document from which it originates. */
+  metadata?: StringMap;
+  /** The confidence score of the summarization. */
+  confidence?: number;
+  /** The name of the model that generates this summary. Format: projects/{project}/locations/{location}/conversationModels/{conversation_model} */
+  conversationModel?: string;
+  /** The summarization content that is concatenated into one string. */
+  text?: string;
+  /** The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value. */
+  textSections?: StringMap;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      generatorId: S.optional(S.String),
+      answerRecord: S.optional(S.String),
+      metadata: S.optional(StringMap),
+      confidence: S.optional(S.Number),
+      conversationModel: S.optional(S.String),
+      text: S.optional(S.String),
+      textSections: S.optional(StringMap),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData>;
 
 /** Indicates the session has terminated, due to either successful completion (e.g. user says "Good bye!" ) or an agent escalation. The agent will not process any further inputs after session is terminated and the client should half-close and disconnect after receiving all remaining responses from the agent. */
 export interface GoogleCloudCesV1mainEndSession {
@@ -2134,420 +2456,119 @@ export const GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation =
     identifier: "GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation>;
 
-export type GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum =
-  "QUERY_SOURCE_UNSPECIFIED" | "AGENT_QUERY" | "SUGGESTED_QUERY";
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum =
-  /*@__PURE__*/ S.String;
-
-/** Explicit input used for generating the answer */
-export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
-  /** Query text. Article Search uses this to store the input query used to generate the search results. */
-  query?: string;
-  /** Query source for the answer. */
-  querySource?:
-    | GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum
-    | (string & {});
-  /** The resource name of associated generator. Format: `projects//locations//generators/` */
-  generatorName?: string;
-}
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      query: S.optional(S.String),
-      querySource: S.optional(
-        GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum,
-      ),
-      generatorName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput>;
-
-export type GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum =
-    | "CORRECTNESS_LEVEL_UNSPECIFIED"
-    | "NOT_CORRECT"
-    | "PARTIALLY_CORRECT"
-    | "FULLY_CORRECT";
-export const GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum =
-  /*@__PURE__*/ S.String;
-
-/** The feedback that the customer has about a certain answer in the conversation. */
-export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
-  /** The correctness level of an answer. */
-  correctnessLevel?:
-    | GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum
-    | (string & {});
-  /** Indicates whether an answer or item was displayed to the human agent in the agent desktop UI. */
-  displayed?: boolean;
-  /** Indicates whether an answer or item was clicked by the human agent. */
-  clicked?: boolean;
-}
-export const GoogleCloudContactcenterinsightsV1AnswerFeedback =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      correctnessLevel: S.optional(
-        GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum,
-      ),
-      displayed: S.optional(S.Boolean),
-      clicked: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1AnswerFeedback",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnswerFeedback>;
-
-export type GoogleCloudCesV1mainSpanList = Array<GoogleCloudCesV1mainSpan>;
-export const GoogleCloudCesV1mainSpanList = /*@__PURE__*/ S.Array(
-  S.suspend(() => GoogleCloudCesV1mainSpan),
-) as any as S.Schema<GoogleCloudCesV1mainSpanList>;
-
-/** A span is a unit of work or a single operation during the request processing. */
-export interface GoogleCloudCesV1mainSpan {
-  /** Output only. The end time of the span. */
-  endTime?: string;
-  /** Output only. The duration of the span. */
-  duration?: string;
-  /** Output only. The name of the span. */
-  name?: string;
-  /** Output only. The start time of the span. */
-  startTime?: string;
-  /** Output only. Key-value attributes associated with the span. */
-  attributes?: DocumentMap;
-  /** Output only. The child spans that are nested under this span. */
-  childSpans?: GoogleCloudCesV1mainSpanList;
-}
-export const GoogleCloudCesV1mainSpan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.optional(S.String),
-    duration: S.optional(S.String),
-    name: S.optional(S.String),
-    startTime: S.optional(S.String),
-    attributes: S.optional(DocumentMap),
-    childSpans: S.optional(GoogleCloudCesV1mainSpanList),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainSpan",
-}) as any as S.Schema<GoogleCloudCesV1mainSpan>;
-
-/** Represents a blob input or output in the conversation. */
-export interface GoogleCloudCesV1mainBlob {
-  /** Required. The IANA standard MIME type of the source data. */
-  mimeType?: string;
-  /** Required. Raw bytes of the blob. */
-  data?: string;
-}
-export const GoogleCloudCesV1mainBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mimeType: S.optional(S.String),
-    data: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainBlob",
-}) as any as S.Schema<GoogleCloudCesV1mainBlob>;
-
-/** Represents an event indicating the transfer of a conversation to a different agent. */
-export interface GoogleCloudCesV1mainAgentTransfer {
-  /** Output only. Display name of the agent. */
-  displayName?: string;
-  /** Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
-  targetAgent?: string;
-}
-export const GoogleCloudCesV1mainAgentTransfer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    targetAgent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainAgentTransfer",
-}) as any as S.Schema<GoogleCloudCesV1mainAgentTransfer>;
-
-/** A tool that is created from a toolset. */
-export interface GoogleCloudCesV1mainToolsetTool {
-  /** Optional. The tool ID to filter the tools to retrieve the schema for. */
-  toolId?: string;
-  /** Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
-  toolset?: string;
-}
-export const GoogleCloudCesV1mainToolsetTool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolId: S.optional(S.String),
-    toolset: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainToolsetTool",
-}) as any as S.Schema<GoogleCloudCesV1mainToolsetTool>;
-
-/** Request for the client or the agent to execute the specified tool. */
-export interface GoogleCloudCesV1mainToolCall {
-  /** Optional. The name of the tool to execute. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
-  tool?: string;
-  /** Output only. Display name of the tool. */
-  displayName?: string;
-  /** Optional. The toolset tool to execute. */
-  toolsetTool?: GoogleCloudCesV1mainToolsetTool;
-  /** Optional. The input parameters and values for the tool in JSON object format. */
-  args?: DocumentMap;
-  /** Optional. The unique identifier of the tool call. If populated, the client should return the execution result with the matching ID in ToolResponse. */
-  id?: string;
-}
-export const GoogleCloudCesV1mainToolCall = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tool: S.optional(S.String),
-    displayName: S.optional(S.String),
-    toolsetTool: S.optional(GoogleCloudCesV1mainToolsetTool),
-    args: S.optional(DocumentMap),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainToolCall",
-}) as any as S.Schema<GoogleCloudCesV1mainToolCall>;
-
-/** Represents an image input or output in the conversation. */
-export interface GoogleCloudCesV1mainImage {
-  /** Required. The IANA standard MIME type of the source data. Supported image types includes: * image/png * image/jpeg * image/webp */
-  mimeType?: string;
-  /** Required. Raw bytes of the image. */
-  data?: string;
-}
-export const GoogleCloudCesV1mainImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mimeType: S.optional(S.String),
-    data: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainImage",
-}) as any as S.Schema<GoogleCloudCesV1mainImage>;
-
-/** The execution result of a specific tool from the client or the agent. */
-export interface GoogleCloudCesV1mainToolResponse {
-  /** Optional. The toolset tool that got executed. */
-  toolsetTool?: GoogleCloudCesV1mainToolsetTool;
-  /** Optional. The name of the tool to execute. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
-  tool?: string;
-  /** Output only. Display name of the tool. */
-  displayName?: string;
-  /** Required. The tool execution result in JSON object format. Use "output" key to specify tool response and "error" key to specify error details (if any). If "output" and "error" keys are not specified, then whole "response" is treated as tool execution result. */
-  response?: DocumentMap;
-  /** Optional. The matching ID of the tool call the response is for. */
-  id?: string;
-}
-export const GoogleCloudCesV1mainToolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolsetTool: S.optional(GoogleCloudCesV1mainToolsetTool),
-    tool: S.optional(S.String),
-    displayName: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainToolResponse",
-}) as any as S.Schema<GoogleCloudCesV1mainToolResponse>;
-
-/** A chunk of content within a message. */
-export interface GoogleCloudCesV1mainChunk {
-  /** Optional. Blob data. */
-  blob?: GoogleCloudCesV1mainBlob;
-  /** Optional. Agent transfer event. */
-  agentTransfer?: GoogleCloudCesV1mainAgentTransfer;
-  /** A struct represents default variables at the start of the conversation, keyed by variable names. */
-  defaultVariables?: DocumentMap;
-  /** Optional. Tool execution request. */
-  toolCall?: GoogleCloudCesV1mainToolCall;
-  /** Optional. Custom payload data. */
-  payload?: DocumentMap;
-  /** Optional. Image data. */
-  image?: GoogleCloudCesV1mainImage;
-  /** A struct represents variables that were updated in the conversation, keyed by variable names. */
-  updatedVariables?: DocumentMap;
-  /** Optional. Text data. */
-  text?: string;
-  /** Optional. Tool execution response. */
-  toolResponse?: GoogleCloudCesV1mainToolResponse;
-  /** Optional. Transcript associated with the audio. */
-  transcript?: string;
-}
-export const GoogleCloudCesV1mainChunk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blob: S.optional(GoogleCloudCesV1mainBlob),
-    agentTransfer: S.optional(GoogleCloudCesV1mainAgentTransfer),
-    defaultVariables: S.optional(DocumentMap),
-    toolCall: S.optional(GoogleCloudCesV1mainToolCall),
-    payload: S.optional(DocumentMap),
-    image: S.optional(GoogleCloudCesV1mainImage),
-    updatedVariables: S.optional(DocumentMap),
-    text: S.optional(S.String),
-    toolResponse: S.optional(GoogleCloudCesV1mainToolResponse),
-    transcript: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainChunk",
-}) as any as S.Schema<GoogleCloudCesV1mainChunk>;
-
-export type GoogleCloudCesV1mainChunkList = Array<GoogleCloudCesV1mainChunk>;
-export const GoogleCloudCesV1mainChunkList = /*@__PURE__*/ S.Array(
-  GoogleCloudCesV1mainChunk,
-) as any as S.Schema<GoogleCloudCesV1mainChunkList>;
-
-/** A message within a conversation. */
-export interface GoogleCloudCesV1mainMessage {
-  /** Optional. The role within the conversation, e.g., user, agent. */
-  role?: string;
-  /** Optional. Content of the message as a series of chunks. */
-  chunks?: GoogleCloudCesV1mainChunkList;
-  /** Optional. Timestamp when the message was sent or received. Should not be used if the message is part of an example. */
-  eventTime?: string;
-}
-export const GoogleCloudCesV1mainMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    chunks: S.optional(GoogleCloudCesV1mainChunkList),
-    eventTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudCesV1mainMessage",
-}) as any as S.Schema<GoogleCloudCesV1mainMessage>;
-
-export type GoogleCloudCesV1mainMessageList =
-  Array<GoogleCloudCesV1mainMessage>;
-export const GoogleCloudCesV1mainMessageList = /*@__PURE__*/ S.Array(
-  GoogleCloudCesV1mainMessage,
-) as any as S.Schema<GoogleCloudCesV1mainMessageList>;
-
-/** The CES diagnostic information. */
-export interface GoogleCloudContactcenterinsightsV1CesTurnAnnotation {
-  /** The root span of the action processing. */
-  rootSpan?: GoogleCloudCesV1mainSpan;
-  /** The messages in the turn. */
-  messages?: GoogleCloudCesV1mainMessageList;
-}
-export const GoogleCloudContactcenterinsightsV1CesTurnAnnotation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rootSpan: S.optional(GoogleCloudCesV1mainSpan),
-      messages: S.optional(GoogleCloudCesV1mainMessageList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1CesTurnAnnotation",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CesTurnAnnotation>;
-
-/** Agent Assist Article Suggestion data. */
-export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
-  /** Article title. */
-  title?: string;
-  /** Article URI. */
-  uri?: string;
-  /** Map that contains metadata about the Article Suggestion and the document that it originates from. */
-  metadata?: StringMap;
-  /** The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document} */
-  source?: string;
-  /** The system's confidence score that this article is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
-  confidenceScore?: number;
-  /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
-  queryRecord?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ArticleSuggestionData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      title: S.optional(S.String),
-      uri: S.optional(S.String),
-      metadata: S.optional(StringMap),
-      source: S.optional(S.String),
-      confidenceScore: S.optional(S.Number),
-      queryRecord: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ArticleSuggestionData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ArticleSuggestionData>;
-
 /** Agent Assist Smart Reply data. */
 export interface GoogleCloudContactcenterinsightsV1SmartReplyData {
+  /** The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
+  confidenceScore?: number;
+  /** The content of the reply. */
+  reply?: string;
   /** Map that contains metadata about the Smart Reply and the document from which it originates. */
   metadata?: StringMap;
   /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
   queryRecord?: string;
-  /** The content of the reply. */
-  reply?: string;
-  /** The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
-  confidenceScore?: number;
 }
 export const GoogleCloudContactcenterinsightsV1SmartReplyData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      confidenceScore: S.optional(S.Number),
+      reply: S.optional(S.String),
       metadata: S.optional(StringMap),
       queryRecord: S.optional(S.String),
-      reply: S.optional(S.String),
-      confidenceScore: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SmartReplyData",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SmartReplyData>;
 
+/** Agent Assist Smart Compose suggestion data. */
+export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
+  /** The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
+  confidenceScore?: number;
+  /** The content of the suggestion. */
+  suggestion?: string;
+  /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
+  queryRecord?: string;
+  /** Map that contains metadata about the Smart Compose suggestion and the document from which it originates. */
+  metadata?: StringMap;
+}
+export const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      confidenceScore: S.optional(S.Number),
+      suggestion: S.optional(S.String),
+      queryRecord: S.optional(S.String),
+      metadata: S.optional(StringMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData>;
+
 /** An annotation that was generated during the customer and agent interaction. */
 export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
+  /** The feedback that the customer has about the answer in `data`. */
+  answerFeedback?: GoogleCloudContactcenterinsightsV1AnswerFeedback;
+  /** The boundary in the conversation where the annotation ends, inclusive. */
+  endBoundary?: GoogleCloudContactcenterinsightsV1AnnotationBoundary;
+  /** The CES turn annotation. */
+  cesTurnAnnotation?: GoogleCloudContactcenterinsightsV1CesTurnAnnotation;
   /** Dialogflow interaction data. */
   dialogflowInteraction?: GoogleCloudContactcenterinsightsV1DialogflowInteractionData;
-  /** Conversation summarization suggestion data. */
-  conversationSummarizationSuggestion?: GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData;
   /** Agent Assist FAQ answer data. */
   faqAnswer?: GoogleCloudContactcenterinsightsV1FaqAnswerData;
   /** The boundary in the conversation where the annotation starts, inclusive. */
   startBoundary?: GoogleCloudContactcenterinsightsV1AnnotationBoundary;
-  /** Agent Assist Smart Compose suggestion data. */
-  smartComposeSuggestion?: GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData;
-  /** The boundary in the conversation where the annotation ends, inclusive. */
-  endBoundary?: GoogleCloudContactcenterinsightsV1AnnotationBoundary;
-  /** The CES end session annotation. */
-  cesEndSessionAnnotation?: GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation;
   /** Explicit input used for generating the answer */
   userInput?: GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput;
-  /** The feedback that the customer has about the answer in `data`. */
-  answerFeedback?: GoogleCloudContactcenterinsightsV1AnswerFeedback;
-  /** The CES turn annotation. */
-  cesTurnAnnotation?: GoogleCloudContactcenterinsightsV1CesTurnAnnotation;
-  /** The unique identifier of the annotation. Format: projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation} */
-  annotationId?: string;
   /** Agent Assist Article Suggestion data. */
   articleSuggestion?: GoogleCloudContactcenterinsightsV1ArticleSuggestionData;
+  /** Conversation summarization suggestion data. */
+  conversationSummarizationSuggestion?: GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData;
+  /** The CES end session annotation. */
+  cesEndSessionAnnotation?: GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation;
   /** Agent Assist Smart Reply data. */
   smartReply?: GoogleCloudContactcenterinsightsV1SmartReplyData;
+  /** The unique identifier of the annotation. Format: projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation} */
+  annotationId?: string;
+  /** Agent Assist Smart Compose suggestion data. */
+  smartComposeSuggestion?: GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData;
   /** The time at which this annotation was created. */
   createTime?: string;
 }
 export const GoogleCloudContactcenterinsightsV1RuntimeAnnotation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      answerFeedback: S.optional(
+        GoogleCloudContactcenterinsightsV1AnswerFeedback,
+      ),
+      endBoundary: S.optional(
+        GoogleCloudContactcenterinsightsV1AnnotationBoundary,
+      ),
+      cesTurnAnnotation: S.optional(
+        GoogleCloudContactcenterinsightsV1CesTurnAnnotation,
+      ),
       dialogflowInteraction: S.optional(
         GoogleCloudContactcenterinsightsV1DialogflowInteractionData,
-      ),
-      conversationSummarizationSuggestion: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
       ),
       faqAnswer: S.optional(GoogleCloudContactcenterinsightsV1FaqAnswerData),
       startBoundary: S.optional(
         GoogleCloudContactcenterinsightsV1AnnotationBoundary,
       ),
-      smartComposeSuggestion: S.optional(
-        GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData,
+      userInput: S.optional(
+        GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput,
       ),
-      endBoundary: S.optional(
-        GoogleCloudContactcenterinsightsV1AnnotationBoundary,
+      articleSuggestion: S.optional(
+        GoogleCloudContactcenterinsightsV1ArticleSuggestionData,
+      ),
+      conversationSummarizationSuggestion: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
       ),
       cesEndSessionAnnotation: S.optional(
         GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation,
       ),
-      userInput: S.optional(
-        GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput,
-      ),
-      answerFeedback: S.optional(
-        GoogleCloudContactcenterinsightsV1AnswerFeedback,
-      ),
-      cesTurnAnnotation: S.optional(
-        GoogleCloudContactcenterinsightsV1CesTurnAnnotation,
-      ),
-      annotationId: S.optional(S.String),
-      articleSuggestion: S.optional(
-        GoogleCloudContactcenterinsightsV1ArticleSuggestionData,
-      ),
       smartReply: S.optional(GoogleCloudContactcenterinsightsV1SmartReplyData),
+      annotationId: S.optional(S.String),
+      smartComposeSuggestion: S.optional(
+        GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData,
+      ),
       createTime: S.optional(S.String),
     }),
   ).annotate({
@@ -2561,234 +2582,12 @@ export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationList =
     GoogleCloudContactcenterinsightsV1RuntimeAnnotation,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationList>;
 
-export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
-  "CORRELATION_TYPE_UNSPECIFIED" | "SEGMENT" | "PARTIAL" | "FULL" | "SYNTHETIC";
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
+export type GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
+  | "SOURCE_TYPE_UNSPECIFIED"
+  | "SYSTEM_GENERATED_ONLY"
+  | "INCLUDES_MANUAL_EDITS";
+export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
   /*@__PURE__*/ S.String;
-
-export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
-  Array<
-    | GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum
-    | (string & {})
-  >;
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList>;
-
-/** Info for correlating across conversations. */
-export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
-  /** Output only. The full conversation correlation id this conversation is a segment of. */
-  fullConversationCorrelationId?: string;
-  /** Output only. The correlation types of this conversation. A single conversation can have multiple correlation types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION. */
-  correlationTypes?: GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList;
-  /** Output only. The full conversation correlation id this conversation is a merged conversation of. */
-  mergedFullConversationCorrelationId?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fullConversationCorrelationId: S.optional(S.String),
-      correlationTypes: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList,
-      ),
-      mergedFullConversationCorrelationId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo>;
-
-/** Metadata from Dialogflow relating to the current transcript segment. */
-export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata {
-  /** Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist. */
-  smartReplyAllowlistCovered?: boolean;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      smartReplyAllowlistCovered: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata>;
-
-/** The data for a sentiment annotation. */
-export interface GoogleCloudContactcenterinsightsV1SentimentData {
-  /** The sentiment score between -1.0 (negative) and 1.0 (positive). */
-  score?: number;
-  /** A non-negative number from 0 to infinity which represents the absolute magnitude of sentiment regardless of score. */
-  magnitude?: number;
-}
-export const GoogleCloudContactcenterinsightsV1SentimentData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      score: S.optional(S.Number),
-      magnitude: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1SentimentData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SentimentData>;
-
-export type GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum =
-  | "ROLE_UNSPECIFIED"
-  | "HUMAN_AGENT"
-  | "AUTOMATED_AGENT"
-  | "END_USER"
-  | "ANY_AGENT";
-export const GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum =
-  /*@__PURE__*/ S.String;
-
-/** The call participant speaking for a given utterance. */
-export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
-  /** Obfuscated user ID from Dialogflow. */
-  obfuscatedExternalUserId?: string;
-  /** The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant} */
-  dialogflowParticipantName?: string;
-  /** Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant} */
-  dialogflowParticipant?: string;
-  /** The role of the participant. */
-  role?:
-    | GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum
-    | (string & {});
-  /** A user-specified ID representing the participant. */
-  userId?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationParticipant =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      obfuscatedExternalUserId: S.optional(S.String),
-      dialogflowParticipantName: S.optional(S.String),
-      dialogflowParticipant: S.optional(S.String),
-      role: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum,
-      ),
-      userId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationParticipant",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationParticipant>;
-
-/** Word-level info for words in a transcript. */
-export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo {
-  /** The word itself. Includes punctuation marks that surround the word. */
-  word?: string;
-  /** A confidence estimate between 0.0 and 1.0 of the fidelity of this word. A default value of 0.0 indicates that the value is unset. */
-  confidence?: number;
-  /** Time offset of the start of this word relative to the beginning of the total conversation. */
-  startOffset?: string;
-  /** Time offset of the end of this word relative to the beginning of the total conversation. */
-  endOffset?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      word: S.optional(S.String),
-      confidence: S.optional(S.Number),
-      startOffset: S.optional(S.String),
-      endOffset: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
-
-export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
-  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList>;
-
-/** A segment of a full transcript. */
-export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment {
-  /** CCAI metadata relating to the current transcript segment. */
-  dialogflowSegmentMetadata?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata;
-  /** Turn level audio for this transcript segment. */
-  turnLevelAudio?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio;
-  /** For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono. */
-  channelTag?: number;
-  /** The sentiment for this transcript segment. */
-  sentiment?: GoogleCloudContactcenterinsightsV1SentimentData;
-  /** The participant of this segment. */
-  segmentParticipant?: GoogleCloudContactcenterinsightsV1ConversationParticipant;
-  /** The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". */
-  languageCode?: string;
-  /** The text of this segment. */
-  text?: string;
-  /** The time that the message occurred, if provided. */
-  messageTime?: string;
-  /** A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates that the value is unset. */
-  confidence?: number;
-  /** A list of the word-specific information for each word in the segment. */
-  words?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dialogflowSegmentMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
-      ),
-      turnLevelAudio: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
-      ),
-      channelTag: S.optional(S.Number),
-      sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
-      segmentParticipant: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationParticipant,
-      ),
-      languageCode: S.optional(S.String),
-      text: S.optional(S.String),
-      messageTime: S.optional(S.String),
-      confidence: S.optional(S.Number),
-      words: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
-
-export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
-  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList>;
-
-/** A message representing the transcript of a conversation. */
-export interface GoogleCloudContactcenterinsightsV1ConversationTranscript {
-  /** A list of sequential transcript segments that comprise the conversation. */
-  transcriptSegments?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationTranscript =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      transcriptSegments: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationTranscript",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscript>;
-
-/** Conversation-level silence data. */
-export interface GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
-  /** Percentage of the total conversation spent in silence. */
-  silencePercentage?: number;
-  /** Amount of time calculated to be in silence. */
-  silenceDuration?: string;
-}
-export const GoogleCloudContactcenterinsightsV1ConversationLevelSilence =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      silencePercentage: S.optional(S.Number),
-      silenceDuration: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationLevelSilence",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSilence>;
 
 /** Tags and their corresponding results. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult {
@@ -2821,38 +2620,33 @@ export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList 
     GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList>;
 
-export type GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
-  "SOURCE_TYPE_UNSPECIFIED" | "SYSTEM_GENERATED_ONLY" | "INCLUDES_MANUAL_EDITS";
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
-  /*@__PURE__*/ S.String;
-
 /** A scorecard result may have multiple sets of scores from varying sources, one of which becomes the "main" answer above. A ScoreSource represents each individual set of scores. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource {
-  /** Collection of tags and their scores. */
-  qaTagResults?: GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList;
   /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
   potentialScore?: number;
-  /** The overall numerical score of the result. */
-  score?: number;
-  /** The normalized score, which is the score divided by the potential score. */
-  normalizedScore?: number;
   /** What created the score. */
   sourceType?:
     | GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum
     | (string & {});
+  /** The overall numerical score of the result. */
+  score?: number;
+  /** Collection of tags and their scores. */
+  qaTagResults?: GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList;
+  /** The normalized score, which is the score divided by the potential score. */
+  normalizedScore?: number;
 }
 export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      qaTagResults: S.optional(
-        GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList,
-      ),
       potentialScore: S.optional(S.Number),
-      score: S.optional(S.Number),
-      normalizedScore: S.optional(S.Number),
       sourceType: S.optional(
         GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum,
       ),
+      score: S.optional(S.Number),
+      qaTagResults: S.optional(
+        GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList,
+      ),
+      normalizedScore: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -2867,7 +2661,9 @@ export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList 
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList>;
 
 export type GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum =
-  "SOURCE_TYPE_UNSPECIFIED" | "SYSTEM_GENERATED" | "MANUAL_EDIT";
+  | "SOURCE_TYPE_UNSPECIFIED"
+  | "SYSTEM_GENERATED"
+  | "MANUAL_EDIT";
 export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2903,32 +2699,32 @@ export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList =
 
 /** An answer to a QaQuestion. */
 export interface GoogleCloudContactcenterinsightsV1QaAnswer {
-  /** The QaQuestion answered by this answer. */
-  qaQuestion?: string;
-  /** User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for grouping/organization and for weighting the score of each answer. */
-  tags?: StringList;
-  /** Lists all answer sources containing one or more answer values of a specific source type, e.g., all system-generated answer sources, or all manual edit answer sources. */
-  answerSources?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList;
   /** The answer value from this source. This field is populated by default, unless the question has a selection strategy configured to return multiple answer values, in which case `answer_values` will be populated instead. */
   answerValue?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue;
   /** The conversation the answer applies to. */
   conversation?: string;
+  /** User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for grouping/organization and for weighting the score of each answer. */
+  tags?: StringList;
   /** Question text. E.g., "Did the agent greet the customer?" */
   questionBody?: string;
+  /** Lists all answer sources containing one or more answer values of a specific source type, e.g., all system-generated answer sources, or all manual edit answer sources. */
+  answerSources?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList;
+  /** The QaQuestion answered by this answer. */
+  qaQuestion?: string;
 }
 export const GoogleCloudContactcenterinsightsV1QaAnswer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      qaQuestion: S.optional(S.String),
-      tags: S.optional(StringList),
-      answerSources: S.optional(
-        GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList,
-      ),
       answerValue: S.optional(
         GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue,
       ),
       conversation: S.optional(S.String),
+      tags: S.optional(StringList),
       questionBody: S.optional(S.String),
+      answerSources: S.optional(
+        GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList,
+      ),
+      qaQuestion: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaAnswer",
@@ -2943,47 +2739,47 @@ export const GoogleCloudContactcenterinsightsV1QaAnswerList =
 
 /** The results of scoring a single conversation against a QaScorecard. Contains a collection of QaAnswers and aggregate score. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
-  /** The QaScorecardRevision scored by this result. */
-  qaScorecardRevision?: string;
+  /** List of all individual score sets. */
+  scoreSources?: GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList;
   /** Identifier. The name of the scorecard result. Format: projects/{project}/locations/{location}/qaScorecardResults/{qa_scorecard_result} */
   name?: string;
+  /** The conversation scored by this result. */
+  conversation?: string;
+  /** The QaScorecardRevision scored by this result. */
+  qaScorecardRevision?: string;
+  /** Output only. The timestamp that the revision was created. */
+  createTime?: string;
+  /** Set of QaAnswers represented in the result. */
+  qaAnswers?: GoogleCloudContactcenterinsightsV1QaAnswerList;
   /** ID of the agent that handled the conversation. */
   agentId?: string;
   /** The normalized score, which is the score divided by the potential score. Any manual edits are included if they exist. */
   normalizedScore?: number;
-  /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
-  potentialScore?: number;
-  /** List of all individual score sets. */
-  scoreSources?: GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList;
-  /** The conversation scored by this result. */
-  conversation?: string;
-  /** Set of QaAnswers represented in the result. */
-  qaAnswers?: GoogleCloudContactcenterinsightsV1QaAnswerList;
-  /** Collection of tags and their scores. */
-  qaTagResults?: GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList;
   /** The overall numerical score of the result, incorporating any manual edits if they exist. */
   score?: number;
-  /** Output only. The timestamp that the revision was created. */
-  createTime?: string;
+  /** Collection of tags and their scores. */
+  qaTagResults?: GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList;
+  /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
+  potentialScore?: number;
 }
 export const GoogleCloudContactcenterinsightsV1QaScorecardResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      qaScorecardRevision: S.optional(S.String),
-      name: S.optional(S.String),
-      agentId: S.optional(S.String),
-      normalizedScore: S.optional(S.Number),
-      potentialScore: S.optional(S.Number),
       scoreSources: S.optional(
         GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList,
       ),
+      name: S.optional(S.String),
       conversation: S.optional(S.String),
+      qaScorecardRevision: S.optional(S.String),
+      createTime: S.optional(S.String),
       qaAnswers: S.optional(GoogleCloudContactcenterinsightsV1QaAnswerList),
+      agentId: S.optional(S.String),
+      normalizedScore: S.optional(S.Number),
+      score: S.optional(S.Number),
       qaTagResults: S.optional(
         GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList,
       ),
-      score: S.optional(S.Number),
-      createTime: S.optional(S.String),
+      potentialScore: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResult",
@@ -2996,73 +2792,21 @@ export const GoogleCloudContactcenterinsightsV1QaScorecardResultList =
     GoogleCloudContactcenterinsightsV1QaScorecardResult,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultList>;
 
-export type GoogleCloudContactcenterinsightsV1EntityTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "PERSON"
-  | "LOCATION"
-  | "ORGANIZATION"
-  | "EVENT"
-  | "WORK_OF_ART"
-  | "CONSUMER_GOOD"
-  | "OTHER"
-  | "PHONE_NUMBER"
-  | "ADDRESS"
-  | "DATE"
-  | "NUMBER"
-  | "PRICE";
-export const GoogleCloudContactcenterinsightsV1EntityTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a person, an organization, or location. */
-export interface GoogleCloudContactcenterinsightsV1Entity {
-  /** The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity provides information about the importance or centrality of that entity to the entire document text. Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient. */
-  salience?: number;
-  /** The representative name for the entity. */
-  displayName?: string;
-  /** Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below. */
-  metadata?: StringMap;
-  /** The aggregate sentiment expressed for this entity in the conversation. */
-  sentiment?: GoogleCloudContactcenterinsightsV1SentimentData;
-  /** The entity type. */
-  type?: GoogleCloudContactcenterinsightsV1EntityTypeEnum | (string & {});
-}
-export const GoogleCloudContactcenterinsightsV1Entity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      salience: S.optional(S.Number),
-      displayName: S.optional(S.String),
-      metadata: S.optional(StringMap),
-      sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
-      type: S.optional(GoogleCloudContactcenterinsightsV1EntityTypeEnum),
-    }),
-).annotate({
-  identifier: "GoogleCloudContactcenterinsightsV1Entity",
-}) as any as S.Schema<GoogleCloudContactcenterinsightsV1Entity>;
-
-export type GoogleCloudContactcenterinsightsV1EntityMap = {
-  [key: string]: GoogleCloudContactcenterinsightsV1Entity | undefined;
-};
-export const GoogleCloudContactcenterinsightsV1EntityMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudContactcenterinsightsV1Entity,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1EntityMap>;
-
 /** Information about the issue. */
 export interface GoogleCloudContactcenterinsightsV1IssueAssignment {
   /** Immutable. Display name of the assigned issue. This field is set at time of analysis and immutable since then. */
   displayName?: string;
-  /** Resource name of the assigned issue. */
-  issue?: string;
   /** Score indicating the likelihood of the issue assignment. currently bounded on [0,1]. */
   score?: number;
+  /** Resource name of the assigned issue. */
+  issue?: string;
 }
 export const GoogleCloudContactcenterinsightsV1IssueAssignment =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       displayName: S.optional(S.String),
-      issue: S.optional(S.String),
       score: S.optional(S.Number),
+      issue: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IssueAssignment",
@@ -3077,20 +2821,37 @@ export const GoogleCloudContactcenterinsightsV1IssueAssignmentList =
 
 /** Issue Modeling result on a conversation. */
 export interface GoogleCloudContactcenterinsightsV1IssueModelResult {
-  /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
-  issueModel?: string;
   /** All the matched issues. */
   issues?: GoogleCloudContactcenterinsightsV1IssueAssignmentList;
+  /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
+  issueModel?: string;
 }
 export const GoogleCloudContactcenterinsightsV1IssueModelResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      issueModel: S.optional(S.String),
       issues: S.optional(GoogleCloudContactcenterinsightsV1IssueAssignmentList),
+      issueModel: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IssueModelResult",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelResult>;
+
+/** The data for a sentiment annotation. */
+export interface GoogleCloudContactcenterinsightsV1SentimentData {
+  /** The sentiment score between -1.0 (negative) and 1.0 (positive). */
+  score?: number;
+  /** A non-negative number from 0 to infinity which represents the absolute magnitude of sentiment regardless of score. */
+  magnitude?: number;
+}
+export const GoogleCloudContactcenterinsightsV1SentimentData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      score: S.optional(S.Number),
+      magnitude: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1SentimentData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SentimentData>;
 
 /** One channel of conversation-level sentiment data. */
 export interface GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
@@ -3118,44 +2879,18 @@ export const GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList =
     GoogleCloudContactcenterinsightsV1ConversationLevelSentiment,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList>;
 
-/** The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match. */
-export interface GoogleCloudContactcenterinsightsV1PhraseMatchData {
-  /** The unique identifier (the resource name) of the phrase matcher. */
-  phraseMatcher?: string;
-  /** The human-readable name of the phrase matcher. */
-  displayName?: string;
-}
-export const GoogleCloudContactcenterinsightsV1PhraseMatchData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      phraseMatcher: S.optional(S.String),
-      displayName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchData>;
-
-export type GoogleCloudContactcenterinsightsV1PhraseMatchDataMap = {
-  [key: string]: GoogleCloudContactcenterinsightsV1PhraseMatchData | undefined;
-};
-export const GoogleCloudContactcenterinsightsV1PhraseMatchDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudContactcenterinsightsV1PhraseMatchData,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchDataMap>;
-
 /** The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE. */
 export interface GoogleCloudContactcenterinsightsV1Intent {
-  /** The human-readable name of the intent. */
-  displayName?: string;
   /** The unique identifier of the intent. */
   id?: string;
+  /** The human-readable name of the intent. */
+  displayName?: string;
 }
 export const GoogleCloudContactcenterinsightsV1Intent = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      displayName: S.optional(S.String),
       id: S.optional(S.String),
+      displayName: S.optional(S.String),
     }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1Intent",
@@ -3170,64 +2905,74 @@ export const GoogleCloudContactcenterinsightsV1IntentMap =
     GoogleCloudContactcenterinsightsV1Intent,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1IntentMap>;
 
-/** The data for a hold annotation. */
-export type GoogleCloudContactcenterinsightsV1HoldData =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1HoldData =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
-/** The data for an interruption annotation. */
-export type GoogleCloudContactcenterinsightsV1InterruptionData =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1InterruptionData =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
-export type GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum =
-  | "MENTION_TYPE_UNSPECIFIED"
-  | "PROPER"
-  | "COMMON";
-export const GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum =
+export type GoogleCloudContactcenterinsightsV1EntityTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "PERSON"
+  | "LOCATION"
+  | "ORGANIZATION"
+  | "EVENT"
+  | "WORK_OF_ART"
+  | "CONSUMER_GOOD"
+  | "OTHER"
+  | "PHONE_NUMBER"
+  | "ADDRESS"
+  | "DATE"
+  | "NUMBER"
+  | "PRICE";
+export const GoogleCloudContactcenterinsightsV1EntityTypeEnum =
   /*@__PURE__*/ S.String;
 
-/** The data for an entity mention annotation. This represents a mention of an `Entity` in the conversation. */
-export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
-  /** The type of the entity mention. */
-  type?:
-    | GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum
-    | (string & {});
-  /** The key of this entity in conversation entities. Can be used to retrieve the exact `Entity` this mention is attached to. */
-  entityUniqueId?: string;
-  /** Sentiment expressed for this mention of the entity. */
+/** The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a person, an organization, or location. */
+export interface GoogleCloudContactcenterinsightsV1Entity {
+  /** The aggregate sentiment expressed for this entity in the conversation. */
   sentiment?: GoogleCloudContactcenterinsightsV1SentimentData;
+  /** The entity type. */
+  type?: GoogleCloudContactcenterinsightsV1EntityTypeEnum | (string & {});
+  /** Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below. */
+  metadata?: StringMap;
+  /** The representative name for the entity. */
+  displayName?: string;
+  /** The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity provides information about the importance or centrality of that entity to the entire document text. Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient. */
+  salience?: number;
 }
-export const GoogleCloudContactcenterinsightsV1EntityMentionData =
-  /*@__PURE__*/ S.suspend(() =>
+export const GoogleCloudContactcenterinsightsV1Entity = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      type: S.optional(
-        GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum,
-      ),
-      entityUniqueId: S.optional(S.String),
       sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+      type: S.optional(GoogleCloudContactcenterinsightsV1EntityTypeEnum),
+      metadata: S.optional(StringMap),
+      displayName: S.optional(S.String),
+      salience: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1EntityMentionData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1EntityMentionData>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1Entity",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1Entity>;
 
-/** The data for an issue match annotation. */
-export interface GoogleCloudContactcenterinsightsV1IssueMatchData {
-  /** Information about the issue's assignment. */
-  issueAssignment?: GoogleCloudContactcenterinsightsV1IssueAssignment;
+export type GoogleCloudContactcenterinsightsV1EntityMap = {
+  [key: string]: GoogleCloudContactcenterinsightsV1Entity | undefined;
+};
+export const GoogleCloudContactcenterinsightsV1EntityMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    GoogleCloudContactcenterinsightsV1Entity,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1EntityMap>;
+
+/** Conversation-level silence data. */
+export interface GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
+  /** Percentage of the total conversation spent in silence. */
+  silencePercentage?: number;
+  /** Amount of time calculated to be in silence. */
+  silenceDuration?: string;
 }
-export const GoogleCloudContactcenterinsightsV1IssueMatchData =
+export const GoogleCloudContactcenterinsightsV1ConversationLevelSilence =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      issueAssignment: S.optional(
-        GoogleCloudContactcenterinsightsV1IssueAssignment,
-      ),
+      silencePercentage: S.optional(S.Number),
+      silenceDuration: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1IssueMatchData",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueMatchData>;
+    identifier: "GoogleCloudContactcenterinsightsV1ConversationLevelSilence",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSilence>;
 
 /** The data for an intent match. Represents an intent match for a text segment in the conversation. A text segment can be part of a sentence, a complete sentence, or an utterance with multiple sentences. */
 export interface GoogleCloudContactcenterinsightsV1IntentMatchData {
@@ -3249,64 +2994,140 @@ export type GoogleCloudContactcenterinsightsV1SilenceData =
 export const GoogleCloudContactcenterinsightsV1SilenceData =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 
+export type GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum =
+  | "MENTION_TYPE_UNSPECIFIED"
+  | "PROPER"
+  | "COMMON";
+export const GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** The data for an entity mention annotation. This represents a mention of an `Entity` in the conversation. */
+export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
+  /** The type of the entity mention. */
+  type?:
+    | GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum
+    | (string & {});
+  /** Sentiment expressed for this mention of the entity. */
+  sentiment?: GoogleCloudContactcenterinsightsV1SentimentData;
+  /** The key of this entity in conversation entities. Can be used to retrieve the exact `Entity` this mention is attached to. */
+  entityUniqueId?: string;
+}
+export const GoogleCloudContactcenterinsightsV1EntityMentionData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum,
+      ),
+      sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+      entityUniqueId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1EntityMentionData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1EntityMentionData>;
+
+/** The data for an interruption annotation. */
+export type GoogleCloudContactcenterinsightsV1InterruptionData =
+  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
+export const GoogleCloudContactcenterinsightsV1InterruptionData =
+  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
+
+/** The data for a hold annotation. */
+export type GoogleCloudContactcenterinsightsV1HoldData =
+  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
+export const GoogleCloudContactcenterinsightsV1HoldData =
+  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
+
+/** The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match. */
+export interface GoogleCloudContactcenterinsightsV1PhraseMatchData {
+  /** The unique identifier (the resource name) of the phrase matcher. */
+  phraseMatcher?: string;
+  /** The human-readable name of the phrase matcher. */
+  displayName?: string;
+}
+export const GoogleCloudContactcenterinsightsV1PhraseMatchData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      phraseMatcher: S.optional(S.String),
+      displayName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchData>;
+
+/** The data for an issue match annotation. */
+export interface GoogleCloudContactcenterinsightsV1IssueMatchData {
+  /** Information about the issue's assignment. */
+  issueAssignment?: GoogleCloudContactcenterinsightsV1IssueAssignment;
+}
+export const GoogleCloudContactcenterinsightsV1IssueMatchData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      issueAssignment: S.optional(
+        GoogleCloudContactcenterinsightsV1IssueAssignment,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1IssueMatchData",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueMatchData>;
+
 /** A piece of metadata that applies to a window of a call. */
 export interface GoogleCloudContactcenterinsightsV1CallAnnotation {
-  /** Data specifying sentiment. */
-  sentimentData?: GoogleCloudContactcenterinsightsV1SentimentData;
-  /** The boundary in the conversation where the annotation ends, inclusive. */
-  annotationEndBoundary?: GoogleCloudContactcenterinsightsV1AnnotationBoundary;
-  /** Data specifying a hold. */
-  holdData?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-  /** Data specifying an interruption. */
-  interruptionData?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-  /** Data specifying an entity mention. */
-  entityMentionData?: GoogleCloudContactcenterinsightsV1EntityMentionData;
-  /** Data specifying an issue match. */
-  issueMatchData?: GoogleCloudContactcenterinsightsV1IssueMatchData;
   /** Data specifying an intent match. */
   intentMatchData?: GoogleCloudContactcenterinsightsV1IntentMatchData;
-  /** The channel of the audio where the annotation occurs. For single-channel audio, this field is not populated. */
-  channelTag?: number;
   /** Data specifying silence. */
   silenceData?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
+  /** The channel of the audio where the annotation occurs. For single-channel audio, this field is not populated. */
+  channelTag?: number;
+  /** The boundary in the conversation where the annotation ends, inclusive. */
+  annotationEndBoundary?: GoogleCloudContactcenterinsightsV1AnnotationBoundary;
+  /** Data specifying an entity mention. */
+  entityMentionData?: GoogleCloudContactcenterinsightsV1EntityMentionData;
+  /** Data specifying an interruption. */
+  interruptionData?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
+  /** Data specifying a hold. */
+  holdData?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
+  /** Data specifying sentiment. */
+  sentimentData?: GoogleCloudContactcenterinsightsV1SentimentData;
   /** Data specifying a phrase match. */
   phraseMatchData?: GoogleCloudContactcenterinsightsV1PhraseMatchData;
   /** The boundary in the conversation where the annotation starts, inclusive. */
   annotationStartBoundary?: GoogleCloudContactcenterinsightsV1AnnotationBoundary;
+  /** Data specifying an issue match. */
+  issueMatchData?: GoogleCloudContactcenterinsightsV1IssueMatchData;
 }
 export const GoogleCloudContactcenterinsightsV1CallAnnotation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      sentimentData: S.optional(
-        GoogleCloudContactcenterinsightsV1SentimentData,
+      intentMatchData: S.optional(
+        GoogleCloudContactcenterinsightsV1IntentMatchData,
       ),
+      silenceData: S.optional(
+        GoogleCloudContactcenterinsightsV1AppealAssessmentRequest,
+      ),
+      channelTag: S.optional(S.Number),
       annotationEndBoundary: S.optional(
         GoogleCloudContactcenterinsightsV1AnnotationBoundary,
-      ),
-      holdData: S.optional(
-        GoogleCloudContactcenterinsightsV1AppealAssessmentRequest,
-      ),
-      interruptionData: S.optional(
-        GoogleCloudContactcenterinsightsV1AppealAssessmentRequest,
       ),
       entityMentionData: S.optional(
         GoogleCloudContactcenterinsightsV1EntityMentionData,
       ),
-      issueMatchData: S.optional(
-        GoogleCloudContactcenterinsightsV1IssueMatchData,
-      ),
-      intentMatchData: S.optional(
-        GoogleCloudContactcenterinsightsV1IntentMatchData,
-      ),
-      channelTag: S.optional(S.Number),
-      silenceData: S.optional(
+      interruptionData: S.optional(
         GoogleCloudContactcenterinsightsV1AppealAssessmentRequest,
+      ),
+      holdData: S.optional(
+        GoogleCloudContactcenterinsightsV1AppealAssessmentRequest,
+      ),
+      sentimentData: S.optional(
+        GoogleCloudContactcenterinsightsV1SentimentData,
       ),
       phraseMatchData: S.optional(
         GoogleCloudContactcenterinsightsV1PhraseMatchData,
       ),
       annotationStartBoundary: S.optional(
         GoogleCloudContactcenterinsightsV1AnnotationBoundary,
+      ),
+      issueMatchData: S.optional(
+        GoogleCloudContactcenterinsightsV1IssueMatchData,
       ),
     }),
   ).annotate({
@@ -3320,47 +3141,56 @@ export const GoogleCloudContactcenterinsightsV1CallAnnotationList =
     GoogleCloudContactcenterinsightsV1CallAnnotation,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1CallAnnotationList>;
 
+export type GoogleCloudContactcenterinsightsV1PhraseMatchDataMap = {
+  [key: string]: GoogleCloudContactcenterinsightsV1PhraseMatchData | undefined;
+};
+export const GoogleCloudContactcenterinsightsV1PhraseMatchDataMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    GoogleCloudContactcenterinsightsV1PhraseMatchData,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchDataMap>;
+
 /** Call-specific metadata created during analysis. */
 export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
-  /** Overall conversation-level silence during the call. */
-  silence?: GoogleCloudContactcenterinsightsV1ConversationLevelSilence;
   /** Results of scoring QaScorecards. */
   qaScorecardResults?: GoogleCloudContactcenterinsightsV1QaScorecardResultList;
-  /** All the entities in the call. */
-  entities?: GoogleCloudContactcenterinsightsV1EntityMap;
   /** Overall conversation-level issue modeling result. */
   issueModelResult?: GoogleCloudContactcenterinsightsV1IssueModelResult;
   /** Overall conversation-level sentiment for each channel of the call. */
   sentiments?: GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList;
-  /** All the matched phrase matchers in the call. */
-  phraseMatchers?: GoogleCloudContactcenterinsightsV1PhraseMatchDataMap;
   /** All the matched intents in the call. */
   intents?: GoogleCloudContactcenterinsightsV1IntentMap;
+  /** All the entities in the call. */
+  entities?: GoogleCloudContactcenterinsightsV1EntityMap;
+  /** Overall conversation-level silence during the call. */
+  silence?: GoogleCloudContactcenterinsightsV1ConversationLevelSilence;
   /** A list of call annotations that apply to this call. */
   annotations?: GoogleCloudContactcenterinsightsV1CallAnnotationList;
+  /** All the matched phrase matchers in the call. */
+  phraseMatchers?: GoogleCloudContactcenterinsightsV1PhraseMatchDataMap;
 }
 export const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      silence: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationLevelSilence,
-      ),
       qaScorecardResults: S.optional(
         GoogleCloudContactcenterinsightsV1QaScorecardResultList,
       ),
-      entities: S.optional(GoogleCloudContactcenterinsightsV1EntityMap),
       issueModelResult: S.optional(
         GoogleCloudContactcenterinsightsV1IssueModelResult,
       ),
       sentiments: S.optional(
         GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList,
       ),
-      phraseMatchers: S.optional(
-        GoogleCloudContactcenterinsightsV1PhraseMatchDataMap,
-      ),
       intents: S.optional(GoogleCloudContactcenterinsightsV1IntentMap),
+      entities: S.optional(GoogleCloudContactcenterinsightsV1EntityMap),
+      silence: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationLevelSilence,
+      ),
       annotations: S.optional(
         GoogleCloudContactcenterinsightsV1CallAnnotationList,
+      ),
+      phraseMatchers: S.optional(
+        GoogleCloudContactcenterinsightsV1PhraseMatchDataMap,
       ),
     }),
   ).annotate({
@@ -3389,170 +3219,909 @@ export const GoogleCloudContactcenterinsightsV1AnalysisResult =
 
 /** The analysis resource. */
 export interface GoogleCloudContactcenterinsightsV1Analysis {
-  /** Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis} */
-  name?: string;
   /** Output only. The time at which the analysis was requested. */
   requestTime?: string;
+  /** Output only. The time at which the analysis was created, which occurs when the long-running operation completes. */
+  createTime?: string;
+  /** Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis} */
+  name?: string;
   /** To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run. */
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
   /** Output only. The result of the analysis, which is populated when the analysis finishes. */
   analysisResult?: GoogleCloudContactcenterinsightsV1AnalysisResult;
-  /** Output only. The time at which the analysis was created, which occurs when the long-running operation completes. */
-  createTime?: string;
 }
 export const GoogleCloudContactcenterinsightsV1Analysis =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
       requestTime: S.optional(S.String),
+      createTime: S.optional(S.String),
+      name: S.optional(S.String),
       annotatorSelector: S.optional(
         GoogleCloudContactcenterinsightsV1AnnotatorSelector,
       ),
       analysisResult: S.optional(
         GoogleCloudContactcenterinsightsV1AnalysisResult,
       ),
-      createTime: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Analysis",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1Analysis>;
 
-/** The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE. */
-export interface GoogleCloudContactcenterinsightsV1DialogflowIntent {
-  /** The human-readable name of the intent. */
-  displayName?: string;
+export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
+  | "CORRELATION_TYPE_UNSPECIFIED"
+  | "SEGMENT"
+  | "PARTIAL"
+  | "FULL"
+  | "SYNTHETIC";
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
+  Array<
+    | GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum
+    | (string & {})
+  >;
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList>;
+
+/** Info for correlating across conversations. */
+export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
+  /** Output only. The correlation types of this conversation. A single conversation can have multiple correlation types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION. */
+  correlationTypes?: GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList;
+  /** Output only. The full conversation correlation id this conversation is a segment of. */
+  fullConversationCorrelationId?: string;
+  /** Output only. The full conversation correlation id this conversation is a merged conversation of. */
+  mergedFullConversationCorrelationId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DialogflowIntent =
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      correlationTypes: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList,
+      ),
+      fullConversationCorrelationId: S.optional(S.String),
+      mergedFullConversationCorrelationId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "HUMAN_AGENT"
+  | "AUTOMATED_AGENT"
+  | "END_USER"
+  | "ANY_AGENT";
+export const GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum =
+  /*@__PURE__*/ S.String;
+
+/** The call participant speaking for a given utterance. */
+export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
+  /** A user-specified ID representing the participant. */
+  userId?: string;
+  /** The role of the participant. */
+  role?:
+    | GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum
+    | (string & {});
+  /** Obfuscated user ID from Dialogflow. */
+  obfuscatedExternalUserId?: string;
+  /** Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant} */
+  dialogflowParticipant?: string;
+  /** The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant} */
+  dialogflowParticipantName?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationParticipant =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String),
+      role: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum,
+      ),
+      obfuscatedExternalUserId: S.optional(S.String),
+      dialogflowParticipant: S.optional(S.String),
+      dialogflowParticipantName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1ConversationParticipant",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationParticipant>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum =
+  | "LIST_TYPE_UNSPECIFIED"
+  | "UNORDERED"
+  | "ORDERED_NUMBER"
+  | "ORDERED_ALPHA";
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** An item in a list. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem {
+  /** Optional. The text of the list item. */
+  text?: string;
+  /** Optional. Nested sub-items. */
+  subItems?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      subItems: S.optional(
+        S.suspend(
+          () =>
+            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>;
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList>;
+
+/** A list part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart {
+  /** Optional. The type of list. */
+  listType?:
+    | GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum
+    | (string & {});
+  /** Optional. List items. */
+  items?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      listType: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum,
+      ),
+      items: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart>;
+
+/** A media part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart {
+  /** Optional. URI or URL to the media. */
+  uri?: string;
+  /** Optional. Alternative text description. */
+  alternativeText?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uri: S.optional(S.String),
+      alternativeText: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart>;
+
+/** A citation part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart {
+  /** Optional. The cited source title. */
+  sourceTitle?: string;
+  /** Optional. The cited source URI. */
+  sourceUri?: string;
+  /** Optional. Snippet of the cited text. */
+  snippet?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sourceTitle: S.optional(S.String),
+      sourceUri: S.optional(S.String),
+      snippet: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart>;
+
+/** A thought part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart {
+  /** Optional. The thought or reasoning text. */
+  text?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart>;
+
+/** A custom payload part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart {
+  /** Optional. Arbitrary structured payload. */
+  payload?: DocumentMap;
+  /** Optional. Type identifier for the payload. */
+  payloadType?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      payload: S.optional(DocumentMap),
+      payloadType: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart>;
+
+/** A text part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart {
+  /** Optional. The text content. */
+  text?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart>;
+
+/** A link part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart {
+  /** Optional. Anchor or display text. */
+  text?: string;
+  /** Optional. Target URI. */
+  uri?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      uri: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart>;
+
+/** A row in a table. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow {
+  /** Optional. The cell values in the row. */
+  cells?: StringList;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cells: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow>;
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList>;
+
+/** A table part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart {
+  /** Optional. Table column headers. */
+  headers?: StringList;
+  /** Optional. Optional title for the table. */
+  title?: string;
+  /** Optional. Table rows. */
+  rows?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      headers: S.optional(StringList),
+      title: S.optional(S.String),
+      rows: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart>;
+
+/** A suggestion chip. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip {
+  /** Optional. Optional action or destination URI triggered by the chip. */
+  actionUri?: string;
+  /** Optional. The chip label or text. */
+  text?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      actionUri: S.optional(S.String),
+      text: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip>;
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList>;
+
+/** A suggestion chips part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart {
+  /** Optional. List of suggestion chips. */
+  chips?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      chips: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart>;
+
+/** Represents an amount of money with its currency type. */
+export interface GoogleTypeMoney {
+  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
+  nanos?: number;
+  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
+  units?: string;
+  /** The three-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+}
+export const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nanos: S.optional(S.Number),
+    units: S.optional(S.String),
+    currencyCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleTypeMoney",
+}) as any as S.Schema<GoogleTypeMoney>;
+
+/** A product in a product collection. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct {
+  /** Optional. Product display name. */
+  displayName?: string;
+  /** Optional. Product ID. */
+  id?: string;
+  /** Optional. Product description. */
+  description?: string;
+  /** Optional. Product price. */
+  price?: GoogleTypeMoney;
+  /** Optional. Product image URLs. */
+  imageUris?: StringList;
+  /** Optional. Product URL or deep link. */
+  uri?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       displayName: S.optional(S.String),
+      id: S.optional(S.String),
+      description: S.optional(S.String),
+      price: S.optional(GoogleTypeMoney),
+      imageUris: S.optional(StringList),
+      uri: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1DialogflowIntent",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntent>;
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct>;
 
-export type GoogleCloudContactcenterinsightsV1DialogflowIntentMap = {
-  [key: string]: GoogleCloudContactcenterinsightsV1DialogflowIntent | undefined;
-};
-export const GoogleCloudContactcenterinsightsV1DialogflowIntentMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudContactcenterinsightsV1DialogflowIntent,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntentMap>;
+export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct>;
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList>;
+
+/** A product collection part. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart {
+  /** Optional. List of products. */
+  products?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      products: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart>;
+
+/** A structured component/part of a transcript segment. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart {
+  /** Optional. Ordered or unordered list. */
+  list?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart;
+  /** Optional. Video media. */
+  video?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart;
+  /** Optional. Citation or reference to grounding material. */
+  citation?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart;
+  /** Optional. Model thought or internal reasoning. */
+  thought?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart;
+  /** Optional. Generic custom structured payload. */
+  customPayload?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart;
+  /** Optional. Plain text content. */
+  text?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart;
+  /** Optional. Image media. */
+  image?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart;
+  /** Optional. Web link or URL. */
+  link?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart;
+  /** Optional. Tabular data. */
+  table?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart;
+  /** Optional. Suggestion chips or interactive buttons. */
+  suggestionChips?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart;
+  /** Optional. Product collection or carousel. */
+  productCollection?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      list: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart,
+      ),
+      video: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart,
+      ),
+      citation: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart,
+      ),
+      thought: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart,
+      ),
+      customPayload: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart,
+      ),
+      text: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart,
+      ),
+      image: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart,
+      ),
+      link: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart,
+      ),
+      table: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart,
+      ),
+      suggestionChips: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart,
+      ),
+      productCollection: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart>;
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList>;
+
+/** Word-level info for words in a transcript. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo {
+  /** Time offset of the start of this word relative to the beginning of the total conversation. */
+  startOffset?: string;
+  /** A confidence estimate between 0.0 and 1.0 of the fidelity of this word. A default value of 0.0 indicates that the value is unset. */
+  confidence?: number;
+  /** The word itself. Includes punctuation marks that surround the word. */
+  word?: string;
+  /** Time offset of the end of this word relative to the beginning of the total conversation. */
+  endOffset?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      startOffset: S.optional(S.String),
+      confidence: S.optional(S.Number),
+      word: S.optional(S.String),
+      endOffset: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList>;
+
+/** Metadata from Dialogflow relating to the current transcript segment. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata {
+  /** Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist. */
+  smartReplyAllowlistCovered?: boolean;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      smartReplyAllowlistCovered: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata>;
+
+/** A wrapper for holding the audio for any given turn. */
+export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio {
+  /** The Cloud Storage URI of the audio for any given turn. */
+  audioGcsUri?: string;
+  /** The duration of the audio. */
+  audioDuration?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioGcsUri: S.optional(S.String),
+      audioDuration: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
+
+/** A segment of a full transcript. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment {
+  /** The participant of this segment. */
+  segmentParticipant?: GoogleCloudContactcenterinsightsV1ConversationParticipant;
+  /** The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". */
+  languageCode?: string;
+  /** For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono. */
+  channelTag?: number;
+  /** Optional. The structured parts that make up this transcript segment. */
+  parts?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList;
+  /** The sentiment for this transcript segment. */
+  sentiment?: GoogleCloudContactcenterinsightsV1SentimentData;
+  /** A list of the word-specific information for each word in the segment. */
+  words?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList;
+  /** A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates that the value is unset. */
+  confidence?: number;
+  /** CCAI metadata relating to the current transcript segment. */
+  dialogflowSegmentMetadata?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata;
+  /** Turn level audio for this transcript segment. */
+  turnLevelAudio?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio;
+  /** The time that the message occurred, if provided. */
+  messageTime?: string;
+  /** The text of this segment. */
+  text?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      segmentParticipant: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationParticipant,
+      ),
+      languageCode: S.optional(S.String),
+      channelTag: S.optional(S.Number),
+      parts: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList,
+      ),
+      sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+      words: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList,
+      ),
+      confidence: S.optional(S.Number),
+      dialogflowSegmentMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
+      ),
+      turnLevelAudio: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
+      ),
+      messageTime: S.optional(S.String),
+      text: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList>;
+
+/** A message representing the transcript of a conversation. */
+export interface GoogleCloudContactcenterinsightsV1ConversationTranscript {
+  /** A list of sequential transcript segments that comprise the conversation. */
+  transcriptSegments?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationTranscript =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      transcriptSegments: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1ConversationTranscript",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscript>;
+
+export type GoogleCloudContactcenterinsightsV1FeedbackLabelList =
+  Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
+export const GoogleCloudContactcenterinsightsV1FeedbackLabelList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabelList>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
+export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList>;
+
+/** Conversation metadata related to quality management. */
+export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
+  /** The amount of time the customer waited to connect with an agent. */
+  waitDuration?: string;
+  /** Input only. The feedback labels associated with the conversation. */
+  feedbackLabels?: GoogleCloudContactcenterinsightsV1FeedbackLabelList;
+  /** An arbitrary string value specifying the menu path the customer took. */
+  menuPath?: string;
+  /** Information about agents involved in the call. */
+  agentInfo?: GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList;
+  /** An arbitrary integer value indicating the customer's satisfaction rating. */
+  customerSatisfactionRating?: number;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      waitDuration: S.optional(S.String),
+      feedbackLabels: S.optional(
+        GoogleCloudContactcenterinsightsV1FeedbackLabelList,
+      ),
+      menuPath: S.optional(S.String),
+      agentInfo: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList,
+      ),
+      customerSatisfactionRating: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1ConversationQualityMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata>;
+
+export type GoogleCloudContactcenterinsightsV1ConversationMediumEnum =
+  | "MEDIUM_UNSPECIFIED"
+  | "PHONE_CALL"
+  | "CHAT";
+export const GoogleCloudContactcenterinsightsV1ConversationMediumEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
+  Array<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
+export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList>;
+
+/** A Dialogflow source of conversation data. */
+export interface GoogleCloudContactcenterinsightsV1DialogflowSource {
+  /** Output only. The name of the Dialogflow conversation that this conversation resource is derived from. Format: projects/{project}/locations/{location}/conversations/{conversation} */
+  dialogflowConversation?: string;
+  /** Cloud Storage URI that points to a file that contains the conversation audio. */
+  audioUri?: string;
+}
+export const GoogleCloudContactcenterinsightsV1DialogflowSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dialogflowConversation: S.optional(S.String),
+      audioUri: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1DialogflowSource",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowSource>;
+
+/** A Cloud Storage source of conversation data. */
+export interface GoogleCloudContactcenterinsightsV1GcsSource {
+  /** Immutable. Cloud Storage URI that points to a file that contains the conversation transcript. */
+  transcriptUri?: string;
+  /** Immutable. Cloud Storage URIs that point to files that contain the conversation audio. Supports both single audio files and multi-leg session recordings (e.g., call transfers, rolling recording buffers). */
+  audioUris?: StringList;
+  /** Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points to a file that contains the conversation audio. */
+  audioUri?: string;
+}
+export const GoogleCloudContactcenterinsightsV1GcsSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      transcriptUri: S.optional(S.String),
+      audioUris: S.optional(StringList),
+      audioUri: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1GcsSource",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GcsSource>;
+
+/** The conversation source, which is a combination of transcript and audio. */
+export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
+  /** Cloud Storage URI that points to a file that contains the conversation metadata. */
+  metadataUri?: string;
+  /** Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order of the URIs is the same as the order of the transcript turns. */
+  turnLevelAudios?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList;
+  /** The source when the conversation comes from Dialogflow. */
+  dialogflowSource?: GoogleCloudContactcenterinsightsV1DialogflowSource;
+  /** A Cloud Storage location specification for the audio and transcript. */
+  gcsSource?: GoogleCloudContactcenterinsightsV1GcsSource;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationDataSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      metadataUri: S.optional(S.String),
+      turnLevelAudios: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList,
+      ),
+      dialogflowSource: S.optional(
+        GoogleCloudContactcenterinsightsV1DialogflowSource,
+      ),
+      gcsSource: S.optional(GoogleCloudContactcenterinsightsV1GcsSource),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1ConversationDataSource",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSource>;
+
+/** Call-specific metadata. */
+export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
+  /** The audio channel that contains the agent. */
+  agentChannel?: number;
+  /** The audio channel that contains the customer. */
+  customerChannel?: number;
+}
+export const GoogleCloudContactcenterinsightsV1ConversationCallMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      agentChannel: S.optional(S.Number),
+      customerChannel: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1ConversationCallMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>;
 
 /** The conversation resource. */
 export interface GoogleCloudContactcenterinsightsV1Conversation {
-  /** Call-specific metadata. */
-  callMetadata?: GoogleCloudContactcenterinsightsV1ConversationCallMetadata;
+  /** Output only. All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent} */
+  dialogflowIntents?: GoogleCloudContactcenterinsightsV1DialogflowIntentMap;
+  /** Output only. The duration of the conversation. */
+  duration?: string;
+  /** Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time. */
+  ttl?: string;
+  /** An opaque, user-specified string representing the human agent who handled the conversation. */
+  agentId?: string;
+  /** Output only. The number of turns in the conversation. */
+  turnCount?: number;
+  /** The time at which the conversation started. */
+  startTime?: string;
+  /** Output only. The annotations that were generated during the customer and agent interaction. */
+  runtimeAnnotations?: GoogleCloudContactcenterinsightsV1RuntimeAnnotationList;
+  /** Output only. The conversation's latest analysis, if one exists. */
+  latestAnalysis?: GoogleCloudContactcenterinsightsV1Analysis;
+  /** Optional. JSON metadata encoded as a string. This field is primarily used by Insights integrations with various telephony systems and must be in one of Insight's supported formats. */
+  metadataJson?: string;
+  /** Obfuscated user ID which the customer sent to us. */
+  obfuscatedUserId?: string;
+  /** Output only. Info for correlating across conversations. */
+  correlationInfo?: GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo;
+  /** Output only. The time at which the conversation was created. */
+  createTime?: string;
+  /** Output only. The most recent time at which the conversation was updated. */
+  updateTime?: string;
+  /** Output only. The conversation transcript. */
+  transcript?: GoogleCloudContactcenterinsightsV1ConversationTranscript;
+  /** A user-specified language code for the conversation. */
+  languageCode?: string;
+  /** Conversation metadata related to quality management. */
+  qualityMetadata?: GoogleCloudContactcenterinsightsV1ConversationQualityMetadata;
+  /** Output only. Latest summary of the conversation. */
+  latestSummary?: GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData;
+  /** The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted. */
+  expireTime?: string;
   /** Immutable. The conversation medium. */
   medium?:
     | GoogleCloudContactcenterinsightsV1ConversationMediumEnum
     | (string & {});
-  /** Conversation metadata related to quality management. */
-  qualityMetadata?: GoogleCloudContactcenterinsightsV1ConversationQualityMetadata;
-  /** Optional. JSON metadata encoded as a string. This field is primarily used by Insights integrations with various telephony systems and must be in one of Insight's supported formats. */
-  metadataJson?: string;
-  /** A user-specified language code for the conversation. */
-  languageCode?: string;
-  /** Output only. Latest summary of the conversation. */
-  latestSummary?: GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData;
-  /** Output only. The duration of the conversation. */
-  duration?: string;
-  /** The time at which the conversation started. */
-  startTime?: string;
-  /** Output only. The number of turns in the conversation. */
-  turnCount?: number;
   /** The source of the audio and transcription for the conversation. */
   dataSource?: GoogleCloudContactcenterinsightsV1ConversationDataSource;
-  /** The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted. */
-  expireTime?: string;
-  /** Output only. The annotations that were generated during the customer and agent interaction. */
-  runtimeAnnotations?: GoogleCloudContactcenterinsightsV1RuntimeAnnotationList;
   /** Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation} */
   name?: string;
-  /** An opaque, user-specified string representing the human agent who handled the conversation. */
-  agentId?: string;
-  /** Output only. Info for correlating across conversations. */
-  correlationInfo?: GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo;
-  /** Obfuscated user ID which the customer sent to us. */
-  obfuscatedUserId?: string;
-  /** Output only. The conversation transcript. */
-  transcript?: GoogleCloudContactcenterinsightsV1ConversationTranscript;
-  /** Output only. The conversation's latest analysis, if one exists. */
-  latestAnalysis?: GoogleCloudContactcenterinsightsV1Analysis;
-  /** Output only. All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent} */
-  dialogflowIntents?: GoogleCloudContactcenterinsightsV1DialogflowIntentMap;
-  /** Output only. The most recent time at which the conversation was updated. */
-  updateTime?: string;
   /** A map for the user to specify any custom fields. A maximum of 100 labels per conversation is allowed, with a maximum of 256 characters per entry. */
   labels?: StringMap;
-  /** Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time. */
-  ttl?: string;
-  /** Output only. The time at which the conversation was created. */
-  createTime?: string;
+  /** Call-specific metadata. */
+  callMetadata?: GoogleCloudContactcenterinsightsV1ConversationCallMetadata;
 }
 export const GoogleCloudContactcenterinsightsV1Conversation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      callMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationCallMetadata,
-      ),
-      medium: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationMediumEnum,
-      ),
-      qualityMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationQualityMetadata,
-      ),
-      metadataJson: S.optional(S.String),
-      languageCode: S.optional(S.String),
-      latestSummary: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
-      ),
-      duration: S.optional(S.String),
-      startTime: S.optional(S.String),
-      turnCount: S.optional(S.Number),
-      dataSource: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationDataSource,
-      ),
-      expireTime: S.optional(S.String),
-      runtimeAnnotations: S.optional(
-        GoogleCloudContactcenterinsightsV1RuntimeAnnotationList,
-      ),
-      name: S.optional(S.String),
-      agentId: S.optional(S.String),
-      correlationInfo: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo,
-      ),
-      obfuscatedUserId: S.optional(S.String),
-      transcript: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationTranscript,
-      ),
-      latestAnalysis: S.optional(GoogleCloudContactcenterinsightsV1Analysis),
       dialogflowIntents: S.optional(
         GoogleCloudContactcenterinsightsV1DialogflowIntentMap,
       ),
-      updateTime: S.optional(S.String),
-      labels: S.optional(StringMap),
+      duration: S.optional(S.String),
       ttl: S.optional(S.String),
+      agentId: S.optional(S.String),
+      turnCount: S.optional(S.Number),
+      startTime: S.optional(S.String),
+      runtimeAnnotations: S.optional(
+        GoogleCloudContactcenterinsightsV1RuntimeAnnotationList,
+      ),
+      latestAnalysis: S.optional(GoogleCloudContactcenterinsightsV1Analysis),
+      metadataJson: S.optional(S.String),
+      obfuscatedUserId: S.optional(S.String),
+      correlationInfo: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo,
+      ),
       createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      transcript: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationTranscript,
+      ),
+      languageCode: S.optional(S.String),
+      qualityMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationQualityMetadata,
+      ),
+      latestSummary: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
+      ),
+      expireTime: S.optional(S.String),
+      medium: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationMediumEnum,
+      ),
+      dataSource: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationDataSource,
+      ),
+      name: S.optional(S.String),
+      labels: S.optional(StringMap),
+      callMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1ConversationCallMetadata,
+      ),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Conversation",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1Conversation>;
 
 export interface CreateProjectsLocationsConversationsRequest {
-  /** A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-` */
-  conversationId?: string;
   /** Required. The parent resource of the conversation. */
   parent: string;
+  /** A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-` */
+  conversationId?: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Conversation;
 }
 export const CreateProjectsLocationsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conversationId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      conversationId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1Conversation.pipe(T.HttpBody()),
       ),
@@ -3666,83 +4235,75 @@ export const CreateProjectsLocationsConversationsFeedbackLabelsRequest =
     identifier: "CreateProjectsLocationsConversationsFeedbackLabelsRequest",
   }) as any as S.Schema<CreateProjectsLocationsConversationsFeedbackLabelsRequest>;
 
+/** A time window for querying conversations. */
+export interface GoogleCloudContactcenterinsightsV1QueryInterval {
+  /** Required. The end time of the time window. */
+  endTime?: string;
+  /** Required. The start time of the time window. */
+  startTime?: string;
+}
+export const GoogleCloudContactcenterinsightsV1QueryInterval =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endTime: S.optional(S.String),
+      startTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1QueryInterval",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryInterval>;
+
 export type GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum =
-  "TIME_UNIT_UNSPECIFIED" | "DAY" | "WEEK" | "MONTH" | "QUARTER" | "YEAR";
+  | "TIME_UNIT_UNSPECIFIED"
+  | "DAY"
+  | "WEEK"
+  | "MONTH"
+  | "QUARTER"
+  | "YEAR";
 export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum =
   /*@__PURE__*/ S.String;
 
 /** Relative date range configuration. */
 export interface GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange {
-  /** Required. The quantity of units in the past. */
-  quantity?: string;
   /** Required. The unit of time. */
   unit?:
     | GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum
     | (string & {});
+  /** Required. The quantity of units in the past. */
+  quantity?: string;
 }
 export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      quantity: S.optional(S.String),
       unit: S.optional(
         GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum,
       ),
+      quantity: S.optional(S.String),
     }),
   ).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange>;
 
-/** A time window for querying conversations. */
-export interface GoogleCloudContactcenterinsightsV1QueryInterval {
-  /** Required. The start time of the time window. */
-  startTime?: string;
-  /** Required. The end time of the time window. */
-  endTime?: string;
-}
-export const GoogleCloudContactcenterinsightsV1QueryInterval =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      startTime: S.optional(S.String),
-      endTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QueryInterval",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryInterval>;
-
 /** Date range configuration for dashboard charts. */
 export interface GoogleCloudContactcenterinsightsV1DateRangeConfig {
-  /** A relative date range. */
-  relativeDateRange?: GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange;
   /** An absolute date range. */
   absoluteDateRange?: GoogleCloudContactcenterinsightsV1QueryInterval;
+  /** A relative date range. */
+  relativeDateRange?: GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange;
 }
 export const GoogleCloudContactcenterinsightsV1DateRangeConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      relativeDateRange: S.optional(
-        GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange,
-      ),
       absoluteDateRange: S.optional(
         GoogleCloudContactcenterinsightsV1QueryInterval,
+      ),
+      relativeDateRange: S.optional(
+        GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange,
       ),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DateRangeConfig",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfig>;
-
-/** Request data that use the existing QueryMetrics. */
-export interface GoogleCloudContactcenterinsightsV1QueryMetrics {
-  request?: DocumentMap;
-}
-export const GoogleCloudContactcenterinsightsV1QueryMetrics =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      request: S.optional(DocumentMap),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QueryMetrics",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryMetrics>;
 
 /** The user message. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage {
@@ -3760,26 +4321,29 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage>;
 
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
-  "TYPE_UNSPECIFIED" | "THOUGHT" | "FINAL_RESPONSE" | "PROGRESS";
+  | "TYPE_UNSPECIFIED"
+  | "THOUGHT"
+  | "FINAL_RESPONSE"
+  | "PROGRESS";
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** A text output message from the system. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput {
-  /** The parts of the message. */
-  texts?: StringList;
   /** The type of the text message. */
   type?:
     | GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum
     | (string & {});
+  /** The parts of the message. */
+  texts?: StringList;
 }
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      texts: S.optional(StringList),
       type: S.optional(
         GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum,
       ),
+      texts: S.optional(StringList),
     }),
   ).annotate({
     identifier:
@@ -3815,10 +4379,10 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   userMessage?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage;
   /** For user messages, this is the time at which the system received the message. For system messages, this is the time at which the system generated the message. */
   createTime?: string;
-  /** A message from the system in response to the user. */
-  systemMessage?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage;
   /** The message id of the message. */
   messageId?: string;
+  /** A message from the system in response to the user. */
+  systemMessage?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage;
 }
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage =
   /*@__PURE__*/ S.suspend(() =>
@@ -3827,10 +4391,10 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
         GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage,
       ),
       createTime: S.optional(S.String),
+      messageId: S.optional(S.String),
       systemMessage: S.optional(
         GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage,
       ),
-      messageId: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -3846,24 +4410,24 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
 
 /** The conversation used to generate the chart. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation {
-  /** The update time of the conversation. */
-  updateTime?: string;
-  /** The conversation id of the chart. */
-  conversationId?: string;
   /** The create time of the conversation. */
   createTime?: string;
+  /** The update time of the conversation. */
+  updateTime?: string;
   /** Ordered list of messages, including user inputs and system responses. */
   messages?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList;
+  /** The conversation id of the chart. */
+  conversationId?: string;
 }
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      updateTime: S.optional(S.String),
-      conversationId: S.optional(S.String),
       createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
       messages: S.optional(
         GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList,
       ),
+      conversationId: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -3897,50 +4461,63 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint
 
 /** Request that use natural language query to generate the chart. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsights {
-  /** SQL query used to generate the chart. */
-  sqlQuery?: string;
-  /** Output only. The chart conversations used to generate the chart. */
-  chartConversations?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList;
-  /** The chart checkpoint used to generate the chart. */
-  chartCheckpoint?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint;
-  request?: DocumentMap;
   /** Chart spec for the chart. */
   chartSpec?: DocumentMap;
+  /** Output only. The chart conversations used to generate the chart. */
+  chartConversations?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList;
+  request?: DocumentMap;
+  /** The chart checkpoint used to generate the chart. */
+  chartCheckpoint?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint;
+  /** SQL query used to generate the chart. */
+  sqlQuery?: string;
   /** Optional. For charts with comparison, this key will determine the metric that will be compared between the current and another dataset. */
   sqlComparisonKey?: string;
 }
 export const GoogleCloudContactcenterinsightsV1GenerativeInsights =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      sqlQuery: S.optional(S.String),
+      chartSpec: S.optional(DocumentMap),
       chartConversations: S.optional(
         GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList,
       ),
+      request: S.optional(DocumentMap),
       chartCheckpoint: S.optional(
         GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint,
       ),
-      request: S.optional(DocumentMap),
-      chartSpec: S.optional(DocumentMap),
+      sqlQuery: S.optional(S.String),
       sqlComparisonKey: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsights",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsights>;
 
+/** Request data that use the existing QueryMetrics. */
+export interface GoogleCloudContactcenterinsightsV1QueryMetrics {
+  request?: DocumentMap;
+}
+export const GoogleCloudContactcenterinsightsV1QueryMetrics =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      request: S.optional(DocumentMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1QueryMetrics",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryMetrics>;
+
 /** The request data for visualizing the dataset in the chart. */
 export interface GoogleCloudContactcenterinsightsV1ChartDataSource {
-  /** Use the existing QueryMetrics to generate the chart. */
-  queryMetrics?: GoogleCloudContactcenterinsightsV1QueryMetrics;
   /** Use natural language query to generate the chart. */
   generativeInsights?: GoogleCloudContactcenterinsightsV1GenerativeInsights;
+  /** Use the existing QueryMetrics to generate the chart. */
+  queryMetrics?: GoogleCloudContactcenterinsightsV1QueryMetrics;
 }
 export const GoogleCloudContactcenterinsightsV1ChartDataSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      queryMetrics: S.optional(GoogleCloudContactcenterinsightsV1QueryMetrics),
       generativeInsights: S.optional(
         GoogleCloudContactcenterinsightsV1GenerativeInsights,
       ),
+      queryMetrics: S.optional(GoogleCloudContactcenterinsightsV1QueryMetrics),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ChartDataSource",
@@ -3953,18 +4530,33 @@ export type GoogleCloudContactcenterinsightsV1ChartChartTypeEnum =
 export const GoogleCloudContactcenterinsightsV1ChartChartTypeEnum =
   /*@__PURE__*/ S.String;
 
+export type GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
+  | "CHART_VISUALIZATION_TYPE_UNSPECIFIED"
+  | "BAR"
+  | "LINE"
+  | "AREA"
+  | "PIE"
+  | "SCATTER"
+  | "TABLE"
+  | "SCORE_CARD"
+  | "SUNBURST"
+  | "GAUGE"
+  | "SANKEY";
+export const GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
+  /*@__PURE__*/ S.String;
+
 /** The redirect action to be taken when the chart is clicked. */
 export interface GoogleCloudContactcenterinsightsV1RedirectAction {
-  /** The query params to be added to the redirect path. */
-  queryParams?: StringMap;
   /** The relative path to redirect to. */
   relativePath?: string;
+  /** The query params to be added to the redirect path. */
+  queryParams?: StringMap;
 }
 export const GoogleCloudContactcenterinsightsV1RedirectAction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      queryParams: S.optional(StringMap),
       relativePath: S.optional(S.String),
+      queryParams: S.optional(StringMap),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1RedirectAction",
@@ -3989,50 +4581,35 @@ export const GoogleCloudContactcenterinsightsV1ChartAction =
     identifier: "GoogleCloudContactcenterinsightsV1ChartAction",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ChartAction>;
 
-export type GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
-  | "CHART_VISUALIZATION_TYPE_UNSPECIFIED"
-  | "BAR"
-  | "LINE"
-  | "AREA"
-  | "PIE"
-  | "SCATTER"
-  | "TABLE"
-  | "SCORE_CARD"
-  | "SUNBURST"
-  | "GAUGE"
-  | "SANKEY";
-export const GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
-  /*@__PURE__*/ S.String;
-
 /** Configurable dashboard's widget that displays data as a chart. */
 export interface GoogleCloudContactcenterinsightsV1Chart {
   dataSource?: GoogleCloudContactcenterinsightsV1ChartDataSource;
-  /** The width of the chart in grid units. */
-  width?: number;
+  /** Date range config applied to the chart. */
+  dateRangeConfig?: GoogleCloudContactcenterinsightsV1DateRangeConfig;
+  /** Filter applied to all charts in the container. Should support scope later. */
+  filter?: string;
   /** Output only. Chart type. */
   chartType?:
     | GoogleCloudContactcenterinsightsV1ChartChartTypeEnum
     | (string & {});
-  /** Date range config applied to the chart. */
-  dateRangeConfig?: GoogleCloudContactcenterinsightsV1DateRangeConfig;
-  /** Optional action to be taken when the chart is clicked. */
-  action?: GoogleCloudContactcenterinsightsV1ChartAction;
-  /** The height of the chart in grid units. */
-  height?: number;
   /** Output only. Chart create time. */
   createTime?: string;
-  /** Chart visualization type. */
-  chartVisualizationType?:
-    | GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum
-    | (string & {});
-  /** Filter applied to all charts in the container. Should support scope later. */
-  filter?: string;
-  /** Chart description */
-  description?: string;
   /** Output only. Chart last update time. */
   updateTime?: string;
   /** Identifier. Chart resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
   name?: string;
+  /** Chart visualization type. */
+  chartVisualizationType?:
+    | GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum
+    | (string & {});
+  /** The height of the chart in grid units. */
+  height?: number;
+  /** Chart description */
+  description?: string;
+  /** Optional action to be taken when the chart is clicked. */
+  action?: GoogleCloudContactcenterinsightsV1ChartAction;
+  /** The width of the chart in grid units. */
+  width?: number;
   /** User provided display name of the chart. */
   displayName?: string;
 }
@@ -4040,23 +4617,23 @@ export const GoogleCloudContactcenterinsightsV1Chart = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       dataSource: S.optional(GoogleCloudContactcenterinsightsV1ChartDataSource),
-      width: S.optional(S.Number),
-      chartType: S.optional(
-        GoogleCloudContactcenterinsightsV1ChartChartTypeEnum,
-      ),
       dateRangeConfig: S.optional(
         GoogleCloudContactcenterinsightsV1DateRangeConfig,
       ),
-      action: S.optional(GoogleCloudContactcenterinsightsV1ChartAction),
-      height: S.optional(S.Number),
+      filter: S.optional(S.String),
+      chartType: S.optional(
+        GoogleCloudContactcenterinsightsV1ChartChartTypeEnum,
+      ),
       createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      name: S.optional(S.String),
       chartVisualizationType: S.optional(
         GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum,
       ),
-      filter: S.optional(S.String),
+      height: S.optional(S.Number),
       description: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      name: S.optional(S.String),
+      action: S.optional(GoogleCloudContactcenterinsightsV1ChartAction),
+      width: S.optional(S.Number),
       displayName: S.optional(S.String),
     }),
 ).annotate({
@@ -4065,24 +4642,24 @@ export const GoogleCloudContactcenterinsightsV1Chart = /*@__PURE__*/ S.suspend(
 
 /** Represents a dashboard element, could be a nested Container or Chart. */
 export interface GoogleCloudContactcenterinsightsV1Widget {
-  /** A reference to a chart widget. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
-  chartReference?: string;
+  /** A chart widget. */
+  chart?: GoogleCloudContactcenterinsightsV1Chart;
   /** A container widget. */
   container?: GoogleCloudContactcenterinsightsV1Container;
   /** Filter applied to all charts in the container. Should support scope later. */
   filter?: string;
-  /** A chart widget. */
-  chart?: GoogleCloudContactcenterinsightsV1Chart;
+  /** A reference to a chart widget. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
+  chartReference?: string;
 }
 export const GoogleCloudContactcenterinsightsV1Widget = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      chartReference: S.optional(S.String),
+      chart: S.optional(GoogleCloudContactcenterinsightsV1Chart),
       container: S.optional(
         S.suspend(() => GoogleCloudContactcenterinsightsV1Container),
       ),
       filter: S.optional(S.String),
-      chart: S.optional(GoogleCloudContactcenterinsightsV1Chart),
+      chartReference: S.optional(S.String),
     }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1Widget",
@@ -4097,36 +4674,36 @@ export const GoogleCloudContactcenterinsightsV1WidgetList =
 
 /** Configurable dashboard's container. Container can contain multiple widgets. */
 export interface GoogleCloudContactcenterinsightsV1Container {
-  /** The width of the container in grid units. */
-  width?: number;
-  /** Date range config applied to all charts in the container. */
-  dateRangeConfig?: GoogleCloudContactcenterinsightsV1DateRangeConfig;
-  /** Widgets in the Container. */
-  widgets?: GoogleCloudContactcenterinsightsV1WidgetList;
-  /** Output only. Unique ID for the container. */
-  containerId?: string;
-  /** User provided display name of the Container. */
-  displayName?: string;
   /** Container description */
   description?: string;
-  /** Filter applied to all charts in the container. Should support scope later. */
-  filter?: string;
+  /** Output only. Unique ID for the container. */
+  containerId?: string;
+  /** Widgets in the Container. */
+  widgets?: GoogleCloudContactcenterinsightsV1WidgetList;
   /** The height of the container in grid units. */
   height?: number;
+  /** Filter applied to all charts in the container. Should support scope later. */
+  filter?: string;
+  /** Date range config applied to all charts in the container. */
+  dateRangeConfig?: GoogleCloudContactcenterinsightsV1DateRangeConfig;
+  /** The width of the container in grid units. */
+  width?: number;
+  /** User provided display name of the Container. */
+  displayName?: string;
 }
 export const GoogleCloudContactcenterinsightsV1Container =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      width: S.optional(S.Number),
+      description: S.optional(S.String),
+      containerId: S.optional(S.String),
+      widgets: S.optional(GoogleCloudContactcenterinsightsV1WidgetList),
+      height: S.optional(S.Number),
+      filter: S.optional(S.String),
       dateRangeConfig: S.optional(
         GoogleCloudContactcenterinsightsV1DateRangeConfig,
       ),
-      widgets: S.optional(GoogleCloudContactcenterinsightsV1WidgetList),
-      containerId: S.optional(S.String),
+      width: S.optional(S.Number),
       displayName: S.optional(S.String),
-      description: S.optional(S.String),
-      filter: S.optional(S.String),
-      height: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Container",
@@ -4134,57 +4711,57 @@ export const GoogleCloudContactcenterinsightsV1Container =
 
 /** Configurable dashboard */
 export interface GoogleCloudContactcenterinsightsV1Dashboard {
-  /** Identifier. Dashboard resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard} */
-  name?: string;
-  /** User provided display name of the dashboard. */
-  displayName?: string;
-  /** Date range config applied to all charts in the dashboard. */
-  dateRangeConfig?: GoogleCloudContactcenterinsightsV1DateRangeConfig;
   /** Output only. Whether the dashboard is read-only. All predefined dashboards are read-only and cannot be modified by the user. */
   readOnly?: boolean;
-  /** Dashboard description */
-  description?: string;
-  /** Output only. Dashboard last update time. */
-  updateTime?: string;
-  /** The dashboard's root widget container. We want to display the dashboard layout in a tree-like structure, where the root container contains other widgets (containers or charts) as children. */
-  rootContainer?: GoogleCloudContactcenterinsightsV1Container;
-  /** Filter applied to all charts in the dashboard. Should support scope later. */
-  filter?: string;
+  /** Identifier. Dashboard resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard} */
+  name?: string;
   /** Output only. Dashboard creation time. */
   createTime?: string;
+  /** Output only. Dashboard last update time. */
+  updateTime?: string;
+  /** Date range config applied to all charts in the dashboard. */
+  dateRangeConfig?: GoogleCloudContactcenterinsightsV1DateRangeConfig;
+  /** Dashboard description */
+  description?: string;
+  /** User provided display name of the dashboard. */
+  displayName?: string;
+  /** Filter applied to all charts in the dashboard. Should support scope later. */
+  filter?: string;
+  /** The dashboard's root widget container. We want to display the dashboard layout in a tree-like structure, where the root container contains other widgets (containers or charts) as children. */
+  rootContainer?: GoogleCloudContactcenterinsightsV1Container;
 }
 export const GoogleCloudContactcenterinsightsV1Dashboard =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      readOnly: S.optional(S.Boolean),
       name: S.optional(S.String),
-      displayName: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
       dateRangeConfig: S.optional(
         GoogleCloudContactcenterinsightsV1DateRangeConfig,
       ),
-      readOnly: S.optional(S.Boolean),
       description: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      rootContainer: S.optional(GoogleCloudContactcenterinsightsV1Container),
+      displayName: S.optional(S.String),
       filter: S.optional(S.String),
-      createTime: S.optional(S.String),
+      rootContainer: S.optional(GoogleCloudContactcenterinsightsV1Container),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Dashboard",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dashboard>;
 
 export interface CreateProjectsLocationsDashboardsRequest {
-  /** Required. The parent resource of the dashboard. */
-  parent: string;
   /** Optional. A unique ID for the new Dashboard. This ID will become the final component of the Dashboard's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. */
   dashboardId?: string;
+  /** Required. The parent resource of the dashboard. */
+  parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dashboard;
 }
 export const CreateProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       dashboardId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1Dashboard.pipe(T.HttpBody()),
       ),
@@ -4237,29 +4814,29 @@ export const GoogleCloudContactcenterinsightsV1DatasetTypeEnum =
 export interface GoogleCloudContactcenterinsightsV1Dataset {
   /** Dataset usage type. */
   type?: GoogleCloudContactcenterinsightsV1DatasetTypeEnum | (string & {});
-  /** Immutable. Identifier. Resource name of the dataset. Format: projects/{project}/locations/{location}/datasets/{dataset} */
-  name?: string;
-  /** Display name for the dataaset */
-  displayName?: string;
-  /** Dataset description. */
-  description?: string;
-  /** Output only. Dataset update time. */
-  updateTime?: string;
   /** Optional. Option TTL for the dataset. */
   ttl?: string;
+  /** Immutable. Identifier. Resource name of the dataset. Format: projects/{project}/locations/{location}/datasets/{dataset} */
+  name?: string;
+  /** Dataset description. */
+  description?: string;
   /** Output only. Dataset create time. */
   createTime?: string;
+  /** Output only. Dataset update time. */
+  updateTime?: string;
+  /** Display name for the dataaset */
+  displayName?: string;
 }
 export const GoogleCloudContactcenterinsightsV1Dataset =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(GoogleCloudContactcenterinsightsV1DatasetTypeEnum),
-      name: S.optional(S.String),
-      displayName: S.optional(S.String),
-      description: S.optional(S.String),
-      updateTime: S.optional(S.String),
       ttl: S.optional(S.String),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
       createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      displayName: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Dataset",
@@ -4293,18 +4870,18 @@ export const CreateProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProjectsLocationsDatasetsRequest>;
 
 export interface CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest {
-  /** Required. The parent resource of the feedback label. */
-  parent: string;
   /** Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. */
   feedbackLabelId?: string;
+  /** Required. The parent resource of the feedback label. */
+  parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
 export const CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       feedbackLabelId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody()),
       ),
@@ -4320,6 +4897,44 @@ export const CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
       "CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
   }) as any as S.Schema<CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
+export type GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum =
+  | "MODEL_TYPE_UNSPECIFIED"
+  | "TYPE_V1"
+  | "TYPE_V2";
+export const GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum =
+  | "MEDIUM_UNSPECIFIED"
+  | "PHONE_CALL"
+  | "CHAT";
+export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum =
+  /*@__PURE__*/ S.String;
+
+/** Configs for the input data used to create the issue model. */
+export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
+  /** A filter to reduce the conversations used for training the model to a specific subset. Refer to https://cloud.google.com/contact-center/insights/docs/filtering for details. */
+  filter?: string;
+  /** Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`. */
+  medium?:
+    | GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum
+    | (string & {});
+  /** Output only. Number of conversations used in training. Output only. */
+  trainingConversationsCount?: string;
+}
+export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String),
+      medium: S.optional(
+        GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum,
+      ),
+      trainingConversationsCount: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>;
+
 export type GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNDEPLOYED"
@@ -4330,86 +4945,50 @@ export type GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
 export const GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum =
-  | "MODEL_TYPE_UNSPECIFIED"
-  | "TYPE_V1"
-  | "TYPE_V2";
-export const GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum =
-  "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT";
-export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum =
-  /*@__PURE__*/ S.String;
-
-/** Configs for the input data used to create the issue model. */
-export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
-  /** Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`. */
-  medium?:
-    | GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum
-    | (string & {});
-  /** Output only. Number of conversations used in training. Output only. */
-  trainingConversationsCount?: string;
-  /** A filter to reduce the conversations used for training the model to a specific subset. Refer to https://cloud.google.com/contact-center/insights/docs/filtering for details. */
-  filter?: string;
-}
-export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      medium: S.optional(
-        GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum,
-      ),
-      trainingConversationsCount: S.optional(S.String),
-      filter: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>;
-
 /** The issue model resource. */
 export interface GoogleCloudContactcenterinsightsV1IssueModel {
-  /** Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
-  name?: string;
-  /** The representative name for the issue model. */
-  displayName?: string;
-  /** Output only. State of the model. */
-  state?: GoogleCloudContactcenterinsightsV1IssueModelStateEnum | (string & {});
-  /** Output only. Immutable. The issue model's label statistics on its training data. */
-  trainingStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStats;
-  /** Language of the model. */
-  languageCode?: string;
   /** Output only. Number of issues in this issue model. */
   issueCount?: string;
+  /** Output only. The time at which this issue model was created. */
+  createTime?: string;
   /** Output only. The most recent time at which the issue model was updated. */
   updateTime?: string;
   /** Type of the model. */
   modelType?:
     | GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum
     | (string & {});
-  /** Output only. The time at which this issue model was created. */
-  createTime?: string;
   /** Configs for the input data that used to create the issue model. */
   inputDataConfig?: GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig;
+  /** The representative name for the issue model. */
+  displayName?: string;
+  /** Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
+  name?: string;
+  /** Language of the model. */
+  languageCode?: string;
+  /** Output only. Immutable. The issue model's label statistics on its training data. */
+  trainingStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStats;
+  /** Output only. State of the model. */
+  state?: GoogleCloudContactcenterinsightsV1IssueModelStateEnum | (string & {});
 }
 export const GoogleCloudContactcenterinsightsV1IssueModel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      displayName: S.optional(S.String),
-      state: S.optional(GoogleCloudContactcenterinsightsV1IssueModelStateEnum),
-      trainingStats: S.optional(
-        GoogleCloudContactcenterinsightsV1IssueModelLabelStats,
-      ),
-      languageCode: S.optional(S.String),
       issueCount: S.optional(S.String),
+      createTime: S.optional(S.String),
       updateTime: S.optional(S.String),
       modelType: S.optional(
         GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum,
       ),
-      createTime: S.optional(S.String),
       inputDataConfig: S.optional(
         GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig,
       ),
+      displayName: S.optional(S.String),
+      name: S.optional(S.String),
+      languageCode: S.optional(S.String),
+      trainingStats: S.optional(
+        GoogleCloudContactcenterinsightsV1IssueModelLabelStats,
+      ),
+      state: S.optional(GoogleCloudContactcenterinsightsV1IssueModelStateEnum),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IssueModel",
@@ -4441,27 +5020,27 @@ export const CreateProjectsLocationsIssueModelsRequest =
 
 /** The issue resource. */
 export interface GoogleCloudContactcenterinsightsV1Issue {
-  /** Immutable. The resource name of the issue. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} */
-  name?: string;
-  /** The representative name for the issue. */
-  displayName?: string;
-  /** Output only. The most recent time that this issue was updated. */
-  updateTime?: string;
-  /** Output only. The time at which this issue was created. */
-  createTime?: string;
   /** Output only. Resource names of the sample representative utterances that match to this issue. */
   sampleUtterances?: StringList;
+  /** The representative name for the issue. */
+  displayName?: string;
+  /** Immutable. The resource name of the issue. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} */
+  name?: string;
+  /** Output only. The time at which this issue was created. */
+  createTime?: string;
+  /** Output only. The most recent time that this issue was updated. */
+  updateTime?: string;
   /** Representative description of the issue. */
   displayDescription?: string;
 }
 export const GoogleCloudContactcenterinsightsV1Issue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.optional(S.String),
-      displayName: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      createTime: S.optional(S.String),
       sampleUtterances: S.optional(StringList),
+      displayName: S.optional(S.String),
+      name: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
       displayDescription: S.optional(S.String),
     }),
 ).annotate({
@@ -4544,21 +5123,21 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig =
 
 /** The data for a phrase match rule. */
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchRule {
-  /** Specifies whether the phrase must be missing from the transcript segment or present in the transcript segment. */
-  negated?: boolean;
   /** Required. The phrase to be matched. */
   query?: string;
   /** Provides additional information about the rule that specifies how to apply the rule. */
   config?: GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig;
+  /** Specifies whether the phrase must be missing from the transcript segment or present in the transcript segment. */
+  negated?: boolean;
 }
 export const GoogleCloudContactcenterinsightsV1PhraseMatchRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      negated: S.optional(S.Boolean),
       query: S.optional(S.String),
       config: S.optional(
         GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig,
       ),
+      negated: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchRule",
@@ -4617,26 +5196,26 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum =
 
 /** The phrase matcher resource. */
 export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
+  /** Output only. The most recent time at which the phrase matcher was updated. */
+  updateTime?: string;
   /** Output only. The most recent time at which the activation status was updated. */
   activationUpdateTime?: string;
+  /** Output only. Immutable. The revision ID of the phrase matcher. A new revision is committed whenever the matcher is changed, except when it is activated or deactivated. A server generated random ID will be used. Example: locations/global/phraseMatchers/my-first-matcher@1234567 */
+  revisionId?: string;
   /** The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript. */
   roleMatch?:
     | GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum
     | (string & {});
+  /** Output only. The timestamp of when the revision was created. It is also the create time when a new matcher is added. */
+  revisionCreateTime?: string;
   /** The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`. */
   versionTag?: string;
-  /** Output only. The most recent time at which the phrase matcher was updated. */
-  updateTime?: string;
-  /** Output only. Immutable. The revision ID of the phrase matcher. A new revision is committed whenever the matcher is changed, except when it is activated or deactivated. A server generated random ID will be used. Example: locations/global/phraseMatchers/my-first-matcher@1234567 */
-  revisionId?: string;
+  /** The human-readable name of the phrase matcher. */
+  displayName?: string;
   /** A list of phase match rule groups that are included in this matcher. */
   phraseMatchRuleGroups?: GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList;
   /** The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
   name?: string;
-  /** The human-readable name of the phrase matcher. */
-  displayName?: string;
-  /** Output only. The timestamp of when the revision was created. It is also the create time when a new matcher is added. */
-  revisionCreateTime?: string;
   /** Required. The type of this phrase matcher. */
   type?:
     | GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum
@@ -4647,19 +5226,19 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
 export const GoogleCloudContactcenterinsightsV1PhraseMatcher =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      updateTime: S.optional(S.String),
       activationUpdateTime: S.optional(S.String),
+      revisionId: S.optional(S.String),
       roleMatch: S.optional(
         GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum,
       ),
+      revisionCreateTime: S.optional(S.String),
       versionTag: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      revisionId: S.optional(S.String),
+      displayName: S.optional(S.String),
       phraseMatchRuleGroups: S.optional(
         GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList,
       ),
       name: S.optional(S.String),
-      displayName: S.optional(S.String),
-      revisionCreateTime: S.optional(S.String),
       type: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum),
       active: S.optional(S.Boolean),
     }),
@@ -4693,25 +5272,25 @@ export const CreateProjectsLocationsPhraseMatchersRequest =
 
 /** A tag is a resource which aims to categorize a set of questions across multiple scorecards, e.g., "Customer Satisfaction","Billing", etc. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionTag {
-  /** Output only. The time at which the question tag was created. */
-  createTime?: string;
-  /** Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any Scorecard Questions, we treat this field as optional. */
-  qaQuestionIds?: StringList;
   /** Identifier. Resource name for the QaQuestionTag Format projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource. */
   name?: string;
-  /** Required. A user-specified display name for the tag. */
-  displayName?: string;
+  /** Output only. The time at which the question tag was created. */
+  createTime?: string;
   /** Output only. The most recent time at which the question tag was updated. */
   updateTime?: string;
+  /** Required. A user-specified display name for the tag. */
+  displayName?: string;
+  /** Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any Scorecard Questions, we treat this field as optional. */
+  qaQuestionIds?: StringList;
 }
 export const GoogleCloudContactcenterinsightsV1QaQuestionTag =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      createTime: S.optional(S.String),
-      qaQuestionIds: S.optional(StringList),
       name: S.optional(S.String),
-      displayName: S.optional(S.String),
+      createTime: S.optional(S.String),
       updateTime: S.optional(S.String),
+      displayName: S.optional(S.String),
+      qaQuestionIds: S.optional(StringList),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaQuestionTag",
@@ -4747,41 +5326,42 @@ export const CreateProjectsLocationsQaQuestionTagsRequest =
 export type GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
-  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE";
+  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
+  | "QA_SCORECARD_SOURCE_INTENT_TAXONOMY";
 export const GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum =
   /*@__PURE__*/ S.String;
 
 /** A QaScorecard represents a collection of questions to be scored during analysis. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecard {
-  /** Output only. The time at which this scorecard was created. */
-  createTime?: string;
-  /** Whether the scorecard is the default one for the project. A default scorecard cannot be deleted and will always appear first in scorecard selector. */
-  isDefault?: boolean;
-  /** Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard} */
-  name?: string;
-  /** The user-specified display name of the scorecard. */
-  displayName?: string;
   /** A text description explaining the intent of the scorecard. */
   description?: string;
+  /** Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard} */
+  name?: string;
+  /** Output only. The time at which this scorecard was created. */
+  createTime?: string;
   /** Output only. The most recent time at which the scorecard was updated. */
   updateTime?: string;
+  /** Whether the scorecard is the default one for the project. A default scorecard cannot be deleted and will always appear first in scorecard selector. */
+  isDefault?: boolean;
   /** Output only. The source of the scorecard. */
   source?:
     | GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum
     | (string & {});
+  /** The user-specified display name of the scorecard. */
+  displayName?: string;
 }
 export const GoogleCloudContactcenterinsightsV1QaScorecard =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      createTime: S.optional(S.String),
-      isDefault: S.optional(S.Boolean),
-      name: S.optional(S.String),
-      displayName: S.optional(S.String),
       description: S.optional(S.String),
+      name: S.optional(S.String),
+      createTime: S.optional(S.String),
       updateTime: S.optional(S.String),
+      isDefault: S.optional(S.Boolean),
       source: S.optional(
         GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum,
       ),
+      displayName: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaScorecard",
@@ -4884,72 +5464,10 @@ export const CreateProjectsLocationsQaScorecardsRevisionsRequest =
     identifier: "CreateProjectsLocationsQaScorecardsRevisionsRequest",
   }) as any as S.Schema<CreateProjectsLocationsQaScorecardsRevisionsRequest>;
 
-export type GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum =
-  | "QA_QUESTION_TYPE_UNSPECIFIED"
-  | "CUSTOMIZABLE"
-  | "PREDEFINED";
-export const GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum =
-    | "DATASET_VALIDATION_WARNING_UNSPECIFIED"
-    | "TOO_MANY_INVALID_FEEDBACK_LABELS"
-    | "INSUFFICIENT_FEEDBACK_LABELS"
-    | "INSUFFICIENT_FEEDBACK_LABELS_PER_ANSWER"
-    | "ALL_FEEDBACK_LABELS_HAVE_THE_SAME_ANSWER";
-export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
-  Array<
-    | GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum
-    | (string & {})
-  >;
-export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList>;
-
-/** Metadata about the tuning operation for the question. Will only be set if a scorecard containing this question has been tuned. */
-export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
-  /** Total number of valid labels provided for the question at the time of tuining. */
-  totalValidLabelCount?: string;
-  /** A list of any applicable data validation warnings about the question's feedback labels. */
-  datasetValidationWarnings?: GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList;
-  /** Error status of the tuning operation for the question. Will only be set if the tuning operation failed. */
-  tuningError?: string;
-}
-export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      totalValidLabelCount: S.optional(S.String),
-      datasetValidationWarnings: S.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList,
-      ),
-      tuningError: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata>;
-
-/** A wrapper representing metrics calculated against a test-set on a LLM that was fine tuned for this question. */
-export interface GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
-  /** Output only. Accuracy of the model. Measures the percentage of correct answers the model gave on the test set. */
-  accuracy?: number;
-}
-export const GoogleCloudContactcenterinsightsV1QaQuestionMetrics =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accuracy: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QaQuestionMetrics",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionMetrics>;
-
 export type GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum =
-    | "PREDEFINED_QUESTION_TYPE_UNSPECIFIED"
-    | "CONVERSATION_OUTCOME"
-    | "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE";
+  | "PREDEFINED_QUESTION_TYPE_UNSPECIFIED"
+  | "CONVERSATION_OUTCOME"
+  | "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE";
 export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4971,6 +5489,13 @@ export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfi
     identifier:
       "GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig>;
+
+export type GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum =
+  | "QA_QUESTION_TYPE_UNSPECIFIED"
+  | "CUSTOMIZABLE"
+  | "PREDEFINED";
+export const GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Options for configuring what metadata is included in the conversation data used in QAI and Discovery Engine. */
 export interface GoogleCloudContactcenterinsightsV1ConversationDataOptions {
@@ -5003,30 +5528,71 @@ export const GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions =
       "GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions>;
 
+export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum =
+  | "DATASET_VALIDATION_WARNING_UNSPECIFIED"
+  | "TOO_MANY_INVALID_FEEDBACK_LABELS"
+  | "INSUFFICIENT_FEEDBACK_LABELS"
+  | "INSUFFICIENT_FEEDBACK_LABELS_PER_ANSWER"
+  | "ALL_FEEDBACK_LABELS_HAVE_THE_SAME_ANSWER";
+export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
+  Array<
+    | GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum
+    | (string & {})
+  >;
+export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList>;
+
+/** Metadata about the tuning operation for the question. Will only be set if a scorecard containing this question has been tuned. */
+export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
+  /** A list of any applicable data validation warnings about the question's feedback labels. */
+  datasetValidationWarnings?: GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList;
+  /** Error status of the tuning operation for the question. Will only be set if the tuning operation failed. */
+  tuningError?: string;
+  /** Total number of valid labels provided for the question at the time of tuining. */
+  totalValidLabelCount?: string;
+}
+export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      datasetValidationWarnings: S.optional(
+        GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList,
+      ),
+      tuningError: S.optional(S.String),
+      totalValidLabelCount: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata>;
+
 /** Message representing a possible answer to the question. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
+  /** Numerical value. */
+  numValue?: number;
+  /** A value of "Not Applicable (N/A)". If provided, this field may only be set to `true`. If a question receives this answer, it will be excluded from any score calculations. */
+  naValue?: boolean;
   /** String value. */
   strValue?: string;
   /** A short string used as an identifier. */
   key?: string;
-  /** A value of "Not Applicable (N/A)". If provided, this field may only be set to `true`. If a question receives this answer, it will be excluded from any score calculations. */
-  naValue?: boolean;
-  /** Numerical value. */
-  numValue?: number;
-  /** Boolean value. */
-  boolValue?: boolean;
   /** Numerical score of the answer, used for generating the overall score of a QaScorecardResult. If the answer uses na_value, this field is unused. */
   score?: number;
+  /** Boolean value. */
+  boolValue?: boolean;
 }
 export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      numValue: S.optional(S.Number),
+      naValue: S.optional(S.Boolean),
       strValue: S.optional(S.String),
       key: S.optional(S.String),
-      naValue: S.optional(S.Boolean),
-      numValue: S.optional(S.Number),
-      boolValue: S.optional(S.Boolean),
       score: S.optional(S.Number),
+      boolValue: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice",
@@ -5039,66 +5605,80 @@ export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList =
     GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList>;
 
+/** A wrapper representing metrics calculated against a test-set on a LLM that was fine tuned for this question. */
+export interface GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
+  /** Output only. Accuracy of the model. Measures the percentage of correct answers the model gave on the test set. */
+  accuracy?: number;
+}
+export const GoogleCloudContactcenterinsightsV1QaQuestionMetrics =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accuracy: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1QaQuestionMetrics",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionMetrics>;
+
 /** A single question to be scored by the Insights QA feature. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestion {
-  /** Questions are tagged for categorization and scoring. Tags can either be: - Default Tags: These are predefined categories. They are identified by their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER"). - Custom Tags: These are user-defined categories. They are identified by their full resource name (e.g., projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}). Both default and custom tags are used to group questions and to influence the scoring of each question. */
-  tags?: StringList;
-  /** Short, descriptive string, used in the UI where it's not practical to display the full question body. E.g., "Greeting". */
-  abbreviation?: string;
+  /** The configuration of the predefined question. This field will only be set if the Question Type is predefined. */
+  predefinedQuestionConfig?: GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig;
+  /** Output only. The time at which this question was created. */
+  createTime?: string;
+  /** Output only. The most recent time at which the question was updated. */
+  updateTime?: string;
+  /** Instructions describing how to determine the answer. */
+  answerInstructions?: string;
+  /** Question text. E.g., "Did the agent greet the customer?" */
+  questionBody?: string;
   /** The type of question. */
   questionType?:
     | GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum
     | (string & {});
-  /** Question text. E.g., "Did the agent greet the customer?" */
-  questionBody?: string;
-  /** Metadata about the tuning operation for the question.This field will only be populated if and only if the question is part of a scorecard revision that has been tuned. */
-  tuningMetadata?: GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata;
-  /** Metrics of the underlying tuned LLM over a holdout/test set while fine tuning the underlying LLM for the given question. This field will only be populated if and only if the question is part of a scorecard revision that has been tuned. */
-  metrics?: GoogleCloudContactcenterinsightsV1QaQuestionMetrics;
-  /** The configuration of the predefined question. This field will only be set if the Question Type is predefined. */
-  predefinedQuestionConfig?: GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig;
-  /** Identifier. The resource name of the question. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question} */
-  name?: string;
   /** Options for configuring the data used to generate the QA question. */
   qaQuestionDataOptions?: GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions;
-  /** Instructions describing how to determine the answer. */
-  answerInstructions?: string;
+  /** Metadata about the tuning operation for the question.This field will only be populated if and only if the question is part of a scorecard revision that has been tuned. */
+  tuningMetadata?: GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata;
+  /** Identifier. The resource name of the question. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question} */
+  name?: string;
+  /** Short, descriptive string, used in the UI where it's not practical to display the full question body. E.g., "Greeting". */
+  abbreviation?: string;
   /** Defines the order of the question within its parent scorecard revision. */
   order?: number;
   /** A list of valid answers to the question, which the LLM must choose from. */
   answerChoices?: GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList;
-  /** Output only. The most recent time at which the question was updated. */
-  updateTime?: string;
-  /** Output only. The time at which this question was created. */
-  createTime?: string;
+  /** Questions are tagged for categorization and scoring. Tags can either be: - Default Tags: These are predefined categories. They are identified by their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER"). - Custom Tags: These are user-defined categories. They are identified by their full resource name (e.g., projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}). Both default and custom tags are used to group questions and to influence the scoring of each question. */
+  tags?: StringList;
+  /** Metrics of the underlying tuned LLM over a holdout/test set while fine tuning the underlying LLM for the given question. This field will only be populated if and only if the question is part of a scorecard revision that has been tuned. */
+  metrics?: GoogleCloudContactcenterinsightsV1QaQuestionMetrics;
 }
 export const GoogleCloudContactcenterinsightsV1QaQuestion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      tags: S.optional(StringList),
-      abbreviation: S.optional(S.String),
-      questionType: S.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum,
-      ),
-      questionBody: S.optional(S.String),
-      tuningMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata,
-      ),
-      metrics: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionMetrics),
       predefinedQuestionConfig: S.optional(
         GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig,
       ),
-      name: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      answerInstructions: S.optional(S.String),
+      questionBody: S.optional(S.String),
+      questionType: S.optional(
+        GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum,
+      ),
       qaQuestionDataOptions: S.optional(
         GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions,
       ),
-      answerInstructions: S.optional(S.String),
+      tuningMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata,
+      ),
+      name: S.optional(S.String),
+      abbreviation: S.optional(S.String),
       order: S.optional(S.Number),
       answerChoices: S.optional(
         GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList,
       ),
-      updateTime: S.optional(S.String),
-      createTime: S.optional(S.String),
+      tags: S.optional(StringList),
+      metrics: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionMetrics),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaQuestion",
@@ -5134,25 +5714,25 @@ export const CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
 
 /** The View resource. */
 export interface GoogleCloudContactcenterinsightsV1View {
-  /** Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} */
-  name?: string;
   /** The human-readable display name of the view. */
   displayName?: string;
-  /** Output only. The most recent time at which the view was updated. */
-  updateTime?: string;
-  /** Output only. The time at which this view was created. */
-  createTime?: string;
   /** A filter to reduce conversation results to a specific subset. Refer to https://cloud.google.com/contact-center/insights/docs/filtering for details. */
   value?: string;
+  /** Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} */
+  name?: string;
+  /** Output only. The time at which this view was created. */
+  createTime?: string;
+  /** Output only. The most recent time at which the view was updated. */
+  updateTime?: string;
 }
 export const GoogleCloudContactcenterinsightsV1View = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.optional(S.String),
       displayName: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      createTime: S.optional(S.String),
       value: S.optional(S.String),
+      name: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
     }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1View",
@@ -5260,16 +5840,16 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
-  /** Required. The name of the conversation to delete. */
-  name: string;
   /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
   force?: boolean;
+  /** Required. The name of the conversation to delete. */
+  name: string;
 }
 export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -5283,16 +5863,16 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
 export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
-  /** Required. The name of the assessment to delete. */
-  name: string;
   /** Optional. If set to true, all of this assessment's notes will also be deleted. Otherwise, the request will only succeed if it has no notes. */
   force?: boolean;
+  /** Required. The name of the assessment to delete. */
+  name: string;
 }
 export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -5406,16 +5986,16 @@ export const DeleteProjectsLocationsConversationsAnalysesRequest =
   }) as any as S.Schema<DeleteProjectsLocationsConversationsAnalysesRequest>;
 
 export interface DeleteProjectsLocationsConversationsAssessmentsRequest {
-  /** Required. The name of the assessment to delete. */
-  name: string;
   /** Optional. If set to true, all of this assessment's notes will also be deleted. Otherwise, the request will only succeed if it has no notes. */
   force?: boolean;
+  /** Required. The name of the assessment to delete. */
+  name: string;
 }
 export const DeleteProjectsLocationsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -5523,16 +6103,16 @@ export const DeleteProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteProjectsLocationsDatasetsRequest>;
 
 export interface DeleteProjectsLocationsDatasetsConversationsRequest {
-  /** Required. The name of the conversation to delete. */
-  name: string;
   /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
   force?: boolean;
+  /** Required. The name of the conversation to delete. */
+  name: string;
 }
 export const DeleteProjectsLocationsDatasetsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -5663,16 +6243,16 @@ export const DeleteProjectsLocationsQaScorecardsRequest =
   }) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRequest>;
 
 export interface DeleteProjectsLocationsQaScorecardsRevisionsRequest {
-  /** Required. The name of the QaScorecardRevision to delete. */
-  name: string;
   /** Optional. If set to true, all of this QaScorecardRevision's child resources will also be deleted. Otherwise, the request will only succeed if it has none. */
   force?: boolean;
+  /** Required. The name of the QaScorecardRevision to delete. */
+  name: string;
 }
 export const DeleteProjectsLocationsQaScorecardsRevisionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -5794,69 +6374,71 @@ export const DeployProjectsLocationsQaScorecardsRevisionsRequest =
     identifier: "DeployProjectsLocationsQaScorecardsRevisionsRequest",
   }) as any as S.Schema<DeployProjectsLocationsQaScorecardsRevisionsRequest>;
 
-export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum =
-  "WRITE_DISPOSITION_UNSPECIFIED" | "WRITE_TRUNCATE" | "WRITE_APPEND";
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum =
-  /*@__PURE__*/ S.String;
-
 /** A BigQuery Table Reference. */
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination {
-  /** Required. The name of the BigQuery dataset that the snapshot result should be exported to. If this dataset does not exist, the export call returns an INVALID_ARGUMENT error. */
-  dataset?: string;
   /** A project ID or number. If specified, then export will attempt to write data to this project instead of the resource project. Otherwise, the resource project will be used. */
   projectId?: string;
   /** The BigQuery table name to which the insights data should be written. If this table does not exist, the export call returns an INVALID_ARGUMENT error. */
   table?: string;
+  /** Required. The name of the BigQuery dataset that the snapshot result should be exported to. If this dataset does not exist, the export call returns an INVALID_ARGUMENT error. */
+  dataset?: string;
 }
 export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      dataset: S.optional(S.String),
       projectId: S.optional(S.String),
       table: S.optional(S.String),
+      dataset: S.optional(S.String),
     }),
   ).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination>;
 
+export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum =
+  | "WRITE_DISPOSITION_UNSPECIFIED"
+  | "WRITE_TRUNCATE"
+  | "WRITE_APPEND";
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum =
+  /*@__PURE__*/ S.String;
+
 export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum =
-    | "EXPORT_SCHEMA_VERSION_UNSPECIFIED"
-    | "EXPORT_V1"
-    | "EXPORT_V2"
-    | "EXPORT_V3"
-    | "EXPORT_V4"
-    | "EXPORT_V5"
-    | "EXPORT_V6"
-    | "EXPORT_V7"
-    | "EXPORT_V8"
-    | "EXPORT_V9"
-    | "EXPORT_V10"
-    | "EXPORT_V11"
-    | "EXPORT_V12"
-    | "EXPORT_V13"
-    | "EXPORT_V14"
-    | "EXPORT_V15"
-    | "EXPORT_V16"
-    | "EXPORT_V17"
-    | "EXPORT_VERSION_LATEST_AVAILABLE";
+  | "EXPORT_SCHEMA_VERSION_UNSPECIFIED"
+  | "EXPORT_V1"
+  | "EXPORT_V2"
+  | "EXPORT_V3"
+  | "EXPORT_V4"
+  | "EXPORT_V5"
+  | "EXPORT_V6"
+  | "EXPORT_V7"
+  | "EXPORT_V8"
+  | "EXPORT_V9"
+  | "EXPORT_V10"
+  | "EXPORT_V11"
+  | "EXPORT_V12"
+  | "EXPORT_V13"
+  | "EXPORT_V14"
+  | "EXPORT_V15"
+  | "EXPORT_V16"
+  | "EXPORT_V17"
+  | "EXPORT_VERSION_LATEST_AVAILABLE";
 export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum =
   /*@__PURE__*/ S.String;
 
 /** The request to export insights. */
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
+  /** Specified if sink is a BigQuery table. */
+  bigQueryDestination?: GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination;
+  /** A fully qualified KMS key name for BigQuery tables protected by CMEK. Format: projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version} */
+  kmsKey?: string;
+  /** Required. The parent resource to export data from. */
+  parent?: string;
   /** A filter to reduce results to a specific subset. Useful for exporting conversations with specific properties. */
   filter?: string;
   /** Options for what to do if the destination table already exists. */
   writeDisposition?:
     | GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum
     | (string & {});
-  /** A fully qualified KMS key name for BigQuery tables protected by CMEK. Format: projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version} */
-  kmsKey?: string;
-  /** Specified if sink is a BigQuery table. */
-  bigQueryDestination?: GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination;
-  /** Required. The parent resource to export data from. */
-  parent?: string;
   /** Optional. Version of the export schema. */
   exportSchemaVersion?:
     | GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum
@@ -5865,15 +6447,15 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
 export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      bigQueryDestination: S.optional(
+        GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination,
+      ),
+      kmsKey: S.optional(S.String),
+      parent: S.optional(S.String),
       filter: S.optional(S.String),
       writeDisposition: S.optional(
         GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum,
       ),
-      kmsKey: S.optional(S.String),
-      bigQueryDestination: S.optional(
-        GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination,
-      ),
-      parent: S.optional(S.String),
       exportSchemaVersion: S.optional(
         GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum,
       ),
@@ -5951,18 +6533,18 @@ export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestina
 
 /** Request to export an issue model. */
 export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
-  /** Required. The issue model to export. */
-  name?: string;
   /** Google Cloud Storage URI to export the issue model to. */
   gcsDestination?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
+  /** Required. The issue model to export. */
+  name?: string;
 }
 export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
       gcsDestination: S.optional(
         GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
       ),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportIssueModelRequest",
@@ -6075,21 +6657,24 @@ export const GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedVie
 
 /** Signed audio URIs for a conversation. */
 export interface GoogleCloudContactcenterinsightsV1SignedAudioUris {
+  /** Output only. The signed URIs for the audio from the Cloud Storage conversation source when multiple audio files exist (e.g. multi-leg conversations). */
+  signedGcsAudioUris?: StringList;
   /** The signed URI for the audio from the Cloud Storage conversation source. */
   signedGcsAudioUri?: string;
-  /** The signed URI for the audio from the Dialogflow conversation source. */
-  signedDialogflowAudioUri?: string;
   /** The signed URI for the audio corresponding to each turn in the conversation. */
   signedTurnLevelAudios?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList;
+  /** The signed URI for the audio from the Dialogflow conversation source. */
+  signedDialogflowAudioUri?: string;
 }
 export const GoogleCloudContactcenterinsightsV1SignedAudioUris =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      signedGcsAudioUris: S.optional(StringList),
       signedGcsAudioUri: S.optional(S.String),
-      signedDialogflowAudioUri: S.optional(S.String),
       signedTurnLevelAudios: S.optional(
         GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList,
       ),
+      signedDialogflowAudioUri: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SignedAudioUris",
@@ -6153,37 +6738,37 @@ export const GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest =
 
 /** The request for generative insights. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest {
-  /** Optional. The user provided chart spec for the chart. This will be used to override the visual spec generated by the LLM. */
-  userProvidedChartSpec?: DocumentMap;
-  /** The natural language query specified by the user. If this field is specified, `sql_query` will be ignored. */
-  naturalLanguageQuery?: string;
-  /** Optional. The SQL query specified by the user. This query must be in BigQuery SQL dialect. The `filter` field will also be ignored, as it is assumed that any filtering is already included in the SQL query. */
-  sqlQuery?: string;
-  /** Optional. Filter for the data that can be specified in addition to the natural language query. This `filter` is specifically used for charts where comparisons are possible. For example, "compare to last month" or "compare to previous quarter". */
-  comparisonFilter?: string;
-  /** Optional. The session id of the conversation. If the session id is not specified, backend will generate a random session id. If the session id is specified, will associate user-provided user_query with the provided session id. */
-  sessionId?: string;
-  /** The full name of the chart resource this request corresponds to. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
-  chart?: string;
   /** Filter for the data that can be specified in addition to the natural language query. Users are encouraged to use this field to populate time-windows. */
   filter?: string;
-  /** Optional. For charts with comparison, this key will determine the metric that will be compared between the current and another dataset. */
-  sqlComparisonKey?: string;
+  /** Optional. The session id of the conversation. If the session id is not specified, backend will generate a random session id. If the session id is specified, will associate user-provided user_query with the provided session id. */
+  sessionId?: string;
+  /** The natural language query specified by the user. If this field is specified, `sql_query` will be ignored. */
+  naturalLanguageQuery?: string;
   /** Optional. The revision id that maps to the state of the chart state revision. When specified, the backend will reload the chart with the sql and visual spec from that revision. */
   revisionId?: string;
+  /** Optional. The user provided chart spec for the chart. This will be used to override the visual spec generated by the LLM. */
+  userProvidedChartSpec?: DocumentMap;
+  /** Optional. The SQL query specified by the user. This query must be in BigQuery SQL dialect. The `filter` field will also be ignored, as it is assumed that any filtering is already included in the SQL query. */
+  sqlQuery?: string;
+  /** The full name of the chart resource this request corresponds to. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
+  chart?: string;
+  /** Optional. For charts with comparison, this key will determine the metric that will be compared between the current and another dataset. */
+  sqlComparisonKey?: string;
+  /** Optional. Filter for the data that can be specified in addition to the natural language query. This `filter` is specifically used for charts where comparisons are possible. For example, "compare to last month" or "compare to previous quarter". */
+  comparisonFilter?: string;
 }
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      userProvidedChartSpec: S.optional(DocumentMap),
-      naturalLanguageQuery: S.optional(S.String),
-      sqlQuery: S.optional(S.String),
-      comparisonFilter: S.optional(S.String),
-      sessionId: S.optional(S.String),
-      chart: S.optional(S.String),
       filter: S.optional(S.String),
-      sqlComparisonKey: S.optional(S.String),
+      sessionId: S.optional(S.String),
+      naturalLanguageQuery: S.optional(S.String),
       revisionId: S.optional(S.String),
+      userProvidedChartSpec: S.optional(DocumentMap),
+      sqlQuery: S.optional(S.String),
+      chart: S.optional(S.String),
+      sqlComparisonKey: S.optional(S.String),
+      comparisonFilter: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest",
@@ -6265,20 +6850,20 @@ export const GetCorrelationConfigProjectsLocationsRequest =
 export interface GoogleCloudContactcenterinsightsV1CorrelationRule {
   /** Required. The unique identifier of the rule. */
   ruleId?: string;
-  /** Optional. A cel expression (go/cel) to be evaluated as a boolean value. Two variables conversation_a and conversation_b will be available for evaluation. This expression should evaluate to true if conversation_a and conversation_b should be joined. This is used as an extra constraint on top of the join_key_expression to further refine the group of conversations that are joined together and will be evaluated in both directions. for two conversations c1 and c2 and the result will be OR'd. We will evaluate: f(c1, c2) OR f(c2, c1) */
-  constraintExpression?: string;
-  /** Optional. A cel expression (go/cel) to be evaluated as a string value. This string value will be used as the join key for the correlation. */
-  joinKeyExpression?: string;
   /** Optional. Whether the config is active to be evaluated. */
   active?: boolean;
+  /** Optional. A cel expression (go/cel) to be evaluated as a string value. This string value will be used as the join key for the correlation. */
+  joinKeyExpression?: string;
+  /** Optional. A cel expression (go/cel) to be evaluated as a boolean value. Two variables conversation_a and conversation_b will be available for evaluation. This expression should evaluate to true if conversation_a and conversation_b should be joined. This is used as an extra constraint on top of the join_key_expression to further refine the group of conversations that are joined together and will be evaluated in both directions. for two conversations c1 and c2 and the result will be OR'd. We will evaluate: f(c1, c2) OR f(c2, c1) */
+  constraintExpression?: string;
 }
 export const GoogleCloudContactcenterinsightsV1CorrelationRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ruleId: S.optional(S.String),
-      constraintExpression: S.optional(S.String),
-      joinKeyExpression: S.optional(S.String),
       active: S.optional(S.Boolean),
+      joinKeyExpression: S.optional(S.String),
+      constraintExpression: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CorrelationRule",
@@ -6311,10 +6896,10 @@ export const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig =
 export interface GoogleCloudContactcenterinsightsV1CorrelationConfig {
   /** Immutable. Identifier. The resource name of the correlation config. Format: projects/{project}/locations/{location}/correlationConfig */
   name?: string;
-  /** Output only. The time at which the correlation config was last updated. */
-  updateTime?: string;
   /** Output only. The time at which the correlation config was created. */
   createTime?: string;
+  /** Output only. The time at which the correlation config was last updated. */
+  updateTime?: string;
   /** The correlation type config for full conversations. */
   fullConversationConfig?: GoogleCloudContactcenterinsightsV1CorrelationTypeConfig;
 }
@@ -6322,8 +6907,8 @@ export const GoogleCloudContactcenterinsightsV1CorrelationConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
-      updateTime: S.optional(S.String),
       createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
       fullConversationConfig: S.optional(
         GoogleCloudContactcenterinsightsV1CorrelationTypeConfig,
       ),
@@ -6369,16 +6954,16 @@ export const GoogleCloudContactcenterinsightsV1EncryptionSpec =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1EncryptionSpec>;
 
 export interface GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
 }
 export const GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resource: S.String.pipe(T.Label()),
       "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+      resource: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -6400,15 +6985,15 @@ export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: StringList;
   /** The log type that this config enables. */
   logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: StringList;
 }
 export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exemptedMembers: S.optional(StringList),
     logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
   }),
 ).annotate({
   identifier: "GoogleIamV1AuditLogConfig",
@@ -6444,18 +7029,18 @@ export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
 export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
 export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
-    description: S.optional(S.String),
     location: S.optional(S.String),
+    description: S.optional(S.String),
     expression: S.optional(S.String),
   }),
 ).annotate({ identifier: "GoogleTypeExpr" }) as any as S.Schema<GoogleTypeExpr>;
@@ -6486,21 +7071,21 @@ export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1Policy {
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: GoogleIamV1AuditConfigList;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: GoogleIamV1BindingList;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: GoogleIamV1AuditConfigList;
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: GoogleIamV1BindingList;
 }
 export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    auditConfigs: S.optional(GoogleIamV1AuditConfigList),
-    etag: S.optional(S.String),
-    bindings: S.optional(GoogleIamV1BindingList),
     version: S.optional(S.Number),
+    etag: S.optional(S.String),
+    auditConfigs: S.optional(GoogleIamV1AuditConfigList),
+    bindings: S.optional(GoogleIamV1BindingList),
   }),
 ).annotate({
   identifier: "GoogleIamV1Policy",
@@ -6544,6 +7129,25 @@ export const GetProjectsLocationsAssessmentRulesRequest =
     identifier: "GetProjectsLocationsAssessmentRulesRequest",
   }) as any as S.Schema<GetProjectsLocationsAssessmentRulesRequest>;
 
+export interface GetProjectsLocationsAssistantSessionsRequest {
+  /** Required. The name of the assistant session to retrieve. Format: `projects/{project}/locations/{location}/assistantSessions/{assistant_session}` */
+  name: string;
+}
+export const GetProjectsLocationsAssistantSessionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://contactcenterinsights.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsAssistantSessionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsAssistantSessionsRequest>;
+
 export interface GetProjectsLocationsAuthorizedViewSetsRequest {
   /** Required. The name of the AuthorizedViewSet to get. */
   name: string;
@@ -6583,7 +7187,9 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
-  "CONVERSATION_VIEW_UNSPECIFIED" | "FULL" | "BASIC";
+  | "CONVERSATION_VIEW_UNSPECIFIED"
+  | "FULL"
+  | "BASIC";
 export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -6846,18 +7452,18 @@ export const GetProjectsLocationsDatasetsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsDatasetsConversationsRequest {
-  /** Required. The name of the conversation to get. */
-  name: string;
   /** The level of details of the conversation. Default is `FULL`. */
   view?: GetProjectsLocationsDatasetsConversationsViewEnum | (string & {});
+  /** Required. The name of the conversation to get. */
+  name: string;
 }
 export const GetProjectsLocationsDatasetsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       view: S.optional(
         GetProjectsLocationsDatasetsConversationsViewEnum.pipe(T.Query()),
       ),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7077,66 +7683,6 @@ export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSettingsProjectsLocationsRequest",
 }) as any as S.Schema<GetSettingsProjectsLocationsRequest>;
 
-/** DLP resources used for redaction while ingesting conversations. DLP settings are applied to conversations ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversation coming from CCAI Platform. They are not applied to conversations ingested from the `CreateConversation` endpoint or the Dialogflow / Agent Assist runtime integrations. When using Dialogflow / Agent Assist runtime integrations, redaction should be performed in Dialogflow / Agent Assist. */
-export interface GoogleCloudContactcenterinsightsV1RedactionConfig {
-  /** The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}` */
-  deidentifyTemplate?: string;
-  /** The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}` */
-  inspectTemplate?: string;
-}
-export const GoogleCloudContactcenterinsightsV1RedactionConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deidentifyTemplate: S.optional(S.String),
-      inspectTemplate: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1RedactionConfig",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1RedactionConfig>;
-
-/** A definition for a metric to be calculated during analysis. */
-export interface GoogleCloudContactcenterinsightsV1MetricDefinition {
-  /** Output only. The user-visible name of the metric (e.g., "Containment Rate"). */
-  displayName?: string;
-  /** Output only. The resource name of the underlying Insights primitive (e.g., Tag or QaQuestion) used to calculate this metric. */
-  sourceId?: string;
-}
-export const GoogleCloudContactcenterinsightsV1MetricDefinition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      sourceId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1MetricDefinition",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1MetricDefinition>;
-
-export type GoogleCloudContactcenterinsightsV1MetricDefinitionMap = {
-  [key: string]: GoogleCloudContactcenterinsightsV1MetricDefinition | undefined;
-};
-export const GoogleCloudContactcenterinsightsV1MetricDefinitionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudContactcenterinsightsV1MetricDefinition,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1MetricDefinitionMap>;
-
-/** Configuration for diagnostic metrics. */
-export interface GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig {
-  /** Optional. A map of diagnostic metrics. The key is a unique identifier for the metric (e.g., "containment"). */
-  metrics?: GoogleCloudContactcenterinsightsV1MetricDefinitionMap;
-}
-export const GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metrics: S.optional(
-        GoogleCloudContactcenterinsightsV1MetricDefinitionMap,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig>;
-
 /** Default configuration when creating Analyses in Insights. */
 export interface GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   /** Percentage of conversations created using Dialogflow runtime integration to analyze automatically, between [0, 100]. */
@@ -7176,54 +7722,114 @@ export const GoogleCloudContactcenterinsightsV1SpeechConfig =
     identifier: "GoogleCloudContactcenterinsightsV1SpeechConfig",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SpeechConfig>;
 
+/** A definition for a metric to be calculated during analysis. */
+export interface GoogleCloudContactcenterinsightsV1MetricDefinition {
+  /** Output only. The resource name of the underlying Insights primitive (e.g., Tag or QaQuestion) used to calculate this metric. */
+  sourceId?: string;
+  /** Output only. The user-visible name of the metric (e.g., "Containment Rate"). */
+  displayName?: string;
+}
+export const GoogleCloudContactcenterinsightsV1MetricDefinition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sourceId: S.optional(S.String),
+      displayName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1MetricDefinition",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1MetricDefinition>;
+
+export type GoogleCloudContactcenterinsightsV1MetricDefinitionMap = {
+  [key: string]: GoogleCloudContactcenterinsightsV1MetricDefinition | undefined;
+};
+export const GoogleCloudContactcenterinsightsV1MetricDefinitionMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    GoogleCloudContactcenterinsightsV1MetricDefinition,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1MetricDefinitionMap>;
+
+/** Configuration for diagnostic metrics. */
+export interface GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig {
+  /** Optional. A map of diagnostic metrics. The key is a unique identifier for the metric (e.g., "containment"). */
+  metrics?: GoogleCloudContactcenterinsightsV1MetricDefinitionMap;
+}
+export const GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      metrics: S.optional(
+        GoogleCloudContactcenterinsightsV1MetricDefinitionMap,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig>;
+
+/** DLP resources used for redaction while ingesting conversations. DLP settings are applied to conversations ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversation coming from CCAI Platform. They are not applied to conversations ingested from the `CreateConversation` endpoint or the Dialogflow / Agent Assist runtime integrations. When using Dialogflow / Agent Assist runtime integrations, redaction should be performed in Dialogflow / Agent Assist. */
+export interface GoogleCloudContactcenterinsightsV1RedactionConfig {
+  /** The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}` */
+  deidentifyTemplate?: string;
+  /** The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}` */
+  inspectTemplate?: string;
+}
+export const GoogleCloudContactcenterinsightsV1RedactionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deidentifyTemplate: S.optional(S.String),
+      inspectTemplate: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1RedactionConfig",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1RedactionConfig>;
+
 /** The CCAI Insights project wide settings. Use these settings to configure the behavior of Insights. View these settings with [`getsettings`](https://cloud.google.com/contact-center/insights/docs/reference/rest/v1/projects.locations/getSettings) and change the settings with [`updateSettings`](https://cloud.google.com/contact-center/insights/docs/reference/rest/v1/projects.locations/updateSettings). */
 export interface GoogleCloudContactcenterinsightsV1Settings {
-  /** Optional. The time zone applied to the project. This is a string representation of the time zone, for example, "America/New_York". This field follows the IANA TZ database format. See https://www.iana.org/time-zones for a list of valid values. If no value is set the user time zone will be used. */
-  timeZone?: string;
-  /** Default DLP redaction resources to be applied while ingesting conversations. This applies to conversations ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversations coming from CCAI Platform. */
-  redactionConfig?: GoogleCloudContactcenterinsightsV1RedactionConfig;
-  /** Output only. The time at which the settings was created. */
-  createTime?: string;
+  /** Default analysis settings. */
+  analysisConfig?: GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig;
   /** A language code to be applied to each transcript segment unless the segment already specifies a language code. Language code defaults to "en-US" if it is neither specified on the segment nor here. */
   languageCode?: string;
   /** The default TTL for newly-created conversations. If a conversation has a specified expiration, that value will be used instead. Changing this value will not change the expiration of existing conversations. Conversations with no expire time persist until they are deleted. */
   conversationTtl?: string;
-  /** Optional. The path to a Cloud Storage bucket containing conversation screen recordings. If provided, Insights will search in the bucket for a screen recording file matching the conversation data source object name prefix. If matches are found, these file URIs will be stored in the conversation screen recordings field. */
-  screenRecordingBucketUri?: string;
+  /** Output only. The time at which the settings was created. */
+  createTime?: string;
   /** Output only. The time at which the settings were last updated. */
   updateTime?: string;
-  /** Optional. Configuration for diagnostic metrics. */
-  diagnosticMetricConfig?: GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig;
-  /** A map that maps a notification trigger to a Pub/Sub topic. Each time a specified trigger occurs, Insights will notify the corresponding Pub/Sub topic. Keys are notification triggers. Supported keys are: * "all-triggers": Notify each time any of the supported triggers occurs. * "create-analysis": Notify each time an analysis is created. * "create-conversation": Notify each time a conversation is created. * "export-insights-data": Notify each time an export is complete. * "ingest-conversations": Notify each time an IngestConversations LRO is complete. * "update-conversation": Notify each time a conversation is updated via UpdateConversation. * "upload-conversation": Notify when an UploadConversation LRO is complete. * "update-or-analyze-conversation": Notify when an analysis for a conversation is completed or when the conversation is updated. The message will contain the conversation with transcript, analysis and other metadata. Values are Pub/Sub topics. The format of each Pub/Sub topic is: projects/{project}/topics/{topic} */
-  pubsubNotificationSettings?: StringMap;
-  /** Immutable. The resource name of the settings resource. Format: projects/{project}/locations/{location}/settings */
-  name?: string;
-  /** Default analysis settings. */
-  analysisConfig?: GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig;
+  /** Optional. The path to a Cloud Storage bucket containing conversation screen recordings. If provided, Insights will search in the bucket for a screen recording file matching the conversation data source object name prefix. If matches are found, these file URIs will be stored in the conversation screen recordings field. */
+  screenRecordingBucketUri?: string;
   /** Optional. Default Speech-to-Text resources to use while ingesting audio files. Optional, CCAI Insights will create a default if not provided. This applies to conversations ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversations coming from CCAI Platform. */
   speechConfig?: GoogleCloudContactcenterinsightsV1SpeechConfig;
+  /** Immutable. The resource name of the settings resource. Format: projects/{project}/locations/{location}/settings */
+  name?: string;
+  /** A map that maps a notification trigger to a Pub/Sub topic. Each time a specified trigger occurs, Insights will notify the corresponding Pub/Sub topic. Keys are notification triggers. Supported keys are: * "all-triggers": Notify each time any of the supported triggers occurs. * "create-analysis": Notify each time an analysis is created. * "create-conversation": Notify each time a conversation is created. * "export-insights-data": Notify each time an export is complete. * "ingest-conversations": Notify each time an IngestConversations LRO is complete. * "update-conversation": Notify each time a conversation is updated via UpdateConversation. * "upload-conversation": Notify when an UploadConversation LRO is complete. * "update-or-analyze-conversation": Notify when an analysis for a conversation is completed or when the conversation is updated. The message will contain the conversation with transcript, analysis and other metadata. Values are Pub/Sub topics. The format of each Pub/Sub topic is: projects/{project}/topics/{topic} */
+  pubsubNotificationSettings?: StringMap;
+  /** Optional. Configuration for diagnostic metrics. */
+  diagnosticMetricConfig?: GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig;
+  /** Optional. The time zone applied to the project. This is a string representation of the time zone, for example, "America/New_York". This field follows the IANA TZ database format. See https://www.iana.org/time-zones for a list of valid values. If no value is set the user time zone will be used. */
+  timeZone?: string;
+  /** Default DLP redaction resources to be applied while ingesting conversations. This applies to conversations ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversations coming from CCAI Platform. */
+  redactionConfig?: GoogleCloudContactcenterinsightsV1RedactionConfig;
 }
 export const GoogleCloudContactcenterinsightsV1Settings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      analysisConfig: S.optional(
+        GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig,
+      ),
+      languageCode: S.optional(S.String),
+      conversationTtl: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      screenRecordingBucketUri: S.optional(S.String),
+      speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
+      name: S.optional(S.String),
+      pubsubNotificationSettings: S.optional(StringMap),
+      diagnosticMetricConfig: S.optional(
+        GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig,
+      ),
       timeZone: S.optional(S.String),
       redactionConfig: S.optional(
         GoogleCloudContactcenterinsightsV1RedactionConfig,
       ),
-      createTime: S.optional(S.String),
-      languageCode: S.optional(S.String),
-      conversationTtl: S.optional(S.String),
-      screenRecordingBucketUri: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      diagnosticMetricConfig: S.optional(
-        GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig,
-      ),
-      pubsubNotificationSettings: S.optional(StringMap),
-      name: S.optional(S.String),
-      analysisConfig: S.optional(
-        GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig,
-      ),
-      speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Settings",
@@ -7237,21 +7843,21 @@ export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource 
 
 /** Request to import an issue model. */
 export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
+  /** Google Cloud Storage source message. */
+  gcsSource?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
   /** Optional. If set to true, will create an issue model from the imported file with randomly generated IDs for the issue model and corresponding issues. Otherwise, replaces an existing model with the same ID as the file. */
   createNewModel?: boolean;
   /** Required. The parent resource of the issue model. */
   parent?: string;
-  /** Google Cloud Storage source message. */
-  gcsSource?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
 }
 export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      createNewModel: S.optional(S.Boolean),
-      parent: S.optional(S.String),
       gcsSource: S.optional(
         GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
       ),
+      createNewModel: S.optional(S.Boolean),
+      parent: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ImportIssueModelRequest",
@@ -7283,47 +7889,31 @@ export const ImportProjectsLocationsIssueModelsRequest =
     identifier: "ImportProjectsLocationsIssueModelsRequest",
   }) as any as S.Schema<ImportProjectsLocationsIssueModelsRequest>;
 
-export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
-  "BUCKET_OBJECT_TYPE_UNSPECIFIED" | "TRANSCRIPT" | "AUDIO";
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Configuration for Cloud Storage bucket sources. */
-export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
-  /** Optional. The Cloud Storage bucket containing source objects. Avoid passing this. Pass this through one of `transcript_bucket_uri` or `audio_bucket_uri`. */
-  bucketUri?: string;
-  /** Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing this. This is inferred from the `transcript_bucket_uri`, `audio_bucket_uri`. */
-  bucketObjectType?:
-    | GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum
-    | (string & {});
-  /** Optional. The Cloud Storage path to the conversation metadata. Note that: [1] Metadata files are expected to be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
-  metadataBucketUri?: string;
-  /** Optional. The Cloud Storage path to the conversation transcripts. Note that: [1] Transcript files are expected to be in JSON format. [2] Transcript, audio, metadata files must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
-  transcriptBucketUri?: string;
-  /** Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3] A source file and its corresponding audio file must share the same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`. */
-  audioBucketUri?: string;
-  /** Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys not included in this field will be ignored. Note that there is a limit of 100 labels per conversation. */
-  customMetadataKeys?: StringList;
+/** Configuration that applies to all conversations. */
+export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig {
+  /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
+  agentChannel?: number;
+  /** Optional. An opaque, user-specified string representing a human agent who handled all conversations in the import. Note that this will be overridden if per-conversation metadata is provided through the `metadata_bucket_uri`. */
+  agentId?: string;
+  /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
+  customerChannel?: number;
 }
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bucketUri: S.optional(S.String),
-      bucketObjectType: S.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum,
-      ),
-      metadataBucketUri: S.optional(S.String),
-      transcriptBucketUri: S.optional(S.String),
-      audioBucketUri: S.optional(S.String),
-      customMetadataKeys: S.optional(StringList),
+      agentChannel: S.optional(S.Number),
+      agentId: S.optional(S.String),
+      customerChannel: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
-      "GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource>;
+      "GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig>;
 
 export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum =
-  "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT";
+  | "MEDIUM_UNSPECIFIED"
+  | "PHONE_CALL"
+  | "CHAT";
 export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum =
   /*@__PURE__*/ S.String;
 
@@ -7346,60 +7936,80 @@ export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscr
       "GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig>;
 
-/** Configuration that applies to all conversations. */
-export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig {
-  /** Optional. An opaque, user-specified string representing a human agent who handled all conversations in the import. Note that this will be overridden if per-conversation metadata is provided through the `metadata_bucket_uri`. */
-  agentId?: string;
-  /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
-  agentChannel?: number;
-  /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
-  customerChannel?: number;
+export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
+  | "BUCKET_OBJECT_TYPE_UNSPECIFIED"
+  | "TRANSCRIPT"
+  | "AUDIO";
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Configuration for Cloud Storage bucket sources. */
+export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
+  /** Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys not included in this field will be ignored. Note that there is a limit of 100 labels per conversation. */
+  customMetadataKeys?: StringList;
+  /** Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3] A source file and its corresponding audio file must share the same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`. */
+  audioBucketUri?: string;
+  /** Optional. The Cloud Storage path to the conversation metadata. Note that: [1] Metadata files are expected to be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
+  metadataBucketUri?: string;
+  /** Optional. The Cloud Storage bucket containing source objects. Avoid passing this. Pass this through one of `transcript_bucket_uri` or `audio_bucket_uri`. */
+  bucketUri?: string;
+  /** Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing this. This is inferred from the `transcript_bucket_uri`, `audio_bucket_uri`. */
+  bucketObjectType?:
+    | GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum
+    | (string & {});
+  /** Optional. The Cloud Storage path to the conversation transcripts. Note that: [1] Transcript files are expected to be in JSON format. [2] Transcript, audio, metadata files must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
+  transcriptBucketUri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      agentId: S.optional(S.String),
-      agentChannel: S.optional(S.Number),
-      customerChannel: S.optional(S.Number),
+      customMetadataKeys: S.optional(StringList),
+      audioBucketUri: S.optional(S.String),
+      metadataBucketUri: S.optional(S.String),
+      bucketUri: S.optional(S.String),
+      bucketObjectType: S.optional(
+        GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum,
+      ),
+      transcriptBucketUri: S.optional(S.String),
     }),
   ).annotate({
     identifier:
-      "GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig>;
+      "GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource>;
 
 /** The request to ingest conversations. */
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
-  /** A cloud storage bucket source. Note that any previously ingested objects from the source will be skipped to avoid duplication. */
-  gcsSource?: GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource;
+  /** Configuration that applies to all conversations. */
+  conversationConfig?: GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig;
   /** Configuration for when `source` contains conversation transcripts. */
   transcriptObjectConfig?: GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig;
-  /** Required. The parent resource for new conversations. */
-  parent?: string;
   /** Optional. If set, this fields indicates the number of objects to ingest from the Cloud Storage bucket. If empty, the entire bucket will be ingested. Unless they are first deleted, conversations produced through sampling won't be ingested by subsequent ingest requests. */
   sampleSize?: number;
   /** Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings. */
   redactionConfig?: GoogleCloudContactcenterinsightsV1RedactionConfig;
-  /** Configuration that applies to all conversations. */
-  conversationConfig?: GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig;
+  /** Required. The parent resource for new conversations. */
+  parent?: string;
+  /** A cloud storage bucket source. Note that any previously ingested objects from the source will be skipped to avoid duplication. */
+  gcsSource?: GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource;
   /** Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings. */
   speechConfig?: GoogleCloudContactcenterinsightsV1SpeechConfig;
 }
 export const GoogleCloudContactcenterinsightsV1IngestConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      gcsSource: S.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource,
+      conversationConfig: S.optional(
+        GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig,
       ),
       transcriptObjectConfig: S.optional(
         GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig,
       ),
-      parent: S.optional(S.String),
       sampleSize: S.optional(S.Number),
       redactionConfig: S.optional(
         GoogleCloudContactcenterinsightsV1RedactionConfig,
       ),
-      conversationConfig: S.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig,
+      parent: S.optional(S.String),
+      gcsSource: S.optional(
+        GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource,
       ),
       speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
     }),
@@ -7503,10 +8113,10 @@ export const InitializeProjectsLocationsEncryptionSpecRequest =
   }) as any as S.Schema<InitializeProjectsLocationsEncryptionSpecRequest>;
 
 export interface ListAllFeedbackLabelsProjectsLocationsRequest {
-  /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
-  pageSize?: number;
   /** Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
+  /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
+  pageSize?: number;
   /** Required. The parent resource of all feedback labels per project. */
   parent: string;
   /** Optional. The value returned by the last `ListAllFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListAllFeedbackLabels` call and that the system should return the next page of data. */
@@ -7515,8 +8125,8 @@ export interface ListAllFeedbackLabelsProjectsLocationsRequest {
 export const ListAllFeedbackLabelsProjectsLocationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
@@ -7532,18 +8142,18 @@ export const ListAllFeedbackLabelsProjectsLocationsRequest =
 
 /** The response for listing all feedback labels. */
 export interface GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The feedback labels that match the request. */
   feedbackLabels?: GoogleCloudContactcenterinsightsV1FeedbackLabelList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      nextPageToken: S.optional(S.String),
       feedbackLabels: S.optional(
         GoogleCloudContactcenterinsightsV1FeedbackLabelList,
       ),
+      nextPageToken: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -7551,22 +8161,22 @@ export const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>;
 
 export interface ListAllFeedbackLabelsProjectsLocationsDatasetsRequest {
+  /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
+  pageSize?: number;
   /** Required. The parent resource of all feedback labels per project. */
   parent: string;
   /** Optional. The value returned by the last `ListAllFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListAllFeedbackLabels` call and that the system should return the next page of data. */
   pageToken?: string;
   /** Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
-  /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
-  pageSize?: number;
 }
 export const ListAllFeedbackLabelsProjectsLocationsDatasetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7579,19 +8189,19 @@ export const ListAllFeedbackLabelsProjectsLocationsDatasetsRequest =
   }) as any as S.Schema<ListAllFeedbackLabelsProjectsLocationsDatasetsRequest>;
 
 export interface ListProjectsLocationsAnalysisRulesRequest {
-  /** Required. The parent resource of the analysis rules. */
-  parent: string;
   /** Optional. The value returned by the last `ListAnalysisRulesResponse`; indicates that this is a continuation of a prior `ListAnalysisRules` call and the system should return the next page of data. */
   pageToken?: string;
   /** Optional. The maximum number of analysis rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
+  /** Required. The parent resource of the analysis rules. */
+  parent: string;
 }
 export const ListProjectsLocationsAnalysisRulesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7630,19 +8240,19 @@ export const GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse>;
 
 export interface ListProjectsLocationsAssessmentRulesRequest {
-  /** Optional. The maximum number of assessment rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
-  pageSize?: number;
   /** Required. The parent resource of the assessment rules. */
   parent: string;
   /** Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. */
   pageToken?: string;
+  /** Optional. The maximum number of assessment rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsAssessmentRulesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7663,43 +8273,98 @@ export const GoogleCloudContactcenterinsightsV1AssessmentRuleList =
 
 /** The response of listing assessment rules. */
 export interface GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
-  /** The assessment rules that match the request. */
-  assessmentRules?: GoogleCloudContactcenterinsightsV1AssessmentRuleList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The assessment rules that match the request. */
+  assessmentRules?: GoogleCloudContactcenterinsightsV1AssessmentRuleList;
 }
 export const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      nextPageToken: S.optional(S.String),
       assessmentRules: S.optional(
         GoogleCloudContactcenterinsightsV1AssessmentRuleList,
       ),
-      nextPageToken: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse>;
 
-export interface ListProjectsLocationsAuthorizedViewSetsRequest {
-  /** Optional. The value returned by the last `ListAuthorizedViewSetsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViewSets` call and that the system should return the next page of data. */
-  pageToken?: string;
-  /** Optional. The filter expression to filter authorized view sets listed in the response. */
+export interface ListProjectsLocationsAssistantSessionsRequest {
+  /** Optional. A filter to reduce results to a specific subset. */
   filter?: string;
+  /** Required. The parent resource, which owns this collection of assistant sessions. Format: `projects/{project}/locations/{location}` */
+  parent: string;
+  /** Optional. The maximum number of assistant sessions to return in a single response. If unspecified, at most 100 assistant sessions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. A page token, received from a previous `ListAssistantSessions` call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+}
+export const ListProjectsLocationsAssistantSessionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/assistantSessions",
+        baseUrl: "https://contactcenterinsights.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsAssistantSessionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsAssistantSessionsRequest>;
+
+export type GoogleCloudContactcenterinsightsV1AssistantSessionList =
+  Array<GoogleCloudContactcenterinsightsV1AssistantSession>;
+export const GoogleCloudContactcenterinsightsV1AssistantSessionList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudContactcenterinsightsV1AssistantSession,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantSessionList>;
+
+/** Response to list assistant sessions. */
+export interface GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse {
+  /** The assistant sessions. */
+  assistantSessions?: GoogleCloudContactcenterinsightsV1AssistantSessionList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. */
+  nextPageToken?: string;
+}
+export const GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      assistantSessions: S.optional(
+        GoogleCloudContactcenterinsightsV1AssistantSessionList,
+      ),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse>;
+
+export interface ListProjectsLocationsAuthorizedViewSetsRequest {
+  /** Optional. The order by expression to order authorized view sets listed in the response. */
+  orderBy?: string;
   /** Optional. The maximum number of view sets to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
   /** Required. The parent resource of the AuthorizedViewSets. */
   parent: string;
-  /** Optional. The order by expression to order authorized view sets listed in the response. */
-  orderBy?: string;
+  /** Optional. The filter expression to filter authorized view sets listed in the response. */
+  filter?: string;
+  /** Optional. The value returned by the last `ListAuthorizedViewSetsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViewSets` call and that the system should return the next page of data. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsAuthorizedViewSetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7739,25 +8404,25 @@ export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse>;
 
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
-  /** Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. */
-  parent: string;
-  /** Optional. The order by expression to order authorized views listed in the response. */
-  orderBy?: string;
   /** Optional. The filter expression to filter authorized views listed in the response. */
   filter?: string;
-  /** Optional. The value returned by the last `ListAuthorizedViewsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViews` call and that the system should return the next page of data. */
-  pageToken?: string;
+  /** Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. */
+  parent: string;
   /** Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
+  /** Optional. The value returned by the last `ListAuthorizedViewsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViews` call and that the system should return the next page of data. */
+  pageToken?: string;
+  /** Optional. The order by expression to order authorized views listed in the response. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7778,57 +8443,59 @@ export const GoogleCloudContactcenterinsightsV1AuthorizedViewList =
 
 /** The response from a ListAuthorizedViews request. */
 export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The AuthorizedViews under the parent. */
   authorizedViews?: GoogleCloudContactcenterinsightsV1AuthorizedViewList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      nextPageToken: S.optional(S.String),
       authorizedViews: S.optional(
         GoogleCloudContactcenterinsightsV1AuthorizedViewList,
       ),
+      nextPageToken: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
-  "CONVERSATION_VIEW_UNSPECIFIED" | "FULL" | "BASIC";
+  | "CONVERSATION_VIEW_UNSPECIFIED"
+  | "FULL"
+  | "BASIC";
 export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
+  /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
+  orderBy?: string;
+  /** The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. */
+  pageToken?: string;
   /** The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
   /** A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. */
   filter?: string;
-  /** The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. */
-  pageToken?: string;
+  /** Required. The parent resource of the conversation. */
+  parent: string;
   /** The level of details of the conversation. Default is `BASIC`. */
   view?:
     | ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum
     | (string & {});
-  /** Required. The parent resource of the conversation. */
-  parent: string;
-  /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
-  orderBy?: string;
 }
 export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       view: S.optional(
         ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum.pipe(
           T.Query(),
         ),
       ),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7868,22 +8535,22 @@ export const GoogleCloudContactcenterinsightsV1ListConversationsResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse>;
 
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
-  /** Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. */
-  parent: string;
   /** Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. */
   pageToken?: string;
-  /** Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for */
-  filter?: string;
   /** The maximum number of assessments to list. If zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
+  /** Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for */
+  filter?: string;
+  /** Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. */
+  parent: string;
 }
 export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7905,34 +8572,34 @@ export const GoogleCloudContactcenterinsightsV1AssessmentList =
 
 /** The response of listing assessments. */
 export interface GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
-  /** The assessments that match the request. */
-  assessments?: GoogleCloudContactcenterinsightsV1AssessmentList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The assessments that match the request. */
+  assessments?: GoogleCloudContactcenterinsightsV1AssessmentList;
 }
 export const GoogleCloudContactcenterinsightsV1ListAssessmentsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      assessments: S.optional(GoogleCloudContactcenterinsightsV1AssessmentList),
       nextPageToken: S.optional(S.String),
+      assessments: S.optional(GoogleCloudContactcenterinsightsV1AssessmentList),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListAssessmentsResponse",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse>;
 
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest {
-  /** Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
-  pageSize?: number;
   /** Required. The parent resource of the notes. */
   parent: string;
+  /** Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
+  pageSize?: number;
   /** Optional. The value returned by the last `ListNotesResponse`. This value indicates that this is a continuation of a prior `ListNotes` call and that the system should return the next page of data. */
   pageToken?: string;
 }
 export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -7970,22 +8637,22 @@ export const GoogleCloudContactcenterinsightsV1ListNotesResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListNotesResponse>;
 
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest {
-  /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
-  filter?: string;
-  /** Required. The parent resource of the feedback labels. */
-  parent: string;
-  /** Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. */
-  pageToken?: string;
   /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
+  /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
+  filter?: string;
+  /** Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. */
+  pageToken?: string;
+  /** Required. The parent resource of the feedback labels. */
+  parent: string;
 }
 export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8018,25 +8685,25 @@ export const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>;
 
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
   /** The standard list page token. */
   pageToken?: string;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
-  /** The standard list filter. */
-  filter?: string;
   /** The standard list page size. */
   pageSize?: number;
+  /** The standard list filter. */
+  filter?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
 }
 export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8056,38 +8723,38 @@ export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
 }
 export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      nextPageToken: S.optional(S.String),
       unreachable: S.optional(StringList),
       operations: S.optional(GoogleLongrunningOperationList),
+      nextPageToken: S.optional(S.String),
     }),
 ).annotate({
   identifier: "GoogleLongrunningListOperationsResponse",
 }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsLocationsAutoLabelingRulesRequest {
-  /** Required. The project and location to list auto labeling rules from. Format: projects/{project}/locations/{location} */
-  parent: string;
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
   /** Optional. The maximum number of auto labeling rules to return in a single response. If unspecified, at most 100 rules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** Required. The project and location to list auto labeling rules from. Format: projects/{project}/locations/{location} */
+  parent: string;
 }
 export const ListProjectsLocationsAutoLabelingRulesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8108,18 +8775,18 @@ export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleList =
 
 /** The response message for listing auto labeling rules. */
 export interface GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse {
-  /** The auto labeling rules. */
-  autoLabelingRules?: GoogleCloudContactcenterinsightsV1AutoLabelingRuleList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The auto labeling rules. */
+  autoLabelingRules?: GoogleCloudContactcenterinsightsV1AutoLabelingRuleList;
 }
 export const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      nextPageToken: S.optional(S.String),
       autoLabelingRules: S.optional(
         GoogleCloudContactcenterinsightsV1AutoLabelingRuleList,
       ),
-      nextPageToken: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -8134,30 +8801,30 @@ export const ListProjectsLocationsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsConversationsRequest {
-  /** The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
-  pageSize?: number;
-  /** The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. */
-  pageToken?: string;
-  /** The level of details of the conversation. Default is `BASIC`. */
-  view?: ListProjectsLocationsConversationsViewEnum | (string & {});
-  /** A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. */
-  filter?: string;
-  /** Required. The parent resource of the conversation. */
-  parent: string;
   /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
   orderBy?: string;
+  /** Required. The parent resource of the conversation. */
+  parent: string;
+  /** A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. */
+  filter?: string;
+  /** The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. */
+  pageToken?: string;
+  /** The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
+  pageSize?: number;
+  /** The level of details of the conversation. Default is `BASIC`. */
+  view?: ListProjectsLocationsConversationsViewEnum | (string & {});
 }
 export const ListProjectsLocationsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       view: S.optional(
         ListProjectsLocationsConversationsViewEnum.pipe(T.Query()),
       ),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8170,22 +8837,22 @@ export const ListProjectsLocationsConversationsRequest =
   }) as any as S.Schema<ListProjectsLocationsConversationsRequest>;
 
 export interface ListProjectsLocationsConversationsAnalysesRequest {
-  /** The maximum number of analyses to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
-  pageSize?: number;
-  /** Required. The parent resource of the analyses. */
-  parent: string;
-  /** The value returned by the last `ListAnalysesResponse`; indicates that this is a continuation of a prior `ListAnalyses` call and the system should return the next page of data. */
-  pageToken?: string;
   /** A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. */
   filter?: string;
+  /** The value returned by the last `ListAnalysesResponse`; indicates that this is a continuation of a prior `ListAnalyses` call and the system should return the next page of data. */
+  pageToken?: string;
+  /** Required. The parent resource of the analyses. */
+  parent: string;
+  /** The maximum number of analyses to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsConversationsAnalysesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8222,21 +8889,21 @@ export const GoogleCloudContactcenterinsightsV1ListAnalysesResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAnalysesResponse>;
 
 export interface ListProjectsLocationsConversationsAssessmentsRequest {
-  /** Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for */
-  filter?: string;
   /** Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. */
   parent: string;
   /** Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. */
   pageToken?: string;
+  /** Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for */
+  filter?: string;
   /** The maximum number of assessments to list. If zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
 export const ListProjectsLocationsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -8250,18 +8917,18 @@ export const ListProjectsLocationsConversationsAssessmentsRequest =
   }) as any as S.Schema<ListProjectsLocationsConversationsAssessmentsRequest>;
 
 export interface ListProjectsLocationsConversationsAssessmentsNotesRequest {
-  /** Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
-  pageSize?: number;
   /** Required. The parent resource of the notes. */
   parent: string;
+  /** Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
+  pageSize?: number;
   /** Optional. The value returned by the last `ListNotesResponse`. This value indicates that this is a continuation of a prior `ListNotes` call and that the system should return the next page of data. */
   pageToken?: string;
 }
 export const ListProjectsLocationsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -8275,22 +8942,22 @@ export const ListProjectsLocationsConversationsAssessmentsNotesRequest =
   }) as any as S.Schema<ListProjectsLocationsConversationsAssessmentsNotesRequest>;
 
 export interface ListProjectsLocationsConversationsFeedbackLabelsRequest {
-  /** Required. The parent resource of the feedback labels. */
-  parent: string;
   /** Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. */
   pageToken?: string;
-  /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
-  filter?: string;
   /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
+  /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
+  filter?: string;
+  /** Required. The parent resource of the feedback labels. */
+  parent: string;
 }
 export const ListProjectsLocationsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8303,25 +8970,25 @@ export const ListProjectsLocationsConversationsFeedbackLabelsRequest =
   }) as any as S.Schema<ListProjectsLocationsConversationsFeedbackLabelsRequest>;
 
 export interface ListProjectsLocationsDashboardsRequest {
-  /** Required. The parent resource of the dashboards. */
-  parent: string;
   /** Optional. The order by expression to order dashboards listed in the response. */
   orderBy?: string;
-  /** Optional. The maximum number of dashboards to return. The service may return fewer than this value. The default and maximum value is 100. */
-  pageSize?: number;
   /** Optional. The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data. */
   pageToken?: string;
+  /** Required. The parent resource of the dashboards. */
+  parent: string;
   /** Optional. The filter expression to filter dashboards listed in the response. */
   filter?: string;
+  /** Optional. The maximum number of dashboards to return. The service may return fewer than this value. The default and maximum value is 100. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8401,21 +9068,21 @@ export const GoogleCloudContactcenterinsightsV1ListChartsResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListChartsResponse>;
 
 export interface ListProjectsLocationsDatasetsRequest {
-  /** Optional. A filter to reduce results to a specific subset. Useful for querying datasets with specific properties. Supported fields include, for Q2 though we only support list by project: - `type` - `description` - `project_number` */
-  filter?: string;
   /** Required. The parent resource of the dataset. */
   parent: string;
   /** Optional. The value returned by the last `ListDatasetsResponse`; indicates that this is a continuation of a prior `ListDatasets` call and the system should return the next page of data. */
   pageToken?: string;
+  /** Optional. A filter to reduce results to a specific subset. Useful for querying datasets with specific properties. Supported fields include, for Q2 though we only support list by project: - `type` - `description` - `project_number` */
+  filter?: string;
   /** Optional. The maximum number of datasets to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
 export const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -8437,16 +9104,16 @@ export const GoogleCloudContactcenterinsightsV1DatasetList =
 
 /** The response to list datasets. */
 export interface GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
-  /** The datasets that match the request. */
-  datasets?: GoogleCloudContactcenterinsightsV1DatasetList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The datasets that match the request. */
+  datasets?: GoogleCloudContactcenterinsightsV1DatasetList;
 }
 export const GoogleCloudContactcenterinsightsV1ListDatasetsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      datasets: S.optional(GoogleCloudContactcenterinsightsV1DatasetList),
       nextPageToken: S.optional(S.String),
+      datasets: S.optional(GoogleCloudContactcenterinsightsV1DatasetList),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListDatasetsResponse",
@@ -8460,30 +9127,30 @@ export const ListProjectsLocationsDatasetsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsDatasetsConversationsRequest {
-  /** Required. The parent resource of the conversation. */
-  parent: string;
-  /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
-  orderBy?: string;
   /** The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
-  /** The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. */
-  pageToken?: string;
-  /** The level of details of the conversation. Default is `BASIC`. */
-  view?: ListProjectsLocationsDatasetsConversationsViewEnum | (string & {});
+  /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
+  orderBy?: string;
   /** A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. */
   filter?: string;
+  /** Required. The parent resource of the conversation. */
+  parent: string;
+  /** The level of details of the conversation. Default is `BASIC`. */
+  view?: ListProjectsLocationsDatasetsConversationsViewEnum | (string & {});
+  /** The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsDatasetsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       view: S.optional(
         ListProjectsLocationsDatasetsConversationsViewEnum.pipe(T.Query()),
       ),
-      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8496,22 +9163,22 @@ export const ListProjectsLocationsDatasetsConversationsRequest =
   }) as any as S.Schema<ListProjectsLocationsDatasetsConversationsRequest>;
 
 export interface ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest {
-  /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
-  pageSize?: number;
-  /** Required. The parent resource of the feedback labels. */
-  parent: string;
   /** Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. */
   pageToken?: string;
+  /** Required. The parent resource of the feedback labels. */
+  parent: string;
   /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
+  /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8605,25 +9272,25 @@ export const GoogleCloudContactcenterinsightsV1ListIssuesResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListIssuesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
+  /** The standard list page size. */
+  pageSize?: number;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
   /** The name of the operation's parent resource. */
   name: string;
   /** The standard list page token. */
   pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The standard list page size. */
-  pageSize?: number;
+  /** The standard list filter. */
+  filter?: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8636,21 +9303,21 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsPhraseMatchersRequest {
-  /** The maximum number of phrase matchers to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
-  pageSize?: number;
-  /** Required. The parent resource of the phrase matcher. */
-  parent: string;
   /** The value returned by the last `ListPhraseMatchersResponse`. This value indicates that this is a continuation of a prior `ListPhraseMatchers` call and that the system should return the next page of data. */
   pageToken?: string;
+  /** Required. The parent resource of the phrase matcher. */
+  parent: string;
+  /** The maximum number of phrase matchers to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
+  pageSize?: number;
   /** A filter to reduce results to a specific subset. Useful for querying phrase matchers with specific properties. */
   filter?: string;
 }
 export const ListProjectsLocationsPhraseMatchersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -8672,18 +9339,18 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatcherList =
 
 /** The response of listing phrase matchers. */
 export interface GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The phrase matchers that match the request. */
   phraseMatchers?: GoogleCloudContactcenterinsightsV1PhraseMatcherList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      nextPageToken: S.optional(S.String),
       phraseMatchers: S.optional(
         GoogleCloudContactcenterinsightsV1PhraseMatcherList,
       ),
+      nextPageToken: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse",
@@ -8740,7 +9407,8 @@ export const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse =
 export type ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
-  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE";
+  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
+  | "QA_SCORECARD_SOURCE_INTENT_TAXONOMY";
 export const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum =
   /*@__PURE__*/ S.String;
 
@@ -8753,26 +9421,26 @@ export const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList =
   ) as any as S.Schema<ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList>;
 
 export interface ListProjectsLocationsQaScorecardsRequest {
+  /** Optional. The value returned by the last `ListQaScorecardsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecards` call and that the system should return the next page of data. */
+  pageToken?: string;
+  /** Required. The parent resource of the scorecards. */
+  parent: string;
   /** Optional. The maximum number of scorecards to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
   /** Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards of one or more sources. */
   qaScorecardSources?: ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList;
-  /** Required. The parent resource of the scorecards. */
-  parent: string;
-  /** Optional. The value returned by the last `ListQaScorecardsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecards` call and that the system should return the next page of data. */
-  pageToken?: string;
 }
 export const ListProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       qaScorecardSources: S.optional(
         ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList.pipe(
           T.Query(),
         ),
       ),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8813,7 +9481,8 @@ export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse =
 export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
-  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE";
+  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
+  | "QA_SCORECARD_SOURCE_INTENT_TAXONOMY";
 export const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum =
   /*@__PURE__*/ S.String;
 
@@ -8828,24 +9497,24 @@ export const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumLis
   ) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList>;
 
 export interface ListProjectsLocationsQaScorecardsRevisionsRequest {
-  /** Required. The parent resource of the scorecard revisions. To list all revisions of all scorecards, substitute the QaScorecard ID with a '-' character. */
-  parent: string;
   /** Optional. A filter to reduce results to a specific subset. Useful for querying scorecard revisions with specific properties. */
   filter?: string;
-  /** Optional. The value returned by the last `ListQaScorecardRevisionsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecardRevisions` call and that the system should return the next page of data. */
-  pageToken?: string;
+  /** Required. The parent resource of the scorecard revisions. To list all revisions of all scorecards, substitute the QaScorecard ID with a '-' character. */
+  parent: string;
   /** Optional. The maximum number of scorecard revisions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
+  /** Optional. The value returned by the last `ListQaScorecardRevisionsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecardRevisions` call and that the system should return the next page of data. */
+  pageToken?: string;
   /** Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards Revisions from Scorecards of one or more sources. */
   qaScorecardSources?: ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList;
 }
 export const ListProjectsLocationsQaScorecardsRevisionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       qaScorecardSources: S.optional(
         ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList.pipe(
           T.Query(),
@@ -8890,19 +9559,19 @@ export const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse 
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse>;
 
 export interface ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
-  /** Optional. The maximum number of questions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
-  pageSize?: number;
   /** Required. The parent resource of the questions. */
   parent: string;
   /** Optional. The value returned by the last `ListQaQuestionsResponse`. This value indicates that this is a continuation of a prior `ListQaQuestions` call and that the system should return the next page of data. */
   pageToken?: string;
+  /** Optional. The maximum number of questions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -8923,34 +9592,34 @@ export const GoogleCloudContactcenterinsightsV1QaQuestionList =
 
 /** The response from a ListQaQuestions request. */
 export interface GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
-  /** The QaQuestions under the parent. */
-  qaQuestions?: GoogleCloudContactcenterinsightsV1QaQuestionList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The QaQuestions under the parent. */
+  qaQuestions?: GoogleCloudContactcenterinsightsV1QaQuestionList;
 }
 export const GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      qaQuestions: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionList),
       nextPageToken: S.optional(S.String),
+      qaQuestions: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionList),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse>;
 
 export interface ListProjectsLocationsViewsRequest {
-  /** Required. The parent resource of the views. */
-  parent: string;
-  /** The value returned by the last `ListViewsResponse`; indicates that this is a continuation of a prior `ListViews` call and the system should return the next page of data. */
-  pageToken?: string;
   /** The maximum number of views to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
+  /** The value returned by the last `ListViewsResponse`; indicates that this is a continuation of a prior `ListViews` call and the system should return the next page of data. */
+  pageToken?: string;
+  /** Required. The parent resource of the views. */
+  parent: string;
 }
 export const ListProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8986,18 +9655,18 @@ export const GoogleCloudContactcenterinsightsV1ListViewsResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListViewsResponse>;
 
 export interface PatchProjectsLocationsAnalysisRulesRequest {
-  /** Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} */
-  name: string;
   /** Optional. The list of fields to be updated. If the update_mask is not provided, the update will be applied to all fields. */
   updateMask?: string;
+  /** Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AnalysisRule;
 }
 export const PatchProjectsLocationsAnalysisRulesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1AnalysisRule.pipe(T.HttpBody()),
       ),
@@ -9095,18 +9764,18 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest {
-  /** Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} */
-  name: string;
   /** Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` */
   updateMask?: string;
+  /** Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
 export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody()),
       ),
@@ -9178,25 +9847,25 @@ export const PatchProjectsLocationsAutoLabelingRulesRequest =
   }) as any as S.Schema<PatchProjectsLocationsAutoLabelingRulesRequest>;
 
 export interface PatchProjectsLocationsConversationsRequest {
-  /** Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation} */
-  name: string;
   /** Optional. Defaults to false. If set to true, and the conversation is not found, a new conversation will be created. In this situation, `update_mask` is ignored. */
   allowMissing?: boolean;
-  /** Optional. If set to true, the conversation will be updated with auto labeling results. */
-  "conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate"?: boolean;
   /** The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` * `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` * `data_source.gcs_source.audio_uri` or * `data_source.dialogflow_source.audio_uri` * `data_source.screen_recordings` */
   updateMask?: string;
+  /** Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation} */
+  name: string;
+  /** Optional. If set to true, the conversation will be updated with auto labeling results. */
+  "conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate"?: boolean;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Conversation;
 }
 export const PatchProjectsLocationsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       "conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate":
         S.optional(S.Boolean.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1Conversation.pipe(T.HttpBody()),
       ),
@@ -9212,18 +9881,18 @@ export const PatchProjectsLocationsConversationsRequest =
   }) as any as S.Schema<PatchProjectsLocationsConversationsRequest>;
 
 export interface PatchProjectsLocationsConversationsAssessmentsNotesRequest {
-  /** Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} */
-  name: string;
   /** Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` */
   updateMask?: string;
+  /** Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
 export const PatchProjectsLocationsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody()),
       ),
@@ -9239,18 +9908,18 @@ export const PatchProjectsLocationsConversationsAssessmentsNotesRequest =
   }) as any as S.Schema<PatchProjectsLocationsConversationsAssessmentsNotesRequest>;
 
 export interface PatchProjectsLocationsConversationsFeedbackLabelsRequest {
-  /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
-  name: string;
   /** Required. The list of fields to be updated. */
   updateMask?: string;
+  /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
 export const PatchProjectsLocationsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody()),
       ),
@@ -9293,18 +9962,18 @@ export const PatchProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchProjectsLocationsDashboardsRequest>;
 
 export interface PatchProjectsLocationsDashboardsChartsRequest {
-  /** Identifier. Chart resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
-  name: string;
   /** Optional. List of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `display_name` */
   updateMask?: string;
+  /** Identifier. Chart resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Chart;
 }
 export const PatchProjectsLocationsDashboardsChartsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1Chart.pipe(T.HttpBody()),
       ),
@@ -9347,18 +10016,18 @@ export const PatchProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchProjectsLocationsDatasetsRequest>;
 
 export interface PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest {
-  /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
-  name: string;
   /** Required. The list of fields to be updated. */
   updateMask?: string;
+  /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
 export const PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody()),
       ),
@@ -9375,18 +10044,18 @@ export const PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   }) as any as S.Schema<PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export interface PatchProjectsLocationsIssueModelsRequest {
-  /** Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
-  name: string;
   /** The list of fields to be updated. */
   updateMask?: string;
+  /** Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
 export const PatchProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1IssueModel.pipe(T.HttpBody()),
       ),
@@ -9402,18 +10071,18 @@ export const PatchProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchProjectsLocationsIssueModelsRequest>;
 
 export interface PatchProjectsLocationsIssueModelsIssuesRequest {
-  /** Immutable. The resource name of the issue. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} */
-  name: string;
   /** The list of fields to be updated. */
   updateMask?: string;
+  /** Immutable. The resource name of the issue. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Issue;
 }
 export const PatchProjectsLocationsIssueModelsIssuesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1Issue.pipe(T.HttpBody()),
       ),
@@ -9429,18 +10098,18 @@ export const PatchProjectsLocationsIssueModelsIssuesRequest =
   }) as any as S.Schema<PatchProjectsLocationsIssueModelsIssuesRequest>;
 
 export interface PatchProjectsLocationsPhraseMatchersRequest {
-  /** The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
-  name: string;
   /** The list of fields to be updated. */
   updateMask?: string;
+  /** The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1PhraseMatcher;
 }
 export const PatchProjectsLocationsPhraseMatchersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(
         GoogleCloudContactcenterinsightsV1PhraseMatcher.pipe(T.HttpBody()),
       ),
@@ -9537,17 +10206,17 @@ export const PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   }) as any as S.Schema<PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export interface PatchProjectsLocationsViewsRequest {
-  /** Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} */
-  name: string;
   /** The list of fields to be updated. */
   updateMask?: string;
+  /** Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} */
+  name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1View;
 }
 export const PatchProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1View.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -9619,40 +10288,125 @@ export const PublishProjectsLocationsConversationsAssessmentsRequest =
     identifier: "PublishProjectsLocationsConversationsAssessmentsRequest",
   }) as any as S.Schema<PublishProjectsLocationsConversationsAssessmentsRequest>;
 
-export type GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum =
-    | "TIME_GRANULARITY_UNSPECIFIED"
-    | "NONE"
-    | "DAILY"
-    | "HOURLY"
-    | "PER_MINUTE"
-    | "PER_5_MINUTES"
-    | "MONTHLY";
-export const GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum =
-  /*@__PURE__*/ S.String;
-
-/** Metadata about the QA question-answer dimension. This is useful for showing the answer distribution for questions for a given scorecard. */
-export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata {
-  /** Optional. The QA scorecard ID. */
-  qaScorecardId?: string;
-  /** Optional. The full body of the question. */
-  answerValue?: string;
-  /** Optional. The QA question ID. */
-  qaQuestionId?: string;
-  /** Optional. The full body of the question. */
-  questionBody?: string;
+/** Metadata about the Conversational Agents playbook dimension. */
+export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata {
+  /** Optional. The dialogflow playbook display name. */
+  playbookDisplayName?: string;
+  /** Optional. The dialogflow playbook ID. */
+  playbookId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata =
+export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      qaScorecardId: S.optional(S.String),
-      answerValue: S.optional(S.String),
-      qaQuestionId: S.optional(S.String),
-      questionBody: S.optional(S.String),
+      playbookDisplayName: S.optional(S.String),
+      playbookId: S.optional(S.String),
     }),
   ).annotate({
     identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata>;
+      "GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata>;
+
+/** Metadata about the conversation profile dimension. */
+export interface GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata {
+  /** Optional. The conversation profile ID. */
+  conversationProfileId?: string;
+}
+export const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conversationProfileId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata>;
+
+/** Metadata about the issue dimension. */
+export interface GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata {
+  /** The issue display name. */
+  issueDisplayName?: string;
+  /** The issue ID. */
+  issueId?: string;
+  /** The parent issue model ID. */
+  issueModelId?: string;
+}
+export const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      issueDisplayName: S.optional(S.String),
+      issueId: S.optional(S.String),
+      issueModelId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata>;
+
+/** Metadata about the conversation medium dimension. */
+export interface GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata {
+  /** Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT. */
+  medium?: string;
+}
+export const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      medium: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata>;
+
+/** Metadata about the Conversational Agents tool dimension. */
+export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata {
+  /** Optional. The dialogflow tool display name. */
+  toolDisplayName?: string;
+  /** Optional. The dialogflow tool ID. */
+  toolId?: string;
+}
+export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      toolDisplayName: S.optional(S.String),
+      toolId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata>;
+
+/** Metadata about the client sentiment category dimension. */
+export interface GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata {
+  /** Optional. The client sentiment category. */
+  sentimentCategory?: string;
+}
+export const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sentimentCategory: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata>;
+
+/** Metadata about conversation labels. */
+export interface GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata {
+  /** Optional. The label key. */
+  labelKey?: string;
+  /** Optional. The label value. */
+  labelValue?: string;
+}
+export const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      labelKey: S.optional(S.String),
+      labelValue: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata>;
 
 export type GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
   | "DIMENSION_KEY_UNSPECIFIED"
@@ -9680,155 +10434,32 @@ export type GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
 export const GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
   /*@__PURE__*/ S.String;
 
-/** Metadata about conversation labels. */
-export interface GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata {
-  /** Optional. The label key. */
-  labelKey?: string;
-  /** Optional. The label value. */
-  labelValue?: string;
-}
-export const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      labelKey: S.optional(S.String),
-      labelValue: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata>;
-
-/** Metadata about the conversation profile dimension. */
-export interface GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata {
-  /** Optional. The conversation profile ID. */
-  conversationProfileId?: string;
-}
-export const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      conversationProfileId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata>;
-
-/** Metadata about the client sentiment category dimension. */
-export interface GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata {
-  /** Optional. The client sentiment category. */
-  sentimentCategory?: string;
-}
-export const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sentimentCategory: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata>;
-
-/** Metadata about the Conversational Agents tool dimension. */
-export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata {
-  /** Optional. The dialogflow tool display name. */
-  toolDisplayName?: string;
-  /** Optional. The dialogflow tool ID. */
-  toolId?: string;
-}
-export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      toolDisplayName: S.optional(S.String),
-      toolId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata>;
-
-/** Metadata about the QA question dimension. */
-export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata {
-  /** Optional. The QA scorecard ID. */
-  qaScorecardId?: string;
-  /** Optional. The QA question ID. */
-  qaQuestionId?: string;
-  /** Optional. The full body of the question. */
-  questionBody?: string;
-}
-export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      qaScorecardId: S.optional(S.String),
-      qaQuestionId: S.optional(S.String),
-      questionBody: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata>;
-
-/** Metadata about the conversation medium dimension. */
-export interface GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata {
-  /** Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT. */
-  medium?: string;
-}
-export const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      medium: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata>;
-
-/** Metadata about the issue dimension. */
-export interface GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata {
-  /** The issue display name. */
-  issueDisplayName?: string;
-  /** The issue ID. */
-  issueId?: string;
-  /** The parent issue model ID. */
-  issueModelId?: string;
-}
-export const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      issueDisplayName: S.optional(S.String),
-      issueId: S.optional(S.String),
-      issueModelId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata>;
-
 /** Metadata about the agent dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata {
-  /** Optional. A user-specified string representing the agent. This will be populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions. */
-  agentId?: string;
-  /** Optional. A user-specified string representing the agent's team. */
-  agentTeam?: string;
-  /** Optional. The agent's deployment ID. Only applicable to automated agents. This will be populated for AGENT and AGENT_DEPLOYMENT_ID dimensions. */
-  agentDeploymentId?: string;
-  /** Optional. The agent's version display name. Only applicable to automated agents. This will be populated for AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions. */
-  agentVersionDisplayName?: string;
-  /** Optional. The agent's name This will be populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions. */
-  agentDisplayName?: string;
   /** Optional. The agent's deployment display name. Only applicable to automated agents. This will be populated for AGENT_DEPLOYMENT_ID dimensions. */
   agentDeploymentDisplayName?: string;
+  /** Optional. The agent's version display name. Only applicable to automated agents. This will be populated for AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions. */
+  agentVersionDisplayName?: string;
+  /** Optional. The agent's deployment ID. Only applicable to automated agents. This will be populated for AGENT and AGENT_DEPLOYMENT_ID dimensions. */
+  agentDeploymentId?: string;
+  /** Optional. A user-specified string representing the agent. This will be populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions. */
+  agentId?: string;
+  /** Optional. The agent's name This will be populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions. */
+  agentDisplayName?: string;
+  /** Optional. A user-specified string representing the agent's team. */
+  agentTeam?: string;
   /** Optional. The agent's version ID. Only applicable to automated agents. This will be populated for AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions. */
   agentVersionId?: string;
 }
 export const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      agentId: S.optional(S.String),
-      agentTeam: S.optional(S.String),
-      agentDeploymentId: S.optional(S.String),
-      agentVersionDisplayName: S.optional(S.String),
-      agentDisplayName: S.optional(S.String),
       agentDeploymentDisplayName: S.optional(S.String),
+      agentVersionDisplayName: S.optional(S.String),
+      agentDeploymentId: S.optional(S.String),
+      agentId: S.optional(S.String),
+      agentDisplayName: S.optional(S.String),
+      agentTeam: S.optional(S.String),
       agentVersionId: S.optional(S.String),
     }),
   ).annotate({
@@ -9851,82 +10482,106 @@ export const GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMeta
       "GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata>;
 
-/** Metadata about the Conversational Agents playbook dimension. */
-export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata {
-  /** Optional. The dialogflow playbook ID. */
-  playbookId?: string;
-  /** Optional. The dialogflow playbook display name. */
-  playbookDisplayName?: string;
+/** Metadata about the QA question-answer dimension. This is useful for showing the answer distribution for questions for a given scorecard. */
+export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata {
+  /** Optional. The full body of the question. */
+  answerValue?: string;
+  /** Optional. The full body of the question. */
+  questionBody?: string;
+  /** Optional. The QA question ID. */
+  qaQuestionId?: string;
+  /** Optional. The QA scorecard ID. */
+  qaScorecardId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata =
+export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      playbookId: S.optional(S.String),
-      playbookDisplayName: S.optional(S.String),
+      answerValue: S.optional(S.String),
+      questionBody: S.optional(S.String),
+      qaQuestionId: S.optional(S.String),
+      qaScorecardId: S.optional(S.String),
     }),
   ).annotate({
     identifier:
-      "GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata>;
+      "GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata>;
+
+/** Metadata about the QA question dimension. */
+export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata {
+  /** Optional. The QA question ID. */
+  qaQuestionId?: string;
+  /** Optional. The full body of the question. */
+  questionBody?: string;
+  /** Optional. The QA scorecard ID. */
+  qaScorecardId?: string;
+}
+export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      qaQuestionId: S.optional(S.String),
+      questionBody: S.optional(S.String),
+      qaScorecardId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata>;
 
 /** A dimension determines the grouping key for the query. In SQL terms, these would be part of both the "SELECT" and "GROUP BY" clauses. */
 export interface GoogleCloudContactcenterinsightsV1Dimension {
-  /** Output only. Metadata about the QA question-answer dimension. */
-  qaQuestionAnswerDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata;
+  /** Output only. Metadata about the Conversational Agents playbook dimension. */
+  conversationalAgentsPlaybookDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata;
+  /** Output only. Metadata about the conversation profile dimension. */
+  conversationProfileDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata;
+  /** Output only. Metadata about the issue dimension. */
+  issueDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata;
+  /** Output only. Metadata about the conversation medium dimension. */
+  mediumDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata;
+  /** Output only. Metadata about the Conversational Agents tool dimension. */
+  conversationalAgentsToolDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata;
+  /** Output only. Metadata about the client sentiment category dimension. */
+  clientSentimentCategoryDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata;
+  /** Output only. Metadata about conversation labels. */
+  labelDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata;
   /** The key of the dimension. */
   dimensionKey?:
     | GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum
     | (string & {});
-  /** Output only. Metadata about conversation labels. */
-  labelDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata;
-  /** Output only. Metadata about the conversation profile dimension. */
-  conversationProfileDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata;
-  /** Output only. Metadata about the client sentiment category dimension. */
-  clientSentimentCategoryDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata;
-  /** Output only. Metadata about the Conversational Agents tool dimension. */
-  conversationalAgentsToolDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata;
-  /** Output only. Metadata about the QA question dimension. */
-  qaQuestionDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata;
-  /** Output only. Metadata about the conversation medium dimension. */
-  mediumDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata;
-  /** Output only. Metadata about the issue dimension. */
-  issueDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata;
   /** Output only. Metadata about the agent dimension. */
   agentDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata;
   /** Output only. Metadata about the QA scorecard dimension. */
   qaScorecardDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata;
-  /** Output only. Metadata about the Conversational Agents playbook dimension. */
-  conversationalAgentsPlaybookDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata;
+  /** Output only. Metadata about the QA question-answer dimension. */
+  qaQuestionAnswerDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata;
+  /** Output only. Metadata about the QA question dimension. */
+  qaQuestionDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata;
 }
 export const GoogleCloudContactcenterinsightsV1Dimension =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      qaQuestionAnswerDimensionMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata,
-      ),
-      dimensionKey: S.optional(
-        GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum,
-      ),
-      labelDimensionMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata,
+      conversationalAgentsPlaybookDimensionMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata,
       ),
       conversationProfileDimensionMetadata: S.optional(
         GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata,
       ),
-      clientSentimentCategoryDimensionMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata,
-      ),
-      conversationalAgentsToolDimensionMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata,
-      ),
-      qaQuestionDimensionMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata,
+      issueDimensionMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata,
       ),
       mediumDimensionMetadata: S.optional(
         GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata,
       ),
-      issueDimensionMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata,
+      conversationalAgentsToolDimensionMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata,
+      ),
+      clientSentimentCategoryDimensionMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata,
+      ),
+      labelDimensionMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata,
+      ),
+      dimensionKey: S.optional(
+        GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum,
       ),
       agentDimensionMetadata: S.optional(
         GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata,
@@ -9934,8 +10589,11 @@ export const GoogleCloudContactcenterinsightsV1Dimension =
       qaScorecardDimensionMetadata: S.optional(
         GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata,
       ),
-      conversationalAgentsPlaybookDimensionMetadata: S.optional(
-        GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata,
+      qaQuestionAnswerDimensionMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata,
+      ),
+      qaQuestionDimensionMetadata: S.optional(
+        GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata,
       ),
     }),
   ).annotate({
@@ -9949,28 +10607,39 @@ export const GoogleCloudContactcenterinsightsV1DimensionList =
     GoogleCloudContactcenterinsightsV1Dimension,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionList>;
 
+export type GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum =
+  | "TIME_GRANULARITY_UNSPECIFIED"
+  | "NONE"
+  | "DAILY"
+  | "HOURLY"
+  | "PER_MINUTE"
+  | "PER_5_MINUTES"
+  | "MONTHLY";
+export const GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum =
+  /*@__PURE__*/ S.String;
+
 /** The request for querying metrics. */
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
-  /** Required. Filter to select a subset of conversations to compute the metrics. Must specify a window of the conversation create time to compute the metrics. The returned metrics will be from the range [DATE(starting create time), DATE(ending create time)). */
-  filter?: string;
+  /** Measures to return. Defaults to all measures if this field is unspecified. A valid mask should traverse from the `measure` field from the response. For example, a path from a measure mask to get the conversation count is "conversation_measure.count". */
+  measureMask?: string;
+  /** The dimensions that determine the grouping key for the query. Defaults to no dimension if this field is unspecified. If a dimension is specified, its key must also be specified. Each dimension's key must be unique. If a time granularity is also specified, metric values in the dimension will be bucketed by this granularity. Up to one dimension is supported for now. */
+  dimensions?: GoogleCloudContactcenterinsightsV1DimensionList;
   /** The time granularity of each data point in the time series. Defaults to NONE if this field is unspecified. */
   timeGranularity?:
     | GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum
     | (string & {});
-  /** The dimensions that determine the grouping key for the query. Defaults to no dimension if this field is unspecified. If a dimension is specified, its key must also be specified. Each dimension's key must be unique. If a time granularity is also specified, metric values in the dimension will be bucketed by this granularity. Up to one dimension is supported for now. */
-  dimensions?: GoogleCloudContactcenterinsightsV1DimensionList;
-  /** Measures to return. Defaults to all measures if this field is unspecified. A valid mask should traverse from the `measure` field from the response. For example, a path from a measure mask to get the conversation count is "conversation_measure.count". */
-  measureMask?: string;
+  /** Required. Filter to select a subset of conversations to compute the metrics. Must specify a window of the conversation create time to compute the metrics. The returned metrics will be from the range [DATE(starting create time), DATE(ending create time)). */
+  filter?: string;
 }
 export const GoogleCloudContactcenterinsightsV1QueryMetricsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      filter: S.optional(S.String),
+      measureMask: S.optional(S.String),
+      dimensions: S.optional(GoogleCloudContactcenterinsightsV1DimensionList),
       timeGranularity: S.optional(
         GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum,
       ),
-      dimensions: S.optional(GoogleCloudContactcenterinsightsV1DimensionList),
-      measureMask: S.optional(S.String),
+      filter: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QueryMetricsRequest",
@@ -10046,27 +10715,27 @@ export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAg
 
 /** The request for summarizing performance according to different metrics for conversations over a specified time window. */
 export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest {
-  /** Optional. Filter to select a subset of conversations to compute the performance overview. Supports the same filters as the filter field in QueryMetricsRequest. The source and query interval/comparison query interval should not be included here. */
-  filter?: string;
-  /** The time window of the conversations to compare the performance to. */
-  comparisonQueryInterval?: GoogleCloudContactcenterinsightsV1QueryInterval;
   /** Required. The time window of the conversations to derive performance stats from. */
   queryInterval?: GoogleCloudContactcenterinsightsV1QueryInterval;
   /** Conversations are from a single agent. */
   agentPerformanceSource?: GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource;
+  /** Optional. Filter to select a subset of conversations to compute the performance overview. Supports the same filters as the filter field in QueryMetricsRequest. The source and query interval/comparison query interval should not be included here. */
+  filter?: string;
+  /** The time window of the conversations to compare the performance to. */
+  comparisonQueryInterval?: GoogleCloudContactcenterinsightsV1QueryInterval;
 }
 export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      filter: S.optional(S.String),
-      comparisonQueryInterval: S.optional(
-        GoogleCloudContactcenterinsightsV1QueryInterval,
-      ),
       queryInterval: S.optional(
         GoogleCloudContactcenterinsightsV1QueryInterval,
       ),
       agentPerformanceSource: S.optional(
         GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource,
+      ),
+      filter: S.optional(S.String),
+      comparisonQueryInterval: S.optional(
+        GoogleCloudContactcenterinsightsV1QueryInterval,
       ),
     }),
   ).annotate({
@@ -10129,19 +10798,19 @@ export const QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthoriz
 
 /** The request to sample conversations to a dataset. */
 export interface GoogleCloudContactcenterinsightsV1SampleConversationsRequest {
-  /** Required. The parent resource of the dataset. */
-  parent?: string;
   /** The dataset resource to copy the sampled conversations to. */
   destinationDataset?: GoogleCloudContactcenterinsightsV1Dataset;
   /** Optional. The sample rule used for sampling conversations. */
   sampleRule?: GoogleCloudContactcenterinsightsV1SampleRule;
+  /** Required. The parent resource of the dataset. */
+  parent?: string;
 }
 export const GoogleCloudContactcenterinsightsV1SampleConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.optional(S.String),
       destinationDataset: S.optional(GoogleCloudContactcenterinsightsV1Dataset),
       sampleRule: S.optional(GoogleCloudContactcenterinsightsV1SampleRule),
+      parent: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SampleConversationsRequest",
@@ -10200,24 +10869,24 @@ export const SampleProjectsLocationsDatasetsConversationsRequest =
   }) as any as S.Schema<SampleProjectsLocationsDatasetsConversationsRequest>;
 
 export interface SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
-  /** Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. */
-  parent: string;
+  /** Optional. The value returned by the last `ListAuthorizedViewsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViews` call and that the system should return the next page of data. */
+  pageToken?: string;
   /** Optional. The order by expression to order authorized views listed in the response. */
   orderBy?: string;
   /** Optional. The query expression to search authorized views. */
   query?: string;
-  /** Optional. The value returned by the last `ListAuthorizedViewsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViews` call and that the system should return the next page of data. */
-  pageToken?: string;
+  /** Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. */
+  parent: string;
   /** Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
 export const SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
       query: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -10253,15 +10922,15 @@ export const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse =
 
 /** Request message for `SetIamPolicy` method. */
 export interface GoogleIamV1SetIamPolicyRequest {
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: GoogleIamV1Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
 }
 export const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updateMask: S.optional(S.String),
     policy: S.optional(GoogleIamV1Policy),
+    updateMask: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GoogleIamV1SetIamPolicyRequest",
@@ -10290,6 +10959,67 @@ export const SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsReque
       "SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
   }) as any as S.Schema<SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
+/** Request to stream chat. */
+export interface GoogleCloudContactcenterinsightsV1StreamChatRequest {
+  /** Required. The message to send to the assistant. */
+  message?: string;
+}
+export const GoogleCloudContactcenterinsightsV1StreamChatRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1StreamChatRequest",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1StreamChatRequest>;
+
+export interface StreamChatProjectsLocationsAssistantSessionsRequest {
+  /** Required. The name of the assistant session to stream chat. Format: `projects/{project}/locations/{location}/assistantSessions/{assistant_session}` */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudContactcenterinsightsV1StreamChatRequest;
+}
+export const StreamChatProjectsLocationsAssistantSessionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudContactcenterinsightsV1StreamChatRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:streamChat",
+        baseUrl: "https://contactcenterinsights.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StreamChatProjectsLocationsAssistantSessionsRequest",
+  }) as any as S.Schema<StreamChatProjectsLocationsAssistantSessionsRequest>;
+
+/** Response from streaming chat. */
+export interface GoogleCloudContactcenterinsightsV1StreamChatResponse {
+  /** The unique ID of the event. */
+  eventId?: string;
+  /** The time when the event occurred. */
+  eventTime?: string;
+  /** A chunk of the assistant response message. */
+  chunk?: GoogleCloudContactcenterinsightsV1AssistantChunk;
+  /** A status message. */
+  statusMessage?: string;
+}
+export const GoogleCloudContactcenterinsightsV1StreamChatResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      eventId: S.optional(S.String),
+      eventTime: S.optional(S.String),
+      chunk: S.optional(GoogleCloudContactcenterinsightsV1AssistantChunk),
+      statusMessage: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudContactcenterinsightsV1StreamChatResponse",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1StreamChatResponse>;
+
 /** Wrapper for a list of conversations. */
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations {
   /** Optional. The conversations. */
@@ -10309,26 +11039,26 @@ export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConve
 
 /** The request to test correlation config. */
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest {
-  /** Required. The correlation config to test. */
-  correlationConfig?: GoogleCloudContactcenterinsightsV1CorrelationConfig;
   /** Optional. The maximum number of conversations to sample when using the `filter`. If not set, defaults to 1000. Values greater than 1000 are coerced to 1000. This field is ignored if `conversations` is provided. */
   maxSampleCount?: number;
-  /** Optional. A list of conversations to test against. */
-  conversations?: GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations;
   /** Optional. Filter to select conversations to test correlation against. Conversations matching this filter will be sampled based on start time. The most recent `max_sample_count` conversations will be selected. If no conversations match the filter, the request will fail with an `INVALID_ARGUMENT` error. */
   filter?: string;
+  /** Required. The correlation config to test. */
+  correlationConfig?: GoogleCloudContactcenterinsightsV1CorrelationConfig;
+  /** Optional. A list of conversations to test against. */
+  conversations?: GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations;
 }
 export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      maxSampleCount: S.optional(S.Number),
+      filter: S.optional(S.String),
       correlationConfig: S.optional(
         GoogleCloudContactcenterinsightsV1CorrelationConfig,
       ),
-      maxSampleCount: S.optional(S.Number),
       conversations: S.optional(
         GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations,
       ),
-      filter: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -10414,18 +11144,18 @@ export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(
 
 /** The request message for testing auto labeling rules. */
 export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest {
-  /** Required. Conversation data to test rules against. */
-  conversation?: GoogleCloudContactcenterinsightsV1Conversation;
   /** Required. The auto labeling rule to test. */
   autoLabelingRule?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
+  /** Required. Conversation data to test rules against. */
+  conversation?: GoogleCloudContactcenterinsightsV1Conversation;
 }
 export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
       autoLabelingRule: S.optional(
         GoogleCloudContactcenterinsightsV1AutoLabelingRule,
       ),
+      conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest",
@@ -10645,27 +11375,27 @@ export const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
 
 /** Request to upload a conversation. */
 export interface GoogleCloudContactcenterinsightsV1UploadConversationRequest {
+  /** Required. The conversation resource to create. */
+  conversation?: GoogleCloudContactcenterinsightsV1Conversation;
+  /** Optional. DLP settings for transcript redaction. Will default to the config specified in Settings. */
+  redactionConfig?: GoogleCloudContactcenterinsightsV1RedactionConfig;
   /** Optional. A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-` */
   conversationId?: string;
   /** Optional. Speech-to-Text configuration. Will default to the config specified in Settings. */
   speechConfig?: GoogleCloudContactcenterinsightsV1SpeechConfig;
-  /** Required. The conversation resource to create. */
-  conversation?: GoogleCloudContactcenterinsightsV1Conversation;
   /** Required. The parent resource of the conversation. */
   parent?: string;
-  /** Optional. DLP settings for transcript redaction. Will default to the config specified in Settings. */
-  redactionConfig?: GoogleCloudContactcenterinsightsV1RedactionConfig;
 }
 export const GoogleCloudContactcenterinsightsV1UploadConversationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conversationId: S.optional(S.String),
-      speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
       conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
-      parent: S.optional(S.String),
       redactionConfig: S.optional(
         GoogleCloudContactcenterinsightsV1RedactionConfig,
       ),
+      conversationId: S.optional(S.String),
+      speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
+      parent: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UploadConversationRequest",
@@ -10698,7 +11428,11 @@ export const UploadProjectsLocationsConversationsRequest =
   }) as any as S.Schema<UploadProjectsLocationsConversationsRequest>;
 
 export type AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Appeal an Assessment. */
 export const appealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
   AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
@@ -10953,7 +11687,9 @@ export const calculateIssueModelStatsProjectsLocationsIssueModels: API.Operation
 }));
 
 export type CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets conversation statistics. */
 export const calculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
   CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
@@ -11008,7 +11744,11 @@ export const calculateStatsProjectsLocationsDatasetsConversations: API.Operation
 }));
 
 export type CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.OperationMethod<
   CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest,
@@ -11084,6 +11824,26 @@ export const createProjectsLocationsAssessmentRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateProjectsLocationsAssistantSessionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates an assistant session. */
+export const createProjectsLocationsAssistantSessions: API.OperationMethod<
+  CreateProjectsLocationsAssistantSessionsRequest,
+  GoogleCloudContactcenterinsightsV1AssistantSession,
+  CreateProjectsLocationsAssistantSessionsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsAssistantSessionsRequest,
+  output: GoogleCloudContactcenterinsightsV1AssistantSession,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateProjectsLocationsAuthorizedViewSetsError =
   | NotFound
   | Forbidden
@@ -11125,7 +11885,11 @@ export const createProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Opera
 }));
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create Assessment. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
   CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
@@ -11142,7 +11906,11 @@ export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
 }));
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create Note. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
   CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest,
@@ -11159,7 +11927,11 @@ export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
 }));
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create feedback label. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
   CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
@@ -11616,7 +12388,11 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Opera
 }));
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a conversation. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
@@ -11633,7 +12409,11 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
 }));
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete an Assessment. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
@@ -11650,7 +12430,11 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
 }));
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Note. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest,
@@ -11667,7 +12451,11 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
 }));
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete feedback label. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
@@ -12164,7 +12952,11 @@ export const exportProjectsLocationsIssueModels: API.OperationMethod<
 }));
 
 export type FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Finalize an Assessment. */
 export const finalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
   FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
@@ -12201,7 +12993,9 @@ export const finalizeProjectsLocationsConversationsAssessments: API.OperationMet
 }));
 
 export type GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the signed URI for the audio for the given conversation. */
 export const generateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
   GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
@@ -12277,7 +13071,11 @@ export const generativeInsightsProjectsLocations: API.OperationMethod<
 }));
 
 export type GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics. */
 export const generativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
   GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
@@ -12330,7 +13128,9 @@ export const getEncryptionSpecProjectsLocations: API.OperationMethod<
 }));
 
 export type GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
   GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
@@ -12381,6 +13181,24 @@ export const getProjectsLocationsAssessmentRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetProjectsLocationsAssistantSessionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Gets an assistant session. */
+export const getProjectsLocationsAssistantSessions: API.OperationMethod<
+  GetProjectsLocationsAssistantSessionsRequest,
+  GoogleCloudContactcenterinsightsV1AssistantSession,
+  GetProjectsLocationsAssistantSessionsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsAssistantSessionsRequest,
+  output: GoogleCloudContactcenterinsightsV1AssistantSession,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetProjectsLocationsAuthorizedViewSetsError =
   | NotFound
   | Forbidden
@@ -12418,7 +13236,9 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Operatio
 }));
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a conversation. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
@@ -12435,7 +13255,9 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations:
 }));
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get Assessment. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
@@ -12452,7 +13274,9 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsA
 }));
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get feedback label. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
@@ -12469,7 +13293,9 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsF
 }));
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.OperationMethod<
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest,
@@ -13013,6 +13839,29 @@ export const listProjectsLocationsAssessmentRules: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
+export type ListProjectsLocationsAssistantSessionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Lists assistant sessions. */
+export const listProjectsLocationsAssistantSessions: API.PaginatedOperationMethod<
+  ListProjectsLocationsAssistantSessionsRequest,
+  GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse,
+  ListProjectsLocationsAssistantSessionsError,
+  GcpOpContext,
+  GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsAssistantSessionsRequest,
+  output: GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
+})) as any;
+
 export type ListProjectsLocationsAuthorizedViewSetsError =
   | NotFound
   | Forbidden
@@ -13060,7 +13909,9 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Paginat
 })) as any;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists conversations. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.PaginatedOperationMethod<
   ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
@@ -13082,7 +13933,9 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
 })) as any;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List Assessments. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.PaginatedOperationMethod<
   ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
@@ -13104,7 +13957,9 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
 })) as any;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List Notes. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.PaginatedOperationMethod<
   ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest,
@@ -13126,7 +13981,9 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
 })) as any;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List feedback labels. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.PaginatedOperationMethod<
   ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
@@ -13148,7 +14005,9 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
 })) as any;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest,
@@ -13687,7 +14546,11 @@ export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Operat
 }));
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update Note. */
 export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
   PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest,
@@ -13704,7 +14567,11 @@ export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
 }));
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update feedback label. */
 export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
   PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
@@ -14021,7 +14888,11 @@ export const patchProjectsLocationsViews: API.OperationMethod<
 }));
 
 export type PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Publish an Assessment. */
 export const publishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
   PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
@@ -14078,7 +14949,11 @@ export const queryMetricsProjectsLocations: API.OperationMethod<
 }));
 
 export type QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Query metrics. */
 export const queryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
   QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
@@ -14114,7 +14989,11 @@ export const queryPerformanceOverviewProjectsLocations: API.OperationMethod<
 }));
 
 export type QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period. */
 export const queryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
   QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
@@ -14194,7 +15073,11 @@ export const searchProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Pagin
 })) as any;
 
 export type SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
   SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
@@ -14204,6 +15087,26 @@ export const setIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API
 > = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
   output: GoogleIamV1Policy,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type StreamChatProjectsLocationsAssistantSessionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Streams chat messages from the assistant. */
+export const streamChatProjectsLocationsAssistantSessions: API.OperationMethod<
+  StreamChatProjectsLocationsAssistantSessionsRequest,
+  GoogleCloudContactcenterinsightsV1StreamChatResponse,
+  StreamChatProjectsLocationsAssistantSessionsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StreamChatProjectsLocationsAssistantSessionsRequest,
+  output: GoogleCloudContactcenterinsightsV1StreamChatResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -14230,7 +15133,11 @@ export const testCorrelationConfigProjectsLocations: API.OperationMethod<
 }));
 
 export type TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
   TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
@@ -14267,7 +15174,11 @@ export const testProjectsLocationsAutoLabelingRules: API.OperationMethod<
 }));
 
 export type TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsError =
-  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Fine tune one or more QaModels. */
 export const tuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisions: API.OperationMethod<
   TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest,

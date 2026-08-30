@@ -373,7 +373,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
-export type BedrockModelId = string;
+export type AdvancedPromptOptimizationModelIdentifier = string;
 export type NonEmptyStringList = string[];
 export const NonEmptyStringList = /*@__PURE__*/ S.Array(S.String);
 export interface InferenceConfiguration {
@@ -1846,6 +1846,7 @@ export const CreateEvaluationJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEvaluationJobResponse",
 }) as any as S.Schema<CreateEvaluationJobResponse>;
 export type OfferToken = string;
+export type BedrockModelId = string;
 export interface CreateFoundationModelAgreementRequest {
   offerToken: string;
   modelId: string;

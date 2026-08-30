@@ -1754,10 +1754,10 @@ export interface ListOrgCustomPatternsRequest {
   sort?: ListOrgCustomPatternsRequestSort | (string & {});
   /** The direction to sort the results by. */
   direction?: ListOrgCustomPatternsRequestDirection | (string & {});
-  /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
-  page?: number;
-  /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
-  per_page?: number;
+  /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results before this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
+  before?: string;
+  /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
+  after?: string;
 }
 export const ListOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1770,8 +1770,8 @@ export const ListOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
     direction: S.optional(
       ListOrgCustomPatternsRequestDirection.pipe(T.Query()),
     ),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    before: S.optional(S.String.pipe(T.Query())),
+    after: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1950,10 +1950,10 @@ export interface ListRepoCustomPatternsRequest {
   sort?: ListRepoCustomPatternsRequestSort | (string & {});
   /** The direction to sort the results by. */
   direction?: ListRepoCustomPatternsRequestDirection | (string & {});
-  /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
-  page?: number;
-  /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
-  per_page?: number;
+  /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results before this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
+  before?: string;
+  /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
+  after?: string;
 }
 export const ListRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1967,8 +1967,8 @@ export const ListRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
     direction: S.optional(
       ListRepoCustomPatternsRequestDirection.pipe(T.Query()),
     ),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    before: S.optional(S.String.pipe(T.Query())),
+    after: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2086,7 +2086,9 @@ export const UpdateOrgCustomPatternRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Push protection setting to set for the pattern. */
 export type UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting =
-  "not-set" | "disabled" | "enabled";
+  | "not-set"
+  | "disabled"
+  | "enabled";
 export const UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting =
   /*@__PURE__*/ S.String;
 
@@ -2120,7 +2122,8 @@ export const UpdateOrgPatternConfigsRequestProviderPatternSettingsList =
 
 /** Push protection setting to set for the pattern. */
 export type UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting =
-  "disabled" | "enabled";
+  | "disabled"
+  | "enabled";
 export const UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting =
   /*@__PURE__*/ S.String;
 

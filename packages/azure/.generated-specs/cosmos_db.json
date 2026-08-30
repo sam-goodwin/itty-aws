@@ -1411,6 +1411,12 @@
             "smithy.api#documentation": "Cosmos DB fleet name. Needs to be unique under a subscription."
           }
         },
+        "tags": {
+          "target": "com.azure.cosmos_db#FleetUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
         "properties": {
           "target": "com.azure.cosmos_db#FleetResourceProperties",
           "traits": {
@@ -1420,6 +1426,18 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#FleetUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cosmos_db#FleetCreate": {

@@ -7,65 +7,13 @@
     "baseUrl": "https://adexperiencereport.googleapis.com/"
   },
   "shapes": {
-    "com.gcp.adexperiencereport_v1#ViolatingSitesResponse": {
-      "type": "structure",
-      "members": {
-        "violatingSites": {
-          "target": "com.gcp.adexperiencereport_v1#SiteSummaryResponseList",
-          "traits": {
-            "smithy.api#documentation": "The list of violating sites."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response message for ListViolatingSites."
-      }
-    },
-    "com.gcp.adexperiencereport_v1#SiteSummaryResponseList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.adexperiencereport_v1#SiteSummaryResponse"
-      }
-    },
-    "com.gcp.adexperiencereport_v1#SiteSummaryResponse": {
-      "type": "structure",
-      "members": {
-        "mobileSummary": {
-          "target": "com.gcp.adexperiencereport_v1#PlatformSummary",
-          "traits": {
-            "smithy.api#documentation": "The site's Ad Experience Report summary on mobile."
-          }
-        },
-        "reviewedSite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the reviewed site, e.g. `google.com`."
-          }
-        },
-        "desktopSummary": {
-          "target": "com.gcp.adexperiencereport_v1#PlatformSummary",
-          "traits": {
-            "smithy.api#documentation": "The site's Ad Experience Report summary on desktop."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response message for GetSiteSummary."
-      }
-    },
     "com.gcp.adexperiencereport_v1#PlatformSummary": {
       "type": "structure",
       "members": {
-        "reportUrl": {
-          "target": "smithy.api#String",
+        "filterStatus": {
+          "target": "com.gcp.adexperiencereport_v1#PlatformSummaryFilterStatusEnum",
           "traits": {
-            "smithy.api#documentation": "A link to the full Ad Experience Report for the site on this platform.. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report."
-          }
-        },
-        "underReview": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the site is currently under review on this platform."
+            "smithy.api#documentation": "The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this platform."
           }
         },
         "betterAdsStatus": {
@@ -74,10 +22,10 @@
             "smithy.api#documentation": "The site's Ad Experience Report status on this platform."
           }
         },
-        "enforcementTime": {
-          "target": "smithy.api#String",
+        "underReview": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the site began or will begin on this platform. Not set when the filter_status is OFF."
+            "smithy.api#documentation": "Whether the site is currently under review on this platform."
           }
         },
         "region": {
@@ -86,10 +34,16 @@
             "smithy.api#documentation": "The site's regions on this platform. No longer populated, because there is no longer any semantic difference between sites in different regions."
           }
         },
-        "filterStatus": {
-          "target": "com.gcp.adexperiencereport_v1#PlatformSummaryFilterStatusEnum",
+        "enforcementTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this platform."
+            "smithy.api#documentation": "The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the site began or will begin on this platform. Not set when the filter_status is OFF."
+          }
+        },
+        "reportUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A link to the full Ad Experience Report for the site on this platform.. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report."
           }
         },
         "lastChangeTime": {
@@ -101,6 +55,41 @@
       },
       "traits": {
         "smithy.api#documentation": "A site's Ad Experience Report summary on a single platform."
+      }
+    },
+    "com.gcp.adexperiencereport_v1#PlatformSummaryFilterStatusEnum": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ON"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OFF"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAUSED"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        }
       }
     },
     "com.gcp.adexperiencereport_v1#PlatformSummaryBetterAdsStatusEnum": {
@@ -167,39 +156,50 @@
         "target": "com.gcp.adexperiencereport_v1#PlatformSummaryRegionItemEnum"
       }
     },
-    "com.gcp.adexperiencereport_v1#PlatformSummaryFilterStatusEnum": {
-      "type": "enum",
+    "com.gcp.adexperiencereport_v1#SiteSummaryResponse": {
+      "type": "structure",
       "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
+        "desktopSummary": {
+          "target": "com.gcp.adexperiencereport_v1#PlatformSummary",
           "traits": {
-            "smithy.api#enumValue": "UNKNOWN"
+            "smithy.api#documentation": "The site's Ad Experience Report summary on desktop."
           }
         },
-        "ON": {
-          "target": "smithy.api#Unit",
+        "mobileSummary": {
+          "target": "com.gcp.adexperiencereport_v1#PlatformSummary",
           "traits": {
-            "smithy.api#enumValue": "ON"
+            "smithy.api#documentation": "The site's Ad Experience Report summary on mobile."
           }
         },
-        "OFF": {
-          "target": "smithy.api#Unit",
+        "reviewedSite": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "OFF"
-          }
-        },
-        "PAUSED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PAUSED"
-          }
-        },
-        "PENDING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PENDING"
+            "smithy.api#documentation": "The name of the reviewed site, e.g. `google.com`."
           }
         }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response message for GetSiteSummary."
+      }
+    },
+    "com.gcp.adexperiencereport_v1#ViolatingSitesResponse": {
+      "type": "structure",
+      "members": {
+        "violatingSites": {
+          "target": "com.gcp.adexperiencereport_v1#SiteSummaryResponseList",
+          "traits": {
+            "smithy.api#documentation": "The list of violating sites."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response message for ListViolatingSites."
+      }
+    },
+    "com.gcp.adexperiencereport_v1#SiteSummaryResponseList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.adexperiencereport_v1#SiteSummaryResponse"
       }
     },
     "com.gcp.adexperiencereport_v1#GetSitesRequest": {

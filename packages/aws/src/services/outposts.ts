@@ -477,6 +477,83 @@ export const CreateOutpostOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOutpostOutput",
 }) as any as S.Schema<CreateOutpostOutput>;
+export type VpcId = string;
+export type SubnetId = string;
+export type SubnetIds = string[];
+export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type VpcEndpointId = string;
+export interface VpcInformation {
+  VpcId?: string;
+  SubnetIds?: string[];
+  VpcEndpointId?: string;
+}
+export const VpcInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VpcId: S.optional(S.String),
+    SubnetIds: S.optional(SubnetIds),
+    VpcEndpointId: S.optional(S.String),
+  }),
+).annotate({ identifier: "VpcInformation" }) as any as S.Schema<VpcInformation>;
+export type VpcInformationList = VpcInformation[];
+export const VpcInformationList = /*@__PURE__*/ S.Array(VpcInformation);
+export interface CreatePrivateConnectivityConfigInput {
+  OutpostId: string;
+  VpcInformationList: VpcInformation[];
+}
+export const CreatePrivateConnectivityConfigInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      OutpostId: S.String.pipe(T.HttpLabel("OutpostId")),
+      VpcInformationList: VpcInformationList,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/outposts/{OutpostId}/privateConnectivity",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreatePrivateConnectivityConfigInput",
+}) as any as S.Schema<CreatePrivateConnectivityConfigInput>;
+export type RoleArn = string;
+export type PrivateConnectivityStatus = "ENABLED" | "DISABLED" | (string & {});
+export const PrivateConnectivityStatus = /*@__PURE__*/ S.String;
+
+export interface PrivateConnectivityConfig {
+  RoleArn?: string;
+  PrivateConnectivityStatus?: PrivateConnectivityStatus;
+  VpcInformationList?: VpcInformation[];
+  ProvisioningRoleArn?: string;
+}
+export const PrivateConnectivityConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RoleArn: S.optional(S.String),
+    PrivateConnectivityStatus: S.optional(PrivateConnectivityStatus),
+    VpcInformationList: S.optional(VpcInformationList),
+    ProvisioningRoleArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateConnectivityConfig",
+}) as any as S.Schema<PrivateConnectivityConfig>;
+export interface CreatePrivateConnectivityConfigOutput {
+  PrivateConnectivityConfig?: PrivateConnectivityConfig;
+  OutpostId?: string;
+}
+export const CreatePrivateConnectivityConfigOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      PrivateConnectivityConfig: S.optional(PrivateConnectivityConfig),
+      OutpostId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CreatePrivateConnectivityConfigOutput",
+}) as any as S.Schema<CreatePrivateConnectivityConfigOutput>;
 export type CountryCode = string;
 export type QuoteCapacityType = "EC2" | "EBS" | "S3" | (string & {});
 export const QuoteCapacityType = /*@__PURE__*/ S.String;
@@ -1196,6 +1273,7 @@ export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type AWSServiceName =
   | "AWS"
   | "EC2"
+  | "EKS"
   | "ELASTICACHE"
   | "ELB"
   | "RDS"
@@ -1640,6 +1718,36 @@ export const GetOutpostSupportedInstanceTypesOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetOutpostSupportedInstanceTypesOutput",
 }) as any as S.Schema<GetOutpostSupportedInstanceTypesOutput>;
+export interface GetPrivateConnectivityConfigInput {
+  OutpostId: string;
+}
+export const GetPrivateConnectivityConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OutpostId: S.String.pipe(T.HttpLabel("OutpostId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/outposts/{OutpostId}/privateConnectivity",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPrivateConnectivityConfigInput",
+}) as any as S.Schema<GetPrivateConnectivityConfigInput>;
+export interface GetPrivateConnectivityConfigOutput {
+  PrivateConnectivityConfig?: PrivateConnectivityConfig;
+}
+export const GetPrivateConnectivityConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrivateConnectivityConfig: S.optional(PrivateConnectivityConfig),
+  }),
+).annotate({
+  identifier: "GetPrivateConnectivityConfigOutput",
+}) as any as S.Schema<GetPrivateConnectivityConfigOutput>;
 export interface GetQuoteInput {
   QuoteIdentifier: string;
 }
@@ -3047,6 +3155,39 @@ export const createOutpost: API.OperationMethod<
   operationName: "CreateOutpost",
 }));
 
+export type CreatePrivateConnectivityConfigError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates the private connectivity configuration for the specified Outpost. Private
+ * connectivity establishes a service link VPN connection between the Outpost and its home
+ * Amazon Web Services Region using a VPC and subnet that you specify, which allows the service link traffic
+ * to flow through your VPC and minimizes public internet exposure.
+ */
+export const createPrivateConnectivityConfig: API.OperationMethod<
+  CreatePrivateConnectivityConfigInput,
+  CreatePrivateConnectivityConfigOutput,
+  CreatePrivateConnectivityConfigError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePrivateConnectivityConfigInput,
+  output: CreatePrivateConnectivityConfigOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreatePrivateConnectivityConfig",
+}));
+
 export type CreateQuoteError =
   | AccessDeniedException
   | InternalServerException
@@ -3464,6 +3605,34 @@ export const getOutpostSupportedInstanceTypes: API.PaginatedOperationMethod<
     pageSize: "MaxResults",
   } as const,
 })) as any;
+
+export type GetPrivateConnectivityConfigError =
+  | AccessDeniedException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets the private connectivity configuration for the specified Outpost.
+ */
+export const getPrivateConnectivityConfig: API.OperationMethod<
+  GetPrivateConnectivityConfigInput,
+  GetPrivateConnectivityConfigOutput,
+  GetPrivateConnectivityConfigError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPrivateConnectivityConfigInput,
+  output: GetPrivateConnectivityConfigOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPrivateConnectivityConfig",
+}));
 
 export type GetQuoteError =
   | AccessDeniedException

@@ -1334,9 +1334,11 @@ export type UpdateClusterError =
  *
  * ### dsql:RemovePeerCluster
  *
- * Permission to remove peer clusters. The *dsql:RemovePeerCluster* permission uses a wildcard ARN pattern to simplify permission management during updates.
+ * Permission to remove peer clusters. When you list peer clusters in `multiRegionProperties.clusters`, you need this permission for each current peer cluster that your list omits.
  *
- * Resources: `arn:aws:dsql:*:*account-id*:cluster/*`
+ * Resources:
+ *
+ * - Each removed peer cluster: exact ARN of each removed peer cluster, in its own Region
  *
  * ### dsql:PutWitnessRegion
  *
@@ -1348,11 +1350,9 @@ export type UpdateClusterError =
  *
  * **This permission is checked both in the cluster Region and in the witness Region.**
  *
- * - The witness region specified in `multiRegionProperties.witnessRegion` cannot be the same as the cluster's Region.
+ * - The witness Region specified in `multiRegionProperties.witnessRegion` cannot be the same as the cluster's Region.
  *
- * - When updating clusters with peer relationships, permissions are checked for both adding and removing peers.
- *
- * - The `dsql:RemovePeerCluster` permission uses a wildcard ARN pattern to simplify permission management during updates.
+ * - When you list peer clusters in `multiRegionProperties.clusters`, you need `dsql:AddPeerCluster` for every peer cluster in your request. You need `dsql:RemovePeerCluster` only for the peer clusters that the update removes.
  */
 export const updateCluster: API.OperationMethod<
   UpdateClusterInput,

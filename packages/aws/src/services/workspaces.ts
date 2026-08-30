@@ -1087,6 +1087,7 @@ export interface WorkspaceProperties {
   Protocols?: Protocol[];
   OperatingSystemName?: OperatingSystemName;
   GlobalAccelerator?: GlobalAcceleratorForWorkSpace;
+  NestedVirtualizationEnabled?: boolean;
 }
 export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1098,6 +1099,7 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
     Protocols: S.optional(ProtocolList),
     OperatingSystemName: S.optional(OperatingSystemName),
     GlobalAccelerator: S.optional(GlobalAcceleratorForWorkSpace),
+    NestedVirtualizationEnabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "WorkspaceProperties",
@@ -1179,6 +1181,7 @@ export type ModificationResourceEnum =
   | "USER_VOLUME"
   | "COMPUTE_TYPE"
   | "PROTOCOL"
+  | "NESTED_VIRTUALIZATION"
   | (string & {});
 export const ModificationResourceEnum = /*@__PURE__*/ S.String;
 
@@ -2290,14 +2293,17 @@ export const ReconnectEnum = /*@__PURE__*/ S.String;
 export type LogUploadEnum = "ENABLED" | "DISABLED" | (string & {});
 export const LogUploadEnum = /*@__PURE__*/ S.String;
 
+export type ClientExperiencePolicy = string;
 export interface ClientProperties {
   ReconnectEnabled?: ReconnectEnum;
   LogUploadEnabled?: LogUploadEnum;
+  ClientExperiencePolicy?: string;
 }
 export const ClientProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReconnectEnabled: S.optional(ReconnectEnum),
     LogUploadEnabled: S.optional(LogUploadEnum),
+    ClientExperiencePolicy: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ClientProperties",
@@ -5868,6 +5874,10 @@ export type CreateWorkspacesPoolError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
+ * End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027,
+ * you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see
+ * Amazon WorkSpaces Pools end of support.
+ *
  * Creates a pool of WorkSpaces.
  */
 export const createWorkspacesPool: API.OperationMethod<
@@ -6785,6 +6795,10 @@ export type DescribeWorkspacesPoolsError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
+ * End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027,
+ * you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see
+ * Amazon WorkSpaces Pools end of support.
+ *
  * Describes the specified WorkSpaces Pools.
  */
 export const describeWorkspacesPools: API.OperationMethod<
@@ -6811,6 +6825,10 @@ export type DescribeWorkspacesPoolSessionsError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
+ * End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027,
+ * you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see
+ * Amazon WorkSpaces Pools end of support.
+ *
  * Retrieves a list that describes the streaming sessions for a specified pool.
  */
 export const describeWorkspacesPoolSessions: API.OperationMethod<
@@ -7157,6 +7175,9 @@ export type MigrateWorkspaceError =
  * For available migration scenarios, details about what happens during migration, and best
  * practices, see Migrate a
  * WorkSpace.
+ *
+ * If the source WorkSpace has nested virtualization enabled and the target bundle does
+ * not support nested virtualization, the migration fails.
  */
 export const migrateWorkspace: API.OperationMethod<
   MigrateWorkspaceRequest,
@@ -7741,6 +7762,10 @@ export type StartWorkspacesPoolError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
+ * End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027,
+ * you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see
+ * Amazon WorkSpaces Pools end of support.
+ *
  * Starts the specified pool.
  *
  * You cannot start a pool unless it has a running mode of
@@ -7798,6 +7823,10 @@ export type StopWorkspacesPoolError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
+ * End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027,
+ * you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see
+ * Amazon WorkSpaces Pools end of support.
+ *
  * Stops the specified pool.
  *
  * You cannot stop a WorkSpace pool unless it has a running mode of `AutoStop`
@@ -7874,6 +7903,10 @@ export type TerminateWorkspacesPoolError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
+ * End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027,
+ * you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see
+ * Amazon WorkSpaces Pools end of support.
+ *
  * Terminates the specified pool.
  */
 export const terminateWorkspacesPool: API.OperationMethod<
@@ -7904,6 +7937,10 @@ export type TerminateWorkspacesPoolSessionError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
+ * End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027,
+ * you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see
+ * Amazon WorkSpaces Pools end of support.
+ *
  * Terminates the pool session.
  */
 export const terminateWorkspacesPoolSession: API.OperationMethod<
@@ -8129,6 +8166,10 @@ export type UpdateWorkspacesPoolError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
+ * End of support notice: On December 31, 2027, Amazon Web Services will end support for Amazon WorkSpaces Pools. After December 31, 2027,
+ * you will no longer be able to access the Amazon WorkSpaces Pools console or Amazon WorkSpaces Pools resources. For more information, see
+ * Amazon WorkSpaces Pools end of support.
+ *
  * Updates the specified pool.
  */
 export const updateWorkspacesPool: API.OperationMethod<

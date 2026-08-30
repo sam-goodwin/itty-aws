@@ -59,6 +59,12 @@ export interface InsightVariablesCreateRequest {
   default_value?: unknown;
   /** Allowed values for List variables. Null for other variable types. */
   values?: unknown;
+  /** Whether a List variable accepts multiple selected values. */
+  is_multi?: boolean;
+  /** HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels. */
+  values_query?: string | null;
+  /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
+  values_query_connection_id?: string | null;
 }
 export const InsightVariablesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67,6 +73,9 @@ export const InsightVariablesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(InsightVariableTypeEnum),
     default_value: S.optional(S.Unknown),
     values: S.optional(S.Unknown),
+    is_multi: S.optional(S.Boolean),
+    values_query: S.optional(S.NullOr(S.String)),
+    values_query_connection_id: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -95,6 +104,12 @@ export interface InsightVariable {
   code_name?: string | null;
   /** Allowed values for List variables. Null for other variable types. */
   values?: unknown;
+  /** Whether a List variable accepts multiple selected values. */
+  is_multi?: boolean;
+  /** HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels. */
+  values_query?: string | null;
+  /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
+  values_query_connection_id?: string | null;
 }
 export const InsightVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -106,6 +121,9 @@ export const InsightVariable = /*@__PURE__*/ S.suspend(() =>
     created_at: S.optional(S.String),
     code_name: S.optional(S.NullOr(S.String)),
     values: S.optional(S.Unknown),
+    is_multi: S.optional(S.Boolean),
+    values_query: S.optional(S.NullOr(S.String)),
+    values_query_connection_id: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "InsightVariable",
@@ -195,6 +213,12 @@ export interface InsightVariablesPartialUpdateRequest {
   default_value?: unknown;
   /** Allowed values for List variables. Null for other variable types. */
   values?: unknown;
+  /** Whether a List variable accepts multiple selected values. */
+  is_multi?: boolean;
+  /** HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels. */
+  values_query?: string | null;
+  /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
+  values_query_connection_id?: string | null;
 }
 export const InsightVariablesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -205,6 +229,9 @@ export const InsightVariablesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       type: S.optional(InsightVariableTypeEnum),
       default_value: S.optional(S.Unknown),
       values: S.optional(S.Unknown),
+      is_multi: S.optional(S.Boolean),
+      values_query: S.optional(S.NullOr(S.String)),
+      values_query_connection_id: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -250,6 +277,12 @@ export interface InsightVariablesUpdateRequest {
   default_value?: unknown;
   /** Allowed values for List variables. Null for other variable types. */
   values?: unknown;
+  /** Whether a List variable accepts multiple selected values. */
+  is_multi?: boolean;
+  /** HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels. */
+  values_query?: string | null;
+  /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
+  values_query_connection_id?: string | null;
 }
 export const InsightVariablesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -259,6 +292,9 @@ export const InsightVariablesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(InsightVariableTypeEnum),
     default_value: S.optional(S.Unknown),
     values: S.optional(S.Unknown),
+    is_multi: S.optional(S.Boolean),
+    values_query: S.optional(S.NullOr(S.String)),
+    values_query_connection_id: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",

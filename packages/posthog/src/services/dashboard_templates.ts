@@ -72,7 +72,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -81,6 +81,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -318,6 +319,8 @@ export interface DashboardTemplatesListRequest {
   ordering?: DashboardTemplatesListRequestOrdering | (string & {});
   /** Optional. `global`: official templates only. `team`: this project's saved templates only (`scope=team` rows for the current project). `organization`: templates shared across all projects in this organization. `feature_flag`: feature-flag dashboard templates only. Omit for official, organization, and this project's templates (default dashboard template picker behavior). */
   scope?: DashboardTemplatesListRequestScope | (string & {});
+  /** Optional. Full-text search across template name, tags, and description, ranked by relevance. Use it to find templates for a topic (e.g. `retention`, `revenue`, `product analytics`). */
+  search?: string;
 }
 export const DashboardTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -327,6 +330,7 @@ export const DashboardTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
     offset: S.optional(S.Number.pipe(T.Query())),
     ordering: S.optional(DashboardTemplatesListRequestOrdering.pipe(T.Query())),
     scope: S.optional(DashboardTemplatesListRequestScope.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",

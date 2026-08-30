@@ -32,7 +32,7 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#httpQuery": "basic",
-            "smithy.api#documentation": "Return a basic payload that omits the heavy `filters`, `query`, and `groups` fields. Useful for pickers that only need id/name/count."
+            "smithy.api#documentation": "Return a basic payload that omits the `query`, `groups`, `last_error_message`, and `experiment_set` fields (`filters` is kept). Useful for pickers that only need id/name/count."
           }
         },
         "hide_behavioral_cohorts": {
@@ -54,6 +54,13 @@
           "traits": {
             "smithy.api#httpQuery": "offset",
             "smithy.api#documentation": "The initial index from which to return the results."
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "Optional. Match against cohort `name`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, transpositions, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Results are ordered by relevance. When omitted, cohorts are ordered newest-first. Capped at 200 characters; longer queries return a 400 error."
           }
         }
       },
@@ -169,6 +176,20 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "last_import_total_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of IDs supplied by the most recent static cohort import. Null if the cohort was never populated from a list of IDs.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "last_import_unmatched_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How many of the IDs in the most recent static cohort import matched no person, and so were not added to the cohort.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "is_static": {
           "target": "smithy.api#Boolean"
         },
@@ -179,8 +200,22 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "condition_type": {
+          "target": "com.posthog.cohorts#CohortConditionTypeFlags",
+          "traits": {
+            "smithy.api#documentation": "Flags describing which kinds of conditions the cohort's filters contain. Null when the cohort has no filters to classify.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "experiment_set": {
           "target": "com.posthog.cohorts#CohortOutputExperimentSetList"
+        },
+        "search_match_type": {
+          "target": "com.posthog.cohorts#SearchMatchTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}
@@ -190,6 +225,12 @@
       "members": {
         "properties": {
           "target": "com.posthog.cohorts#CohortFilterGroup"
+        },
+        "filterTestAccounts": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}
@@ -493,6 +534,15 @@
     "com.posthog.cohorts#PersonFilter": {
       "type": "structure",
       "members": {
+        "operator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document"
+        },
         "bytecode": {
           "target": "com.posthog.cohorts#PersonFilterBytecodeList",
           "traits": {
@@ -517,6 +567,22 @@
         "key": {
           "target": "smithy.api#String"
         },
+        "negation": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.cohorts#PersonFilterBytecodeList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.cohorts#PersonMetadataFilter": {
+      "type": "structure",
+      "members": {
         "operator": {
           "target": "smithy.api#String",
           "traits": {
@@ -526,13 +592,45 @@
         "value": {
           "target": "smithy.api#Document"
         },
+        "bytecode": {
+          "target": "com.posthog.cohorts#PersonMetadataFilterBytecodeList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "bytecode_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "conditionHash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "negation": {
           "target": "smithy.api#Boolean"
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Filter on a top-level persons-table column (e.g. created_at) rather than the\nproperties JSON. The matching key must be one of PERSON_METADATA_FIELDS."
+      }
     },
-    "com.posthog.cohorts#PersonFilterBytecodeList": {
+    "com.posthog.cohorts#PersonMetadataFilterBytecodeList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
@@ -550,6 +648,9 @@
         },
         "PersonFilter": {
           "target": "com.posthog.cohorts#PersonFilter"
+        },
+        "PersonMetadataFilter": {
+          "target": "com.posthog.cohorts#PersonMetadataFilter"
         },
         "CohortFilterGroup": {
           "target": "com.posthog.cohorts#CohortFilterGroup"
@@ -664,6 +765,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -672,7 +779,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.cohorts#BlankEnum": {
@@ -751,10 +858,62 @@
         "smithy.api#documentation": "Type of cohort based on filter complexity\n\n* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical"
       }
     },
+    "com.posthog.cohorts#CohortConditionTypeFlags": {
+      "type": "structure",
+      "members": {
+        "person_properties": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The filters include a person property or person_metadata condition.",
+            "smithy.api#required": {}
+          }
+        },
+        "behavioral": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The filters include a behavioral condition that is not lifecycle-style (e.g. performed_event, performed_event_multiple, performed_event_sequence, or their negations).",
+            "smithy.api#required": {}
+          }
+        },
+        "lifecycle": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The filters include a lifecycle-style behavioral condition (first-seen/regularly/stopped/restarted performing an event).",
+            "smithy.api#required": {}
+          }
+        },
+        "cohorts": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The filters include a nested reference to another cohort.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.cohorts#CohortOutputExperimentSetList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
+      },
+      "traits": {}
+    },
+    "com.posthog.cohorts#SearchMatchTypeEnum": {
+      "type": "enum",
+      "members": {
+        "EXACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exact"
+          }
+        },
+        "SIMILAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "similar"
+          }
+        }
       },
       "traits": {}
     },

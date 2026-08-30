@@ -206,6 +206,14 @@
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
+        },
+        "change_request": {
+          "target": "com.posthog.scheduled_changes#ChangeRequestSummary",
+          "traits": {
+            "smithy.api#documentation": "Summary of the approval change request gating this scheduled change. Null when no approval policy applies. The change only applies at its scheduled time if the request is approved by then.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}
@@ -324,6 +332,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -332,7 +346,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.scheduled_changes#BlankEnum": {
@@ -389,6 +403,72 @@
       },
       "traits": {
         "smithy.api#documentation": "* `daily` - daily\n* `weekly` - weekly\n* `monthly` - monthly\n* `yearly` - yearly"
+      }
+    },
+    "com.posthog.scheduled_changes#ChangeRequestSummary": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the approval change request. Use it to link to the change request in the UI.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.posthog.scheduled_changes#ChangeRequestStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Current approval state: 'pending' (awaiting approval), 'approved' (awaiting application), 'applied', 'rejected', 'expired', or 'failed'.\n\n* `pending` - Pending\n* `approved` - Approved (awaiting application)\n* `applied` - Applied\n* `rejected` - Rejected\n* `expired` - Expired\n* `failed` - Failed to apply",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Minimal read-only ChangeRequest shape for embedding on resources gated by an approval,\ne.g. the scheduled change that carries it. Exposes just enough to show the approval state\nand link to the change request."
+      }
+    },
+    "com.posthog.scheduled_changes#ChangeRequestStateEnum": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "approved"
+          }
+        },
+        "APPLIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "applied"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `pending` - Pending\n* `approved` - Approved (awaiting application)\n* `applied` - Applied\n* `rejected` - Rejected\n* `expired` - Expired\n* `failed` - Failed to apply"
       }
     },
     "com.posthog.scheduled_changes#PaginatedScheduledChangeListResultsList": {

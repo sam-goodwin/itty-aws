@@ -2012,31 +2012,38 @@ export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTo
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPullRequestCreationPolicy =
-  "all" | "collaborators_only";
+  | "all"
+  | "collaborators_only";
 export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPullRequestCreationPolicy =
   /*@__PURE__*/ S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitTitle =
-  "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+  | "PR_TITLE"
+  | "COMMIT_OR_PR_TITLE";
 export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitTitle =
   /*@__PURE__*/ S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitMessage =
-  "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
+  | "PR_BODY"
+  | "COMMIT_MESSAGES"
+  | "BLANK";
 export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitMessage =
   /*@__PURE__*/ S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitTitle =
-  "PR_TITLE" | "MERGE_MESSAGE";
+  | "PR_TITLE"
+  | "MERGE_MESSAGE";
 export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitTitle =
   /*@__PURE__*/ S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitMessage =
-  "PR_BODY" | "PR_TITLE" | "BLANK";
+  | "PR_BODY"
+  | "PR_TITLE"
+  | "BLANK";
 export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitMessage =
   /*@__PURE__*/ S.String;
 
@@ -2561,31 +2568,38 @@ export const ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy =
-  "all" | "collaborators_only";
+  | "all"
+  | "collaborators_only";
 export const ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy =
   /*@__PURE__*/ S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle =
-  "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+  | "PR_TITLE"
+  | "COMMIT_OR_PR_TITLE";
 export const ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle =
   /*@__PURE__*/ S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage =
-  "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
+  | "PR_BODY"
+  | "COMMIT_MESSAGES"
+  | "BLANK";
 export const ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage =
   /*@__PURE__*/ S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle =
-  "PR_TITLE" | "MERGE_MESSAGE";
+  | "PR_TITLE"
+  | "MERGE_MESSAGE";
 export const ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle =
   /*@__PURE__*/ S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage =
-  "PR_BODY" | "PR_TITLE" | "BLANK";
+  | "PR_BODY"
+  | "PR_TITLE"
+  | "BLANK";
 export const ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage =
   /*@__PURE__*/ S.String;
 

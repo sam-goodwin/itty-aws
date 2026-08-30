@@ -146,6 +146,16 @@ export class ServiceQuotaExceededException
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
+export class SubscriptionRequiredException
+  extends /*@__PURE__*/ S.TaggedError<SubscriptionRequiredException>()(
+    "SubscriptionRequiredException",
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      subscriptionUrl: S.optional(S.String),
+      productName: S.optional(S.String),
+    },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
@@ -323,9 +333,10 @@ export const BatchCreateMemoryRecordsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchCreateMemoryRecordsOutput>;
 export interface MemoryRecordDeleteInput {
   memoryRecordId: string;
+  namespace?: string;
 }
 export const MemoryRecordDeleteInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memoryRecordId: S.String }),
+  S.Struct({ memoryRecordId: S.String, namespace: S.optional(S.String) }),
 ).annotate({
   identifier: "MemoryRecordDeleteInput",
 }) as any as S.Schema<MemoryRecordDeleteInput>;
@@ -374,6 +385,7 @@ export interface MemoryRecordUpdateInput {
   timestamp: Date;
   content?: MemoryContent;
   namespaces?: string[];
+  sourceNamespaces?: string[];
   memoryStrategyId?: string;
   metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
@@ -383,6 +395,7 @@ export const MemoryRecordUpdateInput = /*@__PURE__*/ S.suspend(() =>
     timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     content: S.optional(MemoryContent),
     namespaces: S.optional(NamespacesList),
+    sourceNamespaces: S.optional(NamespacesList),
     memoryStrategyId: S.optional(S.String),
     metadata: S.optional(MemoryRecordMetadataMap),
   }),
@@ -655,12 +668,21 @@ export const Conversational = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: Content, role: Role }),
 ).annotate({ identifier: "Conversational" }) as any as S.Schema<Conversational>;
 export type MemoryDocument = unknown;
+export type MemoryJsonDataContent = unknown;
+export interface MemoryJsonData {
+  content: any;
+}
+export const MemoryJsonData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ content: S.Any }),
+).annotate({ identifier: "MemoryJsonData" }) as any as S.Schema<MemoryJsonData>;
 export type PayloadType =
-  | { conversational: Conversational; blob?: never }
-  | { conversational?: never; blob: any };
+  | { conversational: Conversational; blob?: never; json?: never }
+  | { conversational?: never; blob: any; json?: never }
+  | { conversational?: never; blob?: never; json: MemoryJsonData };
 export const PayloadType = /*@__PURE__*/ S.Union([
   S.Struct({ conversational: Conversational }),
   S.Struct({ blob: S.Any }),
+  S.Struct({ json: MemoryJsonData }),
 ]);
 export type PayloadTypeList = PayloadType[];
 export const PayloadTypeList = /*@__PURE__*/ S.Array(PayloadType);
@@ -685,6 +707,21 @@ export const MetadataMap = /*@__PURE__*/ S.Record(
 export type ExtractionMode = "SKIP" | (string & {});
 export const ExtractionMode = /*@__PURE__*/ S.String;
 
+export type NamespaceVariableName = string;
+export type NamespaceVariableValue = string;
+export type NamespaceVariablesMap = { [key: string]: string | undefined };
+export const NamespaceVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface ExtractionConfig {
+  namespaceVariables?: { [key: string]: string | undefined };
+}
+export const ExtractionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ namespaceVariables: S.optional(NamespaceVariablesMap) }),
+).annotate({
+  identifier: "ExtractionConfig",
+}) as any as S.Schema<ExtractionConfig>;
 export interface CreateEventInput {
   memoryId: string;
   actorId: string;
@@ -695,6 +732,7 @@ export interface CreateEventInput {
   clientToken?: string;
   metadata?: { [key: string]: MetadataValue | undefined };
   extractionMode?: ExtractionMode;
+  extractionConfig?: ExtractionConfig;
 }
 export const CreateEventInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -707,6 +745,7 @@ export const CreateEventInput = /*@__PURE__*/ S.suspend(() =>
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     metadata: S.optional(MetadataMap),
     extractionMode: S.optional(ExtractionMode),
+    extractionConfig: S.optional(ExtractionConfig),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/memories/{memoryId}/events" }),
@@ -943,6 +982,7 @@ export type PaymentInstrumentStatus =
   | "ACTIVE"
   | "FAILED"
   | "DELETED"
+  | "BLOCKED"
   | (string & {});
 export const PaymentInstrumentStatus = /*@__PURE__*/ S.String;
 
@@ -1151,6 +1191,58 @@ export const DeleteBatchEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBatchEvaluationResponse",
 }) as any as S.Schema<DeleteBatchEvaluationResponse>;
+export type CapacityProviderId = string;
+export interface DeleteCapacityProviderSessionRequest {
+  capacityProviderId: string;
+  sessionId: string;
+}
+export const DeleteCapacityProviderSessionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      capacityProviderId: S.String.pipe(T.HttpLabel("capacityProviderId")),
+      sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/capacity-providers/{capacityProviderId}/sessions/{sessionId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteCapacityProviderSessionRequest",
+}) as any as S.Schema<DeleteCapacityProviderSessionRequest>;
+export type CapacityProviderArn = string;
+export type CapacityProviderSessionStatus =
+  | "Provisioning"
+  | "Deprovisioning"
+  | "Active"
+  | "Deleting"
+  | "Deleted"
+  | "Stopped"
+  | (string & {});
+export const CapacityProviderSessionStatus = /*@__PURE__*/ S.String;
+
+export interface DeleteCapacityProviderSessionResponse {
+  capacityProviderArn: string;
+  sessionId: string;
+  status: CapacityProviderSessionStatus;
+}
+export const DeleteCapacityProviderSessionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      capacityProviderArn: S.String,
+      sessionId: S.String,
+      status: CapacityProviderSessionStatus,
+    }),
+).annotate({
+  identifier: "DeleteCapacityProviderSessionResponse",
+}) as any as S.Schema<DeleteCapacityProviderSessionResponse>;
 export interface DeleteEventInput {
   memoryId: string;
   sessionId: string;
@@ -1190,11 +1282,13 @@ export const DeleteEventOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMemoryRecordInput {
   memoryId: string;
   memoryRecordId: string;
+  namespace?: string;
 }
 export const DeleteMemoryRecordInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryId: S.String.pipe(T.HttpLabel("memoryId")),
     memoryRecordId: S.String.pipe(T.HttpLabel("memoryRecordId")),
+    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
   }).pipe(
     T.all(
       T.Http({
@@ -2342,6 +2436,50 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 export type Certificates = Certificate[];
 export const Certificates = /*@__PURE__*/ S.Array(Certificate);
+export type S3FilesAccessPointArn = string;
+export type MountPath = string;
+export type S3FilesFileSystemArn = string;
+export interface S3FilesConfiguration {
+  accessPointArn: string;
+  mountPath: string;
+  fileSystemArn: string;
+}
+export const S3FilesConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessPointArn: S.String,
+    mountPath: S.String,
+    fileSystemArn: S.String,
+  }),
+).annotate({
+  identifier: "S3FilesConfiguration",
+}) as any as S.Schema<S3FilesConfiguration>;
+export type EfsAccessPointArn = string;
+export type EfsFileSystemArn = string;
+export interface EfsConfiguration {
+  accessPointArn: string;
+  mountPath: string;
+  fileSystemArn: string;
+}
+export const EfsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessPointArn: S.String,
+    mountPath: S.String,
+    fileSystemArn: S.String,
+  }),
+).annotate({
+  identifier: "EfsConfiguration",
+}) as any as S.Schema<EfsConfiguration>;
+export type ToolsFileSystemConfiguration =
+  | { s3FilesConfiguration: S3FilesConfiguration; efsConfiguration?: never }
+  | { s3FilesConfiguration?: never; efsConfiguration: EfsConfiguration };
+export const ToolsFileSystemConfiguration = /*@__PURE__*/ S.Union([
+  S.Struct({ s3FilesConfiguration: S3FilesConfiguration }),
+  S.Struct({ efsConfiguration: EfsConfiguration }),
+]);
+export type ToolsFileSystemConfigurations = ToolsFileSystemConfiguration[];
+export const ToolsFileSystemConfigurations = /*@__PURE__*/ S.Array(
+  ToolsFileSystemConfiguration,
+);
 export interface GetBrowserSessionResponse {
   browserIdentifier: string;
   sessionId: string;
@@ -2356,6 +2494,7 @@ export interface GetBrowserSessionResponse {
   streams?: BrowserSessionStream;
   proxyConfiguration?: ProxyConfiguration;
   certificates?: Certificate[];
+  filesystemConfigurations?: ToolsFileSystemConfiguration[];
   sessionReplayArtifact?: string;
   lastUpdatedAt?: Date;
 }
@@ -2374,6 +2513,7 @@ export const GetBrowserSessionResponse = /*@__PURE__*/ S.suspend(() =>
     streams: S.optional(BrowserSessionStream),
     proxyConfiguration: S.optional(ProxyConfiguration),
     certificates: S.optional(Certificates),
+    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
     sessionReplayArtifact: S.optional(S.String),
     lastUpdatedAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2424,6 +2564,7 @@ export interface GetCodeInterpreterSessionResponse {
   sessionTimeoutSeconds?: number;
   status?: CodeInterpreterSessionStatus;
   certificates?: Certificate[];
+  filesystemConfigurations?: ToolsFileSystemConfiguration[];
 }
 export const GetCodeInterpreterSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2434,6 +2575,7 @@ export const GetCodeInterpreterSessionResponse = /*@__PURE__*/ S.suspend(() =>
     sessionTimeoutSeconds: S.optional(S.Number),
     status: S.optional(CodeInterpreterSessionStatus),
     certificates: S.optional(Certificates),
+    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
   }),
 ).annotate({
   identifier: "GetCodeInterpreterSessionResponse",
@@ -2473,11 +2615,13 @@ export const GetEventOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetMemoryRecordInput {
   memoryId: string;
   memoryRecordId: string;
+  namespace?: string;
 }
 export const GetMemoryRecordInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryId: S.String.pipe(T.HttpLabel("memoryId")),
     memoryRecordId: S.String.pipe(T.HttpLabel("memoryRecordId")),
+    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
   }).pipe(
     T.all(
       T.Http({
@@ -2797,22 +2941,50 @@ export const BatchEvaluationTraceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchEvaluationTraceConfig",
 }) as any as S.Schema<BatchEvaluationTraceConfig>;
+export interface OnlineEvaluationTraceConfig {
+  onlineEvaluationConfigArn: string;
+  startTime: Date;
+  endTime: Date;
+}
+export const OnlineEvaluationTraceConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    onlineEvaluationConfigArn: S.String,
+    startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "OnlineEvaluationTraceConfig",
+}) as any as S.Schema<OnlineEvaluationTraceConfig>;
 export type AgentTracesConfig =
-  | { sessionSpans: any[]; cloudwatchLogs?: never; batchEvaluation?: never }
+  | {
+      sessionSpans: any[];
+      cloudwatchLogs?: never;
+      batchEvaluation?: never;
+      onlineEvaluation?: never;
+    }
   | {
       sessionSpans?: never;
       cloudwatchLogs: CloudWatchLogsTraceConfig;
       batchEvaluation?: never;
+      onlineEvaluation?: never;
     }
   | {
       sessionSpans?: never;
       cloudwatchLogs?: never;
       batchEvaluation: BatchEvaluationTraceConfig;
+      onlineEvaluation?: never;
+    }
+  | {
+      sessionSpans?: never;
+      cloudwatchLogs?: never;
+      batchEvaluation?: never;
+      onlineEvaluation: OnlineEvaluationTraceConfig;
     };
 export const AgentTracesConfig = /*@__PURE__*/ S.Union([
   S.Struct({ sessionSpans: Spans }),
   S.Struct({ cloudwatchLogs: CloudWatchLogsTraceConfig }),
   S.Struct({ batchEvaluation: BatchEvaluationTraceConfig }),
+  S.Struct({ onlineEvaluation: OnlineEvaluationTraceConfig }),
 ]);
 export interface RecommendationEvaluatorReference {
   evaluatorArn: string;
@@ -3401,6 +3573,68 @@ export const GetWorkloadAccessTokenForUserIdResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetWorkloadAccessTokenForUserIdResponse",
 }) as any as S.Schema<GetWorkloadAccessTokenForUserIdResponse>;
+export type IngestPayloadType =
+  | { conversational: Conversational; json?: never }
+  | { conversational?: never; json: MemoryJsonData };
+export const IngestPayloadType = /*@__PURE__*/ S.Union([
+  S.Struct({ conversational: Conversational }),
+  S.Struct({ json: MemoryJsonData }),
+]);
+export type IngestPayloadList = IngestPayloadType[];
+export const IngestPayloadList = /*@__PURE__*/ S.Array(IngestPayloadType);
+export interface InlineMemoryContent {
+  payload: IngestPayloadType[];
+}
+export const InlineMemoryContent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ payload: IngestPayloadList }),
+).annotate({
+  identifier: "InlineMemoryContent",
+}) as any as S.Schema<InlineMemoryContent>;
+export type ContentSource = { inline: InlineMemoryContent };
+export const ContentSource = /*@__PURE__*/ S.Union([
+  S.Struct({ inline: InlineMemoryContent }),
+]);
+export interface IngestDataInput {
+  memoryId: string;
+  source: ContentSource;
+  contentTimestamp: Date;
+  actorId: string;
+  sessionId?: string;
+  extractionConfig?: ExtractionConfig;
+  metadata?: { [key: string]: MetadataValue | undefined };
+  clientToken?: string;
+}
+export const IngestDataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+    source: ContentSource,
+    contentTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    actorId: S.String,
+    sessionId: S.optional(S.String),
+    extractionConfig: S.optional(ExtractionConfig),
+    metadata: S.optional(MetadataMap),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/memories/{memoryId}/ingest" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "IngestDataInput",
+}) as any as S.Schema<IngestDataInput>;
+export interface IngestDataOutput {
+  sessionId: string;
+}
+export const IngestDataOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ sessionId: S.String }),
+).annotate({
+  identifier: "IngestDataOutput",
+}) as any as S.Schema<IngestDataOutput>;
 export type MimeType = string;
 export type StringType = string;
 export type Body = Uint8Array | redacted.Redacted<Uint8Array>;
@@ -3410,6 +3644,8 @@ export interface InvokeAgentRuntimeRequest {
   mcpSessionId?: string;
   runtimeSessionId?: string;
   mcpProtocolVersion?: string;
+  mcpMethod?: string;
+  mcpName?: string;
   runtimeUserId?: string;
   traceId?: string;
   traceParent?: string;
@@ -3432,6 +3668,8 @@ export const InvokeAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
     mcpProtocolVersion: S.optional(S.String).pipe(
       T.HttpHeader("Mcp-Protocol-Version"),
     ),
+    mcpMethod: S.optional(S.String).pipe(T.HttpHeader("Mcp-Method")),
+    mcpName: S.optional(S.String).pipe(T.HttpHeader("Mcp-Name")),
     runtimeUserId: S.optional(S.String).pipe(
       T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-User-Id"),
     ),
@@ -4679,6 +4917,7 @@ export interface HarnessGeminiModelConfig {
   temperature?: number;
   topP?: number;
   topK?: number;
+  additionalParams?: any;
 }
 export const HarnessGeminiModelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4688,6 +4927,7 @@ export const HarnessGeminiModelConfig = /*@__PURE__*/ S.suspend(() =>
     temperature: S.optional(S.Number),
     topP: S.optional(S.Number),
     topK: S.optional(S.Number),
+    additionalParams: S.optional(S.Any),
   }),
 ).annotate({
   identifier: "HarnessGeminiModelConfig",
@@ -5002,6 +5242,10 @@ export interface InvokeHarnessRequest {
   qualifier?: string;
   runtimeSessionId: string;
   runtimeUserId?: string;
+  traceParent?: string;
+  traceState?: string;
+  traceId?: string;
+  baggage?: string;
   messages: HarnessMessage[];
   model?: HarnessModelConfiguration;
   systemPrompt?: HarnessSystemContentBlock[];
@@ -5023,6 +5267,10 @@ export const InvokeHarnessRequest = /*@__PURE__*/ S.suspend(() =>
     runtimeUserId: S.optional(S.String).pipe(
       T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-User-Id"),
     ),
+    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+    traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
+    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+    baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
     messages: HarnessMessages,
     model: S.optional(HarnessModelConfiguration),
     systemPrompt: S.optional(HarnessSystemPrompt),
@@ -5127,36 +5375,56 @@ export const HarnessReasoningContentBlockDelta = /*@__PURE__*/ S.Union([
   S.Struct({ redactedContent: SensitiveBlob }),
   S.Struct({ signature: S.String }),
 ]);
+export interface HarnessToolResultMetadataBlockDelta {
+  metadata: string | redacted.Redacted<string>;
+}
+export const HarnessToolResultMetadataBlockDelta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ metadata: SensitiveString }),
+).annotate({
+  identifier: "HarnessToolResultMetadataBlockDelta",
+}) as any as S.Schema<HarnessToolResultMetadataBlockDelta>;
 export type HarnessContentBlockDelta =
   | {
       text: string | redacted.Redacted<string>;
       toolUse?: never;
       toolResult?: never;
       reasoningContent?: never;
+      toolResultMetadata?: never;
     }
   | {
       text?: never;
       toolUse: HarnessToolUseBlockDelta;
       toolResult?: never;
       reasoningContent?: never;
+      toolResultMetadata?: never;
     }
   | {
       text?: never;
       toolUse?: never;
       toolResult: HarnessToolResultBlockDelta[];
       reasoningContent?: never;
+      toolResultMetadata?: never;
     }
   | {
       text?: never;
       toolUse?: never;
       toolResult?: never;
       reasoningContent: HarnessReasoningContentBlockDelta;
+      toolResultMetadata?: never;
+    }
+  | {
+      text?: never;
+      toolUse?: never;
+      toolResult?: never;
+      reasoningContent?: never;
+      toolResultMetadata: HarnessToolResultMetadataBlockDelta;
     };
 export const HarnessContentBlockDelta = /*@__PURE__*/ S.Union([
   S.Struct({ text: SensitiveString }),
   S.Struct({ toolUse: HarnessToolUseBlockDelta }),
   S.Struct({ toolResult: HarnessToolResultBlocksDelta }),
   S.Struct({ reasoningContent: HarnessReasoningContentBlockDelta }),
+  S.Struct({ toolResultMetadata: HarnessToolResultMetadataBlockDelta }),
 ]);
 export interface HarnessContentBlockDeltaEvent {
   contentBlockIndex: number;
@@ -6243,22 +6511,49 @@ export const ListSessionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSessionsOutput",
 }) as any as S.Schema<ListSessionsOutput>;
-export type PaymentType = "CRYPTO_X402" | (string & {});
+export type PaymentType = "CRYPTO_X402" | "MPP" | (string & {});
 export const PaymentType = /*@__PURE__*/ S.String;
 
 export type PaymentDocument = unknown;
+export type Permit2AllowanceLimit = string;
 export interface CryptoX402PaymentInput {
   version: string;
   payload: any;
+  permit2AllowanceLimit?: string;
 }
 export const CryptoX402PaymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ version: S.String, payload: S.Any }),
+  S.Struct({
+    version: S.String,
+    payload: S.Any,
+    permit2AllowanceLimit: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CryptoX402PaymentInput",
 }) as any as S.Schema<CryptoX402PaymentInput>;
-export type PaymentInput = { cryptoX402: CryptoX402PaymentInput };
+export type Version = string;
+export type WwwAuthenticateHeader = string;
+export type WwwAuthenticateHeaderList = string[];
+export const WwwAuthenticateHeaderList = /*@__PURE__*/ S.Array(S.String);
+export interface MppPaymentInput {
+  version: string;
+  wwwAuthenticateHeaders: string[];
+  buyerPaysGasFees?: boolean;
+}
+export const MppPaymentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.String,
+    wwwAuthenticateHeaders: WwwAuthenticateHeaderList,
+    buyerPaysGasFees: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MppPaymentInput",
+}) as any as S.Schema<MppPaymentInput>;
+export type PaymentInput =
+  | { cryptoX402: CryptoX402PaymentInput; mpp?: never }
+  | { cryptoX402?: never; mpp: MppPaymentInput };
 export const PaymentInput = /*@__PURE__*/ S.Union([
   S.Struct({ cryptoX402: CryptoX402PaymentInput }),
+  S.Struct({ mpp: MppPaymentInput }),
 ]);
 export interface ProcessPaymentRequest {
   userId?: string;
@@ -6310,9 +6605,27 @@ export const CryptoX402PaymentOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CryptoX402PaymentOutput",
 }) as any as S.Schema<CryptoX402PaymentOutput>;
-export type PaymentOutput = { cryptoX402: CryptoX402PaymentOutput };
+export type MppPaymentCredential = string | redacted.Redacted<string>;
+export interface MppPaymentOutput {
+  version: string;
+  selectedPaymentId: string;
+  paymentCredential: string | redacted.Redacted<string>;
+}
+export const MppPaymentOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.String,
+    selectedPaymentId: S.String,
+    paymentCredential: SensitiveString,
+  }),
+).annotate({
+  identifier: "MppPaymentOutput",
+}) as any as S.Schema<MppPaymentOutput>;
+export type PaymentOutput =
+  | { cryptoX402: CryptoX402PaymentOutput; mpp?: never }
+  | { cryptoX402?: never; mpp: MppPaymentOutput };
 export const PaymentOutput = /*@__PURE__*/ S.Union([
   S.Struct({ cryptoX402: CryptoX402PaymentOutput }),
+  S.Struct({ mpp: MppPaymentOutput }),
 ]);
 export interface ProcessPaymentResponse {
   processPaymentId: string;
@@ -6782,6 +7095,7 @@ export interface StartBrowserSessionRequest {
   proxyConfiguration?: ProxyConfiguration;
   enterprisePolicies?: BrowserEnterprisePolicy[];
   certificates?: Certificate[];
+  filesystemConfigurations?: ToolsFileSystemConfiguration[];
   clientToken?: string;
 }
 export const StartBrowserSessionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6797,6 +7111,7 @@ export const StartBrowserSessionRequest = /*@__PURE__*/ S.suspend(() =>
     proxyConfiguration: S.optional(ProxyConfiguration),
     enterprisePolicies: S.optional(BrowserEnterprisePolicies),
     certificates: S.optional(Certificates),
+    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(
@@ -6837,6 +7152,7 @@ export interface StartCodeInterpreterSessionRequest {
   name?: string;
   sessionTimeoutSeconds?: number;
   certificates?: Certificate[];
+  filesystemConfigurations?: ToolsFileSystemConfiguration[];
   clientToken?: string;
 }
 export const StartCodeInterpreterSessionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6849,6 +7165,7 @@ export const StartCodeInterpreterSessionRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     sessionTimeoutSeconds: S.optional(S.Number),
     certificates: S.optional(Certificates),
+    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(
@@ -7464,7 +7781,9 @@ export type CreatePaymentInstrumentError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | SubscriptionRequiredException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -7483,7 +7802,9 @@ export const createPaymentInstrument: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    ResourceNotFoundException,
     ServiceQuotaExceededException,
+    SubscriptionRequiredException,
     ThrottlingException,
     ValidationException,
   ],
@@ -7497,6 +7818,7 @@ export type CreatePaymentSessionError =
   | ConflictException
   | InternalServerException
   | ServiceQuotaExceededException
+  | SubscriptionRequiredException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -7516,6 +7838,7 @@ export const createPaymentSession: API.OperationMethod<
     ConflictException,
     InternalServerException,
     ServiceQuotaExceededException,
+    SubscriptionRequiredException,
     ThrottlingException,
     ValidationException,
   ],
@@ -7590,6 +7913,36 @@ export const deleteBatchEvaluation: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteBatchEvaluation",
+}));
+
+export type DeleteCapacityProviderSessionError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a session associated with a capacity provider in Amazon Bedrock AgentCore and makes the session unavailable for further use. To delete a capacity provider session, specify both the capacity provider identifier and the session ID. After you delete a session, you cannot restart it.
+ */
+export const deleteCapacityProviderSession: API.OperationMethod<
+  DeleteCapacityProviderSessionRequest,
+  DeleteCapacityProviderSessionResponse,
+  DeleteCapacityProviderSessionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCapacityProviderSessionRequest,
+  output: DeleteCapacityProviderSessionResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteCapacityProviderSession",
 }));
 
 export type DeleteEventError =
@@ -8358,6 +8711,40 @@ export const getWorkloadAccessTokenForUserId: API.OperationMethod<
   operationName: "GetWorkloadAccessTokenForUserId",
 }));
 
+export type IngestDataError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ServiceException
+  | ServiceQuotaExceededException
+  | ThrottledException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Submits content directly for ingestion to generate long-term memory records in a AgentCore Memory resource.
+ *
+ * To use this operation, you must have the `bedrock-agentcore:IngestData` permission.
+ */
+export const ingestData: API.OperationMethod<
+  IngestDataInput,
+  IngestDataOutput,
+  IngestDataError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: IngestDataInput,
+  output: IngestDataOutput,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ServiceException,
+    ServiceQuotaExceededException,
+    ThrottledException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "IngestData",
+}));
+
 export type InvokeAgentRuntimeError =
   | AccessDeniedException
   | InternalServerException
@@ -9042,7 +9429,9 @@ export type ProcessPaymentError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | SubscriptionRequiredException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -9061,7 +9450,9 @@ export const processPayment: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    ResourceNotFoundException,
     ServiceQuotaExceededException,
+    SubscriptionRequiredException,
     ThrottlingException,
     ValidationException,
   ],

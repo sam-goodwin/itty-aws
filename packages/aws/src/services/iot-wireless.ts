@@ -655,16 +655,29 @@ export const ParticipatingGatewaysMulticast = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ParticipatingGatewaysMulticast",
 }) as any as S.Schema<ParticipatingGatewaysMulticast>;
+export type DlDr = number;
+export type DlFreq = number;
+export interface DefaultSessionParametersMulticast {
+  DlDr?: number;
+  DlFreq?: number;
+}
+export const DefaultSessionParametersMulticast = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DlDr: S.optional(S.Number), DlFreq: S.optional(S.Number) }),
+).annotate({
+  identifier: "DefaultSessionParametersMulticast",
+}) as any as S.Schema<DefaultSessionParametersMulticast>;
 export interface LoRaWANMulticast {
   RfRegion?: SupportedRfRegion;
   DlClass?: DlClass;
   ParticipatingGateways?: ParticipatingGatewaysMulticast;
+  DefaultSessionParameters?: DefaultSessionParametersMulticast;
 }
 export const LoRaWANMulticast = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RfRegion: S.optional(SupportedRfRegion),
     DlClass: S.optional(DlClass),
     ParticipatingGateways: S.optional(ParticipatingGatewaysMulticast),
+    DefaultSessionParameters: S.optional(DefaultSessionParametersMulticast),
   }),
 ).annotate({
   identifier: "LoRaWANMulticast",
@@ -2540,6 +2553,7 @@ export interface LoRaWANMulticastGet {
   NumberOfDevicesRequested?: number;
   NumberOfDevicesInGroup?: number;
   ParticipatingGateways?: ParticipatingGatewaysMulticast;
+  DefaultSessionParameters?: DefaultSessionParametersMulticast;
 }
 export const LoRaWANMulticastGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2548,6 +2562,7 @@ export const LoRaWANMulticastGet = /*@__PURE__*/ S.suspend(() =>
     NumberOfDevicesRequested: S.optional(S.Number),
     NumberOfDevicesInGroup: S.optional(S.Number),
     ParticipatingGateways: S.optional(ParticipatingGatewaysMulticast),
+    DefaultSessionParameters: S.optional(DefaultSessionParametersMulticast),
   }),
 ).annotate({
   identifier: "LoRaWANMulticastGet",
@@ -2591,8 +2606,6 @@ export const GetMulticastGroupSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMulticastGroupSessionRequest",
 }) as any as S.Schema<GetMulticastGroupSessionRequest>;
-export type DlDr = number;
-export type DlFreq = number;
 export type SessionStartTimeTimestamp = Date;
 export type SessionTimeout = number;
 export interface LoRaWANMulticastSession {

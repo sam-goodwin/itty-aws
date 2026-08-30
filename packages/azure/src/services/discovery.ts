@@ -4104,7 +4104,8 @@ export const SupercomputerPropertiesUpdateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of managed service identity (either system assigned, or none). */
 export type AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType =
-  "None" | "SystemAssigned";
+  | "None"
+  | "SystemAssigned";
 export const AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType =
   /*@__PURE__*/ S.String;
 

@@ -39,15 +39,214 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
+/** One screenshot per viewport width, parallel to 'widths' (same length, same order). Lets a single toolbar capture cover the same viewport widths the server renders. At most 16 widths. */
+export type SavedCaptureCreateRequestImagesList = Array<string>;
+export const SavedCaptureCreateRequestImagesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SavedCaptureCreateRequestImagesList>;
+
+/** Viewport widths (CSS pixels) the 'images' were captured at, parallel to 'images'. */
+export type SavedCaptureCreateRequestWidthsList = Array<number>;
+export const SavedCaptureCreateRequestWidthsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SavedCaptureCreateRequestWidthsList>;
+
+export interface SavedCaptureCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Single screenshot of the page, captured client-side by the toolbar (JPEG or PNG). Max 20MB. Pair with 'width'. Use 'images'/'widths' instead to save several viewport widths on one heatmap. */
+  image?: string;
+  /** Viewport width (CSS pixels) the single 'image' was captured at. */
+  width?: number;
+  /** One screenshot per viewport width, parallel to 'widths' (same length, same order). Lets a single toolbar capture cover the same viewport widths the server renders. At most 16 widths. */
+  images?: SavedCaptureCreateRequestImagesList;
+  /** Viewport widths (CSS pixels) the 'images' were captured at, parallel to 'images'. */
+  widths?: SavedCaptureCreateRequestWidthsList;
+  /** Exact page URL the screenshot was captured on. Wildcards are not allowed; this is stored as both the heatmap URL and its data URL, so the overlay reads aggregate data for this exact URL. */
+  url: string;
+  /** Human-readable label for the saved heatmap. Defaults to the URL when omitted. */
+  name?: string;
+}
+export const SavedCaptureCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    image: S.optional(S.String),
+    width: S.optional(S.Number),
+    images: S.optional(SavedCaptureCreateRequestImagesList),
+    widths: S.optional(SavedCaptureCreateRequestWidthsList),
+    url: S.String,
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/saved/capture/",
+      code: 200,
+      contentType: "multipart",
+    }),
+  ),
+).annotate({
+  identifier: "SavedCaptureCreateRequest",
+}) as any as S.Schema<SavedCaptureCreateRequest>;
+
+/** Viewport widths (CSS pixels) the screenshot is rendered at. */
+export type HeatmapScreenshotResponseTargetWidthsList = Array<number>;
+export const HeatmapScreenshotResponseTargetWidthsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<HeatmapScreenshotResponseTargetWidthsList>;
+
+/** * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
+export type HeatmapType = "screenshot" | "iframe" | "recording";
+export const HeatmapType = /*@__PURE__*/ S.String;
+
+/** * `server` - Server * `toolbar` - Toolbar */
+export type HeatmapScreenshotResponseSourceEnum = "server" | "toolbar";
+export const HeatmapScreenshotResponseSourceEnum = /*@__PURE__*/ S.String;
+
+/** * `processing` - Processing * `completed` - Completed * `failed` - Failed */
+export type HeatmapScreenshotResponseStatusEnum =
+  | "processing"
+  | "completed"
+  | "failed";
+export const HeatmapScreenshotResponseStatusEnum = /*@__PURE__*/ S.String;
+
+export interface HeatmapSnapshotMetadata {
+  /** Viewport width (CSS pixels) this screenshot was rendered at. */
+  width: number;
+  /** Whether the rendered image for this width is ready to fetch from the content endpoint. */
+  has_content: boolean;
+}
+export const HeatmapSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    width: S.Number,
+    has_content: S.Boolean,
+  }),
+).annotate({
+  identifier: "HeatmapSnapshotMetadata",
+}) as any as S.Schema<HeatmapSnapshotMetadata>;
+
+/** Per-width render metadata. Fetch the actual image bytes for a width from the content endpoint. */
+export type HeatmapScreenshotResponseSnapshotsList =
+  Array<HeatmapSnapshotMetadata>;
+export const HeatmapScreenshotResponseSnapshotsList = /*@__PURE__*/ S.Array(
+  HeatmapSnapshotMetadata,
+) as any as S.Schema<HeatmapScreenshotResponseSnapshotsList>;
+
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "student"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+export const UserBasicRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
+export interface UserBasic {
+  id?: number;
+  uuid?: string;
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: UserBasicHedgehogConfigMap | null;
+  role_at_organization?: UserBasicRoleAtOrganization | null;
+}
+export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+  }),
+).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
+
+/** Mixin for serializers to add user access control fields */
+export interface HeatmapScreenshotResponse {
+  id?: string;
+  /** Short, URL-safe identifier used as the lookup key for saved-heatmap routes. */
+  short_id?: string;
+  /** Human-readable label for the saved heatmap. */
+  name?: string | null;
+  /** The page URL this saved heatmap renders and overlays data on. */
+  url?: string;
+  /** URL whose heatmap data is overlaid on the screenshot (defaults to 'url'). */
+  data_url?: string | null;
+  /** Viewport widths (CSS pixels) the screenshot is rendered at. */
+  target_widths?: HeatmapScreenshotResponseTargetWidthsList;
+  /** Render mode: 'screenshot', 'iframe', or 'recording'. * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
+  type?: HeatmapType;
+  /** How the screenshot was captured: 'server' (rendered headlessly via Browserless) or 'toolbar' (captured client-side from the on-page toolbar, e.g. for pages behind a login). * `server` - Server * `toolbar` - Toolbar */
+  source?: HeatmapScreenshotResponseSourceEnum;
+  /** Screenshot generation status: 'processing', 'completed', or 'failed'. * `processing` - Processing * `completed` - Completed * `failed` - Failed */
+  status?: HeatmapScreenshotResponseStatusEnum;
+  /** Whether at least one rendered image is ready to fetch. */
+  has_content?: boolean;
+  /** Per-width render metadata. Fetch the actual image bytes for a width from the content endpoint. */
+  snapshots?: HeatmapScreenshotResponseSnapshotsList;
+  /** Soft-delete flag; deleted heatmaps are hidden from the list. */
+  deleted?: boolean;
+  /** Whether the headless browser dismisses cookie/consent banners before capturing the screenshot. Only applies to 'screenshot' heatmaps. */
+  block_consent_modals?: boolean;
+  created_by?: UserBasic | null;
+  created_at?: string;
+  updated_at?: string;
+  /** Error detail when screenshot generation failed, otherwise null. */
+  exception?: string | null;
+  /** The effective access level the user has for this object */
+  user_access_level?: string | null;
+}
+export const HeatmapScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    short_id: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.String),
+    data_url: S.optional(S.NullOr(S.String)),
+    target_widths: S.optional(HeatmapScreenshotResponseTargetWidthsList),
+    type: S.optional(HeatmapType),
+    source: S.optional(HeatmapScreenshotResponseSourceEnum),
+    status: S.optional(HeatmapScreenshotResponseStatusEnum),
+    has_content: S.optional(S.Boolean),
+    snapshots: S.optional(HeatmapScreenshotResponseSnapshotsList),
+    deleted: S.optional(S.Boolean),
+    block_consent_modals: S.optional(S.Boolean),
+    created_by: S.optional(S.NullOr(UserBasic)),
+    created_at: S.optional(S.String),
+    updated_at: S.optional(S.String),
+    exception: S.optional(S.NullOr(S.String)),
+    user_access_level: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "HeatmapScreenshotResponse",
+}) as any as S.Schema<HeatmapScreenshotResponse>;
+
 /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
 export type SavedCreateRequestWidthsList = Array<number>;
 export const SavedCreateRequestWidthsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SavedCreateRequestWidthsList>;
-
-/** * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
-export type HeatmapType = "screenshot" | "iframe" | "recording";
-export const HeatmapType = /*@__PURE__*/ S.String;
 
 export interface SavedCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -87,138 +286,6 @@ export const SavedCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SavedCreateRequest",
 }) as any as S.Schema<SavedCreateRequest>;
-
-/** * `processing` - Processing * `completed` - Completed * `failed` - Failed */
-export type HeatmapScreenshotResponseStatusEnum =
-  | "processing"
-  | "completed"
-  | "failed";
-export const HeatmapScreenshotResponseStatusEnum = /*@__PURE__*/ S.String;
-
-export interface HeatmapSnapshotMetadata {
-  /** Viewport width (CSS pixels) this screenshot was rendered at. */
-  width: number;
-  /** Whether the rendered image for this width is ready to fetch from the content endpoint. */
-  has_content: boolean;
-}
-export const HeatmapSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.Number,
-    has_content: S.Boolean,
-  }),
-).annotate({
-  identifier: "HeatmapSnapshotMetadata",
-}) as any as S.Schema<HeatmapSnapshotMetadata>;
-
-/** Per-width render metadata. Fetch the actual image bytes for a width from the content endpoint. */
-export type HeatmapScreenshotResponseSnapshotsList =
-  Array<HeatmapSnapshotMetadata>;
-export const HeatmapScreenshotResponseSnapshotsList = /*@__PURE__*/ S.Array(
-  HeatmapSnapshotMetadata,
-) as any as S.Schema<HeatmapScreenshotResponseSnapshotsList>;
-
-export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
-export type RoleAtOrganizationEnum =
-  | "engineering"
-  | "data"
-  | "product"
-  | "founder"
-  | "leadership"
-  | "marketing"
-  | "sales"
-  | "other";
-export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "";
-export const BlankEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
-export interface UserBasic {
-  id?: number;
-  uuid?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  is_email_verified?: boolean | null;
-  hedgehog_config?: UserBasicHedgehogConfigMap | null;
-  role_at_organization?: UserBasicRoleAtOrganization | null;
-}
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
-  }),
-).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-export interface HeatmapScreenshotResponse {
-  id?: string;
-  /** Short, URL-safe identifier used as the lookup key for saved-heatmap routes. */
-  short_id?: string;
-  /** Human-readable label for the saved heatmap. */
-  name?: string | null;
-  /** The page URL this saved heatmap renders and overlays data on. */
-  url?: string;
-  /** URL whose heatmap data is overlaid on the screenshot (defaults to 'url'). */
-  data_url?: string | null;
-  /** Viewport widths (CSS pixels) the screenshot is rendered at. */
-  target_widths?: unknown;
-  /** Render mode: 'screenshot', 'iframe', or 'recording'. * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
-  type?: HeatmapType;
-  /** Screenshot generation status: 'processing', 'completed', or 'failed'. * `processing` - Processing * `completed` - Completed * `failed` - Failed */
-  status?: HeatmapScreenshotResponseStatusEnum;
-  /** Whether at least one rendered image is ready to fetch. */
-  has_content?: boolean;
-  /** Per-width render metadata. Fetch the actual image bytes for a width from the content endpoint. */
-  snapshots?: HeatmapScreenshotResponseSnapshotsList;
-  /** Soft-delete flag; deleted heatmaps are hidden from the list. */
-  deleted?: boolean;
-  /** Whether the headless browser dismisses cookie/consent banners before capturing the screenshot. Only applies to 'screenshot' heatmaps. */
-  block_consent_modals?: boolean;
-  created_by?: UserBasic | null;
-  created_at?: string;
-  updated_at?: string;
-  /** Error detail when screenshot generation failed, otherwise null. */
-  exception?: string | null;
-}
-export const HeatmapScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    short_id: S.optional(S.String),
-    name: S.optional(S.NullOr(S.String)),
-    url: S.optional(S.String),
-    data_url: S.optional(S.NullOr(S.String)),
-    target_widths: S.optional(S.Unknown),
-    type: S.optional(HeatmapType),
-    status: S.optional(HeatmapScreenshotResponseStatusEnum),
-    has_content: S.optional(S.Boolean),
-    snapshots: S.optional(HeatmapScreenshotResponseSnapshotsList),
-    deleted: S.optional(S.Boolean),
-    block_consent_modals: S.optional(S.Boolean),
-    created_by: S.optional(S.NullOr(UserBasic)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    exception: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "HeatmapScreenshotResponse",
-}) as any as S.Schema<HeatmapScreenshotResponse>;
 
 export interface SavedDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -365,6 +432,80 @@ export const SavedPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavedPartialUpdateRequest",
 }) as any as S.Schema<SavedPartialUpdateRequest>;
 
+export interface SavedPreflightCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Exact page URL to probe. Wildcards are not allowed. This is the URL that would be loaded in the live preview iframe, not the data URL used to look up heatmap events. */
+  url: string;
+}
+export const SavedPreflightCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    url: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/saved/preflight/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SavedPreflightCreateRequest",
+}) as any as S.Schema<SavedPreflightCreateRequest>;
+
+/** * `allowed` - allowed * `blocked` - blocked * `unknown` - unknown */
+export type FramingEnum = "allowed" | "blocked" | "unknown";
+export const FramingEnum = /*@__PURE__*/ S.String;
+
+/** * `x_frame_options` - x_frame_options * `frame_ancestors` - frame_ancestors */
+export type BlockedByEnum = "x_frame_options" | "frame_ancestors";
+export const BlockedByEnum = /*@__PURE__*/ S.String;
+
+export interface HeatmapPreflightResponse {
+  /** Whether the page can be embedded in the live preview iframe. 'blocked' means the site's own headers forbid it, so only a screenshot or session recording background can work. 'unknown' means we could not tell, for example because the page was unreachable or redirected. * `allowed` - allowed * `blocked` - blocked * `unknown` - unknown */
+  framing: FramingEnum;
+  /** Which response header forbids embedding, when framing is 'blocked'. Null otherwise. * `x_frame_options` - x_frame_options * `frame_ancestors` - frame_ancestors */
+  blocked_by: BlockedByEnum | null;
+  /** HTTP status the page returned to us. A 4xx or 5xx here points at the customer's host or CDN rather than at PostHog. Null when the page could not be reached at all. */
+  http_status: number | null;
+  /** Short whitespace-collapsed excerpt of the response body, only present for non-2xx responses, so the user can see what their host returned. Truncated. */
+  body_excerpt: string | null;
+}
+export const HeatmapPreflightResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    framing: FramingEnum,
+    blocked_by: S.NullOr(BlockedByEnum),
+    http_status: S.NullOr(S.Number),
+    body_excerpt: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "HeatmapPreflightResponse",
+}) as any as S.Schema<HeatmapPreflightResponse>;
+
+export interface SavedPrewarmCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Exact page URL to speculatively render ahead of heatmap creation. Wildcards are not allowed. */
+  url: string;
+  /** When true, ask the headless browser to dismiss cookie/consent banners before capturing. Must match the value used at creation time for the prewarmed render to be reused. */
+  block_consent_modals?: boolean;
+}
+export const SavedPrewarmCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    url: S.String,
+    block_consent_modals: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/saved/prewarm/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SavedPrewarmCreateRequest",
+}) as any as S.Schema<SavedPrewarmCreateRequest>;
+
 export interface SavedRegenerateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -404,6 +545,21 @@ export const SavedRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SavedRetrieveRequest",
 }) as any as S.Schema<SavedRetrieveRequest>;
+
+export type SavedCaptureCreateError = PosthogOpError;
+/** Persist screenshots captured client-side by the on-page toolbar as a completed screenshot heatmap. No headless render is enqueued: the toolbar runs in the user's authenticated browser, so this is the path for pages behind a login that Browserless cannot reach. Send one 'image'+'width', or 'images'+'widths' parallel arrays to store several viewport widths on one heatmap (the toolbar re-lays out the page at each width and captures it, matching the widths the server renders). The image bytes are stored and served only through the authenticated content endpoint. The heatmap's data URL is set to the captured URL. */
+export const savedCaptureCreate: API.OperationMethod<
+  SavedCaptureCreateRequest,
+  HeatmapScreenshotResponse,
+  SavedCaptureCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SavedCaptureCreateRequest,
+  output: HeatmapScreenshotResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type SavedCreateError =
   | BadRequest
@@ -469,6 +625,36 @@ export const savedPartialUpdate: API.OperationMethod<
   input: SavedPartialUpdateRequest,
   output: HeatmapScreenshotResponse,
   errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SavedPreflightCreateError = PosthogOpError;
+/** Check whether a page can back a heatmap Fetch a page URL server-side and report whether it allows being embedded in the live preview iframe, plus the HTTP status it returned. The live preview loads the customer's site directly in their browser, so a site that sends X-Frame-Options or a restrictive frame-ancestors will never render, and a 4xx or 5xx from the site's own host or CDN leaves an empty frame with no explanation. This endpoint makes both cases explainable. The fetch comes from PostHog's own network rather than from the screenshot renderer, so a host that varies its response by IP or user agent can answer this differently than it answers a screenshot render. Settled verdicts are cached briefly, so repeat checks for the same URL do not refetch it. */
+export const savedPreflightCreate: API.OperationMethod<
+  SavedPreflightCreateRequest,
+  HeatmapPreflightResponse,
+  SavedPreflightCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SavedPreflightCreateRequest,
+  output: HeatmapPreflightResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SavedPrewarmCreateError = PosthogOpError;
+/** Speculatively render a screenshot for a page URL ahead of heatmap creation, so it's ready (or closer to ready) by the time the user reaches the generation screen. Renders a single preview width. Idempotent within a short window: returns the existing in-flight or completed prewarm render for the same URL and consent setting if one exists (200), otherwise starts a new one (201). The result is reused when a heatmap is later created for the same URL. */
+export const savedPrewarmCreate: API.OperationMethod<
+  SavedPrewarmCreateRequest,
+  HeatmapScreenshotResponse,
+  SavedPrewarmCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SavedPrewarmCreateRequest,
+  output: HeatmapScreenshotResponse,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

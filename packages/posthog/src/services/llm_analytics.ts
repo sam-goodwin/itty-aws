@@ -310,6 +310,175 @@ export const LlmAnalyticsClusteringJobsUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsClusteringJobsUpdateRequest",
 }) as any as S.Schema<LlmAnalyticsClusteringJobsUpdateRequest>;
 
+/** * `none` - none * `l2` - l2 */
+export type EmbeddingNormalizationEnum = "none" | "l2";
+export const EmbeddingNormalizationEnum = /*@__PURE__*/ S.String;
+
+/** * `none` - none * `umap` - umap * `pca` - pca */
+export type DimensionalityReductionMethodEnum = "none" | "umap" | "pca";
+export const DimensionalityReductionMethodEnum = /*@__PURE__*/ S.String;
+
+/** * `hdbscan` - hdbscan * `kmeans` - kmeans */
+export type ClusteringMethodEnum = "hdbscan" | "kmeans";
+export const ClusteringMethodEnum = /*@__PURE__*/ S.String;
+
+/** * `umap` - umap * `pca` - pca * `tsne` - tsne */
+export type VisualizationMethodEnum = "umap" | "pca" | "tsne";
+export const VisualizationMethodEnum = /*@__PURE__*/ S.String;
+
+export type LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap>;
+
+/** Property filters to scope which traces are included in clustering (PostHog standard format) */
+export type LlmAnalyticsClusteringRunsCreateRequestEventFiltersList =
+  Array<LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap>;
+export const LlmAnalyticsClusteringRunsCreateRequestEventFiltersList =
+  /*@__PURE__*/ S.Array(
+    LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap,
+  ) as any as S.Schema<LlmAnalyticsClusteringRunsCreateRequestEventFiltersList>;
+
+export interface LlmAnalyticsClusteringRunsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Number of days to look back for traces */
+  lookback_days?: number;
+  /** Maximum number of traces to sample for clustering */
+  max_samples?: number;
+  /** Embedding normalization method: 'none' (raw embeddings) or 'l2' (L2 normalize before clustering) * `none` - none * `l2` - l2 */
+  embedding_normalization?: EmbeddingNormalizationEnum | (string & {});
+  /** Dimensionality reduction method: 'none' (cluster on raw), 'umap', or 'pca' * `none` - none * `umap` - umap * `pca` - pca */
+  dimensionality_reduction_method?:
+    | DimensionalityReductionMethodEnum
+    | (string & {});
+  /** Target dimensions for dimensionality reduction (ignored if method is 'none') */
+  dimensionality_reduction_ndims?: number;
+  /** Clustering algorithm: 'hdbscan' (density-based, auto-determines k) or 'kmeans' (centroid-based) * `hdbscan` - hdbscan * `kmeans` - kmeans */
+  clustering_method?: ClusteringMethodEnum | (string & {});
+  /** Minimum cluster size as fraction of total samples (e.g., 0.02 = 2%) */
+  min_cluster_size_fraction?: number;
+  /** HDBSCAN min_samples parameter (higher = more conservative clustering) */
+  hdbscan_min_samples?: number;
+  /** Minimum number of clusters to try for k-means */
+  kmeans_min_k?: number;
+  /** Maximum number of clusters to try for k-means */
+  kmeans_max_k?: number;
+  /** Optional label/tag for the clustering run (used as suffix in run_id for tracking experiments) */
+  run_label?: string;
+  /** Method for 2D scatter plot visualization: 'umap', 'pca', or 'tsne' * `umap` - umap * `pca` - pca * `tsne` - tsne */
+  visualization_method?: VisualizationMethodEnum | (string & {});
+  /** Property filters to scope which traces are included in clustering (PostHog standard format) */
+  event_filters?: LlmAnalyticsClusteringRunsCreateRequestEventFiltersList;
+  /** If provided, use this clustering job's analysis_level and event_filters instead of request params */
+  clustering_job_id?: string | null;
+}
+export const LlmAnalyticsClusteringRunsCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      lookback_days: S.optional(S.Number),
+      max_samples: S.optional(S.Number),
+      embedding_normalization: S.optional(EmbeddingNormalizationEnum),
+      dimensionality_reduction_method: S.optional(
+        DimensionalityReductionMethodEnum,
+      ),
+      dimensionality_reduction_ndims: S.optional(S.Number),
+      clustering_method: S.optional(ClusteringMethodEnum),
+      min_cluster_size_fraction: S.optional(S.Number),
+      hdbscan_min_samples: S.optional(S.Number),
+      kmeans_min_k: S.optional(S.Number),
+      kmeans_max_k: S.optional(S.Number),
+      run_label: S.optional(S.String),
+      visualization_method: S.optional(VisualizationMethodEnum),
+      event_filters: S.optional(
+        LlmAnalyticsClusteringRunsCreateRequestEventFiltersList,
+      ),
+      clustering_job_id: S.optional(S.NullOr(S.String)),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/llm_analytics/clustering_runs/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "LlmAnalyticsClusteringRunsCreateRequest",
+}) as any as S.Schema<LlmAnalyticsClusteringRunsCreateRequest>;
+
+export type ClusteringRunRequestEventFiltersItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const ClusteringRunRequestEventFiltersItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ClusteringRunRequestEventFiltersItemMap>;
+
+/** Property filters to scope which traces are included in clustering (PostHog standard format) */
+export type ClusteringRunRequestEventFiltersList =
+  Array<ClusteringRunRequestEventFiltersItemMap>;
+export const ClusteringRunRequestEventFiltersList = /*@__PURE__*/ S.Array(
+  ClusteringRunRequestEventFiltersItemMap,
+) as any as S.Schema<ClusteringRunRequestEventFiltersList>;
+
+/** Serializer for clustering workflow request parameters. */
+export interface ClusteringRunRequest {
+  /** Number of days to look back for traces */
+  lookback_days?: number;
+  /** Maximum number of traces to sample for clustering */
+  max_samples?: number;
+  /** Embedding normalization method: 'none' (raw embeddings) or 'l2' (L2 normalize before clustering) * `none` - none * `l2` - l2 */
+  embedding_normalization?: EmbeddingNormalizationEnum;
+  /** Dimensionality reduction method: 'none' (cluster on raw), 'umap', or 'pca' * `none` - none * `umap` - umap * `pca` - pca */
+  dimensionality_reduction_method?: DimensionalityReductionMethodEnum;
+  /** Target dimensions for dimensionality reduction (ignored if method is 'none') */
+  dimensionality_reduction_ndims?: number;
+  /** Clustering algorithm: 'hdbscan' (density-based, auto-determines k) or 'kmeans' (centroid-based) * `hdbscan` - hdbscan * `kmeans` - kmeans */
+  clustering_method?: ClusteringMethodEnum;
+  /** Minimum cluster size as fraction of total samples (e.g., 0.02 = 2%) */
+  min_cluster_size_fraction?: number;
+  /** HDBSCAN min_samples parameter (higher = more conservative clustering) */
+  hdbscan_min_samples?: number;
+  /** Minimum number of clusters to try for k-means */
+  kmeans_min_k?: number;
+  /** Maximum number of clusters to try for k-means */
+  kmeans_max_k?: number;
+  /** Optional label/tag for the clustering run (used as suffix in run_id for tracking experiments) */
+  run_label?: string;
+  /** Method for 2D scatter plot visualization: 'umap', 'pca', or 'tsne' * `umap` - umap * `pca` - pca * `tsne` - tsne */
+  visualization_method?: VisualizationMethodEnum;
+  /** Property filters to scope which traces are included in clustering (PostHog standard format) */
+  event_filters?: ClusteringRunRequestEventFiltersList;
+  /** If provided, use this clustering job's analysis_level and event_filters instead of request params */
+  clustering_job_id?: string | null;
+}
+export const ClusteringRunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lookback_days: S.optional(S.Number),
+    max_samples: S.optional(S.Number),
+    embedding_normalization: S.optional(EmbeddingNormalizationEnum),
+    dimensionality_reduction_method: S.optional(
+      DimensionalityReductionMethodEnum,
+    ),
+    dimensionality_reduction_ndims: S.optional(S.Number),
+    clustering_method: S.optional(ClusteringMethodEnum),
+    min_cluster_size_fraction: S.optional(S.Number),
+    hdbscan_min_samples: S.optional(S.Number),
+    kmeans_min_k: S.optional(S.Number),
+    kmeans_max_k: S.optional(S.Number),
+    run_label: S.optional(S.String),
+    visualization_method: S.optional(VisualizationMethodEnum),
+    event_filters: S.optional(ClusteringRunRequestEventFiltersList),
+    clustering_job_id: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ClusteringRunRequest",
+}) as any as S.Schema<ClusteringRunRequest>;
+
 export interface LlmAnalyticsEvaluationConfigRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -329,7 +498,7 @@ export const LlmAnalyticsEvaluationConfigRetrieveRequest =
     identifier: "LlmAnalyticsEvaluationConfigRetrieveRequest",
   }) as any as S.Schema<LlmAnalyticsEvaluationConfigRetrieveRequest>;
 
-/** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI */
+/** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub */
 export type LLMProviderEnum =
   | "openai"
   | "anthropic"
@@ -337,7 +506,9 @@ export type LLMProviderEnum =
   | "openrouter"
   | "fireworks"
   | "azure_openai"
-  | "together_ai";
+  | "together_ai"
+  | "minimax"
+  | "zeabur";
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `unknown` - Unknown * `ok` - Ok * `invalid` - Invalid * `error` - Error */
@@ -350,7 +521,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -359,6 +530,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -428,12 +600,6 @@ export const LLMProviderKeyOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LLMProviderKeyOutput>;
 
 export interface EvaluationConfigOutput {
-  /** Cap on trial runs — a getting-started affordance only, not for ongoing evals (use the team's own key). */
-  trial_eval_limit: number;
-  /** Trial runs consumed (getting-started affordance only). */
-  trial_evals_used: number;
-  /** Trial runs remaining — a getting-started affordance only; evals should use the team's own provider key. */
-  trial_evals_remaining: number;
   /** Provider key used to run llm_judge evals; null if none configured yet. */
   active_provider_key: LLMProviderKeyOutput | null;
   /** Timestamp when the evaluation config row was created. */
@@ -443,9 +609,6 @@ export interface EvaluationConfigOutput {
 }
 export const EvaluationConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    trial_eval_limit: S.Number,
-    trial_evals_used: S.Number,
-    trial_evals_remaining: S.Number,
     active_provider_key: S.NullOr(LLMProviderKeyOutput),
     created_at: S.String,
     updated_at: S.String,
@@ -485,25 +648,19 @@ export interface LlmAnalyticsEvaluationReportsCreateRequest {
   project_id: string;
   /** UUID of the evaluation this report config belongs to. */
   evaluation?: string;
-  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name. * `scheduled` - Scheduled * `every_n` - Every N */
+  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
   frequency?: EvaluationReportFrequencyEnum | (string & {});
-  /** RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO'). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is 'scheduled'; ignored otherwise. */
+  /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
-  /** Anchor datetime for the rrule (ISO 8601, UTC — must end in 'Z'). Local-time interpretation is controlled by timezone_name. Required when frequency is 'scheduled'; ignored otherwise. */
-  starts_at?: string | null;
-  /** IANA timezone name used to expand the rrule in local time so e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York'). Defaults to 'UTC'. */
-  timezone_name?: string;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
   delivery_targets?: unknown;
   /** Maximum number of evaluation runs included in each report. Defaults to 200. */
   max_sample_size?: number;
   /** Whether report delivery is active. Disabled configs do not fire. */
   enabled?: boolean;
-  /** Set to true to soft-delete this report config. */
-  deleted?: boolean;
   /** Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt. */
   report_prompt_guidance?: string;
-  /** Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
+  /** Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
   trigger_threshold?: number | null;
   /** Minimum minutes between count-triggered reports to prevent spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60. */
   cooldown_minutes?: number;
@@ -517,12 +674,9 @@ export const LlmAnalyticsEvaluationReportsCreateRequest =
       evaluation: S.optional(S.String),
       frequency: S.optional(EvaluationReportFrequencyEnum),
       rrule: S.optional(S.String),
-      starts_at: S.optional(S.NullOr(S.String)),
-      timezone_name: S.optional(S.String),
       delivery_targets: S.optional(S.Unknown),
       max_sample_size: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
-      deleted: S.optional(S.Boolean),
       report_prompt_guidance: S.optional(S.String),
       trigger_threshold: S.optional(S.NullOr(S.Number)),
       cooldown_minutes: S.optional(S.Number),
@@ -542,13 +696,13 @@ export interface EvaluationReport {
   id?: string;
   /** UUID of the evaluation this report config belongs to. */
   evaluation?: string;
-  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name. * `scheduled` - Scheduled * `every_n` - Every N */
+  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
   frequency?: EvaluationReportFrequencyEnum;
-  /** RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO'). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is 'scheduled'; ignored otherwise. */
+  /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
-  /** Anchor datetime for the rrule (ISO 8601, UTC — must end in 'Z'). Local-time interpretation is controlled by timezone_name. Required when frequency is 'scheduled'; ignored otherwise. */
+  /** Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode. */
   starts_at?: string | null;
-  /** IANA timezone name used to expand the rrule in local time so e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York'). Defaults to 'UTC'. */
+  /** Read-only timezone used for scheduled reports. Evaluation reports use UTC. */
   timezone_name?: string;
   next_delivery_date?: string | null;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
@@ -557,12 +711,16 @@ export interface EvaluationReport {
   max_sample_size?: number;
   /** Whether report delivery is active. Disabled configs do not fire. */
   enabled?: boolean;
-  /** Set to true to soft-delete this report config. */
+  /** Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries. */
   deleted?: boolean;
   last_delivered_at?: string | null;
+  /** Number of reports generated from this evaluation report config. */
+  generated_report_count?: number;
+  /** When the most recent report was generated, or null if no reports have been generated. */
+  last_generated_at?: string | null;
   /** Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt. */
   report_prompt_guidance?: string;
-  /** Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
+  /** Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
   trigger_threshold?: number | null;
   /** Minimum minutes between count-triggered reports to prevent spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60. */
   cooldown_minutes?: number;
@@ -585,6 +743,8 @@ export const EvaluationReport = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     deleted: S.optional(S.Boolean),
     last_delivered_at: S.optional(S.NullOr(S.String)),
+    generated_report_count: S.optional(S.Number),
+    last_generated_at: S.optional(S.NullOr(S.String)),
     report_prompt_guidance: S.optional(S.String),
     trigger_threshold: S.optional(S.NullOr(S.Number)),
     cooldown_minutes: S.optional(S.Number),
@@ -655,6 +815,8 @@ export const LlmAnalyticsEvaluationReportsGenerateCreateResponse =
 export interface LlmAnalyticsEvaluationReportsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  /** Only return report configs for this evaluation UUID. */
+  evaluation?: string;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -664,6 +826,7 @@ export const LlmAnalyticsEvaluationReportsListRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
+      evaluation: S.optional(S.String.pipe(T.Query())),
       limit: S.optional(S.Number.pipe(T.Query())),
       offset: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
@@ -704,27 +867,19 @@ export interface LlmAnalyticsEvaluationReportsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this evaluation report. */
   id: string;
-  /** UUID of the evaluation this report config belongs to. */
-  evaluation?: string;
-  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name. * `scheduled` - Scheduled * `every_n` - Every N */
+  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
   frequency?: EvaluationReportFrequencyEnum | (string & {});
-  /** RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO'). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is 'scheduled'; ignored otherwise. */
+  /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
-  /** Anchor datetime for the rrule (ISO 8601, UTC — must end in 'Z'). Local-time interpretation is controlled by timezone_name. Required when frequency is 'scheduled'; ignored otherwise. */
-  starts_at?: string | null;
-  /** IANA timezone name used to expand the rrule in local time so e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York'). Defaults to 'UTC'. */
-  timezone_name?: string;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
   delivery_targets?: unknown;
   /** Maximum number of evaluation runs included in each report. Defaults to 200. */
   max_sample_size?: number;
   /** Whether report delivery is active. Disabled configs do not fire. */
   enabled?: boolean;
-  /** Set to true to soft-delete this report config. */
-  deleted?: boolean;
   /** Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt. */
   report_prompt_guidance?: string;
-  /** Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
+  /** Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
   trigger_threshold?: number | null;
   /** Minimum minutes between count-triggered reports to prevent spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60. */
   cooldown_minutes?: number;
@@ -736,15 +891,11 @@ export const LlmAnalyticsEvaluationReportsPartialUpdateRequest =
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      evaluation: S.optional(S.String),
       frequency: S.optional(EvaluationReportFrequencyEnum),
       rrule: S.optional(S.String),
-      starts_at: S.optional(S.NullOr(S.String)),
-      timezone_name: S.optional(S.String),
       delivery_targets: S.optional(S.Unknown),
       max_sample_size: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
-      deleted: S.optional(S.Boolean),
       report_prompt_guidance: S.optional(S.String),
       trigger_threshold: S.optional(S.NullOr(S.Number)),
       cooldown_minutes: S.optional(S.Number),
@@ -759,6 +910,70 @@ export const LlmAnalyticsEvaluationReportsPartialUpdateRequest =
   ).annotate({
     identifier: "LlmAnalyticsEvaluationReportsPartialUpdateRequest",
   }) as any as S.Schema<LlmAnalyticsEvaluationReportsPartialUpdateRequest>;
+
+export interface EvaluationReportUpdate {
+  id: string;
+  /** UUID of the evaluation this report config belongs to. */
+  evaluation: string;
+  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
+  frequency?: EvaluationReportFrequencyEnum;
+  /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
+  rrule?: string;
+  /** Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode. */
+  starts_at: string | null;
+  /** Read-only timezone used for scheduled reports. Evaluation reports use UTC. */
+  timezone_name: string;
+  next_delivery_date: string | null;
+  /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
+  delivery_targets?: unknown;
+  /** Maximum number of evaluation runs included in each report. Defaults to 200. */
+  max_sample_size?: number;
+  /** Whether report delivery is active. Disabled configs do not fire. */
+  enabled?: boolean;
+  /** Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries. */
+  deleted: boolean;
+  last_delivered_at: string | null;
+  /** Number of reports generated from this evaluation report config. */
+  generated_report_count: number;
+  /** When the most recent report was generated, or null if no reports have been generated. */
+  last_generated_at: string | null;
+  /** Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt. */
+  report_prompt_guidance?: string;
+  /** Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
+  trigger_threshold?: number | null;
+  /** Minimum minutes between count-triggered reports to prevent spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60. */
+  cooldown_minutes?: number;
+  /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
+  daily_run_cap?: number;
+  created_by: number | null;
+  created_at: string;
+}
+export const EvaluationReportUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    evaluation: S.String,
+    frequency: S.optional(EvaluationReportFrequencyEnum),
+    rrule: S.optional(S.String),
+    starts_at: S.NullOr(S.String),
+    timezone_name: S.String,
+    next_delivery_date: S.NullOr(S.String),
+    delivery_targets: S.optional(S.Unknown),
+    max_sample_size: S.optional(S.Number),
+    enabled: S.optional(S.Boolean),
+    deleted: S.Boolean,
+    last_delivered_at: S.NullOr(S.String),
+    generated_report_count: S.Number,
+    last_generated_at: S.NullOr(S.String),
+    report_prompt_guidance: S.optional(S.String),
+    trigger_threshold: S.optional(S.NullOr(S.Number)),
+    cooldown_minutes: S.optional(S.Number),
+    daily_run_cap: S.optional(S.Number),
+    created_by: S.NullOr(S.Number),
+    created_at: S.String,
+  }),
+).annotate({
+  identifier: "EvaluationReportUpdate",
+}) as any as S.Schema<EvaluationReportUpdate>;
 
 export interface LlmAnalyticsEvaluationReportsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -810,43 +1025,224 @@ export const LlmAnalyticsEvaluationReportsRunsListRequest =
     identifier: "LlmAnalyticsEvaluationReportsRunsListRequest",
   }) as any as S.Schema<LlmAnalyticsEvaluationReportsRunsListRequest>;
 
-/** * `pending` - Pending * `delivered` - Delivered * `partial_failure` - Partial Failure * `failed` - Failed */
+/** * `generation` - Generation * `trace` - Trace * `session` - Session */
+export type EvaluationTargetEnum = "generation" | "trace" | "session";
+export const EvaluationTargetEnum = /*@__PURE__*/ S.String;
+
+export interface EvaluationReportSection {
+  /** Agent-generated section heading. */
+  title?: string;
+  /** Markdown narrative for this section. */
+  content?: string;
+}
+export const EvaluationReportSection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.optional(S.String),
+    content: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EvaluationReportSection",
+}) as any as S.Schema<EvaluationReportSection>;
+
+/** Ordered narrative sections in the report. */
+export type EvaluationReportRunContentSectionsList =
+  Array<EvaluationReportSection>;
+export const EvaluationReportRunContentSectionsList = /*@__PURE__*/ S.Array(
+  EvaluationReportSection,
+) as any as S.Schema<EvaluationReportRunContentSectionsList>;
+
+export interface EvaluationReportCitation {
+  /** Optional generation UUID for generation-target report citations. */
+  generation_id?: string;
+  /** Identifier of the trace cited by this report. */
+  trace_id?: string;
+  /** Optional session identifier for session-target report citations. */
+  session_id?: string;
+  /** Short explanation of why this example is cited. */
+  reason?: string;
+}
+export const EvaluationReportCitation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    generation_id: S.optional(S.String),
+    trace_id: S.optional(S.String),
+    session_id: S.optional(S.String),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EvaluationReportCitation",
+}) as any as S.Schema<EvaluationReportCitation>;
+
+/** References grounding findings in the report. */
+export type EvaluationReportRunContentCitationsList =
+  Array<EvaluationReportCitation>;
+export const EvaluationReportRunContentCitationsList = /*@__PURE__*/ S.Array(
+  EvaluationReportCitation,
+) as any as S.Schema<EvaluationReportRunContentCitationsList>;
+
+/** * `completed` - completed * `metrics_unavailable` - metrics_unavailable */
+export type GenerationStatusEnum = "completed" | "metrics_unavailable";
+export const GenerationStatusEnum = /*@__PURE__*/ S.String;
+
+/** * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
+export type OutputTypeEnum = "boolean" | "sentiment";
+export const OutputTypeEnum = /*@__PURE__*/ S.String;
+
+/** Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative. */
+export type EvaluationReportMetricsResultCountsMap = {
+  [key: string]: number | undefined;
+};
+export const EvaluationReportMetricsResultCountsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<EvaluationReportMetricsResultCountsMap>;
+
+/** Percentage by output-specific result label, from 0 to 100. */
+export type EvaluationReportMetricsResultRatesMap = {
+  [key: string]: number | undefined;
+};
+export const EvaluationReportMetricsResultRatesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<EvaluationReportMetricsResultRatesMap>;
+
+/** Count by result label for the previous period, or null when unavailable. */
+export type EvaluationReportMetricsPreviousResultCountsMap = {
+  [key: string]: number | undefined;
+};
+export const EvaluationReportMetricsPreviousResultCountsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Number,
+  ) as any as S.Schema<EvaluationReportMetricsPreviousResultCountsMap>;
+
+/** Percentage by result label for the previous period, or null when unavailable. */
+export type EvaluationReportMetricsPreviousResultRatesMap = {
+  [key: string]: number | undefined;
+};
+export const EvaluationReportMetricsPreviousResultRatesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Number,
+  ) as any as S.Schema<EvaluationReportMetricsPreviousResultRatesMap>;
+
+export interface EvaluationReportMetrics {
+  /** Evaluation result type. Stored metrics without this field represent boolean evaluations. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
+  output_type?: OutputTypeEnum;
+  /** Number of evaluation results in the report period. */
+  total_runs?: number;
+  /** Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative. */
+  result_counts?: EvaluationReportMetricsResultCountsMap;
+  /** Percentage by output-specific result label, from 0 to 100. */
+  result_rates?: EvaluationReportMetricsResultRatesMap;
+  /** ISO 8601 start of the evaluation window represented by these metrics. */
+  period_start?: string;
+  /** ISO 8601 end of the evaluation window represented by these metrics. */
+  period_end?: string;
+  /** Number of evaluation results in the previous comparison period, or null when unavailable. */
+  previous_total_runs?: number | null;
+  /** Count by result label for the previous period, or null when unavailable. */
+  previous_result_counts?: EvaluationReportMetricsPreviousResultCountsMap | null;
+  /** Percentage by result label for the previous period, or null when unavailable. */
+  previous_result_rates?: EvaluationReportMetricsPreviousResultRatesMap | null;
+  /** Boolean pass percentage, excluding results marked not applicable. */
+  pass_rate?: number;
+  /** Boolean pass percentage for the previous period, or null when unavailable. */
+  previous_pass_rate?: number | null;
+}
+export const EvaluationReportMetrics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    output_type: S.optional(OutputTypeEnum),
+    total_runs: S.optional(S.Number),
+    result_counts: S.optional(EvaluationReportMetricsResultCountsMap),
+    result_rates: S.optional(EvaluationReportMetricsResultRatesMap),
+    period_start: S.optional(S.String),
+    period_end: S.optional(S.String),
+    previous_total_runs: S.optional(S.NullOr(S.Number)),
+    previous_result_counts: S.optional(
+      S.NullOr(EvaluationReportMetricsPreviousResultCountsMap),
+    ),
+    previous_result_rates: S.optional(
+      S.NullOr(EvaluationReportMetricsPreviousResultRatesMap),
+    ),
+    pass_rate: S.optional(S.Number),
+    previous_pass_rate: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "EvaluationReportMetrics",
+}) as any as S.Schema<EvaluationReportMetrics>;
+
+export interface EvaluationReportRunContent {
+  /** Evaluation target analyzed by this report run. Legacy runs without this field targeted generations. * `generation` - Generation * `trace` - Trace * `session` - Session */
+  evaluation_target?: EvaluationTargetEnum;
+  /** Agent-generated report headline. */
+  title?: string;
+  /** Ordered narrative sections in the report. */
+  sections?: EvaluationReportRunContentSectionsList;
+  /** References grounding findings in the report. */
+  citations?: EvaluationReportRunContentCitationsList;
+  /** Whether report generation completed or metrics were temporarily unavailable. Legacy runs without this field completed normally. * `completed` - completed * `metrics_unavailable` - metrics_unavailable */
+  generation_status?: GenerationStatusEnum;
+  /** Structured metrics for completed reports, or null when metrics were temporarily unavailable. */
+  metrics?: EvaluationReportMetrics | null;
+}
+export const EvaluationReportRunContent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluation_target: S.optional(EvaluationTargetEnum),
+    title: S.optional(S.String),
+    sections: S.optional(EvaluationReportRunContentSectionsList),
+    citations: S.optional(EvaluationReportRunContentCitationsList),
+    generation_status: S.optional(GenerationStatusEnum),
+    metrics: S.optional(S.NullOr(EvaluationReportMetrics)),
+  }),
+).annotate({
+  identifier: "EvaluationReportRunContent",
+}) as any as S.Schema<EvaluationReportRunContent>;
+
+/** * `pending` - Pending * `generated` - Generated * `delivered` - Delivered * `partial_failure` - Partial Failure * `failed` - Failed */
 export type DeliveryStatusEnum =
   | "pending"
+  | "generated"
   | "delivered"
   | "partial_failure"
   | "failed";
 export const DeliveryStatusEnum = /*@__PURE__*/ S.String;
+
+/** Delivery error messages. Empty when all configured deliveries succeeded. */
+export type EvaluationReportRunDeliveryErrorsList = Array<string>;
+export const EvaluationReportRunDeliveryErrorsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EvaluationReportRunDeliveryErrorsList>;
 
 export interface EvaluationReportRun {
   /** UUID of this report run. */
   id?: string;
   /** UUID of the report config that generated this run. */
   report?: string;
-  /** Generated report content (markdown or structured text). */
-  content?: unknown;
-  /** Run metadata including model used, token counts, and generation stats. */
-  metadata?: unknown;
+  /** Structured report narrative, citations, and metrics. Legacy runs may contain only some fields. */
+  content?: EvaluationReportRunContent;
+  /** Legacy mirror of content.metrics. May contain partial boolean metrics on older runs. */
+  metadata?: EvaluationReportMetrics | null;
   /** Start of the evaluation window covered by this report. */
   period_start?: string;
   /** End of the evaluation window covered by this report. */
   period_end?: string;
-  /** 'pending', 'delivered', or 'failed'. * `pending` - Pending * `delivered` - Delivered * `partial_failure` - Partial Failure * `failed` - Failed */
+  /** Delivery result: 'pending', 'generated', 'delivered', 'partial_failure', or 'failed'. * `pending` - Pending * `generated` - Generated * `delivered` - Delivered * `partial_failure` - Partial Failure * `failed` - Failed */
   delivery_status?: DeliveryStatusEnum;
-  /** List of delivery error messages if delivery failed. */
-  delivery_errors?: unknown;
+  /** Delivery error messages. Empty when all configured deliveries succeeded. */
+  delivery_errors?: EvaluationReportRunDeliveryErrorsList;
+  /** When this report run was created. */
   created_at?: string;
 }
 export const EvaluationReportRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     report: S.optional(S.String),
-    content: S.optional(S.Unknown),
-    metadata: S.optional(S.Unknown),
+    content: S.optional(EvaluationReportRunContent),
+    metadata: S.optional(S.NullOr(EvaluationReportMetrics)),
     period_start: S.optional(S.String),
     period_end: S.optional(S.String),
     delivery_status: S.optional(DeliveryStatusEnum),
-    delivery_errors: S.optional(S.Unknown),
+    delivery_errors: S.optional(EvaluationReportRunDeliveryErrorsList),
     created_at: S.optional(S.String),
   }),
 ).annotate({
@@ -882,27 +1278,19 @@ export interface LlmAnalyticsEvaluationReportsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this evaluation report. */
   id: string;
-  /** UUID of the evaluation this report config belongs to. */
-  evaluation?: string;
-  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name. * `scheduled` - Scheduled * `every_n` - Every N */
+  /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
   frequency?: EvaluationReportFrequencyEnum | (string & {});
-  /** RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO'). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is 'scheduled'; ignored otherwise. */
+  /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
-  /** Anchor datetime for the rrule (ISO 8601, UTC — must end in 'Z'). Local-time interpretation is controlled by timezone_name. Required when frequency is 'scheduled'; ignored otherwise. */
-  starts_at?: string | null;
-  /** IANA timezone name used to expand the rrule in local time so e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York'). Defaults to 'UTC'. */
-  timezone_name?: string;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
   delivery_targets?: unknown;
   /** Maximum number of evaluation runs included in each report. Defaults to 200. */
   max_sample_size?: number;
   /** Whether report delivery is active. Disabled configs do not fire. */
   enabled?: boolean;
-  /** Set to true to soft-delete this report config. */
-  deleted?: boolean;
   /** Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt. */
   report_prompt_guidance?: string;
-  /** Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
+  /** Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
   trigger_threshold?: number | null;
   /** Minimum minutes between count-triggered reports to prevent spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60. */
   cooldown_minutes?: number;
@@ -914,15 +1302,11 @@ export const LlmAnalyticsEvaluationReportsUpdateRequest =
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      evaluation: S.optional(S.String),
       frequency: S.optional(EvaluationReportFrequencyEnum),
       rrule: S.optional(S.String),
-      starts_at: S.optional(S.NullOr(S.String)),
-      timezone_name: S.optional(S.String),
       delivery_targets: S.optional(S.Unknown),
       max_sample_size: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
-      deleted: S.optional(S.Boolean),
       report_prompt_guidance: S.optional(S.String),
       trigger_threshold: S.optional(S.NullOr(S.Number)),
       cooldown_minutes: S.optional(S.Number),
@@ -943,24 +1327,28 @@ export type LlmAnalyticsModelsRetrieveRequestProvider =
   | "azure_openai"
   | "fireworks"
   | "gemini"
+  | "minimax"
   | "openai"
   | "openrouter"
-  | "together_ai";
+  | "together_ai"
+  | "zeabur";
 export const LlmAnalyticsModelsRetrieveRequestProvider = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsModelsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Optional provider key UUID. When supplied, models reachable with that specific key are returned (useful for Azure OpenAI, where the deployment list depends on the configured endpoint). Must belong to the same provider as the `provider` parameter. */
+  /** Optional provider key UUID. When supplied, models reachable with that specific key are returned (useful for Azure OpenAI, where the deployment list depends on the configured endpoint). A key belongs to exactly one provider, so `provider` may be omitted alongside it; when both are given they must agree. */
   key_id?: string;
-  /** LLM provider to list models for. Must be one of the supported providers. */
-  provider: LlmAnalyticsModelsRetrieveRequestProvider | (string & {});
+  /** LLM provider to list models for. Omit it to list every supported provider and its models in one call. */
+  provider?: LlmAnalyticsModelsRetrieveRequestProvider | (string & {});
 }
 export const LlmAnalyticsModelsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key_id: S.optional(S.String.pipe(T.Query())),
-    provider: LlmAnalyticsModelsRetrieveRequestProvider.pipe(T.Query()),
+    provider: S.optional(
+      LlmAnalyticsModelsRetrieveRequestProvider.pipe(T.Query()),
+    ),
   }).pipe(
     T.Http({
       method: "GET",
@@ -975,29 +1363,57 @@ export const LlmAnalyticsModelsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LLMModelInfo {
   /** Provider-specific model identifier (e.g. 'gpt-4o-mini', 'claude-3-5-sonnet-20241022'). */
   id: string;
-  /** True if the model can run without a provider key — for getting-started testing only; real evals should use the team's own key. */
-  posthog_available: boolean;
+  /** Provider this model belongs to. Pass this value together with `id` when configuring an llm_judge evaluation. */
+  provider: string;
 }
 export const LLMModelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    posthog_available: S.Boolean,
+    provider: S.String,
   }),
 ).annotate({ identifier: "LLMModelInfo" }) as any as S.Schema<LLMModelInfo>;
 
-/** Models supported for the requested provider. */
+/** Models supported for the requested provider, or for every supported provider when `provider` is omitted. */
 export type LLMModelsListResponseModelsList = Array<LLMModelInfo>;
 export const LLMModelsListResponseModelsList = /*@__PURE__*/ S.Array(
   LLMModelInfo,
 ) as any as S.Schema<LLMModelsListResponseModelsList>;
 
+export interface LLMProviderModelsSummary {
+  /** Supported provider value, exactly as the `provider` param accepts it. */
+  provider: string;
+  /** How many of this provider's models appear in `models`. */
+  model_count: number;
+  /** True when this provider's models can only be listed by passing `key_id` for one of the team's provider keys. PostHog funds no models for it, so `model_count` is 0 until a key is supplied. */
+  requires_provider_key: boolean;
+}
+export const LLMProviderModelsSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.String,
+    model_count: S.Number,
+    requires_provider_key: S.Boolean,
+  }),
+).annotate({
+  identifier: "LLMProviderModelsSummary",
+}) as any as S.Schema<LLMProviderModelsSummary>;
+
+/** One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed. */
+export type LLMModelsListResponseProvidersList =
+  Array<LLMProviderModelsSummary>;
+export const LLMModelsListResponseProvidersList = /*@__PURE__*/ S.Array(
+  LLMProviderModelsSummary,
+) as any as S.Schema<LLMModelsListResponseProvidersList>;
+
 export interface LLMModelsListResponse {
-  /** Models supported for the requested provider. */
+  /** Models supported for the requested provider, or for every supported provider when `provider` is omitted. */
   models: LLMModelsListResponseModelsList;
+  /** One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed. */
+  providers: LLMModelsListResponseProvidersList;
 }
 export const LLMModelsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     models: LLMModelsListResponseModelsList,
+    providers: LLMModelsListResponseProvidersList,
   }),
 ).annotate({
   identifier: "LLMModelsListResponse",
@@ -1175,42 +1591,6 @@ export const LlmAnalyticsParserRecipesRetrieveRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "LlmAnalyticsParserRecipesRetrieveRequest",
 }) as any as S.Schema<LlmAnalyticsParserRecipesRetrieveRequest>;
-
-export interface LlmAnalyticsProviderKeysAssignCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this llm provider key. */
-  id: string;
-  provider?: LLMProviderEnum | (string & {});
-  name?: string;
-  api_key?: string | Redacted.Redacted<string>;
-  /** Azure OpenAI endpoint URL */
-  azure_endpoint?: string;
-  /** Azure OpenAI API version */
-  api_version?: string;
-  set_as_active?: boolean;
-}
-export const LlmAnalyticsProviderKeysAssignCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      provider: S.optional(LLMProviderEnum),
-      name: S.optional(S.String),
-      api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      azure_endpoint: S.optional(S.String),
-      api_version: S.optional(S.String),
-      set_as_active: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/llm_analytics/provider_keys/{id}/assign/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LlmAnalyticsProviderKeysAssignCreateRequest",
-  }) as any as S.Schema<LlmAnalyticsProviderKeysAssignCreateRequest>;
 
 export interface LlmAnalyticsProviderKeysCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1401,25 +1781,6 @@ export const LlmAnalyticsProviderKeysRetrieveRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "LlmAnalyticsProviderKeysRetrieveRequest",
 }) as any as S.Schema<LlmAnalyticsProviderKeysRetrieveRequest>;
-
-export interface LlmAnalyticsProviderKeysTrialEvaluationsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/llm_analytics/provider_keys/trial_evaluations/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LlmAnalyticsProviderKeysTrialEvaluationsRetrieveRequest",
-  }) as any as S.Schema<LlmAnalyticsProviderKeysTrialEvaluationsRetrieveRequest>;
 
 export interface LlmAnalyticsProviderKeysUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2683,6 +3044,21 @@ export const llmAnalyticsClusteringJobsUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type LlmAnalyticsClusteringRunsCreateError = PosthogOpError;
+/** Trigger a new clustering workflow run. This endpoint validates the request parameters and starts a Temporal workflow to perform trace clustering with the specified configuration. */
+export const llmAnalyticsClusteringRunsCreate: API.OperationMethod<
+  LlmAnalyticsClusteringRunsCreateRequest,
+  ClusteringRunRequest,
+  LlmAnalyticsClusteringRunsCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LlmAnalyticsClusteringRunsCreateRequest,
+  output: ClusteringRunRequest,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type LlmAnalyticsEvaluationConfigRetrieveError = PosthogOpError;
 /** Get the evaluation config for this team */
 export const llmAnalyticsEvaluationConfigRetrieve: API.OperationMethod<
@@ -2730,7 +3106,7 @@ export const llmAnalyticsEvaluationReportsCreate: API.OperationMethod<
 }));
 
 export type LlmAnalyticsEvaluationReportsDestroyError = PosthogOpError;
-/** Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true */
+/** Evaluation report configs are deleted only when their evaluation is deleted. Use PATCH enabled=false to stop delivery. */
 export const llmAnalyticsEvaluationReportsDestroy: API.OperationMethod<
   LlmAnalyticsEvaluationReportsDestroyRequest,
   LlmAnalyticsEvaluationReportsDestroyResponse,
@@ -2778,12 +3154,12 @@ export type LlmAnalyticsEvaluationReportsPartialUpdateError = PosthogOpError;
 /** CRUD for evaluation report configurations + report run history. */
 export const llmAnalyticsEvaluationReportsPartialUpdate: API.OperationMethod<
   LlmAnalyticsEvaluationReportsPartialUpdateRequest,
-  EvaluationReport,
+  EvaluationReportUpdate,
   LlmAnalyticsEvaluationReportsPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsEvaluationReportsPartialUpdateRequest,
-  output: EvaluationReport,
+  output: EvaluationReportUpdate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2823,19 +3199,19 @@ export type LlmAnalyticsEvaluationReportsUpdateError = PosthogOpError;
 /** CRUD for evaluation report configurations + report run history. */
 export const llmAnalyticsEvaluationReportsUpdate: API.OperationMethod<
   LlmAnalyticsEvaluationReportsUpdateRequest,
-  EvaluationReport,
+  EvaluationReportUpdate,
   LlmAnalyticsEvaluationReportsUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsEvaluationReportsUpdateRequest,
-  output: EvaluationReport,
+  output: EvaluationReportUpdate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
 export type LlmAnalyticsModelsRetrieveError = PosthogOpError;
-/** List available models for a provider. */
+/** List available models, for one provider or for every supported provider. */
 export const llmAnalyticsModelsRetrieve: API.OperationMethod<
   LlmAnalyticsModelsRetrieveRequest,
   LLMModelsListResponse,
@@ -2914,21 +3290,6 @@ export const llmAnalyticsParserRecipesRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsParserRecipesRetrieveRequest,
   output: ParserRecipe,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LlmAnalyticsProviderKeysAssignCreateError = PosthogOpError;
-/** Assign this key to evaluations and optionally re-enable them. */
-export const llmAnalyticsProviderKeysAssignCreate: API.OperationMethod<
-  LlmAnalyticsProviderKeysAssignCreateRequest,
-  LLMProviderKeyOutput,
-  LlmAnalyticsProviderKeysAssignCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LlmAnalyticsProviderKeysAssignCreateRequest,
-  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3014,22 +3375,6 @@ export const llmAnalyticsProviderKeysRetrieve: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsProviderKeysRetrieveRequest,
-  output: LLMProviderKeyOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LlmAnalyticsProviderKeysTrialEvaluationsRetrieveError =
-  PosthogOpError;
-/** List enabled evaluations currently using trial credits for a given provider. */
-export const llmAnalyticsProviderKeysTrialEvaluationsRetrieve: API.OperationMethod<
-  LlmAnalyticsProviderKeysTrialEvaluationsRetrieveRequest,
-  LLMProviderKeyOutput,
-  LlmAnalyticsProviderKeysTrialEvaluationsRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LlmAnalyticsProviderKeysTrialEvaluationsRetrieveRequest,
   output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,

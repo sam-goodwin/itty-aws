@@ -266,6 +266,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -274,7 +280,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.replay#BlankEnum": {
@@ -1155,15 +1161,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_summary": {
-          "target": "smithy.api#Boolean"
-        },
-        "summary_outcome": {
-          "target": "com.posthog.replay#Outcome",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "external_references": {
           "target": "com.posthog.replay#SessionRecordingExternalReferencesList",
           "traits": {
@@ -1174,6 +1171,20 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this recording matched the filters of the listing query that returned it. False only when a recording requested via session_recording_id was included despite not matching the filters."
+          }
+        },
+        "total_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total stored size of the recording's snapshot data in bytes. Only populated when the recording's metadata is loaded, e.g. on retrieve; null in list responses.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "event_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of captured rrweb events in the recording. Only populated when the recording's metadata is loaded, e.g. on retrieve; null in list responses.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1238,26 +1249,6 @@
         "target": "smithy.api#String"
       },
       "traits": {}
-    },
-    "com.posthog.replay#Outcome": {
-      "type": "structure",
-      "members": {
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "success": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Initial goal and session outcome coming from LLM."
-      }
     },
     "com.posthog.replay#SessionRecordingExternalReferencesItemMap": {
       "type": "map",
@@ -1528,16 +1519,16 @@
         }
       }
     },
-    "com.posthog.replay#CreateSessionSummariesIndividuallyRequestSessionIdsList": {
+    "com.posthog.replay#SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "List of session IDs to summarize (max 300)"
+        "smithy.api#documentation": "Session IDs of the recordings to delete (max 100 per call)."
       }
     },
-    "com.posthog.replay#CreateSessionSummariesIndividuallyRequest": {
+    "com.posthog.replay#SessionRecordingsBulkDeleteCreateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1548,16 +1539,18 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "session_ids": {
-          "target": "com.posthog.replay#CreateSessionSummariesIndividuallyRequestSessionIdsList",
+        "session_recording_ids": {
+          "target": "com.posthog.replay#SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList",
           "traits": {
-            "smithy.api#documentation": "List of session IDs to summarize (max 300)"
+            "smithy.api#documentation": "Session IDs of the recordings to delete (max 100 per call).",
+            "smithy.api#required": {}
           }
         },
-        "focus_area": {
+        "date_from": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional focus area for the summarization"
+            "smithy.api#documentation": "Earliest start time of the recordings, as an ISO date or a relative offset like '-30d'. Providing this narrows the lookup and speeds up the request; defaults to the project's recording retention period.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1565,48 +1558,64 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.replay#SessionSummaries": {
+    "com.posthog.replay#SessionRecordingBulkDeleteResponse": {
       "type": "structure",
       "members": {
-        "session_ids": {
-          "target": "com.posthog.replay#SessionSummariesSessionIdsList",
+        "success": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "List of session IDs to summarize (max 300)"
+            "smithy.api#documentation": "True when no deletion attempt failed. IDs that were not found, or that the caller lacks edit access to, are skipped rather than failed — compare deleted_count to total_requested to detect skips.",
+            "smithy.api#required": {}
           }
         },
-        "focus_area": {
-          "target": "smithy.api#String",
+        "deleted_count": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Optional focus area for the summarization"
+            "smithy.api#documentation": "Number of recordings that were deleted.",
+            "smithy.api#required": {}
+          }
+        },
+        "total_requested": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of session recording IDs in the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "failed_ids": {
+          "target": "com.posthog.replay#SessionRecordingBulkDeleteResponseFailedIdsList",
+          "traits": {
+            "smithy.api#documentation": "Session IDs that were found but could not be deleted. These can be retried.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {}
     },
-    "com.posthog.replay#SessionSummariesSessionIdsList": {
+    "com.posthog.replay#SessionRecordingBulkDeleteResponseFailedIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "List of session IDs to summarize (max 300)"
+        "smithy.api#documentation": "Session IDs that were found but could not be deleted. These can be retried."
       }
     },
-    "com.posthog.replay#CreateSessionSummariesIndividually": {
+    "com.posthog.replay#SessionRecordingsBulkDeleteCreate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#CreateSessionSummariesIndividuallyRequest"
+        "target": "com.posthog.replay#SessionRecordingsBulkDeleteCreateRequest"
       },
       "output": {
-        "target": "com.posthog.replay#SessionSummaries"
+        "target": "com.posthog.replay#SessionRecordingBulkDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/api/projects/{project_id}/session_summaries/create_session_summaries_individually/",
+          "uri": "/api/projects/{project_id}/session_recordings/bulk_delete/",
           "code": 200
         },
-        "smithy.api#documentation": "Generate AI individual summary for each session, without grouping."
+        "smithy.api#documentation": "Delete a batch of session recordings by session ID. Deletion is permanent and cannot be undone. IDs that don't match an existing recording are skipped and counted in `total_requested` but not `deleted_count`."
       }
     },
     "com.posthog.replay#BadRequest": {
@@ -1695,7 +1704,7 @@
           "target": "com.posthog.replay#SessionRecordingsDestroy"
         },
         {
-          "target": "com.posthog.replay#CreateSessionSummariesIndividually"
+          "target": "com.posthog.replay#SessionRecordingsBulkDeleteCreate"
         }
       ],
       "traits": {

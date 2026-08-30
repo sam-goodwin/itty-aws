@@ -70,7 +70,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -1007,7 +1010,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -1243,7 +1249,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -1389,7 +1398,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -1452,7 +1464,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -1552,7 +1567,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -1696,7 +1714,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -1802,7 +1823,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -2258,7 +2282,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -2439,7 +2466,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -2675,7 +2705,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -2738,7 +2771,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -2838,7 +2874,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -2982,7 +3021,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -3147,7 +3189,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -3336,7 +3381,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -3391,7 +3439,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -3458,7 +3509,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -3594,7 +3648,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -3692,7 +3749,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -4030,7 +4090,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -4270,7 +4333,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -4609,7 +4675,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -4675,7 +4744,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -4849,7 +4921,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -5002,7 +5077,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -9995,7 +10073,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -10163,7 +10244,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -10235,7 +10319,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -10327,7 +10414,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -10480,7 +10570,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -10657,7 +10750,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -10983,7 +11079,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -11054,7 +11153,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -11147,7 +11249,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -11299,7 +11404,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -11480,7 +11588,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -11873,7 +11984,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -11936,7 +12050,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -12038,7 +12155,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -12182,7 +12302,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -12347,7 +12470,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -12486,7 +12612,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -12541,7 +12670,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -12601,7 +12733,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",
@@ -12737,7 +12872,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         },
         "eTag": {
           "target": "smithy.api#String",

@@ -153,7 +153,7 @@ export const AvailableFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AvailableFiltersResponse",
 }) as any as S.Schema<AvailableFiltersResponse>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -162,6 +162,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -331,6 +332,14 @@ export const AdvancedActivityLogsListRequestItemIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestItemIdsList>;
 
+export type AdvancedActivityLogsListRequestOrdering =
+  | "-created_at"
+  | "created_at";
+export const AdvancedActivityLogsListRequestOrdering = /*@__PURE__*/ S.String;
+
+export type AdvancedActivityLogsListRequestSchema = "ocsf";
+export const AdvancedActivityLogsListRequestSchema = /*@__PURE__*/ S.String;
+
 export type AdvancedActivityLogsListRequestScopesList = Array<string>;
 export const AdvancedActivityLogsListRequestScopesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -357,18 +366,26 @@ export interface AdvancedActivityLogsListRequest {
   detail_filters?: string;
   /** Upper bound on `created_at` (inclusive), ISO-8601. */
   end_date?: string;
+  /** Keep the next link valid after the last entry, so the same cursor can be re-polled as new entries arrive. Only applies with oldest-first ordering. When following, stop on an empty results list rather than on a null next link. */
+  follow?: boolean;
   /** Reserved for future HogQL-based filtering. */
   hogql_filter?: string;
+  /** Include the previous and new values of changed fields. Only applies when schema is ocsf. Values can contain the content of the changed object, which makes responses larger and sends that content to your security tool. */
+  include_values?: boolean;
   /** Filter by client IP addresses. Accepts exact IPv4/IPv6 values or wildcard patterns using `*` (e.g. `203.0.113.*`). Multiple entries are OR-combined. */
   ip_addresses?: AdvancedActivityLogsListRequestIpAddressesList;
   /** When set, filters rows authored by the system (no user). */
   is_system?: boolean;
   /** Filter by the `item_id` of the affected resource(s). */
   item_ids?: AdvancedActivityLogsListRequestItemIdsList;
+  /** Sort by when the entry was created. Defaults to newest first. Use created_at for oldest first when polling for new entries, so a saved cursor picks up where the last request stopped. * `-created_at` - -created_at * `created_at` - created_at */
+  ordering?: AdvancedActivityLogsListRequestOrdering | (string & {});
   /** Page number for pagination. When provided, uses page-based pagination ordered by most recent first. */
   page?: number;
-  /** Number of results per page (default: 100, max: 1000). Only used with page-based pagination. */
+  /** Number of results per page (default: 100, max: 1000). */
   page_size?: number;
+  /** Response format. Set to ocsf to return Open Cybersecurity Schema Framework events for ingestion into a security tool. Omit for the default PostHog format. * `ocsf` - ocsf */
+  schema?: AdvancedActivityLogsListRequestSchema | (string & {});
   /** Filter by activity scopes (e.g. "FeatureFlag", "Insight"). */
   scopes?: AdvancedActivityLogsListRequestScopesList;
   /** Free-text search across the `detail` JSON column. */
@@ -393,7 +410,9 @@ export const AdvancedActivityLogsListRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     detail_filters: S.optional(S.String.pipe(T.Query())),
     end_date: S.optional(S.String.pipe(T.Query())),
+    follow: S.optional(S.Boolean.pipe(T.Query())),
     hogql_filter: S.optional(S.String.pipe(T.Query())),
+    include_values: S.optional(S.Boolean.pipe(T.Query())),
     ip_addresses: S.optional(
       AdvancedActivityLogsListRequestIpAddressesList.pipe(T.Query()),
     ),
@@ -401,8 +420,12 @@ export const AdvancedActivityLogsListRequest = /*@__PURE__*/ S.suspend(() =>
     item_ids: S.optional(
       AdvancedActivityLogsListRequestItemIdsList.pipe(T.Query()),
     ),
+    ordering: S.optional(
+      AdvancedActivityLogsListRequestOrdering.pipe(T.Query()),
+    ),
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
+    schema: S.optional(AdvancedActivityLogsListRequestSchema.pipe(T.Query())),
     scopes: S.optional(
       AdvancedActivityLogsListRequestScopesList.pipe(T.Query()),
     ),
@@ -430,17 +453,17 @@ export const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedActivityLogListResultsList>;
 
 export interface PaginatedActivityLogList {
-  count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedActivityLogListResultsList;
+  count?: number;
 }
 export const PaginatedActivityLogList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
     results: S.optional(PaginatedActivityLogListResultsList),
+    count: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "PaginatedActivityLogList",

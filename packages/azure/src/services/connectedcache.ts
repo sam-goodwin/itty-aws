@@ -1869,12 +1869,8 @@ export const AdditionalCustomerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalCustomerPropertiesInput>;
 
 /** The error detail. */
-export interface CustomerPropertyInputError {}
-export const CustomerPropertyInputError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomerPropertyInputError",
-}) as any as S.Schema<CustomerPropertyInputError>;
+export type CustomerPropertyInputError = CacheNodePropertyInputError;
+export const CustomerPropertyInputError = CacheNodePropertyInputError;
 
 /** Model representing customer for connectedCache resource */
 export interface CustomerPropertyInput {
@@ -1883,13 +1879,13 @@ export interface CustomerPropertyInput {
   /** Mcc customer resource additional properties. */
   additionalCustomerProperties?: AdditionalCustomerPropertiesInput;
   /** The error detail. */
-  error?: CustomerPropertyInputError;
+  error?: CacheNodePropertyInputError;
 }
 export const CustomerPropertyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer: S.optional(CustomerEntityInput),
     additionalCustomerProperties: S.optional(AdditionalCustomerPropertiesInput),
-    error: S.optional(CustomerPropertyInputError),
+    error: S.optional(CacheNodePropertyInputError),
   }),
 ).annotate({
   identifier: "CustomerPropertyInput",

@@ -124,7 +124,9 @@ export const ConfigsCreateRequestOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsCreateRequestOriginPublicDatabase>;
 
 export type ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -164,7 +166,9 @@ export const ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTu
   }) as any as S.Schema<ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -343,7 +347,9 @@ export const ConfigsCreateResponseOriginPublicDatabase =
   }) as any as S.Schema<ConfigsCreateResponseOriginPublicDatabase>;
 
 export type ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -378,7 +384,9 @@ export const ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -609,7 +617,9 @@ export const ConfigsGetResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsGetResponseOriginPublicDatabase>;
 
 export type ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -798,7 +808,9 @@ export const ConfigsListResultItemOriginPublicDatabase =
   }) as any as S.Schema<ConfigsListResultItemOriginPublicDatabase>;
 
 export type ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -833,7 +845,9 @@ export const ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1140,7 +1154,9 @@ export const ConfigsEditResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsEditResponseOriginPublicDatabase>;
 
 export type ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1175,7 +1191,9 @@ export const ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTun
   }) as any as S.Schema<ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1311,7 +1329,9 @@ export const ConfigsUpdateRequestOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsUpdateRequestOriginPublicDatabase>;
 
 export type ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1351,7 +1371,9 @@ export const ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTu
   }) as any as S.Schema<ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1494,7 +1516,9 @@ export const ConfigsUpdateResponseOriginPublicDatabase =
   }) as any as S.Schema<ConfigsUpdateResponseOriginPublicDatabase>;
 
 export type ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1529,7 +1553,9 @@ export const ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql";
+  | "postgres"
+  | "postgresql"
+  | "mysql";
 export const ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 

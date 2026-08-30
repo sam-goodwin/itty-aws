@@ -152,6 +152,12 @@ export interface ActivityLogEntry {
   item_id?: string;
   detail?: Detail;
   created_at?: string;
+  /** Whether the activity was performed by the system rather than a user. */
+  is_system?: boolean;
+  /** Whether the acting user was being impersonated by PostHog staff. */
+  was_impersonated?: boolean;
+  /** API client that triggered the activity, from the x-posthog-client request header (e.g. 'mcp'). Null for requests that did not send the header. */
+  client?: string | null;
 }
 export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -162,6 +168,9 @@ export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
     item_id: S.optional(S.String),
     detail: S.optional(Detail),
     created_at: S.optional(S.String),
+    is_system: S.optional(S.Boolean),
+    was_impersonated: S.optional(S.Boolean),
+    client: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ActivityLogEntry",
@@ -444,8 +453,8 @@ export const FeatureFlagsBulkUpdateTagsCreateRequestIdsList =
   ) as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type ActionEnum = "add" | "remove" | "set";
-export const ActionEnum = /*@__PURE__*/ S.String;
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
+export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
 export type FeatureFlagsBulkUpdateTagsCreateRequestTagsList = Array<string>;
@@ -460,7 +469,7 @@ export interface FeatureFlagsBulkUpdateTagsCreateRequest {
   /** List of object IDs to update tags on. */
   ids?: FeatureFlagsBulkUpdateTagsCreateRequestIdsList;
   /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
-  action?: ActionEnum | (string & {});
+  action?: BulkUpdateTagsActionEnum | (string & {});
   /** Tag names to add, remove, or set. */
   tags?: FeatureFlagsBulkUpdateTagsCreateRequestTagsList;
 }
@@ -469,7 +478,7 @@ export const FeatureFlagsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       ids: S.optional(FeatureFlagsBulkUpdateTagsCreateRequestIdsList),
-      action: S.optional(ActionEnum),
+      action: S.optional(BulkUpdateTagsActionEnum),
       tags: S.optional(FeatureFlagsBulkUpdateTagsCreateRequestTagsList),
     }).pipe(
       T.Http({
@@ -540,12 +549,16 @@ export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
 export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
 
-/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
 export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "exact"
   | "is_not"
   | "icontains"
   | "not_icontains"
+  | "starts_with"
+  | "not_starts_with"
+  | "ends_with"
+  | "not_ends_with"
   | "regex"
   | "not_regex"
   | "gt"
@@ -558,15 +571,15 @@ export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
 export interface FeatureFlagFilterPropertyGenericSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
   value?: unknown;
-  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
   operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum | (string & {});
 }
 export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
@@ -590,11 +603,11 @@ export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 export interface FeatureFlagFilterPropertyExistsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Existence operator. * `is_set` - is_set * `is_not_set` - is_not_set */
   operator?: ExistenceOperatorEnum | (string & {});
@@ -625,11 +638,11 @@ export const DateOperatorEnum = /*@__PURE__*/ S.String;
 export interface FeatureFlagFilterPropertyDateSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before */
   operator?: DateOperatorEnum | (string & {});
@@ -666,11 +679,11 @@ export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
 export interface FeatureFlagFilterPropertySemverSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Semantic version comparison operator. * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
   operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum | (string & {});
@@ -709,11 +722,11 @@ export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
 export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Multi-contains operator. * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
   operator?:
@@ -757,7 +770,7 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Membership operator for cohort properties. * `in` - in * `not_in` - not_in */
   operator?:
@@ -798,7 +811,7 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Operator for feature flag dependency evaluation. * `flag_evaluates_to` - flag_evaluates_to */
   operator?:
@@ -1028,7 +1041,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -1037,6 +1050,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -1162,11 +1176,10 @@ export interface FeatureFlagOutput {
   experiment_set_metadata?: FeatureFlagOutputExperimentSetMetadataList;
   surveys?: FeatureFlagOutputSurveysMap;
   features?: FeatureFlagOutputFeaturesMap;
-  rollback_conditions?: unknown;
-  performed_rollback?: boolean | null;
   can_edit?: boolean;
   tags?: FeatureFlagOutputTagsList;
-  usage_dashboard?: number;
+  /** Dashboard of saved usage insights for this flag, or null if it has none. Flags do not get one on creation; create it with POST /api/projects/{project_id}/feature_flags/{id}/dashboard/. */
+  usage_dashboard?: number | null;
   analytics_dashboards?: FeatureFlagOutputAnalyticsDashboardsList;
   has_enriched_analytics?: boolean | null;
   /** The effective access level the user has for this object */
@@ -1182,6 +1195,8 @@ export interface FeatureFlagOutput {
   last_called_at?: string | null;
   /** Check if this feature flag is used in any team's session recording linked flag setting. */
   is_used_in_replay_settings?: boolean;
+  /** Whether this flag can back an experiment: multivariate with 2 to 20 variants. */
+  is_eligible_for_experiment?: boolean;
 }
 export const FeatureFlagOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1204,11 +1219,9 @@ export const FeatureFlagOutput = /*@__PURE__*/ S.suspend(() =>
     ),
     surveys: S.optional(FeatureFlagOutputSurveysMap),
     features: S.optional(FeatureFlagOutputFeaturesMap),
-    rollback_conditions: S.optional(S.Unknown),
-    performed_rollback: S.optional(S.NullOr(S.Boolean)),
     can_edit: S.optional(S.Boolean),
     tags: S.optional(FeatureFlagOutputTagsList),
-    usage_dashboard: S.optional(S.Number),
+    usage_dashboard: S.optional(S.NullOr(S.Number)),
     analytics_dashboards: S.optional(FeatureFlagOutputAnalyticsDashboardsList),
     has_enriched_analytics: S.optional(S.NullOr(S.Boolean)),
     user_access_level: S.optional(S.NullOr(S.String)),
@@ -1223,6 +1236,7 @@ export const FeatureFlagOutput = /*@__PURE__*/ S.suspend(() =>
     ),
     last_called_at: S.optional(S.NullOr(S.String)),
     is_used_in_replay_settings: S.optional(S.Boolean),
+    is_eligible_for_experiment: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "FeatureFlagOutput",
@@ -1270,13 +1284,15 @@ export const FeatureFlagCreationContextEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationRuntime =
-  EvaluationRuntimeEnum | BlankEnum;
+  | EvaluationRuntimeEnum
+  | BlankEnum;
 export const FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationRuntime>;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestBucketingIdentifier =
-  BucketingIdentifierEnum | BlankEnum;
+  | BucketingIdentifierEnum
+  | BlankEnum;
 export const FeatureFlagsCreateStaticCohortForFlagCreateRequestBucketingIdentifier =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestBucketingIdentifier>;
 
@@ -1296,8 +1312,6 @@ export interface FeatureFlagsCreateStaticCohortForFlagCreateRequest {
   created_at?: string;
   version?: number;
   ensure_experience_continuity?: boolean | null;
-  rollback_conditions?: unknown;
-  performed_rollback?: boolean | null;
   tags?: FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList;
   evaluation_contexts?: FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList;
   analytics_dashboards?: FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList;
@@ -1313,7 +1327,6 @@ export interface FeatureFlagsCreateStaticCohortForFlagCreateRequest {
   /** Last time this feature flag was called (from $feature_flag_called events) */
   last_called_at?: string | null;
   _create_in_folder?: string;
-  _should_create_usage_dashboard?: boolean;
 }
 export const FeatureFlagsCreateStaticCohortForFlagCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1331,8 +1344,6 @@ export const FeatureFlagsCreateStaticCohortForFlagCreateRequest =
       created_at: S.optional(S.String),
       version: S.optional(S.Number),
       ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-      rollback_conditions: S.optional(S.Unknown),
-      performed_rollback: S.optional(S.NullOr(S.Boolean)),
       tags: S.optional(
         FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList,
       ),
@@ -1358,7 +1369,6 @@ export const FeatureFlagsCreateStaticCohortForFlagCreateRequest =
       ),
       last_called_at: S.optional(S.NullOr(S.String)),
       _create_in_folder: S.optional(S.String),
-      _should_create_usage_dashboard: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1376,118 +1386,16 @@ export const FeatureFlagsCreateStaticCohortForFlagCreateResponse =
     identifier: "FeatureFlagsCreateStaticCohortForFlagCreateResponse",
   }) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateResponse>;
 
-export type FeatureFlagsDashboardCreateRequestFiltersMap = {
-  [key: string]: unknown | undefined;
-};
-export const FeatureFlagsDashboardCreateRequestFiltersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<FeatureFlagsDashboardCreateRequestFiltersMap>;
-
-export type FeatureFlagsDashboardCreateRequestTagsList = Array<unknown>;
-export const FeatureFlagsDashboardCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FeatureFlagsDashboardCreateRequestTagsList>;
-
-export type FeatureFlagsDashboardCreateRequestEvaluationContextsList =
-  Array<unknown>;
-export const FeatureFlagsDashboardCreateRequestEvaluationContextsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<FeatureFlagsDashboardCreateRequestEvaluationContextsList>;
-
-export type FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList =
-  Array<number>;
-export const FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList>;
-
-/** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
-export type FeatureFlagsDashboardCreateRequestEvaluationRuntime =
-  | EvaluationRuntimeEnum
-  | BlankEnum;
-export const FeatureFlagsDashboardCreateRequestEvaluationRuntime =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagsDashboardCreateRequestEvaluationRuntime>;
-
-/** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type FeatureFlagsDashboardCreateRequestBucketingIdentifier =
-  | BucketingIdentifierEnum
-  | BlankEnum;
-export const FeatureFlagsDashboardCreateRequestBucketingIdentifier =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagsDashboardCreateRequestBucketingIdentifier>;
-
 export interface FeatureFlagsDashboardCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this feature flag. */
   id: number;
-  /** contains the description for the flag (field name `name` is kept for backwards-compatibility) */
-  name?: string;
-  key?: string;
-  filters?: FeatureFlagsDashboardCreateRequestFiltersMap;
-  deleted?: boolean;
-  active?: boolean;
-  /** Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`). */
-  archived?: boolean;
-  created_at?: string;
-  version?: number;
-  ensure_experience_continuity?: boolean | null;
-  rollback_conditions?: unknown;
-  performed_rollback?: boolean | null;
-  tags?: FeatureFlagsDashboardCreateRequestTagsList;
-  evaluation_contexts?: FeatureFlagsDashboardCreateRequestEvaluationContextsList;
-  analytics_dashboards?: FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList;
-  has_enriched_analytics?: boolean | null;
-  /** Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'. * `feature_flags` - feature_flags * `experiments` - experiments * `surveys` - surveys * `early_access_features` - early_access_features * `web_experiments` - web_experiments * `product_tours` - product_tours */
-  creation_context?: FeatureFlagCreationContextEnum | (string & {});
-  is_remote_configuration?: boolean | null;
-  has_encrypted_payloads?: boolean | null;
-  /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
-  evaluation_runtime?: FeatureFlagsDashboardCreateRequestEvaluationRuntime | null;
-  /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
-  bucketing_identifier?: FeatureFlagsDashboardCreateRequestBucketingIdentifier | null;
-  /** Last time this feature flag was called (from $feature_flag_called events) */
-  last_called_at?: string | null;
-  _create_in_folder?: string;
-  _should_create_usage_dashboard?: boolean;
 }
 export const FeatureFlagsDashboardCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
-    name: S.optional(S.String),
-    key: S.optional(S.String),
-    filters: S.optional(FeatureFlagsDashboardCreateRequestFiltersMap),
-    deleted: S.optional(S.Boolean),
-    active: S.optional(S.Boolean),
-    archived: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    version: S.optional(S.Number),
-    ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-    rollback_conditions: S.optional(S.Unknown),
-    performed_rollback: S.optional(S.NullOr(S.Boolean)),
-    tags: S.optional(FeatureFlagsDashboardCreateRequestTagsList),
-    evaluation_contexts: S.optional(
-      FeatureFlagsDashboardCreateRequestEvaluationContextsList,
-    ),
-    analytics_dashboards: S.optional(
-      FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList,
-    ),
-    has_enriched_analytics: S.optional(S.NullOr(S.Boolean)),
-    creation_context: S.optional(FeatureFlagCreationContextEnum),
-    is_remote_configuration: S.optional(S.NullOr(S.Boolean)),
-    has_encrypted_payloads: S.optional(S.NullOr(S.Boolean)),
-    evaluation_runtime: S.optional(
-      S.NullOr(FeatureFlagsDashboardCreateRequestEvaluationRuntime),
-    ),
-    bucketing_identifier: S.optional(
-      S.NullOr(FeatureFlagsDashboardCreateRequestBucketingIdentifier),
-    ),
-    last_called_at: S.optional(S.NullOr(S.String)),
-    _create_in_folder: S.optional(S.String),
-    _should_create_usage_dashboard: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1588,127 +1496,17 @@ export const FeatureFlagsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeatureFlagsDestroyResponse",
 }) as any as S.Schema<FeatureFlagsDestroyResponse>;
 
-export type FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap = {
-  [key: string]: unknown | undefined;
-};
-export const FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap>;
-
-export type FeatureFlagsEnrichUsageDashboardCreateRequestTagsList =
-  Array<unknown>;
-export const FeatureFlagsEnrichUsageDashboardCreateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestTagsList>;
-
-export type FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList =
-  Array<unknown>;
-export const FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList>;
-
-export type FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList =
-  Array<number>;
-export const FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList>;
-
-/** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
-export type FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationRuntime =
-  | EvaluationRuntimeEnum
-  | BlankEnum;
-export const FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationRuntime =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationRuntime>;
-
-/** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type FeatureFlagsEnrichUsageDashboardCreateRequestBucketingIdentifier =
-  | BucketingIdentifierEnum
-  | BlankEnum;
-export const FeatureFlagsEnrichUsageDashboardCreateRequestBucketingIdentifier =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateRequestBucketingIdentifier>;
-
 export interface FeatureFlagsEnrichUsageDashboardCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this feature flag. */
   id: number;
-  /** contains the description for the flag (field name `name` is kept for backwards-compatibility) */
-  name?: string;
-  key?: string;
-  filters?: FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap;
-  deleted?: boolean;
-  active?: boolean;
-  /** Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`). */
-  archived?: boolean;
-  created_at?: string;
-  version?: number;
-  ensure_experience_continuity?: boolean | null;
-  rollback_conditions?: unknown;
-  performed_rollback?: boolean | null;
-  tags?: FeatureFlagsEnrichUsageDashboardCreateRequestTagsList;
-  evaluation_contexts?: FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList;
-  analytics_dashboards?: FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList;
-  has_enriched_analytics?: boolean | null;
-  /** Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'. * `feature_flags` - feature_flags * `experiments` - experiments * `surveys` - surveys * `early_access_features` - early_access_features * `web_experiments` - web_experiments * `product_tours` - product_tours */
-  creation_context?: FeatureFlagCreationContextEnum | (string & {});
-  is_remote_configuration?: boolean | null;
-  has_encrypted_payloads?: boolean | null;
-  /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
-  evaluation_runtime?: FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationRuntime | null;
-  /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
-  bucketing_identifier?: FeatureFlagsEnrichUsageDashboardCreateRequestBucketingIdentifier | null;
-  /** Last time this feature flag was called (from $feature_flag_called events) */
-  last_called_at?: string | null;
-  _create_in_folder?: string;
-  _should_create_usage_dashboard?: boolean;
 }
 export const FeatureFlagsEnrichUsageDashboardCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      name: S.optional(S.String),
-      key: S.optional(S.String),
-      filters: S.optional(
-        FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap,
-      ),
-      deleted: S.optional(S.Boolean),
-      active: S.optional(S.Boolean),
-      archived: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      version: S.optional(S.Number),
-      ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-      rollback_conditions: S.optional(S.Unknown),
-      performed_rollback: S.optional(S.NullOr(S.Boolean)),
-      tags: S.optional(FeatureFlagsEnrichUsageDashboardCreateRequestTagsList),
-      evaluation_contexts: S.optional(
-        FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList,
-      ),
-      analytics_dashboards: S.optional(
-        FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList,
-      ),
-      has_enriched_analytics: S.optional(S.NullOr(S.Boolean)),
-      creation_context: S.optional(FeatureFlagCreationContextEnum),
-      is_remote_configuration: S.optional(S.NullOr(S.Boolean)),
-      has_encrypted_payloads: S.optional(S.NullOr(S.Boolean)),
-      evaluation_runtime: S.optional(
-        S.NullOr(
-          FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationRuntime,
-        ),
-      ),
-      bucketing_identifier: S.optional(
-        S.NullOr(
-          FeatureFlagsEnrichUsageDashboardCreateRequestBucketingIdentifier,
-        ),
-      ),
-      last_called_at: S.optional(S.NullOr(S.String)),
-      _create_in_folder: S.optional(S.String),
-      _should_create_usage_dashboard: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1726,11 +1524,20 @@ export const FeatureFlagsEnrichUsageDashboardCreateResponse =
     identifier: "FeatureFlagsEnrichUsageDashboardCreateResponse",
   }) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateResponse>;
 
+export type FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList =
+  Array<string>;
+export const FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList>;
+
 export interface FeatureFlagsEvaluationReasonsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** User distinct ID */
   distinct_id: string;
+  /** Optional list of flag keys to scope the response to. When omitted, evaluation reasons are returned for every flag in the project, which can be a very large payload on projects with many flags. Pass the specific flag(s) you are debugging to keep the response small. Accepts either repeated query params (flag_keys=a&flag_keys=b) or a JSON array string (flag_keys=["a","b"]). */
+  flag_keys?: FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList;
   /** Groups for feature flag evaluation (JSON object string) */
   groups?: string;
 }
@@ -1739,6 +1546,11 @@ export const FeatureFlagsEvaluationReasonsRetrieveRequest =
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       distinct_id: S.String.pipe(T.Query()),
+      flag_keys: S.optional(
+        FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList.pipe(
+          T.Query(),
+        ),
+      ),
       groups: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -1762,6 +1574,10 @@ export const FeatureFlagsListRequestActive = /*@__PURE__*/ S.String;
 
 export type FeatureFlagsListRequestArchived = "false" | "true";
 export const FeatureFlagsListRequestArchived = /*@__PURE__*/ S.String;
+
+export type FeatureFlagsListRequestEligibleForExperiment = "true";
+export const FeatureFlagsListRequestEligibleForExperiment =
+  /*@__PURE__*/ S.String;
 
 export type FeatureFlagsListRequestEvaluationRuntime =
   | "all"
@@ -1788,6 +1604,10 @@ export interface FeatureFlagsListRequest {
   archived?: FeatureFlagsListRequestArchived | (string & {});
   /** Filter by the user(s) who created the feature flag. Accepts a single user ID, or a JSON-encoded / comma-separated list of user IDs to match any of them. */
   created_by_id?: string;
+  /** When 'true', only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored. */
+  eligible_for_experiment?:
+    | FeatureFlagsListRequestEligibleForExperiment
+    | (string & {});
   /** Filter feature flags by their evaluation runtime. */
   evaluation_runtime?: FeatureFlagsListRequestEvaluationRuntime | (string & {});
   /** JSON-encoded list of feature flag keys to exclude from the results. */
@@ -1798,6 +1618,8 @@ export interface FeatureFlagsListRequest {
   has_evaluation_contexts?:
     | FeatureFlagsListRequestHasEvaluationContexts
     | (string & {});
+  /** Filter by exact feature flag key match. Case insensitive. */
+  key?: string;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -1814,6 +1636,9 @@ export const FeatureFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
     active: S.optional(FeatureFlagsListRequestActive.pipe(T.Query())),
     archived: S.optional(FeatureFlagsListRequestArchived.pipe(T.Query())),
     created_by_id: S.optional(S.String.pipe(T.Query())),
+    eligible_for_experiment: S.optional(
+      FeatureFlagsListRequestEligibleForExperiment.pipe(T.Query()),
+    ),
     evaluation_runtime: S.optional(
       FeatureFlagsListRequestEvaluationRuntime.pipe(T.Query()),
     ),
@@ -1822,6 +1647,7 @@ export const FeatureFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
     has_evaluation_contexts: S.optional(
       FeatureFlagsListRequestHasEvaluationContexts.pipe(T.Query()),
     ),
+    key: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
@@ -1887,15 +1713,26 @@ export const FeatureFlagsMatchingIdsRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "FeatureFlagsMatchingIdsRetrieveResponse",
 }) as any as S.Schema<FeatureFlagsMatchingIdsRetrieveResponse>;
 
+export type FeatureFlagsMyFlagsRetrieveRequestFlagKeysList = Array<string>;
+export const FeatureFlagsMyFlagsRetrieveRequestFlagKeysList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FeatureFlagsMyFlagsRetrieveRequestFlagKeysList>;
+
 export interface FeatureFlagsMyFlagsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  /** Optional list of flag keys to scope the response to. When omitted, every flag in the project is returned with its evaluated value, which can be a very large payload on projects with many flags. Pass the specific flag(s) you want to check to keep the response small. Accepts either repeated query params (flag_keys=a&flag_keys=b) or a JSON array string (flag_keys=["a","b"]). */
+  flag_keys?: FeatureFlagsMyFlagsRetrieveRequestFlagKeysList;
   /** Groups for feature flag evaluation (JSON object string) */
   groups?: string;
 }
 export const FeatureFlagsMyFlagsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
+    flag_keys: S.optional(
+      FeatureFlagsMyFlagsRetrieveRequestFlagKeysList.pipe(T.Query()),
+    ),
     groups: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -2312,6 +2149,8 @@ export interface FeatureFlagTestEvaluationResponse {
   result: unknown;
   /** The reason for the evaluation result */
   reason: string;
+  /** Human-readable explanation of the evaluation result. Set when the reason code is coarse, for example a non-match decided by a behavioral or realtime cohort whose membership is not fully evaluated here, which can disagree with the cohort's member list. */
+  reason_description?: string | null;
   /** The index of the condition that matched, if applicable */
   condition_index: number | null;
   /** Payload associated with the flag result, if any */
@@ -2328,6 +2167,7 @@ export const FeatureFlagTestEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
     flag_key: S.String,
     result: S.Unknown,
     reason: S.String,
+    reason_description: S.optional(S.NullOr(S.String)),
     condition_index: S.NullOr(S.Number),
     payload: S.Unknown,
     person_properties: FeatureFlagTestEvaluationResponsePersonPropertiesMap,
@@ -2393,8 +2233,6 @@ export interface FeatureFlagsUpdateRequest {
   created_at?: string;
   version?: number;
   ensure_experience_continuity?: boolean | null;
-  rollback_conditions?: unknown;
-  performed_rollback?: boolean | null;
   tags?: FeatureFlagsUpdateRequestTagsList;
   evaluation_contexts?: FeatureFlagsUpdateRequestEvaluationContextsList;
   analytics_dashboards?: FeatureFlagsUpdateRequestAnalyticsDashboardsList;
@@ -2410,7 +2248,6 @@ export interface FeatureFlagsUpdateRequest {
   /** Last time this feature flag was called (from $feature_flag_called events) */
   last_called_at?: string | null;
   _create_in_folder?: string;
-  _should_create_usage_dashboard?: boolean;
 }
 export const FeatureFlagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2425,8 +2262,6 @@ export const FeatureFlagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     created_at: S.optional(S.String),
     version: S.optional(S.Number),
     ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-    rollback_conditions: S.optional(S.Unknown),
-    performed_rollback: S.optional(S.NullOr(S.Boolean)),
     tags: S.optional(FeatureFlagsUpdateRequestTagsList),
     evaluation_contexts: S.optional(
       FeatureFlagsUpdateRequestEvaluationContextsList,
@@ -2446,7 +2281,6 @@ export const FeatureFlagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     last_called_at: S.optional(S.NullOr(S.String)),
     _create_in_folder: S.optional(S.String),
-    _should_create_usage_dashboard: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2565,8 +2399,6 @@ export interface FeatureFlagVersionResponse {
   active?: boolean;
   deleted?: boolean;
   version?: number | null;
-  rollback_conditions?: unknown;
-  performed_rollback?: boolean | null;
   ensure_experience_continuity?: boolean | null;
   has_enriched_analytics?: boolean | null;
   is_remote_configuration?: boolean | null;
@@ -2594,8 +2426,6 @@ export const FeatureFlagVersionResponse = /*@__PURE__*/ S.suspend(() =>
     active: S.optional(S.Boolean),
     deleted: S.optional(S.Boolean),
     version: S.optional(S.NullOr(S.Number)),
-    rollback_conditions: S.optional(S.Unknown),
-    performed_rollback: S.optional(S.NullOr(S.Boolean)),
     ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
     has_enriched_analytics: S.optional(S.NullOr(S.Boolean)),
     is_remote_configuration: S.optional(S.NullOr(S.Boolean)),

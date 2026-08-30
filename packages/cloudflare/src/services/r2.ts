@@ -572,7 +572,9 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor =
   /*@__PURE__*/ S.String;
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction =
-  "default" | "eu" | "fedramp";
+  | "default"
+  | "eu"
+  | "fedramp";
 export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -1661,8 +1663,8 @@ export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditio
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition>;
 
 export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
-    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
-    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
+  | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
+  | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
 export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -1729,8 +1731,8 @@ export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCond
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition>;
 
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
-    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
-    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
+  | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
+  | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -2267,7 +2269,9 @@ export const SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema =
   }) as any as S.Schema<SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema>;
 
 export type SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction =
-  "default" | "eu" | "fedramp";
+  | "default"
+  | "eu"
+  | "fedramp";
 export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -2623,11 +2627,11 @@ export const ListBucketEventNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBucketEventNotificationsRequest>;
 
 export type BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem =
-    | "PutObject"
-    | "CopyObject"
-    | "DeleteObject"
-    | "CompleteMultipartUpload"
-    | "LifecycleDeletion";
+  | "PutObject"
+  | "CopyObject"
+  | "DeleteObject"
+  | "CompleteMultipartUpload"
+  | "LifecycleDeletion";
 export const BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem =
   /*@__PURE__*/ S.String;
 
@@ -3282,7 +3286,9 @@ export const SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema =
   }) as any as S.Schema<SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema>;
 
 export type SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdiction =
-  "default" | "eu" | "fedramp";
+  | "default"
+  | "eu"
+  | "fedramp";
 export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -3957,8 +3963,8 @@ export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondit
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition>;
 
 export type BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition =
-    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
-    | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
+  | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
+  | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -4023,8 +4029,8 @@ export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCo
   }) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition>;
 
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition =
-    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
-    | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
+  | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
+  | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
 export const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([

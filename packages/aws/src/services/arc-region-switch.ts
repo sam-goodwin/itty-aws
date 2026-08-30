@@ -133,6 +133,16 @@ export class AccessDeniedException
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(403),
   ).pipe(C.withAuthError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
+    "ConflictException",
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      resourceId: S.optional(S.String),
+      resourceType: S.optional(S.String),
+    },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
 export class IllegalArgumentException
   extends /*@__PURE__*/ S.TaggedError<IllegalArgumentException>()(
     "IllegalArgumentException",
@@ -854,6 +864,34 @@ export const NeptuneGlobalDatabaseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NeptuneGlobalDatabaseConfiguration",
 }) as any as S.Schema<NeptuneGlobalDatabaseConfiguration>;
+export type RdsUngracefulBehavior = "promoteReadReplica" | (string & {});
+export const RdsUngracefulBehavior = /*@__PURE__*/ S.String;
+
+export interface RdsUngraceful {
+  ungraceful?: RdsUngracefulBehavior;
+}
+export const RdsUngraceful = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ungraceful: S.optional(RdsUngracefulBehavior) }),
+).annotate({ identifier: "RdsUngraceful" }) as any as S.Schema<RdsUngraceful>;
+export interface RdsSwitchoverReadReplicaConfiguration {
+  timeoutMinutes?: number;
+  crossAccountRole?: string;
+  externalId?: string;
+  dbInstanceArnMap: { [key: string]: string | undefined };
+  ungraceful?: RdsUngraceful;
+}
+export const RdsSwitchoverReadReplicaConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      timeoutMinutes: S.optional(S.Number),
+      crossAccountRole: S.optional(S.String),
+      externalId: S.optional(S.String),
+      dbInstanceArnMap: RdsDbInstanceArnMap,
+      ungraceful: S.optional(RdsUngraceful),
+    }),
+).annotate({
+  identifier: "RdsSwitchoverReadReplicaConfiguration",
+}) as any as S.Schema<RdsSwitchoverReadReplicaConfiguration>;
 export type ExecutionBlockConfiguration =
   | {
       customActionLambdaConfig: CustomActionLambdaConfiguration;
@@ -873,6 +911,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -892,6 +931,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -911,6 +951,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -930,6 +971,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -949,6 +991,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -968,6 +1011,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -987,6 +1031,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1006,6 +1051,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1025,6 +1071,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1044,6 +1091,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1063,6 +1111,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1082,6 +1131,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1101,6 +1151,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1120,6 +1171,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1139,6 +1191,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig: AuroraServerlessScalingConfiguration;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1158,6 +1211,7 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig: AuroraProvisionedScalingConfiguration;
       neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1177,6 +1231,27 @@ export type ExecutionBlockConfiguration =
       auroraServerlessScalingConfig?: never;
       auroraProvisionedScalingConfig?: never;
       neptuneGlobalDatabaseConfig: NeptuneGlobalDatabaseConfiguration;
+      rdsSwitchoverReadReplicaConfig?: never;
+    }
+  | {
+      customActionLambdaConfig?: never;
+      ec2AsgCapacityIncreaseConfig?: never;
+      executionApprovalConfig?: never;
+      arcRoutingControlConfig?: never;
+      globalAuroraConfig?: never;
+      parallelConfig?: never;
+      regionSwitchPlanConfig?: never;
+      ecsCapacityIncreaseConfig?: never;
+      eksResourceScalingConfig?: never;
+      route53HealthCheckConfig?: never;
+      documentDbConfig?: never;
+      rdsPromoteReadReplicaConfig?: never;
+      rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
+      rdsSwitchoverReadReplicaConfig: RdsSwitchoverReadReplicaConfiguration;
     };
 export const ExecutionBlockConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ customActionLambdaConfig: CustomActionLambdaConfiguration }),
@@ -1212,6 +1287,9 @@ export const ExecutionBlockConfiguration = /*@__PURE__*/ S.Union([
     auroraProvisionedScalingConfig: AuroraProvisionedScalingConfiguration,
   }),
   S.Struct({ neptuneGlobalDatabaseConfig: NeptuneGlobalDatabaseConfiguration }),
+  S.Struct({
+    rdsSwitchoverReadReplicaConfig: RdsSwitchoverReadReplicaConfiguration,
+  }),
 ]) as any as S.Schema<ExecutionBlockConfiguration>;
 export type ExecutionBlockType =
   | "CustomActionLambda"
@@ -1231,6 +1309,7 @@ export type ExecutionBlockType =
   | "AuroraServerlessScaling"
   | "AuroraProvisionedScaling"
   | "NeptuneGlobalDatabase"
+  | "RdsSwitchoverReadReplica"
   | (string & {});
 export const ExecutionBlockType = /*@__PURE__*/ S.String;
 
@@ -2161,6 +2240,7 @@ export interface StartPlanExecutionRequest {
   comment?: string;
   latestVersion?: string;
   recoveryExecutionId?: string;
+  clientToken?: string;
 }
 export const StartPlanExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2171,6 +2251,7 @@ export const StartPlanExecutionRequest = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.String),
     latestVersion: S.optional(S.String),
     recoveryExecutionId: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2736,6 +2817,7 @@ export const listTagsForResource: API.OperationMethod<
 
 export type StartPlanExecutionError =
   | AccessDeniedException
+  | ConflictException
   | IllegalArgumentException
   | IllegalStateException
   | ResourceNotFoundException
@@ -2755,6 +2837,7 @@ export const startPlanExecution: API.OperationMethod<
   output: StartPlanExecutionResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     IllegalArgumentException,
     IllegalStateException,
     ResourceNotFoundException,

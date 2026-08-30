@@ -1293,7 +1293,9 @@ export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchI
   ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -2535,7 +2537,9 @@ export const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesL
   ) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -3079,7 +3083,9 @@ export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncl
   ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -4251,7 +4257,9 @@ export const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList
   ) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -4770,7 +4778,9 @@ export const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesL
   ) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -5256,7 +5266,9 @@ export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchI
   ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -7278,7 +7290,9 @@ export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchInc
   ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -8620,7 +8634,9 @@ export const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesLi
   ) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 
@@ -8930,7 +8946,9 @@ export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchInclude
   ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting =
-  "all" | "none" | "custom";
+  | "all"
+  | "none"
+  | "custom";
 export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting =
   /*@__PURE__*/ S.String;
 

@@ -22,11 +22,13 @@ const rules = T.EndpointResolver((p, _) => {
     UseDualStack = false,
     UseFIPS = false,
     Endpoint,
+    OperationType,
     StreamId,
     StreamARN,
-    OperationType,
     ConsumerARN,
     ResourceARN,
+    AccountId,
+    AccountIdEndpointMode,
   } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -36,6 +38,7 @@ const rules = T.EndpointResolver((p, _) => {
     type: "error" as const,
     message: m as string,
   });
+  const _p0 = () => ({ metricValues: ["O"] });
   {
     const StreamIdDelimiterValue = _.substring(StreamId, 20, 21, false);
     const StreamIdDelimiterReversedValue = _.substring(StreamId, 3, 4, true);
@@ -581,6 +584,98 @@ const rules = T.EndpointResolver((p, _) => {
       return err("Invalid ARN: Failed to parse ARN.");
     }
   }
+  {
+    const PartitionResult = _.partition(Region);
+    if (
+      !(Endpoint != null) &&
+      AccountIdEndpointMode != null &&
+      !(AccountIdEndpointMode === "disabled") &&
+      AccountId != null &&
+      Region != null &&
+      PartitionResult != null &&
+      PartitionResult !== false &&
+      !(_.getAttr(PartitionResult, "name") === "aws-iso") &&
+      !(_.getAttr(PartitionResult, "name") === "aws-iso-b")
+    ) {
+      if (_.isValidHostLabel(AccountId, false)) {
+        if (OperationType != null) {
+          if (UseFIPS === true && UseDualStack === true) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              if (_.getAttr(PartitionResult, "supportsDualStack") === true) {
+                return e(
+                  `https://${AccountId}.${OperationType}-kinesis-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+                  _p0(),
+                  {},
+                );
+              }
+              return err(
+                "DualStack is enabled, but this partition does not support DualStack.",
+              );
+            }
+            return err(
+              "FIPS is enabled, but this partition does not support FIPS.",
+            );
+          }
+          if (UseFIPS === true) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              return e(
+                `https://${AccountId}.${OperationType}-kinesis-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+                _p0(),
+                {},
+              );
+            }
+            return err(
+              "FIPS is enabled but this partition does not support FIPS",
+            );
+          }
+          if (UseDualStack === true) {
+            if (_.getAttr(PartitionResult, "supportsDualStack") === true) {
+              return e(
+                `https://${AccountId}.${OperationType}-kinesis.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+                _p0(),
+                {},
+              );
+            }
+            return err(
+              "DualStack is enabled but this partition does not support DualStack",
+            );
+          }
+          return e(
+            `https://${AccountId}.${OperationType}-kinesis.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+            _p0(),
+            {},
+          );
+        }
+        return err(
+          "Operation Type is not set. Please contact service team for resolution.",
+        );
+      }
+      return err("Invalid account id.");
+    }
+  }
+  {
+    const PartitionResult = _.partition(Region);
+    if (
+      !(Endpoint != null) &&
+      AccountIdEndpointMode != null &&
+      AccountIdEndpointMode === "required" &&
+      Region != null &&
+      PartitionResult != null &&
+      PartitionResult !== false
+    ) {
+      if (
+        !(_.getAttr(PartitionResult, "name") === "aws-iso") &&
+        !(_.getAttr(PartitionResult, "name") === "aws-iso-b")
+      ) {
+        return err(
+          "AccountIdEndpointMode is required but no AccountID was provided or able to be loaded",
+        );
+      }
+      return err(
+        "Invalid Configuration: AccountIdEndpointMode is required but account endpoints are not supported in this partition",
+      );
+    }
+  }
   if (Endpoint != null) {
     if (UseFIPS === true) {
       return err(
@@ -804,6 +899,7 @@ export const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
       proto,
       ver,
       rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
   ),
 ).annotate({
@@ -958,6 +1054,7 @@ export const DescribeAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
       proto,
       ver,
       rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
   ),
 ).annotate({
@@ -1013,6 +1110,7 @@ export const DescribeLimitsInput = /*@__PURE__*/ S.suspend(() =>
       proto,
       ver,
       rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
   ),
 ).annotate({
@@ -1741,6 +1839,7 @@ export const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
       proto,
       ver,
       rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
   ),
 ).annotate({
@@ -2558,6 +2657,7 @@ export const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
       proto,
       ver,
       rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
   ),
 ).annotate({
@@ -3281,12 +3381,15 @@ export type GetRecordsError =
  * the record with the sequence number or other attribute that marks it as the last record
  * to process.
  *
- * Each data record can be up to 1 MiB in size, and each shard can read up to 2 MiB per
- * second. You can ensure that your calls don't exceed the maximum supported size or
- * throughput by using the `Limit` parameter to specify the maximum number of
- * records that GetRecords can return. Consider your average record size
- * when determining this limit. The maximum number of records that can be returned per call
- * is 10,000.
+ * Each data record can be up to 1 MiB in size by default. Amazon Kinesis Data Streams supports
+ * large records up to 10 MiB in size, but the average throughput for your stream cannot exceed
+ * 1 MiB per second. For more information about how large records are handled, see
+ * Large records.
+ * Each shard can read up to 2 MiB per second. You can ensure that your calls don't exceed
+ * the maximum supported size or throughput by using the `Limit` parameter to
+ * specify the maximum number of records that GetRecords can return.
+ * Consider your average record size when determining this limit. The maximum number of records
+ * that can be returned per call is 10,000.
  *
  * The size of the data returned by GetRecords varies depending on the
  * utilization of the shard. It is recommended that consumer applications retrieve records
@@ -4592,13 +4695,15 @@ export type UpdateStreamWarmThroughputError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. This operation allows you to proactively scale your on-demand data stream to a specified throughput level, enabling better performance for sudden traffic spikes.
+ * Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream. Updates the warm throughput configuration for the specified on-demand data stream. Use this operation to scale your stream to a specified throughput level before anticipated traffic spikes, or to release excess capacity after traffic has decreased.
  *
  * When invoking this API, you must use either the `StreamARN` or the `StreamName` parameter, or both. It is recommended that you use the `StreamARN` input parameter when you invoke this API.
  *
  * Updating the warm throughput is an asynchronous operation. Upon receiving the request, Kinesis Data Streams returns immediately and sets the status of the stream to `UPDATING`. After the update is complete, Kinesis Data Streams sets the status of the stream back to `ACTIVE`. Depending on the size of the stream, the scaling action could take a few minutes to complete. You can continue to read and write data to your stream while its status is `UPDATING`.
  *
  * This operation is only supported for data streams with the on-demand capacity mode in accounts that have `MinimumThroughputBillingCommitment` enabled. Provisioned capacity mode streams do not support warm throughput configuration.
+ *
+ * To release excess capacity, call the API again and set the warm throughput to the same or a lower value.
  *
  * This operation has the following default limits. By default, you cannot do the following:
  *

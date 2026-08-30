@@ -632,7 +632,10 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials =
   }) as any as S.Schema<SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials>;
 
 export type SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy =
-  "serial" | "uuid" | "uuid_v7" | "ulid";
+  | "serial"
+  | "uuid"
+  | "uuid_v7"
+  | "ulid";
 export const SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy =
   /*@__PURE__*/ S.String;
 
@@ -1020,7 +1023,10 @@ export const SinksCreateResponseConfigCloudflarePipelinesR2TableCredentials =
   SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials;
 
 export type SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy =
-  "serial" | "uuid" | "uuid_v7" | "ulid";
+  | "serial"
+  | "uuid"
+  | "uuid_v7"
+  | "ulid";
 export const SinksCreateResponseConfigCloudflarePipelinesR2TableFileNamingStrategy =
   /*@__PURE__*/ S.String;
 
@@ -2331,7 +2337,10 @@ export type SinksGetResponseType = "r2" | "r2_data_catalog";
 export const SinksGetResponseType = /*@__PURE__*/ S.String;
 
 export type SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
-  "serial" | "uuid" | "uuid_v7" | "ulid";
+  | "serial"
+  | "uuid"
+  | "uuid_v7"
+  | "ulid";
 export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
   /*@__PURE__*/ S.String;
 
@@ -3303,7 +3312,10 @@ export type SinksListResultItemType = "r2" | "r2_data_catalog";
 export const SinksListResultItemType = /*@__PURE__*/ S.String;
 
 export type SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
-  "serial" | "uuid" | "uuid_v7" | "ulid";
+  | "serial"
+  | "uuid"
+  | "uuid_v7"
+  | "ulid";
 export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy =
   /*@__PURE__*/ S.String;
 

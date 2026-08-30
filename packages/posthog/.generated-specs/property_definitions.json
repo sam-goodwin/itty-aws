@@ -254,6 +254,12 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
+        },
+        "warehouse_origin": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only."
+          }
         }
       },
       "traits": {
@@ -367,6 +373,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -375,7 +387,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.property_definitions#BlankEnum": {
@@ -779,7 +791,7 @@
         "smithy.api#documentation": "List of object IDs to update tags on."
       }
     },
-    "com.posthog.property_definitions#ActionEnum": {
+    "com.posthog.property_definitions#BulkUpdateTagsActionEnum": {
       "type": "enum",
       "members": {
         "ADD": {
@@ -832,7 +844,7 @@
           }
         },
         "action": {
-          "target": "com.posthog.property_definitions#ActionEnum",
+          "target": "com.posthog.property_definitions#BulkUpdateTagsActionEnum",
           "traits": {
             "smithy.api#documentation": "'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags.\n\n* `add` - add\n* `remove` - remove\n* `set` - set"
           }

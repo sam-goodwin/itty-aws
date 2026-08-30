@@ -59,6 +59,18 @@
       },
       "traits": {}
     },
+    "com.posthog.feature_flags#FeatureFlagsListRequestEligibleForExperiment": {
+      "type": "enum",
+      "members": {
+        "TRUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "true"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.feature_flags#FeatureFlagsListRequestEvaluationRuntime": {
       "type": "enum",
       "members": {
@@ -162,6 +174,13 @@
             "smithy.api#documentation": "Filter by the user(s) who created the feature flag. Accepts a single user ID, or a JSON-encoded / comma-separated list of user IDs to match any of them."
           }
         },
+        "eligible_for_experiment": {
+          "target": "com.posthog.feature_flags#FeatureFlagsListRequestEligibleForExperiment",
+          "traits": {
+            "smithy.api#httpQuery": "eligible_for_experiment",
+            "smithy.api#documentation": "When 'true', only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored."
+          }
+        },
         "evaluation_runtime": {
           "target": "com.posthog.feature_flags#FeatureFlagsListRequestEvaluationRuntime",
           "traits": {
@@ -188,6 +207,13 @@
           "traits": {
             "smithy.api#httpQuery": "has_evaluation_contexts",
             "smithy.api#documentation": "Filter feature flags by presence of evaluation contexts. 'true' returns only flags with at least one evaluation context, 'false' returns only flags without."
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "key",
+            "smithy.api#documentation": "Filter by exact feature flag key match. Case insensitive."
           }
         },
         "limit": {
@@ -325,15 +351,6 @@
         "features": {
           "target": "com.posthog.feature_flags#FeatureFlagOutputFeaturesMap"
         },
-        "rollback_conditions": {
-          "target": "smithy.api#Document"
-        },
-        "performed_rollback": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "can_edit": {
           "target": "smithy.api#Boolean"
         },
@@ -341,7 +358,11 @@
           "target": "com.posthog.feature_flags#FeatureFlagOutputTagsList"
         },
         "usage_dashboard": {
-          "target": "smithy.api#Integer"
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Dashboard of saved usage insights for this flag, or null if it has none. Flags do not get one on creation; create it with POST /api/projects/{project_id}/feature_flags/{id}/dashboard/.",
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "analytics_dashboards": {
           "target": "com.posthog.feature_flags#FeatureFlagOutputAnalyticsDashboardsList"
@@ -399,6 +420,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Check if this feature flag is used in any team's session recording linked flag setting."
+          }
+        },
+        "is_eligible_for_experiment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this flag can back an experiment: multivariate with 2 to 20 variants."
           }
         }
       },
@@ -516,6 +543,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -524,7 +557,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.feature_flags#BlankEnum": {
@@ -851,7 +884,7 @@
         "type": {
           "target": "com.posthog.feature_flags#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -864,7 +897,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -877,7 +910,7 @@
         "operator": {
           "target": "com.posthog.feature_flags#FeatureFlagFilterPropertyGenericSchemaOperatorEnum",
           "traits": {
-            "smithy.api#documentation": "Operator used to compare the property value.\n\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `gte` - gte\n* `lt` - lt\n* `lte` - lte"
+            "smithy.api#documentation": "Operator used to compare the property value.\n\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `starts_with` - starts_with\n* `not_starts_with` - not_starts_with\n* `ends_with` - ends_with\n* `not_ends_with` - not_ends_with\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `gte` - gte\n* `lt` - lt\n* `lte` - lte"
           }
         }
       },
@@ -936,6 +969,30 @@
             "smithy.api#enumValue": "not_icontains"
           }
         },
+        "STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "starts_with"
+          }
+        },
+        "NOT_STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_starts_with"
+          }
+        },
+        "ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ends_with"
+          }
+        },
+        "NOT_ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_ends_with"
+          }
+        },
         "REGEX": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -974,7 +1031,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `gte` - gte\n* `lt` - lt\n* `lte` - lte"
+        "smithy.api#documentation": "* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `starts_with` - starts_with\n* `not_starts_with` - not_starts_with\n* `ends_with` - ends_with\n* `not_ends_with` - not_ends_with\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `gte` - gte\n* `lt` - lt\n* `lte` - lte"
       }
     },
     "com.posthog.feature_flags#FeatureFlagFilterPropertyExistsSchema": {
@@ -989,7 +1046,7 @@
         "type": {
           "target": "com.posthog.feature_flags#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -1002,7 +1059,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1053,7 +1110,7 @@
         "type": {
           "target": "com.posthog.feature_flags#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -1066,7 +1123,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1123,7 +1180,7 @@
         "type": {
           "target": "com.posthog.feature_flags#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -1136,7 +1193,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1229,7 +1286,7 @@
         "type": {
           "target": "com.posthog.feature_flags#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -1242,7 +1299,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1315,7 +1372,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1393,7 +1450,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1854,15 +1911,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "rollback_conditions": {
-          "target": "smithy.api#Document"
-        },
-        "performed_rollback": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "tags": {
           "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestTagsList"
         },
@@ -1919,9 +1967,6 @@
         },
         "_create_in_folder": {
           "target": "smithy.api#String"
-        },
-        "_should_create_usage_dashboard": {
-          "target": "smithy.api#Boolean"
         }
       },
       "traits": {
@@ -2235,6 +2280,25 @@
         },
         "created_at": {
           "target": "smithy.api#String"
+        },
+        "is_system": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the activity was performed by the system rather than a user."
+          }
+        },
+        "was_impersonated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the acting user was being impersonated by PostHog staff."
+          }
+        },
+        "client": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "API client that triggered the activity, from the x-posthog-client request header (e.g. 'mcp'). Null for requests that did not send the header.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}
@@ -2473,15 +2537,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "rollback_conditions": {
-          "target": "smithy.api#Document"
-        },
-        "performed_rollback": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "tags": {
           "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList"
         },
@@ -2538,9 +2593,6 @@
         },
         "_create_in_folder": {
           "target": "smithy.api#String"
-        },
-        "_should_create_usage_dashboard": {
-          "target": "smithy.api#Boolean"
         }
       },
       "traits": {
@@ -2575,65 +2627,6 @@
         "smithy.api#documentation": "Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/feature-flags) for more information on feature flags.\n\nIf you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestTagsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestEvaluationContextsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestEvaluationRuntime": {
-      "type": "union",
-      "members": {
-        "EvaluationRuntimeEnum": {
-          "target": "com.posthog.feature_flags#EvaluationRuntimeEnum"
-        },
-        "BlankEnum": {
-          "target": "com.posthog.feature_flags#BlankEnum"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Specifies where this feature flag should be evaluated\n\n* `server` - Server\n* `client` - Client\n* `all` - All"
-      }
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestBucketingIdentifier": {
-      "type": "union",
-      "members": {
-        "BucketingIdentifierEnum": {
-          "target": "com.posthog.feature_flags#BucketingIdentifierEnum"
-        },
-        "BlankEnum": {
-          "target": "com.posthog.feature_flags#BlankEnum"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Identifier used for bucketing users into rollout and variants\n\n* `distinct_id` - User ID (default)\n* `device_id` - Device ID"
-      }
-    },
     "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequest": {
       "type": "structure",
       "members": {
@@ -2652,111 +2645,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A unique integer value identifying this feature flag."
           }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "contains the description for the flag (field name `name` is kept for backwards-compatibility)"
-          }
-        },
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "filters": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestFiltersMap"
-        },
-        "deleted": {
-          "target": "smithy.api#Boolean"
-        },
-        "active": {
-          "target": "smithy.api#Boolean"
-        },
-        "archived": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`)."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
-        "ensure_experience_continuity": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "rollback_conditions": {
-          "target": "smithy.api#Document"
-        },
-        "performed_rollback": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "tags": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestTagsList"
-        },
-        "evaluation_contexts": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestEvaluationContextsList"
-        },
-        "analytics_dashboards": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList"
-        },
-        "has_enriched_analytics": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "creation_context": {
-          "target": "com.posthog.feature_flags#FeatureFlagCreationContextEnum",
-          "traits": {
-            "smithy.api#documentation": "Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'.\n\n* `feature_flags` - feature_flags\n* `experiments` - experiments\n* `surveys` - surveys\n* `early_access_features` - early_access_features\n* `web_experiments` - web_experiments\n* `product_tours` - product_tours"
-          }
-        },
-        "is_remote_configuration": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "has_encrypted_payloads": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "evaluation_runtime": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestEvaluationRuntime",
-          "traits": {
-            "smithy.api#documentation": "Specifies where this feature flag should be evaluated\n\n* `server` - Server\n* `client` - Client\n* `all` - All",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "bucketing_identifier": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestBucketingIdentifier",
-          "traits": {
-            "smithy.api#documentation": "Identifier used for bucketing users into rollout and variants\n\n* `distinct_id` - User ID (default)\n* `device_id` - Device ID",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_called_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Last time this feature flag was called (from $feature_flag_called events)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
-        },
-        "_should_create_usage_dashboard": {
-          "target": "smithy.api#Boolean"
         }
       },
       "traits": {
@@ -2886,65 +2774,6 @@
         "smithy.api#documentation": "Get other active flags that depend on this flag."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestTagsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationRuntime": {
-      "type": "union",
-      "members": {
-        "EvaluationRuntimeEnum": {
-          "target": "com.posthog.feature_flags#EvaluationRuntimeEnum"
-        },
-        "BlankEnum": {
-          "target": "com.posthog.feature_flags#BlankEnum"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Specifies where this feature flag should be evaluated\n\n* `server` - Server\n* `client` - Client\n* `all` - All"
-      }
-    },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestBucketingIdentifier": {
-      "type": "union",
-      "members": {
-        "BucketingIdentifierEnum": {
-          "target": "com.posthog.feature_flags#BucketingIdentifierEnum"
-        },
-        "BlankEnum": {
-          "target": "com.posthog.feature_flags#BlankEnum"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Identifier used for bucketing users into rollout and variants\n\n* `distinct_id` - User ID (default)\n* `device_id` - Device ID"
-      }
-    },
     "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequest": {
       "type": "structure",
       "members": {
@@ -2963,111 +2792,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A unique integer value identifying this feature flag."
           }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "contains the description for the flag (field name `name` is kept for backwards-compatibility)"
-          }
-        },
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "filters": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestFiltersMap"
-        },
-        "deleted": {
-          "target": "smithy.api#Boolean"
-        },
-        "active": {
-          "target": "smithy.api#Boolean"
-        },
-        "archived": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`)."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
-        "ensure_experience_continuity": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "rollback_conditions": {
-          "target": "smithy.api#Document"
-        },
-        "performed_rollback": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "tags": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestTagsList"
-        },
-        "evaluation_contexts": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList"
-        },
-        "analytics_dashboards": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList"
-        },
-        "has_enriched_analytics": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "creation_context": {
-          "target": "com.posthog.feature_flags#FeatureFlagCreationContextEnum",
-          "traits": {
-            "smithy.api#documentation": "Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'.\n\n* `feature_flags` - feature_flags\n* `experiments` - experiments\n* `surveys` - surveys\n* `early_access_features` - early_access_features\n* `web_experiments` - web_experiments\n* `product_tours` - product_tours"
-          }
-        },
-        "is_remote_configuration": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "has_encrypted_payloads": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "evaluation_runtime": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationRuntime",
-          "traits": {
-            "smithy.api#documentation": "Specifies where this feature flag should be evaluated\n\n* `server` - Server\n* `client` - Client\n* `all` - All",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "bucketing_identifier": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestBucketingIdentifier",
-          "traits": {
-            "smithy.api#documentation": "Identifier used for bucketing users into rollout and variants\n\n* `distinct_id` - User ID (default)\n* `device_id` - Device ID",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_called_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Last time this feature flag was called (from $feature_flag_called events)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
-        },
-        "_should_create_usage_dashboard": {
-          "target": "smithy.api#Boolean"
         }
       },
       "traits": {
@@ -3330,6 +3054,13 @@
           "traits": {
             "smithy.api#documentation": "The reason for the evaluation result",
             "smithy.api#required": {}
+          }
+        },
+        "reason_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable explanation of the evaluation result. Set when the reason code is coarse, for example a non-match decided by a behavioral or realtime cohort whose membership is not fully evaluated here, which can disagree with the cohort's member list.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "condition_index": {
@@ -3599,15 +3330,6 @@
         },
         "version": {
           "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "rollback_conditions": {
-          "target": "smithy.api#Document"
-        },
-        "performed_rollback": {
-          "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -4252,7 +3974,7 @@
         "smithy.api#documentation": "List of object IDs to update tags on."
       }
     },
-    "com.posthog.feature_flags#ActionEnum": {
+    "com.posthog.feature_flags#BulkUpdateTagsActionEnum": {
       "type": "enum",
       "members": {
         "ADD": {
@@ -4305,7 +4027,7 @@
           }
         },
         "action": {
-          "target": "com.posthog.feature_flags#ActionEnum",
+          "target": "com.posthog.feature_flags#BulkUpdateTagsActionEnum",
           "traits": {
             "smithy.api#documentation": "'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags.\n\n* `add` - add\n* `remove` - remove\n* `set` - set"
           }
@@ -4406,6 +4128,13 @@
         "smithy.api#documentation": "Bulk update tags on multiple objects.\n\nPAT access: this action has no ``required_scopes=`` on the decorator —\ninheriting viewsets must add ``\"bulk_update_tags\"`` to their\n``scope_object_write_actions`` list to accept personal API keys.\nWithout that opt-in, ``APIScopePermission`` rejects PAT requests with\n\"This action does not support personal API key access\". Done per-viewset\nso granting ``<scope>:write`` for one resource doesn't leak access to\nsibling resources that share this mixin.\n\nAccepts:\n- {\"ids\": [...], \"action\": \"add\"|\"remove\"|\"set\", \"tags\": [\"tag1\", \"tag2\"]}\n\nActions:\n- \"add\": Add tags to existing tags on each object\n- \"remove\": Remove specific tags from each object\n- \"set\": Replace all tags on each object with the provided list"
       }
     },
+    "com.posthog.feature_flags#FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
     "com.posthog.feature_flags#FeatureFlagsEvaluationReasonsRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -4423,6 +4152,13 @@
             "smithy.api#httpQuery": "distinct_id",
             "smithy.api#required": {},
             "smithy.api#documentation": "User distinct ID"
+          }
+        },
+        "flag_keys": {
+          "target": "com.posthog.feature_flags#FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList",
+          "traits": {
+            "smithy.api#httpQuery": "flag_keys",
+            "smithy.api#documentation": "Optional list of flag keys to scope the response to. When omitted, evaluation reasons are returned for every flag in the project, which can be a very large payload on projects with many flags. Pass the specific flag(s) you are debugging to keep the response small. Accepts either repeated query params (flag_keys=a&flag_keys=b) or a JSON array string (flag_keys=[\"a\",\"b\"])."
           }
         },
         "groups": {
@@ -4506,6 +4242,13 @@
         "smithy.api#documentation": "Get IDs of all feature flags matching the current filters.\nUses the same filtering logic as the list endpoint.\nReturns only IDs that the user has permission to edit."
       }
     },
+    "com.posthog.feature_flags#FeatureFlagsMyFlagsRetrieveRequestFlagKeysList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
     "com.posthog.feature_flags#FeatureFlagsMyFlagsRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -4515,6 +4258,13 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "flag_keys": {
+          "target": "com.posthog.feature_flags#FeatureFlagsMyFlagsRetrieveRequestFlagKeysList",
+          "traits": {
+            "smithy.api#httpQuery": "flag_keys",
+            "smithy.api#documentation": "Optional list of flag keys to scope the response to. When omitted, every flag in the project is returned with its evaluated value, which can be a very large payload on projects with many flags. Pass the specific flag(s) you want to check to keep the response small. Accepts either repeated query params (flag_keys=a&flag_keys=b) or a JSON array string (flag_keys=[\"a\",\"b\"])."
           }
         },
         "groups": {

@@ -488,7 +488,9 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre =
   }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre>;
 
 export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate =
-  "low" | "mid" | "high";
+  | "low"
+  | "mid"
+  | "high";
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -510,13 +512,14 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthChe
   }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget>;
 
 export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
-    | string
-    | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
 export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
-  "reply" | "request";
+  | "reply"
+  | "request";
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -746,7 +749,8 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus =
   }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus>;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
-  "unidirectional" | "bidirectional";
+  | "unidirectional"
+  | "bidirectional";
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
@@ -763,8 +767,8 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget
   CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
-    | string
-    | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
@@ -971,7 +975,9 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp =
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
-  "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING";
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -1024,12 +1030,15 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteI
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
-  "unidirectional" | "bidirectional";
+  | "unidirectional"
+  | "bidirectional";
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate =
-  "low" | "mid" | "high";
+  | "low"
+  | "mid"
+  | "high";
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate =
   /*@__PURE__*/ S.String;
 
@@ -1039,13 +1048,14 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTa
   CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
-    | string
-    | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
-  "reply" | "request";
+  | "reply"
+  | "request";
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
   /*@__PURE__*/ S.String;
 
@@ -3548,7 +3558,12 @@ export const SitesLansCreateRequestStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelay>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  | "text"
+  | "hex"
+  | "ip"
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -3778,7 +3793,12 @@ export const SitesLansCreateResultItemStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelay>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  | "text"
+  | "hex"
+  | "ip"
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -5363,7 +5383,12 @@ export const SitesLansDeleteResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  | "text"
+  | "hex"
+  | "ip"
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -12566,7 +12591,12 @@ export const SitesLansListResultItemStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelay>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  | "text"
+  | "hex"
+  | "ip"
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -13786,7 +13816,12 @@ export const SitesLansEditResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  | "text"
+  | "hex"
+  | "ip"
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -14357,8 +14392,8 @@ export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetM
   CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 
 export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
-    | string
-    | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+  | string
+  | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
 export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
 
@@ -16701,7 +16736,12 @@ export const SitesLansUpdateRequestStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpRelay>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  | "text"
+  | "hex"
+  | "ip"
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -16909,7 +16949,12 @@ export const SitesLansUpdateResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | "byte" | "short" | "integer";
+  | "text"
+  | "hex"
+  | "ip"
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 

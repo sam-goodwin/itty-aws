@@ -208,6 +208,12 @@ export const OutputHeaderConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OutputHeaderConfiguration",
 }) as any as S.Schema<OutputHeaderConfiguration>;
+export type OutputLockingMode =
+  | "EPOCH_LOCKED"
+  | "NON_EPOCH_LOCKED"
+  | (string & {});
+export const OutputLockingMode = /*@__PURE__*/ S.String;
+
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
@@ -223,6 +229,7 @@ export interface CreateChannelRequest {
   Description?: string;
   InputSwitchConfiguration?: InputSwitchConfiguration;
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
+  OutputLockingMode?: OutputLockingMode;
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -237,6 +244,7 @@ export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
     Description: S.optional(S.String),
     InputSwitchConfiguration: S.optional(InputSwitchConfiguration),
     OutputHeaderConfiguration: S.optional(OutputHeaderConfiguration),
+    OutputLockingMode: S.optional(OutputLockingMode),
     Tags: S.optional(TagMap),
   })
     .pipe(S.encodeKeys({ Tags: "tags" }))
@@ -278,6 +286,7 @@ export interface CreateChannelResponse {
   Tags?: { [key: string]: string | undefined };
   InputSwitchConfiguration?: InputSwitchConfiguration;
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
+  OutputLockingMode?: OutputLockingMode;
 }
 export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -293,6 +302,7 @@ export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
     Tags: S.optional(TagMap),
     InputSwitchConfiguration: S.optional(InputSwitchConfiguration),
     OutputHeaderConfiguration: S.optional(OutputHeaderConfiguration),
+    OutputLockingMode: S.optional(OutputLockingMode),
   }),
 ).annotate({
   identifier: "CreateChannelResponse",
@@ -679,6 +689,12 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
     SpekeKeyProvider: SpekeKeyProvider,
   }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
+export type OutputTimestampMode =
+  | "PASSTHROUGH"
+  | "REBASED_TO_CHANNEL_START"
+  | (string & {});
+export const OutputTimestampMode = /*@__PURE__*/ S.String;
+
 export interface Segment {
   SegmentDurationSeconds?: number;
   SegmentName?: string;
@@ -687,6 +703,7 @@ export interface Segment {
   TsIncludeDvbSubtitles?: boolean;
   Scte?: Scte;
   Encryption?: Encryption;
+  OutputTimestampMode?: OutputTimestampMode;
 }
 export const Segment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -697,6 +714,7 @@ export const Segment = /*@__PURE__*/ S.suspend(() =>
     TsIncludeDvbSubtitles: S.optional(S.Boolean),
     Scte: S.optional(Scte),
     Encryption: S.optional(Encryption),
+    OutputTimestampMode: S.optional(OutputTimestampMode),
   }),
 ).annotate({ identifier: "Segment" }) as any as S.Schema<Segment>;
 export type ManifestName = string;
@@ -1067,6 +1085,9 @@ export const ForceEndpointErrorConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type UriSeparator = "UNDERSCORE" | "HYPHEN" | (string & {});
 export const UriSeparator = /*@__PURE__*/ S.String;
 
+export type StreamNameOutputMode = "INDEX" | "PASSTHROUGH_NAME" | (string & {});
+export const StreamNameOutputMode = /*@__PURE__*/ S.String;
+
 export interface CreateOriginEndpointRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -1082,6 +1103,7 @@ export interface CreateOriginEndpointRequest {
   MssManifests?: CreateMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
   UriSeparator?: UriSeparator;
+  StreamNameOutputMode?: StreamNameOutputMode;
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1105,6 +1127,7 @@ export const CreateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
       ForceEndpointErrorConfiguration,
     ),
     UriSeparator: S.optional(UriSeparator),
+    StreamNameOutputMode: S.optional(StreamNameOutputMode),
     Tags: S.optional(TagMap),
   }).pipe(
     T.all(
@@ -1282,6 +1305,7 @@ export interface CreateOriginEndpointResponse {
   MssManifests?: GetMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
   UriSeparator?: UriSeparator;
+  StreamNameOutputMode?: StreamNameOutputMode;
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
@@ -1305,6 +1329,7 @@ export const CreateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
       ForceEndpointErrorConfiguration,
     ),
     UriSeparator: S.optional(UriSeparator),
+    StreamNameOutputMode: S.optional(StreamNameOutputMode),
     ETag: S.optional(S.String),
     Tags: S.optional(TagMap),
   }),
@@ -1498,6 +1523,7 @@ export interface GetChannelResponse {
   Tags?: { [key: string]: string | undefined };
   InputSwitchConfiguration?: InputSwitchConfiguration;
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
+  OutputLockingMode?: OutputLockingMode;
 }
 export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1514,6 +1540,7 @@ export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
     Tags: S.optional(TagMap),
     InputSwitchConfiguration: S.optional(InputSwitchConfiguration),
     OutputHeaderConfiguration: S.optional(OutputHeaderConfiguration),
+    OutputLockingMode: S.optional(OutputLockingMode),
   }),
 ).annotate({
   identifier: "GetChannelResponse",
@@ -1710,6 +1737,7 @@ export interface GetOriginEndpointResponse {
   MssManifests?: GetMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
   UriSeparator?: UriSeparator;
+  StreamNameOutputMode?: StreamNameOutputMode;
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
@@ -1734,6 +1762,7 @@ export const GetOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
       ForceEndpointErrorConfiguration,
     ),
     UriSeparator: S.optional(UriSeparator),
+    StreamNameOutputMode: S.optional(StreamNameOutputMode),
     ETag: S.optional(S.String),
     Tags: S.optional(TagMap),
   }),
@@ -1889,6 +1918,7 @@ export interface ChannelListConfiguration {
   ModifiedAt: Date;
   Description?: string;
   InputType?: InputType;
+  OutputLockingMode?: OutputLockingMode;
 }
 export const ChannelListConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1899,6 +1929,7 @@ export const ChannelListConfiguration = /*@__PURE__*/ S.suspend(() =>
     ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     Description: S.optional(S.String),
     InputType: S.optional(InputType),
+    OutputLockingMode: S.optional(OutputLockingMode),
   }),
 ).annotate({
   identifier: "ChannelListConfiguration",
@@ -2103,6 +2134,7 @@ export interface OriginEndpointListConfiguration {
   MssManifests?: ListMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
   UriSeparator?: UriSeparator;
+  StreamNameOutputMode?: StreamNameOutputMode;
 }
 export const OriginEndpointListConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2122,6 +2154,7 @@ export const OriginEndpointListConfiguration = /*@__PURE__*/ S.suspend(() =>
       ForceEndpointErrorConfiguration,
     ),
     UriSeparator: S.optional(UriSeparator),
+    StreamNameOutputMode: S.optional(StreamNameOutputMode),
   }),
 ).annotate({
   identifier: "OriginEndpointListConfiguration",
@@ -2423,6 +2456,7 @@ export interface UpdateChannelResponse {
   Tags?: { [key: string]: string | undefined };
   InputSwitchConfiguration?: InputSwitchConfiguration;
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
+  OutputLockingMode?: OutputLockingMode;
 }
 export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2438,6 +2472,7 @@ export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
     Tags: S.optional(TagMap),
     InputSwitchConfiguration: S.optional(InputSwitchConfiguration),
     OutputHeaderConfiguration: S.optional(OutputHeaderConfiguration),
+    OutputLockingMode: S.optional(OutputLockingMode),
   }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "UpdateChannelResponse",
@@ -2503,6 +2538,7 @@ export interface UpdateOriginEndpointRequest {
   MssManifests?: CreateMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
   UriSeparator?: UriSeparator;
+  StreamNameOutputMode?: StreamNameOutputMode;
   ETag?: string;
 }
 export const UpdateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2522,6 +2558,7 @@ export const UpdateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
       ForceEndpointErrorConfiguration,
     ),
     UriSeparator: S.optional(UriSeparator),
+    StreamNameOutputMode: S.optional(StreamNameOutputMode),
     ETag: S.optional(S.String).pipe(T.HttpHeader("x-amzn-update-if-match")),
   }).pipe(
     T.all(
@@ -2555,6 +2592,7 @@ export interface UpdateOriginEndpointResponse {
   MssManifests?: GetMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
   UriSeparator?: UriSeparator;
+  StreamNameOutputMode?: StreamNameOutputMode;
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
   DashManifests?: GetDashManifestConfiguration[];
@@ -2578,6 +2616,7 @@ export const UpdateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
       ForceEndpointErrorConfiguration,
     ),
     UriSeparator: S.optional(UriSeparator),
+    StreamNameOutputMode: S.optional(StreamNameOutputMode),
     ETag: S.optional(S.String),
     Tags: S.optional(TagMap),
     DashManifests: S.optional(GetDashManifests),
@@ -2702,6 +2741,12 @@ export type ValidationExceptionType =
   | "INVALID_ARN"
   | "SCTE_IN_MANIFESTS_INVALID_CONFIGURATION"
   | "CUSTOM_AD_TYPES_INVALID_CONFIGURATION"
+  | "ONLY_CMAF_INPUT_TYPE_ALLOW_OUTPUT_LOCKING_MODE"
+  | "ONLY_NON_EPOCH_LOCKED_ALLOW_OUTPUT_TIMESTAMP_MODE"
+  | "OUTPUT_TIMESTAMP_MODE_IMMUTABLE"
+  | "NON_EPOCH_LOCKED_WITH_FORCE_ENDPOINT_ERROR_CONFIGURATION"
+  | "ONLY_HLS_INPUT_TYPE_ALLOW_STREAM_NAME_OUTPUT_MODE"
+  | "STREAM_NAME_OUTPUT_MODE_IMMUTABLE"
   | (string & {});
 export const ValidationExceptionType = /*@__PURE__*/ S.String;
 

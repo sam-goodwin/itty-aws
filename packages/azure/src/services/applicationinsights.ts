@@ -89,12 +89,12 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface WorkbookResourceIdentityInput {
   type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
 export const WorkbookResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
   }),
 ).annotate({
   identifier: "WorkbookResourceIdentityInput",
@@ -106,7 +106,7 @@ export const ApplicationInsightsCommonTypesWorkbookSharedTypeKind =
   /*@__PURE__*/ S.String;
 
 export interface WorkbooksCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
@@ -283,21 +283,21 @@ export interface WorkbookResourceIdentity {
   /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
   tenantId?: string;
   type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
+  userAssignedIdentities?: UserAssignedIdentities;
 }
 export const WorkbookResourceIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
     type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
+    userAssignedIdentities: S.optional(UserAssignedIdentities),
   }),
 ).annotate({
   identifier: "WorkbookResourceIdentity",
 }) as any as S.Schema<WorkbookResourceIdentity>;
 
 export interface WorkbooksCreateOrUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -336,7 +336,7 @@ export const WorkbooksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbooksCreateOrUpdateResponse>;
 
 export interface WorkbooksDeleteRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
@@ -368,7 +368,7 @@ export const WorkbooksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbooksDeleteResponse>;
 
 export interface WorkbooksGetRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
@@ -403,7 +403,7 @@ export const WorkbooksGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkbooksGetResponseTagsMap>;
 
 export interface WorkbooksGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -456,7 +456,7 @@ export const WorkbooksListByResourceGroupRequestTagsList =
   ) as any as S.Schema<WorkbooksListByResourceGroupRequestTagsList>;
 
 export interface WorkbooksListByResourceGroupRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
@@ -500,7 +500,7 @@ export const WorkbookTagsMap = /*@__PURE__*/ S.Record(
 
 /** A workbook definition. */
 export interface Workbook {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -572,7 +572,7 @@ export const WorkbooksListBySubscriptionRequestTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WorkbooksListBySubscriptionRequestTagsList>;
 
 export interface WorkbooksListBySubscriptionRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Category of workbook to return. */
   category: WorkbooksListBySubscriptionRequestCategory | (string & {});
@@ -602,7 +602,7 @@ export const WorkbooksListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbooksListBySubscriptionRequest>;
 
 export interface WorkbooksRevisionGetRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
@@ -639,7 +639,7 @@ export const WorkbooksRevisionGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkbooksRevisionGetResponseTagsMap>;
 
 export interface WorkbooksRevisionGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -678,7 +678,7 @@ export const WorkbooksRevisionGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbooksRevisionGetResponse>;
 
 export interface WorkbooksRevisionsListRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
@@ -750,7 +750,7 @@ export const WorkbookPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkbookPropertiesUpdateParameters>;
 
 export interface WorkbooksUpdateRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
@@ -796,7 +796,7 @@ export const WorkbooksUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkbooksUpdateResponseTagsMap>;
 
 export interface WorkbooksUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;

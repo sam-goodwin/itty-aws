@@ -3048,6 +3048,7 @@ export interface DiagnosticsCreateOrUpdateRequest {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const DiagnosticsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3110,6 +3111,7 @@ export interface DiagnosticsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: DiagnosticProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -3213,6 +3215,7 @@ export interface DiagnosticsGetResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: DiagnosticProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -3281,6 +3284,7 @@ export interface Diagnostic {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: DiagnosticProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -3411,6 +3415,7 @@ export interface DiagnosticsUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: DiagnosticProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -5494,6 +5499,7 @@ export interface ExecutionsCreateOrUpdateRequest {
   executionName: string;
   /** The resource-specific properties for this resource. */
   properties?: ExecutionPropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const ExecutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5640,6 +5646,7 @@ export interface ExecutionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ExecutionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -5746,6 +5753,7 @@ export interface ExecutionsGetResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ExecutionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -5810,6 +5818,7 @@ export interface Execution {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ExecutionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -5923,6 +5932,7 @@ export interface ExecutionsUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ExecutionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -7042,6 +7052,7 @@ export interface InstanceHistoriesGetResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: InstanceHistoryProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -7106,6 +7117,7 @@ export interface InstanceHistory {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: InstanceHistoryProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -7186,6 +7198,7 @@ export interface InstancesCreateOrUpdateRequest {
   instanceName: string;
   /** The resource-specific properties for this resource. */
   properties?: InstancePropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const InstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7256,6 +7269,7 @@ export interface InstancesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: InstanceProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -7356,6 +7370,7 @@ export interface InstancesGetResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: InstanceProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -7416,6 +7431,7 @@ export interface Instance {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: InstanceProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -7543,6 +7559,7 @@ export interface InstancesUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: InstanceProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -10592,6 +10609,7 @@ export interface SolutionsCreateOrUpdateRequest {
   solutionName: string;
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const SolutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10678,6 +10696,7 @@ export interface SolutionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -10772,6 +10791,7 @@ export interface SolutionsGetResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -10829,6 +10849,7 @@ export interface Solution {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -10915,6 +10936,7 @@ export interface SolutionsUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -12252,6 +12274,7 @@ export interface SolutionVersionsCreateOrUpdateRequest {
   solutionVersionName: string;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionPropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const SolutionVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
@@ -12521,6 +12544,7 @@ export interface SolutionVersionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -12622,6 +12646,7 @@ export interface SolutionVersionsGetResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -12683,6 +12708,7 @@ export interface SolutionVersion {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -12793,6 +12819,7 @@ export interface SolutionVersionsUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -12885,6 +12912,7 @@ export interface TargetsCreateOrUpdateRequest {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: TargetPropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12991,6 +13019,7 @@ export interface TargetsCreateOrUpdateResponse {
   properties?: TargetProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const TargetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -13095,6 +13124,7 @@ export interface TargetsGetResponse {
   properties?: TargetProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const TargetsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -13197,6 +13227,7 @@ export interface Target {
   properties?: TargetProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const Target = /*@__PURE__*/ S.suspend(() =>
@@ -13296,6 +13327,7 @@ export interface TargetsPublishSolutionVersionResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -13467,6 +13499,7 @@ export interface TargetsReviewSolutionVersionResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -13566,6 +13599,7 @@ export interface TargetsUnstageSolutionVersionResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -13703,6 +13737,7 @@ export interface TargetsUpdateResponse {
   properties?: TargetProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const TargetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -13782,6 +13817,7 @@ export interface TargetsUpdateExternalValidationStatusResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -13818,6 +13854,7 @@ export interface WorkflowsCreateOrUpdateRequest {
   workflowName: string;
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const WorkflowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13869,6 +13906,7 @@ export interface WorkflowsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -13963,6 +14001,7 @@ export interface WorkflowsGetResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -14020,6 +14059,7 @@ export interface Workflow {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -14102,6 +14142,7 @@ export interface WorkflowsUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -14260,6 +14301,7 @@ export interface WorkflowVersionsCreateOrUpdateRequest {
   versionName: string;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowVersionPropertiesInput;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const WorkflowVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
@@ -14343,6 +14385,7 @@ export interface WorkflowVersionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -14444,6 +14487,7 @@ export interface WorkflowVersionsGetResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -14505,6 +14549,7 @@ export interface WorkflowVersion {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
@@ -14625,6 +14670,7 @@ export interface WorkflowVersionsUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkflowVersionProperties;
+  /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;

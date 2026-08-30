@@ -96,6 +96,7 @@
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "Whether this join has been soft-deleted.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -114,35 +115,43 @@
         "source_table_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Name of the table the join starts from, for example events.",
             "smithy.api#required": {}
           }
         },
         "source_table_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the source table used as the join key.",
             "smithy.api#required": {}
           }
         },
         "joining_table_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Name of the table or view being joined onto the source table.",
             "smithy.api#required": {}
           }
         },
         "joining_table_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the joining table used as the join key.",
             "smithy.api#required": {}
           }
         },
         "field_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Accessor added to the source table to reach the joined rows, for example person in events.person.",
             "smithy.api#required": {}
           }
         },
         "configuration": {
-          "target": "smithy.api#Document"
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Optional join configuration, for example experiments optimization flags."
+          }
         }
       },
       "traits": {}
@@ -247,6 +256,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -255,7 +270,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.warehouse_view_links#BlankEnum": {
@@ -320,41 +335,50 @@
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "Whether this join has been soft-deleted.",
             "com.distilled.openapi#nullable": {}
           }
         },
         "source_table_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Name of the table the join starts from, for example events.",
             "smithy.api#required": {}
           }
         },
         "source_table_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the source table used as the join key.",
             "smithy.api#required": {}
           }
         },
         "joining_table_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Name of the table or view being joined onto the source table.",
             "smithy.api#required": {}
           }
         },
         "joining_table_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the joining table used as the join key.",
             "smithy.api#required": {}
           }
         },
         "field_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Accessor added to the source table to reach the joined rows, for example person in events.person.",
             "smithy.api#required": {}
           }
         },
         "configuration": {
-          "target": "smithy.api#Document"
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Optional join configuration, for example experiments optimization flags."
+          }
         }
       },
       "traits": {
@@ -441,41 +465,50 @@
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "Whether this join has been soft-deleted.",
             "com.distilled.openapi#nullable": {}
           }
         },
         "source_table_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Name of the table the join starts from, for example events.",
             "smithy.api#required": {}
           }
         },
         "source_table_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the source table used as the join key.",
             "smithy.api#required": {}
           }
         },
         "joining_table_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Name of the table or view being joined onto the source table.",
             "smithy.api#required": {}
           }
         },
         "joining_table_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the joining table used as the join key.",
             "smithy.api#required": {}
           }
         },
         "field_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Accessor added to the source table to reach the joined rows, for example person in events.person.",
             "smithy.api#required": {}
           }
         },
         "configuration": {
-          "target": "smithy.api#Document"
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Optional join configuration, for example experiments optimization flags."
+          }
         }
       },
       "traits": {
@@ -521,26 +554,45 @@
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "Whether this join has been soft-deleted.",
             "com.distilled.openapi#nullable": {}
           }
         },
         "source_table_name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the table the join starts from, for example events."
+          }
         },
         "source_table_key": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the source table used as the join key."
+          }
         },
         "joining_table_name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the table or view being joined onto the source table."
+          }
         },
         "joining_table_key": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the joining table used as the join key."
+          }
         },
         "field_name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Accessor added to the source table to reach the joined rows, for example person in events.person."
+          }
         },
         "configuration": {
-          "target": "smithy.api#Document"
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Optional join configuration, for example experiments optimization flags."
+          }
         }
       },
       "traits": {
@@ -619,24 +671,28 @@
         "joining_table_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Name of the table or view being joined onto the source table.",
             "smithy.api#required": {}
           }
         },
         "joining_table_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the joining table used as the join key.",
             "smithy.api#required": {}
           }
         },
         "source_table_name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Name of the table the join starts from, for example events.",
             "smithy.api#required": {}
           }
         },
         "source_table_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Column or HogQL expression on the source table used as the join key.",
             "smithy.api#required": {}
           }
         }
@@ -645,14 +701,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.warehouse_view_links#ViewLinkValidationResponse": {
+      "type": "structure",
+      "members": {
+        "is_valid": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the join compiled and returned rows when executed against a sample of the source table.",
+            "smithy.api#required": {}
+          }
+        },
+        "msg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Warning about the validation result, for example when the sampled join returned no rows.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hogql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The HogQL statement used to validate the join.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "columns": {
+          "target": "com.posthog.warehouse_view_links#ViewLinkValidationResponseColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Column names for each row in results.",
+            "smithy.api#required": {}
+          }
+        },
+        "results": {
+          "target": "com.posthog.warehouse_view_links#ViewLinkValidationResponseResultsList",
+          "traits": {
+            "smithy.api#documentation": "Distinct source and joining key pairs from the joined result, at most 5.",
+            "smithy.api#required": {}
+          }
+        },
+        "total_rows": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of sampled source rows checked for a join match, at most 10000. Null when the match-rate query failed.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "matched_rows": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of sampled source rows with at least one match in the joining table. Null when the match-rate query failed.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "match_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "matched_rows divided by total_rows, between 0 and 1. Null when the match-rate query failed or no rows were sampled.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.warehouse_view_links#ViewLinkValidationResponseColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Column names for each row in results."
+      }
+    },
+    "com.posthog.warehouse_view_links#ViewLinkValidationResponseResultsItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.warehouse_view_links#ViewLinkValidationResponseResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.warehouse_view_links#ViewLinkValidationResponseResultsItemList"
+      },
+      "traits": {
+        "smithy.api#documentation": "Distinct source and joining key pairs from the joined result, at most 5."
+      }
+    },
     "com.posthog.warehouse_view_links#WarehouseViewLinksValidateCreate": {
       "type": "operation",
       "input": {
         "target": "com.posthog.warehouse_view_links#WarehouseViewLinksValidateCreateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.posthog.warehouse_view_links#ViewLinkValidationResponse"
       },
+      "errors": [
+        {
+          "target": "com.posthog.warehouse_view_links#BadRequest"
+        }
+      ],
       "traits": {
         "smithy.api#http": {
           "method": "POST",
@@ -660,6 +813,19 @@
           "code": 200
         },
         "smithy.api#documentation": "Create, Read, Update and Delete View Columns."
+      }
+    },
+    "com.posthog.warehouse_view_links#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
       }
     },
     "com.posthog.warehouse_view_links#WarehouseViewLinks": {

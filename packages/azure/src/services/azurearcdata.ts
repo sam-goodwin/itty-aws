@@ -3871,16 +3871,16 @@ export const SqlServerAvailabilityGroupsCreateResponse =
 
 /** The endpoint connection authentication type(s). */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode =
-    | "Windows_NTLM"
-    | "Windows_Kerberos"
-    | "Windows_Negotiate"
-    | "Certificate"
-    | "Windows_NTLM_Certificate"
-    | "Windows_Kerberos_Certificate"
-    | "Windows_Negotiate_Certificate"
-    | "Certificate_Windows_NTLM"
-    | "Certificate_Windows_Kerberos"
-    | "Certificate_Windows_Negotiate";
+  | "Windows_NTLM"
+  | "Windows_Kerberos"
+  | "Windows_Negotiate"
+  | "Certificate"
+  | "Windows_NTLM_Certificate"
+  | "Windows_Kerberos_Certificate"
+  | "Windows_Negotiate_Certificate"
+  | "Certificate_Windows_NTLM"
+  | "Certificate_Windows_Kerberos"
+  | "Certificate_Windows_Negotiate";
 export const AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode =
   /*@__PURE__*/ S.String;
 
@@ -3909,13 +3909,16 @@ export const AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode =
 
 /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections =
-  "NO" | "ALL" | "READ_ONLY";
+  | "NO"
+  | "ALL"
+  | "READ_ONLY";
 export const AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections =
   /*@__PURE__*/ S.String;
 
 /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections =
-  "ALL" | "READ_WRITE";
+  | "ALL"
+  | "READ_WRITE";
 export const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections =
   /*@__PURE__*/ S.String;
 
@@ -4027,31 +4030,41 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesL
 
 /** Preferred replica for running automated backups. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference =
-  "PRIMARY" | "SECONDARY_ONLY" | "SECONDARY" | "NONE";
+  | "PRIMARY"
+  | "SECONDARY_ONLY"
+  | "SECONDARY"
+  | "NONE";
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference =
   /*@__PURE__*/ S.String;
 
 /** User-defined failure condition level under which an automatic failover must be triggered. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel =
-  1 | 2 | 3 | 4 | 5;
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5;
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel =
   /*@__PURE__*/ S.Number;
 
 /** Specifies whether the availability group supports failover for database health conditions. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover =
-  "ON" | "OFF";
+  | "ON"
+  | "OFF";
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover =
   /*@__PURE__*/ S.String;
 
 /** Specifies whether DTC support has been enabled for this availability group. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport =
-  "PER_DB" | "NONE";
+  | "PER_DB"
+  | "NONE";
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport =
   /*@__PURE__*/ S.String;
 
 /** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType =
-  "WSFC" | "NONE";
+  | "WSFC"
+  | "NONE";
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType =
   /*@__PURE__*/ S.String;
 
@@ -4182,19 +4195,24 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse =
 
 /** The availability mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
-  "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+  | "SYNCHRONOUS_COMMIT"
+  | "ASYNCHRONOUS_COMMIT";
 export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
   /*@__PURE__*/ S.String;
 
 /** The failover mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode =
-  "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+  | "AUTOMATIC"
+  | "MANUAL"
+  | "EXTERNAL"
+  | "NONE";
 export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode =
   /*@__PURE__*/ S.String;
 
 /** The seeding mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode =
-  "AUTOMATIC" | "MANUAL";
+  | "AUTOMATIC"
+  | "MANUAL";
 export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode =
   /*@__PURE__*/ S.String;
 
@@ -4358,7 +4376,10 @@ export const AvailabilityGroupCreateUpdateConfigurationDatabasesList =
 
 /** Preferred replica for running automated backups. */
 export type AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference =
-  "PRIMARY" | "SECONDARY_ONLY" | "SECONDARY" | "NONE";
+  | "PRIMARY"
+  | "SECONDARY_ONLY"
+  | "SECONDARY"
+  | "NONE";
 export const AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference =
   /*@__PURE__*/ S.String;
 
@@ -7479,7 +7500,10 @@ export const SkuRecommendationResultsAzureSqlDatabase = /*@__PURE__*/ S.suspend(
 
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus =
-  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown";
+  | "NotReady"
+  | "Ready"
+  | "ReadyWithConditions"
+  | "Unknown";
 export const SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -7537,7 +7561,10 @@ export const SkuRecommendationResultsAzureSqlManagedInstance =
 
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus =
-  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown";
+  | "NotReady"
+  | "Ready"
+  | "ReadyWithConditions"
+  | "Unknown";
 export const SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -8912,7 +8939,8 @@ export const SqlServerInstancesRunBestPracticesAssessmentResponse =
 
 /** The role of managed instance in a distributed availability group, can be Primary or Secondary. */
 export type SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole =
-  "Primary" | "Secondary";
+  | "Primary"
+  | "Secondary";
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole =
   /*@__PURE__*/ S.String;
 

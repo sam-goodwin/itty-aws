@@ -43,12 +43,16 @@ export class NotFound
 export interface CimdVerificationTokensCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
+  /** Human-readable name to identify this token later, e.g. 'Production CIMD partner'. */
   label: string;
+  /** HTTPS URL of the CIMD metadata document this token will be published in. The token only verifies at this URL, so a copy hosted anywhere else is rejected. Host case, an explicit :443 and a trailing slash are normalized away; the path is case-sensitive. */
+  cimd_url: string;
 }
 export const CimdVerificationTokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     label: S.String,
+    cimd_url: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -66,7 +70,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -75,6 +79,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -113,7 +118,10 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 /** Create-response variant that includes the plaintext token. Only emitted from the create endpoint - storage-side we only persist the hash, so subsequent reads use the base serializer. */
 export interface CIMDVerificationTokenWithValue {
   id: string;
+  /** Human-readable name to identify this token later, e.g. 'Production CIMD partner'. */
   label: string;
+  /** HTTPS URL of the CIMD metadata document this token verifies at. Null on tokens issued before URL binding; those no longer verify until bound via PATCH or reissued. */
+  cimd_url: string | null;
   mask_value: string | null;
   created_by: UserBasic;
   created_at: string;
@@ -125,6 +133,7 @@ export const CIMDVerificationTokenWithValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     label: S.String,
+    cimd_url: S.NullOr(S.String),
     mask_value: S.NullOr(S.String),
     created_by: UserBasic,
     created_at: S.String,
@@ -188,9 +197,13 @@ export const CimdVerificationTokensListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CimdVerificationTokensListRequest",
 }) as any as S.Schema<CimdVerificationTokensListRequest>;
 
+/** Read shape for list/retrieve/create-response. `cimd_url` is nullable here for tokens issued before URL binding; the write serializers below require a value. */
 export interface CIMDVerificationToken {
   id: string;
+  /** Human-readable name to identify this token later, e.g. 'Production CIMD partner'. */
   label: string;
+  /** HTTPS URL of the CIMD metadata document this token verifies at. Null on tokens issued before URL binding; those no longer verify until bound via PATCH or reissued. */
+  cimd_url: string | null;
   mask_value: string | null;
   created_by: UserBasic;
   created_at: string;
@@ -200,6 +213,7 @@ export const CIMDVerificationToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     label: S.String,
+    cimd_url: S.NullOr(S.String),
     mask_value: S.NullOr(S.String),
     created_by: UserBasic,
     created_at: S.String,
@@ -232,6 +246,31 @@ export const PaginatedCIMDVerificationTokenList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaginatedCIMDVerificationTokenList",
 }) as any as S.Schema<PaginatedCIMDVerificationTokenList>;
+
+export interface CimdVerificationTokensPartialUpdateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A UUID string identifying this CIMD Verification Token. */
+  id: string;
+  /** HTTPS URL of the CIMD metadata document to bind this token to. Only settable once, on a token with no existing binding; an already-bound token must be reissued instead. */
+  cimd_url?: string;
+}
+export const CimdVerificationTokensPartialUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      organization_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      cimd_url: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/organizations/{organization_id}/cimd_verification_tokens/{id}/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CimdVerificationTokensPartialUpdateRequest",
+  }) as any as S.Schema<CimdVerificationTokensPartialUpdateRequest>;
 
 export interface CimdVerificationTokensRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -270,11 +309,17 @@ export interface CreateRequest {
   name?: string;
   logo_media_id?: string | null;
   enforce_2fa?: boolean | null;
+  /** When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains. */
+  enforce_verified_domains?: boolean | null;
   members_can_invite?: boolean | null;
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
+  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
+  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
+  /** When True, requests through the PostHog MCP server can read but not change this organization's data. */
+  read_only_mcp_access?: boolean | null;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
   is_ai_training_opted_in?: boolean | null;
@@ -290,10 +335,13 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     logo_media_id: S.optional(S.NullOr(S.String)),
     enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+    enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
+    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
+    read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
     default_experiment_stats_method: S.optional(
@@ -370,11 +418,17 @@ export interface Organization {
   metadata?: OrganizationMetadataMap;
   customer_id?: string | null;
   enforce_2fa?: boolean | null;
+  /** When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains. */
+  enforce_verified_domains?: boolean | null;
   members_can_invite?: boolean | null;
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
+  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
+  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
+  /** When True, requests through the PostHog MCP server can read but not change this organization's data. */
+  read_only_mcp_access?: boolean | null;
   member_count?: number;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
@@ -416,10 +470,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
     metadata: S.optional(OrganizationMetadataMap),
     customer_id: S.optional(S.NullOr(S.String)),
     enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+    enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
+    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
+    read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
     member_count: S.optional(S.Number),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
@@ -436,6 +493,54 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
     is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
+
+export interface DesktopBetaTermsCreateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+}
+export const DesktopBetaTermsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/organizations/{organization_id}/desktop_beta_terms/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DesktopBetaTermsCreateRequest",
+}) as any as S.Schema<DesktopBetaTermsCreateRequest>;
+
+export interface DesktopBetaTermsAcceptanceDTO {
+  /** Whether the organization has accepted the PostHog Desktop beta terms. */
+  is_desktop_beta_terms_accepted: boolean;
+}
+export const DesktopBetaTermsAcceptanceDTO = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    is_desktop_beta_terms_accepted: S.Boolean,
+  }),
+).annotate({
+  identifier: "DesktopBetaTermsAcceptanceDTO",
+}) as any as S.Schema<DesktopBetaTermsAcceptanceDTO>;
+
+export interface DesktopBetaTermsListRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+}
+export const DesktopBetaTermsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/organizations/{organization_id}/desktop_beta_terms/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DesktopBetaTermsListRequest",
+}) as any as S.Schema<DesktopBetaTermsListRequest>;
 
 export interface DestroyRequest {
   /** A UUID string identifying this organization. */
@@ -456,29 +561,12 @@ export const DestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestroyResponse",
 }) as any as S.Schema<DestroyResponse>;
 
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type DomainsCreateRequestIdJagAllowedClientsList = Array<string>;
-export const DomainsCreateRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DomainsCreateRequestIdJagAllowedClientsList>;
-
 export interface DomainsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   domain?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  saml_entity_id?: string | null;
-  saml_acs_url?: string | null;
-  saml_x509_cert?: string | null;
-  scim_enabled?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: DomainsCreateRequestIdJagAllowedClientsList;
 }
 export const DomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -486,15 +574,6 @@ export const DomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    saml_entity_id: S.optional(S.NullOr(S.String)),
-    saml_acs_url: S.optional(S.NullOr(S.String)),
-    saml_x509_cert: S.optional(S.NullOr(S.String)),
-    scim_enabled: S.optional(S.Boolean),
-    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-    id_jag_allowed_clients: S.optional(
-      DomainsCreateRequestIdJagAllowedClientsList,
-    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -506,12 +585,6 @@ export const DomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsCreateRequest",
 }) as any as S.Schema<DomainsCreateRequest>;
 
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type OrganizationDomainIdJagAllowedClientsList = Array<string>;
-export const OrganizationDomainIdJagAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationDomainIdJagAllowedClientsList>;
-
 export interface OrganizationDomain {
   id?: string;
   domain?: string;
@@ -521,24 +594,7 @@ export interface OrganizationDomain {
   verification_challenge?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places). */
-  has_saml?: boolean;
-  saml_entity_id?: string | null;
-  saml_acs_url?: string | null;
-  saml_x509_cert?: string | null;
-  /** Returns whether SCIM is configured and enabled for this domain. */
-  has_scim?: boolean;
-  scim_enabled?: boolean;
   scim_base_url?: string | null;
-  scim_bearer_token?: string | null;
-  /** Returns whether ID-JAG (XAA) is configured for this domain. */
-  has_id_jag?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: OrganizationDomainIdJagAllowedClientsList;
 }
 export const OrganizationDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -549,20 +605,7 @@ export const OrganizationDomain = /*@__PURE__*/ S.suspend(() =>
     verification_challenge: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    has_saml: S.optional(S.Boolean),
-    saml_entity_id: S.optional(S.NullOr(S.String)),
-    saml_acs_url: S.optional(S.NullOr(S.String)),
-    saml_x509_cert: S.optional(S.NullOr(S.String)),
-    has_scim: S.optional(S.Boolean),
-    scim_enabled: S.optional(S.Boolean),
     scim_base_url: S.optional(S.NullOr(S.String)),
-    scim_bearer_token: S.optional(S.NullOr(S.String)),
-    has_id_jag: S.optional(S.Boolean),
-    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-    id_jag_allowed_clients: S.optional(
-      OrganizationDomainIdJagAllowedClientsList,
-    ),
   }),
 ).annotate({
   identifier: "OrganizationDomain",
@@ -643,13 +686,6 @@ export const PaginatedOrganizationDomainList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedOrganizationDomainList",
 }) as any as S.Schema<PaginatedOrganizationDomainList>;
 
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type DomainsPartialUpdateRequestIdJagAllowedClientsList = Array<string>;
-export const DomainsPartialUpdateRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DomainsPartialUpdateRequestIdJagAllowedClientsList>;
-
 export interface DomainsPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -658,16 +694,6 @@ export interface DomainsPartialUpdateRequest {
   domain?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  saml_entity_id?: string | null;
-  saml_acs_url?: string | null;
-  saml_x509_cert?: string | null;
-  scim_enabled?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: DomainsPartialUpdateRequestIdJagAllowedClientsList;
 }
 export const DomainsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -676,15 +702,6 @@ export const DomainsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    saml_entity_id: S.optional(S.NullOr(S.String)),
-    saml_acs_url: S.optional(S.NullOr(S.String)),
-    saml_x509_cert: S.optional(S.NullOr(S.String)),
-    scim_enabled: S.optional(S.Boolean),
-    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-    id_jag_allowed_clients: S.optional(
-      DomainsPartialUpdateRequestIdJagAllowedClientsList,
-    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -745,74 +762,6 @@ export const DomainsScimLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsScimLogsRetrieveResponse",
 }) as any as S.Schema<DomainsScimLogsRetrieveResponse>;
 
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type DomainsScimTokenCreateRequestIdJagAllowedClientsList =
-  Array<string>;
-export const DomainsScimTokenCreateRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DomainsScimTokenCreateRequestIdJagAllowedClientsList>;
-
-export interface DomainsScimTokenCreateRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** A UUID string identifying this domain. */
-  id: string;
-  domain?: string;
-  jit_provisioning_enabled?: boolean;
-  sso_enforcement?: string;
-  saml_entity_id?: string | null;
-  saml_acs_url?: string | null;
-  saml_x509_cert?: string | null;
-  scim_enabled?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: DomainsScimTokenCreateRequestIdJagAllowedClientsList;
-}
-export const DomainsScimTokenCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    domain: S.optional(S.String),
-    jit_provisioning_enabled: S.optional(S.Boolean),
-    sso_enforcement: S.optional(S.String),
-    saml_entity_id: S.optional(S.NullOr(S.String)),
-    saml_acs_url: S.optional(S.NullOr(S.String)),
-    saml_x509_cert: S.optional(S.NullOr(S.String)),
-    scim_enabled: S.optional(S.Boolean),
-    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-    id_jag_allowed_clients: S.optional(
-      DomainsScimTokenCreateRequestIdJagAllowedClientsList,
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/organizations/{organization_id}/domains/{id}/scim/token/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DomainsScimTokenCreateRequest",
-}) as any as S.Schema<DomainsScimTokenCreateRequest>;
-
-export interface DomainsScimTokenCreateResponse {}
-export const DomainsScimTokenCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DomainsScimTokenCreateResponse",
-}) as any as S.Schema<DomainsScimTokenCreateResponse>;
-
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type DomainsUpdateRequestIdJagAllowedClientsList = Array<string>;
-export const DomainsUpdateRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DomainsUpdateRequestIdJagAllowedClientsList>;
-
 export interface DomainsUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -821,16 +770,6 @@ export interface DomainsUpdateRequest {
   domain?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  saml_entity_id?: string | null;
-  saml_acs_url?: string | null;
-  saml_x509_cert?: string | null;
-  scim_enabled?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: DomainsUpdateRequestIdJagAllowedClientsList;
 }
 export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -839,15 +778,6 @@ export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    saml_entity_id: S.optional(S.NullOr(S.String)),
-    saml_acs_url: S.optional(S.NullOr(S.String)),
-    saml_x509_cert: S.optional(S.NullOr(S.String)),
-    scim_enabled: S.optional(S.Boolean),
-    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-    id_jag_allowed_clients: S.optional(
-      DomainsUpdateRequestIdJagAllowedClientsList,
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -859,13 +789,6 @@ export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsUpdateRequest",
 }) as any as S.Schema<DomainsUpdateRequest>;
 
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type DomainsVerifyCreateRequestIdJagAllowedClientsList = Array<string>;
-export const DomainsVerifyCreateRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DomainsVerifyCreateRequestIdJagAllowedClientsList>;
-
 export interface DomainsVerifyCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -874,16 +797,6 @@ export interface DomainsVerifyCreateRequest {
   domain?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  saml_entity_id?: string | null;
-  saml_acs_url?: string | null;
-  saml_x509_cert?: string | null;
-  scim_enabled?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: DomainsVerifyCreateRequestIdJagAllowedClientsList;
 }
 export const DomainsVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -892,15 +805,6 @@ export const DomainsVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    saml_entity_id: S.optional(S.NullOr(S.String)),
-    saml_acs_url: S.optional(S.NullOr(S.String)),
-    saml_x509_cert: S.optional(S.NullOr(S.String)),
-    scim_enabled: S.optional(S.Boolean),
-    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-    id_jag_allowed_clients: S.optional(
-      DomainsVerifyCreateRequestIdJagAllowedClientsList,
-    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -918,6 +822,517 @@ export const DomainsVerifyCreateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DomainsVerifyCreateResponse",
 }) as any as S.Schema<DomainsVerifyCreateResponse>;
+
+/** * `all` - All * `selected` - Selected */
+export type DomainScopeEnum = "all" | "selected";
+export const DomainScopeEnum = /*@__PURE__*/ S.String;
+
+/** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
+export type IdentityProviderConfigsCreateRequestDomainScope =
+  | DomainScopeEnum
+  | BlankEnum;
+export const IdentityProviderConfigsCreateRequestDomainScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProviderConfigsCreateRequestDomainScope>;
+
+/** * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+export type ConfigScopeEnum = "saml" | "scim" | "xaa";
+export const ConfigScopeEnum = /*@__PURE__*/ S.String;
+
+/** Feature configured by this identity provider configuration. * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+export type IdentityProviderConfigsCreateRequestConfigScope =
+  | ConfigScopeEnum
+  | BlankEnum;
+export const IdentityProviderConfigsCreateRequestConfigScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProviderConfigsCreateRequestConfigScope>;
+
+/** Organization domain IDs that this identity provider configuration applies to. */
+export type IdentityProviderConfigsCreateRequestOrganizationDomainIdsList =
+  Array<string>;
+export const IdentityProviderConfigsCreateRequestOrganizationDomainIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IdentityProviderConfigsCreateRequestOrganizationDomainIdsList>;
+
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
+  Array<string>;
+export const IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IdentityProviderConfigsCreateRequestIdJagAllowedClientsList>;
+
+export interface IdentityProviderConfigsCreateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** Display name for this IdP configuration (e.g. 'Okta production'). */
+  name?: string;
+  /** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
+  domain_scope?: IdentityProviderConfigsCreateRequestDomainScope | null;
+  /** Feature configured by this identity provider configuration. * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+  config_scope?: IdentityProviderConfigsCreateRequestConfigScope | null;
+  /** Organization domain IDs that this identity provider configuration applies to. */
+  organization_domain_ids?: IdentityProviderConfigsCreateRequestOrganizationDomainIdsList;
+  /** SAML IdP entity ID (issuer). */
+  saml_entity_id?: string | null;
+  /** SAML single sign-on (ACS) URL the IdP redirects to. */
+  saml_acs_url?: string | null;
+  /** SAML IdP X.509 signing certificate (PEM). */
+  saml_x509_cert?: string | null;
+  /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
+  scim_enabled?: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: IdentityProviderConfigsCreateRequestIdJagAllowedClientsList;
+}
+export const IdentityProviderConfigsCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      organization_id: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      domain_scope: S.optional(
+        S.NullOr(IdentityProviderConfigsCreateRequestDomainScope),
+      ),
+      config_scope: S.optional(
+        S.NullOr(IdentityProviderConfigsCreateRequestConfigScope),
+      ),
+      organization_domain_ids: S.optional(
+        IdentityProviderConfigsCreateRequestOrganizationDomainIdsList,
+      ),
+      saml_entity_id: S.optional(S.NullOr(S.String)),
+      saml_acs_url: S.optional(S.NullOr(S.String)),
+      saml_x509_cert: S.optional(S.NullOr(S.String)),
+      scim_enabled: S.optional(S.Boolean),
+      id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+      id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+      id_jag_allowed_clients: S.optional(
+        IdentityProviderConfigsCreateRequestIdJagAllowedClientsList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/organizations/{organization_id}/identity_provider_configs/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "IdentityProviderConfigsCreateRequest",
+}) as any as S.Schema<IdentityProviderConfigsCreateRequest>;
+
+/** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
+export type IdentityProviderConfigDomainScope = DomainScopeEnum | BlankEnum;
+export const IdentityProviderConfigDomainScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProviderConfigDomainScope>;
+
+/** Feature configured by this identity provider configuration. * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+export type IdentityProviderConfigConfigScope = ConfigScopeEnum | BlankEnum;
+export const IdentityProviderConfigConfigScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProviderConfigConfigScope>;
+
+/** Organization domain IDs that this identity provider configuration applies to. */
+export type IdentityProviderConfigOrganizationDomainIdsList = Array<string>;
+export const IdentityProviderConfigOrganizationDomainIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IdentityProviderConfigOrganizationDomainIdsList>;
+
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type IdentityProviderConfigIdJagAllowedClientsList = Array<string>;
+export const IdentityProviderConfigIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IdentityProviderConfigIdJagAllowedClientsList>;
+
+export interface IdentityProviderConfig {
+  id: string;
+  /** Display name for this IdP configuration (e.g. 'Okta production'). */
+  name?: string;
+  /** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
+  domain_scope?: IdentityProviderConfigDomainScope | null;
+  /** Feature configured by this identity provider configuration. * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+  config_scope?: IdentityProviderConfigConfigScope | null;
+  /** Organization domain IDs that this identity provider configuration applies to. */
+  organization_domain_ids?: IdentityProviderConfigOrganizationDomainIdsList;
+  created_at: string;
+  updated_at: string;
+  /** Whether SAML is fully configured on this config. */
+  has_saml: boolean;
+  /** Stable UUID sent as SAML RelayState to route authentication responses to this IdP configuration. */
+  saml_relay_state: string;
+  /** SAML IdP entity ID (issuer). */
+  saml_entity_id?: string | null;
+  /** SAML single sign-on (ACS) URL the IdP redirects to. */
+  saml_acs_url?: string | null;
+  /** SAML IdP X.509 signing certificate (PEM). */
+  saml_x509_cert?: string | null;
+  /** Whether SCIM is enabled and a bearer token is set on this config. */
+  has_scim: boolean;
+  /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
+  scim_enabled?: boolean;
+  /** Plaintext SCIM bearer token. Only returned once, immediately after SCIM is enabled or the token is regenerated; null otherwise. */
+  scim_bearer_token: string | null;
+  /** Whether ID-JAG (XAA) is configured on this config. */
+  has_id_jag: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: IdentityProviderConfigIdJagAllowedClientsList;
+}
+export const IdentityProviderConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.optional(S.String),
+    domain_scope: S.optional(S.NullOr(IdentityProviderConfigDomainScope)),
+    config_scope: S.optional(S.NullOr(IdentityProviderConfigConfigScope)),
+    organization_domain_ids: S.optional(
+      IdentityProviderConfigOrganizationDomainIdsList,
+    ),
+    created_at: S.String,
+    updated_at: S.String,
+    has_saml: S.Boolean,
+    saml_relay_state: S.String,
+    saml_entity_id: S.optional(S.NullOr(S.String)),
+    saml_acs_url: S.optional(S.NullOr(S.String)),
+    saml_x509_cert: S.optional(S.NullOr(S.String)),
+    has_scim: S.Boolean,
+    scim_enabled: S.optional(S.Boolean),
+    scim_bearer_token: S.NullOr(S.String),
+    has_id_jag: S.Boolean,
+    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+    id_jag_allowed_clients: S.optional(
+      IdentityProviderConfigIdJagAllowedClientsList,
+    ),
+  }),
+).annotate({
+  identifier: "IdentityProviderConfig",
+}) as any as S.Schema<IdentityProviderConfig>;
+
+export interface IdentityProviderConfigsDestroyRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A UUID string identifying this identity provider config. */
+  id: string;
+}
+export const IdentityProviderConfigsDestroyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      organization_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "IdentityProviderConfigsDestroyRequest",
+}) as any as S.Schema<IdentityProviderConfigsDestroyRequest>;
+
+export interface IdentityProviderConfigsDestroyResponse {}
+export const IdentityProviderConfigsDestroyResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "IdentityProviderConfigsDestroyResponse",
+}) as any as S.Schema<IdentityProviderConfigsDestroyResponse>;
+
+export interface IdentityProviderConfigsListRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const IdentityProviderConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/organizations/{organization_id}/identity_provider_configs/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "IdentityProviderConfigsListRequest",
+}) as any as S.Schema<IdentityProviderConfigsListRequest>;
+
+export type PaginatedIdentityProviderConfigListResultsList =
+  Array<IdentityProviderConfig>;
+export const PaginatedIdentityProviderConfigListResultsList =
+  /*@__PURE__*/ S.Array(
+    IdentityProviderConfig,
+  ) as any as S.Schema<PaginatedIdentityProviderConfigListResultsList>;
+
+export interface PaginatedIdentityProviderConfigList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedIdentityProviderConfigListResultsList;
+}
+export const PaginatedIdentityProviderConfigList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedIdentityProviderConfigListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedIdentityProviderConfigList",
+}) as any as S.Schema<PaginatedIdentityProviderConfigList>;
+
+/** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
+export type IdentityProviderConfigsPartialUpdateRequestDomainScope =
+  | DomainScopeEnum
+  | BlankEnum;
+export const IdentityProviderConfigsPartialUpdateRequestDomainScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProviderConfigsPartialUpdateRequestDomainScope>;
+
+/** Feature configured by this identity provider configuration. * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+export type IdentityProviderConfigsPartialUpdateRequestConfigScope =
+  | ConfigScopeEnum
+  | BlankEnum;
+export const IdentityProviderConfigsPartialUpdateRequestConfigScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProviderConfigsPartialUpdateRequestConfigScope>;
+
+/** Organization domain IDs that this identity provider configuration applies to. */
+export type IdentityProviderConfigsPartialUpdateRequestOrganizationDomainIdsList =
+  Array<string>;
+export const IdentityProviderConfigsPartialUpdateRequestOrganizationDomainIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IdentityProviderConfigsPartialUpdateRequestOrganizationDomainIdsList>;
+
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList =
+  Array<string>;
+export const IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList>;
+
+export interface IdentityProviderConfigsPartialUpdateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A UUID string identifying this identity provider config. */
+  id: string;
+  /** Display name for this IdP configuration (e.g. 'Okta production'). */
+  name?: string;
+  /** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
+  domain_scope?: IdentityProviderConfigsPartialUpdateRequestDomainScope | null;
+  /** Feature configured by this identity provider configuration. * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+  config_scope?: IdentityProviderConfigsPartialUpdateRequestConfigScope | null;
+  /** Organization domain IDs that this identity provider configuration applies to. */
+  organization_domain_ids?: IdentityProviderConfigsPartialUpdateRequestOrganizationDomainIdsList;
+  /** SAML IdP entity ID (issuer). */
+  saml_entity_id?: string | null;
+  /** SAML single sign-on (ACS) URL the IdP redirects to. */
+  saml_acs_url?: string | null;
+  /** SAML IdP X.509 signing certificate (PEM). */
+  saml_x509_cert?: string | null;
+  /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
+  scim_enabled?: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList;
+}
+export const IdentityProviderConfigsPartialUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      organization_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      domain_scope: S.optional(
+        S.NullOr(IdentityProviderConfigsPartialUpdateRequestDomainScope),
+      ),
+      config_scope: S.optional(
+        S.NullOr(IdentityProviderConfigsPartialUpdateRequestConfigScope),
+      ),
+      organization_domain_ids: S.optional(
+        IdentityProviderConfigsPartialUpdateRequestOrganizationDomainIdsList,
+      ),
+      saml_entity_id: S.optional(S.NullOr(S.String)),
+      saml_acs_url: S.optional(S.NullOr(S.String)),
+      saml_x509_cert: S.optional(S.NullOr(S.String)),
+      scim_enabled: S.optional(S.Boolean),
+      id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+      id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+      id_jag_allowed_clients: S.optional(
+        IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "IdentityProviderConfigsPartialUpdateRequest",
+  }) as any as S.Schema<IdentityProviderConfigsPartialUpdateRequest>;
+
+export interface IdentityProviderConfigsRetrieveRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A UUID string identifying this identity provider config. */
+  id: string;
+}
+export const IdentityProviderConfigsRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      organization_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "IdentityProviderConfigsRetrieveRequest",
+}) as any as S.Schema<IdentityProviderConfigsRetrieveRequest>;
+
+export interface IdentityProviderConfigsScimTokenCreateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A UUID string identifying this identity provider config. */
+  id: string;
+}
+export const IdentityProviderConfigsScimTokenCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      organization_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/scim/token/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "IdentityProviderConfigsScimTokenCreateRequest",
+  }) as any as S.Schema<IdentityProviderConfigsScimTokenCreateRequest>;
+
+export interface SCIMTokenResponse {
+  /** Whether SCIM is enabled for this config. */
+  scim_enabled: boolean;
+  /** Newly generated plaintext SCIM bearer token. Only returned once. */
+  scim_bearer_token: string;
+}
+export const SCIMTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scim_enabled: S.Boolean,
+    scim_bearer_token: S.String,
+  }),
+).annotate({
+  identifier: "SCIMTokenResponse",
+}) as any as S.Schema<SCIMTokenResponse>;
+
+/** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
+export type IdentityProviderConfigsUpdateRequestDomainScope =
+  | DomainScopeEnum
+  | BlankEnum;
+export const IdentityProviderConfigsUpdateRequestDomainScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProviderConfigsUpdateRequestDomainScope>;
+
+/** Feature configured by this identity provider configuration. * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+export type IdentityProviderConfigsUpdateRequestConfigScope =
+  | ConfigScopeEnum
+  | BlankEnum;
+export const IdentityProviderConfigsUpdateRequestConfigScope =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProviderConfigsUpdateRequestConfigScope>;
+
+/** Organization domain IDs that this identity provider configuration applies to. */
+export type IdentityProviderConfigsUpdateRequestOrganizationDomainIdsList =
+  Array<string>;
+export const IdentityProviderConfigsUpdateRequestOrganizationDomainIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IdentityProviderConfigsUpdateRequestOrganizationDomainIdsList>;
+
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList =
+  Array<string>;
+export const IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList>;
+
+export interface IdentityProviderConfigsUpdateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A UUID string identifying this identity provider config. */
+  id: string;
+  /** Display name for this IdP configuration (e.g. 'Okta production'). */
+  name?: string;
+  /** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
+  domain_scope?: IdentityProviderConfigsUpdateRequestDomainScope | null;
+  /** Feature configured by this identity provider configuration. * `saml` - Saml * `scim` - Scim * `xaa` - Xaa */
+  config_scope?: IdentityProviderConfigsUpdateRequestConfigScope | null;
+  /** Organization domain IDs that this identity provider configuration applies to. */
+  organization_domain_ids?: IdentityProviderConfigsUpdateRequestOrganizationDomainIdsList;
+  /** SAML IdP entity ID (issuer). */
+  saml_entity_id?: string | null;
+  /** SAML single sign-on (ACS) URL the IdP redirects to. */
+  saml_acs_url?: string | null;
+  /** SAML IdP X.509 signing certificate (PEM). */
+  saml_x509_cert?: string | null;
+  /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
+  scim_enabled?: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList;
+}
+export const IdentityProviderConfigsUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      organization_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      domain_scope: S.optional(
+        S.NullOr(IdentityProviderConfigsUpdateRequestDomainScope),
+      ),
+      config_scope: S.optional(
+        S.NullOr(IdentityProviderConfigsUpdateRequestConfigScope),
+      ),
+      organization_domain_ids: S.optional(
+        IdentityProviderConfigsUpdateRequestOrganizationDomainIdsList,
+      ),
+      saml_entity_id: S.optional(S.NullOr(S.String)),
+      saml_acs_url: S.optional(S.NullOr(S.String)),
+      saml_x509_cert: S.optional(S.NullOr(S.String)),
+      scim_enabled: S.optional(S.Boolean),
+      id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+      id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+      id_jag_allowed_clients: S.optional(
+        IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "IdentityProviderConfigsUpdateRequest",
+}) as any as S.Schema<IdentityProviderConfigsUpdateRequest>;
 
 export interface IntegrationsEnvironmentMappingPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -1237,6 +1652,7 @@ export interface LegalDocumentDTO {
   company_name?: string;
   representative_email?: string;
   status?: string;
+  signed_pdf_stored?: boolean;
   created_by?: LegalDocumentCreator | null;
   created_at?: string;
 }
@@ -1247,6 +1663,7 @@ export const LegalDocumentDTO = /*@__PURE__*/ S.suspend(() =>
     company_name: S.optional(S.String),
     representative_email: S.optional(S.String),
     status: S.optional(S.String),
+    signed_pdf_stored: S.optional(S.Boolean),
     created_by: S.optional(S.NullOr(LegalDocumentCreator)),
     created_at: S.optional(S.String),
   }),
@@ -1475,21 +1892,30 @@ export const MembersListRequestOrder = /*@__PURE__*/ S.String;
 export interface MembersListRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
+  /** Only return members whose email address is on this domain (case-insensitive). */
+  email_domain?: string;
+  /** Comma-separated membership levels to return, e.g. `1,8`. Levels are 1 member, 8 admin, 15 owner. */
+  levels?: string;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
   /** Sort order. Defaults to `-joined_at`. */
   order?: MembersListRequestOrder | (string & {});
-  /** Match against member `first_name`, `last_name`, and `email`. Returns case-insensitive substring matches and fuzzy trigram matches (typos, prefix-as-you-type) together, ordered exact-first; each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters. */
+  /** When `true`, only return members whose email domain is not one of the organization's verified domains — the members who would lose access under verified-domain enforcement. */
+  outside_verified_domains?: boolean;
+  /** Match against member `first_name`, `last_name`, and `email`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters. */
   search?: string;
 }
 export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
+    email_domain: S.optional(S.String.pipe(T.Query())),
+    levels: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     order: S.optional(MembersListRequestOrder.pipe(T.Query())),
+    outside_verified_domains: S.optional(S.Boolean.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1514,7 +1940,7 @@ export interface OrganizationMember {
   is_2fa_enabled?: boolean;
   has_social_auth?: boolean;
   last_login?: string;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const OrganizationMember = /*@__PURE__*/ S.suspend(() =>
@@ -2432,7 +2858,7 @@ export type ProjectBackwardCompatBusinessModel = BusinessModelEnum | BlankEnum;
 export const ProjectBackwardCompatBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ProjectBackwardCompatBusinessModel>;
 
-/** * `ingest_first_event` - ingest_first_event * `set_up_reverse_proxy` - set_up_reverse_proxy * `create_first_insight` - create_first_insight * `create_first_dashboard` - create_first_dashboard * `track_custom_events` - track_custom_events * `define_actions` - define_actions * `set_up_cohorts` - set_up_cohorts * `explore_trends_insight` - explore_trends_insight * `create_funnel` - create_funnel * `explore_retention_insight` - explore_retention_insight * `explore_paths_insight` - explore_paths_insight * `explore_stickiness_insight` - explore_stickiness_insight * `explore_lifecycle_insight` - explore_lifecycle_insight * `add_authorized_domain` - add_authorized_domain * `set_up_web_vitals` - set_up_web_vitals * `review_web_analytics_dashboard` - review_web_analytics_dashboard * `filter_web_analytics` - filter_web_analytics * `set_up_web_analytics_conversion_goals` - set_up_web_analytics_conversion_goals * `visit_web_vitals_dashboard` - visit_web_vitals_dashboard * `setup_session_recordings` - setup_session_recordings * `watch_session_recording` - watch_session_recording * `configure_recording_settings` - configure_recording_settings * `create_recording_playlist` - create_recording_playlist * `enable_console_logs` - enable_console_logs * `create_feature_flag` - create_feature_flag * `implement_flag_in_code` - implement_flag_in_code * `update_feature_flag_release_conditions` - update_feature_flag_release_conditions * `create_multivariate_flag` - create_multivariate_flag * `set_up_flag_payloads` - set_up_flag_payloads * `set_up_flag_evaluation_runtimes` - set_up_flag_evaluation_runtimes * `create_experiment` - create_experiment * `implement_experiment_variants` - implement_experiment_variants * `launch_experiment` - launch_experiment * `review_experiment_results` - review_experiment_results * `create_survey` - create_survey * `launch_survey` - launch_survey * `collect_survey_responses` - collect_survey_responses * `connect_source` - connect_source * `run_first_query` - run_first_query * `join_external_data` - join_external_data * `create_saved_view` - create_saved_view * `enable_error_tracking` - enable_error_tracking * `upload_source_maps` - upload_source_maps * `view_first_error` - view_first_error * `resolve_first_error` - resolve_first_error * `ingest_first_llm_event` - ingest_first_llm_event * `view_first_trace` - view_first_trace * `track_costs` - track_costs * `set_up_llm_evaluation` - set_up_llm_evaluation * `run_ai_playground` - run_ai_playground * `enable_revenue_analytics_viewset` - enable_revenue_analytics_viewset * `connect_revenue_source` - connect_revenue_source * `set_up_revenue_goal` - set_up_revenue_goal * `enable_log_capture` - enable_log_capture * `view_first_logs` - view_first_logs * `create_first_workflow` - create_first_workflow * `set_up_first_workflow_channel` - set_up_first_workflow_channel * `configure_workflow_trigger` - configure_workflow_trigger * `add_workflow_action` - add_workflow_action * `launch_workflow` - launch_workflow * `create_first_endpoint` - create_first_endpoint * `configure_endpoint` - configure_endpoint * `test_endpoint` - test_endpoint * `create_early_access_feature` - create_early_access_feature * `update_feature_stage` - update_feature_stage * `use_posthog_ai` - use_posthog_ai * `use_posthog_code` - use_posthog_code * `use_posthog_mcp` - use_posthog_mcp * `use_posthog_in_slack` - use_posthog_in_slack */
+/** * `ingest_first_event` - ingest_first_event * `set_up_reverse_proxy` - set_up_reverse_proxy * `create_first_insight` - create_first_insight * `create_first_dashboard` - create_first_dashboard * `track_custom_events` - track_custom_events * `define_actions` - define_actions * `set_up_cohorts` - set_up_cohorts * `explore_trends_insight` - explore_trends_insight * `create_funnel` - create_funnel * `explore_retention_insight` - explore_retention_insight * `explore_paths_insight` - explore_paths_insight * `explore_stickiness_insight` - explore_stickiness_insight * `explore_lifecycle_insight` - explore_lifecycle_insight * `add_authorized_domain` - add_authorized_domain * `set_up_web_vitals` - set_up_web_vitals * `review_web_analytics_dashboard` - review_web_analytics_dashboard * `filter_web_analytics` - filter_web_analytics * `set_up_web_analytics_conversion_goals` - set_up_web_analytics_conversion_goals * `visit_web_vitals_dashboard` - visit_web_vitals_dashboard * `setup_session_recordings` - setup_session_recordings * `watch_session_recording` - watch_session_recording * `configure_recording_settings` - configure_recording_settings * `create_recording_playlist` - create_recording_playlist * `enable_console_logs` - enable_console_logs * `create_feature_flag` - create_feature_flag * `implement_flag_in_code` - implement_flag_in_code * `update_feature_flag_release_conditions` - update_feature_flag_release_conditions * `create_multivariate_flag` - create_multivariate_flag * `set_up_flag_payloads` - set_up_flag_payloads * `set_up_flag_evaluation_runtimes` - set_up_flag_evaluation_runtimes * `create_experiment` - create_experiment * `implement_experiment_variants` - implement_experiment_variants * `launch_experiment` - launch_experiment * `review_experiment_results` - review_experiment_results * `create_survey` - create_survey * `launch_survey` - launch_survey * `collect_survey_responses` - collect_survey_responses * `connect_source` - connect_source * `run_first_query` - run_first_query * `join_external_data` - join_external_data * `create_saved_view` - create_saved_view * `enable_error_tracking` - enable_error_tracking * `upload_source_maps` - upload_source_maps * `view_first_error` - view_first_error * `resolve_first_error` - resolve_first_error * `ingest_first_llm_event` - ingest_first_llm_event * `view_first_trace` - view_first_trace * `track_costs` - track_costs * `set_up_llm_evaluation` - set_up_llm_evaluation * `run_ai_playground` - run_ai_playground * `enable_log_capture` - enable_log_capture * `view_first_logs` - view_first_logs * `create_first_workflow` - create_first_workflow * `set_up_first_workflow_channel` - set_up_first_workflow_channel * `configure_workflow_trigger` - configure_workflow_trigger * `add_workflow_action` - add_workflow_action * `launch_workflow` - launch_workflow * `create_first_endpoint` - create_first_endpoint * `configure_endpoint` - configure_endpoint * `test_endpoint` - test_endpoint * `create_early_access_feature` - create_early_access_feature * `update_feature_stage` - update_feature_stage * `use_posthog_ai` - use_posthog_ai * `use_posthog_code` - use_posthog_code * `use_posthog_mcp` - use_posthog_mcp * `use_posthog_in_slack` - use_posthog_in_slack */
 export type AvailableSetupTaskIdsEnum =
   | "ingest_first_event"
   | "set_up_reverse_proxy"
@@ -2484,9 +2910,6 @@ export type AvailableSetupTaskIdsEnum =
   | "track_costs"
   | "set_up_llm_evaluation"
   | "run_ai_playground"
-  | "enable_revenue_analytics_viewset"
-  | "connect_revenue_source"
-  | "set_up_revenue_goal"
   | "enable_log_capture"
   | "view_first_logs"
   | "create_first_workflow"
@@ -2679,19 +3102,928 @@ export const BaseCurrencyEnum = /*@__PURE__*/ S.String;
 export interface TeamRevenueAnalyticsConfig {
   base_currency?: BaseCurrencyEnum | (string & {});
   events?: unknown;
-  goals?: unknown;
   filter_test_accounts?: boolean;
 }
 export const TeamRevenueAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base_currency: S.optional(BaseCurrencyEnum),
     events: S.optional(S.Unknown),
-    goals: S.optional(S.Unknown),
     filter_test_accounts: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "TeamRevenueAnalyticsConfig",
 }) as any as S.Schema<TeamRevenueAnalyticsConfig>;
+
+export interface SourceMap {
+  ad_group_id?: string | null;
+  ad_group_name?: string | null;
+  ad_id?: string | null;
+  ad_name?: string | null;
+  campaign?: string | null;
+  clicks?: string | null;
+  cost?: string | null;
+  currency?: string | null;
+  date?: string | null;
+  id?: string | null;
+  impressions?: string | null;
+  reported_conversion?: string | null;
+  reported_conversion_value?: string | null;
+  source?: string | null;
+}
+export const SourceMap = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ad_group_id: S.optional(S.NullOr(S.String)),
+    ad_group_name: S.optional(S.NullOr(S.String)),
+    ad_id: S.optional(S.NullOr(S.String)),
+    ad_name: S.optional(S.NullOr(S.String)),
+    campaign: S.optional(S.NullOr(S.String)),
+    clicks: S.optional(S.NullOr(S.String)),
+    cost: S.optional(S.NullOr(S.String)),
+    currency: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.NullOr(S.String)),
+    impressions: S.optional(S.NullOr(S.String)),
+    reported_conversion: S.optional(S.NullOr(S.String)),
+    reported_conversion_value: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({ identifier: "SourceMap" }) as any as S.Schema<SourceMap>;
+
+/** Mapping of external data source id to that source's column mapping. */
+export type MarketingAnalyticsSourceMapping = {
+  [key: string]: SourceMap | undefined;
+};
+export const MarketingAnalyticsSourceMapping = /*@__PURE__*/ S.Record(
+  S.String,
+  SourceMap,
+) as any as S.Schema<MarketingAnalyticsSourceMapping>;
+
+export type BaseMathType =
+  | "total"
+  | "dau"
+  | "weekly_active"
+  | "monthly_active"
+  | "unique_session"
+  | "first_time_for_user"
+  | "first_matching_event_for_user";
+export const BaseMathType = /*@__PURE__*/ S.String;
+
+export type FunnelMathType =
+  | "total"
+  | "first_time_for_user"
+  | "first_time_for_user_with_filters";
+export const FunnelMathType = /*@__PURE__*/ S.String;
+
+export type PropertyMathType =
+  | "avg"
+  | "sum"
+  | "min"
+  | "max"
+  | "median"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99";
+export const PropertyMathType = /*@__PURE__*/ S.String;
+
+export type CountPerActorMathType =
+  | "avg_count_per_actor"
+  | "min_count_per_actor"
+  | "max_count_per_actor"
+  | "median_count_per_actor"
+  | "p75_count_per_actor"
+  | "p90_count_per_actor"
+  | "p95_count_per_actor"
+  | "p99_count_per_actor";
+export const CountPerActorMathType = /*@__PURE__*/ S.String;
+
+export type GroupMathType =
+  | "unique_group"
+  | "first_time_for_group"
+  | "first_matching_event_for_group";
+export const GroupMathType = /*@__PURE__*/ S.String;
+
+export type ExperimentMetricMathType =
+  | "total"
+  | "sum"
+  | "unique_session"
+  | "min"
+  | "max"
+  | "avg"
+  | "dau"
+  | "unique_group"
+  | "hogql";
+export const ExperimentMetricMathType = /*@__PURE__*/ S.String;
+
+export type CalendarHeatmapMathType = "total" | "dau";
+export const CalendarHeatmapMathType = /*@__PURE__*/ S.String;
+
+export type MarketingAnalyticsEventConversionGoalMath =
+  | BaseMathType
+  | FunnelMathType
+  | PropertyMathType
+  | CountPerActorMathType
+  | GroupMathType
+  | ExperimentMetricMathType
+  | CalendarHeatmapMathType
+  | string;
+export const MarketingAnalyticsEventConversionGoalMath =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsEventConversionGoalMath>;
+
+export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
+export const MathGroupTypeIndex = /*@__PURE__*/ S.Number;
+
+export type CurrencyCode =
+  | "AED"
+  | "AFN"
+  | "ALL"
+  | "AMD"
+  | "ANG"
+  | "AOA"
+  | "ARS"
+  | "AUD"
+  | "AWG"
+  | "AZN"
+  | "BAM"
+  | "BBD"
+  | "BDT"
+  | "BGN"
+  | "BHD"
+  | "BIF"
+  | "BMD"
+  | "BND"
+  | "BOB"
+  | "BRL"
+  | "BSD"
+  | "BTC"
+  | "BTN"
+  | "BWP"
+  | "BYN"
+  | "BZD"
+  | "CAD"
+  | "CDF"
+  | "CHF"
+  | "CLP"
+  | "CNY"
+  | "COP"
+  | "CRC"
+  | "CVE"
+  | "CZK"
+  | "DJF"
+  | "DKK"
+  | "DOP"
+  | "DZD"
+  | "EGP"
+  | "ERN"
+  | "ETB"
+  | "EUR"
+  | "FJD"
+  | "GBP"
+  | "GEL"
+  | "GHS"
+  | "GIP"
+  | "GMD"
+  | "GNF"
+  | "GTQ"
+  | "GYD"
+  | "HKD"
+  | "HNL"
+  | "HRK"
+  | "HTG"
+  | "HUF"
+  | "IDR"
+  | "ILS"
+  | "INR"
+  | "IQD"
+  | "IRR"
+  | "ISK"
+  | "JMD"
+  | "JOD"
+  | "JPY"
+  | "KES"
+  | "KGS"
+  | "KHR"
+  | "KMF"
+  | "KRW"
+  | "KWD"
+  | "KYD"
+  | "KZT"
+  | "LAK"
+  | "LBP"
+  | "LKR"
+  | "LRD"
+  | "LTL"
+  | "LVL"
+  | "LSL"
+  | "LYD"
+  | "MAD"
+  | "MDL"
+  | "MGA"
+  | "MKD"
+  | "MMK"
+  | "MNT"
+  | "MOP"
+  | "MRU"
+  | "MTL"
+  | "MUR"
+  | "MVR"
+  | "MWK"
+  | "MXN"
+  | "MYR"
+  | "MZN"
+  | "NAD"
+  | "NGN"
+  | "NIO"
+  | "NOK"
+  | "NPR"
+  | "NZD"
+  | "OMR"
+  | "PAB"
+  | "PEN"
+  | "PGK"
+  | "PHP"
+  | "PKR"
+  | "PLN"
+  | "PYG"
+  | "QAR"
+  | "RON"
+  | "RSD"
+  | "RUB"
+  | "RWF"
+  | "SAR"
+  | "SBD"
+  | "SCR"
+  | "SDG"
+  | "SEK"
+  | "SGD"
+  | "SRD"
+  | "SSP"
+  | "STN"
+  | "SYP"
+  | "SZL"
+  | "THB"
+  | "TJS"
+  | "TMT"
+  | "TND"
+  | "TOP"
+  | "TRY"
+  | "TTD"
+  | "TWD"
+  | "TZS"
+  | "UAH"
+  | "UGX"
+  | "USD"
+  | "UYU"
+  | "UZS"
+  | "VES"
+  | "VND"
+  | "VUV"
+  | "WST"
+  | "XAF"
+  | "XCD"
+  | "XOF"
+  | "XPF"
+  | "YER"
+  | "ZAR"
+  | "ZMW";
+export const CurrencyCode = /*@__PURE__*/ S.String;
+
+export interface RevenueCurrencyPropertyConfig {
+  property?: string | null;
+  static?: CurrencyCode | (string & {}) | null;
+}
+export const RevenueCurrencyPropertyConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    property: S.optional(S.NullOr(S.String)),
+    static: S.optional(S.NullOr(CurrencyCode)),
+  }),
+).annotate({
+  identifier: "RevenueCurrencyPropertyConfig",
+}) as any as S.Schema<RevenueCurrencyPropertyConfig>;
+
+export type MarketingAnalyticsEventConversionGoalOrderByList = Array<string>;
+export const MarketingAnalyticsEventConversionGoalOrderByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MarketingAnalyticsEventConversionGoalOrderByList>;
+
+export type PropertyOperator =
+  | "exact"
+  | "is_not"
+  | "icontains"
+  | "not_icontains"
+  | "starts_with"
+  | "not_starts_with"
+  | "ends_with"
+  | "not_ends_with"
+  | "regex"
+  | "not_regex"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "is_set"
+  | "is_not_set"
+  | "is_date_exact"
+  | "is_date_before"
+  | "is_date_after"
+  | "between"
+  | "not_between"
+  | "min"
+  | "max"
+  | "in"
+  | "not_in"
+  | "is_cleaned_path_exact"
+  | "flag_evaluates_to"
+  | "semver_eq"
+  | "semver_neq"
+  | "semver_gt"
+  | "semver_gte"
+  | "semver_lt"
+  | "semver_lte"
+  | "semver_tilde"
+  | "semver_caret"
+  | "semver_wildcard"
+  | "icontains_multi"
+  | "not_icontains_multi";
+export const PropertyOperator = /*@__PURE__*/ S.String;
+
+export type EventPropertyFilterValueCase0Item = string | number | boolean;
+export const EventPropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
+
+export type EventPropertyFilterValueCase0List =
+  Array<EventPropertyFilterValueCase0Item>;
+export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  EventPropertyFilterValueCase0Item,
+) as any as S.Schema<EventPropertyFilterValueCase0List>;
+
+export type EventPropertyFilterValue =
+  | EventPropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const EventPropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValue>;
+
+export interface EventPropertyFilter {
+  key?: string;
+  label?: string | null;
+  operator?: PropertyOperator | (string & {}) | null;
+  /** Event properties */
+  type?: string;
+  value?: EventPropertyFilterValue | null;
+}
+export const EventPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(S.NullOr(PropertyOperator)),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(EventPropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "EventPropertyFilter",
+}) as any as S.Schema<EventPropertyFilter>;
+
+export type PersonPropertyFilterValueCase0Item = string | number | boolean;
+export const PersonPropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
+
+export type PersonPropertyFilterValueCase0List =
+  Array<PersonPropertyFilterValueCase0Item>;
+export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  PersonPropertyFilterValueCase0Item,
+) as any as S.Schema<PersonPropertyFilterValueCase0List>;
+
+export type PersonPropertyFilterValue =
+  | PersonPropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const PersonPropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValue>;
+
+export interface PersonPropertyFilter {
+  key?: string;
+  label?: string | null;
+  operator?: PropertyOperator | (string & {});
+  /** Person properties */
+  type?: string;
+  value?: PersonPropertyFilterValue | null;
+}
+export const PersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(PropertyOperator),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(PersonPropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "PersonPropertyFilter",
+}) as any as S.Schema<PersonPropertyFilter>;
+
+export interface CohortPropertyFilter {
+  cohort_name?: string | null;
+  key?: string;
+  label?: string | null;
+  operator?: PropertyOperator | (string & {}) | null;
+  type?: string;
+  value?: number;
+}
+export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cohort_name: S.optional(S.NullOr(S.String)),
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(S.NullOr(PropertyOperator)),
+    type: S.optional(S.String),
+    value: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CohortPropertyFilter",
+}) as any as S.Schema<CohortPropertyFilter>;
+
+export type Key10 = "tag_name" | "text" | "href" | "selector";
+export const Key10 = /*@__PURE__*/ S.String;
+
+export type ElementPropertyFilterValueCase0Item = string | number | boolean;
+export const ElementPropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
+
+export type ElementPropertyFilterValueCase0List =
+  Array<ElementPropertyFilterValueCase0Item>;
+export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  ElementPropertyFilterValueCase0Item,
+) as any as S.Schema<ElementPropertyFilterValueCase0List>;
+
+export type ElementPropertyFilterValue =
+  | ElementPropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const ElementPropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValue>;
+
+export interface ElementPropertyFilter {
+  key?: Key10 | (string & {});
+  label?: string | null;
+  operator?: PropertyOperator | (string & {});
+  type?: string;
+  value?: ElementPropertyFilterValue | null;
+}
+export const ElementPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(Key10),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(PropertyOperator),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(ElementPropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "ElementPropertyFilter",
+}) as any as S.Schema<ElementPropertyFilter>;
+
+export type HogQLPropertyFilterValueCase0Item = string | number | boolean;
+export const HogQLPropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
+
+export type HogQLPropertyFilterValueCase0List =
+  Array<HogQLPropertyFilterValueCase0Item>;
+export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  HogQLPropertyFilterValueCase0Item,
+) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
+
+export type HogQLPropertyFilterValue =
+  | HogQLPropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const HogQLPropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValue>;
+
+export interface HogQLPropertyFilter {
+  key?: string;
+  label?: string | null;
+  type?: string;
+  value?: HogQLPropertyFilterValue | null;
+}
+export const HogQLPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(HogQLPropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "HogQLPropertyFilter",
+}) as any as S.Schema<HogQLPropertyFilter>;
+
+export type DataWarehousePropertyFilterValueCase0Item =
+  | string
+  | number
+  | boolean;
+export const DataWarehousePropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
+
+export type DataWarehousePropertyFilterValueCase0List =
+  Array<DataWarehousePropertyFilterValueCase0Item>;
+export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  DataWarehousePropertyFilterValueCase0Item,
+) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
+
+export type DataWarehousePropertyFilterValue =
+  | DataWarehousePropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const DataWarehousePropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValue>;
+
+export interface DataWarehousePropertyFilter {
+  key?: string;
+  label?: string | null;
+  operator?: PropertyOperator | (string & {});
+  type?: string;
+  value?: DataWarehousePropertyFilterValue | null;
+}
+export const DataWarehousePropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(PropertyOperator),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(DataWarehousePropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "DataWarehousePropertyFilter",
+}) as any as S.Schema<DataWarehousePropertyFilter>;
+
+export type MarketingAnalyticsEventConversionGoalPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | CohortPropertyFilter
+  | ElementPropertyFilter
+  | HogQLPropertyFilter
+  | DataWarehousePropertyFilter;
+export const MarketingAnalyticsEventConversionGoalPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsEventConversionGoalPropertiesItem>;
+
+export type MarketingAnalyticsEventConversionGoalPropertiesList =
+  Array<MarketingAnalyticsEventConversionGoalPropertiesItem>;
+export const MarketingAnalyticsEventConversionGoalPropertiesList =
+  /*@__PURE__*/ S.Array(
+    MarketingAnalyticsEventConversionGoalPropertiesItem,
+  ) as any as S.Schema<MarketingAnalyticsEventConversionGoalPropertiesList>;
+
+export type MarketingAnalyticsEventConversionGoalResponseMap = {
+  [key: string]: unknown | undefined;
+};
+export const MarketingAnalyticsEventConversionGoalResponseMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MarketingAnalyticsEventConversionGoalResponseMap>;
+
+export type MarketingAnalyticsEventConversionGoalSchemaMapValue =
+  | string
+  | unknown;
+export const MarketingAnalyticsEventConversionGoalSchemaMapValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsEventConversionGoalSchemaMapValue>;
+
+export type MarketingAnalyticsEventConversionGoalSchemaMapMap = {
+  [key: string]:
+    | MarketingAnalyticsEventConversionGoalSchemaMapValue
+    | undefined;
+};
+export const MarketingAnalyticsEventConversionGoalSchemaMapMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    MarketingAnalyticsEventConversionGoalSchemaMapValue,
+  ) as any as S.Schema<MarketingAnalyticsEventConversionGoalSchemaMapMap>;
+
+/** A conversion goal counted from events. */
+export interface MarketingAnalyticsEventConversionGoal {
+  conversion_goal_id: string;
+  conversion_goal_name: string;
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  counts_as_customer?: boolean | null;
+  /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
+  counts_as_revenue?: boolean | null;
+  custom_name?: string | null;
+  /** The event or `null` for all events. */
+  event?: string | null;
+  kind: string;
+  limit?: number | null;
+  math?: MarketingAnalyticsEventConversionGoalMath | null;
+  math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
+  math_hogql?: string | null;
+  math_multiplier?: number | null;
+  math_property?: string | null;
+  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
+  math_property_type?: string | null;
+  name: string;
+  optionalInFunnel?: boolean | null;
+  /** Columns to order by */
+  orderBy?: MarketingAnalyticsEventConversionGoalOrderByList | null;
+  properties?: MarketingAnalyticsEventConversionGoalPropertiesList | null;
+  response?: MarketingAnalyticsEventConversionGoalResponseMap | null;
+  schema_map: MarketingAnalyticsEventConversionGoalSchemaMapMap;
+  /** version of the node, used for schema migrations */
+  version?: number | null;
+}
+export const MarketingAnalyticsEventConversionGoal = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      conversion_goal_id: S.String,
+      conversion_goal_name: S.String,
+      counts_as_customer: S.optional(S.NullOr(S.Boolean)),
+      counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
+      custom_name: S.optional(S.NullOr(S.String)),
+      event: S.optional(S.NullOr(S.String)),
+      kind: S.String,
+      limit: S.optional(S.NullOr(S.Number)),
+      math: S.optional(S.NullOr(MarketingAnalyticsEventConversionGoalMath)),
+      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+      math_hogql: S.optional(S.NullOr(S.String)),
+      math_multiplier: S.optional(S.NullOr(S.Number)),
+      math_property: S.optional(S.NullOr(S.String)),
+      math_property_revenue_currency: S.optional(
+        S.NullOr(RevenueCurrencyPropertyConfig),
+      ),
+      math_property_type: S.optional(S.NullOr(S.String)),
+      name: S.String,
+      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
+      orderBy: S.optional(
+        S.NullOr(MarketingAnalyticsEventConversionGoalOrderByList),
+      ),
+      properties: S.optional(
+        S.NullOr(MarketingAnalyticsEventConversionGoalPropertiesList),
+      ),
+      response: S.optional(
+        S.NullOr(MarketingAnalyticsEventConversionGoalResponseMap),
+      ),
+      schema_map: MarketingAnalyticsEventConversionGoalSchemaMapMap,
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+).annotate({
+  identifier: "MarketingAnalyticsEventConversionGoal",
+}) as any as S.Schema<MarketingAnalyticsEventConversionGoal>;
+
+export type MarketingAnalyticsActionConversionGoalMath =
+  | BaseMathType
+  | FunnelMathType
+  | PropertyMathType
+  | CountPerActorMathType
+  | GroupMathType
+  | ExperimentMetricMathType
+  | CalendarHeatmapMathType
+  | string;
+export const MarketingAnalyticsActionConversionGoalMath =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsActionConversionGoalMath>;
+
+export type MarketingAnalyticsActionConversionGoalPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | CohortPropertyFilter
+  | ElementPropertyFilter
+  | HogQLPropertyFilter
+  | DataWarehousePropertyFilter;
+export const MarketingAnalyticsActionConversionGoalPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsActionConversionGoalPropertiesItem>;
+
+export type MarketingAnalyticsActionConversionGoalPropertiesList =
+  Array<MarketingAnalyticsActionConversionGoalPropertiesItem>;
+export const MarketingAnalyticsActionConversionGoalPropertiesList =
+  /*@__PURE__*/ S.Array(
+    MarketingAnalyticsActionConversionGoalPropertiesItem,
+  ) as any as S.Schema<MarketingAnalyticsActionConversionGoalPropertiesList>;
+
+export type MarketingAnalyticsActionConversionGoalResponseMap = {
+  [key: string]: unknown | undefined;
+};
+export const MarketingAnalyticsActionConversionGoalResponseMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MarketingAnalyticsActionConversionGoalResponseMap>;
+
+export type MarketingAnalyticsActionConversionGoalSchemaMapValue =
+  | string
+  | unknown;
+export const MarketingAnalyticsActionConversionGoalSchemaMapValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsActionConversionGoalSchemaMapValue>;
+
+export type MarketingAnalyticsActionConversionGoalSchemaMapMap = {
+  [key: string]:
+    | MarketingAnalyticsActionConversionGoalSchemaMapValue
+    | undefined;
+};
+export const MarketingAnalyticsActionConversionGoalSchemaMapMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    MarketingAnalyticsActionConversionGoalSchemaMapValue,
+  ) as any as S.Schema<MarketingAnalyticsActionConversionGoalSchemaMapMap>;
+
+/** A conversion goal counted from an action. */
+export interface MarketingAnalyticsActionConversionGoal {
+  conversion_goal_id: string;
+  conversion_goal_name: string;
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  counts_as_customer?: boolean | null;
+  /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
+  counts_as_revenue?: boolean | null;
+  custom_name?: string | null;
+  id: number;
+  kind: string;
+  math?: MarketingAnalyticsActionConversionGoalMath | null;
+  math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
+  math_hogql?: string | null;
+  math_multiplier?: number | null;
+  math_property?: string | null;
+  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
+  math_property_type?: string | null;
+  name: string;
+  optionalInFunnel?: boolean | null;
+  properties?: MarketingAnalyticsActionConversionGoalPropertiesList | null;
+  response?: MarketingAnalyticsActionConversionGoalResponseMap | null;
+  schema_map: MarketingAnalyticsActionConversionGoalSchemaMapMap;
+  /** version of the node, used for schema migrations */
+  version?: number | null;
+}
+export const MarketingAnalyticsActionConversionGoal = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      conversion_goal_id: S.String,
+      conversion_goal_name: S.String,
+      counts_as_customer: S.optional(S.NullOr(S.Boolean)),
+      counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
+      custom_name: S.optional(S.NullOr(S.String)),
+      id: S.Number,
+      kind: S.String,
+      math: S.optional(S.NullOr(MarketingAnalyticsActionConversionGoalMath)),
+      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+      math_hogql: S.optional(S.NullOr(S.String)),
+      math_multiplier: S.optional(S.NullOr(S.Number)),
+      math_property: S.optional(S.NullOr(S.String)),
+      math_property_revenue_currency: S.optional(
+        S.NullOr(RevenueCurrencyPropertyConfig),
+      ),
+      math_property_type: S.optional(S.NullOr(S.String)),
+      name: S.String,
+      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
+      properties: S.optional(
+        S.NullOr(MarketingAnalyticsActionConversionGoalPropertiesList),
+      ),
+      response: S.optional(
+        S.NullOr(MarketingAnalyticsActionConversionGoalResponseMap),
+      ),
+      schema_map: MarketingAnalyticsActionConversionGoalSchemaMapMap,
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+).annotate({
+  identifier: "MarketingAnalyticsActionConversionGoal",
+}) as any as S.Schema<MarketingAnalyticsActionConversionGoal>;
+
+export type MarketingAnalyticsWarehouseConversionGoalMath =
+  | BaseMathType
+  | FunnelMathType
+  | PropertyMathType
+  | CountPerActorMathType
+  | GroupMathType
+  | ExperimentMetricMathType
+  | CalendarHeatmapMathType
+  | string;
+export const MarketingAnalyticsWarehouseConversionGoalMath =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalMath>;
+
+export type MarketingAnalyticsWarehouseConversionGoalPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | CohortPropertyFilter
+  | ElementPropertyFilter
+  | HogQLPropertyFilter
+  | DataWarehousePropertyFilter;
+export const MarketingAnalyticsWarehouseConversionGoalPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalPropertiesItem>;
+
+export type MarketingAnalyticsWarehouseConversionGoalPropertiesList =
+  Array<MarketingAnalyticsWarehouseConversionGoalPropertiesItem>;
+export const MarketingAnalyticsWarehouseConversionGoalPropertiesList =
+  /*@__PURE__*/ S.Array(
+    MarketingAnalyticsWarehouseConversionGoalPropertiesItem,
+  ) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalPropertiesList>;
+
+export type MarketingAnalyticsWarehouseConversionGoalResponseMap = {
+  [key: string]: unknown | undefined;
+};
+export const MarketingAnalyticsWarehouseConversionGoalResponseMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalResponseMap>;
+
+export type MarketingAnalyticsWarehouseConversionGoalSchemaMapValue =
+  | string
+  | unknown;
+export const MarketingAnalyticsWarehouseConversionGoalSchemaMapValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalSchemaMapValue>;
+
+export type MarketingAnalyticsWarehouseConversionGoalSchemaMapMap = {
+  [key: string]:
+    | MarketingAnalyticsWarehouseConversionGoalSchemaMapValue
+    | undefined;
+};
+export const MarketingAnalyticsWarehouseConversionGoalSchemaMapMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    MarketingAnalyticsWarehouseConversionGoalSchemaMapValue,
+  ) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalSchemaMapMap>;
+
+/** A conversion goal counted from a data warehouse table. */
+export interface MarketingAnalyticsWarehouseConversionGoal {
+  conversion_goal_id: string;
+  conversion_goal_name: string;
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  counts_as_customer?: boolean | null;
+  /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
+  counts_as_revenue?: boolean | null;
+  custom_name?: string | null;
+  distinct_id_field: string;
+  dw_source_type?: string | null;
+  id: string;
+  id_field: string;
+  kind: string;
+  math?: MarketingAnalyticsWarehouseConversionGoalMath | null;
+  math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
+  math_hogql?: string | null;
+  math_multiplier?: number | null;
+  math_property?: string | null;
+  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
+  math_property_type?: string | null;
+  name: string;
+  optionalInFunnel?: boolean | null;
+  properties?: MarketingAnalyticsWarehouseConversionGoalPropertiesList | null;
+  response?: MarketingAnalyticsWarehouseConversionGoalResponseMap | null;
+  schema_map: MarketingAnalyticsWarehouseConversionGoalSchemaMapMap;
+  table_name: string;
+  timestamp_field: string;
+  /** version of the node, used for schema migrations */
+  version?: number | null;
+}
+export const MarketingAnalyticsWarehouseConversionGoal =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conversion_goal_id: S.String,
+      conversion_goal_name: S.String,
+      counts_as_customer: S.optional(S.NullOr(S.Boolean)),
+      counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
+      custom_name: S.optional(S.NullOr(S.String)),
+      distinct_id_field: S.String,
+      dw_source_type: S.optional(S.NullOr(S.String)),
+      id: S.String,
+      id_field: S.String,
+      kind: S.String,
+      math: S.optional(S.NullOr(MarketingAnalyticsWarehouseConversionGoalMath)),
+      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+      math_hogql: S.optional(S.NullOr(S.String)),
+      math_multiplier: S.optional(S.NullOr(S.Number)),
+      math_property: S.optional(S.NullOr(S.String)),
+      math_property_revenue_currency: S.optional(
+        S.NullOr(RevenueCurrencyPropertyConfig),
+      ),
+      math_property_type: S.optional(S.NullOr(S.String)),
+      name: S.String,
+      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
+      properties: S.optional(
+        S.NullOr(MarketingAnalyticsWarehouseConversionGoalPropertiesList),
+      ),
+      response: S.optional(
+        S.NullOr(MarketingAnalyticsWarehouseConversionGoalResponseMap),
+      ),
+      schema_map: MarketingAnalyticsWarehouseConversionGoalSchemaMapMap,
+      table_name: S.String,
+      timestamp_field: S.String,
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "MarketingAnalyticsWarehouseConversionGoal",
+  }) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoal>;
+
+export type MarketingAnalyticsConversionGoalListItem =
+  | MarketingAnalyticsEventConversionGoal
+  | MarketingAnalyticsActionConversionGoal
+  | MarketingAnalyticsWarehouseConversionGoal;
+export const MarketingAnalyticsConversionGoalListItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsConversionGoalListItem>;
+
+/** The conversion goals configured for marketing analytics, in display order. */
+export type MarketingAnalyticsConversionGoalList =
+  Array<MarketingAnalyticsConversionGoalListItem>;
+export const MarketingAnalyticsConversionGoalList = /*@__PURE__*/ S.Array(
+  MarketingAnalyticsConversionGoalListItem,
+) as any as S.Schema<MarketingAnalyticsConversionGoalList>;
 
 /** * `first_touch` - First Touch * `last_touch` - Last Touch * `linear` - Linear * `time_decay` - Time Decay * `position_based` - Position Based */
 export type AttributionModeEnum =
@@ -2702,24 +4034,99 @@ export type AttributionModeEnum =
   | "position_based";
 export const AttributionModeEnum = /*@__PURE__*/ S.String;
 
+export type MarketingAnalyticsCampaignNameMappingsValueValueList =
+  Array<string>;
+export const MarketingAnalyticsCampaignNameMappingsValueValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MarketingAnalyticsCampaignNameMappingsValueValueList>;
+
+export type MarketingAnalyticsCampaignNameMappingsValueMap = {
+  [key: string]:
+    | MarketingAnalyticsCampaignNameMappingsValueValueList
+    | undefined;
+};
+export const MarketingAnalyticsCampaignNameMappingsValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    MarketingAnalyticsCampaignNameMappingsValueValueList,
+  ) as any as S.Schema<MarketingAnalyticsCampaignNameMappingsValueMap>;
+
+/** Mapping of integration type to canonical campaign name to the aliases folded into it. */
+export type MarketingAnalyticsCampaignNameMappings = {
+  [key: string]: MarketingAnalyticsCampaignNameMappingsValueMap | undefined;
+};
+export const MarketingAnalyticsCampaignNameMappings = /*@__PURE__*/ S.Record(
+  S.String,
+  MarketingAnalyticsCampaignNameMappingsValueMap,
+) as any as S.Schema<MarketingAnalyticsCampaignNameMappings>;
+
+export type MarketingAnalyticsCustomSourceMappingsValueList = Array<string>;
+export const MarketingAnalyticsCustomSourceMappingsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MarketingAnalyticsCustomSourceMappingsValueList>;
+
+/** Mapping of integration type to the custom UTM source values folded into it. */
+export type MarketingAnalyticsCustomSourceMappings = {
+  [key: string]: MarketingAnalyticsCustomSourceMappingsValueList | undefined;
+};
+export const MarketingAnalyticsCustomSourceMappings = /*@__PURE__*/ S.Record(
+  S.String,
+  MarketingAnalyticsCustomSourceMappingsValueList,
+) as any as S.Schema<MarketingAnalyticsCustomSourceMappings>;
+
+export type MatchField = "campaign_name" | "campaign_id";
+export const MatchField = /*@__PURE__*/ S.String;
+
+export interface CampaignFieldPreference {
+  match_field: MatchField | (string & {});
+}
+export const CampaignFieldPreference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    match_field: MatchField,
+  }),
+).annotate({
+  identifier: "CampaignFieldPreference",
+}) as any as S.Schema<CampaignFieldPreference>;
+
+/** Mapping of integration type to the campaign field used when matching campaigns. */
+export type MarketingAnalyticsCampaignFieldPreferences = {
+  [key: string]: CampaignFieldPreference | undefined;
+};
+export const MarketingAnalyticsCampaignFieldPreferences =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    CampaignFieldPreference,
+  ) as any as S.Schema<MarketingAnalyticsCampaignFieldPreferences>;
+
 export interface TeamMarketingAnalyticsConfig {
-  sources_map?: unknown;
-  conversion_goals?: unknown;
+  /** Column mapping per external data source, keyed by source id. Tells marketing analytics which column holds campaign, source, cost, clicks and impressions for that source. */
+  sources_map?: MarketingAnalyticsSourceMapping;
+  /** Conversion goals to attribute against, in display order. Each goal points at an event, an action or a data warehouse table, and carries a schema_map describing which fields hold the UTM parameters, the timestamp and the distinct id. Replaces the whole list on write. */
+  conversion_goals?: MarketingAnalyticsConversionGoalList;
+  /** How many days back a touchpoint can be credited for a conversion. Between 1 and 90. */
   attribution_window_days?: number;
+  /** How credit is split across touchpoints when a person saw several campaigns before converting. * `first_touch` - First Touch * `last_touch` - Last Touch * `linear` - Linear * `time_decay` - Time Decay * `position_based` - Position Based */
   attribution_mode?: AttributionModeEnum | (string & {});
-  campaign_name_mappings?: unknown;
-  custom_source_mappings?: unknown;
-  campaign_field_preferences?: unknown;
+  /** Manual campaign name aliases, keyed by integration type then by canonical campaign name, with the list of names that should be folded into it. Applied before automatic matching. */
+  campaign_name_mappings?: MarketingAnalyticsCampaignNameMappings;
+  /** Custom UTM source values to fold into an integration, keyed by integration type. A UTM source can only belong to one integration. */
+  custom_source_mappings?: MarketingAnalyticsCustomSourceMappings;
+  /** Which field to match campaigns on per integration type, campaign_name or campaign_id. Manual mappings in campaign_name_mappings still take precedence. */
+  campaign_field_preferences?: MarketingAnalyticsCampaignFieldPreferences;
 }
 export const TeamMarketingAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sources_map: S.optional(S.Unknown),
-    conversion_goals: S.optional(S.Unknown),
+    sources_map: S.optional(MarketingAnalyticsSourceMapping),
+    conversion_goals: S.optional(MarketingAnalyticsConversionGoalList),
     attribution_window_days: S.optional(S.Number),
     attribution_mode: S.optional(AttributionModeEnum),
-    campaign_name_mappings: S.optional(S.Unknown),
-    custom_source_mappings: S.optional(S.Unknown),
-    campaign_field_preferences: S.optional(S.Unknown),
+    campaign_name_mappings: S.optional(MarketingAnalyticsCampaignNameMappings),
+    custom_source_mappings: S.optional(MarketingAnalyticsCustomSourceMappings),
+    campaign_field_preferences: S.optional(
+      MarketingAnalyticsCampaignFieldPreferences,
+    ),
   }),
 ).annotate({
   identifier: "TeamMarketingAnalyticsConfig",
@@ -2752,13 +4159,20 @@ export const TeamCustomerAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TeamCustomerAnalyticsConfig",
 }) as any as S.Schema<TeamCustomerAnalyticsConfig>;
 
+/** * `off` - Off * `opt_out` - Opt Out * `opt_in` - Opt In */
+export type EmailTrackingConsentModeEnum = "off" | "opt_out" | "opt_in";
+export const EmailTrackingConsentModeEnum = /*@__PURE__*/ S.String;
+
 export interface TeamWorkflowsConfig {
   /** When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_*) alongside the existing workflow metrics. */
   capture_workflows_engagement_events?: boolean;
+  /** Recipient-consent enforcement for open/click tracking on marketing workflow emails. 'off': no enforcement, tracking follows each email step's own setting. 'opt_out': track by default but not recipients who have opted out. 'opt_in': only track recipients who have explicitly opted in. Transactional emails are exempt from consent enforcement. * `off` - Off * `opt_out` - Opt Out * `opt_in` - Opt In */
+  email_tracking_consent_mode?: EmailTrackingConsentModeEnum | (string & {});
 }
 export const TeamWorkflowsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capture_workflows_engagement_events: S.optional(S.Boolean),
+    email_tracking_consent_mode: S.optional(EmailTrackingConsentModeEnum),
   }),
 ).annotate({
   identifier: "TeamWorkflowsConfig",
@@ -2772,7 +4186,7 @@ export const CookielessServerHashModeEnum = /*@__PURE__*/ S.Number;
 export interface ProjectBackwardCompat {
   id?: number;
   organization?: string;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -3068,7 +4482,8 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingD
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel>;
 
@@ -3077,7 +4492,7 @@ export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -3366,7 +4781,7 @@ export interface OrganizationsProjectsChangeOrganizationCreateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -3645,7 +5060,8 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestR
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestBusinessModel>;
 
@@ -3654,7 +5070,7 @@ export interface OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequ
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -3941,7 +5357,7 @@ export const OrganizationsProjectsCreateRequestBusinessModel =
 export interface OrganizationsProjectsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -4208,7 +5624,8 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestRecordin
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestBusinessModel>;
 
@@ -4217,7 +5634,7 @@ export interface OrganizationsProjectsDefaultEvaluationContextsCreateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -4568,7 +5985,8 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestRecording
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestBusinessModel>;
 
@@ -4577,7 +5995,7 @@ export interface OrganizationsProjectsDefaultReleaseConditionsUpdateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -4856,7 +6274,8 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRec
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel>;
 
@@ -4865,7 +6284,7 @@ export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateReques
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -5190,17 +6609,20 @@ export const OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest =
       "OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest",
   }) as any as S.Schema<OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest>;
 
-export interface OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest {
+export interface OrganizationsProjectsEventIngestionRestrictionsListRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
+  /** A search term. */
+  search?: string;
 }
-export const OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest =
+export const OrganizationsProjectsEventIngestionRestrictionsListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
+      search: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -5209,9 +6631,101 @@ export const OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest =
       }),
     ),
   ).annotate({
-    identifier:
-      "OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest",
-  }) as any as S.Schema<OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest>;
+    identifier: "OrganizationsProjectsEventIngestionRestrictionsListRequest",
+  }) as any as S.Schema<OrganizationsProjectsEventIngestionRestrictionsListRequest>;
+
+/** * `skip_person_processing` - Skip Person Processing * `drop_event_from_ingestion` - Drop Event From Ingestion * `force_overflow_from_ingestion` - Force Overflow From Ingestion * `redirect_to_dlq` - Redirect To Dlq * `redirect_to_topic` - Redirect To Topic */
+export type RestrictionTypeEnum =
+  | "skip_person_processing"
+  | "drop_event_from_ingestion"
+  | "force_overflow_from_ingestion"
+  | "redirect_to_dlq"
+  | "redirect_to_topic";
+export const RestrictionTypeEnum = /*@__PURE__*/ S.String;
+
+/** Distinct IDs the restriction applies to. Empty means it is not filtered by distinct ID. */
+export type EventIngestionRestrictionDistinctIdsList = Array<string>;
+export const EventIngestionRestrictionDistinctIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventIngestionRestrictionDistinctIdsList>;
+
+/** Session IDs the restriction applies to. Empty means it is not filtered by session ID. */
+export type EventIngestionRestrictionSessionIdsList = Array<string>;
+export const EventIngestionRestrictionSessionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventIngestionRestrictionSessionIdsList>;
+
+/** Event names the restriction applies to. Empty means it is not filtered by event name. */
+export type EventIngestionRestrictionEventNamesList = Array<string>;
+export const EventIngestionRestrictionEventNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventIngestionRestrictionEventNamesList>;
+
+/** Event UUIDs the restriction applies to. Empty means it is not filtered by event UUID. */
+export type EventIngestionRestrictionEventUuidsList = Array<string>;
+export const EventIngestionRestrictionEventUuidsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventIngestionRestrictionEventUuidsList>;
+
+/** * `analytics` - Analytics * `session_recordings` - Session Recordings * `errortracking` - Errortracking * `clientwarnings` - Clientwarnings * `ai` - Ai */
+export type PipelinesEnum =
+  | "analytics"
+  | "session_recordings"
+  | "errortracking"
+  | "clientwarnings"
+  | "ai";
+export const PipelinesEnum = /*@__PURE__*/ S.String;
+
+/** Ingestion pipelines the restriction applies to. Filters combine with AND; values within a filter combine with OR. */
+export type EventIngestionRestrictionPipelinesList = Array<PipelinesEnum>;
+export const EventIngestionRestrictionPipelinesList = /*@__PURE__*/ S.Array(
+  PipelinesEnum,
+) as any as S.Schema<EventIngestionRestrictionPipelinesList>;
+
+export interface EventIngestionRestriction {
+  /** What happens to matching events: dropped, sent to the overflow lane, or ingested without person processing. * `skip_person_processing` - Skip Person Processing * `drop_event_from_ingestion` - Drop Event From Ingestion * `force_overflow_from_ingestion` - Force Overflow From Ingestion * `redirect_to_dlq` - Redirect To Dlq * `redirect_to_topic` - Redirect To Topic */
+  restriction_type: RestrictionTypeEnum;
+  /** Distinct IDs the restriction applies to. Empty means it is not filtered by distinct ID. */
+  distinct_ids: EventIngestionRestrictionDistinctIdsList;
+  /** Session IDs the restriction applies to. Empty means it is not filtered by session ID. */
+  session_ids: EventIngestionRestrictionSessionIdsList;
+  /** Event names the restriction applies to. Empty means it is not filtered by event name. */
+  event_names: EventIngestionRestrictionEventNamesList;
+  /** Event UUIDs the restriction applies to. Empty means it is not filtered by event UUID. */
+  event_uuids: EventIngestionRestrictionEventUuidsList;
+  /** Ingestion pipelines the restriction applies to. Filters combine with AND; values within a filter combine with OR. */
+  pipelines: EventIngestionRestrictionPipelinesList;
+}
+export const EventIngestionRestriction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    restriction_type: RestrictionTypeEnum,
+    distinct_ids: EventIngestionRestrictionDistinctIdsList,
+    session_ids: EventIngestionRestrictionSessionIdsList,
+    event_names: EventIngestionRestrictionEventNamesList,
+    event_uuids: EventIngestionRestrictionEventUuidsList,
+    pipelines: EventIngestionRestrictionPipelinesList,
+  }),
+).annotate({
+  identifier: "EventIngestionRestriction",
+}) as any as S.Schema<EventIngestionRestriction>;
+
+export type OrganizationsProjectsEventIngestionRestrictionsListResponseBodyList =
+  Array<EventIngestionRestriction>;
+export const OrganizationsProjectsEventIngestionRestrictionsListResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    EventIngestionRestriction,
+  ) as any as S.Schema<OrganizationsProjectsEventIngestionRestrictionsListResponseBodyList>;
+
+export type OrganizationsProjectsEventIngestionRestrictionsListResponse =
+  OrganizationsProjectsEventIngestionRestrictionsListResponseBodyList;
+export const OrganizationsProjectsEventIngestionRestrictionsListResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    OrganizationsProjectsEventIngestionRestrictionsListResponseBodyList.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
+    identifier: "OrganizationsProjectsEventIngestionRestrictionsListResponse",
+  }) as any as S.Schema<OrganizationsProjectsEventIngestionRestrictionsListResponse>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsList =
   Array<string>;
@@ -5266,7 +6780,8 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestRecording
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestBusinessModel>;
 
@@ -5275,7 +6790,7 @@ export interface OrganizationsProjectsExperimentsConfigPartialUpdateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -5576,7 +7091,8 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestR
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel>;
 
@@ -5585,7 +7101,7 @@ export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequ
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -5984,7 +7500,7 @@ export interface OrganizationsProjectsLogsConfigPartialUpdateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -6295,7 +7811,7 @@ export interface OrganizationsProjectsPartialUpdateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -6580,7 +8096,7 @@ export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -6881,7 +8397,8 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecording
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel>;
 
@@ -6890,7 +8407,7 @@ export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -7200,7 +8717,7 @@ export interface OrganizationsProjectsUpdateRequest {
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  /** Human-readable project name. */
+  /** Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
@@ -7428,11 +8945,17 @@ export interface PartialUpdateRequest {
   name?: string;
   logo_media_id?: string | null;
   enforce_2fa?: boolean | null;
+  /** When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains. */
+  enforce_verified_domains?: boolean | null;
   members_can_invite?: boolean | null;
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
+  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
+  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
+  /** When True, requests through the PostHog MCP server can read but not change this organization's data. */
+  read_only_mcp_access?: boolean | null;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
   is_ai_training_opted_in?: boolean | null;
@@ -7449,10 +8972,13 @@ export const PartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     logo_media_id: S.optional(S.NullOr(S.String)),
     enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+    enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
+    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
+    read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
     default_experiment_stats_method: S.optional(
@@ -7466,6 +8992,41 @@ export const PartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PartialUpdateRequest",
 }) as any as S.Schema<PartialUpdateRequest>;
+
+export interface RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest {
+  /** A UUID string identifying this organization. */
+  id: string;
+}
+export const RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/organizations/{id}/remove_blocked_members_and_enforce_verified_domains/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest",
+  }) as any as S.Schema<RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest>;
+
+export interface OrganizationRemoveBlockedMembersResponse {
+  /** Whether verified-domain enforcement was turned on. */
+  success: boolean;
+  /** How many members with an email outside the verified domains were removed from the organization. Owners are never removed. */
+  removed_members: number;
+}
+export const OrganizationRemoveBlockedMembersResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      success: S.Boolean,
+      removed_members: S.Number,
+    }),
+).annotate({
+  identifier: "OrganizationRemoveBlockedMembersResponse",
+}) as any as S.Schema<OrganizationRemoveBlockedMembersResponse>;
 
 export interface RequestAiAccessCreateRequest {
   /** A UUID string identifying this organization. */
@@ -8039,6 +9600,94 @@ export const RolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolesUpdateRequest",
 }) as any as S.Schema<RolesUpdateRequest>;
 
+export interface TeamsDataFreshnessRetrieveRequest {
+  /** A UUID string identifying this organization. */
+  id: string;
+}
+export const TeamsDataFreshnessRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/organizations/{id}/teams/data_freshness/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "TeamsDataFreshnessRetrieveRequest",
+}) as any as S.Schema<TeamsDataFreshnessRetrieveRequest>;
+
+/** * `never` - never * `live` - live * `stale` - stale */
+export type FreshnessEnum = "never" | "live" | "stale";
+export const FreshnessEnum = /*@__PURE__*/ S.String;
+
+export interface DataFreshnessSource {
+  /** The product this timestamp is about, as a `ProductKey` (e.g. `session_replay`, `logs`). Not an enum: products declare their own data sources, so the set grows without an API change. */
+  data_source: string;
+  /** When data of this kind last reached the project. Only sources with data inside the lookback window are listed. */
+  last_data_at: string;
+}
+export const DataFreshnessSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data_source: S.String,
+    last_data_at: S.String,
+  }),
+).annotate({
+  identifier: "DataFreshnessSource",
+}) as any as S.Schema<DataFreshnessSource>;
+
+/** Per-source breakdown, most recently active first. */
+export type DataFreshnessProjectSourcesList = Array<DataFreshnessSource>;
+export const DataFreshnessProjectSourcesList = /*@__PURE__*/ S.Array(
+  DataFreshnessSource,
+) as any as S.Schema<DataFreshnessProjectSourcesList>;
+
+export interface DataFreshnessProject {
+  /** ID of the project this freshness verdict is for. */
+  team_id: number;
+  /** `live` if data of any kind arrived within `quiet_after_days`, `stale` if none did, `never` if the project has never ingested anything at all. * `never` - never * `live` - live * `stale` - stale */
+  freshness: FreshnessEnum;
+  /** When data of any kind last reached the project, or null if nothing arrived within the lookback window. */
+  last_data_at: string | null;
+  /** Per-source breakdown, most recently active first. */
+  sources: DataFreshnessProjectSourcesList;
+}
+export const DataFreshnessProject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    team_id: S.Number,
+    freshness: FreshnessEnum,
+    last_data_at: S.NullOr(S.String),
+    sources: DataFreshnessProjectSourcesList,
+  }),
+).annotate({
+  identifier: "DataFreshnessProject",
+}) as any as S.Schema<DataFreshnessProject>;
+
+/** One entry per project the requesting user can see. */
+export type OrganizationDataFreshnessResultsList = Array<DataFreshnessProject>;
+export const OrganizationDataFreshnessResultsList = /*@__PURE__*/ S.Array(
+  DataFreshnessProject,
+) as any as S.Schema<OrganizationDataFreshnessResultsList>;
+
+export interface OrganizationDataFreshness {
+  /** One entry per project the requesting user can see. */
+  results: OrganizationDataFreshnessResultsList;
+  /** How many days back the check looks. Data older than this is not visible to the check. */
+  lookback_days: number;
+  /** How many days without data make a project or source count as quiet. */
+  quiet_after_days: number;
+}
+export const OrganizationDataFreshness = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: OrganizationDataFreshnessResultsList,
+    lookback_days: S.Number,
+    quiet_after_days: S.Number,
+  }),
+).annotate({
+  identifier: "OrganizationDataFreshness",
+}) as any as S.Schema<OrganizationDataFreshness>;
+
 /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
 export type UpdateRequestDefaultExperimentStatsMethod =
   | DefaultExperimentStatsMethodEnum
@@ -8052,11 +9701,17 @@ export interface UpdateRequest {
   name?: string;
   logo_media_id?: string | null;
   enforce_2fa?: boolean | null;
+  /** When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains. */
+  enforce_verified_domains?: boolean | null;
   members_can_invite?: boolean | null;
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
+  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
+  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
+  /** When True, requests through the PostHog MCP server can read but not change this organization's data. */
+  read_only_mcp_access?: boolean | null;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
   is_ai_training_opted_in?: boolean | null;
@@ -8073,10 +9728,13 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     logo_media_id: S.optional(S.NullOr(S.String)),
     enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+    enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
+    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
+    read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
     default_experiment_stats_method: S.optional(
@@ -8251,7 +9909,7 @@ export const WelcomeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WelcomeResponse>;
 
 export type CimdVerificationTokensCreateError = PosthogOpError;
-/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. The plaintext value is only available on creation; we store a hash. */
+/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. Each token is scoped at creation to the one `cimd_url` it will be published at, and verifies nowhere else. Two organizations may name the same URL; only the one whose token is actually served there verifies, so claiming a URL cannot be used to block a partner from verifying theirs. The plaintext value is only available on creation; we store a hash. */
 export const cimdVerificationTokensCreate: API.OperationMethod<
   CimdVerificationTokensCreateRequest,
   CIMDVerificationTokenWithValue,
@@ -8266,7 +9924,7 @@ export const cimdVerificationTokensCreate: API.OperationMethod<
 }));
 
 export type CimdVerificationTokensDestroyError = PosthogOpError;
-/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. The plaintext value is only available on creation; we store a hash. */
+/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. Each token is scoped at creation to the one `cimd_url` it will be published at, and verifies nowhere else. Two organizations may name the same URL; only the one whose token is actually served there verifies, so claiming a URL cannot be used to block a partner from verifying theirs. The plaintext value is only available on creation; we store a hash. */
 export const cimdVerificationTokensDestroy: API.OperationMethod<
   CimdVerificationTokensDestroyRequest,
   CimdVerificationTokensDestroyResponse,
@@ -8281,7 +9939,7 @@ export const cimdVerificationTokensDestroy: API.OperationMethod<
 }));
 
 export type CimdVerificationTokensListError = PosthogOpError;
-/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. The plaintext value is only available on creation; we store a hash. */
+/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. Each token is scoped at creation to the one `cimd_url` it will be published at, and verifies nowhere else. Two organizations may name the same URL; only the one whose token is actually served there verifies, so claiming a URL cannot be used to block a partner from verifying theirs. The plaintext value is only available on creation; we store a hash. */
 export const cimdVerificationTokensList: API.OperationMethod<
   CimdVerificationTokensListRequest,
   PaginatedCIMDVerificationTokenList,
@@ -8295,8 +9953,23 @@ export const cimdVerificationTokensList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CimdVerificationTokensPartialUpdateError = PosthogOpError;
+/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. Each token is scoped at creation to the one `cimd_url` it will be published at, and verifies nowhere else. Two organizations may name the same URL; only the one whose token is actually served there verifies, so claiming a URL cannot be used to block a partner from verifying theirs. The plaintext value is only available on creation; we store a hash. */
+export const cimdVerificationTokensPartialUpdate: API.OperationMethod<
+  CimdVerificationTokensPartialUpdateRequest,
+  CIMDVerificationToken,
+  CimdVerificationTokensPartialUpdateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CimdVerificationTokensPartialUpdateRequest,
+  output: CIMDVerificationToken,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CimdVerificationTokensRetrieveError = PosthogOpError;
-/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. The plaintext value is only available on creation; we store a hash. */
+/** Manage CIMD verification tokens for an organization. A partner embeds the plaintext token in their CIMD metadata document as `verification_token` inside the `com.posthog` object (the legacy top-level `posthog_verification_token` field still works as a fallback). When PostHog fetches the metadata, matching the token links the partner app to this organization and grants a higher default rate limit for account provisioning. Each token is scoped at creation to the one `cimd_url` it will be published at, and verifies nowhere else. Two organizations may name the same URL; only the one whose token is actually served there verifies, so claiming a URL cannot be used to block a partner from verifying theirs. The plaintext value is only available on creation; we store a hash. */
 export const cimdVerificationTokensRetrieve: API.OperationMethod<
   CimdVerificationTokensRetrieveRequest,
   CIMDVerificationToken,
@@ -8320,6 +9993,34 @@ export const create: API.OperationMethod<
   input: CreateRequest,
   output: Organization,
   errors: [BadRequest, Forbidden],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DesktopBetaTermsCreateError = PosthogOpError;
+export const desktopBetaTermsCreate: API.OperationMethod<
+  DesktopBetaTermsCreateRequest,
+  DesktopBetaTermsAcceptanceDTO,
+  DesktopBetaTermsCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DesktopBetaTermsCreateRequest,
+  output: DesktopBetaTermsAcceptanceDTO,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DesktopBetaTermsListError = PosthogOpError;
+export const desktopBetaTermsList: API.OperationMethod<
+  DesktopBetaTermsListRequest,
+  DesktopBetaTermsAcceptanceDTO,
+  DesktopBetaTermsListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DesktopBetaTermsListRequest,
+  output: DesktopBetaTermsAcceptanceDTO,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -8437,25 +10138,6 @@ export const domainsScimLogsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DomainsScimTokenCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Regenerate SCIM bearer token. */
-export const domainsScimTokenCreate: API.OperationMethod<
-  DomainsScimTokenCreateRequest,
-  DomainsScimTokenCreateResponse,
-  DomainsScimTokenCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DomainsScimTokenCreateRequest,
-  output: DomainsScimTokenCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DomainsUpdateError =
   | BadRequest
   | Forbidden
@@ -8488,6 +10170,105 @@ export const domainsVerifyCreate: API.OperationMethod<
   input: DomainsVerifyCreateRequest,
   output: DomainsVerifyCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type IdentityProviderConfigsCreateError = PosthogOpError;
+export const identityProviderConfigsCreate: API.OperationMethod<
+  IdentityProviderConfigsCreateRequest,
+  IdentityProviderConfig,
+  IdentityProviderConfigsCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: IdentityProviderConfigsCreateRequest,
+  output: IdentityProviderConfig,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type IdentityProviderConfigsDestroyError = PosthogOpError;
+export const identityProviderConfigsDestroy: API.OperationMethod<
+  IdentityProviderConfigsDestroyRequest,
+  IdentityProviderConfigsDestroyResponse,
+  IdentityProviderConfigsDestroyError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: IdentityProviderConfigsDestroyRequest,
+  output: IdentityProviderConfigsDestroyResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type IdentityProviderConfigsListError = PosthogOpError;
+export const identityProviderConfigsList: API.OperationMethod<
+  IdentityProviderConfigsListRequest,
+  PaginatedIdentityProviderConfigList,
+  IdentityProviderConfigsListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: IdentityProviderConfigsListRequest,
+  output: PaginatedIdentityProviderConfigList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type IdentityProviderConfigsPartialUpdateError = PosthogOpError;
+export const identityProviderConfigsPartialUpdate: API.OperationMethod<
+  IdentityProviderConfigsPartialUpdateRequest,
+  IdentityProviderConfig,
+  IdentityProviderConfigsPartialUpdateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: IdentityProviderConfigsPartialUpdateRequest,
+  output: IdentityProviderConfig,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type IdentityProviderConfigsRetrieveError = PosthogOpError;
+export const identityProviderConfigsRetrieve: API.OperationMethod<
+  IdentityProviderConfigsRetrieveRequest,
+  IdentityProviderConfig,
+  IdentityProviderConfigsRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: IdentityProviderConfigsRetrieveRequest,
+  output: IdentityProviderConfig,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type IdentityProviderConfigsScimTokenCreateError = PosthogOpError;
+/** Regenerate the SCIM bearer token for this IdP config. */
+export const identityProviderConfigsScimTokenCreate: API.OperationMethod<
+  IdentityProviderConfigsScimTokenCreateRequest,
+  SCIMTokenResponse,
+  IdentityProviderConfigsScimTokenCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: IdentityProviderConfigsScimTokenCreateRequest,
+  output: SCIMTokenResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type IdentityProviderConfigsUpdateError = PosthogOpError;
+export const identityProviderConfigsUpdate: API.OperationMethod<
+  IdentityProviderConfigsUpdateRequest,
+  IdentityProviderConfig,
+  IdentityProviderConfigsUpdateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: IdentityProviderConfigsUpdateRequest,
+  output: IdentityProviderConfig,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -8905,7 +10686,7 @@ export const organizationsProjectsCreate: API.OperationMethod<
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateError =
   PosthogOpError;
-/** Manage default evaluation contexts for a project. */
+/** Manage default evaluation contexts for a project. Members can read; writing requires project admin, matching the admin-only settings UI. */
 export const organizationsProjectsDefaultEvaluationContextsCreate: API.OperationMethod<
   OrganizationsProjectsDefaultEvaluationContextsCreateRequest,
   ProjectBackwardCompat,
@@ -8921,7 +10702,7 @@ export const organizationsProjectsDefaultEvaluationContextsCreate: API.Operation
 
 export type OrganizationsProjectsDefaultEvaluationContextsDestroyError =
   PosthogOpError;
-/** Manage default evaluation contexts for a project. */
+/** Manage default evaluation contexts for a project. Members can read; writing requires project admin, matching the admin-only settings UI. */
 export const organizationsProjectsDefaultEvaluationContextsDestroy: API.OperationMethod<
   OrganizationsProjectsDefaultEvaluationContextsDestroyRequest,
   OrganizationsProjectsDefaultEvaluationContextsDestroyResponse,
@@ -8937,7 +10718,7 @@ export const organizationsProjectsDefaultEvaluationContextsDestroy: API.Operatio
 
 export type OrganizationsProjectsDefaultEvaluationContextsRetrieveError =
   PosthogOpError;
-/** Manage default evaluation contexts for a project. */
+/** Manage default evaluation contexts for a project. Members can read; writing requires project admin, matching the admin-only settings UI. */
 export const organizationsProjectsDefaultEvaluationContextsRetrieve: API.OperationMethod<
   OrganizationsProjectsDefaultEvaluationContextsRetrieveRequest,
   ProjectBackwardCompat,
@@ -8953,7 +10734,7 @@ export const organizationsProjectsDefaultEvaluationContextsRetrieve: API.Operati
 
 export type OrganizationsProjectsDefaultReleaseConditionsRetrieveError =
   PosthogOpError;
-/** Manage default release conditions for new feature flags in this project. */
+/** Manage default release conditions for new feature flags in this project. Members can read; writing requires project admin, matching the admin-only settings UI. */
 export const organizationsProjectsDefaultReleaseConditionsRetrieve: API.OperationMethod<
   OrganizationsProjectsDefaultReleaseConditionsRetrieveRequest,
   ProjectBackwardCompat,
@@ -8969,7 +10750,7 @@ export const organizationsProjectsDefaultReleaseConditionsRetrieve: API.Operatio
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateError =
   PosthogOpError;
-/** Manage default release conditions for new feature flags in this project. */
+/** Manage default release conditions for new feature flags in this project. Members can read; writing requires project admin, matching the admin-only settings UI. */
 export const organizationsProjectsDefaultReleaseConditionsUpdate: API.OperationMethod<
   OrganizationsProjectsDefaultReleaseConditionsUpdateRequest,
   ProjectBackwardCompat,
@@ -9052,17 +10833,17 @@ export const organizationsProjectsEvaluationContextSuggestionsDestroy: API.Opera
   retry: Retry.Retry,
 }));
 
-export type OrganizationsProjectsEventIngestionRestrictionsRetrieveError =
+export type OrganizationsProjectsEventIngestionRestrictionsListError =
   PosthogOpError;
 /** Projects for the current organization. */
-export const organizationsProjectsEventIngestionRestrictionsRetrieve: API.OperationMethod<
-  OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest,
-  ProjectBackwardCompat,
-  OrganizationsProjectsEventIngestionRestrictionsRetrieveError,
+export const organizationsProjectsEventIngestionRestrictionsList: API.OperationMethod<
+  OrganizationsProjectsEventIngestionRestrictionsListRequest,
+  OrganizationsProjectsEventIngestionRestrictionsListResponse,
+  OrganizationsProjectsEventIngestionRestrictionsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest,
-  output: ProjectBackwardCompat,
+  input: OrganizationsProjectsEventIngestionRestrictionsListRequest,
+  output: OrganizationsProjectsEventIngestionRestrictionsListResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9157,7 +10938,7 @@ export const organizationsProjectsList: API.OperationMethod<
 }));
 
 export type OrganizationsProjectsLogsConfigPartialUpdateError = PosthogOpError;
-/** Manage logs product configuration for this project's canonical environment. Mirrors the env-router action so /api/projects/:id/logs_config/ resolves alongside the legacy /api/environments/:id/logs_config/ alias. */
+/** Manage logs product configuration for this project's canonical environment. Members can read; writing requires project admin, matching the admin-only settings UI. Mirrors the env-router action so /api/projects/:id/logs_config/ resolves alongside the legacy /api/environments/:id/logs_config/ alias. */
 export const organizationsProjectsLogsConfigPartialUpdate: API.OperationMethod<
   OrganizationsProjectsLogsConfigPartialUpdateRequest,
   ProjectBackwardCompat,
@@ -9172,7 +10953,7 @@ export const organizationsProjectsLogsConfigPartialUpdate: API.OperationMethod<
 }));
 
 export type OrganizationsProjectsLogsConfigRetrieveError = PosthogOpError;
-/** Manage logs product configuration for this project's canonical environment. Mirrors the env-router action so /api/projects/:id/logs_config/ resolves alongside the legacy /api/environments/:id/logs_config/ alias. */
+/** Manage logs product configuration for this project's canonical environment. Members can read; writing requires project admin, matching the admin-only settings UI. Mirrors the env-router action so /api/projects/:id/logs_config/ resolves alongside the legacy /api/environments/:id/logs_config/ alias. */
 export const organizationsProjectsLogsConfigRetrieve: API.OperationMethod<
   OrganizationsProjectsLogsConfigRetrieveRequest,
   ProjectBackwardCompat,
@@ -9313,6 +11094,22 @@ export const partialUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type RemoveBlockedMembersAndEnforceVerifiedDomainsCreateError =
+  PosthogOpError;
+/** Remove the members whose email domain is outside the organization's verified domains and turn `enforce_verified_domains` on, in one transaction. Owners are never removed; they keep gated access and can disable the setting themselves. Admin only. Use this only when the caller has confirmed the removals. To turn the setting on without touching memberships, PATCH `enforce_verified_domains` on the organization instead. */
+export const removeBlockedMembersAndEnforceVerifiedDomainsCreate: API.OperationMethod<
+  RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest,
+  OrganizationRemoveBlockedMembersResponse,
+  RemoveBlockedMembersAndEnforceVerifiedDomainsCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest,
+  output: OrganizationRemoveBlockedMembersResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type RequestAiAccessCreateError = PosthogOpError;
 /** Notify organization admins that a member is requesting PostHog AI be enabled. */
 export const requestAiAccessCreate: API.OperationMethod<
@@ -9418,6 +11215,7 @@ export type RolesCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesCreate: API.OperationMethod<
   RolesCreateRequest,
   Role,
@@ -9432,6 +11230,7 @@ export const rolesCreate: API.OperationMethod<
 }));
 
 export type RolesDestroyError = Forbidden | NotFound | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesDestroy: API.OperationMethod<
   RolesDestroyRequest,
   RolesDestroyResponse,
@@ -9446,6 +11245,7 @@ export const rolesDestroy: API.OperationMethod<
 }));
 
 export type RolesListError = BadRequest | Forbidden | NotFound | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesList: API.OperationMethod<
   RolesListRequest,
   PaginatedRoleList,
@@ -9464,6 +11264,7 @@ export type RolesPartialUpdateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesPartialUpdate: API.OperationMethod<
   RolesPartialUpdateRequest,
   Role,
@@ -9478,6 +11279,7 @@ export const rolesPartialUpdate: API.OperationMethod<
 }));
 
 export type RolesRetrieveError = Forbidden | NotFound | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRetrieve: API.OperationMethod<
   RolesRetrieveRequest,
   Role,
@@ -9496,6 +11298,7 @@ export type RolesRoleMembershipsCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsCreate: API.OperationMethod<
   RolesRoleMembershipsCreateRequest,
   RoleMembershipOutput,
@@ -9513,6 +11316,7 @@ export type RolesRoleMembershipsDestroyError =
   | Forbidden
   | NotFound
   | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsDestroy: API.OperationMethod<
   RolesRoleMembershipsDestroyRequest,
   RolesRoleMembershipsDestroyResponse,
@@ -9531,6 +11335,7 @@ export type RolesRoleMembershipsListError =
   | Forbidden
   | NotFound
   | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsList: API.OperationMethod<
   RolesRoleMembershipsListRequest,
   PaginatedRoleMembershipListOutput,
@@ -9548,6 +11353,7 @@ export type RolesRoleMembershipsRetrieveError =
   | Forbidden
   | NotFound
   | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsRetrieve: API.OperationMethod<
   RolesRoleMembershipsRetrieveRequest,
   RoleMembershipOutput,
@@ -9566,6 +11372,7 @@ export type RolesUpdateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
+/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesUpdate: API.OperationMethod<
   RolesUpdateRequest,
   Role,
@@ -9575,6 +11382,21 @@ export const rolesUpdate: API.OperationMethod<
   input: RolesUpdateRequest,
   output: Role,
   errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type TeamsDataFreshnessRetrieveError = PosthogOpError;
+/** When each project in the organization last received data, broken down by kind of data. */
+export const teamsDataFreshnessRetrieve: API.OperationMethod<
+  TeamsDataFreshnessRetrieveRequest,
+  OrganizationDataFreshness,
+  TeamsDataFreshnessRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: TeamsDataFreshnessRetrieveRequest,
+  output: OrganizationDataFreshness,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

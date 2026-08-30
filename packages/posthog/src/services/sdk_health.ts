@@ -14,7 +14,7 @@ export type { PosthogOpError, PosthogOpContext };
 export interface SdkHealthReportRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** When true, bypasses the Redis cache and re-queries ClickHouse for SDK usage. Use sparingly — data is refreshed every 12 hours by a background job. */
+  /** When true, bypasses the Redis cache and re-queries ClickHouse for SDK usage. A background job refreshes this data once a day, so the cached answer is usually current. Use sparingly. */
   force_refresh?: boolean;
 }
 export const SdkHealthReportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
@@ -37,8 +37,27 @@ export type OverallHealthEnum = "healthy" | "needs_attention";
 export const OverallHealthEnum = /*@__PURE__*/ S.String;
 
 /** * `success` - success * `warning` - warning * `danger` - danger */
-export type HealthEnum = "success" | "warning" | "danger";
-export const HealthEnum = /*@__PURE__*/ S.String;
+export type SdkHealthReportHealthEnum = "success" | "warning" | "danger";
+export const SdkHealthReportHealthEnum = /*@__PURE__*/ S.String;
+
+/** * `web` - web * `posthog-ios` - posthog-ios * `posthog-android` - posthog-android * `posthog-java` - posthog-java * `posthog-server` - posthog-server * `posthog-node` - posthog-node * `posthog-python` - posthog-python * `posthog-php` - posthog-php * `posthog-ruby` - posthog-ruby * `posthog-go` - posthog-go * `posthog-flutter` - posthog-flutter * `posthog-react-native` - posthog-react-native * `posthog-kmp` - posthog-kmp * `posthog-dotnet` - posthog-dotnet * `posthog-elixir` - posthog-elixir */
+export type LibEnum =
+  | "web"
+  | "posthog-ios"
+  | "posthog-android"
+  | "posthog-java"
+  | "posthog-server"
+  | "posthog-node"
+  | "posthog-python"
+  | "posthog-php"
+  | "posthog-ruby"
+  | "posthog-go"
+  | "posthog-flutter"
+  | "posthog-react-native"
+  | "posthog-kmp"
+  | "posthog-dotnet"
+  | "posthog-elixir";
+export const LibEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - none * `warning` - warning * `danger` - danger */
 export type SdkAssessmentSeverityEnum = "none" | "warning" | "danger";
@@ -127,8 +146,8 @@ export const SdkAssessmentOutdatedTrafficAlertsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SdkAssessmentOutdatedTrafficAlertsList>;
 
 export interface SdkAssessment {
-  /** SDK identifier, e.g. 'web', 'posthog-python', 'posthog-node', 'posthog-ios'. */
-  lib?: string;
+  /** SDK identifier, e.g. 'web', 'posthog-python', 'posthog-node', 'posthog-ios'. * `web` - web * `posthog-ios` - posthog-ios * `posthog-android` - posthog-android * `posthog-java` - posthog-java * `posthog-server` - posthog-server * `posthog-node` - posthog-node * `posthog-python` - posthog-python * `posthog-php` - posthog-php * `posthog-ruby` - posthog-ruby * `posthog-go` - posthog-go * `posthog-flutter` - posthog-flutter * `posthog-react-native` - posthog-react-native * `posthog-kmp` - posthog-kmp * `posthog-dotnet` - posthog-dotnet * `posthog-elixir` - posthog-elixir */
+  lib?: LibEnum;
   /** Human-readable SDK name matching the SDK Health UI (e.g. 'Python', 'Node.js', 'Web', 'iOS'). */
   readable_name?: string;
   /** Most recent published version of this SDK. */
@@ -139,6 +158,8 @@ export interface SdkAssessment {
   is_outdated?: boolean;
   /** True if the primary in-use version is flagged as old by age alone. */
   is_old?: boolean;
+  /** True when this SDK must be replaced by a supported successor rather than upgraded in place. */
+  migration_required?: boolean;
   /** UI severity badge — 'none' when healthy, 'warning' when outdated, 'danger' when the majority of team SDKs are outdated. * `none` - none * `warning` - warning * `danger` - danger */
   severity?: SdkAssessmentSeverityEnum;
   /** Per-SDK programmatic summary (used for ranking/filtering). For user-facing copy, prefer releases[].status_reason (badge tooltip) and banners (top-level alert text) — those match the UI exactly. */
@@ -152,12 +173,13 @@ export interface SdkAssessment {
 }
 export const SdkAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lib: S.optional(S.String),
+    lib: S.optional(LibEnum),
     readable_name: S.optional(S.String),
     latest_version: S.optional(S.String),
     needs_updating: S.optional(S.Boolean),
     is_outdated: S.optional(S.Boolean),
     is_old: S.optional(S.Boolean),
+    migration_required: S.optional(S.Boolean),
     severity: S.optional(SdkAssessmentSeverityEnum),
     reason: S.optional(S.String),
     banners: S.optional(SdkAssessmentBannersList),
@@ -176,7 +198,7 @@ export interface SdkHealthReport {
   /** 'healthy' when no SDKs need updating, 'needs_attention' otherwise. * `healthy` - healthy * `needs_attention` - needs_attention */
   overall_health?: OverallHealthEnum;
   /** UI-level status — 'success' when healthy, 'warning' when some SDKs are outdated, 'danger' when the majority are outdated. * `success` - success * `warning` - warning * `danger` - danger */
-  health?: HealthEnum;
+  health?: SdkHealthReportHealthEnum;
   /** Number of SDKs that need updating. */
   needs_updating_count?: number;
   /** Number of distinct PostHog SDKs the project is actively using. */
@@ -187,7 +209,7 @@ export interface SdkHealthReport {
 export const SdkHealthReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overall_health: S.optional(OverallHealthEnum),
-    health: S.optional(HealthEnum),
+    health: S.optional(SdkHealthReportHealthEnum),
     needs_updating_count: S.optional(S.Number),
     team_sdk_count: S.optional(S.Number),
     sdks: S.optional(SdkHealthReportSdksList),

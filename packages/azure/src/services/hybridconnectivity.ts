@@ -50,7 +50,7 @@ export const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -157,7 +157,7 @@ export const EndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -186,7 +186,7 @@ export const EndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -229,7 +229,7 @@ export const EndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -306,7 +306,7 @@ export const EndpointsListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listCredentials",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -376,7 +376,7 @@ export const EndpointsListIngressGatewayCredentialsRequest =
         method: "POST",
         uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listIngressGatewayCredentials",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -456,7 +456,7 @@ export const EndpointsListManagedProxyDetailsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listManagedProxyDetails",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
 ).annotate({
@@ -497,7 +497,7 @@ export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -577,7 +577,7 @@ export const GenerateAwsTemplatePostRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/generateAwsTemplate",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -590,6 +590,131 @@ export const GenerateAwsTemplatePostResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateAwsTemplatePostResponse",
 }) as any as S.Schema<GenerateAwsTemplatePostResponse>;
+
+/** The list of solution types and their settings */
+export type GenerateGcpTemplatePostRequestSolutionTypesList =
+  Array<SolutionTypeSettings>;
+export const GenerateGcpTemplatePostRequestSolutionTypesList =
+  /*@__PURE__*/ S.Array(
+    SolutionTypeSettings,
+  ) as any as S.Schema<GenerateGcpTemplatePostRequestSolutionTypesList>;
+
+/** GCP project properties. */
+export interface GcpProjectProperties {
+  /** The project number of the GCP project. */
+  projectNumber: string;
+  /** The project id of the GCP project. */
+  projectId: string;
+}
+export const GcpProjectProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    projectNumber: S.String,
+    projectId: S.String,
+  }),
+).annotate({
+  identifier: "GcpProjectProperties",
+}) as any as S.Schema<GcpProjectProperties>;
+
+/** List of GCP projects which need to be excluded. */
+export type GcpOrganizationPropertiesExcludedProjectNumbersList = Array<string>;
+export const GcpOrganizationPropertiesExcludedProjectNumbersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GcpOrganizationPropertiesExcludedProjectNumbersList>;
+
+/** List of GCP folders which need to be excluded. */
+export type GcpOrganizationPropertiesExcludedFolderIdsList = Array<string>;
+export const GcpOrganizationPropertiesExcludedFolderIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GcpOrganizationPropertiesExcludedFolderIdsList>;
+
+/** GCP organization properties. */
+export interface GcpOrganizationProperties {
+  /** The organization id of the GCP organization. */
+  organizationId: string;
+  /** The project number of the management project under the GCP organization. */
+  managementProjectNumber: string;
+  /** The project Id of the management project under the GCP organization. */
+  managementProjectId: string;
+  /** List of GCP projects which need to be excluded. */
+  excludedProjectNumbers?: GcpOrganizationPropertiesExcludedProjectNumbersList;
+  /** List of GCP folders which need to be excluded. */
+  excludedFolderIds?: GcpOrganizationPropertiesExcludedFolderIdsList;
+}
+export const GcpOrganizationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationId: S.String,
+    managementProjectNumber: S.String,
+    managementProjectId: S.String,
+    excludedProjectNumbers: S.optional(
+      GcpOrganizationPropertiesExcludedProjectNumbersList,
+    ),
+    excludedFolderIds: S.optional(
+      GcpOrganizationPropertiesExcludedFolderIdsList,
+    ),
+  }),
+).annotate({
+  identifier: "GcpOrganizationProperties",
+}) as any as S.Schema<GcpOrganizationProperties>;
+
+/** cloud profile for GCP. */
+export interface GcpCloudProfile {
+  /** The project properties of the GCP project. */
+  projectProperties?: GcpProjectProperties;
+  /** The organization properties of the GCP organization. */
+  organizationProperties?: GcpOrganizationProperties;
+}
+export const GcpCloudProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    projectProperties: S.optional(GcpProjectProperties),
+    organizationProperties: S.optional(GcpOrganizationProperties),
+  }),
+).annotate({
+  identifier: "GcpCloudProfile",
+}) as any as S.Schema<GcpCloudProfile>;
+
+/** GCP template format. */
+export type GcpTemplateFormat = "terraform" | "shellscript";
+export const GcpTemplateFormat = /*@__PURE__*/ S.String;
+
+export interface GenerateGcpTemplatePostRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of public cloud connector */
+  connectorId: string;
+  /** The list of solution types and their settings */
+  solutionTypes?: GenerateGcpTemplatePostRequestSolutionTypesList;
+  /** The GCP cloud profile. */
+  gcpCloudProfile?: GcpCloudProfile;
+  /** Optional template output format. Defaults to 'terraform' if not provided */
+  gcpTemplateFormat?: GcpTemplateFormat | (string & {});
+}
+export const GenerateGcpTemplatePostRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    connectorId: S.String,
+    solutionTypes: S.optional(GenerateGcpTemplatePostRequestSolutionTypesList),
+    gcpCloudProfile: S.optional(GcpCloudProfile),
+    gcpTemplateFormat: S.optional(GcpTemplateFormat),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/generateGcpTemplate",
+      code: 200,
+      apiVersion: "2027-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateGcpTemplatePostRequest",
+}) as any as S.Schema<GenerateGcpTemplatePostRequest>;
+
+export type GenerateGcpTemplatePostResponse = unknown;
+export const GenerateGcpTemplatePostResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Unknown.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "GenerateGcpTemplatePostResponse",
+}) as any as S.Schema<GenerateGcpTemplatePostResponse>;
 
 export interface InventoryGetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -609,7 +734,7 @@ export const InventoryGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/inventory/{inventoryId}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -706,7 +831,7 @@ export const InventoryListBySolutionConfigurationRequest =
         method: "GET",
         uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/inventory",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -767,7 +892,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.HybridConnectivity/operations",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -884,19 +1009,22 @@ export const AwsCloudProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsCloudProfile>;
 
 /** Enum of host cloud the public cloud connector is referencing. */
-export type HostType = "AWS";
+export type HostType = "AWS" | "GCP";
 export const HostType = /*@__PURE__*/ S.String;
 
 /** Properties of public cloud connectors. */
 export interface PublicCloudConnectorPropertiesInput {
   /** Cloud profile for AWS. */
-  awsCloudProfile: AwsCloudProfile;
+  awsCloudProfile?: AwsCloudProfile;
+  /** Cloud profile for GCP. */
+  gcpCloudProfile?: GcpCloudProfile;
   /** Host cloud the public cloud connector. */
   hostType: HostType | (string & {});
 }
 export const PublicCloudConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    awsCloudProfile: AwsCloudProfile,
+    awsCloudProfile: S.optional(AwsCloudProfile),
+    gcpCloudProfile: S.optional(GcpCloudProfile),
     hostType: HostType,
   }),
 ).annotate({
@@ -931,7 +1059,7 @@ export const PublicCloudConnectorsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -951,7 +1079,9 @@ export const PublicCloudConnectorsCreateOrUpdateResponseTagsMap =
 /** Properties of public cloud connectors. */
 export interface PublicCloudConnectorProperties {
   /** Cloud profile for AWS. */
-  awsCloudProfile: AwsCloudProfile;
+  awsCloudProfile?: AwsCloudProfile;
+  /** Cloud profile for GCP. */
+  gcpCloudProfile?: GcpCloudProfile;
   /** Host cloud the public cloud connector. */
   hostType: HostType;
   /** The resource provisioning state. */
@@ -961,7 +1091,8 @@ export interface PublicCloudConnectorProperties {
 }
 export const PublicCloudConnectorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    awsCloudProfile: AwsCloudProfile,
+    awsCloudProfile: S.optional(AwsCloudProfile),
+    gcpCloudProfile: S.optional(GcpCloudProfile),
     hostType: HostType,
     provisioningState: S.optional(
       AzureResourceManagerResourceProvisioningState,
@@ -987,6 +1118,8 @@ export interface PublicCloudConnectorsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PublicCloudConnectorProperties;
+  /** The kind of the public cloud connector. */
+  kind?: HostType;
 }
 export const PublicCloudConnectorsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -998,6 +1131,7 @@ export const PublicCloudConnectorsCreateOrUpdateResponse =
       tags: S.optional(PublicCloudConnectorsCreateOrUpdateResponseTagsMap),
       location: S.String,
       properties: S.optional(PublicCloudConnectorProperties),
+      kind: S.optional(HostType),
     }),
   ).annotate({
     identifier: "PublicCloudConnectorsCreateOrUpdateResponse",
@@ -1021,7 +1155,7 @@ export const PublicCloudConnectorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -1053,7 +1187,7 @@ export const PublicCloudConnectorsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -1084,6 +1218,8 @@ export interface PublicCloudConnectorsGetResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PublicCloudConnectorProperties;
+  /** The kind of the public cloud connector. */
+  kind?: HostType;
 }
 export const PublicCloudConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1094,6 +1230,7 @@ export const PublicCloudConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PublicCloudConnectorsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(PublicCloudConnectorProperties),
+    kind: S.optional(HostType),
   }),
 ).annotate({
   identifier: "PublicCloudConnectorsGetResponse",
@@ -1115,7 +1252,7 @@ export const PublicCloudConnectorsListByResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -1145,6 +1282,8 @@ export interface PublicCloudConnector {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PublicCloudConnectorProperties;
+  /** The kind of the public cloud connector. */
+  kind?: HostType;
 }
 export const PublicCloudConnector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1155,6 +1294,7 @@ export const PublicCloudConnector = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PublicCloudConnectorTagsMap),
     location: S.String,
     properties: S.optional(PublicCloudConnectorProperties),
+    kind: S.optional(HostType),
   }),
 ).annotate({
   identifier: "PublicCloudConnector",
@@ -1196,7 +1336,7 @@ export const PublicCloudConnectorsListBySubscriptionRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/publicCloudConnectors",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -1222,7 +1362,7 @@ export const PublicCloudConnectorsTestPermissionsRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}/testPermissions",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -1398,15 +1538,67 @@ export const AwsCloudProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "AwsCloudProfileUpdate",
 }) as any as S.Schema<AwsCloudProfileUpdate>;
 
+/** List of GCP projects which need to be excluded. */
+export type GcpOrganizationPropertiesUpdateExcludedProjectNumbersList =
+  Array<string>;
+export const GcpOrganizationPropertiesUpdateExcludedProjectNumbersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GcpOrganizationPropertiesUpdateExcludedProjectNumbersList>;
+
+/** List of GCP folders which need to be excluded. */
+export type GcpOrganizationPropertiesUpdateExcludedFolderIdsList =
+  Array<string>;
+export const GcpOrganizationPropertiesUpdateExcludedFolderIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GcpOrganizationPropertiesUpdateExcludedFolderIdsList>;
+
+/** GCP organization properties for update. */
+export interface GcpOrganizationPropertiesUpdate {
+  /** List of GCP projects which need to be excluded. */
+  excludedProjectNumbers?: GcpOrganizationPropertiesUpdateExcludedProjectNumbersList;
+  /** List of GCP folders which need to be excluded. */
+  excludedFolderIds?: GcpOrganizationPropertiesUpdateExcludedFolderIdsList;
+}
+export const GcpOrganizationPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    excludedProjectNumbers: S.optional(
+      GcpOrganizationPropertiesUpdateExcludedProjectNumbersList,
+    ),
+    excludedFolderIds: S.optional(
+      GcpOrganizationPropertiesUpdateExcludedFolderIdsList,
+    ),
+  }),
+).annotate({
+  identifier: "GcpOrganizationPropertiesUpdate",
+}) as any as S.Schema<GcpOrganizationPropertiesUpdate>;
+
+/** cloud profile for GCP. */
+export interface GcpCloudProfileUpdate {
+  /** The organization properties of the GCP organization. */
+  organizationProperties?: GcpOrganizationPropertiesUpdate;
+}
+export const GcpCloudProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationProperties: S.optional(GcpOrganizationPropertiesUpdate),
+  }),
+).annotate({
+  identifier: "GcpCloudProfileUpdate",
+}) as any as S.Schema<GcpCloudProfileUpdate>;
+
 /** Properties of public cloud connectors. */
 export interface PublicCloudConnectorPropertiesUpdate {
   /** Cloud profile for AWS. */
   awsCloudProfile?: AwsCloudProfileUpdate;
+  /** Cloud profile for GCP. */
+  gcpCloudProfile?: GcpCloudProfileUpdate;
 }
 export const PublicCloudConnectorPropertiesUpdate = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       awsCloudProfile: S.optional(AwsCloudProfileUpdate),
+      gcpCloudProfile: S.optional(GcpCloudProfileUpdate),
     }),
 ).annotate({
   identifier: "PublicCloudConnectorPropertiesUpdate",
@@ -1436,7 +1628,7 @@ export const PublicCloudConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -1468,6 +1660,8 @@ export interface PublicCloudConnectorsUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PublicCloudConnectorProperties;
+  /** The kind of the public cloud connector. */
+  kind?: HostType;
 }
 export const PublicCloudConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1478,6 +1672,7 @@ export const PublicCloudConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PublicCloudConnectorsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(PublicCloudConnectorProperties),
+    kind: S.optional(HostType),
   }),
 ).annotate({
   identifier: "PublicCloudConnectorsUpdateResponse",
@@ -1524,7 +1719,7 @@ export const ServiceConfigurationsCreateOrupdateRequest =
         method: "PUT",
         uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -1605,7 +1800,7 @@ export const ServiceConfigurationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -1637,7 +1832,7 @@ export const ServiceConfigurationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -1684,7 +1879,7 @@ export const ServiceConfigurationsListByEndpointResourceRequest =
         method: "GET",
         uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -1773,7 +1968,7 @@ export const ServiceConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -1827,7 +2022,7 @@ export const SolutionConfigurationsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
   ).annotate({
@@ -1904,7 +2099,7 @@ export const SolutionConfigurationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -1933,7 +2128,7 @@ export const SolutionConfigurationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -1976,7 +2171,7 @@ export const SolutionConfigurationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -2047,7 +2242,7 @@ export const SolutionConfigurationsSyncNowRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/syncNow",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
 ).annotate({
@@ -2136,7 +2331,7 @@ export const SolutionConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -2186,7 +2381,7 @@ export const SolutionTypesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/solutionTypes/{solutionType}",
       code: 200,
-      apiVersion: "2024-12-01",
+      apiVersion: "2027-01-01",
     }),
   ),
 ).annotate({
@@ -2200,12 +2395,25 @@ export const SolutionTypePropertiesSupportedAzureRegionsList =
     S.String,
   ) as any as S.Schema<SolutionTypePropertiesSupportedAzureRegionsList>;
 
+/** The supported host types for the current solution type. */
+export type SolutionTypePropertiesHostTypesList = Array<HostType>;
+export const SolutionTypePropertiesHostTypesList = /*@__PURE__*/ S.Array(
+  HostType,
+) as any as S.Schema<SolutionTypePropertiesHostTypesList>;
+
 /** Array of allowed values for this solution settings property. */
 export type SolutionTypeSettingsPropertiesAllowedValuesList = Array<string>;
 export const SolutionTypeSettingsPropertiesAllowedValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SolutionTypeSettingsPropertiesAllowedValuesList>;
+
+/** The supported host types for the current solution setting */
+export type SolutionTypeSettingsPropertiesHostTypesList = Array<HostType>;
+export const SolutionTypeSettingsPropertiesHostTypesList =
+  /*@__PURE__*/ S.Array(
+    HostType,
+  ) as any as S.Schema<SolutionTypeSettingsPropertiesHostTypesList>;
 
 /** Represent Solution settings properties description array. */
 export interface SolutionTypeSettingsProperties {
@@ -2219,6 +2427,8 @@ export interface SolutionTypeSettingsProperties {
   description: string;
   /** Array of allowed values for this solution settings property. */
   allowedValues: SolutionTypeSettingsPropertiesAllowedValuesList;
+  /** The supported host types for the current solution setting */
+  hostTypes: SolutionTypeSettingsPropertiesHostTypesList;
   /** Default value for this solution settings property. */
   defaultValue: string;
 }
@@ -2229,6 +2439,7 @@ export const SolutionTypeSettingsProperties = /*@__PURE__*/ S.suspend(() =>
     type: S.String,
     description: S.String,
     allowedValues: SolutionTypeSettingsPropertiesAllowedValuesList,
+    hostTypes: SolutionTypeSettingsPropertiesHostTypesList,
     defaultValue: S.String,
   }),
 ).annotate({
@@ -2250,6 +2461,8 @@ export interface SolutionTypeProperties {
   description?: string;
   /** The locations this solution is supported in. */
   supportedAzureRegions?: SolutionTypePropertiesSupportedAzureRegionsList;
+  /** The supported host types for the current solution type. */
+  hostTypes?: SolutionTypePropertiesHostTypesList;
   /** Array of solution settings and its description. */
   solutionSettings?: SolutionTypePropertiesSolutionSettingsList;
 }
@@ -2260,6 +2473,7 @@ export const SolutionTypeProperties = /*@__PURE__*/ S.suspend(() =>
     supportedAzureRegions: S.optional(
       SolutionTypePropertiesSupportedAzureRegionsList,
     ),
+    hostTypes: S.optional(SolutionTypePropertiesHostTypesList),
     solutionSettings: S.optional(SolutionTypePropertiesSolutionSettingsList),
   }),
 ).annotate({
@@ -2306,7 +2520,7 @@ export const SolutionTypesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/solutionTypes",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
 ).annotate({
@@ -2374,7 +2588,7 @@ export const SolutionTypesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/solutionTypes",
         code: 200,
-        apiVersion: "2024-12-01",
+        apiVersion: "2027-01-01",
       }),
     ),
 ).annotate({
@@ -2511,6 +2725,21 @@ export const GenerateAwsTemplatePost: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateAwsTemplatePostRequest,
   output: GenerateAwsTemplatePostResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GenerateGcpTemplatePostError = AzureOpError;
+/** Retrieve GCP Access Control template */
+export const GenerateGcpTemplatePost: API.OperationMethod<
+  GenerateGcpTemplatePostRequest,
+  GenerateGcpTemplatePostResponse,
+  GenerateGcpTemplatePostError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateGcpTemplatePostRequest,
+  output: GenerateGcpTemplatePostResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

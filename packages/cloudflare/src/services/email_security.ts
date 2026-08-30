@@ -850,16 +850,16 @@ export const InvestigateBulkCancelCreateResponseActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition =
-    | "MALICIOUS"
-    | "MALICIOUS-BEC"
-    | "SUSPICIOUS"
-    | "SPOOF"
-    | "SPAM"
-    | "BULK"
-    | "ENCRYPTED"
-    | "EXTERNAL"
-    | "UNKNOWN"
-    | "NONE";
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -3928,16 +3928,16 @@ export const InvestigateBulkMessagesListResultItemActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition =
-    | "MALICIOUS"
-    | "MALICIOUS-BEC"
-    | "SUSPICIOUS"
-    | "SPOOF"
-    | "SPAM"
-    | "BULK"
-    | "ENCRYPTED"
-    | "EXTERNAL"
-    | "UNKNOWN"
-    | "NONE";
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 

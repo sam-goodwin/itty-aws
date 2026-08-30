@@ -393,6 +393,7 @@ export interface AssetScope {
   assetId: string;
   filterIds: string[];
   status: string;
+  scopeName?: string;
   errorMessage?: string;
 }
 export const AssetScope = /*@__PURE__*/ S.suspend(() =>
@@ -400,6 +401,7 @@ export const AssetScope = /*@__PURE__*/ S.suspend(() =>
     assetId: S.String,
     filterIds: FilterIds,
     status: S.String,
+    scopeName: S.optional(S.String),
     errorMessage: S.optional(S.String),
   }),
 ).annotate({ identifier: "AssetScope" }) as any as S.Schema<AssetScope>;
@@ -2725,6 +2727,143 @@ export const S3PropertiesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3PropertiesInput",
 }) as any as S.Schema<S3PropertiesInput>;
+export interface ConnectivityProperties {
+  connectionProperties?: { [key: string]: string | undefined };
+  physicalConnectionRequirements?: PhysicalConnectionRequirements;
+  name?: string;
+  description?: string;
+  validateCredentials?: boolean;
+  validateForComputeEnvironments?: ComputeEnvironments[];
+  sparkProperties?: { [key: string]: string | undefined };
+  athenaProperties?: { [key: string]: string | undefined };
+  pythonProperties?: { [key: string]: string | undefined };
+  authenticationConfiguration?: AuthenticationConfigurationInput;
+}
+export const ConnectivityProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectionProperties: S.optional(ConnectionProperties),
+    physicalConnectionRequirements: S.optional(PhysicalConnectionRequirements),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    validateCredentials: S.optional(S.Boolean),
+    validateForComputeEnvironments: S.optional(ComputeEnvironmentsList),
+    sparkProperties: S.optional(PropertyMap),
+    athenaProperties: S.optional(PropertyMap),
+    pythonProperties: S.optional(PropertyMap),
+    authenticationConfiguration: S.optional(AuthenticationConfigurationInput),
+  }),
+).annotate({
+  identifier: "ConnectivityProperties",
+}) as any as S.Schema<ConnectivityProperties>;
+export type SnowflakeRole = string;
+export interface IdentityMapping {
+  usernameAttribute: string;
+  prefix?: string;
+}
+export const IdentityMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ usernameAttribute: S.String, prefix: S.optional(S.String) }),
+).annotate({
+  identifier: "IdentityMapping",
+}) as any as S.Schema<IdentityMapping>;
+export type Timezone =
+  | "UTC"
+  | "AFRICA_JOHANNESBURG"
+  | "AMERICA_MONTREAL"
+  | "AMERICA_SAO_PAULO"
+  | "ASIA_BAHRAIN"
+  | "ASIA_BANGKOK"
+  | "ASIA_CALCUTTA"
+  | "ASIA_DUBAI"
+  | "ASIA_HONG_KONG"
+  | "ASIA_JAKARTA"
+  | "ASIA_KUALA_LUMPUR"
+  | "ASIA_SEOUL"
+  | "ASIA_SHANGHAI"
+  | "ASIA_SINGAPORE"
+  | "ASIA_TAIPEI"
+  | "ASIA_TOKYO"
+  | "AUSTRALIA_MELBOURNE"
+  | "AUSTRALIA_SYDNEY"
+  | "CANADA_CENTRAL"
+  | "CET"
+  | "CST6CDT"
+  | "ETC_GMT"
+  | "ETC_GMT0"
+  | "ETC_GMT_ADD_0"
+  | "ETC_GMT_ADD_1"
+  | "ETC_GMT_ADD_10"
+  | "ETC_GMT_ADD_11"
+  | "ETC_GMT_ADD_12"
+  | "ETC_GMT_ADD_2"
+  | "ETC_GMT_ADD_3"
+  | "ETC_GMT_ADD_4"
+  | "ETC_GMT_ADD_5"
+  | "ETC_GMT_ADD_6"
+  | "ETC_GMT_ADD_7"
+  | "ETC_GMT_ADD_8"
+  | "ETC_GMT_ADD_9"
+  | "ETC_GMT_NEG_0"
+  | "ETC_GMT_NEG_1"
+  | "ETC_GMT_NEG_10"
+  | "ETC_GMT_NEG_11"
+  | "ETC_GMT_NEG_12"
+  | "ETC_GMT_NEG_13"
+  | "ETC_GMT_NEG_14"
+  | "ETC_GMT_NEG_2"
+  | "ETC_GMT_NEG_3"
+  | "ETC_GMT_NEG_4"
+  | "ETC_GMT_NEG_5"
+  | "ETC_GMT_NEG_6"
+  | "ETC_GMT_NEG_7"
+  | "ETC_GMT_NEG_8"
+  | "ETC_GMT_NEG_9"
+  | "EUROPE_DUBLIN"
+  | "EUROPE_LONDON"
+  | "EUROPE_PARIS"
+  | "EUROPE_STOCKHOLM"
+  | "EUROPE_ZURICH"
+  | "ISRAEL"
+  | "MEXICO_GENERAL"
+  | "MST7MDT"
+  | "PACIFIC_AUCKLAND"
+  | "US_CENTRAL"
+  | "US_EASTERN"
+  | "US_MOUNTAIN"
+  | "US_PACIFIC"
+  | (string & {});
+export const Timezone = /*@__PURE__*/ S.String;
+
+export type LineageSyncScheduleCronString = string;
+export interface LineageSyncInput {
+  timezone?: Timezone;
+  enabled: boolean;
+  schedule?: string;
+}
+export const LineageSyncInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timezone: S.optional(Timezone),
+    enabled: S.Boolean,
+    schedule: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LineageSyncInput",
+}) as any as S.Schema<LineageSyncInput>;
+export interface SnowflakePropertiesInput {
+  connectivityProperties?: ConnectivityProperties;
+  snowflakeRole: string;
+  identityMapping: IdentityMapping;
+  lineageSync?: LineageSyncInput;
+}
+export const SnowflakePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectivityProperties: S.optional(ConnectivityProperties),
+    snowflakeRole: S.String,
+    identityMapping: IdentityMapping,
+    lineageSync: S.optional(LineageSyncInput),
+  }),
+).annotate({
+  identifier: "SnowflakePropertiesInput",
+}) as any as S.Schema<SnowflakePropertiesInput>;
 export interface AmazonQPropertiesInput {
   isEnabled: boolean;
   profileArn?: string;
@@ -2787,6 +2926,20 @@ export const VpcPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcPropertiesInput",
 }) as any as S.Schema<VpcPropertiesInput>;
+export interface GitPropertiesInput {
+  codeConnectionArn: string;
+  repositoryId: string;
+  defaultBranch: string;
+}
+export const GitPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeConnectionArn: S.String,
+    repositoryId: S.String,
+    defaultBranch: S.String,
+  }),
+).annotate({
+  identifier: "GitPropertiesInput",
+}) as any as S.Schema<GitPropertiesInput>;
 export type ConnectionPropertiesInput =
   | {
       athenaProperties: AthenaPropertiesInput;
@@ -2797,12 +2950,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2813,12 +2968,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2829,12 +2986,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2845,12 +3004,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2861,12 +3022,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2877,12 +3040,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties: SparkEmrPropertiesInput;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2893,12 +3058,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties: SparkGluePropertiesInput;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2909,12 +3076,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties: S3PropertiesInput;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2925,12 +3094,32 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties: SnowflakePropertiesInput;
+      amazonQProperties?: never;
+      mlflowProperties?: never;
+      workflowsMwaaProperties?: never;
+      workflowsServerlessProperties?: never;
+      lakehouseProperties?: never;
+      vpcProperties?: never;
+      gitProperties?: never;
+    }
+  | {
+      athenaProperties?: never;
+      glueProperties?: never;
+      hyperPodProperties?: never;
+      iamProperties?: never;
+      redshiftProperties?: never;
+      sparkEmrProperties?: never;
+      sparkGlueProperties?: never;
+      s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties: AmazonQPropertiesInput;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2941,12 +3130,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties: MlflowPropertiesInput;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2957,12 +3148,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties: WorkflowsMwaaPropertiesInput;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2973,12 +3166,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties: WorkflowsServerlessPropertiesInput;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -2989,12 +3184,14 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties: LakehousePropertiesInput;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3005,12 +3202,32 @@ export type ConnectionPropertiesInput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties: VpcPropertiesInput;
+      gitProperties?: never;
+    }
+  | {
+      athenaProperties?: never;
+      glueProperties?: never;
+      hyperPodProperties?: never;
+      iamProperties?: never;
+      redshiftProperties?: never;
+      sparkEmrProperties?: never;
+      sparkGlueProperties?: never;
+      s3Properties?: never;
+      snowflakeProperties?: never;
+      amazonQProperties?: never;
+      mlflowProperties?: never;
+      workflowsMwaaProperties?: never;
+      workflowsServerlessProperties?: never;
+      lakehouseProperties?: never;
+      vpcProperties?: never;
+      gitProperties: GitPropertiesInput;
     };
 export const ConnectionPropertiesInput = /*@__PURE__*/ S.Union([
   S.Struct({ athenaProperties: AthenaPropertiesInput }),
@@ -3021,6 +3238,7 @@ export const ConnectionPropertiesInput = /*@__PURE__*/ S.Union([
   S.Struct({ sparkEmrProperties: SparkEmrPropertiesInput }),
   S.Struct({ sparkGlueProperties: SparkGluePropertiesInput }),
   S.Struct({ s3Properties: S3PropertiesInput }),
+  S.Struct({ snowflakeProperties: SnowflakePropertiesInput }),
   S.Struct({ amazonQProperties: AmazonQPropertiesInput }),
   S.Struct({ mlflowProperties: MlflowPropertiesInput }),
   S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesInput }),
@@ -3029,6 +3247,7 @@ export const ConnectionPropertiesInput = /*@__PURE__*/ S.Union([
   }),
   S.Struct({ lakehouseProperties: LakehousePropertiesInput }),
   S.Struct({ vpcProperties: VpcPropertiesInput }),
+  S.Struct({ gitProperties: GitPropertiesInput }),
 ]);
 export type ConnectionScope = "DOMAIN" | "PROJECT" | (string & {});
 export const ConnectionScope = /*@__PURE__*/ S.String;
@@ -3097,6 +3316,7 @@ export type ConnectionType =
   | "AMAZON_Q"
   | "MLFLOW"
   | "VPC"
+  | "GIT"
   | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
 
@@ -3397,6 +3617,40 @@ export const S3PropertiesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3PropertiesOutput",
 }) as any as S.Schema<S3PropertiesOutput>;
+export interface LineageSyncOutput {
+  lineageJobId?: string;
+  timezone?: Timezone;
+  enabled?: boolean;
+  schedule?: string;
+}
+export const LineageSyncOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lineageJobId: S.optional(S.String),
+    timezone: S.optional(Timezone),
+    enabled: S.optional(S.Boolean),
+    schedule: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LineageSyncOutput",
+}) as any as S.Schema<LineageSyncOutput>;
+export interface SnowflakePropertiesOutput {
+  snowflakeRole: string;
+  identityMapping: IdentityMapping;
+  lineageSync: LineageSyncOutput;
+  status: ConnectionStatus;
+  errorMessage?: string;
+}
+export const SnowflakePropertiesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    snowflakeRole: S.String,
+    identityMapping: IdentityMapping,
+    lineageSync: LineageSyncOutput,
+    status: ConnectionStatus,
+    errorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SnowflakePropertiesOutput",
+}) as any as S.Schema<SnowflakePropertiesOutput>;
 export interface AmazonQPropertiesOutput {
   isEnabled: boolean;
   profileArn?: string;
@@ -3459,6 +3713,24 @@ export const VpcPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcPropertiesOutput",
 }) as any as S.Schema<VpcPropertiesOutput>;
+export interface GitPropertiesOutput {
+  codeConnectionArn: string;
+  repositoryId: string;
+  defaultBranch: string;
+  status?: ConnectionStatus;
+  errorMessage?: string;
+}
+export const GitPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeConnectionArn: S.String,
+    repositoryId: S.String,
+    defaultBranch: S.String,
+    status: S.optional(ConnectionStatus),
+    errorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GitPropertiesOutput",
+}) as any as S.Schema<GitPropertiesOutput>;
 export type ConnectionPropertiesOutput =
   | {
       athenaProperties: AthenaPropertiesOutput;
@@ -3469,12 +3741,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3485,12 +3759,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3501,12 +3777,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3517,12 +3795,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3533,12 +3813,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3549,12 +3831,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties: SparkEmrPropertiesOutput;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3565,12 +3849,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties: SparkGluePropertiesOutput;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3581,12 +3867,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties: S3PropertiesOutput;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3597,12 +3885,32 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties: SnowflakePropertiesOutput;
+      amazonQProperties?: never;
+      mlflowProperties?: never;
+      workflowsMwaaProperties?: never;
+      workflowsServerlessProperties?: never;
+      lakehouseProperties?: never;
+      vpcProperties?: never;
+      gitProperties?: never;
+    }
+  | {
+      athenaProperties?: never;
+      glueProperties?: never;
+      hyperPodProperties?: never;
+      iamProperties?: never;
+      redshiftProperties?: never;
+      sparkEmrProperties?: never;
+      sparkGlueProperties?: never;
+      s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties: AmazonQPropertiesOutput;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3613,12 +3921,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties: MlflowPropertiesOutput;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3629,12 +3939,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties: WorkflowsMwaaPropertiesOutput;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3645,12 +3957,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties: WorkflowsServerlessPropertiesOutput;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3661,12 +3975,14 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties: LakehousePropertiesOutput;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -3677,12 +3993,32 @@ export type ConnectionPropertiesOutput =
       sparkEmrProperties?: never;
       sparkGlueProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       workflowsMwaaProperties?: never;
       workflowsServerlessProperties?: never;
       lakehouseProperties?: never;
       vpcProperties: VpcPropertiesOutput;
+      gitProperties?: never;
+    }
+  | {
+      athenaProperties?: never;
+      glueProperties?: never;
+      hyperPodProperties?: never;
+      iamProperties?: never;
+      redshiftProperties?: never;
+      sparkEmrProperties?: never;
+      sparkGlueProperties?: never;
+      s3Properties?: never;
+      snowflakeProperties?: never;
+      amazonQProperties?: never;
+      mlflowProperties?: never;
+      workflowsMwaaProperties?: never;
+      workflowsServerlessProperties?: never;
+      lakehouseProperties?: never;
+      vpcProperties?: never;
+      gitProperties: GitPropertiesOutput;
     };
 export const ConnectionPropertiesOutput = /*@__PURE__*/ S.Union([
   S.Struct({ athenaProperties: AthenaPropertiesOutput }),
@@ -3693,6 +4029,7 @@ export const ConnectionPropertiesOutput = /*@__PURE__*/ S.Union([
   S.Struct({ sparkEmrProperties: SparkEmrPropertiesOutput }),
   S.Struct({ sparkGlueProperties: SparkGluePropertiesOutput }),
   S.Struct({ s3Properties: S3PropertiesOutput }),
+  S.Struct({ snowflakeProperties: SnowflakePropertiesOutput }),
   S.Struct({ amazonQProperties: AmazonQPropertiesOutput }),
   S.Struct({ mlflowProperties: MlflowPropertiesOutput }),
   S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesOutput }),
@@ -3701,6 +4038,7 @@ export const ConnectionPropertiesOutput = /*@__PURE__*/ S.Union([
   }),
   S.Struct({ lakehouseProperties: LakehousePropertiesOutput }),
   S.Struct({ vpcProperties: VpcPropertiesOutput }),
+  S.Struct({ gitProperties: GitPropertiesOutput }),
 ]);
 export interface CreateConnectionOutput {
   connectionId: string;
@@ -4068,74 +4406,6 @@ export const RecommendationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationConfiguration>;
 export type EnableSetting = "ENABLED" | "DISABLED" | (string & {});
 export const EnableSetting = /*@__PURE__*/ S.String;
-
-export type Timezone =
-  | "UTC"
-  | "AFRICA_JOHANNESBURG"
-  | "AMERICA_MONTREAL"
-  | "AMERICA_SAO_PAULO"
-  | "ASIA_BAHRAIN"
-  | "ASIA_BANGKOK"
-  | "ASIA_CALCUTTA"
-  | "ASIA_DUBAI"
-  | "ASIA_HONG_KONG"
-  | "ASIA_JAKARTA"
-  | "ASIA_KUALA_LUMPUR"
-  | "ASIA_SEOUL"
-  | "ASIA_SHANGHAI"
-  | "ASIA_SINGAPORE"
-  | "ASIA_TAIPEI"
-  | "ASIA_TOKYO"
-  | "AUSTRALIA_MELBOURNE"
-  | "AUSTRALIA_SYDNEY"
-  | "CANADA_CENTRAL"
-  | "CET"
-  | "CST6CDT"
-  | "ETC_GMT"
-  | "ETC_GMT0"
-  | "ETC_GMT_ADD_0"
-  | "ETC_GMT_ADD_1"
-  | "ETC_GMT_ADD_10"
-  | "ETC_GMT_ADD_11"
-  | "ETC_GMT_ADD_12"
-  | "ETC_GMT_ADD_2"
-  | "ETC_GMT_ADD_3"
-  | "ETC_GMT_ADD_4"
-  | "ETC_GMT_ADD_5"
-  | "ETC_GMT_ADD_6"
-  | "ETC_GMT_ADD_7"
-  | "ETC_GMT_ADD_8"
-  | "ETC_GMT_ADD_9"
-  | "ETC_GMT_NEG_0"
-  | "ETC_GMT_NEG_1"
-  | "ETC_GMT_NEG_10"
-  | "ETC_GMT_NEG_11"
-  | "ETC_GMT_NEG_12"
-  | "ETC_GMT_NEG_13"
-  | "ETC_GMT_NEG_14"
-  | "ETC_GMT_NEG_2"
-  | "ETC_GMT_NEG_3"
-  | "ETC_GMT_NEG_4"
-  | "ETC_GMT_NEG_5"
-  | "ETC_GMT_NEG_6"
-  | "ETC_GMT_NEG_7"
-  | "ETC_GMT_NEG_8"
-  | "ETC_GMT_NEG_9"
-  | "EUROPE_DUBLIN"
-  | "EUROPE_LONDON"
-  | "EUROPE_PARIS"
-  | "EUROPE_STOCKHOLM"
-  | "EUROPE_ZURICH"
-  | "ISRAEL"
-  | "MEXICO_GENERAL"
-  | "MST7MDT"
-  | "PACIFIC_AUCKLAND"
-  | "US_CENTRAL"
-  | "US_EASTERN"
-  | "US_MOUNTAIN"
-  | "US_PACIFIC"
-  | (string & {});
-export const Timezone = /*@__PURE__*/ S.String;
 
 export type CronString = string;
 export interface ScheduleConfiguration {
@@ -5416,7 +5686,12 @@ export const CellInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CellInformation>;
 export type CellOrder = CellInformation[];
 export const CellOrder = /*@__PURE__*/ S.Array(CellInformation);
-export type NotebookStatus = "ACTIVE" | "ARCHIVED" | (string & {});
+export type NotebookStatus =
+  | "ACTIVE"
+  | "ARCHIVED"
+  | "SYNC_IN_PROGRESS"
+  | "SYNC_FAILED"
+  | (string & {});
 export const NotebookStatus = /*@__PURE__*/ S.String;
 
 export type ComputeId = string;
@@ -5451,6 +5726,32 @@ export interface NotebookError {
 export const NotebookError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ message: S.String }),
 ).annotate({ identifier: "NotebookError" }) as any as S.Schema<NotebookError>;
+export type GitConnectionId = string;
+export type GitRepository = string | redacted.Redacted<string>;
+export type GitBranch = string | redacted.Redacted<string>;
+export type CommitHash = string;
+export type FileName = string;
+export type CommitMessage = string | redacted.Redacted<string>;
+export interface GitMetadata {
+  connectionId: string;
+  repository: string | redacted.Redacted<string>;
+  branch: string | redacted.Redacted<string>;
+  commitHash: string;
+  fileName?: string;
+  committedAt?: Date;
+  commitMessage?: string | redacted.Redacted<string>;
+}
+export const GitMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectionId: S.String,
+    repository: SensitiveString,
+    branch: SensitiveString,
+    commitHash: S.String,
+    fileName: S.optional(S.String),
+    committedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    commitMessage: S.optional(SensitiveString),
+  }),
+).annotate({ identifier: "GitMetadata" }) as any as S.Schema<GitMetadata>;
 export interface CreateNotebookOutput {
   id: string;
   name: string | redacted.Redacted<string>;
@@ -5471,6 +5772,7 @@ export interface CreateNotebookOutput {
   parameters?: { [key: string]: string | undefined };
   environmentConfiguration?: EnvironmentConfig;
   error?: NotebookError;
+  gitMetadata?: GitMetadata;
 }
 export const CreateNotebookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5493,6 +5795,7 @@ export const CreateNotebookOutput = /*@__PURE__*/ S.suspend(() =>
     parameters: S.optional(Parameters),
     environmentConfiguration: S.optional(EnvironmentConfig),
     error: S.optional(NotebookError),
+    gitMetadata: S.optional(GitMetadata),
   }),
 ).annotate({
   identifier: "CreateNotebookOutput",
@@ -6964,6 +7267,7 @@ export interface DeleteDomainInput {
   identifier: string;
   clientToken?: string;
   skipDeletionCheck?: boolean;
+  cascadeDelete?: boolean;
 }
 export const DeleteDomainInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6975,6 +7279,7 @@ export const DeleteDomainInput = /*@__PURE__*/ S.suspend(() =>
     skipDeletionCheck: S.optional(S.Boolean).pipe(
       T.HttpQuery("skipDeletionCheck"),
     ),
+    cascadeDelete: S.optional(S.Boolean).pipe(T.HttpQuery("cascadeDelete")),
   }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v2/domains/{identifier}" }),
@@ -8375,6 +8680,21 @@ export const GetDomainInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetDomainInput" }) as any as S.Schema<GetDomainInput>;
+export interface FailureReason {
+  id?: string;
+  message?: string;
+}
+export const FailureReason = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.optional(S.String), message: S.optional(S.String) }),
+).annotate({ identifier: "FailureReason" }) as any as S.Schema<FailureReason>;
+export type FailureReasonsList = FailureReason[];
+export const FailureReasonsList = /*@__PURE__*/ S.Array(FailureReason);
+export interface DeleteProgress {
+  successfullyDeletedProjectCount?: number;
+}
+export const DeleteProgress = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ successfullyDeletedProjectCount: S.optional(S.Number) }),
+).annotate({ identifier: "DeleteProgress" }) as any as S.Schema<DeleteProgress>;
 export interface GetDomainOutput {
   id: string;
   rootDomainUnitId?: string;
@@ -8391,6 +8711,8 @@ export interface GetDomainOutput {
   tags?: { [key: string]: string | undefined };
   domainVersion?: DomainVersion;
   serviceRole?: string;
+  failureReasons?: FailureReason[];
+  deleteProgress?: DeleteProgress;
 }
 export const GetDomainOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8409,6 +8731,8 @@ export const GetDomainOutput = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(Tags),
     domainVersion: S.optional(DomainVersion),
     serviceRole: S.optional(S.String),
+    failureReasons: S.optional(FailureReasonsList),
+    deleteProgress: S.optional(DeleteProgress),
   }),
 ).annotate({
   identifier: "GetDomainOutput",
@@ -9667,6 +9991,7 @@ export interface GetNotebookOutput {
   parameters?: { [key: string]: string | undefined };
   environmentConfiguration?: EnvironmentConfig;
   error?: NotebookError;
+  gitMetadata?: GitMetadata;
 }
 export const GetNotebookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9689,6 +10014,7 @@ export const GetNotebookOutput = /*@__PURE__*/ S.suspend(() =>
     parameters: S.optional(Parameters),
     environmentConfiguration: S.optional(EnvironmentConfig),
     error: S.optional(NotebookError),
+    gitMetadata: S.optional(GitMetadata),
   }),
 ).annotate({
   identifier: "GetNotebookOutput",
@@ -15144,6 +15470,70 @@ export const StartNotebookRunOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartNotebookRunOutput",
 }) as any as S.Schema<StartNotebookRunOutput>;
+export interface StartNotebookSyncInput {
+  domainIdentifier: string;
+  owningProjectIdentifier: string;
+  sourceLocation: SourceLocation;
+  gitMetadata?: GitMetadata;
+  notebookId?: string;
+  name?: string | redacted.Redacted<string>;
+  description?: string | redacted.Redacted<string>;
+  clientToken?: string;
+}
+export const StartNotebookSyncInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    owningProjectIdentifier: S.String,
+    sourceLocation: SourceLocation,
+    gitMetadata: S.optional(GitMetadata),
+    notebookId: S.optional(S.String),
+    name: S.optional(SensitiveString),
+    description: S.optional(SensitiveString),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/notebook-syncs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartNotebookSyncInput",
+}) as any as S.Schema<StartNotebookSyncInput>;
+export interface StartNotebookSyncOutput {
+  notebookId?: string;
+  status?: NotebookStatus;
+  domainId?: string;
+  owningProjectId?: string;
+  sourceLocation?: SourceLocation;
+  gitMetadata?: GitMetadata;
+  name?: string | redacted.Redacted<string>;
+  description?: string | redacted.Redacted<string>;
+  createdAt?: Date;
+  createdBy?: string;
+}
+export const StartNotebookSyncOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notebookId: S.optional(S.String),
+    status: S.optional(NotebookStatus),
+    domainId: S.optional(S.String),
+    owningProjectId: S.optional(S.String),
+    sourceLocation: S.optional(SourceLocation),
+    gitMetadata: S.optional(GitMetadata),
+    name: S.optional(SensitiveString),
+    description: S.optional(SensitiveString),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    createdBy: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StartNotebookSyncOutput",
+}) as any as S.Schema<StartNotebookSyncOutput>;
 export interface StopNotebookRunInput {
   domainIdentifier: string;
   identifier: string;
@@ -15478,6 +15868,34 @@ export const S3PropertiesPatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3PropertiesPatch",
 }) as any as S.Schema<S3PropertiesPatch>;
+export interface ConnectivityPropertiesPatch {
+  description?: string;
+  connectionProperties?: { [key: string]: string | undefined };
+  authenticationConfiguration?: AuthenticationConfigurationPatch;
+}
+export const ConnectivityPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    connectionProperties: S.optional(ConnectionProperties),
+    authenticationConfiguration: S.optional(AuthenticationConfigurationPatch),
+  }),
+).annotate({
+  identifier: "ConnectivityPropertiesPatch",
+}) as any as S.Schema<ConnectivityPropertiesPatch>;
+export interface SnowflakePropertiesPatch {
+  connectivityPropertiesPatch?: ConnectivityPropertiesPatch;
+  snowflakeRole?: string;
+  lineageSync?: LineageSyncInput;
+}
+export const SnowflakePropertiesPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectivityPropertiesPatch: S.optional(ConnectivityPropertiesPatch),
+    snowflakeRole: S.optional(S.String),
+    lineageSync: S.optional(LineageSyncInput),
+  }),
+).annotate({
+  identifier: "SnowflakePropertiesPatch",
+}) as any as S.Schema<SnowflakePropertiesPatch>;
 export interface AmazonQPropertiesPatch {
   isEnabled: boolean;
   profileArn?: string;
@@ -15522,6 +15940,18 @@ export const VpcPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcPropertiesPatch",
 }) as any as S.Schema<VpcPropertiesPatch>;
+export interface GitPropertiesPatch {
+  codeConnectionArn?: string;
+  defaultBranch?: string;
+}
+export const GitPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeConnectionArn: S.optional(S.String),
+    defaultBranch: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GitPropertiesPatch",
+}) as any as S.Schema<GitPropertiesPatch>;
 export type ConnectionPropertiesPatch =
   | {
       athenaProperties: AthenaPropertiesPatch;
@@ -15530,10 +15960,12 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15542,10 +15974,12 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15554,10 +15988,12 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15566,10 +16002,12 @@ export type ConnectionPropertiesPatch =
       redshiftProperties: RedshiftPropertiesPatch;
       sparkEmrProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15578,10 +16016,12 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties: SparkEmrPropertiesPatch;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15590,10 +16030,12 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties?: never;
       s3Properties: S3PropertiesPatch;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15602,10 +16044,26 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties?: never;
       s3Properties?: never;
+      snowflakeProperties: SnowflakePropertiesPatch;
+      amazonQProperties?: never;
+      mlflowProperties?: never;
+      lakehouseProperties?: never;
+      vpcProperties?: never;
+      gitProperties?: never;
+    }
+  | {
+      athenaProperties?: never;
+      glueProperties?: never;
+      iamProperties?: never;
+      redshiftProperties?: never;
+      sparkEmrProperties?: never;
+      s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties: AmazonQPropertiesPatch;
       mlflowProperties?: never;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15614,10 +16072,12 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties: MlflowPropertiesPatch;
       lakehouseProperties?: never;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15626,10 +16086,12 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       lakehouseProperties: LakehousePropertiesPatch;
       vpcProperties?: never;
+      gitProperties?: never;
     }
   | {
       athenaProperties?: never;
@@ -15638,10 +16100,26 @@ export type ConnectionPropertiesPatch =
       redshiftProperties?: never;
       sparkEmrProperties?: never;
       s3Properties?: never;
+      snowflakeProperties?: never;
       amazonQProperties?: never;
       mlflowProperties?: never;
       lakehouseProperties?: never;
       vpcProperties: VpcPropertiesPatch;
+      gitProperties?: never;
+    }
+  | {
+      athenaProperties?: never;
+      glueProperties?: never;
+      iamProperties?: never;
+      redshiftProperties?: never;
+      sparkEmrProperties?: never;
+      s3Properties?: never;
+      snowflakeProperties?: never;
+      amazonQProperties?: never;
+      mlflowProperties?: never;
+      lakehouseProperties?: never;
+      vpcProperties?: never;
+      gitProperties: GitPropertiesPatch;
     };
 export const ConnectionPropertiesPatch = /*@__PURE__*/ S.Union([
   S.Struct({ athenaProperties: AthenaPropertiesPatch }),
@@ -15650,10 +16128,12 @@ export const ConnectionPropertiesPatch = /*@__PURE__*/ S.Union([
   S.Struct({ redshiftProperties: RedshiftPropertiesPatch }),
   S.Struct({ sparkEmrProperties: SparkEmrPropertiesPatch }),
   S.Struct({ s3Properties: S3PropertiesPatch }),
+  S.Struct({ snowflakeProperties: SnowflakePropertiesPatch }),
   S.Struct({ amazonQProperties: AmazonQPropertiesPatch }),
   S.Struct({ mlflowProperties: MlflowPropertiesPatch }),
   S.Struct({ lakehouseProperties: LakehousePropertiesPatch }),
   S.Struct({ vpcProperties: VpcPropertiesPatch }),
+  S.Struct({ gitProperties: GitPropertiesPatch }),
 ]);
 export interface UpdateConnectionInput {
   configurations?: Configuration[];
@@ -16435,6 +16915,7 @@ export interface UpdateNotebookOutput {
   parameters?: { [key: string]: string | undefined };
   environmentConfiguration?: EnvironmentConfig;
   error?: NotebookError;
+  gitMetadata?: GitMetadata;
 }
 export const UpdateNotebookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16457,6 +16938,7 @@ export const UpdateNotebookOutput = /*@__PURE__*/ S.suspend(() =>
     parameters: S.optional(Parameters),
     environmentConfiguration: S.optional(EnvironmentConfig),
     error: S.optional(NotebookError),
+    gitMetadata: S.optional(GitMetadata),
   }),
 ).annotate({
   identifier: "UpdateNotebookOutput",
@@ -22710,6 +23192,40 @@ export const startNotebookRun: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "StartNotebookRun",
+}));
+
+export type StartNotebookSyncError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a notebook sync in Amazon SageMaker Unified Studio. This operation syncs a notebook from a Git repository into a project.
+ */
+export const startNotebookSync: API.OperationMethod<
+  StartNotebookSyncInput,
+  StartNotebookSyncOutput,
+  StartNotebookSyncError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartNotebookSyncInput,
+  output: StartNotebookSyncOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartNotebookSync",
 }));
 
 export type StopNotebookRunError =

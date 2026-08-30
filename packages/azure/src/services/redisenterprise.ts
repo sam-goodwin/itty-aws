@@ -2115,7 +2115,8 @@ export const ClusterCreatePropertiesInputMinimumTlsVersion =
 
 /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
 export type ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
-  "systemAssignedIdentity" | "userAssignedIdentity";
+  | "systemAssignedIdentity"
+  | "userAssignedIdentity";
 export const ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -2335,7 +2336,8 @@ export const ClusterCreatePropertiesMinimumTlsVersion = /*@__PURE__*/ S.String;
 
 /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
 export type ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
-  "systemAssignedIdentity" | "userAssignedIdentity";
+  | "systemAssignedIdentity"
+  | "userAssignedIdentity";
 export const ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -2802,7 +2804,8 @@ export const ClusterUpdatePropertiesInputMinimumTlsVersion =
 
 /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
 export type ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
-  "systemAssignedIdentity" | "userAssignedIdentity";
+  | "systemAssignedIdentity"
+  | "userAssignedIdentity";
 export const ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 

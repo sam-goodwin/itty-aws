@@ -1777,6 +1777,7 @@ export class VpcEncryptionControlViolationException
       T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
+export type IAMRoleArn = string;
 export interface AddRoleToDBClusterMessage {
   DBClusterIdentifier?: string;
   RoleArn?: string;
@@ -2582,6 +2583,7 @@ export interface DBSnapshot {
   DedicatedLogVolume?: boolean;
   AdditionalStorageVolumes?: AdditionalStorageVolume[];
   SnapshotAvailabilityZone?: string;
+  FullSnapshotSizeInBytes?: number;
 }
 export const DBSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2634,6 +2636,7 @@ export const DBSnapshot = /*@__PURE__*/ S.suspend(() =>
     DedicatedLogVolume: S.optional(S.Boolean),
     AdditionalStorageVolumes: S.optional(AdditionalStorageVolumesList),
     SnapshotAvailabilityZone: S.optional(S.String),
+    FullSnapshotSizeInBytes: S.optional(S.Number),
   }),
 ).annotate({ identifier: "DBSnapshot" }) as any as S.Schema<DBSnapshot>;
 export interface CopyDBSnapshotResult {
@@ -3242,6 +3245,21 @@ export type MasterUserAuthenticationType =
   | (string & {});
 export const MasterUserAuthenticationType = /*@__PURE__*/ S.String;
 
+export interface DBClusterAssociatedRole {
+  RoleArn: string;
+  FeatureName?: string;
+}
+export const DBClusterAssociatedRole = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RoleArn: S.String, FeatureName: S.optional(S.String) }),
+).annotate({
+  identifier: "DBClusterAssociatedRole",
+}) as any as S.Schema<DBClusterAssociatedRole>;
+export type DBClusterAssociatedRoles = DBClusterAssociatedRole[];
+export const DBClusterAssociatedRoles = /*@__PURE__*/ S.Array(
+  DBClusterAssociatedRole.pipe(T.XmlName("DBClusterAssociatedRole")).annotate({
+    identifier: "DBClusterAssociatedRole",
+  }),
+);
 export interface CreateDBClusterMessage {
   AvailabilityZones?: string[];
   BackupRetentionPeriod?: number;
@@ -3302,6 +3320,7 @@ export interface CreateDBClusterMessage {
   TagSpecifications?: TagSpecification[];
   MasterUserAuthenticationType?: MasterUserAuthenticationType;
   WithExpressConfiguration?: boolean;
+  AssociatedRoles?: DBClusterAssociatedRole[];
 }
 export const CreateDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3366,6 +3385,7 @@ export const CreateDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
     TagSpecifications: S.optional(TagSpecificationList),
     MasterUserAuthenticationType: S.optional(MasterUserAuthenticationType),
     WithExpressConfiguration: S.optional(S.Boolean),
+    AssociatedRoles: S.optional(DBClusterAssociatedRoles),
   }).pipe(
     T.all(
       ns,
@@ -4375,6 +4395,8 @@ export const ActivityStreamPolicyStatus = /*@__PURE__*/ S.String;
 export interface AdditionalStorageVolumeOutput {
   VolumeName?: string;
   StorageVolumeStatus?: string;
+  StorageOperationStatus?: string;
+  StorageOperationPercentProgress?: number;
   AllocatedStorage?: number;
   IOPS?: number;
   MaxAllocatedStorage?: number;
@@ -4385,6 +4407,8 @@ export const AdditionalStorageVolumeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VolumeName: S.optional(S.String),
     StorageVolumeStatus: S.optional(S.String),
+    StorageOperationStatus: S.optional(S.String),
+    StorageOperationPercentProgress: S.optional(S.Number),
     AllocatedStorage: S.optional(S.Number),
     IOPS: S.optional(S.Number),
     MaxAllocatedStorage: S.optional(S.Number),
@@ -4491,6 +4515,8 @@ export interface DBInstance {
   EngineLifecycleSupport?: string;
   AdditionalStorageVolumes?: AdditionalStorageVolumeOutput[];
   StorageVolumeStatus?: string;
+  StorageOperationStatus?: string;
+  StorageOperationPercentProgress?: number;
 }
 export const DBInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4599,6 +4625,8 @@ export const DBInstance = /*@__PURE__*/ S.suspend(() =>
     EngineLifecycleSupport: S.optional(S.String),
     AdditionalStorageVolumes: S.optional(AdditionalStorageVolumesOutputList),
     StorageVolumeStatus: S.optional(S.String),
+    StorageOperationStatus: S.optional(S.String),
+    StorageOperationPercentProgress: S.optional(S.Number),
   }),
 ).annotate({ identifier: "DBInstance" }) as any as S.Schema<DBInstance>;
 export interface CreateDBInstanceResult {
@@ -10040,6 +10068,7 @@ export interface ModifyDBClusterMessage {
   EnableLimitlessDatabase?: boolean;
   CACertificateIdentifier?: string;
   MasterUserAuthenticationType?: MasterUserAuthenticationType;
+  EngineLifecycleSupport?: string;
 }
 export const ModifyDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10094,6 +10123,7 @@ export const ModifyDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
     EnableLimitlessDatabase: S.optional(S.Boolean),
     CACertificateIdentifier: S.optional(S.String),
     MasterUserAuthenticationType: S.optional(MasterUserAuthenticationType),
+    EngineLifecycleSupport: S.optional(S.String),
   }).pipe(
     T.all(
       ns,
@@ -10305,6 +10335,7 @@ export interface ModifyDBInstanceMessage {
   AdditionalStorageVolumes?: ModifyAdditionalStorageVolume[];
   TagSpecifications?: TagSpecification[];
   MasterUserAuthenticationType?: MasterUserAuthenticationType;
+  EngineLifecycleSupport?: string;
 }
 export const ModifyDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10374,6 +10405,7 @@ export const ModifyDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
     AdditionalStorageVolumes: S.optional(ModifyAdditionalStorageVolumesList),
     TagSpecifications: S.optional(TagSpecificationList),
     MasterUserAuthenticationType: S.optional(MasterUserAuthenticationType),
+    EngineLifecycleSupport: S.optional(S.String),
   }).pipe(
     T.all(
       ns,
@@ -11398,6 +11430,7 @@ export interface RestoreDBClusterFromS3Message {
   MasterUserSecretKmsKeyId?: string;
   EngineLifecycleSupport?: string;
   TagSpecifications?: TagSpecification[];
+  AssociatedRoles?: DBClusterAssociatedRole[];
 }
 export const RestoreDBClusterFromS3Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11441,6 +11474,7 @@ export const RestoreDBClusterFromS3Message = /*@__PURE__*/ S.suspend(() =>
     MasterUserSecretKmsKeyId: S.optional(S.String),
     EngineLifecycleSupport: S.optional(S.String),
     TagSpecifications: S.optional(TagSpecificationList),
+    AssociatedRoles: S.optional(DBClusterAssociatedRoles),
   }).pipe(
     T.all(
       ns,
@@ -11504,6 +11538,7 @@ export interface RestoreDBClusterFromSnapshotMessage {
   TagSpecifications?: TagSpecification[];
   EnableVPCNetworking?: boolean;
   EnableInternetAccessGateway?: boolean;
+  AssociatedRoles?: DBClusterAssociatedRole[];
 }
 export const RestoreDBClusterFromSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11549,6 +11584,7 @@ export const RestoreDBClusterFromSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
     TagSpecifications: S.optional(TagSpecificationList),
     EnableVPCNetworking: S.optional(S.Boolean),
     EnableInternetAccessGateway: S.optional(S.Boolean),
+    AssociatedRoles: S.optional(DBClusterAssociatedRoles),
   }).pipe(
     T.all(
       ns,
@@ -11612,6 +11648,7 @@ export interface RestoreDBClusterToPointInTimeMessage {
   TagSpecifications?: TagSpecification[];
   EnableVPCNetworking?: boolean;
   EnableInternetAccessGateway?: boolean;
+  AssociatedRoles?: DBClusterAssociatedRole[];
 }
 export const RestoreDBClusterToPointInTimeMessage = /*@__PURE__*/ S.suspend(
   () =>
@@ -11660,6 +11697,7 @@ export const RestoreDBClusterToPointInTimeMessage = /*@__PURE__*/ S.suspend(
       TagSpecifications: S.optional(TagSpecificationList),
       EnableVPCNetworking: S.optional(S.Boolean),
       EnableInternetAccessGateway: S.optional(S.Boolean),
+      AssociatedRoles: S.optional(DBClusterAssociatedRoles),
     }).pipe(
       T.all(
         ns,
@@ -13032,6 +13070,7 @@ export type CreateDBClusterError =
   | DBClusterNotFoundFault
   | DBClusterParameterGroupNotFoundFault
   | DBClusterQuotaExceededFault
+  | DBClusterRoleQuotaExceededFault
   | DBInstanceNotFoundFault
   | DBSubnetGroupDoesNotCoverEnoughAZs
   | DBSubnetGroupNotFoundFault
@@ -13065,6 +13104,8 @@ export type CreateDBClusterError =
  * You can also use the `ReplicationSourceIdentifier` parameter to create a Multi-AZ DB cluster read replica with an RDS for MySQL or PostgreSQL DB instance as the source. For more information about Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the *Amazon RDS User Guide*.
  *
  * You can use the `WithExpressConfiguration` parameter to create an Aurora DB Cluster with express configuration and create cluster in seconds. Express configuration provides a cluster with a writer instance and feature specific values set to all other input parameters of this API.
+ *
+ * You can use the `AssociatedRoles` parameter to associate one or more Amazon Web Services Identity and Access Management (IAM) roles with an Aurora DB cluster. Each associated role lets the DB cluster access other Amazon Web Services on your behalf, such as Amazon S3 for data import and export, or Amazon Web Services Lambda for invoking functions.
  */
 export const createDBCluster: API.OperationMethod<
   CreateDBClusterMessage,
@@ -13079,6 +13120,7 @@ export const createDBCluster: API.OperationMethod<
     DBClusterNotFoundFault,
     DBClusterParameterGroupNotFoundFault,
     DBClusterQuotaExceededFault,
+    DBClusterRoleQuotaExceededFault,
     DBInstanceNotFoundFault,
     DBSubnetGroupDoesNotCoverEnoughAZs,
     DBSubnetGroupNotFoundFault,
@@ -16966,6 +17008,7 @@ export type RestoreDBClusterFromS3Error =
   | DBClusterNotFoundFault
   | DBClusterParameterGroupNotFoundFault
   | DBClusterQuotaExceededFault
+  | DBClusterRoleQuotaExceededFault
   | DBSubnetGroupNotFoundFault
   | DomainNotFoundFault
   | InsufficientStorageClusterCapacityFault
@@ -16987,6 +17030,8 @@ export type RestoreDBClusterFromS3Error =
  * For more information on Amazon Aurora, see What is Amazon Aurora? in the *Amazon Aurora User Guide*.
  *
  * This operation only applies to Aurora DB clusters. The source DB engine must be MySQL.
+ *
+ * You can use the `AssociatedRoles` parameter to associate one or more Amazon Web Services Identity and Access Management (IAM) roles with the Aurora DB cluster when you restore it from Amazon S3.
  */
 export const restoreDBClusterFromS3: API.OperationMethod<
   RestoreDBClusterFromS3Message,
@@ -17001,6 +17046,7 @@ export const restoreDBClusterFromS3: API.OperationMethod<
     DBClusterNotFoundFault,
     DBClusterParameterGroupNotFoundFault,
     DBClusterQuotaExceededFault,
+    DBClusterRoleQuotaExceededFault,
     DBSubnetGroupNotFoundFault,
     DomainNotFoundFault,
     InsufficientStorageClusterCapacityFault,
@@ -17023,6 +17069,7 @@ export type RestoreDBClusterFromSnapshotError =
   | DBClusterAlreadyExistsFault
   | DBClusterParameterGroupNotFoundFault
   | DBClusterQuotaExceededFault
+  | DBClusterRoleQuotaExceededFault
   | DBClusterSnapshotNotFoundFault
   | DBSnapshotNotFoundFault
   | DBSubnetGroupDoesNotCoverEnoughAZs
@@ -17051,6 +17098,8 @@ export type RestoreDBClusterFromSnapshotError =
  *
  * You can use the `EnableVPCNetworking` and `EnableInternetAccessGateway` parameters together to restore an Aurora PostgreSQL cluster without VPC networking and with internet-based connectivity. These two parameters must always be specified together. Set `EnableVPCNetworking` to `false` to disable the VPC network interface (ENI) for the cluster. `EnableInternetAccessGateway` enables internet-based connectivity through an internet access gateway. IAM database authentication is required and must be enabled using `EnableIAMDatabaseAuthentication`. Once the cluster is restored, you need to modify the DB cluster to update `MasterUserAuthenticationType` to `iam-db-auth`.
  *
+ * You can use the `AssociatedRoles` parameter to associate one or more Amazon Web Services Identity and Access Management (IAM) roles with an Aurora DB cluster when you restore it from a snapshot.
+ *
  * This operation only restores the DB cluster, not the DB instances for that DB cluster. You must invoke the `CreateDBInstance` operation to create DB instances for the restored DB cluster, specifying the identifier of the restored DB cluster in `DBClusterIdentifier`. You can create DB instances only after the `RestoreDBClusterFromSnapshot` operation has completed and the DB cluster is available.
  *
  * For more information on Amazon Aurora DB clusters, see What is Amazon Aurora? in the *Amazon Aurora User Guide*.
@@ -17069,6 +17118,7 @@ export const restoreDBClusterFromSnapshot: API.OperationMethod<
     DBClusterAlreadyExistsFault,
     DBClusterParameterGroupNotFoundFault,
     DBClusterQuotaExceededFault,
+    DBClusterRoleQuotaExceededFault,
     DBClusterSnapshotNotFoundFault,
     DBSnapshotNotFoundFault,
     DBSubnetGroupDoesNotCoverEnoughAZs,
@@ -17101,6 +17151,7 @@ export type RestoreDBClusterToPointInTimeError =
   | DBClusterNotFoundFault
   | DBClusterParameterGroupNotFoundFault
   | DBClusterQuotaExceededFault
+  | DBClusterRoleQuotaExceededFault
   | DBClusterSnapshotNotFoundFault
   | DBSubnetGroupNotFoundFault
   | DomainNotFoundFault
@@ -17125,6 +17176,8 @@ export type RestoreDBClusterToPointInTimeError =
  *
  * You can use the `EnableVPCNetworking` and `EnableInternetAccessGateway` parameters together to restore an Aurora PostgreSQL cluster without VPC networking and with internet-based connectivity. These two parameters must always be specified together. Set `EnableVPCNetworking` to `false` to disable the VPC network interface (ENI) for the cluster. `EnableInternetAccessGateway` enables internet-based connectivity through an internet access gateway. IAM database authentication is required and must be enabled using `EnableIAMDatabaseAuthentication`. Once the cluster is restored, you need to modify the DB cluster to update `MasterUserAuthenticationType` to `iam-db-auth`.
  *
+ * You can use the `AssociatedRoles` parameter to associate one or more Amazon Web Services Identity and Access Management (IAM) roles with an Aurora DB cluster when you restore it to a point in time.
+ *
  * For Aurora, this operation only restores the DB cluster, not the DB instances for that DB cluster. You must invoke the `CreateDBInstance` operation to create DB instances for the restored DB cluster, specifying the identifier of the restored DB cluster in `DBClusterIdentifier`. You can create DB instances only after the `RestoreDBClusterToPointInTime` operation has completed and the DB cluster is available.
  *
  * For more information on Amazon Aurora DB clusters, see What is Amazon Aurora? in the *Amazon Aurora User Guide*.
@@ -17145,6 +17198,7 @@ export const restoreDBClusterToPointInTime: API.OperationMethod<
     DBClusterNotFoundFault,
     DBClusterParameterGroupNotFoundFault,
     DBClusterQuotaExceededFault,
+    DBClusterRoleQuotaExceededFault,
     DBClusterSnapshotNotFoundFault,
     DBSubnetGroupNotFoundFault,
     DomainNotFoundFault,

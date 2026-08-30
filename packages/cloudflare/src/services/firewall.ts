@@ -3645,7 +3645,8 @@ export const ListWafPackageRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWafPackageRulesRequest>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesItem =
-  "on" | "off";
+  | "on"
+  | "off";
 export const WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -3713,7 +3714,11 @@ export const WafPackagesRulesListResultItemWAFManagedRulesAnomalyRule =
   }) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesAnomalyRule>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem =
-  "default" | "disable" | "simulate" | "block" | "challenge";
+  | "default"
+  | "disable"
+  | "simulate"
+  | "block"
+  | "challenge";
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -3725,12 +3730,19 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAll
   ) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleDefaultMode =
-  "disable" | "simulate" | "block" | "challenge";
+  | "disable"
+  | "simulate"
+  | "block"
+  | "challenge";
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleDefaultMode =
   /*@__PURE__*/ S.String;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleMode =
-  "default" | "disable" | "simulate" | "block" | "challenge";
+  | "default"
+  | "disable"
+  | "simulate"
+  | "block"
+  | "challenge";
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleMode =
   /*@__PURE__*/ S.String;
 
@@ -3776,7 +3788,8 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRule =
   }) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRule>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem =
-  "on" | "off";
+  | "on"
+  | "off";
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -3788,7 +3801,8 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAl
   ) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleMode =
-  "on" | "off";
+  | "on"
+  | "off";
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleMode =
   /*@__PURE__*/ S.String;
 
@@ -4567,7 +4581,8 @@ export const PatchWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchWafPackageRuleRequest>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem =
-  "on" | "off";
+  | "on"
+  | "off";
 export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -4624,7 +4639,11 @@ export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRule =
   }) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesAnomalyRule>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem =
-  "default" | "disable" | "simulate" | "block" | "challenge";
+  | "default"
+  | "disable"
+  | "simulate"
+  | "block"
+  | "challenge";
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 
@@ -4636,7 +4655,10 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowed
   ) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleDefaultMode =
-  "disable" | "simulate" | "block" | "challenge";
+  | "disable"
+  | "simulate"
+  | "block"
+  | "challenge";
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleDefaultMode =
   /*@__PURE__*/ S.String;
 
@@ -4690,7 +4712,8 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRule =
   }) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRule>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem =
-  "on" | "off";
+  | "on"
+  | "off";
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem =
   /*@__PURE__*/ S.String;
 

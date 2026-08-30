@@ -337,6 +337,8 @@ export type DetectorFeature =
   | "LAMBDA_NETWORK_LOGS"
   | "EKS_RUNTIME_MONITORING"
   | "RUNTIME_MONITORING"
+  | "AI_PROTECTION"
+  | "AI_ANALYST"
   | (string & {});
 export const DetectorFeature = /*@__PURE__*/ S.String;
 
@@ -1955,6 +1957,7 @@ export type OrgFeature =
   | "LAMBDA_NETWORK_LOGS"
   | "EKS_RUNTIME_MONITORING"
   | "RUNTIME_MONITORING"
+  | "AI_PROTECTION"
   | (string & {});
 export const OrgFeature = /*@__PURE__*/ S.String;
 
@@ -2574,6 +2577,8 @@ export type DetectorFeatureResult =
   | "LAMBDA_NETWORK_LOGS"
   | "EKS_RUNTIME_MONITORING"
   | "RUNTIME_MONITORING"
+  | "AI_PROTECTION"
+  | "AI_ANALYST"
   | (string & {});
 export const DetectorFeatureResult = /*@__PURE__*/ S.String;
 
@@ -2696,6 +2701,7 @@ export const GetFilterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFilterRequest",
 }) as any as S.Schema<GetFilterRequest>;
+export type FilterVersion = number;
 export interface GetFilterResponse {
   Name: string;
   Description?: string;
@@ -2703,6 +2709,9 @@ export interface GetFilterResponse {
   Rank?: number;
   FindingCriteria: FindingCriteria;
   Tags?: { [key: string]: string | undefined };
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  Version?: number;
 }
 export const GetFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2712,6 +2721,9 @@ export const GetFilterResponse = /*@__PURE__*/ S.suspend(() =>
     Rank: S.optional(S.Number),
     FindingCriteria: S.optional(FindingCriteria),
     Tags: S.optional(TagMap),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Version: S.optional(S.Number),
   }).pipe(
     S.encodeKeys({
       Name: "name",
@@ -2720,6 +2732,9 @@ export const GetFilterResponse = /*@__PURE__*/ S.suspend(() =>
       Rank: "rank",
       FindingCriteria: "findingCriteria",
       Tags: "tags",
+      CreatedAt: "createdAt",
+      UpdatedAt: "updatedAt",
+      Version: "version",
     }),
   ),
 ).annotate({
@@ -3610,23 +3625,137 @@ export const Ec2ImageDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "Ec2ImageDetails",
 }) as any as S.Schema<Ec2ImageDetails>;
+export interface ScanConfigurationContinuousScanDetails {
+  StartTime?: Date;
+  EndTime: Date;
+}
+export const ScanConfigurationContinuousScanDetails = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }).pipe(S.encodeKeys({ StartTime: "startTime", EndTime: "endTime" })),
+).annotate({
+  identifier: "ScanConfigurationContinuousScanDetails",
+}) as any as S.Schema<ScanConfigurationContinuousScanDetails>;
 export interface RecoveryPointDetails {
   RecoveryPointArn?: string;
   BackupVaultName?: string;
+  ContinuousScanDetails?: ScanConfigurationContinuousScanDetails;
 }
 export const RecoveryPointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecoveryPointArn: S.optional(S.String),
     BackupVaultName: S.optional(S.String),
+    ContinuousScanDetails: S.optional(ScanConfigurationContinuousScanDetails),
   }).pipe(
     S.encodeKeys({
       RecoveryPointArn: "recoveryPointArn",
       BackupVaultName: "backupVaultName",
+      ContinuousScanDetails: "continuousScanDetails",
     }),
   ),
 ).annotate({
   identifier: "RecoveryPointDetails",
 }) as any as S.Schema<RecoveryPointDetails>;
+export interface BedrockGuardrail {
+  Arn?: string;
+  Version?: string;
+}
+export const BedrockGuardrail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.optional(S.String), Version: S.optional(S.String) }).pipe(
+    S.encodeKeys({ Arn: "arn", Version: "version" }),
+  ),
+).annotate({
+  identifier: "BedrockGuardrail",
+}) as any as S.Schema<BedrockGuardrail>;
+export type BedrockGuardrails = BedrockGuardrail[];
+export const BedrockGuardrails = /*@__PURE__*/ S.Array(BedrockGuardrail);
+export type GuardrailAction = "GUARDRAIL_INTERVENED" | "NONE" | (string & {});
+export const GuardrailAction = /*@__PURE__*/ S.String;
+
+export type GuardrailSource = "INPUT" | "OUTPUT" | (string & {});
+export const GuardrailSource = /*@__PURE__*/ S.String;
+
+export type ContentPolicyFilterType =
+  | "PROMPT_ATTACK"
+  | "JAILBREAK"
+  | "HATE"
+  | "INSULTS"
+  | "SEXUAL"
+  | "VIOLENCE"
+  | "MISCONDUCT"
+  | (string & {});
+export const ContentPolicyFilterType = /*@__PURE__*/ S.String;
+
+export type ConfidenceLevel =
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | "NONE"
+  | (string & {});
+export const ConfidenceLevel = /*@__PURE__*/ S.String;
+
+export type ContentPolicyFilterAction = "BLOCKED" | "NONE" | (string & {});
+export const ContentPolicyFilterAction = /*@__PURE__*/ S.String;
+
+export interface ContentPolicyFilter {
+  Type?: ContentPolicyFilterType;
+  Confidence?: ConfidenceLevel;
+  Action?: ContentPolicyFilterAction;
+}
+export const ContentPolicyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.optional(ContentPolicyFilterType),
+    Confidence: S.optional(ConfidenceLevel),
+    Action: S.optional(ContentPolicyFilterAction),
+  }).pipe(
+    S.encodeKeys({ Type: "type", Confidence: "confidence", Action: "action" }),
+  ),
+).annotate({
+  identifier: "ContentPolicyFilter",
+}) as any as S.Schema<ContentPolicyFilter>;
+export type ContentPolicyFilters = ContentPolicyFilter[];
+export const ContentPolicyFilters = /*@__PURE__*/ S.Array(ContentPolicyFilter);
+export interface BedrockGuardrailDetails {
+  GuardrailArn?: string;
+  GuardrailVersion?: string;
+  Guardrails?: BedrockGuardrail[];
+  GuardrailAction?: GuardrailAction;
+  GuardrailSource?: GuardrailSource;
+  ContentPolicyFilters?: ContentPolicyFilter[];
+}
+export const BedrockGuardrailDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GuardrailArn: S.optional(S.String),
+    GuardrailVersion: S.optional(S.String),
+    Guardrails: S.optional(BedrockGuardrails),
+    GuardrailAction: S.optional(GuardrailAction),
+    GuardrailSource: S.optional(GuardrailSource),
+    ContentPolicyFilters: S.optional(ContentPolicyFilters),
+  }).pipe(
+    S.encodeKeys({
+      GuardrailArn: "guardrailArn",
+      GuardrailVersion: "guardrailVersion",
+      Guardrails: "guardrails",
+      GuardrailAction: "guardrailAction",
+      GuardrailSource: "guardrailSource",
+      ContentPolicyFilters: "contentPolicyFilters",
+    }),
+  ),
+).annotate({
+  identifier: "BedrockGuardrailDetails",
+}) as any as S.Schema<BedrockGuardrailDetails>;
+export interface ModelDetail {
+  ModelId?: string;
+}
+export const ModelDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ModelId: S.optional(S.String) }).pipe(
+    S.encodeKeys({ ModelId: "modelId" }),
+  ),
+).annotate({ identifier: "ModelDetail" }) as any as S.Schema<ModelDetail>;
+export type ModelDetails = ModelDetail[];
+export const ModelDetails = /*@__PURE__*/ S.Array(ModelDetail);
 export interface Resource {
   AccessKeyDetails?: AccessKeyDetails;
   S3BucketDetails?: S3BucketDetail[];
@@ -3644,6 +3773,8 @@ export interface Resource {
   EbsSnapshotDetails?: EbsSnapshotDetails;
   Ec2ImageDetails?: Ec2ImageDetails;
   RecoveryPointDetails?: RecoveryPointDetails;
+  BedrockGuardrailDetails?: BedrockGuardrailDetails;
+  ModelDetails?: ModelDetail[];
 }
 export const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3663,6 +3794,8 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
     EbsSnapshotDetails: S.optional(EbsSnapshotDetails),
     Ec2ImageDetails: S.optional(Ec2ImageDetails),
     RecoveryPointDetails: S.optional(RecoveryPointDetails),
+    BedrockGuardrailDetails: S.optional(BedrockGuardrailDetails),
+    ModelDetails: S.optional(ModelDetails),
   }).pipe(
     S.encodeKeys({
       AccessKeyDetails: "accessKeyDetails",
@@ -3681,6 +3814,8 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
       EbsSnapshotDetails: "ebsSnapshotDetails",
       Ec2ImageDetails: "ec2ImageDetails",
       RecoveryPointDetails: "recoveryPointDetails",
+      BedrockGuardrailDetails: "bedrockGuardrailDetails",
+      ModelDetails: "modelDetails",
     }),
   ),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
@@ -4551,7 +4686,7 @@ export const RuntimeDetails = /*@__PURE__*/ S.suspend(() =>
     Context: S.optional(RuntimeContext),
   }).pipe(S.encodeKeys({ Process: "process", Context: "context" })),
 ).annotate({ identifier: "RuntimeDetails" }) as any as S.Schema<RuntimeDetails>;
-export type ProfileType = "FREQUENCY" | (string & {});
+export type ProfileType = "FREQUENCY" | "VOLUME" | (string & {});
 export const ProfileType = /*@__PURE__*/ S.String;
 
 export type ProfileSubtype =
@@ -4559,18 +4694,24 @@ export type ProfileSubtype =
   | "INFREQUENT"
   | "UNSEEN"
   | "RARE"
+  | "COUNT"
+  | "AVERAGE"
   | (string & {});
 export const ProfileSubtype = /*@__PURE__*/ S.String;
 
 export type ObservationTexts = string[];
 export const ObservationTexts = /*@__PURE__*/ S.Array(S.String);
+export type ObservationNumbers = number[];
+export const ObservationNumbers = /*@__PURE__*/ S.Array(S.Number);
 export interface Observations {
   Text?: string[];
+  Number?: number[];
 }
 export const Observations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Text: S.optional(ObservationTexts) }).pipe(
-    S.encodeKeys({ Text: "text" }),
-  ),
+  S.Struct({
+    Text: S.optional(ObservationTexts),
+    Number: S.optional(ObservationNumbers),
+  }).pipe(S.encodeKeys({ Text: "text", Number: "number" })),
 ).annotate({ identifier: "Observations" }) as any as S.Schema<Observations>;
 export interface AnomalyObject {
   ProfileType?: ProfileType;
@@ -6469,19 +6610,6 @@ export const ScannedResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScannedResource>;
 export type ScannedResources = ScannedResource[];
 export const ScannedResources = /*@__PURE__*/ S.Array(ScannedResource);
-export interface ScanConfigurationContinuousScanDetails {
-  StartTime?: Date;
-  EndTime: Date;
-}
-export const ScanConfigurationContinuousScanDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }).pipe(S.encodeKeys({ StartTime: "startTime", EndTime: "endTime" })),
-).annotate({
-  identifier: "ScanConfigurationContinuousScanDetails",
-}) as any as S.Schema<ScanConfigurationContinuousScanDetails>;
 export interface ScanConfigurationRecoveryPoint {
   BackupVaultName?: string;
   ContinuousScanDetails?: ScanConfigurationContinuousScanDetails;
@@ -7244,6 +7372,7 @@ export type FreeTrialFeatureResult =
   | "EKS_RUNTIME_MONITORING"
   | "EC2_RUNTIME_MONITORING"
   | "FARGATE_RUNTIME_MONITORING"
+  | "AI_PROTECTION"
   | (string & {});
 export const FreeTrialFeatureResult = /*@__PURE__*/ S.String;
 
@@ -7562,6 +7691,7 @@ export type UsageFeature =
   | "FARGATE_RUNTIME_MONITORING"
   | "RDS_DBI_PROTECTION_PROVISIONED"
   | "RDS_DBI_PROTECTION_SERVERLESS"
+  | "AI_PROTECTION"
   | (string & {});
 export const UsageFeature = /*@__PURE__*/ S.String;
 

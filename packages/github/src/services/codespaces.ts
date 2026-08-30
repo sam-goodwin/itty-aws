@@ -645,13 +645,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -1262,7 +1264,8 @@ export const CreateOrUpdateRepoSecretResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
 
 export type CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem =
-  number | string;
+  | number
+  | string;
 export const CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem>;
 

@@ -67,21 +67,21 @@ export class NotFound
 
 /** `Release` is a named reference to a `Ruleset`. Once a `Release` refers to a `Ruleset`, rules-enabled services will be able to enforce the `Ruleset`. */
 export interface Release {
-  /** Required. Format: `projects/{project_id}/releases/{release_id}` */
-  name?: string;
   /** Required. Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created. */
   rulesetName?: string;
-  /** Output only. Time the release was created. */
-  createTime?: string;
+  /** Required. Format: `projects/{project_id}/releases/{release_id}` */
+  name?: string;
   /** Output only. Time the release was updated. */
   updateTime?: string;
+  /** Output only. Time the release was created. */
+  createTime?: string;
 }
 export const Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     rulesetName: S.optional(S.String),
-    createTime: S.optional(S.String),
+    name: S.optional(S.String),
     updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Release" }) as any as S.Schema<Release>;
 
@@ -161,10 +161,10 @@ export interface Ruleset {
   name?: string;
   /** Required. `Source` for the `Ruleset`. */
   source?: Source;
-  /** Output only. Time the `Ruleset` was created. */
-  createTime?: string;
   /** Output only. The metadata for this ruleset. */
   metadata?: Metadata;
+  /** Output only. Time the `Ruleset` was created. */
+  createTime?: string;
   /** Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/ */
   attachmentPoint?: string;
 }
@@ -172,8 +172,8 @@ export const Ruleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     source: S.optional(Source),
-    createTime: S.optional(S.String),
     metadata: S.optional(Metadata),
+    createTime: S.optional(S.String),
     attachmentPoint: S.optional(S.String),
   }),
 ).annotate({ identifier: "Ruleset" }) as any as S.Schema<Ruleset>;
@@ -274,12 +274,6 @@ export const GetExecutableProjectsReleasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetExecutableProjectsReleasesRequest",
 }) as any as S.Schema<GetExecutableProjectsReleasesRequest>;
 
-export type GetReleaseExecutableResponseLanguageEnum =
-  | "LANGUAGE_UNSPECIFIED"
-  | "FIREBASE_RULES"
-  | "EVENT_FLOW_TRIGGERS";
-export const GetReleaseExecutableResponseLanguageEnum = /*@__PURE__*/ S.String;
-
 export type GetReleaseExecutableResponseExecutableVersionEnum =
   | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
   | "FIREBASE_RULES_EXECUTABLE_V1"
@@ -287,30 +281,36 @@ export type GetReleaseExecutableResponseExecutableVersionEnum =
 export const GetReleaseExecutableResponseExecutableVersionEnum =
   /*@__PURE__*/ S.String;
 
+export type GetReleaseExecutableResponseLanguageEnum =
+  | "LANGUAGE_UNSPECIFIED"
+  | "FIREBASE_RULES"
+  | "EVENT_FLOW_TRIGGERS";
+export const GetReleaseExecutableResponseLanguageEnum = /*@__PURE__*/ S.String;
+
 /** The response for FirebaseRulesService.GetReleaseExecutable */
 export interface GetReleaseExecutableResponse {
-  /** Executable view of the `Ruleset` referenced by the `Release`. */
-  executable?: string;
-  /** `Language` used to generate the executable bytes. */
-  language?: GetReleaseExecutableResponseLanguageEnum;
   /** `Ruleset` name associated with the `Release` executable. */
   rulesetName?: string;
-  /** Timestamp for the most recent `Release.update_time`. */
-  updateTime?: string;
+  /** Executable view of the `Ruleset` referenced by the `Release`. */
+  executable?: string;
   /** The Rules runtime version of the executable. */
   executableVersion?: GetReleaseExecutableResponseExecutableVersionEnum;
+  /** `Language` used to generate the executable bytes. */
+  language?: GetReleaseExecutableResponseLanguageEnum;
+  /** Timestamp for the most recent `Release.update_time`. */
+  updateTime?: string;
   /** Optional, indicates the freshness of the result. The response is guaranteed to be the latest within an interval up to the sync_time (inclusive). */
   syncTime?: string;
 }
 export const GetReleaseExecutableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    executable: S.optional(S.String),
-    language: S.optional(GetReleaseExecutableResponseLanguageEnum),
     rulesetName: S.optional(S.String),
-    updateTime: S.optional(S.String),
+    executable: S.optional(S.String),
     executableVersion: S.optional(
       GetReleaseExecutableResponseExecutableVersionEnum,
     ),
+    language: S.optional(GetReleaseExecutableResponseLanguageEnum),
+    updateTime: S.optional(S.String),
     syncTime: S.optional(S.String),
   }),
 ).annotate({
@@ -358,17 +358,17 @@ export interface ListProjectsReleasesRequest {
   name: string;
   /** Optional. `Release` filter. The list method supports filters with restrictions on the `Release.name`, and `Release.ruleset_name`. Example 1: A filter of 'name=prod*' might return `Release`s with names within 'projects/foo' prefixed with 'prod': Name -> Ruleset Name: * projects/foo/releases/prod -> projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v1 -> projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v2 -> projects/foo/rulesets/uuid8888 Example 2: A filter of `name=prod* ruleset_name=uuid1234` would return only `Release` instances for 'projects/foo' with names prefixed with 'prod' referring to the same `Ruleset` name of 'uuid1234': Name -> Ruleset Name: * projects/foo/releases/prod -> projects/foo/rulesets/1234 * projects/foo/releases/prod/v1 -> projects/foo/rulesets/1234 In the examples, the filter parameters refer to the search filters are relative to the project. Fully qualified prefixed may also be used. */
   filter?: string;
-  /** Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load fewer than `page_size` results due to the size of the output. To traverse all of the releases, the caller should iterate until the `page_token` on the response is empty. */
-  pageSize?: number;
   /** Optional. Next page token for the next batch of `Release` instances. */
   pageToken?: string;
+  /** Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load fewer than `page_size` results due to the size of the output. To traverse all of the releases, the caller should iterate until the `page_token` on the response is empty. */
+  pageSize?: number;
 }
 export const ListProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -406,17 +406,17 @@ export interface ListProjectsRulesetsRequest {
   name: string;
   /** Optional. `Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`. Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to the RFC 3339 date/time specifications. Example: `create_time > date("2017-01-01T00:00:00Z") AND name=UUID-*` */
   filter?: string;
-  /** Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load less than `page_size` due to the size of the output. To traverse all of the releases, caller should iterate until the `page_token` is empty. */
-  pageSize?: number;
   /** Optional. Next page token for loading the next batch of `Ruleset` instances. */
   pageToken?: string;
+  /** Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load less than `page_size` due to the size of the output. To traverse all of the releases, caller should iterate until the `page_token` is empty. */
+  pageSize?: number;
 }
 export const ListProjectsRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -486,57 +486,51 @@ export const PatchProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchProjectsReleasesRequest",
 }) as any as S.Schema<PatchProjectsReleasesRequest>;
 
-export type TestCaseExpectationEnum =
-  | "EXPECTATION_UNSPECIFIED"
-  | "ALLOW"
-  | "DENY";
-export const TestCaseExpectationEnum = /*@__PURE__*/ S.String;
+/** Possible result values from the function mock invocation. */
+export interface Result {
+  /** The result is undefined, meaning the result could not be computed. */
+  undefined?: Empty;
+  /** The result is an actual value. The type of the value must match that of the type declared by the service. */
+  value?: unknown;
+}
+export const Result = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    undefined: S.optional(Empty),
+    value: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
 /** Arg matchers for the mock function. */
 export interface Arg {
-  /** Argument exactly matches value provided. */
-  exactValue?: unknown;
   /** Argument matches any value provided. */
   anyValue?: Empty;
+  /** Argument exactly matches value provided. */
+  exactValue?: unknown;
 }
 export const Arg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exactValue: S.optional(S.Unknown),
     anyValue: S.optional(Empty),
+    exactValue: S.optional(S.Unknown),
   }),
 ).annotate({ identifier: "Arg" }) as any as S.Schema<Arg>;
 
 export type ArgList = Array<Arg>;
 export const ArgList = /*@__PURE__*/ S.Array(Arg) as any as S.Schema<ArgList>;
 
-/** Possible result values from the function mock invocation. */
-export interface Result {
-  /** The result is an actual value. The type of the value must match that of the type declared by the service. */
-  value?: unknown;
-  /** The result is undefined, meaning the result could not be computed. */
-  undefined?: Empty;
-}
-export const Result = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Unknown),
-    undefined: S.optional(Empty),
-  }),
-).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
-
 /** Mock function definition. Mocks must refer to a function declared by the target service. The type of the function args and result will be inferred at test time. If either the arg or result values are not compatible with function type declaration, the request will be considered invalid. More than one `FunctionMock` may be provided for a given function name so long as the `Arg` matchers are distinct. There may be only one function for a given overload where all `Arg` values are `Arg.any_value`. */
 export interface FunctionMock {
   /** The name of the function. The function name must match one provided by a service declaration. */
   function?: string;
-  /** The list of `Arg` values to match. The order in which the arguments are provided is the order in which they must appear in the function invocation. */
-  args?: ArgList;
   /** The mock result of the function call. */
   result?: Result;
+  /** The list of `Arg` values to match. The order in which the arguments are provided is the order in which they must appear in the function invocation. */
+  args?: ArgList;
 }
 export const FunctionMock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(S.String),
-    args: S.optional(ArgList),
     result: S.optional(Result),
+    args: S.optional(ArgList),
   }),
 ).annotate({ identifier: "FunctionMock" }) as any as S.Schema<FunctionMock>;
 
@@ -544,6 +538,12 @@ export type FunctionMockList = Array<FunctionMock>;
 export const FunctionMockList = /*@__PURE__*/ S.Array(
   FunctionMock,
 ) as any as S.Schema<FunctionMockList>;
+
+export type TestCaseExpectationEnum =
+  | "EXPECTATION_UNSPECIFIED"
+  | "ALLOW"
+  | "DENY";
+export const TestCaseExpectationEnum = /*@__PURE__*/ S.String;
 
 export type TestCasePathEncodingEnum =
   | "ENCODING_UNSPECIFIED"
@@ -560,14 +560,14 @@ export const TestCaseExpressionReportLevelEnum = /*@__PURE__*/ S.String;
 
 /** `TestCase` messages provide the request context and an expectation as to whether the given context will be allowed or denied. Test cases may specify the `request`, `resource`, and `function_mocks` to mock a function call to a service-provided function. The `request` object represents context present at request-time. The `resource` is the value of the target resource as it appears in persistent storage before the request is executed. */
 export interface TestCase {
-  /** Test expectation. */
-  expectation?: TestCaseExpectationEnum | (string & {});
+  /** Optional function mocks for service-defined functions. If not set, any service defined function is expected to return an error, which may or may not influence the test outcome. */
+  functionMocks?: FunctionMockList;
   /** Request context. The exact format of the request context is service-dependent. See the appropriate service documentation for information about the supported fields and types on the request. Minimally, all services support the following fields and types: Request field | Type ---------------|----------------- auth.uid | `string` auth.token | `map` headers | `map` method | `string` params | `map` path | `string` time | `google.protobuf.Timestamp` If the request value is not well-formed for the service, the request will be rejected as an invalid argument. */
   request?: unknown;
   /** Optional resource value as it appears in persistent storage before the request is fulfilled. The resource type depends on the `request.path` value. */
   resource?: unknown;
-  /** Optional function mocks for service-defined functions. If not set, any service defined function is expected to return an error, which may or may not influence the test outcome. */
-  functionMocks?: FunctionMockList;
+  /** Test expectation. */
+  expectation?: TestCaseExpectationEnum | (string & {});
   /** Specifies whether paths (such as request.path) are encoded and how. */
   pathEncoding?: TestCasePathEncodingEnum | (string & {});
   /** Specifies what should be included in the response. */
@@ -575,10 +575,10 @@ export interface TestCase {
 }
 export const TestCase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    expectation: S.optional(TestCaseExpectationEnum),
+    functionMocks: S.optional(FunctionMockList),
     request: S.optional(S.Unknown),
     resource: S.optional(S.Unknown),
-    functionMocks: S.optional(FunctionMockList),
+    expectation: S.optional(TestCaseExpectationEnum),
     pathEncoding: S.optional(TestCasePathEncodingEnum),
     expressionReportLevel: S.optional(TestCaseExpressionReportLevelEnum),
   }),
@@ -639,10 +639,10 @@ export const TestProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Position in the `Source` content including its line, column number, and an index of the `File` in the `Source` message. Used for debug purposes. */
 export interface SourcePosition {
-  /** Name of the `File`. */
-  fileName?: string;
   /** Line number of the source fragment. 1-based. */
   line?: number;
+  /** Name of the `File`. */
+  fileName?: string;
   /** First column on the source line associated with the source fragment. */
   column?: number;
   /** Start position relative to the beginning of the file. */
@@ -652,8 +652,8 @@ export interface SourcePosition {
 }
 export const SourcePosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fileName: S.optional(S.String),
     line: S.optional(S.Number),
+    fileName: S.optional(S.String),
     column: S.optional(S.Number),
     currentOffset: S.optional(S.Number),
     endOffset: S.optional(S.Number),
@@ -669,17 +669,17 @@ export const IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Issues include warnings, errors, and deprecation notices. */
 export interface Issue {
-  /** Position of the issue in the `Source`. */
-  sourcePosition?: SourcePosition;
   /** Short error description. */
   description?: string;
+  /** Position of the issue in the `Source`. */
+  sourcePosition?: SourcePosition;
   /** The severity of the issue. */
   severity?: IssueSeverityEnum;
 }
 export const Issue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sourcePosition: S.optional(SourcePosition),
     description: S.optional(S.String),
+    sourcePosition: S.optional(SourcePosition),
     severity: S.optional(IssueSeverityEnum),
   }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
@@ -691,6 +691,27 @@ export const IssueList = /*@__PURE__*/ S.Array(
 
 export type TestResultStateEnum = "STATE_UNSPECIFIED" | "SUCCESS" | "FAILURE";
 export const TestResultStateEnum = /*@__PURE__*/ S.String;
+
+/** Store the position and access outcome for an expression visited in rules. */
+export interface VisitedExpression {
+  /** The evaluated value for the visited expression, e.g. true/false */
+  value?: unknown;
+  /** Position in the `Source` or `Ruleset` where an expression was visited. */
+  sourcePosition?: SourcePosition;
+}
+export const VisitedExpression = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.Unknown),
+    sourcePosition: S.optional(SourcePosition),
+  }),
+).annotate({
+  identifier: "VisitedExpression",
+}) as any as S.Schema<VisitedExpression>;
+
+export type VisitedExpressionList = Array<VisitedExpression>;
+export const VisitedExpressionList = /*@__PURE__*/ S.Array(
+  VisitedExpression,
+) as any as S.Schema<VisitedExpressionList>;
 
 export type DocumentList = Array<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
@@ -716,27 +737,6 @@ export const FunctionCallList = /*@__PURE__*/ S.Array(
   FunctionCall,
 ) as any as S.Schema<FunctionCallList>;
 
-/** Store the position and access outcome for an expression visited in rules. */
-export interface VisitedExpression {
-  /** Position in the `Source` or `Ruleset` where an expression was visited. */
-  sourcePosition?: SourcePosition;
-  /** The evaluated value for the visited expression, e.g. true/false */
-  value?: unknown;
-}
-export const VisitedExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourcePosition: S.optional(SourcePosition),
-    value: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "VisitedExpression",
-}) as any as S.Schema<VisitedExpression>;
-
-export type VisitedExpressionList = Array<VisitedExpression>;
-export const VisitedExpressionList = /*@__PURE__*/ S.Array(
-  VisitedExpression,
-) as any as S.Schema<VisitedExpressionList>;
-
 /** Tuple for how many times an Expression was evaluated to a particular ExpressionValue. */
 export interface ValueCount {
   /** The return value of the expression */
@@ -760,16 +760,16 @@ export const ValueCountList = /*@__PURE__*/ S.Array(
 export interface ExpressionReport {
   /** Position of expression in original rules source. */
   sourcePosition?: SourcePosition;
-  /** Values that this expression evaluated to when encountered. */
-  values?: ValueCountList;
   /** Subexpressions */
   children?: ExpressionReportList;
+  /** Values that this expression evaluated to when encountered. */
+  values?: ValueCountList;
 }
 export const ExpressionReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourcePosition: S.optional(SourcePosition),
-    values: S.optional(ValueCountList),
     children: S.optional(S.suspend(() => ExpressionReportList)),
+    values: S.optional(ValueCountList),
   }),
 ).annotate({
   identifier: "ExpressionReport",
@@ -782,26 +782,26 @@ export const ExpressionReportList = /*@__PURE__*/ S.Array(
 
 /** Test result message containing the state of the test as well as a description and source position for test failures. */
 export interface TestResult {
+  /** Position in the `Source` or `Ruleset` where the principle runtime error occurs. Evaluation of an expression may result in an error. Rules are deny by default, so a `DENY` expectation when an error is generated is valid. When there is a `DENY` with an error, the `SourcePosition` is returned. E.g. `error_position { line: 19 column: 37 }` */
+  errorPosition?: SourcePosition;
   /** State of the test. */
   state?: TestResultStateEnum;
   /** Debug messages related to test execution issues encountered during evaluation. Debug messages may be related to too many or too few invocations of function mocks or to runtime errors that occur during evaluation. For example: ```Unable to read variable [name: "resource"]``` */
   debugMessages?: StringList;
-  /** Position in the `Source` or `Ruleset` where the principle runtime error occurs. Evaluation of an expression may result in an error. Rules are deny by default, so a `DENY` expectation when an error is generated is valid. When there is a `DENY` with an error, the `SourcePosition` is returned. E.g. `error_position { line: 19 column: 37 }` */
-  errorPosition?: SourcePosition;
-  /** The set of function calls made to service-defined methods. Function calls are included in the order in which they are encountered during evaluation, are provided for both mocked and unmocked functions, and included on the response regardless of the test `state`. */
-  functionCalls?: FunctionCallList;
   /** The set of visited permission expressions for a given test. This returns the positions and evaluation results of all visited permission expressions which were relevant to the test case, e.g. ``` match /path { allow read if: } ``` For a detailed report of the intermediate evaluation states, see the `expression_reports` field */
   visitedExpressions?: VisitedExpressionList;
+  /** The set of function calls made to service-defined methods. Function calls are included in the order in which they are encountered during evaluation, are provided for both mocked and unmocked functions, and included on the response regardless of the test `state`. */
+  functionCalls?: FunctionCallList;
   /** The mapping from expression in the ruleset AST to the values they were evaluated to. Partially-nested to mirror AST structure. Note that this field is actually tracking expressions and not permission statements in contrast to the "visited_expressions" field above. Literal expressions are omitted. */
   expressionReports?: ExpressionReportList;
 }
 export const TestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    errorPosition: S.optional(SourcePosition),
     state: S.optional(TestResultStateEnum),
     debugMessages: S.optional(StringList),
-    errorPosition: S.optional(SourcePosition),
-    functionCalls: S.optional(FunctionCallList),
     visitedExpressions: S.optional(VisitedExpressionList),
+    functionCalls: S.optional(FunctionCallList),
     expressionReports: S.optional(ExpressionReportList),
   }),
 ).annotate({ identifier: "TestResult" }) as any as S.Schema<TestResult>;

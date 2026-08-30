@@ -110,7 +110,8 @@ export const JsonWebKeySet = /*@__PURE__*/ S.suspend(() =>
 
 /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
 export type AttestationServiceCreationSpecificParamsTpmAttestationAuthentication =
-  "Enabled" | "Disabled";
+  | "Enabled"
+  | "Disabled";
 export const AttestationServiceCreationSpecificParamsTpmAttestationAuthentication =
   /*@__PURE__*/ S.String;
 

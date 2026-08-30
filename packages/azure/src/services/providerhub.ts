@@ -43,11 +43,14 @@ export interface ApplicationDataAuthorization {
   role: Role | (string & {});
   /** The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types */
   resourceTypes?: ApplicationDataAuthorizationResourceTypesList;
+  /** Exclude application id from 'providerAuthorizations' section of manifest? */
+  excludeApplicationIdFromManifest?: boolean;
 }
 export const ApplicationDataAuthorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: Role,
     resourceTypes: S.optional(ApplicationDataAuthorizationResourceTypesList),
+    excludeApplicationIdFromManifest: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "ApplicationDataAuthorization",
@@ -117,7 +120,7 @@ export const AuthorizedApplicationsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -208,7 +211,7 @@ export const AuthorizedApplicationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -240,7 +243,7 @@ export const AuthorizedApplicationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -285,7 +288,7 @@ export const AuthorizedApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -362,7 +365,7 @@ export const CheckinManifestRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/checkinManifest",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -581,7 +584,8 @@ export type ResourceProviderType =
   | "RegistrationFree"
   | "LegacyRegistrationRequired"
   | "TenantOnly"
-  | "AuthorizationFree";
+  | "AuthorizationFree"
+  | "Decommissioned";
 export const ResourceProviderType = /*@__PURE__*/ S.String;
 
 /** The required features. */
@@ -803,6 +807,14 @@ export const ResourceProviderManagementCanaryManifestOwnersList =
     S.String,
   ) as any as S.Schema<ResourceProviderManagementCanaryManifestOwnersList>;
 
+/** List of feature management owners. */
+export type ResourceProviderManagementFeatureManagementOwnersList =
+  Array<string>;
+export const ResourceProviderManagementFeatureManagementOwnersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ResourceProviderManagementFeatureManagementOwnersList>;
+
 export interface ResourceProviderManagement {
   /** The schema owners. */
   schemaOwners?: ResourceProviderManagementSchemaOwnersList;
@@ -834,6 +846,8 @@ export interface ResourceProviderManagement {
   pcCode?: string;
   /** The profit center program id for the subscription. */
   profitCenterProgramId?: string;
+  /** List of feature management owners. */
+  featureManagementOwners?: ResourceProviderManagementFeatureManagementOwnersList;
 }
 export const ResourceProviderManagement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -866,6 +880,9 @@ export const ResourceProviderManagement = /*@__PURE__*/ S.suspend(() =>
     ),
     pcCode: S.optional(S.String),
     profitCenterProgramId: S.optional(S.String),
+    featureManagementOwners: S.optional(
+      ResourceProviderManagementFeatureManagementOwnersList,
+    ),
   }),
 ).annotate({
   identifier: "ResourceProviderManagement",
@@ -1597,6 +1614,10 @@ export interface ProviderRegistrationProperties {
   privateResourceProviderConfiguration?: PrivateResourceProviderConfiguration;
   /** The token auth configuration. */
   tokenAuthConfiguration?: TokenAuthConfiguration;
+  /** The on behalf of subscription id for the resource provider. */
+  oboSubscriptionId?: string;
+  /** Indicates whether automatic registration for the preset resource types is enabled or disabled. */
+  enablePresetResourceTypes?: boolean;
 }
 export const ProviderRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1664,6 +1685,8 @@ export const ProviderRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
       PrivateResourceProviderConfiguration,
     ),
     tokenAuthConfiguration: S.optional(TokenAuthConfiguration),
+    oboSubscriptionId: S.optional(S.String),
+    enablePresetResourceTypes: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "ProviderRegistrationProperties",
@@ -1756,7 +1779,8 @@ export type ExtensionCategory =
   | "ResourceMoveBegin"
   | "ResourceMoveCompleted"
   | "BestMatchOperationBegin"
-  | "SubscriptionLifecycleNotificationDeletion";
+  | "SubscriptionLifecycleNotificationDeletion"
+  | "ResourceBillingNotification";
 export const ExtensionCategory = /*@__PURE__*/ S.String;
 
 /** The extension categories. */
@@ -1927,7 +1951,12 @@ export const ResourceTypeExtensionOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTypeExtensionOptions>;
 
 /** The marketplace type. */
-export type MarketplaceType = "NotSpecified" | "AddOn" | "Bypass" | "Store";
+export type MarketplaceType =
+  | "NotSpecified"
+  | "AddOn"
+  | "Bypass"
+  | "Store"
+  | "ProviderHub";
 export const MarketplaceType = /*@__PURE__*/ S.String;
 
 /** The api versions. */
@@ -2021,6 +2050,12 @@ export const ResourceTypeRegistrationPropertiesAuthorizationActionMappingsList =
     AuthorizationActionMapping,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesAuthorizationActionMappingsList>;
 
+/** The options for the linked access check. */
+export type LinkedAccessCheckOptions =
+  | "NotSpecified"
+  | "IgnoreEmptyStringLinkedType";
+export const LinkedAccessCheckOptions = /*@__PURE__*/ S.String;
+
 export interface LinkedAccessCheck {
   /** The action name. */
   actionName?: string;
@@ -2032,6 +2067,8 @@ export interface LinkedAccessCheck {
   linkedActionVerb?: string;
   /** The linked type. */
   linkedType?: string;
+  /** The options for the linked access check. */
+  options?: LinkedAccessCheckOptions | (string & {});
 }
 export const LinkedAccessCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2040,6 +2077,7 @@ export const LinkedAccessCheck = /*@__PURE__*/ S.suspend(() =>
     linkedAction: S.optional(S.String),
     linkedActionVerb: S.optional(S.String),
     linkedType: S.optional(S.String),
+    options: S.optional(LinkedAccessCheckOptions),
   }),
 ).annotate({
   identifier: "LinkedAccessCheck",
@@ -2135,12 +2173,15 @@ export interface ThrottlingMetric {
   limit: number;
   /** The interval. */
   interval?: string;
+  /** The bucket size. */
+  bucketSize?: string;
 }
 export const ThrottlingMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ThrottlingMetricType,
     limit: S.Number,
     interval: S.optional(S.String),
+    bucketSize: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ThrottlingMetric",
@@ -2377,11 +2418,200 @@ export const ResourceMovePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceMovePolicy>;
 
 /** The resource deletion policy. */
-export type ResourceDeletionPolicy =
+export type RPaaSResourceDeletionPolicy =
   | "NotSpecified"
   | "CascadeDeleteAll"
-  | "CascadeDeleteProxyOnlyChildren";
+  | "CascadeDeleteProxyOnlyChildren"
+  | "Cascade"
+  | "Force";
+export const RPaaSResourceDeletionPolicy = /*@__PURE__*/ S.String;
+
+/** The resource deletion policy. */
+export type ResourceDeletionPolicy =
+  | "NotSpecified"
+  | "Cascade"
+  | "Force"
+  | "SoftDelete";
 export const ResourceDeletionPolicy = /*@__PURE__*/ S.String;
+
+/** The resource deletion policy properties. */
+export interface ResourceDeletionPolicyProperties {
+  /** The minimum retention time. */
+  minimumRetentionTime?: string;
+  /** The maximum retention time. */
+  maximumRetentionTime?: string;
+}
+export const ResourceDeletionPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimumRetentionTime: S.optional(S.String),
+    maximumRetentionTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceDeletionPolicyProperties",
+}) as any as S.Schema<ResourceDeletionPolicyProperties>;
+
+/** The individual resource deletion policy. */
+export interface ResourceDeletionPolicyAndProperties {
+  /** The resource deletion policy name. */
+  policyName?: ResourceDeletionPolicy | (string & {});
+  /** The resource deletion policy properties. */
+  properties?: ResourceDeletionPolicyProperties;
+}
+export const ResourceDeletionPolicyAndProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyName: S.optional(ResourceDeletionPolicy),
+    properties: S.optional(ResourceDeletionPolicyProperties),
+  }),
+).annotate({
+  identifier: "ResourceDeletionPolicyAndProperties",
+}) as any as S.Schema<ResourceDeletionPolicyAndProperties>;
+
+/** List of resource deletion policies added. */
+export type ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList =
+  Array<ResourceDeletionPolicyAndProperties>;
+export const ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList =
+  /*@__PURE__*/ S.Array(
+    ResourceDeletionPolicyAndProperties,
+  ) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList>;
+
+/** The application ids. */
+export type ResourceTypeManagedResourceGroupConfigurationApplicationIdsList =
+  Array<string>;
+export const ResourceTypeManagedResourceGroupConfigurationApplicationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ResourceTypeManagedResourceGroupConfigurationApplicationIdsList>;
+
+/** The actions excluded from the deny assignment. */
+export type ManagedResourceGroupDenyAssignmentConfigurationNotActionsList =
+  Array<string>;
+export const ManagedResourceGroupDenyAssignmentConfigurationNotActionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ManagedResourceGroupDenyAssignmentConfigurationNotActionsList>;
+
+/** The deny assignment configuration for the managed resource group. */
+export interface ManagedResourceGroupDenyAssignmentConfiguration {
+  /** Indicates whether the deny assignment configuration is enabled. */
+  enabled?: boolean;
+  /** The actions excluded from the deny assignment. */
+  notActions?: ManagedResourceGroupDenyAssignmentConfigurationNotActionsList;
+}
+export const ManagedResourceGroupDenyAssignmentConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      notActions: S.optional(
+        ManagedResourceGroupDenyAssignmentConfigurationNotActionsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ManagedResourceGroupDenyAssignmentConfiguration",
+  }) as any as S.Schema<ManagedResourceGroupDenyAssignmentConfiguration>;
+
+/** The managed resource group configuration for the resource type. */
+export interface ResourceTypeManagedResourceGroupConfiguration {
+  /** Indicates whether the managed resource group configuration is enabled. */
+  enabled?: boolean;
+  /** The resource group location override. */
+  resourceGroupLocationOverride?: string;
+  /** The application ids. */
+  applicationIds?: ResourceTypeManagedResourceGroupConfigurationApplicationIdsList;
+  /** The deny assignment configuration. */
+  denyAssignmentConfiguration?: ManagedResourceGroupDenyAssignmentConfiguration;
+}
+export const ResourceTypeManagedResourceGroupConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      resourceGroupLocationOverride: S.optional(S.String),
+      applicationIds: S.optional(
+        ResourceTypeManagedResourceGroupConfigurationApplicationIdsList,
+      ),
+      denyAssignmentConfiguration: S.optional(
+        ManagedResourceGroupDenyAssignmentConfiguration,
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourceTypeManagedResourceGroupConfiguration",
+  }) as any as S.Schema<ResourceTypeManagedResourceGroupConfiguration>;
+
+/** List of required members for the group id. */
+export type GroupConnectivityInformationRequiredMembersList = Array<string>;
+export const GroupConnectivityInformationRequiredMembersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GroupConnectivityInformationRequiredMembersList>;
+
+/** List of required zone names for the group id. */
+export type GroupConnectivityInformationRequiredZoneNamesList = Array<string>;
+export const GroupConnectivityInformationRequiredZoneNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GroupConnectivityInformationRequiredZoneNamesList>;
+
+export interface GroupConnectivityInformation {
+  /** The group id. */
+  groupId: string;
+  /** List of required members for the group id. */
+  requiredMembers: GroupConnectivityInformationRequiredMembersList;
+  /** List of required zone names for the group id. */
+  requiredZoneNames: GroupConnectivityInformationRequiredZoneNamesList;
+  /** The redirect map id. */
+  redirectMapId?: string;
+}
+export const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String,
+    requiredMembers: GroupConnectivityInformationRequiredMembersList,
+    requiredZoneNames: GroupConnectivityInformationRequiredZoneNamesList,
+    redirectMapId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GroupConnectivityInformation",
+}) as any as S.Schema<GroupConnectivityInformation>;
+
+/** The list of group connectivity information. */
+export type PrivateEndpointConfigurationGroupConnectivityInformationList =
+  Array<GroupConnectivityInformation>;
+export const PrivateEndpointConfigurationGroupConnectivityInformationList =
+  /*@__PURE__*/ S.Array(
+    GroupConnectivityInformation,
+  ) as any as S.Schema<PrivateEndpointConfigurationGroupConnectivityInformationList>;
+
+/** The private endpoint configuration. */
+export interface PrivateEndpointConfiguration {
+  /** The first api version that support private endpoint. */
+  minApiVersion: string;
+  /** The list of group connectivity information. */
+  groupConnectivityInformation: PrivateEndpointConfigurationGroupConnectivityInformationList;
+}
+export const PrivateEndpointConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minApiVersion: S.String,
+    groupConnectivityInformation:
+      PrivateEndpointConfigurationGroupConnectivityInformationList,
+  }),
+).annotate({
+  identifier: "PrivateEndpointConfiguration",
+}) as any as S.Schema<PrivateEndpointConfiguration>;
+
+/** The state of write lock feature. The feature will ensure a deterministic sequence of write-operation within and across the verbs. Also the feature will ensure that the semantics of synchronous and long-running operations are honored. */
+export type WriteLockConfigurationState = "Disabled" | "Enabled";
+export const WriteLockConfigurationState = /*@__PURE__*/ S.String;
+
+/** The write lock configuration. */
+export interface WriteLockConfiguration {
+  /** The state of write lock feature. The feature will ensure a deterministic sequence of write-operation within and across the verbs. Also the feature will ensure that the semantics of synchronous and long-running operations are honored. */
+  state?: WriteLockConfigurationState | (string & {});
+}
+export const WriteLockConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(WriteLockConfigurationState),
+  }),
+).annotate({
+  identifier: "WriteLockConfiguration",
+}) as any as S.Schema<WriteLockConfiguration>;
 
 /** The policy. */
 export type Policy = "NotSpecified" | "SynchronizeBeginExtension";
@@ -2961,15 +3191,66 @@ export const ResourceTypeRegistrationPropertiesResourceQueryManagement =
 export type SupportedOperations = "NotSpecified" | "Get" | "Delete";
 export const SupportedOperations = /*@__PURE__*/ S.String;
 
+/** The required features. */
+export type ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList =
+  Array<string>;
+export const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList>;
+
+/** Batch action configuration. */
+export interface ActionConfiguration {
+  /** Authorization action. */
+  authorizationAction?: string;
+  /** The maximum batch size. */
+  maxBatchSize?: number;
+}
+export const ActionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authorizationAction: S.optional(S.String),
+    maxBatchSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ActionConfiguration",
+}) as any as S.Schema<ActionConfiguration>;
+
+/** Action Configurations. */
+export type ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportActionConfigurationsList =
+  Array<ActionConfiguration>;
+export const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportActionConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    ActionConfiguration,
+  ) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportActionConfigurationsList>;
+
 /** Batch provisioning support. */
 export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport {
   /** Supported operations. */
   supportedOperations?: SupportedOperations | (string & {});
+  /** The maximum batch size. */
+  maxBatchSize?: number;
+  /** Batch contract version. */
+  batchContractVersion?: string;
+  /** The maximum nested batch size. */
+  maxNestedBatchSize?: number;
+  /** The required features. */
+  requiredFeatures?: ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList;
+  /** Action Configurations. */
+  actionConfigurations?: ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportActionConfigurationsList;
 }
 export const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       supportedOperations: S.optional(SupportedOperations),
+      maxBatchSize: S.optional(S.Number),
+      batchContractVersion: S.optional(S.String),
+      maxNestedBatchSize: S.optional(S.Number),
+      requiredFeatures: S.optional(
+        ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList,
+      ),
+      actionConfigurations: S.optional(
+        ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportActionConfigurationsList,
+      ),
     }),
   ).annotate({
     identifier:
@@ -3154,7 +3435,17 @@ export interface ResourceTypeRegistrationProperties {
   /** The resource move policy. */
   resourceMovePolicy?: ResourceMovePolicy;
   /** The resource deletion policy. */
-  resourceDeletionPolicy?: ResourceDeletionPolicy | (string & {});
+  resourceDeletionPolicy?: RPaaSResourceDeletionPolicy | (string & {});
+  /** List of resource deletion policies added. */
+  resourceDeletionPolicies?: ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList;
+  /** The managed resource group configuration. */
+  managedResourceGroupConfiguration?: ResourceTypeManagedResourceGroupConfiguration;
+  /** The private endpoint configuration. */
+  privateEndpointConfiguration?: PrivateEndpointConfiguration;
+  /** The write lock configuration. */
+  writeLock?: WriteLockConfiguration;
+  /** Indicates whether super scale is enabled. */
+  superScaleEnabled?: boolean;
   /** The resource concurrency control options. */
   resourceConcurrencyControlOptions?: ResourceTypeRegistrationPropertiesResourceConcurrencyControlOptionsMap;
   /** The resource graph configuration. */
@@ -3303,7 +3594,16 @@ export const ResourceTypeRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
       ResourceTypeRegistrationPropertiesExtendedLocationsList,
     ),
     resourceMovePolicy: S.optional(ResourceMovePolicy),
-    resourceDeletionPolicy: S.optional(ResourceDeletionPolicy),
+    resourceDeletionPolicy: S.optional(RPaaSResourceDeletionPolicy),
+    resourceDeletionPolicies: S.optional(
+      ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList,
+    ),
+    managedResourceGroupConfiguration: S.optional(
+      ResourceTypeManagedResourceGroupConfiguration,
+    ),
+    privateEndpointConfiguration: S.optional(PrivateEndpointConfiguration),
+    writeLock: S.optional(WriteLockConfiguration),
+    superScaleEnabled: S.optional(S.Boolean),
     resourceConcurrencyControlOptions: S.optional(
       ResourceTypeRegistrationPropertiesResourceConcurrencyControlOptionsMap,
     ),
@@ -3409,6 +3709,48 @@ export const CustomRolloutSpecificationInputResourceTypeRegistrationsList =
     ResourceTypeRegistrationInput,
   ) as any as S.Schema<CustomRolloutSpecificationInputResourceTypeRegistrationsList>;
 
+/** The manifest checkin option. */
+export type ManifestCheckinSpecificationManifestCheckinOption =
+  | "AttemptAutomaticManifestCheckin"
+  | "DoNotAttemptAutomaticManifestCheckin";
+export const ManifestCheckinSpecificationManifestCheckinOption =
+  /*@__PURE__*/ S.String;
+
+export interface CheckinManifestParams {
+  /** The environment supplied to the checkin manifest operation. */
+  environment: string;
+  /** The baseline ARM manifest location supplied to the checkin manifest operation. */
+  baselineArmManifestLocation: string;
+}
+export const CheckinManifestParams = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environment: S.String,
+    baselineArmManifestLocation: S.String,
+  }),
+).annotate({
+  identifier: "CheckinManifestParams",
+}) as any as S.Schema<CheckinManifestParams>;
+
+/** The manifest checkin specification. */
+export interface ManifestCheckinSpecification {
+  /** The manifest checkin option. */
+  manifestCheckinOption?:
+    | ManifestCheckinSpecificationManifestCheckinOption
+    | (string & {});
+  /** The manifest checkin params. */
+  manifestCheckinParams?: CheckinManifestParams;
+}
+export const ManifestCheckinSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    manifestCheckinOption: S.optional(
+      ManifestCheckinSpecificationManifestCheckinOption,
+    ),
+    manifestCheckinParams: S.optional(CheckinManifestParams),
+  }),
+).annotate({
+  identifier: "ManifestCheckinSpecification",
+}) as any as S.Schema<ManifestCheckinSpecification>;
+
 export interface CustomRolloutSpecificationInput {
   /** The auto provisioning configuration. */
   autoProvisionConfig?: CustomRolloutSpecificationAutoProvisionConfig;
@@ -3424,6 +3766,10 @@ export interface CustomRolloutSpecificationInput {
   providerRegistration?: ProviderRegistrationInput;
   /** The resource type registrations. */
   resourceTypeRegistrations?: CustomRolloutSpecificationInputResourceTypeRegistrationsList;
+  /** The rollout id. */
+  rolloutId?: string;
+  /** The manifest checkin specification. */
+  manifestCheckinSpecification?: ManifestCheckinSpecification;
 }
 export const CustomRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3438,6 +3784,8 @@ export const CustomRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
     resourceTypeRegistrations: S.optional(
       CustomRolloutSpecificationInputResourceTypeRegistrationsList,
     ),
+    rolloutId: S.optional(S.String),
+    manifestCheckinSpecification: S.optional(ManifestCheckinSpecification),
   }),
 ).annotate({
   identifier: "CustomRolloutSpecificationInput",
@@ -3511,6 +3859,36 @@ export const CustomRolloutStatusInputFailedOrSkippedRegionsMap =
     ExtendedErrorInfoInput,
   ) as any as S.Schema<CustomRolloutStatusInputFailedOrSkippedRegionsMap>;
 
+/** Information about a manifest applied to a region. */
+export interface AppliedManifestInfo {
+  /** Region to which the manifest was applied. */
+  region?: string;
+  /** Time at which the manifest was applied. */
+  manifestAppliedAt?: string;
+  /** Commit id of previous manifest. */
+  previousCommitId?: string;
+  /** Commit id of manifest being applied. */
+  appliedCommitId?: string;
+}
+export const AppliedManifestInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(S.String),
+    manifestAppliedAt: S.optional(S.String),
+    previousCommitId: S.optional(S.String),
+    appliedCommitId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppliedManifestInfo",
+}) as any as S.Schema<AppliedManifestInfo>;
+
+/** Information about the manifests applied to the completed regions. */
+export type CustomRolloutStatusInputCompletedRegionsInfoList =
+  Array<AppliedManifestInfo>;
+export const CustomRolloutStatusInputCompletedRegionsInfoList =
+  /*@__PURE__*/ S.Array(
+    AppliedManifestInfo,
+  ) as any as S.Schema<CustomRolloutStatusInputCompletedRegionsInfoList>;
+
 export interface CustomRolloutStatusInput {
   /** The completed regions. */
   completedRegions?: CustomRolloutStatusInputCompletedRegionsList;
@@ -3518,6 +3896,8 @@ export interface CustomRolloutStatusInput {
   failedOrSkippedRegions?: CustomRolloutStatusInputFailedOrSkippedRegionsMap;
   /** The manifest checkin status. */
   manifestCheckinStatus?: CheckinManifestInfo;
+  /** Information about the manifests applied to the completed regions. */
+  completedRegionsInfo?: CustomRolloutStatusInputCompletedRegionsInfoList;
 }
 export const CustomRolloutStatusInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3526,6 +3906,9 @@ export const CustomRolloutStatusInput = /*@__PURE__*/ S.suspend(() =>
       CustomRolloutStatusInputFailedOrSkippedRegionsMap,
     ),
     manifestCheckinStatus: S.optional(CheckinManifestInfo),
+    completedRegionsInfo: S.optional(
+      CustomRolloutStatusInputCompletedRegionsInfoList,
+    ),
   }),
 ).annotate({
   identifier: "CustomRolloutStatusInput",
@@ -3567,7 +3950,7 @@ export const CustomRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -3666,6 +4049,10 @@ export interface CustomRolloutSpecification {
   providerRegistration?: ProviderRegistration;
   /** The resource type registrations. */
   resourceTypeRegistrations?: CustomRolloutSpecificationResourceTypeRegistrationsList;
+  /** The rollout id. */
+  rolloutId?: string;
+  /** The manifest checkin specification. */
+  manifestCheckinSpecification?: ManifestCheckinSpecification;
 }
 export const CustomRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3680,6 +4067,8 @@ export const CustomRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
     resourceTypeRegistrations: S.optional(
       CustomRolloutSpecificationResourceTypeRegistrationsList,
     ),
+    rolloutId: S.optional(S.String),
+    manifestCheckinSpecification: S.optional(ManifestCheckinSpecification),
   }),
 ).annotate({
   identifier: "CustomRolloutSpecification",
@@ -3752,6 +4141,14 @@ export const CustomRolloutStatusFailedOrSkippedRegionsMap =
     ExtendedErrorInfo,
   ) as any as S.Schema<CustomRolloutStatusFailedOrSkippedRegionsMap>;
 
+/** Information about the manifests applied to the completed regions. */
+export type CustomRolloutStatusCompletedRegionsInfoList =
+  Array<AppliedManifestInfo>;
+export const CustomRolloutStatusCompletedRegionsInfoList =
+  /*@__PURE__*/ S.Array(
+    AppliedManifestInfo,
+  ) as any as S.Schema<CustomRolloutStatusCompletedRegionsInfoList>;
+
 export interface CustomRolloutStatus {
   /** The completed regions. */
   completedRegions?: CustomRolloutStatusCompletedRegionsList;
@@ -3759,6 +4156,8 @@ export interface CustomRolloutStatus {
   failedOrSkippedRegions?: CustomRolloutStatusFailedOrSkippedRegionsMap;
   /** The manifest checkin status. */
   manifestCheckinStatus?: CheckinManifestInfo;
+  /** Information about the manifests applied to the completed regions. */
+  completedRegionsInfo?: CustomRolloutStatusCompletedRegionsInfoList;
 }
 export const CustomRolloutStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3767,6 +4166,9 @@ export const CustomRolloutStatus = /*@__PURE__*/ S.suspend(() =>
       CustomRolloutStatusFailedOrSkippedRegionsMap,
     ),
     manifestCheckinStatus: S.optional(CheckinManifestInfo),
+    completedRegionsInfo: S.optional(
+      CustomRolloutStatusCompletedRegionsInfoList,
+    ),
   }),
 ).annotate({
   identifier: "CustomRolloutStatus",
@@ -3833,7 +4235,7 @@ export const CustomRolloutsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -3865,7 +4267,7 @@ export const CustomRolloutsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -3912,7 +4314,7 @@ export const CustomRolloutsListByProviderRegistrationRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -3985,7 +4387,7 @@ export const CustomRolloutsStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}/stop",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -4110,6 +4512,8 @@ export interface DefaultRolloutSpecificationInput {
   resourceTypeRegistrations?: DefaultRolloutSpecificationInputResourceTypeRegistrationsList;
   /** The auto provisioning config. */
   autoProvisionConfig?: DefaultRolloutSpecificationAutoProvisionConfig;
+  /** The manifest checkin specification. */
+  manifestCheckinSpecification?: ManifestCheckinSpecification;
 }
 export const DefaultRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4127,6 +4531,7 @@ export const DefaultRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
     autoProvisionConfig: S.optional(
       DefaultRolloutSpecificationAutoProvisionConfig,
     ),
+    manifestCheckinSpecification: S.optional(ManifestCheckinSpecification),
   }),
 ).annotate({
   identifier: "DefaultRolloutSpecificationInput",
@@ -4239,7 +4644,7 @@ export const DefaultRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -4275,6 +4680,8 @@ export interface DefaultRolloutSpecification {
   resourceTypeRegistrations?: DefaultRolloutSpecificationResourceTypeRegistrationsList;
   /** The auto provisioning config. */
   autoProvisionConfig?: DefaultRolloutSpecificationAutoProvisionConfig;
+  /** The manifest checkin specification. */
+  manifestCheckinSpecification?: ManifestCheckinSpecification;
 }
 export const DefaultRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4292,6 +4699,7 @@ export const DefaultRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
     autoProvisionConfig: S.optional(
       DefaultRolloutSpecificationAutoProvisionConfig,
     ),
+    manifestCheckinSpecification: S.optional(ManifestCheckinSpecification),
   }),
 ).annotate({
   identifier: "DefaultRolloutSpecification",
@@ -4405,7 +4813,7 @@ export const DefaultRolloutsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -4437,7 +4845,7 @@ export const DefaultRolloutsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -4484,7 +4892,7 @@ export const DefaultRolloutsListByProviderRegistrationRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -4557,7 +4965,7 @@ export const DefaultRolloutsStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}/stop",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -4586,7 +4994,7 @@ export const GenerateManifestRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateManifest",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -4716,12 +5124,12 @@ export const ResourceTypeLinkedOperationRulesList = /*@__PURE__*/ S.Array(
   LinkedOperationRule,
 ) as any as S.Schema<ResourceTypeLinkedOperationRulesList>;
 
-/** The resource deletion policy. */
-export type ManifestResourceDeletionPolicy =
-  | "NotSpecified"
-  | "Cascade"
-  | "Force";
-export const ManifestResourceDeletionPolicy = /*@__PURE__*/ S.String;
+/** List of resource deletion policies added. */
+export type ResourceTypeResourceDeletionPoliciesList =
+  Array<ResourceDeletionPolicyAndProperties>;
+export const ResourceTypeResourceDeletionPoliciesList = /*@__PURE__*/ S.Array(
+  ResourceDeletionPolicyAndProperties,
+) as any as S.Schema<ResourceTypeResourceDeletionPoliciesList>;
 
 /** The notifications. */
 export type ResourceTypeNotificationsList = Array<Notification>;
@@ -4790,7 +5198,9 @@ export interface ResourceType {
   /** The linked operation rules. */
   linkedOperationRules?: ResourceTypeLinkedOperationRulesList;
   /** The resource deletion policy. */
-  resourceDeletionPolicy?: ManifestResourceDeletionPolicy;
+  resourceDeletionPolicy?: ResourceDeletionPolicy;
+  /** List of resource deletion policies added. */
+  resourceDeletionPolicies?: ResourceTypeResourceDeletionPoliciesList;
   /** The quota rule. */
   quotaRule?: QuotaRule;
   /** The notifications. */
@@ -4834,7 +5244,10 @@ export const ResourceType = /*@__PURE__*/ S.suspend(() =>
     templateDeploymentPolicy: S.optional(TemplateDeploymentPolicy),
     extendedLocations: S.optional(ResourceTypeExtendedLocationsList),
     linkedOperationRules: S.optional(ResourceTypeLinkedOperationRulesList),
-    resourceDeletionPolicy: S.optional(ManifestResourceDeletionPolicy),
+    resourceDeletionPolicy: S.optional(ResourceDeletionPolicy),
+    resourceDeletionPolicies: S.optional(
+      ResourceTypeResourceDeletionPoliciesList,
+    ),
     quotaRule: S.optional(QuotaRule),
     notifications: S.optional(ResourceTypeNotificationsList),
     linkedNotificationRules: S.optional(
@@ -4939,6 +5352,8 @@ export interface ResourceProviderManifest {
   linkedNotificationRules?: ResourceProviderManifestLinkedNotificationRulesList;
   /** The resource provider authorization rules. */
   resourceProviderAuthorizationRules?: ResourceProviderAuthorizationRules;
+  /** The token auth configuration. */
+  tokenAuthConfiguration?: TokenAuthConfiguration;
 }
 export const ResourceProviderManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4971,10 +5386,147 @@ export const ResourceProviderManifest = /*@__PURE__*/ S.suspend(() =>
     resourceProviderAuthorizationRules: S.optional(
       ResourceProviderAuthorizationRules,
     ),
+    tokenAuthConfiguration: S.optional(TokenAuthConfiguration),
   }),
 ).annotate({
   identifier: "ResourceProviderManifest",
 }) as any as S.Schema<ResourceProviderManifest>;
+
+/** The manifest properties. */
+export interface ManifestInfoPropertiesInput {
+  /** The manifest. */
+  manifest?: string;
+  /** The URI the manifest content is read from when the manifest is not supplied inline. */
+  manifestUri?: string;
+}
+export const ManifestInfoPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    manifest: S.optional(S.String),
+    manifestUri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManifestInfoPropertiesInput",
+}) as any as S.Schema<ManifestInfoPropertiesInput>;
+
+export interface ManifestsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The environment supplied to the manifests operation. */
+  environment: string;
+  /** The manifest properties. */
+  properties?: ManifestInfoPropertiesInput;
+}
+export const ManifestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    environment: S.String.pipe(T.Label()),
+    properties: S.optional(ManifestInfoPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/manifests/{environment}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "ManifestsCreateOrUpdateRequest",
+}) as any as S.Schema<ManifestsCreateOrUpdateRequest>;
+
+/** The manifest properties. */
+export interface ManifestInfoProperties {
+  /** The manifest. */
+  manifest?: string;
+  /** The URI the manifest content is read from when the manifest is not supplied inline. */
+  manifestUri?: string;
+  /** The manifest commit identifier. */
+  commitId?: string;
+}
+export const ManifestInfoProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    manifest: S.optional(S.String),
+    manifestUri: S.optional(S.String),
+    commitId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManifestInfoProperties",
+}) as any as S.Schema<ManifestInfoProperties>;
+
+export interface ManifestsCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The manifest properties. */
+  properties?: ManifestInfoProperties;
+}
+export const ManifestsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManifestInfoProperties),
+  }),
+).annotate({
+  identifier: "ManifestsCreateOrUpdateResponse",
+}) as any as S.Schema<ManifestsCreateOrUpdateResponse>;
+
+export interface ManifestsGetRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The environment supplied to the manifests operation. */
+  environment: string;
+}
+export const ManifestsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    environment: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/manifests/{environment}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "ManifestsGetRequest",
+}) as any as S.Schema<ManifestsGetRequest>;
+
+export interface ManifestsGetResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The manifest properties. */
+  properties?: ManifestInfoProperties;
+}
+export const ManifestsGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManifestInfoProperties),
+  }),
+).annotate({
+  identifier: "ManifestsGetResponse",
+}) as any as S.Schema<ManifestsGetResponse>;
 
 /** The environment type. */
 export type AvailableCheckInManifestEnvironment =
@@ -5166,7 +5718,7 @@ export const NewRegionFrontloadReleaseCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -5217,7 +5769,7 @@ export const NewRegionFrontloadReleaseGenerateManifestRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateNewRegionFrontloadManifest",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -5242,7 +5794,7 @@ export const NewRegionFrontloadReleaseGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -5293,7 +5845,7 @@ export const NewRegionFrontloadReleaseStopRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}/stop",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -5401,7 +5953,7 @@ export const NotificationRegistrationsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -5451,7 +6003,7 @@ export const NotificationRegistrationsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -5483,7 +6035,7 @@ export const NotificationRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -5530,7 +6082,7 @@ export const NotificationRegistrationsListByProviderRegistrationRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -5648,6 +6200,8 @@ export interface LocalizedOperationDisplayDefinition {
   zhHans?: OperationsDisplayDefinition;
   /** Display information of the operation for zh-Hant locale. */
   zhHant?: OperationsDisplayDefinition;
+  /** Display information of the operation for qps-Ploc pseudo locale. */
+  qpsPloc?: OperationsDisplayDefinition;
 }
 export const LocalizedOperationDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5669,6 +6223,7 @@ export const LocalizedOperationDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
     sv: S.optional(OperationsDisplayDefinition),
     zhHans: S.optional(OperationsDisplayDefinition),
     zhHant: S.optional(OperationsDisplayDefinition),
+    qpsPloc: S.optional(OperationsDisplayDefinition),
   }),
 ).annotate({
   identifier: "LocalizedOperationDisplayDefinition",
@@ -5689,6 +6244,8 @@ export interface LocalizedOperationDefinition {
   display: LocalizedOperationDisplayDefinition;
   /** The action type. */
   actionType?: OperationActionType | (string & {});
+  /** Anything */
+  properties?: unknown;
 }
 export const LocalizedOperationDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5697,6 +6254,7 @@ export const LocalizedOperationDefinition = /*@__PURE__*/ S.suspend(() =>
     origin: S.optional(OperationOrigins),
     display: LocalizedOperationDisplayDefinition,
     actionType: S.optional(OperationActionType),
+    properties: S.optional(S.Unknown),
   }),
 ).annotate({
   identifier: "LocalizedOperationDefinition",
@@ -5738,7 +6296,7 @@ export const OperationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -5783,7 +6341,7 @@ export const OperationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -5804,7 +6362,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.ProviderHub/operations",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -5881,27 +6439,33 @@ export const OperationsListByProviderRegistrationRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
     identifier: "OperationsListByProviderRegistrationRequest",
   }) as any as S.Schema<OperationsListByProviderRegistrationRequest>;
 
-export type OperationsListByProviderRegistrationResponseBodyList =
-  Array<OperationsDefinition>;
-export const OperationsListByProviderRegistrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    OperationsDefinition,
-  ) as any as S.Schema<OperationsListByProviderRegistrationResponseBodyList>;
-
-export type OperationsListByProviderRegistrationResponse =
-  OperationsListByProviderRegistrationResponseBodyList;
+export interface OperationsListByProviderRegistrationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: OperationsContentProperties;
+}
 export const OperationsListByProviderRegistrationResponse =
   /*@__PURE__*/ S.suspend(() =>
-    OperationsListByProviderRegistrationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(OperationsContentProperties),
+    }),
   ).annotate({
     identifier: "OperationsListByProviderRegistrationResponse",
   }) as any as S.Schema<OperationsListByProviderRegistrationResponse>;
@@ -5955,7 +6519,7 @@ export const ProviderMonitorSettingsCreateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -6021,7 +6585,7 @@ export const ProviderMonitorSettingsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -6053,7 +6617,7 @@ export const ProviderMonitorSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -6114,7 +6678,7 @@ export const ProviderMonitorSettingsListByResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -6198,7 +6762,7 @@ export const ProviderMonitorSettingsListBySubscriptionRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerMonitorSettings",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -6224,7 +6788,7 @@ export const ProviderMonitorSettingsUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PATCH",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -6300,7 +6864,7 @@ export const ProviderRegistrationsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -6357,7 +6921,7 @@ export const ProviderRegistrationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -6387,7 +6951,7 @@ export const ProviderRegistrationsGenerateOperationsRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateOperations",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -6427,7 +6991,7 @@ export const ProviderRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -6479,7 +7043,7 @@ export const ProviderRegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -6559,7 +7123,7 @@ export const ResourceActionsDeleteResourcesRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourceActions/{resourceActionName}/deleteResources",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -6605,7 +7169,7 @@ export const ResourceTypeRegistrationsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -6666,7 +7230,7 @@ export const ResourceTypeRegistrationsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -6698,7 +7262,7 @@ export const ResourceTypeRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -6755,7 +7319,7 @@ export const ResourceTypeRegistrationsListByProviderRegistrationRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -7029,7 +7593,7 @@ export const SkusCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -7086,7 +7650,7 @@ export const SkusCreateOrUpdateNestedResourceTypeFirstRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -7147,7 +7711,7 @@ export const SkusCreateOrUpdateNestedResourceTypeSecondRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -7211,7 +7775,7 @@ export const SkusCreateOrUpdateNestedResourceTypeThirdRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -7263,7 +7827,7 @@ export const SkusDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
@@ -7302,7 +7866,7 @@ export const SkusDeleteNestedResourceTypeFirstRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -7343,7 +7907,7 @@ export const SkusDeleteNestedResourceTypeSecondRequest =
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -7387,7 +7951,7 @@ export const SkusDeleteNestedResourceTypeThirdRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -7421,7 +7985,7 @@ export const SkusGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
       code: 200,
-      apiVersion: "2024-09-01",
+      apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({ identifier: "SkusGetRequest" }) as any as S.Schema<SkusGetRequest>;
@@ -7474,7 +8038,7 @@ export const SkusGetNestedResourceTypeFirstRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -7533,7 +8097,7 @@ export const SkusGetNestedResourceTypeSecondRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -7595,7 +8159,7 @@ export const SkusGetNestedResourceTypeThirdRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
 ).annotate({
@@ -7645,7 +8209,7 @@ export const SkusListByResourceTypeRegistrationsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -7721,7 +8285,7 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -7754,7 +8318,7 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest 
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -7790,7 +8354,7 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus",
         code: 200,
-        apiVersion: "2024-09-01",
+        apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
@@ -8033,6 +8597,36 @@ export const GenerateManifest: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateManifestRequest,
   output: ResourceProviderManifest,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ManifestsCreateOrUpdateError = AzureOpError;
+/** Creates or Updates a manifest in manifest repository. */
+export const ManifestsCreateOrUpdate: API.OperationMethod<
+  ManifestsCreateOrUpdateRequest,
+  ManifestsCreateOrUpdateResponse,
+  ManifestsCreateOrUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ManifestsCreateOrUpdateRequest,
+  output: ManifestsCreateOrUpdateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ManifestsGetError = AzureOpError;
+/** Gets the manifest from the manifest repository. */
+export const ManifestsGet: API.OperationMethod<
+  ManifestsGetRequest,
+  ManifestsGetResponse,
+  ManifestsGetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ManifestsGetRequest,
+  output: ManifestsGetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

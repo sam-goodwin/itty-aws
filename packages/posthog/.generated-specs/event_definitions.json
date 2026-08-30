@@ -17,6 +17,13 @@
     ]
   },
   "shapes": {
+    "com.posthog.event_definitions#EventDefinitionsListRequestNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
     "com.posthog.event_definitions#EventDefinitionsListRequest": {
       "type": "structure",
       "members": {
@@ -47,6 +54,13 @@
           "traits": {
             "smithy.api#httpQuery": "limit",
             "smithy.api#documentation": "Number of results to return per page."
+          }
+        },
+        "names": {
+          "target": "com.posthog.event_definitions#EventDefinitionsListRequestNamesList",
+          "traits": {
+            "smithy.api#httpQuery": "names",
+            "smithy.api#documentation": "Return exact matches for these event names. Pass names as repeated or comma-separated values."
           }
         },
         "offset": {
@@ -303,6 +317,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -311,7 +331,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.event_definitions#BlankEnum": {
@@ -818,6 +838,140 @@
         }
       }
     },
+    "com.posthog.event_definitions#EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of event definition UUIDs to update."
+      }
+    },
+    "com.posthog.event_definitions#EventDefinitionsBulkUpdateVerifiedCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "ids": {
+          "target": "com.posthog.event_definitions#EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of event definition UUIDs to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Target verified state to apply to every matched event. `true` marks the events as verified (and unhides them, since an event cannot be both hidden and verified); `false` unverifies them.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.event_definitions#EventDefinitionBulkUpdateVerifiedResponse": {
+      "type": "structure",
+      "members": {
+        "updated": {
+          "target": "com.posthog.event_definitions#EventDefinitionBulkUpdateVerifiedResponseUpdatedList",
+          "traits": {
+            "smithy.api#documentation": "Events whose verified state was changed. Events already in the target state are omitted.",
+            "smithy.api#required": {}
+          }
+        },
+        "skipped": {
+          "target": "com.posthog.event_definitions#EventDefinitionBulkUpdateVerifiedResponseSkippedList",
+          "traits": {
+            "smithy.api#documentation": "Events that were skipped (e.g. not found in this project), with a reason each.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.event_definitions#EventDefinitionBulkUpdateVerifiedItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID of the event definition whose verified state changed.",
+            "smithy.api#required": {}
+          }
+        },
+        "verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The event's verified state after the update.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.event_definitions#EventDefinitionBulkUpdateVerifiedResponseUpdatedList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.event_definitions#EventDefinitionBulkUpdateVerifiedItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Events whose verified state was changed. Events already in the target state are omitted."
+      }
+    },
+    "com.posthog.event_definitions#BulkUpdateTagsUUIDError": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID of the object that was skipped.",
+            "smithy.api#required": {}
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Why the object was skipped, e.g. 'Not found'.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.event_definitions#EventDefinitionBulkUpdateVerifiedResponseSkippedList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.event_definitions#BulkUpdateTagsUUIDError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Events that were skipped (e.g. not found in this project), with a reason each."
+      }
+    },
+    "com.posthog.event_definitions#EventDefinitionsBulkUpdateVerifiedCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.event_definitions#EventDefinitionsBulkUpdateVerifiedCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.event_definitions#EventDefinitionBulkUpdateVerifiedResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/event_definitions/bulk_update_verified/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Mark multiple event definitions as verified or unverified in one request.\n\nIn the same vein as ``bulk_update_tags``, but ``verified`` lives on the enterprise\n``EnterpriseEventDefinition`` extension rather than the base row, so this action:\n- requires an enterprise license;\n- scopes by project (``team__project_id``) and relies on project membership — the same\n  boundary the single-object update path uses — rather than object-level RBAC;\n- lazily promotes ingestion-created base rows to ``EnterpriseEventDefinition`` (mirroring\n  ``_get_event_definition``) before setting ``verified``;\n- mirrors the single-object semantics: verifying stamps ``verified_by``/``verified_at`` and\n  unhides the event (an event cannot be both hidden and verified); unverifying clears them;\n- logs a \"changed\" activity per event so the History tab matches the single-object path.\n\nEvents already in the target state are skipped (not re-written, not logged)."
+      }
+    },
     "com.posthog.event_definitions#EventDefinitionsByNameRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -1192,6 +1346,9 @@
         },
         {
           "target": "com.posthog.event_definitions#EventDefinitionsDestroy"
+        },
+        {
+          "target": "com.posthog.event_definitions#EventDefinitionsBulkUpdateVerifiedCreate"
         },
         {
           "target": "com.posthog.event_definitions#EventDefinitionsByNameRetrieve"

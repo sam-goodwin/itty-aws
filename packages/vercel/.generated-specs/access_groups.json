@@ -144,6 +144,12 @@
           "traits": {
             "smithy.api#enumValue": "V0Viewer"
           }
+        },
+        "WORKFLOWDECRYPTOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WorkflowDecryptor"
+          }
         }
       },
       "traits": {}

@@ -12,6 +12,15 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }).pipe(C.withAuthError),
+    [{ status: 403 }],
+  ) {}
+
 export class NotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
@@ -20,6 +29,35 @@ export class NotFound
     }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
+
+/** The question text shown to the user. Always empty for sensitive questions. */
+export type PendingInputPromptsList = Array<string>;
+export const PendingInputPromptsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PendingInputPromptsList>;
+
+/** The in-flight `wizard_ask` question. Typed rather than a free-form dict so the shape the widget renders is enforced at the edge instead of trusted from the producer. */
+export interface PendingInput {
+  /** Identifier the wizard mints for this question. Changes when a new question is asked. */
+  id: string;
+  /** UTC timestamp when the wizard asked. Defaults to the session's update time when absent. */
+  asked_at?: string;
+  /** How many questions this single ask covers. */
+  question_count?: number;
+  /** Whether the answer is a secret. Sensitive questions never carry prompt text. */
+  sensitive?: boolean;
+  /** The question text shown to the user. Always empty for sensitive questions. */
+  prompts?: PendingInputPromptsList;
+}
+export const PendingInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    asked_at: S.optional(S.String),
+    question_count: S.optional(S.Number),
+    sensitive: S.optional(S.Boolean),
+    prompts: S.optional(PendingInputPromptsList),
+  }),
+).annotate({ identifier: "PendingInput" }) as any as S.Schema<PendingInput>;
 
 /** * `idle` - IDLE * `running` - RUNNING * `completed` - COMPLETED * `error` - ERROR */
 export type RunPhaseEnum = "idle" | "running" | "completed" | "error";
@@ -73,6 +111,10 @@ export const WizardSessionsCreateRequestErrorMap = /*@__PURE__*/ S.Record(
 export interface WizardSessionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  /** Populated while the wizard is blocked on a question in the terminal. Null/absent means no input is pending; a push without it clears the previous prompt. */
+  pending_input?: PendingInput | null;
+  /** Markdown handoff doc for the run (the wizard's setup report). Send it once the run has produced one; omitting it on later pushes keeps the stored value. */
+  handoff_text?: string | null;
   /** Stable identifier the wizard mints for this run (format: '{workflow_id}-{skill_id}-{started_at_iso}'). Reposting with the same session_id upserts the existing row. */
   session_id: string;
   /** High-level workflow being run, e.g. 'onboarding', 'migration', 'audit'. */
@@ -92,6 +134,8 @@ export interface WizardSessionsCreateRequest {
 export const WizardSessionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
+    pending_input: S.optional(S.NullOr(PendingInput)),
+    handoff_text: S.optional(S.NullOr(S.String)),
     session_id: S.String,
     workflow_id: S.String,
     skill_id: S.String,
@@ -130,8 +174,25 @@ export const WizardSessionDTOErrorMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<WizardSessionDTOErrorMap>;
 
+export interface WizardSessionUserDTO {
+  id: number;
+  first_name: string;
+  email: string;
+}
+export const WizardSessionUserDTO = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    first_name: S.String,
+    email: S.String,
+  }),
+).annotate({
+  identifier: "WizardSessionUserDTO",
+}) as any as S.Schema<WizardSessionUserDTO>;
+
 /** Output: serialises a WizardSessionDTO returned by the facade. */
 export interface WizardSessionDTO {
+  /** The question the wizard is currently blocked on, or null when nothing is pending. */
+  pending_input: PendingInput | null;
   session_id: string;
   team_id: number;
   workflow_id: string;
@@ -141,12 +202,17 @@ export interface WizardSessionDTO {
   tasks: WizardSessionDTOTasksList;
   event_plan: WizardSessionDTOEventPlanMap | null;
   error: WizardSessionDTOErrorMap | null;
+  /** Markdown handoff doc the wizard produced for this run (its setup report), or null while the run hasn't written one. Sticky once set. */
+  handoff_text: string | null;
+  /** The user who initiated this wizard run (null for runs created before attribution existed). Lets the UI name whose run it is. */
+  created_by: WizardSessionUserDTO | null;
   created_at: string;
   updated_at: string;
   is_stale: boolean;
 }
 export const WizardSessionDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    pending_input: S.NullOr(PendingInput),
     session_id: S.String,
     team_id: S.Number,
     workflow_id: S.String,
@@ -156,6 +222,8 @@ export const WizardSessionDTO = /*@__PURE__*/ S.suspend(() =>
     tasks: WizardSessionDTOTasksList,
     event_plan: S.NullOr(WizardSessionDTOEventPlanMap),
     error: S.NullOr(WizardSessionDTOErrorMap),
+    handoff_text: S.NullOr(S.String),
+    created_by: S.NullOr(WizardSessionUserDTO),
     created_at: S.String,
     updated_at: S.String,
     is_stale: S.Boolean,
@@ -289,7 +357,7 @@ export const WizardSessionsStreamRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "WizardSessionsStreamRetrieveResponse",
 }) as any as S.Schema<WizardSessionsStreamRetrieveResponse>;
 
-export type WizardSessionsCreateError = PosthogOpError;
+export type WizardSessionsCreateError = Forbidden | PosthogOpError;
 /** Upsert a wizard session. The `session_id` key is the idempotency anchor — reposting the same `session_id` replaces the existing row. Returns 201 on create, 200 on update. */
 export const wizardSessionsCreate: API.OperationMethod<
   WizardSessionsCreateRequest,
@@ -299,7 +367,7 @@ export const wizardSessionsCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WizardSessionsCreateRequest,
   output: WizardSessionDTO,
-  errors: [],
+  errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

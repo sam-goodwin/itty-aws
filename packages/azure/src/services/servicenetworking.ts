@@ -86,7 +86,7 @@ export const AssociationsInterfaceCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -227,7 +227,7 @@ export const AssociationsInterfaceDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       code: 200,
-      apiVersion: "2025-01-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -262,7 +262,7 @@ export const AssociationsInterfaceGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       code: 200,
-      apiVersion: "2025-01-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -327,7 +327,7 @@ export const AssociationsInterfaceListByTrafficControllerRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -457,7 +457,7 @@ export const AssociationsInterfaceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       code: 200,
-      apiVersion: "2025-01-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -514,10 +514,80 @@ export const FrontendsInterfaceCreateOrUpdateRequestTagsMap =
     S.String,
   ) as any as S.Schema<FrontendsInterfaceCreateOrUpdateRequestTagsMap>;
 
+/** Whether public network access is allowed for the frontend. */
+export type PublicNetworkAccess = "Enabled" | "Disabled";
+export const PublicNetworkAccess = /*@__PURE__*/ S.String;
+
+/** Reference to an Association resource. */
+export interface FrontendAssociation {
+  /** Resource ID of the Association. */
+  id: string;
+}
+export const FrontendAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "FrontendAssociation",
+}) as any as S.Schema<FrontendAssociation>;
+
+/** Web Application Firewall Security Policy */
+export interface WafSecurityPolicy {
+  /** Resource ID of the Waf Security Policy */
+  id: string;
+}
+export const WafSecurityPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "WafSecurityPolicy",
+}) as any as S.Schema<WafSecurityPolicy>;
+
+/** IpAccessRules Security Policy */
+export interface IpAccessRulesSecurityPolicy {
+  /** Resource ID of the Ip Access Rules Security Policy */
+  id: string;
+}
+export const IpAccessRulesSecurityPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "IpAccessRulesSecurityPolicy",
+}) as any as S.Schema<IpAccessRulesSecurityPolicy>;
+
+/** SecurityPolicyConfigurations Subresource of Traffic Controller. */
+export interface SecurityPolicyConfigurations {
+  /** Contains reference to a WAF-type security policy. */
+  wafSecurityPolicy?: WafSecurityPolicy;
+  /** Contains reference to a IpAccessRules-type security policy. */
+  ipAccessRulesSecurityPolicy?: IpAccessRulesSecurityPolicy;
+}
+export const SecurityPolicyConfigurations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    wafSecurityPolicy: S.optional(WafSecurityPolicy),
+    ipAccessRulesSecurityPolicy: S.optional(IpAccessRulesSecurityPolicy),
+  }),
+).annotate({
+  identifier: "SecurityPolicyConfigurations",
+}) as any as S.Schema<SecurityPolicyConfigurations>;
+
 /** Frontend Properties. */
-export interface FrontendPropertiesInput {}
+export interface FrontendPropertiesInput {
+  /** Whether public network access is allowed for the frontend. Enabled indicates a public frontend; Disabled indicates a private frontend. */
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
+  /** Reference to an Association resource that contains the subnet where the private frontend should be deployed. */
+  association?: FrontendAssociation;
+  /** Frontend Security Policy Configuration */
+  securityPolicyConfigurations?: SecurityPolicyConfigurations;
+}
 export const FrontendPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    association: S.optional(FrontendAssociation),
+    securityPolicyConfigurations: S.optional(SecurityPolicyConfigurations),
+  }),
 ).annotate({
   identifier: "FrontendPropertiesInput",
 }) as any as S.Schema<FrontendPropertiesInput>;
@@ -553,7 +623,7 @@ export const FrontendsInterfaceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -574,12 +644,21 @@ export const FrontendsInterfaceCreateOrUpdateResponseTagsMap =
 export interface FrontendProperties {
   /** The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend. */
   fqdn?: string;
+  /** Whether public network access is allowed for the frontend. Enabled indicates a public frontend; Disabled indicates a private frontend. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Reference to an Association resource that contains the subnet where the private frontend should be deployed. */
+  association?: FrontendAssociation;
+  /** Frontend Security Policy Configuration */
+  securityPolicyConfigurations?: SecurityPolicyConfigurations;
   /** Provisioning State of Traffic Controller Frontend Resource */
   provisioningState?: ProvisioningState;
 }
 export const FrontendProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    association: S.optional(FrontendAssociation),
+    securityPolicyConfigurations: S.optional(SecurityPolicyConfigurations),
     provisioningState: S.optional(ProvisioningState),
   }),
 ).annotate({
@@ -638,7 +717,7 @@ export const FrontendsInterfaceDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       code: 200,
-      apiVersion: "2025-01-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -673,7 +752,7 @@ export const FrontendsInterfaceGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       code: 200,
-      apiVersion: "2025-01-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -738,7 +817,7 @@ export const FrontendsInterfaceListByTrafficControllerRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -812,6 +891,82 @@ export const FrontendsInterfaceUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<FrontendsInterfaceUpdateRequestTagsMap>;
 
+/** Reference to an Association resource. */
+export interface FrontendAssociationUpdate {
+  /** Resource ID of the Association. */
+  id?: string;
+}
+export const FrontendAssociationUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FrontendAssociationUpdate",
+}) as any as S.Schema<FrontendAssociationUpdate>;
+
+/** Web Application Firewall Security Policy */
+export interface WafSecurityPolicyUpdate {
+  /** Resource ID of the Waf Security Policy */
+  id?: string;
+}
+export const WafSecurityPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WafSecurityPolicyUpdate",
+}) as any as S.Schema<WafSecurityPolicyUpdate>;
+
+/** IpAccessRules Security Policy */
+export interface IpAccessRulesSecurityPolicyUpdate {
+  /** Resource ID of the Ip Access Rules Security Policy */
+  id?: string;
+}
+export const IpAccessRulesSecurityPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IpAccessRulesSecurityPolicyUpdate",
+}) as any as S.Schema<IpAccessRulesSecurityPolicyUpdate>;
+
+/** SecurityPolicyConfigurations Subresource of Traffic Controller. */
+export interface SecurityPolicyConfigurationsUpdate {
+  /** Contains reference to a WAF-type security policy. */
+  wafSecurityPolicy?: WafSecurityPolicyUpdate;
+  /** Contains reference to a IpAccessRules-type security policy. */
+  ipAccessRulesSecurityPolicy?: IpAccessRulesSecurityPolicyUpdate;
+}
+export const SecurityPolicyConfigurationsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    wafSecurityPolicy: S.optional(WafSecurityPolicyUpdate),
+    ipAccessRulesSecurityPolicy: S.optional(IpAccessRulesSecurityPolicyUpdate),
+  }),
+).annotate({
+  identifier: "SecurityPolicyConfigurationsUpdate",
+}) as any as S.Schema<SecurityPolicyConfigurationsUpdate>;
+
+/** The updatable properties of the Frontend. */
+export interface FrontendUpdateProperties {
+  /** Whether public network access is allowed for the frontend. Enabled indicates a public frontend; Disabled indicates a private frontend. */
+  publicNetworkAccess?: PublicNetworkAccess | (string & {});
+  /** Reference to an Association resource that contains the subnet where the private frontend should be deployed. */
+  association?: FrontendAssociationUpdate;
+  /** Frontend Security Policy Configuration */
+  securityPolicyConfigurations?: SecurityPolicyConfigurationsUpdate;
+}
+export const FrontendUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    association: S.optional(FrontendAssociationUpdate),
+    securityPolicyConfigurations: S.optional(
+      SecurityPolicyConfigurationsUpdate,
+    ),
+  }),
+).annotate({
+  identifier: "FrontendUpdateProperties",
+}) as any as S.Schema<FrontendUpdateProperties>;
+
 export interface FrontendsInterfaceUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -823,6 +978,8 @@ export interface FrontendsInterfaceUpdateRequest {
   frontendName: string;
   /** Resource tags. */
   tags?: FrontendsInterfaceUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: FrontendUpdateProperties;
 }
 export const FrontendsInterfaceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -831,12 +988,13 @@ export const FrontendsInterfaceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     trafficControllerName: S.String.pipe(T.Label()),
     frontendName: S.String.pipe(T.Label()),
     tags: S.optional(FrontendsInterfaceUpdateRequestTagsMap),
+    properties: S.optional(FrontendUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       code: 200,
-      apiVersion: "2025-01-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -889,7 +1047,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.ServiceNetworking/operations",
       code: 200,
-      apiVersion: "2025-01-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -970,6 +1128,468 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+export interface PrivateEndpointConnectionsInterfaceDeleteRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** traffic controller name for path */
+  trafficControllerName: string;
+  /** Private Endpoint Connection */
+  privateEndpointConnectionName: string;
+}
+export const PrivateEndpointConnectionsInterfaceDeleteRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      trafficControllerName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2026-03-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsInterfaceDeleteRequest",
+  }) as any as S.Schema<PrivateEndpointConnectionsInterfaceDeleteRequest>;
+
+export interface PrivateEndpointConnectionsInterfaceDeleteResponse {}
+export const PrivateEndpointConnectionsInterfaceDeleteResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "PrivateEndpointConnectionsInterfaceDeleteResponse",
+  }) as any as S.Schema<PrivateEndpointConnectionsInterfaceDeleteResponse>;
+
+export interface PrivateEndpointConnectionsInterfaceGetRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** traffic controller name for path */
+  trafficControllerName: string;
+  /** Private Endpoint Connection */
+  privateEndpointConnectionName: string;
+}
+export const PrivateEndpointConnectionsInterfaceGetRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      trafficControllerName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2026-03-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsInterfaceGetRequest",
+  }) as any as S.Schema<PrivateEndpointConnectionsInterfaceGetRequest>;
+
+/** Reference to a private endpoint resource. */
+export interface PrivateEndpointReference {
+  /** Resource ID of the private endpoint. */
+  id?: string;
+}
+export const PrivateEndpointReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpointReference",
+}) as any as S.Schema<PrivateEndpointReference>;
+
+/** The private endpoint connection status. */
+export type PrivateLinkServiceConnectionStatus =
+  | "Pending"
+  | "Approved"
+  | "Rejected"
+  | "Disconnected";
+export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
+
+/** The state of a private link service connection. */
+export interface PrivateLinkServiceConnectionState {
+  /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
+  status?: PrivateLinkServiceConnectionStatus | (string & {});
+  /** The reason for approval/rejection of the connection. */
+  description?: string;
+  /** A message indicating if changes on the service provider require any updates on the consumer. */
+  actionsRequired?: string;
+}
+export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(PrivateLinkServiceConnectionStatus),
+    description: S.optional(S.String),
+    actionsRequired: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkServiceConnectionState",
+}) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
+/** Properties of a Private Endpoint Connection. */
+export interface PrivateEndpointConnectionProperties {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointReference;
+  /** The connection state of the private endpoint connection. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+  /** Provisioning state of the private endpoint connection. */
+  provisioningState?: ProvisioningState;
+}
+export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateEndpoint: S.optional(PrivateEndpointReference),
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    provisioningState: S.optional(ProvisioningState),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnectionProperties",
+}) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
+export interface PrivateEndpointConnectionsInterfaceGetResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const PrivateEndpointConnectionsInterfaceGetResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(PrivateEndpointConnectionProperties),
+    }),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsInterfaceGetResponse",
+  }) as any as S.Schema<PrivateEndpointConnectionsInterfaceGetResponse>;
+
+export interface PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** traffic controller name for path */
+  trafficControllerName: string;
+}
+export const PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      trafficControllerName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/privateEndpointConnections",
+        code: 200,
+        apiVersion: "2026-03-01",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest",
+  }) as any as S.Schema<PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest>;
+
+/** Private Endpoint Connection resource of Traffic Controller. */
+export interface PrivateEndpointConnection {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(PrivateEndpointConnectionProperties),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnection",
+}) as any as S.Schema<PrivateEndpointConnection>;
+
+/** The PrivateEndpointConnection items on this page */
+export type PrivateEndpointConnectionListResultValueList =
+  Array<PrivateEndpointConnection>;
+export const PrivateEndpointConnectionListResultValueList =
+  /*@__PURE__*/ S.Array(
+    PrivateEndpointConnection,
+  ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
+/** The response of a PrivateEndpointConnection list operation. */
+export interface PrivateEndpointConnectionListResult {
+  /** The PrivateEndpointConnection items on this page */
+  value: PrivateEndpointConnectionListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: PrivateEndpointConnectionListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnectionListResult",
+}) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
+/** Properties of a Private Endpoint Connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The connection state of the private endpoint connection. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
+export interface PrivateEndpointConnectionsInterfaceUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** traffic controller name for path */
+  trafficControllerName: string;
+  /** Private Endpoint Connection */
+  privateEndpointConnectionName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
+}
+export const PrivateEndpointConnectionsInterfaceUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      trafficControllerName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2026-03-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsInterfaceUpdateRequest",
+  }) as any as S.Schema<PrivateEndpointConnectionsInterfaceUpdateRequest>;
+
+export interface PrivateEndpointConnectionsInterfaceUpdateResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const PrivateEndpointConnectionsInterfaceUpdateResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(PrivateEndpointConnectionProperties),
+    }),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsInterfaceUpdateResponse",
+  }) as any as S.Schema<PrivateEndpointConnectionsInterfaceUpdateResponse>;
+
+export interface PrivateLinkResourcesInterfaceGetRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** traffic controller name for path */
+  trafficControllerName: string;
+  /** Private Link Resource */
+  privateLinkResourceName: string;
+}
+export const PrivateLinkResourcesInterfaceGetRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      trafficControllerName: S.String.pipe(T.Label()),
+      privateLinkResourceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/privateLinkResources/{privateLinkResourceName}",
+        code: 200,
+        apiVersion: "2026-03-01",
+      }),
+    ),
+).annotate({
+  identifier: "PrivateLinkResourcesInterfaceGetRequest",
+}) as any as S.Schema<PrivateLinkResourcesInterfaceGetRequest>;
+
+/** The private link resource required member names. */
+export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
+/** The private link resource private DNS zone names. */
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
+/** Properties of a private link resource. */
+export interface PrivateLinkResourceProperties {
+  /** The private link resource group ID. */
+  groupId?: string;
+  /** The private link resource required member names. */
+  requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
+  /** The private link resource private DNS zone names. */
+  requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
+  /** The status of the last operation. */
+  provisioningState?: ProvisioningState;
+}
+export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.optional(S.String),
+    requiredMembers: S.optional(
+      PrivateLinkResourcePropertiesRequiredMembersList,
+    ),
+    requiredZoneNames: S.optional(
+      PrivateLinkResourcePropertiesRequiredZoneNamesList,
+    ),
+    provisioningState: S.optional(ProvisioningState),
+  }),
+).annotate({
+  identifier: "PrivateLinkResourceProperties",
+}) as any as S.Schema<PrivateLinkResourceProperties>;
+
+export interface PrivateLinkResourcesInterfaceGetResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: PrivateLinkResourceProperties;
+}
+export const PrivateLinkResourcesInterfaceGetResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(PrivateLinkResourceProperties),
+    }),
+).annotate({
+  identifier: "PrivateLinkResourcesInterfaceGetResponse",
+}) as any as S.Schema<PrivateLinkResourcesInterfaceGetResponse>;
+
+export interface PrivateLinkResourcesInterfaceListByTrafficControllerRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** traffic controller name for path */
+  trafficControllerName: string;
+}
+export const PrivateLinkResourcesInterfaceListByTrafficControllerRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      trafficControllerName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/privateLinkResources",
+        code: 200,
+        apiVersion: "2026-03-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PrivateLinkResourcesInterfaceListByTrafficControllerRequest",
+  }) as any as S.Schema<PrivateLinkResourcesInterfaceListByTrafficControllerRequest>;
+
+/** A private link resource. */
+export interface PrivateLinkResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: PrivateLinkResourceProperties;
+}
+export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(PrivateLinkResourceProperties),
+  }),
+).annotate({
+  identifier: "PrivateLinkResource",
+}) as any as S.Schema<PrivateLinkResource>;
+
+/** The PrivateLinkResource items on this page */
+export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
+export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+  PrivateLinkResource,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
+/** The response of a PrivateLinkResource list operation. */
+export interface PrivateLinkResourceListResult {
+  /** The PrivateLinkResource items on this page */
+  value: PrivateLinkResourceListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: PrivateLinkResourceListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkResourceListResult",
+}) as any as S.Schema<PrivateLinkResourceListResult>;
+
 /** Resource tags. */
 export type SecurityPoliciesInterfaceCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -991,14 +1611,66 @@ export const WafPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WafPolicy" }) as any as S.Schema<WafPolicy>;
 
+/** Source Address Prefixed Applied by the Rule. Asterisk '*' can also be used to match all source IPs. */
+export type IpAccessRuleSourceAddressPrefixesList = Array<string>;
+export const IpAccessRuleSourceAddressPrefixesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<IpAccessRuleSourceAddressPrefixesList>;
+
+/** Action of Ip Access Rule */
+export type IpAccessRuleAction = "allow" | "deny";
+export const IpAccessRuleAction = /*@__PURE__*/ S.String;
+
+/** Ip Access Policy Rules */
+export interface IpAccessRule {
+  /** Name of the Ip Access Rule */
+  name: string;
+  /** The priority of the rule. The value can be between 1 and 500. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule. */
+  priority: number;
+  /** Source Address Prefixed Applied by the Rule. Asterisk '*' can also be used to match all source IPs. */
+  sourceAddressPrefixes: IpAccessRuleSourceAddressPrefixesList;
+  /** Action of the Rule */
+  action: IpAccessRuleAction | (string & {});
+}
+export const IpAccessRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    priority: S.Number,
+    sourceAddressPrefixes: IpAccessRuleSourceAddressPrefixesList,
+    action: IpAccessRuleAction,
+  }),
+).annotate({ identifier: "IpAccessRule" }) as any as S.Schema<IpAccessRule>;
+
+/** Ip Access Policy Rules List */
+export type IpAccessRulesPolicyRulesList = Array<IpAccessRule>;
+export const IpAccessRulesPolicyRulesList = /*@__PURE__*/ S.Array(
+  IpAccessRule,
+) as any as S.Schema<IpAccessRulesPolicyRulesList>;
+
+/** Ip Access Policy */
+export interface IpAccessRulesPolicy {
+  /** Ip Access Policy Rules List */
+  rules?: IpAccessRulesPolicyRulesList;
+}
+export const IpAccessRulesPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rules: S.optional(IpAccessRulesPolicyRulesList),
+  }),
+).annotate({
+  identifier: "IpAccessRulesPolicy",
+}) as any as S.Schema<IpAccessRulesPolicy>;
+
 /** SecurityPolicy Properties. */
 export interface SecurityPolicyPropertiesInput {
   /** Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set. */
   wafPolicy?: WafPolicy;
+  /** Ip Access Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set. */
+  ipAccessRulesPolicy?: IpAccessRulesPolicy;
 }
 export const SecurityPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wafPolicy: S.optional(WafPolicy),
+    ipAccessRulesPolicy: S.optional(IpAccessRulesPolicy),
   }),
 ).annotate({
   identifier: "SecurityPolicyPropertiesInput",
@@ -1035,7 +1707,7 @@ export const SecurityPoliciesInterfaceCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -1053,7 +1725,7 @@ export const SecurityPoliciesInterfaceCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateResponseTagsMap>;
 
 /** Policy Type of the Security Policy */
-export type PolicyType = "waf";
+export type PolicyType = "waf" | "ipAccessRules";
 export const PolicyType = /*@__PURE__*/ S.String;
 
 /** SecurityPolicy Properties. */
@@ -1062,6 +1734,8 @@ export interface SecurityPolicyProperties {
   policyType?: PolicyType;
   /** Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set. */
   wafPolicy?: WafPolicy;
+  /** Ip Access Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set. */
+  ipAccessRulesPolicy?: IpAccessRulesPolicy;
   /** Provisioning State of Traffic Controller SecurityPolicy Resource */
   provisioningState?: ProvisioningState;
 }
@@ -1069,6 +1743,7 @@ export const SecurityPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyType: S.optional(PolicyType),
     wafPolicy: S.optional(WafPolicy),
+    ipAccessRulesPolicy: S.optional(IpAccessRulesPolicy),
     provisioningState: S.optional(ProvisioningState),
   }),
 ).annotate({
@@ -1128,7 +1803,7 @@ export const SecurityPoliciesInterfaceDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -1163,7 +1838,7 @@ export const SecurityPoliciesInterfaceGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
       code: 200,
-      apiVersion: "2025-01-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1230,7 +1905,7 @@ export const SecurityPoliciesInterfaceListByTrafficControllerRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -1322,10 +1997,13 @@ export const WafPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
 export interface SecurityPolicyUpdateProperties {
   /** Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set. */
   wafPolicy?: WafPolicyUpdate;
+  /** Ip Access Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set. */
+  ipAccessRulesPolicy?: IpAccessRulesPolicy;
 }
 export const SecurityPolicyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wafPolicy: S.optional(WafPolicyUpdate),
+    ipAccessRulesPolicy: S.optional(IpAccessRulesPolicy),
   }),
 ).annotate({
   identifier: "SecurityPolicyUpdateProperties",
@@ -1359,7 +2037,7 @@ export const SecurityPoliciesInterfaceUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PATCH",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -1417,32 +2095,6 @@ export const TrafficControllerInterfaceCreateOrUpdateRequestTagsMap =
     S.String,
   ) as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateRequestTagsMap>;
 
-/** Web Application Firewall Security Policy */
-export interface WafSecurityPolicy {
-  /** Resource ID of the Waf Security Policy */
-  id: string;
-}
-export const WafSecurityPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "WafSecurityPolicy",
-}) as any as S.Schema<WafSecurityPolicy>;
-
-/** SecurityPolicyConfigurations Subresource of Traffic Controller. */
-export interface SecurityPolicyConfigurations {
-  /** Contains reference to a WAF-type security policy. */
-  wafSecurityPolicy?: WafSecurityPolicy;
-}
-export const SecurityPolicyConfigurations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    wafSecurityPolicy: S.optional(WafSecurityPolicy),
-  }),
-).annotate({
-  identifier: "SecurityPolicyConfigurations",
-}) as any as S.Schema<SecurityPolicyConfigurations>;
-
 /** Traffic Controller Properties. */
 export interface TrafficControllerPropertiesInput {
   /** Security Policy Configuration */
@@ -1484,7 +2136,7 @@ export const TrafficControllerInterfaceCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -1540,6 +2192,14 @@ export const TrafficControllerPropertiesSecurityPoliciesList =
     ResourceId,
   ) as any as S.Schema<TrafficControllerPropertiesSecurityPoliciesList>;
 
+/** Private Endpoint Connections List */
+export type TrafficControllerPropertiesPrivateEndpointConnectionsList =
+  Array<ResourceId>;
+export const TrafficControllerPropertiesPrivateEndpointConnectionsList =
+  /*@__PURE__*/ S.Array(
+    ResourceId,
+  ) as any as S.Schema<TrafficControllerPropertiesPrivateEndpointConnectionsList>;
+
 /** Traffic Controller Properties. */
 export interface TrafficControllerProperties {
   /** Configuration Endpoints. */
@@ -1550,6 +2210,8 @@ export interface TrafficControllerProperties {
   associations?: TrafficControllerPropertiesAssociationsList;
   /** Security Policies References List */
   securityPolicies?: TrafficControllerPropertiesSecurityPoliciesList;
+  /** Private Endpoint Connections List */
+  privateEndpointConnections?: TrafficControllerPropertiesPrivateEndpointConnectionsList;
   /** Security Policy Configuration */
   securityPolicyConfigurations?: SecurityPolicyConfigurations;
   /** The status of the last operation. */
@@ -1564,6 +2226,9 @@ export const TrafficControllerProperties = /*@__PURE__*/ S.suspend(() =>
     associations: S.optional(TrafficControllerPropertiesAssociationsList),
     securityPolicies: S.optional(
       TrafficControllerPropertiesSecurityPoliciesList,
+    ),
+    privateEndpointConnections: S.optional(
+      TrafficControllerPropertiesPrivateEndpointConnectionsList,
     ),
     securityPolicyConfigurations: S.optional(SecurityPolicyConfigurations),
     provisioningState: S.optional(ProvisioningState),
@@ -1622,7 +2287,7 @@ export const TrafficControllerInterfaceDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -1655,7 +2320,7 @@ export const TrafficControllerInterfaceGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -1719,7 +2384,7 @@ export const TrafficControllerInterfaceListByResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -1799,7 +2464,7 @@ export const TrafficControllerInterfaceListBySubscriptionRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceNetworking/trafficControllers",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -1815,32 +2480,6 @@ export const TrafficControllerInterfaceUpdateRequestTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<TrafficControllerInterfaceUpdateRequestTagsMap>;
-
-/** Web Application Firewall Security Policy */
-export interface WafSecurityPolicyUpdate {
-  /** Resource ID of the Waf Security Policy */
-  id?: string;
-}
-export const WafSecurityPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WafSecurityPolicyUpdate",
-}) as any as S.Schema<WafSecurityPolicyUpdate>;
-
-/** SecurityPolicyConfigurations Subresource of Traffic Controller. */
-export interface SecurityPolicyConfigurationsUpdate {
-  /** Contains reference to a WAF-type security policy. */
-  wafSecurityPolicy?: WafSecurityPolicyUpdate;
-}
-export const SecurityPolicyConfigurationsUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    wafSecurityPolicy: S.optional(WafSecurityPolicyUpdate),
-  }),
-).annotate({
-  identifier: "SecurityPolicyConfigurationsUpdate",
-}) as any as S.Schema<SecurityPolicyConfigurationsUpdate>;
 
 /** The updatable properties of the TrafficController. */
 export interface TrafficControllerUpdateProperties {
@@ -1882,7 +2521,7 @@ export const TrafficControllerInterfaceUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PATCH",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
         code: 200,
-        apiVersion: "2025-01-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -2090,6 +2729,98 @@ export const OperationsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: OperationsListRequest,
   output: OperationsListResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PrivateEndpointConnectionsInterfaceDeleteError = AzureOpError;
+/** Delete a PrivateEndpointConnection */
+export const PrivateEndpointConnectionsInterfaceDelete: API.OperationMethod<
+  PrivateEndpointConnectionsInterfaceDeleteRequest,
+  PrivateEndpointConnectionsInterfaceDeleteResponse,
+  PrivateEndpointConnectionsInterfaceDeleteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PrivateEndpointConnectionsInterfaceDeleteRequest,
+  output: PrivateEndpointConnectionsInterfaceDeleteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PrivateEndpointConnectionsInterfaceGetError = AzureOpError;
+/** Get a PrivateEndpointConnection */
+export const PrivateEndpointConnectionsInterfaceGet: API.OperationMethod<
+  PrivateEndpointConnectionsInterfaceGetRequest,
+  PrivateEndpointConnectionsInterfaceGetResponse,
+  PrivateEndpointConnectionsInterfaceGetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PrivateEndpointConnectionsInterfaceGetRequest,
+  output: PrivateEndpointConnectionsInterfaceGetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PrivateEndpointConnectionsInterfaceListByTrafficControllerError =
+  AzureOpError;
+/** List PrivateEndpointConnection resources by TrafficController */
+export const PrivateEndpointConnectionsInterfaceListByTrafficController: API.OperationMethod<
+  PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest,
+  PrivateEndpointConnectionListResult,
+  PrivateEndpointConnectionsInterfaceListByTrafficControllerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest,
+  output: PrivateEndpointConnectionListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PrivateEndpointConnectionsInterfaceUpdateError = AzureOpError;
+/** Create a PrivateEndpointConnection */
+export const PrivateEndpointConnectionsInterfaceUpdate: API.OperationMethod<
+  PrivateEndpointConnectionsInterfaceUpdateRequest,
+  PrivateEndpointConnectionsInterfaceUpdateResponse,
+  PrivateEndpointConnectionsInterfaceUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PrivateEndpointConnectionsInterfaceUpdateRequest,
+  output: PrivateEndpointConnectionsInterfaceUpdateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PrivateLinkResourcesInterfaceGetError = AzureOpError;
+/** Get a PrivateLinkResource */
+export const PrivateLinkResourcesInterfaceGet: API.OperationMethod<
+  PrivateLinkResourcesInterfaceGetRequest,
+  PrivateLinkResourcesInterfaceGetResponse,
+  PrivateLinkResourcesInterfaceGetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PrivateLinkResourcesInterfaceGetRequest,
+  output: PrivateLinkResourcesInterfaceGetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PrivateLinkResourcesInterfaceListByTrafficControllerError =
+  AzureOpError;
+/** List PrivateLinkResource resources by TrafficController */
+export const PrivateLinkResourcesInterfaceListByTrafficController: API.OperationMethod<
+  PrivateLinkResourcesInterfaceListByTrafficControllerRequest,
+  PrivateLinkResourceListResult,
+  PrivateLinkResourcesInterfaceListByTrafficControllerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PrivateLinkResourcesInterfaceListByTrafficControllerRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

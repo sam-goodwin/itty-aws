@@ -24,6 +24,30 @@
       },
       "traits": {}
     },
+    "com.posthog.surveys#SurveysListRequestStatus": {
+      "type": "enum",
+      "members": {
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "DRAFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draft"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.surveys#SurveysListRequestType": {
       "type": "enum",
       "members": {
@@ -71,6 +95,13 @@
             "smithy.api#httpQuery": "archived"
           }
         },
+        "created_by": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "created_by",
+            "smithy.api#documentation": "Filter surveys by the ID of the user who created them."
+          }
+        },
         "ids": {
           "target": "com.posthog.surveys#SurveysListRequestIdsList",
           "traits": {
@@ -96,7 +127,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "search",
-            "smithy.api#documentation": "Fuzzy match against survey `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type."
+            "smithy.api#documentation": "Match against survey `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`."
+          }
+        },
+        "status": {
+          "target": "com.posthog.surveys#SurveysListRequestStatus",
+          "traits": {
+            "smithy.api#httpQuery": "status",
+            "smithy.api#documentation": "Filter surveys by their current status.\n\n* `draft` - Draft\n* `running` - Running\n* `complete` - Complete"
           }
         },
         "type": {
@@ -316,7 +354,7 @@
         "search_match_type": {
           "target": "com.posthog.surveys#SearchMatchTypeEnum",
           "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`.",
+            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -626,6 +664,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -634,7 +678,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.surveys#UserBasicRoleAtOrganization": {
@@ -905,7 +949,7 @@
         "type": {
           "target": "com.posthog.surveys#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -918,7 +962,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -931,7 +975,7 @@
         "operator": {
           "target": "com.posthog.surveys#FeatureFlagFilterPropertyGenericSchemaOperatorEnum",
           "traits": {
-            "smithy.api#documentation": "Operator used to compare the property value.\n\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `gte` - gte\n* `lt` - lt\n* `lte` - lte"
+            "smithy.api#documentation": "Operator used to compare the property value.\n\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `starts_with` - starts_with\n* `not_starts_with` - not_starts_with\n* `ends_with` - ends_with\n* `not_ends_with` - not_ends_with\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `gte` - gte\n* `lt` - lt\n* `lte` - lte"
           }
         }
       },
@@ -990,6 +1034,30 @@
             "smithy.api#enumValue": "not_icontains"
           }
         },
+        "STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "starts_with"
+          }
+        },
+        "NOT_STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_starts_with"
+          }
+        },
+        "ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ends_with"
+          }
+        },
+        "NOT_ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_ends_with"
+          }
+        },
         "REGEX": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1028,7 +1096,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `gte` - gte\n* `lt` - lt\n* `lte` - lte"
+        "smithy.api#documentation": "* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `starts_with` - starts_with\n* `not_starts_with` - not_starts_with\n* `ends_with` - ends_with\n* `not_ends_with` - not_ends_with\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `gte` - gte\n* `lt` - lt\n* `lte` - lte"
       }
     },
     "com.posthog.surveys#FeatureFlagFilterPropertyExistsSchema": {
@@ -1043,7 +1111,7 @@
         "type": {
           "target": "com.posthog.surveys#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -1056,7 +1124,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1107,7 +1175,7 @@
         "type": {
           "target": "com.posthog.surveys#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -1120,7 +1188,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1177,7 +1245,7 @@
         "type": {
           "target": "com.posthog.surveys#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -1190,7 +1258,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1283,7 +1351,7 @@
         "type": {
           "target": "com.posthog.surveys#PropertyGroupTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Property filter type. Common values are 'person' and 'cohort'.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
+            "smithy.api#documentation": "Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties.\n\n* `cohort` - cohort\n* `person` - person\n* `group` - group"
           }
         },
         "cohort_name": {
@@ -1296,7 +1364,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1369,7 +1437,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1447,7 +1515,7 @@
         "group_type_index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Group type index when using group-based filters.",
+            "smithy.api#documentation": "Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2216,7 +2284,7 @@
           }
         },
         "urlMatchType": {
-          "target": "com.posthog.surveys#StringMatchOperatorEnum",
+          "target": "com.posthog.surveys#SurveyMatchTypeEnum",
           "traits": {
             "smithy.api#documentation": "URL/device matching types: 'regex' (matches regex pattern), 'not_regex' (does not match regex pattern), 'exact' (exact string match), 'is_not' (not exact match), 'icontains' (case-insensitive contains), 'not_icontains' (case-insensitive does not contain).\n\n* `regex` - regex\n* `not_regex` - not_regex\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains"
           }
@@ -2231,7 +2299,7 @@
           }
         },
         "deviceTypesMatchType": {
-          "target": "com.posthog.surveys#StringMatchOperatorEnum",
+          "target": "com.posthog.surveys#SurveyMatchTypeEnum",
           "traits": {
             "smithy.api#documentation": "URL/device matching types: 'regex' (matches regex pattern), 'not_regex' (does not match regex pattern), 'exact' (exact string match), 'is_not' (not exact match), 'icontains' (case-insensitive contains), 'not_icontains' (case-insensitive does not contain).\n\n* `regex` - regex\n* `not_regex` - not_regex\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains"
           }
@@ -2245,9 +2313,21 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#StringMatchOperatorEnum": {
+    "com.posthog.surveys#SurveyMatchTypeEnum": {
       "type": "enum",
       "members": {
+        "REGEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "regex"
+          }
+        },
+        "NOT_REGEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_regex"
+          }
+        },
         "EXACT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2271,22 +2351,10 @@
           "traits": {
             "smithy.api#enumValue": "not_icontains"
           }
-        },
-        "REGEX": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "regex"
-          }
-        },
-        "NOT_REGEX": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "not_regex"
-          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `regex` - regex\n* `not_regex` - not_regex"
+        "smithy.api#documentation": "* `regex` - regex\n* `not_regex` - not_regex\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains"
       }
     },
     "com.posthog.surveys#SurveyEventsConditionSchema": {
@@ -2527,13 +2595,13 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Survey name."
+            "smithy.api#documentation": "Survey name. Anyone can read it. In-app surveys send it to every visitor's browser alongside the questions and appearance text, and a hosted survey shows it on its public page. Keep customer names and other private details out of it."
           }
         },
         "description": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Survey description."
+            "smithy.api#documentation": "Survey description. Internal only: unlike the name and questions, it is never delivered to visitors."
           }
         },
         "type": {
@@ -3230,13 +3298,13 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Survey name."
+            "smithy.api#documentation": "Survey name. Anyone can read it. In-app surveys send it to every visitor's browser alongside the questions and appearance text, and a hosted survey shows it on its public page. Keep customer names and other private details out of it."
           }
         },
         "description": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Survey description."
+            "smithy.api#documentation": "Survey description. Internal only: unlike the name and questions, it is never delivered to visitors."
           }
         },
         "type": {

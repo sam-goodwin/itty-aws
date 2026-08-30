@@ -274,7 +274,7 @@ export const AlertsDismissRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -365,7 +365,7 @@ export const AlertsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -411,7 +411,7 @@ export const AlertsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/alerts",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -488,7 +488,7 @@ export const AlertsListExternalRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/alerts",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -516,7 +516,7 @@ export const BenefitRecommendationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{billingScope}/providers/Microsoft.CostManagement/benefitRecommendations",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -619,7 +619,7 @@ export const AllSavingsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllSavingsList" }) as any as S.Schema<AllSavingsList>;
 
 /** Kind of the recommendation scope. */
-export type Scope = "Single" | "Shared";
+export type Scope = "Single" | "Shared" | "ManagementGroup";
 export const Scope = /*@__PURE__*/ S.String;
 
 /** The properties of the benefit recommendations. */
@@ -723,7 +723,9 @@ export const BenefitRecommendationsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenefitRecommendationsListResult>;
 
 export type BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter =
-  "Hourly" | "Daily" | "Monthly";
+  | "Hourly"
+  | "Daily"
+  | "Monthly";
 export const BenefitUtilizationSummariesListByBillingAccountIdRequestGrainParameter =
   /*@__PURE__*/ S.String;
 
@@ -752,7 +754,7 @@ export const BenefitUtilizationSummariesListByBillingAccountIdRequest =
         method: "GET",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -810,7 +812,9 @@ export const BenefitUtilizationSummariesListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BenefitUtilizationSummariesListResult>;
 
 export type BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter =
-  "Hourly" | "Daily" | "Monthly";
+  | "Hourly"
+  | "Daily"
+  | "Monthly";
 export const BenefitUtilizationSummariesListByBillingProfileIdRequestGrainParameter =
   /*@__PURE__*/ S.String;
 
@@ -842,7 +846,7 @@ export const BenefitUtilizationSummariesListByBillingProfileIdRequest =
         method: "GET",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -850,7 +854,9 @@ export const BenefitUtilizationSummariesListByBillingProfileIdRequest =
   }) as any as S.Schema<BenefitUtilizationSummariesListByBillingProfileIdRequest>;
 
 export type BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter =
-  "Hourly" | "Daily" | "Monthly";
+  | "Hourly"
+  | "Daily"
+  | "Monthly";
 export const BenefitUtilizationSummariesListBySavingsPlanIdRequestGrainParameter =
   /*@__PURE__*/ S.String;
 
@@ -882,7 +888,7 @@ export const BenefitUtilizationSummariesListBySavingsPlanIdRequest =
         method: "GET",
         uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -890,7 +896,9 @@ export const BenefitUtilizationSummariesListBySavingsPlanIdRequest =
   }) as any as S.Schema<BenefitUtilizationSummariesListBySavingsPlanIdRequest>;
 
 export type BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter =
-  "Hourly" | "Daily" | "Monthly";
+  | "Hourly"
+  | "Daily"
+  | "Monthly";
 export const BenefitUtilizationSummariesListBySavingsPlanOrderRequestGrainParameter =
   /*@__PURE__*/ S.String;
 
@@ -919,7 +927,7 @@ export const BenefitUtilizationSummariesListBySavingsPlanOrderRequest =
         method: "GET",
         uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1178,7 +1186,7 @@ export const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1298,7 +1306,7 @@ export const BudgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1327,7 +1335,7 @@ export const BudgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1376,7 +1384,7 @@ export const BudgetsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/budgets",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1450,7 +1458,7 @@ export const CostAllocationRulesCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/checkNameAvailability",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1633,7 +1641,7 @@ export const CostAllocationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1705,7 +1713,7 @@ export const CostAllocationRulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1734,7 +1742,7 @@ export const CostAllocationRulesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1777,7 +1785,7 @@ export const CostAllocationRulesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1833,7 +1841,8 @@ export const CostAllocationRuleList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CostAllocationRuleList>;
 
 export type DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType =
-  "externalSubscriptions" | "externalBillingAccounts";
+  | "externalSubscriptions"
+  | "externalBillingAccounts";
 export const DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType =
   /*@__PURE__*/ S.String;
 
@@ -1870,7 +1879,7 @@ export const DimensionsByExternalCloudProviderTypeRequest =
         method: "GET",
         uri: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2005,7 +2014,7 @@ export const DimensionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/dimensions",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2332,7 +2341,7 @@ export const ExportsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2625,7 +2634,7 @@ export const ExportsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2657,7 +2666,7 @@ export const ExportsExecuteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/run",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2689,7 +2698,7 @@ export const ExportsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2748,7 +2757,7 @@ export const ExportsGetExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2770,7 +2779,7 @@ export const ExportsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/exports",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2833,7 +2842,8 @@ export const ExportListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportListResult>;
 
 export type ForecastExternalCloudProviderUsageRequestExternalCloudProviderType =
-  "externalSubscriptions" | "externalBillingAccounts";
+  | "externalSubscriptions"
+  | "externalBillingAccounts";
 export const ForecastExternalCloudProviderUsageRequestExternalCloudProviderType =
   /*@__PURE__*/ S.String;
 
@@ -3038,7 +3048,7 @@ export const ForecastExternalCloudProviderUsageRequest =
         method: "POST",
         uri: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/forecast",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3172,7 +3182,7 @@ export const ForecastUsageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/{scope}/providers/Microsoft.CostManagement/forecast",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3255,7 +3265,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountRe
         method: "POST",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3387,7 +3397,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileRe
         method: "POST",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3435,7 +3445,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationIdReq
         method: "POST",
         uri: "/providers/microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3480,7 +3490,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrder
         method: "POST",
         uri: "/providers/microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3528,7 +3538,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdReq
         method: "POST",
         uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3573,7 +3583,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrder
         method: "POST",
         uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3626,7 +3636,7 @@ export const GenerateCostDetailsReportCreateOperationRequest =
         method: "POST",
         uri: "/{scope}/providers/Microsoft.CostManagement/generateCostDetailsReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3774,7 +3784,7 @@ export const GenerateCostDetailsReportGetOperationResultsRequest =
         method: "GET",
         uri: "/{scope}/providers/Microsoft.CostManagement/costDetailsOperationResults/{operationId}",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3819,7 +3829,7 @@ export const GenerateDetailedCostReportCreateOperationRequest =
         method: "POST",
         uri: "/{scope}/providers/Microsoft.CostManagement/generateDetailedCostReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3884,7 +3894,7 @@ export const GenerateDetailedCostReportOperationResultsGetRequest =
         method: "GET",
         uri: "/{scope}/providers/Microsoft.CostManagement/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3932,7 +3942,7 @@ export const GenerateDetailedCostReportOperationStatusGetRequest =
         method: "GET",
         uri: "/{scope}/providers/Microsoft.CostManagement/operationStatus/{operationId}",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4017,7 +4027,7 @@ export const GenerateReservationDetailsReportByBillingAccountIdRequest =
         method: "POST",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateReservationDetailsReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4091,12 +4101,253 @@ export const GenerateReservationDetailsReportByBillingProfileIdRequest =
         method: "POST",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateReservationDetailsReport",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
     identifier: "GenerateReservationDetailsReportByBillingProfileIdRequest",
   }) as any as S.Schema<GenerateReservationDetailsReportByBillingProfileIdRequest>;
+
+/** The customer billing metadata */
+export interface CustomerMetadata {
+  /** Customer billing account id */
+  billingAccountId: string;
+  /** Customer billing profile id */
+  billingProfileId: string;
+}
+export const CustomerMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String,
+    billingProfileId: S.String,
+  }),
+).annotate({
+  identifier: "CustomerMetadata",
+}) as any as S.Schema<CustomerMetadata>;
+
+/** The properties of the markup rule. */
+export interface MarkupRuleProperties {
+  /** The description of the markup rule. */
+  description?: string;
+  /** The markup percentage of the rule. */
+  percentage: number;
+  /** Starting date of the markup rule. */
+  startDate: string;
+  /** Ending date of the markup rule. */
+  endDate?: string;
+  /** Customer information for the markup rule. */
+  customerDetails: CustomerMetadata;
+}
+export const MarkupRuleProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    percentage: S.Number,
+    startDate: S.String,
+    endDate: S.optional(S.String),
+    customerDetails: CustomerMetadata,
+  }),
+).annotate({
+  identifier: "MarkupRuleProperties",
+}) as any as S.Schema<MarkupRuleProperties>;
+
+export interface MarkupRulesCreateOrUpdateRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** BillingProfile ID */
+  billingProfileId: string;
+  /** Markup rule name. */
+  ruleName: string;
+  /** Markup rule properties */
+  properties?: MarkupRuleProperties;
+}
+export const MarkupRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+    properties: S.optional(MarkupRuleProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "MarkupRulesCreateOrUpdateRequest",
+}) as any as S.Schema<MarkupRulesCreateOrUpdateRequest>;
+
+export interface MarkupRulesCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Markup rule properties */
+  properties?: MarkupRuleProperties;
+}
+export const MarkupRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(MarkupRuleProperties),
+  }),
+).annotate({
+  identifier: "MarkupRulesCreateOrUpdateResponse",
+}) as any as S.Schema<MarkupRulesCreateOrUpdateResponse>;
+
+export interface MarkupRulesDeleteRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** BillingProfile ID */
+  billingProfileId: string;
+  /** Markup rule name. */
+  ruleName: string;
+}
+export const MarkupRulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "MarkupRulesDeleteRequest",
+}) as any as S.Schema<MarkupRulesDeleteRequest>;
+
+export interface MarkupRulesDeleteResponse {}
+export const MarkupRulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "MarkupRulesDeleteResponse",
+}) as any as S.Schema<MarkupRulesDeleteResponse>;
+
+export interface MarkupRulesGetRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** BillingProfile ID */
+  billingProfileId: string;
+  /** Markup rule name. */
+  ruleName: string;
+}
+export const MarkupRulesGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "MarkupRulesGetRequest",
+}) as any as S.Schema<MarkupRulesGetRequest>;
+
+export interface MarkupRulesGetResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Markup rule properties */
+  properties?: MarkupRuleProperties;
+}
+export const MarkupRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(MarkupRuleProperties),
+  }),
+).annotate({
+  identifier: "MarkupRulesGetResponse",
+}) as any as S.Schema<MarkupRulesGetResponse>;
+
+export interface MarkupRulesListRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** BillingProfile ID */
+  billingProfileId: string;
+}
+export const MarkupRulesListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "MarkupRulesListRequest",
+}) as any as S.Schema<MarkupRulesListRequest>;
+
+/** Markup rule */
+export interface MarkupRule {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Markup rule properties */
+  properties?: MarkupRuleProperties;
+}
+export const MarkupRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(MarkupRuleProperties),
+  }),
+).annotate({ identifier: "MarkupRule" }) as any as S.Schema<MarkupRule>;
+
+/** The list of markup rules. */
+export type MarkupRulePagedResponseValueList = Array<MarkupRule>;
+export const MarkupRulePagedResponseValueList = /*@__PURE__*/ S.Array(
+  MarkupRule,
+) as any as S.Schema<MarkupRulePagedResponseValueList>;
+
+/** Markup rule list result. It contains a list of Markup rules. */
+export interface MarkupRulePagedResponse {
+  /** The list of markup rules. */
+  value?: MarkupRulePagedResponseValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const MarkupRulePagedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(MarkupRulePagedResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MarkupRulePagedResponse",
+}) as any as S.Schema<MarkupRulePagedResponse>;
 
 export interface OperationsListRequest {}
 export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4105,7 +4356,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.CostManagement/operations",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4208,7 +4459,7 @@ export const PriceSheetDownloadByBillingAccountRequest =
         method: "POST",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.CostManagement/pricesheets/default/download",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4231,7 +4482,7 @@ export const PriceSheetDownloadByBillingProfileRequest =
         method: "POST",
         uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.CostManagement/pricesheets/default/download",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4363,7 +4614,7 @@ export const PriceSheetDownloadByInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices/{invoiceName}/providers/Microsoft.CostManagement/pricesheets/default/download",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4550,7 +4801,7 @@ export const QueryUsageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/{scope}/providers/Microsoft.CostManagement/query",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4638,7 +4889,8 @@ export const QueryUsageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryUsageResponse>;
 
 export type QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType =
-  "externalSubscriptions" | "externalBillingAccounts";
+  | "externalSubscriptions"
+  | "externalBillingAccounts";
 export const QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType =
   /*@__PURE__*/ S.String;
 
@@ -4675,7 +4927,7 @@ export const QueryUsageByExternalCloudProviderTypeRequest =
         method: "POST",
         uri: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/query",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4742,7 +4994,7 @@ export const ScheduledActionsCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/providers/Microsoft.CostManagement/checkNameAvailability",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4794,7 +5046,7 @@ export const ScheduledActionsCheckNameAvailabilityByScopeRequest =
         method: "POST",
         uri: "/{scope}/providers/Microsoft.CostManagement/checkNameAvailability",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5013,7 +5265,7 @@ export const ScheduledActionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -5076,7 +5328,7 @@ export const ScheduledActionsCreateOrUpdateByScopeRequest =
         method: "PUT",
         uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5126,7 +5378,7 @@ export const ScheduledActionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5156,7 +5408,7 @@ export const ScheduledActionsDeleteByScopeRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -5182,7 +5434,7 @@ export const ScheduledActionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.CostManagement/scheduledActions/{name}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5234,7 +5486,7 @@ export const ScheduledActionsGetByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5283,7 +5535,7 @@ export const ScheduledActionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.CostManagement/scheduledActions",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5358,7 +5610,7 @@ export const ScheduledActionsListByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5377,7 +5629,7 @@ export const ScheduledActionsRunRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5406,7 +5658,7 @@ export const ScheduledActionsRunByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5446,7 +5698,7 @@ export const SettingsCreateOrUpdateByScopeRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
         code: 200,
-        apiVersion: "2025-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -5496,7 +5748,7 @@ export const SettingsDeleteByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5528,7 +5780,7 @@ export const SettingsGetByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5571,7 +5823,7 @@ export const SettingsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/settings",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5965,7 +6217,7 @@ export const ViewsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/providers/Microsoft.CostManagement/views/{viewName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6076,7 +6328,7 @@ export const ViewsCreateOrUpdateByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6122,7 +6374,7 @@ export const ViewsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/providers/Microsoft.CostManagement/views/{viewName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6151,7 +6403,7 @@ export const ViewsDeleteByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6177,7 +6429,7 @@ export const ViewsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.CostManagement/views/{viewName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6226,7 +6478,7 @@ export const ViewsGetByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6267,7 +6519,7 @@ export const ViewsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.CostManagement/views",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6332,7 +6584,7 @@ export const ViewsListByScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.CostManagement/views",
       code: 200,
-      apiVersion: "2025-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6966,6 +7218,66 @@ export const GenerateReservationDetailsReportByBillingProfileId: API.OperationMe
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateReservationDetailsReportByBillingProfileIdRequest,
   output: OperationStatus,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type MarkupRulesCreateOrUpdateError = AzureOpError;
+/** Create or update a markup rule for a billing account and billing profile. */
+export const MarkupRulesCreateOrUpdate: API.OperationMethod<
+  MarkupRulesCreateOrUpdateRequest,
+  MarkupRulesCreateOrUpdateResponse,
+  MarkupRulesCreateOrUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: MarkupRulesCreateOrUpdateRequest,
+  output: MarkupRulesCreateOrUpdateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type MarkupRulesDeleteError = AzureOpError;
+/** Delete a markup rule for a billing account and billing profile. */
+export const MarkupRulesDelete: API.OperationMethod<
+  MarkupRulesDeleteRequest,
+  MarkupRulesDeleteResponse,
+  MarkupRulesDeleteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: MarkupRulesDeleteRequest,
+  output: MarkupRulesDeleteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type MarkupRulesGetError = AzureOpError;
+/** Get a markup rule by name for a billing account and billing profile. */
+export const MarkupRulesGet: API.OperationMethod<
+  MarkupRulesGetRequest,
+  MarkupRulesGetResponse,
+  MarkupRulesGetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: MarkupRulesGetRequest,
+  output: MarkupRulesGetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type MarkupRulesListError = AzureOpError;
+/** List all markup rules for a billing account and billing profile. */
+export const MarkupRulesList: API.OperationMethod<
+  MarkupRulesListRequest,
+  MarkupRulePagedResponse,
+  MarkupRulesListError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: MarkupRulesListRequest,
+  output: MarkupRulePagedResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

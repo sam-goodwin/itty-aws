@@ -3,348 +3,76 @@
   "metadata": {
     "service": "blogger",
     "version": "v3",
-    "title": "blogger API",
+    "title": "Blogger API",
     "baseUrl": "https://blogger.googleapis.com/"
   },
   "shapes": {
-    "com.gcp.blogger_v3#Comment": {
+    "com.gcp.blogger_v3#BlogPerUserInfo": {
       "type": "structure",
       "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Blog resource."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the User."
+          }
+        },
+        "hasAdminAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the user has Admin level access to the blog."
+          }
+        },
         "kind": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The kind of this entry. Always blogger#comment."
+            "smithy.api#documentation": "The kind of this entity. Always blogger#blogPerUserInfo."
           }
         },
-        "id": {
+        "role": {
+          "target": "com.gcp.blogger_v3#BlogPerUserInfoRoleEnum",
+          "traits": {
+            "smithy.api#documentation": "Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER)."
+          }
+        },
+        "photosAlbumKey": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The identifier for this resource."
-          }
-        },
-        "status": {
-          "target": "com.gcp.blogger_v3#CommentStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of the comment (only populated for admin users)."
-          }
-        },
-        "inReplyTo": {
-          "target": "com.gcp.blogger_v3#CommentInReplyTo",
-          "traits": {
-            "smithy.api#documentation": "Data about the comment this is in reply to."
-          }
-        },
-        "post": {
-          "target": "com.gcp.blogger_v3#CommentPost",
-          "traits": {
-            "smithy.api#documentation": "Data about the post containing this comment."
-          }
-        },
-        "blog": {
-          "target": "com.gcp.blogger_v3#CommentBlog",
-          "traits": {
-            "smithy.api#documentation": "Data about the blog containing this comment."
-          }
-        },
-        "published": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this comment was published."
-          }
-        },
-        "updated": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this comment was last updated."
-          }
-        },
-        "selfLink": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The API REST URL to fetch this resource from."
-          }
-        },
-        "content": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The actual content of the comment. May include HTML markup."
-          }
-        },
-        "author": {
-          "target": "com.gcp.blogger_v3#CommentAuthor",
-          "traits": {
-            "smithy.api#documentation": "The author of this Comment."
+            "smithy.api#documentation": "The Photo Album Key for the user when adding photos to the blog."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#CommentStatusEnum": {
+    "com.gcp.blogger_v3#BlogPerUserInfoRoleEnum": {
       "type": "enum",
       "members": {
-        "LIVE": {
+        "VIEW_TYPE_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "LIVE"
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
           }
         },
-        "EMPTIED": {
+        "READER": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "EMPTIED"
+            "smithy.api#enumValue": "READER"
           }
         },
-        "PENDING": {
+        "AUTHOR": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "PENDING"
+            "smithy.api#enumValue": "AUTHOR"
           }
         },
-        "SPAM": {
+        "ADMIN": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "SPAM"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#CommentInReplyTo": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The identified of the parent of this comment."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#CommentPost": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The identifier of the post containing this comment."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#CommentBlog": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The identifier of the blog containing this comment."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#CommentAuthor": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The identifier of the creator."
-          }
-        },
-        "displayName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The display name."
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The URL of the creator's Profile page."
-          }
-        },
-        "image": {
-          "target": "com.gcp.blogger_v3#CommentAuthorImage",
-          "traits": {
-            "smithy.api#documentation": "The creator's avatar."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#CommentAuthorImage": {
-      "type": "structure",
-      "members": {
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The creator's avatar URL."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#Blog": {
-      "type": "structure",
-      "members": {
-        "kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The kind of this entry. Always blogger#blog."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The identifier for this resource."
-          }
-        },
-        "status": {
-          "target": "com.gcp.blogger_v3#BlogStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of the blog."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of this blog. This is displayed as the title."
-          }
-        },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The description of this blog. This is displayed underneath the title."
-          }
-        },
-        "published": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this blog was published."
-          }
-        },
-        "updated": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this blog was last updated."
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The URL where this blog is published."
-          }
-        },
-        "selfLink": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The API REST URL to fetch this resource from."
-          }
-        },
-        "customMetaData": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The JSON custom meta-data for the Blog."
-          }
-        },
-        "posts": {
-          "target": "com.gcp.blogger_v3#BlogPosts",
-          "traits": {
-            "smithy.api#documentation": "The container of posts in this blog."
-          }
-        },
-        "pages": {
-          "target": "com.gcp.blogger_v3#BlogPages",
-          "traits": {
-            "smithy.api#documentation": "The container of pages in this blog."
-          }
-        },
-        "locale": {
-          "target": "com.gcp.blogger_v3#BlogLocale",
-          "traits": {
-            "smithy.api#documentation": "The locale this Blog is set to."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#BlogStatusEnum": {
-      "type": "enum",
-      "members": {
-        "LIVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LIVE"
-          }
-        },
-        "DELETED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DELETED"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#BlogPosts": {
-      "type": "structure",
-      "members": {
-        "totalItems": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The count of posts in this blog."
-          }
-        },
-        "selfLink": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The URL of the container for posts in this blog."
-          }
-        },
-        "items": {
-          "target": "com.gcp.blogger_v3#PostList_",
-          "traits": {
-            "smithy.api#documentation": "The List of Posts for this Blog."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#PostList_": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.blogger_v3#Post"
-      }
-    },
-    "com.gcp.blogger_v3#BlogPages": {
-      "type": "structure",
-      "members": {
-        "totalItems": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The count of pages in this blog."
-          }
-        },
-        "selfLink": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The URL of the container for pages in this blog."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#BlogLocale": {
-      "type": "structure",
-      "members": {
-        "language": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The language this blog is authored in."
-          }
-        },
-        "country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The country this blog's locale is set to."
-          }
-        },
-        "variant": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The language variant this blog is authored in."
+            "smithy.api#enumValue": "ADMIN"
           }
         }
       }
@@ -352,10 +80,22 @@
     "com.gcp.blogger_v3#Post": {
       "type": "structure",
       "members": {
-        "kind": {
+        "blog": {
+          "target": "com.gcp.blogger_v3#PostBlog",
+          "traits": {
+            "smithy.api#documentation": "Data about the blog containing this Post."
+          }
+        },
+        "published": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#post."
+            "smithy.api#documentation": "RFC 3339 date-time when this Post was published."
+          }
+        },
+        "customMetaData": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The JSON meta-data for the Post."
           }
         },
         "id": {
@@ -370,34 +110,28 @@
             "smithy.api#documentation": "Status of the post. Only set for admin-level requests."
           }
         },
-        "blog": {
-          "target": "com.gcp.blogger_v3#PostBlog",
-          "traits": {
-            "smithy.api#documentation": "Data about the blog containing this Post."
-          }
-        },
-        "published": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this Post was published."
-          }
-        },
-        "updated": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this Post was last updated."
-          }
-        },
         "trashed": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "RFC 3339 date-time when this Post was last trashed."
           }
         },
-        "url": {
-          "target": "smithy.api#String",
+        "replies": {
+          "target": "com.gcp.blogger_v3#PostReplies",
           "traits": {
-            "smithy.api#documentation": "The URL where this Post is displayed."
+            "smithy.api#documentation": "The container of comments on this Post."
+          }
+        },
+        "author": {
+          "target": "com.gcp.blogger_v3#PostAuthor",
+          "traits": {
+            "smithy.api#documentation": "The author of this Post."
+          }
+        },
+        "images": {
+          "target": "com.gcp.blogger_v3#PostImagesItemList",
+          "traits": {
+            "smithy.api#documentation": "Display image for the Post."
           }
         },
         "selfLink": {
@@ -406,10 +140,46 @@
             "smithy.api#documentation": "The API REST URL to fetch this resource from."
           }
         },
+        "location": {
+          "target": "com.gcp.blogger_v3#PostLocation",
+          "traits": {
+            "smithy.api#documentation": "The location for geotagged posts."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the resource."
+          }
+        },
         "title": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The title of the Post."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of this entity. Always blogger#post."
+          }
+        },
+        "labels": {
+          "target": "com.gcp.blogger_v3#StringList",
+          "traits": {
+            "smithy.api#documentation": "The list of labels this Post was tagged with."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL where this Post is displayed."
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC 3339 date-time when this Post was last updated."
           }
         },
         "titleLink": {
@@ -424,52 +194,21 @@
             "smithy.api#documentation": "The content of the Post. May contain HTML markup."
           }
         },
-        "images": {
-          "target": "com.gcp.blogger_v3#PostImagesItemList",
-          "traits": {
-            "smithy.api#documentation": "Display image for the Post."
-          }
-        },
-        "customMetaData": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The JSON meta-data for the Post."
-          }
-        },
-        "author": {
-          "target": "com.gcp.blogger_v3#PostAuthor",
-          "traits": {
-            "smithy.api#documentation": "The author of this Post."
-          }
-        },
-        "replies": {
-          "target": "com.gcp.blogger_v3#PostReplies",
-          "traits": {
-            "smithy.api#documentation": "The container of comments on this Post."
-          }
-        },
-        "labels": {
-          "target": "com.gcp.blogger_v3#StringList",
-          "traits": {
-            "smithy.api#documentation": "The list of labels this Post was tagged with."
-          }
-        },
-        "location": {
-          "target": "com.gcp.blogger_v3#PostLocation",
-          "traits": {
-            "smithy.api#documentation": "The location for geotagged posts."
-          }
-        },
         "readerComments": {
           "target": "com.gcp.blogger_v3#PostReaderCommentsEnum",
           "traits": {
             "smithy.api#documentation": "Comment control and display setting for readers of this post."
           }
-        },
-        "etag": {
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PostBlog": {
+      "type": "structure",
+      "members": {
+        "id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Etag of the resource."
+            "smithy.api#documentation": "The identifier of the Blog that contains this Post."
           }
         }
       }
@@ -503,38 +242,42 @@
         }
       }
     },
-    "com.gcp.blogger_v3#PostBlog": {
+    "com.gcp.blogger_v3#PostReplies": {
       "type": "structure",
       "members": {
-        "id": {
+        "items": {
+          "target": "com.gcp.blogger_v3#CommentList_",
+          "traits": {
+            "smithy.api#documentation": "The List of Comments for this Post."
+          }
+        },
+        "selfLink": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The identifier of the Blog that contains this Post."
+            "smithy.api#documentation": "The URL of the comments on this post."
+          }
+        },
+        "totalItems": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The count of comments on this post."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#PostImagesItem": {
-      "type": "structure",
-      "members": {
-        "url": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.gcp.blogger_v3#PostImagesItemList": {
+    "com.gcp.blogger_v3#CommentList_": {
       "type": "list",
       "member": {
-        "target": "com.gcp.blogger_v3#PostImagesItem"
+        "target": "com.gcp.blogger_v3#Comment"
       }
     },
     "com.gcp.blogger_v3#PostAuthor": {
       "type": "structure",
       "members": {
-        "id": {
+        "url": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The identifier of the creator."
+            "smithy.api#documentation": "The URL of the creator's Profile page."
           }
         },
         "displayName": {
@@ -543,10 +286,10 @@
             "smithy.api#documentation": "The display name."
           }
         },
-        "url": {
+        "id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The URL of the creator's Profile page."
+            "smithy.api#documentation": "The identifier of the creator."
           }
         },
         "image": {
@@ -568,48 +311,27 @@
         }
       }
     },
-    "com.gcp.blogger_v3#PostReplies": {
+    "com.gcp.blogger_v3#PostImagesItem": {
       "type": "structure",
       "members": {
-        "totalItems": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The count of comments on this post."
-          }
-        },
-        "selfLink": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The URL of the comments on this post."
-          }
-        },
-        "items": {
-          "target": "com.gcp.blogger_v3#CommentList_",
-          "traits": {
-            "smithy.api#documentation": "The List of Comments for this Post."
-          }
+        "url": {
+          "target": "smithy.api#String"
         }
       }
     },
-    "com.gcp.blogger_v3#CommentList_": {
+    "com.gcp.blogger_v3#PostImagesItemList": {
       "type": "list",
       "member": {
-        "target": "com.gcp.blogger_v3#Comment"
-      }
-    },
-    "com.gcp.blogger_v3#StringList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
+        "target": "com.gcp.blogger_v3#PostImagesItem"
       }
     },
     "com.gcp.blogger_v3#PostLocation": {
       "type": "structure",
       "members": {
-        "name": {
+        "span": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Location name."
+            "smithy.api#documentation": "Location's viewport span. Can be used when rendering a map preview."
           }
         },
         "lat": {
@@ -624,12 +346,18 @@
             "smithy.api#documentation": "Location's longitude."
           }
         },
-        "span": {
+        "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Location's viewport span. Can be used when rendering a map preview."
+            "smithy.api#documentation": "Location name."
           }
         }
+      }
+    },
+    "com.gcp.blogger_v3#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.gcp.blogger_v3#PostReaderCommentsEnum": {
@@ -655,97 +383,283 @@
         }
       }
     },
-    "com.gcp.blogger_v3#BlogUserInfo": {
+    "com.gcp.blogger_v3#User": {
       "type": "structure",
       "members": {
+        "locale": {
+          "target": "com.gcp.blogger_v3#UserLocale",
+          "traits": {
+            "smithy.api#documentation": "This user's locale"
+          }
+        },
         "kind": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#blogUserInfo."
+            "smithy.api#documentation": "The kind of this entity. Always blogger#user."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name."
+          }
+        },
+        "blogs": {
+          "target": "com.gcp.blogger_v3#UserBlogs",
+          "traits": {
+            "smithy.api#documentation": "The container of blogs for this user."
+          }
+        },
+        "about": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Profile summary information."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier for this User."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user's profile page."
+          }
+        },
+        "selfLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API REST URL to fetch this resource from."
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when this profile was created, in seconds since epoch."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#UserLocale": {
+      "type": "structure",
+      "members": {
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The country this blog's locale is set to."
+          }
+        },
+        "variant": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The language variant this blog is authored in."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The language this blog is authored in."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#UserBlogs": {
+      "type": "structure",
+      "members": {
+        "selfLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the Blogs for this user."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#Page": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.gcp.blogger_v3#PageStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "The status of the page for admin resources (either LIVE or DRAFT)."
           }
         },
         "blog": {
-          "target": "com.gcp.blogger_v3#Blog",
+          "target": "com.gcp.blogger_v3#PageBlog",
           "traits": {
-            "smithy.api#documentation": "The Blog resource."
+            "smithy.api#documentation": "Data about the blog containing this Page."
           }
         },
-        "blog_user_info": {
-          "target": "com.gcp.blogger_v3#BlogPerUserInfo",
+        "author": {
+          "target": "com.gcp.blogger_v3#PageAuthor",
           "traits": {
-            "smithy.api#documentation": "Information about a User for the Blog."
+            "smithy.api#documentation": "The author of this Page."
           }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#BlogPerUserInfo": {
-      "type": "structure",
-      "members": {
+        },
+        "trashed": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC 3339 date-time when this Page was trashed."
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC 3339 date-time when this Page was last updated."
+          }
+        },
+        "published": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC 3339 date-time when this Page was published."
+          }
+        },
+        "selfLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API REST URL to fetch this resource from."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL that this Page is displayed at."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The body content of this Page, in HTML."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title of this entity. This is the name displayed in the Admin user interface."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the resource."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier for this resource."
+          }
+        },
         "kind": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#blogPerUserInfo."
-          }
-        },
-        "userId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the User."
-          }
-        },
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Blog resource."
-          }
-        },
-        "photosAlbumKey": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The Photo Album Key for the user when adding photos to the blog."
-          }
-        },
-        "hasAdminAccess": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has Admin level access to the blog."
-          }
-        },
-        "role": {
-          "target": "com.gcp.blogger_v3#BlogPerUserInfoRoleEnum",
-          "traits": {
-            "smithy.api#documentation": "Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER)."
+            "smithy.api#documentation": "The kind of this entity. Always blogger#page."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#BlogPerUserInfoRoleEnum": {
+    "com.gcp.blogger_v3#PageStatusEnum": {
       "type": "enum",
       "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
+        "LIVE": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+            "smithy.api#enumValue": "LIVE"
           }
         },
-        "READER": {
+        "DRAFT": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "READER"
+            "smithy.api#enumValue": "DRAFT"
           }
         },
-        "AUTHOR": {
+        "SOFT_TRASHED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
+            "smithy.api#enumValue": "SOFT_TRASHED"
           }
         }
+      }
+    },
+    "com.gcp.blogger_v3#PageBlog": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the blog containing this page."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PageAuthor": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "com.gcp.blogger_v3#PageAuthorImage",
+          "traits": {
+            "smithy.api#documentation": "The creator's avatar."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the creator's Profile page."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the creator."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PageAuthorImage": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creator's avatar URL."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PostUserInfosList": {
+      "type": "structure",
+      "members": {
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pagination token to fetch the next page, if one exists."
+          }
+        },
+        "items": {
+          "target": "com.gcp.blogger_v3#PostUserInfoList",
+          "traits": {
+            "smithy.api#documentation": "The list of Posts with User information for the post, for this Blog."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of this entity. Always blogger#postList."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PostUserInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.blogger_v3#PostUserInfo"
       }
     },
     "com.gcp.blogger_v3#Pageviews": {
@@ -817,13 +731,72 @@
         "target": "com.gcp.blogger_v3#PageviewsCountsItem"
       }
     },
-    "com.gcp.blogger_v3#Page": {
+    "com.gcp.blogger_v3#BlogList": {
       "type": "structure",
       "members": {
+        "blogUserInfos": {
+          "target": "com.gcp.blogger_v3#BlogUserInfoList",
+          "traits": {
+            "smithy.api#documentation": "Admin level list of blog per-user information."
+          }
+        },
+        "items": {
+          "target": "com.gcp.blogger_v3#BlogList_",
+          "traits": {
+            "smithy.api#documentation": "The list of Blogs this user has Authorship or Admin rights over."
+          }
+        },
         "kind": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#page."
+            "smithy.api#documentation": "The kind of this entity. Always blogger#blogList."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#BlogUserInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.blogger_v3#BlogUserInfo"
+      }
+    },
+    "com.gcp.blogger_v3#BlogList_": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.blogger_v3#Blog"
+      }
+    },
+    "com.gcp.blogger_v3#Blog": {
+      "type": "structure",
+      "members": {
+        "posts": {
+          "target": "com.gcp.blogger_v3#BlogPosts",
+          "traits": {
+            "smithy.api#documentation": "The container of posts in this blog."
+          }
+        },
+        "locale": {
+          "target": "com.gcp.blogger_v3#BlogLocale",
+          "traits": {
+            "smithy.api#documentation": "The locale this Blog is set to."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL where this blog is published."
+          }
+        },
+        "pages": {
+          "target": "com.gcp.blogger_v3#BlogPages",
+          "traits": {
+            "smithy.api#documentation": "The container of pages in this blog."
+          }
+        },
+        "published": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC 3339 date-time when this blog was published."
           }
         },
         "id": {
@@ -832,40 +805,28 @@
             "smithy.api#documentation": "The identifier for this resource."
           }
         },
-        "status": {
-          "target": "com.gcp.blogger_v3#PageStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of the page for admin resources (either LIVE or DRAFT)."
-          }
-        },
-        "blog": {
-          "target": "com.gcp.blogger_v3#PageBlog",
-          "traits": {
-            "smithy.api#documentation": "Data about the blog containing this Page."
-          }
-        },
-        "published": {
+        "customMetaData": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this Page was published."
+            "smithy.api#documentation": "The JSON custom meta-data for the Blog."
+          }
+        },
+        "status": {
+          "target": "com.gcp.blogger_v3#BlogStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "The status of the blog."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of this blog. This is displayed as the title."
           }
         },
         "updated": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this Page was last updated."
-          }
-        },
-        "trashed": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "RFC 3339 date-time when this Page was trashed."
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The URL that this Page is displayed at."
+            "smithy.api#documentation": "RFC 3339 date-time when this blog was last updated."
           }
         },
         "selfLink": {
@@ -874,33 +835,90 @@
             "smithy.api#documentation": "The API REST URL to fetch this resource from."
           }
         },
-        "title": {
+        "kind": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The title of this entity. This is the name displayed in the Admin user interface."
+            "smithy.api#documentation": "The kind of this entry. Always blogger#blog."
           }
         },
-        "content": {
+        "description": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The body content of this Page, in HTML."
-          }
-        },
-        "author": {
-          "target": "com.gcp.blogger_v3#PageAuthor",
-          "traits": {
-            "smithy.api#documentation": "The author of this Page."
-          }
-        },
-        "etag": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Etag of the resource."
+            "smithy.api#documentation": "The description of this blog. This is displayed underneath the title."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#PageStatusEnum": {
+    "com.gcp.blogger_v3#BlogPosts": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.gcp.blogger_v3#PostList_",
+          "traits": {
+            "smithy.api#documentation": "The List of Posts for this Blog."
+          }
+        },
+        "totalItems": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The count of posts in this blog."
+          }
+        },
+        "selfLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the container for posts in this blog."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PostList_": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.blogger_v3#Post"
+      }
+    },
+    "com.gcp.blogger_v3#BlogLocale": {
+      "type": "structure",
+      "members": {
+        "variant": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The language variant this blog is authored in."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The language this blog is authored in."
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The country this blog's locale is set to."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#BlogPages": {
+      "type": "structure",
+      "members": {
+        "totalItems": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The count of pages in this blog."
+          }
+        },
+        "selfLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the container for pages in this blog."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#BlogStatusEnum": {
       "type": "enum",
       "members": {
         "LIVE": {
@@ -909,67 +927,173 @@
             "smithy.api#enumValue": "LIVE"
           }
         },
-        "DRAFT": {
+        "DELETED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "DRAFT"
-          }
-        },
-        "SOFT_TRASHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SOFT_TRASHED"
+            "smithy.api#enumValue": "DELETED"
           }
         }
       }
     },
-    "com.gcp.blogger_v3#PageBlog": {
+    "com.gcp.blogger_v3#CommentList": {
       "type": "structure",
       "members": {
-        "id": {
+        "etag": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The identifier of the blog containing this page."
+            "smithy.api#documentation": "Etag of the response."
+          }
+        },
+        "items": {
+          "target": "com.gcp.blogger_v3#CommentList_",
+          "traits": {
+            "smithy.api#documentation": "The List of Comments for a Post."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of this entry. Always blogger#commentList."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pagination token to fetch the next page, if one exists."
+          }
+        },
+        "prevPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pagination token to fetch the previous page, if one exists."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#PageAuthor": {
+    "com.gcp.blogger_v3#BlogUserInfo": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
+        "blog": {
+          "target": "com.gcp.blogger_v3#Blog",
           "traits": {
-            "smithy.api#documentation": "The identifier of the creator."
+            "smithy.api#documentation": "The Blog resource."
           }
         },
-        "displayName": {
-          "target": "smithy.api#String",
+        "blog_user_info": {
+          "target": "com.gcp.blogger_v3#BlogPerUserInfo",
           "traits": {
-            "smithy.api#documentation": "The display name."
+            "smithy.api#documentation": "Information about a User for the Blog."
           }
         },
-        "url": {
+        "kind": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The URL of the creator's Profile page."
-          }
-        },
-        "image": {
-          "target": "com.gcp.blogger_v3#PageAuthorImage",
-          "traits": {
-            "smithy.api#documentation": "The creator's avatar."
+            "smithy.api#documentation": "The kind of this entity. Always blogger#blogUserInfo."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#PageAuthorImage": {
+    "com.gcp.blogger_v3#PageList": {
       "type": "structure",
       "members": {
-        "url": {
+        "items": {
+          "target": "com.gcp.blogger_v3#PageList_",
+          "traits": {
+            "smithy.api#documentation": "The list of Pages for a Blog."
+          }
+        },
+        "etag": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The creator's avatar URL."
+            "smithy.api#documentation": "Etag of the response."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of this entity. Always blogger#pageList."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pagination token to fetch the next page, if one exists."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PageList_": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.blogger_v3#Page"
+      }
+    },
+    "com.gcp.blogger_v3#PostList": {
+      "type": "structure",
+      "members": {
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the response."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of this entity. Always blogger#postList."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pagination token to fetch the next page, if one exists."
+          }
+        },
+        "prevPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pagination token to fetch the previous page, if one exists."
+          }
+        },
+        "items": {
+          "target": "com.gcp.blogger_v3#PostList_",
+          "traits": {
+            "smithy.api#documentation": "The list of Posts for this Blog."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PostPerUserInfo": {
+      "type": "structure",
+      "members": {
+        "hasEditAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the user has Author level access to the post."
+          }
+        },
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Blog that the post resource belongs to."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of this entity. Always blogger#postPerUserInfo."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the User."
+          }
+        },
+        "postId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Post resource."
           }
         }
       }
@@ -997,66 +1121,55 @@
         }
       }
     },
-    "com.gcp.blogger_v3#PostPerUserInfo": {
+    "com.gcp.blogger_v3#Comment": {
       "type": "structure",
       "members": {
-        "kind": {
-          "target": "smithy.api#String",
+        "inReplyTo": {
+          "target": "com.gcp.blogger_v3#CommentInReplyTo",
           "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#postPerUserInfo."
-          }
-        },
-        "userId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the User."
-          }
-        },
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Blog that the post resource belongs to."
-          }
-        },
-        "postId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Post resource."
-          }
-        },
-        "hasEditAccess": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has Author level access to the post."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#User": {
-      "type": "structure",
-      "members": {
-        "kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#user."
+            "smithy.api#documentation": "Data about the comment this is in reply to."
           }
         },
         "id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The identifier for this User."
+            "smithy.api#documentation": "The identifier for this resource."
           }
         },
-        "created": {
-          "target": "smithy.api#String",
+        "author": {
+          "target": "com.gcp.blogger_v3#CommentAuthor",
           "traits": {
-            "smithy.api#documentation": "The timestamp of when this profile was created, in seconds since epoch."
+            "smithy.api#documentation": "The author of this Comment."
           }
         },
-        "url": {
+        "post": {
+          "target": "com.gcp.blogger_v3#CommentPost",
+          "traits": {
+            "smithy.api#documentation": "Data about the post containing this comment."
+          }
+        },
+        "content": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The user's profile page."
+            "smithy.api#documentation": "The actual content of the comment. May include HTML markup."
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC 3339 date-time when this comment was last updated."
+          }
+        },
+        "published": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC 3339 date-time when this comment was published."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of this entry. Always blogger#comment."
           }
         },
         "selfLink": {
@@ -1065,238 +1178,189 @@
             "smithy.api#documentation": "The API REST URL to fetch this resource from."
           }
         },
-        "blogs": {
-          "target": "com.gcp.blogger_v3#UserBlogs",
+        "status": {
+          "target": "com.gcp.blogger_v3#CommentStatusEnum",
           "traits": {
-            "smithy.api#documentation": "The container of blogs for this user."
+            "smithy.api#documentation": "The status of the comment (only populated for admin users)."
           }
         },
+        "blog": {
+          "target": "com.gcp.blogger_v3#CommentBlog",
+          "traits": {
+            "smithy.api#documentation": "Data about the blog containing this comment."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#CommentInReplyTo": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identified of the parent of this comment."
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#CommentAuthor": {
+      "type": "structure",
+      "members": {
         "displayName": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The display name."
           }
         },
-        "about": {
-          "target": "smithy.api#String",
+        "image": {
+          "target": "com.gcp.blogger_v3#CommentAuthorImage",
           "traits": {
-            "smithy.api#documentation": "Profile summary information."
+            "smithy.api#documentation": "The creator's avatar."
           }
         },
-        "locale": {
-          "target": "com.gcp.blogger_v3#UserLocale",
+        "url": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "This user's locale"
+            "smithy.api#documentation": "The URL of the creator's Profile page."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the creator."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#UserBlogs": {
+    "com.gcp.blogger_v3#CommentAuthorImage": {
       "type": "structure",
       "members": {
-        "selfLink": {
+        "url": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The URL of the Blogs for this user."
+            "smithy.api#documentation": "The creator's avatar URL."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#UserLocale": {
+    "com.gcp.blogger_v3#CommentPost": {
       "type": "structure",
       "members": {
-        "language": {
+        "id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The language this blog is authored in."
-          }
-        },
-        "country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The country this blog's locale is set to."
-          }
-        },
-        "variant": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The language variant this blog is authored in."
+            "smithy.api#documentation": "The identifier of the post containing this comment."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#BlogList": {
+    "com.gcp.blogger_v3#CommentStatusEnum": {
+      "type": "enum",
+      "members": {
+        "LIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIVE"
+          }
+        },
+        "EMPTIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EMPTIED"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#CommentBlog": {
       "type": "structure",
       "members": {
-        "kind": {
+        "id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#blogList."
-          }
-        },
-        "items": {
-          "target": "com.gcp.blogger_v3#BlogList_",
-          "traits": {
-            "smithy.api#documentation": "The list of Blogs this user has Authorship or Admin rights over."
-          }
-        },
-        "blogUserInfos": {
-          "target": "com.gcp.blogger_v3#BlogUserInfoList",
-          "traits": {
-            "smithy.api#documentation": "Admin level list of blog per-user information."
+            "smithy.api#documentation": "The identifier of the blog containing this comment."
           }
         }
       }
     },
-    "com.gcp.blogger_v3#BlogList_": {
+    "com.gcp.blogger_v3#ListPagesStatusEnum": {
+      "type": "enum",
+      "members": {
+        "LIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIVE"
+          }
+        },
+        "DRAFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DRAFT"
+          }
+        },
+        "SOFT_TRASHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SOFT_TRASHED"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#ListPagesStatusEnumList": {
       "type": "list",
       "member": {
-        "target": "com.gcp.blogger_v3#Blog"
+        "target": "com.gcp.blogger_v3#ListPagesStatusEnum"
       }
     },
-    "com.gcp.blogger_v3#BlogUserInfoList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.blogger_v3#BlogUserInfo"
-      }
-    },
-    "com.gcp.blogger_v3#CommentList": {
-      "type": "structure",
+    "com.gcp.blogger_v3#ListPagesViewEnum": {
+      "type": "enum",
       "members": {
-        "kind": {
-          "target": "smithy.api#String",
+        "VIEW_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "The kind of this entry. Always blogger#commentList."
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
           }
         },
-        "nextPageToken": {
-          "target": "smithy.api#String",
+        "READER": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Pagination token to fetch the next page, if one exists."
+            "smithy.api#enumValue": "READER"
           }
         },
-        "prevPageToken": {
-          "target": "smithy.api#String",
+        "AUTHOR": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Pagination token to fetch the previous page, if one exists."
+            "smithy.api#enumValue": "AUTHOR"
           }
         },
-        "items": {
-          "target": "com.gcp.blogger_v3#CommentList_",
+        "ADMIN": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "The List of Comments for a Post."
-          }
-        },
-        "etag": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Etag of the response."
+            "smithy.api#enumValue": "ADMIN"
           }
         }
       }
     },
-    "com.gcp.blogger_v3#PageList": {
+    "com.gcp.blogger_v3#ListPagesRequest": {
       "type": "structure",
       "members": {
-        "kind": {
-          "target": "smithy.api#String",
+        "fetchBodies": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#pageList."
+            "smithy.api#httpQuery": "fetchBodies"
           }
         },
-        "items": {
-          "target": "com.gcp.blogger_v3#PageList_",
-          "traits": {
-            "smithy.api#documentation": "The list of Pages for a Blog."
-          }
-        },
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Pagination token to fetch the next page, if one exists."
-          }
-        },
-        "etag": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Etag of the response."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#PageList_": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.blogger_v3#Page"
-      }
-    },
-    "com.gcp.blogger_v3#PostList": {
-      "type": "structure",
-      "members": {
-        "kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#postList."
-          }
-        },
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Pagination token to fetch the next page, if one exists."
-          }
-        },
-        "items": {
-          "target": "com.gcp.blogger_v3#PostList_",
-          "traits": {
-            "smithy.api#documentation": "The list of Posts for this Blog."
-          }
-        },
-        "etag": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Etag of the response."
-          }
-        },
-        "prevPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Pagination token to fetch the previous page, if one exists."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#PostUserInfosList": {
-      "type": "structure",
-      "members": {
-        "kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The kind of this entity. Always blogger#postList."
-          }
-        },
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Pagination token to fetch the next page, if one exists."
-          }
-        },
-        "items": {
-          "target": "com.gcp.blogger_v3#PostUserInfoList",
-          "traits": {
-            "smithy.api#documentation": "The list of Posts with User information for the post, for this Blog."
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#PostUserInfoList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.blogger_v3#PostUserInfo"
-      }
-    },
-    "com.gcp.blogger_v3#ApproveCommentsRequest": {
-      "type": "structure",
-      "members": {
         "blogId": {
           "target": "smithy.api#String",
           "traits": {
@@ -1304,18 +1368,28 @@
             "smithy.api#required": {}
           }
         },
-        "postId": {
-          "target": "smithy.api#String",
+        "status": {
+          "target": "com.gcp.blogger_v3#ListPagesStatusEnumList",
           "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
+            "smithy.api#httpQuery": "status"
           }
         },
-        "commentId": {
+        "maxResults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxResults"
+          }
+        },
+        "view": {
+          "target": "com.gcp.blogger_v3#ListPagesViewEnum",
+          "traits": {
+            "smithy.api#httpQuery": "view"
+          }
+        },
+        "pageToken": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
+            "smithy.api#httpQuery": "pageToken"
           }
         }
       }
@@ -1346,6 +1420,61 @@
         ]
       }
     },
+    "com.gcp.blogger_v3#ListPages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#ListPagesRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#PageList"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v3/blogs/{blogId}/pages"
+        },
+        "smithy.api#documentation": "Lists pages.",
+        "smithy.api#paginated": {
+          "inputToken": "pageToken",
+          "outputToken": "nextPageToken",
+          "items": "items"
+        }
+      }
+    },
+    "com.gcp.blogger_v3#DeletePagesRequest": {
+      "type": "structure",
+      "members": {
+        "useTrash": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Move to Trash if possible",
+            "smithy.api#httpQuery": "useTrash"
+          }
+        },
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.gcp.blogger_v3#BadRequest": {
       "type": "structure",
       "members": {},
@@ -1370,6 +1499,796 @@
             "status": 409
           }
         ]
+      }
+    },
+    "com.gcp.blogger_v3#DeletePages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#DeletePagesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "v3/blogs/{blogId}/pages/{pageId}"
+        },
+        "smithy.api#documentation": "Deletes a page by blog id and page id."
+      }
+    },
+    "com.gcp.blogger_v3#RevertPagesRequest": {
+      "type": "structure",
+      "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#RevertPages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#RevertPagesRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Page"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v3/blogs/{blogId}/pages/{pageId}/revert"
+        },
+        "smithy.api#documentation": "Reverts a published or scheduled page to draft state."
+      }
+    },
+    "com.gcp.blogger_v3#PublishPagesRequest": {
+      "type": "structure",
+      "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PublishPages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#PublishPagesRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Page"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v3/blogs/{blogId}/pages/{pageId}/publish"
+        },
+        "smithy.api#documentation": "Publishes a page."
+      }
+    },
+    "com.gcp.blogger_v3#UpdatePagesRequest": {
+      "type": "structure",
+      "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "publish": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "publish"
+          }
+        },
+        "pageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "revert": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "revert"
+          }
+        },
+        "body": {
+          "target": "com.gcp.blogger_v3#Page",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#UpdatePages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#UpdatePagesRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Page"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "v3/blogs/{blogId}/pages/{pageId}"
+        },
+        "smithy.api#documentation": "Updates a page by blog id and page id."
+      }
+    },
+    "com.gcp.blogger_v3#GetPagesViewEnum": {
+      "type": "enum",
+      "members": {
+        "VIEW_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READER"
+          }
+        },
+        "AUTHOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTHOR"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADMIN"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetPagesRequest": {
+      "type": "structure",
+      "members": {
+        "view": {
+          "target": "com.gcp.blogger_v3#GetPagesViewEnum",
+          "traits": {
+            "smithy.api#httpQuery": "view"
+          }
+        },
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetPages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#GetPagesRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Page"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v3/blogs/{blogId}/pages/{pageId}"
+        },
+        "smithy.api#documentation": "Gets a page by blog id and page id."
+      }
+    },
+    "com.gcp.blogger_v3#PatchPagesRequest": {
+      "type": "structure",
+      "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "publish": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "publish"
+          }
+        },
+        "pageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "revert": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "revert"
+          }
+        },
+        "body": {
+          "target": "com.gcp.blogger_v3#Page",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PatchPages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#PatchPagesRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Page"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "v3/blogs/{blogId}/pages/{pageId}"
+        },
+        "smithy.api#documentation": "Patches a page."
+      }
+    },
+    "com.gcp.blogger_v3#InsertPagesRequest": {
+      "type": "structure",
+      "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "isDraft": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "isDraft"
+          }
+        },
+        "body": {
+          "target": "com.gcp.blogger_v3#Page",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#InsertPages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#InsertPagesRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Page"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v3/blogs/{blogId}/pages"
+        },
+        "smithy.api#documentation": "Inserts a page."
+      }
+    },
+    "com.gcp.blogger_v3#GetPageViewsRangeEnum": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "_30DAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30DAYS"
+          }
+        },
+        "_7DAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "7DAYS"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetPageViewsRangeEnumList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.blogger_v3#GetPageViewsRangeEnum"
+      }
+    },
+    "com.gcp.blogger_v3#GetPageViewsRequest": {
+      "type": "structure",
+      "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "range": {
+          "target": "com.gcp.blogger_v3#GetPageViewsRangeEnumList",
+          "traits": {
+            "smithy.api#httpQuery": "range"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetPageViews": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#GetPageViewsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Pageviews"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v3/blogs/{blogId}/pageviews"
+        },
+        "smithy.api#documentation": "Gets page views by blog id."
+      }
+    },
+    "com.gcp.blogger_v3#GetBlogsViewEnum": {
+      "type": "enum",
+      "members": {
+        "VIEW_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READER"
+          }
+        },
+        "AUTHOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTHOR"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADMIN"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetBlogsRequest": {
+      "type": "structure",
+      "members": {
+        "maxPosts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPosts"
+          }
+        },
+        "view": {
+          "target": "com.gcp.blogger_v3#GetBlogsViewEnum",
+          "traits": {
+            "smithy.api#documentation": "Unspecified is interpreted as READER.",
+            "smithy.api#httpQuery": "view"
+          }
+        },
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetBlogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#GetBlogsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Blog"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v3/blogs/{blogId}"
+        },
+        "smithy.api#documentation": "Gets a blog by id."
+      }
+    },
+    "com.gcp.blogger_v3#GetByUrlBlogsViewEnum": {
+      "type": "enum",
+      "members": {
+        "VIEW_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READER"
+          }
+        },
+        "AUTHOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTHOR"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADMIN"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetByUrlBlogsRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "url",
+            "smithy.api#required": {}
+          }
+        },
+        "view": {
+          "target": "com.gcp.blogger_v3#GetByUrlBlogsViewEnum",
+          "traits": {
+            "smithy.api#documentation": "Unspecified is interpreted as READER.",
+            "smithy.api#httpQuery": "view"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetByUrlBlogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#GetByUrlBlogsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Blog"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v3/blogs/byurl"
+        },
+        "smithy.api#documentation": "Gets a blog by url."
+      }
+    },
+    "com.gcp.blogger_v3#ListByUserBlogsStatusEnum": {
+      "type": "enum",
+      "members": {
+        "LIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIVE"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETED"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#ListByUserBlogsStatusEnumList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.blogger_v3#ListByUserBlogsStatusEnum"
+      }
+    },
+    "com.gcp.blogger_v3#ListByUserBlogsViewEnum": {
+      "type": "enum",
+      "members": {
+        "VIEW_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READER"
+          }
+        },
+        "AUTHOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTHOR"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADMIN"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#ListByUserBlogsRoleEnum": {
+      "type": "enum",
+      "members": {
+        "VIEW_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READER"
+          }
+        },
+        "AUTHOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTHOR"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADMIN"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#ListByUserBlogsRoleEnumList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.blogger_v3#ListByUserBlogsRoleEnum"
+      }
+    },
+    "com.gcp.blogger_v3#ListByUserBlogsRequest": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.gcp.blogger_v3#ListByUserBlogsStatusEnumList",
+          "traits": {
+            "smithy.api#documentation": "Default value of status is LIVE.",
+            "smithy.api#httpQuery": "status"
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "fetchUserInfo": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "fetchUserInfo"
+          }
+        },
+        "view": {
+          "target": "com.gcp.blogger_v3#ListByUserBlogsViewEnum",
+          "traits": {
+            "smithy.api#documentation": "Unspecified is interpreted as the user's role on the blog.",
+            "smithy.api#httpQuery": "view"
+          }
+        },
+        "role": {
+          "target": "com.gcp.blogger_v3#ListByUserBlogsRoleEnumList",
+          "traits": {
+            "smithy.api#httpQuery": "role"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#ListByUserBlogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#ListByUserBlogsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#BlogList"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v3/users/{userId}/blogs"
+        },
+        "smithy.api#documentation": "Lists blogs by user."
+      }
+    },
+    "com.gcp.blogger_v3#ApproveCommentsRequest": {
+      "type": "structure",
+      "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "postId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "commentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.gcp.blogger_v3#ApproveComments": {
@@ -1400,6 +2319,266 @@
           "uri": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve"
         },
         "smithy.api#documentation": "Marks a comment as not spam by blog id, post id and comment id."
+      }
+    },
+    "com.gcp.blogger_v3#ListCommentsViewEnum": {
+      "type": "enum",
+      "members": {
+        "VIEW_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READER"
+          }
+        },
+        "AUTHOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTHOR"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADMIN"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#ListCommentsStatusEnum": {
+      "type": "enum",
+      "members": {
+        "LIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIVE"
+          }
+        },
+        "EMPTIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EMPTIED"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#ListCommentsRequest": {
+      "type": "structure",
+      "members": {
+        "view": {
+          "target": "com.gcp.blogger_v3#ListCommentsViewEnum",
+          "traits": {
+            "smithy.api#httpQuery": "view"
+          }
+        },
+        "fetchBodies": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "fetchBodies"
+          }
+        },
+        "pageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pageToken"
+          }
+        },
+        "maxResults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxResults"
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "endDate"
+          }
+        },
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.gcp.blogger_v3#ListCommentsStatusEnum",
+          "traits": {
+            "smithy.api#httpQuery": "status"
+          }
+        },
+        "postId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "startDate"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#ListComments": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#ListCommentsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#CommentList"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v3/blogs/{blogId}/posts/{postId}/comments"
+        },
+        "smithy.api#documentation": "Lists comments.",
+        "smithy.api#paginated": {
+          "inputToken": "pageToken",
+          "outputToken": "nextPageToken",
+          "items": "items"
+        }
+      }
+    },
+    "com.gcp.blogger_v3#RemoveContentCommentsRequest": {
+      "type": "structure",
+      "members": {
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "postId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "commentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#RemoveContentComments": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#RemoveContentCommentsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Comment"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent"
+        },
+        "smithy.api#documentation": "Removes the content of a comment by blog id, post id and comment id."
+      }
+    },
+    "com.gcp.blogger_v3#MarkAsSpamCommentsRequest": {
+      "type": "structure",
+      "members": {
+        "commentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "postId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#MarkAsSpamComments": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#MarkAsSpamCommentsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Comment"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam"
+        },
+        "smithy.api#documentation": "Marks a comment as spam by blog id, post id and comment id."
       }
     },
     "com.gcp.blogger_v3#DeleteCommentsRequest": {
@@ -1501,17 +2680,17 @@
             "smithy.api#required": {}
           }
         },
+        "view": {
+          "target": "com.gcp.blogger_v3#GetCommentsViewEnum",
+          "traits": {
+            "smithy.api#httpQuery": "view"
+          }
+        },
         "commentId": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#GetCommentsViewEnum",
-          "traits": {
-            "smithy.api#httpQuery": "view"
           }
         }
       }
@@ -1538,154 +2717,6 @@
           "uri": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}"
         },
         "smithy.api#documentation": "Gets a comment by id."
-      }
-    },
-    "com.gcp.blogger_v3#ListCommentsViewEnum": {
-      "type": "enum",
-      "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
-          }
-        },
-        "READER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READER"
-          }
-        },
-        "AUTHOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListCommentsStatusEnum": {
-      "type": "enum",
-      "members": {
-        "LIVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LIVE"
-          }
-        },
-        "EMPTIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EMPTIED"
-          }
-        },
-        "PENDING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PENDING"
-          }
-        },
-        "SPAM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SPAM"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListCommentsRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "postId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "startDate": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "startDate"
-          }
-        },
-        "endDate": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "endDate"
-          }
-        },
-        "maxResults": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "maxResults"
-          }
-        },
-        "fetchBodies": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "fetchBodies"
-          }
-        },
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "pageToken"
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#ListCommentsViewEnum",
-          "traits": {
-            "smithy.api#httpQuery": "view"
-          }
-        },
-        "status": {
-          "target": "com.gcp.blogger_v3#ListCommentsStatusEnum",
-          "traits": {
-            "smithy.api#httpQuery": "status"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListComments": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#ListCommentsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#CommentList"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v3/blogs/{blogId}/posts/{postId}/comments"
-        },
-        "smithy.api#documentation": "Lists comments.",
-        "smithy.api#paginated": {
-          "inputToken": "pageToken",
-          "outputToken": "nextPageToken",
-          "items": "items"
-        }
       }
     },
     "com.gcp.blogger_v3#ListByBlogCommentsStatusEnum": {
@@ -1726,17 +2757,10 @@
     "com.gcp.blogger_v3#ListByBlogCommentsRequest": {
       "type": "structure",
       "members": {
-        "blogId": {
-          "target": "smithy.api#String",
+        "maxResults": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "startDate": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "startDate"
+            "smithy.api#httpQuery": "maxResults"
           }
         },
         "endDate": {
@@ -1745,28 +2769,35 @@
             "smithy.api#httpQuery": "endDate"
           }
         },
-        "maxResults": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "maxResults"
-          }
-        },
         "fetchBodies": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#httpQuery": "fetchBodies"
           }
         },
-        "pageToken": {
+        "blogId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "pageToken"
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
           }
         },
         "status": {
           "target": "com.gcp.blogger_v3#ListByBlogCommentsStatusEnumList",
           "traits": {
             "smithy.api#httpQuery": "status"
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "startDate"
+          }
+        },
+        "pageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pageToken"
           }
         }
       }
@@ -1800,7 +2831,7 @@
         }
       }
     },
-    "com.gcp.blogger_v3#MarkAsSpamCommentsRequest": {
+    "com.gcp.blogger_v3#PatchPostsRequest": {
       "type": "structure",
       "members": {
         "blogId": {
@@ -1810,444 +2841,35 @@
             "smithy.api#required": {}
           }
         },
-        "postId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "commentId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#MarkAsSpamComments": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#MarkAsSpamCommentsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Comment"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam"
-        },
-        "smithy.api#documentation": "Marks a comment as spam by blog id, post id and comment id."
-      }
-    },
-    "com.gcp.blogger_v3#RemoveContentCommentsRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "postId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "commentId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#RemoveContentComments": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#RemoveContentCommentsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Comment"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent"
-        },
-        "smithy.api#documentation": "Removes the content of a comment by blog id, post id and comment id."
-      }
-    },
-    "com.gcp.blogger_v3#DeletePagesRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "useTrash": {
+        "fetchBody": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Move to Trash if possible",
-            "smithy.api#httpQuery": "useTrash"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#DeletePages": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#DeletePagesRequest"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "v3/blogs/{blogId}/pages/{pageId}"
-        },
-        "smithy.api#documentation": "Deletes a page by blog id and page id."
-      }
-    },
-    "com.gcp.blogger_v3#GetPagesViewEnum": {
-      "type": "enum",
-      "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+            "smithy.api#httpQuery": "fetchBody"
           }
         },
-        "READER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READER"
-          }
-        },
-        "AUTHOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetPagesRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#GetPagesViewEnum",
-          "traits": {
-            "smithy.api#httpQuery": "view"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetPages": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#GetPagesRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Page"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v3/blogs/{blogId}/pages/{pageId}"
-        },
-        "smithy.api#documentation": "Gets a page by blog id and page id."
-      }
-    },
-    "com.gcp.blogger_v3#InsertPagesRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "isDraft": {
+        "fetchImages": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpQuery": "isDraft"
+            "smithy.api#httpQuery": "fetchImages"
           }
         },
-        "body": {
-          "target": "com.gcp.blogger_v3#Page",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#InsertPages": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#InsertPagesRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Page"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v3/blogs/{blogId}/pages"
-        },
-        "smithy.api#documentation": "Inserts a page."
-      }
-    },
-    "com.gcp.blogger_v3#ListPagesStatusEnum": {
-      "type": "enum",
-      "members": {
-        "LIVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LIVE"
-          }
-        },
-        "DRAFT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DRAFT"
-          }
-        },
-        "SOFT_TRASHED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SOFT_TRASHED"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListPagesStatusEnumList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.blogger_v3#ListPagesStatusEnum"
-      }
-    },
-    "com.gcp.blogger_v3#ListPagesViewEnum": {
-      "type": "enum",
-      "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
-          }
-        },
-        "READER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READER"
-          }
-        },
-        "AUTHOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListPagesRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "fetchBodies": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "fetchBodies"
-          }
-        },
-        "maxResults": {
+        "maxComments": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpQuery": "maxResults"
-          }
-        },
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "pageToken"
-          }
-        },
-        "status": {
-          "target": "com.gcp.blogger_v3#ListPagesStatusEnumList",
-          "traits": {
-            "smithy.api#httpQuery": "status"
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#ListPagesViewEnum",
-          "traits": {
-            "smithy.api#httpQuery": "view"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListPages": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#ListPagesRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#PageList"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v3/blogs/{blogId}/pages"
-        },
-        "smithy.api#documentation": "Lists pages.",
-        "smithy.api#paginated": {
-          "inputToken": "pageToken",
-          "outputToken": "nextPageToken",
-          "items": "items"
-        }
-      }
-    },
-    "com.gcp.blogger_v3#PatchPagesRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
+            "smithy.api#httpQuery": "maxComments"
           }
         },
         "publish": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#httpQuery": "publish"
+          }
+        },
+        "postId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
           }
         },
         "revert": {
@@ -2257,7 +2879,7 @@
           }
         },
         "body": {
-          "target": "com.gcp.blogger_v3#Page",
+          "target": "com.gcp.blogger_v3#Post",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -2265,13 +2887,13 @@
         }
       }
     },
-    "com.gcp.blogger_v3#PatchPages": {
+    "com.gcp.blogger_v3#PatchPosts": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.blogger_v3#PatchPagesRequest"
+        "target": "com.gcp.blogger_v3#PatchPostsRequest"
       },
       "output": {
-        "target": "com.gcp.blogger_v3#Page"
+        "target": "com.gcp.blogger_v3#Post"
       },
       "errors": [
         {
@@ -2290,175 +2912,9 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "v3/blogs/{blogId}/pages/{pageId}"
+          "uri": "v3/blogs/{blogId}/posts/{postId}"
         },
-        "smithy.api#documentation": "Patches a page."
-      }
-    },
-    "com.gcp.blogger_v3#PublishPagesRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#PublishPages": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#PublishPagesRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Page"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v3/blogs/{blogId}/pages/{pageId}/publish"
-        },
-        "smithy.api#documentation": "Publishes a page."
-      }
-    },
-    "com.gcp.blogger_v3#RevertPagesRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#RevertPages": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#RevertPagesRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Page"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v3/blogs/{blogId}/pages/{pageId}/revert"
-        },
-        "smithy.api#documentation": "Reverts a published or scheduled page to draft state."
-      }
-    },
-    "com.gcp.blogger_v3#UpdatePagesRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "publish": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "publish"
-          }
-        },
-        "revert": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "revert"
-          }
-        },
-        "body": {
-          "target": "com.gcp.blogger_v3#Page",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#UpdatePages": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#UpdatePagesRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Page"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "PUT",
-          "uri": "v3/blogs/{blogId}/pages/{pageId}"
-        },
-        "smithy.api#documentation": "Updates a page by blog id and page id."
+        "smithy.api#documentation": "Patches a post."
       }
     },
     "com.gcp.blogger_v3#DeletePostsRequest": {
@@ -2514,36 +2970,7 @@
         "smithy.api#documentation": "Deletes a post by blog id and post id."
       }
     },
-    "com.gcp.blogger_v3#GetPostsViewEnum": {
-      "type": "enum",
-      "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
-          }
-        },
-        "READER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READER"
-          }
-        },
-        "AUTHOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetPostsRequest": {
+    "com.gcp.blogger_v3#RevertPostsRequest": {
       "type": "structure",
       "members": {
         "blogId": {
@@ -2559,37 +2986,13 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "fetchBody": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "fetchBody"
-          }
-        },
-        "fetchImages": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "fetchImages"
-          }
-        },
-        "maxComments": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "maxComments"
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#GetPostsViewEnum",
-          "traits": {
-            "smithy.api#httpQuery": "view"
-          }
         }
       }
     },
-    "com.gcp.blogger_v3#GetPosts": {
+    "com.gcp.blogger_v3#RevertPosts": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.blogger_v3#GetPostsRequest"
+        "target": "com.gcp.blogger_v3#RevertPostsRequest"
       },
       "output": {
         "target": "com.gcp.blogger_v3#Post"
@@ -2600,14 +3003,75 @@
         },
         {
           "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
         }
       ],
       "traits": {
         "smithy.api#http": {
-          "method": "GET",
-          "uri": "v3/blogs/{blogId}/posts/{postId}"
+          "method": "POST",
+          "uri": "v3/blogs/{blogId}/posts/{postId}/revert"
         },
-        "smithy.api#documentation": "Gets a post by blog id and post id"
+        "smithy.api#documentation": "Reverts a published or scheduled post to draft state."
+      }
+    },
+    "com.gcp.blogger_v3#PublishPostsRequest": {
+      "type": "structure",
+      "members": {
+        "publishDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "publishDate"
+          }
+        },
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "postId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#PublishPosts": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#PublishPostsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Post"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v3/blogs/{blogId}/posts/{postId}/publish"
+        },
+        "smithy.api#documentation": "Publishes a post."
       }
     },
     "com.gcp.blogger_v3#GetByPathPostsViewEnum": {
@@ -2642,13 +3106,6 @@
     "com.gcp.blogger_v3#GetByPathPostsRequest": {
       "type": "structure",
       "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
         "path": {
           "target": "smithy.api#String",
           "traits": {
@@ -2666,6 +3123,13 @@
           "target": "com.gcp.blogger_v3#GetByPathPostsViewEnum",
           "traits": {
             "smithy.api#httpQuery": "view"
+          }
+        },
+        "blogId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
           }
         }
       }
@@ -2694,7 +3158,7 @@
         "smithy.api#documentation": "Gets a post by path."
       }
     },
-    "com.gcp.blogger_v3#InsertPostsRequest": {
+    "com.gcp.blogger_v3#UpdatePostsRequest": {
       "type": "structure",
       "members": {
         "blogId": {
@@ -2704,10 +3168,23 @@
             "smithy.api#required": {}
           }
         },
-        "fetchBody": {
+        "publish": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpQuery": "fetchBody"
+            "smithy.api#httpQuery": "publish"
+          }
+        },
+        "postId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "revert": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "revert"
           }
         },
         "fetchImages": {
@@ -2716,10 +3193,16 @@
             "smithy.api#httpQuery": "fetchImages"
           }
         },
-        "isDraft": {
+        "maxComments": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxComments"
+          }
+        },
+        "fetchBody": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpQuery": "isDraft"
+            "smithy.api#httpQuery": "fetchBody"
           }
         },
         "body": {
@@ -2731,10 +3214,10 @@
         }
       }
     },
-    "com.gcp.blogger_v3#InsertPosts": {
+    "com.gcp.blogger_v3#UpdatePosts": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.blogger_v3#InsertPostsRequest"
+        "target": "com.gcp.blogger_v3#UpdatePostsRequest"
       },
       "output": {
         "target": "com.gcp.blogger_v3#Post"
@@ -2755,10 +3238,33 @@
       ],
       "traits": {
         "smithy.api#http": {
-          "method": "POST",
-          "uri": "v3/blogs/{blogId}/posts"
+          "method": "PUT",
+          "uri": "v3/blogs/{blogId}/posts/{postId}"
         },
-        "smithy.api#documentation": "Inserts a post."
+        "smithy.api#documentation": "Updates a post by blog id and post id."
+      }
+    },
+    "com.gcp.blogger_v3#ListPostsSortOptionEnum": {
+      "type": "enum",
+      "members": {
+        "SORT_OPTION_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SORT_OPTION_UNSPECIFIED"
+          }
+        },
+        "DESCENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DESCENDING"
+          }
+        },
+        "ASCENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ASCENDING"
+          }
+        }
       }
     },
     "com.gcp.blogger_v3#ListPostsOrderByEnum": {
@@ -2848,37 +3354,20 @@
         }
       }
     },
-    "com.gcp.blogger_v3#ListPostsSortOptionEnum": {
-      "type": "enum",
-      "members": {
-        "SORT_OPTION_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SORT_OPTION_UNSPECIFIED"
-          }
-        },
-        "DESCENDING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DESCENDING"
-          }
-        },
-        "ASCENDING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ASCENDING"
-          }
-        }
-      }
-    },
     "com.gcp.blogger_v3#ListPostsRequest": {
       "type": "structure",
       "members": {
-        "blogId": {
+        "sortOption": {
+          "target": "com.gcp.blogger_v3#ListPostsSortOptionEnum",
+          "traits": {
+            "smithy.api#documentation": "Sort direction applied to post list.",
+            "smithy.api#httpQuery": "sortOption"
+          }
+        },
+        "pageToken": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
+            "smithy.api#httpQuery": "pageToken"
           }
         },
         "endDate": {
@@ -2887,16 +3376,23 @@
             "smithy.api#httpQuery": "endDate"
           }
         },
-        "fetchBodies": {
-          "target": "smithy.api#Boolean",
+        "orderBy": {
+          "target": "com.gcp.blogger_v3#ListPostsOrderByEnum",
           "traits": {
-            "smithy.api#httpQuery": "fetchBodies"
+            "smithy.api#httpQuery": "orderBy"
           }
         },
-        "fetchImages": {
-          "target": "smithy.api#Boolean",
+        "blogId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "fetchImages"
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.gcp.blogger_v3#ListPostsStatusEnumList",
+          "traits": {
+            "smithy.api#httpQuery": "status"
           }
         },
         "labels": {
@@ -2911,28 +3407,16 @@
             "smithy.api#httpQuery": "maxResults"
           }
         },
-        "orderBy": {
-          "target": "com.gcp.blogger_v3#ListPostsOrderByEnum",
-          "traits": {
-            "smithy.api#httpQuery": "orderBy"
-          }
-        },
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "pageToken"
-          }
-        },
         "startDate": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "startDate"
           }
         },
-        "status": {
-          "target": "com.gcp.blogger_v3#ListPostsStatusEnumList",
+        "fetchBodies": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpQuery": "status"
+            "smithy.api#httpQuery": "fetchBodies"
           }
         },
         "view": {
@@ -2941,11 +3425,10 @@
             "smithy.api#httpQuery": "view"
           }
         },
-        "sortOption": {
-          "target": "com.gcp.blogger_v3#ListPostsSortOptionEnum",
+        "fetchImages": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Sort direction applied to post list.",
-            "smithy.api#httpQuery": "sortOption"
+            "smithy.api#httpQuery": "fetchImages"
           }
         }
       }
@@ -2979,7 +3462,7 @@
         }
       }
     },
-    "com.gcp.blogger_v3#PatchPostsRequest": {
+    "com.gcp.blogger_v3#InsertPostsRequest": {
       "type": "structure",
       "members": {
         "blogId": {
@@ -2989,6 +3472,107 @@
             "smithy.api#required": {}
           }
         },
+        "fetchImages": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "fetchImages"
+          }
+        },
+        "isDraft": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "isDraft"
+          }
+        },
+        "fetchBody": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "fetchBody"
+          }
+        },
+        "body": {
+          "target": "com.gcp.blogger_v3#Post",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#InsertPosts": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.blogger_v3#InsertPostsRequest"
+      },
+      "output": {
+        "target": "com.gcp.blogger_v3#Post"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.blogger_v3#NotFound"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Forbidden"
+        },
+        {
+          "target": "com.gcp.blogger_v3#BadRequest"
+        },
+        {
+          "target": "com.gcp.blogger_v3#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v3/blogs/{blogId}/posts"
+        },
+        "smithy.api#documentation": "Inserts a post."
+      }
+    },
+    "com.gcp.blogger_v3#GetPostsViewEnum": {
+      "type": "enum",
+      "members": {
+        "VIEW_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READER"
+          }
+        },
+        "AUTHOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTHOR"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADMIN"
+          }
+        }
+      }
+    },
+    "com.gcp.blogger_v3#GetPostsRequest": {
+      "type": "structure",
+      "members": {
+        "fetchBody": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "fetchBody"
+          }
+        },
+        "view": {
+          "target": "com.gcp.blogger_v3#GetPostsViewEnum",
+          "traits": {
+            "smithy.api#httpQuery": "view"
+          }
+        },
         "postId": {
           "target": "smithy.api#String",
           "traits": {
@@ -2996,10 +3580,11 @@
             "smithy.api#required": {}
           }
         },
-        "fetchBody": {
-          "target": "smithy.api#Boolean",
+        "blogId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "fetchBody"
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
           }
         },
         "fetchImages": {
@@ -3013,32 +3598,13 @@
           "traits": {
             "smithy.api#httpQuery": "maxComments"
           }
-        },
-        "publish": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "publish"
-          }
-        },
-        "revert": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "revert"
-          }
-        },
-        "body": {
-          "target": "com.gcp.blogger_v3#Post",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
         }
       }
     },
-    "com.gcp.blogger_v3#PatchPosts": {
+    "com.gcp.blogger_v3#GetPosts": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.blogger_v3#PatchPostsRequest"
+        "target": "com.gcp.blogger_v3#GetPostsRequest"
       },
       "output": {
         "target": "com.gcp.blogger_v3#Post"
@@ -3049,124 +3615,14 @@
         },
         {
           "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
         }
       ],
       "traits": {
         "smithy.api#http": {
-          "method": "PATCH",
+          "method": "GET",
           "uri": "v3/blogs/{blogId}/posts/{postId}"
         },
-        "smithy.api#documentation": "Patches a post."
-      }
-    },
-    "com.gcp.blogger_v3#PublishPostsRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "postId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "publishDate": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "publishDate"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#PublishPosts": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#PublishPostsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Post"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v3/blogs/{blogId}/posts/{postId}/publish"
-        },
-        "smithy.api#documentation": "Publishes a post."
-      }
-    },
-    "com.gcp.blogger_v3#RevertPostsRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "postId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#RevertPosts": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#RevertPostsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Post"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v3/blogs/{blogId}/posts/{postId}/revert"
-        },
-        "smithy.api#documentation": "Reverts a published or scheduled post to draft state."
+        "smithy.api#documentation": "Gets a post by blog id and post id"
       }
     },
     "com.gcp.blogger_v3#SearchPostsOrderByEnum": {
@@ -3195,17 +3651,16 @@
     "com.gcp.blogger_v3#SearchPostsRequest": {
       "type": "structure",
       "members": {
+        "orderBy": {
+          "target": "com.gcp.blogger_v3#SearchPostsOrderByEnum",
+          "traits": {
+            "smithy.api#httpQuery": "orderBy"
+          }
+        },
         "blogId": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "q": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "q",
             "smithy.api#required": {}
           }
         },
@@ -3215,10 +3670,11 @@
             "smithy.api#httpQuery": "fetchBodies"
           }
         },
-        "orderBy": {
-          "target": "com.gcp.blogger_v3#SearchPostsOrderByEnum",
+        "q": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "orderBy"
+            "smithy.api#httpQuery": "q",
+            "smithy.api#required": {}
           }
         }
       }
@@ -3247,330 +3703,7 @@
         "smithy.api#documentation": "Searches for posts matching given query terms in the specified blog."
       }
     },
-    "com.gcp.blogger_v3#UpdatePostsRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "postId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "fetchBody": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "fetchBody"
-          }
-        },
-        "fetchImages": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "fetchImages"
-          }
-        },
-        "maxComments": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "maxComments"
-          }
-        },
-        "publish": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "publish"
-          }
-        },
-        "revert": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "revert"
-          }
-        },
-        "body": {
-          "target": "com.gcp.blogger_v3#Post",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#UpdatePosts": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#UpdatePostsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Post"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        },
-        {
-          "target": "com.gcp.blogger_v3#BadRequest"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "PUT",
-          "uri": "v3/blogs/{blogId}/posts/{postId}"
-        },
-        "smithy.api#documentation": "Updates a post by blog id and post id."
-      }
-    },
-    "com.gcp.blogger_v3#GetBlogsViewEnum": {
-      "type": "enum",
-      "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
-          }
-        },
-        "READER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READER"
-          }
-        },
-        "AUTHOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetBlogsRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "maxPosts": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "maxPosts"
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#GetBlogsViewEnum",
-          "traits": {
-            "smithy.api#documentation": "Unspecified is interpreted as READER.",
-            "smithy.api#httpQuery": "view"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetBlogs": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#GetBlogsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Blog"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v3/blogs/{blogId}"
-        },
-        "smithy.api#documentation": "Gets a blog by id."
-      }
-    },
-    "com.gcp.blogger_v3#GetByUrlBlogsViewEnum": {
-      "type": "enum",
-      "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
-          }
-        },
-        "READER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READER"
-          }
-        },
-        "AUTHOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetByUrlBlogsRequest": {
-      "type": "structure",
-      "members": {
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "url",
-            "smithy.api#required": {}
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#GetByUrlBlogsViewEnum",
-          "traits": {
-            "smithy.api#documentation": "Unspecified is interpreted as READER.",
-            "smithy.api#httpQuery": "view"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetByUrlBlogs": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#GetByUrlBlogsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Blog"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v3/blogs/byurl"
-        },
-        "smithy.api#documentation": "Gets a blog by url."
-      }
-    },
-    "com.gcp.blogger_v3#ListByUserBlogsRoleEnum": {
-      "type": "enum",
-      "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
-          }
-        },
-        "READER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READER"
-          }
-        },
-        "AUTHOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListByUserBlogsRoleEnumList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.blogger_v3#ListByUserBlogsRoleEnum"
-      }
-    },
-    "com.gcp.blogger_v3#ListByUserBlogsStatusEnum": {
-      "type": "enum",
-      "members": {
-        "LIVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LIVE"
-          }
-        },
-        "DELETED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DELETED"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListByUserBlogsStatusEnumList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.blogger_v3#ListByUserBlogsStatusEnum"
-      }
-    },
-    "com.gcp.blogger_v3#ListByUserBlogsViewEnum": {
-      "type": "enum",
-      "members": {
-        "VIEW_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VIEW_TYPE_UNSPECIFIED"
-          }
-        },
-        "READER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READER"
-          }
-        },
-        "AUTHOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTHOR"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ADMIN"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#ListByUserBlogsRequest": {
+    "com.gcp.blogger_v3#GetUsersRequest": {
       "type": "structure",
       "members": {
         "userId": {
@@ -3579,42 +3712,16 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "fetchUserInfo": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "fetchUserInfo"
-          }
-        },
-        "role": {
-          "target": "com.gcp.blogger_v3#ListByUserBlogsRoleEnumList",
-          "traits": {
-            "smithy.api#httpQuery": "role"
-          }
-        },
-        "status": {
-          "target": "com.gcp.blogger_v3#ListByUserBlogsStatusEnumList",
-          "traits": {
-            "smithy.api#documentation": "Default value of status is LIVE.",
-            "smithy.api#httpQuery": "status"
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#ListByUserBlogsViewEnum",
-          "traits": {
-            "smithy.api#documentation": "Unspecified is interpreted as the user's role on the blog.",
-            "smithy.api#httpQuery": "view"
-          }
         }
       }
     },
-    "com.gcp.blogger_v3#ListByUserBlogs": {
+    "com.gcp.blogger_v3#GetUsers": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.blogger_v3#ListByUserBlogsRequest"
+        "target": "com.gcp.blogger_v3#GetUsersRequest"
       },
       "output": {
-        "target": "com.gcp.blogger_v3#BlogList"
+        "target": "com.gcp.blogger_v3#User"
       },
       "errors": [
         {
@@ -3627,21 +3734,14 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "v3/users/{userId}/blogs"
+          "uri": "v3/users/{userId}"
         },
-        "smithy.api#documentation": "Lists blogs by user."
+        "smithy.api#documentation": "Gets one user by user_id."
       }
     },
     "com.gcp.blogger_v3#GetBlogUserInfosRequest": {
       "type": "structure",
       "members": {
-        "userId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
         "blogId": {
           "target": "smithy.api#String",
           "traits": {
@@ -3653,6 +3753,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#httpQuery": "maxPosts"
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
           }
         }
       }
@@ -3679,77 +3786,6 @@
           "uri": "v3/users/{userId}/blogs/{blogId}"
         },
         "smithy.api#documentation": "Gets one blog and user info pair by blog id and user id."
-      }
-    },
-    "com.gcp.blogger_v3#GetPageViewsRangeEnum": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "_30DAYS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "30DAYS"
-          }
-        },
-        "_7DAYS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "7DAYS"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetPageViewsRangeEnumList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.blogger_v3#GetPageViewsRangeEnum"
-      }
-    },
-    "com.gcp.blogger_v3#GetPageViewsRequest": {
-      "type": "structure",
-      "members": {
-        "blogId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "range": {
-          "target": "com.gcp.blogger_v3#GetPageViewsRangeEnumList",
-          "traits": {
-            "smithy.api#httpQuery": "range"
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetPageViews": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#GetPageViewsRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#Pageviews"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v3/blogs/{blogId}/pageviews"
-        },
-        "smithy.api#documentation": "Gets page views by blog id."
       }
     },
     "com.gcp.blogger_v3#GetPostUserInfosRequest": {
@@ -3905,17 +3941,22 @@
             "smithy.api#required": {}
           }
         },
-        "blogId": {
+        "pageToken": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
+            "smithy.api#httpQuery": "pageToken"
           }
         },
-        "startDate": {
-          "target": "smithy.api#String",
+        "orderBy": {
+          "target": "com.gcp.blogger_v3#ListPostUserInfosOrderByEnum",
           "traits": {
-            "smithy.api#httpQuery": "startDate"
+            "smithy.api#httpQuery": "orderBy"
+          }
+        },
+        "view": {
+          "target": "com.gcp.blogger_v3#ListPostUserInfosViewEnum",
+          "traits": {
+            "smithy.api#httpQuery": "view"
           }
         },
         "endDate": {
@@ -3936,34 +3977,29 @@
             "smithy.api#httpQuery": "labels"
           }
         },
-        "maxResults": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "maxResults"
-          }
-        },
-        "pageToken": {
+        "blogId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "pageToken"
-          }
-        },
-        "orderBy": {
-          "target": "com.gcp.blogger_v3#ListPostUserInfosOrderByEnum",
-          "traits": {
-            "smithy.api#httpQuery": "orderBy"
-          }
-        },
-        "view": {
-          "target": "com.gcp.blogger_v3#ListPostUserInfosViewEnum",
-          "traits": {
-            "smithy.api#httpQuery": "view"
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
           }
         },
         "status": {
           "target": "com.gcp.blogger_v3#ListPostUserInfosStatusEnumList",
           "traits": {
             "smithy.api#httpQuery": "status"
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "startDate"
+          }
+        },
+        "maxResults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxResults"
           }
         }
       }
@@ -3995,42 +4031,6 @@
           "outputToken": "nextPageToken",
           "items": "items"
         }
-      }
-    },
-    "com.gcp.blogger_v3#GetUsersRequest": {
-      "type": "structure",
-      "members": {
-        "userId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.blogger_v3#GetUsers": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.blogger_v3#GetUsersRequest"
-      },
-      "output": {
-        "target": "com.gcp.blogger_v3#User"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.blogger_v3#NotFound"
-        },
-        {
-          "target": "com.gcp.blogger_v3#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v3/users/{userId}"
-        },
-        "smithy.api#documentation": "Gets one user by user_id."
       }
     }
   }

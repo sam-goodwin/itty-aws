@@ -63,7 +63,7 @@ export const BackupInstancesAdhocBackupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/backup",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -357,7 +357,7 @@ export const BackupInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -658,7 +658,7 @@ export const BackupInstancesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -685,7 +685,7 @@ export const BackupInstancesExtensionRoutingListRequest =
         method: "GET",
         uri: "/{resourceId}/providers/Microsoft.DataProtection/backupInstances",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -774,7 +774,7 @@ export const BackupInstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -842,7 +842,7 @@ export const BackupInstancesGetBackupInstanceOperationResultRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -907,7 +907,7 @@ export const BackupInstancesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -957,7 +957,7 @@ export const BackupInstancesResumeBackupsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeBackups",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -993,7 +993,7 @@ export const BackupInstancesResumeProtectionRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeProtection",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1042,7 +1042,7 @@ export const BackupInstancesStopProtectionRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/stopProtection",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1091,7 +1091,7 @@ export const BackupInstancesSuspendBackupsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/suspendBackups",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1134,7 +1134,7 @@ export const BackupInstancesSyncBackupInstanceRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/sync",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1254,7 +1254,7 @@ export const BackupInstancesTriggerCrossRegionRestoreRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/crossRegionRestore",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1312,7 +1312,7 @@ export const BackupInstancesTriggerRehydrateRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/rehydrate",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1375,7 +1375,7 @@ export const BackupInstancesTriggerRestoreRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/restore",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1423,7 +1423,7 @@ export const BackupInstancesValidateCrossRegionRestoreRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/validateCrossRegionRestore",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1468,7 +1468,7 @@ export const BackupInstancesValidateForBackupRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/validateForBackup",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1516,7 +1516,7 @@ export const BackupInstancesValidateForModifyBackupRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateForModifyBackup",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1554,7 +1554,7 @@ export const BackupInstancesValidateForRestoreRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateRestore",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1621,7 +1621,7 @@ export const BackupPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1673,7 +1673,7 @@ export const BackupPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1707,7 +1707,7 @@ export const BackupPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1756,7 +1756,7 @@ export const BackupPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1832,7 +1832,7 @@ export const BackupVaultOperationResultsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1876,6 +1876,25 @@ export const MonitoringSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitoringSettings",
 }) as any as S.Schema<MonitoringSettings>;
+
+export type GranularityLevel =
+  | "VaultLevel"
+  | "ProtectedItemLevel"
+  | "ProtectedItemWithParentTag";
+export const GranularityLevel = /*@__PURE__*/ S.String;
+
+/** Cost Management Settings of the vault */
+export interface CostManagementSettings {
+  /** Settings for granularity level */
+  granularityLevel?: GranularityLevel | (string & {});
+}
+export const CostManagementSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    granularityLevel: S.optional(GranularityLevel),
+  }),
+).annotate({
+  identifier: "CostManagementSettings",
+}) as any as S.Schema<CostManagementSettings>;
 
 /** Provisioning state of the BackupVault resource */
 export type ProvisioningState =
@@ -2164,6 +2183,8 @@ export const BackupVaultReplicatedRegionsList = /*@__PURE__*/ S.Array(
 export interface BackupVault {
   /** Monitoring Settings */
   monitoringSettings?: MonitoringSettings;
+  /** Cost Management Settings of the vault */
+  costManagementSettings?: CostManagementSettings;
   /** Provisioning state of the BackupVault resource */
   provisioningState?: ProvisioningState;
   /** Resource move state for backup vault */
@@ -2190,6 +2211,7 @@ export interface BackupVault {
 export const BackupVault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringSettings: S.optional(MonitoringSettings),
+    costManagementSettings: S.optional(CostManagementSettings),
     provisioningState: S.optional(ProvisioningState),
     resourceMoveState: S.optional(ResourceMoveState),
     resourceMoveDetails: S.optional(ResourceMoveDetails),
@@ -2319,7 +2341,7 @@ export const BackupVaultsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2377,6 +2399,8 @@ export const BackupVaultInputReplicatedRegionsList = /*@__PURE__*/ S.Array(
 export interface BackupVaultInput {
   /** Monitoring Settings */
   monitoringSettings?: MonitoringSettings;
+  /** Cost Management Settings of the vault */
+  costManagementSettings?: CostManagementSettings;
   /** Security Settings */
   securitySettings?: SecuritySettings;
   /** Storage Settings */
@@ -2391,6 +2415,7 @@ export interface BackupVaultInput {
 export const BackupVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringSettings: S.optional(MonitoringSettings),
+    costManagementSettings: S.optional(CostManagementSettings),
     securitySettings: S.optional(SecuritySettings),
     storageSettings: S.optional(BackupVaultInputStorageSettingsList),
     featureSettings: S.optional(FeatureSettings),
@@ -2471,7 +2496,7 @@ export const BackupVaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2541,7 +2566,7 @@ export const BackupVaultsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2573,7 +2598,7 @@ export const BackupVaultsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2641,7 +2666,7 @@ export const BackupVaultsGetInResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2729,7 +2754,7 @@ export const BackupVaultsGetInSubscriptionRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/backupVaults",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2776,6 +2801,8 @@ export interface PatchBackupVaultInput {
   securitySettings?: SecuritySettings;
   /** Feature Settings */
   featureSettings?: FeatureSettings;
+  /** Cost Management Settings of the vault */
+  costManagementSettings?: CostManagementSettings;
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: PatchBackupVaultInputResourceGuardOperationRequestsList;
 }
@@ -2784,6 +2811,7 @@ export const PatchBackupVaultInput = /*@__PURE__*/ S.suspend(() =>
     monitoringSettings: S.optional(MonitoringSettings),
     securitySettings: S.optional(SecuritySettings),
     featureSettings: S.optional(FeatureSettings),
+    costManagementSettings: S.optional(CostManagementSettings),
     resourceGuardOperationRequests: S.optional(
       PatchBackupVaultInputResourceGuardOperationRequestsList,
     ),
@@ -2828,7 +2856,7 @@ export const BackupVaultsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2899,7 +2927,7 @@ export const DataProtectionCheckFeatureSupportRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/checkFeatureSupport",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2926,7 +2954,7 @@ export const DataProtectionOperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.DataProtection/operations",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3030,7 +3058,7 @@ export const DeletedBackupInstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3160,7 +3188,7 @@ export const DeletedBackupInstancesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3237,7 +3265,7 @@ export const DeletedBackupInstancesUndeleteRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}/undelete",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -3269,7 +3297,7 @@ export const DeletedBackupVaultsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults/{deletedVaultName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3319,6 +3347,8 @@ export const ResourceDeletionInfo = /*@__PURE__*/ S.suspend(() =>
 export interface DeletedBackupVault {
   /** Monitoring Settings */
   monitoringSettings?: MonitoringSettings;
+  /** Cost Management Settings of the vault */
+  costManagementSettings?: CostManagementSettings;
   /** Provisioning state of the BackupVault resource */
   provisioningState?: ProvisioningState;
   /** Resource move state for backup vault */
@@ -3353,6 +3383,7 @@ export interface DeletedBackupVault {
 export const DeletedBackupVault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringSettings: S.optional(MonitoringSettings),
+    costManagementSettings: S.optional(CostManagementSettings),
     provisioningState: S.optional(ProvisioningState),
     resourceMoveState: S.optional(ResourceMoveState),
     resourceMoveDetails: S.optional(ResourceMoveDetails),
@@ -3415,7 +3446,7 @@ export const DeletedBackupVaultsListByLocationRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -3538,7 +3569,7 @@ export const DppResourceGuardProxyCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3591,7 +3622,7 @@ export const DppResourceGuardProxyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3626,7 +3657,7 @@ export const DppResourceGuardProxyGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3675,7 +3706,7 @@ export const DppResourceGuardProxyListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3766,7 +3797,7 @@ export const DppResourceGuardProxyUnlockDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -3807,7 +3838,7 @@ export const ExportJobsOperationResultGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs/operations/{operationId}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3854,7 +3885,7 @@ export const ExportJobsTriggerRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/exportBackupJobs",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3893,7 +3924,7 @@ export const FetchCrossRegionRestoreJobGetRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchCrossRegionRestoreJob",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -4177,7 +4208,7 @@ export const FetchCrossRegionRestoreJobsListRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchCrossRegionRestoreJobs",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -4264,7 +4295,7 @@ export const FetchSecondaryRecoveryPointsListRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchSecondaryRecoveryPoints",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -4353,7 +4384,7 @@ export const JobsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs/{jobId}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({ identifier: "JobsGetRequest" }) as any as S.Schema<JobsGetRequest>;
@@ -4400,7 +4431,7 @@ export const JobsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4445,7 +4476,7 @@ export const OperationResultGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationResults/{operationId}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4488,7 +4519,7 @@ export const OperationStatusBackupVaultContextGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationStatus/{operationId}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4606,7 +4637,7 @@ export const OperationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationStatus/{operationId}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4631,7 +4662,7 @@ export const OperationStatusResourceGroupContextGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/operationStatus/{operationId}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4661,7 +4692,7 @@ export const RecoveryPointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints/{recoveryPointId}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4719,7 +4750,7 @@ export const RecoveryPointsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4766,7 +4797,7 @@ export const ResourceGuardsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4798,7 +4829,7 @@ export const ResourceGuardsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4923,7 +4954,7 @@ export const ResourceGuardsGetBackupSecurityPINRequestsObjectsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4994,7 +5025,7 @@ export const ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests/{requestName}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5047,7 +5078,7 @@ export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests/{requestName}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5100,7 +5131,7 @@ export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectReque
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests/{requestName}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5153,7 +5184,7 @@ export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests/{requestName}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5206,7 +5237,7 @@ export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests/{requestName}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5259,7 +5290,7 @@ export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests/{requestName}",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5309,7 +5340,7 @@ export const ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5335,7 +5366,7 @@ export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5362,7 +5393,7 @@ export const ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5385,7 +5416,7 @@ export const ResourceGuardsGetResourcesInResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5474,7 +5505,7 @@ export const ResourceGuardsGetResourcesInSubscriptionRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/resourceGuards",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5526,7 +5557,7 @@ export const ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5552,7 +5583,7 @@ export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests",
         code: 200,
-        apiVersion: "2026-03-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5589,7 +5620,7 @@ export const ResourceGuardsPatchRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5699,7 +5730,7 @@ export const ResourceGuardsPutRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5785,7 +5816,7 @@ export const RestorableTimeRangesFindRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges",
       code: 200,
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({

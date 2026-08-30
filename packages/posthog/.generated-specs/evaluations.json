@@ -108,6 +108,20 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
+        "directory_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "directory_id",
+            "smithy.api#documentation": "Filter evaluations by directory UUID."
+          }
+        },
+        "directory_id__isnull": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "directory_id__isnull",
+            "smithy.api#documentation": "Filter evaluations by whether they are at the top level."
+          }
+        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -204,6 +218,13 @@
             "smithy.api#documentation": "Optional description of what this evaluation checks."
           }
         },
+        "directory_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Directory containing the evaluation. Pass null to move the evaluation to the top level.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -229,7 +250,7 @@
         "evaluation_type": {
           "target": "com.posthog.evaluations#EvaluationTypeEnum",
           "traits": {
-            "smithy.api#documentation": "'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment.\n\n* `llm_judge` - LLM as a judge\n* `hog` - Hog\n* `sentiment` - Sentiment analysis"
+            "smithy.api#documentation": "'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment (trained on English, so use 'llm_judge' for multilingual agents).\n\n* `llm_judge` - LLM as a judge\n* `hog` - Hog\n* `sentiment` - Sentiment analysis"
           }
         },
         "evaluation_config": {
@@ -256,9 +277,22 @@
             "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
           }
         },
+        "target": {
+          "target": "com.posthog.evaluations#EvaluationTargetEnum",
+          "traits": {
+            "smithy.api#documentation": "What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy.\n\n* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+          }
+        },
+        "target_config": {
+          "target": "com.posthog.evaluations#EvaluationTargetConfig",
+          "traits": {
+            "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
+          }
+        },
         "model_configuration": {
           "target": "com.posthog.evaluations#ModelConfiguration",
           "traits": {
+            "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -271,6 +305,7 @@
         "created_by": {
           "target": "com.posthog.evaluations#UserBasic",
           "traits": {
+            "smithy.api#documentation": "User who created the evaluation.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -279,9 +314,18 @@
           "traits": {
             "smithy.api#documentation": "Set to true to soft-delete the evaluation."
           }
+        },
+        "user_access_level": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The effective access level the user has for this object",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "An evaluation that scores LLM generations, traces, or sessions."
+      }
     },
     "com.posthog.evaluations#EvaluationStatusEnum": {
       "type": "enum",
@@ -312,16 +356,10 @@
     "com.posthog.evaluations#StatusReasonEnum": {
       "type": "enum",
       "members": {
-        "TRIAL_LIMIT_REACHED": {
+        "PROVIDER_KEY_REQUIRED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "trial_limit_reached"
-          }
-        },
-        "MODEL_NOT_ALLOWED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "model_not_allowed"
+            "smithy.api#enumValue": "provider_key_required"
           }
         },
         "PROVIDER_KEY_DELETED": {
@@ -374,7 +412,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `trial_limit_reached` - Trial evaluation limit reached\n* `model_not_allowed` - Model not available on the trial plan\n* `provider_key_deleted` - Provider API key was deleted\n* `no_default_model` - No default model available for the selected provider\n* `provider_key_invalid` - Provider API key is invalid\n* `provider_key_permission_denied` - Provider API key lacks model access\n* `provider_key_quota_exceeded` - Provider API key quota exceeded\n* `provider_key_rate_limited` - Provider API key is rate limited\n* `model_not_found` - Model not found\n* `hog_error` - Hog evaluation code failed"
+        "smithy.api#documentation": "* `provider_key_required` - No provider API key configured\n* `provider_key_deleted` - Provider API key was deleted\n* `no_default_model` - No default model available for the selected provider\n* `provider_key_invalid` - Provider API key is invalid\n* `provider_key_permission_denied` - Provider API key lacks model access\n* `provider_key_quota_exceeded` - Provider API key quota exceeded\n* `provider_key_rate_limited` - Provider API key is rate limited\n* `model_not_found` - Model not found\n* `hog_error` - Hog evaluation code failed"
       }
     },
     "com.posthog.evaluations#EvaluationTypeEnum": {
@@ -440,7 +478,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Classify sentiment from user messages in the generation input."
+        "smithy.api#documentation": "Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents."
       }
     },
     "com.posthog.evaluations#EvaluationEvaluationConfigCase2": {
@@ -449,7 +487,7 @@
         "source": {
           "target": "com.posthog.evaluations#EvaluationEvaluationConfigCase2Source",
           "traits": {
-            "smithy.api#documentation": "Classify sentiment from user messages in the generation input."
+            "smithy.api#documentation": "Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents."
           }
         }
       },
@@ -561,6 +599,118 @@
         "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
       }
     },
+    "com.posthog.evaluations#EvaluationTargetEnum": {
+      "type": "enum",
+      "members": {
+        "GENERATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generation"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trace"
+          }
+        },
+        "SESSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "session"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+      }
+    },
+    "com.posthog.evaluations#EvaluationTargetConfigCase0Strategy": {
+      "type": "enum",
+      "members": {
+        "FIXED_WINDOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fixed_window"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Wait a fixed window after the first matching generation, then evaluate."
+      }
+    },
+    "com.posthog.evaluations#EvaluationTargetConfigCase0": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.posthog.evaluations#EvaluationTargetConfigCase0Strategy",
+          "traits": {
+            "smithy.api#documentation": "Wait a fixed window after the first matching generation, then evaluate.",
+            "smithy.api#required": {}
+          }
+        },
+        "window_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.evaluations#EvaluationTargetConfigCase1Strategy": {
+      "type": "enum",
+      "members": {
+        "INACTIVITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactivity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Evaluate once the unit has had no new activity for the quiet period."
+      }
+    },
+    "com.posthog.evaluations#EvaluationTargetConfigCase1": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.posthog.evaluations#EvaluationTargetConfigCase1Strategy",
+          "traits": {
+            "smithy.api#documentation": "Evaluate once the unit has had no new activity for the quiet period.",
+            "smithy.api#required": {}
+          }
+        },
+        "quiet_period_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        },
+        "max_age_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.evaluations#EvaluationTargetConfig": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.evaluations#EvaluationTargetConfigCase0"
+        },
+        "Case1": {
+          "target": "com.posthog.evaluations#EvaluationTargetConfigCase1"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
+      }
+    },
     "com.posthog.evaluations#ModelConfiguration": {
       "type": "structure",
       "members": {
@@ -573,7 +723,7 @@
         "provider_key_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Team provider key to run this eval with (same provider as `provider`). Leave null only for brief pre-key testing; real evals should set it.",
+            "smithy.api#documentation": "Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -632,10 +782,22 @@
           "traits": {
             "smithy.api#enumValue": "together_ai"
           }
+        },
+        "MINIMAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "minimax"
+          }
+        },
+        "ZEABUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zeabur"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI"
+        "smithy.api#documentation": "* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI\n* `minimax` - MiniMax\n* `zeabur` - Zeabur AI Hub"
       }
     },
     "com.posthog.evaluations#UserBasic": {
@@ -738,6 +900,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -746,7 +914,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.evaluations#BlankEnum": {
@@ -833,7 +1001,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Classify sentiment from user messages in the generation input."
+        "smithy.api#documentation": "Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents."
       }
     },
     "com.posthog.evaluations#EvaluationsCreateRequestEvaluationConfigCase2": {
@@ -842,7 +1010,7 @@
         "source": {
           "target": "com.posthog.evaluations#EvaluationsCreateRequestEvaluationConfigCase2Source",
           "traits": {
-            "smithy.api#documentation": "Classify sentiment from user messages in the generation input."
+            "smithy.api#documentation": "Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents."
           }
         }
       },
@@ -888,6 +1056,92 @@
         "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
       }
     },
+    "com.posthog.evaluations#EvaluationsCreateRequestTargetConfigCase0Strategy": {
+      "type": "enum",
+      "members": {
+        "FIXED_WINDOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fixed_window"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Wait a fixed window after the first matching generation, then evaluate."
+      }
+    },
+    "com.posthog.evaluations#EvaluationsCreateRequestTargetConfigCase0": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.posthog.evaluations#EvaluationsCreateRequestTargetConfigCase0Strategy",
+          "traits": {
+            "smithy.api#documentation": "Wait a fixed window after the first matching generation, then evaluate.",
+            "smithy.api#required": {}
+          }
+        },
+        "window_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.evaluations#EvaluationsCreateRequestTargetConfigCase1Strategy": {
+      "type": "enum",
+      "members": {
+        "INACTIVITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactivity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Evaluate once the unit has had no new activity for the quiet period."
+      }
+    },
+    "com.posthog.evaluations#EvaluationsCreateRequestTargetConfigCase1": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.posthog.evaluations#EvaluationsCreateRequestTargetConfigCase1Strategy",
+          "traits": {
+            "smithy.api#documentation": "Evaluate once the unit has had no new activity for the quiet period.",
+            "smithy.api#required": {}
+          }
+        },
+        "quiet_period_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        },
+        "max_age_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.evaluations#EvaluationsCreateRequestTargetConfig": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.evaluations#EvaluationsCreateRequestTargetConfigCase0"
+        },
+        "Case1": {
+          "target": "com.posthog.evaluations#EvaluationsCreateRequestTargetConfigCase1"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
+      }
+    },
     "com.posthog.evaluations#ModelConfigurationInput": {
       "type": "structure",
       "members": {
@@ -900,7 +1154,7 @@
         "provider_key_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Team provider key to run this eval with (same provider as `provider`). Leave null only for brief pre-key testing; real evals should set it.",
+            "smithy.api#documentation": "Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -932,6 +1186,13 @@
             "smithy.api#documentation": "Optional description of what this evaluation checks."
           }
         },
+        "directory_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Directory containing the evaluation. Pass null to move the evaluation to the top level.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -941,7 +1202,7 @@
         "evaluation_type": {
           "target": "com.posthog.evaluations#EvaluationTypeEnum",
           "traits": {
-            "smithy.api#documentation": "'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment.\n\n* `llm_judge` - LLM as a judge\n* `hog` - Hog\n* `sentiment` - Sentiment analysis"
+            "smithy.api#documentation": "'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment (trained on English, so use 'llm_judge' for multilingual agents).\n\n* `llm_judge` - LLM as a judge\n* `hog` - Hog\n* `sentiment` - Sentiment analysis"
           }
         },
         "evaluation_config": {
@@ -968,9 +1229,22 @@
             "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
           }
         },
+        "target": {
+          "target": "com.posthog.evaluations#EvaluationTargetEnum",
+          "traits": {
+            "smithy.api#documentation": "What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy.\n\n* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+          }
+        },
+        "target_config": {
+          "target": "com.posthog.evaluations#EvaluationsCreateRequestTargetConfig",
+          "traits": {
+            "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
+          }
+        },
         "model_configuration": {
           "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
+            "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1078,7 +1352,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Classify sentiment from user messages in the generation input."
+        "smithy.api#documentation": "Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents."
       }
     },
     "com.posthog.evaluations#EvaluationsUpdateRequestEvaluationConfigCase2": {
@@ -1087,7 +1361,7 @@
         "source": {
           "target": "com.posthog.evaluations#EvaluationsUpdateRequestEvaluationConfigCase2Source",
           "traits": {
-            "smithy.api#documentation": "Classify sentiment from user messages in the generation input."
+            "smithy.api#documentation": "Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents."
           }
         }
       },
@@ -1133,6 +1407,92 @@
         "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
       }
     },
+    "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfigCase0Strategy": {
+      "type": "enum",
+      "members": {
+        "FIXED_WINDOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fixed_window"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Wait a fixed window after the first matching generation, then evaluate."
+      }
+    },
+    "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfigCase0": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfigCase0Strategy",
+          "traits": {
+            "smithy.api#documentation": "Wait a fixed window after the first matching generation, then evaluate.",
+            "smithy.api#required": {}
+          }
+        },
+        "window_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfigCase1Strategy": {
+      "type": "enum",
+      "members": {
+        "INACTIVITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactivity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Evaluate once the unit has had no new activity for the quiet period."
+      }
+    },
+    "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfigCase1": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfigCase1Strategy",
+          "traits": {
+            "smithy.api#documentation": "Evaluate once the unit has had no new activity for the quiet period.",
+            "smithy.api#required": {}
+          }
+        },
+        "quiet_period_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        },
+        "max_age_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfig": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfigCase0"
+        },
+        "Case1": {
+          "target": "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfigCase1"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
+      }
+    },
     "com.posthog.evaluations#EvaluationsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1164,6 +1524,13 @@
             "smithy.api#documentation": "Optional description of what this evaluation checks."
           }
         },
+        "directory_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Directory containing the evaluation. Pass null to move the evaluation to the top level.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1173,7 +1540,7 @@
         "evaluation_type": {
           "target": "com.posthog.evaluations#EvaluationTypeEnum",
           "traits": {
-            "smithy.api#documentation": "'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment.\n\n* `llm_judge` - LLM as a judge\n* `hog` - Hog\n* `sentiment` - Sentiment analysis"
+            "smithy.api#documentation": "'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment (trained on English, so use 'llm_judge' for multilingual agents).\n\n* `llm_judge` - LLM as a judge\n* `hog` - Hog\n* `sentiment` - Sentiment analysis"
           }
         },
         "evaluation_config": {
@@ -1200,9 +1567,22 @@
             "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
           }
         },
+        "target": {
+          "target": "com.posthog.evaluations#EvaluationTargetEnum",
+          "traits": {
+            "smithy.api#documentation": "What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy.\n\n* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+          }
+        },
+        "target_config": {
+          "target": "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfig",
+          "traits": {
+            "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
+          }
+        },
         "model_configuration": {
           "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
+            "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1270,7 +1650,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Classify sentiment from user messages in the generation input."
+        "smithy.api#documentation": "Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents."
       }
     },
     "com.posthog.evaluations#EvaluationsPartialUpdateRequestEvaluationConfigCase2": {
@@ -1279,7 +1659,7 @@
         "source": {
           "target": "com.posthog.evaluations#EvaluationsPartialUpdateRequestEvaluationConfigCase2Source",
           "traits": {
-            "smithy.api#documentation": "Classify sentiment from user messages in the generation input."
+            "smithy.api#documentation": "Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents."
           }
         }
       },
@@ -1325,6 +1705,92 @@
         "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
       }
     },
+    "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfigCase0Strategy": {
+      "type": "enum",
+      "members": {
+        "FIXED_WINDOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fixed_window"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Wait a fixed window after the first matching generation, then evaluate."
+      }
+    },
+    "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfigCase0": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfigCase0Strategy",
+          "traits": {
+            "smithy.api#documentation": "Wait a fixed window after the first matching generation, then evaluate.",
+            "smithy.api#required": {}
+          }
+        },
+        "window_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfigCase1Strategy": {
+      "type": "enum",
+      "members": {
+        "INACTIVITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactivity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Evaluate once the unit has had no new activity for the quiet period."
+      }
+    },
+    "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfigCase1": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfigCase1Strategy",
+          "traits": {
+            "smithy.api#documentation": "Evaluate once the unit has had no new activity for the quiet period.",
+            "smithy.api#required": {}
+          }
+        },
+        "quiet_period_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        },
+        "max_age_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfig": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfigCase0"
+        },
+        "Case1": {
+          "target": "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfigCase1"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
+      }
+    },
     "com.posthog.evaluations#EvaluationsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1356,6 +1822,13 @@
             "smithy.api#documentation": "Optional description of what this evaluation checks."
           }
         },
+        "directory_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Directory containing the evaluation. Pass null to move the evaluation to the top level.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1365,7 +1838,7 @@
         "evaluation_type": {
           "target": "com.posthog.evaluations#EvaluationTypeEnum",
           "traits": {
-            "smithy.api#documentation": "'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment.\n\n* `llm_judge` - LLM as a judge\n* `hog` - Hog\n* `sentiment` - Sentiment analysis"
+            "smithy.api#documentation": "'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment (trained on English, so use 'llm_judge' for multilingual agents).\n\n* `llm_judge` - LLM as a judge\n* `hog` - Hog\n* `sentiment` - Sentiment analysis"
           }
         },
         "evaluation_config": {
@@ -1392,9 +1865,22 @@
             "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
           }
         },
+        "target": {
+          "target": "com.posthog.evaluations#EvaluationTargetEnum",
+          "traits": {
+            "smithy.api#documentation": "What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy.\n\n* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+          }
+        },
+        "target_config": {
+          "target": "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfig",
+          "traits": {
+            "smithy.api#documentation": "Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'."
+          }
+        },
         "model_configuration": {
           "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
+            "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1485,6 +1971,24 @@
         "smithy.api#documentation": "Optional trigger conditions to filter which events are sampled."
       }
     },
+    "com.posthog.evaluations#TestHogTargetConfig": {
+      "type": "structure",
+      "members": {
+        "window_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Aggregation window for trace samples, in seconds."
+          }
+        },
+        "quiet_period_seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "For session samples: only sessions with no activity for this long are previewed, matching when a session evaluation would actually run."
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.evaluations#EvaluationsTestHogCreateRequest": {
       "type": "structure",
       "members": {
@@ -1519,6 +2023,18 @@
           "traits": {
             "smithy.api#documentation": "Optional trigger conditions to filter which events are sampled."
           }
+        },
+        "target": {
+          "target": "com.posthog.evaluations#EvaluationTargetEnum",
+          "traits": {
+            "smithy.api#documentation": "What the evaluation runs against: 'generation' samples individual generations, 'trace' samples whole traces, and 'session' samples whole sessions that have gone quiet. Each target runs against the same globals it would run against online.\n\n* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+          }
+        },
+        "target_config": {
+          "target": "com.posthog.evaluations#TestHogTargetConfig",
+          "traits": {
+            "smithy.api#documentation": "Target-specific preview settings. For a trace target, set window_seconds between 10 and 7200."
+          }
         }
       },
       "traits": {
@@ -1543,10 +2059,23 @@
     "com.posthog.evaluations#TestHogResultItem": {
       "type": "structure",
       "members": {
+        "sample_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stable identifier for the sampled generation, trace, or session."
+          }
+        },
+        "sample_type": {
+          "target": "com.posthog.evaluations#EvaluationTargetEnum",
+          "traits": {
+            "smithy.api#documentation": "Type of sampled unit: generation, trace, or session.\n\n* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+          }
+        },
         "event_uuid": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "UUID of the $ai_generation event."
+            "smithy.api#documentation": "UUID of the sampled $ai_generation event, or null for a trace or session sample.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "trace_id": {
@@ -1559,13 +2088,13 @@
         "input_preview": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "First 200 chars of the generation input."
+            "smithy.api#documentation": "First 200 characters of input from the sampled unit."
           }
         },
         "output_preview": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "First 200 chars of the generation output."
+            "smithy.api#documentation": "First 200 characters of output from the sampled unit."
           }
         },
         "result": {

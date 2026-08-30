@@ -4414,7 +4414,7 @@
         "pricingTypes": {
           "target": "com.azure.marketplacecatalog#ProductDetailsPricingTypesList",
           "traits": {
-            "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing"
+            "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing\n- `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details\n- `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products\n- `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products\n- `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer"
           }
         },
         "publisherDisplayName": {
@@ -4535,6 +4535,12 @@
           "target": "com.azure.marketplacecatalog#ProductDetailsAttributesList",
           "traits": {
             "smithy.api#documentation": "Set of products attributes"
+          }
+        },
+        "offeringType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offering type of product family Offers"
           }
         },
         "videos": {
@@ -4712,6 +4718,12 @@
           "traits": {
             "smithy.api#documentation": "Indicates that the SKU has add-ons"
           }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The product code"
+          }
         }
       },
       "traits": {
@@ -4799,7 +4811,7 @@
         "pricingTypes": {
           "target": "com.azure.marketplacecatalog#PlanDetailsPricingTypesList",
           "traits": {
-            "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing"
+            "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing\n- `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details\n- `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products\n- `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products\n- `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer"
           }
         },
         "vmSecuritytypes": {
@@ -5405,6 +5417,18 @@
           "traits": {
             "smithy.api#documentation": "Term duration. Examples: 'P1M' (1 month), 'P30D' (30 days)"
           }
+        },
+        "meterType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Meter type"
+          }
+        },
+        "baseProductCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base product code"
+          }
         }
       },
       "traits": {
@@ -5851,10 +5875,184 @@
             "smithy.api#documentation": "Display rank",
             "smithy.api#required": {}
           }
+        },
+        "prerequisiteConstraints": {
+          "target": "com.azure.marketplacecatalog#PrerequisiteConstraints",
+          "traits": {
+            "smithy.api#documentation": "Prerequisite constraints for the availability"
+          }
+        },
+        "subscriptionStatusConstraints": {
+          "target": "com.azure.marketplacecatalog#SubscriptionStatusConstraints",
+          "traits": {
+            "smithy.api#documentation": "Subscription status eligibility constraints for the availability"
+          }
+        },
+        "pricingBenefit": {
+          "target": "com.azure.marketplacecatalog#PricingBenefit",
+          "traits": {
+            "smithy.api#documentation": "Pricing benefit applicable to the availability (e.g. percent discounts)"
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Availability for a given plan"
+      }
+    },
+    "com.azure.marketplacecatalog#PricingBenefit": {
+      "type": "structure",
+      "members": {
+        "rank": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Rank of the pricing benefit"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the pricing benefit (e.g. PercentDiscount)"
+          }
+        },
+        "value": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value of the pricing benefit (e.g. 0.2 for a 20% discount)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Pricing benefit applicable to the availability (e.g. percent discounts)"
+      }
+    },
+    "com.azure.marketplacecatalog#SubscriptionStatusConstraints": {
+      "type": "structure",
+      "members": {
+        "requireAnyOf": {
+          "target": "com.azure.marketplacecatalog#SubscriptionStatusConstraintsRequireAnyOfList",
+          "traits": {
+            "smithy.api#documentation": "List of subscription statuses of which any must be satisfied"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Subscription status eligibility constraints for the availability"
+      }
+    },
+    "com.azure.marketplacecatalog#SubscriptionStatusConstraintsRequireAnyOfList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscription statuses of which any must be satisfied"
+      }
+    },
+    "com.azure.marketplacecatalog#PrerequisiteConstraints": {
+      "type": "structure",
+      "members": {
+        "mustHaveAll": {
+          "target": "com.azure.marketplacecatalog#PrerequisiteConstraint",
+          "traits": {
+            "smithy.api#documentation": "Constraint requiring all of the specified prerequisites to be met"
+          }
+        },
+        "mustHaveAny": {
+          "target": "com.azure.marketplacecatalog#PrerequisiteConstraint",
+          "traits": {
+            "smithy.api#documentation": "Constraint requiring any of the specified prerequisites to be met"
+          }
+        },
+        "mustHaveNone": {
+          "target": "com.azure.marketplacecatalog#PrerequisiteConstraint",
+          "traits": {
+            "smithy.api#documentation": "Constraint requiring none of the specified prerequisites to be met"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Prerequisite constraints for the availability"
+      }
+    },
+    "com.azure.marketplacecatalog#PrerequisiteConstraint": {
+      "type": "structure",
+      "members": {
+        "products": {
+          "target": "com.azure.marketplacecatalog#PrerequisiteConstraintProductsList",
+          "traits": {
+            "smithy.api#documentation": "Prerequisite products"
+          }
+        },
+        "seatConstraint": {
+          "target": "com.azure.marketplacecatalog#MinMaxSeatsConstraint",
+          "traits": {
+            "smithy.api#documentation": "Seat constraint"
+          }
+        },
+        "lookbackWindow": {
+          "target": "com.azure.marketplacecatalog#LookbackWindow",
+          "traits": {
+            "smithy.api#documentation": "Lookback window"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A single prerequisite constraint"
+      }
+    },
+    "com.azure.marketplacecatalog#LookbackWindow": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Lookback window type"
+          }
+        },
+        "period": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Lookback window period"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Lookback window for a prerequisite constraint"
+      }
+    },
+    "com.azure.marketplacecatalog#PrerequisiteConstraintProductsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplacecatalog#PrerequisiteProduct"
+      },
+      "traits": {
+        "smithy.api#documentation": "Prerequisite products"
+      }
+    },
+    "com.azure.marketplacecatalog#PrerequisiteProduct": {
+      "type": "structure",
+      "members": {
+        "basePlanId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base plan id"
+          }
+        },
+        "minSeats": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum seats"
+          }
+        },
+        "maxSeats": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum seats"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A prerequisite product"
       }
     },
     "com.azure.marketplacecatalog#AvailabilityTermsList": {
@@ -6206,7 +6404,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing"
+        "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing\n- `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details\n- `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products\n- `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products\n- `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer"
       }
     },
     "com.azure.marketplacecatalog#PlanDetailsCategoryIdsList": {
@@ -6476,7 +6674,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing"
+        "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing\n- `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details\n- `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products\n- `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products\n- `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer"
       }
     },
     "com.azure.marketplacecatalog#ProductDetailsOperatingSystemsList": {
@@ -6729,7 +6927,7 @@
         "pricingTypes": {
           "target": "com.azure.marketplacecatalog#ProductSummaryPricingTypesList",
           "traits": {
-            "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing"
+            "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing\n- `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details\n- `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products\n- `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products\n- `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer"
           }
         },
         "publisherDisplayName": {
@@ -6852,6 +7050,12 @@
             "smithy.api#documentation": "Set of products attributes"
           }
         },
+        "offeringType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offering type of product family Offers"
+          }
+        },
         "plans": {
           "target": "com.azure.marketplacecatalog#ProductSummaryPlansList",
           "traits": {
@@ -6944,7 +7148,7 @@
         "pricingTypes": {
           "target": "com.azure.marketplacecatalog#PlanSummaryPricingTypesList",
           "traits": {
-            "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing"
+            "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing\n- `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details\n- `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products\n- `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products\n- `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer"
           }
         },
         "vmSecuritytypes": {
@@ -7016,7 +7220,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing"
+        "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing\n- `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details\n- `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products\n- `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products\n- `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer"
       }
     },
     "com.azure.marketplacecatalog#PlanSummaryCategoryIdsList": {
@@ -7079,7 +7283,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing"
+        "smithy.api#documentation": "Indicates the billing models and cost structures available for the plan.\n- `Free` - No charge for plan usage, typically for community editions or basic service tiers\n- `FreeTrial` - Time-limited free access period before transitioning to paid billing model\n- `Byol` - Bring Your Own License model where customers provide existing software licenses\n- `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage\n- `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing\n- `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details\n- `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products\n- `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products\n- `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer"
       }
     },
     "com.azure.marketplacecatalog#ProductSummaryOperatingSystemsList": {
@@ -8539,6 +8743,12 @@
             "smithy.api#documentation": "Category IDs for this SKU."
           }
         },
+        "pricingAudiences": {
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponsePricingAudiencesList",
+          "traits": {
+            "smithy.api#documentation": "Pricing audiences for the SKU."
+          }
+        },
         "availabilities": {
           "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseAvailabilitiesList",
           "traits": {
@@ -8932,6 +9142,15 @@
       },
       "traits": {
         "smithy.api#documentation": "Included quantity properties for a meter"
+      }
+    },
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountResponsePricingAudiencesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Pricing audiences for the SKU."
       }
     },
     "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseCategoryIdsList": {
@@ -9650,10 +9869,25 @@
           "traits": {
             "smithy.api#documentation": "Category IDs for this SKU."
           }
+        },
+        "pricingAudiences": {
+          "target": "com.azure.marketplacecatalog#SkuSummaryPricingAudiencesList",
+          "traits": {
+            "smithy.api#documentation": "Pricing audiences for the SKU."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Summary description of the SKU."
+      }
+    },
+    "com.azure.marketplacecatalog#SkuSummaryPricingAudiencesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Pricing audiences for the SKU."
       }
     },
     "com.azure.marketplacecatalog#SkuSummaryCategoryIdsList": {
@@ -10027,6 +10261,12 @@
             "smithy.api#documentation": "Category IDs for this SKU."
           }
         },
+        "pricingAudiences": {
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponsePricingAudiencesList",
+          "traits": {
+            "smithy.api#documentation": "Pricing audiences for the SKU."
+          }
+        },
         "availabilities": {
           "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseAvailabilitiesList",
           "traits": {
@@ -10045,6 +10285,15 @@
       },
       "traits": {
         "smithy.api#documentation": "Availabilities for this SKU."
+      }
+    },
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileResponsePricingAudiencesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Pricing audiences for the SKU."
       }
     },
     "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseCategoryIdsList": {

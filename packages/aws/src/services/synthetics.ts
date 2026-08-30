@@ -312,12 +312,18 @@ export const BrowserConfig = /*@__PURE__*/ S.suspend(() =>
 export type BrowserConfigs = BrowserConfig[];
 export const BrowserConfigs = /*@__PURE__*/ S.Array(BrowserConfig);
 export type Location = string;
+export type KmsKeyArn = string;
 export interface AddReplicaLocationInput {
   Location: string;
   VpcConfig?: VpcConfigInput;
+  KmsKeyArn?: string;
 }
 export const AddReplicaLocationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Location: S.String, VpcConfig: S.optional(VpcConfigInput) }),
+  S.Struct({
+    Location: S.String,
+    VpcConfig: S.optional(VpcConfigInput),
+    KmsKeyArn: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "AddReplicaLocationInput",
 }) as any as S.Schema<AddReplicaLocationInput>;
@@ -335,7 +341,6 @@ export const TagMap = /*@__PURE__*/ S.Record(
 export type EncryptionMode = "SSE_S3" | "SSE_KMS" | (string & {});
 export const EncryptionMode = /*@__PURE__*/ S.String;
 
-export type KmsKeyArn = string;
 export interface S3EncryptionConfig {
   EncryptionMode?: EncryptionMode;
   KmsKeyArn?: string;
@@ -373,6 +378,7 @@ export interface CreateCanaryRequest {
   AddReplicaLocations?: AddReplicaLocationInput[];
   Tags?: { [key: string]: string | undefined };
   ArtifactConfig?: ArtifactConfigInput;
+  KmsKeyArn?: string;
 }
 export const CreateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -392,6 +398,7 @@ export const CreateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
     AddReplicaLocations: S.optional(AddReplicaLocations),
     Tags: S.optional(TagMap),
     ArtifactConfig: S.optional(ArtifactConfigInput),
+    KmsKeyArn: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/canary" }),
@@ -679,6 +686,7 @@ export interface Canary {
   MultiLocationConfig?: MultiLocationConfig;
   Tags?: { [key: string]: string | undefined };
   ArtifactConfig?: ArtifactConfigOutput;
+  KmsKeyArn?: string;
   DryRunConfig?: DryRunConfigOutput;
 }
 export const Canary = /*@__PURE__*/ S.suspend(() =>
@@ -705,6 +713,7 @@ export const Canary = /*@__PURE__*/ S.suspend(() =>
     MultiLocationConfig: S.optional(MultiLocationConfig),
     Tags: S.optional(TagMap),
     ArtifactConfig: S.optional(ArtifactConfigOutput),
+    KmsKeyArn: S.optional(S.String),
     DryRunConfig: S.optional(DryRunConfigOutput),
   }),
 ).annotate({ identifier: "Canary" }) as any as S.Schema<Canary>;
@@ -1508,6 +1517,7 @@ export interface UpdateCanaryRequest {
   BrowserConfigs?: BrowserConfig[];
   AddReplicaLocations?: AddReplicaLocationInput[];
   RemoveReplicaLocations?: string[];
+  KmsKeyArn?: string;
 }
 export const UpdateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1529,6 +1539,7 @@ export const UpdateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
     BrowserConfigs: S.optional(BrowserConfigs),
     AddReplicaLocations: S.optional(AddReplicaLocations),
     RemoveReplicaLocations: S.optional(RemoveReplicaLocations),
+    KmsKeyArn: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({ method: "PATCH", uri: "/canary/{Name}" }),

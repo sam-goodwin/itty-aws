@@ -2227,13 +2227,19 @@ export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4998,13 +5004,19 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

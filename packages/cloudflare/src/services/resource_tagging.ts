@@ -3500,49 +3500,49 @@ export const ListValuesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListValuesResponse>;
 
 export type AccountTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestAccountLevelWorkerVersion =
-    | "access_application"
-    | "access_group"
-    | "account"
-    | "ai_gateway"
-    | "alerting_policy"
-    | "alerting_webhook"
-    | "cloudflared_tunnel"
-    | "d1_database"
-    | "durable_object_namespace"
-    | "gateway_list"
-    | "gateway_rule"
-    | "image"
-    | "kv_namespace"
-    | "queue"
-    | "r2_bucket"
-    | "resource_share"
-    | "stream_live_input"
-    | "stream_video"
-    | "worker"
-    | "worker_version";
+  | "access_application"
+  | "access_group"
+  | "account"
+  | "ai_gateway"
+  | "alerting_policy"
+  | "alerting_webhook"
+  | "cloudflared_tunnel"
+  | "d1_database"
+  | "durable_object_namespace"
+  | "gateway_list"
+  | "gateway_rule"
+  | "image"
+  | "kv_namespace"
+  | "queue"
+  | "r2_bucket"
+  | "resource_share"
+  | "stream_live_input"
+  | "stream_video"
+  | "worker"
+  | "worker_version";
 export const AccountTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestAccountLevelWorkerVersion =
   /*@__PURE__*/ S.String;
 
 export type AccountTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestAccountLevelBase =
-    | "access_application"
-    | "access_group"
-    | "account"
-    | "ai_gateway"
-    | "alerting_policy"
-    | "alerting_webhook"
-    | "cloudflared_tunnel"
-    | "d1_database"
-    | "durable_object_namespace"
-    | "gateway_list"
-    | "gateway_rule"
-    | "image"
-    | "kv_namespace"
-    | "queue"
-    | "r2_bucket"
-    | "resource_share"
-    | "stream_live_input"
-    | "stream_video"
-    | "worker";
+  | "access_application"
+  | "access_group"
+  | "account"
+  | "ai_gateway"
+  | "alerting_policy"
+  | "alerting_webhook"
+  | "cloudflared_tunnel"
+  | "d1_database"
+  | "durable_object_namespace"
+  | "gateway_list"
+  | "gateway_rule"
+  | "image"
+  | "kv_namespace"
+  | "queue"
+  | "r2_bucket"
+  | "resource_share"
+  | "stream_live_input"
+  | "stream_video"
+  | "worker";
 export const AccountTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestAccountLevelBase =
   /*@__PURE__*/ S.String;
 
@@ -4649,23 +4649,23 @@ export const PutAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutAccountTagResponse>;
 
 export type ZoneTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestZoneLevelBase =
-    | "api_gateway_operation"
-    | "custom_certificate"
-    | "custom_hostname"
-    | "dns_record"
-    | "managed_client_certificate"
-    | "zone";
+  | "api_gateway_operation"
+  | "custom_certificate"
+  | "custom_hostname"
+  | "dns_record"
+  | "managed_client_certificate"
+  | "zone";
 export const ZoneTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestZoneLevelBase =
   /*@__PURE__*/ S.String;
 
 export type ZoneTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy =
-    | "api_gateway_operation"
-    | "custom_certificate"
-    | "custom_hostname"
-    | "dns_record"
-    | "managed_client_certificate"
-    | "zone"
-    | "access_application_policy";
+  | "api_gateway_operation"
+  | "custom_certificate"
+  | "custom_hostname"
+  | "dns_record"
+  | "managed_client_certificate"
+  | "zone"
+  | "access_application_policy";
 export const ZoneTagsUpdateRequestResourceTypeResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy =
   /*@__PURE__*/ S.String;
 

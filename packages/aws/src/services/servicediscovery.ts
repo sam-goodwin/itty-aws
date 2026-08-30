@@ -15,7 +15,7 @@ const auth = T.AwsAuthSigv4({ name: "servicediscovery" });
 const ver = T.ServiceVersion("2017-03-14");
 const proto = T.AwsProtocolsAwsJson1_1();
 const rules = T.EndpointResolver((p, _) => {
-  const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
+  const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
     endpoint: { url: u as string, properties: p, headers: h },
@@ -54,7 +54,7 @@ const rules = T.EndpointResolver((p, _) => {
             "FIPS and DualStack are enabled, but this partition does not support one or both",
           );
         }
-        if (UseFIPS === true) {
+        if (UseFIPS === true && UseDualStack === false) {
           if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
             return e(
               `https://servicediscovery-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
@@ -64,17 +64,8 @@ const rules = T.EndpointResolver((p, _) => {
             "FIPS is enabled but this partition does not support FIPS",
           );
         }
-        if (UseDualStack === true) {
+        if (UseFIPS === false && UseDualStack === true) {
           if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
-            if ("aws" === _.getAttr(PartitionResult, "name")) {
-              return e(`https://servicediscovery.${Region}.amazonaws.com`);
-            }
-            if ("aws-cn" === _.getAttr(PartitionResult, "name")) {
-              return e(`https://servicediscovery.${Region}.amazonaws.com.cn`);
-            }
-            if ("aws-us-gov" === _.getAttr(PartitionResult, "name")) {
-              return e(`https://servicediscovery.${Region}.amazonaws.com`);
-            }
             return e(
               `https://servicediscovery.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
             );

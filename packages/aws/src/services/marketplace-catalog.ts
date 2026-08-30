@@ -137,7 +137,14 @@ export class ThrottlingException
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    {
+      message: S.optional(S.String).pipe(T.ErrorMessage()),
+      ValidationExceptionFieldList: S.optional(
+        S.suspend(() => ValidationExceptionFieldList).annotate({
+          identifier: "ValidationExceptionFieldList",
+        }),
+      ),
+    },
     T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
 export type Catalog = string;
@@ -283,6 +290,155 @@ export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourcePolicyResponse",
 }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export type AssessmentIdentifier = string;
+export type DescribeAssessmentMaxResultInteger = number;
+export type NextToken = string;
+export interface DescribeAssessmentRequest {
+  Catalog: string;
+  AssessmentIdentifier: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const DescribeAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    AssessmentIdentifier: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DescribeAssessment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeAssessmentRequest",
+}) as any as S.Schema<DescribeAssessmentRequest>;
+export type VersionedFrameworkId = string;
+export interface AssessmentTargetSummary {
+  EntityId?: string;
+  ChangeSetId?: string;
+}
+export const AssessmentTargetSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EntityId: S.optional(S.String),
+    ChangeSetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssessmentTargetSummary",
+}) as any as S.Schema<AssessmentTargetSummary>;
+export interface AMISecuritySummary {
+  DeliveryOptionId?: string;
+}
+export const AMISecuritySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DeliveryOptionId: S.optional(S.String) }),
+).annotate({
+  identifier: "AMISecuritySummary",
+}) as any as S.Schema<AMISecuritySummary>;
+export interface ContainerSecuritySummary {
+  DeliveryOptionId?: string;
+}
+export const ContainerSecuritySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DeliveryOptionId: S.optional(S.String) }),
+).annotate({
+  identifier: "ContainerSecuritySummary",
+}) as any as S.Schema<ContainerSecuritySummary>;
+export type FrameworkSummary =
+  | { AMISecuritySummary: AMISecuritySummary; ContainerSecuritySummary?: never }
+  | {
+      AMISecuritySummary?: never;
+      ContainerSecuritySummary: ContainerSecuritySummary;
+    };
+export const FrameworkSummary = /*@__PURE__*/ S.Union([
+  S.Struct({ AMISecuritySummary: AMISecuritySummary }),
+  S.Struct({ ContainerSecuritySummary: ContainerSecuritySummary }),
+]);
+export type AssessmentResult = "PASS" | "FAIL" | (string & {});
+export const AssessmentResult = /*@__PURE__*/ S.String;
+
+export type ControlAssessmentResult =
+  | "PASS"
+  | "FAIL"
+  | "NOT_EXECUTED"
+  | "EXEMPTION_PASS"
+  | (string & {});
+export const ControlAssessmentResult = /*@__PURE__*/ S.String;
+
+export type ErrorCode = string;
+export type ErrorMessage = string;
+export type ScopeName = string;
+export type ScopeValue = string;
+export interface ErrorScope {
+  Name?: string;
+  Value?: string;
+}
+export const ErrorScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+).annotate({ identifier: "ErrorScope" }) as any as S.Schema<ErrorScope>;
+export type ErrorScopeList = ErrorScope[];
+export const ErrorScopeList = /*@__PURE__*/ S.Array(ErrorScope);
+export interface ControlError {
+  Code?: string;
+  Message?: string;
+  Scope?: ErrorScope[];
+}
+export const ControlError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Scope: S.optional(ErrorScopeList),
+  }),
+).annotate({ identifier: "ControlError" }) as any as S.Schema<ControlError>;
+export type ControlErrorList = ControlError[];
+export const ControlErrorList = /*@__PURE__*/ S.Array(ControlError);
+export interface ControlAssessment {
+  ControlId?: string;
+  ControlAssessmentResult?: ControlAssessmentResult;
+  Errors?: ControlError[];
+}
+export const ControlAssessment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ControlId: S.optional(S.String),
+    ControlAssessmentResult: S.optional(ControlAssessmentResult),
+    Errors: S.optional(ControlErrorList),
+  }),
+).annotate({
+  identifier: "ControlAssessment",
+}) as any as S.Schema<ControlAssessment>;
+export type ControlAssessmentList = ControlAssessment[];
+export const ControlAssessmentList = /*@__PURE__*/ S.Array(ControlAssessment);
+export interface DescribeAssessmentResponse {
+  AssessmentArn?: string;
+  AssessmentId?: string;
+  FrameworkId?: string;
+  AssessmentTargetSummary?: AssessmentTargetSummary;
+  FrameworkSummary?: FrameworkSummary;
+  AssessmentResult?: AssessmentResult;
+  CreatedAt?: string;
+  ExpiresAt?: string;
+  ControlAssessments?: ControlAssessment[];
+  NextToken?: string;
+}
+export const DescribeAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssessmentArn: S.optional(S.String),
+    AssessmentId: S.optional(S.String),
+    FrameworkId: S.optional(S.String),
+    AssessmentTargetSummary: S.optional(AssessmentTargetSummary),
+    FrameworkSummary: S.optional(FrameworkSummary),
+    AssessmentResult: S.optional(AssessmentResult),
+    CreatedAt: S.optional(S.String),
+    ExpiresAt: S.optional(S.String),
+    ControlAssessments: S.optional(ControlAssessmentList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeAssessmentResponse",
+}) as any as S.Schema<DescribeAssessmentResponse>;
 export interface DescribeChangeSetRequest {
   Catalog: string;
   ChangeSetId: string;
@@ -459,6 +615,113 @@ export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
+export type FrameworkId = string;
+export interface AssessmentTargetFilter {
+  EntityId?: string;
+  ChangeSetId?: string;
+}
+export const AssessmentTargetFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EntityId: S.optional(S.String),
+    ChangeSetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssessmentTargetFilter",
+}) as any as S.Schema<AssessmentTargetFilter>;
+export interface AMISecurityFilters {
+  DeliveryOptionId?: string;
+}
+export const AMISecurityFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DeliveryOptionId: S.optional(S.String) }),
+).annotate({
+  identifier: "AMISecurityFilters",
+}) as any as S.Schema<AMISecurityFilters>;
+export interface ContainerSecurityFilters {
+  DeliveryOptionId?: string;
+}
+export const ContainerSecurityFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DeliveryOptionId: S.optional(S.String) }),
+).annotate({
+  identifier: "ContainerSecurityFilters",
+}) as any as S.Schema<ContainerSecurityFilters>;
+export type FrameworkFilters =
+  | { AMISecurityFilters: AMISecurityFilters; ContainerSecurityFilters?: never }
+  | {
+      AMISecurityFilters?: never;
+      ContainerSecurityFilters: ContainerSecurityFilters;
+    };
+export const FrameworkFilters = /*@__PURE__*/ S.Union([
+  S.Struct({ AMISecurityFilters: AMISecurityFilters }),
+  S.Struct({ ContainerSecurityFilters: ContainerSecurityFilters }),
+]);
+export type ListAssessmentsMaxResultInteger = number;
+export interface ListAssessmentsRequest {
+  Catalog: string;
+  FrameworkId?: string;
+  AssessmentTargetFilter?: AssessmentTargetFilter;
+  FrameworkFilters?: FrameworkFilters;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    FrameworkId: S.optional(S.String),
+    AssessmentTargetFilter: S.optional(AssessmentTargetFilter),
+    FrameworkFilters: S.optional(FrameworkFilters),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListAssessments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAssessmentsRequest",
+}) as any as S.Schema<ListAssessmentsRequest>;
+export interface AssessmentSummary {
+  AssessmentArn?: string;
+  AssessmentId?: string;
+  FrameworkId?: string;
+  AssessmentTargetSummary?: AssessmentTargetSummary;
+  FrameworkSummary?: FrameworkSummary;
+  AssessmentResult?: AssessmentResult;
+  CreatedAt?: string;
+  ExpiresAt?: string;
+}
+export const AssessmentSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssessmentArn: S.optional(S.String),
+    AssessmentId: S.optional(S.String),
+    FrameworkId: S.optional(S.String),
+    AssessmentTargetSummary: S.optional(AssessmentTargetSummary),
+    FrameworkSummary: S.optional(FrameworkSummary),
+    AssessmentResult: S.optional(AssessmentResult),
+    CreatedAt: S.optional(S.String),
+    ExpiresAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssessmentSummary",
+}) as any as S.Schema<AssessmentSummary>;
+export type AssessmentSummaryList = AssessmentSummary[];
+export const AssessmentSummaryList = /*@__PURE__*/ S.Array(AssessmentSummary);
+export interface ListAssessmentsResponse {
+  AssessmentSummaryList?: AssessmentSummary[];
+  NextToken?: string;
+}
+export const ListAssessmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssessmentSummaryList: S.optional(AssessmentSummaryList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAssessmentsResponse",
+}) as any as S.Schema<ListAssessmentsResponse>;
 export type FilterName = string;
 export type FilterValueContent = string;
 export type ValueList = string[];
@@ -484,7 +747,6 @@ export const Sort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(SortOrder) }),
 ).annotate({ identifier: "Sort" }) as any as S.Schema<Sort>;
 export type ListChangeSetsMaxResultInteger = number;
-export type NextToken = string;
 export interface ListChangeSetsRequest {
   Catalog: string;
   FilterList?: Filter[];
@@ -989,6 +1251,55 @@ export const OfferSetIdFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferSetIdFilter",
 }) as any as S.Schema<OfferSetIdFilter>;
+export type OfferTargetAgreementIdString = string;
+export type OfferTargetAgreementIdFilterValueList = string[];
+export const OfferTargetAgreementIdFilterValueList = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export interface OfferTargetAgreementIdFilter {
+  ValueList?: string[];
+}
+export const OfferTargetAgreementIdFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ValueList: S.optional(OfferTargetAgreementIdFilterValueList) }),
+).annotate({
+  identifier: "OfferTargetAgreementIdFilter",
+}) as any as S.Schema<OfferTargetAgreementIdFilter>;
+export type OfferTargetAgreementIntentString = "Renew" | (string & {});
+export const OfferTargetAgreementIntentString = /*@__PURE__*/ S.String;
+
+export type OfferTargetAgreementIntentFilterValueList =
+  OfferTargetAgreementIntentString[];
+export const OfferTargetAgreementIntentFilterValueList = /*@__PURE__*/ S.Array(
+  OfferTargetAgreementIntentString,
+);
+export interface OfferTargetAgreementIntentFilter {
+  ValueList?: OfferTargetAgreementIntentString[];
+}
+export const OfferTargetAgreementIntentFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ValueList: S.optional(OfferTargetAgreementIntentFilterValueList),
+  }),
+).annotate({
+  identifier: "OfferTargetAgreementIntentFilter",
+}) as any as S.Schema<OfferTargetAgreementIntentFilter>;
+export type OfferCreatedBySourceString =
+  | "Seller"
+  | "AwsMarketplace"
+  | (string & {});
+export const OfferCreatedBySourceString = /*@__PURE__*/ S.String;
+
+export type OfferCreatedBySourceFilterValueList = OfferCreatedBySourceString[];
+export const OfferCreatedBySourceFilterValueList = /*@__PURE__*/ S.Array(
+  OfferCreatedBySourceString,
+);
+export interface OfferCreatedBySourceFilter {
+  ValueList?: OfferCreatedBySourceString[];
+}
+export const OfferCreatedBySourceFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ValueList: S.optional(OfferCreatedBySourceFilterValueList) }),
+).annotate({
+  identifier: "OfferCreatedBySourceFilter",
+}) as any as S.Schema<OfferCreatedBySourceFilter>;
 export interface OfferFilters {
   EntityId?: OfferEntityIdFilter;
   Name?: OfferNameFilter;
@@ -1001,6 +1312,9 @@ export interface OfferFilters {
   Targeting?: OfferTargetingFilter;
   LastModifiedDate?: OfferLastModifiedDateFilter;
   OfferSetId?: OfferSetIdFilter;
+  TargetAgreementId?: OfferTargetAgreementIdFilter;
+  TargetAgreementIntent?: OfferTargetAgreementIntentFilter;
+  CreatedBySource?: OfferCreatedBySourceFilter;
 }
 export const OfferFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1015,6 +1329,9 @@ export const OfferFilters = /*@__PURE__*/ S.suspend(() =>
     Targeting: S.optional(OfferTargetingFilter),
     LastModifiedDate: S.optional(OfferLastModifiedDateFilter),
     OfferSetId: S.optional(OfferSetIdFilter),
+    TargetAgreementId: S.optional(OfferTargetAgreementIdFilter),
+    TargetAgreementIntent: S.optional(OfferTargetAgreementIntentFilter),
+    CreatedBySource: S.optional(OfferCreatedBySourceFilter),
   }),
 ).annotate({ identifier: "OfferFilters" }) as any as S.Schema<OfferFilters>;
 export type ContainerProductEntityIdString = string;
@@ -1381,6 +1698,27 @@ export const ResaleAuthorizationLastModifiedDateFilter =
   ).annotate({
     identifier: "ResaleAuthorizationLastModifiedDateFilter",
   }) as any as S.Schema<ResaleAuthorizationLastModifiedDateFilter>;
+export type ResaleAuthorizationResellerRoleString =
+  | "ChannelPartner"
+  | "Distributor"
+  | (string & {});
+export const ResaleAuthorizationResellerRoleString = /*@__PURE__*/ S.String;
+
+export type ResaleAuthorizationResellerRoleFilterValueList =
+  ResaleAuthorizationResellerRoleString[];
+export const ResaleAuthorizationResellerRoleFilterValueList =
+  /*@__PURE__*/ S.Array(ResaleAuthorizationResellerRoleString);
+export interface ResaleAuthorizationResellerRoleFilter {
+  ValueList?: ResaleAuthorizationResellerRoleString[];
+}
+export const ResaleAuthorizationResellerRoleFilter = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ValueList: S.optional(ResaleAuthorizationResellerRoleFilterValueList),
+    }),
+).annotate({
+  identifier: "ResaleAuthorizationResellerRoleFilter",
+}) as any as S.Schema<ResaleAuthorizationResellerRoleFilter>;
 export interface ResaleAuthorizationFilters {
   EntityId?: ResaleAuthorizationEntityIdFilter;
   Name?: ResaleAuthorizationNameFilter;
@@ -1395,6 +1733,7 @@ export interface ResaleAuthorizationFilters {
   Status?: ResaleAuthorizationStatusFilter;
   OfferExtendedStatus?: ResaleAuthorizationOfferExtendedStatusFilter;
   LastModifiedDate?: ResaleAuthorizationLastModifiedDateFilter;
+  ResellerRole?: ResaleAuthorizationResellerRoleFilter;
 }
 export const ResaleAuthorizationFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1419,6 +1758,7 @@ export const ResaleAuthorizationFilters = /*@__PURE__*/ S.suspend(() =>
       ResaleAuthorizationOfferExtendedStatusFilter,
     ),
     LastModifiedDate: S.optional(ResaleAuthorizationLastModifiedDateFilter),
+    ResellerRole: S.optional(ResaleAuthorizationResellerRoleFilter),
   }),
 ).annotate({
   identifier: "ResaleAuthorizationFilters",
@@ -1809,6 +2149,9 @@ export type OfferSortBy =
   | "Targeting"
   | "LastModifiedDate"
   | "OfferSetId"
+  | "TargetAgreementId"
+  | "TargetAgreementIntent"
+  | "CreatedBySource"
   | (string & {});
 export const OfferSortBy = /*@__PURE__*/ S.String;
 
@@ -2103,6 +2446,9 @@ export interface OfferSummary {
   State?: OfferStateString;
   Targeting?: OfferTargetingString[];
   OfferSetId?: string;
+  TargetAgreementId?: string;
+  TargetAgreementIntent?: OfferTargetAgreementIntentString;
+  CreatedBySource?: OfferCreatedBySourceString;
 }
 export const OfferSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2115,6 +2461,9 @@ export const OfferSummary = /*@__PURE__*/ S.suspend(() =>
     State: S.optional(OfferStateString),
     Targeting: S.optional(OfferTargetingList),
     OfferSetId: S.optional(S.String),
+    TargetAgreementId: S.optional(S.String),
+    TargetAgreementIntent: S.optional(OfferTargetAgreementIntentString),
+    CreatedBySource: S.optional(OfferCreatedBySourceString),
   }),
 ).annotate({ identifier: "OfferSummary" }) as any as S.Schema<OfferSummary>;
 export interface ResaleAuthorizationSummary {
@@ -2129,6 +2478,7 @@ export interface ResaleAuthorizationSummary {
   OfferExtendedStatus?: string;
   CreatedDate?: string;
   AvailabilityEndDate?: string;
+  ResellerRole?: ResaleAuthorizationResellerRoleString;
 }
 export const ResaleAuthorizationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2143,6 +2493,7 @@ export const ResaleAuthorizationSummary = /*@__PURE__*/ S.suspend(() =>
     OfferExtendedStatus: S.optional(S.String),
     CreatedDate: S.optional(S.String),
     AvailabilityEndDate: S.optional(S.String),
+    ResellerRole: S.optional(ResaleAuthorizationResellerRoleString),
   }),
 ).annotate({
   identifier: "ResaleAuthorizationSummary",
@@ -2400,6 +2751,39 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export type ValidationExceptionReason =
+  | "UnknownOperation"
+  | "CannotParse"
+  | "FieldValidationFailed"
+  | "Other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+
+export type FieldName = string;
+export interface ValidationExceptionField {
+  Reason?: ValidationExceptionReason;
+  EntityType?: string;
+  EntityId?: string;
+  ChangeType?: string;
+  Field?: string;
+  Message?: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Reason: S.optional(ValidationExceptionReason),
+    EntityType: S.optional(S.String),
+    EntityId: S.optional(S.String),
+    ChangeType: S.optional(S.String),
+    Field: S.optional(S.String),
+    Message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type BatchDescribeEntitiesError =
   | AccessDeniedException
   | InternalServiceException
@@ -2494,6 +2878,48 @@ export const deleteResourcePolicy: API.OperationMethod<
   operationName: "DeleteResourcePolicy",
 }));
 
+export type DescribeAssessmentError =
+  | AccessDeniedException
+  | InternalServiceException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the metadata and detailed results of a single assessment, including the
+ * framework that was evaluated, the overall assessment result, and a paginated list of
+ * individual control evaluation results.
+ *
+ * To list available assessments before describing one, use the
+ * `ListAssessments` action.
+ */
+export const describeAssessment: API.PaginatedOperationMethod<
+  DescribeAssessmentRequest,
+  DescribeAssessmentResponse,
+  DescribeAssessmentError,
+  Credentials | HttpClient.HttpClient,
+  ControlAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: DescribeAssessmentRequest,
+  output: DescribeAssessmentResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeAssessment",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ControlAssessments",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
+
 export type DescribeChangeSetError =
   | AccessDeniedException
   | InternalServiceException
@@ -2586,6 +3012,51 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
+export type ListAssessmentsError =
+  | AccessDeniedException
+  | InternalServiceException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a paginated list of assessments associated with an entity or change set in
+ * AWS Marketplace. An *assessment* is the result of evaluating a
+ * product or change set against a framework, such as AMI Security or Container
+ * Security.
+ *
+ * Use the `AssessmentTargetFilter` to scope results to a specific entity or
+ * change set, and use `FrameworkFilters` to scope results to a single
+ * framework. To retrieve detailed control-level results for an individual assessment, use
+ * the `DescribeAssessment` action.
+ *
+ * Results are sorted by assessment creation time in descending order.
+ */
+export const listAssessments: API.PaginatedOperationMethod<
+  ListAssessmentsRequest,
+  ListAssessmentsResponse,
+  ListAssessmentsError,
+  Credentials | HttpClient.HttpClient,
+  AssessmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListAssessmentsRequest,
+  output: ListAssessmentsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAssessments",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "AssessmentSummaryList",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
 
 export type ListChangeSetsError =
   | AccessDeniedException

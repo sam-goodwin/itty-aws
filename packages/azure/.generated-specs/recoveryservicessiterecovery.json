@@ -30,10 +30,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationvCenters",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of vCenter registered under the vault.\n\nLists the vCenter servers registered in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#VCenterCollection": {
@@ -565,10 +565,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates vault setting. A vault setting object is a singleton per vault and it is always present by default.\n\nThe operation to configure vault setting.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationVaultSettingCreateResponse": {
@@ -715,10 +715,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the vault setting.\n\nGets the vault setting. This includes the Migration Hub connection settings.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationVaultSettingGetResponse": {
@@ -818,10 +818,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of vault setting.\n\nGets the list of vault setting. This includes the Migration Hub connection settings.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#VaultSettingCollection": {
@@ -943,10 +943,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth/default/refresh",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Refreshes health summary of the vault.\n\nRefreshes health summary of the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationVaultHealthRefreshResponse": {
@@ -1291,10 +1291,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the health summary for the vault.\n\nGets the health details of the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationVaultHealthGetResponse": {
@@ -1386,10 +1386,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationSupportedOperatingSystems",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the data of supported operating systems by SRS.\n\nGets the data of supported operating systems by SRS.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#SupportedOperatingSystemsGetResponse": {
@@ -1595,10 +1595,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassifications",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of storage classification objects under a vault.\n\nLists the storage classifications in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#StorageClassificationCollection": {
@@ -1734,10 +1734,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassificationMappings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of storage classification mappings objects under a vault.\n\nLists the storage classification mappings in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#StorageClassificationMappingCollection": {
@@ -1873,10 +1873,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryServicesProviders",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of registered recovery services providers in the vault. This is a view only api.\n\nLists the registered recovery services providers in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#RecoveryServicesProviderCollection": {
@@ -2246,10 +2246,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/unplannedFailover",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute unplanned failover of the recovery plan.\n\nThe operation to start the unplanned failover of a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansUnplannedFailoverResponse": {
@@ -2896,10 +2896,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/testFailoverCleanup",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute test failover cleanup of the recovery plan.\n\nThe operation to cleanup test failover of a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansTestFailoverCleanupResponse": {
@@ -3020,10 +3020,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/testFailover",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute test failover of the recovery plan.\n\nThe operation to start the test failover of a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansTestFailoverResponse": {
@@ -3173,10 +3173,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/reProtect",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute reprotect of the recovery plan.\n\nThe operation to reprotect(reverse replicate) a recovery plan. This api is for deprecated scenarios and no longer works.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansReprotectResponse": {
@@ -3276,10 +3276,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/plannedFailover",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute planned failover of the recovery plan.\n\nThe operation to start the planned failover of a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansPlannedFailoverResponse": {
@@ -3416,10 +3416,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/failoverCommit",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute commit failover of the recovery plan.\n\nThe operation to commit the failover of a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansFailoverCommitResponse": {
@@ -3519,10 +3519,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/failoverCancel",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute cancel failover of the recovery plan.\n\nThe operation to cancel the failover of a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansFailoverCancelResponse": {
@@ -3622,10 +3622,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes the specified recovery plan.\n\nDelete a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansDeleteRequest": {
@@ -3681,10 +3681,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates the given recovery plan.\n\nThe operation to update a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansUpdateResponse": {
@@ -3813,10 +3813,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates a recovery plan with the given details.\n\nThe operation to create a recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansCreateResponse": {
@@ -4023,10 +4023,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the requested recovery plan.\n\nGets the details of the recovery plan.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansGetResponse": {
@@ -4126,10 +4126,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of recovery plans.\n\nLists the recovery plans in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#RecoveryPlanCollection": {
@@ -4251,10 +4251,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents/{intentObjectName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Create protection intent Resource.\n\nThe operation to create an ASR replication protection intent item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionIntentsCreateResponse": {
@@ -4448,10 +4448,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents/{intentObjectName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a Replication protection intent item.\n\nGets the details of an ASR replication protection intent.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionIntentsGetResponse": {
@@ -4551,10 +4551,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of replication protection intent objects.\n\nGets the list of ASR replication protection intent objects in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionIntentCollection": {
@@ -4690,10 +4690,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainers",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of all protection containers in a vault.\n\nLists the protection containers in a vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ProtectionContainerCollection": {
@@ -4879,10 +4879,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainerMappings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of all protection container mappings in a vault.\n\nLists the protection container mappings in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ProtectionContainerMappingCollection": {
@@ -5102,10 +5102,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionClusters",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of Replication protection clusters in vault.\n\nGets the list of ASR replication protected clusters in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterCollection": {
@@ -5604,10 +5604,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectedItems",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of replication protected items.\n\nGets the list of ASR replication protected items in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemCollection": {
@@ -5964,10 +5964,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Delete the policy.\n\nThe operation to delete a replication policy.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationPoliciesDeleteRequest": {
@@ -6023,10 +6023,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates the policy.\n\nThe operation to update a replication policy.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationPoliciesUpdateResponse": {
@@ -6196,10 +6196,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates the policy.\n\nThe operation to create a replication policy.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationPoliciesCreateResponse": {
@@ -6319,10 +6319,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the requested policy.\n\nGets the details of a replication policy.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationPoliciesGetResponse": {
@@ -6422,10 +6422,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of replication policies.\n\nLists the replication policies for a vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#PolicyCollection": {
@@ -6547,10 +6547,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworks",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of networks. View-only API.\n\nLists the networks available in a vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#NetworkCollection": {
@@ -6748,10 +6748,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworkMappings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets all the network mappings under a vault.\n\nLists all ASR network mappings in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#NetworkMappingCollection": {
@@ -6950,10 +6950,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationMigrationItems",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of migration items in the vault.\n\nGets the list of migration items in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#MigrationItemCollection": {
@@ -7566,10 +7566,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/export",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Exports the details of the Azure Site Recovery jobs of the vault.\n\nThe operation to export the details of the Azure Site Recovery jobs of the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationJobsExportResponse": {
@@ -8144,10 +8144,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/resume",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Resumes the specified job.\n\nThe operation to resume an Azure Site Recovery job.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationJobsResumeResponse": {
@@ -8267,10 +8267,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/restart",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Restarts the specified job.\n\nThe operation to restart an Azure Site Recovery job.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationJobsRestartResponse": {
@@ -8370,10 +8370,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/cancel",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Cancels the specified job.\n\nThe operation to cancel an Azure Site Recovery job.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationJobsCancelResponse": {
@@ -8473,10 +8473,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the job details.\n\nGet the details of an Azure Site Recovery job.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationJobsGetResponse": {
@@ -8576,10 +8576,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of jobs.\n\nGets the list of Azure Site Recovery Jobs for the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#JobCollection": {
@@ -8708,10 +8708,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Remove vcenter operation.\n\nThe operation to remove(unregister) a registered vCenter server from the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationvCentersDeleteRequest": {
@@ -8775,10 +8775,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Update vCenter operation.\n\nThe operation to update a registered vCenter.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationvCentersUpdateResponse": {
@@ -8930,10 +8930,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Add vCenter.\n\nThe operation to create a vCenter object..",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationvCentersCreateResponse": {
@@ -9085,10 +9085,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a vCenter.\n\nGets the details of a registered vCenter server(Add vCenter server).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationvCentersGetResponse": {
@@ -9196,10 +9196,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of vCenter registered under a fabric.\n\nLists the vCenter servers registered in a fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationvCentersListByReplicationFabricsRequest": {
@@ -9255,10 +9255,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Delete a storage classification mapping.\n\nThe operation to delete a storage classification mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationStorageClassificationMappingsDeleteRequest": {
@@ -9330,10 +9330,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Create storage classification mapping.\n\nThe operation to create a storage classification mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationStorageClassificationMappingsCreateResponse": {
@@ -9469,10 +9469,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a storage classification mapping.\n\nGets the details of the specified storage classification mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationStorageClassificationMappingsGetResponse": {
@@ -9588,10 +9588,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of storage classification mappings objects under a storage.\n\nLists the storage classification mappings for the fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsRequest": {
@@ -9655,10 +9655,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a storage classification.\n\nGets the details of the specified storage classification.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationStorageClassificationsGetResponse": {
@@ -9766,10 +9766,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of storage classification objects under a fabric.\n\nLists the storage classifications available in the specified fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationStorageClassificationsListByReplicationFabricsRequest": {
@@ -9825,10 +9825,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}/remove",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes provider from fabric. Note: Deleting provider for any fabric other than SingleHost is unsupported. To maintain backward compatibility for released clients the object \"deleteRspInput\" is used (if the object is empty we assume that it is old client and continue the old behavior).\n\nThe operation to removes/delete(unregister) a recovery services provider from the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryServicesProvidersDeleteRequest": {
@@ -9892,10 +9892,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}/refreshProvider",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Refresh details from the recovery services provider.\n\nThe operation to refresh the information from the recovery services provider.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryServicesProvidersRefreshProviderResponse": {
@@ -10003,10 +10003,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Purges recovery service provider from fabric.\n\nThe operation to purge(force delete) a recovery services provider from the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryServicesProvidersPurgeRequest": {
@@ -10070,10 +10070,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Adds a recovery services provider.\n\nThe operation to add a recovery services provider.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryServicesProvidersCreateResponse": {
@@ -10278,10 +10278,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a recovery services provider.\n\nGets the details of registered recovery services provider.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryServicesProvidersGetResponse": {
@@ -10389,10 +10389,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of registered recovery services providers for the fabric.\n\nLists the registered recovery services providers for the specified fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryServicesProvidersListByReplicationFabricsRequest": {
@@ -10448,10 +10448,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/switchprotection",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Switches protection from one container to another or one replication provider to another.\n\nOperation to switch protection from one container to another or one replication provider to another.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersSwitchProtectionResponse": {
@@ -10600,10 +10600,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/switchClusterProtection",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Switches protection from one container to another.\n\nOperation to switch protection from one container to another.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersSwitchClusterProtectionResponse": {
@@ -10752,10 +10752,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}/remove",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Remove protection container mapping.\n\nThe operation to delete or remove a protection container mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsDeleteRequest": {
@@ -10861,10 +10861,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Purge protection container mapping.\n\nThe operation to purge(force delete) a protection container mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsPurgeRequest": {
@@ -10936,10 +10936,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Update protection container mapping.\n\nThe operation to update protection container mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsUpdateResponse": {
@@ -11090,10 +11090,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Create protection container mapping.\n\nThe operation to create a protection container mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsCreateResponse": {
@@ -11256,10 +11256,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets a protection container mapping.\n\nGets the details of a protection container mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsGetResponse": {
@@ -11375,10 +11375,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of protection container mappings for a protection container.\n\nLists the protection container mappings for a protection container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsListByReplicationProtectionContainersRequest": {
@@ -11442,10 +11442,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/unplannedFailover",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute unplanned cluster failover.\n\nOperation to initiate a failover of the replication protection cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersUnplannedFailoverResponse": {
@@ -11603,10 +11603,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/testFailoverCleanup",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute test failover cleanup for cluster.\n\nOperation to clean up the test failover of a replication protected cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersTestFailoverCleanupResponse": {
@@ -11737,10 +11737,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/testFailover",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute test failover for cluster.\n\nOperation to initiate a failover of the replication protection cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersTestFailoverResponse": {
@@ -11924,10 +11924,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/repairReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Resynchronize or repair replication of protection cluster.\n\nThe operation to repair replication protection cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersRepairReplicationResponse": {
@@ -12037,10 +12037,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/recoveryPoints/{recoveryPointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets a recovery point.\n\nGet the details of specified recovery point.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ClusterRecoveryPoint": {
@@ -12219,10 +12219,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/recoveryPoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of cluster recovery points.\n\nThe list of cluster recovery points.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ClusterRecoveryPointCollection": {
@@ -12324,10 +12324,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/operationResults/{jobId}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Tracks the Replication protection cluster async operation.\n\nTrack the results of an asynchronous operation on the replication protection cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersGetOperationResultsResponse": {
@@ -12445,10 +12445,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/failoverCommit",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute commit failover for cluster.\n\nOperation to initiate commit failover of the replication protection cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersFailoverCommitResponse": {
@@ -12558,10 +12558,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/applyRecoveryPoint",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute the change recovery point operation for cluster.\n\nOperation to apply a new cluster recovery point on the Protection cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersApplyRecoveryPointResponse": {
@@ -12729,10 +12729,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Purge the replication protection cluster.\n\nThe operation to purge the replication protection cluster. This operation will force delete the replication protection cluster. Use the remove operation on replication protection cluster to perform a clean disable replication protection cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersPurgeRequest": {
@@ -12804,10 +12804,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Create Replication protection Cluster.\n\nThe operation to create an ASR replication protection cluster item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersCreateResponse": {
@@ -13150,10 +13150,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a Replication protection cluster.\n\nGets the details of an ASR replication protection cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersGetResponse": {
@@ -13263,10 +13263,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of Replication protection clusters in fabric, container.\n\nGets the list of ASR replication protected clusters in the protection container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersListByReplicationProtectionContainersRequest": {
@@ -13330,10 +13330,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateMobilityService",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Update the mobility service on a protected item.\n\nThe operation to update(push update) the installed mobility service software on a replication protected item to the latest available version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsUpdateMobilityServiceResponse": {
@@ -13469,10 +13469,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateAppliance",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates appliance for replication protected Item.\n\nThe operation to update appliance of an ASR replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsUpdateApplianceResponse": {
@@ -13632,10 +13632,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/unplannedFailover",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute unplanned failover.\n\nOperation to initiate a failover of the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsUnplannedFailoverResponse": {
@@ -13799,10 +13799,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailoverCleanup",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute test failover cleanup.\n\nOperation to clean up the test failover of a replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsTestFailoverCleanupResponse": {
@@ -13939,10 +13939,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailover",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute test failover.\n\nOperation to perform a test failover of the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsTestFailoverResponse": {
@@ -14112,10 +14112,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/targetComputeSizes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of target compute sizes for the replication protected item.\n\nLists the available target compute sizes for a replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#TargetComputeSizeCollection": {
@@ -14355,10 +14355,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/switchProvider",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute switch provider.\n\nOperation to initiate a switch provider of the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsSwitchProviderResponse": {
@@ -14515,10 +14515,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/resolveHealthErrors",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Resolve health errors.\n\nOperation to resolve health issues of the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsResolveHealthErrorsResponse": {
@@ -14677,10 +14677,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/repairReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Resynchronize or repair replication.\n\nThe operation to start resynchronize/repair replication for a replication protected item requiring resynchronization.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsRepairReplicationResponse": {
@@ -14796,10 +14796,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/removeDisks",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Removes disk(s).\n\nOperation to remove disk(s) from the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsRemoveDisksResponse": {
@@ -14950,10 +14950,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/remove",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Disables protection.\n\nThe operation to disable replication on a replication protected item. This will also remove the item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsDeleteRequest": {
@@ -15087,10 +15087,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reinstallMobilityService",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Reinstall the mobility service on a protected item.\n\nThe operation to reinstall the installed mobility service software on a replication protected item to the latest available version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsReinstallMobilityServiceResponse": {
@@ -15226,10 +15226,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints/{recoveryPointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets a recovery point.\n\nGet the details of specified recovery point.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#RecoveryPointsGetResponse": {
@@ -15394,10 +15394,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of recovery points for a replication protected item.\n\nLists the available recovery points for a replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#RecoveryPointCollection": {
@@ -15543,10 +15543,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reProtect",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute Reverse Replication\\Reprotect.\n\nOperation to reprotect or reverse replicate a failed over replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsReprotectResponse": {
@@ -15703,10 +15703,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/plannedFailover",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute planned failover.\n\nOperation to initiate a planned failover of the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsPlannedFailoverResponse": {
@@ -15863,10 +15863,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCommit",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute commit failover.\n\nOperation to commit the failover of the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsFailoverCommitResponse": {
@@ -15982,10 +15982,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCancel",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Execute cancel failover.\n\nOperation to cancel the failover of the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsFailoverCancelResponse": {
@@ -16101,10 +16101,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/applyRecoveryPoint",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Change or apply recovery point.\n\nThe operation to change the recovery point of a failed over replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsApplyRecoveryPointResponse": {
@@ -16263,10 +16263,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/addDisks",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Add disk(s) for protection.\n\nOperation to add disks(s) to the replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsAddDisksResponse": {
@@ -16418,10 +16418,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Purges protection.\n\nThe operation to delete or purge a replication protected item. This operation will force delete the replication protected item. Use the remove operation on replication protected item to perform a clean disable replication for the item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsPurgeRequest": {
@@ -16493,10 +16493,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates the replication protected item settings.\n\nThe operation to update the recovery settings of an ASR replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsUpdateResponse": {
@@ -16890,10 +16890,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Enables protection.\n\nThe operation to create an ASR replication protected item (Enable replication).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsCreateResponse": {
@@ -17056,10 +17056,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a Replication protected item.\n\nGets the details of an ASR replication protected item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsGetResponse": {
@@ -17175,10 +17175,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of Replication protected items.\n\nGets the list of ASR replication protected items in the protection container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsListByReplicationProtectionContainersRequest": {
@@ -17242,10 +17242,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems/{protectableItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a protectable item.\n\nThe operation to get the details of a protectable item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectableItemsGetResponse": {
@@ -17444,10 +17444,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of protectable items.\n\nLists the protectable items in a protection container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ProtectableItemCollection": {
@@ -17606,10 +17606,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrateCleanup",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Test migrate cleanup.\n\nThe operation to initiate test migrate cleanup.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsTestMigrateCleanupResponse": {
@@ -17746,10 +17746,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrate",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Test migrate item.\n\nThe operation to initiate test migration of the item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsTestMigrateResponse": {
@@ -17902,10 +17902,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resync",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Resynchronizes replication.\n\nThe operation to resynchronize replication of an ASR migration item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsResyncResponse": {
@@ -18058,10 +18058,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resumeReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Resume replication.\n\nThe operation to initiate resume replication of the item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsResumeReplicationResponse": {
@@ -18214,10 +18214,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/pauseReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Pause replication.\n\nThe operation to initiate pause replication of the item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsPauseReplicationResponse": {
@@ -18355,10 +18355,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints/{migrationRecoveryPointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets a recovery point for a migration item.\n\nGets a recovery point for a migration item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#MigrationRecoveryPointsGetResponse": {
@@ -18528,10 +18528,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the recovery points for a migration item.\n\nGets the recovery points for a migration item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#MigrationRecoveryPointCollection": {
@@ -18677,10 +18677,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrate",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Migrate item.\n\nThe operation to initiate migration of the item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsMigrateResponse": {
@@ -18833,10 +18833,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Delete the migration item.\n\nThe operation to delete an ASR migration item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsDeleteRequest": {
@@ -18915,10 +18915,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates migration item.\n\nThe operation to update the recovery settings of an ASR migration item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsUpdateResponse": {
@@ -19070,10 +19070,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Enables migration.\n\nThe operation to create an ASR migration item (enable migration).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsCreateResponse": {
@@ -19233,10 +19233,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of a migration item.\n\nGets the details of a migration item.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsGetResponse": {
@@ -19352,10 +19352,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of migration items in the protection container.\n\nGets the list of ASR migration items in the protection container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsListByReplicationProtectionContainersRequest": {
@@ -19440,10 +19440,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/remove",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Removes a protection container.\n\nOperation to remove a protection container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersDeleteRequest": {
@@ -19507,10 +19507,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/discoverProtectableItem",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Adds a protectable item to the replication protection container.\n\nThe operation to a add a protectable item to a protection container(Add physical server).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersDiscoverProtectableItemResponse": {
@@ -19650,10 +19650,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Create a protection container.\n\nOperation to create a protection container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersCreateResponse": {
@@ -19805,10 +19805,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the protection container details.\n\nGets the details of a protection container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersGetResponse": {
@@ -19916,10 +19916,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of protection container for a fabric.\n\nLists the protection containers in the specified fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersListByReplicationFabricsRequest": {
@@ -19975,10 +19975,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Delete network mapping.\n\nThe operation to delete a network mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworkMappingsDeleteRequest": {
@@ -20050,10 +20050,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Updates network mapping.\n\nThe operation to update an ASR network mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworkMappingsUpdateResponse": {
@@ -20216,10 +20216,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates network mapping.\n\nThe operation to create an ASR network mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworkMappingsCreateResponse": {
@@ -20384,10 +20384,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets network mapping by name.\n\nGets the details of an ASR network mapping.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworkMappingsGetResponse": {
@@ -20503,10 +20503,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets all the network mappings under a network.\n\nLists all ASR network mappings for the specified network.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworkMappingsListByReplicationNetworksRequest": {
@@ -20570,10 +20570,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets a network with specified server id and network name.\n\nGets the details of a network.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworksGetResponse": {
@@ -20681,10 +20681,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of networks under a fabric.\n\nLists the networks available for a fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworksListByReplicationFabricsRequest": {
@@ -20740,10 +20740,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks/{logicalNetworkName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets a logical network with specified server id and logical network name.\n\nGets the details of a logical network.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationLogicalNetworksGetResponse": {
@@ -20883,10 +20883,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of logical networks under a fabric.\n\nLists all the logical networks of the Azure Site Recovery fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#LogicalNetworkCollection": {
@@ -21016,10 +21016,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/renewCertificate",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Renews certificate for the fabric.\n\nRenews the connection certificate for the ASR replication fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsRenewCertificateResponse": {
@@ -21245,10 +21245,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/removeInfra",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Removes the appliance's infrastructure under the fabric.\n\nRemoves the appliance's infrastructure under the fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsRemoveInfraRequest": {
@@ -21304,10 +21304,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/remove",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes the site.\n\nThe operation to delete or remove an Azure Site Recovery fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsDeleteRequest": {
@@ -21363,10 +21363,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/reassociateGateway",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Perform failover of the process server.\n\nThe operation to move replications from a process server to another process server.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsReassociateGatewayResponse": {
@@ -21519,10 +21519,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/migratetoaad",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Migrates the site to AAD.\n\nThe operation to migrate an Azure Site Recovery fabric to AAD.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsMigrateToAadRequest": {
@@ -21578,10 +21578,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/checkConsistency",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Checks the consistency of the ASR fabric.\n\nThe operation to perform a consistency check on the fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsCheckConsistencyResponse": {
@@ -21681,10 +21681,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Purges the site.\n\nThe operation to purge(force delete) an Azure Site Recovery fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsPurgeRequest": {
@@ -21740,10 +21740,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates an Azure Site Recovery fabric.\n\nThe operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsCreateResponse": {
@@ -21878,10 +21878,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the details of an ASR fabric.\n\nGets the details of an Azure Site Recovery fabric.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsGetResponse": {
@@ -21988,10 +21988,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of ASR fabrics.\n\nGets a list of the Azure Site Recovery fabrics in the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#FabricCollection": {
@@ -22113,10 +22113,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents/{eventName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Get the details of an Azure Site recovery event.\n\nThe operation to get the details of an Azure Site recovery event.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationEventsGetResponse": {
@@ -22329,10 +22329,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of Azure Site Recovery events.\n\nGets the list of Azure Site Recovery events for the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#EventCollection": {
@@ -22461,10 +22461,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAppliances",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of appliances.\n\nGets the list of Azure Site Recovery appliances for the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ApplianceCollection": {
@@ -22592,10 +22592,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Configures email notifications for this vault.\n\nCreate or update an email notification(alert) configuration.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationAlertSettingsCreateResponse": {
@@ -22771,10 +22771,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets an email notification(alert) configuration.\n\nGets the details of the specified email notification(alert) configuration.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationAlertSettingsGetResponse": {
@@ -22874,10 +22874,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the list of configured email notification(alert) configurations.\n\nGets the list of email notification(alert) configurations for the vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#AlertCollection": {
@@ -22999,10 +22999,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/operations",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Returns the list of available operations.\n\nOperation to return the list of available operations.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#OperationsDiscoveryCollection": {
@@ -23136,10 +23136,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults/default",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the validation errors in case the VM is unsuitable for protection.\n\nValidates whether a given VM can be protected or not in which case returns list of errors.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationEligibilityResultsGetResponse": {
@@ -23292,10 +23292,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the validation errors in case the VM is unsuitable for protection.\n\nValidates whether a given VM can be protected or not in which case returns list of errors.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationEligibilityResultsCollection": {

@@ -487,6 +487,7 @@ export interface ResponseOutputItem {
   HlsPlaylistSettings?: HlsPlaylistSettings;
   ManifestName: string;
   PlaybackUrl: string;
+  DualStackPlaybackUrl?: string;
   SourceGroup: string;
 }
 export const ResponseOutputItem = /*@__PURE__*/ S.suspend(() =>
@@ -495,6 +496,7 @@ export const ResponseOutputItem = /*@__PURE__*/ S.suspend(() =>
     HlsPlaylistSettings: S.optional(HlsPlaylistSettings),
     ManifestName: S.String,
     PlaybackUrl: S.String,
+    DualStackPlaybackUrl: S.optional(S.String),
     SourceGroup: S.String,
   }),
 ).annotate({
@@ -1880,6 +1882,7 @@ export const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export type FunctionType =
   | "HTTP_REQUEST"
   | "CUSTOM_OUTPUT"
+  | "CONCURRENT_EXECUTOR"
   | "SEQUENTIAL_EXECUTOR"
   | (string & {});
 export const FunctionType = /*@__PURE__*/ S.String;
@@ -1924,15 +1927,35 @@ export const CustomOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionRef {
   RunCondition?: string;
   FunctionId?: string;
+  Alias?: string;
 }
 export const FunctionRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RunCondition: S.optional(S.String),
     FunctionId: S.optional(S.String),
+    Alias: S.optional(S.String),
   }),
 ).annotate({ identifier: "FunctionRef" }) as any as S.Schema<FunctionRef>;
 export type __listOfFunctionsRef = FunctionRef[];
 export const __listOfFunctionsRef = /*@__PURE__*/ S.Array(FunctionRef);
+export interface ConcurrentExecutorConfiguration {
+  Runtime: RuntimeType;
+  Output: { [key: string]: string | undefined };
+  FunctionList: FunctionRef[];
+  TimeoutMilliseconds: number;
+  MaxConcurrency: number;
+}
+export const ConcurrentExecutorConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Runtime: RuntimeType,
+    Output: __mapOf__string,
+    FunctionList: __listOfFunctionsRef,
+    TimeoutMilliseconds: S.Number,
+    MaxConcurrency: S.Number,
+  }),
+).annotate({
+  identifier: "ConcurrentExecutorConfiguration",
+}) as any as S.Schema<ConcurrentExecutorConfiguration>;
 export interface SequentialExecutorConfiguration {
   Runtime: RuntimeType;
   Output?: { [key: string]: string | undefined };
@@ -1955,6 +1978,7 @@ export interface GetFunctionResponse {
   Description?: string;
   HttpRequestConfiguration?: HttpRequestConfiguration;
   CustomOutputConfiguration?: CustomOutputConfiguration;
+  ConcurrentExecutorConfiguration?: ConcurrentExecutorConfiguration;
   SequentialExecutorConfiguration?: SequentialExecutorConfiguration;
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
@@ -1966,6 +1990,9 @@ export const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
     Description: S.optional(S.String),
     HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
     CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
+    ConcurrentExecutorConfiguration: S.optional(
+      ConcurrentExecutorConfiguration,
+    ),
     SequentialExecutorConfiguration: S.optional(
       SequentialExecutorConfiguration,
     ),
@@ -2050,12 +2077,14 @@ export const OriginManifestType = /*@__PURE__*/ S.String;
 
 export interface DashConfiguration {
   ManifestEndpointPrefix?: string;
+  DualStackManifestEndpointPrefix?: string;
   MpdLocation?: string;
   OriginManifestType?: OriginManifestType;
 }
 export const DashConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestEndpointPrefix: S.optional(S.String),
+    DualStackManifestEndpointPrefix: S.optional(S.String),
     MpdLocation: S.optional(S.String),
     OriginManifestType: S.optional(OriginManifestType),
   }),
@@ -2064,23 +2093,53 @@ export const DashConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashConfiguration>;
 export interface HlsConfiguration {
   ManifestEndpointPrefix?: string;
+  DualStackManifestEndpointPrefix?: string;
 }
 export const HlsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ManifestEndpointPrefix: S.optional(S.String) }),
+  S.Struct({
+    ManifestEndpointPrefix: S.optional(S.String),
+    DualStackManifestEndpointPrefix: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "HlsConfiguration",
 }) as any as S.Schema<HlsConfiguration>;
 export type InsertionMode = "STITCHED_ONLY" | "PLAYER_SELECT" | (string & {});
 export const InsertionMode = /*@__PURE__*/ S.String;
 
+export type PreRollAdSequencingMode =
+  | "FOLLOW_AD_SEQUENCE"
+  | "IGNORE_AD_SEQUENCE"
+  | (string & {});
+export const PreRollAdSequencingMode = /*@__PURE__*/ S.String;
+
+export interface PreRollVastResponse {
+  AdSequencingMode?: PreRollAdSequencingMode;
+}
+export const PreRollVastResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AdSequencingMode: S.optional(PreRollAdSequencingMode) }),
+).annotate({
+  identifier: "PreRollVastResponse",
+}) as any as S.Schema<PreRollVastResponse>;
+export interface PreRollAdDecisionServerConfiguration {
+  VastResponse?: PreRollVastResponse;
+}
+export const PreRollAdDecisionServerConfiguration = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ VastResponse: S.optional(PreRollVastResponse) }),
+).annotate({
+  identifier: "PreRollAdDecisionServerConfiguration",
+}) as any as S.Schema<PreRollAdDecisionServerConfiguration>;
 export interface LivePreRollConfiguration {
   AdDecisionServerUrl?: string;
   MaxDurationSeconds?: number;
+  AdDecisionServerConfiguration?: PreRollAdDecisionServerConfiguration;
 }
 export const LivePreRollConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdDecisionServerUrl: S.optional(S.String),
     MaxDurationSeconds: S.optional(S.Number),
+    AdDecisionServerConfiguration: S.optional(
+      PreRollAdDecisionServerConfiguration,
+    ),
   }),
 ).annotate({
   identifier: "LivePreRollConfiguration",
@@ -2157,11 +2216,29 @@ export const HttpRequest = /*@__PURE__*/ S.suspend(() =>
     CompressRequest: S.optional(CompressionMethod),
   }),
 ).annotate({ identifier: "HttpRequest" }) as any as S.Schema<HttpRequest>;
+export type AdSequencingMode =
+  | "FOLLOW_AD_SEQUENCE"
+  | "IGNORE_AD_SEQUENCE"
+  | "FOLLOW_AD_SEQUENCE_ONLY_LIVE"
+  | "FOLLOW_AD_SEQUENCE_ONLY_VOD"
+  | (string & {});
+export const AdSequencingMode = /*@__PURE__*/ S.String;
+
+export interface VastResponse {
+  AdSequencingMode?: AdSequencingMode;
+}
+export const VastResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AdSequencingMode: S.optional(AdSequencingMode) }),
+).annotate({ identifier: "VastResponse" }) as any as S.Schema<VastResponse>;
 export interface AdDecisionServerConfiguration {
   HttpRequest?: HttpRequest;
+  VastResponse?: VastResponse;
 }
 export const AdDecisionServerConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HttpRequest: S.optional(HttpRequest) }),
+  S.Struct({
+    HttpRequest: S.optional(HttpRequest),
+    VastResponse: S.optional(VastResponse),
+  }),
 ).annotate({
   identifier: "AdDecisionServerConfiguration",
 }) as any as S.Schema<AdDecisionServerConfiguration>;
@@ -2176,6 +2253,36 @@ export const FunctionMapping = /*@__PURE__*/ S.Record(
   EventName,
   S.String.pipe(S.optional),
 );
+export interface AdsPersonalizationTimeouts {
+  AdsRequestTimeoutMilliseconds?: number;
+  LiveMaximumAdsPersonalizationTimeMilliseconds?: number;
+  VodMaximumAdsPersonalizationTimeMilliseconds?: number;
+  PrefetchAdsRequestTimeoutMilliseconds?: number;
+  PrefetchMaximumAdsPersonalizationTimeMilliseconds?: number;
+}
+export const AdsPersonalizationTimeouts = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AdsRequestTimeoutMilliseconds: S.optional(S.Number),
+    LiveMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
+    VodMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
+    PrefetchAdsRequestTimeoutMilliseconds: S.optional(S.Number),
+    PrefetchMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AdsPersonalizationTimeouts",
+}) as any as S.Schema<AdsPersonalizationTimeouts>;
+export interface AdsPersonalizationConcurrency {
+  MaxConcurrentAdsRequests?: number;
+  EnableVodVastParallelization?: boolean;
+}
+export const AdsPersonalizationConcurrency = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxConcurrentAdsRequests: S.optional(S.Number),
+    EnableVodVastParallelization: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AdsPersonalizationConcurrency",
+}) as any as S.Schema<AdsPersonalizationConcurrency>;
 export interface GetPlaybackConfigurationResponse {
   AdDecisionServerUrl?: string;
   AvailSuppression?: AvailSuppression;
@@ -2196,7 +2303,9 @@ export interface GetPlaybackConfigurationResponse {
   PersonalizationThresholdSeconds?: number;
   PlaybackConfigurationArn?: string;
   PlaybackEndpointPrefix?: string;
+  DualStackPlaybackEndpointPrefix?: string;
   SessionInitializationEndpointPrefix?: string;
+  DualStackSessionInitializationEndpointPrefix?: string;
   SlateAdUrl?: string;
   Tags?: { [key: string]: string | undefined };
   TranscodeProfileName?: string;
@@ -2204,6 +2313,8 @@ export interface GetPlaybackConfigurationResponse {
   AdConditioningConfiguration?: AdConditioningConfiguration;
   AdDecisionServerConfiguration?: AdDecisionServerConfiguration;
   FunctionMapping?: { [key: string]: string | undefined };
+  AdsPersonalizationTimeouts?: AdsPersonalizationTimeouts;
+  AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
 }
 export const GetPlaybackConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2222,7 +2333,9 @@ export const GetPlaybackConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
     PersonalizationThresholdSeconds: S.optional(S.Number),
     PlaybackConfigurationArn: S.optional(S.String),
     PlaybackEndpointPrefix: S.optional(S.String),
+    DualStackPlaybackEndpointPrefix: S.optional(S.String),
     SessionInitializationEndpointPrefix: S.optional(S.String),
+    DualStackSessionInitializationEndpointPrefix: S.optional(S.String),
     SlateAdUrl: S.optional(S.String),
     Tags: S.optional(__mapOf__string),
     TranscodeProfileName: S.optional(S.String),
@@ -2230,6 +2343,8 @@ export const GetPlaybackConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
     AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
     AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
     FunctionMapping: S.optional(FunctionMapping),
+    AdsPersonalizationTimeouts: S.optional(AdsPersonalizationTimeouts),
+    AdsPersonalizationConcurrency: S.optional(AdsPersonalizationConcurrency),
   }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "GetPlaybackConfigurationResponse",
@@ -2444,6 +2559,7 @@ export interface Function {
   Description?: string;
   HttpRequestConfiguration?: HttpRequestConfiguration;
   CustomOutputConfiguration?: CustomOutputConfiguration;
+  ConcurrentExecutorConfiguration?: ConcurrentExecutorConfiguration;
   SequentialExecutorConfiguration?: SequentialExecutorConfiguration;
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
@@ -2455,6 +2571,9 @@ export const Function = /*@__PURE__*/ S.suspend(() =>
     Description: S.optional(S.String),
     HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
     CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
+    ConcurrentExecutorConfiguration: S.optional(
+      ConcurrentExecutorConfiguration,
+    ),
     SequentialExecutorConfiguration: S.optional(
       SequentialExecutorConfiguration,
     ),
@@ -2577,7 +2696,9 @@ export interface PlaybackConfiguration {
   PersonalizationThresholdSeconds?: number;
   PlaybackConfigurationArn?: string;
   PlaybackEndpointPrefix?: string;
+  DualStackPlaybackEndpointPrefix?: string;
   SessionInitializationEndpointPrefix?: string;
+  DualStackSessionInitializationEndpointPrefix?: string;
   SlateAdUrl?: string;
   Tags?: { [key: string]: string | undefined };
   TranscodeProfileName?: string;
@@ -2585,6 +2706,8 @@ export interface PlaybackConfiguration {
   AdConditioningConfiguration?: AdConditioningConfiguration;
   AdDecisionServerConfiguration?: AdDecisionServerConfiguration;
   FunctionMapping?: { [key: string]: string | undefined };
+  AdsPersonalizationTimeouts?: AdsPersonalizationTimeouts;
+  AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
 }
 export const PlaybackConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2603,7 +2726,9 @@ export const PlaybackConfiguration = /*@__PURE__*/ S.suspend(() =>
     PersonalizationThresholdSeconds: S.optional(S.Number),
     PlaybackConfigurationArn: S.optional(S.String),
     PlaybackEndpointPrefix: S.optional(S.String),
+    DualStackPlaybackEndpointPrefix: S.optional(S.String),
     SessionInitializationEndpointPrefix: S.optional(S.String),
+    DualStackSessionInitializationEndpointPrefix: S.optional(S.String),
     SlateAdUrl: S.optional(S.String),
     Tags: S.optional(__mapOf__string),
     TranscodeProfileName: S.optional(S.String),
@@ -2611,6 +2736,8 @@ export const PlaybackConfiguration = /*@__PURE__*/ S.suspend(() =>
     AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
     AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
     FunctionMapping: S.optional(FunctionMapping),
+    AdsPersonalizationTimeouts: S.optional(AdsPersonalizationTimeouts),
+    AdsPersonalizationConcurrency: S.optional(AdsPersonalizationConcurrency),
   }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "PlaybackConfiguration",
@@ -2902,6 +3029,7 @@ export interface PutFunctionRequest {
   Description?: string;
   HttpRequestConfiguration?: HttpRequestConfiguration;
   CustomOutputConfiguration?: CustomOutputConfiguration;
+  ConcurrentExecutorConfiguration?: ConcurrentExecutorConfiguration;
   SequentialExecutorConfiguration?: SequentialExecutorConfiguration;
   Tags?: { [key: string]: string | undefined };
 }
@@ -2912,6 +3040,9 @@ export const PutFunctionRequest = /*@__PURE__*/ S.suspend(() =>
     Description: S.optional(S.String),
     HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
     CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
+    ConcurrentExecutorConfiguration: S.optional(
+      ConcurrentExecutorConfiguration,
+    ),
     SequentialExecutorConfiguration: S.optional(
       SequentialExecutorConfiguration,
     ),
@@ -2937,6 +3068,7 @@ export interface PutFunctionResponse {
   Description?: string;
   HttpRequestConfiguration?: HttpRequestConfiguration;
   CustomOutputConfiguration?: CustomOutputConfiguration;
+  ConcurrentExecutorConfiguration?: ConcurrentExecutorConfiguration;
   SequentialExecutorConfiguration?: SequentialExecutorConfiguration;
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
@@ -2948,6 +3080,9 @@ export const PutFunctionResponse = /*@__PURE__*/ S.suspend(() =>
     Description: S.optional(S.String),
     HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
     CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
+    ConcurrentExecutorConfiguration: S.optional(
+      ConcurrentExecutorConfiguration,
+    ),
     SequentialExecutorConfiguration: S.optional(
       SequentialExecutorConfiguration,
     ),
@@ -2997,6 +3132,8 @@ export interface PutPlaybackConfigurationRequest {
   AdConditioningConfiguration?: AdConditioningConfiguration;
   AdDecisionServerConfiguration?: AdDecisionServerConfiguration;
   FunctionMapping?: { [key: string]: string | undefined };
+  AdsPersonalizationTimeouts?: AdsPersonalizationTimeouts;
+  AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
 }
 export const PutPlaybackConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3018,6 +3155,8 @@ export const PutPlaybackConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
     AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
     AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
     FunctionMapping: S.optional(FunctionMapping),
+    AdsPersonalizationTimeouts: S.optional(AdsPersonalizationTimeouts),
+    AdsPersonalizationConcurrency: S.optional(AdsPersonalizationConcurrency),
   })
     .pipe(S.encodeKeys({ Tags: "tags" }))
     .pipe(
@@ -3053,7 +3192,9 @@ export interface PutPlaybackConfigurationResponse {
   PersonalizationThresholdSeconds?: number;
   PlaybackConfigurationArn?: string;
   PlaybackEndpointPrefix?: string;
+  DualStackPlaybackEndpointPrefix?: string;
   SessionInitializationEndpointPrefix?: string;
+  DualStackSessionInitializationEndpointPrefix?: string;
   SlateAdUrl?: string;
   Tags?: { [key: string]: string | undefined };
   TranscodeProfileName?: string;
@@ -3061,6 +3202,8 @@ export interface PutPlaybackConfigurationResponse {
   AdConditioningConfiguration?: AdConditioningConfiguration;
   AdDecisionServerConfiguration?: AdDecisionServerConfiguration;
   FunctionMapping?: { [key: string]: string | undefined };
+  AdsPersonalizationTimeouts?: AdsPersonalizationTimeouts;
+  AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
 }
 export const PutPlaybackConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3079,7 +3222,9 @@ export const PutPlaybackConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
     PersonalizationThresholdSeconds: S.optional(S.Number),
     PlaybackConfigurationArn: S.optional(S.String),
     PlaybackEndpointPrefix: S.optional(S.String),
+    DualStackPlaybackEndpointPrefix: S.optional(S.String),
     SessionInitializationEndpointPrefix: S.optional(S.String),
+    DualStackSessionInitializationEndpointPrefix: S.optional(S.String),
     SlateAdUrl: S.optional(S.String),
     Tags: S.optional(__mapOf__string),
     TranscodeProfileName: S.optional(S.String),
@@ -3087,6 +3232,8 @@ export const PutPlaybackConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
     AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
     AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
     FunctionMapping: S.optional(FunctionMapping),
+    AdsPersonalizationTimeouts: S.optional(AdsPersonalizationTimeouts),
+    AdsPersonalizationConcurrency: S.optional(AdsPersonalizationConcurrency),
   }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "PutPlaybackConfigurationResponse",

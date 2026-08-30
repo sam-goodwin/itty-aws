@@ -1046,7 +1046,8 @@ export const AvailableOperationOrigin = /*@__PURE__*/ S.String;
 
 /** Metric's aggregation type for e.g. (Average, Total) */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
-  "Average" | "Total";
+  | "Average"
+  | "Total";
 export const AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
   /*@__PURE__*/ S.String;
 

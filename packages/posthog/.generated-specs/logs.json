@@ -28,6 +28,13 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
+        "created_by": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "created_by",
+            "smithy.api#documentation": "Only return log alerts created by the user with this UUID."
+          }
+        },
         "limit": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -105,7 +112,7 @@
           }
         },
         "threshold_operator": {
-          "target": "com.posthog.logs#ThresholdOperatorEnum",
+          "target": "com.posthog.logs#LogsAlertThresholdOperatorEnum",
           "traits": {
             "smithy.api#documentation": "Whether the alert fires when the count is above or below the threshold.\n\n* `above` - Above\n* `below` - Below"
           }
@@ -144,6 +151,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Minimum minutes between repeated notifications after the alert fires. 0 means no cooldown."
+          }
+        },
+        "schedule_restriction": {
+          "target": "com.posthog.logs#AlertScheduleRestriction",
+          "traits": {
+            "smithy.api#documentation": "Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "snooze_until": {
@@ -352,6 +366,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "not_icontains"
+          }
+        },
+        "STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "starts_with"
+          }
+        },
+        "NOT_STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_starts_with"
+          }
+        },
+        "ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ends_with"
+          }
+        },
+        "NOT_ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_ends_with"
           }
         },
         "REGEX": {
@@ -634,6 +672,82 @@
       "members": {
         "Case0": {
           "target": "com.posthog.logs#PersonPropertyFilterValueCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "Case2": {
+          "target": "smithy.api#Double"
+        },
+        "Case3": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#PersonMetadataPropertyFilter": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator": {
+          "target": "com.posthog.logs#PropertyOperator",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Top-level columns on the persons table (e.g. created_at), not properties JSON"
+          }
+        },
+        "value": {
+          "target": "com.posthog.logs#PersonMetadataPropertyFilterValue",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#PersonMetadataPropertyFilterValueCase0Item": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#PersonMetadataPropertyFilterValueCase0List": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#PersonMetadataPropertyFilterValueCase0Item"
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#PersonMetadataPropertyFilterValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.logs#PersonMetadataPropertyFilterValueCase0List"
         },
         "Case1": {
           "target": "smithy.api#String"
@@ -1655,6 +1769,79 @@
       },
       "traits": {}
     },
+    "com.posthog.logs#MetricPropertyFilter": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator": {
+          "target": "com.posthog.logs#PropertyOperator",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "value": {
+          "target": "com.posthog.logs#MetricPropertyFilterValue",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#MetricPropertyFilterValueCase0Item": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#MetricPropertyFilterValueCase0List": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#MetricPropertyFilterValueCase0Item"
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#MetricPropertyFilterValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.logs#MetricPropertyFilterValueCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "Case2": {
+          "target": "smithy.api#Double"
+        },
+        "Case3": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.logs#SpanPropertyFilter": {
       "type": "structure",
       "members": {
@@ -1813,6 +2000,82 @@
       },
       "traits": {}
     },
+    "com.posthog.logs#AccountCustomPropertyFilter": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator": {
+          "target": "com.posthog.logs#PropertyOperator",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer analytics account custom property — the key is the property definition id"
+          }
+        },
+        "value": {
+          "target": "com.posthog.logs#AccountCustomPropertyFilterValue",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#AccountCustomPropertyFilterValueCase0Item": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#AccountCustomPropertyFilterValueCase0List": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#AccountCustomPropertyFilterValueCase0Item"
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#AccountCustomPropertyFilterValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.logs#AccountCustomPropertyFilterValueCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "Case2": {
+          "target": "smithy.api#Double"
+        },
+        "Case3": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.logs#WorkflowVariablePropertyFilter": {
       "type": "structure",
       "members": {
@@ -1880,6 +2143,191 @@
       },
       "traits": {}
     },
+    "com.posthog.logs#BehavioralPropertyFilter": {
+      "type": "structure",
+      "members": {
+        "event_filters": {
+          "target": "com.posthog.logs#BehavioralPropertyFilterEventFiltersList",
+          "traits": {
+            "smithy.api#documentation": "Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "event_type": {
+          "target": "com.posthog.logs#BehavioralEventSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "explicit_datetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Absolute or relative (e.g. -30d) lower date bound — alternative to time_value/time_interval",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "explicit_datetime_to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event name, or action id when event_type is 'actions'",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "negation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Match persons who did NOT satisfy the criterion. Not the same as a low count — zero-occurrence persons never match count operators",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator": {
+          "target": "com.posthog.logs#PropertyOperator",
+          "traits": {
+            "smithy.api#documentation": "Count comparison for performed_event_multiple, defaults to exact",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count threshold for performed_event_multiple",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "time_interval": {
+          "target": "com.posthog.logs#TimeUnitType",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "time_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Relative time window size, paired with time_interval",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Person performed (or didn't perform) an event in a time window. ClickHouse-only — not evaluable by flags or CDP"
+          }
+        },
+        "value": {
+          "target": "com.posthog.logs#InlineBehavioralType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#BehavioralPropertyFilterEventFiltersItem": {
+      "type": "union",
+      "members": {
+        "EventPropertyFilter": {
+          "target": "com.posthog.logs#EventPropertyFilter"
+        },
+        "PersonPropertyFilter": {
+          "target": "com.posthog.logs#PersonPropertyFilter"
+        },
+        "ElementPropertyFilter": {
+          "target": "com.posthog.logs#ElementPropertyFilter"
+        },
+        "FeaturePropertyFilter": {
+          "target": "com.posthog.logs#FeaturePropertyFilter"
+        },
+        "HogQLPropertyFilter": {
+          "target": "com.posthog.logs#HogQLPropertyFilter"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#BehavioralPropertyFilterEventFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#BehavioralPropertyFilterEventFiltersItem"
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#BehavioralEventSource": {
+      "type": "enum",
+      "members": {
+        "EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "events"
+          }
+        },
+        "ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "actions"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#TimeUnitType": {
+      "type": "enum",
+      "members": {
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "YEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#InlineBehavioralType": {
+      "type": "enum",
+      "members": {
+        "PERFORMED_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "performed_event"
+          }
+        },
+        "PERFORMED_EVENT_MULTIPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "performed_event_multiple"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.logs#PropertyGroupFilterValueValuesItem": {
       "type": "union",
       "members": {
@@ -1891,6 +2339,9 @@
         },
         "PersonPropertyFilter": {
           "target": "com.posthog.logs#PersonPropertyFilter"
+        },
+        "PersonMetadataPropertyFilter": {
+          "target": "com.posthog.logs#PersonMetadataPropertyFilter"
         },
         "ElementPropertyFilter": {
           "target": "com.posthog.logs#ElementPropertyFilter"
@@ -1937,14 +2388,23 @@
         "LogPropertyFilter": {
           "target": "com.posthog.logs#LogPropertyFilter"
         },
+        "MetricPropertyFilter": {
+          "target": "com.posthog.logs#MetricPropertyFilter"
+        },
         "SpanPropertyFilter": {
           "target": "com.posthog.logs#SpanPropertyFilter"
         },
         "RevenueAnalyticsPropertyFilter": {
           "target": "com.posthog.logs#RevenueAnalyticsPropertyFilter"
         },
+        "AccountCustomPropertyFilter": {
+          "target": "com.posthog.logs#AccountCustomPropertyFilter"
+        },
         "WorkflowVariablePropertyFilter": {
           "target": "com.posthog.logs#WorkflowVariablePropertyFilter"
+        },
+        "BehavioralPropertyFilter": {
+          "target": "com.posthog.logs#BehavioralPropertyFilter"
         }
       },
       "traits": {}
@@ -2019,7 +2479,7 @@
       },
       "traits": {}
     },
-    "com.posthog.logs#ThresholdOperatorEnum": {
+    "com.posthog.logs#LogsAlertThresholdOperatorEnum": {
       "type": "enum",
       "members": {
         "ABOVE": {
@@ -2081,6 +2541,45 @@
       },
       "traits": {
         "smithy.api#documentation": "* `not_firing` - Not firing\n* `firing` - Firing\n* `pending_resolve` - Pending resolve\n* `errored` - Errored\n* `snoozed` - Snoozed\n* `broken` - Broken"
+      }
+    },
+    "com.posthog.logs#AlertScheduleRestriction": {
+      "type": "structure",
+      "members": {
+        "blocked_windows": {
+          "target": "com.posthog.logs#AlertScheduleRestrictionBlockedWindowsList",
+          "traits": {
+            "smithy.api#documentation": "Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#AlertScheduleRestrictionWindow": {
+      "type": "structure",
+      "members": {
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span ≥ 30 minutes on the local daily timeline (half-open [start, end))."
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span ≥ 30 minutes locally."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#AlertScheduleRestrictionBlockedWindowsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#AlertScheduleRestrictionWindow"
+      },
+      "traits": {
+        "smithy.api#documentation": "Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours."
       }
     },
     "com.posthog.logs#LogsAlertStateInterval": {
@@ -2257,6 +2756,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2265,7 +2770,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.logs#BlankEnum": {
@@ -2362,7 +2867,7 @@
           }
         },
         "threshold_operator": {
-          "target": "com.posthog.logs#ThresholdOperatorEnum",
+          "target": "com.posthog.logs#LogsAlertThresholdOperatorEnum",
           "traits": {
             "smithy.api#documentation": "Whether the alert fires when the count is above or below the threshold.\n\n* `above` - Above\n* `below` - Below"
           }
@@ -2389,6 +2894,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Minimum minutes between repeated notifications after the alert fires. 0 means no cooldown."
+          }
+        },
+        "schedule_restriction": {
+          "target": "com.posthog.logs#AlertScheduleRestriction",
+          "traits": {
+            "smithy.api#documentation": "Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "snooze_until": {
@@ -2454,13 +2966,271 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.logs#LogsAlertConfigurationDetail": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for this alert.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name for this alert. Defaults to 'Untitled alert' on create when omitted."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the alert is actively being evaluated. Disabling resets the state to not_firing."
+          }
+        },
+        "filters": {
+          "target": "com.posthog.logs#LogsAlertFilters",
+          "traits": {
+            "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false)."
+          }
+        },
+        "threshold_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log."
+          }
+        },
+        "threshold_operator": {
+          "target": "com.posthog.logs#LogsAlertThresholdOperatorEnum",
+          "traits": {
+            "smithy.api#documentation": "Whether the alert fires when the count is above or below the threshold.\n\n* `above` - Above\n* `below` - Below"
+          }
+        },
+        "window_minutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60."
+          }
+        },
+        "check_interval_minutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How often the alert is evaluated, in minutes. Server-managed.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.posthog.logs#LogsAlertConfigurationStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed.\n\n* `not_firing` - Not firing\n* `firing` - Firing\n* `pending_resolve` - Pending resolve\n* `errored` - Errored\n* `snoozed` - Snoozed\n* `broken` - Broken",
+            "smithy.api#required": {}
+          }
+        },
+        "evaluation_periods": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of check periods in the sliding evaluation window for firing (M in N-of-M)."
+          }
+        },
+        "datapoints_to_alarm": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How many periods within the evaluation window must breach the threshold to fire (N in N-of-M)."
+          }
+        },
+        "cooldown_minutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum minutes between repeated notifications after the alert fires. 0 means no cooldown."
+          }
+        },
+        "schedule_restriction": {
+          "target": "com.posthog.logs#AlertScheduleRestriction",
+          "traits": {
+            "smithy.api#documentation": "Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "snooze_until": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "next_check_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the next evaluation is scheduled. Server-managed.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "last_notified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the last notification was sent. Server-managed.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "last_checked_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the alert was last evaluated. Server-managed.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "consecutive_failures": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of consecutive evaluation failures. Resets on success. Server-managed.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message from the most recent errored check, or null if the alert's most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state_timeline": {
+          "target": "com.posthog.logs#LogsAlertConfigurationDetailStateTimelineList",
+          "traits": {
+            "smithy.api#documentation": "Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list.",
+            "smithy.api#required": {}
+          }
+        },
+        "destination_types": {
+          "target": "com.posthog.logs#LogsAlertConfigurationDetailDestinationTypesList",
+          "traits": {
+            "smithy.api#documentation": "Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert.",
+            "smithy.api#required": {}
+          }
+        },
+        "first_enabled_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the alert was first enabled. Null means the alert is still in draft state.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the alert was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_by": {
+          "target": "com.posthog.logs#UserBasic",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the alert was last modified.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "destinations": {
+          "target": "com.posthog.logs#LogsAlertConfigurationDetailDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "This alert's notification destinations, one entry per destination. Each carries the HogFunction IDs that delete it as a group, and its configuration with credential-bearing URL components removed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "One alert, with the destinations attached to it. The list endpoint leaves them out:\nreading a destination pulls its stored inputs, which run to several KB per row."
+      }
+    },
+    "com.posthog.logs#LogsAlertConfigurationDetailStateTimelineList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsAlertStateInterval"
+      },
+      "traits": {
+        "smithy.api#documentation": "Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list."
+      }
+    },
+    "com.posthog.logs#LogsAlertConfigurationDetailDestinationTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#NotificationDestinationTypeEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert."
+      }
+    },
+    "com.posthog.logs#LogsAlertDestinationConfig": {
+      "type": "structure",
+      "members": {
+        "hog_function_ids": {
+          "target": "com.posthog.logs#LogsAlertDestinationConfigHogFunctionIdsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.posthog.logs#NotificationDestinationTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Notification destination type.\n\n* `slack` - slack\n* `webhook` - webhook\n* `teams` - teams",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether every HogFunction in the group is enabled, so the destination notifies for all alert event kinds. This is the stored setting: a destination PostHog stopped delivering to after repeated failures still reads as true.",
+            "smithy.api#required": {}
+          }
+        },
+        "slack_workspace_id": {
+          "target": "smithy.api#Integer"
+        },
+        "slack_channel_id": {
+          "target": "smithy.api#String"
+        },
+        "webhook_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Webhook endpoint reduced to scheme and host. The path, query and userinfo carry the secret."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsAlertDestinationConfigHogFunctionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsAlertConfigurationDetailDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsAlertDestinationConfig"
+      },
+      "traits": {
+        "smithy.api#documentation": "This alert's notification destinations, one entry per destination. Each carries the HogFunction IDs that delete it as a group, and its configuration with credential-bearing URL components removed."
+      }
+    },
     "com.posthog.logs#LogsAlertsRetrieve": {
       "type": "operation",
       "input": {
         "target": "com.posthog.logs#LogsAlertsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.logs#LogsAlertConfiguration"
+        "target": "com.posthog.logs#LogsAlertConfigurationDetail"
       },
       "errors": [
         {
@@ -2522,7 +3292,7 @@
           }
         },
         "threshold_operator": {
-          "target": "com.posthog.logs#ThresholdOperatorEnum",
+          "target": "com.posthog.logs#LogsAlertThresholdOperatorEnum",
           "traits": {
             "smithy.api#documentation": "Whether the alert fires when the count is above or below the threshold.\n\n* `above` - Above\n* `below` - Below"
           }
@@ -2549,6 +3319,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Minimum minutes between repeated notifications after the alert fires. 0 means no cooldown."
+          }
+        },
+        "schedule_restriction": {
+          "target": "com.posthog.logs#AlertScheduleRestriction",
+          "traits": {
+            "smithy.api#documentation": "Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "snooze_until": {
@@ -2634,7 +3411,7 @@
           }
         },
         "threshold_operator": {
-          "target": "com.posthog.logs#ThresholdOperatorEnum",
+          "target": "com.posthog.logs#LogsAlertThresholdOperatorEnum",
           "traits": {
             "smithy.api#documentation": "Whether the alert fires when the count is above or below the threshold.\n\n* `above` - Above\n* `below` - Below"
           }
@@ -2661,6 +3438,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Minimum minutes between repeated notifications after the alert fires. 0 means no cooldown."
+          }
+        },
+        "schedule_restriction": {
+          "target": "com.posthog.logs#AlertScheduleRestriction",
+          "traits": {
+            "smithy.api#documentation": "Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "snooze_until": {
@@ -2772,7 +3556,7 @@
         "type": {
           "target": "com.posthog.logs#NotificationDestinationTypeEnum",
           "traits": {
-            "smithy.api#documentation": "Destination type — slack, webhook, or teams.\n\n* `slack` - slack\n* `webhook` - webhook\n* `teams` - teams"
+            "smithy.api#documentation": "Notification destination type.\n\n* `slack` - slack\n* `webhook` - webhook\n* `teams` - teams"
           }
         },
         "slack_workspace_id": {
@@ -2796,7 +3580,7 @@
         "webhook_url": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "HTTPS endpoint to POST to. Required when type=webhook, or the Teams webhook URL when type=teams."
+            "smithy.api#documentation": "HTTPS endpoint to post to. Required for webhook and teams."
           }
         }
       },
@@ -3183,7 +3967,7 @@
           }
         },
         "threshold_operator": {
-          "target": "com.posthog.logs#ThresholdOperatorEnum",
+          "target": "com.posthog.logs#LogsAlertThresholdOperatorEnum",
           "traits": {
             "smithy.api#documentation": "Whether the alert fires when the count is above or below the threshold.\n\n* `above` - Above\n* `below` - Below"
           }
@@ -3350,6 +4134,765 @@
         "smithy.api#documentation": "Simulate a logs alert on historical data using the full state machine. Read-only — no alert check records are created."
       }
     },
+    "com.posthog.logs#ScanDateRange": {
+      "type": "structure",
+      "members": {
+        "date_from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start of the evaluation window (ISO 8601). Buckets before this are only used as baseline history.",
+            "smithy.api#required": {}
+          }
+        },
+        "date_to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End of the evaluation window (ISO 8601), clamped to now.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsAnomaliesScanCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "serviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service to scan (the log record's service_name). Required: the scan aggregates weeks of baseline history from raw logs, so it is scoped to one service per call.",
+            "smithy.api#required": {}
+          }
+        },
+        "dateRange": {
+          "target": "com.posthog.logs#ScanDateRange",
+          "traits": {
+            "smithy.api#documentation": "Evaluation window to scan for anomalies. May span at most 7 days.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanResponse": {
+      "type": "structure",
+      "members": {
+        "service_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service that was scanned.",
+            "smithy.api#required": {}
+          }
+        },
+        "eval_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Actual start of the evaluated window after any clipping.",
+            "smithy.api#required": {}
+          }
+        },
+        "eval_end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Actual end of the evaluated window after clamping to now.",
+            "smithy.api#required": {}
+          }
+        },
+        "lookback_days": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Days of baseline history the scan used.",
+            "smithy.api#required": {}
+          }
+        },
+        "eval_clipped": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when the evaluation window was clipped to fit the read budget. The response covers only the clipped window.",
+            "smithy.api#required": {}
+          }
+        },
+        "degraded": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when the scan could not afford the full lookback and fell back to a cheaper configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "binding_constraints": {
+          "target": "com.posthog.logs#LogsAnomalyScanResponseBindingConstraintsList",
+          "traits": {
+            "smithy.api#documentation": "Everything that limited the baseline, empty for an unconstrained scan. team_retention: the project's log retention is shorter than the full lookback. byte_budget: the scan degraded to stay inside its ClickHouse read budget.",
+            "smithy.api#required": {}
+          }
+        },
+        "series": {
+          "target": "com.posthog.logs#LogsAnomalyScanResponseSeriesList",
+          "traits": {
+            "smithy.api#documentation": "One entry per severity level observed for the service, with per bucket evidence.",
+            "smithy.api#required": {}
+          }
+        },
+        "issues": {
+          "target": "com.posthog.logs#LogsAnomalyScanResponseIssuesList",
+          "traits": {
+            "smithy.api#documentation": "Anomaly issues that opened during the evaluation window, oldest first.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#BindingConstraintsEnum": {
+      "type": "enum",
+      "members": {
+        "TEAM_RETENTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "team_retention"
+          }
+        },
+        "BYTE_BUDGET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte_budget"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `team_retention` - team_retention\n* `byte_budget` - byte_budget"
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanResponseBindingConstraintsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#BindingConstraintsEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Everything that limited the baseline, empty for an unconstrained scan. team_retention: the project's log retention is shorter than the full lookback. byte_budget: the scan degraded to stay inside its ClickHouse read budget."
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanSeries": {
+      "type": "structure",
+      "members": {
+        "severity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Severity level of this log series (for example info, warn, error).",
+            "smithy.api#required": {}
+          }
+        },
+        "stage": {
+          "target": "com.posthog.logs#LogsAnomalyBaselineStageEnum",
+          "traits": {
+            "smithy.api#documentation": "Baseline stage reached by the end of the evaluation window. Null if no bucket was scored.\n\n* `insufficient` - insufficient\n* `cold_start` - cold_start\n* `developing` - developing\n* `mature` - mature",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tier": {
+          "target": "com.posthog.logs#TierEnum",
+          "traits": {
+            "smithy.api#documentation": "Traffic tier at the end of the window, from a (0.5 or more records per second) down to d (below the detection floor of roughly 1 record per minute).\n\n* `a` - a\n* `b` - b\n* `c` - c\n* `d` - d",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "history_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Earliest bucket with data inside the fetched lookback.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "limited_by": {
+          "target": "com.posthog.logs#LimitedByEnum",
+          "traits": {
+            "smithy.api#documentation": "What limited this series' baseline maturity, or null for a full baseline. series_history: data starts inside the lookback, because the series is young or a per-stream retention rule trimmed it (indistinguishable from the data). byte_budget and team_retention mirror the scan level constraints.\n\n* `series_history` - series_history\n* `team_retention` - team_retention\n* `byte_budget` - byte_budget",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "buckets": {
+          "target": "com.posthog.logs#LogsAnomalyScanSeriesBucketsList",
+          "traits": {
+            "smithy.api#documentation": "Per bucket observed counts and expected bands across the evaluation window, for evidence charts.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsAnomalyBaselineStageEnum": {
+      "type": "enum",
+      "members": {
+        "INSUFFICIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "insufficient"
+          }
+        },
+        "COLD_START": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cold_start"
+          }
+        },
+        "DEVELOPING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "developing"
+          }
+        },
+        "MATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mature"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `insufficient` - insufficient\n* `cold_start` - cold_start\n* `developing` - developing\n* `mature` - mature"
+      }
+    },
+    "com.posthog.logs#TierEnum": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "a"
+          }
+        },
+        "B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "b"
+          }
+        },
+        "C": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "c"
+          }
+        },
+        "D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "d"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `a` - a\n* `b` - b\n* `c` - c\n* `d` - d"
+      }
+    },
+    "com.posthog.logs#LimitedByEnum": {
+      "type": "enum",
+      "members": {
+        "SERIES_HISTORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "series_history"
+          }
+        },
+        "TEAM_RETENTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "team_retention"
+          }
+        },
+        "BYTE_BUDGET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte_budget"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `series_history` - series_history\n* `team_retention` - team_retention\n* `byte_budget` - byte_budget"
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanBucket": {
+      "type": "structure",
+      "members": {
+        "time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start of the 5 minute bucket (UTC).",
+            "smithy.api#required": {}
+          }
+        },
+        "observed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Log records observed in this bucket.",
+            "smithy.api#required": {}
+          }
+        },
+        "expected": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Expected count from the learned baseline. Null when the bucket was not scored.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower edge of the expected band. Observed below this is a drop or silence candidate.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper edge of the expected band. Observed above this is a spike candidate.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "stage": {
+          "target": "com.posthog.logs#LogsAnomalyBaselineStageEnum",
+          "traits": {
+            "smithy.api#documentation": "How much history backed the baseline for this bucket. Wider bands and lower confidence in cold_start; mature means a full seasonal baseline. Null when the bucket was gated out (for example, traffic below the detection floor).\n\n* `insufficient` - insufficient\n* `cold_start` - cold_start\n* `developing` - developing\n* `mature` - mature",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "verdict": {
+          "target": "com.posthog.logs#LogsAnomalyVerdictEnum",
+          "traits": {
+            "smithy.api#documentation": "Anomaly verdict for this bucket, or null when the observed count sat inside the band.\n\n* `spike` - spike\n* `drop` - drop\n* `silence` - silence",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsAnomalyVerdictEnum": {
+      "type": "enum",
+      "members": {
+        "SPIKE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spike"
+          }
+        },
+        "DROP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "drop"
+          }
+        },
+        "SILENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "silence"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `spike` - spike\n* `drop` - drop\n* `silence` - silence"
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanSeriesBucketsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsAnomalyScanBucket"
+      },
+      "traits": {
+        "smithy.api#documentation": "Per bucket observed counts and expected bands across the evaluation window, for evidence charts."
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanResponseSeriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsAnomalyScanSeries"
+      },
+      "traits": {
+        "smithy.api#documentation": "One entry per severity level observed for the service, with per bucket evidence."
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanIssue": {
+      "type": "structure",
+      "members": {
+        "direction": {
+          "target": "com.posthog.logs#LogsAnomalyScanIssueDirectionEnum",
+          "traits": {
+            "smithy.api#documentation": "up covers spikes; down covers drops and silences (which share one issue per service).\n\n* `up` - up\n* `down` - down",
+            "smithy.api#required": {}
+          }
+        },
+        "severity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Severity of the spiking series. Null for down issues, which are tracked per service.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "kind": {
+          "target": "com.posthog.logs#LogsAnomalyVerdictEnum",
+          "traits": {
+            "smithy.api#documentation": "Most severe verdict the issue reached. A drop that deepens into silence escalates in place.\n\n* `spike` - spike\n* `drop` - drop\n* `silence` - silence",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.posthog.logs#LogsAnomalyScanIssueStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Lifecycle state at the end of the evaluation window.\n\n* `pending` - pending\n* `active` - active\n* `resolved` - resolved",
+            "smithy.api#required": {}
+          }
+        },
+        "opened_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Bucket where the issue first opened.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_anomalous_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Most recent anomalous bucket attributed to this issue.",
+            "smithy.api#required": {}
+          }
+        },
+        "resolved_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Bucket where the issue resolved, or null if it was still open at the end of the window.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "anomalous_bucket_times": {
+          "target": "com.posthog.logs#LogsAnomalyScanIssueAnomalousBucketTimesList",
+          "traits": {
+            "smithy.api#documentation": "Every anomalous bucket attributed to this issue, oldest first.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsAnomalyScanIssueDirectionEnum": {
+      "type": "enum",
+      "members": {
+        "UP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "up"
+          }
+        },
+        "DOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "down"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `up` - up\n* `down` - down"
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanIssueStateEnum": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "RESOLVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resolved"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `pending` - pending\n* `active` - active\n* `resolved` - resolved"
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanIssueAnomalousBucketTimesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Every anomalous bucket attributed to this issue, oldest first."
+      }
+    },
+    "com.posthog.logs#LogsAnomalyScanResponseIssuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsAnomalyScanIssue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Anomaly issues that opened during the evaluation window, oldest first."
+      }
+    },
+    "com.posthog.logs#LogsAnomaliesScanCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsAnomaliesScanCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsAnomalyScanResponse"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.logs#UnprocessableEntity"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/anomalies/scan/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Scan a service's logs for volume anomalies\n\nRuns anomaly detection on demand over one service's log volume for the given window. Learns per severity baselines from up to 6 weeks of history and returns per bucket expected bands plus any spike, drop, or silence issues. Synchronous and read only."
+      }
+    },
+    "com.posthog.logs#IntervalMinutesEnum": {
+      "type": "intEnum",
+      "members": {
+        "_60": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 60
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `60` - 60"
+      }
+    },
+    "com.posthog.logs#LogsAnomaliesSeriesBandsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "serviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service whose per-series volume to chart (the log record's service_name).",
+            "smithy.api#required": {}
+          }
+        },
+        "intervalMinutes": {
+          "target": "com.posthog.logs#IntervalMinutesEnum",
+          "traits": {
+            "smithy.api#documentation": "Display grain in minutes for buckets and bands. Only hourly is supported today.\n\n* `60` - 60"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsSeriesBandsResponse": {
+      "type": "structure",
+      "members": {
+        "service_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service the series belong to.",
+            "smithy.api#required": {}
+          }
+        },
+        "window_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start of the observed window (UTC, inclusive).",
+            "smithy.api#required": {}
+          }
+        },
+        "window_end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End of the observed window (UTC, exclusive).",
+            "smithy.api#required": {}
+          }
+        },
+        "interval_minutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Display grain of the buckets, in minutes.",
+            "smithy.api#required": {}
+          }
+        },
+        "series_truncated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when the service has more series than the response carries; the quietest were dropped.",
+            "smithy.api#required": {}
+          }
+        },
+        "series": {
+          "target": "com.posthog.logs#LogsSeriesBandsResponseSeriesList",
+          "traits": {
+            "smithy.api#documentation": "One entry per (namespace, environment, severity) series, ordered by observed volume descending.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsSeriesBandSeries": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Namespace of the emitting resource; empty when the logs carry none.",
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment environment of the emitting resource; empty when the logs carry none.",
+            "smithy.api#required": {}
+          }
+        },
+        "severity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Lowercased log severity of this series (for example info, error).",
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total observed log count over the window. Series are ordered by this, descending.",
+            "smithy.api#required": {}
+          }
+        },
+        "baseline_weeks": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Full weeks of history behind the band, 0 to 5. Below 2 the series is still learning and its buckets carry no band.",
+            "smithy.api#required": {}
+          }
+        },
+        "buckets": {
+          "target": "com.posthog.logs#LogsSeriesBandSeriesBucketsList",
+          "traits": {
+            "smithy.api#documentation": "One entry per display bucket across the whole window, oldest first, zero-filled.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsSeriesBandBucket": {
+      "type": "structure",
+      "members": {
+        "time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start of the display bucket (UTC).",
+            "smithy.api#required": {}
+          }
+        },
+        "observed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Log count observed in this bucket.",
+            "smithy.api#required": {}
+          }
+        },
+        "lower": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower edge of the expected band. Null while the series has too little history to band.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "upper": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper edge of the expected band. Null while the series has too little history to band.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsSeriesBandSeriesBucketsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsSeriesBandBucket"
+      },
+      "traits": {
+        "smithy.api#documentation": "One entry per display bucket across the whole window, oldest first, zero-filled."
+      }
+    },
+    "com.posthog.logs#LogsSeriesBandsResponseSeriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsSeriesBandSeries"
+      },
+      "traits": {
+        "smithy.api#documentation": "One entry per (namespace, environment, severity) series, ordered by observed volume descending."
+      }
+    },
+    "com.posthog.logs#LogsAnomaliesSeriesBandsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsAnomaliesSeriesBandsCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsSeriesBandsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.logs#UnprocessableEntity"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/anomalies/series_bands/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Per-series log volume with expected bands\n\nReturns the last 7 days of log volume for every (namespace, environment, severity) series of one service, with a time-of-week expected band derived from the prior weeks of the volume rollup. Synchronous and read only."
+      }
+    },
     "com.posthog.logs#LogsAttributesRetrieveRequestAttributeType": {
       "type": "enum",
       "members": {
@@ -3406,7 +4949,7 @@
         "operator": {
           "target": "com.posthog.logs#LogPropertyFilterOperatorEnum",
           "traits": {
-            "smithy.api#documentation": "Comparison operator.\n\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `lt` - lt\n* `is_date_exact` - is_date_exact\n* `is_date_before` - is_date_before\n* `is_date_after` - is_date_after\n* `is_set` - is_set\n* `is_not_set` - is_not_set"
+            "smithy.api#documentation": "Comparison operator.\n\n* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `starts_with` - starts_with\n* `not_starts_with` - not_starts_with\n* `ends_with` - ends_with\n* `not_ends_with` - not_ends_with\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `lt` - lt\n* `is_date_exact` - is_date_exact\n* `is_date_before` - is_date_before\n* `is_date_after` - is_date_after\n* `is_set` - is_set\n* `is_not_set` - is_not_set"
           }
         },
         "value": {
@@ -3471,6 +5014,30 @@
             "smithy.api#enumValue": "not_icontains"
           }
         },
+        "STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "starts_with"
+          }
+        },
+        "NOT_STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_starts_with"
+          }
+        },
+        "ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ends_with"
+          }
+        },
+        "NOT_ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_ends_with"
+          }
+        },
         "REGEX": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -3527,7 +5094,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `lt` - lt\n* `is_date_exact` - is_date_exact\n* `is_date_before` - is_date_before\n* `is_date_after` - is_date_after\n* `is_set` - is_set\n* `is_not_set` - is_not_set"
+        "smithy.api#documentation": "* `exact` - exact\n* `is_not` - is_not\n* `icontains` - icontains\n* `not_icontains` - not_icontains\n* `starts_with` - starts_with\n* `not_starts_with` - not_starts_with\n* `ends_with` - ends_with\n* `not_ends_with` - not_ends_with\n* `regex` - regex\n* `not_regex` - not_regex\n* `gt` - gt\n* `lt` - lt\n* `is_date_exact` - is_date_exact\n* `is_date_before` - is_date_before\n* `is_date_after` - is_date_after\n* `is_set` - is_set\n* `is_not_set` - is_not_set"
       }
     },
     "com.posthog.logs#LogsAttributesRetrieveRequestFilterGroupList": {
@@ -4196,14 +5763,21 @@
         "facetField": {
           "target": "com.posthog.logs#FacetFieldEnum",
           "traits": {
-            "smithy.api#documentation": "Top-level column to facet on. Provide exactly one of facetField or facetResourceAttribute. Its own filter is excluded so counts reflect the other active filters.\n\n* `severity_text` - severity_text\n* `service_name` - service_name",
+            "smithy.api#documentation": "Top-level column to facet on. Provide exactly one of facetField, facetResourceAttribute or facetAttribute. Its own filter is excluded so counts reflect the other active filters.\n\n* `severity_text` - severity_text\n* `service_name` - service_name",
             "com.distilled.openapi#nullable": {}
           }
         },
         "facetResourceAttribute": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Resource attribute key to facet on (e.g. 'k8s.namespace.name'). Provide exactly one of facetField or facetResourceAttribute. Its own log_resource_attribute filter is excluded so counts reflect the other active filters.",
+            "smithy.api#documentation": "Resource attribute key to facet on (e.g. 'k8s.namespace.name'). Provide exactly one of facetField, facetResourceAttribute or facetAttribute. Its own log_resource_attribute filter is excluded so counts reflect the other active filters.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "facetAttribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Log attribute key to facet on (e.g. 'log.iostream'). Provide exactly one of facetField, facetResourceAttribute or facetAttribute. Counts honour severity, service and resource-attribute filters, but not body search, other log-attribute filters, or this facet's own filter.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -4241,6 +5815,12 @@
           "target": "com.posthog.logs#LogsFacetValuesBodyFilterGroupList",
           "traits": {
             "smithy.api#documentation": "Property filters for the query."
+          }
+        },
+        "personId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scope counts to one person (UUID or numeric ID). Expanded server-side to the person's distinct IDs and matched against the team's configured distinct-id log attribute keys."
           }
         }
       },
@@ -4374,6 +5954,311 @@
         }
       }
     },
+    "com.posthog.logs#LogsGroupByBody": {
+      "type": "structure",
+      "members": {
+        "dateRange": {
+          "target": "com.posthog.logs#DateRange",
+          "traits": {
+            "smithy.api#documentation": "Date range to aggregate over. Defaults to last hour."
+          }
+        },
+        "severityLevels": {
+          "target": "com.posthog.logs#LogsGroupByBodySeverityLevelsList",
+          "traits": {
+            "smithy.api#documentation": "Filter by log severity levels before grouping."
+          }
+        },
+        "serviceNames": {
+          "target": "com.posthog.logs#LogsGroupByBodyServiceNamesList",
+          "traits": {
+            "smithy.api#documentation": "Restrict grouping to these service names."
+          }
+        },
+        "searchTerm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Full-text search term to filter log bodies before grouping."
+          }
+        },
+        "filterGroup": {
+          "target": "com.posthog.logs#LogsGroupByBodyFilterGroupList",
+          "traits": {
+            "smithy.api#documentation": "Property filters applied before grouping. Same shape as the query-logs endpoint."
+          }
+        },
+        "groupBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key to group logs by — an attribute key (e.g. \"session_id\", \"service.name\") or, when groupBySource is \"column\", one of the top-level log fields: \"severity_level\", \"trace_id\", \"span_id\". Ignored when groupBys is provided."
+          }
+        },
+        "groupBySource": {
+          "target": "com.posthog.logs#LogsGroupBySourceEnum",
+          "traits": {
+            "smithy.api#documentation": "Where the grouping key lives: \"log\" for log-level attributes, \"resource\" for resource-level attributes, \"column\" for top-level log fields. Ignored when groupBys is provided.\n\n* `log` - log\n* `resource` - resource\n* `column` - column"
+          }
+        },
+        "groupBys": {
+          "target": "com.posthog.logs#LogsGroupByBodyGroupBysList",
+          "traits": {
+            "smithy.api#documentation": "Ordered group-by dimensions to combine (a group is one combination of per-dimension values), up to 4. Takes precedence over groupBy/groupBySource; one of the two must be provided."
+          }
+        },
+        "orderGroupsBy": {
+          "target": "com.posthog.logs#OrderGroupsByEnum",
+          "traits": {
+            "smithy.api#documentation": "Aggregate to rank groups by (descending): \"log_count\" for the noisiest groups, \"error_count\" for the most failing, \"last_seen\" for the most recent.\n\n* `log_count` - log_count\n* `error_count` - error_count\n* `last_seen` - last_seen"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of groups to return (top-N by orderGroupsBy). Defaults to 100."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsGroupByBodySeverityLevelsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#SeverityLevelsEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Filter by log severity levels before grouping."
+      }
+    },
+    "com.posthog.logs#LogsGroupByBodyServiceNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Restrict grouping to these service names."
+      }
+    },
+    "com.posthog.logs#LogsGroupByBodyFilterGroupList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogPropertyFilter2"
+      },
+      "traits": {
+        "smithy.api#documentation": "Property filters applied before grouping. Same shape as the query-logs endpoint."
+      }
+    },
+    "com.posthog.logs#LogsGroupBySourceEnum": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "RESOURCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource"
+          }
+        },
+        "COLUMN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "column"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `log` - log\n* `resource` - resource\n* `column` - column"
+      }
+    },
+    "com.posthog.logs#LogsGroupByDimension": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key this dimension groups by — an attribute key (e.g. \"session_id\", \"service.name\") or, when source is \"column\", one of the top-level log fields: \"severity_level\", \"trace_id\", \"span_id\".",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "com.posthog.logs#LogsGroupBySourceEnum",
+          "traits": {
+            "smithy.api#documentation": "Where this dimension's key lives: \"log\" for log-level attributes, \"resource\" for resource-level attributes, \"column\" for top-level log fields.\n\n* `log` - log\n* `resource` - resource\n* `column` - column"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsGroupByBodyGroupBysList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsGroupByDimension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ordered group-by dimensions to combine (a group is one combination of per-dimension values), up to 4. Takes precedence over groupBy/groupBySource; one of the two must be provided."
+      }
+    },
+    "com.posthog.logs#OrderGroupsByEnum": {
+      "type": "enum",
+      "members": {
+        "LOG_COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_count"
+          }
+        },
+        "ERROR_COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error_count"
+          }
+        },
+        "LAST_SEEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_seen"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `log_count` - log_count\n* `error_count` - error_count\n* `last_seen` - last_seen"
+      }
+    },
+    "com.posthog.logs#LogsGroupByCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "query": {
+          "target": "com.posthog.logs#LogsGroupByBody",
+          "traits": {
+            "smithy.api#documentation": "The group-by query to execute.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsGroupByResponse": {
+      "type": "structure",
+      "members": {
+        "groups": {
+          "target": "com.posthog.logs#LogsGroupByResponseGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Top groups ordered by the requested aggregate, descending. Capped at `limit`.",
+            "smithy.api#required": {}
+          }
+        },
+        "total_groups": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total distinct group values matching the filters, before the top-N cap.",
+            "smithy.api#required": {}
+          }
+        },
+        "total_logs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total matching logs across all groups (rows without the grouping key are excluded).",
+            "smithy.api#required": {}
+          }
+        },
+        "truncated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when more groups matched than were returned (total_groups > groups length).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsGroupByGroup": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The first dimension's grouped value. Kept for single-dimension callers; prefer `values`.",
+            "smithy.api#required": {}
+          }
+        },
+        "values": {
+          "target": "com.posthog.logs#LogsGroupByGroupValuesList",
+          "traits": {
+            "smithy.api#documentation": "This group's values, one per requested dimension, in request order.",
+            "smithy.api#required": {}
+          }
+        },
+        "log_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of matching logs in this group.",
+            "smithy.api#required": {}
+          }
+        },
+        "error_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of matching logs in this group at severity \"error\" or \"fatal\".",
+            "smithy.api#required": {}
+          }
+        },
+        "last_seen": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 timestamp of the most recent matching log in this group.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsGroupByGroupValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "This group's values, one per requested dimension, in request order."
+      }
+    },
+    "com.posthog.logs#LogsGroupByResponseGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsGroupByGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Top groups ordered by the requested aggregate, descending. Capped at `limit`."
+      }
+    },
+    "com.posthog.logs#LogsGroupByCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsGroupByCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsGroupByResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/group-by/",
+          "code": 200
+        }
+      }
+    },
     "com.posthog.logs#LogsHasLogsRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -4439,6 +6324,1082 @@
         }
       }
     },
+    "com.posthog.logs#LogsMetricRulesListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of results to return per page."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "The initial index from which to return the results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#PaginatedLogsMetricRuleList": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "previous": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "results": {
+          "target": "com.posthog.logs#PaginatedLogsMetricRuleListResultsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsMetricRule": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for this metric rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-visible label for this rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "metric_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, ingestion evaluates this rule against every log record. At most 10 rules can be enabled per project."
+          }
+        },
+        "filter_group": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\",\"type\":\"log_attribute\"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter — empty groups never match."
+          }
+        },
+        "value_attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Log attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`. Omit to count matching log records instead. Immutable after creation — it determines the emitted metric type.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "group_by": {
+          "target": "com.posthog.logs#LogsMetricRuleGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Incremented on each update for worker cache coherency.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_by": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsMetricRuleGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
+      }
+    },
+    "com.posthog.logs#PaginatedLogsMetricRuleListResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsMetricRule"
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsMetricRulesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsMetricRulesListRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#PaginatedLogsMetricRuleList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/logs/metric_rules/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesCreateRequestGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-visible label for this rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "metric_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, ingestion evaluates this rule against every log record. At most 10 rules can be enabled per project."
+          }
+        },
+        "filter_group": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\",\"type\":\"log_attribute\"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter — empty groups never match."
+          }
+        },
+        "value_attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Log attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`. Omit to count matching log records instead. Immutable after creation — it determines the emitted metric type.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "group_by": {
+          "target": "com.posthog.logs#LogsMetricRulesCreateRequestGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsMetricRulesCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsMetricRule"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/metric_rules/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this logs metric rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsMetricRulesRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsMetricRule"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/logs/metric_rules/{id}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesUpdateRequestGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this logs metric rule."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-visible label for this rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "metric_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, ingestion evaluates this rule against every log record. At most 10 rules can be enabled per project."
+          }
+        },
+        "filter_group": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\",\"type\":\"log_attribute\"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter — empty groups never match."
+          }
+        },
+        "value_attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Log attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`. Omit to count matching log records instead. Immutable after creation — it determines the emitted metric type.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "group_by": {
+          "target": "com.posthog.logs#LogsMetricRulesUpdateRequestGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsMetricRulesUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsMetricRule"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/api/projects/{project_id}/logs/metric_rules/{id}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesPartialUpdateRequestGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesPartialUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this logs metric rule."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-visible label for this rule."
+          }
+        },
+        "metric_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, ingestion evaluates this rule against every log record. At most 10 rules can be enabled per project."
+          }
+        },
+        "filter_group": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "PropertyGroupFilter JSON (AND/OR tree of property predicates) selecting which log records feed the metric, e.g. `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\",\"type\":\"log_attribute\"}]}]}`. Null matches every ingested log record. Every group must contain at least one filter — empty groups never match."
+          }
+        },
+        "value_attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Log attribute key holding a numeric value to aggregate into a distribution (count + sum), e.g. `attributes.duration_ms` or `resource_attributes.batch.size`. Omit to count matching log records instead. Immutable after creation — it determines the emitted metric type.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "group_by": {
+          "target": "com.posthog.logs#LogsMetricRulesPartialUpdateRequestGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesPartialUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsMetricRulesPartialUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsMetricRule"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/api/projects/{project_id}/logs/metric_rules/{id}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesDestroyRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this logs metric rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsMetricRulesDestroy": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsMetricRulesDestroyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/projects/{project_id}/logs/metric_rules/{id}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsPatternsBody": {
+      "type": "structure",
+      "members": {
+        "dateRange": {
+          "target": "com.posthog.logs#DateRange",
+          "traits": {
+            "smithy.api#documentation": "Date range to mine patterns from. Defaults to last hour."
+          }
+        },
+        "severityLevels": {
+          "target": "com.posthog.logs#LogsPatternsBodySeverityLevelsList",
+          "traits": {
+            "smithy.api#documentation": "Filter by log severity levels before mining."
+          }
+        },
+        "serviceNames": {
+          "target": "com.posthog.logs#LogsPatternsBodyServiceNamesList",
+          "traits": {
+            "smithy.api#documentation": "Restrict mining to these service names."
+          }
+        },
+        "searchTerm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Full-text search term to filter log bodies before mining."
+          }
+        },
+        "filterGroup": {
+          "target": "com.posthog.logs#LogsPatternsBodyFilterGroupList",
+          "traits": {
+            "smithy.api#documentation": "Property filters applied before mining. Same shape as the query-logs endpoint."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsPatternsBodySeverityLevelsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#SeverityLevelsEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Filter by log severity levels before mining."
+      }
+    },
+    "com.posthog.logs#LogsPatternsBodyServiceNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Restrict mining to these service names."
+      }
+    },
+    "com.posthog.logs#LogsPatternsBodyFilterGroupList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogPropertyFilter2"
+      },
+      "traits": {
+        "smithy.api#documentation": "Property filters applied before mining. Same shape as the query-logs endpoint."
+      }
+    },
+    "com.posthog.logs#LogsPatternsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "query": {
+          "target": "com.posthog.logs#LogsPatternsBody",
+          "traits": {
+            "smithy.api#documentation": "The patterns query to execute.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsPatternsResponse": {
+      "type": "structure",
+      "members": {
+        "patterns": {
+          "target": "com.posthog.logs#LogsPatternsResponsePatternsList",
+          "traits": {
+            "smithy.api#documentation": "Mined patterns ordered by `count` descending.",
+            "smithy.api#required": {}
+          }
+        },
+        "scanned_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of log rows fed to the miner (the sample size, capped at the sample limit).",
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total log rows matching the filters in the window, before sampling. Use with `scanned_count` to scale per-pattern counts when `sampled` is true.",
+            "smithy.api#required": {}
+          }
+        },
+        "sampled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when the window held more rows than the sample cap, so patterns were mined from a deterministic, evenly-distributed sample rather than every matching row.",
+            "smithy.api#required": {}
+          }
+        },
+        "sample_coverage_pct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Share of the window's log rows that were eligible for sampling (0–100). Below 100, the scan was bounded to evenly-spaced time slices across the window to keep the query within its execution budget; rows outside the slices could not appear in the sample.",
+            "smithy.api#required": {}
+          }
+        },
+        "sparkline_buckets": {
+          "target": "com.posthog.logs#LogsPatternsResponseSparklineBucketsList",
+          "traits": {
+            "smithy.api#documentation": "Time buckets that every pattern's `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogPattern": {
+      "type": "structure",
+      "members": {
+        "pattern": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mined log template with variable tokens masked, e.g. \"Connected to <ip> in <num>ms\". Tokens: <timestamp>, <uuid>, <ip>, <hex>, <num>, plus <*> for word positions Drain found to vary.",
+            "smithy.api#required": {}
+          }
+        },
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Occurrences of this pattern within the sample. When `sampled` is true this is a sample count, not the full-window total — prefer `estimated_count` for display.",
+            "smithy.api#required": {}
+          }
+        },
+        "estimated_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Estimated occurrences across the full window, extrapolated from the sample (`count / scanned_count * total_count`). Equals `count` when the window was not sampled.",
+            "smithy.api#required": {}
+          }
+        },
+        "volume_share_pct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Share of the sampled log volume this pattern represents (0–100).",
+            "smithy.api#required": {}
+          }
+        },
+        "error_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Sampled occurrences at severity \"error\" or \"fatal\". Prefer `estimated_error_count` for display.",
+            "smithy.api#required": {}
+          }
+        },
+        "estimated_error_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Estimated error/fatal occurrences across the full window, extrapolated from the sample. Equals `error_count` when the window was not sampled.",
+            "smithy.api#required": {}
+          }
+        },
+        "first_seen": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 timestamp of the earliest sampled occurrence.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_seen": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 timestamp of the latest sampled occurrence.",
+            "smithy.api#required": {}
+          }
+        },
+        "examples": {
+          "target": "com.posthog.logs#LogPatternExamplesList",
+          "traits": {
+            "smithy.api#documentation": "Up to 10 distinct sampled log lines that produced this pattern, with severity, service, and timestamp for display.",
+            "smithy.api#required": {}
+          }
+        },
+        "services": {
+          "target": "com.posthog.logs#LogPatternServicesList",
+          "traits": {
+            "smithy.api#documentation": "Up to 4 distinct service names this pattern was observed in.",
+            "smithy.api#required": {}
+          }
+        },
+        "sparkline": {
+          "target": "com.posthog.logs#LogPatternSparklineList",
+          "traits": {
+            "smithy.api#documentation": "Estimated occurrences per time bucket, aligned index-for-index with the response's `sparkline_buckets`. Extrapolated from the sample like `estimated_count`, so it shows the volume shape over the window, not exact per-bucket tallies.",
+            "smithy.api#required": {}
+          }
+        },
+        "severity_counts": {
+          "target": "com.posthog.logs#LogPatternSeverityCountsMap",
+          "traits": {
+            "smithy.api#documentation": "Sampled occurrences keyed by lowercased severity (\"trace\" through \"fatal\"). Raw sample counts, not extrapolated — severity dominance is a proportion, so scaling would not change it.",
+            "smithy.api#required": {}
+          }
+        },
+        "match_regex": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RE2-safe regex over raw log bodies that matches lines of this pattern, compiled from the template and validated against the raw bodies of the pattern's own sampled rows before being offered. Null when the template lacks literal content or validation failed. Never trust an unvalidated predicate. Use with the message/regex log property filter.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "match_literal": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Longest literal run in the template, for plain-text (icontains) filtering when `match_regex` is null. Null when the template has no usable literal content.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogPatternExample": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Log body as the miner saw it: whitespace-collapsed and truncated to the mining length cap, with the message field extracted from JSON bodies. This is not the raw stored line.",
+            "smithy.api#required": {}
+          }
+        },
+        "severity_text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Severity of the sampled line, e.g. \"info\", \"error\".",
+            "smithy.api#required": {}
+          }
+        },
+        "service_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service that emitted the sampled line.",
+            "smithy.api#required": {}
+          }
+        },
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 timestamp of the sampled line.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogPatternExamplesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogPatternExample"
+      },
+      "traits": {
+        "smithy.api#documentation": "Up to 10 distinct sampled log lines that produced this pattern, with severity, service, and timestamp for display."
+      }
+    },
+    "com.posthog.logs#LogPatternServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Up to 4 distinct service names this pattern was observed in."
+      }
+    },
+    "com.posthog.logs#LogPatternSparklineList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Estimated occurrences per time bucket, aligned index-for-index with the response's `sparkline_buckets`. Extrapolated from the sample like `estimated_count`, so it shows the volume shape over the window, not exact per-bucket tallies."
+      }
+    },
+    "com.posthog.logs#LogPatternSeverityCountsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sampled occurrences keyed by lowercased severity (\"trace\" through \"fatal\"). Raw sample counts, not extrapolated — severity dominance is a proportion, so scaling would not change it."
+      }
+    },
+    "com.posthog.logs#LogsPatternsResponsePatternsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogPattern"
+      },
+      "traits": {
+        "smithy.api#documentation": "Mined patterns ordered by `count` descending."
+      }
+    },
+    "com.posthog.logs#LogsPatternsSparklineBucket": {
+      "type": "structure",
+      "members": {
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Bucket start (ISO 8601, inclusive).",
+            "smithy.api#required": {}
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Bucket end (ISO 8601, exclusive).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsPatternsResponseSparklineBucketsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsPatternsSparklineBucket"
+      },
+      "traits": {
+        "smithy.api#documentation": "Time buckets that every pattern's `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly."
+      }
+    },
+    "com.posthog.logs#LogsPatternsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsPatternsCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsPatternsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/patterns/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsPatternsDiffCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "query": {
+          "target": "com.posthog.logs#LogsPatternsBody",
+          "traits": {
+            "smithy.api#documentation": "The patterns query for the current (foreground) window: date range plus any severity/service/search/property filters. The same filters are applied to the baseline window.",
+            "smithy.api#required": {}
+          }
+        },
+        "baselineDateRange": {
+          "target": "com.posthog.logs#DateRange",
+          "traits": {
+            "smithy.api#documentation": "Baseline window to compare against. Omit to default to the current window shifted back exactly one week, which absorbs daily and weekly log-volume cycles. Pass an explicit range to compare against a specific period, e.g. pre-deploy or pre-incident."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsPatternsDiffResponse": {
+      "type": "structure",
+      "members": {
+        "entries": {
+          "target": "com.posthog.logs#LogsPatternsDiffResponseEntriesList",
+          "traits": {
+            "smithy.api#documentation": "Classified diff entries, most interesting first: \"new\" (by estimated count), then \"rate_shift\" (by shift magnitude), then \"gone\", then \"unchanged\". A pattern in the baseline is matched to the current window by literal-content fingerprint, so a placeholder widening between runs does not read as one pattern vanishing and another appearing.",
+            "smithy.api#required": {}
+          }
+        },
+        "current": {
+          "target": "com.posthog.logs#LogsPatternsDiffWindow",
+          "traits": {
+            "smithy.api#documentation": "Mining metadata for the current window.",
+            "smithy.api#required": {}
+          }
+        },
+        "baseline": {
+          "target": "com.posthog.logs#LogsPatternsDiffWindow",
+          "traits": {
+            "smithy.api#documentation": "Mining metadata for the baseline window. Check `total_count` before trusting a wall of \"new\" entries: an empty or tiny baseline (e.g. logging only started this week) makes everything look new.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogPatternDiffEntry": {
+      "type": "structure",
+      "members": {
+        "classification": {
+          "target": "com.posthog.logs#LogPatternDiffEntryClassificationEnum",
+          "traits": {
+            "smithy.api#documentation": "\"new\": appears only in the current window and clears the novelty floor (at least ~1% volume share, or any error/fatal occurrences). \"rate_shift\": present in both windows with the per-second rate changed by at least 2x either way, backed by enough samples on both sides to trust the estimates. \"gone\": cleared the floor in the baseline but absent from the current window. \"unchanged\" means \"no confident claim\", not \"provably identical\" — sampled mining cannot prove a below-floor template is genuinely new or gone.\n\n* `new` - new\n* `rate_shift` - rate_shift\n* `gone` - gone\n* `unchanged` - unchanged",
+            "smithy.api#required": {}
+          }
+        },
+        "rate_ratio": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current-window rate divided by baseline rate, both normalized per second so windows of different lengths compare fairly. 4.0 means 4x faster now; 0.25 means quartered. Null when the pattern is missing from either window.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "pattern": {
+          "target": "com.posthog.logs#LogPattern",
+          "traits": {
+            "smithy.api#documentation": "The mined pattern with full stats. Taken from the current window, or from the baseline window for \"gone\" entries. When template wobble split one message across several near-identical templates, this is the highest-volume representative and the entry's classification reflects their combined counts.",
+            "smithy.api#required": {}
+          }
+        },
+        "baseline_estimated_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Estimated occurrences across the baseline window (extrapolated like `estimated_count`). Null when the pattern was not seen in the baseline sample.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "baseline_volume_share_pct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Share of the baseline sample this pattern represented (0-100). Null when absent from the baseline.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogPatternDiffEntryClassificationEnum": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "new"
+          }
+        },
+        "RATE_SHIFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rate_shift"
+          }
+        },
+        "GONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gone"
+          }
+        },
+        "UNCHANGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unchanged"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `new` - new\n* `rate_shift` - rate_shift\n* `gone` - gone\n* `unchanged` - unchanged"
+      }
+    },
+    "com.posthog.logs#LogsPatternsDiffResponseEntriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogPatternDiffEntry"
+      },
+      "traits": {
+        "smithy.api#documentation": "Classified diff entries, most interesting first: \"new\" (by estimated count), then \"rate_shift\" (by shift magnitude), then \"gone\", then \"unchanged\". A pattern in the baseline is matched to the current window by literal-content fingerprint, so a placeholder widening between runs does not read as one pattern vanishing and another appearing."
+      }
+    },
+    "com.posthog.logs#LogsPatternsDiffWindow": {
+      "type": "structure",
+      "members": {
+        "scanned_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Log rows fed to the miner for this window (sample size).",
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total log rows matching the filters in this window.",
+            "smithy.api#required": {}
+          }
+        },
+        "sampled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when this window's counts are extrapolated from a sample rather than exact.",
+            "smithy.api#required": {}
+          }
+        },
+        "sample_coverage_pct": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Share of this window's rows eligible for sampling (0-100); below 100 the scan was time-slice bounded.",
+            "smithy.api#required": {}
+          }
+        },
+        "date_from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resolved window start (ISO 8601, inclusive).",
+            "smithy.api#required": {}
+          }
+        },
+        "date_to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resolved window end (ISO 8601, exclusive).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsPatternsDiffCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsPatternsDiffCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsPatternsDiffResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/patterns_diff/",
+          "code": 200
+        }
+      }
+    },
     "com.posthog.logs#LogsQueryBody": {
       "type": "structure",
       "members": {
@@ -4495,6 +7456,18 @@
           "traits": {
             "smithy.api#documentation": "Omit the per-log attributes and resource_attributes maps from results to keep payloads compact. Defaults to false."
           }
+        },
+        "customColumns": {
+          "target": "com.posthog.logs#LogsQueryBodyCustomColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Custom column expressions evaluated per log row. Each entry is either a source-prefixed shorthand (`attributes.<key>`, `resource_attributes.<key>`, `body.<json.path>`) or a scalar HogQL expression (`upper(level)`, `coalesce(attributes['a'], attributes['b'])`). Aggregations and subqueries are rejected. Values come back on each result row keyed by the aliases echoed in the response `columns` field."
+          }
+        },
+        "personId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scope results to one person (UUID or numeric ID). Expanded server-side to the person's distinct IDs and matched against the team's configured distinct-id log attribute keys."
+          }
         }
       },
       "traits": {}
@@ -4544,6 +7517,15 @@
       },
       "traits": {
         "smithy.api#documentation": "Property filters for the query."
+      }
+    },
+    "com.posthog.logs#LogsQueryBodyCustomColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom column expressions evaluated per log row. Each entry is either a source-prefixed shorthand (`attributes.<key>`, `resource_attributes.<key>`, `body.<json.path>`) or a scalar HogQL expression (`upper(level)`, `coalesce(attributes['a'], attributes['b'])`). Aggregations and subqueries are rejected. Values come back on each result row keyed by the aliases echoed in the response `columns` field."
       }
     },
     "com.posthog.logs#LogsQueryCreateRequest": {
@@ -4600,6 +7582,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Maximum number of rows the `export` endpoint will produce — informational."
+          }
+        },
+        "columns": {
+          "target": "com.posthog.logs#LogsQueryResponseColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Aliases for the requested `customColumns`, in request order. Each result row carries its custom column values under these keys. Null when no custom columns were requested.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -4728,6 +7717,15 @@
         "smithy.api#documentation": "Log entries matching the query."
       }
     },
+    "com.posthog.logs#LogsQueryResponseColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Aliases for the requested `customColumns`, in request order. Each result row carries its custom column values under these keys. Null when no custom columns were requested."
+      }
+    },
     "com.posthog.logs#LogsQueryCreate": {
       "type": "operation",
       "input": {
@@ -4753,6 +7751,549 @@
           "uri": "/api/projects/{project_id}/logs/query/",
           "code": 200
         }
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of results to return per page."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "The initial index from which to return the results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#PaginatedLogsRetentionRuleList": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "previous": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "results": {
+          "target": "com.posthog.logs#PaginatedLogsRetentionRuleListResultsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsRetentionRule": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for this retention rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-visible label for this rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the rule is ignored by ingestion and listing UIs that show active rules only."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{\"retention_days\":30,\"filter_group\":{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}}`. Logs matching no enabled rule keep the environment's default retention.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Incremented on each update for worker cache coherency.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_by": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#PaginatedLogsRetentionRuleListResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsRetentionRule"
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsRetentionRulesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsRetentionRulesListRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#PaginatedLogsRetentionRuleList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/logs/retention_rules/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-visible label for this rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the rule is ignored by ingestion and listing UIs that show active rules only."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{\"retention_days\":30,\"filter_group\":{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}}`. Logs matching no enabled rule keep the environment's default retention.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsRetentionRulesCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsRetentionRule"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/retention_rules/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this logs retention rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsRetentionRulesRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsRetentionRule"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/logs/retention_rules/{id}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this logs retention rule."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-visible label for this rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the rule is ignored by ingestion and listing UIs that show active rules only."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{\"retention_days\":30,\"filter_group\":{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}}`. Logs matching no enabled rule keep the environment's default retention.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsRetentionRulesUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsRetentionRule"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/api/projects/{project_id}/logs/retention_rules/{id}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesPartialUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this logs retention rule."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-visible label for this rule."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the rule is ignored by ingestion and listing UIs that show active rules only."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{\"retention_days\":30,\"filter_group\":{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}}`. Logs matching no enabled rule keep the environment's default retention."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesPartialUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsRetentionRulesPartialUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsRetentionRule"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/api/projects/{project_id}/logs/retention_rules/{id}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesDestroyRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this logs retention rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesDestroy": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsRetentionRulesDestroyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/projects/{project_id}/logs/retention_rules/{id}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesReorderCreateRequestOrderedIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Rule IDs in the desired evaluation order (first element is highest priority / lowest order index)."
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesReorderCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of results to return per page."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "The initial index from which to return the results."
+          }
+        },
+        "ordered_ids": {
+          "target": "com.posthog.logs#LogsRetentionRulesReorderCreateRequestOrderedIdsList",
+          "traits": {
+            "smithy.api#documentation": "Rule IDs in the desired evaluation order (first element is highest priority / lowest order index).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesReorderCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsRetentionRulesReorderCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#PaginatedLogsRetentionRuleList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/retention_rules/reorder/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Atomically reassign priorities so the given ID order maps to ascending priorities (0..n-1)."
+      }
+    },
+    "com.posthog.logs#LogsRetentionRulesSuggestNameCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "retention_days": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Retention tier the rule would assign, in days.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter_group": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "PropertyGroupFilter tree the rule would match on.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.logs#LogsRetentionRuleNameSuggestion": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Suggested rule name. Empty when no suggestion could be generated — clients hide the hint.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsRetentionRulesSuggestNameCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.logs#LogsRetentionRulesSuggestNameCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.logs#LogsRetentionRuleNameSuggestion"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/logs/retention_rules/suggest_name/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Suggest a human-readable name for a retention rule from its retention tier and filter group. Used by the create form as an auto-suggest; nothing is persisted. Returns an empty name when a suggestion can't be generated."
       }
     },
     "com.posthog.logs#LogsSamplingRulesListRequest": {
@@ -4875,7 +8416,7 @@
         "config": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.",
+            "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.",
             "smithy.api#required": {}
           }
         },
@@ -5056,7 +8597,7 @@
         "config": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.",
+            "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.",
             "smithy.api#required": {}
           }
         }
@@ -5209,7 +8750,7 @@
         "config": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.",
+            "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.",
             "smithy.api#required": {}
           }
         }
@@ -5320,7 +8861,7 @@
         "config": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes."
+            "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes."
           }
         }
       },
@@ -5535,6 +9076,12 @@
             "smithy.api#documentation": "Full-text search term to filter log bodies."
           }
         },
+        "serviceNameSearch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Case-insensitive substring match on service name, applied before aggregation. Use to reach services beyond the response cap."
+          }
+        },
         "filterGroup": {
           "target": "com.posthog.logs#LogsServicesBodyFilterGroupList",
           "traits": {
@@ -5599,13 +9146,19 @@
         "services": {
           "target": "com.posthog.logs#LogsServicesResponseServicesList",
           "traits": {
-            "smithy.api#documentation": "Per-service aggregates, ordered by log_count descending. Capped at 25 services."
+            "smithy.api#documentation": "Per-service aggregates, ordered by log_count descending. Capped at 10000 services."
           }
         },
         "sparkline": {
           "target": "com.posthog.logs#LogsServicesResponseSparklineList",
           "traits": {
-            "smithy.api#documentation": "Time-bucketed counts broken down by service, for plotting volume over time."
+            "smithy.api#documentation": "Time-bucketed counts broken down by service, for plotting volume over time. Covers only the top 25 services in this response; re-request with `serviceNames` to get sparklines for specific services."
+          }
+        },
+        "total_services": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "True distinct service count for the window and filters, unaffected by the 10000-service cap on `services`. Greater than the length of `services` when the response is truncated."
           }
         },
         "summary": {
@@ -5734,7 +9287,7 @@
         "target": "com.posthog.logs#LogsServiceAggregate"
       },
       "traits": {
-        "smithy.api#documentation": "Per-service aggregates, ordered by log_count descending. Capped at 25 services."
+        "smithy.api#documentation": "Per-service aggregates, ordered by log_count descending. Capped at 10000 services."
       }
     },
     "com.posthog.logs#LogsServicesSparklineBucket": {
@@ -5761,7 +9314,7 @@
         "target": "com.posthog.logs#LogsServicesSparklineBucket"
       },
       "traits": {
-        "smithy.api#documentation": "Time-bucketed counts broken down by service, for plotting volume over time."
+        "smithy.api#documentation": "Time-bucketed counts broken down by service, for plotting volume over time. Covers only the top 25 services in this response; re-request with `serviceNames` to get sparklines for specific services."
       }
     },
     "com.posthog.logs#LogsServicesSummary": {
@@ -5849,6 +9402,18 @@
           "traits": {
             "smithy.api#documentation": "Break down sparkline by \"severity\" (default) or \"service\".\n\n* `severity` - severity\n* `service` - service"
           }
+        },
+        "sparklineRankBy": {
+          "target": "com.posthog.logs#SparklineRankByEnum",
+          "traits": {
+            "smithy.api#documentation": "Rank breakdown values by \"count\" (default) or \"bytes\" before collapsing the tail into \"other\".\n\n* `count` - count\n* `bytes` - bytes"
+          }
+        },
+        "personId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scope results to one person (UUID or numeric ID). Expanded server-side to the person's distinct IDs and matched against the team's configured distinct-id log attribute keys."
+          }
         }
       },
       "traits": {}
@@ -5898,6 +9463,26 @@
       },
       "traits": {
         "smithy.api#documentation": "* `severity` - severity\n* `service` - service"
+      }
+    },
+    "com.posthog.logs#SparklineRankByEnum": {
+      "type": "enum",
+      "members": {
+        "COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "count"
+          }
+        },
+        "BYTES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bytes"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `count` - count\n* `bytes` - bytes"
       }
     },
     "com.posthog.logs#LogsSparklineCreateRequest": {
@@ -6244,6 +9829,13 @@
             "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys."
           }
         },
+        "columns": {
+          "target": "com.posthog.logs#LogsViewColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "pinned": {
           "target": "smithy.api#Boolean"
         },
@@ -6275,6 +9867,103 @@
       },
       "traits": {
         "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys."
+      }
+    },
+    "com.posthog.logs#LogsViewColumn": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Client-generated stable identity for list operations (React keys, reorder). Never interpreted by the server.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.posthog.logs#LogsViewColumnTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Column type. Built-in types resolve client-side from log row fields; `custom` columns are computed server-side from `expression`.\n\n* `timestamp` - timestamp\n* `level` - level\n* `source` - source\n* `trace_id` - trace_id\n* `span_id` - span_id\n* `message` - message\n* `custom` - custom",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Header label override. Defaults to the built-in type's label, or to the expression for custom columns."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Only meaningful for `type: custom`: a source-prefixed shorthand (`attributes.<key>`, `resource_attributes.<key>`, `body.<json.path>`) or a scalar HogQL expression, sent verbatim in the logs query's `customColumns`."
+          }
+        },
+        "width": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Column width in pixels (1–2000). Omitted for the default width; ignored for the flex message column."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.logs#LogsViewColumnTypeEnum": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        },
+        "LEVEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "level"
+          }
+        },
+        "SOURCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "source"
+          }
+        },
+        "TRACE_ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trace_id"
+          }
+        },
+        "SPAN_ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "span_id"
+          }
+        },
+        "MESSAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "message"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `timestamp` - timestamp\n* `level` - level\n* `source` - source\n* `trace_id` - trace_id\n* `span_id` - span_id\n* `message` - message\n* `custom` - custom"
+      }
+    },
+    "com.posthog.logs#LogsViewColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsViewColumn"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it."
       }
     },
     "com.posthog.logs#PaginatedLogsViewListResultsList": {
@@ -6312,6 +10001,15 @@
         "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys."
       }
     },
+    "com.posthog.logs#LogsViewsCreateRequestColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsViewColumn"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it."
+      }
+    },
     "com.posthog.logs#LogsViewsCreateRequest": {
       "type": "structure",
       "members": {
@@ -6330,6 +10028,13 @@
           "target": "com.posthog.logs#LogsViewsCreateRequestFiltersMap",
           "traits": {
             "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys."
+          }
+        },
+        "columns": {
+          "target": "com.posthog.logs#LogsViewsCreateRequestColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "pinned": {
@@ -6407,6 +10112,15 @@
         "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys."
       }
     },
+    "com.posthog.logs#LogsViewsUpdateRequestColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsViewColumn"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it."
+      }
+    },
     "com.posthog.logs#LogsViewsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -6432,6 +10146,13 @@
           "target": "com.posthog.logs#LogsViewsUpdateRequestFiltersMap",
           "traits": {
             "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys."
+          }
+        },
+        "columns": {
+          "target": "com.posthog.logs#LogsViewsUpdateRequestColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "pinned": {
@@ -6470,6 +10191,15 @@
         "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys."
       }
     },
+    "com.posthog.logs#LogsViewsPartialUpdateRequestColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.logs#LogsViewColumn"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it."
+      }
+    },
     "com.posthog.logs#LogsViewsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -6495,6 +10225,13 @@
           "target": "com.posthog.logs#LogsViewsPartialUpdateRequestFiltersMap",
           "traits": {
             "smithy.api#documentation": "Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys."
+          }
+        },
+        "columns": {
+          "target": "com.posthog.logs#LogsViewsPartialUpdateRequestColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "pinned": {
@@ -6599,6 +10336,19 @@
         ]
       }
     },
+    "com.posthog.logs#UnprocessableEntity": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 422,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 422
+          }
+        ]
+      }
+    },
     "com.posthog.logs#Logs": {
       "type": "service",
       "version": "1.0.0",
@@ -6637,6 +10387,12 @@
           "target": "com.posthog.logs#LogsAlertsSimulateCreate"
         },
         {
+          "target": "com.posthog.logs#LogsAnomaliesScanCreate"
+        },
+        {
+          "target": "com.posthog.logs#LogsAnomaliesSeriesBandsCreate"
+        },
+        {
           "target": "com.posthog.logs#LogsAttributesRetrieve"
         },
         {
@@ -6655,10 +10411,61 @@
           "target": "com.posthog.logs#LogsFacetValuesCreate"
         },
         {
+          "target": "com.posthog.logs#LogsGroupByCreate"
+        },
+        {
           "target": "com.posthog.logs#LogsHasLogsRetrieve"
         },
         {
+          "target": "com.posthog.logs#LogsMetricRulesList"
+        },
+        {
+          "target": "com.posthog.logs#LogsMetricRulesCreate"
+        },
+        {
+          "target": "com.posthog.logs#LogsMetricRulesRetrieve"
+        },
+        {
+          "target": "com.posthog.logs#LogsMetricRulesUpdate"
+        },
+        {
+          "target": "com.posthog.logs#LogsMetricRulesPartialUpdate"
+        },
+        {
+          "target": "com.posthog.logs#LogsMetricRulesDestroy"
+        },
+        {
+          "target": "com.posthog.logs#LogsPatternsCreate"
+        },
+        {
+          "target": "com.posthog.logs#LogsPatternsDiffCreate"
+        },
+        {
           "target": "com.posthog.logs#LogsQueryCreate"
+        },
+        {
+          "target": "com.posthog.logs#LogsRetentionRulesList"
+        },
+        {
+          "target": "com.posthog.logs#LogsRetentionRulesCreate"
+        },
+        {
+          "target": "com.posthog.logs#LogsRetentionRulesRetrieve"
+        },
+        {
+          "target": "com.posthog.logs#LogsRetentionRulesUpdate"
+        },
+        {
+          "target": "com.posthog.logs#LogsRetentionRulesPartialUpdate"
+        },
+        {
+          "target": "com.posthog.logs#LogsRetentionRulesDestroy"
+        },
+        {
+          "target": "com.posthog.logs#LogsRetentionRulesReorderCreate"
+        },
+        {
+          "target": "com.posthog.logs#LogsRetentionRulesSuggestNameCreate"
         },
         {
           "target": "com.posthog.logs#LogsSamplingRulesList"

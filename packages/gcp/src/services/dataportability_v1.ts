@@ -174,24 +174,24 @@ export const PortabilityArchiveStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that contains the state of an Archive job. */
 export interface PortabilityArchiveState {
-  /** Resource that represents the state of the Archive job. */
-  state?: PortabilityArchiveStateStateEnum;
   /** If the state is complete, this method returns the signed URLs of the objects in the Cloud Storage bucket. */
   urls?: StringList;
-  /** The resource name of ArchiveJob's PortabilityArchiveState singleton. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID provided in the request. */
-  name?: string;
-  /** The timestamp that represents the starting point for the data you are exporting. This field is set only if the start_time field is specified in the InitiatePortabilityArchiveRequest. */
-  startTime?: string;
   /** The timestamp that represents the end point for the data you are exporting. If the end_time value is set in the InitiatePortabilityArchiveRequest, this field is set to that value. If end_time is not set, this value is set to the time the export was requested. */
   exportTime?: string;
+  /** Resource that represents the state of the Archive job. */
+  state?: PortabilityArchiveStateStateEnum;
+  /** The timestamp that represents the starting point for the data you are exporting. This field is set only if the start_time field is specified in the InitiatePortabilityArchiveRequest. */
+  startTime?: string;
+  /** The resource name of ArchiveJob's PortabilityArchiveState singleton. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID provided in the request. */
+  name?: string;
 }
 export const PortabilityArchiveState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    state: S.optional(PortabilityArchiveStateStateEnum),
     urls: S.optional(StringList),
-    name: S.optional(S.String),
-    startTime: S.optional(S.String),
     exportTime: S.optional(S.String),
+    state: S.optional(PortabilityArchiveStateStateEnum),
+    startTime: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PortabilityArchiveState",

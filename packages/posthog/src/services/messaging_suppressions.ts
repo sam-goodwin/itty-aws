@@ -33,8 +33,8 @@ export const MessagingSuppressionsAddSuppressionCreateRequest =
     identifier: "MessagingSuppressionsAddSuppressionCreateRequest",
   }) as any as S.Schema<MessagingSuppressionsAddSuppressionCreateRequest>;
 
-/** * `BOUNCE` - Bounce * `MANUAL` - Manual */
-export type MessageSuppressionSourceEnum = "BOUNCE" | "MANUAL";
+/** * `BOUNCE` - Bounce * `MANUAL` - Manual * `COMPLAINT` - Complaint */
+export type MessageSuppressionSourceEnum = "BOUNCE" | "MANUAL" | "COMPLAINT";
 export const MessageSuppressionSourceEnum = /*@__PURE__*/ S.String;
 
 export interface MessageSuppression {
@@ -42,7 +42,7 @@ export interface MessageSuppression {
   id: string;
   /** Normalized recipient email address. Suppression is keyed on this value, per team. */
   identifier: string;
-  /** How the entry landed on the list: `BOUNCE` for automatic (bounce-driven), `MANUAL` for user-added via the UI/API. * `BOUNCE` - Bounce * `MANUAL` - Manual */
+  /** How the entry landed on the list: `BOUNCE` for automatic (bounce-driven), `COMPLAINT` for automatic (the recipient reported a message as spam), `MANUAL` for user-added via the UI/API. * `BOUNCE` - Bounce * `MANUAL` - Manual * `COMPLAINT` - Complaint */
   source: MessageSuppressionSourceEnum;
   /** Human-readable reason for the suppression (e.g. 'Auto-suppressed after 5 consecutive soft bounces'). */
   reason: string | null;
@@ -112,6 +112,8 @@ export interface MessagingSuppressionsSuppressionsRetrieveRequest {
   project_id: string;
   page?: number;
   page_size?: number;
+  /** Case-insensitive substring match on the recipient email address. */
+  search?: string;
 }
 export const MessagingSuppressionsSuppressionsRetrieveRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -119,6 +121,7 @@ export const MessagingSuppressionsSuppressionsRetrieveRequest =
       project_id: S.String.pipe(T.Label()),
       page: S.optional(S.Number.pipe(T.Query())),
       page_size: S.optional(S.Number.pipe(T.Query())),
+      search: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",

@@ -2319,7 +2319,7 @@ export const DataPolicyManifestsGetByPolicyModeRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/dataPolicyManifests/{policyMode}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -2639,7 +2639,7 @@ export const DataPolicyManifestsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Authorization/dataPolicyManifests",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2772,7 +2772,7 @@ export const DeploymentOperationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}/operations/{operationId}",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2859,16 +2859,6 @@ export const StatusMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StatusMessage" }) as any as S.Schema<StatusMessage>;
 
-export type ExtensionConfigPropertyType =
-  | "String"
-  | "Int"
-  | "Bool"
-  | "Array"
-  | "Object"
-  | "SecureString"
-  | "SecureObject";
-export const ExtensionConfigPropertyType = /*@__PURE__*/ S.String;
-
 /** Azure Key Vault reference. */
 export interface KeyVaultReference_2 {
   /** Azure Key Vault resource id. */
@@ -2901,9 +2891,8 @@ export const KeyVaultParameterReference_2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeyVaultParameterReference_2",
 }) as any as S.Schema<KeyVaultParameterReference_2>;
 
+/** Represents the value for an extension config property. */
 export interface DeploymentExtensionConfigItem_2 {
-  /** The value type of the extension config property. */
-  type?: ExtensionConfigPropertyType | (string & {});
   /** The value of the extension config property. */
   value?: unknown;
   /** The Azure Key Vault reference used to retrieve the secret value of the extension config property. */
@@ -2911,7 +2900,6 @@ export interface DeploymentExtensionConfigItem_2 {
 }
 export const DeploymentExtensionConfigItem_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(ExtensionConfigPropertyType),
     value: S.optional(S.Unknown),
     keyVaultReference: S.optional(KeyVaultParameterReference_2),
   }),
@@ -2935,8 +2923,10 @@ export interface DeploymentExtensionDefinition {
   name?: string;
   /** The extension version. */
   version?: string;
-  /** The extension configuration ID. It uniquely identifies a deployment control plane within an extension. */
+  /** The extension configuration ID. It uniquely identifies a deployment target within an extension. */
   configId?: string;
+  /** The extension configuration hash. Can be used to distinguish different configurations that have the same config ID. */
+  configHash?: string;
   /** The extension configuration. */
   config?: DeploymentExtensionDefinitionConfigMap;
 }
@@ -2946,11 +2936,18 @@ export const DeploymentExtensionDefinition = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     version: S.optional(S.String),
     configId: S.optional(S.String),
+    configHash: S.optional(S.String),
     config: S.optional(DeploymentExtensionDefinitionConfigMap),
   }),
 ).annotate({
   identifier: "DeploymentExtensionDefinition",
 }) as any as S.Schema<DeploymentExtensionDefinition>;
+
+/** The symbolic name path to the resource in the deployment template, including nested deployment(s) and extension if applicable. */
+export type TargetResourceSymbolicNamePathList = Array<string>;
+export const TargetResourceSymbolicNamePathList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TargetResourceSymbolicNamePathList>;
 
 /** Target resource. */
 export interface TargetResource {
@@ -2968,6 +2965,8 @@ export interface TargetResource {
   apiVersion?: string;
   /** The symbolic name of the resource as defined in the deployment template. */
   symbolicName?: string;
+  /** The symbolic name path to the resource in the deployment template, including nested deployment(s) and extension if applicable. */
+  symbolicNamePath?: TargetResourceSymbolicNamePathList;
 }
 export const TargetResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2978,6 +2977,7 @@ export const TargetResource = /*@__PURE__*/ S.suspend(() =>
     identifiers: S.optional(S.Unknown),
     apiVersion: S.optional(S.String),
     symbolicName: S.optional(S.String),
+    symbolicNamePath: S.optional(TargetResourceSymbolicNamePathList),
   }),
 ).annotate({ identifier: "TargetResource" }) as any as S.Schema<TargetResource>;
 
@@ -3070,7 +3070,7 @@ export const DeploymentOperationsGetAtManagementGroupScopeRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3096,7 +3096,7 @@ export const DeploymentOperationsGetAtScopeRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -3122,7 +3122,7 @@ export const DeploymentOperationsGetAtSubscriptionScopeRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3145,7 +3145,7 @@ export const DeploymentOperationsGetAtTenantScopeRequest =
         method: "GET",
         uri: "/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3173,7 +3173,7 @@ export const DeploymentOperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}/operations",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3222,7 +3222,7 @@ export const DeploymentOperationsListAtManagementGroupScopeRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3248,7 +3248,7 @@ export const DeploymentOperationsListAtScopeRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/operations",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -3274,7 +3274,7 @@ export const DeploymentOperationsListAtSubscriptionScopeRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3297,7 +3297,7 @@ export const DeploymentOperationsListAtTenantScopeRequest =
         method: "GET",
         uri: "/providers/Microsoft.Resources/deployments/{deploymentName}/operations",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3312,7 +3312,7 @@ export const DeploymentsCalculateTemplateHashRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/providers/Microsoft.Resources/calculateTemplateHash",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -3353,7 +3353,7 @@ export const DeploymentsCancelRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3383,7 +3383,7 @@ export const DeploymentsCancelAtManagementGroupScopeRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3411,7 +3411,7 @@ export const DeploymentsCancelAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3441,7 +3441,7 @@ export const DeploymentsCancelAtSubscriptionScopeRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3467,7 +3467,7 @@ export const DeploymentsCancelAtTenantScopeRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -3796,7 +3796,7 @@ export const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4163,6 +4163,12 @@ export const OnErrorDeploymentExtended = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnErrorDeploymentExtended",
 }) as any as S.Schema<OnErrorDeploymentExtended>;
 
+/** The symbolic name path to the resource in the deployment template, including nested deployment(s) and extension if applicable. */
+export type ResourceReferenceSymbolicNamePathList = Array<string>;
+export const ResourceReferenceSymbolicNamePathList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceReferenceSymbolicNamePathList>;
+
 /** The resource Id model. */
 export interface ResourceReference_2 {
   /** The fully qualified Azure resource ID. */
@@ -4175,6 +4181,8 @@ export interface ResourceReference_2 {
   identifiers?: unknown;
   /** The API version the resource was deployed with. */
   apiVersion?: string;
+  /** The symbolic name path to the resource in the deployment template, including nested deployment(s) and extension if applicable. */
+  symbolicNamePath?: ResourceReferenceSymbolicNamePathList;
 }
 export const ResourceReference_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4183,6 +4191,7 @@ export const ResourceReference_2 = /*@__PURE__*/ S.suspend(() =>
     resourceType: S.optional(S.String),
     identifiers: S.optional(S.Unknown),
     apiVersion: S.optional(S.String),
+    symbolicNamePath: S.optional(ResourceReferenceSymbolicNamePathList),
   }),
 ).annotate({
   identifier: "ResourceReference_2",
@@ -4406,7 +4415,7 @@ export const DeploymentsCreateOrUpdateAtManagementGroupScopeRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4494,7 +4503,7 @@ export const DeploymentsCreateOrUpdateAtScopeRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -4582,7 +4591,7 @@ export const DeploymentsCreateOrUpdateAtSubscriptionScopeRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -4664,7 +4673,7 @@ export const DeploymentsCreateOrUpdateAtTenantScopeRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5319,7 +5328,7 @@ export const DeploymentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5349,7 +5358,7 @@ export const DeploymentsDeleteAtManagementGroupScopeRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5377,7 +5386,7 @@ export const DeploymentsDeleteAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5407,7 +5416,7 @@ export const DeploymentsDeleteAtSubscriptionScopeRequest =
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5433,7 +5442,7 @@ export const DeploymentsDeleteAtTenantScopeRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -5465,7 +5474,7 @@ export const DeploymentsExportTemplateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5501,7 +5510,7 @@ export const DeploymentsExportTemplateAtManagementGroupScopeRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5524,7 +5533,7 @@ export const DeploymentsExportTemplateAtScopeRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -5547,7 +5556,7 @@ export const DeploymentsExportTemplateAtSubscriptionScopeRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5567,7 +5576,7 @@ export const DeploymentsExportTemplateAtTenantScopeRequest =
         method: "POST",
         uri: "/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5592,7 +5601,7 @@ export const DeploymentsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5654,7 +5663,7 @@ export const DeploymentsGetAtManagementGroupScopeRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5717,7 +5726,7 @@ export const DeploymentsGetAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5779,7 +5788,7 @@ export const DeploymentsGetAtSubscriptionScopeRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -5839,7 +5848,7 @@ export const DeploymentsGetAtTenantScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Resources/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5905,7 +5914,7 @@ export const DeploymentsListAtManagementGroupScopeRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -5990,7 +5999,7 @@ export const DeploymentsListAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Resources/deployments",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6016,7 +6025,7 @@ export const DeploymentsListAtSubscriptionScopeRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -6038,7 +6047,7 @@ export const DeploymentsListAtTenantScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Resources/deployments",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6067,7 +6076,7 @@ export const DeploymentsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -7157,22 +7166,26 @@ export const DeploymentStacksCreateOrUpdateAtSubscriptionResponse =
   }) as any as S.Schema<DeploymentStacksCreateOrUpdateAtSubscriptionResponse>;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResources =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  | "detach"
+  | "fail";
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -7245,22 +7258,26 @@ export const DeploymentStacksDeleteAtManagementGroupResponse =
   }) as any as S.Schema<DeploymentStacksDeleteAtManagementGroupResponse>;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResources =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  | "detach"
+  | "fail";
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -7336,22 +7353,26 @@ export const DeploymentStacksDeleteAtResourceGroupResponse =
   }) as any as S.Schema<DeploymentStacksDeleteAtResourceGroupResponse>;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResources =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  | "detach"
+  | "fail";
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -8913,22 +8934,26 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRespons
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResources =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  | "detach"
+  | "fail";
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -9307,22 +9332,26 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateResponse 
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResources =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  | "detach"
+  | "fail";
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -9645,22 +9674,26 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateResponse =
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResources =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach";
+  | "delete"
+  | "detach";
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail";
+  | "detach"
+  | "fail";
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -9923,7 +9956,7 @@ export const DeploymentsValidateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -9990,7 +10023,7 @@ export const DeploymentsValidateAtManagementGroupScopeRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -10033,7 +10066,7 @@ export const DeploymentsValidateAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -10078,7 +10111,7 @@ export const DeploymentsValidateAtSubscriptionScopeRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -10117,7 +10150,7 @@ export const DeploymentsValidateAtTenantScopeRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -10125,52 +10158,55 @@ export const DeploymentsValidateAtTenantScopeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeploymentsValidateAtTenantScopeRequest>;
 
 /** Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string. */
-export type DeploymentWhatIfPropertiesParametersMap = {
+export type DeploymentWhatIfPropertiesInputParametersMap = {
   [key: string]: DeploymentParameter_2 | undefined;
 };
-export const DeploymentWhatIfPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DeploymentParameter_2,
-) as any as S.Schema<DeploymentWhatIfPropertiesParametersMap>;
+export const DeploymentWhatIfPropertiesInputParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentParameter_2,
+  ) as any as S.Schema<DeploymentWhatIfPropertiesInputParametersMap>;
 
 /** External input values, used by external tooling for parameter evaluation. */
-export type DeploymentWhatIfPropertiesExternalInputsMap = {
+export type DeploymentWhatIfPropertiesInputExternalInputsMap = {
   [key: string]: DeploymentExternalInput | undefined;
 };
-export const DeploymentWhatIfPropertiesExternalInputsMap =
+export const DeploymentWhatIfPropertiesInputExternalInputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     DeploymentExternalInput,
-  ) as any as S.Schema<DeploymentWhatIfPropertiesExternalInputsMap>;
+  ) as any as S.Schema<DeploymentWhatIfPropertiesInputExternalInputsMap>;
 
 /** External input definitions, used by external tooling to define expected external input values. */
-export type DeploymentWhatIfPropertiesExternalInputDefinitionsMap = {
+export type DeploymentWhatIfPropertiesInputExternalInputDefinitionsMap = {
   [key: string]: DeploymentExternalInputDefinition | undefined;
 };
-export const DeploymentWhatIfPropertiesExternalInputDefinitionsMap =
+export const DeploymentWhatIfPropertiesInputExternalInputDefinitionsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     DeploymentExternalInputDefinition,
-  ) as any as S.Schema<DeploymentWhatIfPropertiesExternalInputDefinitionsMap>;
+  ) as any as S.Schema<DeploymentWhatIfPropertiesInputExternalInputDefinitionsMap>;
 
-export type DeploymentWhatIfPropertiesExtensionConfigsValueMap = {
+export type DeploymentWhatIfPropertiesInputExtensionConfigsValueMap = {
   [key: string]: DeploymentExtensionConfigItem_2 | undefined;
 };
-export const DeploymentWhatIfPropertiesExtensionConfigsValueMap =
+export const DeploymentWhatIfPropertiesInputExtensionConfigsValueMap =
   /*@__PURE__*/ S.Record(
     S.String,
     DeploymentExtensionConfigItem_2,
-  ) as any as S.Schema<DeploymentWhatIfPropertiesExtensionConfigsValueMap>;
+  ) as any as S.Schema<DeploymentWhatIfPropertiesInputExtensionConfigsValueMap>;
 
 /** The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template. */
-export type DeploymentWhatIfPropertiesExtensionConfigsMap = {
-  [key: string]: DeploymentWhatIfPropertiesExtensionConfigsValueMap | undefined;
+export type DeploymentWhatIfPropertiesInputExtensionConfigsMap = {
+  [key: string]:
+    | DeploymentWhatIfPropertiesInputExtensionConfigsValueMap
+    | undefined;
 };
-export const DeploymentWhatIfPropertiesExtensionConfigsMap =
+export const DeploymentWhatIfPropertiesInputExtensionConfigsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DeploymentWhatIfPropertiesExtensionConfigsValueMap,
-  ) as any as S.Schema<DeploymentWhatIfPropertiesExtensionConfigsMap>;
+    DeploymentWhatIfPropertiesInputExtensionConfigsValueMap,
+  ) as any as S.Schema<DeploymentWhatIfPropertiesInputExtensionConfigsMap>;
 
 /** The format of the What-If results */
 export type WhatIfResultFormat = "ResourceIdOnly" | "FullResourcePayloads";
@@ -10189,22 +10225,73 @@ export const DeploymentWhatIfSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentWhatIfSettings",
 }) as any as S.Schema<DeploymentWhatIfSettings>;
 
+/** The symbolic name path to the resource in the deployment template, including nested deployment(s) and extension if applicable. */
+export type DeploymentResourceWhatIfPredictionInputSymbolicNamePathList =
+  Array<string>;
+export const DeploymentResourceWhatIfPredictionInputSymbolicNamePathList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DeploymentResourceWhatIfPredictionInputSymbolicNamePathList>;
+
+export type DeploymentExtensionDefinitionInput =
+  UserAssignedResourceIdentityInput;
+export const DeploymentExtensionDefinitionInput =
+  UserAssignedResourceIdentityInput;
+
+/** A prediction for a deployment resource by its symbolic name path. */
+export interface DeploymentResourceWhatIfPredictionInput {
+  /** The symbolic name path to the resource in the deployment template, including nested deployment(s) and extension if applicable. */
+  symbolicNamePath: DeploymentResourceWhatIfPredictionInputSymbolicNamePathList;
+  /** The predicted fully-qualified Azure resource ID. */
+  resourceId?: string;
+  /** The predicted extension usage. */
+  extension?: UserAssignedResourceIdentityInput;
+  /** The predicted resource type. */
+  resourceType?: string;
+  /** The predicted extensible resource identifiers. */
+  identifiers?: unknown;
+  /** The predicted API version. */
+  apiVersion?: string;
+}
+export const DeploymentResourceWhatIfPredictionInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      symbolicNamePath:
+        DeploymentResourceWhatIfPredictionInputSymbolicNamePathList,
+      resourceId: S.optional(S.String),
+      extension: S.optional(UserAssignedResourceIdentityInput),
+      resourceType: S.optional(S.String),
+      identifiers: S.optional(S.Unknown),
+      apiVersion: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DeploymentResourceWhatIfPredictionInput",
+}) as any as S.Schema<DeploymentResourceWhatIfPredictionInput>;
+
+/** Resource predictions that can be utilized by what-if to produce potential modification changes. */
+export type DeploymentWhatIfPropertiesInputResourcePredictionsList =
+  Array<DeploymentResourceWhatIfPredictionInput>;
+export const DeploymentWhatIfPropertiesInputResourcePredictionsList =
+  /*@__PURE__*/ S.Array(
+    DeploymentResourceWhatIfPredictionInput,
+  ) as any as S.Schema<DeploymentWhatIfPropertiesInputResourcePredictionsList>;
+
 /** Deployment What-if properties. */
-export interface DeploymentWhatIfProperties {
+export interface DeploymentWhatIfPropertiesInput {
   /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
   template?: unknown;
   /** The URI of the template. Use either the templateLink property or the template property, but not both. */
   templateLink?: TemplateLink;
   /** Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string. */
-  parameters?: DeploymentWhatIfPropertiesParametersMap;
+  parameters?: DeploymentWhatIfPropertiesInputParametersMap;
   /** External input values, used by external tooling for parameter evaluation. */
-  externalInputs?: DeploymentWhatIfPropertiesExternalInputsMap;
+  externalInputs?: DeploymentWhatIfPropertiesInputExternalInputsMap;
   /** External input definitions, used by external tooling to define expected external input values. */
-  externalInputDefinitions?: DeploymentWhatIfPropertiesExternalInputDefinitionsMap;
+  externalInputDefinitions?: DeploymentWhatIfPropertiesInputExternalInputDefinitionsMap;
   /** The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
   parametersLink?: ParametersLink;
   /** The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template. */
-  extensionConfigs?: DeploymentWhatIfPropertiesExtensionConfigsMap;
+  extensionConfigs?: DeploymentWhatIfPropertiesInputExtensionConfigsMap;
   /** The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources. */
   mode: DeploymentMode | (string & {});
   /** The debug setting of the deployment. */
@@ -10217,28 +10304,37 @@ export interface DeploymentWhatIfProperties {
   validationLevel?: ValidationLevel | (string & {});
   /** Optional What-If operation settings. */
   whatIfSettings?: DeploymentWhatIfSettings;
+  /** Resource predictions that can be utilized by what-if to produce potential modification changes. */
+  resourcePredictions?: DeploymentWhatIfPropertiesInputResourcePredictionsList;
 }
-export const DeploymentWhatIfProperties = /*@__PURE__*/ S.suspend(() =>
+export const DeploymentWhatIfPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template: S.optional(S.Unknown),
     templateLink: S.optional(TemplateLink),
-    parameters: S.optional(DeploymentWhatIfPropertiesParametersMap),
-    externalInputs: S.optional(DeploymentWhatIfPropertiesExternalInputsMap),
+    parameters: S.optional(DeploymentWhatIfPropertiesInputParametersMap),
+    externalInputs: S.optional(
+      DeploymentWhatIfPropertiesInputExternalInputsMap,
+    ),
     externalInputDefinitions: S.optional(
-      DeploymentWhatIfPropertiesExternalInputDefinitionsMap,
+      DeploymentWhatIfPropertiesInputExternalInputDefinitionsMap,
     ),
     parametersLink: S.optional(ParametersLink),
-    extensionConfigs: S.optional(DeploymentWhatIfPropertiesExtensionConfigsMap),
+    extensionConfigs: S.optional(
+      DeploymentWhatIfPropertiesInputExtensionConfigsMap,
+    ),
     mode: DeploymentMode,
     debugSetting: S.optional(DebugSetting),
     onErrorDeployment: S.optional(OnErrorDeployment),
     expressionEvaluationOptions: S.optional(ExpressionEvaluationOptions),
     validationLevel: S.optional(ValidationLevel),
     whatIfSettings: S.optional(DeploymentWhatIfSettings),
+    resourcePredictions: S.optional(
+      DeploymentWhatIfPropertiesInputResourcePredictionsList,
+    ),
   }),
 ).annotate({
-  identifier: "DeploymentWhatIfProperties",
-}) as any as S.Schema<DeploymentWhatIfProperties>;
+  identifier: "DeploymentWhatIfPropertiesInput",
+}) as any as S.Schema<DeploymentWhatIfPropertiesInput>;
 
 export interface DeploymentsWhatIfRequest {
   /** The ID of the target subscription. */
@@ -10250,7 +10346,7 @@ export interface DeploymentsWhatIfRequest {
   /** The location to store the deployment data. */
   location?: string;
   /** The deployment properties. */
-  properties: DeploymentWhatIfProperties;
+  properties: DeploymentWhatIfPropertiesInput;
 }
 export const DeploymentsWhatIfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10258,13 +10354,13 @@ export const DeploymentsWhatIfRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
     location: S.optional(S.String),
-    properties: DeploymentWhatIfProperties,
+    properties: DeploymentWhatIfPropertiesInput,
   }).pipe(
     T.Http({
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
       code: 200,
-      apiVersion: "2025-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -10330,12 +10426,14 @@ export const WhatIfChangeDeltaList = /*@__PURE__*/ S.Array(
 
 /** Information about a single resource change predicted by What-If operation. */
 export interface WhatIfChange {
-  /** Resource ID */
+  /** The fully-qualified ARM resource ID for this change. */
   resourceId?: string;
   /** The resource id of the Deployment responsible for this change. */
   deploymentId?: string;
   /** The symbolic name of the resource responsible for this change. */
   symbolicName?: string;
+  /** The resource type of the resource. */
+  resourceType?: string;
   /** A subset of properties that uniquely identify a Bicep extensible resource because it lacks a resource id like an Azure resource has. */
   identifiers?: unknown;
   /** The extension the resource was deployed with. */
@@ -10356,6 +10454,7 @@ export const WhatIfChange = /*@__PURE__*/ S.suspend(() =>
     resourceId: S.optional(S.String),
     deploymentId: S.optional(S.String),
     symbolicName: S.optional(S.String),
+    resourceType: S.optional(S.String),
     identifiers: S.optional(S.Unknown),
     extension: S.optional(DeploymentExtensionDefinition),
     changeType: ChangeType,
@@ -10432,7 +10531,7 @@ export interface DeploymentsWhatIfAtManagementGroupScopeRequest {
   /** The location to store the deployment data. */
   location: string;
   /** The deployment properties. */
-  properties: DeploymentWhatIfProperties;
+  properties: DeploymentWhatIfPropertiesInput;
 }
 export const DeploymentsWhatIfAtManagementGroupScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10440,13 +10539,13 @@ export const DeploymentsWhatIfAtManagementGroupScopeRequest =
       groupId: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
       location: S.String,
-      properties: DeploymentWhatIfProperties,
+      properties: DeploymentWhatIfPropertiesInput,
     }).pipe(
       T.Http({
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -10461,7 +10560,7 @@ export interface DeploymentsWhatIfAtSubscriptionScopeRequest {
   /** The location to store the deployment data. */
   location?: string;
   /** The deployment properties. */
-  properties: DeploymentWhatIfProperties;
+  properties: DeploymentWhatIfPropertiesInput;
 }
 export const DeploymentsWhatIfAtSubscriptionScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10469,13 +10568,13 @@ export const DeploymentsWhatIfAtSubscriptionScopeRequest =
       subscriptionId: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
       location: S.optional(S.String),
-      properties: DeploymentWhatIfProperties,
+      properties: DeploymentWhatIfPropertiesInput,
     }).pipe(
       T.Http({
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -10488,20 +10587,20 @@ export interface DeploymentsWhatIfAtTenantScopeRequest {
   /** The location to store the deployment data. */
   location: string;
   /** The deployment properties. */
-  properties: DeploymentWhatIfProperties;
+  properties: DeploymentWhatIfPropertiesInput;
 }
 export const DeploymentsWhatIfAtTenantScopeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       deploymentName: S.String.pipe(T.Label()),
       location: S.String,
-      properties: DeploymentWhatIfProperties,
+      properties: DeploymentWhatIfPropertiesInput,
     }).pipe(
       T.Http({
         method: "POST",
         uri: "/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
         code: 200,
-        apiVersion: "2025-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -11999,7 +12098,7 @@ export type SelectorKind =
   | "resourceType"
   | "resourceWithoutLocation"
   | "policyDefinitionReferenceId"
-  | "resourcePercentage"
+  | "resourceRolloutPercentage"
   | "userPrincipalId"
   | "groupPrincipalId";
 export const SelectorKind = /*@__PURE__*/ S.String;
@@ -12245,7 +12344,7 @@ export const PolicyAssignmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -12450,7 +12549,7 @@ export const PolicyAssignmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -12505,7 +12604,7 @@ export const PolicyAssignmentsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -12563,7 +12662,7 @@ export const PolicyAssignmentsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -12645,7 +12744,7 @@ export const PolicyAssignmentsListForManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -12689,7 +12788,7 @@ export const PolicyAssignmentsListForResourceRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -12721,7 +12820,7 @@ export const PolicyAssignmentsListForResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -12788,7 +12887,7 @@ export const PolicyAssignmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -13018,7 +13117,7 @@ export const PolicyDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -13069,7 +13168,7 @@ export const PolicyDefinitionsCreateOrUpdateAtManagementGroupRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13116,7 +13215,7 @@ export const PolicyDefinitionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -13146,7 +13245,7 @@ export const PolicyDefinitionsDeleteAtManagementGroupRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13174,7 +13273,7 @@ export const PolicyDefinitionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -13221,7 +13320,7 @@ export const PolicyDefinitionsGetAtManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13265,7 +13364,7 @@ export const PolicyDefinitionsGetBuiltInRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -13314,7 +13413,7 @@ export const PolicyDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -13383,7 +13482,7 @@ export const PolicyDefinitionsListBuiltInRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Authorization/policyDefinitions",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -13409,7 +13508,7 @@ export const PolicyDefinitionsListByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13487,7 +13586,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13541,7 +13640,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13594,7 +13693,7 @@ export const PolicyDefinitionVersionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -13627,7 +13726,7 @@ export const PolicyDefinitionVersionsDeleteAtManagementGroupRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13658,7 +13757,7 @@ export const PolicyDefinitionVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -13708,7 +13807,7 @@ export const PolicyDefinitionVersionsGetAtManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13756,7 +13855,7 @@ export const PolicyDefinitionVersionsGetBuiltInRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13806,7 +13905,7 @@ export const PolicyDefinitionVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -13874,7 +13973,7 @@ export const PolicyDefinitionVersionsListAllRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -13894,7 +13993,7 @@ export const PolicyDefinitionVersionsListAllAtManagementGroupRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13909,7 +14008,7 @@ export const PolicyDefinitionVersionsListAllBuiltinsRequest =
         method: "POST",
         uri: "/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13932,7 +14031,7 @@ export const PolicyDefinitionVersionsListBuiltInRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -13958,7 +14057,7 @@ export const PolicyDefinitionVersionsListByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14123,7 +14222,7 @@ export const PolicySetDefinitionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14291,7 +14390,7 @@ export const PolicySetDefinitionsCreateOrUpdateAtManagementGroupRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14338,7 +14437,7 @@ export const PolicySetDefinitionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -14368,7 +14467,7 @@ export const PolicySetDefinitionsDeleteAtManagementGroupRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14399,7 +14498,7 @@ export const PolicySetDefinitionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -14449,7 +14548,7 @@ export const PolicySetDefinitionsGetAtManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14497,7 +14596,7 @@ export const PolicySetDefinitionsGetBuiltInRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -14550,7 +14649,7 @@ export const PolicySetDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -14623,7 +14722,7 @@ export const PolicySetDefinitionsListBuiltInRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policySetDefinitions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -14652,7 +14751,7 @@ export const PolicySetDefinitionsListByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14747,7 +14846,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14865,7 +14964,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14918,7 +15017,7 @@ export const PolicySetDefinitionVersionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -14950,7 +15049,7 @@ export const PolicySetDefinitionVersionsDeleteAtManagementGroupRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -14985,7 +15084,7 @@ export const PolicySetDefinitionVersionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -15039,7 +15138,7 @@ export const PolicySetDefinitionVersionsGetAtManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -15090,7 +15189,7 @@ export const PolicySetDefinitionVersionsGetBuiltInRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -15144,7 +15243,7 @@ export const PolicySetDefinitionVersionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -15214,7 +15313,7 @@ export const PolicySetDefinitionVersionsListAllRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -15234,7 +15333,7 @@ export const PolicySetDefinitionVersionsListAllAtManagementGroupRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -15249,7 +15348,7 @@ export const PolicySetDefinitionVersionsListAllBuiltinsRequest =
         method: "POST",
         uri: "/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -15275,7 +15374,7 @@ export const PolicySetDefinitionVersionsListBuiltInRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -15304,7 +15403,7 @@ export const PolicySetDefinitionVersionsListByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -15348,7 +15447,7 @@ export const PolicyTokensAcquireRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/acquirePolicyToken",
       code: 200,
-      apiVersion: "2026-06-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -15439,6 +15538,20 @@ export const ExternalEndpointResult = /*@__PURE__*/ S.String;
 export type PolicyAction = "Unknown" | "Allow" | "Audit" | "Deny" | "Error";
 export const PolicyAction = /*@__PURE__*/ S.String;
 
+/** The compliance state of the resource against the policy. Possible values are NotSpecified, NonCompliant, Partial, Conflict, NotApplicable, Compliant, Error, Unknown, Exempt, and Protected. */
+export type ComplianceState =
+  | "NotSpecified"
+  | "NonCompliant"
+  | "Partial"
+  | "Conflict"
+  | "NotApplicable"
+  | "Compliant"
+  | "Error"
+  | "Unknown"
+  | "Exempt"
+  | "Protected";
+export const ComplianceState = /*@__PURE__*/ S.String;
+
 /** The external evaluation endpoint invocation results. */
 export interface ExternalEvaluationEndpointInvocationResult {
   /** The details of the policy requiring the external endpoint invocation. */
@@ -15459,6 +15572,8 @@ export interface ExternalEvaluationEndpointInvocationResult {
   policyEvaluationDetails?: unknown;
   /** The endpoint specific metadata. */
   additionalInfo?: unknown;
+  /** The compliance state of the resource against the policy. Possible values are NotSpecified, NonCompliant, Conflict, NotApplicable, Compliant, Error, Unknown, and Exempt. */
+  complianceState?: ComplianceState;
   /** The expiration of the results. */
   expiration?: string;
 }
@@ -15474,6 +15589,7 @@ export const ExternalEvaluationEndpointInvocationResult =
       policyAction: S.optional(PolicyAction),
       policyEvaluationDetails: S.optional(S.Unknown),
       additionalInfo: S.optional(S.Unknown),
+      complianceState: S.optional(ComplianceState),
       expiration: S.optional(S.String),
     }),
   ).annotate({
@@ -15543,12 +15659,41 @@ export const PolicyTokensAcquireAtManagementGroupRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/acquirePolicyToken",
         code: 200,
-        apiVersion: "2026-06-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
     identifier: "PolicyTokensAcquireAtManagementGroupRequest",
   }) as any as S.Schema<PolicyTokensAcquireAtManagementGroupRequest>;
+
+export interface PolicyTokensAcquireAtResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The resource operation to acquire a token for. */
+  operation: PolicyTokenOperation;
+  /** The change reference. */
+  changeReference?: string;
+}
+export const PolicyTokensAcquireAtResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      operation: PolicyTokenOperation,
+      changeReference: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/acquirePolicyToken",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PolicyTokensAcquireAtResourceGroupRequest",
+  }) as any as S.Schema<PolicyTokensAcquireAtResourceGroupRequest>;
 
 export interface PrivateLinkAssociationDeleteRequest {
   /** The management group ID. */
@@ -18184,13 +18329,13 @@ export const ResourceValidationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The state. */
 export type SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState =
-    | "NotSpecified"
-    | "NotRegistered"
-    | "Pending"
-    | "Registering"
-    | "Registered"
-    | "Unregistering"
-    | "Unregistered";
+  | "NotSpecified"
+  | "NotRegistered"
+  | "Pending"
+  | "Registering"
+  | "Registered"
+  | "Unregistering"
+  | "Unregistered";
 export const SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -18270,13 +18415,13 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdateRequest =
 
 /** The state. */
 export type SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesState =
-    | "NotSpecified"
-    | "NotRegistered"
-    | "Pending"
-    | "Registering"
-    | "Registered"
-    | "Unregistering"
-    | "Unregistered";
+  | "NotSpecified"
+  | "NotRegistered"
+  | "Pending"
+  | "Registering"
+  | "Registered"
+  | "Unregistering"
+  | "Unregistered";
 export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -18316,7 +18461,9 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesMet
 
 /** The feature approval type. */
 export type SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesApprovalType =
-  "NotSpecified" | "ApprovalRequired" | "AutoApproval";
+  | "NotSpecified"
+  | "ApprovalRequired"
+  | "AutoApproval";
 export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesApprovalType =
   /*@__PURE__*/ S.String;
 
@@ -20445,7 +20592,10 @@ export const TemplateSpecVersionsCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type TemplateSpecVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const TemplateSpecVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -20712,7 +20862,10 @@ export const TemplateSpecVersionsGetBuiltInResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type TemplateSpecVersionsGetBuiltInResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const TemplateSpecVersionsGetBuiltInResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -24191,6 +24344,21 @@ export const PolicyTokensAcquireAtManagementGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PolicyTokensAcquireAtManagementGroupRequest,
+  output: PolicyTokenResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PolicyTokensAcquireAtResourceGroupError = AzureOpError;
+/** Acquires a policy token at resource group level. This operation acquires a policy token in the given resource group for the given request body. */
+export const PolicyTokensAcquireAtResourceGroup: API.OperationMethod<
+  PolicyTokensAcquireAtResourceGroupRequest,
+  PolicyTokenResponse,
+  PolicyTokensAcquireAtResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PolicyTokensAcquireAtResourceGroupRequest,
   output: PolicyTokenResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,

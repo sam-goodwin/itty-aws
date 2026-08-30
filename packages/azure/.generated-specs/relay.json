@@ -30,10 +30,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Regenerates the primary or secondary connection strings to the WCF relay.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#AccessKeys": {
@@ -168,10 +168,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/listKeys",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Primary and secondary connection strings to the WCF relay.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#WCFRelaysListKeysRequest": {
@@ -235,10 +235,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Deletes a WCF relay authorization rule.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#WCFRelaysDeleteAuthorizationRuleRequest": {
@@ -302,10 +302,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Creates or updates an authorization rule for a WCF relay.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#WCFRelaysCreateOrUpdateAuthorizationRuleResponse": {
@@ -575,10 +575,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Get authorizationRule for a WCF relay by name.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#WCFRelaysGetAuthorizationRuleResponse": {
@@ -686,10 +686,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Authorization rules for a WCF relay.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#AuthorizationRuleListResult": {
@@ -819,10 +819,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Deletes a WCF relay.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#WCFRelaysDeleteRequest": {
@@ -878,10 +878,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Creates or updates a WCF relay. This operation is idempotent.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#WCFRelaysCreateOrUpdateResponse": {
@@ -1095,10 +1095,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Returns the description for the specified WCF relay.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#WCFRelaysGetResponse": {
@@ -1198,10 +1198,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Lists the WCF relays within the namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#WcfRelaysListResult": {
@@ -1323,10 +1323,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources/{privateLinkResourceName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Gets a private link resource by a specified group name for a container registry.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#PrivateLinkResourcesGetResponse": {
@@ -1464,10 +1464,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Lists the private link resources for a container registry.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#PrivateLinkResourcesListResult": {
@@ -1583,10 +1583,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Deletes an existing namespace. This operation also removes all associated resources under the namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#PrivateEndpointConnectionsDeleteRequest": {
@@ -1642,10 +1642,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Creates or updates PrivateEndpointConnections of service namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#PrivateEndpointConnectionsCreateOrUpdateResponse": {
@@ -1887,10 +1887,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Gets a description for the specified Private Endpoint Connection name.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#PrivateEndpointConnectionsGetResponse": {
@@ -1990,10 +1990,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Gets the available PrivateEndpointConnections within a namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#PrivateEndpointConnectionListResult": {
@@ -2115,10 +2115,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Create or update NetworkRuleSet for a Namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesCreateOrUpdateNetworkRuleSetResponse": {
@@ -2331,10 +2331,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Gets NetworkRuleSet for a Namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesGetNetworkRuleSetResponse": {
@@ -2420,10 +2420,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Regenerates the primary or secondary connection strings to the hybrid connection.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsRegenerateKeysRequest": {
@@ -2500,10 +2500,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/listKeys",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Primary and secondary connection strings to the hybrid connection.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsListKeysRequest": {
@@ -2567,10 +2567,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Deletes a hybrid connection authorization rule.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsDeleteAuthorizationRuleRequest": {
@@ -2634,10 +2634,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Creates or updates an authorization rule for a hybrid connection.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsCreateOrUpdateAuthorizationRuleResponse": {
@@ -2751,10 +2751,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Hybrid connection authorization rule for a hybrid connection by name.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsGetAuthorizationRuleResponse": {
@@ -2862,10 +2862,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Authorization rules for a hybrid connection.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsListAuthorizationRulesRequest": {
@@ -2921,10 +2921,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Deletes a hybrid connection.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsDeleteRequest": {
@@ -2980,10 +2980,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Creates or updates a service hybrid connection. This operation is idempotent.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsCreateOrUpdateResponse": {
@@ -3147,10 +3147,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Returns the description for the specified hybrid connection.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionsGetResponse": {
@@ -3250,10 +3250,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Lists the hybrid connection within the namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#HybridConnectionListResult": {
@@ -3375,10 +3375,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Regenerates the primary or secondary connection strings to the namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesRegenerateKeysRequest": {
@@ -3447,10 +3447,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Primary and secondary connection strings to the namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesListKeysRequest": {
@@ -3506,10 +3506,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Deletes a namespace authorization rule.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesDeleteAuthorizationRuleRequest": {
@@ -3565,10 +3565,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Creates or updates an authorization rule for a namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesCreateOrUpdateAuthorizationRuleResponse": {
@@ -3674,10 +3674,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Authorization rule for a namespace by name.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesGetAuthorizationRuleResponse": {
@@ -3777,10 +3777,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Authorization rules for a namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesListAuthorizationRulesRequest": {
@@ -3828,10 +3828,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Deletes an existing namespace. This operation also removes all associated resources under the namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesDeleteRequest": {
@@ -3879,10 +3879,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Creates or updates a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesUpdateResponse": {
@@ -4041,10 +4041,36 @@
           "traits": {
             "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled."
           }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.relay#TlsVersion",
+          "traits": {
+            "smithy.api#documentation": "The minimum TLS version for the namespace.\nSupported values are 1.2 and 1.3.\nThe service defaults to 1.2 when the property is omitted.\nExisting namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Properties of the namespace."
+      }
+    },
+    "com.azure.relay#TlsVersion": {
+      "type": "enum",
+      "members": {
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        },
+        "_1_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.3"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "TLS versions supported by Relay namespaces."
       }
     },
     "com.azure.relay#RelayNamespacePropertiesPublicNetworkAccess": {
@@ -4158,6 +4184,12 @@
           "traits": {
             "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled."
           }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.relay#TlsVersion",
+          "traits": {
+            "smithy.api#documentation": "The minimum TLS version for the namespace.\nSupported values are 1.2 and 1.3.\nThe service defaults to 1.2 when the property is omitted.\nExisting namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2."
+          }
         }
       },
       "traits": {
@@ -4238,10 +4270,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Create Azure Relay namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesCreateOrUpdateResponse": {
@@ -4395,10 +4427,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Returns the description for the specified namespace.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesGetResponse": {
@@ -4515,10 +4547,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Lists all the available namespaces within the ResourceGroup.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#RelayNamespaceListResult": {
@@ -4657,10 +4689,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Lists all the available namespaces within the subscription regardless of the resourceGroups.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#NamespacesListRequest": {
@@ -4692,10 +4724,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "Check the specified namespace name availability.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#CheckNameAvailabilityResult": {
@@ -4804,10 +4836,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Relay/operations",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2026-01-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
     "com.azure.relay#OperationsListResponse": {

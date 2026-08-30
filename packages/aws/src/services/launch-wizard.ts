@@ -338,10 +338,35 @@ export type WorkloadStatus =
   | (string & {});
 export const WorkloadStatus = /*@__PURE__*/ S.String;
 
+export interface ManagementAccountConstraint {}
+export const ManagementAccountConstraint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ManagementAccountConstraint",
+}) as any as S.Schema<ManagementAccountConstraint>;
+export type ServicePrincipalType = string;
+export interface DelegatedAdminConstraint {
+  servicePrincipal: string;
+}
+export const DelegatedAdminConstraint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ servicePrincipal: S.String }),
+).annotate({
+  identifier: "DelegatedAdminConstraint",
+}) as any as S.Schema<DelegatedAdminConstraint>;
+export type AccountConstraint =
+  | { managementAccount: ManagementAccountConstraint; delegatedAdmin?: never }
+  | { managementAccount?: never; delegatedAdmin: DelegatedAdminConstraint };
+export const AccountConstraint = /*@__PURE__*/ S.Union([
+  S.Struct({ managementAccount: ManagementAccountConstraint }),
+  S.Struct({ delegatedAdmin: DelegatedAdminConstraint }),
+]);
+export type AccountConstraintsList = AccountConstraint[];
+export const AccountConstraintsList = /*@__PURE__*/ S.Array(AccountConstraint);
 export interface WorkloadData {
   workloadName?: string;
   displayName?: string;
   status?: WorkloadStatus;
+  accountConstraints?: AccountConstraint[];
   description?: string;
   documentationUrl?: string;
   iconUrl?: string;
@@ -352,6 +377,7 @@ export const WorkloadData = /*@__PURE__*/ S.suspend(() =>
     workloadName: S.optional(S.String),
     displayName: S.optional(S.String),
     status: S.optional(WorkloadStatus),
+    accountConstraints: S.optional(AccountConstraintsList),
     description: S.optional(S.String),
     documentationUrl: S.optional(S.String),
     iconUrl: S.optional(S.String),
@@ -444,6 +470,7 @@ export interface WorkloadDeploymentPatternData {
   description?: string;
   status?: WorkloadDeploymentPatternStatus;
   statusMessage?: string;
+  accountConstraints?: AccountConstraint[];
   specifications?: DeploymentSpecificationsField[];
 }
 export const WorkloadDeploymentPatternData = /*@__PURE__*/ S.suspend(() =>
@@ -456,6 +483,7 @@ export const WorkloadDeploymentPatternData = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     status: S.optional(WorkloadDeploymentPatternStatus),
     statusMessage: S.optional(S.String),
+    accountConstraints: S.optional(AccountConstraintsList),
     specifications: S.optional(DeploymentSpecificationsData),
   }),
 ).annotate({
@@ -508,12 +536,20 @@ export type EventStatus =
   | (string & {});
 export const EventStatus = /*@__PURE__*/ S.String;
 
+export type DeploymentEventMetadataKey = string;
+export type DeploymentEventMetadataValue = string;
+export type DeploymentEventMetadata = { [key: string]: string | undefined };
+export const DeploymentEventMetadata = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface DeploymentEventDataSummary {
   name?: string;
   description?: string;
   status?: EventStatus;
   statusReason?: string;
   timestamp?: Date;
+  metadata?: { [key: string]: string | undefined };
 }
 export const DeploymentEventDataSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -522,6 +558,7 @@ export const DeploymentEventDataSummary = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(EventStatus),
     statusReason: S.optional(S.String),
     timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    metadata: S.optional(DeploymentEventMetadata),
   }),
 ).annotate({
   identifier: "DeploymentEventDataSummary",
@@ -756,6 +793,7 @@ export interface WorkloadDeploymentPatternDataSummary {
   description?: string;
   status?: WorkloadDeploymentPatternStatus;
   statusMessage?: string;
+  accountConstraints?: AccountConstraint[];
 }
 export const WorkloadDeploymentPatternDataSummary = /*@__PURE__*/ S.suspend(
   () =>
@@ -768,6 +806,7 @@ export const WorkloadDeploymentPatternDataSummary = /*@__PURE__*/ S.suspend(
       description: S.optional(S.String),
       status: S.optional(WorkloadDeploymentPatternStatus),
       statusMessage: S.optional(S.String),
+      accountConstraints: S.optional(AccountConstraintsList),
     }),
 ).annotate({
   identifier: "WorkloadDeploymentPatternDataSummary",
@@ -817,12 +856,14 @@ export interface WorkloadDataSummary {
   workloadName?: string;
   displayName?: string;
   status?: WorkloadStatus;
+  accountConstraints?: AccountConstraint[];
 }
 export const WorkloadDataSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadName: S.optional(S.String),
     displayName: S.optional(S.String),
     status: S.optional(WorkloadStatus),
+    accountConstraints: S.optional(AccountConstraintsList),
   }),
 ).annotate({
   identifier: "WorkloadDataSummary",

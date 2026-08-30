@@ -2836,18 +2836,6 @@ export const SessionMonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SessionMonitoringConfiguration",
 }) as any as S.Schema<SessionMonitoringConfiguration>;
-export interface CertificateAuthority {
-  CertificateArn?: string;
-  CertificateData?: string;
-}
-export const CertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateArn: S.optional(S.String),
-    CertificateData: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateAuthority",
-}) as any as S.Schema<CertificateAuthority>;
 export interface Session {
   Id?: string;
   ClusterId?: string;
@@ -2866,7 +2854,6 @@ export interface Session {
   EngineConfigurations?: Configuration[];
   MonitoringConfiguration?: SessionMonitoringConfiguration;
   SessionIdleTimeoutInMinutes?: number;
-  CertificateAuthority?: CertificateAuthority;
   ServerUrl?: string;
   Tags?: Tag[];
 }
@@ -2889,7 +2876,6 @@ export const Session = /*@__PURE__*/ S.suspend(() =>
     EngineConfigurations: S.optional(ConfigurationList),
     MonitoringConfiguration: S.optional(SessionMonitoringConfiguration),
     SessionIdleTimeoutInMinutes: S.optional(S.Number),
-    CertificateAuthority: S.optional(CertificateAuthority),
     ServerUrl: S.optional(S.String),
     Tags: S.optional(TagList),
   }),

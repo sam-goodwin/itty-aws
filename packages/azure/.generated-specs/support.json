@@ -30,10 +30,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Adds a new customer communication to an Azure support ticket.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#CommunicationsCreateResponse": {
@@ -349,10 +349,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Returns communication details for a support ticket.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#CommunicationsGetResponse": {
@@ -439,10 +439,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#CommunicationsListResult": {
@@ -564,10 +564,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Check the availability of a resource name. This API should be used to check the uniqueness of the name for adding a new communication to the support ticket.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#CheckNameAvailabilityOutput": {
@@ -667,10 +667,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Returns chatTranscript details for a support ticket under a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#ChatTranscriptsGetResponse": {
@@ -823,10 +823,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all chat transcripts for a support ticket under subscription",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#ChatTranscriptsListResult": {
@@ -933,10 +933,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.<br/><br/>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer. In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsUpdateResponse": {
@@ -1149,179 +1149,10 @@
           "traits": {
             "smithy.api#documentation": "This property indicates secondary consents for the support ticket"
           }
-        },
-        "directConnectEscalation": {
-          "target": "com.azure.support#DirectConnectEscalation",
-          "traits": {
-            "smithy.api#documentation": "Direct Connect Escalation details for a support ticket."
-          }
-        },
-        "communityForumPost": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Contains a link to the post on the community forum."
-          }
-        },
-        "supportChannel": {
-          "target": "com.azure.support#SupportChannel",
-          "traits": {
-            "smithy.api#documentation": "Support channel type for the support ticket."
-          }
-        },
-        "chatConversationStatus": {
-          "target": "com.azure.support#ChatConversationStatus",
-          "traits": {
-            "smithy.api#documentation": "Status of the chat conversation associated with the support ticket."
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Describes the properties of a support ticket."
-      }
-    },
-    "com.azure.support#ChatConversationStatus": {
-      "type": "enum",
-      "members": {
-        "ACTIVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Active"
-          }
-        },
-        "CLOSED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Closed"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Status of the chat conversation associated with the support ticket."
-      }
-    },
-    "com.azure.support#SupportChannel": {
-      "type": "enum",
-      "members": {
-        "CHAT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Chat"
-          }
-        },
-        "WEB": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Web"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Support channel type for the support ticket."
-      }
-    },
-    "com.azure.support#DirectConnectEscalation": {
-      "type": "structure",
-      "members": {
-        "azureEEStatus": {
-          "target": "com.azure.support#EscalationStatus",
-          "traits": {
-            "smithy.api#documentation": "Status of Direct Connect Escalation."
-          }
-        },
-        "allowedSeverities": {
-          "target": "com.azure.support#DirectConnectEscalationAllowedSeveritiesList",
-          "traits": {
-            "smithy.api#documentation": "An array containing the allowed severities for direct connect escalation."
-          }
-        },
-        "reasonForEscalation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Reason for escalation / business impact."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Direct Connect Escalation details for a support ticket."
-      }
-    },
-    "com.azure.support#DirectConnectEscalationAllowedSeveritiesList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.support#SeverityLevel"
-      },
-      "traits": {
-        "smithy.api#documentation": "An array containing the allowed severities for direct connect escalation."
-      }
-    },
-    "com.azure.support#SeverityLevel": {
-      "type": "enum",
-      "members": {
-        "MINIMAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "minimal"
-          }
-        },
-        "MODERATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "moderate"
-          }
-        },
-        "CRITICAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "critical"
-          }
-        },
-        "HIGHESTCRITICALIMPACT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "highestcriticalimpact"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers."
-      }
-    },
-    "com.azure.support#EscalationStatus": {
-      "type": "enum",
-      "members": {
-        "ESCALATIONAVAILABLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EscalationAvailable"
-          }
-        },
-        "ESCALATIONINITIATED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EscalationInitiated"
-          }
-        },
-        "ESCALATIONPROCESSED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EscalationProcessed"
-          }
-        },
-        "ESCALATIONUNSUPPORTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EscalationUnsupported"
-          }
-        },
-        "ESCALATIONUNAVAILABLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EscalationUnavailable"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Status of Direct Connect Escalation."
       }
     },
     "com.azure.support#SupportTicketDetailsPropertiesSecondaryConsentList": {
@@ -1620,6 +1451,38 @@
         "smithy.api#documentation": "Advanced diagnostic consent to be updated on the support ticket."
       }
     },
+    "com.azure.support#SeverityLevel": {
+      "type": "enum",
+      "members": {
+        "MINIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "minimal"
+          }
+        },
+        "MODERATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moderate"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        },
+        "HIGHESTCRITICALIMPACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "highestcriticalimpact"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers."
+      }
+    },
     "com.azure.support#SupportTicketsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1667,12 +1530,6 @@
           "target": "com.azure.support#SupportTicketsUpdateRequestSecondaryConsentList",
           "traits": {
             "smithy.api#documentation": "This property indicates secondary consents for the support ticket"
-          }
-        },
-        "directConnectEscalation": {
-          "target": "com.azure.support#DirectConnectEscalation",
-          "traits": {
-            "smithy.api#documentation": "Direct Connect Escalation details for a support ticket."
           }
         }
       },
@@ -1793,10 +1650,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Creates a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.<br/><br/>Providing consent to share diagnostic information with Azure support is currently not supported via the API. The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.<br/><br/>**Creating a support ticket for on-behalf-of**: Include _x-ms-authorization-auxiliary_ header to provide an auxiliary token as per [documentation](https://docs.microsoft.com/azure/azure-resource-manager/management/authenticate-multi-tenant). The primary token will be from the tenant for whom a support ticket is being raised against the subscription, i.e. Cloud solution provider (CSP) customer tenant. The auxiliary token will be from the Cloud solution provider (CSP) partner tenant.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsCreateResponse": {
@@ -1992,18 +1849,6 @@
           "traits": {
             "smithy.api#documentation": "This property indicates secondary consents for the support ticket"
           }
-        },
-        "directConnectEscalation": {
-          "target": "com.azure.support#DirectConnectEscalation",
-          "traits": {
-            "smithy.api#documentation": "Direct Connect Escalation details for a support ticket."
-          }
-        },
-        "communityForumPost": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Contains a link to the post on the community forum."
-          }
         }
       },
       "traits": {
@@ -2046,10 +1891,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Get ticket details for an Azure subscription. Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsGetResponse": {
@@ -2128,10 +1973,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all the support tickets for an Azure subscription. You can also filter the support tickets by _Status_, _CreatedDate_, _ServiceId_, and _ProblemClassificationId_ using the $filter parameter. Output will be a paged result with _nextLink_, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsListResult": {
@@ -2232,164 +2077,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ProblemClassificationsClassifyProblems": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.support#ProblemClassificationsClassifyProblemsRequest"
-      },
-      "output": {
-        "target": "com.azure.support#ProblemClassificationsClassificationOutput"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/services/{problemServiceName}/classifyProblems",
-          "code": 200,
-          "apiVersion": "2026-06-01"
-        },
-        "smithy.api#documentation": "Classify the right problem classifications (categories) available for a specific Azure service.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
-      }
-    },
-    "com.azure.support#ProblemClassificationsClassificationOutput": {
-      "type": "structure",
-      "members": {
-        "problemClassificationResults": {
-          "target": "com.azure.support#ProblemClassificationsClassificationOutputProblemClassificationResultsList",
-          "traits": {
-            "smithy.api#documentation": "Set of problem classification objects classified."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Output of the problem classification Classification API."
-      }
-    },
-    "com.azure.support#ProblemClassificationsClassificationOutputProblemClassificationResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.support#ProblemClassificationsClassificationResult"
-      },
-      "traits": {
-        "smithy.api#documentation": "Set of problem classification objects classified."
-      }
-    },
-    "com.azure.support#ProblemClassificationsClassificationResult": {
-      "type": "structure",
-      "members": {
-        "problemId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier that may be used for solution discovery or some other purposes."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Title of the problem classification result."
-          }
-        },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Description of the problem classification result."
-          }
-        },
-        "serviceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier of the service associated with this problem classification result."
-          }
-        },
-        "problemClassificationId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier that may be used for support ticket creation."
-          }
-        },
-        "relatedService": {
-          "target": "com.azure.support#ClassificationService",
-          "traits": {
-            "smithy.api#documentation": "Related service."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "ProblemClassification Classification result object."
-      }
-    },
-    "com.azure.support#ClassificationService": {
-      "type": "structure",
-      "members": {
-        "serviceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure resource Id of the service."
-          }
-        },
-        "displayName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Localized name of the azure service."
-          }
-        },
-        "resourceTypes": {
-          "target": "com.azure.support#ClassificationServiceResourceTypesList",
-          "traits": {
-            "smithy.api#documentation": "List of applicable ARM resource types for this service."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Service Classification result object."
-      }
-    },
-    "com.azure.support#ClassificationServiceResourceTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "List of applicable ARM resource types for this service."
-      }
-    },
-    "com.azure.support#ProblemClassificationsClassifyProblemsRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
-          }
-        },
-        "problemServiceName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Name of the Azure service for which the problem classifications need to be retrieved."
-          }
-        },
-        "issueSummary": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Natural language description of the customer’s issue.",
-            "smithy.api#required": {}
-          }
-        },
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ARM resource Id of the resource that is having the issue."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
     "com.azure.support#FilesUpload": {
       "type": "operation",
       "input": {
@@ -2403,10 +2090,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "This API allows you to upload content to a file",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FilesUploadRequest": {
@@ -2466,10 +2153,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Creates a new file under a workspace for the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FilesCreateResponse": {
@@ -2619,10 +2306,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Returns details of a specific file in a work space.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FilesGetResponse": {
@@ -2708,10 +2395,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all the Files information under a workspace for an Azure subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FilesListResult": {
@@ -2818,10 +2505,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Creates a new file workspace for the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FileWorkspacesCreateResponse": {
@@ -2919,10 +2606,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Gets details for a specific file workspace in an Azure subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FileWorkspacesGetResponse": {
@@ -2987,123 +2674,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ServiceClassificationsClassifyServices": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.support#ServiceClassificationsClassifyServicesRequest"
-      },
-      "output": {
-        "target": "com.azure.support#ServiceClassificationOutput"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/classifyServices",
-          "code": 200,
-          "apiVersion": "2026-06-01"
-        },
-        "smithy.api#documentation": "Classify the list of right Azure services.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
-      }
-    },
-    "com.azure.support#ServiceClassificationOutput": {
-      "type": "structure",
-      "members": {
-        "serviceClassificationResults": {
-          "target": "com.azure.support#ServiceClassificationOutputServiceClassificationResultsList",
-          "traits": {
-            "smithy.api#documentation": "Set of problem classification objects classified."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Output of the service classification API."
-      }
-    },
-    "com.azure.support#ServiceClassificationOutputServiceClassificationResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.support#ServiceClassificationAnswer"
-      },
-      "traits": {
-        "smithy.api#documentation": "Set of problem classification objects classified."
-      }
-    },
-    "com.azure.support#ServiceClassificationAnswer": {
-      "type": "structure",
-      "members": {
-        "serviceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure resource Id of the service."
-          }
-        },
-        "displayName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Localized name of the azure service."
-          }
-        },
-        "resourceTypes": {
-          "target": "com.azure.support#ServiceClassificationAnswerResourceTypesList",
-          "traits": {
-            "smithy.api#documentation": "List of applicable ARM resource types for this service."
-          }
-        },
-        "childService": {
-          "target": "com.azure.support#ClassificationService",
-          "traits": {
-            "smithy.api#documentation": "Child service."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Service Classification result object."
-      }
-    },
-    "com.azure.support#ServiceClassificationAnswerResourceTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "List of applicable ARM resource types for this service."
-      }
-    },
-    "com.azure.support#ServiceClassificationsClassifyServicesRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
-          }
-        },
-        "issueSummary": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Natural language description of the customer’s issue."
-          }
-        },
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ARM resource Id of the resource that is having the issue."
-          }
-        },
-        "additionalContext": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Additional information in the form of a string."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
     "com.azure.support#SupportTicketsCheckNameAvailability": {
       "type": "operation",
       "input": {
@@ -3117,10 +2687,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Check the availability of a resource name. This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsCheckNameAvailabilityRequest": {
@@ -3166,10 +2736,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Adds a new customer communication to an Azure support ticket.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#CommunicationsNoSubscriptionCreateResponse": {
@@ -3255,10 +2825,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Returns communication details for a support ticket.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#CommunicationsNoSubscriptionGetResponse": {
@@ -3337,10 +2907,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#CommunicationsNoSubscriptionListRequest": {
@@ -3386,10 +2956,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Check the availability of a resource name. This API should be used to check the uniqueness of the name for adding a new communication to the support ticket.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#CommunicationsNoSubscriptionCheckNameAvailabilityRequest": {
@@ -3435,10 +3005,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Returns chatTranscript details for a no subscription support ticket.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#ChatTranscriptsNoSubscriptionGetResponse": {
@@ -3516,10 +3086,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all chat transcripts for a support ticket",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#ChatTranscriptsNoSubscriptionListRequest": {
@@ -3551,10 +3121,10 @@
           "method": "PATCH",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "This API allows you to update the severity level, ticket status, and your contact information in the support ticket.<br/><br/>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer. In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsNoSubscriptionUpdateResponse": {
@@ -3636,12 +3206,6 @@
           "traits": {
             "smithy.api#documentation": "This property indicates secondary consents for the support ticket"
           }
-        },
-        "directConnectEscalation": {
-          "target": "com.azure.support#DirectConnectEscalation",
-          "traits": {
-            "smithy.api#documentation": "Direct Connect Escalation details for a support ticket."
-          }
         }
       },
       "traits": {
@@ -3670,10 +3234,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Creates a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.<br/><br/>Providing consent to share diagnostic information with Azure support is currently not supported via the API. The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.<br/><br/>",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsNoSubscriptionCreateResponse": {
@@ -3751,10 +3315,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Gets details for a specific support ticket. Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsNoSubscriptionGetResponse": {
@@ -3825,10 +3389,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all the support tickets. <br/><br/>You can also filter the support tickets by <i>Status</i>, <i>CreatedDate</i>, , <i>ServiceId</i>, and <i>ProblemClassificationId</i> using the $filter parameter. Output will be a paged result with <i>nextLink</i>, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsNoSubscriptionListRequest": {
@@ -3866,10 +3430,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/services/{serviceName}/problemClassifications/{problemClassificationName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Get problem classification details for a specific Azure service.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#ProblemClassificationsGetResponse": {
@@ -3996,10 +3560,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all the problem classifications (categories) available for a specific Azure service. Always use the service and problem classifications obtained programmatically. This practice ensures that you always have the most recent set of service and problem classification Ids.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#ProblemClassificationsListResult": {
@@ -4085,54 +3649,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ProblemClassificationsNoSubscriptionClassifyProblems": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.support#ProblemClassificationsNoSubscriptionClassifyProblemsRequest"
-      },
-      "output": {
-        "target": "com.azure.support#ProblemClassificationsClassificationOutput"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/providers/Microsoft.Support/services/{problemServiceName}/classifyProblems",
-          "code": 200,
-          "apiVersion": "2026-06-01"
-        },
-        "smithy.api#documentation": "Classify the right problem classifications (categories) available for a specific Azure service.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
-      }
-    },
-    "com.azure.support#ProblemClassificationsNoSubscriptionClassifyProblemsRequest": {
-      "type": "structure",
-      "members": {
-        "problemServiceName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Name of the Azure service for which the problem classifications need to be retrieved."
-          }
-        },
-        "issueSummary": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Natural language description of the customer’s issue.",
-            "smithy.api#required": {}
-          }
-        },
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ARM resource Id of the resource that is having the issue."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
     "com.azure.support#ServicesGet": {
       "type": "operation",
       "input": {
@@ -4146,10 +3662,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/services/{serviceName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Gets a specific Azure service for support ticket creation.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#ServicesGetResponse": {
@@ -4248,10 +3764,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/services",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all the Azure services available for support ticket creation. For **Technical** issues, select the Service Id that maps to the Azure service/product as displayed in the **Services** drop-down list on the Azure portal's [New support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) page. Always use the service and its corresponding problem classification(s) obtained programmatically for support ticket creation. This practice ensures that you always have the most recent set of service and problem classification Ids.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#ServicesListResult": {
@@ -4334,10 +3850,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/operations",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#OperationsListResponse": {
@@ -4479,73 +3995,6 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.support#LookUpResourceIdPost": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.support#LookUpResourceIdPostRequest"
-      },
-      "output": {
-        "target": "com.azure.support#LookUpResourceIdResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/providers/Microsoft.Support/lookUpResourceId",
-          "code": 200,
-          "apiVersion": "2026-06-01"
-        },
-        "smithy.api#documentation": "This operation fetches ARM resource id of support resource type.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
-      }
-    },
-    "com.azure.support#LookUpResourceIdResponse": {
-      "type": "structure",
-      "members": {
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The resource Id of support resource type."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The look up resource id response"
-      }
-    },
-    "com.azure.support#LookUpResourceIdPostRequest": {
-      "type": "structure",
-      "members": {
-        "identifier": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The System generated Id that is unique. Use supportTicketId property for Microsoft.Support/supportTickets resource type."
-          }
-        },
-        "type": {
-          "target": "com.azure.support#LookUpResourceIdPostRequestType",
-          "traits": {
-            "smithy.api#documentation": "The type of resource."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.support#LookUpResourceIdPostRequestType": {
-      "type": "enum",
-      "members": {
-        "MICROSOFT_SUPPORT_SUPPORTTICKETS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Microsoft.Support/supportTickets"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The type of resource."
-      }
-    },
     "com.azure.support#FilesNoSubscriptionUpload": {
       "type": "operation",
       "input": {
@@ -4559,10 +4008,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "This API allows you to upload content to a file",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FilesNoSubscriptionUploadRequest": {
@@ -4614,10 +4063,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Creates a new file under a workspace.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FilesNoSubscriptionCreateResponse": {
@@ -4701,10 +4150,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Returns details of a specific file in a work space.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FilesNoSubscriptionGetResponse": {
@@ -4782,10 +4231,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Lists all the Files information under a workspace for an Azure subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FilesNoSubscriptionListRequest": {
@@ -4817,10 +4266,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Creates a new file workspace.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FileWorkspacesNoSubscriptionCreateResponse": {
@@ -4890,10 +4339,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Gets details for a specific file workspace.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#FileWorkspacesNoSubscriptionGetResponse": {
@@ -4950,51 +4399,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ServiceClassificationsNoSubscriptionClassifyServices": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.support#ServiceClassificationsNoSubscriptionClassifyServicesRequest"
-      },
-      "output": {
-        "target": "com.azure.support#ServiceClassificationOutput"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/providers/Microsoft.Support/classifyServices",
-          "code": 200,
-          "apiVersion": "2026-06-01"
-        },
-        "smithy.api#documentation": "Classify the list of right Azure services.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
-      }
-    },
-    "com.azure.support#ServiceClassificationsNoSubscriptionClassifyServicesRequest": {
-      "type": "structure",
-      "members": {
-        "issueSummary": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Natural language description of the customer’s issue."
-          }
-        },
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ARM resource Id of the resource that is having the issue."
-          }
-        },
-        "additionalContext": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Additional information in the form of a string."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
     "com.azure.support#SupportTicketsNoSubscriptionCheckNameAvailability": {
       "type": "operation",
       "input": {
@@ -5008,10 +4412,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Support/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2024-04-01"
         },
         "smithy.api#documentation": "Check the availability of a resource name. This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
     "com.azure.support#SupportTicketsNoSubscriptionCheckNameAvailabilityRequest": {
@@ -5071,9 +4475,6 @@
           "target": "com.azure.support#SupportTicketsList"
         },
         {
-          "target": "com.azure.support#ProblemClassificationsClassifyProblems"
-        },
-        {
           "target": "com.azure.support#FilesUpload"
         },
         {
@@ -5090,9 +4491,6 @@
         },
         {
           "target": "com.azure.support#FileWorkspacesGet"
-        },
-        {
-          "target": "com.azure.support#ServiceClassificationsClassifyServices"
         },
         {
           "target": "com.azure.support#SupportTicketsCheckNameAvailability"
@@ -5134,9 +4532,6 @@
           "target": "com.azure.support#ProblemClassificationsList"
         },
         {
-          "target": "com.azure.support#ProblemClassificationsNoSubscriptionClassifyProblems"
-        },
-        {
           "target": "com.azure.support#ServicesGet"
         },
         {
@@ -5144,9 +4539,6 @@
         },
         {
           "target": "com.azure.support#OperationsList"
-        },
-        {
-          "target": "com.azure.support#LookUpResourceIdPost"
         },
         {
           "target": "com.azure.support#FilesNoSubscriptionUpload"
@@ -5165,9 +4557,6 @@
         },
         {
           "target": "com.azure.support#FileWorkspacesNoSubscriptionGet"
-        },
-        {
-          "target": "com.azure.support#ServiceClassificationsNoSubscriptionClassifyServices"
         },
         {
           "target": "com.azure.support#SupportTicketsNoSubscriptionCheckNameAvailability"

@@ -362,13 +362,19 @@ export const ApplicationDefinitionsCreateOrUpdateResponseTagsMap =
 
 /** The type of identity that created the resource. */
 export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1499,7 +1505,10 @@ export const ApplicationsCreateOrUpdateByIdResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type ApplicationsCreateOrUpdateByIdResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ApplicationsCreateOrUpdateByIdResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

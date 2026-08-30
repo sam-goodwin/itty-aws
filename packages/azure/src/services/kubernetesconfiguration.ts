@@ -2415,7 +2415,12 @@ export const FluxConfigurationsCreateOrUpdateResponsePropertiesStatusesList =
 
 /** The provisioning state of the resource. */
 export type FluxConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
-  "Succeeded" | "Failed" | "Canceled" | "Creating" | "Updating" | "Deleting";
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Creating"
+  | "Updating"
+  | "Deleting";
 export const FluxConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2512,7 +2517,10 @@ export const FluxConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type FluxConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const FluxConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3942,7 +3950,11 @@ export const SourceControlConfigurationsCreateOrUpdateRequest =
 
 /** The provisioning state of the resource provider. */
 export type SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
-  "Accepted" | "Deleting" | "Running" | "Succeeded" | "Failed";
+  | "Accepted"
+  | "Deleting"
+  | "Running"
+  | "Succeeded"
+  | "Failed";
 export const SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4037,13 +4049,19 @@ export const SourceControlConfigurationsCreateOrUpdateResponseProperties =
 
 /** The type of identity that created the resource. */
 export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -4260,7 +4278,10 @@ export const SourceControlConfigurationsGetResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type SourceControlConfigurationsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const SourceControlConfigurationsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

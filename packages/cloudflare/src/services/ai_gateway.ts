@@ -1520,7 +1520,8 @@ export const DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs =
   }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs>;
 
 export type DynamicRoutingCreateDeploymentResponseElementsItemCase3PropertiesLimitType =
-  "count" | "cost";
+  | "count"
+  | "cost";
 export const DynamicRoutingCreateDeploymentResponseElementsItemCase3PropertiesLimitType =
   /*@__PURE__*/ S.String;
 
@@ -2715,7 +2716,8 @@ export const DynamicRoutingCreateVersionRequestElementsItemCase3Outputs =
   DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs;
 
 export type DynamicRoutingCreateVersionRequestElementsItemCase3PropertiesLimitType =
-  "count" | "cost";
+  | "count"
+  | "cost";
 export const DynamicRoutingCreateVersionRequestElementsItemCase3PropertiesLimitType =
   /*@__PURE__*/ S.String;
 
@@ -3005,7 +3007,8 @@ export const DynamicRoutingCreateVersionResponseElementsItemCase3Outputs =
   DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs;
 
 export type DynamicRoutingCreateVersionResponseElementsItemCase3PropertiesLimitType =
-  "count" | "cost";
+  | "count"
+  | "cost";
 export const DynamicRoutingCreateVersionResponseElementsItemCase3PropertiesLimitType =
   /*@__PURE__*/ S.String;
 
@@ -6235,7 +6238,8 @@ export const DynamicRoutingGetVersionResponseElementsItemCase3Outputs =
   DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs;
 
 export type DynamicRoutingGetVersionResponseElementsItemCase3PropertiesLimitType =
-  "count" | "cost";
+  | "count"
+  | "cost";
 export const DynamicRoutingGetVersionResponseElementsItemCase3PropertiesLimitType =
   /*@__PURE__*/ S.String;
 
@@ -7737,7 +7741,8 @@ export const DynamicRoutingListResponseDataRoutesItemElementsItemCase3Outputs =
   DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs;
 
 export type DynamicRoutingListResponseDataRoutesItemElementsItemCase3PropertiesLimitType =
-  "count" | "cost";
+  | "count"
+  | "cost";
 export const DynamicRoutingListResponseDataRoutesItemElementsItemCase3PropertiesLimitType =
   /*@__PURE__*/ S.String;
 
@@ -8738,7 +8743,8 @@ export const DynamicRoutingUpdateResponseRouteElementsItemCase3Outputs =
   DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs;
 
 export type DynamicRoutingUpdateResponseRouteElementsItemCase3PropertiesLimitType =
-  "count" | "cost";
+  | "count"
+  | "cost";
 export const DynamicRoutingUpdateResponseRouteElementsItemCase3PropertiesLimitType =
   /*@__PURE__*/ S.String;
 

@@ -952,10 +952,61 @@ export const MediaExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MediaExtractionConfiguration",
 }) as any as S.Schema<MediaExtractionConfiguration>;
+export interface DailySchedule {}
+export const DailySchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({ identifier: "DailySchedule" }) as any as S.Schema<DailySchedule>;
+export type DayOfWeek =
+  | "SUNDAY"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | (string & {});
+export const DayOfWeek = /*@__PURE__*/ S.String;
+
+export interface WeeklySchedule {
+  dayOfWeek: DayOfWeek;
+}
+export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ dayOfWeek: DayOfWeek }),
+).annotate({ identifier: "WeeklySchedule" }) as any as S.Schema<WeeklySchedule>;
+export type DayOfMonthNumber = number;
+export interface LastDayOfMonth {}
+export const LastDayOfMonth = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({ identifier: "LastDayOfMonth" }) as any as S.Schema<LastDayOfMonth>;
+export type DayOfMonth =
+  | { dayNumber: number; lastDayOfMonth?: never }
+  | { dayNumber?: never; lastDayOfMonth: LastDayOfMonth };
+export const DayOfMonth = /*@__PURE__*/ S.Union([
+  S.Struct({ dayNumber: S.Number }),
+  S.Struct({ lastDayOfMonth: LastDayOfMonth }),
+]);
+export interface MonthlySchedule {
+  dayOfMonth: DayOfMonth;
+}
+export const MonthlySchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ dayOfMonth: DayOfMonth }),
+).annotate({
+  identifier: "MonthlySchedule",
+}) as any as S.Schema<MonthlySchedule>;
+export type SyncSchedule =
+  | { daily: DailySchedule; weekly?: never; monthly?: never }
+  | { daily?: never; weekly: WeeklySchedule; monthly?: never }
+  | { daily?: never; weekly?: never; monthly: MonthlySchedule };
+export const SyncSchedule = /*@__PURE__*/ S.Union([
+  S.Struct({ daily: DailySchedule }),
+  S.Struct({ weekly: WeeklySchedule }),
+  S.Struct({ monthly: MonthlySchedule }),
+]);
 export interface ManagedKnowledgeBaseConnectorConfiguration {
   deletionProtectionConfiguration?: DeletionProtectionConfiguration;
   mediaExtractionConfiguration?: MediaExtractionConfiguration;
   connectorParameters?: any;
+  syncSchedule?: SyncSchedule;
 }
 export const ManagedKnowledgeBaseConnectorConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -965,6 +1016,7 @@ export const ManagedKnowledgeBaseConnectorConfiguration =
       ),
       mediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
       connectorParameters: S.optional(S.Any),
+      syncSchedule: S.optional(SyncSchedule),
     }),
   ).annotate({
     identifier: "ManagedKnowledgeBaseConnectorConfiguration",

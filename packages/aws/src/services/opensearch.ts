@@ -1659,6 +1659,17 @@ export const AutomatedSnapshotPauseRequestOptions = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AutomatedSnapshotPauseRequestOptions",
 }) as any as S.Schema<AutomatedSnapshotPauseRequestOptions>;
+export type DomainUseCase =
+  | "SEARCH"
+  | "VECTOR"
+  | "OBSERVABILITY"
+  | "MIXED"
+  | (string & {});
+export const DomainUseCase = /*@__PURE__*/ S.String;
+
+export type EngineMode = "GENERAL" | "OPTIMIZED" | (string & {});
+export const EngineMode = /*@__PURE__*/ S.String;
+
 export interface CreateDomainRequest {
   DomainName: string;
   EngineVersion?: string;
@@ -1683,6 +1694,8 @@ export interface CreateDomainRequest {
   AIMLOptions?: AIMLOptionsInput;
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
   AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseRequestOptions;
+  UseCase?: DomainUseCase;
+  EngineMode?: EngineMode;
 }
 export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1711,6 +1724,8 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
     AutomatedSnapshotPauseOptions: S.optional(
       AutomatedSnapshotPauseRequestOptions,
     ),
+    UseCase: S.optional(DomainUseCase),
+    EngineMode: S.optional(EngineMode),
   }).pipe(
     T.all(
       ns,
@@ -2052,6 +2067,8 @@ export interface DomainStatus {
   AIMLOptions?: AIMLOptionsOutput;
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
   AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseOptions;
+  UseCase?: DomainUseCase;
+  EngineMode?: EngineMode;
 }
 export const DomainStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2091,6 +2108,8 @@ export const DomainStatus = /*@__PURE__*/ S.suspend(() =>
     AIMLOptions: S.optional(AIMLOptionsOutput),
     DeploymentStrategyOptions: S.optional(DeploymentStrategyOptions),
     AutomatedSnapshotPauseOptions: S.optional(AutomatedSnapshotPauseOptions),
+    UseCase: S.optional(DomainUseCase),
+    EngineMode: S.optional(EngineMode),
   }),
 ).annotate({ identifier: "DomainStatus" }) as any as S.Schema<DomainStatus>;
 export interface CreateDomainResponse {
@@ -3379,6 +3398,22 @@ export const AutomatedSnapshotPauseOptionsStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutomatedSnapshotPauseOptionsStatus",
 }) as any as S.Schema<AutomatedSnapshotPauseOptionsStatus>;
+export interface UseCaseStatus {
+  Options: DomainUseCase;
+  Status: OptionStatus;
+}
+export const UseCaseStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Options: DomainUseCase, Status: OptionStatus }),
+).annotate({ identifier: "UseCaseStatus" }) as any as S.Schema<UseCaseStatus>;
+export interface EngineModeStatus {
+  Options: EngineMode;
+  Status: OptionStatus;
+}
+export const EngineModeStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Options: EngineMode, Status: OptionStatus }),
+).annotate({
+  identifier: "EngineModeStatus",
+}) as any as S.Schema<EngineModeStatus>;
 export interface DomainConfig {
   EngineVersion?: VersionStatus;
   ClusterConfig?: ClusterConfigStatus;
@@ -3403,6 +3438,8 @@ export interface DomainConfig {
   AIMLOptions?: AIMLOptionsStatus;
   DeploymentStrategyOptions?: DeploymentStrategyOptionsStatus;
   AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseOptionsStatus;
+  UseCase?: UseCaseStatus;
+  EngineMode?: EngineModeStatus;
 }
 export const DomainConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3431,6 +3468,8 @@ export const DomainConfig = /*@__PURE__*/ S.suspend(() =>
     AutomatedSnapshotPauseOptions: S.optional(
       AutomatedSnapshotPauseOptionsStatus,
     ),
+    UseCase: S.optional(UseCaseStatus),
+    EngineMode: S.optional(EngineModeStatus),
   }),
 ).annotate({ identifier: "DomainConfig" }) as any as S.Schema<DomainConfig>;
 export interface DescribeDomainConfigResponse {
@@ -4800,6 +4839,68 @@ export const GetIndexResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIndexResponse",
 }) as any as S.Schema<GetIndexResponse>;
+export interface GetMigrationRequest {
+  migrationId: string;
+}
+export const GetMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ migrationId: S.String.pipe(T.HttpLabel("migrationId")) }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2021-01-01/opensearch/app-migrations/{migrationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetMigrationRequest",
+}) as any as S.Schema<GetMigrationRequest>;
+export interface MigrationSource {
+  datasourceArn: string;
+}
+export const MigrationSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ datasourceArn: S.String }),
+).annotate({
+  identifier: "MigrationSource",
+}) as any as S.Schema<MigrationSource>;
+export interface MigrationError {
+  code?: string;
+  message?: string;
+}
+export const MigrationError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
+).annotate({ identifier: "MigrationError" }) as any as S.Schema<MigrationError>;
+export interface GetMigrationResponse {
+  migrationId?: string;
+  status?: string;
+  applicationId?: string;
+  source?: MigrationSource;
+  exportedCount?: number;
+  importedCount?: number;
+  error?: MigrationError;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export const GetMigrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migrationId: S.optional(S.String),
+    status: S.optional(S.String),
+    applicationId: S.optional(S.String),
+    source: S.optional(MigrationSource),
+    exportedCount: S.optional(S.Number),
+    importedCount: S.optional(S.Number),
+    error: S.optional(MigrationError),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetMigrationResponse",
+}) as any as S.Schema<GetMigrationResponse>;
 export interface GetPackageVersionHistoryRequest {
   PackageID: string;
   MaxResults?: number;
@@ -4992,6 +5093,62 @@ export const GetUpgradeStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUpgradeStatusResponse",
 }) as any as S.Schema<GetUpgradeStatusResponse>;
+export type InsightFeedbackEntityType = "DomainName" | (string & {});
+export const InsightFeedbackEntityType = /*@__PURE__*/ S.String;
+
+export interface InsightFeedbackEntity {
+  Type: InsightFeedbackEntityType;
+  Value: string;
+}
+export const InsightFeedbackEntity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: InsightFeedbackEntityType, Value: S.String }),
+).annotate({
+  identifier: "InsightFeedbackEntity",
+}) as any as S.Schema<InsightFeedbackEntity>;
+export type InsightFeedbackThumbs = "Up" | "Down" | (string & {});
+export const InsightFeedbackThumbs = /*@__PURE__*/ S.String;
+
+export type InsightFeedbackText = string;
+export interface InsightFeedbackRequest {
+  Entity: InsightFeedbackEntity;
+  InsightId: string;
+  Thumbs: InsightFeedbackThumbs;
+  FeedbackText?: string;
+}
+export const InsightFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Entity: InsightFeedbackEntity,
+    InsightId: S.String,
+    Thumbs: InsightFeedbackThumbs,
+    FeedbackText: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/2021-01-01/opensearch/insight-feedback",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "InsightFeedbackRequest",
+}) as any as S.Schema<InsightFeedbackRequest>;
+export type InsightResponseStatus = "SUCCESS" | "ERROR" | (string & {});
+export const InsightResponseStatus = /*@__PURE__*/ S.String;
+
+export interface InsightFeedbackResponse {
+  Status?: InsightResponseStatus;
+}
+export const InsightFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.optional(InsightResponseStatus) }).pipe(ns),
+).annotate({
+  identifier: "InsightFeedbackResponse",
+}) as any as S.Schema<InsightFeedbackResponse>;
 export type ApplicationStatuses = ApplicationStatus[];
 export const ApplicationStatuses = /*@__PURE__*/ S.Array(ApplicationStatus);
 export interface ListApplicationsRequest {
@@ -5541,6 +5698,72 @@ export const ListInstanceTypeDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInstanceTypeDetailsResponse",
 }) as any as S.Schema<ListInstanceTypeDetailsResponse>;
+export interface ListMigrationsRequest {
+  applicationId: string;
+  status?: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListMigrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpQuery("applicationId")),
+    status: S.optional(S.String).pipe(T.HttpQuery("status")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/2021-01-01/opensearch/app-migrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListMigrationsRequest",
+}) as any as S.Schema<ListMigrationsRequest>;
+export interface MigrationSummary {
+  migrationId?: string;
+  status?: string;
+  applicationId?: string;
+  source?: MigrationSource;
+  exportedCount?: number;
+  importedCount?: number;
+  error?: MigrationError;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export const MigrationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migrationId: S.optional(S.String),
+    status: S.optional(S.String),
+    applicationId: S.optional(S.String),
+    source: S.optional(MigrationSource),
+    exportedCount: S.optional(S.Number),
+    importedCount: S.optional(S.Number),
+    error: S.optional(MigrationError),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "MigrationSummary",
+}) as any as S.Schema<MigrationSummary>;
+export type MigrationSummaryList = MigrationSummary[];
+export const MigrationSummaryList = /*@__PURE__*/ S.Array(MigrationSummary);
+export interface ListMigrationsResponse {
+  migrations?: MigrationSummary[];
+  nextToken?: string;
+}
+export const ListMigrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migrations: S.optional(MigrationSummaryList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListMigrationsResponse",
+}) as any as S.Schema<ListMigrationsResponse>;
 export interface ListPackagesForDomainRequest {
   DomainName: string;
   MaxResults?: number;
@@ -6139,6 +6362,99 @@ export const StartDomainMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartDomainMaintenanceResponse",
 }) as any as S.Schema<StartDomainMaintenanceResponse>;
+export interface MigrationWorkspace {
+  workspaceId?: string;
+  createWorkspace?: boolean;
+  name?: string;
+  type?: string;
+}
+export const MigrationWorkspace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspaceId: S.optional(S.String),
+    createWorkspace: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MigrationWorkspace",
+}) as any as S.Schema<MigrationWorkspace>;
+export interface SavedObjectIdentifier {
+  type: string;
+  id: string;
+}
+export const SavedObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ type: S.String, id: S.String }),
+).annotate({
+  identifier: "SavedObjectIdentifier",
+}) as any as S.Schema<SavedObjectIdentifier>;
+export type SavedObjectIdentifierList = SavedObjectIdentifier[];
+export const SavedObjectIdentifierList = /*@__PURE__*/ S.Array(
+  SavedObjectIdentifier,
+);
+export interface ExportOptions {
+  types?: string[];
+  objects?: SavedObjectIdentifier[];
+  includeReferencesDeep?: boolean;
+}
+export const ExportOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    types: S.optional(StringList),
+    objects: S.optional(SavedObjectIdentifierList),
+    includeReferencesDeep: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "ExportOptions" }) as any as S.Schema<ExportOptions>;
+export interface MigrationOptions {
+  source: MigrationSource;
+  workspace: MigrationWorkspace;
+  exportOptions?: ExportOptions;
+  conflictResolution?: string;
+}
+export const MigrationOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    source: MigrationSource,
+    workspace: MigrationWorkspace,
+    exportOptions: S.optional(ExportOptions),
+    conflictResolution: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MigrationOptions",
+}) as any as S.Schema<MigrationOptions>;
+export interface StartMigrationRequest {
+  applicationId: string;
+  migrationOptions: MigrationOptions;
+  clientToken?: string;
+}
+export const StartMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String,
+    migrationOptions: MigrationOptions,
+    clientToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2021-01-01/opensearch/app-migrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartMigrationRequest",
+}) as any as S.Schema<StartMigrationRequest>;
+export interface StartMigrationResponse {
+  migrationId?: string;
+  status?: string;
+}
+export const StartMigrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migrationId: S.optional(S.String),
+    status: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "StartMigrationResponse",
+}) as any as S.Schema<StartMigrationResponse>;
 export type ScheduleAt =
   | "NOW"
   | "TIMESTAMP"
@@ -6338,6 +6654,8 @@ export interface UpdateDomainConfigRequest {
   AIMLOptions?: AIMLOptionsInput;
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
   AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseRequestOptions;
+  UseCase?: DomainUseCase;
+  EngineMode?: EngineMode;
 }
 export const UpdateDomainConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6366,6 +6684,8 @@ export const UpdateDomainConfigRequest = /*@__PURE__*/ S.suspend(() =>
     AutomatedSnapshotPauseOptions: S.optional(
       AutomatedSnapshotPauseRequestOptions,
     ),
+    UseCase: S.optional(DomainUseCase),
+    EngineMode: S.optional(EngineMode),
   }).pipe(
     T.all(
       ns,
@@ -6836,7 +7156,7 @@ export type AttachDataSourceError =
   | ValidationException
   | CommonErrors;
 /**
- * Attaches a data source to an OpenSearch application. The data source can be an Amazon OpenSearch Service domain or an Amazon OpenSearch Serverless collection. If both the application and data source are in the `ACTIVE` state, the attachment completes immediately and returns a status of `ATTACHED`. If either resource is not yet active, the operation stores the request and returns a status of `PENDING`. A background process then completes the attachment when both resources become active. Pending attachments that are not completed within 24 hours are marked as `FAILED`. This operation is idempotent. If a data source is already attached or pending for the same application, the existing attachment is returned.
+ * Attaches a data source to an OpenSearch application. The data source must be an Amazon OpenSearch Service domain. If both the application and the data source are active, the attachment completes immediately with a status of `ATTACHED`. Otherwise, the operation returns `PENDING` and completes the attachment automatically once both become active. If the attachment cannot be completed, its status becomes `FAILED`. This operation is idempotent: If the data source is already attached or pending, the operation returns the existing attachment.
  */
 export const attachDataSource: API.OperationMethod<
   AttachDataSourceRequest,
@@ -8336,6 +8656,36 @@ export const getIndex: API.OperationMethod<
   operationName: "GetIndex",
 }));
 
+export type GetMigrationError =
+  | AccessDeniedException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the current status and progress of a migration job, including the number of exported and imported objects and error details if the migration failed.
+ */
+export const getMigration: API.OperationMethod<
+  GetMigrationRequest,
+  GetMigrationResponse,
+  GetMigrationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMigrationRequest,
+  output: GetMigrationResponse,
+  errors: [
+    AccessDeniedException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetMigration",
+}));
+
 export type GetPackageVersionHistoryError =
   | AccessDeniedException
   | BaseException
@@ -8441,6 +8791,40 @@ export const getUpgradeStatus: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetUpgradeStatus",
+}));
+
+export type InsightFeedbackError =
+  | BaseException
+  | DisabledOperationException
+  | InternalException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Submits feedback for an existing insight in an Amazon OpenSearch Service domain.
+ * Allows users to provide a thumbs up or thumbs down rating and optional text feedback
+ * for a specific insight.
+ */
+export const insightFeedback: API.OperationMethod<
+  InsightFeedbackRequest,
+  InsightFeedbackResponse,
+  InsightFeedbackError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: InsightFeedbackRequest,
+  output: InsightFeedbackResponse,
+  errors: [
+    BaseException,
+    DisabledOperationException,
+    InternalException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "InsightFeedback",
 }));
 
 export type ListApplicationsError =
@@ -8741,6 +9125,34 @@ export const listInstanceTypeDetails: API.PaginatedOperationMethod<
     pageSize: "MaxResults",
   } as const,
 })) as any;
+
+export type ListMigrationsError =
+  | AccessDeniedException
+  | DisabledOperationException
+  | InternalException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists migration jobs for an Amazon OpenSearch Service application. You can filter results by migration status. Use pagination to ensure that the operation returns quickly and successfully.
+ */
+export const listMigrations: API.OperationMethod<
+  ListMigrationsRequest,
+  ListMigrationsResponse,
+  ListMigrationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMigrationsRequest,
+  output: ListMigrationsResponse,
+  errors: [
+    AccessDeniedException,
+    DisabledOperationException,
+    InternalException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListMigrations",
+}));
 
 export type ListPackagesForDomainError =
   | AccessDeniedException
@@ -9200,6 +9612,38 @@ export const startDomainMaintenance: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "StartDomainMaintenance",
+}));
+
+export type StartMigrationError =
+  | AccessDeniedException
+  | ConflictException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Initiates a migration job to migrate saved objects from a data source to an Amazon OpenSearch Service application workspace. Saved objects include dashboards, visualizations, index patterns, and searches. You can specify export filters to control the scope of the migration and a conflict resolution strategy for handling existing objects in the target workspace.
+ */
+export const startMigration: API.OperationMethod<
+  StartMigrationRequest,
+  StartMigrationResponse,
+  StartMigrationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartMigrationRequest,
+  output: StartMigrationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartMigration",
 }));
 
 export type StartServiceSoftwareUpdateError =

@@ -108,7 +108,7 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "scope",
-            "smithy.api#documentation": "Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay)."
+            "smithy.api#documentation": "Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay). Support-ticket scopes (Ticket, conversations_ticket) additionally require ticket API scope access."
           }
         },
         "search": {
@@ -123,6 +123,13 @@
           "traits": {
             "smithy.api#httpQuery": "source_comment",
             "smithy.api#documentation": "Filter replies to a specific parent comment."
+          }
+        },
+        "task_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "task_id",
+            "smithy.api#documentation": "Owning task for task, task_artifact, and desktop_canvas comment scopes."
           }
         }
       },
@@ -163,6 +170,15 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "scope": {
+          "target": "smithy.api#String"
+        },
+        "item_context": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Metadata for the comment target, anchor, thread state, and owning task."
+          }
+        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -179,6 +195,13 @@
           "target": "com.posthog.comments#UserBasic",
           "traits": {
             "smithy.api#documentation": "The user who marked this task complete. Null for open tasks and non-task comments.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "slack_thread": {
+          "target": "com.posthog.comments#CommentSlackThreadRef",
+          "traits": {
+            "smithy.api#documentation": "The Slack thread this comment's discussion is mirrored to, or null. Set only on a tracked thread-root comment; used to surface an 'Open in Slack' link and hide re-sending.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -202,12 +225,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "item_context": {
-          "target": "smithy.api#Document"
-        },
-        "scope": {
-          "target": "smithy.api#String"
         },
         "completed_at": {
           "target": "smithy.api#String",
@@ -325,6 +342,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -333,7 +356,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.comments#BlankEnum": {
@@ -356,6 +379,33 @@
         },
         "BlankEnum": {
           "target": "com.posthog.comments#BlankEnum"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.comments#CommentSlackThreadRef": {
+      "type": "structure",
+      "members": {
+        "channel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Slack channel ID this discussion is mirrored to.",
+            "smithy.api#required": {}
+          }
+        },
+        "channel_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Slack channel name resolved from Slack when the discussion was sent (no leading #). Empty for private channels and when unknown; may lag behind a rename in Slack.",
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deep link that opens the mirrored Slack thread.",
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {}
@@ -412,6 +462,15 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
+        "scope": {
+          "target": "smithy.api#String"
+        },
+        "item_context": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Metadata for the comment target, anchor, thread state, and owning task."
+          }
+        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -445,12 +504,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "item_context": {
-          "target": "smithy.api#Document"
-        },
-        "scope": {
-          "target": "smithy.api#String"
-        },
         "source_comment": {
           "target": "smithy.api#String",
           "traits": {
@@ -479,6 +532,9 @@
         },
         {
           "target": "com.posthog.comments#NotFound"
+        },
+        {
+          "target": "com.posthog.comments#Conflict"
         }
       ],
       "traits": {
@@ -486,7 +542,8 @@
           "method": "POST",
           "uri": "/api/projects/{project_id}/comments/",
           "code": 200
-        }
+        },
+        "smithy.api#documentation": "Create a comment.\n\nSupport messages are deduplicated: an identical message from the same author on the same\nticket within a short window returns the original comment with a 200 instead of creating a\nsecond one, and a 409 while a concurrent request is still creating it."
       }
     },
     "com.posthog.comments#CommentsRetrieveRequest": {
@@ -563,6 +620,15 @@
             "smithy.api#documentation": "A UUID string identifying this comment."
           }
         },
+        "scope": {
+          "target": "smithy.api#String"
+        },
+        "item_context": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Metadata for the comment target, anchor, thread state, and owning task."
+          }
+        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -595,12 +661,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "item_context": {
-          "target": "smithy.api#Document"
-        },
-        "scope": {
-          "target": "smithy.api#String"
         },
         "source_comment": {
           "target": "smithy.api#String",
@@ -666,6 +726,15 @@
             "smithy.api#documentation": "A UUID string identifying this comment."
           }
         },
+        "scope": {
+          "target": "smithy.api#String"
+        },
+        "item_context": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Metadata for the comment target, anchor, thread state, and owning task."
+          }
+        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -698,12 +767,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "item_context": {
-          "target": "smithy.api#Document"
-        },
-        "scope": {
-          "target": "smithy.api#String"
         },
         "source_comment": {
           "target": "smithy.api#String",
@@ -874,6 +937,145 @@
         "smithy.api#documentation": "Reopen a completed task-comment. Clears completed_at and completed_by. 400 if the comment is not a task or is already open."
       }
     },
+    "com.posthog.comments#CommentsSendToSlackCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this comment."
+          }
+        },
+        "integration_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "ID of the Slack integration (kind='slack') whose bot posts the thread.",
+            "smithy.api#required": {}
+          }
+        },
+        "channel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Slack channel ID to create the mirrored thread in. The bot must be a member of the channel. The channel's display name is resolved server-side.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.comments#CommentSlackThread": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource type of the mirrored discussion (e.g. Insight).",
+            "smithy.api#required": {}
+          }
+        },
+        "item_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource the discussion is attached to.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "source_comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The thread-root comment whose replies mirror to the Slack thread.",
+            "smithy.api#required": {}
+          }
+        },
+        "integration": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Slack integration used to post to and read from the thread.",
+            "smithy.api#required": {}
+          }
+        },
+        "slack_channel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Slack channel the mirrored thread lives in.",
+            "smithy.api#required": {}
+          }
+        },
+        "slack_channel_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Slack channel name resolved from Slack at send time (no leading #). Empty for private channels and when unknown.",
+            "smithy.api#required": {}
+          }
+        },
+        "slack_thread_ts": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Slack thread timestamp anchoring the mirrored thread.",
+            "smithy.api#required": {}
+          }
+        },
+        "slack_team_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Slack workspace ID, used to route inbound replies back.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_by": {
+          "target": "com.posthog.comments#UserBasic",
+          "traits": {
+            "smithy.api#documentation": "User who mirrored the discussion. Null if since deleted.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.comments#CommentsSendToSlackCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.comments#CommentsSendToSlackCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.comments#CommentSlackThread"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/comments/{id}/send_to_slack/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Mirror this discussion thread to a Slack channel. Posts the comment (and its existing replies) as a new Slack thread; later replies on either side sync across. A discussion mirrors to exactly one Slack thread: re-calling with the same channel returns the existing mirror; a different channel is a 400 naming the existing one. 409 while a concurrent send is in flight. 404 when the feature is not enabled for the team."
+      }
+    },
     "com.posthog.comments#CommentsThreadRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -1001,6 +1203,19 @@
         ]
       }
     },
+    "com.posthog.comments#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
     "com.posthog.comments#Comments": {
       "type": "service",
       "version": "1.0.0",
@@ -1028,6 +1243,9 @@
         },
         {
           "target": "com.posthog.comments#CommentsReopenCreate"
+        },
+        {
+          "target": "com.posthog.comments#CommentsSendToSlackCreate"
         },
         {
           "target": "com.posthog.comments#CommentsThreadRetrieve"

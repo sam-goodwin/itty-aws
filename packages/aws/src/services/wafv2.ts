@@ -468,6 +468,16 @@ export type TextTransformationType =
   | "BASE64_DECODE_EXT"
   | "URL_DECODE_UNI"
   | "UTF8_TO_UNICODE"
+  | "REMOVE_WHITESPACE"
+  | "TRIM"
+  | "TRIM_LEFT"
+  | "TRIM_RIGHT"
+  | "REMOVE_COMMENTS_CHAR"
+  | "UPPERCASE"
+  | "CMD_LINE_WIN"
+  | "CMD_LINE_UNIX"
+  | "JS_DECODE_EXT"
+  | "SHA256"
   | (string & {});
 export const TextTransformationType = /*@__PURE__*/ S.String;
 
@@ -482,6 +492,29 @@ export const TextTransformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TextTransformation>;
 export type TextTransformations = TextTransformation[];
 export const TextTransformations = /*@__PURE__*/ S.Array(TextTransformation);
+export type PreParseTextTransformationPriority = number;
+export type PreParseTextTransformationType =
+  | "NONE"
+  | "URL_DECODE"
+  | "URL_DECODE_UNI"
+  | "COMBINE_DUPLICATE_QUERY_ARGS_BY_COMMA"
+  | "REPLACE_SEMICOLONS_WITH_AMPERSANDS"
+  | (string & {});
+export const PreParseTextTransformationType = /*@__PURE__*/ S.String;
+
+export interface PreParseTextTransformation {
+  Priority: number;
+  Type: PreParseTextTransformationType;
+}
+export const PreParseTextTransformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Priority: S.Number, Type: PreParseTextTransformationType }),
+).annotate({
+  identifier: "PreParseTextTransformation",
+}) as any as S.Schema<PreParseTextTransformation>;
+export type PreParseTextTransformations = PreParseTextTransformation[];
+export const PreParseTextTransformations = /*@__PURE__*/ S.Array(
+  PreParseTextTransformation,
+);
 export type PositionalConstraint =
   | "EXACTLY"
   | "STARTS_WITH"
@@ -495,6 +528,7 @@ export interface ByteMatchStatement {
   SearchString: Uint8Array;
   FieldToMatch: FieldToMatch;
   TextTransformations: TextTransformation[];
+  PreParseTextTransformations?: PreParseTextTransformation[];
   PositionalConstraint: PositionalConstraint;
 }
 export const ByteMatchStatement = /*@__PURE__*/ S.suspend(() =>
@@ -502,6 +536,7 @@ export const ByteMatchStatement = /*@__PURE__*/ S.suspend(() =>
     SearchString: T.Blob,
     FieldToMatch: FieldToMatch,
     TextTransformations: TextTransformations,
+    PreParseTextTransformations: S.optional(PreParseTextTransformations),
     PositionalConstraint: PositionalConstraint,
   }),
 ).annotate({
@@ -513,12 +548,14 @@ export const SensitivityLevel = /*@__PURE__*/ S.String;
 export interface SqliMatchStatement {
   FieldToMatch: FieldToMatch;
   TextTransformations: TextTransformation[];
+  PreParseTextTransformations?: PreParseTextTransformation[];
   SensitivityLevel?: SensitivityLevel;
 }
 export const SqliMatchStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FieldToMatch: FieldToMatch,
     TextTransformations: TextTransformations,
+    PreParseTextTransformations: S.optional(PreParseTextTransformations),
     SensitivityLevel: S.optional(SensitivityLevel),
   }),
 ).annotate({
@@ -527,11 +564,13 @@ export const SqliMatchStatement = /*@__PURE__*/ S.suspend(() =>
 export interface XssMatchStatement {
   FieldToMatch: FieldToMatch;
   TextTransformations: TextTransformation[];
+  PreParseTextTransformations?: PreParseTextTransformation[];
 }
 export const XssMatchStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FieldToMatch: FieldToMatch,
     TextTransformations: TextTransformations,
+    PreParseTextTransformations: S.optional(PreParseTextTransformations),
   }),
 ).annotate({
   identifier: "XssMatchStatement",
@@ -552,6 +591,7 @@ export interface SizeConstraintStatement {
   ComparisonOperator: ComparisonOperator;
   Size: number;
   TextTransformations: TextTransformation[];
+  PreParseTextTransformations?: PreParseTextTransformation[];
 }
 export const SizeConstraintStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -559,6 +599,7 @@ export const SizeConstraintStatement = /*@__PURE__*/ S.suspend(() =>
     ComparisonOperator: ComparisonOperator,
     Size: S.Number,
     TextTransformations: TextTransformations,
+    PreParseTextTransformations: S.optional(PreParseTextTransformations),
   }),
 ).annotate({
   identifier: "SizeConstraintStatement",
@@ -998,12 +1039,14 @@ export interface RegexPatternSetReferenceStatement {
   ARN: string;
   FieldToMatch: FieldToMatch;
   TextTransformations: TextTransformation[];
+  PreParseTextTransformations?: PreParseTextTransformation[];
 }
 export const RegexPatternSetReferenceStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.String,
     FieldToMatch: FieldToMatch,
     TextTransformations: TextTransformations,
+    PreParseTextTransformations: S.optional(PreParseTextTransformations),
   }),
 ).annotate({
   identifier: "RegexPatternSetReferenceStatement",
@@ -1556,12 +1599,14 @@ export interface RegexMatchStatement {
   RegexString: string;
   FieldToMatch: FieldToMatch;
   TextTransformations: TextTransformation[];
+  PreParseTextTransformations?: PreParseTextTransformation[];
 }
 export const RegexMatchStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RegexString: S.String,
     FieldToMatch: FieldToMatch,
     TextTransformations: TextTransformations,
+    PreParseTextTransformations: S.optional(PreParseTextTransformations),
   }),
 ).annotate({
   identifier: "RegexMatchStatement",
@@ -5116,6 +5161,7 @@ export type ParameterExceptionField =
   | "WALLET_ADDRESS"
   | "PRICE_AMOUNT"
   | "PAYMENT_NETWORK"
+  | "PRE_PARSE_TEXT_TRANSFORMATION"
   | (string & {});
 export const ParameterExceptionField = /*@__PURE__*/ S.String;
 
@@ -5400,7 +5446,7 @@ export type CreateWebACLError =
 /**
  * Creates a WebACL per the specifications provided.
  *
- * A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance.
+ * A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore Gateway.
  */
 export const createWebACL: API.OperationMethod<
   CreateWebACLRequest,
@@ -7254,7 +7300,7 @@ export type UpdateWebACLError =
  *
  * - Provide the complete web ACL specification to this call
  *
- * A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, and Amazon Web Services Verified Access instance.
+ * A web ACL defines a collection of rules to use to inspect and control web requests. Each rule has a statement that defines what to look for in web requests and an action that WAF applies to requests that match the statement. In the web ACL, you assign a default action to take (allow, block) for any request that does not match any of the rules. The rules in a web ACL can be a combination of the types Rule, RuleGroup, and managed rule group. You can associate a web ACL with one or more Amazon Web Services resources to protect. The resource types include Amazon CloudFront distribution, Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner service, Amplify application, Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore Gateway.
  *
  * **Temporary inconsistencies during updates**
  *

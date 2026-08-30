@@ -160,14 +160,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "edgeConfigId",
-            "smithy.api#documentation": "Filter results by connected Edge Config ID"
+            "smithy.api#documentation": "Filter results by connected Global Config ID"
           }
         },
         "edgeConfigTokenId": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "edgeConfigTokenId",
-            "smithy.api#documentation": "Filter results by connected Edge Config Token ID"
+            "smithy.api#documentation": "Filter results by connected Global Config Token ID"
           }
         },
         "deprecated": {
@@ -253,7 +253,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -396,7 +403,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -1096,7 +1110,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -3250,7 +3264,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -4500,7 +4514,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
       }
     },
     "com.vercel.projects#GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItem": {
@@ -4528,7 +4542,7 @@
         "excludePaths": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemRollingReleaseGateChecksItemExcludePathsList",
           "traits": {
-            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
           }
         },
         "ingestWatermarkSeconds": {
@@ -4673,6 +4687,12 @@
         },
         "hasData": {
           "target": "smithy.api#Boolean"
+        },
+        "dataReceivedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+          }
         },
         "paidAt": {
           "target": "smithy.api#Double"
@@ -5350,7 +5370,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -5953,6 +5973,24 @@
         },
         "Case1": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemSecurityFirewallRoutesItemSrcCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectsResponseBodyCase0ItemSecurityFirewallRoutesItemTierRequirement": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
         }
       },
       "traits": {}
@@ -6587,6 +6625,9 @@
         "src": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemSecurityFirewallRoutesItemSrc"
         },
+        "tierRequirement": {
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemSecurityFirewallRoutesItemTierRequirement"
+        },
         "has": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemSecurityFirewallRoutesItemHasList"
         },
@@ -7218,6 +7259,24 @@
           "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemOidcTokenConfigIssuerMode",
           "traits": {
             "smithy.api#documentation": "- team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectsResponseBodyCase0ItemTier": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
           }
         }
       },
@@ -8490,7 +8549,7 @@
           "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemOidcTokenConfig"
         },
         "tier": {
-          "target": "smithy.api#String"
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemTier"
         },
         "abuse": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase0ItemAbuse"
@@ -8538,7 +8597,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -8681,7 +8747,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -9381,7 +9454,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -11535,7 +11608,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -12785,7 +12858,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
       }
     },
     "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItem": {
@@ -12813,7 +12886,7 @@
         "excludePaths": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemRollingReleaseGateChecksItemExcludePathsList",
           "traits": {
-            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
           }
         },
         "ingestWatermarkSeconds": {
@@ -12958,6 +13031,12 @@
         },
         "hasData": {
           "target": "smithy.api#Boolean"
+        },
+        "dataReceivedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+          }
         },
         "paidAt": {
           "target": "smithy.api#Double"
@@ -13635,7 +13714,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -14238,6 +14317,24 @@
         },
         "Case1": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemSrcCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTierRequirement": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
         }
       },
       "traits": {}
@@ -14872,6 +14969,9 @@
         "src": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemSrc"
         },
+        "tierRequirement": {
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTierRequirement"
+        },
         "has": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemHasList"
         },
@@ -15503,6 +15603,24 @@
           "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfigIssuerMode",
           "traits": {
             "smithy.api#documentation": "- team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemTier": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
           }
         }
       },
@@ -16775,7 +16893,7 @@
           "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfig"
         },
         "tier": {
-          "target": "smithy.api#String"
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemTier"
         },
         "abuse": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase1ProjectsItemAbuse"
@@ -16907,7 +17025,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -17050,7 +17175,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -17750,7 +17882,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -17970,6 +18102,12 @@
         },
         "hasData": {
           "target": "smithy.api#Boolean"
+        },
+        "dataReceivedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+          }
         },
         "paidAt": {
           "target": "smithy.api#Double"
@@ -21108,7 +21246,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -22291,10 +22429,64 @@
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemSandboxRegion": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -22303,10 +22495,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -22315,10 +22549,64 @@
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemSandboxFailoverRegionsItem": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -22327,10 +22615,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -22688,7 +23018,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
       }
     },
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItem": {
@@ -22716,7 +23046,7 @@
         "excludePaths": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemRollingReleaseGateChecksItemExcludePathsList",
           "traits": {
-            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
           }
         },
         "ingestWatermarkSeconds": {
@@ -23775,7 +24105,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -23896,6 +24226,13 @@
       "traits": {}
     },
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsAiGatewayApiKeyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsAiGatewayApiKeyBypassAllList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -24225,6 +24562,13 @@
       "traits": {}
     },
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsConnexClientProjectList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsConnexContactList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -25379,6 +25723,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsProductionShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsProjectList": {
       "type": "list",
       "member": {
@@ -25666,6 +26017,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsShareableLinkStrictList": {
       "type": "list",
       "member": {
@@ -25715,6 +26073,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsVercelAuthList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsVercelRunList": {
       "type": "list",
       "member": {
@@ -25723,6 +26088,13 @@
       "traits": {}
     },
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsWebAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsWorkflowRunDataList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -25761,6 +26133,9 @@
         },
         "aiGatewayApiKey": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsAiGatewayApiKeyList"
+        },
+        "aiGatewayApiKeyBypassAll": {
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsAiGatewayApiKeyBypassAllList"
         },
         "aiGatewayApiKeyOwnedBySelf": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsAiGatewayApiKeyOwnedBySelfList"
@@ -25902,6 +26277,9 @@
         },
         "connexClientProject": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsConnexClientProjectList"
+        },
+        "connexContact": {
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsConnexContactList"
         },
         "connexInstallation": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsConnexInstallationList"
@@ -26398,6 +26776,9 @@
         "productionAliasProtectionBypass": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsProductionAliasProtectionBypassList"
         },
+        "productionShareableLink": {
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsProductionShareableLinkList"
+        },
         "project": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsProjectList"
         },
@@ -26521,6 +26902,9 @@
         "securityPlusConfiguration": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsSecurityPlusConfigurationList"
         },
+        "shareableLink": {
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsShareableLinkList"
+        },
         "shareableLinkStrict": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsShareableLinkStrictList"
         },
@@ -26542,11 +26926,17 @@
         "v0Chat": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsV0ChatList"
         },
+        "vercelAuth": {
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsVercelAuthList"
+        },
         "vercelRun": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsVercelRunList"
         },
         "webAnalytics": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsWebAnalyticsList"
+        },
+        "workflowRunData": {
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemPermissionsWorkflowRunDataList"
         }
       },
       "traits": {}
@@ -28464,6 +28854,24 @@
         "smithy.api#documentation": "Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident."
       }
     },
+    "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemTier": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemUsageStatusKind": {
       "type": "enum",
       "members": {
@@ -30143,7 +30551,7 @@
           }
         },
         "tier": {
-          "target": "smithy.api#String"
+          "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemTier"
         },
         "usageStatus": {
           "target": "com.vercel.projects#GetProjectsResponseBodyCase2ProjectsItemUsageStatus"
@@ -31367,6 +31775,277 @@
         "smithy.api#documentation": "The Vercel Auth setting for the project (historically named \\\"SSO Protection\\\")"
       }
     },
+    "com.vercel.projects#CreateProjectRequestSandboxRegion": {
+      "type": "enum",
+      "members": {
+        "IAD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iad1"
+          }
+        },
+        "SFO1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "CLE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Vercel region sandboxes in this project are created in by default."
+      }
+    },
+    "com.vercel.projects#CreateProjectRequestSandboxFailoverRegionsItem": {
+      "type": "enum",
+      "members": {
+        "IAD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iad1"
+          }
+        },
+        "SFO1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "CLE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#CreateProjectRequestSandboxFailoverRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#CreateProjectRequestSandboxFailoverRegionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The regions sandboxes in this project fall back to when they cannot be created in `region`."
+      }
+    },
+    "com.vercel.projects#CreateProjectRequestSandbox": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.vercel.projects#CreateProjectRequestSandboxRegion",
+          "traits": {
+            "smithy.api#documentation": "The Vercel region sandboxes in this project are created in by default."
+          }
+        },
+        "failoverRegions": {
+          "target": "com.vercel.projects#CreateProjectRequestSandboxFailoverRegionsList",
+          "traits": {
+            "smithy.api#documentation": "The regions sandboxes in this project fall back to when they cannot be created in `region`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the default region and failover regions for sandboxes created in the project"
+      }
+    },
     "com.vercel.projects#CreateProjectRequestOidcTokenConfigIssuerMode": {
       "type": "enum",
       "members": {
@@ -31756,6 +32435,12 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "sandbox": {
+          "target": "com.vercel.projects#CreateProjectRequestSandbox",
+          "traits": {
+            "smithy.api#documentation": "Specifies the default region and failover regions for sandboxes created in the project"
+          }
+        },
         "outputDirectory": {
           "target": "smithy.api#String",
           "traits": {
@@ -31843,7 +32528,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -31986,7 +32678,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -32686,7 +33385,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -32906,6 +33605,12 @@
         },
         "hasData": {
           "target": "smithy.api#Boolean"
+        },
+        "dataReceivedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+          }
         },
         "paidAt": {
           "target": "smithy.api#Double"
@@ -36044,7 +36749,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -37227,10 +37932,64 @@
     "com.vercel.projects#CreateProjectResponseSandboxRegion": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -37239,10 +37998,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -37251,10 +38052,64 @@
     "com.vercel.projects#CreateProjectResponseSandboxFailoverRegionsItem": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -37263,10 +38118,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -37624,7 +38521,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
       }
     },
     "com.vercel.projects#CreateProjectResponseRollingReleaseGateChecksItem": {
@@ -37652,7 +38549,7 @@
         "excludePaths": {
           "target": "com.vercel.projects#CreateProjectResponseRollingReleaseGateChecksItemExcludePathsList",
           "traits": {
-            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
           }
         },
         "ingestWatermarkSeconds": {
@@ -38711,7 +39608,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -38794,6 +39691,13 @@
       "traits": {}
     },
     "com.vercel.projects#CreateProjectResponsePermissionsAiGatewayApiKeyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#CreateProjectResponsePermissionsAiGatewayApiKeyBypassAllList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -39123,6 +40027,13 @@
       "traits": {}
     },
     "com.vercel.projects#CreateProjectResponsePermissionsConnexClientProjectList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#CreateProjectResponsePermissionsConnexContactList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -40277,6 +41188,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#CreateProjectResponsePermissionsProductionShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#CreateProjectResponsePermissionsProjectList": {
       "type": "list",
       "member": {
@@ -40564,6 +41482,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#CreateProjectResponsePermissionsShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#CreateProjectResponsePermissionsShareableLinkStrictList": {
       "type": "list",
       "member": {
@@ -40613,6 +41538,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#CreateProjectResponsePermissionsVercelAuthList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#CreateProjectResponsePermissionsVercelRunList": {
       "type": "list",
       "member": {
@@ -40621,6 +41553,13 @@
       "traits": {}
     },
     "com.vercel.projects#CreateProjectResponsePermissionsWebAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#CreateProjectResponsePermissionsWorkflowRunDataList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -40659,6 +41598,9 @@
         },
         "aiGatewayApiKey": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsAiGatewayApiKeyList"
+        },
+        "aiGatewayApiKeyBypassAll": {
+          "target": "com.vercel.projects#CreateProjectResponsePermissionsAiGatewayApiKeyBypassAllList"
         },
         "aiGatewayApiKeyOwnedBySelf": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsAiGatewayApiKeyOwnedBySelfList"
@@ -40800,6 +41742,9 @@
         },
         "connexClientProject": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsConnexClientProjectList"
+        },
+        "connexContact": {
+          "target": "com.vercel.projects#CreateProjectResponsePermissionsConnexContactList"
         },
         "connexInstallation": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsConnexInstallationList"
@@ -41296,6 +42241,9 @@
         "productionAliasProtectionBypass": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsProductionAliasProtectionBypassList"
         },
+        "productionShareableLink": {
+          "target": "com.vercel.projects#CreateProjectResponsePermissionsProductionShareableLinkList"
+        },
         "project": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsProjectList"
         },
@@ -41419,6 +42367,9 @@
         "securityPlusConfiguration": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsSecurityPlusConfigurationList"
         },
+        "shareableLink": {
+          "target": "com.vercel.projects#CreateProjectResponsePermissionsShareableLinkList"
+        },
         "shareableLinkStrict": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsShareableLinkStrictList"
         },
@@ -41440,11 +42391,17 @@
         "v0Chat": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsV0ChatList"
         },
+        "vercelAuth": {
+          "target": "com.vercel.projects#CreateProjectResponsePermissionsVercelAuthList"
+        },
         "vercelRun": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsVercelRunList"
         },
         "webAnalytics": {
           "target": "com.vercel.projects#CreateProjectResponsePermissionsWebAnalyticsList"
+        },
+        "workflowRunData": {
+          "target": "com.vercel.projects#CreateProjectResponsePermissionsWorkflowRunDataList"
         }
       },
       "traits": {}
@@ -43362,6 +44319,24 @@
         "smithy.api#documentation": "Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident."
       }
     },
+    "com.vercel.projects#CreateProjectResponseTier": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.vercel.projects#CreateProjectResponseUsageStatusKind": {
       "type": "enum",
       "members": {
@@ -45041,7 +46016,7 @@
           }
         },
         "tier": {
-          "target": "smithy.api#String"
+          "target": "com.vercel.projects#CreateProjectResponseTier"
         },
         "usageStatus": {
           "target": "com.vercel.projects#CreateProjectResponseUsageStatus"
@@ -45385,7 +46360,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -45528,7 +46510,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -46228,7 +47217,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -46448,6 +47437,12 @@
         },
         "hasData": {
           "target": "smithy.api#Boolean"
+        },
+        "dataReceivedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+          }
         },
         "paidAt": {
           "target": "smithy.api#Double"
@@ -49574,7 +50569,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -50757,10 +51752,64 @@
     "com.vercel.projects#GetProjectResponseSandboxRegion": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -50769,10 +51818,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -50781,10 +51872,64 @@
     "com.vercel.projects#GetProjectResponseSandboxFailoverRegionsItem": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -50793,10 +51938,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -51154,7 +52341,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
       }
     },
     "com.vercel.projects#GetProjectResponseRollingReleaseGateChecksItem": {
@@ -51182,7 +52369,7 @@
         "excludePaths": {
           "target": "com.vercel.projects#GetProjectResponseRollingReleaseGateChecksItemExcludePathsList",
           "traits": {
-            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
           }
         },
         "ingestWatermarkSeconds": {
@@ -52241,7 +53428,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -52324,6 +53511,13 @@
       "traits": {}
     },
     "com.vercel.projects#GetProjectResponsePermissionsAiGatewayApiKeyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectResponsePermissionsAiGatewayApiKeyBypassAllList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -52653,6 +53847,13 @@
       "traits": {}
     },
     "com.vercel.projects#GetProjectResponsePermissionsConnexClientProjectList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectResponsePermissionsConnexContactList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -53807,6 +55008,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#GetProjectResponsePermissionsProductionShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#GetProjectResponsePermissionsProjectList": {
       "type": "list",
       "member": {
@@ -54094,6 +55302,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#GetProjectResponsePermissionsShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#GetProjectResponsePermissionsShareableLinkStrictList": {
       "type": "list",
       "member": {
@@ -54143,6 +55358,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#GetProjectResponsePermissionsVercelAuthList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#GetProjectResponsePermissionsVercelRunList": {
       "type": "list",
       "member": {
@@ -54151,6 +55373,13 @@
       "traits": {}
     },
     "com.vercel.projects#GetProjectResponsePermissionsWebAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#GetProjectResponsePermissionsWorkflowRunDataList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -54189,6 +55418,9 @@
         },
         "aiGatewayApiKey": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsAiGatewayApiKeyList"
+        },
+        "aiGatewayApiKeyBypassAll": {
+          "target": "com.vercel.projects#GetProjectResponsePermissionsAiGatewayApiKeyBypassAllList"
         },
         "aiGatewayApiKeyOwnedBySelf": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsAiGatewayApiKeyOwnedBySelfList"
@@ -54330,6 +55562,9 @@
         },
         "connexClientProject": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsConnexClientProjectList"
+        },
+        "connexContact": {
+          "target": "com.vercel.projects#GetProjectResponsePermissionsConnexContactList"
         },
         "connexInstallation": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsConnexInstallationList"
@@ -54826,6 +56061,9 @@
         "productionAliasProtectionBypass": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsProductionAliasProtectionBypassList"
         },
+        "productionShareableLink": {
+          "target": "com.vercel.projects#GetProjectResponsePermissionsProductionShareableLinkList"
+        },
         "project": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsProjectList"
         },
@@ -54949,6 +56187,9 @@
         "securityPlusConfiguration": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsSecurityPlusConfigurationList"
         },
+        "shareableLink": {
+          "target": "com.vercel.projects#GetProjectResponsePermissionsShareableLinkList"
+        },
         "shareableLinkStrict": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsShareableLinkStrictList"
         },
@@ -54970,11 +56211,17 @@
         "v0Chat": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsV0ChatList"
         },
+        "vercelAuth": {
+          "target": "com.vercel.projects#GetProjectResponsePermissionsVercelAuthList"
+        },
         "vercelRun": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsVercelRunList"
         },
         "webAnalytics": {
           "target": "com.vercel.projects#GetProjectResponsePermissionsWebAnalyticsList"
+        },
+        "workflowRunData": {
+          "target": "com.vercel.projects#GetProjectResponsePermissionsWorkflowRunDataList"
         }
       },
       "traits": {}
@@ -56892,6 +58139,24 @@
         "smithy.api#documentation": "Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident."
       }
     },
+    "com.vercel.projects#GetProjectResponseTier": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.vercel.projects#GetProjectResponseUsageStatusKind": {
       "type": "enum",
       "members": {
@@ -58574,7 +59839,7 @@
           }
         },
         "tier": {
-          "target": "smithy.api#String"
+          "target": "com.vercel.projects#GetProjectResponseTier"
         },
         "usageStatus": {
           "target": "com.vercel.projects#GetProjectResponseUsageStatus"
@@ -59615,49 +60880,6 @@
         "smithy.api#documentation": "Allows to protect project deployments with a password"
       }
     },
-    "com.vercel.projects#UpdateProjectRequestPassportPublicPathRulesItemType": {
-      "type": "enum",
-      "members": {
-        "EQUALS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "equals"
-          }
-        },
-        "STARTSWITH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "startsWith"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.projects#UpdateProjectRequestPassportPublicPathRulesItem": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.vercel.projects#UpdateProjectRequestPassportPublicPathRulesItemType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.projects#UpdateProjectRequestPassportPublicPathRulesList": {
-      "type": "list",
-      "member": {
-        "target": "com.vercel.projects#UpdateProjectRequestPassportPublicPathRulesItem"
-      },
-      "traits": {}
-    },
     "com.vercel.projects#UpdateProjectRequestPassportDeploymentType": {
       "type": "enum",
       "members": {
@@ -59691,9 +60913,6 @@
     "com.vercel.projects#UpdateProjectRequestPassport": {
       "type": "structure",
       "members": {
-        "publicPathRules": {
-          "target": "com.vercel.projects#UpdateProjectRequestPassportPublicPathRulesList"
-        },
         "connectorId": {
           "target": "smithy.api#String",
           "traits": {
@@ -59706,6 +60925,277 @@
       },
       "traits": {
         "smithy.api#documentation": "Passport configuration for the project."
+      }
+    },
+    "com.vercel.projects#UpdateProjectRequestSandboxRegion": {
+      "type": "enum",
+      "members": {
+        "IAD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iad1"
+          }
+        },
+        "SFO1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "CLE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Vercel region sandboxes in this project are created in by default."
+      }
+    },
+    "com.vercel.projects#UpdateProjectRequestSandboxFailoverRegionsItem": {
+      "type": "enum",
+      "members": {
+        "IAD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iad1"
+          }
+        },
+        "SFO1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "CLE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UpdateProjectRequestSandboxFailoverRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#UpdateProjectRequestSandboxFailoverRegionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The regions sandboxes in this project fall back to when they cannot be created in `region`."
+      }
+    },
+    "com.vercel.projects#UpdateProjectRequestSandbox": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.vercel.projects#UpdateProjectRequestSandboxRegion",
+          "traits": {
+            "smithy.api#documentation": "The Vercel region sandboxes in this project are created in by default."
+          }
+        },
+        "failoverRegions": {
+          "target": "com.vercel.projects#UpdateProjectRequestSandboxFailoverRegionsList",
+          "traits": {
+            "smithy.api#documentation": "The regions sandboxes in this project fall back to when they cannot be created in `region`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the default region and failover regions for sandboxes created in the project"
       }
     },
     "com.vercel.projects#UpdateProjectRequestSsoProtectionDeploymentType": {
@@ -60867,6 +62357,12 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "sandbox": {
+          "target": "com.vercel.projects#UpdateProjectRequestSandbox",
+          "traits": {
+            "smithy.api#documentation": "Specifies the default region and failover regions for sandboxes created in the project"
+          }
+        },
         "ssoProtection": {
           "target": "com.vercel.projects#UpdateProjectRequestSsoProtection",
           "traits": {
@@ -60946,7 +62442,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -61089,7 +62592,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -61789,7 +63299,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -62009,6 +63519,12 @@
         },
         "hasData": {
           "target": "smithy.api#Boolean"
+        },
+        "dataReceivedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+          }
         },
         "paidAt": {
           "target": "smithy.api#Double"
@@ -65099,7 +66615,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -66282,10 +67798,64 @@
     "com.vercel.projects#UpdateProjectResponseSandboxRegion": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -66294,10 +67864,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -66306,10 +67918,64 @@
     "com.vercel.projects#UpdateProjectResponseSandboxFailoverRegionsItem": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -66318,10 +67984,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -66679,7 +68387,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
       }
     },
     "com.vercel.projects#UpdateProjectResponseRollingReleaseGateChecksItem": {
@@ -66707,7 +68415,7 @@
         "excludePaths": {
           "target": "com.vercel.projects#UpdateProjectResponseRollingReleaseGateChecksItemExcludePathsList",
           "traits": {
-            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
           }
         },
         "ingestWatermarkSeconds": {
@@ -67766,7 +69474,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -67849,6 +69557,13 @@
       "traits": {}
     },
     "com.vercel.projects#UpdateProjectResponsePermissionsAiGatewayApiKeyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UpdateProjectResponsePermissionsAiGatewayApiKeyBypassAllList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -68178,6 +69893,13 @@
       "traits": {}
     },
     "com.vercel.projects#UpdateProjectResponsePermissionsConnexClientProjectList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UpdateProjectResponsePermissionsConnexContactList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -69332,6 +71054,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UpdateProjectResponsePermissionsProductionShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UpdateProjectResponsePermissionsProjectList": {
       "type": "list",
       "member": {
@@ -69619,6 +71348,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UpdateProjectResponsePermissionsShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UpdateProjectResponsePermissionsShareableLinkStrictList": {
       "type": "list",
       "member": {
@@ -69668,6 +71404,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UpdateProjectResponsePermissionsVercelAuthList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UpdateProjectResponsePermissionsVercelRunList": {
       "type": "list",
       "member": {
@@ -69676,6 +71419,13 @@
       "traits": {}
     },
     "com.vercel.projects#UpdateProjectResponsePermissionsWebAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UpdateProjectResponsePermissionsWorkflowRunDataList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -69714,6 +71464,9 @@
         },
         "aiGatewayApiKey": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsAiGatewayApiKeyList"
+        },
+        "aiGatewayApiKeyBypassAll": {
+          "target": "com.vercel.projects#UpdateProjectResponsePermissionsAiGatewayApiKeyBypassAllList"
         },
         "aiGatewayApiKeyOwnedBySelf": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsAiGatewayApiKeyOwnedBySelfList"
@@ -69855,6 +71608,9 @@
         },
         "connexClientProject": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsConnexClientProjectList"
+        },
+        "connexContact": {
+          "target": "com.vercel.projects#UpdateProjectResponsePermissionsConnexContactList"
         },
         "connexInstallation": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsConnexInstallationList"
@@ -70351,6 +72107,9 @@
         "productionAliasProtectionBypass": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsProductionAliasProtectionBypassList"
         },
+        "productionShareableLink": {
+          "target": "com.vercel.projects#UpdateProjectResponsePermissionsProductionShareableLinkList"
+        },
         "project": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsProjectList"
         },
@@ -70474,6 +72233,9 @@
         "securityPlusConfiguration": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsSecurityPlusConfigurationList"
         },
+        "shareableLink": {
+          "target": "com.vercel.projects#UpdateProjectResponsePermissionsShareableLinkList"
+        },
         "shareableLinkStrict": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsShareableLinkStrictList"
         },
@@ -70495,11 +72257,17 @@
         "v0Chat": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsV0ChatList"
         },
+        "vercelAuth": {
+          "target": "com.vercel.projects#UpdateProjectResponsePermissionsVercelAuthList"
+        },
         "vercelRun": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsVercelRunList"
         },
         "webAnalytics": {
           "target": "com.vercel.projects#UpdateProjectResponsePermissionsWebAnalyticsList"
+        },
+        "workflowRunData": {
+          "target": "com.vercel.projects#UpdateProjectResponsePermissionsWorkflowRunDataList"
         }
       },
       "traits": {}
@@ -72417,6 +74185,24 @@
         "smithy.api#documentation": "Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident."
       }
     },
+    "com.vercel.projects#UpdateProjectResponseTier": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UpdateProjectResponseUsageStatusKind": {
       "type": "enum",
       "members": {
@@ -74096,7 +75882,7 @@
           }
         },
         "tier": {
-          "target": "smithy.api#String"
+          "target": "com.vercel.projects#UpdateProjectResponseTier"
         },
         "usageStatus": {
           "target": "com.vercel.projects#UpdateProjectResponseUsageStatus"
@@ -74291,7 +76077,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -74434,7 +76227,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -75134,7 +76934,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -75354,6 +77154,12 @@
         },
         "hasData": {
           "target": "smithy.api#Boolean"
+        },
+        "dataReceivedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+          }
         },
         "paidAt": {
           "target": "smithy.api#Double"
@@ -78492,7 +80298,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -79675,10 +81481,64 @@
     "com.vercel.projects#UploadProjectAvatarResponseSandboxRegion": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -79687,10 +81547,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -79699,10 +81601,64 @@
     "com.vercel.projects#UploadProjectAvatarResponseSandboxFailoverRegionsItem": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -79711,10 +81667,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -80072,7 +82070,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
       }
     },
     "com.vercel.projects#UploadProjectAvatarResponseRollingReleaseGateChecksItem": {
@@ -80100,7 +82098,7 @@
         "excludePaths": {
           "target": "com.vercel.projects#UploadProjectAvatarResponseRollingReleaseGateChecksItemExcludePathsList",
           "traits": {
-            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
           }
         },
         "ingestWatermarkSeconds": {
@@ -81159,7 +83157,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -81242,6 +83240,13 @@
       "traits": {}
     },
     "com.vercel.projects#UploadProjectAvatarResponsePermissionsAiGatewayApiKeyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UploadProjectAvatarResponsePermissionsAiGatewayApiKeyBypassAllList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -81571,6 +83576,13 @@
       "traits": {}
     },
     "com.vercel.projects#UploadProjectAvatarResponsePermissionsConnexClientProjectList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UploadProjectAvatarResponsePermissionsConnexContactList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -82725,6 +84737,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UploadProjectAvatarResponsePermissionsProductionShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UploadProjectAvatarResponsePermissionsProjectList": {
       "type": "list",
       "member": {
@@ -83012,6 +85031,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UploadProjectAvatarResponsePermissionsShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UploadProjectAvatarResponsePermissionsShareableLinkStrictList": {
       "type": "list",
       "member": {
@@ -83061,6 +85087,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UploadProjectAvatarResponsePermissionsVercelAuthList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UploadProjectAvatarResponsePermissionsVercelRunList": {
       "type": "list",
       "member": {
@@ -83069,6 +85102,13 @@
       "traits": {}
     },
     "com.vercel.projects#UploadProjectAvatarResponsePermissionsWebAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UploadProjectAvatarResponsePermissionsWorkflowRunDataList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -83107,6 +85147,9 @@
         },
         "aiGatewayApiKey": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsAiGatewayApiKeyList"
+        },
+        "aiGatewayApiKeyBypassAll": {
+          "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsAiGatewayApiKeyBypassAllList"
         },
         "aiGatewayApiKeyOwnedBySelf": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsAiGatewayApiKeyOwnedBySelfList"
@@ -83248,6 +85291,9 @@
         },
         "connexClientProject": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsConnexClientProjectList"
+        },
+        "connexContact": {
+          "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsConnexContactList"
         },
         "connexInstallation": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsConnexInstallationList"
@@ -83744,6 +85790,9 @@
         "productionAliasProtectionBypass": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsProductionAliasProtectionBypassList"
         },
+        "productionShareableLink": {
+          "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsProductionShareableLinkList"
+        },
         "project": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsProjectList"
         },
@@ -83867,6 +85916,9 @@
         "securityPlusConfiguration": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsSecurityPlusConfigurationList"
         },
+        "shareableLink": {
+          "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsShareableLinkList"
+        },
         "shareableLinkStrict": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsShareableLinkStrictList"
         },
@@ -83888,11 +85940,17 @@
         "v0Chat": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsV0ChatList"
         },
+        "vercelAuth": {
+          "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsVercelAuthList"
+        },
         "vercelRun": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsVercelRunList"
         },
         "webAnalytics": {
           "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsWebAnalyticsList"
+        },
+        "workflowRunData": {
+          "target": "com.vercel.projects#UploadProjectAvatarResponsePermissionsWorkflowRunDataList"
         }
       },
       "traits": {}
@@ -85810,6 +87868,24 @@
         "smithy.api#documentation": "Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident."
       }
     },
+    "com.vercel.projects#UploadProjectAvatarResponseTier": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UploadProjectAvatarResponseUsageStatusKind": {
       "type": "enum",
       "members": {
@@ -87489,7 +89565,7 @@
           }
         },
         "tier": {
-          "target": "smithy.api#String"
+          "target": "com.vercel.projects#UploadProjectAvatarResponseTier"
         },
         "usageStatus": {
           "target": "com.vercel.projects#UploadProjectAvatarResponseUsageStatus"
@@ -94236,10 +96312,7 @@
       "type": "structure",
       "members": {
         "created": {
-          "target": "com.vercel.projects#CreateProjectEnvResponseCreated",
-          "traits": {
-            "smithy.api#required": {}
-          }
+          "target": "com.vercel.projects#CreateProjectEnvResponseCreated"
         },
         "failed": {
           "target": "com.vercel.projects#CreateProjectEnvResponseFailedList",
@@ -100854,7 +102927,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -100997,7 +103077,14 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The internal ID of the Vercel App backing this principal.",
             "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
           }
         }
       },
@@ -101697,7 +103784,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -101917,6 +104004,12 @@
         },
         "hasData": {
           "target": "smithy.api#Boolean"
+        },
+        "dataReceivedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "When the first free (not Speed Insights Plus) production data point was observed, in ms. Set once by subscriber-analytics-events; projects that already had data before this field shipped get it backfilled on their next batch, so it reads \"first free data point observed\", not necessarily \"first ever\"."
+          }
         },
         "paidAt": {
           "target": "smithy.api#Double"
@@ -105055,7 +107148,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -106238,10 +108331,64 @@
     "com.vercel.projects#UpdateMicrofrontendsResponseSandboxRegion": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -106250,10 +108397,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -106262,10 +108451,64 @@
     "com.vercel.projects#UpdateMicrofrontendsResponseSandboxFailoverRegionsItem": {
       "type": "enum",
       "members": {
+        "ARN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arn1"
+          }
+        },
+        "BOM1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bom1"
+          }
+        },
+        "CDG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdg1"
+          }
+        },
         "CLE1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cle1"
+          }
+        },
+        "CPT1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpt1"
+          }
+        },
+        "DUB1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dub1"
+          }
+        },
+        "FRA1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fra1"
+          }
+        },
+        "GRU1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gru1"
+          }
+        },
+        "HKG1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hkg1"
+          }
+        },
+        "HND1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hnd1"
           }
         },
         "IAD1": {
@@ -106274,10 +108517,52 @@
             "smithy.api#enumValue": "iad1"
           }
         },
+        "ICN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icn1"
+          }
+        },
+        "KIX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kix1"
+          }
+        },
+        "LHR1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lhr1"
+          }
+        },
+        "PDX1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pdx1"
+          }
+        },
         "SFO1": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sfo1"
+          }
+        },
+        "SIN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sin1"
+          }
+        },
+        "SYD1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syd1"
+          }
+        },
+        "YUL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yul1"
           }
         }
       },
@@ -106635,7 +108920,7 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+        "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
       }
     },
     "com.vercel.projects#UpdateMicrofrontendsResponseRollingReleaseGateChecksItem": {
@@ -106663,7 +108948,7 @@
         "excludePaths": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponseRollingReleaseGateChecksItemExcludePathsList",
           "traits": {
-            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted."
+            "smithy.api#documentation": "Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted."
           }
         },
         "ingestWatermarkSeconds": {
@@ -107722,7 +110007,7 @@
         "userId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Present for user creators; omitted for app/integration/system creators."
           }
         },
         "withCache": {
@@ -107805,6 +110090,13 @@
       "traits": {}
     },
     "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsAiGatewayApiKeyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsAiGatewayApiKeyBypassAllList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -108134,6 +110426,13 @@
       "traits": {}
     },
     "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsConnexClientProjectList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsConnexContactList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -109288,6 +111587,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsProductionShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsProjectList": {
       "type": "list",
       "member": {
@@ -109575,6 +111881,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsShareableLinkList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsShareableLinkStrictList": {
       "type": "list",
       "member": {
@@ -109624,6 +111937,13 @@
       },
       "traits": {}
     },
+    "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsVercelAuthList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsVercelRunList": {
       "type": "list",
       "member": {
@@ -109632,6 +111952,13 @@
       "traits": {}
     },
     "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsWebAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#ACLAction"
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsWorkflowRunDataList": {
       "type": "list",
       "member": {
         "target": "com.vercel.projects#ACLAction"
@@ -109670,6 +111997,9 @@
         },
         "aiGatewayApiKey": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsAiGatewayApiKeyList"
+        },
+        "aiGatewayApiKeyBypassAll": {
+          "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsAiGatewayApiKeyBypassAllList"
         },
         "aiGatewayApiKeyOwnedBySelf": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsAiGatewayApiKeyOwnedBySelfList"
@@ -109811,6 +112141,9 @@
         },
         "connexClientProject": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsConnexClientProjectList"
+        },
+        "connexContact": {
+          "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsConnexContactList"
         },
         "connexInstallation": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsConnexInstallationList"
@@ -110307,6 +112640,9 @@
         "productionAliasProtectionBypass": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsProductionAliasProtectionBypassList"
         },
+        "productionShareableLink": {
+          "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsProductionShareableLinkList"
+        },
         "project": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsProjectList"
         },
@@ -110430,6 +112766,9 @@
         "securityPlusConfiguration": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsSecurityPlusConfigurationList"
         },
+        "shareableLink": {
+          "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsShareableLinkList"
+        },
         "shareableLinkStrict": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsShareableLinkStrictList"
         },
@@ -110451,11 +112790,17 @@
         "v0Chat": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsV0ChatList"
         },
+        "vercelAuth": {
+          "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsVercelAuthList"
+        },
         "vercelRun": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsVercelRunList"
         },
         "webAnalytics": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsWebAnalyticsList"
+        },
+        "workflowRunData": {
+          "target": "com.vercel.projects#UpdateMicrofrontendsResponsePermissionsWorkflowRunDataList"
         }
       },
       "traits": {}
@@ -112373,6 +114718,24 @@
         "smithy.api#documentation": "Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident."
       }
     },
+    "com.vercel.projects#UpdateMicrofrontendsResponseTier": {
+      "type": "enum",
+      "members": {
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.vercel.projects#UpdateMicrofrontendsResponseUsageStatusKind": {
       "type": "enum",
       "members": {
@@ -114052,7 +116415,7 @@
           }
         },
         "tier": {
-          "target": "smithy.api#String"
+          "target": "com.vercel.projects#UpdateMicrofrontendsResponseTier"
         },
         "usageStatus": {
           "target": "com.vercel.projects#UpdateMicrofrontendsResponseUsageStatus"
@@ -114176,6 +116539,9 @@
         },
         {
           "target": "com.vercel.projects#Conflict"
+        },
+        {
+          "target": "com.vercel.projects#UnprocessableEntity"
         }
       ],
       "traits": {

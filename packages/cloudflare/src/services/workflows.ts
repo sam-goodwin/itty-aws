@@ -1083,12 +1083,15 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase0 =
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase0>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackoff =
-  "constant" | "linear" | "exponential";
+  | "constant"
+  | "linear"
+  | "exponential";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackoff =
   /*@__PURE__*/ S.String;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesDelay =
-  string | number;
+  | string
+  | number;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesDelay =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 

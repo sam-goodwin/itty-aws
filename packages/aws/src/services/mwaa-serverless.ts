@@ -146,6 +146,22 @@ export const DefinitionS3Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefinitionS3Location",
 }) as any as S.Schema<DefinitionS3Location>;
+export interface S3Location {
+  Bucket: string;
+  ObjectKey: string;
+  VersionId?: string;
+}
+export const S3Location = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Bucket: S.String,
+    ObjectKey: S.String,
+    VersionId: S.optional(S.String),
+  }),
+).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+export type Code = { S3Location: S3Location };
+export const Code = /*@__PURE__*/ S.Union([
+  S.Struct({ S3Location: S3Location }),
+]);
 export type RoleARN = string;
 export type DescriptionString = string;
 export type EncryptionType =
@@ -199,6 +215,7 @@ export interface CreateWorkflowRequest {
   Name: string;
   ClientToken?: string;
   DefinitionS3Location: DefinitionS3Location;
+  Code?: Code;
   RoleArn: string;
   Description?: string;
   EncryptionConfiguration?: EncryptionConfiguration;
@@ -213,6 +230,7 @@ export const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
     Name: S.String,
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     DefinitionS3Location: DefinitionS3Location,
+    Code: S.optional(Code),
     RoleArn: S.String,
     Description: S.optional(S.String),
     EncryptionConfiguration: S.optional(EncryptionConfiguration),
@@ -431,6 +449,8 @@ export interface GetWorkflowResponse {
   EngineVersion?: EngineVersion;
   WorkflowStatus?: WorkflowStatus;
   DefinitionS3Location?: DefinitionS3Location;
+  Code?: Code;
+  CodeSnapshottedAt?: Date;
   ScheduleConfiguration?: ScheduleConfiguration;
   RoleArn?: string;
   NetworkConfiguration?: NetworkConfiguration;
@@ -454,6 +474,10 @@ export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
     EngineVersion: S.optional(EngineVersion),
     WorkflowStatus: S.optional(WorkflowStatus),
     DefinitionS3Location: S.optional(DefinitionS3Location),
+    Code: S.optional(Code),
+    CodeSnapshottedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
     ScheduleConfiguration: S.optional(ScheduleConfiguration),
     RoleArn: S.optional(S.String),
     NetworkConfiguration: S.optional(NetworkConfiguration),
@@ -1000,6 +1024,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWorkflowRequest {
   WorkflowArn: string;
   DefinitionS3Location: DefinitionS3Location;
+  Code?: Code;
   RoleArn: string;
   Description?: string;
   LoggingConfiguration?: LoggingConfiguration;
@@ -1011,6 +1036,7 @@ export const UpdateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkflowArn: S.String.pipe(T.HttpLabel("WorkflowArn")),
     DefinitionS3Location: DefinitionS3Location,
+    Code: S.optional(Code),
     RoleArn: S.String,
     Description: S.optional(S.String),
     LoggingConfiguration: S.optional(LoggingConfiguration),

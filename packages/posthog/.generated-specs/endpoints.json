@@ -225,6 +225,12 @@
           "traits": {
             "smithy.api#documentation": "Tag names associated with this endpoint."
           }
+        },
+        "optional_breakdown_properties": {
+          "target": "com.posthog.endpoints#EndpointResponseOptionalBreakdownPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown."
+          }
         }
       },
       "traits": {
@@ -331,6 +337,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -339,7 +351,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.endpoints#BlankEnum": {
@@ -373,6 +385,18 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "URL-safe endpoint name."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether materialization is enabled for this endpoint version."
+          }
+        },
+        "ready": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a successful materialization is available to serve."
           }
         },
         "status": {
@@ -469,6 +493,15 @@
         "smithy.api#documentation": "Tag names associated with this endpoint."
       }
     },
+    "com.posthog.endpoints#EndpointResponseOptionalBreakdownPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown."
+      }
+    },
     "com.posthog.endpoints#PaginatedEndpointResponseListResultsList": {
       "type": "list",
       "member": {
@@ -523,6 +556,15 @@
       },
       "traits": {
         "smithy.api#documentation": "List of tag names to associate with this endpoint. Replaces any existing tags."
+      }
+    },
+    "com.posthog.endpoints#EndpointsCreateRequestOptionalBreakdownPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required."
       }
     },
     "com.posthog.endpoints#EndpointsCreateRequest": {
@@ -609,6 +651,13 @@
           "target": "com.posthog.endpoints#EndpointsCreateRequestTagsList",
           "traits": {
             "smithy.api#documentation": "List of tag names to associate with this endpoint. Replaces any existing tags.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "optional_breakdown_properties": {
+          "target": "com.posthog.endpoints#EndpointsCreateRequestOptionalBreakdownPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -811,6 +860,12 @@
             "smithy.api#documentation": "Tag names associated with this endpoint."
           }
         },
+        "optional_breakdown_properties": {
+          "target": "com.posthog.endpoints#EndpointVersionResponseOptionalBreakdownPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown."
+          }
+        },
         "version": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -884,6 +939,15 @@
         "smithy.api#documentation": "Tag names associated with this endpoint."
       }
     },
+    "com.posthog.endpoints#EndpointVersionResponseOptionalBreakdownPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown."
+      }
+    },
     "com.posthog.endpoints#EndpointsRetrieve": {
       "type": "operation",
       "input": {
@@ -928,6 +992,15 @@
       },
       "traits": {
         "smithy.api#documentation": "List of tag names to associate with this endpoint. Replaces any existing tags."
+      }
+    },
+    "com.posthog.endpoints#EndpointsUpdateRequestOptionalBreakdownPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required."
       }
     },
     "com.posthog.endpoints#EndpointsUpdateRequest": {
@@ -1016,6 +1089,13 @@
             "smithy.api#documentation": "List of tag names to associate with this endpoint. Replaces any existing tags.",
             "com.distilled.openapi#nullable": {}
           }
+        },
+        "optional_breakdown_properties": {
+          "target": "com.posthog.endpoints#EndpointsUpdateRequestOptionalBreakdownPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {
@@ -1069,6 +1149,15 @@
       },
       "traits": {
         "smithy.api#documentation": "List of tag names to associate with this endpoint. Replaces any existing tags."
+      }
+    },
+    "com.posthog.endpoints#EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required."
       }
     },
     "com.posthog.endpoints#EndpointsPartialUpdateRequest": {
@@ -1155,6 +1244,13 @@
           "target": "com.posthog.endpoints#EndpointsPartialUpdateRequestTagsList",
           "traits": {
             "smithy.api#documentation": "List of tag names to associate with this endpoint. Replaces any existing tags.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "optional_breakdown_properties": {
+          "target": "com.posthog.endpoints#EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -1261,7 +1357,7 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "after",
-            "smithy.api#documentation": "Only return entries after this ISO 8601 timestamp."
+            "smithy.api#documentation": "Only return entries after this ISO 8601 timestamp. Defaults to 7 days ago; pass an explicit value to read further back."
           }
         },
         "before": {
@@ -1439,6 +1535,138 @@
           "code": 200
         },
         "smithy.api#documentation": "Get materialization status for an endpoint. Supports ?version=N query param."
+      }
+    },
+    "com.posthog.endpoints#EndpointsMaterializationSuggestionCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Endpoint version to suggest a fix for. Defaults to the latest version.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.endpoints#EndpointMaterializationSuggestion": {
+      "type": "structure",
+      "members": {
+        "suggestion_status": {
+          "target": "com.posthog.endpoints#SuggestionStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "Outcome of the suggestion run: 'ok' — the suggested query passes the live materialization checks; 'cannot_fix' — no semantically equivalent rewrite exists; 'invalid' — a suggestion was produced but never passed validation (suggested_query carries the last attempt); 'model_error' — the model returned no usable response.\n\n* `ok` - ok\n* `cannot_fix` - cannot_fix\n* `invalid` - invalid\n* `model_error` - model_error",
+            "smithy.api#required": {}
+          }
+        },
+        "suggested_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The complete rewritten SQL query, or null when no rewrite was produced.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "explanation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-facing explanation of what was changed and why, or why no fix exists.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "attempts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How many suggest→validate rounds were used.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last validation failure when the suggestion did not pass the checks.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "original_reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The materialization blocker that triggered the suggestion.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AI-suggested query rewrite that would make the endpoint materializable."
+      }
+    },
+    "com.posthog.endpoints#SuggestionStatusEnum": {
+      "type": "enum",
+      "members": {
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        },
+        "CANNOT_FIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cannot_fix"
+          }
+        },
+        "INVALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "invalid"
+          }
+        },
+        "MODEL_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "model_error"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `ok` - ok\n* `cannot_fix` - cannot_fix\n* `invalid` - invalid\n* `model_error` - model_error"
+      }
+    },
+    "com.posthog.endpoints#EndpointsMaterializationSuggestionCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.endpoints#EndpointsMaterializationSuggestionCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.endpoints#EndpointMaterializationSuggestion"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/endpoints/{name}/materialization_suggestion/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Ask AI to rewrite the endpoint's query into a semantically equivalent form that can be materialized. Only applicable to SQL (HogQL) endpoints that currently fail the materialization checks. The suggestion is validated against the live checks before being returned; nothing is saved. Requires the organization's AI data processing approval."
       }
     },
     "com.posthog.endpoints#EndpointsOpenapiSpecRetrieveRequest": {
@@ -1633,6 +1861,20 @@
         "explicitDate": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "filterTestAccounts": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Tri-state test-account override. Null/absent = inherit; true = force on; false = force off.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "interval": {
+          "target": "com.posthog.endpoints#IntervalType",
+          "traits": {
+            "smithy.api#documentation": "Time granularity forced onto every insight that supports one. Absent/null = inherit.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1923,6 +2165,60 @@
       },
       "traits": {}
     },
+    "com.posthog.endpoints#IntervalType": {
+      "type": "enum",
+      "members": {
+        "SECOND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "second"
+          }
+        },
+        "MINUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "minute"
+          }
+        },
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "QUARTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarter"
+          }
+        },
+        "YEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.endpoints#EventPropertyFilter": {
       "type": "structure",
       "members": {
@@ -1981,6 +2277,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "not_icontains"
+          }
+        },
+        "STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "starts_with"
+          }
+        },
+        "NOT_STARTS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_starts_with"
+          }
+        },
+        "ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ends_with"
+          }
+        },
+        "NOT_ENDS_WITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not_ends_with"
           }
         },
         "REGEX": {
@@ -2263,6 +2583,82 @@
       "members": {
         "Case0": {
           "target": "com.posthog.endpoints#PersonPropertyFilterValueCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "Case2": {
+          "target": "smithy.api#Double"
+        },
+        "Case3": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#PersonMetadataPropertyFilter": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator": {
+          "target": "com.posthog.endpoints#PropertyOperator",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Top-level columns on the persons table (e.g. created_at), not properties JSON"
+          }
+        },
+        "value": {
+          "target": "com.posthog.endpoints#PersonMetadataPropertyFilterValue",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#PersonMetadataPropertyFilterValueCase0Item": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#PersonMetadataPropertyFilterValueCase0List": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.endpoints#PersonMetadataPropertyFilterValueCase0Item"
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#PersonMetadataPropertyFilterValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.endpoints#PersonMetadataPropertyFilterValueCase0List"
         },
         "Case1": {
           "target": "smithy.api#String"
@@ -3284,6 +3680,79 @@
       },
       "traits": {}
     },
+    "com.posthog.endpoints#MetricPropertyFilter": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator": {
+          "target": "com.posthog.endpoints#PropertyOperator",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String"
+        },
+        "value": {
+          "target": "com.posthog.endpoints#MetricPropertyFilterValue",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#MetricPropertyFilterValueCase0Item": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#MetricPropertyFilterValueCase0List": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.endpoints#MetricPropertyFilterValueCase0Item"
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#MetricPropertyFilterValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.endpoints#MetricPropertyFilterValueCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "Case2": {
+          "target": "smithy.api#Double"
+        },
+        "Case3": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.endpoints#SpanPropertyFilter": {
       "type": "structure",
       "members": {
@@ -3442,6 +3911,82 @@
       },
       "traits": {}
     },
+    "com.posthog.endpoints#AccountCustomPropertyFilter": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator": {
+          "target": "com.posthog.endpoints#PropertyOperator",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer analytics account custom property — the key is the property definition id"
+          }
+        },
+        "value": {
+          "target": "com.posthog.endpoints#AccountCustomPropertyFilterValue",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#AccountCustomPropertyFilterValueCase0Item": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#AccountCustomPropertyFilterValueCase0List": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.endpoints#AccountCustomPropertyFilterValueCase0Item"
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#AccountCustomPropertyFilterValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.posthog.endpoints#AccountCustomPropertyFilterValueCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "Case2": {
+          "target": "smithy.api#Double"
+        },
+        "Case3": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.endpoints#WorkflowVariablePropertyFilter": {
       "type": "structure",
       "members": {
@@ -3509,6 +4054,191 @@
       },
       "traits": {}
     },
+    "com.posthog.endpoints#BehavioralPropertyFilter": {
+      "type": "structure",
+      "members": {
+        "event_filters": {
+          "target": "com.posthog.endpoints#BehavioralPropertyFilterEventFiltersList",
+          "traits": {
+            "smithy.api#documentation": "Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "event_type": {
+          "target": "com.posthog.endpoints#BehavioralEventSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "explicit_datetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Absolute or relative (e.g. -30d) lower date bound — alternative to time_value/time_interval",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "explicit_datetime_to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event name, or action id when event_type is 'actions'",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "negation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Match persons who did NOT satisfy the criterion. Not the same as a low count — zero-occurrence persons never match count operators",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator": {
+          "target": "com.posthog.endpoints#PropertyOperator",
+          "traits": {
+            "smithy.api#documentation": "Count comparison for performed_event_multiple, defaults to exact",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operator_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count threshold for performed_event_multiple",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "time_interval": {
+          "target": "com.posthog.endpoints#TimeUnitType",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "time_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Relative time window size, paired with time_interval",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Person performed (or didn't perform) an event in a time window. ClickHouse-only — not evaluable by flags or CDP"
+          }
+        },
+        "value": {
+          "target": "com.posthog.endpoints#InlineBehavioralType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#BehavioralPropertyFilterEventFiltersItem": {
+      "type": "union",
+      "members": {
+        "EventPropertyFilter": {
+          "target": "com.posthog.endpoints#EventPropertyFilter"
+        },
+        "PersonPropertyFilter": {
+          "target": "com.posthog.endpoints#PersonPropertyFilter"
+        },
+        "ElementPropertyFilter": {
+          "target": "com.posthog.endpoints#ElementPropertyFilter"
+        },
+        "FeaturePropertyFilter": {
+          "target": "com.posthog.endpoints#FeaturePropertyFilter"
+        },
+        "HogQLPropertyFilter": {
+          "target": "com.posthog.endpoints#HogQLPropertyFilter"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#BehavioralPropertyFilterEventFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.endpoints#BehavioralPropertyFilterEventFiltersItem"
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#BehavioralEventSource": {
+      "type": "enum",
+      "members": {
+        "EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "events"
+          }
+        },
+        "ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "actions"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#TimeUnitType": {
+      "type": "enum",
+      "members": {
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "YEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.endpoints#InlineBehavioralType": {
+      "type": "enum",
+      "members": {
+        "PERFORMED_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "performed_event"
+          }
+        },
+        "PERFORMED_EVENT_MULTIPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "performed_event_multiple"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.endpoints#DashboardFilterPropertiesItem": {
       "type": "union",
       "members": {
@@ -3517,6 +4247,9 @@
         },
         "PersonPropertyFilter": {
           "target": "com.posthog.endpoints#PersonPropertyFilter"
+        },
+        "PersonMetadataPropertyFilter": {
+          "target": "com.posthog.endpoints#PersonMetadataPropertyFilter"
         },
         "ElementPropertyFilter": {
           "target": "com.posthog.endpoints#ElementPropertyFilter"
@@ -3563,14 +4296,23 @@
         "LogPropertyFilter": {
           "target": "com.posthog.endpoints#LogPropertyFilter"
         },
+        "MetricPropertyFilter": {
+          "target": "com.posthog.endpoints#MetricPropertyFilter"
+        },
         "SpanPropertyFilter": {
           "target": "com.posthog.endpoints#SpanPropertyFilter"
         },
         "RevenueAnalyticsPropertyFilter": {
           "target": "com.posthog.endpoints#RevenueAnalyticsPropertyFilter"
         },
+        "AccountCustomPropertyFilter": {
+          "target": "com.posthog.endpoints#AccountCustomPropertyFilter"
+        },
         "WorkflowVariablePropertyFilter": {
           "target": "com.posthog.endpoints#WorkflowVariablePropertyFilter"
+        },
+        "BehavioralPropertyFilter": {
+          "target": "com.posthog.endpoints#BehavioralPropertyFilter"
         }
       },
       "traits": {}
@@ -3894,6 +4636,13 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "error_code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stable machine-readable code for the error (the DRF exception code), when known.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "error_message": {
           "target": "smithy.api#String",
           "traits": {
@@ -4018,6 +4767,61 @@
         "smithy.api#documentation": "Get the most recent execution time per endpoint (endpoint-level). Timestamps are recorded by the run path for personal-API-key calls. For per-version usage, query the query_log table directly."
       }
     },
+    "com.posthog.endpoints#EndpointsMaterializationConditionsRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.endpoints#EndpointMaterializationConditions": {
+      "type": "structure",
+      "members": {
+        "conditions_source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Python source code of the checks that decide whether an endpoint query can be materialized, read from the running system — always matches what this instance enforces. Reason from it to rewrite a rejected query into a form that passes every check.",
+            "smithy.api#required": {}
+          }
+        },
+        "rewrite_contract": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Hard rules a rewrite must obey so it stays semantically equivalent to the original query (same results for all variable values, keep every variable placeholder unchanged).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The live materialization rules, for agents that want to rewrite a rejected query themselves."
+      }
+    },
+    "com.posthog.endpoints#EndpointsMaterializationConditionsRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.endpoints#EndpointsMaterializationConditionsRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.endpoints#EndpointMaterializationConditions"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/endpoints/materialization_conditions/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the source code of the live materialization checks, plus the rewrite contract. Lets an agent rewrite a rejected endpoint query itself: fetch these conditions, produce a semantically equivalent query that passes every check, update the endpoint with it, then confirm via materialization_status. The source is read from the running system, so it always matches the checks this instance enforces."
+      }
+    },
     "com.posthog.endpoints#BadRequest": {
       "type": "structure",
       "members": {},
@@ -4089,6 +4893,9 @@
           "target": "com.posthog.endpoints#EndpointsMaterializationStatusRetrieve"
         },
         {
+          "target": "com.posthog.endpoints#EndpointsMaterializationSuggestionCreate"
+        },
+        {
           "target": "com.posthog.endpoints#EndpointsOpenapiSpecRetrieve"
         },
         {
@@ -4102,6 +4909,9 @@
         },
         {
           "target": "com.posthog.endpoints#EndpointsLastExecutionTimesCreate"
+        },
+        {
+          "target": "com.posthog.endpoints#EndpointsMaterializationConditionsRetrieve"
         }
       ],
       "traits": {

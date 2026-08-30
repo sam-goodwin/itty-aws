@@ -61,7 +61,9 @@ export interface AnnotationsCreateRequest {
   date_marker?: string | null;
   /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
   creation_type?: CreationTypeEnum | (string & {});
+  /** Optional insight ID to attach this annotation to. Must belong to the current project. */
   dashboard_item?: number | null;
+  /** Optional dashboard ID to attach this annotation to. Must belong to the current project. */
   dashboard_id?: number | null;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
   deleted?: boolean;
@@ -101,7 +103,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -110,6 +112,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -153,7 +156,9 @@ export interface Annotation {
   date_marker?: string | null;
   /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
   creation_type?: CreationTypeEnum;
+  /** Optional insight ID to attach this annotation to. Must belong to the current project. */
   dashboard_item?: number | null;
+  /** Optional dashboard ID to attach this annotation to. Must belong to the current project. */
   dashboard_id?: number | null;
   dashboard_name?: string | null;
   insight_short_id?: string | null;
@@ -281,7 +286,9 @@ export interface AnnotationsPartialUpdateRequest {
   date_marker?: string | null;
   /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
   creation_type?: CreationTypeEnum | (string & {});
+  /** Optional insight ID to attach this annotation to. Must belong to the current project. */
   dashboard_item?: number | null;
+  /** Optional dashboard ID to attach this annotation to. Must belong to the current project. */
   dashboard_id?: number | null;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
   deleted?: boolean;
@@ -348,7 +355,9 @@ export interface AnnotationsUpdateRequest {
   date_marker?: string | null;
   /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
   creation_type?: CreationTypeEnum | (string & {});
+  /** Optional insight ID to attach this annotation to. Must belong to the current project. */
   dashboard_item?: number | null;
+  /** Optional dashboard ID to attach this annotation to. Must belong to the current project. */
   dashboard_id?: number | null;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
   deleted?: boolean;

@@ -831,6 +831,23 @@ export type ImportExistingResources = boolean;
 export type DeploymentMode = "REVERT_DRIFT" | (string & {});
 export const DeploymentMode = /*@__PURE__*/ S.String;
 
+export type DeploymentConfigMode = "STANDARD" | "EXPRESS" | (string & {});
+export const DeploymentConfigMode = /*@__PURE__*/ S.String;
+
+export type DisableRollback = boolean;
+export interface DeploymentConfig {
+  Mode?: DeploymentConfigMode;
+  DisableRollback?: boolean;
+}
+export const DeploymentConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Mode: S.optional(DeploymentConfigMode),
+    DisableRollback: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DeploymentConfig",
+}) as any as S.Schema<DeploymentConfig>;
+export type DisableValidation = boolean;
 export interface CreateChangeSetInput {
   StackName?: string;
   TemplateBody?: string;
@@ -852,6 +869,8 @@ export interface CreateChangeSetInput {
   OnStackFailure?: OnStackFailure;
   ImportExistingResources?: boolean;
   DeploymentMode?: DeploymentMode;
+  DeploymentConfig?: DeploymentConfig;
+  DisableValidation?: boolean;
 }
 export const CreateChangeSetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -875,6 +894,8 @@ export const CreateChangeSetInput = /*@__PURE__*/ S.suspend(() =>
     OnStackFailure: S.optional(OnStackFailure),
     ImportExistingResources: S.optional(S.Boolean),
     DeploymentMode: S.optional(DeploymentMode),
+    DeploymentConfig: S.optional(DeploymentConfig),
+    DisableValidation: S.optional(S.Boolean),
   }).pipe(
     T.all(
       ns,
@@ -978,7 +999,6 @@ export const CreateGeneratedTemplateOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGeneratedTemplateOutput",
 }) as any as S.Schema<CreateGeneratedTemplateOutput>;
-export type DisableRollback = boolean;
 export type TimeoutMinutes = number;
 export type OnFailure = "DO_NOTHING" | "ROLLBACK" | "DELETE" | (string & {});
 export const OnFailure = /*@__PURE__*/ S.String;
@@ -1006,6 +1026,8 @@ export interface CreateStackInput {
   ClientRequestToken?: string;
   EnableTerminationProtection?: boolean;
   RetainExceptOnCreate?: boolean;
+  DeploymentConfig?: DeploymentConfig;
+  DisableValidation?: boolean;
 }
 export const CreateStackInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1027,6 +1049,8 @@ export const CreateStackInput = /*@__PURE__*/ S.suspend(() =>
     ClientRequestToken: S.optional(S.String),
     EnableTerminationProtection: S.optional(S.Boolean),
     RetainExceptOnCreate: S.optional(S.Boolean),
+    DeploymentConfig: S.optional(DeploymentConfig),
+    DisableValidation: S.optional(S.Boolean),
   }).pipe(
     T.all(
       ns,
@@ -1453,6 +1477,7 @@ export interface DeleteStackInput {
   RoleARN?: string;
   ClientRequestToken?: string;
   DeletionMode?: DeletionMode;
+  DeploymentConfig?: DeploymentConfig;
 }
 export const DeleteStackInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1461,6 +1486,7 @@ export const DeleteStackInput = /*@__PURE__*/ S.suspend(() =>
     RoleARN: S.optional(S.String),
     ClientRequestToken: S.optional(S.String),
     DeletionMode: S.optional(DeletionMode),
+    DeploymentConfig: S.optional(DeploymentConfig),
   }).pipe(
     T.all(
       ns,
@@ -1744,6 +1770,7 @@ export type ResourcePropertyPath = string;
 export type DriftIgnoredReason =
   | "MANAGED_BY_AWS"
   | "WRITE_ONLY_PROPERTY"
+  | "SENSITIVE_PROPERTY"
   | (string & {});
 export const DriftIgnoredReason = /*@__PURE__*/ S.String;
 
@@ -1960,6 +1987,7 @@ export interface DescribeChangeSetOutput {
   OnStackFailure?: OnStackFailure;
   ImportExistingResources?: boolean;
   DeploymentMode?: DeploymentMode;
+  DeploymentConfig?: DeploymentConfig;
 }
 export const DescribeChangeSetOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1988,6 +2016,7 @@ export const DescribeChangeSetOutput = /*@__PURE__*/ S.suspend(() =>
     OnStackFailure: S.optional(OnStackFailure),
     ImportExistingResources: S.optional(S.Boolean),
     DeploymentMode: S.optional(DeploymentMode),
+    DeploymentConfig: S.optional(DeploymentConfig),
   }).pipe(ns),
 ).annotate({
   identifier: "DescribeChangeSetOutput",
@@ -3314,6 +3343,7 @@ export interface Stack {
   StackStatus?: StackStatus;
   StackStatusReason?: string;
   DisableRollback?: boolean;
+  DeploymentConfig?: DeploymentConfig;
   NotificationARNs?: string[];
   TimeoutInMinutes?: number;
   Capabilities?: Capability[];
@@ -3349,6 +3379,7 @@ export const Stack = /*@__PURE__*/ S.suspend(() =>
     StackStatus: S.optional(StackStatus),
     StackStatusReason: S.optional(S.String),
     DisableRollback: S.optional(S.Boolean),
+    DeploymentConfig: S.optional(DeploymentConfig),
     NotificationARNs: S.optional(NotificationARNs),
     TimeoutInMinutes: S.optional(S.Number),
     Capabilities: S.optional(Capabilities),
@@ -6156,6 +6187,7 @@ export interface RollbackStackInput {
   RoleARN?: string;
   ClientRequestToken?: string;
   RetainExceptOnCreate?: boolean;
+  DeploymentConfig?: DeploymentConfig;
 }
 export const RollbackStackInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6163,6 +6195,7 @@ export const RollbackStackInput = /*@__PURE__*/ S.suspend(() =>
     RoleARN: S.optional(S.String),
     ClientRequestToken: S.optional(S.String),
     RetainExceptOnCreate: S.optional(S.Boolean),
+    DeploymentConfig: S.optional(DeploymentConfig),
   }).pipe(
     T.all(
       ns,
@@ -6478,6 +6511,8 @@ export interface UpdateStackInput {
   DisableRollback?: boolean;
   ClientRequestToken?: string;
   RetainExceptOnCreate?: boolean;
+  DeploymentConfig?: DeploymentConfig;
+  DisableValidation?: boolean;
 }
 export const UpdateStackInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6499,6 +6534,8 @@ export const UpdateStackInput = /*@__PURE__*/ S.suspend(() =>
     DisableRollback: S.optional(S.Boolean),
     ClientRequestToken: S.optional(S.String),
     RetainExceptOnCreate: S.optional(S.Boolean),
+    DeploymentConfig: S.optional(DeploymentConfig),
+    DisableValidation: S.optional(S.Boolean),
   }).pipe(
     T.all(
       ns,

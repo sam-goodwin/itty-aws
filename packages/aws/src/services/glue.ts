@@ -376,18 +376,24 @@ export class VersionMismatchException
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
 export type AssetId = string;
+export type IterableFormName = string;
+export type ItemIdentifier = string;
 export type GlossaryTermId = string;
 export type GlossaryTermIdList = string[];
 export const GlossaryTermIdList = /*@__PURE__*/ S.Array(S.String);
 export type HashString = string;
 export interface AssociateGlossaryTermsRequest {
   AssetIdentifier: string;
+  IterableFormName?: string;
+  ItemIdentifier?: string;
   GlossaryTermIdentifiers: string[];
   ClientToken?: string;
 }
 export const AssociateGlossaryTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AssetIdentifier: S.String.pipe(T.HttpLabel("AssetIdentifier")),
+    IterableFormName: S.optional(S.String),
+    ItemIdentifier: S.optional(S.String),
     GlossaryTermIdentifiers: GlossaryTermIdList,
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
@@ -408,11 +414,15 @@ export const AssociateGlossaryTermsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateGlossaryTermsRequest>;
 export interface AssociateGlossaryTermsResponse {
   AssetIdentifier?: string;
+  IterableFormName?: string;
+  ItemIdentifier?: string;
   GlossaryTerms?: string[];
 }
 export const AssociateGlossaryTermsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AssetIdentifier: S.optional(S.String),
+    IterableFormName: S.optional(S.String),
+    ItemIdentifier: S.optional(S.String),
     GlossaryTerms: S.optional(GlossaryTermIdList),
   }),
 ).annotate({
@@ -1392,11 +1402,37 @@ export type DataQualityRuleResults = DataQualityRuleResult[];
 export const DataQualityRuleResults = /*@__PURE__*/ S.Array(
   DataQualityRuleResult,
 );
+export type BinEdges = string[];
+export const BinEdges = /*@__PURE__*/ S.Array(S.String);
+export type Count = number[];
+export const Count = /*@__PURE__*/ S.Array(S.Number);
+export interface DistributionData {
+  BinEdges?: string[];
+  Count?: number[];
+  DataType?: string;
+}
+export const DistributionData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BinEdges: S.optional(BinEdges),
+    Count: S.optional(Count),
+    DataType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DistributionData",
+}) as any as S.Schema<DistributionData>;
+export type EvaluatedDistributionsMap = {
+  [key: string]: DistributionData | undefined;
+};
+export const EvaluatedDistributionsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DistributionData.pipe(S.optional),
+);
 export interface DataQualityAnalyzerResult {
   Name?: string;
   Description?: string | redacted.Redacted<string>;
   EvaluationMessage?: string | redacted.Redacted<string>;
   EvaluatedMetrics?: { [key: string]: number | undefined };
+  EvaluatedDistributions?: { [key: string]: DistributionData | undefined };
 }
 export const DataQualityAnalyzerResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1404,6 +1440,7 @@ export const DataQualityAnalyzerResult = /*@__PURE__*/ S.suspend(() =>
     Description: S.optional(SensitiveString),
     EvaluationMessage: S.optional(SensitiveString),
     EvaluatedMetrics: S.optional(EvaluatedMetricsMap),
+    EvaluatedDistributions: S.optional(EvaluatedDistributionsMap),
   }),
 ).annotate({
   identifier: "DataQualityAnalyzerResult",
@@ -1537,6 +1574,230 @@ export const BatchGetDataQualityResultResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetDataQualityResultResponse",
 }) as any as S.Schema<BatchGetDataQualityResultResponse>;
+export type DataQualityRulesetEvaluationRunIdList = string[];
+export const DataQualityRulesetEvaluationRunIdList = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export interface BatchGetDataQualityRulesetEvaluationRunRequest {
+  RunIds: string[];
+}
+export const BatchGetDataQualityRulesetEvaluationRunRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ RunIds: DataQualityRulesetEvaluationRunIdList }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "BatchGetDataQualityRulesetEvaluationRunRequest",
+  }) as any as S.Schema<BatchGetDataQualityRulesetEvaluationRunRequest>;
+export type RoleString = string;
+export type Timeout = number;
+export type UriString = string;
+export type DQCompositeRuleEvaluationMethod = "COLUMN" | "ROW" | (string & {});
+export const DQCompositeRuleEvaluationMethod = /*@__PURE__*/ S.String;
+
+export type ResultTypeEnum =
+  | "ALL"
+  | "PASSED_ONLY"
+  | "FAILED_ONLY"
+  | (string & {});
+export const ResultTypeEnum = /*@__PURE__*/ S.String;
+
+export interface CatalogTableConfigOptions {
+  DatabaseName?: string;
+  TableName?: string;
+  S3Location?: string;
+  CatalogId?: string;
+}
+export const CatalogTableConfigOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatabaseName: S.optional(S.String),
+    TableName: S.optional(S.String),
+    S3Location: S.optional(S.String),
+    CatalogId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CatalogTableConfigOptions",
+}) as any as S.Schema<CatalogTableConfigOptions>;
+export interface RowLevelResultsOptions {
+  MaxRowsToWrite?: number;
+  ResultType?: ResultTypeEnum;
+  CatalogTableConfig?: CatalogTableConfigOptions;
+}
+export const RowLevelResultsOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxRowsToWrite: S.optional(S.Number),
+    ResultType: S.optional(ResultTypeEnum),
+    CatalogTableConfig: S.optional(CatalogTableConfigOptions),
+  }),
+).annotate({
+  identifier: "RowLevelResultsOptions",
+}) as any as S.Schema<RowLevelResultsOptions>;
+export interface DistributionResultsOptions {
+  WriteDistributionResultsEnabled?: boolean;
+  CatalogTableConfig?: CatalogTableConfigOptions;
+}
+export const DistributionResultsOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WriteDistributionResultsEnabled: S.optional(S.Boolean),
+    CatalogTableConfig: S.optional(CatalogTableConfigOptions),
+  }),
+).annotate({
+  identifier: "DistributionResultsOptions",
+}) as any as S.Schema<DistributionResultsOptions>;
+export interface ProfilingResultsOptions {
+  WriteProfilingResultsEnabled?: boolean;
+  CatalogTableConfig?: CatalogTableConfigOptions;
+  DistributionResults?: DistributionResultsOptions;
+}
+export const ProfilingResultsOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WriteProfilingResultsEnabled: S.optional(S.Boolean),
+    CatalogTableConfig: S.optional(CatalogTableConfigOptions),
+    DistributionResults: S.optional(DistributionResultsOptions),
+  }),
+).annotate({
+  identifier: "ProfilingResultsOptions",
+}) as any as S.Schema<ProfilingResultsOptions>;
+export type ObservationConfiguration = "ALL" | "NONE" | (string & {});
+export const ObservationConfiguration = /*@__PURE__*/ S.String;
+
+export type ObservationMode = "SCHEDULED" | "FIXED" | (string & {});
+export const ObservationMode = /*@__PURE__*/ S.String;
+
+export interface DataQualityRuleResultsOptions {
+  WriteDataQualityRuleResultsEnabled?: boolean;
+  CatalogTableConfig?: CatalogTableConfigOptions;
+}
+export const DataQualityRuleResultsOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WriteDataQualityRuleResultsEnabled: S.optional(S.Boolean),
+    CatalogTableConfig: S.optional(CatalogTableConfigOptions),
+  }),
+).annotate({
+  identifier: "DataQualityRuleResultsOptions",
+}) as any as S.Schema<DataQualityRuleResultsOptions>;
+export interface ObservationResultsOptions {
+  WriteObservationResultsEnabled?: boolean;
+  CatalogTableConfig?: CatalogTableConfigOptions;
+}
+export const ObservationResultsOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WriteObservationResultsEnabled: S.optional(S.Boolean),
+    CatalogTableConfig: S.optional(CatalogTableConfigOptions),
+  }),
+).annotate({
+  identifier: "ObservationResultsOptions",
+}) as any as S.Schema<ObservationResultsOptions>;
+export interface DataQualityEvaluationRunAdditionalRunOptions {
+  CloudWatchMetricsEnabled?: boolean;
+  ResultsS3Prefix?: string;
+  CompositeRuleEvaluationMethod?: DQCompositeRuleEvaluationMethod;
+  CustomLogGroupPrefix?: string;
+  RowLevelResults?: RowLevelResultsOptions;
+  ProfilingResults?: ProfilingResultsOptions;
+  ObservationScope?: ObservationConfiguration;
+  ObservationMode?: ObservationMode;
+  DataQualityRuleResults?: DataQualityRuleResultsOptions;
+  ObservationResults?: ObservationResultsOptions;
+}
+export const DataQualityEvaluationRunAdditionalRunOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CloudWatchMetricsEnabled: S.optional(S.Boolean),
+      ResultsS3Prefix: S.optional(S.String),
+      CompositeRuleEvaluationMethod: S.optional(
+        DQCompositeRuleEvaluationMethod,
+      ),
+      CustomLogGroupPrefix: S.optional(S.String),
+      RowLevelResults: S.optional(RowLevelResultsOptions),
+      ProfilingResults: S.optional(ProfilingResultsOptions),
+      ObservationScope: S.optional(ObservationConfiguration),
+      ObservationMode: S.optional(ObservationMode),
+      DataQualityRuleResults: S.optional(DataQualityRuleResultsOptions),
+      ObservationResults: S.optional(ObservationResultsOptions),
+    }),
+  ).annotate({
+    identifier: "DataQualityEvaluationRunAdditionalRunOptions",
+  }) as any as S.Schema<DataQualityEvaluationRunAdditionalRunOptions>;
+export type TaskStatusType =
+  | "STARTING"
+  | "RUNNING"
+  | "STOPPING"
+  | "STOPPED"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "TIMEOUT"
+  | (string & {});
+export const TaskStatusType = /*@__PURE__*/ S.String;
+
+export type ExecutionTime = number;
+export type RulesetNames = string[];
+export const RulesetNames = /*@__PURE__*/ S.Array(S.String);
+export type DataQualityResultIdList = string[];
+export const DataQualityResultIdList = /*@__PURE__*/ S.Array(S.String);
+export type DataSourceMap = { [key: string]: DataSource | undefined };
+export const DataSourceMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DataSource.pipe(S.optional),
+);
+export interface DataQualityRulesetEvaluationRun {
+  RunId?: string;
+  DataSource?: DataSource;
+  Role?: string;
+  NumberOfWorkers?: number;
+  Timeout?: number;
+  AdditionalRunOptions?: DataQualityEvaluationRunAdditionalRunOptions;
+  Status?: TaskStatusType;
+  ErrorString?: string;
+  StartedOn?: Date;
+  LastModifiedOn?: Date;
+  CompletedOn?: Date;
+  ExecutionTime?: number;
+  RulesetNames?: string[];
+  ResultIds?: string[];
+  AdditionalDataSources?: { [key: string]: DataSource | undefined };
+}
+export const DataQualityRulesetEvaluationRun = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RunId: S.optional(S.String),
+    DataSource: S.optional(DataSource),
+    Role: S.optional(S.String),
+    NumberOfWorkers: S.optional(S.Number),
+    Timeout: S.optional(S.Number),
+    AdditionalRunOptions: S.optional(
+      DataQualityEvaluationRunAdditionalRunOptions,
+    ),
+    Status: S.optional(TaskStatusType),
+    ErrorString: S.optional(S.String),
+    StartedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModifiedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CompletedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExecutionTime: S.optional(S.Number),
+    RulesetNames: S.optional(RulesetNames),
+    ResultIds: S.optional(DataQualityResultIdList),
+    AdditionalDataSources: S.optional(DataSourceMap),
+  }),
+).annotate({
+  identifier: "DataQualityRulesetEvaluationRun",
+}) as any as S.Schema<DataQualityRulesetEvaluationRun>;
+export type DataQualityRulesetEvaluationRunsList =
+  DataQualityRulesetEvaluationRun[];
+export const DataQualityRulesetEvaluationRunsList = /*@__PURE__*/ S.Array(
+  DataQualityRulesetEvaluationRun,
+);
+export interface BatchGetDataQualityRulesetEvaluationRunResponse {
+  Runs?: DataQualityRulesetEvaluationRun[];
+  RunsNotFound?: string[];
+}
+export const BatchGetDataQualityRulesetEvaluationRunResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Runs: S.optional(DataQualityRulesetEvaluationRunsList),
+      RunsNotFound: S.optional(DataQualityRulesetEvaluationRunIdList),
+    }),
+  ).annotate({
+    identifier: "BatchGetDataQualityRulesetEvaluationRunResponse",
+  }) as any as S.Schema<BatchGetDataQualityRulesetEvaluationRunResponse>;
 export type DevEndpointNames = string[];
 export const DevEndpointNames = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetDevEndpointsRequest {
@@ -1646,8 +1907,6 @@ export const BatchGetDevEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetDevEndpointsResponse",
 }) as any as S.Schema<BatchGetDevEndpointsResponse>;
-export type IterableFormName = string;
-export type ItemIdentifier = string;
 export type ItemIdentifierList = string[];
 export const ItemIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetIterableFormsRequest {
@@ -1756,8 +2015,6 @@ export const BatchGetJobsRequest = /*@__PURE__*/ S.suspend(() =>
 export type JobMode = "SCRIPT" | "VISUAL" | "NOTEBOOK" | (string & {});
 export const JobMode = /*@__PURE__*/ S.String;
 
-export type UriString = string;
-export type RoleString = string;
 export type MaxConcurrentRuns = number;
 export interface ExecutionProperty {
   MaxConcurrentRuns?: number;
@@ -1801,7 +2058,6 @@ export const ConnectionsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionsList",
 }) as any as S.Schema<ConnectionsList>;
 export type MaxRetries = number;
-export type Timeout = number;
 export type NotifyDelayAfter = number;
 export interface NotificationProperty {
   NotifyDelayAfter?: number;
@@ -5196,7 +5452,6 @@ export const Predecessor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Predecessor" }) as any as S.Schema<Predecessor>;
 export type PredecessorList = Predecessor[];
 export const PredecessorList = /*@__PURE__*/ S.Array(Predecessor);
-export type ExecutionTime = number;
 export type OrchestrationMessageString = string;
 export type OrchestrationPolicyJsonString = string;
 export interface JobRun {
@@ -5653,17 +5908,6 @@ export const CancelMLTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelMLTaskRunRequest",
 }) as any as S.Schema<CancelMLTaskRunRequest>;
-export type TaskStatusType =
-  | "STARTING"
-  | "RUNNING"
-  | "STOPPING"
-  | "STOPPED"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "TIMEOUT"
-  | (string & {});
-export const TaskStatusType = /*@__PURE__*/ S.String;
-
 export interface CancelMLTaskRunResponse {
   TransformId?: string;
   TaskRunId?: string;
@@ -8418,9 +8662,15 @@ export const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttachmentRequest>;
 export interface DeleteAttachmentResponse {
   AssetIdentifier?: string;
+  IterableFormName?: string;
+  ItemIdentifier?: string;
 }
 export const DeleteAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssetIdentifier: S.optional(S.String) }),
+  S.Struct({
+    AssetIdentifier: S.optional(S.String),
+    IterableFormName: S.optional(S.String),
+    ItemIdentifier: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DeleteAttachmentResponse",
 }) as any as S.Schema<DeleteAttachmentResponse>;
@@ -9369,6 +9619,7 @@ export interface ConnectorProperty {
   AllowedValues?: string[];
   PropertyLocation?: PropertyLocation;
   PropertyType: PropertyType;
+  Format?: string;
 }
 export const ConnectorProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9379,6 +9630,7 @@ export const ConnectorProperty = /*@__PURE__*/ S.suspend(() =>
     AllowedValues: S.optional(ListOfString),
     PropertyLocation: S.optional(PropertyLocation),
     PropertyType: PropertyType,
+    Format: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConnectorProperty",
@@ -9460,12 +9712,69 @@ export const PaginationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaginationConfiguration",
 }) as any as S.Schema<PaginationConfiguration>;
+export type FilterMode = "QUERY_PARAMS" | "FILTER_STRING" | (string & {});
+export const FilterMode = /*@__PURE__*/ S.String;
+
+export type ConnectionStringToStringMap = { [key: string]: string | undefined };
+export const ConnectionStringToStringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface BetweenConfiguration {
+  LowBoundKey?: string;
+  HighBoundKey?: string;
+  Template?: string;
+}
+export const BetweenConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LowBoundKey: S.optional(S.String),
+    HighBoundKey: S.optional(S.String),
+    Template: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BetweenConfiguration",
+}) as any as S.Schema<BetweenConfiguration>;
+export interface FilterStringConfiguration {
+  QueryParameterName: string;
+  QuoteStringValues?: boolean;
+  QuoteCharacter?: string;
+}
+export const FilterStringConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QueryParameterName: S.String,
+    QuoteStringValues: S.optional(S.Boolean),
+    QuoteCharacter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FilterStringConfiguration",
+}) as any as S.Schema<FilterStringConfiguration>;
+export interface FilterConfiguration {
+  FilterMode: FilterMode;
+  OperatorMappings?: { [key: string]: string | undefined };
+  DateTimeFormat?: string;
+  StripQuotes?: boolean;
+  BetweenConfiguration?: BetweenConfiguration;
+  FilterStringConfiguration?: FilterStringConfiguration;
+}
+export const FilterConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FilterMode: FilterMode,
+    OperatorMappings: S.optional(ConnectionStringToStringMap),
+    DateTimeFormat: S.optional(S.String),
+    StripQuotes: S.optional(S.Boolean),
+    BetweenConfiguration: S.optional(BetweenConfiguration),
+    FilterStringConfiguration: S.optional(FilterStringConfiguration),
+  }),
+).annotate({
+  identifier: "FilterConfiguration",
+}) as any as S.Schema<FilterConfiguration>;
 export interface SourceConfiguration {
   RequestMethod?: HTTPMethod;
   RequestPath?: string;
   RequestParameters?: ConnectorProperty[];
   ResponseConfiguration?: ResponseConfiguration;
   PaginationConfiguration?: PaginationConfiguration;
+  FilterConfiguration?: FilterConfiguration;
 }
 export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9474,6 +9783,7 @@ export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
     RequestParameters: S.optional(ConnectorPropertyList),
     ResponseConfiguration: S.optional(ResponseConfiguration),
     PaginationConfiguration: S.optional(PaginationConfiguration),
+    FilterConfiguration: S.optional(FilterConfiguration),
   }),
 ).annotate({
   identifier: "SourceConfiguration",
@@ -9502,12 +9812,43 @@ export type FieldDataType =
   | (string & {});
 export const FieldDataType = /*@__PURE__*/ S.String;
 
+export interface FilterOverrides {
+  FieldName?: string;
+  OperatorMappings?: { [key: string]: string | undefined };
+  BetweenConfiguration?: BetweenConfiguration;
+  DateTimeFormat?: string;
+}
+export const FilterOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FieldName: S.optional(S.String),
+    OperatorMappings: S.optional(ConnectionStringToStringMap),
+    BetweenConfiguration: S.optional(BetweenConfiguration),
+    DateTimeFormat: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FilterOverrides",
+}) as any as S.Schema<FilterOverrides>;
 export interface FieldDefinition {
   Name: string;
   FieldDataType: FieldDataType;
+  ResponseDateFormat?: string;
+  IsPartitionable?: boolean;
+  IsNullable?: boolean;
+  IsQueryable?: boolean;
+  IsOrderable?: boolean;
+  FilterOverrides?: FilterOverrides;
 }
 export const FieldDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, FieldDataType: FieldDataType }),
+  S.Struct({
+    Name: S.String,
+    FieldDataType: FieldDataType,
+    ResponseDateFormat: S.optional(S.String),
+    IsPartitionable: S.optional(S.Boolean),
+    IsNullable: S.optional(S.Boolean),
+    IsQueryable: S.optional(S.Boolean),
+    IsOrderable: S.optional(S.Boolean),
+    FilterOverrides: S.optional(FilterOverrides),
+  }),
 ).annotate({
   identifier: "FieldDefinition",
 }) as any as S.Schema<FieldDefinition>;
@@ -9825,12 +10166,16 @@ export const DescribeIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeIntegrationsResponse>;
 export interface DisassociateGlossaryTermsRequest {
   AssetIdentifier: string;
+  IterableFormName?: string;
+  ItemIdentifier?: string;
   GlossaryTermIdentifiers: string[];
   ClientToken?: string;
 }
 export const DisassociateGlossaryTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AssetIdentifier: S.String.pipe(T.HttpLabel("AssetIdentifier")),
+    IterableFormName: S.optional(S.String),
+    ItemIdentifier: S.optional(S.String),
     GlossaryTermIdentifiers: GlossaryTermIdList,
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
@@ -9851,11 +10196,15 @@ export const DisassociateGlossaryTermsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisassociateGlossaryTermsRequest>;
 export interface DisassociateGlossaryTermsResponse {
   AssetIdentifier?: string;
+  IterableFormName?: string;
+  ItemIdentifier?: string;
   GlossaryTerms?: string[];
 }
 export const DisassociateGlossaryTermsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AssetIdentifier: S.optional(S.String),
+    IterableFormName: S.optional(S.String),
+    ItemIdentifier: S.optional(S.String),
     GlossaryTerms: S.optional(GlossaryTermIdList),
   }),
 ).annotate({
@@ -11295,6 +11644,73 @@ export const GetDataCatalogEncryptionSettingsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetDataCatalogEncryptionSettingsResponse",
 }) as any as S.Schema<GetDataCatalogEncryptionSettingsResponse>;
+export interface GetDataCatalogExportConfigurationInput {}
+export const GetDataCatalogExportConfigurationInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/get-data-catalog-export-configuration",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetDataCatalogExportConfigurationInput",
+}) as any as S.Schema<GetDataCatalogExportConfigurationInput>;
+export type ExportSetting = "ENABLED" | "DISABLED" | (string & {});
+export const ExportSetting = /*@__PURE__*/ S.String;
+
+export type ExportStatus =
+  | "ENABLING"
+  | "ENABLED"
+  | "DISABLING"
+  | "DISABLED"
+  | "FAILED"
+  | (string & {});
+export const ExportStatus = /*@__PURE__*/ S.String;
+
+export type SseAlgorithm = string;
+export type KmsKeyArnString = string;
+export interface ExportEncryptionConfiguration {
+  SseAlgorithm?: string;
+  KmsKeyArn?: string;
+}
+export const ExportEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SseAlgorithm: S.optional(S.String),
+    KmsKeyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExportEncryptionConfiguration",
+}) as any as S.Schema<ExportEncryptionConfiguration>;
+export type S3TableBucketArn = string;
+export interface GetDataCatalogExportConfigurationOutput {
+  ExportSetting?: ExportSetting;
+  Status?: ExportStatus;
+  EncryptionConfiguration?: ExportEncryptionConfiguration;
+  S3TableBucketArn?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const GetDataCatalogExportConfigurationOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ExportSetting: S.optional(ExportSetting),
+      Status: S.optional(ExportStatus),
+      EncryptionConfiguration: S.optional(ExportEncryptionConfiguration),
+      S3TableBucketArn: S.optional(S.String),
+      CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    }),
+).annotate({
+  identifier: "GetDataCatalogExportConfigurationOutput",
+}) as any as S.Schema<GetDataCatalogExportConfigurationOutput>;
 export interface GetDataflowGraphRequest {
   PythonScript?: string;
 }
@@ -11453,6 +11869,15 @@ export const GetDataQualityRuleRecommendationRunRequest =
   ).annotate({
     identifier: "GetDataQualityRuleRecommendationRunRequest",
   }) as any as S.Schema<GetDataQualityRuleRecommendationRunRequest>;
+export interface DataQualityRuleRecommendationRunAdditionalRunOptions {
+  CustomLogGroupPrefix?: string;
+}
+export const DataQualityRuleRecommendationRunAdditionalRunOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ CustomLogGroupPrefix: S.optional(S.String) }),
+  ).annotate({
+    identifier: "DataQualityRuleRecommendationRunAdditionalRunOptions",
+  }) as any as S.Schema<DataQualityRuleRecommendationRunAdditionalRunOptions>;
 export interface GetDataQualityRuleRecommendationRunResponse {
   RunId?: string;
   DataSource?: DataSource;
@@ -11468,6 +11893,7 @@ export interface GetDataQualityRuleRecommendationRunResponse {
   RecommendedRuleset?: string;
   CreatedRulesetName?: string;
   DataQualitySecurityConfiguration?: string;
+  AdditionalRunOptions?: DataQualityRuleRecommendationRunAdditionalRunOptions;
 }
 export const GetDataQualityRuleRecommendationRunResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -11488,6 +11914,9 @@ export const GetDataQualityRuleRecommendationRunResponse =
       RecommendedRuleset: S.optional(S.String),
       CreatedRulesetName: S.optional(S.String),
       DataQualitySecurityConfiguration: S.optional(S.String),
+      AdditionalRunOptions: S.optional(
+        DataQualityRuleRecommendationRunAdditionalRunOptions,
+      ),
     }),
   ).annotate({
     identifier: "GetDataQualityRuleRecommendationRunResponse",
@@ -11537,37 +11966,6 @@ export const GetDataQualityRulesetEvaluationRunRequest =
   ).annotate({
     identifier: "GetDataQualityRulesetEvaluationRunRequest",
   }) as any as S.Schema<GetDataQualityRulesetEvaluationRunRequest>;
-export type DQCompositeRuleEvaluationMethod = "COLUMN" | "ROW" | (string & {});
-export const DQCompositeRuleEvaluationMethod = /*@__PURE__*/ S.String;
-
-export interface DataQualityEvaluationRunAdditionalRunOptions {
-  CloudWatchMetricsEnabled?: boolean;
-  ResultsS3Prefix?: string;
-  CompositeRuleEvaluationMethod?: DQCompositeRuleEvaluationMethod;
-  CustomLogGroupPrefix?: string;
-}
-export const DataQualityEvaluationRunAdditionalRunOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CloudWatchMetricsEnabled: S.optional(S.Boolean),
-      ResultsS3Prefix: S.optional(S.String),
-      CompositeRuleEvaluationMethod: S.optional(
-        DQCompositeRuleEvaluationMethod,
-      ),
-      CustomLogGroupPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DataQualityEvaluationRunAdditionalRunOptions",
-  }) as any as S.Schema<DataQualityEvaluationRunAdditionalRunOptions>;
-export type RulesetNames = string[];
-export const RulesetNames = /*@__PURE__*/ S.Array(S.String);
-export type DataQualityResultIdList = string[];
-export const DataQualityResultIdList = /*@__PURE__*/ S.Array(S.String);
-export type DataSourceMap = { [key: string]: DataSource | undefined };
-export const DataSourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DataSource.pipe(S.optional),
-);
 export interface GetDataQualityRulesetEvaluationRunResponse {
   RunId?: string;
   DataSource?: DataSource;
@@ -14649,6 +15047,7 @@ export interface ListDataQualityRuleRecommendationRunsRequest {
   Filter?: DataQualityRuleRecommendationRunFilter;
   NextToken?: string;
   MaxResults?: number;
+  Tags?: { [key: string]: string | undefined };
 }
 export const ListDataQualityRuleRecommendationRunsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14656,6 +15055,7 @@ export const ListDataQualityRuleRecommendationRunsRequest =
       Filter: S.optional(DataQualityRuleRecommendationRunFilter),
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
+      Tags: S.optional(TagsMap),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -14667,6 +15067,7 @@ export interface DataQualityRuleRecommendationRunDescription {
   Status?: TaskStatusType;
   StartedOn?: Date;
   DataSource?: DataSource;
+  CreatedRulesetName?: string;
 }
 export const DataQualityRuleRecommendationRunDescription =
   /*@__PURE__*/ S.suspend(() =>
@@ -14675,6 +15076,7 @@ export const DataQualityRuleRecommendationRunDescription =
       Status: S.optional(TaskStatusType),
       StartedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       DataSource: S.optional(DataSource),
+      CreatedRulesetName: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DataQualityRuleRecommendationRunDescription",
@@ -14976,6 +15378,7 @@ export interface StatisticSummary {
   RunIdentifier?: RunIdentifier;
   StatisticName?: string;
   DoubleValue?: number;
+  DistributionValue?: DistributionData;
   EvaluationLevel?: StatisticEvaluationLevel;
   ColumnsReferenced?: string[];
   ReferencedDatasets?: string[];
@@ -14990,6 +15393,7 @@ export const StatisticSummary = /*@__PURE__*/ S.suspend(() =>
     RunIdentifier: S.optional(RunIdentifier),
     StatisticName: S.optional(S.String),
     DoubleValue: S.optional(S.Number),
+    DistributionValue: S.optional(DistributionData),
     EvaluationLevel: S.optional(StatisticEvaluationLevel),
     ColumnsReferenced: S.optional(ColumnNameList),
     ReferencedDatasets: S.optional(ReferenceDatasetsList),
@@ -16042,6 +16446,46 @@ export const PutDataCatalogEncryptionSettingsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PutDataCatalogEncryptionSettingsResponse",
 }) as any as S.Schema<PutDataCatalogEncryptionSettingsResponse>;
+export interface PutDataCatalogExportConfigurationInput {
+  ExportSetting: ExportSetting;
+  EncryptionConfiguration?: ExportEncryptionConfiguration;
+  ClientToken?: string;
+}
+export const PutDataCatalogExportConfigurationInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ExportSetting: ExportSetting,
+      EncryptionConfiguration: S.optional(ExportEncryptionConfiguration),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/put-data-catalog-export-configuration",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "PutDataCatalogExportConfigurationInput",
+}) as any as S.Schema<PutDataCatalogExportConfigurationInput>;
+export interface PutDataCatalogExportConfigurationOutput {
+  ExportSetting?: ExportSetting;
+  EncryptionConfiguration?: ExportEncryptionConfiguration;
+}
+export const PutDataCatalogExportConfigurationOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ExportSetting: S.optional(ExportSetting),
+      EncryptionConfiguration: S.optional(ExportEncryptionConfiguration),
+    }),
+).annotate({
+  identifier: "PutDataCatalogExportConfigurationOutput",
+}) as any as S.Schema<PutDataCatalogExportConfigurationOutput>;
 export interface PutDataQualityProfileAnnotationRequest {
   ProfileId: string;
   InclusionAnnotation: InclusionAnnotationValue;
@@ -16963,6 +17407,7 @@ export interface StartDataQualityRuleRecommendationRunRequest {
   CreatedRulesetName?: string;
   DataQualitySecurityConfiguration?: string;
   ClientToken?: string;
+  AdditionalRunOptions?: DataQualityRuleRecommendationRunAdditionalRunOptions;
 }
 export const StartDataQualityRuleRecommendationRunRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16974,6 +17419,9 @@ export const StartDataQualityRuleRecommendationRunRequest =
       CreatedRulesetName: S.optional(S.String),
       DataQualitySecurityConfiguration: S.optional(S.String),
       ClientToken: S.optional(S.String),
+      AdditionalRunOptions: S.optional(
+        DataQualityRuleRecommendationRunAdditionalRunOptions,
+      ),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -18888,6 +19336,32 @@ export const batchGetDataQualityResult: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "BatchGetDataQualityResult",
+}));
+
+export type BatchGetDataQualityRulesetEvaluationRunError =
+  | InternalServiceException
+  | InvalidInputException
+  | OperationTimeoutException
+  | CommonErrors;
+/**
+ * Retrieves the details of multiple evaluation runs in a single request.
+ */
+export const batchGetDataQualityRulesetEvaluationRun: API.OperationMethod<
+  BatchGetDataQualityRulesetEvaluationRunRequest,
+  BatchGetDataQualityRulesetEvaluationRunResponse,
+  BatchGetDataQualityRulesetEvaluationRunError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchGetDataQualityRulesetEvaluationRunRequest,
+  output: BatchGetDataQualityRulesetEvaluationRunResponse,
+  errors: [
+    InternalServiceException,
+    InvalidInputException,
+    OperationTimeoutException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "BatchGetDataQualityRulesetEvaluationRun",
 }));
 
 export type BatchGetDevEndpointsError =
@@ -22543,6 +23017,34 @@ export const getDataCatalogEncryptionSettings: API.OperationMethod<
   operationName: "GetDataCatalogEncryptionSettings",
 }));
 
+export type GetDataCatalogExportConfigurationError =
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves the current export configuration for the Glue Data Catalog. The export configuration controls whether catalog metadata is exported to S3 Tables.
+ */
+export const getDataCatalogExportConfiguration: API.OperationMethod<
+  GetDataCatalogExportConfigurationInput,
+  GetDataCatalogExportConfigurationOutput,
+  GetDataCatalogExportConfigurationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDataCatalogExportConfigurationInput,
+  output: GetDataCatalogExportConfigurationOutput,
+  errors: [
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDataCatalogExportConfiguration",
+}));
+
 export type GetDataflowGraphError =
   | InternalServiceException
   | InvalidInputException
@@ -25688,6 +26190,7 @@ export const putAsset: API.OperationMethod<
 export type PutAssetTypeError =
   | AccessDeniedException
   | ConcurrentModificationException
+  | EntityNotFoundException
   | InternalServiceException
   | InvalidInputException
   | ThrottlingException
@@ -25706,6 +26209,7 @@ export const putAssetType: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
+    EntityNotFoundException,
     InternalServiceException,
     InvalidInputException,
     ThrottlingException,
@@ -25772,6 +26276,36 @@ export const putDataCatalogEncryptionSettings: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "PutDataCatalogEncryptionSettings",
+}));
+
+export type PutDataCatalogExportConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates or updates the export configuration for the Glue Data Catalog. Use this operation to enable or disable the export of catalog metadata to S3 Tables.
+ */
+export const putDataCatalogExportConfiguration: API.OperationMethod<
+  PutDataCatalogExportConfigurationInput,
+  PutDataCatalogExportConfigurationOutput,
+  PutDataCatalogExportConfigurationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutDataCatalogExportConfigurationInput,
+  output: PutDataCatalogExportConfigurationOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutDataCatalogExportConfiguration",
 }));
 
 export type PutDataQualityProfileAnnotationError =
@@ -26570,7 +27104,7 @@ export type StartMaterializedViewRefreshTaskRunError =
   | ResourceNumberLimitExceededException
   | CommonErrors;
 /**
- * Starts a materialized view refresh task run, for a specified table and columns.
+ * Starts a materialized view refresh task run for a specified materialized view.
  */
 export const startMaterializedViewRefreshTaskRun: API.OperationMethod<
   StartMaterializedViewRefreshTaskRunRequest,
@@ -26864,7 +27398,7 @@ export type StopMaterializedViewRefreshTaskRunError =
   | OperationTimeoutException
   | CommonErrors;
 /**
- * Stops a materialized view refresh task run, for a specified table and columns.
+ * Stops a materialized view refresh task run for a specified materialized view.
  */
 export const stopMaterializedViewRefreshTaskRun: API.OperationMethod<
   StopMaterializedViewRefreshTaskRunRequest,

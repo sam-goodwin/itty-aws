@@ -9423,7 +9423,8 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVul
   /*@__PURE__*/ S.String;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
-  "master" | "default";
+  | "master"
+  | "default";
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9557,7 +9558,8 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabili
   /*@__PURE__*/ S.String;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
-  "master" | "default";
+  | "master"
+  | "default";
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -11035,7 +11037,8 @@ export const WorkspaceAadAdminsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Desired state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState =
-  "Enabled" | "Disabled";
+  | "Enabled"
+  | "Disabled";
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState =
   /*@__PURE__*/ S.String;
 
@@ -11109,13 +11112,18 @@ export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest =
 
 /** Desired state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
-  "Enabled" | "Disabled";
+  | "Enabled"
+  | "Disabled";
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
   /*@__PURE__*/ S.String;
 
 /** Actual state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState =
-  "Enabling" | "Enabled" | "Disabling" | "Disabled" | "Unknown";
+  | "Enabling"
+  | "Enabled"
+  | "Disabling"
+  | "Disabled"
+  | "Unknown";
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState =
   /*@__PURE__*/ S.String;
 
@@ -11211,13 +11219,18 @@ export const WorkspaceManagedIdentitySqlControlSettingsGetRequest =
 
 /** Desired state */
 export type WorkspaceManagedIdentitySqlControlSettingsGetResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
-  "Enabled" | "Disabled";
+  | "Enabled"
+  | "Disabled";
 export const WorkspaceManagedIdentitySqlControlSettingsGetResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
   /*@__PURE__*/ S.String;
 
 /** Actual state */
 export type WorkspaceManagedIdentitySqlControlSettingsGetResponsePropertiesGrantSqlControlToManagedIdentityActualState =
-  "Enabling" | "Enabled" | "Disabling" | "Disabled" | "Unknown";
+  | "Enabling"
+  | "Enabled"
+  | "Disabling"
+  | "Disabled"
+  | "Unknown";
 export const WorkspaceManagedIdentitySqlControlSettingsGetResponsePropertiesGrantSqlControlToManagedIdentityActualState =
   /*@__PURE__*/ S.String;
 

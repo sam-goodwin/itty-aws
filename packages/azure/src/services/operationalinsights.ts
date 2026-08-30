@@ -31,7 +31,7 @@ export const AvailableServiceTiersListByWorkspaceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/availableServiceTiers",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -292,7 +292,7 @@ export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -590,7 +590,7 @@ export const ClustersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -622,7 +622,7 @@ export const ClustersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -690,7 +690,7 @@ export const ClustersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/clusters",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -780,7 +780,7 @@ export const ClustersListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -848,7 +848,7 @@ export const ClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -998,7 +998,7 @@ export const DataExportsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1050,7 +1050,7 @@ export const DataExportsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1085,7 +1085,7 @@ export const DataExportsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1134,7 +1134,7 @@ export const DataExportsListByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1265,7 +1265,7 @@ export const DataSourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1335,7 +1335,7 @@ export const DataSourcesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1370,7 +1370,7 @@ export const DataSourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1443,7 +1443,7 @@ export const DataSourcesListByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1523,7 +1523,7 @@ export const DeletedWorkspacesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1668,6 +1668,8 @@ export interface WorkspaceFeatures {
   unifiedSentinelBillingOnly?: boolean | null;
   /** List of associations for the workspace. Indicates if the workspace is associated with any of the following experiences: MDC, Sentinel, SentinelGraph, etc. */
   associations?: WorkspaceFeaturesAssociationsList;
+  /** Enable Data authorization mode for the workspace. */
+  dataAuthorizationMode?: boolean | null;
 }
 export const WorkspaceFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1680,6 +1682,7 @@ export const WorkspaceFeatures = /*@__PURE__*/ S.suspend(() =>
     disableLocalAuth: S.optional(S.NullOr(S.Boolean)),
     unifiedSentinelBillingOnly: S.optional(S.NullOr(S.Boolean)),
     associations: S.optional(WorkspaceFeaturesAssociationsList),
+    dataAuthorizationMode: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "WorkspaceFeatures",
@@ -1931,7 +1934,7 @@ export const DeletedWorkspacesListByResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -1959,7 +1962,7 @@ export const GatewaysDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/gateways/{gatewayId}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1994,7 +1997,7 @@ export const IntelligencePacksDisableRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Disable",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2029,7 +2032,7 @@ export const IntelligencePacksEnableRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Enable",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2061,7 +2064,7 @@ export const IntelligencePacksListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2164,7 +2167,7 @@ export const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2230,7 +2233,7 @@ export const LinkedServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2294,7 +2297,7 @@ export const LinkedServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2356,7 +2359,7 @@ export const LinkedServicesListByWorkspaceRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -2492,7 +2495,7 @@ export const LinkedStorageAccountsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -2558,7 +2561,7 @@ export const LinkedStorageAccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2604,7 +2607,7 @@ export const LinkedStorageAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2654,7 +2657,7 @@ export const LinkedStorageAccountsListByWorkspaceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -2727,7 +2730,7 @@ export const ManagementGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/managementGroups",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2812,7 +2815,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.OperationalInsights/operations",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2895,7 +2898,7 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/locations/{location}/operationStatuses/{asyncOperationId}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3015,7 +3018,7 @@ export const QueriesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3050,7 +3053,7 @@ export const QueriesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3215,7 +3218,7 @@ export const QueriesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3344,7 +3347,7 @@ export const QueriesPutRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3472,7 +3475,7 @@ export const QueriesSearchRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/search",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3503,7 +3506,7 @@ export const QueriesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3574,7 +3577,7 @@ export const QueryPacksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3677,7 +3680,7 @@ export const QueryPacksCreateOrUpdateWithoutNameRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -3743,7 +3746,7 @@ export const QueryPacksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3775,7 +3778,7 @@ export const QueryPacksGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3833,7 +3836,7 @@ export const QueryPacksListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/queryPacks",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3919,7 +3922,7 @@ export const QueryPacksListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -3956,7 +3959,7 @@ export const QueryPacksUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4080,7 +4083,7 @@ export const SavedSearchesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4135,7 +4138,7 @@ export const SavedSearchesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4170,7 +4173,7 @@ export const SavedSearchesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4222,7 +4225,7 @@ export const SavedSearchesListByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4292,7 +4295,7 @@ export const SchemaGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/schema",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4495,7 +4498,7 @@ export const SharedKeysGetSharedKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/sharedKeys",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4534,7 +4537,7 @@ export const SharedKeysRegenerateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/regenerateSharedKey",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4650,7 +4653,7 @@ export const StorageInsightConfigsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -4719,7 +4722,7 @@ export const StorageInsightConfigsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4754,7 +4757,7 @@ export const StorageInsightConfigsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4819,7 +4822,7 @@ export const StorageInsightConfigsListByWorkspaceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -4940,6 +4943,42 @@ export const SummaryLogsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SummaryLogsPropertiesInput",
 }) as any as S.Schema<SummaryLogsPropertiesInput>;
 
+/** Type of managed service identity. */
+export type SummaryLogsIdentityType = "None" | "UserAssigned";
+export const SummaryLogsIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties. */
+export type SummaryLogsUserIdentityPropertiesInput = AssociatedWorkspaceInput;
+export const SummaryLogsUserIdentityPropertiesInput = AssociatedWorkspaceInput;
+
+/** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type SummaryLogsIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: AssociatedWorkspaceInput | undefined;
+};
+export const SummaryLogsIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    AssociatedWorkspaceInput,
+  ) as any as S.Schema<SummaryLogsIdentityInputUserAssignedIdentitiesMap>;
+
+/** Identity for the summary logs resource. */
+export interface SummaryLogsIdentityInput {
+  /** Type of managed service identity. */
+  type: SummaryLogsIdentityType | (string & {});
+  /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: SummaryLogsIdentityInputUserAssignedIdentitiesMap;
+}
+export const SummaryLogsIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SummaryLogsIdentityType,
+    userAssignedIdentities: S.optional(
+      SummaryLogsIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "SummaryLogsIdentityInput",
+}) as any as S.Schema<SummaryLogsIdentityInput>;
+
 export interface SummaryLogsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4951,6 +4990,8 @@ export interface SummaryLogsCreateOrUpdateRequest {
   summaryLogsName: string;
   /** Summary rule properties. */
   properties?: SummaryLogsPropertiesInput;
+  /** The managed identity of the summary logs resource. Only user-assigned identity is supported. */
+  identity?: SummaryLogsIdentityInput;
 }
 export const SummaryLogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4959,12 +5000,13 @@ export const SummaryLogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     workspaceName: S.String.pipe(T.Label()),
     summaryLogsName: S.String.pipe(T.Label()),
     properties: S.optional(SummaryLogsPropertiesInput),
+    identity: S.optional(SummaryLogsIdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5015,6 +5057,44 @@ export const SummaryLogsProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SummaryLogsProperties",
 }) as any as S.Schema<SummaryLogsProperties>;
 
+/** User assigned identity properties. */
+export type SummaryLogsUserIdentityProperties = UserIdentityProperties;
+export const SummaryLogsUserIdentityProperties = UserIdentityProperties;
+
+/** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type SummaryLogsIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserIdentityProperties | undefined;
+};
+export const SummaryLogsIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserIdentityProperties,
+  ) as any as S.Schema<SummaryLogsIdentityUserAssignedIdentitiesMap>;
+
+/** Identity for the summary logs resource. */
+export interface SummaryLogsIdentity {
+  /** The principal ID of resource identity. */
+  principalId?: string;
+  /** The tenant ID of resource. */
+  tenantId?: string;
+  /** Type of managed service identity. */
+  type: SummaryLogsIdentityType;
+  /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: SummaryLogsIdentityUserAssignedIdentitiesMap;
+}
+export const SummaryLogsIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: SummaryLogsIdentityType,
+    userAssignedIdentities: S.optional(
+      SummaryLogsIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "SummaryLogsIdentity",
+}) as any as S.Schema<SummaryLogsIdentity>;
+
 export interface SummaryLogsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5026,6 +5106,8 @@ export interface SummaryLogsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Summary rule properties. */
   properties?: SummaryLogsProperties;
+  /** The managed identity of the summary logs resource. Only user-assigned identity is supported. */
+  identity?: SummaryLogsIdentity;
 }
 export const SummaryLogsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5034,6 +5116,7 @@ export const SummaryLogsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(SummaryLogsProperties),
+    identity: S.optional(SummaryLogsIdentity),
   }),
 ).annotate({
   identifier: "SummaryLogsCreateOrUpdateResponse",
@@ -5060,7 +5143,7 @@ export const SummaryLogsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5095,7 +5178,7 @@ export const SummaryLogsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5113,6 +5196,8 @@ export interface SummaryLogsGetResponse {
   systemData?: SystemData;
   /** Summary rule properties. */
   properties?: SummaryLogsProperties;
+  /** The managed identity of the summary logs resource. Only user-assigned identity is supported. */
+  identity?: SummaryLogsIdentity;
 }
 export const SummaryLogsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5121,6 +5206,7 @@ export const SummaryLogsGetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(SummaryLogsProperties),
+    identity: S.optional(SummaryLogsIdentity),
   }),
 ).annotate({
   identifier: "SummaryLogsGetResponse",
@@ -5144,7 +5230,7 @@ export const SummaryLogsListByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5163,6 +5249,8 @@ export interface SummaryLogs {
   systemData?: SystemData;
   /** Summary rule properties. */
   properties?: SummaryLogsProperties;
+  /** The managed identity of the summary logs resource. Only user-assigned identity is supported. */
+  identity?: SummaryLogsIdentity;
 }
 export const SummaryLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5171,6 +5259,7 @@ export const SummaryLogs = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(SummaryLogsProperties),
+    identity: S.optional(SummaryLogsIdentity),
   }),
 ).annotate({ identifier: "SummaryLogs" }) as any as S.Schema<SummaryLogs>;
 
@@ -5233,7 +5322,7 @@ export const SummaryLogsRetryBinRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/retrybin",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5268,7 +5357,7 @@ export const SummaryLogsStartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/start",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5303,7 +5392,7 @@ export const SummaryLogsStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/stop",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5338,7 +5427,7 @@ export const TablesCancelSearchRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/cancelSearch",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5400,6 +5489,10 @@ export const RestoredLogsInput = /*@__PURE__*/ S.suspend(() =>
 export type TablePlanEnum = "Basic" | "Analytics" | "Auxiliary";
 export const TablePlanEnum = /*@__PURE__*/ S.String;
 
+/** The protection level of the table. Determines the default data access isolation behavior. */
+export type TableProtectionLevelEnum = "General" | "Protected";
+export const TableProtectionLevelEnum = /*@__PURE__*/ S.String;
+
 /** Column data type. */
 export type ColumnTypeEnum =
   | "string"
@@ -5413,7 +5506,12 @@ export type ColumnTypeEnum =
 export const ColumnTypeEnum = /*@__PURE__*/ S.String;
 
 /** Column data type logical hint. */
-export type ColumnDataTypeHintEnum = "uri" | "guid" | "armPath" | "ip";
+export type ColumnDataTypeHintEnum =
+  | "uri"
+  | "guid"
+  | "armPath"
+  | "ip"
+  | "vector16";
 export const ColumnDataTypeHintEnum = /*@__PURE__*/ S.String;
 
 /** Table column. */
@@ -5424,7 +5522,7 @@ export interface ColumnInput {
   type?: ColumnTypeEnum | (string & {});
   /** Column data type logical hint. */
   dataTypeHint?: ColumnDataTypeHintEnum | (string & {});
-  /** Column display name. */
+  /** Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name. */
   displayName?: string;
   /** Column description. */
   description?: string;
@@ -5477,6 +5575,8 @@ export interface TablePropertiesInput {
   restoredLogs?: RestoredLogsInput;
   /** Instruct the system how to handle and charge the logs ingested to this table. */
   plan?: TablePlanEnum | (string & {});
+  /** The protection level of the table. Determines the default data access isolation behavior. */
+  protectionLevel?: TableProtectionLevelEnum | (string & {});
   /** Table schema. */
   schema?: SchemaInput;
 }
@@ -5487,6 +5587,7 @@ export const TablePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     searchResults: S.optional(SearchResultsInput),
     restoredLogs: S.optional(RestoredLogsInput),
     plan: S.optional(TablePlanEnum),
+    protectionLevel: S.optional(TableProtectionLevelEnum),
     schema: S.optional(SchemaInput),
   }),
 ).annotate({
@@ -5517,7 +5618,7 @@ export const TablesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5600,7 +5701,7 @@ export interface Column {
   type?: ColumnTypeEnum;
   /** Column data type logical hint. */
   dataTypeHint?: ColumnDataTypeHintEnum;
-  /** Column display name. */
+  /** Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name. */
   displayName?: string;
   /** Column description. */
   description?: string;
@@ -5732,6 +5833,8 @@ export interface TableProperties {
   resultStatistics?: ResultStatistics;
   /** Instruct the system how to handle and charge the logs ingested to this table. */
   plan?: TablePlanEnum;
+  /** The protection level of the table. Determines the default data access isolation behavior. */
+  protectionLevel?: TableProtectionLevelEnum;
   /** The timestamp that table plan was last modified (UTC). */
   lastPlanModifiedDate?: string;
   /** Table schema. */
@@ -5752,6 +5855,7 @@ export const TableProperties = /*@__PURE__*/ S.suspend(() =>
     restoredLogs: S.optional(RestoredLogs),
     resultStatistics: S.optional(ResultStatistics),
     plan: S.optional(TablePlanEnum),
+    protectionLevel: S.optional(TableProtectionLevelEnum),
     lastPlanModifiedDate: S.optional(S.String),
     schema: S.optional(Schema),
     provisioningState: S.optional(OperationalInsightsTableProvisioningState),
@@ -5807,7 +5911,7 @@ export const TablesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5842,7 +5946,7 @@ export const TablesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5891,7 +5995,7 @@ export const TablesListByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5964,7 +6068,7 @@ export const TablesMigrateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/migrate",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6002,7 +6106,7 @@ export const TablesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6051,7 +6155,7 @@ export const UsagesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/usages",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6141,7 +6245,7 @@ export const WorkspacePurgeGetPurgeStatusRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/operations/{purgeId}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6218,7 +6322,7 @@ export const WorkspacePurgePurgeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/purge",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6231,6 +6335,60 @@ export const WorkspacePurgePurgeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkspacePurgePurgeResponse",
 }) as any as S.Schema<WorkspacePurgePurgeResponse>;
+
+/** The time range over which a data lake purge request operates. */
+export interface WorkspacePurgeLakeDataTimeRange {
+  /** The inclusive start of the time range, in UTC. Must fall on an hour boundary (minutes and seconds must be zero). */
+  startTime: string;
+  /** The exclusive end of the time range, in UTC. Must fall on an hour boundary and be earlier than the start of the current hour. */
+  endTime: string;
+}
+export const WorkspacePurgeLakeDataTimeRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.String,
+    endTime: S.String,
+  }),
+).annotate({
+  identifier: "WorkspacePurgeLakeDataTimeRange",
+}) as any as S.Schema<WorkspacePurgeLakeDataTimeRange>;
+
+export interface WorkspacePurgePurgeLakeDataRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The name of the table from which to purge data lake data. Must be an Auxiliary table, or an Analytics table that is mirrored to the data lake. */
+  table: string;
+  /** The time range over which data lake data is purged. */
+  timeRange: WorkspacePurgeLakeDataTimeRange;
+}
+export const WorkspacePurgePurgeLakeDataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    table: S.String,
+    timeRange: WorkspacePurgeLakeDataTimeRange,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/purgeLakeData",
+      code: 200,
+      apiVersion: "2026-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "WorkspacePurgePurgeLakeDataRequest",
+}) as any as S.Schema<WorkspacePurgePurgeLakeDataRequest>;
+
+export interface WorkspacePurgePurgeLakeDataResponse {}
+export const WorkspacePurgePurgeLakeDataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "WorkspacePurgePurgeLakeDataResponse",
+}) as any as S.Schema<WorkspacePurgePurgeLakeDataResponse>;
 
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = {
@@ -6298,6 +6456,8 @@ export interface WorkspaceFeaturesInput {
   clusterResourceId?: string | null;
   /** Disable Non-AAD based Auth. */
   disableLocalAuth?: boolean | null;
+  /** Enable Data authorization mode for the workspace. */
+  dataAuthorizationMode?: boolean | null;
 }
 export const WorkspaceFeaturesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6308,6 +6468,7 @@ export const WorkspaceFeaturesInput = /*@__PURE__*/ S.suspend(() =>
     ),
     clusterResourceId: S.optional(S.NullOr(S.String)),
     disableLocalAuth: S.optional(S.NullOr(S.Boolean)),
+    dataAuthorizationMode: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "WorkspaceFeaturesInput",
@@ -6441,7 +6602,7 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6514,7 +6675,7 @@ export const WorkspacesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6546,7 +6707,7 @@ export const WorkspacesFailbackRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/failback",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6581,7 +6742,7 @@ export const WorkspacesFailoverRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/locations/{location}/workspaces/{workspaceName}/failover",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6613,7 +6774,7 @@ export const WorkspacesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6686,7 +6847,7 @@ export const WorkspacesGetNSPRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7028,7 +7189,7 @@ export const WorkspacesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/workspaces",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7051,7 +7212,7 @@ export const WorkspacesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces",
         code: 200,
-        apiVersion: "2025-07-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -7076,7 +7237,7 @@ export const WorkspacesListNSPRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7151,7 +7312,7 @@ export const WorkspacesReconcileNSPRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7201,7 +7362,7 @@ export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
       code: 200,
-      apiVersion: "2025-07-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -8343,6 +8504,21 @@ export const WorkspacePurgePurge: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WorkspacePurgePurgeRequest,
   output: WorkspacePurgePurgeResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type WorkspacePurgePurgeLakeDataError = AzureOpError;
+/** Purges data lake data in a Log Analytics workspace for a table over a specified time range. This operation deletes data lake data (Auxiliary tables, or Analytics tables mirrored to the data lake) for the specified table within the given time range. The operation is long-running; poll the URL returned in the Azure-AsyncOperation response header to track its status. */
+export const WorkspacePurgePurgeLakeData: API.OperationMethod<
+  WorkspacePurgePurgeLakeDataRequest,
+  WorkspacePurgePurgeLakeDataResponse,
+  WorkspacePurgePurgeLakeDataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: WorkspacePurgePurgeLakeDataRequest,
+  output: WorkspacePurgePurgeLakeDataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

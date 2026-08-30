@@ -104,21 +104,21 @@ export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseInstance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
-  /** Required. The parent project for which to create a database instance, in the form: `projects/{project-number}/locations/{location-id}`. */
-  parent: string;
   /** When set to true, the request will be validated but not submitted. */
   validateOnly?: boolean;
   /** The globally unique identifier of the database instance. */
   databaseId?: string;
+  /** Required. The parent project for which to create a database instance, in the form: `projects/{project-number}/locations/{location-id}`. */
+  parent: string;
   /** Request body */
   body?: DatabaseInstance;
 }
 export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       databaseId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(DatabaseInstance.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -200,22 +200,22 @@ export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface ListProjectsLocationsInstancesRequest {
-  /** Required. The parent project for which to list database instances, in the form: `projects/{project-number}/locations/{location-id}` To list across all locations, use a parent in the form: `projects/{project-number}/locations/-` */
-  parent: string;
+  /** The maximum number of database instances to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
+  pageSize?: number;
   /** Token returned from a previous call to `ListDatabaseInstances` indicating where in the set of database instances to resume listing. */
   pageToken?: string;
   /** Indicate that DatabaseInstances in the `DELETED` state should also be returned. */
   showDeleted?: boolean;
-  /** The maximum number of database instances to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
-  pageSize?: number;
+  /** Required. The parent project for which to list database instances, in the form: `projects/{project-number}/locations/{location-id}` To list across all locations, use a parent in the form: `projects/{project-number}/locations/-` */
+  parent: string;
 }
 export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",

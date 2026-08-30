@@ -14256,7 +14256,8 @@ export const ManagedResourceGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
 export type NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled =
-  "True" | "False";
+  | "True"
+  | "False";
 export const NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled =
   /*@__PURE__*/ S.String;
 
@@ -14421,7 +14422,8 @@ export const NetworkFabricControllerPropertiesNetworkFabricIdsList =
 
 /** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
 export type NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled =
-  "True" | "False";
+  | "True"
+  | "False";
 export const NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled =
   /*@__PURE__*/ S.String;
 
@@ -15686,7 +15688,8 @@ export const UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState =
 
 /** NNI derived unique Route Distinguisher state. Default is Disabled. */
 export type UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState =
-  "Enabled" | "Disabled";
+  | "Enabled"
+  | "Disabled";
 export const UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -16090,7 +16093,8 @@ export const UniqueRouteDistinguisherPropertiesUniqueRdsList =
 
 /** NNI derived unique Route Distinguisher state. Default is Disabled. */
 export type UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState =
-  "Enabled" | "Disabled";
+  | "Enabled"
+  | "Disabled";
 export const UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 

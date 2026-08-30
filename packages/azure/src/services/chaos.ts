@@ -2570,7 +2570,7 @@ export const ExperimentsStart: API.OperationMethod<
 }));
 
 export type ExperimentsUpdateError = AzureOpError;
-/** The operation to update an experiment. */
+/** Update an experiment. */
 export const ExperimentsUpdate: API.OperationMethod<
   ExperimentsUpdateRequest,
   ExperimentsUpdateResponse,

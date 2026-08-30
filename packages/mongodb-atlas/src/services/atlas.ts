@@ -858,7 +858,8 @@ export type DefaultAlertViewForNdsGroupEventTypeNameCase4 =
   | "ENCRYPTION_AT_REST_CONFIG_NO_LONGER_VALID"
   | "GROUP_SERVICE_ACCOUNT_SECRETS_EXPIRING"
   | "GROUP_SERVICE_ACCOUNT_SECRETS_EXPIRED"
-  | "ACTIVE_LEGACY_TLS_CONNECTIONS";
+  | "ACTIVE_LEGACY_TLS_CONNECTIONS"
+  | "WEBHOOK_TEMPLATE_RENDER_FAILED";
 export const DefaultAlertViewForNdsGroupEventTypeNameCase4 =
   /*@__PURE__*/ S.String;
 
@@ -879,7 +880,8 @@ export type DefaultAlertViewForNdsGroupEventTypeNameCase6 =
   | "CLUSTER_BLOCK_WRITE"
   | "CLUSTER_UNBLOCK_WRITE"
   | "LOG_STREAMING_EXPORT_FAILED_NONRETRYABLE"
-  | "LOG_STREAMING_EXPORT_FAILED_RETRIES_EXHAUSTED";
+  | "LOG_STREAMING_EXPORT_FAILED_RETRIES_EXHAUSTED"
+  | "LOG_STREAMING_REPLAY_FAILED";
 export const DefaultAlertViewForNdsGroupEventTypeNameCase6 =
   /*@__PURE__*/ S.String;
 
@@ -931,6 +933,7 @@ export const DefaultAlertViewForNdsGroupEventTypeNameCase13 =
 
 export type DefaultAlertViewForNdsGroupEventTypeNameCase14 =
   | "STREAM_PROCESSOR_STATE_IS_FAILED"
+  | "STREAM_PROCESSOR_AUTOSCALE_INITIATED"
   | "OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD";
 export const DefaultAlertViewForNdsGroupEventTypeNameCase14 =
   /*@__PURE__*/ S.String;
@@ -1759,7 +1762,7 @@ export const AuthorizeGroupCloudProviderAccessRoleRequestProviderName =
 export interface AuthorizeGroupCloudProviderAccessRoleRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
-  /** Unique 24-hexadecimal digit string that identifies the role. */
+  /** Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`. */
   roleId: string;
   /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
   envelope?: boolean;
@@ -1835,7 +1838,7 @@ export const CloudProviderAccessAWSIAMRoleProviderName = /*@__PURE__*/ S.String;
 
 /** Details that describe the features linked to the Amazon Web Services (AWS) Identity and Access Management (IAM) role. */
 export interface CloudProviderAccessAWSIAMRole {
-  /** Unique 24-hexadecimal digit string that identifies the role. */
+  /** Unique 24-hexadecimal digit string that identifies the role. Pass this value as the `roleId` path parameter when you request, update, or remove this Azure Service Principal. Azure Service Principals return this identifier as `_id`, while Amazon Web Services (AWS) IAM roles and Google Service Accounts return it as `roleId`. */
   _id?: string;
   /** Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided. */
   atlasAzureAppId?: string;
@@ -1915,7 +1918,7 @@ export const CloudProviderAccessAzureServicePrincipalProviderName =
 
 /** Details that describe the features linked to the Azure Service Principal. */
 export interface CloudProviderAccessAzureServicePrincipal {
-  /** Unique 24-hexadecimal digit string that identifies the role. */
+  /** Unique 24-hexadecimal digit string that identifies the role. Pass this value as the `roleId` path parameter when you request, update, or remove this Azure Service Principal. Azure Service Principals return this identifier as `_id`, while Amazon Web Services (AWS) IAM roles and Google Service Accounts return it as `roleId`. */
   _id?: string;
   /** Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided. */
   atlasAzureAppId?: string;
@@ -1998,7 +2001,7 @@ export const CloudProviderAccessGCPServiceAccountProviderName =
 
 /** Details that describe the features linked to the GCP Service Account. */
 export interface CloudProviderAccessGCPServiceAccount {
-  /** Unique 24-hexadecimal digit string that identifies the role. */
+  /** Unique 24-hexadecimal digit string that identifies the role. Pass this value as the `roleId` path parameter when you request, update, or remove this Azure Service Principal. Azure Service Principals return this identifier as `_id`, while Amazon Web Services (AWS) IAM roles and Google Service Accounts return it as `roleId`. */
   _id?: string;
   /** Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided. */
   atlasAzureAppId?: string;
@@ -2219,7 +2222,7 @@ export interface CreateFederationSettingIdentityProviderRequest {
     | CreateFederationSettingIdentityProviderRequestAuthorizationType
     | (string & {});
   /** The description of the identity provider. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that identifies the identity provider. */
   displayName?: string;
   /** Identifier of the claim which contains IdP Group IDs in the token. */
@@ -2246,7 +2249,7 @@ export const CreateFederationSettingIdentityProviderRequest =
       authorizationType: S.optional(
         CreateFederationSettingIdentityProviderRequestAuthorizationType,
       ),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
       displayName: S.optional(S.String),
       groupsClaim: S.optional(S.String),
       idpType: S.optional(
@@ -2351,7 +2354,9 @@ export interface ConnectedOrgConfig {
   /** Value that indicates whether domain restriction is enabled for this connected organization. */
   domainRestrictionEnabled: boolean;
   /** Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. */
-  identityProviderId?: string;
+  identityProviderId?: string | null;
+  /** Flag that indicates whether instant user provisioning is disabled for this connected organization. */
+  instantUserProvisioningDisabled?: boolean | null;
   /** Unique 24-hexadecimal digit string that identifies the connected organization configuration. */
   orgId: string;
   /** Atlas roles that are granted to a user in this organization after authenticating. Roles are a human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific MongoDB Cloud user. These roles can only be organization specific roles. */
@@ -2368,7 +2373,8 @@ export const ConnectedOrgConfig = /*@__PURE__*/ S.suspend(() =>
     ),
     domainAllowList: S.optional(ConnectedOrgConfigDomainAllowListList),
     domainRestrictionEnabled: S.Boolean,
-    identityProviderId: S.optional(S.String),
+    identityProviderId: S.optional(S.NullOr(S.String)),
+    instantUserProvisioningDisabled: S.optional(S.NullOr(S.Boolean)),
     orgId: S.String,
     postAuthRoleGrants: S.optional(ConnectedOrgConfigPostAuthRoleGrantsList),
     roleMappings: S.optional(ConnectedOrgConfigRoleMappingsList),
@@ -2419,19 +2425,19 @@ export interface FederationOidcWorkforceIdentityProvider {
   /** List that contains the connected organization configurations associated with the identity provider. */
   associatedOrgs?: FederationOidcWorkforceIdentityProviderAssociatedOrgsList;
   /** Identifier of the intended recipient of the token. */
-  audience?: string;
+  audience?: string | null;
   /** Indicates whether authorization is granted based on group membership or user ID. */
   authorizationType?: FederationOidcWorkforceIdentityProviderAuthorizationType;
   /** Client identifier that is assigned to an application by the Identity Provider. */
-  clientId?: string;
+  clientId?: string | null;
   /** Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   createdAt?: string;
   /** The description of the identity provider. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that identifies the identity provider. */
   displayName?: string;
   /** Identifier of the claim which contains IdP Group IDs in the token. */
-  groupsClaim?: string;
+  groupsClaim?: string | null;
   /** Unique 24-hexadecimal digit string that identifies the identity provider. */
   id: string;
   /** String enum that indicates the type of the identity provider. Default is WORKFORCE. */
@@ -2439,13 +2445,13 @@ export interface FederationOidcWorkforceIdentityProvider {
   /** Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. */
   issuerUri?: string;
   /** Legacy 20-hexadecimal digit string that identifies the identity provider. */
-  oktaIdpId: string;
+  oktaIdpId: string | null;
   /** String enum that indicates the protocol of the identity provider. Either SAML or OIDC. */
   protocol?: FederationOidcWorkforceIdentityProviderProtocol;
   /** Scopes that MongoDB applications will request from the authorization endpoint. */
   requestedScopes?: FederationOidcWorkforceIdentityProviderRequestedScopesList;
   /** Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** Identifier of the claim which contains the user ID in the token. */
   userClaim?: string;
 }
@@ -2458,24 +2464,24 @@ export const FederationOidcWorkforceIdentityProvider = /*@__PURE__*/ S.suspend(
       associatedOrgs: S.optional(
         FederationOidcWorkforceIdentityProviderAssociatedOrgsList,
       ),
-      audience: S.optional(S.String),
+      audience: S.optional(S.NullOr(S.String)),
       authorizationType: S.optional(
         FederationOidcWorkforceIdentityProviderAuthorizationType,
       ),
-      clientId: S.optional(S.String),
+      clientId: S.optional(S.NullOr(S.String)),
       createdAt: S.optional(S.String),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
       displayName: S.optional(S.String),
-      groupsClaim: S.optional(S.String),
+      groupsClaim: S.optional(S.NullOr(S.String)),
       id: S.String,
       idpType: S.optional(FederationOidcWorkforceIdentityProviderIdpType),
       issuerUri: S.optional(S.String),
-      oktaIdpId: S.String,
+      oktaIdpId: S.NullOr(S.String),
       protocol: S.optional(FederationOidcWorkforceIdentityProviderProtocol),
       requestedScopes: S.optional(
         FederationOidcWorkforceIdentityProviderRequestedScopesList,
       ),
-      updatedAt: S.optional(S.String),
+      updatedAt: S.optional(S.NullOr(S.String)),
       userClaim: S.optional(S.String),
     }),
 ).annotate({
@@ -2513,17 +2519,17 @@ export interface FederationOidcWorkloadIdentityProvider {
   /** List that contains the connected organization configurations associated with the identity provider. */
   associatedOrgs?: FederationOidcWorkloadIdentityProviderAssociatedOrgsList;
   /** Identifier of the intended recipient of the token. */
-  audience?: string;
+  audience?: string | null;
   /** Indicates whether authorization is granted based on group membership or user ID. */
   authorizationType?: FederationOidcWorkloadIdentityProviderAuthorizationType;
   /** Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   createdAt?: string;
   /** The description of the identity provider. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that identifies the identity provider. */
   displayName?: string;
   /** Identifier of the claim which contains IdP Group IDs in the token. */
-  groupsClaim?: string;
+  groupsClaim?: string | null;
   /** Unique 24-hexadecimal digit string that identifies the identity provider. */
   id: string;
   /** String enum that indicates the type of the identity provider. Default is WORKFORCE. */
@@ -2531,11 +2537,11 @@ export interface FederationOidcWorkloadIdentityProvider {
   /** Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. */
   issuerUri?: string;
   /** Legacy 20-hexadecimal digit string that identifies the identity provider. */
-  oktaIdpId: string;
+  oktaIdpId: string | null;
   /** String enum that indicates the protocol of the identity provider. Either SAML or OIDC. */
   protocol?: FederationOidcWorkloadIdentityProviderProtocol;
   /** Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  updatedAt?: string;
+  updatedAt?: string | null;
   /** Identifier of the claim which contains the user ID in the token. */
   userClaim?: string;
 }
@@ -2545,20 +2551,20 @@ export const FederationOidcWorkloadIdentityProvider = /*@__PURE__*/ S.suspend(
       associatedOrgs: S.optional(
         FederationOidcWorkloadIdentityProviderAssociatedOrgsList,
       ),
-      audience: S.optional(S.String),
+      audience: S.optional(S.NullOr(S.String)),
       authorizationType: S.optional(
         FederationOidcWorkloadIdentityProviderAuthorizationType,
       ),
       createdAt: S.optional(S.String),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
       displayName: S.optional(S.String),
-      groupsClaim: S.optional(S.String),
+      groupsClaim: S.optional(S.NullOr(S.String)),
       id: S.String,
       idpType: S.optional(FederationOidcWorkloadIdentityProviderIdpType),
       issuerUri: S.optional(S.String),
-      oktaIdpId: S.String,
+      oktaIdpId: S.NullOr(S.String),
       protocol: S.optional(FederationOidcWorkloadIdentityProviderProtocol),
-      updatedAt: S.optional(S.String),
+      updatedAt: S.optional(S.NullOr(S.String)),
       userClaim: S.optional(S.String),
     }),
 ).annotate({
@@ -2826,6 +2832,93 @@ export const PaginatedNetworkAccessView = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedNetworkAccessView",
 }) as any as S.Schema<PaginatedNetworkAccessView>;
 
+/** Cloud provider scope for this API key. Use "ANY" for a cloud-agnostic scope. Additional cloud values will be supported in future API versions. */
+export type CreateGroupAiModelApiKeyRequestCloud = "ANY";
+export const CreateGroupAiModelApiKeyRequestCloud = /*@__PURE__*/ S.String;
+
+/** Geography scope for this API key. Use "ANY" for a geography-agnostic scope. Additional geography values will be supported in future API versions. */
+export type CreateGroupAiModelApiKeyRequestGeography = "ANY";
+export const CreateGroupAiModelApiKeyRequestGeography = /*@__PURE__*/ S.String;
+
+export interface CreateGroupAiModelApiKeyRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** Cloud provider scope for this API key. Use "ANY" for a cloud-agnostic scope. Additional cloud values will be supported in future API versions. */
+  cloud: CreateGroupAiModelApiKeyRequestCloud | (string & {});
+  /** Geography scope for this API key. Use "ANY" for a geography-agnostic scope. Additional geography values will be supported in future API versions. */
+  geography: CreateGroupAiModelApiKeyRequestGeography | (string & {});
+  /** A name for the new API key that will be created. */
+  name: string;
+}
+export const CreateGroupAiModelApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+    cloud: CreateGroupAiModelApiKeyRequestCloud,
+    geography: CreateGroupAiModelApiKeyRequestGeography,
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "CreateGroupAiModelApiKeyRequest",
+}) as any as S.Schema<CreateGroupAiModelApiKeyRequest>;
+
+export interface AiModelApiKeyResponse {
+  /** Identifier used to reference this API key in admin API calls. */
+  apiKeyId?: string;
+  /** Cloud provider scope for this API key. Use "ANY" for cloud-agnostic scope. */
+  cloud?: string;
+  /** UTC date when the API key was created. This parameter is formatted as an ISO 8601 timestamp. */
+  createdAt?: string;
+  /** Name of the user that created this API key. If no user name is available, the user ID is returned. */
+  createdBy?: string;
+  /** Server-computed endpoint hostname derived from `cloud` and `geography`. This field is read-only and must not be supplied in request bodies. */
+  endpoint?: string;
+  /** Geography scope for this API key. Use "ANY" for geography-agnostic scope. */
+  geography?: string;
+  /** ID of the Atlas group this API key belongs to. */
+  groupId?: string;
+  /** UTC date when the API key was last used. This parameter is formatted as an ISO 8601 timestamp. */
+  lastUsedAt?: string | null;
+  /** A partially obfuscated version of the API key secret returned when the API key was created. */
+  maskedSecret?: string;
+  /** Arbitrary string identifier assigned to this API key for convenient identification. */
+  name?: string;
+  /** The full API key secret used for interacting with the embedding / reranking service. Note: this will only be fully populated in the response to a create API key request. Responses to get, list, and update requests will not include the secret. */
+  secret?: string | Redacted.Redacted<string> | null;
+  /** A string describing the current status of the API key. */
+  status?: string;
+}
+export const AiModelApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKeyId: S.optional(S.String),
+    cloud: S.optional(S.String),
+    createdAt: S.optional(S.String),
+    createdBy: S.optional(S.String),
+    endpoint: S.optional(S.String),
+    geography: S.optional(S.String),
+    groupId: S.optional(S.String),
+    lastUsedAt: S.optional(S.NullOr(S.String)),
+    maskedSecret: S.optional(S.String),
+    name: S.optional(S.String),
+    secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+    status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AiModelApiKeyResponse",
+}) as any as S.Schema<AiModelApiKeyResponse>;
+
 export type DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase0 =
   "CREDIT_CARD_ABOUT_TO_EXPIRE";
 export const DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase0 =
@@ -2884,7 +2977,8 @@ export type DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase4 =
   | "ENCRYPTION_AT_REST_CONFIG_NO_LONGER_VALID"
   | "GROUP_SERVICE_ACCOUNT_SECRETS_EXPIRING"
   | "GROUP_SERVICE_ACCOUNT_SECRETS_EXPIRED"
-  | "ACTIVE_LEGACY_TLS_CONNECTIONS";
+  | "ACTIVE_LEGACY_TLS_CONNECTIONS"
+  | "WEBHOOK_TEMPLATE_RENDER_FAILED";
 export const DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase4 =
   /*@__PURE__*/ S.String;
 
@@ -2906,7 +3000,8 @@ export type DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase6 =
   | "CLUSTER_BLOCK_WRITE"
   | "CLUSTER_UNBLOCK_WRITE"
   | "LOG_STREAMING_EXPORT_FAILED_NONRETRYABLE"
-  | "LOG_STREAMING_EXPORT_FAILED_RETRIES_EXHAUSTED";
+  | "LOG_STREAMING_EXPORT_FAILED_RETRIES_EXHAUSTED"
+  | "LOG_STREAMING_REPLAY_FAILED";
 export const DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase6 =
   /*@__PURE__*/ S.String;
 
@@ -2941,6 +3036,7 @@ export const DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase10 =
 
 export type DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase11 =
   | "STREAM_PROCESSOR_STATE_IS_FAILED"
+  | "STREAM_PROCESSOR_AUTOSCALE_INITIATED"
   | "OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD";
 export const DefaultAlertConfigViewForNdsGroupInputEventTypeNameCase11 =
   /*@__PURE__*/ S.String;
@@ -3554,6 +3650,10 @@ export interface WebhookNotification {
   notifierId?: string;
   /** Human-readable label that displays the alert notification type. */
   typeName: WebhookNotificationTypeName;
+  /** Template, using ${field} interpolation, that renders the HTTP body MongoDB Cloud sends with each webhook notification. Must render valid JSON. When unset, MongoDB Cloud sends its default JSON payload. */
+  webhookBodyTemplate?: string;
+  /** Template, using ${field} interpolation, that renders the HTTP headers MongoDB Cloud sends with each webhook notification. Must render a JSON object mapping header name to header value. The webhook secret and the signature header are NOT exposed to templates. */
+  webhookHeadersTemplate?: string;
   /** Authentication secret for a webhook-based alert. Atlas returns this value if you set `notifications.[n].typeName` :`WEBHOOK` and either: * You set `notification.[n].webhookSecret` to a non-empty string * You set a default webhook secret either on the Integrations page, or with the Integrations API **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted. */
   webhookSecret?: string;
   /** Target URL for a webhook-based alert. Atlas returns this value if you set `"notifications.[n].typeName" :"WEBHOOK"` and either: * You set `notification.[n].webhookURL` to a non-empty string * You set a default webhook URL either on the Integrations page, or with the Integrations API **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted. */
@@ -3566,6 +3666,8 @@ export const WebhookNotification = /*@__PURE__*/ S.suspend(() =>
     intervalMin: S.optional(S.Number),
     notifierId: S.optional(S.String),
     typeName: WebhookNotificationTypeName,
+    webhookBodyTemplate: S.optional(S.String),
+    webhookHeadersTemplate: S.optional(S.String),
     webhookSecret: S.optional(S.String),
     webhookUrl: S.optional(S.String),
   }),
@@ -5494,6 +5596,51 @@ export const ConnectionsRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionsRawMetricThresholdView",
 }) as any as S.Schema<ConnectionsRawMetricThresholdView>;
+
+/** MongoDB Cloud computes the current metric value as an average. */
+export type ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewMode =
+  "AVERAGE";
+export const ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewMode =
+  /*@__PURE__*/ S.String;
+
+/** Comparison operator to apply when checking the current metric value. */
+export type ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewOperator =
+  "GREATER_THAN";
+export const ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewOperator =
+  /*@__PURE__*/ S.String;
+
+export interface ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdView {
+  /** Human-readable label that identifies the metric against which MongoDB Cloud checks the configured `metricThreshold.threshold`. */
+  metricName: string;
+  /** MongoDB Cloud computes the current metric value as an average. */
+  mode?:
+    | ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewMode
+    | (string & {});
+  /** Comparison operator to apply when checking the current metric value. */
+  operator?:
+    | ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewOperator
+    | (string & {});
+  /** Value of metric that, when exceeded, triggers an alert. */
+  threshold?: number;
+  units?: RawMetricUnits | (string & {});
+}
+export const ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdView =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      metricName: S.String,
+      mode: S.optional(
+        ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewMode,
+      ),
+      operator: S.optional(
+        ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewOperator,
+      ),
+      threshold: S.optional(S.Number),
+      units: S.optional(RawMetricUnits),
+    }),
+  ).annotate({
+    identifier:
+      "ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdView",
+  }) as any as S.Schema<ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ConnectionsMaxRawMetricThresholdViewMode = "AVERAGE";
@@ -8088,7 +8235,8 @@ export const OperationThrottlingRejectedOperationsRawMetricThresholdViewMode =
 
 /** Comparison operator to apply when checking the current metric value. */
 export type OperationThrottlingRejectedOperationsRawMetricThresholdViewOperator =
-  "LESS_THAN" | "GREATER_THAN";
+  | "LESS_THAN"
+  | "GREATER_THAN";
 export const OperationThrottlingRejectedOperationsRawMetricThresholdViewOperator =
   /*@__PURE__*/ S.String;
 
@@ -8257,7 +8405,8 @@ export const QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewMode =
 
 /** Comparison operator to apply when checking the current metric value. */
 export type QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewOperator =
-  "LESS_THAN" | "GREATER_THAN";
+  | "LESS_THAN"
+  | "GREATER_THAN";
 export const QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewOperator =
   /*@__PURE__*/ S.String;
 
@@ -9403,7 +9552,8 @@ export const MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode =
 
 /** Comparison operator to apply when checking the current metric value. */
 export type MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewOperator =
-  "LESS_THAN" | "GREATER_THAN";
+  | "LESS_THAN"
+  | "GREATER_THAN";
 export const MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewOperator =
   /*@__PURE__*/ S.String;
 
@@ -10485,6 +10635,7 @@ export type HostMetricThreshold =
   | GlobalLockPercentageRawMetricThresholdView
   | TimeMetricThresholdView
   | ConnectionsRawMetricThresholdView
+  | ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdView
   | ConnectionsMaxRawMetricThresholdView
   | ConnectionsPercentRawMetricThresholdView
   | GlobalAccessesNotInMemoryRawMetricThresholdView
@@ -12238,7 +12389,8 @@ export const FlexMetricAlertConfigViewForNdsGroupInput =
 
 /** Event type that triggers an alert. */
 export type StreamProcessorEventTypeViewAlertableNoThreshold =
-  "STREAM_PROCESSOR_STATE_IS_FAILED";
+  | "STREAM_PROCESSOR_STATE_IS_FAILED"
+  | "STREAM_PROCESSOR_AUTOSCALE_INITIATED";
 export const StreamProcessorEventTypeViewAlertableNoThreshold =
   /*@__PURE__*/ S.String;
 
@@ -12293,7 +12445,9 @@ export const StreamProcessorAlertConfigViewForNdsGroupInputNotificationsList =
 export interface StreamProcessorAlertConfigViewForNdsGroupInput {
   /** Flag that indicates whether someone enabled this alert configuration for the specified project. */
   enabled?: boolean;
-  eventTypeName: StreamProcessorEventTypeViewAlertableNoThreshold;
+  eventTypeName:
+    | StreamProcessorEventTypeViewAlertableNoThreshold
+    | (string & {});
   /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. */
   matchers?: StreamProcessorAlertConfigViewForNdsGroupInputMatchersList;
   /** List that contains the targets that MongoDB Cloud sends notifications. */
@@ -12547,7 +12701,8 @@ export type DefaultAlertConfigViewForNdsGroupEventTypeNameCase4 =
   | "ENCRYPTION_AT_REST_CONFIG_NO_LONGER_VALID"
   | "GROUP_SERVICE_ACCOUNT_SECRETS_EXPIRING"
   | "GROUP_SERVICE_ACCOUNT_SECRETS_EXPIRED"
-  | "ACTIVE_LEGACY_TLS_CONNECTIONS";
+  | "ACTIVE_LEGACY_TLS_CONNECTIONS"
+  | "WEBHOOK_TEMPLATE_RENDER_FAILED";
 export const DefaultAlertConfigViewForNdsGroupEventTypeNameCase4 =
   /*@__PURE__*/ S.String;
 
@@ -12569,7 +12724,8 @@ export type DefaultAlertConfigViewForNdsGroupEventTypeNameCase6 =
   | "CLUSTER_BLOCK_WRITE"
   | "CLUSTER_UNBLOCK_WRITE"
   | "LOG_STREAMING_EXPORT_FAILED_NONRETRYABLE"
-  | "LOG_STREAMING_EXPORT_FAILED_RETRIES_EXHAUSTED";
+  | "LOG_STREAMING_EXPORT_FAILED_RETRIES_EXHAUSTED"
+  | "LOG_STREAMING_REPLAY_FAILED";
 export const DefaultAlertConfigViewForNdsGroupEventTypeNameCase6 =
   /*@__PURE__*/ S.String;
 
@@ -12604,6 +12760,7 @@ export const DefaultAlertConfigViewForNdsGroupEventTypeNameCase10 =
 
 export type DefaultAlertConfigViewForNdsGroupEventTypeNameCase11 =
   | "STREAM_PROCESSOR_STATE_IS_FAILED"
+  | "STREAM_PROCESSOR_AUTOSCALE_INITIATED"
   | "OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD";
 export const DefaultAlertConfigViewForNdsGroupEventTypeNameCase11 =
   /*@__PURE__*/ S.String;
@@ -14317,8 +14474,8 @@ export type CreateGroupClusterRequestAdaptiveCapacity = "ENABLED" | "DISABLED";
 export const CreateGroupClusterRequestAdaptiveCapacity = /*@__PURE__*/ S.String;
 
 export type ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12Item =
-    | "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
-    | "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256";
+  | "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+  | "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256";
 export const ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12Item =
   /*@__PURE__*/ S.String;
 
@@ -14334,10 +14491,10 @@ export const ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTl
   ) as any as S.Schema<ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12List>;
 
 export type ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls13Item =
-    | "TLS_AES_256_GCM_SHA384"
-    | "TLS_CHACHA20_POLY1305_SHA256"
-    | "TLS_AES_128_GCM_SHA256"
-    | "TLS_AES_128_CCM_SHA256";
+  | "TLS_AES_256_GCM_SHA384"
+  | "TLS_CHACHA20_POLY1305_SHA256"
+  | "TLS_AES_128_GCM_SHA256"
+  | "TLS_AES_128_CCM_SHA256";
 export const ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls13Item =
   /*@__PURE__*/ S.String;
 
@@ -14470,29 +14627,6 @@ export type CreateGroupClusterRequestLabelsList = Array<ComponentLabel>;
 export const CreateGroupClusterRequestLabelsList = /*@__PURE__*/ S.Array(
   ComponentLabel,
 ) as any as S.Schema<CreateGroupClusterRequestLabelsList>;
-
-/** Level of access to grant to MongoDB Employees. */
-export type EmployeeAccessGrantViewInputGrantType =
-  | "CLUSTER_DATABASE_LOGS"
-  | "CLUSTER_INFRASTRUCTURE"
-  | "CLUSTER_INFRASTRUCTURE_AND_APP_SERVICES_SYNC_DATA";
-export const EmployeeAccessGrantViewInputGrantType = /*@__PURE__*/ S.String;
-
-/** MongoDB employee granted access level and expiration for a cluster. */
-export interface EmployeeAccessGrantViewInput {
-  /** Expiration date for the employee access grant. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  expirationTime: string;
-  /** Level of access to grant to MongoDB Employees. */
-  grantType: EmployeeAccessGrantViewInputGrantType | (string & {});
-}
-export const EmployeeAccessGrantViewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expirationTime: S.String,
-    grantType: EmployeeAccessGrantViewInputGrantType,
-  }),
-).annotate({
-  identifier: "EmployeeAccessGrantViewInput",
-}) as any as S.Schema<EmployeeAccessGrantViewInput>;
 
 /** Set this field to configure the replica set scaling mode for your cluster. By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes. When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads. When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. */
 export type CreateGroupClusterRequestReplicaSetScalingStrategy =
@@ -14704,7 +14838,21 @@ export type GCPHardwareSpec20240805InstanceSize =
   | "R200"
   | "R300"
   | "R400"
-  | "R600";
+  | "R600"
+  | "M30_GEN_2"
+  | "M40_GEN_2"
+  | "M50_GEN_2"
+  | "M60_GEN_2"
+  | "M80_GEN_2"
+  | "M140_GEN_2"
+  | "M200_GEN_2"
+  | "R40_GEN_2"
+  | "R50_GEN_2"
+  | "R60_GEN_2"
+  | "R80_GEN_2"
+  | "R200_GEN_2"
+  | "R300_GEN_2"
+  | "R400_GEN_2";
 export const GCPHardwareSpec20240805InstanceSize = /*@__PURE__*/ S.String;
 
 export interface GCPHardwareSpec20240805 {
@@ -15704,7 +15852,6 @@ export interface CreateGroupClusterRequest {
   globalClusterSelfManagedSharding?: boolean;
   /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
   labels?: CreateGroupClusterRequestLabelsList;
-  mongoDBEmployeeAccessGrant?: EmployeeAccessGrantViewInput;
   /** MongoDB major version of the cluster. Set to the binary major version. On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions). On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version. */
   mongoDBMajorVersion?: string;
   /** Human-readable label that identifies the cluster. */
@@ -15758,7 +15905,6 @@ export const CreateGroupClusterRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     globalClusterSelfManagedSharding: S.optional(S.Boolean),
     labels: S.optional(CreateGroupClusterRequestLabelsList),
-    mongoDBEmployeeAccessGrant: S.optional(EmployeeAccessGrantViewInput),
     mongoDBMajorVersion: S.optional(S.String),
     name: S.optional(S.String),
     paused: S.optional(S.Boolean),
@@ -15835,7 +15981,9 @@ export const ClusterConnectionStringsAwsPrivateLinkSrvMap =
 
 /** Cloud provider in which MongoDB Cloud deploys the private endpoint. */
 export type ClusterDescriptionConnectionStringsPrivateEndpointEndpointProviderName =
-  "AWS" | "AZURE" | "GCP";
+  | "AWS"
+  | "AZURE"
+  | "GCP";
 export const ClusterDescriptionConnectionStringsPrivateEndpointEndpointProviderName =
   /*@__PURE__*/ S.String;
 
@@ -16045,7 +16193,21 @@ export type BaseCloudProviderInstanceSizeCase2 =
   | "R200"
   | "R300"
   | "R400"
-  | "R600";
+  | "R600"
+  | "M30_GEN_2"
+  | "M40_GEN_2"
+  | "M50_GEN_2"
+  | "M60_GEN_2"
+  | "M80_GEN_2"
+  | "M140_GEN_2"
+  | "M200_GEN_2"
+  | "R40_GEN_2"
+  | "R50_GEN_2"
+  | "R60_GEN_2"
+  | "R80_GEN_2"
+  | "R200_GEN_2"
+  | "R300_GEN_2"
+  | "R400_GEN_2";
 export const BaseCloudProviderInstanceSizeCase2 = /*@__PURE__*/ S.String;
 
 /** Instance size boundary to which your cluster can automatically scale. */
@@ -17782,6 +17944,270 @@ export const DiskBackupSnapshotRestoreJob = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskBackupSnapshotRestoreJob",
 }) as any as S.Schema<DiskBackupSnapshotRestoreJob>;
 
+/** Source and optional target namespace for a restore. */
+export interface ApiAtlasRestoreNamespaceView {
+  /** Namespace requested to restore (e.g. database name or `database.collection`). */
+  sourceNamespace: string;
+  /** Requested target namespace for the restored data; if empty, source namespace is used. */
+  targetNamespace?: string;
+}
+export const ApiAtlasRestoreNamespaceView = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceNamespace: S.String,
+    targetNamespace: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApiAtlasRestoreNamespaceView",
+}) as any as S.Schema<ApiAtlasRestoreNamespaceView>;
+
+/** List of collections to restore (up to 100 items). */
+export type CreateGroupClusterCollectionRestoreJobRequestCollectionsList =
+  Array<ApiAtlasRestoreNamespaceView>;
+export const CreateGroupClusterCollectionRestoreJobRequestCollectionsList =
+  /*@__PURE__*/ S.Array(
+    ApiAtlasRestoreNamespaceView,
+  ) as any as S.Schema<CreateGroupClusterCollectionRestoreJobRequestCollectionsList>;
+
+/** List of databases to restore (up to 100 items). */
+export type CreateGroupClusterCollectionRestoreJobRequestDatabasesList =
+  Array<ApiAtlasRestoreNamespaceView>;
+export const CreateGroupClusterCollectionRestoreJobRequestDatabasesList =
+  /*@__PURE__*/ S.Array(
+    ApiAtlasRestoreNamespaceView,
+  ) as any as S.Schema<CreateGroupClusterCollectionRestoreJobRequestDatabasesList>;
+
+/** Strategy for restoring indexes (all, none, or all except TTL). */
+export type CreateGroupClusterCollectionRestoreJobRequestIndexStrategy =
+  | "ALL"
+  | "NONE"
+  | "ALL_EXCEPT_TTL";
+export const CreateGroupClusterCollectionRestoreJobRequestIndexStrategy =
+  /*@__PURE__*/ S.String;
+
+/** Strategy for writing data on the target (create as new or overwrite existing). With `OVERWRITE_EXISTING`, any writes to the affected databases or collections during the restore will be lost when the existing namespaces are dropped and replaced. To avoid data loss, stop writes to the affected namespaces before starting the restore. */
+export type CreateGroupClusterCollectionRestoreJobRequestWriteStrategy =
+  | "CREATE_NEW"
+  | "OVERWRITE_EXISTING";
+export const CreateGroupClusterCollectionRestoreJobRequestWriteStrategy =
+  /*@__PURE__*/ S.String;
+
+export interface CreateGroupClusterCollectionRestoreJobRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the source cluster for the restore. */
+  clusterName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** Optional suffix applied to restored collection names. */
+  collectionSuffix?: string | null;
+  /** List of collections to restore (up to 100 items). */
+  collections?: CreateGroupClusterCollectionRestoreJobRequestCollectionsList;
+  /** Optional suffix applied to restored database names. */
+  databaseSuffix?: string | null;
+  /** List of databases to restore (up to 100 items). */
+  databases?: CreateGroupClusterCollectionRestoreJobRequestDatabasesList;
+  /** Strategy for restoring indexes (all, none, or all except TTL). */
+  indexStrategy:
+    | CreateGroupClusterCollectionRestoreJobRequestIndexStrategy
+    | (string & {});
+  /** Oplog increment for point-in-time restore. */
+  oplogInc?: number | null;
+  /** Oplog timestamp (seconds part) for point-in-time restore. */
+  oplogTs?: number | null;
+  /** Point-in-time restore time in seconds since UNIX epoch. */
+  pointInTimeUtcSeconds?: number | null;
+  /** ID of the snapshot to restore. */
+  snapshotId?: string;
+  /** Target cluster name. */
+  targetClusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the target group. */
+  targetGroupId: string;
+  /** Strategy for writing data on the target (create as new or overwrite existing). With `OVERWRITE_EXISTING`, any writes to the affected databases or collections during the restore will be lost when the existing namespaces are dropped and replaced. To avoid data loss, stop writes to the affected namespaces before starting the restore. */
+  writeStrategy:
+    | CreateGroupClusterCollectionRestoreJobRequestWriteStrategy
+    | (string & {});
+}
+export const CreateGroupClusterCollectionRestoreJobRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+      collectionSuffix: S.optional(S.NullOr(S.String)),
+      collections: S.optional(
+        CreateGroupClusterCollectionRestoreJobRequestCollectionsList,
+      ),
+      databaseSuffix: S.optional(S.NullOr(S.String)),
+      databases: S.optional(
+        CreateGroupClusterCollectionRestoreJobRequestDatabasesList,
+      ),
+      indexStrategy: CreateGroupClusterCollectionRestoreJobRequestIndexStrategy,
+      oplogInc: S.optional(S.NullOr(S.Number)),
+      oplogTs: S.optional(S.NullOr(S.Number)),
+      pointInTimeUtcSeconds: S.optional(S.NullOr(S.Number)),
+      snapshotId: S.optional(S.String),
+      targetClusterName: S.String,
+      targetGroupId: S.String,
+      writeStrategy: CreateGroupClusterCollectionRestoreJobRequestWriteStrategy,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateGroupClusterCollectionRestoreJobRequest",
+  }) as any as S.Schema<CreateGroupClusterCollectionRestoreJobRequest>;
+
+/** List of collections in the restore scope (up to 100 items). */
+export type ApiAtlasCollectionRestoreJobResponseCollectionsList =
+  Array<ApiAtlasRestoreNamespaceView>;
+export const ApiAtlasCollectionRestoreJobResponseCollectionsList =
+  /*@__PURE__*/ S.Array(
+    ApiAtlasRestoreNamespaceView,
+  ) as any as S.Schema<ApiAtlasCollectionRestoreJobResponseCollectionsList>;
+
+/** List of databases in the restore scope (up to 100 items). */
+export type ApiAtlasCollectionRestoreJobResponseDatabasesList =
+  Array<ApiAtlasRestoreNamespaceView>;
+export const ApiAtlasCollectionRestoreJobResponseDatabasesList =
+  /*@__PURE__*/ S.Array(
+    ApiAtlasRestoreNamespaceView,
+  ) as any as S.Schema<ApiAtlasCollectionRestoreJobResponseDatabasesList>;
+
+/** Index build state indicating the status of index creation during or after a restore operation. */
+export type ApiAtlasCollectionRestoreJobIndexStatusState =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "SUCCESSFUL"
+  | "FAILED"
+  | "NOT_RESTORED";
+export const ApiAtlasCollectionRestoreJobIndexStatusState =
+  /*@__PURE__*/ S.String;
+
+/** Overall index build status for a collection restore job. */
+export interface ApiAtlasCollectionRestoreJobIndexStatus {
+  /** Number of collections that failed to build indexes. */
+  failedCollectionCount?: number;
+  /** Index build state indicating the status of index creation during or after a restore operation. */
+  state?: ApiAtlasCollectionRestoreJobIndexStatusState;
+}
+export const ApiAtlasCollectionRestoreJobIndexStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      failedCollectionCount: S.optional(S.Number),
+      state: S.optional(ApiAtlasCollectionRestoreJobIndexStatusState),
+    }),
+).annotate({
+  identifier: "ApiAtlasCollectionRestoreJobIndexStatus",
+}) as any as S.Schema<ApiAtlasCollectionRestoreJobIndexStatus>;
+
+/** Strategy for restoring indexes (all, none, or all except TTL). */
+export type ApiAtlasCollectionRestoreJobResponseIndexStrategy =
+  | "ALL"
+  | "NONE"
+  | "ALL_EXCEPT_TTL";
+export const ApiAtlasCollectionRestoreJobResponseIndexStrategy =
+  /*@__PURE__*/ S.String;
+
+/** Current state of the collection restore job. */
+export type ApiAtlasCollectionRestoreJobResponseState =
+  | "INITIALIZING"
+  | "IN_PROGRESS"
+  | "FINALIZING"
+  | "SUCCESSFUL"
+  | "CANCELED"
+  | "FAILED";
+export const ApiAtlasCollectionRestoreJobResponseState = /*@__PURE__*/ S.String;
+
+/** Strategy for writing data on the target (create as new or overwrite existing). With `OVERWRITE_EXISTING`, any writes to the affected databases or collections during the restore will be lost when the existing namespaces are dropped and replaced. To avoid data loss, stop writes to the affected namespaces before starting the restore. */
+export type ApiAtlasCollectionRestoreJobResponseWriteStrategy =
+  | "CREATE_NEW"
+  | "OVERWRITE_EXISTING";
+export const ApiAtlasCollectionRestoreJobResponseWriteStrategy =
+  /*@__PURE__*/ S.String;
+
+/** Collection restore job summary including the list of databases and collections in the restore scope (up to 100 items each). */
+export interface ApiAtlasCollectionRestoreJobResponse {
+  /** Suffix applied to restored collection names. */
+  collectionSuffix?: string;
+  /** List of collections in the restore scope (up to 100 items). */
+  collections?: ApiAtlasCollectionRestoreJobResponseCollectionsList;
+  /** Date and time when the restore job was created (ISO 8601 format in UTC). */
+  createdAt?: string;
+  /** Suffix applied to restored database names. */
+  databaseSuffix?: string;
+  /** List of databases in the restore scope (up to 100 items). */
+  databases?: ApiAtlasCollectionRestoreJobResponseDatabasesList;
+  /** Error message when the job has failed or been canceled. */
+  errorMessage?: string;
+  /** Date and time when the restore job finished (ISO 8601 format in UTC). */
+  finishedAt?: string;
+  /** Unique 24-hexadecimal digit string that identifies the collection restore job. */
+  id?: string;
+  indexStatus?: ApiAtlasCollectionRestoreJobIndexStatus;
+  /** Strategy for restoring indexes (all, none, or all except TTL). */
+  indexStrategy?: ApiAtlasCollectionRestoreJobResponseIndexStrategy;
+  /** Oplog increment for point-in-time restore. */
+  oplogInc?: number;
+  /** Oplog timestamp (seconds part) for point-in-time restore. */
+  oplogTs?: number;
+  /** Point-in-time restore time in seconds since UNIX epoch. */
+  pointInTimeUtcSeconds?: number;
+  /** Number of documents restored so far across all supported collections. */
+  restoredDocuments?: number;
+  /** Unique 24-hexadecimal digit string that identifies the snapshot being restored. */
+  snapshotId?: string;
+  /** Current state of the collection restore job. */
+  state?: ApiAtlasCollectionRestoreJobResponseState;
+  /** Human-readable label that identifies the target cluster. */
+  targetClusterName?: string;
+  /** Unique 24-hexadecimal digit string that identifies the target group. */
+  targetGroupId?: string;
+  /** Total number of documents across all supported collections in the restore job. This value may initially reflect an estimate based on collection metadata and can change as accurate document counts become available during the restore. */
+  totalDocuments?: number;
+  /** Strategy for writing data on the target (create as new or overwrite existing). With `OVERWRITE_EXISTING`, any writes to the affected databases or collections during the restore will be lost when the existing namespaces are dropped and replaced. To avoid data loss, stop writes to the affected namespaces before starting the restore. */
+  writeStrategy?: ApiAtlasCollectionRestoreJobResponseWriteStrategy;
+}
+export const ApiAtlasCollectionRestoreJobResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      collectionSuffix: S.optional(S.String),
+      collections: S.optional(
+        ApiAtlasCollectionRestoreJobResponseCollectionsList,
+      ),
+      createdAt: S.optional(S.String),
+      databaseSuffix: S.optional(S.String),
+      databases: S.optional(ApiAtlasCollectionRestoreJobResponseDatabasesList),
+      errorMessage: S.optional(S.String),
+      finishedAt: S.optional(S.String),
+      id: S.optional(S.String),
+      indexStatus: S.optional(ApiAtlasCollectionRestoreJobIndexStatus),
+      indexStrategy: S.optional(
+        ApiAtlasCollectionRestoreJobResponseIndexStrategy,
+      ),
+      oplogInc: S.optional(S.Number),
+      oplogTs: S.optional(S.Number),
+      pointInTimeUtcSeconds: S.optional(S.Number),
+      restoredDocuments: S.optional(S.Number),
+      snapshotId: S.optional(S.String),
+      state: S.optional(ApiAtlasCollectionRestoreJobResponseState),
+      targetClusterName: S.optional(S.String),
+      targetGroupId: S.optional(S.String),
+      totalDocuments: S.optional(S.Number),
+      writeStrategy: S.optional(
+        ApiAtlasCollectionRestoreJobResponseWriteStrategy,
+      ),
+    }),
+).annotate({
+  identifier: "ApiAtlasCollectionRestoreJobResponse",
+}) as any as S.Schema<ApiAtlasCollectionRestoreJobResponse>;
+
 /** Human-readable label that identifies the subset of a global cluster. */
 export interface ZoneMapping {
   /** Code that represents a location that maps to a zone in your global cluster. MongoDB Cloud represents this location with a ISO 3166-2 location and subdivision codes when possible. */
@@ -18633,6 +19059,73 @@ export const BackupOnlineArchive = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupOnlineArchive",
 }) as any as S.Schema<BackupOnlineArchive>;
 
+export interface CreateGroupClusterOverloadSimulationRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster on which to start the overload protection simulation. */
+  clusterName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** Duration of the overload protection simulation in seconds. */
+  durationSeconds: number;
+}
+export const CreateGroupClusterOverloadSimulationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+      durationSeconds: S.Number,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateGroupClusterOverloadSimulationRequest",
+  }) as any as S.Schema<CreateGroupClusterOverloadSimulationRequest>;
+
+/** Overload protection simulation for a cluster. */
+export interface OverloadProtectionSimulationResponse {
+  /** Date and time when cancellation of the overload protection simulation was requested. This parameter is only present when a cancellation has been requested and expresses its value in the ISO 8601 timestamp format in UTC. */
+  cancelRequestedAt?: string;
+  /** Human-readable label that identifies the cluster on which the simulation is running. */
+  clusterName: string;
+  /** Duration of the overload protection simulation in seconds. */
+  durationSeconds: number;
+  /** Date and time when the overload protection simulation expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
+  expiresAt: string;
+  /** Unique 24-hexadecimal character string that identifies the project that contains the cluster. */
+  groupId: string;
+  /** Date and time when the overload protection simulation was requested. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
+  requestDate: string;
+  /** Unique identifier of the overload protection simulation. */
+  simulationId: string;
+  /** Current state of the overload protection simulation. */
+  state: string;
+}
+export const OverloadProtectionSimulationResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cancelRequestedAt: S.optional(S.String),
+      clusterName: S.String,
+      durationSeconds: S.Number,
+      expiresAt: S.String,
+      groupId: S.String,
+      requestDate: S.String,
+      simulationId: S.String,
+      state: S.String,
+    }),
+).annotate({
+  identifier: "OverloadProtectionSimulationResponse",
+}) as any as S.Schema<OverloadProtectionSimulationResponse>;
+
 /** Cloud service provider that hosts the Search Nodes in this region. Required when a region is specified. */
 export type ApiSearchDeploymentRequestSpecViewCloudProvider =
   | "AWS"
@@ -18643,6 +19136,7 @@ export const ApiSearchDeploymentRequestSpecViewCloudProvider =
 
 /** Hardware specification for the Search Node instance sizes. */
 export type ApiSearchDeploymentRequestSpecViewInstanceSize =
+  | "S10_HIGHCPU"
   | "S20_HIGHCPU_NVME"
   | "S30_HIGHCPU_NVME"
   | "S40_HIGHCPU_NVME"
@@ -18675,20 +19169,23 @@ export interface ApiSearchDeploymentRequestSpecView {
   /** Cloud service provider that hosts the Search Nodes in this region. Required when a region is specified. */
   cloudProvider?:
     | ApiSearchDeploymentRequestSpecViewCloudProvider
-    | (string & {});
+    | (string & {})
+    | null;
   /** Hardware specification for the Search Node instance sizes. */
   instanceSize: ApiSearchDeploymentRequestSpecViewInstanceSize | (string & {});
   /** Number of Search Nodes in this region. Optional; falls back to the request-level default when omitted. */
-  nodeCount?: number;
+  nodeCount?: number | null;
   /** Cloud provider region where Search Nodes are provisioned. Required when the request configures more than one region; optional for single-region requests. */
-  regionName?: string;
+  regionName?: string | null;
 }
 export const ApiSearchDeploymentRequestSpecView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cloudProvider: S.optional(ApiSearchDeploymentRequestSpecViewCloudProvider),
+    cloudProvider: S.optional(
+      S.NullOr(ApiSearchDeploymentRequestSpecViewCloudProvider),
+    ),
     instanceSize: ApiSearchDeploymentRequestSpecViewInstanceSize,
-    nodeCount: S.optional(S.Number),
-    regionName: S.optional(S.String),
+    nodeCount: S.optional(S.NullOr(S.Number)),
+    regionName: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ApiSearchDeploymentRequestSpecView",
@@ -18712,7 +19209,7 @@ export interface CreateGroupClusterSearchDeploymentRequest {
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
   /** Default number of Search Nodes per region. Applied to a region without an explicit override. */
-  defaultNodeCount?: number;
+  defaultNodeCount?: number | null;
   /** List of settings that configure the Search Nodes for your cluster. Provide one element per region when configuring asymmetric deployments; a single element applies to all regions. */
   specs: CreateGroupClusterSearchDeploymentRequestSpecsList;
 }
@@ -18723,7 +19220,7 @@ export const CreateGroupClusterSearchDeploymentRequest =
       clusterName: S.String.pipe(T.Label()),
       envelope: S.optional(S.Boolean.pipe(T.Query())),
       pretty: S.optional(S.Boolean.pipe(T.Query())),
-      defaultNodeCount: S.optional(S.Number),
+      defaultNodeCount: S.optional(S.NullOr(S.Number)),
       specs: CreateGroupClusterSearchDeploymentRequestSpecsList,
     }).pipe(
       T.Http({
@@ -18747,6 +19244,7 @@ export const ApiSearchDeploymentEffectiveSpecViewCloudProvider =
 
 /** Hardware specification for the Search Node instance sizes. */
 export type ApiSearchDeploymentEffectiveSpecViewInstanceSize =
+  | "S10_HIGHCPU"
   | "S20_HIGHCPU_NVME"
   | "S30_HIGHCPU_NVME"
   | "S40_HIGHCPU_NVME"
@@ -18820,6 +19318,7 @@ export const ApiSearchDeploymentResponseViewEncryptionAtRestProvider =
 
 /** Hardware specification for the Search Node instance sizes. */
 export type ApiSearchDeploymentSpecViewInstanceSize =
+  | "S10_HIGHCPU"
   | "S20_HIGHCPU_NVME"
   | "S30_HIGHCPU_NVME"
   | "S40_HIGHCPU_NVME"
@@ -18850,7 +19349,7 @@ export const ApiSearchDeploymentSpecViewInstanceSize = /*@__PURE__*/ S.String;
 /** Hardware specification for the Search Nodes that back a search deployment. */
 export interface ApiSearchDeploymentSpecView {
   /** Hardware specification for the Search Node instance sizes. */
-  instanceSize: ApiSearchDeploymentSpecViewInstanceSize | (string & {});
+  instanceSize: ApiSearchDeploymentSpecViewInstanceSize;
   /** Number of Search Nodes in the cluster. */
   nodeCount: number;
 }
@@ -18881,7 +19380,7 @@ export interface ApiSearchDeploymentResponseView {
   /** List of settings that configure the Search Nodes for your cluster, with per-region detail including the region name and cloud provider. */
   effectiveSpecs?: ApiSearchDeploymentResponseViewEffectiveSpecsList;
   /** Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster. */
-  encryptionAtRestProvider?: ApiSearchDeploymentResponseViewEncryptionAtRestProvider;
+  encryptionAtRestProvider?: ApiSearchDeploymentResponseViewEncryptionAtRestProvider | null;
   /** Unique 24-hexadecimal character string that identifies the project. */
   groupId?: string;
   /** Unique 24-hexadecimal digit string that identifies the search deployment. */
@@ -18897,7 +19396,7 @@ export const ApiSearchDeploymentResponseView = /*@__PURE__*/ S.suspend(() =>
       ApiSearchDeploymentResponseViewEffectiveSpecsList,
     ),
     encryptionAtRestProvider: S.optional(
-      ApiSearchDeploymentResponseViewEncryptionAtRestProvider,
+      S.NullOr(ApiSearchDeploymentResponseViewEncryptionAtRestProvider),
     ),
     groupId: S.optional(S.String),
     id: S.optional(S.String),
@@ -19839,6 +20338,7 @@ export type DatabasePrivilegeActionAction =
   | "DROP_COLLECTION"
   | "ENABLE_PROFILER"
   | "KILL_ANY_CURSOR"
+  | "ANALYZE"
   | "CHANGE_STREAM"
   | "COLL_MOD"
   | "COMPACT"
@@ -23554,6 +24054,8 @@ export interface Datadog {
   sendDatabaseMetrics?: boolean;
   /** Toggle sending query shape metrics that includes query hash and metrics on latency, execution frequency, documents returned, and timestamps. */
   sendQueryStatsMetrics?: boolean;
+  /** Toggle sending sharding metrics that includes sharding distribution and chunk metrics per cluster, shard, and collection. */
+  sendShardingMetrics?: boolean;
   /** Toggle sending user provided group and cluster resource tags with the Datadog metrics. */
   sendUserProvidedResourceTags?: boolean;
   /** Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type. */
@@ -23567,6 +24069,7 @@ export const Datadog = /*@__PURE__*/ S.suspend(() =>
     sendCollectionLatencyMetrics: S.optional(S.Boolean),
     sendDatabaseMetrics: S.optional(S.Boolean),
     sendQueryStatsMetrics: S.optional(S.Boolean),
+    sendShardingMetrics: S.optional(S.Boolean),
     sendUserProvidedResourceTags: S.optional(S.Boolean),
     type: S.optional(DatadogType),
   }),
@@ -23660,6 +24163,10 @@ export const WebhookType = /*@__PURE__*/ S.String;
 
 /** Details to integrate one webhook with one MongoDB Cloud project. */
 export interface Webhook {
+  /** HTTP body template for a webhook-based alert. The rendered output MUST be valid JSON — MongoDB Cloud sends the rendered body with `Content-Type: application/json`. If the template fails to render, exceeds the 16 KB limit, or renders non-JSON output, MongoDB Cloud sends the webhook with its default JSON payload instead. */
+  bodyTemplate?: string;
+  /** HTTP headers template for a webhook-based alert. The rendered output MUST be a JSON object mapping header name to header value (e.g. `{"X-Custom-Header": "static-value", "X-Alert-Id": "${id}"}`). Placeholders may reference any alert-view field plus `${eventType}`; the webhook secret and the signature header are NOT exposed to templates. If the template fails to render, exceeds the 4 KB limit, or renders output that is not a valid JSON name→value object, MongoDB Cloud sends the webhook with its default set of headers instead. */
+  headersTemplate?: string;
   /** Integration id. */
   id?: string | null;
   /** An optional field returned if your webhook is configured with a secret. **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted. */
@@ -23671,6 +24178,8 @@ export interface Webhook {
 }
 export const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    bodyTemplate: S.optional(S.String),
+    headersTemplate: S.optional(S.String),
     id: S.optional(S.NullOr(S.String)),
     secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
     type: S.optional(WebhookType),
@@ -23790,14 +24299,14 @@ export interface Destination {
   /** The network type to use between the migration host and the destination cluster. */
   hostnameSchemaType: DestinationHostnameSchemaType | (string & {});
   /** Represents the endpoint to use when the host schema type is `PRIVATE_LINK`. */
-  privateLinkId?: string;
+  privateLinkId?: string | null;
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterName: S.String,
     groupId: S.String,
     hostnameSchemaType: DestinationHostnameSchemaType,
-    privateLinkId: S.optional(S.String),
+    privateLinkId: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
@@ -23872,7 +24381,7 @@ export const ShardingRequest = /*@__PURE__*/ S.suspend(() =>
 /** Document that describes the source of the migration. */
 export interface Source {
   /** Path to the CA certificate that signed SSL certificates use to authenticate to the source cluster. */
-  caCertificatePath?: string;
+  caCertificatePath?: string | null;
   /** Label that identifies the source cluster name. */
   clusterName: string;
   /** Unique 24-hexadecimal digit string that identifies the source project. */
@@ -23880,21 +24389,21 @@ export interface Source {
   /** Flag that indicates whether MongoDB Automation manages authentication to the source cluster. If true, do not provide values for username and password. */
   managedAuthentication: boolean;
   /** Password that authenticates the username to the source cluster. */
-  password?: string | Redacted.Redacted<string>;
+  password?: string | Redacted.Redacted<string> | null;
   /** Flag that indicates whether you have SSL enabled. */
   ssl: boolean;
   /** Label that identifies the SCRAM-SHA user that connects to the source cluster. */
-  username?: string;
+  username?: string | null;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    caCertificatePath: S.optional(S.String),
+    caCertificatePath: S.optional(S.NullOr(S.String)),
     clusterName: S.String,
     groupId: S.String,
     managedAuthentication: S.Boolean,
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
     ssl: S.Boolean,
-    username: S.optional(S.String),
+    username: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
@@ -23960,7 +24469,7 @@ export interface LiveMigrationResponse {
   /** Flag that indicates the migrated cluster can be cut over to MongoDB Atlas. */
   readyForCutover?: boolean;
   /** Progress made in migrating one cluster to MongoDB Atlas. `NEW`: Someone scheduled a local cluster migration to MongoDB Atlas. `FAILED`: The cluster migration to MongoDB Atlas failed. `COMPLETE`: The cluster migration to MongoDB Atlas succeeded. `EXPIRED`: MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and destination clusters have almost synchronized. If `"readyForCutover" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status. `WORKING`: The cluster migration to MongoDB Atlas is performing one of the following tasks: - Preparing connections to source and destination clusters. - Replicating data from source to destination. - Verifying MongoDB Atlas connection settings. - Stopping replication after the cut over. */
-  status?: LiveMigrationResponseStatus;
+  status?: LiveMigrationResponseStatus | null;
 }
 export const LiveMigrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23968,7 +24477,7 @@ export const LiveMigrationResponse = /*@__PURE__*/ S.suspend(() =>
     lagTimeSeconds: S.optional(S.NullOr(S.Number)),
     migrationHosts: S.optional(LiveMigrationResponseMigrationHostsList),
     readyForCutover: S.optional(S.Boolean),
-    status: S.optional(LiveMigrationResponseStatus),
+    status: S.optional(S.NullOr(LiveMigrationResponseStatus)),
   }),
 ).annotate({
   identifier: "LiveMigrationResponse",
@@ -24033,7 +24542,7 @@ export const CreateGroupLogIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGroupLogIntegrationRequest>;
 
 /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-export type S3LogIntegrationResponseRegion =
+export type S3LogIntegrationResponseOutputRegion =
   | "US1"
   | "US3"
   | "US5"
@@ -24041,11 +24550,817 @@ export type S3LogIntegrationResponseRegion =
   | "AP1"
   | "AP2"
   | "US1_FED";
-export const S3LogIntegrationResponseRegion = /*@__PURE__*/ S.String;
+export const S3LogIntegrationResponseOutputRegion = /*@__PURE__*/ S.String;
 
 /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-export type S3LogIntegrationResponseType = "DATADOG_LOG_EXPORT";
-export const S3LogIntegrationResponseType = /*@__PURE__*/ S.String;
+export type S3LogIntegrationResponseOutputType = "DATADOG_LOG_EXPORT";
+export const S3LogIntegrationResponseOutputType = /*@__PURE__*/ S.String;
+
+/** HTTP header with name and value. */
+export interface HeaderOutput {
+  /** Header name. */
+  name: string;
+}
+export const HeaderOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+  }),
+).annotate({ identifier: "HeaderOutput" }) as any as S.Schema<HeaderOutput>;
+
+/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+export type S3LogIntegrationResponseOutputOtelSuppliedHeadersList =
+  Array<HeaderOutput>;
+export const S3LogIntegrationResponseOutputOtelSuppliedHeadersList =
+  /*@__PURE__*/ S.Array(
+    HeaderOutput,
+  ) as any as S.Schema<S3LogIntegrationResponseOutputOtelSuppliedHeadersList>;
+
+export type S3LogIntegrationResponseOutputLogTypesItem =
+  | "MONGOD"
+  | "MONGOS"
+  | "MONGOD_AUDIT"
+  | "MONGOS_AUDIT";
+export const S3LogIntegrationResponseOutputLogTypesItem =
+  /*@__PURE__*/ S.String;
+
+/** Array of log types exported by this integration. */
+export type S3LogIntegrationResponseOutputLogTypesList =
+  Array<S3LogIntegrationResponseOutputLogTypesItem>;
+export const S3LogIntegrationResponseOutputLogTypesList = /*@__PURE__*/ S.Array(
+  S3LogIntegrationResponseOutputLogTypesItem,
+) as any as S.Schema<S3LogIntegrationResponseOutputLogTypesList>;
+
+/** Details to integrate S3 log export with one Atlas project. */
+export interface S3LogIntegrationResponseOutput {
+  /** API key for authentication. */
+  apiKey?: string | Redacted.Redacted<string>;
+  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+  region?: S3LogIntegrationResponseOutputRegion;
+  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+  type: S3LogIntegrationResponseOutputType;
+  /** Name of the bucket to store log files. */
+  bucketName: string;
+  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
+  prefixPath: string;
+  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
+  roleId?: string;
+  /** OpenTelemetry collector endpoint URL. */
+  otelEndpoint?: string;
+  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+  otelSuppliedHeaders?: S3LogIntegrationResponseOutputOtelSuppliedHeadersList;
+  /** HTTP Event Collector (HEC) token for authentication. */
+  hecToken?: string;
+  /** HTTP Event Collector (HEC) endpoint URL. */
+  hecUrl?: string;
+  /** Storage account name where logs will be stored. */
+  storageAccountName?: string;
+  /** Storage container name for log files. */
+  storageContainerName?: string;
+  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
+  id: string;
+  /** Array of log types exported by this integration. */
+  logTypes: S3LogIntegrationResponseOutputLogTypesList;
+  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
+  iamRoleId: string;
+  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
+  kmsKey?: string | null;
+  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
+  useLegacyPathStructure?: boolean | null;
+}
+export const S3LogIntegrationResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    region: S.optional(S3LogIntegrationResponseOutputRegion),
+    type: S3LogIntegrationResponseOutputType,
+    bucketName: S.String,
+    prefixPath: S.String,
+    roleId: S.optional(S.String),
+    otelEndpoint: S.optional(S.String),
+    otelSuppliedHeaders: S.optional(
+      S3LogIntegrationResponseOutputOtelSuppliedHeadersList,
+    ),
+    hecToken: S.optional(S.String),
+    hecUrl: S.optional(S.String),
+    storageAccountName: S.optional(S.String),
+    storageContainerName: S.optional(S.String),
+    id: S.String,
+    logTypes: S3LogIntegrationResponseOutputLogTypesList,
+    iamRoleId: S.String,
+    kmsKey: S.optional(S.NullOr(S.String)),
+    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "S3LogIntegrationResponseOutput",
+}) as any as S.Schema<S3LogIntegrationResponseOutput>;
+
+/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+export type DatadogLogIntegrationResponseOutputRegion =
+  | "US1"
+  | "US3"
+  | "US5"
+  | "EU"
+  | "AP1"
+  | "AP2"
+  | "US1_FED";
+export const DatadogLogIntegrationResponseOutputRegion = /*@__PURE__*/ S.String;
+
+/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+export type DatadogLogIntegrationResponseOutputType = "DATADOG_LOG_EXPORT";
+export const DatadogLogIntegrationResponseOutputType = /*@__PURE__*/ S.String;
+
+/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+export type DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  Array<HeaderOutput>;
+export const DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  /*@__PURE__*/ S.Array(
+    HeaderOutput,
+  ) as any as S.Schema<DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+
+export type DatadogLogIntegrationResponseOutputLogTypesItem =
+  | "MONGOD"
+  | "MONGOS"
+  | "MONGOD_AUDIT"
+  | "MONGOS_AUDIT";
+export const DatadogLogIntegrationResponseOutputLogTypesItem =
+  /*@__PURE__*/ S.String;
+
+/** Array of log types exported by this integration. */
+export type DatadogLogIntegrationResponseOutputLogTypesList =
+  Array<DatadogLogIntegrationResponseOutputLogTypesItem>;
+export const DatadogLogIntegrationResponseOutputLogTypesList =
+  /*@__PURE__*/ S.Array(
+    DatadogLogIntegrationResponseOutputLogTypesItem,
+  ) as any as S.Schema<DatadogLogIntegrationResponseOutputLogTypesList>;
+
+/** Details to integrate Datadog log export with one Atlas project. */
+export interface DatadogLogIntegrationResponseOutput {
+  /** API key for authentication. */
+  apiKey: string | Redacted.Redacted<string>;
+  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+  region: DatadogLogIntegrationResponseOutputRegion;
+  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+  type: DatadogLogIntegrationResponseOutputType;
+  /** Name of the bucket to store log files. */
+  bucketName?: string;
+  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
+  prefixPath?: string;
+  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
+  roleId?: string;
+  /** OpenTelemetry collector endpoint URL. */
+  otelEndpoint?: string;
+  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+  otelSuppliedHeaders?: DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList;
+  /** HTTP Event Collector (HEC) token for authentication. */
+  hecToken?: string;
+  /** HTTP Event Collector (HEC) endpoint URL. */
+  hecUrl?: string;
+  /** Storage account name where logs will be stored. */
+  storageAccountName?: string;
+  /** Storage container name for log files. */
+  storageContainerName?: string;
+  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
+  id: string;
+  /** Array of log types exported by this integration. */
+  logTypes: DatadogLogIntegrationResponseOutputLogTypesList;
+  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
+  iamRoleId?: string;
+  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
+  kmsKey?: string | null;
+  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
+  useLegacyPathStructure?: boolean | null;
+}
+export const DatadogLogIntegrationResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKey: S.String.pipe(T.SensitiveValue({})),
+    region: DatadogLogIntegrationResponseOutputRegion,
+    type: DatadogLogIntegrationResponseOutputType,
+    bucketName: S.optional(S.String),
+    prefixPath: S.optional(S.String),
+    roleId: S.optional(S.String),
+    otelEndpoint: S.optional(S.String),
+    otelSuppliedHeaders: S.optional(
+      DatadogLogIntegrationResponseOutputOtelSuppliedHeadersList,
+    ),
+    hecToken: S.optional(S.String),
+    hecUrl: S.optional(S.String),
+    storageAccountName: S.optional(S.String),
+    storageContainerName: S.optional(S.String),
+    id: S.String,
+    logTypes: DatadogLogIntegrationResponseOutputLogTypesList,
+    iamRoleId: S.optional(S.String),
+    kmsKey: S.optional(S.NullOr(S.String)),
+    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "DatadogLogIntegrationResponseOutput",
+}) as any as S.Schema<DatadogLogIntegrationResponseOutput>;
+
+/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+export type GcsLogIntegrationResponseOutputRegion =
+  | "US1"
+  | "US3"
+  | "US5"
+  | "EU"
+  | "AP1"
+  | "AP2"
+  | "US1_FED";
+export const GcsLogIntegrationResponseOutputRegion = /*@__PURE__*/ S.String;
+
+/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+export type GcsLogIntegrationResponseOutputType = "DATADOG_LOG_EXPORT";
+export const GcsLogIntegrationResponseOutputType = /*@__PURE__*/ S.String;
+
+/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+export type GcsLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  Array<HeaderOutput>;
+export const GcsLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  /*@__PURE__*/ S.Array(
+    HeaderOutput,
+  ) as any as S.Schema<GcsLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+
+export type GcsLogIntegrationResponseOutputLogTypesItem =
+  | "MONGOD"
+  | "MONGOS"
+  | "MONGOD_AUDIT"
+  | "MONGOS_AUDIT";
+export const GcsLogIntegrationResponseOutputLogTypesItem =
+  /*@__PURE__*/ S.String;
+
+/** Array of log types exported by this integration. */
+export type GcsLogIntegrationResponseOutputLogTypesList =
+  Array<GcsLogIntegrationResponseOutputLogTypesItem>;
+export const GcsLogIntegrationResponseOutputLogTypesList =
+  /*@__PURE__*/ S.Array(
+    GcsLogIntegrationResponseOutputLogTypesItem,
+  ) as any as S.Schema<GcsLogIntegrationResponseOutputLogTypesList>;
+
+/** Details to integrate Google Cloud Storage log export with one Atlas project. */
+export interface GcsLogIntegrationResponseOutput {
+  /** API key for authentication. */
+  apiKey?: string | Redacted.Redacted<string>;
+  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+  region?: GcsLogIntegrationResponseOutputRegion;
+  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+  type: GcsLogIntegrationResponseOutputType;
+  /** Name of the bucket to store log files. */
+  bucketName: string;
+  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
+  prefixPath: string;
+  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
+  roleId: string;
+  /** OpenTelemetry collector endpoint URL. */
+  otelEndpoint?: string;
+  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+  otelSuppliedHeaders?: GcsLogIntegrationResponseOutputOtelSuppliedHeadersList;
+  /** HTTP Event Collector (HEC) token for authentication. */
+  hecToken?: string;
+  /** HTTP Event Collector (HEC) endpoint URL. */
+  hecUrl?: string;
+  /** Storage account name where logs will be stored. */
+  storageAccountName?: string;
+  /** Storage container name for log files. */
+  storageContainerName?: string;
+  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
+  id: string;
+  /** Array of log types exported by this integration. */
+  logTypes: GcsLogIntegrationResponseOutputLogTypesList;
+  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
+  iamRoleId?: string;
+  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
+  kmsKey?: string | null;
+  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
+  useLegacyPathStructure?: boolean | null;
+}
+export const GcsLogIntegrationResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    region: S.optional(GcsLogIntegrationResponseOutputRegion),
+    type: GcsLogIntegrationResponseOutputType,
+    bucketName: S.String,
+    prefixPath: S.String,
+    roleId: S.String,
+    otelEndpoint: S.optional(S.String),
+    otelSuppliedHeaders: S.optional(
+      GcsLogIntegrationResponseOutputOtelSuppliedHeadersList,
+    ),
+    hecToken: S.optional(S.String),
+    hecUrl: S.optional(S.String),
+    storageAccountName: S.optional(S.String),
+    storageContainerName: S.optional(S.String),
+    id: S.String,
+    logTypes: GcsLogIntegrationResponseOutputLogTypesList,
+    iamRoleId: S.optional(S.String),
+    kmsKey: S.optional(S.NullOr(S.String)),
+    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "GcsLogIntegrationResponseOutput",
+}) as any as S.Schema<GcsLogIntegrationResponseOutput>;
+
+/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+export type OtelLogIntegrationResponseOutputRegion =
+  | "US1"
+  | "US3"
+  | "US5"
+  | "EU"
+  | "AP1"
+  | "AP2"
+  | "US1_FED";
+export const OtelLogIntegrationResponseOutputRegion = /*@__PURE__*/ S.String;
+
+/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+export type OtelLogIntegrationResponseOutputType = "DATADOG_LOG_EXPORT";
+export const OtelLogIntegrationResponseOutputType = /*@__PURE__*/ S.String;
+
+/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+export type OtelLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  Array<HeaderOutput>;
+export const OtelLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  /*@__PURE__*/ S.Array(
+    HeaderOutput,
+  ) as any as S.Schema<OtelLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+
+export type OtelLogIntegrationResponseOutputLogTypesItem =
+  | "MONGOD"
+  | "MONGOS"
+  | "MONGOD_AUDIT"
+  | "MONGOS_AUDIT";
+export const OtelLogIntegrationResponseOutputLogTypesItem =
+  /*@__PURE__*/ S.String;
+
+/** Array of log types exported by this integration. */
+export type OtelLogIntegrationResponseOutputLogTypesList =
+  Array<OtelLogIntegrationResponseOutputLogTypesItem>;
+export const OtelLogIntegrationResponseOutputLogTypesList =
+  /*@__PURE__*/ S.Array(
+    OtelLogIntegrationResponseOutputLogTypesItem,
+  ) as any as S.Schema<OtelLogIntegrationResponseOutputLogTypesList>;
+
+/** Details to integrate OpenTelemetry log export with one Atlas project. */
+export interface OtelLogIntegrationResponseOutput {
+  /** API key for authentication. */
+  apiKey?: string | Redacted.Redacted<string>;
+  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+  region?: OtelLogIntegrationResponseOutputRegion;
+  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+  type: OtelLogIntegrationResponseOutputType;
+  /** Name of the bucket to store log files. */
+  bucketName?: string;
+  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
+  prefixPath?: string;
+  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
+  roleId?: string;
+  /** OpenTelemetry collector endpoint URL. */
+  otelEndpoint: string;
+  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+  otelSuppliedHeaders: OtelLogIntegrationResponseOutputOtelSuppliedHeadersList;
+  /** HTTP Event Collector (HEC) token for authentication. */
+  hecToken?: string;
+  /** HTTP Event Collector (HEC) endpoint URL. */
+  hecUrl?: string;
+  /** Storage account name where logs will be stored. */
+  storageAccountName?: string;
+  /** Storage container name for log files. */
+  storageContainerName?: string;
+  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
+  id: string;
+  /** Array of log types exported by this integration. */
+  logTypes: OtelLogIntegrationResponseOutputLogTypesList;
+  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
+  iamRoleId?: string;
+  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
+  kmsKey?: string | null;
+  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
+  useLegacyPathStructure?: boolean | null;
+}
+export const OtelLogIntegrationResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    region: S.optional(OtelLogIntegrationResponseOutputRegion),
+    type: OtelLogIntegrationResponseOutputType,
+    bucketName: S.optional(S.String),
+    prefixPath: S.optional(S.String),
+    roleId: S.optional(S.String),
+    otelEndpoint: S.String,
+    otelSuppliedHeaders:
+      OtelLogIntegrationResponseOutputOtelSuppliedHeadersList,
+    hecToken: S.optional(S.String),
+    hecUrl: S.optional(S.String),
+    storageAccountName: S.optional(S.String),
+    storageContainerName: S.optional(S.String),
+    id: S.String,
+    logTypes: OtelLogIntegrationResponseOutputLogTypesList,
+    iamRoleId: S.optional(S.String),
+    kmsKey: S.optional(S.NullOr(S.String)),
+    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "OtelLogIntegrationResponseOutput",
+}) as any as S.Schema<OtelLogIntegrationResponseOutput>;
+
+/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+export type SplunkLogIntegrationResponseOutputRegion =
+  | "US1"
+  | "US3"
+  | "US5"
+  | "EU"
+  | "AP1"
+  | "AP2"
+  | "US1_FED";
+export const SplunkLogIntegrationResponseOutputRegion = /*@__PURE__*/ S.String;
+
+/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+export type SplunkLogIntegrationResponseOutputType = "DATADOG_LOG_EXPORT";
+export const SplunkLogIntegrationResponseOutputType = /*@__PURE__*/ S.String;
+
+/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+export type SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  Array<HeaderOutput>;
+export const SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  /*@__PURE__*/ S.Array(
+    HeaderOutput,
+  ) as any as S.Schema<SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+
+export type SplunkLogIntegrationResponseOutputLogTypesItem =
+  | "MONGOD"
+  | "MONGOS"
+  | "MONGOD_AUDIT"
+  | "MONGOS_AUDIT";
+export const SplunkLogIntegrationResponseOutputLogTypesItem =
+  /*@__PURE__*/ S.String;
+
+/** Array of log types exported by this integration. */
+export type SplunkLogIntegrationResponseOutputLogTypesList =
+  Array<SplunkLogIntegrationResponseOutputLogTypesItem>;
+export const SplunkLogIntegrationResponseOutputLogTypesList =
+  /*@__PURE__*/ S.Array(
+    SplunkLogIntegrationResponseOutputLogTypesItem,
+  ) as any as S.Schema<SplunkLogIntegrationResponseOutputLogTypesList>;
+
+/** Details to integrate Splunk log export with one Atlas project. */
+export interface SplunkLogIntegrationResponseOutput {
+  /** API key for authentication. */
+  apiKey?: string | Redacted.Redacted<string>;
+  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+  region?: SplunkLogIntegrationResponseOutputRegion;
+  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+  type: SplunkLogIntegrationResponseOutputType;
+  /** Name of the bucket to store log files. */
+  bucketName?: string;
+  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
+  prefixPath?: string;
+  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
+  roleId?: string;
+  /** OpenTelemetry collector endpoint URL. */
+  otelEndpoint?: string;
+  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+  otelSuppliedHeaders?: SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList;
+  /** HTTP Event Collector (HEC) token for authentication. */
+  hecToken: string;
+  /** HTTP Event Collector (HEC) endpoint URL. */
+  hecUrl: string;
+  /** Storage account name where logs will be stored. */
+  storageAccountName?: string;
+  /** Storage container name for log files. */
+  storageContainerName?: string;
+  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
+  id: string;
+  /** Array of log types exported by this integration. */
+  logTypes: SplunkLogIntegrationResponseOutputLogTypesList;
+  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
+  iamRoleId?: string;
+  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
+  kmsKey?: string | null;
+  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
+  useLegacyPathStructure?: boolean | null;
+}
+export const SplunkLogIntegrationResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    region: S.optional(SplunkLogIntegrationResponseOutputRegion),
+    type: SplunkLogIntegrationResponseOutputType,
+    bucketName: S.optional(S.String),
+    prefixPath: S.optional(S.String),
+    roleId: S.optional(S.String),
+    otelEndpoint: S.optional(S.String),
+    otelSuppliedHeaders: S.optional(
+      SplunkLogIntegrationResponseOutputOtelSuppliedHeadersList,
+    ),
+    hecToken: S.String,
+    hecUrl: S.String,
+    storageAccountName: S.optional(S.String),
+    storageContainerName: S.optional(S.String),
+    id: S.String,
+    logTypes: SplunkLogIntegrationResponseOutputLogTypesList,
+    iamRoleId: S.optional(S.String),
+    kmsKey: S.optional(S.NullOr(S.String)),
+    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "SplunkLogIntegrationResponseOutput",
+}) as any as S.Schema<SplunkLogIntegrationResponseOutput>;
+
+/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+export type AzureLogIntegrationResponseOutputRegion =
+  | "US1"
+  | "US3"
+  | "US5"
+  | "EU"
+  | "AP1"
+  | "AP2"
+  | "US1_FED";
+export const AzureLogIntegrationResponseOutputRegion = /*@__PURE__*/ S.String;
+
+/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+export type AzureLogIntegrationResponseOutputType = "DATADOG_LOG_EXPORT";
+export const AzureLogIntegrationResponseOutputType = /*@__PURE__*/ S.String;
+
+/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+export type AzureLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  Array<HeaderOutput>;
+export const AzureLogIntegrationResponseOutputOtelSuppliedHeadersList =
+  /*@__PURE__*/ S.Array(
+    HeaderOutput,
+  ) as any as S.Schema<AzureLogIntegrationResponseOutputOtelSuppliedHeadersList>;
+
+export type AzureLogIntegrationResponseOutputLogTypesItem =
+  | "MONGOD"
+  | "MONGOS"
+  | "MONGOD_AUDIT"
+  | "MONGOS_AUDIT";
+export const AzureLogIntegrationResponseOutputLogTypesItem =
+  /*@__PURE__*/ S.String;
+
+/** Array of log types exported by this integration. */
+export type AzureLogIntegrationResponseOutputLogTypesList =
+  Array<AzureLogIntegrationResponseOutputLogTypesItem>;
+export const AzureLogIntegrationResponseOutputLogTypesList =
+  /*@__PURE__*/ S.Array(
+    AzureLogIntegrationResponseOutputLogTypesItem,
+  ) as any as S.Schema<AzureLogIntegrationResponseOutputLogTypesList>;
+
+/** Details to integrate Azure Blob Storage log export with one Atlas project. */
+export interface AzureLogIntegrationResponseOutput {
+  /** API key for authentication. */
+  apiKey?: string | Redacted.Redacted<string>;
+  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
+  region?: AzureLogIntegrationResponseOutputRegion;
+  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
+  type: AzureLogIntegrationResponseOutputType;
+  /** Name of the bucket to store log files. */
+  bucketName?: string;
+  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
+  prefixPath: string;
+  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
+  roleId: string;
+  /** OpenTelemetry collector endpoint URL. */
+  otelEndpoint?: string;
+  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
+  otelSuppliedHeaders?: AzureLogIntegrationResponseOutputOtelSuppliedHeadersList;
+  /** HTTP Event Collector (HEC) token for authentication. */
+  hecToken?: string;
+  /** HTTP Event Collector (HEC) endpoint URL. */
+  hecUrl?: string;
+  /** Storage account name where logs will be stored. */
+  storageAccountName: string;
+  /** Storage container name for log files. */
+  storageContainerName: string;
+  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
+  id: string;
+  /** Array of log types exported by this integration. */
+  logTypes: AzureLogIntegrationResponseOutputLogTypesList;
+  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
+  iamRoleId?: string;
+  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
+  kmsKey?: string | null;
+  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
+  useLegacyPathStructure?: boolean | null;
+}
+export const AzureLogIntegrationResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    region: S.optional(AzureLogIntegrationResponseOutputRegion),
+    type: AzureLogIntegrationResponseOutputType,
+    bucketName: S.optional(S.String),
+    prefixPath: S.String,
+    roleId: S.String,
+    otelEndpoint: S.optional(S.String),
+    otelSuppliedHeaders: S.optional(
+      AzureLogIntegrationResponseOutputOtelSuppliedHeadersList,
+    ),
+    hecToken: S.optional(S.String),
+    hecUrl: S.optional(S.String),
+    storageAccountName: S.String,
+    storageContainerName: S.String,
+    id: S.String,
+    logTypes: AzureLogIntegrationResponseOutputLogTypesList,
+    iamRoleId: S.optional(S.String),
+    kmsKey: S.optional(S.NullOr(S.String)),
+    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "AzureLogIntegrationResponseOutput",
+}) as any as S.Schema<AzureLogIntegrationResponseOutput>;
+
+/** Response schema for log integration operations. */
+export type LogIntegrationResponseOutput =
+  | S3LogIntegrationResponseOutput
+  | DatadogLogIntegrationResponseOutput
+  | GcsLogIntegrationResponseOutput
+  | OtelLogIntegrationResponseOutput
+  | SplunkLogIntegrationResponseOutput
+  | AzureLogIntegrationResponseOutput;
+export const LogIntegrationResponseOutput =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<LogIntegrationResponseOutput>;
+
+export interface ServiceAccountIPAccessListEntryInput {
+  /** Range of network addresses in the access list for the Service Account. This parameter requires the range to be expressed in Classless Inter-Domain Routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or `ipAddress`, but not for both in the same request. */
+  cidrBlock?: string | null;
+  /** Network address in the access list for the Service Account. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or `cidrBlock`, but not for both in the same request. */
+  ipAddress?: string | null;
+}
+export const ServiceAccountIPAccessListEntryInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cidrBlock: S.optional(S.NullOr(S.String)),
+      ipAddress: S.optional(S.NullOr(S.String)),
+    }),
+).annotate({
+  identifier: "ServiceAccountIPAccessListEntryInput",
+}) as any as S.Schema<ServiceAccountIPAccessListEntryInput>;
+
+/** List of IP access list entries that define allowed source addresses for this MCP configuration. */
+export type CreateGroupMcpConfigRequestIpAccessListList =
+  Array<ServiceAccountIPAccessListEntryInput>;
+export const CreateGroupMcpConfigRequestIpAccessListList =
+  /*@__PURE__*/ S.Array(
+    ServiceAccountIPAccessListEntryInput,
+  ) as any as S.Schema<CreateGroupMcpConfigRequestIpAccessListList>;
+
+/** List of project roles to assign to this MCP configuration. */
+export type CreateGroupMcpConfigRequestRolesList = Array<string>;
+export const CreateGroupMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateGroupMcpConfigRequestRolesList>;
+
+export interface CreateGroupMcpConfigRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** List of IP access list entries that define allowed source addresses for this MCP configuration. */
+  ipAccessList?: CreateGroupMcpConfigRequestIpAccessListList;
+  /** Human-readable name that identifies this MCP configuration. */
+  mcpConfigName: string;
+  /** List of project roles to assign to this MCP configuration. */
+  roles: CreateGroupMcpConfigRequestRolesList;
+}
+export const CreateGroupMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    ipAccessList: S.optional(CreateGroupMcpConfigRequestIpAccessListList),
+    mcpConfigName: S.String,
+    roles: CreateGroupMcpConfigRequestRolesList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "CreateGroupMcpConfigRequest",
+}) as any as S.Schema<CreateGroupMcpConfigRequest>;
+
+export interface ServiceAccountIPAccessListEntry {
+  /** Range of network addresses in the access list for the Service Account. This parameter requires the range to be expressed in Classless Inter-Domain Routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or `ipAddress`, but not for both in the same request. */
+  cidrBlock?: string | null;
+  /** Date MongoDB Cloud added the entry was added to the Access List. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
+  createdAt?: string;
+  /** Network address in the access list for the Service Account. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or `cidrBlock`, but not for both in the same request. */
+  ipAddress?: string | null;
+  /** Network address that issued the most recent request to the API. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. The resource returns this parameter after this IP address makes at least one request. */
+  lastUsedAddress?: string | null;
+  /** Date when MongoDB Cloud received the most recent request that originated from this Internet Protocol version 4 or version 6 address. The resource returns this parameter when at least one request originates from this IP address. MongoDB Cloud updates this parameter each time a client accesses the permitted resource, with a delay of up to 5 minutes. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
+  lastUsedAt?: string | null;
+  /** The number of requests that has originated from this network address. */
+  requestCount?: number;
+}
+export const ServiceAccountIPAccessListEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cidrBlock: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.String),
+    ipAddress: S.optional(S.NullOr(S.String)),
+    lastUsedAddress: S.optional(S.NullOr(S.String)),
+    lastUsedAt: S.optional(S.NullOr(S.String)),
+    requestCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ServiceAccountIPAccessListEntry",
+}) as any as S.Schema<ServiceAccountIPAccessListEntry>;
+
+/** List of IP access list entries that define allowed source addresses for this MCP configuration. */
+export type GroupMcpConfigResponseIpAccessListList =
+  Array<ServiceAccountIPAccessListEntry>;
+export const GroupMcpConfigResponseIpAccessListList = /*@__PURE__*/ S.Array(
+  ServiceAccountIPAccessListEntry,
+) as any as S.Schema<GroupMcpConfigResponseIpAccessListList>;
+
+/** List of project roles associated with this MCP configuration. */
+export type GroupMcpConfigResponseRolesList = Array<string>;
+export const GroupMcpConfigResponseRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GroupMcpConfigResponseRolesList>;
+
+export interface GroupMcpConfigResponse {
+  /** Unique identifier for the Service Account client associated with this MCP configuration. Use this Service Account to connect to the Atlas Remote MCP. */
+  clientId?: string;
+  /** Unique identifier for the egress Service Account client associated with this MCP configuration. This Service Account is managed by MongoDB Atlas. */
+  egressClientId?: string;
+  /** List of IP access list entries that define allowed source addresses for this MCP configuration. */
+  ipAccessList?: GroupMcpConfigResponseIpAccessListList;
+  /** Unique identifier that identifies this MCP configuration. */
+  mcpConfigId?: string;
+  /** Human-readable name that identifies this MCP configuration. */
+  mcpConfigName?: string | null;
+  /** List of project roles associated with this MCP configuration. */
+  roles?: GroupMcpConfigResponseRolesList;
+}
+export const GroupMcpConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.optional(S.String),
+    egressClientId: S.optional(S.String),
+    ipAccessList: S.optional(GroupMcpConfigResponseIpAccessListList),
+    mcpConfigId: S.optional(S.String),
+    mcpConfigName: S.optional(S.NullOr(S.String)),
+    roles: S.optional(GroupMcpConfigResponseRolesList),
+  }),
+).annotate({
+  identifier: "GroupMcpConfigResponse",
+}) as any as S.Schema<GroupMcpConfigResponse>;
+
+export interface CreateGroupMcpConfigSecretRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings. */
+  secretExpiresAfterHours: number;
+}
+export const CreateGroupMcpConfigSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    secretExpiresAfterHours: S.Number,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "CreateGroupMcpConfigSecretRequest",
+}) as any as S.Schema<CreateGroupMcpConfigSecretRequest>;
+
+export interface ServiceAccountSecret {
+  /** The date that the secret was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
+  createdAt: string;
+  /** The date for the expiration of the secret. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
+  expiresAt: string;
+  /** Unique 24-hexadecimal digit string that identifies the secret. */
+  id: string;
+  /** The last time the secret was used. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
+  lastUsedAt?: string | null;
+  /** The masked Service Account secret. */
+  maskedSecretValue?: string;
+  /** The secret for the Service Account. It will be returned only the first time after creation. */
+  secret?: string | Redacted.Redacted<string>;
+}
+export const ServiceAccountSecret = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    expiresAt: S.String,
+    id: S.String,
+    lastUsedAt: S.optional(S.NullOr(S.String)),
+    maskedSecretValue: S.optional(S.String),
+    secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({
+  identifier: "ServiceAccountSecret",
+}) as any as S.Schema<ServiceAccountSecret>;
+
+/** The temporality to send to the metric integration. */
+export type CreateGroupMetricIntegrationRequestAggregationTemporality =
+  | "DELTA"
+  | "CUMULATIVE";
+export const CreateGroupMetricIntegrationRequestAggregationTemporality =
+  /*@__PURE__*/ S.String;
+
+/** Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used. */
+export type CreateGroupMetricIntegrationRequestAuthType = "HEADER";
+export const CreateGroupMetricIntegrationRequestAuthType =
+  /*@__PURE__*/ S.String;
 
 /** HTTP header with name and value. */
 export interface Header {
@@ -24061,594 +25376,185 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
-/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-export type S3LogIntegrationResponseOtelSuppliedHeadersList = Array<Header>;
-export const S3LogIntegrationResponseOtelSuppliedHeadersList =
+/** HTTP headers for authentication and configuration. Total size limit 2KB. Required when `authType` is `HEADER`. */
+export type CreateGroupMetricIntegrationRequestHeadersList = Array<Header>;
+export const CreateGroupMetricIntegrationRequestHeadersList =
   /*@__PURE__*/ S.Array(
     Header,
-  ) as any as S.Schema<S3LogIntegrationResponseOtelSuppliedHeadersList>;
+  ) as any as S.Schema<CreateGroupMetricIntegrationRequestHeadersList>;
 
-export type S3LogIntegrationResponseLogTypesItem =
-  | "MONGOD"
-  | "MONGOS"
-  | "MONGOD_AUDIT"
-  | "MONGOS_AUDIT";
-export const S3LogIntegrationResponseLogTypesItem = /*@__PURE__*/ S.String;
+/** Type of metric integration. Identifies which protocol will be used for the integration. This value cannot be modified after the integration is created. */
+export type CreateGroupMetricIntegrationRequestIntegrationType = "OTEL";
+export const CreateGroupMetricIntegrationRequestIntegrationType =
+  /*@__PURE__*/ S.String;
 
-/** Array of log types exported by this integration. */
-export type S3LogIntegrationResponseLogTypesList =
-  Array<S3LogIntegrationResponseLogTypesItem>;
-export const S3LogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  S3LogIntegrationResponseLogTypesItem,
-) as any as S.Schema<S3LogIntegrationResponseLogTypesList>;
+export type CreateGroupMetricIntegrationRequestMetricSelectionItem =
+  | "ATLAS_STREAM_PROCESSING"
+  | "MONGODB_METRICS"
+  | "HARDWARE_METRICS";
+export const CreateGroupMetricIntegrationRequestMetricSelectionItem =
+  /*@__PURE__*/ S.String;
 
-/** Details to integrate S3 log export with one Atlas project. */
-export interface S3LogIntegrationResponse {
-  /** API key for authentication. */
-  apiKey?: string | Redacted.Redacted<string>;
-  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-  region?: S3LogIntegrationResponseRegion;
-  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-  type: S3LogIntegrationResponseType;
-  /** Name of the bucket to store log files. */
-  bucketName: string;
-  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
-  prefixPath: string;
-  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
-  roleId?: string;
-  /** OpenTelemetry collector endpoint URL. */
-  otelEndpoint?: string;
-  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-  otelSuppliedHeaders?: S3LogIntegrationResponseOtelSuppliedHeadersList;
-  /** HTTP Event Collector (HEC) token for authentication. */
-  hecToken?: string;
-  /** HTTP Event Collector (HEC) endpoint URL. */
-  hecUrl?: string;
-  /** Storage account name where logs will be stored. */
-  storageAccountName?: string;
-  /** Storage container name for log files. */
-  storageContainerName?: string;
-  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
-  id: string;
-  /** Array of log types exported by this integration. */
-  logTypes: S3LogIntegrationResponseLogTypesList;
-  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
-  iamRoleId: string;
-  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
-  kmsKey?: string | null;
-  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
-  useLegacyPathStructure?: boolean | null;
-}
-export const S3LogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    region: S.optional(S3LogIntegrationResponseRegion),
-    type: S3LogIntegrationResponseType,
-    bucketName: S.String,
-    prefixPath: S.String,
-    roleId: S.optional(S.String),
-    otelEndpoint: S.optional(S.String),
-    otelSuppliedHeaders: S.optional(
-      S3LogIntegrationResponseOtelSuppliedHeadersList,
-    ),
-    hecToken: S.optional(S.String),
-    hecUrl: S.optional(S.String),
-    storageAccountName: S.optional(S.String),
-    storageContainerName: S.optional(S.String),
-    id: S.String,
-    logTypes: S3LogIntegrationResponseLogTypesList,
-    iamRoleId: S.String,
-    kmsKey: S.optional(S.NullOr(S.String)),
-    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "S3LogIntegrationResponse",
-}) as any as S.Schema<S3LogIntegrationResponse>;
-
-/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-export type DatadogLogIntegrationResponseRegion =
-  | "US1"
-  | "US3"
-  | "US5"
-  | "EU"
-  | "AP1"
-  | "AP2"
-  | "US1_FED";
-export const DatadogLogIntegrationResponseRegion = /*@__PURE__*/ S.String;
-
-/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-export type DatadogLogIntegrationResponseType = "DATADOG_LOG_EXPORT";
-export const DatadogLogIntegrationResponseType = /*@__PURE__*/ S.String;
-
-/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-export type DatadogLogIntegrationResponseOtelSuppliedHeadersList =
-  Array<Header>;
-export const DatadogLogIntegrationResponseOtelSuppliedHeadersList =
+/** Array of metric categories to export. Determines which types of metrics are sent to the integration. */
+export type CreateGroupMetricIntegrationRequestMetricSelectionList = Array<
+  CreateGroupMetricIntegrationRequestMetricSelectionItem | (string & {})
+>;
+export const CreateGroupMetricIntegrationRequestMetricSelectionList =
   /*@__PURE__*/ S.Array(
-    Header,
-  ) as any as S.Schema<DatadogLogIntegrationResponseOtelSuppliedHeadersList>;
+    CreateGroupMetricIntegrationRequestMetricSelectionItem,
+  ) as any as S.Schema<CreateGroupMetricIntegrationRequestMetricSelectionList>;
 
-export type DatadogLogIntegrationResponseLogTypesItem =
-  | "MONGOD"
-  | "MONGOS"
-  | "MONGOD_AUDIT"
-  | "MONGOS_AUDIT";
-export const DatadogLogIntegrationResponseLogTypesItem = /*@__PURE__*/ S.String;
+/** The provider type for the metric integration. Identifies the third-party service provider. */
+export type CreateGroupMetricIntegrationRequestProviderType =
+  | "CUSTOM"
+  | "DYNATRACE"
+  | "NEW_RELIC";
+export const CreateGroupMetricIntegrationRequestProviderType =
+  /*@__PURE__*/ S.String;
 
-/** Array of log types exported by this integration. */
-export type DatadogLogIntegrationResponseLogTypesList =
-  Array<DatadogLogIntegrationResponseLogTypesItem>;
-export const DatadogLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  DatadogLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<DatadogLogIntegrationResponseLogTypesList>;
-
-/** Details to integrate Datadog log export with one Atlas project. */
-export interface DatadogLogIntegrationResponse {
-  /** API key for authentication. */
-  apiKey: string | Redacted.Redacted<string>;
-  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-  region: DatadogLogIntegrationResponseRegion;
-  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-  type: DatadogLogIntegrationResponseType;
-  /** Name of the bucket to store log files. */
-  bucketName?: string;
-  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
-  prefixPath?: string;
-  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
-  roleId?: string;
-  /** OpenTelemetry collector endpoint URL. */
-  otelEndpoint?: string;
-  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-  otelSuppliedHeaders?: DatadogLogIntegrationResponseOtelSuppliedHeadersList;
-  /** HTTP Event Collector (HEC) token for authentication. */
-  hecToken?: string;
-  /** HTTP Event Collector (HEC) endpoint URL. */
-  hecUrl?: string;
-  /** Storage account name where logs will be stored. */
-  storageAccountName?: string;
-  /** Storage container name for log files. */
-  storageContainerName?: string;
-  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
-  id: string;
-  /** Array of log types exported by this integration. */
-  logTypes: DatadogLogIntegrationResponseLogTypesList;
-  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
-  iamRoleId?: string;
-  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
-  kmsKey?: string | null;
-  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
-  useLegacyPathStructure?: boolean | null;
+export interface CreateGroupMetricIntegrationRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** The temporality to send to the metric integration. */
+  aggregationTemporality:
+    | CreateGroupMetricIntegrationRequestAggregationTemporality
+    | (string & {});
+  /** Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used. */
+  authType: CreateGroupMetricIntegrationRequestAuthType | (string & {});
+  /** OpenTelemetry collector endpoint URL. Must use HTTPS. */
+  endpoint: string;
+  /** HTTP headers for authentication and configuration. Total size limit 2KB. Required when `authType` is `HEADER`. */
+  headers?: CreateGroupMetricIntegrationRequestHeadersList;
+  /** Type of metric integration. Identifies which protocol will be used for the integration. This value cannot be modified after the integration is created. */
+  integrationType:
+    | CreateGroupMetricIntegrationRequestIntegrationType
+    | (string & {});
+  /** Array of metric categories to export. Determines which types of metrics are sent to the integration. */
+  metricSelection: CreateGroupMetricIntegrationRequestMetricSelectionList;
+  /** The provider type for the metric integration. Identifies the third-party service provider. */
+  providerType: CreateGroupMetricIntegrationRequestProviderType | (string & {});
 }
-export const DatadogLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateGroupMetricIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    apiKey: S.String.pipe(T.SensitiveValue({})),
-    region: DatadogLogIntegrationResponseRegion,
-    type: DatadogLogIntegrationResponseType,
-    bucketName: S.optional(S.String),
-    prefixPath: S.optional(S.String),
-    roleId: S.optional(S.String),
-    otelEndpoint: S.optional(S.String),
-    otelSuppliedHeaders: S.optional(
-      DatadogLogIntegrationResponseOtelSuppliedHeadersList,
-    ),
-    hecToken: S.optional(S.String),
-    hecUrl: S.optional(S.String),
-    storageAccountName: S.optional(S.String),
-    storageContainerName: S.optional(S.String),
-    id: S.String,
-    logTypes: DatadogLogIntegrationResponseLogTypesList,
-    iamRoleId: S.optional(S.String),
-    kmsKey: S.optional(S.NullOr(S.String)),
-    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
-  }),
+    groupId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+    aggregationTemporality:
+      CreateGroupMetricIntegrationRequestAggregationTemporality,
+    authType: CreateGroupMetricIntegrationRequestAuthType,
+    endpoint: S.String,
+    headers: S.optional(CreateGroupMetricIntegrationRequestHeadersList),
+    integrationType: CreateGroupMetricIntegrationRequestIntegrationType,
+    metricSelection: CreateGroupMetricIntegrationRequestMetricSelectionList,
+    providerType: CreateGroupMetricIntegrationRequestProviderType,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
 ).annotate({
-  identifier: "DatadogLogIntegrationResponse",
-}) as any as S.Schema<DatadogLogIntegrationResponse>;
+  identifier: "CreateGroupMetricIntegrationRequest",
+}) as any as S.Schema<CreateGroupMetricIntegrationRequest>;
 
-/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-export type GcsLogIntegrationResponseRegion =
-  | "US1"
-  | "US3"
-  | "US5"
-  | "EU"
-  | "AP1"
-  | "AP2"
-  | "US1_FED";
-export const GcsLogIntegrationResponseRegion = /*@__PURE__*/ S.String;
+/** The temporality to send to the metric integration. */
+export type MetricIntegrationResponseAggregationTemporality =
+  | "DELTA"
+  | "CUMULATIVE";
+export const MetricIntegrationResponseAggregationTemporality =
+  /*@__PURE__*/ S.String;
 
-/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-export type GcsLogIntegrationResponseType = "DATADOG_LOG_EXPORT";
-export const GcsLogIntegrationResponseType = /*@__PURE__*/ S.String;
+/** Authentication method the integration uses when exporting metrics to the endpoint. */
+export type MetricIntegrationResponseAuthType = "HEADER";
+export const MetricIntegrationResponseAuthType = /*@__PURE__*/ S.String;
 
-/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-export type GcsLogIntegrationResponseOtelSuppliedHeadersList = Array<Header>;
-export const GcsLogIntegrationResponseOtelSuppliedHeadersList =
+/** HTTP header with a redacted value. */
+export interface RedactedHeader {
+  /** Header name. */
+  name: string;
+  /** Redacted header value. */
+  value: string;
+}
+export const RedactedHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+  }),
+).annotate({ identifier: "RedactedHeader" }) as any as S.Schema<RedactedHeader>;
+
+/** HTTP headers for authentication and configuration. Values are redacted and never returned in plaintext. */
+export type MetricIntegrationResponseHeadersRedactedList =
+  Array<RedactedHeader>;
+export const MetricIntegrationResponseHeadersRedactedList =
   /*@__PURE__*/ S.Array(
-    Header,
-  ) as any as S.Schema<GcsLogIntegrationResponseOtelSuppliedHeadersList>;
+    RedactedHeader,
+  ) as any as S.Schema<MetricIntegrationResponseHeadersRedactedList>;
 
-export type GcsLogIntegrationResponseLogTypesItem =
-  | "MONGOD"
-  | "MONGOS"
-  | "MONGOD_AUDIT"
-  | "MONGOS_AUDIT";
-export const GcsLogIntegrationResponseLogTypesItem = /*@__PURE__*/ S.String;
+/** Type of metric integration. Identifies which protocol will be used for the integration. */
+export type MetricIntegrationResponseIntegrationType = "OTEL";
+export const MetricIntegrationResponseIntegrationType = /*@__PURE__*/ S.String;
 
-/** Array of log types exported by this integration. */
-export type GcsLogIntegrationResponseLogTypesList =
-  Array<GcsLogIntegrationResponseLogTypesItem>;
-export const GcsLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  GcsLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<GcsLogIntegrationResponseLogTypesList>;
+export type MetricIntegrationResponseMetricSelectionItem =
+  | "ATLAS_STREAM_PROCESSING"
+  | "MONGODB_METRICS"
+  | "HARDWARE_METRICS";
+export const MetricIntegrationResponseMetricSelectionItem =
+  /*@__PURE__*/ S.String;
 
-/** Details to integrate Google Cloud Storage log export with one Atlas project. */
-export interface GcsLogIntegrationResponse {
-  /** API key for authentication. */
-  apiKey?: string | Redacted.Redacted<string>;
-  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-  region?: GcsLogIntegrationResponseRegion;
-  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-  type: GcsLogIntegrationResponseType;
-  /** Name of the bucket to store log files. */
-  bucketName: string;
-  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
-  prefixPath: string;
-  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
-  roleId: string;
-  /** OpenTelemetry collector endpoint URL. */
-  otelEndpoint?: string;
-  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-  otelSuppliedHeaders?: GcsLogIntegrationResponseOtelSuppliedHeadersList;
-  /** HTTP Event Collector (HEC) token for authentication. */
-  hecToken?: string;
-  /** HTTP Event Collector (HEC) endpoint URL. */
-  hecUrl?: string;
-  /** Storage account name where logs will be stored. */
-  storageAccountName?: string;
-  /** Storage container name for log files. */
-  storageContainerName?: string;
-  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
-  id: string;
-  /** Array of log types exported by this integration. */
-  logTypes: GcsLogIntegrationResponseLogTypesList;
-  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
-  iamRoleId?: string;
-  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
-  kmsKey?: string | null;
-  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
-  useLegacyPathStructure?: boolean | null;
-}
-export const GcsLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    region: S.optional(GcsLogIntegrationResponseRegion),
-    type: GcsLogIntegrationResponseType,
-    bucketName: S.String,
-    prefixPath: S.String,
-    roleId: S.String,
-    otelEndpoint: S.optional(S.String),
-    otelSuppliedHeaders: S.optional(
-      GcsLogIntegrationResponseOtelSuppliedHeadersList,
-    ),
-    hecToken: S.optional(S.String),
-    hecUrl: S.optional(S.String),
-    storageAccountName: S.optional(S.String),
-    storageContainerName: S.optional(S.String),
-    id: S.String,
-    logTypes: GcsLogIntegrationResponseLogTypesList,
-    iamRoleId: S.optional(S.String),
-    kmsKey: S.optional(S.NullOr(S.String)),
-    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "GcsLogIntegrationResponse",
-}) as any as S.Schema<GcsLogIntegrationResponse>;
-
-/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-export type OtelLogIntegrationResponseRegion =
-  | "US1"
-  | "US3"
-  | "US5"
-  | "EU"
-  | "AP1"
-  | "AP2"
-  | "US1_FED";
-export const OtelLogIntegrationResponseRegion = /*@__PURE__*/ S.String;
-
-/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-export type OtelLogIntegrationResponseType = "DATADOG_LOG_EXPORT";
-export const OtelLogIntegrationResponseType = /*@__PURE__*/ S.String;
-
-/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-export type OtelLogIntegrationResponseOtelSuppliedHeadersList = Array<Header>;
-export const OtelLogIntegrationResponseOtelSuppliedHeadersList =
+/** Array of metric categories to export. Determines which types of metrics are sent to the integration. */
+export type MetricIntegrationResponseMetricSelectionList =
+  Array<MetricIntegrationResponseMetricSelectionItem>;
+export const MetricIntegrationResponseMetricSelectionList =
   /*@__PURE__*/ S.Array(
-    Header,
-  ) as any as S.Schema<OtelLogIntegrationResponseOtelSuppliedHeadersList>;
+    MetricIntegrationResponseMetricSelectionItem,
+  ) as any as S.Schema<MetricIntegrationResponseMetricSelectionList>;
 
-export type OtelLogIntegrationResponseLogTypesItem =
-  | "MONGOD"
-  | "MONGOS"
-  | "MONGOD_AUDIT"
-  | "MONGOS_AUDIT";
-export const OtelLogIntegrationResponseLogTypesItem = /*@__PURE__*/ S.String;
+/** The provider type for the metric integration. Identifies the third-party service provider. */
+export type MetricIntegrationResponseProviderType =
+  | "CUSTOM"
+  | "DYNATRACE"
+  | "NEW_RELIC";
+export const MetricIntegrationResponseProviderType = /*@__PURE__*/ S.String;
 
-/** Array of log types exported by this integration. */
-export type OtelLogIntegrationResponseLogTypesList =
-  Array<OtelLogIntegrationResponseLogTypesItem>;
-export const OtelLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  OtelLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<OtelLogIntegrationResponseLogTypesList>;
-
-/** Details to integrate OpenTelemetry log export with one Atlas project. */
-export interface OtelLogIntegrationResponse {
-  /** API key for authentication. */
-  apiKey?: string | Redacted.Redacted<string>;
-  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-  region?: OtelLogIntegrationResponseRegion;
-  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-  type: OtelLogIntegrationResponseType;
-  /** Name of the bucket to store log files. */
-  bucketName?: string;
-  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
-  prefixPath?: string;
-  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
-  roleId?: string;
+/** Response schema for metric integration operations. */
+export interface MetricIntegrationResponse {
+  /** The temporality to send to the metric integration. */
+  aggregationTemporality: MetricIntegrationResponseAggregationTemporality;
+  /** Authentication method the integration uses when exporting metrics to the endpoint. */
+  authType: MetricIntegrationResponseAuthType;
   /** OpenTelemetry collector endpoint URL. */
-  otelEndpoint: string;
-  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-  otelSuppliedHeaders: OtelLogIntegrationResponseOtelSuppliedHeadersList;
-  /** HTTP Event Collector (HEC) token for authentication. */
-  hecToken?: string;
-  /** HTTP Event Collector (HEC) endpoint URL. */
-  hecUrl?: string;
-  /** Storage account name where logs will be stored. */
-  storageAccountName?: string;
-  /** Storage container name for log files. */
-  storageContainerName?: string;
-  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
-  id: string;
-  /** Array of log types exported by this integration. */
-  logTypes: OtelLogIntegrationResponseLogTypesList;
-  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
-  iamRoleId?: string;
-  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
-  kmsKey?: string | null;
-  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
-  useLegacyPathStructure?: boolean | null;
+  endpoint: string;
+  /** HTTP headers for authentication and configuration. Values are redacted and never returned in plaintext. */
+  headersRedacted?: MetricIntegrationResponseHeadersRedactedList;
+  /** Type of metric integration. Identifies which protocol will be used for the integration. */
+  integrationType: MetricIntegrationResponseIntegrationType;
+  /** Unique identifier of the metric integration configuration. */
+  metricIntegrationId: string;
+  /** Array of metric categories to export. Determines which types of metrics are sent to the integration. */
+  metricSelection: MetricIntegrationResponseMetricSelectionList;
+  /** The provider type for the metric integration. Identifies the third-party service provider. */
+  providerType: MetricIntegrationResponseProviderType;
 }
-export const OtelLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+export const MetricIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    region: S.optional(OtelLogIntegrationResponseRegion),
-    type: OtelLogIntegrationResponseType,
-    bucketName: S.optional(S.String),
-    prefixPath: S.optional(S.String),
-    roleId: S.optional(S.String),
-    otelEndpoint: S.String,
-    otelSuppliedHeaders: OtelLogIntegrationResponseOtelSuppliedHeadersList,
-    hecToken: S.optional(S.String),
-    hecUrl: S.optional(S.String),
-    storageAccountName: S.optional(S.String),
-    storageContainerName: S.optional(S.String),
-    id: S.String,
-    logTypes: OtelLogIntegrationResponseLogTypesList,
-    iamRoleId: S.optional(S.String),
-    kmsKey: S.optional(S.NullOr(S.String)),
-    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
+    aggregationTemporality: MetricIntegrationResponseAggregationTemporality,
+    authType: MetricIntegrationResponseAuthType,
+    endpoint: S.String,
+    headersRedacted: S.optional(MetricIntegrationResponseHeadersRedactedList),
+    integrationType: MetricIntegrationResponseIntegrationType,
+    metricIntegrationId: S.String,
+    metricSelection: MetricIntegrationResponseMetricSelectionList,
+    providerType: MetricIntegrationResponseProviderType,
   }),
 ).annotate({
-  identifier: "OtelLogIntegrationResponse",
-}) as any as S.Schema<OtelLogIntegrationResponse>;
-
-/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-export type SplunkLogIntegrationResponseRegion =
-  | "US1"
-  | "US3"
-  | "US5"
-  | "EU"
-  | "AP1"
-  | "AP2"
-  | "US1_FED";
-export const SplunkLogIntegrationResponseRegion = /*@__PURE__*/ S.String;
-
-/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-export type SplunkLogIntegrationResponseType = "DATADOG_LOG_EXPORT";
-export const SplunkLogIntegrationResponseType = /*@__PURE__*/ S.String;
-
-/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-export type SplunkLogIntegrationResponseOtelSuppliedHeadersList = Array<Header>;
-export const SplunkLogIntegrationResponseOtelSuppliedHeadersList =
-  /*@__PURE__*/ S.Array(
-    Header,
-  ) as any as S.Schema<SplunkLogIntegrationResponseOtelSuppliedHeadersList>;
-
-export type SplunkLogIntegrationResponseLogTypesItem =
-  | "MONGOD"
-  | "MONGOS"
-  | "MONGOD_AUDIT"
-  | "MONGOS_AUDIT";
-export const SplunkLogIntegrationResponseLogTypesItem = /*@__PURE__*/ S.String;
-
-/** Array of log types exported by this integration. */
-export type SplunkLogIntegrationResponseLogTypesList =
-  Array<SplunkLogIntegrationResponseLogTypesItem>;
-export const SplunkLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  SplunkLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<SplunkLogIntegrationResponseLogTypesList>;
-
-/** Details to integrate Splunk log export with one Atlas project. */
-export interface SplunkLogIntegrationResponse {
-  /** API key for authentication. */
-  apiKey?: string | Redacted.Redacted<string>;
-  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-  region?: SplunkLogIntegrationResponseRegion;
-  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-  type: SplunkLogIntegrationResponseType;
-  /** Name of the bucket to store log files. */
-  bucketName?: string;
-  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
-  prefixPath?: string;
-  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
-  roleId?: string;
-  /** OpenTelemetry collector endpoint URL. */
-  otelEndpoint?: string;
-  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-  otelSuppliedHeaders?: SplunkLogIntegrationResponseOtelSuppliedHeadersList;
-  /** HTTP Event Collector (HEC) token for authentication. */
-  hecToken: string;
-  /** HTTP Event Collector (HEC) endpoint URL. */
-  hecUrl: string;
-  /** Storage account name where logs will be stored. */
-  storageAccountName?: string;
-  /** Storage container name for log files. */
-  storageContainerName?: string;
-  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
-  id: string;
-  /** Array of log types exported by this integration. */
-  logTypes: SplunkLogIntegrationResponseLogTypesList;
-  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
-  iamRoleId?: string;
-  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
-  kmsKey?: string | null;
-  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
-  useLegacyPathStructure?: boolean | null;
-}
-export const SplunkLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    region: S.optional(SplunkLogIntegrationResponseRegion),
-    type: SplunkLogIntegrationResponseType,
-    bucketName: S.optional(S.String),
-    prefixPath: S.optional(S.String),
-    roleId: S.optional(S.String),
-    otelEndpoint: S.optional(S.String),
-    otelSuppliedHeaders: S.optional(
-      SplunkLogIntegrationResponseOtelSuppliedHeadersList,
-    ),
-    hecToken: S.String,
-    hecUrl: S.String,
-    storageAccountName: S.optional(S.String),
-    storageContainerName: S.optional(S.String),
-    id: S.String,
-    logTypes: SplunkLogIntegrationResponseLogTypesList,
-    iamRoleId: S.optional(S.String),
-    kmsKey: S.optional(S.NullOr(S.String)),
-    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "SplunkLogIntegrationResponse",
-}) as any as S.Schema<SplunkLogIntegrationResponse>;
-
-/** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-export type AzureLogIntegrationResponseRegion =
-  | "US1"
-  | "US3"
-  | "US5"
-  | "EU"
-  | "AP1"
-  | "AP2"
-  | "US1_FED";
-export const AzureLogIntegrationResponseRegion = /*@__PURE__*/ S.String;
-
-/** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-export type AzureLogIntegrationResponseType = "DATADOG_LOG_EXPORT";
-export const AzureLogIntegrationResponseType = /*@__PURE__*/ S.String;
-
-/** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-export type AzureLogIntegrationResponseOtelSuppliedHeadersList = Array<Header>;
-export const AzureLogIntegrationResponseOtelSuppliedHeadersList =
-  /*@__PURE__*/ S.Array(
-    Header,
-  ) as any as S.Schema<AzureLogIntegrationResponseOtelSuppliedHeadersList>;
-
-export type AzureLogIntegrationResponseLogTypesItem =
-  | "MONGOD"
-  | "MONGOS"
-  | "MONGOD_AUDIT"
-  | "MONGOS_AUDIT";
-export const AzureLogIntegrationResponseLogTypesItem = /*@__PURE__*/ S.String;
-
-/** Array of log types exported by this integration. */
-export type AzureLogIntegrationResponseLogTypesList =
-  Array<AzureLogIntegrationResponseLogTypesItem>;
-export const AzureLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  AzureLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<AzureLogIntegrationResponseLogTypesList>;
-
-/** Details to integrate Azure Blob Storage log export with one Atlas project. */
-export interface AzureLogIntegrationResponse {
-  /** API key for authentication. */
-  apiKey?: string | Redacted.Redacted<string>;
-  /** Datadog site/region for log ingestion. Valid values: US1, US3, US5, EU, AP1, AP2, US1_FED. */
-  region?: AzureLogIntegrationResponseRegion;
-  /** Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created. */
-  type: AzureLogIntegrationResponseType;
-  /** Name of the bucket to store log files. */
-  bucketName?: string;
-  /** Path prefix where the log files will be stored. Atlas will add further sub-directories based on the log type. */
-  prefixPath: string;
-  /** Unique 24-character hexadecimal string that identifies the Atlas Cloud Provider Access role. */
-  roleId: string;
-  /** OpenTelemetry collector endpoint URL. */
-  otelEndpoint?: string;
-  /** HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. */
-  otelSuppliedHeaders?: AzureLogIntegrationResponseOtelSuppliedHeadersList;
-  /** HTTP Event Collector (HEC) token for authentication. */
-  hecToken?: string;
-  /** HTTP Event Collector (HEC) endpoint URL. */
-  hecUrl?: string;
-  /** Storage account name where logs will be stored. */
-  storageAccountName: string;
-  /** Storage container name for log files. */
-  storageContainerName: string;
-  /** Unique 24-character hexadecimal digit string that identifies the log integration configuration. */
-  id: string;
-  /** Array of log types exported by this integration. */
-  logTypes: AzureLogIntegrationResponseLogTypesList;
-  /** Unique 24-character hexadecimal string that identifies the AWS IAM role that Atlas uses to access the S3 bucket. */
-  iamRoleId?: string;
-  /** AWS KMS key ID or ARN for server-side encryption (optional). If not provided, uses bucket default encryption settings. */
-  kmsKey?: string | null;
-  /** When true, uses the legacy daily-folder path structure compatible with Push-Based Log Export: `{prefix}/{cluster}/{hostname}/{logType}/{YYYY-MM-DD}/{timestamp}-{logType}.log`. When false (default), uses the flat timestamped structure: `{prefix}/{cluster}/{hostname}/{logType}/{timestamp}-{logType}.log`. */
-  useLegacyPathStructure?: boolean | null;
-}
-export const AzureLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    region: S.optional(AzureLogIntegrationResponseRegion),
-    type: AzureLogIntegrationResponseType,
-    bucketName: S.optional(S.String),
-    prefixPath: S.String,
-    roleId: S.String,
-    otelEndpoint: S.optional(S.String),
-    otelSuppliedHeaders: S.optional(
-      AzureLogIntegrationResponseOtelSuppliedHeadersList,
-    ),
-    hecToken: S.optional(S.String),
-    hecUrl: S.optional(S.String),
-    storageAccountName: S.String,
-    storageContainerName: S.String,
-    id: S.String,
-    logTypes: AzureLogIntegrationResponseLogTypesList,
-    iamRoleId: S.optional(S.String),
-    kmsKey: S.optional(S.NullOr(S.String)),
-    useLegacyPathStructure: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "AzureLogIntegrationResponse",
-}) as any as S.Schema<AzureLogIntegrationResponse>;
-
-/** Response schema for log integration operations. */
-export type LogIntegrationResponse =
-  | S3LogIntegrationResponse
-  | DatadogLogIntegrationResponse
-  | GcsLogIntegrationResponse
-  | OtelLogIntegrationResponse
-  | SplunkLogIntegrationResponse
-  | AzureLogIntegrationResponse;
-export const LogIntegrationResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<LogIntegrationResponse>;
+  identifier: "MetricIntegrationResponse",
+}) as any as S.Schema<MetricIntegrationResponse>;
 
 /** Cloud service provider that serves the requested network peering connection. */
 export type CreateGroupPeerRequestProviderName = "AWS" | "AZURE" | "GCP";
@@ -24966,7 +25872,9 @@ export const EndpointService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointService>;
 
 export type CreateGroupPrivateEndpointEndpointServiceEndpointRequestCloudProvider =
-  "AWS" | "AZURE" | "GCP";
+  | "AWS"
+  | "AZURE"
+  | "GCP";
 export const CreateGroupPrivateEndpointEndpointServiceEndpointRequestCloudProvider =
   /*@__PURE__*/ S.String;
 
@@ -25018,12 +25926,15 @@ export interface PrivateLinkEndpoint {
   deleteRequested?: boolean;
   /** Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded. */
   errorMessage?: string;
+  /** Region name of the private endpoint. */
+  regionName?: string;
 }
 export const PrivateLinkEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudProvider: PrivateLinkEndpointCloudProvider,
     deleteRequested: S.optional(S.Boolean),
     errorMessage: S.optional(S.String),
+    regionName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PrivateLinkEndpoint",
@@ -25252,33 +26163,6 @@ export const GroupServiceAccountRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupServiceAccountRolesList>;
 
-export interface ServiceAccountSecret {
-  /** The date that the secret was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  createdAt: string;
-  /** The date for the expiration of the secret. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  expiresAt: string;
-  /** Unique 24-hexadecimal digit string that identifies the secret. */
-  id: string;
-  /** The last time the secret was used. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  lastUsedAt?: string;
-  /** The masked Service Account secret. */
-  maskedSecretValue?: string;
-  /** The secret for the Service Account. It will be returned only the first time after creation. */
-  secret?: string | Redacted.Redacted<string>;
-}
-export const ServiceAccountSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    expiresAt: S.String,
-    id: S.String,
-    lastUsedAt: S.optional(S.String),
-    maskedSecretValue: S.optional(S.String),
-    secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({
-  identifier: "ServiceAccountSecret",
-}) as any as S.Schema<ServiceAccountSecret>;
-
 /** A list of secrets associated with the specified Service Account. */
 export type GroupServiceAccountSecretsList = Array<ServiceAccountSecret>;
 export const GroupServiceAccountSecretsList = /*@__PURE__*/ S.Array(
@@ -25311,22 +26195,6 @@ export const GroupServiceAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GroupServiceAccount",
 }) as any as S.Schema<GroupServiceAccount>;
-
-export interface ServiceAccountIPAccessListEntryInput {
-  /** Range of network addresses in the access list for the Service Account. This parameter requires the range to be expressed in Classless Inter-Domain Routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or `ipAddress`, but not for both in the same request. */
-  cidrBlock?: string;
-  /** Network address in the access list for the Service Account. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or `cidrBlock`, but not for both in the same request. */
-  ipAddress?: string;
-}
-export const ServiceAccountIPAccessListEntryInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cidrBlock: S.optional(S.String),
-      ipAddress: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServiceAccountIPAccessListEntryInput",
-}) as any as S.Schema<ServiceAccountIPAccessListEntryInput>;
 
 export type CreateGroupServiceAccountAccessListRequestBodyList =
   Array<ServiceAccountIPAccessListEntryInput>;
@@ -25383,33 +26251,6 @@ export const PaginatedServiceAccountIPAccessEntryViewLinksList =
   /*@__PURE__*/ S.Array(
     Link,
   ) as any as S.Schema<PaginatedServiceAccountIPAccessEntryViewLinksList>;
-
-export interface ServiceAccountIPAccessListEntry {
-  /** Range of network addresses in the access list for the Service Account. This parameter requires the range to be expressed in Classless Inter-Domain Routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or `ipAddress`, but not for both in the same request. */
-  cidrBlock?: string;
-  /** Date MongoDB Cloud added the entry was added to the Access List. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  createdAt?: string;
-  /** Network address in the access list for the Service Account. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or `cidrBlock`, but not for both in the same request. */
-  ipAddress?: string;
-  /** Network address that issued the most recent request to the API. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. The resource returns this parameter after this IP address makes at least one request. */
-  lastUsedAddress?: string;
-  /** Date when MongoDB Cloud received the most recent request that originated from this Internet Protocol version 4 or version 6 address. The resource returns this parameter when at least one request originates from this IP address. MongoDB Cloud updates this parameter each time a client accesses the permitted resource, with a delay of up to 5 minutes. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  lastUsedAt?: string;
-  /** The number of requests that has originated from this network address. */
-  requestCount?: number;
-}
-export const ServiceAccountIPAccessListEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cidrBlock: S.optional(S.String),
-    createdAt: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    lastUsedAddress: S.optional(S.String),
-    lastUsedAt: S.optional(S.String),
-    requestCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ServiceAccountIPAccessListEntry",
-}) as any as S.Schema<ServiceAccountIPAccessListEntry>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedServiceAccountIPAccessEntryViewResultsList =
@@ -25470,7 +26311,7 @@ export const CreateGroupServiceAccountSecretRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateGroupServiceAccountSecretRequest",
 }) as any as S.Schema<CreateGroupServiceAccountSecretRequest>;
 
-/** Type of the connection. */
+/** Connection type. */
 export type CreateGroupStreamConnectionRequestType =
   | "Kafka"
   | "Cluster"
@@ -25492,11 +26333,11 @@ export interface CreateGroupStreamConnectionRequest {
   envelope?: boolean;
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: CreateGroupStreamConnectionRequestType | (string & {});
 }
 export const CreateGroupStreamConnectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -25530,7 +26371,7 @@ export const DBRoleToExecuteLinksList = /*@__PURE__*/ S.Array(
 export type DBRoleToExecuteType = "BUILT_IN" | "CUSTOM";
 export const DBRoleToExecuteType = /*@__PURE__*/ S.String;
 
-/** The name of a Built in or Custom DB Role to connect to an Atlas Cluster. */
+/** Name of a built-in or custom DB Role to connect to a MongoDB Cloud Cluster. */
 export interface DBRoleToExecute {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: DBRoleToExecuteLinksList;
@@ -25550,6 +26391,31 @@ export const DBRoleToExecute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DBRoleToExecute>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type StreamsAWSConnectionConfigLinksList = Array<Link>;
+export const StreamsAWSConnectionConfigLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<StreamsAWSConnectionConfigLinksList>;
+
+/** AWS configurations for AWS-based connection types. */
+export interface StreamsAWSConnectionConfig {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: StreamsAWSConnectionConfigLinksList;
+  /** Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account. */
+  roleArn?: string;
+  /** The name of an S3 bucket used to check authorization of the passed-in IAM role ARN. */
+  testBucket?: string;
+}
+export const StreamsAWSConnectionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    links: S.optional(StreamsAWSConnectionConfigLinksList),
+    roleArn: S.optional(S.String),
+    testBucket: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StreamsAWSConnectionConfig",
+}) as any as S.Schema<StreamsAWSConnectionConfig>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsKafkaAuthenticationOutputLinksList = Array<Link>;
 export const StreamsKafkaAuthenticationOutputLinksList = /*@__PURE__*/ S.Array(
   Link,
@@ -25557,13 +26423,14 @@ export const StreamsKafkaAuthenticationOutputLinksList = /*@__PURE__*/ S.Array(
 
 /** User credentials required to connect to a Kafka Cluster. Includes the authentication type, as well as the parameters for that authentication mode. */
 export interface StreamsKafkaAuthenticationOutput {
+  aws?: StreamsAWSConnectionConfig;
   /** OIDC client identifier for authentication to the Kafka cluster. */
   clientId?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsKafkaAuthenticationOutputLinksList;
   /** Style of authentication. Can be one of PLAIN, SCRAM-256, SCRAM-512, or OAUTHBEARER. */
   mechanism?: string;
-  /** SASL OAUTHBEARER authentication method. Can only be OIDC currently. */
+  /** SASL OAUTHBEARER authentication method. Currently, only OIDC is supported. */
   method?: string;
   /** SASL OAUTHBEARER extensions parameter for additional OAuth2 configuration. */
   saslOauthbearerExtensions?: string;
@@ -25578,6 +26445,7 @@ export interface StreamsKafkaAuthenticationOutput {
 }
 export const StreamsKafkaAuthenticationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    aws: S.optional(StreamsAWSConnectionConfig),
     clientId: S.optional(S.String),
     links: S.optional(StreamsKafkaAuthenticationOutputLinksList),
     mechanism: S.optional(S.String),
@@ -25592,7 +26460,7 @@ export const StreamsKafkaAuthenticationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsKafkaAuthenticationOutput",
 }) as any as S.Schema<StreamsKafkaAuthenticationOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsClusterConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -25617,7 +26485,7 @@ export const StreamsKafkaNetworkingAccessType = /*@__PURE__*/ S.String;
 
 /** Information about networking access. */
 export interface StreamsKafkaNetworkingAccess {
-  /** Reserved. Will be used by `PRIVATE_LINK` connection type. */
+  /** Reserved. Will be used by `PRIVATE_LINK` connection type. Setting this field with any other networking access type returns a validation error. */
   connectionId?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsKafkaNetworkingAccessLinksList;
@@ -25696,29 +26564,60 @@ export const StreamsClusterConnectionOutputHeadersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StreamsClusterConnectionOutputHeadersMap>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-export type StreamsAWSConnectionConfigLinksList = Array<Link>;
-export const StreamsAWSConnectionConfigLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StreamsAWSConnectionConfigLinksList>;
+export type StreamsPublicPrivateLinkNetworkingAccessLinksList = Array<Link>;
+export const StreamsPublicPrivateLinkNetworkingAccessLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<StreamsPublicPrivateLinkNetworkingAccessLinksList>;
 
-/** AWS configurations for AWS-based connection types. */
-export interface StreamsAWSConnectionConfig {
+/** Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`. For AWS, Azure, and GCP connections, use `PRIVATE_LINK` for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively. */
+export type StreamsPublicPrivateLinkNetworkingAccessType =
+  | "PUBLIC"
+  | "PRIVATE_LINK";
+export const StreamsPublicPrivateLinkNetworkingAccessType =
+  /*@__PURE__*/ S.String;
+
+/** Information about networking access. */
+export interface StreamsPublicPrivateLinkNetworkingAccess {
+  /** The ID of the Private Link connection. Required for `PRIVATE_LINK` type. For GCP connections using Private Service Connect (PSC), this is the PSC connection ID. */
+  connectionId?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-  links?: StreamsAWSConnectionConfigLinksList;
-  /** Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account. */
-  roleArn?: string;
-  /** The name of an S3 bucket used to check authorization of the passed-in IAM role ARN. */
-  testBucket?: string;
+  links?: StreamsPublicPrivateLinkNetworkingAccessLinksList;
+  /** Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`. For AWS, Azure, and GCP connections, use `PRIVATE_LINK` for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively. */
+  type?: StreamsPublicPrivateLinkNetworkingAccessType;
 }
-export const StreamsAWSConnectionConfig = /*@__PURE__*/ S.suspend(() =>
+export const StreamsPublicPrivateLinkNetworkingAccess = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      connectionId: S.optional(S.String),
+      links: S.optional(StreamsPublicPrivateLinkNetworkingAccessLinksList),
+      type: S.optional(StreamsPublicPrivateLinkNetworkingAccessType),
+    }),
+).annotate({
+  identifier: "StreamsPublicPrivateLinkNetworkingAccess",
+}) as any as S.Schema<StreamsPublicPrivateLinkNetworkingAccess>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type StreamsPublicPrivateLinkNetworkingLinksList = Array<Link>;
+export const StreamsPublicPrivateLinkNetworkingLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<StreamsPublicPrivateLinkNetworkingLinksList>;
+
+/** Networking configuration for connections that support `PUBLIC` and `PRIVATE_LINK` access types. For GCP connections, use `PRIVATE_LINK` for GCP Private Service Connect (PSC). */
+export interface StreamsPublicPrivateLinkNetworking {
+  access?: StreamsPublicPrivateLinkNetworkingAccess;
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: StreamsPublicPrivateLinkNetworkingLinksList;
+}
+export const StreamsPublicPrivateLinkNetworking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    links: S.optional(StreamsAWSConnectionConfigLinksList),
-    roleArn: S.optional(S.String),
-    testBucket: S.optional(S.String),
+    access: S.optional(StreamsPublicPrivateLinkNetworkingAccess),
+    links: S.optional(StreamsPublicPrivateLinkNetworkingLinksList),
   }),
 ).annotate({
-  identifier: "StreamsAWSConnectionConfig",
-}) as any as S.Schema<StreamsAWSConnectionConfig>;
+  identifier: "StreamsPublicPrivateLinkNetworking",
+}) as any as S.Schema<StreamsPublicPrivateLinkNetworking>;
 
 /** The Schema Registry provider. */
 export type StreamsClusterConnectionOutputProvider = "CONFLUENT";
@@ -25790,62 +26689,6 @@ export const AzureConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureConnection>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-export type StreamsPublicPrivateLinkNetworkingAccessLinksList = Array<Link>;
-export const StreamsPublicPrivateLinkNetworkingAccessLinksList =
-  /*@__PURE__*/ S.Array(
-    Link,
-  ) as any as S.Schema<StreamsPublicPrivateLinkNetworkingAccessLinksList>;
-
-/** Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`. For AWS, Azure, and GCP connections, use `PRIVATE_LINK` for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively. */
-export type StreamsPublicPrivateLinkNetworkingAccessType =
-  | "PUBLIC"
-  | "PRIVATE_LINK";
-export const StreamsPublicPrivateLinkNetworkingAccessType =
-  /*@__PURE__*/ S.String;
-
-/** Information about networking access. */
-export interface StreamsPublicPrivateLinkNetworkingAccess {
-  /** The ID of the Private Link connection. Required for `PRIVATE_LINK` type. For GCP connections using Private Service Connect (PSC), this is the PSC connection ID. */
-  connectionId?: string;
-  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-  links?: StreamsPublicPrivateLinkNetworkingAccessLinksList;
-  /** Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`. For AWS, Azure, and GCP connections, use `PRIVATE_LINK` for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively. */
-  type?: StreamsPublicPrivateLinkNetworkingAccessType;
-}
-export const StreamsPublicPrivateLinkNetworkingAccess = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      connectionId: S.optional(S.String),
-      links: S.optional(StreamsPublicPrivateLinkNetworkingAccessLinksList),
-      type: S.optional(StreamsPublicPrivateLinkNetworkingAccessType),
-    }),
-).annotate({
-  identifier: "StreamsPublicPrivateLinkNetworkingAccess",
-}) as any as S.Schema<StreamsPublicPrivateLinkNetworkingAccess>;
-
-/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-export type StreamsPublicPrivateLinkNetworkingLinksList = Array<Link>;
-export const StreamsPublicPrivateLinkNetworkingLinksList =
-  /*@__PURE__*/ S.Array(
-    Link,
-  ) as any as S.Schema<StreamsPublicPrivateLinkNetworkingLinksList>;
-
-/** Networking configuration for connections that support `PUBLIC` and `PRIVATE_LINK` access types. For GCP connections, use `PRIVATE_LINK` for GCP Private Service Connect (PSC). */
-export interface StreamsPublicPrivateLinkNetworking {
-  access?: StreamsPublicPrivateLinkNetworkingAccess;
-  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-  links?: StreamsPublicPrivateLinkNetworkingLinksList;
-}
-export const StreamsPublicPrivateLinkNetworking = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access: S.optional(StreamsPublicPrivateLinkNetworkingAccess),
-    links: S.optional(StreamsPublicPrivateLinkNetworkingLinksList),
-  }),
-).annotate({
-  identifier: "StreamsPublicPrivateLinkNetworking",
-}) as any as S.Schema<StreamsPublicPrivateLinkNetworking>;
-
-/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsGCPConnectionConfigLinksList = Array<Link>;
 export const StreamsGCPConnectionConfigLinksList = /*@__PURE__*/ S.Array(
   Link,
@@ -25873,7 +26716,7 @@ export const StreamsClusterConnectionOutputLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StreamsClusterConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsClusterConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -25881,7 +26724,7 @@ export type StreamsClusterConnectionOutputState =
   | "FAILED";
 export const StreamsClusterConnectionOutputState = /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsClusterConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -25896,14 +26739,14 @@ export const StreamsClusterConnectionOutputType = /*@__PURE__*/ S.String;
 
 export interface StreamsClusterConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsClusterConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -25912,30 +26755,30 @@ export interface StreamsClusterConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider?: StreamsClusterConnectionOutputProvider;
   schemaRegistryAuthentication?: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls?: StreamsClusterConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsClusterConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsClusterConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsClusterConnectionOutputType;
 }
 export const StreamsClusterConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    clusterGroupId: S.optional(S.String),
+    clusterGroupId: S.optional(S.NullOr(S.String)),
     clusterName: S.optional(S.String),
     dbRoleToExecute: S.optional(DBRoleToExecute),
     authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -25946,6 +26789,7 @@ export const StreamsClusterConnectionOutput = /*@__PURE__*/ S.suspend(() =>
     headers: S.optional(StreamsClusterConnectionOutputHeadersMap),
     url: S.optional(S.String),
     aws: S.optional(StreamsAWSConnectionConfig),
+    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     provider: S.optional(StreamsClusterConnectionOutputProvider),
     schemaRegistryAuthentication: S.optional(
       SchemaRegistryAuthenticationOutput,
@@ -25954,7 +26798,6 @@ export const StreamsClusterConnectionOutput = /*@__PURE__*/ S.suspend(() =>
       StreamsClusterConnectionOutputSchemaRegistryUrlsList,
     ),
     azure: S.optional(AzureConnection),
-    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     gcp: S.optional(StreamsGCPConnectionConfig),
     id: S.optional(S.String),
     links: S.optional(StreamsClusterConnectionOutputLinksList),
@@ -25967,7 +26810,7 @@ export const StreamsClusterConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsClusterConnectionOutput",
 }) as any as S.Schema<StreamsClusterConnectionOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsKafkaConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -26002,7 +26845,7 @@ export const StreamsKafkaConnectionOutputLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StreamsKafkaConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsKafkaConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -26010,7 +26853,7 @@ export type StreamsKafkaConnectionOutputState =
   | "FAILED";
 export const StreamsKafkaConnectionOutputState = /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsKafkaConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -26025,14 +26868,14 @@ export const StreamsKafkaConnectionOutputType = /*@__PURE__*/ S.String;
 
 export interface StreamsKafkaConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsKafkaConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -26041,30 +26884,30 @@ export interface StreamsKafkaConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider?: StreamsKafkaConnectionOutputProvider;
   schemaRegistryAuthentication?: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls?: StreamsKafkaConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsKafkaConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsKafkaConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsKafkaConnectionOutputType;
 }
 export const StreamsKafkaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    clusterGroupId: S.optional(S.String),
+    clusterGroupId: S.optional(S.NullOr(S.String)),
     clusterName: S.optional(S.String),
     dbRoleToExecute: S.optional(DBRoleToExecute),
     authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -26075,6 +26918,7 @@ export const StreamsKafkaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
     headers: S.optional(StreamsKafkaConnectionOutputHeadersMap),
     url: S.optional(S.String),
     aws: S.optional(StreamsAWSConnectionConfig),
+    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     provider: S.optional(StreamsKafkaConnectionOutputProvider),
     schemaRegistryAuthentication: S.optional(
       SchemaRegistryAuthenticationOutput,
@@ -26083,7 +26927,6 @@ export const StreamsKafkaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
       StreamsKafkaConnectionOutputSchemaRegistryUrlsList,
     ),
     azure: S.optional(AzureConnection),
-    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     gcp: S.optional(StreamsGCPConnectionConfig),
     id: S.optional(S.String),
     links: S.optional(StreamsKafkaConnectionOutputLinksList),
@@ -26096,7 +26939,7 @@ export const StreamsKafkaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsKafkaConnectionOutput",
 }) as any as S.Schema<StreamsKafkaConnectionOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsHttpsConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -26131,7 +26974,7 @@ export const StreamsHttpsConnectionOutputLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StreamsHttpsConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsHttpsConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -26139,7 +26982,7 @@ export type StreamsHttpsConnectionOutputState =
   | "FAILED";
 export const StreamsHttpsConnectionOutputState = /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsHttpsConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -26154,14 +26997,14 @@ export const StreamsHttpsConnectionOutputType = /*@__PURE__*/ S.String;
 
 export interface StreamsHttpsConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsHttpsConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -26170,30 +27013,30 @@ export interface StreamsHttpsConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider?: StreamsHttpsConnectionOutputProvider;
   schemaRegistryAuthentication?: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls?: StreamsHttpsConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsHttpsConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsHttpsConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsHttpsConnectionOutputType;
 }
 export const StreamsHttpsConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    clusterGroupId: S.optional(S.String),
+    clusterGroupId: S.optional(S.NullOr(S.String)),
     clusterName: S.optional(S.String),
     dbRoleToExecute: S.optional(DBRoleToExecute),
     authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -26204,6 +27047,7 @@ export const StreamsHttpsConnectionOutput = /*@__PURE__*/ S.suspend(() =>
     headers: S.optional(StreamsHttpsConnectionOutputHeadersMap),
     url: S.optional(S.String),
     aws: S.optional(StreamsAWSConnectionConfig),
+    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     provider: S.optional(StreamsHttpsConnectionOutputProvider),
     schemaRegistryAuthentication: S.optional(
       SchemaRegistryAuthenticationOutput,
@@ -26212,7 +27056,6 @@ export const StreamsHttpsConnectionOutput = /*@__PURE__*/ S.suspend(() =>
       StreamsHttpsConnectionOutputSchemaRegistryUrlsList,
     ),
     azure: S.optional(AzureConnection),
-    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     gcp: S.optional(StreamsGCPConnectionConfig),
     id: S.optional(S.String),
     links: S.optional(StreamsHttpsConnectionOutputLinksList),
@@ -26225,7 +27068,7 @@ export const StreamsHttpsConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsHttpsConnectionOutput",
 }) as any as S.Schema<StreamsHttpsConnectionOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsAWSLambdaConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -26262,7 +27105,7 @@ export const StreamsAWSLambdaConnectionOutputLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StreamsAWSLambdaConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsAWSLambdaConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -26270,7 +27113,7 @@ export type StreamsAWSLambdaConnectionOutputState =
   | "FAILED";
 export const StreamsAWSLambdaConnectionOutputState = /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsAWSLambdaConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -26286,14 +27129,14 @@ export const StreamsAWSLambdaConnectionOutputType = /*@__PURE__*/ S.String;
 /** The configuration for AWS Lambda connections. */
 export interface StreamsAWSLambdaConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsAWSLambdaConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -26302,30 +27145,30 @@ export interface StreamsAWSLambdaConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider?: StreamsAWSLambdaConnectionOutputProvider;
   schemaRegistryAuthentication?: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls?: StreamsAWSLambdaConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsAWSLambdaConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsAWSLambdaConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsAWSLambdaConnectionOutputType;
 }
 export const StreamsAWSLambdaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    clusterGroupId: S.optional(S.String),
+    clusterGroupId: S.optional(S.NullOr(S.String)),
     clusterName: S.optional(S.String),
     dbRoleToExecute: S.optional(DBRoleToExecute),
     authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -26336,6 +27179,7 @@ export const StreamsAWSLambdaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
     headers: S.optional(StreamsAWSLambdaConnectionOutputHeadersMap),
     url: S.optional(S.String),
     aws: S.optional(StreamsAWSConnectionConfig),
+    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     provider: S.optional(StreamsAWSLambdaConnectionOutputProvider),
     schemaRegistryAuthentication: S.optional(
       SchemaRegistryAuthenticationOutput,
@@ -26344,7 +27188,6 @@ export const StreamsAWSLambdaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
       StreamsAWSLambdaConnectionOutputSchemaRegistryUrlsList,
     ),
     azure: S.optional(AzureConnection),
-    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     gcp: S.optional(StreamsGCPConnectionConfig),
     id: S.optional(S.String),
     links: S.optional(StreamsAWSLambdaConnectionOutputLinksList),
@@ -26357,7 +27200,7 @@ export const StreamsAWSLambdaConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsAWSLambdaConnectionOutput",
 }) as any as S.Schema<StreamsAWSLambdaConnectionOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsS3ConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -26392,7 +27235,7 @@ export const StreamsS3ConnectionOutputLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StreamsS3ConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsS3ConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -26400,7 +27243,7 @@ export type StreamsS3ConnectionOutputState =
   | "FAILED";
 export const StreamsS3ConnectionOutputState = /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsS3ConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -26416,14 +27259,14 @@ export const StreamsS3ConnectionOutputType = /*@__PURE__*/ S.String;
 /** The configuration for S3 connections. */
 export interface StreamsS3ConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsS3ConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -26432,30 +27275,30 @@ export interface StreamsS3ConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider?: StreamsS3ConnectionOutputProvider;
   schemaRegistryAuthentication?: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls?: StreamsS3ConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsS3ConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsS3ConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsS3ConnectionOutputType;
 }
 export const StreamsS3ConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    clusterGroupId: S.optional(S.String),
+    clusterGroupId: S.optional(S.NullOr(S.String)),
     clusterName: S.optional(S.String),
     dbRoleToExecute: S.optional(DBRoleToExecute),
     authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -26466,6 +27309,7 @@ export const StreamsS3ConnectionOutput = /*@__PURE__*/ S.suspend(() =>
     headers: S.optional(StreamsS3ConnectionOutputHeadersMap),
     url: S.optional(S.String),
     aws: S.optional(StreamsAWSConnectionConfig),
+    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     provider: S.optional(StreamsS3ConnectionOutputProvider),
     schemaRegistryAuthentication: S.optional(
       SchemaRegistryAuthenticationOutput,
@@ -26474,7 +27318,6 @@ export const StreamsS3ConnectionOutput = /*@__PURE__*/ S.suspend(() =>
       StreamsS3ConnectionOutputSchemaRegistryUrlsList,
     ),
     azure: S.optional(AzureConnection),
-    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     gcp: S.optional(StreamsGCPConnectionConfig),
     id: S.optional(S.String),
     links: S.optional(StreamsS3ConnectionOutputLinksList),
@@ -26487,7 +27330,7 @@ export const StreamsS3ConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsS3ConnectionOutput",
 }) as any as S.Schema<StreamsS3ConnectionOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsAWSKinesisDataStreamsConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -26527,7 +27370,7 @@ export const StreamsAWSKinesisDataStreamsConnectionOutputLinksList =
     Link,
   ) as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsAWSKinesisDataStreamsConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -26536,7 +27379,7 @@ export type StreamsAWSKinesisDataStreamsConnectionOutputState =
 export const StreamsAWSKinesisDataStreamsConnectionOutputState =
   /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsAWSKinesisDataStreamsConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -26553,14 +27396,14 @@ export const StreamsAWSKinesisDataStreamsConnectionOutputType =
 /** The configuration for AWS Kinesis Data Stream connections. */
 export interface StreamsAWSKinesisDataStreamsConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsAWSKinesisDataStreamsConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -26569,31 +27412,31 @@ export interface StreamsAWSKinesisDataStreamsConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider?: StreamsAWSKinesisDataStreamsConnectionOutputProvider;
   schemaRegistryAuthentication?: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls?: StreamsAWSKinesisDataStreamsConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsAWSKinesisDataStreamsConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsAWSKinesisDataStreamsConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsAWSKinesisDataStreamsConnectionOutputType;
 }
 export const StreamsAWSKinesisDataStreamsConnectionOutput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      clusterGroupId: S.optional(S.String),
+      clusterGroupId: S.optional(S.NullOr(S.String)),
       clusterName: S.optional(S.String),
       dbRoleToExecute: S.optional(DBRoleToExecute),
       authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -26606,6 +27449,7 @@ export const StreamsAWSKinesisDataStreamsConnectionOutput =
       ),
       url: S.optional(S.String),
       aws: S.optional(StreamsAWSConnectionConfig),
+      publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
       provider: S.optional(
         StreamsAWSKinesisDataStreamsConnectionOutputProvider,
       ),
@@ -26616,7 +27460,6 @@ export const StreamsAWSKinesisDataStreamsConnectionOutput =
         StreamsAWSKinesisDataStreamsConnectionOutputSchemaRegistryUrlsList,
       ),
       azure: S.optional(AzureConnection),
-      publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
       gcp: S.optional(StreamsGCPConnectionConfig),
       id: S.optional(S.String),
       links: S.optional(StreamsAWSKinesisDataStreamsConnectionOutputLinksList),
@@ -26629,7 +27472,7 @@ export const StreamsAWSKinesisDataStreamsConnectionOutput =
     identifier: "StreamsAWSKinesisDataStreamsConnectionOutput",
   }) as any as S.Schema<StreamsAWSKinesisDataStreamsConnectionOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsSchemaRegistryConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -26669,7 +27512,7 @@ export const StreamsSchemaRegistryConnectionOutputLinksList =
     Link,
   ) as any as S.Schema<StreamsSchemaRegistryConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsSchemaRegistryConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -26678,7 +27521,7 @@ export type StreamsSchemaRegistryConnectionOutputState =
 export const StreamsSchemaRegistryConnectionOutputState =
   /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsSchemaRegistryConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -26694,14 +27537,14 @@ export const StreamsSchemaRegistryConnectionOutputType = /*@__PURE__*/ S.String;
 /** The configuration for Schema Registry connections. */
 export interface StreamsSchemaRegistryConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsSchemaRegistryConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -26710,31 +27553,31 @@ export interface StreamsSchemaRegistryConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider: StreamsSchemaRegistryConnectionOutputProvider;
   schemaRegistryAuthentication: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls: StreamsSchemaRegistryConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsSchemaRegistryConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsSchemaRegistryConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsSchemaRegistryConnectionOutputType;
 }
 export const StreamsSchemaRegistryConnectionOutput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      clusterGroupId: S.optional(S.String),
+      clusterGroupId: S.optional(S.NullOr(S.String)),
       clusterName: S.optional(S.String),
       dbRoleToExecute: S.optional(DBRoleToExecute),
       authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -26745,12 +27588,12 @@ export const StreamsSchemaRegistryConnectionOutput = /*@__PURE__*/ S.suspend(
       headers: S.optional(StreamsSchemaRegistryConnectionOutputHeadersMap),
       url: S.optional(S.String),
       aws: S.optional(StreamsAWSConnectionConfig),
+      publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
       provider: StreamsSchemaRegistryConnectionOutputProvider,
       schemaRegistryAuthentication: SchemaRegistryAuthenticationOutput,
       schemaRegistryUrls:
         StreamsSchemaRegistryConnectionOutputSchemaRegistryUrlsList,
       azure: S.optional(AzureConnection),
-      publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
       gcp: S.optional(StreamsGCPConnectionConfig),
       id: S.optional(S.String),
       links: S.optional(StreamsSchemaRegistryConnectionOutputLinksList),
@@ -26763,7 +27606,7 @@ export const StreamsSchemaRegistryConnectionOutput = /*@__PURE__*/ S.suspend(
   identifier: "StreamsSchemaRegistryConnectionOutput",
 }) as any as S.Schema<StreamsSchemaRegistryConnectionOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsAzureBlobStorageConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -26803,7 +27646,7 @@ export const StreamsAzureBlobStorageConnectionOutputLinksList =
     Link,
   ) as any as S.Schema<StreamsAzureBlobStorageConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsAzureBlobStorageConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -26812,7 +27655,7 @@ export type StreamsAzureBlobStorageConnectionOutputState =
 export const StreamsAzureBlobStorageConnectionOutputState =
   /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsAzureBlobStorageConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -26829,14 +27672,14 @@ export const StreamsAzureBlobStorageConnectionOutputType =
 /** The configuration for Azure Blob Storage connections. */
 export interface StreamsAzureBlobStorageConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsAzureBlobStorageConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -26845,31 +27688,31 @@ export interface StreamsAzureBlobStorageConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider?: StreamsAzureBlobStorageConnectionOutputProvider;
   schemaRegistryAuthentication?: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls?: StreamsAzureBlobStorageConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsAzureBlobStorageConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsAzureBlobStorageConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsAzureBlobStorageConnectionOutputType;
 }
 export const StreamsAzureBlobStorageConnectionOutput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      clusterGroupId: S.optional(S.String),
+      clusterGroupId: S.optional(S.NullOr(S.String)),
       clusterName: S.optional(S.String),
       dbRoleToExecute: S.optional(DBRoleToExecute),
       authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -26880,6 +27723,7 @@ export const StreamsAzureBlobStorageConnectionOutput = /*@__PURE__*/ S.suspend(
       headers: S.optional(StreamsAzureBlobStorageConnectionOutputHeadersMap),
       url: S.optional(S.String),
       aws: S.optional(StreamsAWSConnectionConfig),
+      publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
       provider: S.optional(StreamsAzureBlobStorageConnectionOutputProvider),
       schemaRegistryAuthentication: S.optional(
         SchemaRegistryAuthenticationOutput,
@@ -26888,7 +27732,6 @@ export const StreamsAzureBlobStorageConnectionOutput = /*@__PURE__*/ S.suspend(
         StreamsAzureBlobStorageConnectionOutputSchemaRegistryUrlsList,
       ),
       azure: S.optional(AzureConnection),
-      publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
       gcp: S.optional(StreamsGCPConnectionConfig),
       id: S.optional(S.String),
       links: S.optional(StreamsAzureBlobStorageConnectionOutputLinksList),
@@ -26901,7 +27744,7 @@ export const StreamsAzureBlobStorageConnectionOutput = /*@__PURE__*/ S.suspend(
   identifier: "StreamsAzureBlobStorageConnectionOutput",
 }) as any as S.Schema<StreamsAzureBlobStorageConnectionOutput>;
 
-/** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
 export type StreamsGCPPubSubConnectionOutputConfigMap = {
   [key: string]: string | undefined;
 };
@@ -26938,7 +27781,7 @@ export const StreamsGCPPubSubConnectionOutputLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StreamsGCPPubSubConnectionOutputLinksList>;
 
-/** The state of the connection. */
+/** Connection state. */
 export type StreamsGCPPubSubConnectionOutputState =
   | "PENDING"
   | "READY"
@@ -26946,7 +27789,7 @@ export type StreamsGCPPubSubConnectionOutputState =
   | "FAILED";
 export const StreamsGCPPubSubConnectionOutputState = /*@__PURE__*/ S.String;
 
-/** Type of the connection. */
+/** Connection type. */
 export type StreamsGCPPubSubConnectionOutputType =
   | "Kafka"
   | "Cluster"
@@ -26962,14 +27805,14 @@ export const StreamsGCPPubSubConnectionOutputType = /*@__PURE__*/ S.String;
 /** The configuration for GCP Pub/Sub connections. */
 export interface StreamsGCPPubSubConnectionOutput {
   /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
-  clusterGroupId?: string;
+  clusterGroupId?: string | null;
   /** Name of the cluster configured for this connection. */
   clusterName?: string;
   dbRoleToExecute?: DBRoleToExecute;
   authentication?: StreamsKafkaAuthenticationOutput;
   /** Comma separated list of server addresses. */
   bootstrapServers?: string;
-  /** A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters. */
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
   config?: StreamsGCPPubSubConnectionOutputConfigMap;
   networking?: StreamsKafkaNetworking;
   security?: StreamsKafkaSecurity;
@@ -26978,30 +27821,30 @@ export interface StreamsGCPPubSubConnectionOutput {
   /** The URL to be used for the request. */
   url?: string;
   aws?: StreamsAWSConnectionConfig;
+  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   /** The Schema Registry provider. */
   provider?: StreamsGCPPubSubConnectionOutputProvider;
   schemaRegistryAuthentication?: SchemaRegistryAuthenticationOutput;
   /** List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. */
   schemaRegistryUrls?: StreamsGCPPubSubConnectionOutputSchemaRegistryUrlsList;
   azure?: AzureConnection;
-  publicPrivateNetworking?: StreamsPublicPrivateLinkNetworking;
   gcp?: StreamsGCPConnectionConfig;
   /** Unique identifier of the connection. */
   id?: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsGCPPubSubConnectionOutputLinksList;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** The state of the connection. */
+  /** Connection state. */
   state?: StreamsGCPPubSubConnectionOutputState;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: StreamsGCPPubSubConnectionOutputType;
 }
 export const StreamsGCPPubSubConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    clusterGroupId: S.optional(S.String),
+    clusterGroupId: S.optional(S.NullOr(S.String)),
     clusterName: S.optional(S.String),
     dbRoleToExecute: S.optional(DBRoleToExecute),
     authentication: S.optional(StreamsKafkaAuthenticationOutput),
@@ -27012,6 +27855,7 @@ export const StreamsGCPPubSubConnectionOutput = /*@__PURE__*/ S.suspend(() =>
     headers: S.optional(StreamsGCPPubSubConnectionOutputHeadersMap),
     url: S.optional(S.String),
     aws: S.optional(StreamsAWSConnectionConfig),
+    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     provider: S.optional(StreamsGCPPubSubConnectionOutputProvider),
     schemaRegistryAuthentication: S.optional(
       SchemaRegistryAuthenticationOutput,
@@ -27020,7 +27864,6 @@ export const StreamsGCPPubSubConnectionOutput = /*@__PURE__*/ S.suspend(() =>
       StreamsGCPPubSubConnectionOutputSchemaRegistryUrlsList,
     ),
     azure: S.optional(AzureConnection),
-    publicPrivateNetworking: S.optional(StreamsPublicPrivateLinkNetworking),
     gcp: S.optional(StreamsGCPConnectionConfig),
     id: S.optional(S.String),
     links: S.optional(StreamsGCPPubSubConnectionOutputLinksList),
@@ -27047,17 +27890,10 @@ export type StreamsConnectionOutput =
 export const StreamsConnectionOutput =
   /*@__PURE__*/ S.Unknown as any as S.Schema<StreamsConnectionOutput>;
 
-/** Type of the connection. */
+/** Connection type. */
 export type CreateGroupStreamConnectionFailoverConnectionRequestType =
   | "Kafka"
-  | "Cluster"
-  | "Sample"
-  | "Https"
-  | "AzureBlobStorage"
-  | "AWSLambda"
-  | "AWSKinesisDataStreams"
-  | "SchemaRegistry"
-  | "GCPPubSub";
+  | "Cluster";
 export const CreateGroupStreamConnectionFailoverConnectionRequestType =
   /*@__PURE__*/ S.String;
 
@@ -27072,11 +27908,11 @@ export interface CreateGroupStreamConnectionFailoverConnectionRequest {
   envelope?: boolean;
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** Type of the connection. */
+  /** Connection type. */
   type?:
     | CreateGroupStreamConnectionFailoverConnectionRequestType
     | (string & {});
@@ -27105,6 +27941,177 @@ export const CreateGroupStreamConnectionFailoverConnectionRequest =
   ).annotate({
     identifier: "CreateGroupStreamConnectionFailoverConnectionRequest",
   }) as any as S.Schema<CreateGroupStreamConnectionFailoverConnectionRequest>;
+
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
+export type StreamsFailoverClusterConnectionOutputConfigMap = {
+  [key: string]: string | undefined;
+};
+export const StreamsFailoverClusterConnectionOutputConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StreamsFailoverClusterConnectionOutputConfigMap>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type StreamsFailoverClusterConnectionOutputLinksList = Array<Link>;
+export const StreamsFailoverClusterConnectionOutputLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<StreamsFailoverClusterConnectionOutputLinksList>;
+
+/** Connection state. */
+export type StreamsFailoverClusterConnectionOutputState =
+  | "PENDING"
+  | "READY"
+  | "DELETING"
+  | "FAILED";
+export const StreamsFailoverClusterConnectionOutputState =
+  /*@__PURE__*/ S.String;
+
+/** Connection type. */
+export type StreamsFailoverClusterConnectionOutputType = "Kafka" | "Cluster";
+export const StreamsFailoverClusterConnectionOutputType =
+  /*@__PURE__*/ S.String;
+
+export interface StreamsFailoverClusterConnectionOutput {
+  authentication?: StreamsKafkaAuthenticationOutput;
+  /** Comma separated list of server addresses. */
+  bootstrapServers?: string;
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
+  config?: StreamsFailoverClusterConnectionOutputConfigMap;
+  networking?: StreamsKafkaNetworking;
+  security?: StreamsKafkaSecurity;
+  /** Unique identifier of the connection. */
+  id?: string;
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: StreamsFailoverClusterConnectionOutputLinksList;
+  /** Human-readable label that identifies the stream connection. */
+  name?: string;
+  /** Connection region. */
+  region?: string;
+  /** Connection state. */
+  state?: StreamsFailoverClusterConnectionOutputState;
+  /** Connection type. */
+  type?: StreamsFailoverClusterConnectionOutputType;
+  /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
+  clusterGroupId?: string | null;
+  /** Name of the cluster configured for this connection. */
+  clusterName?: string;
+  dbRoleToExecute?: DBRoleToExecute;
+}
+export const StreamsFailoverClusterConnectionOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authentication: S.optional(StreamsKafkaAuthenticationOutput),
+      bootstrapServers: S.optional(S.String),
+      config: S.optional(StreamsFailoverClusterConnectionOutputConfigMap),
+      networking: S.optional(StreamsKafkaNetworking),
+      security: S.optional(StreamsKafkaSecurity),
+      id: S.optional(S.String),
+      links: S.optional(StreamsFailoverClusterConnectionOutputLinksList),
+      name: S.optional(S.String),
+      region: S.optional(S.String),
+      state: S.optional(StreamsFailoverClusterConnectionOutputState),
+      type: S.optional(StreamsFailoverClusterConnectionOutputType),
+      clusterGroupId: S.optional(S.NullOr(S.String)),
+      clusterName: S.optional(S.String),
+      dbRoleToExecute: S.optional(DBRoleToExecute),
+    }),
+).annotate({
+  identifier: "StreamsFailoverClusterConnectionOutput",
+}) as any as S.Schema<StreamsFailoverClusterConnectionOutput>;
+
+/** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
+export type StreamsFailoverKafkaConnectionOutputConfigMap = {
+  [key: string]: string | undefined;
+};
+export const StreamsFailoverKafkaConnectionOutputConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StreamsFailoverKafkaConnectionOutputConfigMap>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type StreamsFailoverKafkaConnectionOutputLinksList = Array<Link>;
+export const StreamsFailoverKafkaConnectionOutputLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<StreamsFailoverKafkaConnectionOutputLinksList>;
+
+/** Connection state. */
+export type StreamsFailoverKafkaConnectionOutputState =
+  | "PENDING"
+  | "READY"
+  | "DELETING"
+  | "FAILED";
+export const StreamsFailoverKafkaConnectionOutputState = /*@__PURE__*/ S.String;
+
+/** Connection type. */
+export type StreamsFailoverKafkaConnectionOutputType = "Kafka" | "Cluster";
+export const StreamsFailoverKafkaConnectionOutputType = /*@__PURE__*/ S.String;
+
+export interface StreamsFailoverKafkaConnectionOutput {
+  authentication?: StreamsKafkaAuthenticationOutput;
+  /** Comma separated list of server addresses. */
+  bootstrapServers?: string;
+  /** Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters. */
+  config?: StreamsFailoverKafkaConnectionOutputConfigMap;
+  networking?: StreamsKafkaNetworking;
+  security?: StreamsKafkaSecurity;
+  /** Unique identifier of the connection. */
+  id?: string;
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: StreamsFailoverKafkaConnectionOutputLinksList;
+  /** Human-readable label that identifies the stream connection. */
+  name?: string;
+  /** Connection region. */
+  region?: string;
+  /** Connection state. */
+  state?: StreamsFailoverKafkaConnectionOutputState;
+  /** Connection type. */
+  type?: StreamsFailoverKafkaConnectionOutputType;
+  /** Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. */
+  clusterGroupId?: string | null;
+  /** Name of the cluster configured for this connection. */
+  clusterName?: string;
+  dbRoleToExecute?: DBRoleToExecute;
+}
+export const StreamsFailoverKafkaConnectionOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authentication: S.optional(StreamsKafkaAuthenticationOutput),
+      bootstrapServers: S.optional(S.String),
+      config: S.optional(StreamsFailoverKafkaConnectionOutputConfigMap),
+      networking: S.optional(StreamsKafkaNetworking),
+      security: S.optional(StreamsKafkaSecurity),
+      id: S.optional(S.String),
+      links: S.optional(StreamsFailoverKafkaConnectionOutputLinksList),
+      name: S.optional(S.String),
+      region: S.optional(S.String),
+      state: S.optional(StreamsFailoverKafkaConnectionOutputState),
+      type: S.optional(StreamsFailoverKafkaConnectionOutputType),
+      clusterGroupId: S.optional(S.NullOr(S.String)),
+      clusterName: S.optional(S.String),
+      dbRoleToExecute: S.optional(DBRoleToExecute),
+    }),
+).annotate({
+  identifier: "StreamsFailoverKafkaConnectionOutput",
+}) as any as S.Schema<StreamsFailoverKafkaConnectionOutput>;
+
+/** Settings that define a failover connection to an external data store. */
+export type StreamsFailoverConnectionOutput =
+  | StreamsFailoverClusterConnectionOutput
+  | StreamsFailoverKafkaConnectionOutput;
+export const StreamsFailoverConnectionOutput =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<StreamsFailoverConnectionOutput>;
+
+/** Authentication mechanism to use with this private networking connection. */
+export type CreateGroupStreamPrivateLinkConnectionRequestAuthenticationScheme =
+  | "TLS"
+  | "SASL_SCRAM"
+  | "IAM";
+export const CreateGroupStreamPrivateLinkConnectionRequestAuthenticationScheme =
+  /*@__PURE__*/ S.String;
 
 /** Azure Resource IDs of each availability zone for the Azure Confluent cluster. */
 export type CreateGroupStreamPrivateLinkConnectionRequestAzureResourceIdsList =
@@ -27147,6 +28154,10 @@ export interface CreateGroupStreamPrivateLinkConnectionRequest {
   pretty?: boolean;
   /** Amazon Resource Name (ARN). Required for AWS Provider and MSK vendor. */
   arn?: string;
+  /** Authentication mechanism to use with this private networking connection. */
+  authenticationScheme?:
+    | CreateGroupStreamPrivateLinkConnectionRequestAuthenticationScheme
+    | (string & {});
   /** Azure Resource IDs of each availability zone for the Azure Confluent cluster. */
   azureResourceIds?: CreateGroupStreamPrivateLinkConnectionRequestAzureResourceIdsList;
   /** The domain hostname. Required for the following provider and vendor combinations: - AWS provider with CONFLUENT vendor. - AZURE provider with EVENTHUB or CONFLUENT vendor. */
@@ -27163,7 +28174,7 @@ export interface CreateGroupStreamPrivateLinkConnectionRequest {
   region?: string;
   /** For AZURE EVENTHUB, this is the [namespace endpoint ID](https://learn.microsoft.com/en-us/rest/api/eventhub/namespaces/get). For AWS CONFLUENT cluster, this is the [VPC Endpoint service name](https://docs.confluent.io/cloud/current/networking/private-links/aws-privatelink.html). */
   serviceEndpointId?: string;
-  /** Vendor that manages the cloud service. The list of supported vendor values is: - AWS -- `MSK` for AWS MSK Kafka clusters -- `CONFLUENT` for Confluent Kafka clusters on AWS -- `KINESIS` for AWS Kinesis Data Streams - Azure -- `EVENTHUB` for Azure EventHub. -- `CONFLUENT` for Confluent Kafka clusters on Azure -- `AZURE_BLOB_STORAGE` for Azure Blob Storage - GCP -- `CONFLUENT` for Confluent Kafka clusters on GCP -- `PUBSUB` for Google Cloud Pub/Sub **NOTE** Omitting the vendor field will default to using the GENERIC vendor. */
+  /** Vendor that manages the cloud service. The list of supported vendor values is: - AWS -- `MSK` for AWS MSK Kafka clusters -- `CONFLUENT` for Confluent Kafka clusters on AWS -- `KINESIS` for AWS Kinesis Data Streams -- `S3` for AWS S3 -- `LAMBDA` for AWS Lambda - Azure -- `EVENTHUB` for Azure EventHub. -- `CONFLUENT` for Confluent Kafka clusters on Azure -- `AZURE_BLOB_STORAGE` for Azure Blob Storage - GCP -- `CONFLUENT` for Confluent Kafka clusters on GCP -- `PUBSUB` for Google Cloud Pub/Sub **NOTE** Omitting the vendor field will default to using the GENERIC vendor. */
   vendor?: string;
 }
 export const CreateGroupStreamPrivateLinkConnectionRequest =
@@ -27173,6 +28184,9 @@ export const CreateGroupStreamPrivateLinkConnectionRequest =
       envelope: S.optional(S.Boolean.pipe(T.Query())),
       pretty: S.optional(S.Boolean.pipe(T.Query())),
       arn: S.optional(S.String),
+      authenticationScheme: S.optional(
+        CreateGroupStreamPrivateLinkConnectionRequestAuthenticationScheme,
+      ),
       azureResourceIds: S.optional(
         CreateGroupStreamPrivateLinkConnectionRequestAzureResourceIdsList,
       ),
@@ -27201,6 +28215,14 @@ export const CreateGroupStreamPrivateLinkConnectionRequest =
   ).annotate({
     identifier: "CreateGroupStreamPrivateLinkConnectionRequest",
   }) as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequest>;
+
+/** Authentication mechanism to use with this private networking connection. */
+export type StreamsPrivateLinkConnectionAuthenticationScheme =
+  | "TLS"
+  | "SASL_SCRAM"
+  | "IAM";
+export const StreamsPrivateLinkConnectionAuthenticationScheme =
+  /*@__PURE__*/ S.String;
 
 /** Azure Resource IDs of each availability zone for the Azure Confluent cluster. */
 export type StreamsPrivateLinkConnectionAzureResourceIdsList = Array<string>;
@@ -27243,6 +28265,8 @@ export interface StreamsPrivateLinkConnection {
   _id?: string;
   /** Amazon Resource Name (ARN). Required for AWS Provider and MSK vendor. */
   arn?: string;
+  /** Authentication mechanism to use with this private networking connection. */
+  authenticationScheme?: StreamsPrivateLinkConnectionAuthenticationScheme;
   /** Azure Resource IDs of each availability zone for the Azure Confluent cluster. */
   azureResourceIds?: StreamsPrivateLinkConnectionAzureResourceIdsList;
   /** The domain hostname. Required for the following provider and vendor combinations: - AWS provider with CONFLUENT vendor. - AZURE provider with EVENTHUB or CONFLUENT vendor. */
@@ -27271,13 +28295,16 @@ export interface StreamsPrivateLinkConnection {
   serviceEndpointId?: string;
   /** State the connection is in. */
   state?: string;
-  /** Vendor that manages the cloud service. The list of supported vendor values is: - AWS -- `MSK` for AWS MSK Kafka clusters -- `CONFLUENT` for Confluent Kafka clusters on AWS -- `KINESIS` for AWS Kinesis Data Streams - Azure -- `EVENTHUB` for Azure EventHub. -- `CONFLUENT` for Confluent Kafka clusters on Azure -- `AZURE_BLOB_STORAGE` for Azure Blob Storage - GCP -- `CONFLUENT` for Confluent Kafka clusters on GCP -- `PUBSUB` for Google Cloud Pub/Sub **NOTE** Omitting the vendor field will default to using the GENERIC vendor. */
+  /** Vendor that manages the cloud service. The list of supported vendor values is: - AWS -- `MSK` for AWS MSK Kafka clusters -- `CONFLUENT` for Confluent Kafka clusters on AWS -- `KINESIS` for AWS Kinesis Data Streams -- `S3` for AWS S3 -- `LAMBDA` for AWS Lambda - Azure -- `EVENTHUB` for Azure EventHub. -- `CONFLUENT` for Confluent Kafka clusters on Azure -- `AZURE_BLOB_STORAGE` for Azure Blob Storage - GCP -- `CONFLUENT` for Confluent Kafka clusters on GCP -- `PUBSUB` for Google Cloud Pub/Sub **NOTE** Omitting the vendor field will default to using the GENERIC vendor. */
   vendor?: string;
 }
 export const StreamsPrivateLinkConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     arn: S.optional(S.String),
+    authenticationScheme: S.optional(
+      StreamsPrivateLinkConnectionAuthenticationScheme,
+    ),
     azureResourceIds: S.optional(
       StreamsPrivateLinkConnectionAzureResourceIdsList,
     ),
@@ -27304,6 +28331,43 @@ export const StreamsPrivateLinkConnection = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsPrivateLinkConnection",
 }) as any as S.Schema<StreamsPrivateLinkConnection>;
 
+/** Tier ceiling for autoscaling (scale-up limit). - **Omitted:** - On `CREATE`: falls back to the workspace max tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace max tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
+export type StreamsAutoscalingInputMaxTier =
+  | "SP50"
+  | "SP30"
+  | "SP10"
+  | "SP5"
+  | "SP2";
+export const StreamsAutoscalingInputMaxTier = /*@__PURE__*/ S.String;
+
+/** Tier floor for autoscaling (scale-down limit). - **Omitted:** - On `CREATE`: falls back to the workspace default tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace default tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
+export type StreamsAutoscalingInputMinTier =
+  | "SP50"
+  | "SP30"
+  | "SP10"
+  | "SP5"
+  | "SP2";
+export const StreamsAutoscalingInputMinTier = /*@__PURE__*/ S.String;
+
+/** Autoscaling configuration for a stream processor. */
+export interface StreamsAutoscalingInput {
+  /** Flag that indicates whether autoscaling is enabled. - **Omitted, `null`, or `false`:** - On `CREATE`: a no-op, there is no persisted setting yet to disable or clear. - On `MODIFY` or `:startWith`: omitted preserves the current setting. `null` or `false` disables autoscaling and clears its configuration. - **`true`** on `CREATE`, `MODIFY`, or `:startWith`: enables autoscaling. */
+  enabled?: boolean | null;
+  /** Tier ceiling for autoscaling (scale-up limit). - **Omitted:** - On `CREATE`: falls back to the workspace max tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace max tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
+  maxTier?: StreamsAutoscalingInputMaxTier | (string & {}) | null;
+  /** Tier floor for autoscaling (scale-down limit). - **Omitted:** - On `CREATE`: falls back to the workspace default tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace default tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
+  minTier?: StreamsAutoscalingInputMinTier | (string & {}) | null;
+}
+export const StreamsAutoscalingInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    maxTier: S.optional(S.NullOr(StreamsAutoscalingInputMaxTier)),
+    minTier: S.optional(S.NullOr(StreamsAutoscalingInputMinTier)),
+  }),
+).annotate({
+  identifier: "StreamsAutoscalingInput",
+}) as any as S.Schema<StreamsAutoscalingInput>;
+
 /** Dead letter queue for the stream processor. */
 export interface StreamsDLQInput {
   /** Name of the collection to use for the DLQ. */
@@ -27325,10 +28389,12 @@ export const StreamsDLQInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional configuration for the stream processor. */
 export interface StreamsOptionsInput {
+  autoscaling?: StreamsAutoscalingInput | null;
   dlq?: StreamsDLQInput;
 }
 export const StreamsOptionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    autoscaling: S.optional(S.NullOr(StreamsAutoscalingInput)),
     dlq: S.optional(StreamsDLQInput),
   }),
 ).annotate({
@@ -27348,7 +28414,7 @@ export const CreateGroupStreamProcessorRequestPipelineList =
     Document,
   ) as any as S.Schema<CreateGroupStreamProcessorRequestPipelineList>;
 
-/** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type CreateGroupStreamProcessorRequestTier =
   | "SP50"
   | "SP30"
@@ -27373,7 +28439,7 @@ export interface CreateGroupStreamProcessorRequest {
   options?: StreamsOptionsInput;
   /** Stream aggregation pipeline you want to apply to your streaming data. */
   pipeline?: CreateGroupStreamProcessorRequestPipelineList;
-  /** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
   tier?: CreateGroupStreamProcessorRequestTier | (string & {});
 }
 export const CreateGroupStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
@@ -27399,11 +28465,66 @@ export const CreateGroupStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupStreamProcessorRequest",
 }) as any as S.Schema<CreateGroupStreamProcessorRequest>;
 
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
+export type StreamsProcessorEffectiveTier =
+  | "SP50"
+  | "SP30"
+  | "SP10"
+  | "SP5"
+  | "SP2";
+export const StreamsProcessorEffectiveTier = /*@__PURE__*/ S.String;
+
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsProcessorLinksList = Array<Link>;
 export const StreamsProcessorLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StreamsProcessorLinksList>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type StreamsAutoscalingLinksList = Array<Link>;
+export const StreamsAutoscalingLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<StreamsAutoscalingLinksList>;
+
+/** Tier ceiling for autoscaling (scale-up limit). - **Omitted:** - On `CREATE`: falls back to the workspace max tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace max tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
+export type StreamsAutoscalingMaxTier =
+  | "SP50"
+  | "SP30"
+  | "SP10"
+  | "SP5"
+  | "SP2";
+export const StreamsAutoscalingMaxTier = /*@__PURE__*/ S.String;
+
+/** Tier floor for autoscaling (scale-down limit). - **Omitted:** - On `CREATE`: falls back to the workspace default tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace default tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
+export type StreamsAutoscalingMinTier =
+  | "SP50"
+  | "SP30"
+  | "SP10"
+  | "SP5"
+  | "SP2";
+export const StreamsAutoscalingMinTier = /*@__PURE__*/ S.String;
+
+/** Autoscaling configuration for a stream processor. */
+export interface StreamsAutoscaling {
+  /** Flag that indicates whether autoscaling is enabled. - **Omitted, `null`, or `false`:** - On `CREATE`: a no-op, there is no persisted setting yet to disable or clear. - On `MODIFY` or `:startWith`: omitted preserves the current setting. `null` or `false` disables autoscaling and clears its configuration. - **`true`** on `CREATE`, `MODIFY`, or `:startWith`: enables autoscaling. */
+  enabled?: boolean | null;
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: StreamsAutoscalingLinksList;
+  /** Tier ceiling for autoscaling (scale-up limit). - **Omitted:** - On `CREATE`: falls back to the workspace max tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace max tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
+  maxTier?: StreamsAutoscalingMaxTier | null;
+  /** Tier floor for autoscaling (scale-down limit). - **Omitted:** - On `CREATE`: falls back to the workspace default tier (there is no current bound to preserve). - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace default tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier. */
+  minTier?: StreamsAutoscalingMinTier | null;
+}
+export const StreamsAutoscaling = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    links: S.optional(StreamsAutoscalingLinksList),
+    maxTier: S.optional(S.NullOr(StreamsAutoscalingMaxTier)),
+    minTier: S.optional(S.NullOr(StreamsAutoscalingMinTier)),
+  }),
+).annotate({
+  identifier: "StreamsAutoscaling",
+}) as any as S.Schema<StreamsAutoscaling>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsDLQLinksList = Array<Link>;
@@ -27439,12 +28560,14 @@ export const StreamsOptionsLinksList = /*@__PURE__*/ S.Array(
 
 /** Optional configuration for the stream processor. */
 export interface StreamsOptions {
+  autoscaling?: StreamsAutoscaling | null;
   dlq?: StreamsDLQ;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamsOptionsLinksList;
 }
 export const StreamsOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    autoscaling: S.optional(S.NullOr(StreamsAutoscaling)),
     dlq: S.optional(StreamsDLQ),
     links: S.optional(StreamsOptionsLinksList),
   }),
@@ -27456,7 +28579,7 @@ export const StreamsProcessorPipelineList = /*@__PURE__*/ S.Array(
   Document,
 ) as any as S.Schema<StreamsProcessorPipelineList>;
 
-/** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamsProcessorTier = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
 export const StreamsProcessorTier = /*@__PURE__*/ S.String;
 
@@ -27464,6 +28587,8 @@ export const StreamsProcessorTier = /*@__PURE__*/ S.String;
 export interface StreamsProcessor {
   /** Unique 24-hexadecimal character string that identifies the stream processor. */
   _id?: string;
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
+  effectiveTier: StreamsProcessorEffectiveTier;
   /** Flag that enables or disables failover for the stream processor. */
   failoverEnabled?: boolean;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -27473,12 +28598,13 @@ export interface StreamsProcessor {
   options?: StreamsOptions;
   /** Stream aggregation pipeline you want to apply to your streaming data. */
   pipeline?: StreamsProcessorPipelineList;
-  /** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
   tier?: StreamsProcessorTier;
 }
 export const StreamsProcessor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
+    effectiveTier: StreamsProcessorEffectiveTier,
     failoverEnabled: S.optional(S.Boolean),
     links: S.optional(StreamsProcessorLinksList),
     name: S.optional(S.String),
@@ -27579,7 +28705,7 @@ export const StreamsSampleConnectionsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsSampleConnectionsInput",
 }) as any as S.Schema<StreamsSampleConnectionsInput>;
 
-/** Max tier size for the Stream Workspace. Configures Memory / VCPU allowances. */
+/** Max tier size for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamConfigInputMaxTierSize =
   | "SP50"
   | "SP30"
@@ -27588,15 +28714,15 @@ export type StreamConfigInputMaxTierSize =
   | "SP2";
 export const StreamConfigInputMaxTierSize = /*@__PURE__*/ S.String;
 
-/** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamConfigInputTier = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
 export const StreamConfigInputTier = /*@__PURE__*/ S.String;
 
 /** Configuration options for an Atlas Stream Processing Workspace. */
 export interface StreamConfigInput {
-  /** Max tier size for the Stream Workspace. Configures Memory / VCPU allowances. */
+  /** Max tier size for the Stream Workspace. Configures Memory or VCPU allowances. */
   maxTierSize?: StreamConfigInputMaxTierSize | (string & {});
-  /** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
   tier?: StreamConfigInputTier | (string & {});
 }
 export const StreamConfigInput = /*@__PURE__*/ S.suspend(() =>
@@ -27733,11 +28859,11 @@ export const StreamConfigLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StreamConfigLinksList>;
 
-/** Max tier size for the Stream Workspace. Configures Memory / VCPU allowances. */
+/** Max tier size for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamConfigMaxTierSize = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
 export const StreamConfigMaxTierSize = /*@__PURE__*/ S.String;
 
-/** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamConfigTier = "SP50" | "SP30" | "SP10" | "SP5" | "SP2";
 export const StreamConfigTier = /*@__PURE__*/ S.String;
 
@@ -27745,9 +28871,9 @@ export const StreamConfigTier = /*@__PURE__*/ S.String;
 export interface StreamConfig {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: StreamConfigLinksList;
-  /** Max tier size for the Stream Workspace. Configures Memory / VCPU allowances. */
+  /** Max tier size for the Stream Workspace. Configures Memory or VCPU allowances. */
   maxTierSize?: StreamConfigMaxTierSize;
-  /** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
   tier?: StreamConfigTier;
 }
 export const StreamConfig = /*@__PURE__*/ S.suspend(() =>
@@ -28245,7 +29371,7 @@ export type CreateOrgBillingCostExplorerUsageProcessRequestServicesItem =
   | "Cloud Manager"
   | "Cloud Manager Standard/Premium"
   | "Legacy Backup"
-  | "AI Models"
+  | "AI Model APIs"
   | "Automated Embedding"
   | "Native Reranking"
   | "Flex Consulting"
@@ -28328,6 +29454,98 @@ export const CreateOrgBillingCostExplorerUsageProcessResponse =
     identifier: "CreateOrgBillingCostExplorerUsageProcessResponse",
   }) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessResponse>;
 
+/** Format of the report. */
+export type CreateOrgInvoiceReportRequestReportFormat = "CSV";
+export const CreateOrgInvoiceReportRequestReportFormat = /*@__PURE__*/ S.String;
+
+/** Type of report to generate. */
+export type CreateOrgInvoiceReportRequestReportType = "FOCUS";
+export const CreateOrgInvoiceReportRequestReportType = /*@__PURE__*/ S.String;
+
+export interface CreateOrgInvoiceReportRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique string that identifies the invoice for which to generate the report. */
+  invoiceId: string;
+  /** Version of the report format specification. */
+  formatSpecVersion?: string;
+  /** Format of the report. */
+  reportFormat: CreateOrgInvoiceReportRequestReportFormat | (string & {});
+  /** Type of report to generate. */
+  reportType: CreateOrgInvoiceReportRequestReportType | (string & {});
+}
+export const CreateOrgInvoiceReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    invoiceId: S.String.pipe(T.Label()),
+    formatSpecVersion: S.optional(S.String),
+    reportFormat: CreateOrgInvoiceReportRequestReportFormat,
+    reportType: CreateOrgInvoiceReportRequestReportType,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "CreateOrgInvoiceReportRequest",
+}) as any as S.Schema<CreateOrgInvoiceReportRequest>;
+
+/** Format of the generated report. */
+export type InvoiceReportResponseReportFormat = "CSV";
+export const InvoiceReportResponseReportFormat = /*@__PURE__*/ S.String;
+
+/** Type of the generated report. */
+export type InvoiceReportResponseReportType = "FOCUS";
+export const InvoiceReportResponseReportType = /*@__PURE__*/ S.String;
+
+/** Current state of the report generation. */
+export type InvoiceReportResponseState =
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED";
+export const InvoiceReportResponseState = /*@__PURE__*/ S.String;
+
+/** Status and details of a previously requested invoice report. */
+export interface InvoiceReportResponse {
+  /** URL to download the report. Present only when the report has succeeded. */
+  downloadUrl?: string;
+  /** Time at which the download URL expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Present only when the report has succeeded. */
+  expiresAt?: string;
+  /** Reason the report failed. Present only when the report has failed. */
+  failureReason?: string;
+  /** Version of the report format specification. */
+  formatSpecVersion?: string;
+  /** Unique 24-hexadecimal digit string that identifies the invoice. */
+  invoiceId: string;
+  /** Format of the generated report. */
+  reportFormat: InvoiceReportResponseReportFormat;
+  /** Unique 24-hexadecimal digit string that identifies the report. */
+  reportId: string;
+  /** Type of the generated report. */
+  reportType: InvoiceReportResponseReportType;
+  /** Current state of the report generation. */
+  state: InvoiceReportResponseState;
+}
+export const InvoiceReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    downloadUrl: S.optional(S.String),
+    expiresAt: S.optional(S.String),
+    failureReason: S.optional(S.String),
+    formatSpecVersion: S.optional(S.String),
+    invoiceId: S.String,
+    reportFormat: InvoiceReportResponseReportFormat,
+    reportId: S.String,
+    reportType: InvoiceReportResponseReportType,
+    state: InvoiceReportResponseState,
+  }),
+).annotate({
+  identifier: "InvoiceReportResponse",
+}) as any as S.Schema<InvoiceReportResponse>;
+
 /** IP address access list entries associated with the API key. */
 export type CreateOrgLiveMigrationLinkTokenRequestAccessListIpsList =
   Array<string>;
@@ -28377,6 +29595,137 @@ export const TargetOrg = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetOrg" }) as any as S.Schema<TargetOrg>;
 
+/** List of IP access list entries that define allowed source addresses for this MCP configuration. */
+export type CreateOrgMcpConfigRequestIpAccessListList =
+  Array<ServiceAccountIPAccessListEntryInput>;
+export const CreateOrgMcpConfigRequestIpAccessListList = /*@__PURE__*/ S.Array(
+  ServiceAccountIPAccessListEntryInput,
+) as any as S.Schema<CreateOrgMcpConfigRequestIpAccessListList>;
+
+/** Organization roles available for Service Accounts. */
+export type CreateOrgMcpConfigRequestRolesItem =
+  | "ORG_MEMBER"
+  | "ORG_READ_ONLY"
+  | "ORG_BILLING_ADMIN"
+  | "ORG_BILLING_READ_ONLY"
+  | "ORG_STREAM_PROCESSING_ADMIN"
+  | "ORG_GROUP_CREATOR"
+  | "ORG_OWNER";
+export const CreateOrgMcpConfigRequestRolesItem = /*@__PURE__*/ S.String;
+
+/** List of organization roles to assign to this MCP configuration. */
+export type CreateOrgMcpConfigRequestRolesList = Array<
+  CreateOrgMcpConfigRequestRolesItem | (string & {})
+>;
+export const CreateOrgMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
+  CreateOrgMcpConfigRequestRolesItem,
+) as any as S.Schema<CreateOrgMcpConfigRequestRolesList>;
+
+export interface CreateOrgMcpConfigRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** List of IP access list entries that define allowed source addresses for this MCP configuration. */
+  ipAccessList?: CreateOrgMcpConfigRequestIpAccessListList;
+  /** Human-readable name that identifies this MCP configuration. */
+  mcpConfigName: string;
+  /** List of organization roles to assign to this MCP configuration. */
+  roles: CreateOrgMcpConfigRequestRolesList;
+}
+export const CreateOrgMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    ipAccessList: S.optional(CreateOrgMcpConfigRequestIpAccessListList),
+    mcpConfigName: S.String,
+    roles: CreateOrgMcpConfigRequestRolesList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "CreateOrgMcpConfigRequest",
+}) as any as S.Schema<CreateOrgMcpConfigRequest>;
+
+/** List of IP access list entries that define allowed source addresses for this MCP configuration. */
+export type OrgMcpConfigResponseIpAccessListList =
+  Array<ServiceAccountIPAccessListEntry>;
+export const OrgMcpConfigResponseIpAccessListList = /*@__PURE__*/ S.Array(
+  ServiceAccountIPAccessListEntry,
+) as any as S.Schema<OrgMcpConfigResponseIpAccessListList>;
+
+/** Organization roles available for Service Accounts. */
+export type OrgMcpConfigResponseRolesItem =
+  | "ORG_MEMBER"
+  | "ORG_READ_ONLY"
+  | "ORG_BILLING_ADMIN"
+  | "ORG_BILLING_READ_ONLY"
+  | "ORG_STREAM_PROCESSING_ADMIN"
+  | "ORG_GROUP_CREATOR"
+  | "ORG_OWNER";
+export const OrgMcpConfigResponseRolesItem = /*@__PURE__*/ S.String;
+
+/** List of organization roles associated with this MCP configuration. */
+export type OrgMcpConfigResponseRolesList =
+  Array<OrgMcpConfigResponseRolesItem>;
+export const OrgMcpConfigResponseRolesList = /*@__PURE__*/ S.Array(
+  OrgMcpConfigResponseRolesItem,
+) as any as S.Schema<OrgMcpConfigResponseRolesList>;
+
+export interface OrgMcpConfigResponse {
+  /** Unique identifier for the Service Account client associated with this MCP configuration. Use this Service Account to connect to the Atlas Remote MCP. */
+  clientId?: string;
+  /** Unique identifier for the egress Service Account client associated with this MCP configuration. This Service Account is managed by MongoDB Atlas. */
+  egressClientId?: string;
+  /** List of IP access list entries that define allowed source addresses for this MCP configuration. */
+  ipAccessList?: OrgMcpConfigResponseIpAccessListList;
+  /** Unique identifier that identifies this MCP configuration. */
+  mcpConfigId?: string;
+  /** Human-readable name that identifies this MCP configuration. */
+  mcpConfigName?: string | null;
+  /** List of organization roles associated with this MCP configuration. */
+  roles?: OrgMcpConfigResponseRolesList;
+}
+export const OrgMcpConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.optional(S.String),
+    egressClientId: S.optional(S.String),
+    ipAccessList: S.optional(OrgMcpConfigResponseIpAccessListList),
+    mcpConfigId: S.optional(S.String),
+    mcpConfigName: S.optional(S.NullOr(S.String)),
+    roles: S.optional(OrgMcpConfigResponseRolesList),
+  }),
+).annotate({
+  identifier: "OrgMcpConfigResponse",
+}) as any as S.Schema<OrgMcpConfigResponse>;
+
+export interface CreateOrgMcpConfigSecretRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings. */
+  secretExpiresAfterHours: number;
+}
+export const CreateOrgMcpConfigSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    secretExpiresAfterHours: S.Number,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "CreateOrgMcpConfigSecretRequest",
+}) as any as S.Schema<CreateOrgMcpConfigSecretRequest>;
+
 export interface ApiAtlasPolicyCreateView {
   /** A string that defines the permissions for the policy. The syntax used is the Cedar Policy language. */
   body: string;
@@ -28404,7 +29753,7 @@ export interface CreateOrgResourcePolicyRequest {
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
   /** Description of the atlas resource policy. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that describes the atlas resource policy. */
   name: string;
   /** List of policies that make up the atlas resource policy. */
@@ -28415,7 +29764,7 @@ export const CreateOrgResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     orgId: S.String.pipe(T.Label()),
     envelope: S.optional(S.Boolean.pipe(T.Query())),
     pretty: S.optional(S.Boolean.pipe(T.Query())),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     name: S.String,
     policies: CreateOrgResourcePolicyRequestPoliciesList,
   }).pipe(
@@ -28840,7 +30189,7 @@ export interface DeauthorizeGroupCloudProviderAccessRoleRequest {
   cloudProvider:
     | DeauthorizeGroupCloudProviderAccessRoleRequestCloudProvider
     | (string & {});
-  /** Unique 24-hexadecimal digit string that identifies the role. */
+  /** Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`. */
   roleId: string;
   /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
   envelope?: boolean;
@@ -29064,6 +30413,41 @@ export const DeleteGroupAccessListEntryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteGroupAccessListEntryResponse",
 }) as any as S.Schema<DeleteGroupAccessListEntryResponse>;
+
+export interface DeleteGroupAiModelApiKeyRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** The id of the API key to be deleted. */
+  apiKeyId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const DeleteGroupAiModelApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    apiKeyId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteGroupAiModelApiKeyRequest",
+}) as any as S.Schema<DeleteGroupAiModelApiKeyRequest>;
+
+export interface DeleteGroupAiModelApiKeyResponse {}
+export const DeleteGroupAiModelApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteGroupAiModelApiKeyResponse",
+}) as any as S.Schema<DeleteGroupAiModelApiKeyResponse>;
 
 export interface DeleteGroupAlertConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -29774,6 +31158,44 @@ export const DeleteGroupClusterOnlineArchiveResponse = /*@__PURE__*/ S.suspend(
   identifier: "DeleteGroupClusterOnlineArchiveResponse",
 }) as any as S.Schema<DeleteGroupClusterOnlineArchiveResponse>;
 
+export interface DeleteGroupClusterOverloadSimulationRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster on which the overload protection simulation is running. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the overload protection simulation. */
+  simulationId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const DeleteGroupClusterOverloadSimulationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      simulationId: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations/{simulationId}",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteGroupClusterOverloadSimulationRequest",
+  }) as any as S.Schema<DeleteGroupClusterOverloadSimulationRequest>;
+
+export interface DeleteGroupClusterOverloadSimulationResponse {}
+export const DeleteGroupClusterOverloadSimulationResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteGroupClusterOverloadSimulationResponse",
+  }) as any as S.Schema<DeleteGroupClusterOverloadSimulationResponse>;
+
 export interface DeleteGroupClusterSearchDeploymentRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
@@ -30251,6 +31673,105 @@ export const DeleteGroupLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGroupLogIntegrationResponse",
 }) as any as S.Schema<DeleteGroupLogIntegrationResponse>;
 
+export interface DeleteGroupMcpConfigRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the MCP configuration to delete. */
+  mcpConfigId: string;
+  /** Flag that indicates whether to delete the MCP configuration even if it has active secrets. If false and active secrets exist, the request returns an error. Defaults to false. */
+  cascading?: boolean;
+}
+export const DeleteGroupMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    cascading: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteGroupMcpConfigRequest",
+}) as any as S.Schema<DeleteGroupMcpConfigRequest>;
+
+export interface DeleteGroupMcpConfigResponse {}
+export const DeleteGroupMcpConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteGroupMcpConfigResponse",
+}) as any as S.Schema<DeleteGroupMcpConfigResponse>;
+
+export interface DeleteGroupMcpConfigSecretRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** Unique 24-hexadecimal digit string that identifies the secret. */
+  secretId: string;
+}
+export const DeleteGroupMcpConfigSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    secretId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteGroupMcpConfigSecretRequest",
+}) as any as S.Schema<DeleteGroupMcpConfigSecretRequest>;
+
+export interface DeleteGroupMcpConfigSecretResponse {}
+export const DeleteGroupMcpConfigSecretResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteGroupMcpConfigSecretResponse",
+}) as any as S.Schema<DeleteGroupMcpConfigSecretResponse>;
+
+export interface DeleteGroupMetricIntegrationRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the metric integration configuration. */
+  metricIntegrationId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const DeleteGroupMetricIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    metricIntegrationId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations/{metricIntegrationId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteGroupMetricIntegrationRequest",
+}) as any as S.Schema<DeleteGroupMetricIntegrationRequest>;
+
+export interface DeleteGroupMetricIntegrationResponse {}
+export const DeleteGroupMetricIntegrationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteGroupMetricIntegrationResponse",
+}) as any as S.Schema<DeleteGroupMetricIntegrationResponse>;
+
 export interface DeleteGroupPeerRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
@@ -30337,7 +31858,9 @@ export const DeleteGroupPrivateEndpointEndpointServiceResponse =
   }) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceResponse>;
 
 export type DeleteGroupPrivateEndpointEndpointServiceEndpointRequestCloudProvider =
-  "AWS" | "AZURE" | "GCP";
+  | "AWS"
+  | "AZURE"
+  | "GCP";
 export const DeleteGroupPrivateEndpointEndpointServiceEndpointRequestCloudProvider =
   /*@__PURE__*/ S.String;
 
@@ -30917,6 +32440,70 @@ export const DeleteOrgLiveMigrationLinkTokensResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteOrgLiveMigrationLinkTokensResponse",
 }) as any as S.Schema<DeleteOrgLiveMigrationLinkTokensResponse>;
+
+export interface DeleteOrgMcpConfigRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique identifier of the MCP configuration to delete. */
+  mcpConfigId: string;
+  /** Flag that indicates whether to delete the MCP configuration even if it has active secrets. If false and active secrets exist, the request returns an error. Defaults to false. */
+  cascading?: boolean;
+}
+export const DeleteOrgMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    cascading: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteOrgMcpConfigRequest",
+}) as any as S.Schema<DeleteOrgMcpConfigRequest>;
+
+export interface DeleteOrgMcpConfigResponse {}
+export const DeleteOrgMcpConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteOrgMcpConfigResponse",
+}) as any as S.Schema<DeleteOrgMcpConfigResponse>;
+
+export interface DeleteOrgMcpConfigSecretRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** Unique 24-hexadecimal digit string that identifies the secret. */
+  secretId: string;
+}
+export const DeleteOrgMcpConfigSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    secretId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteOrgMcpConfigSecretRequest",
+}) as any as S.Schema<DeleteOrgMcpConfigSecretRequest>;
+
+export interface DeleteOrgMcpConfigSecretResponse {}
+export const DeleteOrgMcpConfigSecretResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteOrgMcpConfigSecretResponse",
+}) as any as S.Schema<DeleteOrgMcpConfigSecretResponse>;
 
 export interface DeleteOrgResourcePolicyRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -31734,17 +33321,17 @@ export const FederationSamlIdentityProviderStatus = /*@__PURE__*/ S.String;
 
 export interface FederationSamlIdentityProvider {
   /** URL that points to where to send the SAML response. */
-  acsUrl?: string;
+  acsUrl?: string | null;
   /** List that contains the domains associated with the identity provider. */
   associatedDomains?: FederationSamlIdentityProviderAssociatedDomainsList;
   /** List that contains the connected organization configurations associated with the identity provider. */
   associatedOrgs?: FederationSamlIdentityProviderAssociatedOrgsList;
   /** Unique string that identifies the intended audience of the SAML assertion. */
-  audienceUri?: string;
+  audienceUri?: string | null;
   /** Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   createdAt?: string;
   /** The description of the identity provider. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that identifies the identity provider. */
   displayName?: string;
   /** Unique 24-hexadecimal digit string that identifies the identity provider. */
@@ -31754,7 +33341,7 @@ export interface FederationSamlIdentityProvider {
   /** Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. */
   issuerUri?: string;
   /** Legacy 20-hexadecimal digit string that identifies the identity provider. */
-  oktaIdpId: string;
+  oktaIdpId: string | null;
   pemFileInfo?: PemFileInfo;
   /** String enum that indicates the protocol of the identity provider. Either SAML or OIDC. */
   protocol?: FederationSamlIdentityProviderProtocol;
@@ -31763,7 +33350,7 @@ export interface FederationSamlIdentityProvider {
   /** Signature algorithm that Federated Authentication uses to encrypt the identity provider signature. */
   responseSignatureAlgorithm?: FederationSamlIdentityProviderResponseSignatureAlgorithm;
   /** Custom SSO URL for the identity provider. */
-  slug?: string;
+  slug?: string | null;
   /** Flag that indicates whether the identity provider has SSO debug enabled. */
   ssoDebugEnabled?: boolean;
   /** URL that points to the receiver of the SAML authentication request. */
@@ -31771,36 +33358,36 @@ export interface FederationSamlIdentityProvider {
   /** String enum that indicates whether the identity provider is active. */
   status?: FederationSamlIdentityProviderStatus;
   /** Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  updatedAt?: string;
+  updatedAt?: string | null;
 }
 export const FederationSamlIdentityProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    acsUrl: S.optional(S.String),
+    acsUrl: S.optional(S.NullOr(S.String)),
     associatedDomains: S.optional(
       FederationSamlIdentityProviderAssociatedDomainsList,
     ),
     associatedOrgs: S.optional(
       FederationSamlIdentityProviderAssociatedOrgsList,
     ),
-    audienceUri: S.optional(S.String),
+    audienceUri: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.String),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     displayName: S.optional(S.String),
     id: S.String,
     idpType: S.optional(FederationSamlIdentityProviderIdpType),
     issuerUri: S.optional(S.String),
-    oktaIdpId: S.String,
+    oktaIdpId: S.NullOr(S.String),
     pemFileInfo: S.optional(PemFileInfo),
     protocol: S.optional(FederationSamlIdentityProviderProtocol),
     requestBinding: S.optional(FederationSamlIdentityProviderRequestBinding),
     responseSignatureAlgorithm: S.optional(
       FederationSamlIdentityProviderResponseSignatureAlgorithm,
     ),
-    slug: S.optional(S.String),
+    slug: S.optional(S.NullOr(S.String)),
     ssoDebugEnabled: S.optional(S.Boolean),
     ssoUrl: S.optional(S.String),
     status: S.optional(FederationSamlIdentityProviderStatus),
-    updatedAt: S.optional(S.String),
+    updatedAt: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "FederationSamlIdentityProvider",
@@ -32108,6 +33695,7 @@ export const EventTypeForNdsGroupCase15 = /*@__PURE__*/ S.String;
 
 export type EventTypeForNdsGroupCase16 =
   | "CPS_RESTORE_REQUESTED_AUDIT"
+  | "CPS_RESTORE_AUTH_AUDIT"
   | "CPS_SNAPSHOT_SCHEDULE_UPDATED_AUDIT"
   | "CPS_SNAPSHOT_FASTER_RESTORES_START_AUDIT"
   | "CPS_SNAPSHOT_FASTER_RESTORES_SUCCESS_AUDIT"
@@ -32147,6 +33735,9 @@ export type EventTypeForNdsGroupCase19 =
   | "FTS_INDEX_BUILD_FAILED"
   | "FTS_INDEX_CREATED"
   | "FTS_INDEX_UPDATED"
+  | "FTS_INDEX_PARTITIONS_CHANGED"
+  | "FTS_INDEX_REBUILT"
+  | "FTS_INDEX_DEFINITION_ROLLED_BACK"
   | "FTS_INDEX_DELETED"
   | "FTS_INDEX_CLEANED_UP"
   | "FTS_INDEX_STALE"
@@ -32198,7 +33789,8 @@ export type EventTypeForNdsGroupCase22 =
   | "GROUP_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRED"
   | "GROUP_SERVICE_ACCOUNT_SECRETS_EXPIRED"
   | "ACTIVE_LEGACY_TLS_CONNECTIONS"
-  | "NO_ACTIVE_LEGACY_TLS_CONNECTIONS";
+  | "NO_ACTIVE_LEGACY_TLS_CONNECTIONS"
+  | "WEBHOOK_TEMPLATE_RENDER_FAILED";
 export const EventTypeForNdsGroupCase22 = /*@__PURE__*/ S.String;
 
 export type EventTypeForNdsGroupCase23 =
@@ -32451,6 +34043,7 @@ export type EventTypeForNdsGroupCase28 =
   | "SERVERLESS_UPGRADE_TO_DEDICATED_SUCCESSFUL"
   | "SERVERLESS_UPGRADE_TO_DEDICATED_FAILED"
   | "CLUSTER_FORCE_RECONFIG_REQUESTED"
+  | "AGENT_FORCE_RESTART_REQUESTED"
   | "CLUSTER_RESET_FORCE_RECONFIG_REQUESTED"
   | "PROJECT_BYPASSED_MAINTENANCE"
   | "FEATURE_FLAG_MAINTENANCE"
@@ -32494,6 +34087,7 @@ export type EventTypeForNdsGroupCase28 =
   | "LOG_STREAMING_EXPORT_RECOVERED"
   | "LOG_STREAMING_REPLAY_STARTED"
   | "LOG_STREAMING_REPLAY_COMPLETE"
+  | "LOG_STREAMING_REPLAY_FAILED"
   | "OTEL_METRIC_INTEGRATION_ENABLED"
   | "OTEL_METRIC_INTEGRATION_CONFIGURATION_UPDATED"
   | "OTEL_METRIC_INTEGRATION_DISABLED"
@@ -32522,6 +34116,7 @@ export type EventTypeForNdsGroupCase28 =
   | "CLUSTER_INSTANCE_ENABLED"
   | "SEARCH_HOST_PAUSE_ALL_INITIAL_SYNCS"
   | "SEARCH_HOST_DISABLE_FTS"
+  | "SEARCH_HOST_PAUSE_INITIAL_SYNC_ON_INDEX_IDS"
   | "CLUSTER_BLOCK_WRITE"
   | "CLUSTER_UNBLOCK_WRITE"
   | "KMIP_KEY_ROTATION_SCHEDULED"
@@ -32547,13 +34142,21 @@ export type EventTypeForNdsGroupCase28 =
   | "SHADOW_CLUSTER_REPLAY_STATUS_UPDATE"
   | "NODE_HIDDEN_BY_ADMIN"
   | "NODE_UNHIDDEN_BY_ADMIN"
+  | "DISK_WARMING_PROCESS_NODE_HIDDEN_BY_ADMIN"
+  | "DISK_WARMING_PROCESS_NODE_UNHIDDEN_BY_ADMIN"
+  | "DISK_WARMING_PROCESS_INSTANCE_CANCELLED_BY_ADMIN"
+  | "DISK_WARMING_PROCESS_DISK_TAG_READY_BY_ADMIN"
   | "CLUSTER_CREATED_VIA_ANIS"
   | "MAINTENANCE_WAVE_ASSIGNMENT_ADDED"
   | "MAINTENANCE_WAVE_ASSIGNMENT_MODIFIED"
   | "MAINTENANCE_WAVE_ASSIGNMENT_REMOVED"
   | "CLUSTER_MONGUARD_ENABLED"
   | "CLUSTER_MONGUARD_DISABLED"
-  | "CLUSTER_MONGODB_VERSION_UPDATED";
+  | "CLUSTER_MONGODB_VERSION_UPDATED"
+  | "VOLUME_IMPAIRED"
+  | "VOLUME_IMPAIRED_RESOLVED"
+  | "SQL_INTERFACE_ENABLED"
+  | "SQL_INTERFACE_DISABLED";
 export const EventTypeForNdsGroupCase28 = /*@__PURE__*/ S.String;
 
 export type EventTypeForNdsGroupCase29 =
@@ -32667,6 +34270,7 @@ export const EventTypeForNdsGroupCase38 = /*@__PURE__*/ S.String;
 export type EventTypeForNdsGroupCase39 =
   | "CROSS_REGION_SUPPORTED_REGION_MODIFIED"
   | "ENDPOINT_SERVICE_CREATED"
+  | "ENDPOINT_SERVICE_CREATION_RETRIED"
   | "ENDPOINT_SERVICE_DELETED"
   | "INTERFACE_ENDPOINT_CREATED"
   | "INTERFACE_ENDPOINT_DELETED"
@@ -32723,6 +34327,12 @@ export const EventTypeForNdsGroupCase47 = /*@__PURE__*/ S.String;
 
 export type EventTypeForNdsGroupCase48 =
   | "STREAM_PROCESSOR_STATE_IS_FAILED"
+  | "STREAM_PROCESSOR_STARTED"
+  | "STREAM_PROCESSOR_AUTOSCALE_INITIATED"
+  | "STREAM_PROCESSOR_CREATED"
+  | "STREAM_PROCESSOR_STOPPED"
+  | "STREAM_PROCESSOR_DROPPED"
+  | "STREAM_PROCESSOR_MODIFIED"
   | "INSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD"
   | "OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD";
 export const EventTypeForNdsGroupCase48 = /*@__PURE__*/ S.String;
@@ -32952,6 +34562,192 @@ export const ActivityFeedLinkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivityFeedLinkResponse",
 }) as any as S.Schema<ActivityFeedLinkResponse>;
+
+export type GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud =
+  "ANY";
+export const GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud =
+  /*@__PURE__*/ S.String;
+
+export type GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography =
+  "ANY";
+export const GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography =
+  /*@__PURE__*/ S.String;
+
+export interface GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Cloud provider scope. Must be "ANY". Additional values will be supported in future API versions. */
+  cloud:
+    | GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud
+    | (string & {});
+  /** Geography scope. Must be "ANY". Additional values will be supported in future API versions. */
+  geography:
+    | GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography
+    | (string & {});
+  /** The name of the model group to be retrieved. */
+  modelGroupName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      cloud:
+        GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud.pipe(
+          T.Label(),
+        ),
+      geography:
+        GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography.pipe(
+          T.Label(),
+        ),
+      modelGroupName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
+  }) as any as S.Schema<GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest>;
+
+/** List of embedding model names included in this model group. */
+export type AiModelRateLimitResponseModelNamesList = Array<string>;
+export const AiModelRateLimitResponseModelNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AiModelRateLimitResponseModelNamesList>;
+
+export interface AiModelRateLimitResponse {
+  /** Cloud provider scope for this rate limit. Use "ANY" for cloud-agnostic scope. */
+  cloud?: string;
+  /** Server-computed endpoint hostname derived from `cloud` and `geography`. This field is read-only and must not be supplied in request bodies. */
+  endpoint?: string;
+  /** Geography scope for this rate limit. Use "ANY" for geography-agnostic scope. */
+  geography?: string;
+  /** Identifier used to reference this model group. */
+  modelGroupName?: string;
+  /** List of embedding model names included in this model group. */
+  modelNames?: AiModelRateLimitResponseModelNamesList;
+  /** The number of requests per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model. */
+  requestsPerMinuteLimit?: number;
+  /** The number of tokens per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model. */
+  tokensPerMinuteLimit?: number;
+}
+export const AiModelRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloud: S.optional(S.String),
+    endpoint: S.optional(S.String),
+    geography: S.optional(S.String),
+    modelGroupName: S.optional(S.String),
+    modelNames: S.optional(AiModelRateLimitResponseModelNamesList),
+    requestsPerMinuteLimit: S.optional(S.Number),
+    tokensPerMinuteLimit: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AiModelRateLimitResponse",
+}) as any as S.Schema<AiModelRateLimitResponse>;
+
+export interface GetGroupAiModelApiKeyRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** The id of the API key to be retrieved. */
+  apiKeyId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupAiModelApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    apiKeyId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetGroupAiModelApiKeyRequest",
+}) as any as S.Schema<GetGroupAiModelApiKeyRequest>;
+
+export interface GetGroupAiModelApiRateLimitsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupAiModelApiRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetGroupAiModelApiRateLimitsRequest",
+}) as any as S.Schema<GetGroupAiModelApiRateLimitsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedAtlasAiModelRateLimitsResponseLinksList = Array<Link>;
+export const PaginatedAtlasAiModelRateLimitsResponseLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponseLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedAtlasAiModelRateLimitsResponseResultsList =
+  Array<AiModelRateLimitResponse>;
+export const PaginatedAtlasAiModelRateLimitsResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    AiModelRateLimitResponse,
+  ) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponseResultsList>;
+
+/** List response for AI Model rate limits at the organization and project level. */
+export interface PaginatedAtlasAiModelRateLimitsResponse {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedAtlasAiModelRateLimitsResponseLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedAtlasAiModelRateLimitsResponseResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedAtlasAiModelRateLimitsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      links: S.optional(PaginatedAtlasAiModelRateLimitsResponseLinksList),
+      results: PaginatedAtlasAiModelRateLimitsResponseResultsList,
+      totalCount: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "PaginatedAtlasAiModelRateLimitsResponse",
+}) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponse>;
 
 export interface GetGroupAlertRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -33584,7 +35380,7 @@ export const GetGroupByNameRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupCloudProviderAccessRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
-  /** Unique 24-hexadecimal digit string that identifies the role. */
+  /** Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`. */
   roleId: string;
   /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
   envelope?: boolean;
@@ -33866,6 +35662,121 @@ export const DiskBackupReplicaSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskBackupReplicaSet",
 }) as any as S.Schema<DiskBackupReplicaSet>;
 
+export interface GetGroupClusterBackupSnapshotDatabaseRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the desired snapshot. */
+  snapshotId: string;
+  /** Human-readable label that identifies the database. */
+  databaseName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupClusterBackupSnapshotDatabaseRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      snapshotId: S.String.pipe(T.Label()),
+      databaseName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetGroupClusterBackupSnapshotDatabaseRequest",
+  }) as any as S.Schema<GetGroupClusterBackupSnapshotDatabaseRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type DiskBackupDatabaseResponseLinksList = Array<Link>;
+export const DiskBackupDatabaseResponseLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<DiskBackupDatabaseResponseLinksList>;
+
+export interface DiskBackupDatabaseResponse {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: DiskBackupDatabaseResponseLinksList;
+  /** Human-readable label that identifies the database within the snapshot. */
+  name: string;
+}
+export const DiskBackupDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    links: S.optional(DiskBackupDatabaseResponseLinksList),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "DiskBackupDatabaseResponse",
+}) as any as S.Schema<DiskBackupDatabaseResponse>;
+
+export interface GetGroupClusterBackupSnapshotDatabaseCollectionRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the desired snapshot. */
+  snapshotId: string;
+  /** Human-readable label that identifies the database. */
+  databaseName: string;
+  /** Human-readable label that identifies the collection. */
+  collectionName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupClusterBackupSnapshotDatabaseCollectionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      snapshotId: S.String.pipe(T.Label()),
+      databaseName: S.String.pipe(T.Label()),
+      collectionName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName}",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetGroupClusterBackupSnapshotDatabaseCollectionRequest",
+  }) as any as S.Schema<GetGroupClusterBackupSnapshotDatabaseCollectionRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type DiskBackupCollectionResponseLinksList = Array<Link>;
+export const DiskBackupCollectionResponseLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<DiskBackupCollectionResponseLinksList>;
+
+export interface DiskBackupCollectionResponse {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: DiskBackupCollectionResponseLinksList;
+  /** Human-readable label that identifies the collection in the database within the snapshot. */
+  name: string;
+}
+export const DiskBackupCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    links: S.optional(DiskBackupCollectionResponseLinksList),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "DiskBackupCollectionResponse",
+}) as any as S.Schema<DiskBackupCollectionResponse>;
+
 export interface GetGroupClusterBackupSnapshotShardedClusterRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
@@ -34052,6 +35963,167 @@ export const DiskBackupShardedClusterSnapshot = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskBackupShardedClusterSnapshot",
 }) as any as S.Schema<DiskBackupShardedClusterSnapshot>;
 
+export interface GetGroupClusterCollectionRestoreJobRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster with the collection restore jobs you want to return. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the collection restore job to return. */
+  jobId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupClusterCollectionRestoreJobRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      jobId: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetGroupClusterCollectionRestoreJobRequest",
+  }) as any as S.Schema<GetGroupClusterCollectionRestoreJobRequest>;
+
+export interface GetGroupClusterCollectionRestoreJobCollectionRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster with the collection restore job you want to return. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the collection restore job. */
+  jobId: string;
+  /** Source namespace that identifies the collection to return (e.g. `db.collection`). */
+  sourceNamespace: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupClusterCollectionRestoreJobCollectionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      jobId: S.String.pipe(T.Label()),
+      sourceNamespace: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace}",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetGroupClusterCollectionRestoreJobCollectionRequest",
+  }) as any as S.Schema<GetGroupClusterCollectionRestoreJobCollectionRequest>;
+
+/** Index specification with arbitrary fields (e.g. name, key, unique). */
+export type ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap>;
+
+/** List of index specifications that failed to build (up to 64 items). */
+export type ApiAtlasCollectionRestoreIndexStatusFailedIndexesList =
+  Array<ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap>;
+export const ApiAtlasCollectionRestoreIndexStatusFailedIndexesList =
+  /*@__PURE__*/ S.Array(
+    ApiAtlasCollectionRestoreIndexStatusFailedIndexesItemMap,
+  ) as any as S.Schema<ApiAtlasCollectionRestoreIndexStatusFailedIndexesList>;
+
+/** Index build state indicating the status of index creation during or after a restore operation. */
+export type ApiAtlasCollectionRestoreIndexStatusState =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "SUCCESSFUL"
+  | "FAILED"
+  | "NOT_RESTORED";
+export const ApiAtlasCollectionRestoreIndexStatusState = /*@__PURE__*/ S.String;
+
+/** Index build status for a collection within a restore job. */
+export interface ApiAtlasCollectionRestoreIndexStatus {
+  /** Error message if index build failed. */
+  errorMessage?: string;
+  /** List of index specifications that failed to build (up to 64 items). */
+  failedIndexes?: ApiAtlasCollectionRestoreIndexStatusFailedIndexesList;
+  /** Index build state indicating the status of index creation during or after a restore operation. */
+  state?: ApiAtlasCollectionRestoreIndexStatusState;
+}
+export const ApiAtlasCollectionRestoreIndexStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      errorMessage: S.optional(S.String),
+      failedIndexes: S.optional(
+        ApiAtlasCollectionRestoreIndexStatusFailedIndexesList,
+      ),
+      state: S.optional(ApiAtlasCollectionRestoreIndexStatusState),
+    }),
+).annotate({
+  identifier: "ApiAtlasCollectionRestoreIndexStatus",
+}) as any as S.Schema<ApiAtlasCollectionRestoreIndexStatus>;
+
+/** Current state of this collection within the restore job. */
+export type ApiAtlasCollectionRestoreCollectionStateResponseState =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "FINALIZING"
+  | "NOT_FOUND"
+  | "UNSUPPORTED"
+  | "SUCCESSFUL"
+  | "ROLLBACK"
+  | "NOT_RESTORED"
+  | "FAILED";
+export const ApiAtlasCollectionRestoreCollectionStateResponseState =
+  /*@__PURE__*/ S.String;
+
+/** Collection-level state within a collection restore job. */
+export interface ApiAtlasCollectionRestoreCollectionStateResponse {
+  /** Actual target namespace after restore (e.g. after conflict rename). */
+  effectiveTargetNamespace?: string;
+  indexStatus?: ApiAtlasCollectionRestoreIndexStatus;
+  /** Number of documents restored so far. */
+  restoredDocuments?: number;
+  /** Source namespace that was requested to restore. */
+  sourceNamespace?: string;
+  /** Current state of this collection within the restore job. */
+  state?: ApiAtlasCollectionRestoreCollectionStateResponseState;
+  /** Requested target namespace for the restored collection. */
+  targetNamespace?: string;
+  /** Total document count for this collection. */
+  totalDocuments?: number;
+}
+export const ApiAtlasCollectionRestoreCollectionStateResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      effectiveTargetNamespace: S.optional(S.String),
+      indexStatus: S.optional(ApiAtlasCollectionRestoreIndexStatus),
+      restoredDocuments: S.optional(S.Number),
+      sourceNamespace: S.optional(S.String),
+      state: S.optional(ApiAtlasCollectionRestoreCollectionStateResponseState),
+      targetNamespace: S.optional(S.String),
+      totalDocuments: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "ApiAtlasCollectionRestoreCollectionStateResponse",
+  }) as any as S.Schema<ApiAtlasCollectionRestoreCollectionStateResponse>;
+
 export type GetGroupClusterCollStatNamespacesRequestClusterView =
   | "PRIMARY"
   | "SECONDARY"
@@ -34214,6 +36286,38 @@ export const GetGroupClusterOutageSimulationRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetGroupClusterOutageSimulationRequest",
 }) as any as S.Schema<GetGroupClusterOutageSimulationRequest>;
 
+export interface GetGroupClusterOverloadSimulationRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster on which the overload protection simulation is running. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the overload protection simulation. */
+  simulationId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupClusterOverloadSimulationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      simulationId: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations/{simulationId}",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+).annotate({
+  identifier: "GetGroupClusterOverloadSimulationRequest",
+}) as any as S.Schema<GetGroupClusterOverloadSimulationRequest>;
+
 export interface GetGroupClusterProcessArgsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
@@ -34243,36 +36347,30 @@ export const GetGroupClusterProcessArgsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGroupClusterProcessArgsRequest>;
 
 export type ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12Item =
-    | "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
-    | "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256";
+  | "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+  | "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256";
 export const ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12Item =
   /*@__PURE__*/ S.String;
 
 /** The custom OpenSSL cipher suite list for TLS 1.2. Requires `tlsCipherConfigMode` = `CUSTOM`; when `tlsCipherConfigMode` is omitted, supplying a non-empty list infers `CUSTOM`. */
 export type ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12List =
-  Array<
-    | ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12Item
-    | (string & {})
-  >;
+  Array<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12Item>;
 export const ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12List =
   /*@__PURE__*/ S.Array(
     ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12Item,
   ) as any as S.Schema<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12List>;
 
 export type ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13Item =
-    | "TLS_AES_256_GCM_SHA384"
-    | "TLS_CHACHA20_POLY1305_SHA256"
-    | "TLS_AES_128_GCM_SHA256"
-    | "TLS_AES_128_CCM_SHA256";
+  | "TLS_AES_256_GCM_SHA384"
+  | "TLS_CHACHA20_POLY1305_SHA256"
+  | "TLS_AES_128_GCM_SHA256"
+  | "TLS_AES_128_CCM_SHA256";
 export const ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13Item =
   /*@__PURE__*/ S.String;
 
 /** The custom OpenSSL cipher suite list for TLS 1.3. Requires `tlsCipherConfigMode` = `CUSTOM`; when `tlsCipherConfigMode` is omitted, supplying a non-empty list infers `CUSTOM`. */
 export type ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13List =
-  Array<
-    | ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13Item
-    | (string & {})
-  >;
+  Array<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13Item>;
 export const ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13List =
   /*@__PURE__*/ S.Array(
     ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13Item,
@@ -34311,9 +36409,7 @@ export interface ClusterDescriptionProcessArgs20240805 {
   /** Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. When using 8.0+, we recommend disabling server-side JavaScript and using operators of aggregation pipeline as more performant alternative. */
   javascriptEnabled?: boolean;
   /** Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. */
-  minimumEnabledTlsProtocol?:
-    | ClusterDescriptionProcessArgs20240805MinimumEnabledTlsProtocol
-    | (string & {});
+  minimumEnabledTlsProtocol?: ClusterDescriptionProcessArgs20240805MinimumEnabledTlsProtocol;
   /** Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results. */
   noTableScan?: boolean;
   /** Minimum retention window for cluster's oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates. */
@@ -34327,9 +36423,7 @@ export interface ClusterDescriptionProcessArgs20240805 {
   /** Number of documents per database to sample when gathering schema information. */
   sampleSizeBIConnector?: number;
   /** The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3. */
-  tlsCipherConfigMode?:
-    | ClusterDescriptionProcessArgs20240805TlsCipherConfigMode
-    | (string & {});
+  tlsCipherConfigMode?: ClusterDescriptionProcessArgs20240805TlsCipherConfigMode;
   /** Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic clean-up process. */
   transactionLifetimeLimitSeconds?: number;
 }
@@ -35683,6 +37777,22 @@ export const GetGroupEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGroupEventRequest",
 }) as any as S.Schema<GetGroupEventRequest>;
 
+/** Information about a principal, such as an OAuth application, that triggered the event through delegated access. */
+export interface Principal {
+  /** The identifier of this principal. */
+  id?: string;
+  /** The human-readable name of this principal. */
+  name?: string;
+  onBehalfOf?: Principal;
+}
+export const Principal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    onBehalfOf: S.optional(Principal),
+  }),
+).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
+
 export type DefaultEventViewForNdsGroupEventTypeNameCase0 =
   | "AUTO_INDEXING_ENABLED"
   | "AUTO_INDEXING_DISABLED"
@@ -35766,6 +37876,7 @@ export const DefaultEventViewForNdsGroupEventTypeNameCase5 =
 
 export type DefaultEventViewForNdsGroupEventTypeNameCase6 =
   | "CPS_RESTORE_REQUESTED_AUDIT"
+  | "CPS_RESTORE_AUTH_AUDIT"
   | "CPS_SNAPSHOT_SCHEDULE_UPDATED_AUDIT"
   | "CPS_SNAPSHOT_FASTER_RESTORES_START_AUDIT"
   | "CPS_SNAPSHOT_FASTER_RESTORES_SUCCESS_AUDIT"
@@ -35847,7 +37958,8 @@ export type DefaultEventViewForNdsGroupEventTypeNameCase11 =
   | "GROUP_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRED"
   | "GROUP_SERVICE_ACCOUNT_SECRETS_EXPIRED"
   | "ACTIVE_LEGACY_TLS_CONNECTIONS"
-  | "NO_ACTIVE_LEGACY_TLS_CONNECTIONS";
+  | "NO_ACTIVE_LEGACY_TLS_CONNECTIONS"
+  | "WEBHOOK_TEMPLATE_RENDER_FAILED";
 export const DefaultEventViewForNdsGroupEventTypeNameCase11 =
   /*@__PURE__*/ S.String;
 
@@ -35937,6 +38049,7 @@ export const DefaultEventViewForNdsGroupEventTypeNameCase20 =
 export type DefaultEventViewForNdsGroupEventTypeNameCase21 =
   | "CROSS_REGION_SUPPORTED_REGION_MODIFIED"
   | "ENDPOINT_SERVICE_CREATED"
+  | "ENDPOINT_SERVICE_CREATION_RETRIED"
   | "ENDPOINT_SERVICE_DELETED"
   | "INTERFACE_ENDPOINT_CREATED"
   | "INTERFACE_ENDPOINT_DELETED"
@@ -35993,6 +38106,12 @@ export const DefaultEventViewForNdsGroupEventTypeNameCase28 =
 
 export type DefaultEventViewForNdsGroupEventTypeNameCase29 =
   | "STREAM_PROCESSOR_STATE_IS_FAILED"
+  | "STREAM_PROCESSOR_STARTED"
+  | "STREAM_PROCESSOR_AUTOSCALE_INITIATED"
+  | "STREAM_PROCESSOR_CREATED"
+  | "STREAM_PROCESSOR_STOPPED"
+  | "STREAM_PROCESSOR_DROPPED"
+  | "STREAM_PROCESSOR_MODIFIED"
   | "INSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD"
   | "OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD";
 export const DefaultEventViewForNdsGroupEventTypeNameCase29 =
@@ -36130,7 +38249,7 @@ export interface Raw {
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   cre?: string;
   /** Description of the event. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that identifies the project. */
   gn?: string;
   /** Unique 24-hexadecimal digit string that identifies the event. */
@@ -36148,7 +38267,7 @@ export const Raw = /*@__PURE__*/ S.suspend(() =>
     alertConfigId: S.optional(S.String),
     cid: S.optional(S.String),
     cre: S.optional(S.String),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     gn: S.optional(S.String),
     id: S.optional(S.String),
     orgId: S.optional(S.String),
@@ -36163,6 +38282,7 @@ export interface DefaultEventViewForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   /** Unique identifier of event type. */
   eventTypeName: DefaultEventViewForNdsGroupEventTypeName;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
@@ -36189,6 +38309,7 @@ export const DefaultEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: DefaultEventViewForNdsGroupEventTypeName,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36225,6 +38346,7 @@ export interface AlertAudit {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: AlertAuditTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36251,6 +38373,7 @@ export const AlertAudit = /*@__PURE__*/ S.suspend(() =>
     alertId: S.optional(S.String),
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: AlertAuditTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36288,6 +38411,7 @@ export interface AlertConfigAudit {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: AlertConfigAuditTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36314,6 +38438,7 @@ export const AlertConfigAudit = /*@__PURE__*/ S.suspend(() =>
     alertConfigId: S.optional(S.String),
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: AlertConfigAuditTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36356,6 +38481,7 @@ export interface ApiUserEventViewForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: ApiUserEventTypeViewForNdsGroup;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36373,18 +38499,19 @@ export interface ApiUserEventViewForNdsGroup {
   /** IPv4 or IPv6 address from which the user triggered this event. */
   remoteAddress?: string;
   /** Public part of the API key that this event targets. */
-  targetPublicKey?: string;
+  targetPublicKey?: string | null;
   /** Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the `apiKeyId` parameter. */
   userId?: string;
   /** Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the `publicApiKey` parameter. */
   username?: string;
   /** Entry in the list of source host addresses that the API key accepts and this event targets. */
-  whitelistEntry?: string;
+  whitelistEntry?: string | null;
 }
 export const ApiUserEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: ApiUserEventTypeViewForNdsGroup,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36394,10 +38521,10 @@ export const ApiUserEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
     publicKey: S.optional(S.String),
     raw: S.optional(Raw),
     remoteAddress: S.optional(S.String),
-    targetPublicKey: S.optional(S.String),
+    targetPublicKey: S.optional(S.NullOr(S.String)),
     userId: S.optional(S.String),
     username: S.optional(S.String),
-    whitelistEntry: S.optional(S.String),
+    whitelistEntry: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ApiUserEventViewForNdsGroup",
@@ -36431,6 +38558,7 @@ export interface ServiceAccountGroupEvents {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: ServiceAccountEventTypeViewForNdsGroup;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36456,6 +38584,7 @@ export const ServiceAccountGroupEvents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: ServiceAccountEventTypeViewForNdsGroup,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36488,6 +38617,7 @@ export interface AutomationConfigEventView {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: AutomationConfigEventTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36513,6 +38643,7 @@ export const AutomationConfigEventView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: AutomationConfigEventTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36608,6 +38739,7 @@ export interface BillingEventViewForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: BillingEventTypeViewForNdsGroup;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36637,6 +38769,7 @@ export const BillingEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: BillingEventTypeViewForNdsGroup,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36723,6 +38856,7 @@ export interface DataExplorerAccessedEventView {
   created: string;
   /** Human-readable label of the database on which this incident occurred. The resource returns this parameter when `"eventTypeName" : "DATA_EXPLORER"` or `"eventTypeName" : "DATA_EXPLORER_CRUD"`. */
   database?: string;
+  delegatePrincipal?: Principal;
   eventTypeName: DataExplorerAccessedEventTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36752,6 +38886,7 @@ export const DataExplorerAccessedEventView = /*@__PURE__*/ S.suspend(() =>
     collection: S.optional(S.String),
     created: S.String,
     database: S.optional(S.String),
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: DataExplorerAccessedEventTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36785,6 +38920,7 @@ export interface DataExplorerEvent {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: DataExplorerEventTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36812,6 +38948,7 @@ export const DataExplorerEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: DataExplorerEventTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36836,6 +38973,9 @@ export type FTSIndexAuditTypeView =
   | "FTS_INDEX_BUILD_FAILED"
   | "FTS_INDEX_CREATED"
   | "FTS_INDEX_UPDATED"
+  | "FTS_INDEX_PARTITIONS_CHANGED"
+  | "FTS_INDEX_REBUILT"
+  | "FTS_INDEX_DEFINITION_ROLLED_BACK"
   | "FTS_INDEX_DELETED"
   | "FTS_INDEX_CLEANED_UP"
   | "FTS_INDEX_STALE"
@@ -36856,6 +38996,7 @@ export interface FTSIndexAuditView {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: FTSIndexAuditTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -36881,6 +39022,7 @@ export const FTSIndexAuditView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: FTSIndexAuditTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -36952,6 +39094,7 @@ export interface HostEventViewForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   /** Desk location of MongoDB employee associated with the event. */
   deskLocation?: string;
   /** Identifier of MongoDB employee associated with the event. */
@@ -36987,6 +39130,7 @@ export const HostEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     deskLocation: S.optional(S.String),
     employeeIdentifier: S.optional(S.String),
     eventTypeName: HostEventTypeViewForNdsGroup,
@@ -37027,6 +39171,7 @@ export interface HostMetricEvent {
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
   currentValue?: HostMetricValue;
+  delegatePrincipal?: Principal;
   /** Desk location of MongoDB employee associated with the event. */
   deskLocation?: string;
   /** Identifier of MongoDB employee associated with the event. */
@@ -37065,6 +39210,7 @@ export const HostMetricEvent = /*@__PURE__*/ S.suspend(() =>
     apiKeyId: S.optional(S.String),
     created: S.String,
     currentValue: S.optional(HostMetricValue),
+    delegatePrincipal: S.optional(Principal),
     deskLocation: S.optional(S.String),
     employeeIdentifier: S.optional(S.String),
     eventTypeName: HostMetricEventTypeView,
@@ -37276,6 +39422,7 @@ export type NDSAuditTypeViewForNdsGroup =
   | "SERVERLESS_UPGRADE_TO_DEDICATED_SUCCESSFUL"
   | "SERVERLESS_UPGRADE_TO_DEDICATED_FAILED"
   | "CLUSTER_FORCE_RECONFIG_REQUESTED"
+  | "AGENT_FORCE_RESTART_REQUESTED"
   | "CLUSTER_RESET_FORCE_RECONFIG_REQUESTED"
   | "PROJECT_BYPASSED_MAINTENANCE"
   | "FEATURE_FLAG_MAINTENANCE"
@@ -37319,6 +39466,7 @@ export type NDSAuditTypeViewForNdsGroup =
   | "LOG_STREAMING_EXPORT_RECOVERED"
   | "LOG_STREAMING_REPLAY_STARTED"
   | "LOG_STREAMING_REPLAY_COMPLETE"
+  | "LOG_STREAMING_REPLAY_FAILED"
   | "OTEL_METRIC_INTEGRATION_ENABLED"
   | "OTEL_METRIC_INTEGRATION_CONFIGURATION_UPDATED"
   | "OTEL_METRIC_INTEGRATION_DISABLED"
@@ -37347,6 +39495,7 @@ export type NDSAuditTypeViewForNdsGroup =
   | "CLUSTER_INSTANCE_ENABLED"
   | "SEARCH_HOST_PAUSE_ALL_INITIAL_SYNCS"
   | "SEARCH_HOST_DISABLE_FTS"
+  | "SEARCH_HOST_PAUSE_INITIAL_SYNC_ON_INDEX_IDS"
   | "CLUSTER_BLOCK_WRITE"
   | "CLUSTER_UNBLOCK_WRITE"
   | "KMIP_KEY_ROTATION_SCHEDULED"
@@ -37372,13 +39521,21 @@ export type NDSAuditTypeViewForNdsGroup =
   | "SHADOW_CLUSTER_REPLAY_STATUS_UPDATE"
   | "NODE_HIDDEN_BY_ADMIN"
   | "NODE_UNHIDDEN_BY_ADMIN"
+  | "DISK_WARMING_PROCESS_NODE_HIDDEN_BY_ADMIN"
+  | "DISK_WARMING_PROCESS_NODE_UNHIDDEN_BY_ADMIN"
+  | "DISK_WARMING_PROCESS_INSTANCE_CANCELLED_BY_ADMIN"
+  | "DISK_WARMING_PROCESS_DISK_TAG_READY_BY_ADMIN"
   | "CLUSTER_CREATED_VIA_ANIS"
   | "MAINTENANCE_WAVE_ASSIGNMENT_ADDED"
   | "MAINTENANCE_WAVE_ASSIGNMENT_MODIFIED"
   | "MAINTENANCE_WAVE_ASSIGNMENT_REMOVED"
   | "CLUSTER_MONGUARD_ENABLED"
   | "CLUSTER_MONGUARD_DISABLED"
-  | "CLUSTER_MONGODB_VERSION_UPDATED";
+  | "CLUSTER_MONGODB_VERSION_UPDATED"
+  | "VOLUME_IMPAIRED"
+  | "VOLUME_IMPAIRED_RESOLVED"
+  | "SQL_INTERFACE_ENABLED"
+  | "SQL_INTERFACE_DISABLED";
 export const NDSAuditTypeViewForNdsGroup = /*@__PURE__*/ S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -37395,6 +39552,7 @@ export interface NDSAuditViewForNdsGroup {
   created: string;
   /** The username of the MongoDB User that was created, deleted, or edited. */
   dbUserUsername?: string;
+  delegatePrincipal?: Principal;
   eventTypeName: NDSAuditTypeViewForNdsGroup;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -37423,6 +39581,7 @@ export const NDSAuditViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
     apiKeyId: S.optional(S.String),
     created: S.String,
     dbUserUsername: S.optional(S.String),
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: NDSAuditTypeViewForNdsGroup,
     groupId: S.optional(S.String),
     id: S.String,
@@ -37476,6 +39635,7 @@ export interface NDSAutoScalingAuditViewForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: NDSAutoScalingAuditTypeViewForNdsGroup;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -37501,6 +39661,7 @@ export const NDSAutoScalingAuditViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: NDSAutoScalingAuditTypeViewForNdsGroup,
     groupId: S.optional(S.String),
     id: S.String,
@@ -37541,6 +39702,7 @@ export interface NDSServerlessInstanceAuditView {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: NDSServerlessInstanceAuditTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -37566,6 +39728,7 @@ export const NDSServerlessInstanceAuditView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: NDSServerlessInstanceAuditTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -37608,6 +39771,7 @@ export interface NDSTenantEndpointAuditView {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   /** Unique 24-hexadecimal digit string that identifies the endpoint associated with this event. */
   endpointId?: string;
   eventTypeName: NDSTenantEndpointAuditTypeView;
@@ -37637,6 +39801,7 @@ export const NDSTenantEndpointAuditView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     endpointId: S.optional(S.String),
     eventTypeName: NDSTenantEndpointAuditTypeView,
     groupId: S.optional(S.String),
@@ -37731,6 +39896,7 @@ export interface SearchDeploymentAuditView {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: SearchDeploymentAuditTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -37756,6 +39922,7 @@ export const SearchDeploymentAuditView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: SearchDeploymentAuditTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -37791,6 +39958,7 @@ export interface TeamEventViewForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: TeamEventTypeViewForNdsGroup;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -37818,6 +39986,7 @@ export const TeamEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: TeamEventTypeViewForNdsGroup,
     groupId: S.optional(S.String),
     id: S.String,
@@ -37859,6 +40028,7 @@ export interface UserEventViewForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: UserEventTypeViewForNdsGroup;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -37876,7 +40046,7 @@ export interface UserEventViewForNdsGroup {
   /** IPv4 or IPv6 address from which the user triggered this event. */
   remoteAddress?: string;
   /** Email address for the console user that this event targets. The resource returns this parameter when `"eventTypeName" : "USER"`. */
-  targetUsername?: string;
+  targetUsername?: string | null;
   /** Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the `apiKeyId` parameter. */
   userId?: string;
   /** Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the `publicApiKey` parameter. */
@@ -37886,6 +40056,7 @@ export const UserEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: UserEventTypeViewForNdsGroup,
     groupId: S.optional(S.String),
     id: S.String,
@@ -37895,7 +40066,7 @@ export const UserEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
     publicKey: S.optional(S.String),
     raw: S.optional(Raw),
     remoteAddress: S.optional(S.String),
-    targetUsername: S.optional(S.String),
+    targetUsername: S.optional(S.NullOr(S.String)),
     userId: S.optional(S.String),
     username: S.optional(S.String),
   }),
@@ -37922,6 +40093,7 @@ export interface ResourceEventViewForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: ResourceEventTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -37951,6 +40123,7 @@ export const ResourceEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: ResourceEventTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -38014,6 +40187,12 @@ export const StreamsEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
 /** Unique identifier of event type. */
 export type StreamProcessorEventTypeViewForNdsGroup =
   | "STREAM_PROCESSOR_STATE_IS_FAILED"
+  | "STREAM_PROCESSOR_STARTED"
+  | "STREAM_PROCESSOR_AUTOSCALE_INITIATED"
+  | "STREAM_PROCESSOR_CREATED"
+  | "STREAM_PROCESSOR_STOPPED"
+  | "STREAM_PROCESSOR_DROPPED"
+  | "STREAM_PROCESSOR_MODIFIED"
   | "INSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD"
   | "OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD";
 export const StreamProcessorEventTypeViewForNdsGroup = /*@__PURE__*/ S.String;
@@ -38030,6 +40209,8 @@ export interface StreamProcessorEventViewForNdsGroup {
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
   eventTypeName: StreamProcessorEventTypeViewForNdsGroup;
+  /** Tier the stream processor scaled from. */
+  fromTier?: string;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
   /** Unique 24-hexadecimal digit string that identifies the event. */
@@ -38047,11 +40228,18 @@ export interface StreamProcessorEventViewForNdsGroup {
   /** State of the stream processor associated with the event. */
   processorState?: string;
   raw?: Raw;
+  /** Reason for the autoscale event. */
+  reason?: string;
+  /** Cloud provider region in which the stream processor is running. */
+  region?: string;
+  /** Tier the stream processor scaled to. */
+  toTier?: string;
 }
 export const StreamProcessorEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     eventTypeName: StreamProcessorEventTypeViewForNdsGroup,
+    fromTier: S.optional(S.String),
     groupId: S.optional(S.String),
     id: S.String,
     instanceName: S.optional(S.String),
@@ -38061,6 +40249,9 @@ export const StreamProcessorEventViewForNdsGroup = /*@__PURE__*/ S.suspend(() =>
     processorName: S.optional(S.String),
     processorState: S.optional(S.String),
     raw: S.optional(Raw),
+    reason: S.optional(S.String),
+    region: S.optional(S.String),
+    toTier: S.optional(S.String),
   }),
 ).annotate({
   identifier: "StreamProcessorEventViewForNdsGroup",
@@ -38088,6 +40279,7 @@ export interface ChartsAudit {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: ChartsAuditTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -38113,6 +40305,7 @@ export const ChartsAudit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: ChartsAuditTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -38154,6 +40347,7 @@ export interface AtlasResourcePolicyAuditForNdsGroup {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   /** Unique identifier of event type. */
   eventTypeName: AtlasResourcePolicyAuditForNdsGroupEventTypeName;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
@@ -38186,6 +40380,7 @@ export const AtlasResourcePolicyAuditForNdsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: AtlasResourcePolicyAuditForNdsGroupEventTypeName,
     groupId: S.optional(S.String),
     id: S.String,
@@ -38930,9 +41125,9 @@ export const GetGroupMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the a window where maintenance will not begin within. */
 export interface ProtectedHours {
-  /** Zero-based integer that represents the end hour of the of the day that the maintenance will not begin in. */
+  /** Zero-based integer, in the project's configured time zone (see `timeZoneId`), that represents the end hour of the day that maintenance will not begin in. */
   endHourOfDay?: number;
-  /** Zero-based integer that represents the beginning hour of the of the day that the maintenance will not begin in. */
+  /** Zero-based integer, in the project's configured time zone (see `timeZoneId`), that represents the beginning hour of the day that maintenance will not begin in. */
   startHourOfDay?: number;
 }
 export const ProtectedHours = /*@__PURE__*/ S.suspend(() =>
@@ -38945,9 +41140,9 @@ export const ProtectedHours = /*@__PURE__*/ S.suspend(() =>
 export interface GroupMaintenanceWindow {
   /** Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. This setting controls the same underlying auto-deferral feature as the `/maintenanceWindow/autoDefer` endpoint. Use either this field (to set a specific value) or that endpoint (to toggle the current value). For most use cases, this field in the PATCH request is preferred because it allows setting an explicit value rather than toggling. */
   autoDeferOnceEnabled?: boolean;
-  /** One-based integer that represents the day of the week that the maintenance window starts. - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday. */
+  /** One-based integer that represents the day of the week, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts. - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday. */
   dayOfWeek: number;
-  /** Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon. */
+  /** Zero-based integer that represents the hour of the day, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon. If you haven't changed your project's time zone, this defaults to UTC. */
   hourOfDay?: number;
   /** Number of times the current maintenance event for this project has been deferred. */
   numberOfDeferrals?: number;
@@ -39002,6 +41197,93 @@ export const GetGroupManagedSlowMsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGroupManagedSlowMsResponse",
 }) as any as S.Schema<GetGroupManagedSlowMsResponse>;
+
+export interface GetGroupMcpConfigRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetGroupMcpConfigRequest",
+}) as any as S.Schema<GetGroupMcpConfigRequest>;
+
+export interface GetGroupMcpConfigSecretRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** Unique 24-hexadecimal digit string that identifies the secret. */
+  secretId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupMcpConfigSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    secretId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetGroupMcpConfigSecretRequest",
+}) as any as S.Schema<GetGroupMcpConfigSecretRequest>;
+
+export interface GetGroupMetricIntegrationRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the metric integration configuration. */
+  metricIntegrationId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetGroupMetricIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    metricIntegrationId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations/{metricIntegrationId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetGroupMetricIntegrationRequest",
+}) as any as S.Schema<GetGroupMetricIntegrationRequest>;
 
 export type GetGroupMongoDbVersionsRequestCloudProvider =
   | "AWS"
@@ -39204,7 +41486,9 @@ export const GetGroupPrivateEndpointEndpointServiceRequest =
   }) as any as S.Schema<GetGroupPrivateEndpointEndpointServiceRequest>;
 
 export type GetGroupPrivateEndpointEndpointServiceEndpointRequestCloudProvider =
-  "AWS" | "AZURE" | "GCP";
+  | "AWS"
+  | "AZURE"
+  | "GCP";
 export const GetGroupPrivateEndpointEndpointServiceEndpointRequestCloudProvider =
   /*@__PURE__*/ S.String;
 
@@ -39944,7 +42228,29 @@ export type GetGroupProcessMeasurementsRequestMItem =
   | "TICKETS_AVAILABLE_READS"
   | "TICKETS_AVAILABLE_WRITE"
   | "OPERATION_THROTTLING_REJECTED_OPERATIONS"
-  | "QUERY_SPILL_TO_DISK_DURING_SORT";
+  | "QUERY_SPILL_TO_DISK_DURING_SORT"
+  | "STORAGE_READ_IOPS"
+  | "STORAGE_WRITE_IOPS"
+  | "STORAGE_READ_LATENCY"
+  | "STORAGE_WRITE_LATENCY"
+  | "STORAGE_BYTES_READ"
+  | "STORAGE_BYTES_WRITTEN"
+  | "STORAGE_THROUGHPUT_UTILIZATION"
+  | "STORAGE_SPACE_USED"
+  | "STORAGE_SPACE_FREE"
+  | "STORAGE_SPACE_PERCENT_FREE"
+  | "STORAGE_SPACE_PERCENT_USED"
+  | "CATALOG_ACTIVE_COLLECTIONS_AND_INDEXES"
+  | "QUERY_SPILL_FILE_SPILLED_SIZE"
+  | "AVG_MAJORITY_WRITE_CONCERN_WRITE_TIME"
+  | "TRANSACTIONS_CURRENT_ACTIVE"
+  | "TRANSACTIONS_CURRENT_INACTIVE"
+  | "TRANSACTIONS_CURRENT_OPEN"
+  | "TRANSACTIONS_TOTAL_ABORTED"
+  | "TRANSACTIONS_TOTAL_COMMITTED"
+  | "TRANSACTIONS_TOTAL_STARTED"
+  | "CACHE_PRESSURE_PERCENTAGE"
+  | "INGRESS_QUEUE_WAIT_TIME";
 export const GetGroupProcessMeasurementsRequestMItem = /*@__PURE__*/ S.String;
 
 export type GetGroupProcessMeasurementsRequestMList = Array<
@@ -40108,6 +42414,8 @@ export const GetGroupSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of settings that configures the project. */
 export interface GroupSettings {
+  /** Flag that indicates whether the MongoDB Assistant on the Atlas Home Page is enabled for the specified project. */
+  isAtlasHomePageAiAssistantEnabled?: boolean;
   /** Flag that indicates whether the AI Cluster Assistant is enabled for the specified project. */
   isClusterAiAssistantEnabled?: boolean;
   /** Flag that indicates whether to collect database-specific metrics for the specified project. */
@@ -40133,6 +42441,7 @@ export interface GroupSettings {
 }
 export const GroupSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    isAtlasHomePageAiAssistantEnabled: S.optional(S.Boolean),
     isClusterAiAssistantEnabled: S.optional(S.Boolean),
     isCollectDatabaseSpecificsStatisticsEnabled: S.optional(S.Boolean),
     isDataExplorerEnabled: S.optional(S.Boolean),
@@ -40400,6 +42709,15 @@ export const GetGroupStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGroupStreamProcessorRequest",
 }) as any as S.Schema<GetGroupStreamProcessorRequest>;
 
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
+export type StreamsProcessorWithStatsEffectiveTier =
+  | "SP50"
+  | "SP30"
+  | "SP10"
+  | "SP5"
+  | "SP2";
+export const StreamsProcessorWithStatsEffectiveTier = /*@__PURE__*/ S.String;
+
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
 export type StreamsProcessorWithStatsLinksList = Array<Link>;
 export const StreamsProcessorWithStatsLinksList = /*@__PURE__*/ S.Array(
@@ -40430,7 +42748,7 @@ export const StreamsProcessorWithStatsStatsMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<StreamsProcessorWithStatsStatsMap>;
 
-/** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StreamsProcessorWithStatsTier =
   | "SP50"
   | "SP30"
@@ -40443,6 +42761,8 @@ export const StreamsProcessorWithStatsTier = /*@__PURE__*/ S.String;
 export interface StreamsProcessorWithStats {
   /** Unique 24-hexadecimal character string that identifies the stream processor. */
   _id: string;
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
+  effectiveTier: StreamsProcessorWithStatsEffectiveTier;
   /** Flag that indicates whether the stream processor is eligible for failover. */
   eligibleForFailover?: boolean;
   /** Flag that enables or disables failover for the stream processor. */
@@ -40458,12 +42778,13 @@ export interface StreamsProcessorWithStats {
   state: string;
   /** The stats associated with the stream processor. */
   stats?: StreamsProcessorWithStatsStatsMap;
-  /** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
   tier?: StreamsProcessorWithStatsTier;
 }
 export const StreamsProcessorWithStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
+    effectiveTier: StreamsProcessorWithStatsEffectiveTier,
     eligibleForFailover: S.optional(S.Boolean),
     failoverEnabled: S.optional(S.Boolean),
     links: S.optional(StreamsProcessorWithStatsLinksList),
@@ -41148,13 +43469,15 @@ export const EventTypeForOrgCase7 = /*@__PURE__*/ S.String;
 export type EventTypeForOrgCase8 =
   | "ORG_LIMIT_UPDATED"
   | "SHADOW_CLUSTER_ORG_OPT_IN"
-  | "SHADOW_CLUSTER_ORG_OPT_OUT";
+  | "SHADOW_CLUSTER_ORG_OPT_OUT"
+  | "ATLAS_MAINTENANCE_FLEET_ACTIVE_WAVE_CLOSED_BY_ADMIN";
 export const EventTypeForOrgCase8 = /*@__PURE__*/ S.String;
 
 export type EventTypeForOrgCase9 =
   | "ORG_CREATED"
   | "CUSTOM_SESSION_TIMEOUT_MODIFIED"
   | "SECURITY_CONTACT_MODIFIED"
+  | "OPERATIONS_CONTACT_MODIFIED"
   | "ORG_CREDIT_CARD_ADDED"
   | "ORG_CREDIT_CARD_UPDATED"
   | "ORG_CREDIT_CARD_CURRENT"
@@ -41229,6 +43552,8 @@ export type EventTypeForOrgCase9 =
   | "ORG_DELEGATION_SETTINGS_UPDATED"
   | "ORGANIZATION_VOYAGE_SETTINGS_CREATED"
   | "ORGANIZATION_VOYAGE_SETTINGS_DELETED"
+  | "ORG_DATA_SHARING_AI_MODELS_ENABLED"
+  | "ORG_DATA_SHARING_AI_MODELS_DISABLED"
   | "ORG_WAVE_ASSIGNMENT_MODE_MANUAL"
   | "ORG_WAVE_ASSIGNMENT_MODE_ENV_TAG_MAPPING"
   | "PROJECT_CREATED_VIA_ANIS";
@@ -41298,6 +43623,7 @@ export const EventTypeForOrgCase15 = /*@__PURE__*/ S.String;
 
 export type EventTypeForOrgCase16 =
   | "AI_MODELS_APIS_USAGE_TIER_UPDATED"
+  | "AI_MODELS_APIS_RATE_LIMIT_ADMIN_OVERRIDE"
   | "AI_MODELS_APIS_FREE_TOKENS_ADMIN_ADJUSTED";
 export const EventTypeForOrgCase16 = /*@__PURE__*/ S.String;
 
@@ -41376,6 +43702,120 @@ export const GetOrgActivityFeedRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOrgActivityFeedRequest",
 }) as any as S.Schema<GetOrgActivityFeedRequest>;
 
+export type GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud =
+  "ANY";
+export const GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud =
+  /*@__PURE__*/ S.String;
+
+export type GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography =
+  "ANY";
+export const GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography =
+  /*@__PURE__*/ S.String;
+
+export interface GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Cloud provider scope. Must be "ANY". Additional values will be supported in future API versions. */
+  cloud:
+    | GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud
+    | (string & {});
+  /** Geography scope. Must be "ANY". Additional values will be supported in future API versions. */
+  geography:
+    | GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography
+    | (string & {});
+  /** The name of the model group to be retrieved. */
+  modelGroupName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      orgId: S.String.pipe(T.Label()),
+      cloud:
+        GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud.pipe(
+          T.Label(),
+        ),
+      geography:
+        GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography.pipe(
+          T.Label(),
+        ),
+      modelGroupName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/orgs/{orgId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
+  }) as any as S.Schema<GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequest>;
+
+export interface GetOrgAiModelApiKeyRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** The id of the API key to be retrieved. */
+  apiKeyId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetOrgAiModelApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    apiKeyId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/aiModelApiKeys/{apiKeyId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrgAiModelApiKeyRequest",
+}) as any as S.Schema<GetOrgAiModelApiKeyRequest>;
+
+export interface GetOrgAiModelApiRateLimitsRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetOrgAiModelApiRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/aiModelApiRateLimits",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrgAiModelApiRateLimitsRequest",
+}) as any as S.Schema<GetOrgAiModelApiRateLimitsRequest>;
+
 export interface GetOrgApiKeyRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
   orgId: string;
@@ -41435,6 +43875,79 @@ export const GetOrgApiKeyAccessListEntryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOrgApiKeyAccessListEntryRequest",
 }) as any as S.Schema<GetOrgApiKeyAccessListEntryRequest>;
 
+export interface GetOrgAssociatedInvoicesRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** The month for which to retrieve invoices (1-12). Defaults to current month. */
+  month?: number;
+  /** The year for which to retrieve invoices. Defaults to current year. */
+  year?: number;
+  /** Whether to include invoices from linked organizations. Defaults to false. */
+  includeLinkedOrgs?: boolean;
+}
+export const GetOrgAssociatedInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    month: S.optional(S.Number.pipe(T.Query())),
+    year: S.optional(S.Number.pipe(T.Query())),
+    includeLinkedOrgs: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/associatedInvoices",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrgAssociatedInvoicesRequest",
+}) as any as S.Schema<GetOrgAssociatedInvoicesRequest>;
+
+/** An invoice associated with an organization. */
+export interface AssociatedInvoice {
+  /** Unique 24-hexadecimal digit identifier for an invoice. */
+  invoiceId?: string;
+  /** Unique 24-hexadecimal digit identifier for an organization. */
+  orgId?: string;
+}
+export const AssociatedInvoice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invoiceId: S.optional(S.String),
+    orgId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssociatedInvoice",
+}) as any as S.Schema<AssociatedInvoice>;
+
+/** List of invoices associated with the organization for the specified period. */
+export type OrgAssociatedInvoiceResponseAssociatedInvoicesList =
+  Array<AssociatedInvoice>;
+export const OrgAssociatedInvoiceResponseAssociatedInvoicesList =
+  /*@__PURE__*/ S.Array(
+    AssociatedInvoice,
+  ) as any as S.Schema<OrgAssociatedInvoiceResponseAssociatedInvoicesList>;
+
+/** Response containing associated invoices for an organization. */
+export interface OrgAssociatedInvoiceResponse {
+  /** List of invoices associated with the organization for the specified period. */
+  associatedInvoices?: OrgAssociatedInvoiceResponseAssociatedInvoicesList;
+  /** Two-digit number that represents the month of the associated invoices. */
+  month?: string;
+  /** Four-digit number that represents the year of the associated invoices. */
+  year?: string;
+}
+export const OrgAssociatedInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    associatedInvoices: S.optional(
+      OrgAssociatedInvoiceResponseAssociatedInvoicesList,
+    ),
+    month: S.optional(S.String),
+    year: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OrgAssociatedInvoiceResponse",
+}) as any as S.Schema<OrgAssociatedInvoiceResponse>;
+
 export interface GetOrgBillingCostExplorerUsageRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
   orgId: string;
@@ -41467,6 +43980,71 @@ export const GetOrgBillingCostExplorerUsageResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetOrgBillingCostExplorerUsageResponse",
 }) as any as S.Schema<GetOrgBillingCostExplorerUsageResponse>;
+
+export interface GetOrgDelegationSettingsRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetOrgDelegationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/delegationSettings",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrgDelegationSettingsRequest",
+}) as any as S.Schema<GetOrgDelegationSettingsRequest>;
+
+/** Policy that controls how MCP (Model Context Protocol) delegated access is permitted within this organization. Possible values are `DISALLOWED`, `READ_ONLY`, and `READ_WRITE`. Defaults to `DISALLOWED`. */
+export type OrgDelegationSettingsResponseDelegatedMcpAccess =
+  | "DISALLOWED"
+  | "READ_ONLY"
+  | "READ_WRITE";
+export const OrgDelegationSettingsResponseDelegatedMcpAccess =
+  /*@__PURE__*/ S.String;
+
+/** Policy that controls whether partner delegated access is permitted within this organization. Possible values are `DISALLOWED` and `READ_WRITE`. Defaults to `DISALLOWED`. */
+export type OrgDelegationSettingsResponseDelegatedPartnerAccess =
+  | "DISALLOWED"
+  | "READ_WRITE";
+export const OrgDelegationSettingsResponseDelegatedPartnerAccess =
+  /*@__PURE__*/ S.String;
+
+export interface OrgDelegationSettingsResponse {
+  /** Policy that controls how MCP (Model Context Protocol) delegated access is permitted within this organization. Possible values are `DISALLOWED`, `READ_ONLY`, and `READ_WRITE`. Defaults to `DISALLOWED`. */
+  delegatedMcpAccess?: OrgDelegationSettingsResponseDelegatedMcpAccess | null;
+  /** Policy that controls whether partner delegated access is permitted within this organization. Possible values are `DISALLOWED` and `READ_WRITE`. Defaults to `DISALLOWED`. */
+  delegatedPartnerAccess?: OrgDelegationSettingsResponseDelegatedPartnerAccess | null;
+  /** Maximum number of seconds a refresh token may be idle before it expires. When not set, the system default applies. */
+  idleRefreshTokenLifetime?: number | null;
+  /** Maximum lifetime of a refresh token in seconds, regardless of activity. When not set, the system default applies. */
+  maximumRefreshTokenLifetime?: number | null;
+}
+export const OrgDelegationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    delegatedMcpAccess: S.optional(
+      S.NullOr(OrgDelegationSettingsResponseDelegatedMcpAccess),
+    ),
+    delegatedPartnerAccess: S.optional(
+      S.NullOr(OrgDelegationSettingsResponseDelegatedPartnerAccess),
+    ),
+    idleRefreshTokenLifetime: S.optional(S.NullOr(S.Number)),
+    maximumRefreshTokenLifetime: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "OrgDelegationSettingsResponse",
+}) as any as S.Schema<OrgDelegationSettingsResponse>;
 
 export interface GetOrgEventRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -41582,6 +44160,7 @@ export const DefaultEventViewForOrgEventTypeNameCase4 = /*@__PURE__*/ S.String;
 
 export type DefaultEventViewForOrgEventTypeNameCase5 =
   | "AI_MODELS_APIS_USAGE_TIER_UPDATED"
+  | "AI_MODELS_APIS_RATE_LIMIT_ADMIN_OVERRIDE"
   | "AI_MODELS_APIS_FREE_TOKENS_ADMIN_ADJUSTED";
 export const DefaultEventViewForOrgEventTypeNameCase5 = /*@__PURE__*/ S.String;
 
@@ -41623,6 +44202,7 @@ export interface DefaultEventViewForOrg {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   /** Unique identifier of event type. */
   eventTypeName: DefaultEventViewForOrgEventTypeName;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
@@ -41649,6 +44229,7 @@ export const DefaultEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: DefaultEventViewForOrgEventTypeName,
     groupId: S.optional(S.String),
     id: S.String,
@@ -41691,6 +44272,7 @@ export interface ApiUserEventViewForOrg {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: ApiUserEventTypeViewForOrg;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -41708,18 +44290,19 @@ export interface ApiUserEventViewForOrg {
   /** IPv4 or IPv6 address from which the user triggered this event. */
   remoteAddress?: string;
   /** Public part of the API key that this event targets. */
-  targetPublicKey?: string;
+  targetPublicKey?: string | null;
   /** Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the `apiKeyId` parameter. */
   userId?: string;
   /** Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the `publicApiKey` parameter. */
   username?: string;
   /** Entry in the list of source host addresses that the API key accepts and this event targets. */
-  whitelistEntry?: string;
+  whitelistEntry?: string | null;
 }
 export const ApiUserEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: ApiUserEventTypeViewForOrg,
     groupId: S.optional(S.String),
     id: S.String,
@@ -41729,10 +44312,10 @@ export const ApiUserEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
     publicKey: S.optional(S.String),
     raw: S.optional(Raw),
     remoteAddress: S.optional(S.String),
-    targetPublicKey: S.optional(S.String),
+    targetPublicKey: S.optional(S.NullOr(S.String)),
     userId: S.optional(S.String),
     username: S.optional(S.String),
-    whitelistEntry: S.optional(S.String),
+    whitelistEntry: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ApiUserEventViewForOrg",
@@ -41766,6 +44349,7 @@ export interface ServiceAccountOrgEvents {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: ServiceAccountEventTypeViewForOrg;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -41791,6 +44375,7 @@ export const ServiceAccountOrgEvents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: ServiceAccountEventTypeViewForOrg,
     groupId: S.optional(S.String),
     id: S.String,
@@ -41903,6 +44488,7 @@ export interface BillingEventViewForOrg {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: BillingEventTypeViewForOrg;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -41932,6 +44518,7 @@ export const BillingEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: BillingEventTypeViewForOrg,
     groupId: S.optional(S.String),
     id: S.String,
@@ -41954,7 +44541,8 @@ export const BillingEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
 export type NDSAuditTypeViewForOrg =
   | "ORG_LIMIT_UPDATED"
   | "SHADOW_CLUSTER_ORG_OPT_IN"
-  | "SHADOW_CLUSTER_ORG_OPT_OUT";
+  | "SHADOW_CLUSTER_ORG_OPT_OUT"
+  | "ATLAS_MAINTENANCE_FLEET_ACTIVE_WAVE_CLOSED_BY_ADMIN";
 export const NDSAuditTypeViewForOrg = /*@__PURE__*/ S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
@@ -41971,6 +44559,7 @@ export interface NDSAuditViewForOrg {
   created: string;
   /** The username of the MongoDB User that was created, deleted, or edited. */
   dbUserUsername?: string;
+  delegatePrincipal?: Principal;
   eventTypeName: NDSAuditTypeViewForOrg;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -41999,6 +44588,7 @@ export const NDSAuditViewForOrg = /*@__PURE__*/ S.suspend(() =>
     apiKeyId: S.optional(S.String),
     created: S.String,
     dbUserUsername: S.optional(S.String),
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: NDSAuditTypeViewForOrg,
     groupId: S.optional(S.String),
     id: S.String,
@@ -42021,6 +44611,7 @@ export type OrgEventTypeViewForOrg =
   | "ORG_CREATED"
   | "CUSTOM_SESSION_TIMEOUT_MODIFIED"
   | "SECURITY_CONTACT_MODIFIED"
+  | "OPERATIONS_CONTACT_MODIFIED"
   | "ORG_CREDIT_CARD_ADDED"
   | "ORG_CREDIT_CARD_UPDATED"
   | "ORG_CREDIT_CARD_CURRENT"
@@ -42095,6 +44686,8 @@ export type OrgEventTypeViewForOrg =
   | "ORG_DELEGATION_SETTINGS_UPDATED"
   | "ORGANIZATION_VOYAGE_SETTINGS_CREATED"
   | "ORGANIZATION_VOYAGE_SETTINGS_DELETED"
+  | "ORG_DATA_SHARING_AI_MODELS_ENABLED"
+  | "ORG_DATA_SHARING_AI_MODELS_DISABLED"
   | "ORG_WAVE_ASSIGNMENT_MODE_MANUAL"
   | "ORG_WAVE_ASSIGNMENT_MODE_ENV_TAG_MAPPING"
   | "PROJECT_CREATED_VIA_ANIS";
@@ -42112,6 +44705,7 @@ export interface OrgEventViewForOrg {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: OrgEventTypeViewForOrg;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -42139,6 +44733,7 @@ export const OrgEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: OrgEventTypeViewForOrg,
     groupId: S.optional(S.String),
     id: S.String,
@@ -42179,6 +44774,7 @@ export interface TeamEvent {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: TeamEventTypeView;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -42206,6 +44802,7 @@ export const TeamEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: TeamEventTypeView,
     groupId: S.optional(S.String),
     id: S.String,
@@ -42247,6 +44844,7 @@ export interface UserEventViewForOrg {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: UserEventTypeViewForOrg;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -42264,7 +44862,7 @@ export interface UserEventViewForOrg {
   /** IPv4 or IPv6 address from which the user triggered this event. */
   remoteAddress?: string;
   /** Email address for the console user that this event targets. The resource returns this parameter when `"eventTypeName" : "USER"`. */
-  targetUsername?: string;
+  targetUsername?: string | null;
   /** Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the `apiKeyId` parameter. */
   userId?: string;
   /** Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the `publicApiKey` parameter. */
@@ -42274,6 +44872,7 @@ export const UserEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: UserEventTypeViewForOrg,
     groupId: S.optional(S.String),
     id: S.String,
@@ -42283,7 +44882,7 @@ export const UserEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
     publicKey: S.optional(S.String),
     raw: S.optional(Raw),
     remoteAddress: S.optional(S.String),
-    targetUsername: S.optional(S.String),
+    targetUsername: S.optional(S.NullOr(S.String)),
     userId: S.optional(S.String),
     username: S.optional(S.String),
   }),
@@ -42309,6 +44908,7 @@ export interface ResourceEventViewForOrg {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   eventTypeName: ResourceEventTypeViewForOrg;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
   groupId?: string;
@@ -42338,6 +44938,7 @@ export const ResourceEventViewForOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: ResourceEventTypeViewForOrg,
     groupId: S.optional(S.String),
     id: S.String,
@@ -42377,6 +44978,7 @@ export interface AtlasResourcePolicyAuditForOrg {
   apiKeyId?: string;
   /** Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   created: string;
+  delegatePrincipal?: Principal;
   /** Unique identifier of event type. */
   eventTypeName: AtlasResourcePolicyAuditForOrgEventTypeName;
   /** Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event. */
@@ -42405,6 +45007,7 @@ export const AtlasResourcePolicyAuditForOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyId: S.optional(S.String),
     created: S.String,
+    delegatePrincipal: S.optional(Principal),
     eventTypeName: AtlasResourcePolicyAuditForOrgEventTypeName,
     groupId: S.optional(S.String),
     id: S.String,
@@ -42603,6 +45206,10 @@ export const GetOrgInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOrgInvoiceRequest",
 }) as any as S.Schema<GetOrgInvoiceRequest>;
 
+/** Code identifying the cloud provider this line item's usage is attributed to. Values map as follows: AWS is Amazon Web Services, GCP is Google Cloud, AZURE is Microsoft Azure, and ATLAS is other Atlas usage not tied to a specific cloud provider. */
+export type InvoiceLineItemCloudProvider = "AWS" | "GCP" | "AZURE" | "ATLAS";
+export const InvoiceLineItemCloudProvider = /*@__PURE__*/ S.String;
+
 /** A map of key-value pairs corresponding to the tags associated with the line item resource. */
 export type InvoiceLineItemTagsValueList = Array<string>;
 export const InvoiceLineItemTagsValueList = /*@__PURE__*/ S.Array(
@@ -42620,6 +45227,8 @@ export const InvoiceLineItemTagsMap = /*@__PURE__*/ S.Record(
 
 /** One service included in this invoice. */
 export interface InvoiceLineItem {
+  /** Code identifying the cloud provider this line item's usage is attributed to. Values map as follows: AWS is Amazon Web Services, GCP is Google Cloud, AZURE is Microsoft Azure, and ATLAS is other Atlas usage not tied to a specific cloud provider. */
+  cloudProvider?: InvoiceLineItemCloudProvider;
   /** Human-readable label that identifies the cluster that incurred the charge. */
   clusterName?: string;
   /** Date and time when MongoDB Cloud created this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
@@ -42659,6 +45268,7 @@ export interface InvoiceLineItem {
 }
 export const InvoiceLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    cloudProvider: S.optional(InvoiceLineItemCloudProvider),
     clusterName: S.optional(S.String),
     created: S.optional(S.String),
     discountCents: S.optional(S.Number),
@@ -42892,6 +45502,90 @@ export const GetOrgInvoiceCsvResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOrgInvoiceCsvResponse",
 }) as any as S.Schema<GetOrgInvoiceCsvResponse>;
+
+export interface GetOrgInvoiceReportRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique string that identifies the invoice the report was generated for. */
+  invoiceId: string;
+  /** Unique string that identifies the report to retrieve. */
+  reportId: string;
+}
+export const GetOrgInvoiceReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    invoiceId: S.String.pipe(T.Label()),
+    reportId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports/{reportId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrgInvoiceReportRequest",
+}) as any as S.Schema<GetOrgInvoiceReportRequest>;
+
+export interface GetOrgMcpConfigRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetOrgMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrgMcpConfigRequest",
+}) as any as S.Schema<GetOrgMcpConfigRequest>;
+
+export interface GetOrgMcpConfigSecretRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** Unique 24-hexadecimal digit string that identifies the secret. */
+  secretId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const GetOrgMcpConfigSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    secretId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrgMcpConfigSecretRequest",
+}) as any as S.Schema<GetOrgMcpConfigSecretRequest>;
 
 export interface GetOrgNonCompliantResourcesRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -43211,6 +45905,8 @@ export interface OrganizationSettings {
   maxServiceAccountSecretValidityInHours?: number;
   /** Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/. */
   multiFactorAuthRequired?: boolean;
+  /** String that specifies a distribution list email address for the specified organization to receive proactive notifications about its infrastructure. The operations contact is used for notifications only and is not authorized to make decisions or approvals. Passing an explicit null clears the existing operations contact (if any). An empty string is invalid and is rejected with a validation error. */
+  operationsContact?: string | null;
   /** Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/. */
   restrictEmployeeAccess?: boolean;
   /** String that specifies a single email address for the specified organization to receive security-related notifications. Specifying a security contact does not grant them authorization or access to Atlas for security decisions or approvals. An empty string is valid and clears the existing security contact (if any). */
@@ -43225,6 +45921,7 @@ export const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
     genAIFeaturesEnabled: S.optional(S.Boolean),
     maxServiceAccountSecretValidityInHours: S.optional(S.Number),
     multiFactorAuthRequired: S.optional(S.Boolean),
+    operationsContact: S.optional(S.NullOr(S.String)),
     restrictEmployeeAccess: S.optional(S.Boolean),
     securityContact: S.optional(S.String),
     streamsCrossGroupEnabled: S.optional(S.Boolean),
@@ -43399,13 +46096,13 @@ export const GetRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
 /** The rate limit capacity for the endpoint set. */
 export interface RateLimitEndpointSetCapacity {
   /** The default request capacity of the endpoint set. Returned if there is a capacity override set for the requested entity. */
-  defaultValue?: number;
+  defaultValue?: number | null;
   /** The applied request capacity of the endpoint set. */
   value?: number;
 }
 export const RateLimitEndpointSetCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultValue: S.optional(S.Number),
+    defaultValue: S.optional(S.NullOr(S.Number)),
     value: S.optional(S.Number),
   }),
 ).annotate({
@@ -43446,14 +46143,14 @@ export const RateLimitEndpointSetResponseEndpointsList = /*@__PURE__*/ S.Array(
 /** The rate limit refill duration for the endpoint set. */
 export interface RateLimitEndpointSetRefillDurationSeconds {
   /** The default rate limit refill duration, in seconds, of the endpoint set. Returned if there is a rate limit refill duration override set for the requested entity. */
-  defaultValue?: number;
+  defaultValue?: number | null;
   /** The applied rate limit refill duration of the endpoint set. */
   value?: number;
 }
 export const RateLimitEndpointSetRefillDurationSeconds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      defaultValue: S.optional(S.Number),
+      defaultValue: S.optional(S.NullOr(S.Number)),
       value: S.optional(S.Number),
     }),
   ).annotate({
@@ -43463,13 +46160,13 @@ export const RateLimitEndpointSetRefillDurationSeconds =
 /** The rate limit refill rate for the endpoint set. */
 export interface RateLimitEndpointSetRefillRate {
   /** The default rate limit refill rate of the endpoint set. Returned if there is a rate limit refill rate override set for the requested entity. */
-  defaultValue?: number;
+  defaultValue?: number | null;
   /** The applied rate limit refill rate of the endpoint set. */
   value?: number;
 }
 export const RateLimitEndpointSetRefillRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    defaultValue: S.optional(S.Number),
+    defaultValue: S.optional(S.NullOr(S.Number)),
     value: S.optional(S.Number),
   }),
 ).annotate({
@@ -43573,14 +46270,14 @@ export const GetSystemStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface AccessListItemView {
   /** Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation that found in this project's access list. */
-  cidrBlock?: string;
+  cidrBlock?: string | null;
   /** IP address included in the API access list. */
-  ipAddress: string;
+  ipAddress: string | null;
 }
 export const AccessListItemView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cidrBlock: S.optional(S.String),
-    ipAddress: S.String,
+    cidrBlock: S.optional(S.NullOr(S.String)),
+    ipAddress: S.NullOr(S.String),
   }),
 ).annotate({
   identifier: "AccessListItemView",
@@ -43628,24 +46325,42 @@ export const SystemStatusLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<SystemStatusLinksList>;
 
+/** Details about the MongoDB Cloud user that this request is authenticated as. */
+export interface AuthenticatedUser {
+  /** Email address that represents the username of the MongoDB Cloud user. */
+  username?: string;
+}
+export const AuthenticatedUser = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    username: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthenticatedUser",
+}) as any as S.Schema<AuthenticatedUser>;
+
 export interface SystemStatus {
-  apiKey: ApiKey | null;
+  apiKey?: ApiKey | null;
   /** Human-readable label that identifies the service from which you requested this response. */
   appName: SystemStatusAppName;
   /** Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application. */
   build: string;
+  /** IPv4 or IPv6 address from which you requested this response. Use this value to confirm which address IP access lists evaluate for your requests. */
+  ipAddress: string;
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
   links?: SystemStatusLinksList;
   /** Flag that indicates whether someone enabled throttling on this service. */
   throttling: boolean;
+  user?: AuthenticatedUser | null;
 }
 export const SystemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    apiKey: S.NullOr(ApiKey),
+    apiKey: S.optional(S.NullOr(ApiKey)),
     appName: SystemStatusAppName,
     build: S.String,
+    ipAddress: S.String,
     links: S.optional(SystemStatusLinksList),
     throttling: S.Boolean,
+    user: S.optional(S.NullOr(AuthenticatedUser)),
   }),
 ).annotate({ identifier: "SystemStatus" }) as any as S.Schema<SystemStatus>;
 
@@ -44160,13 +46875,49 @@ export const OutboundControlPlaneCloudProviderIPAddresses =
     identifier: "OutboundControlPlaneCloudProviderIPAddresses",
   }) as any as S.Schema<OutboundControlPlaneCloudProviderIPAddresses>;
 
+/** IP addresses for a specific gateway, organized by direction and cloud provider. */
+export interface GatewayIpAddresses {
+  inbound?: InboundControlPlaneCloudProviderIPAddresses;
+  outbound?: OutboundControlPlaneCloudProviderIPAddresses;
+}
+export const GatewayIpAddresses = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inbound: S.optional(InboundControlPlaneCloudProviderIPAddresses),
+    outbound: S.optional(OutboundControlPlaneCloudProviderIPAddresses),
+  }),
+).annotate({
+  identifier: "GatewayIpAddresses",
+}) as any as S.Schema<GatewayIpAddresses>;
+
+/** Represents a service-specific gateway, such as the Atlas Gateway, with its IP addresses. */
+export interface Gateway {
+  ips?: GatewayIpAddresses;
+  /** Name of the service that this gateway represents. */
+  name?: string;
+}
+export const Gateway = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ips: S.optional(GatewayIpAddresses),
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "Gateway" }) as any as S.Schema<Gateway>;
+
+/** List of gateways, each representing a group of service-specific IP addresses that customers can add to their allow lists independently. Includes the Atlas Gateway (data plane) group when present. */
+export type ControlPlaneIPAddressesGatewaysList = Array<Gateway>;
+export const ControlPlaneIPAddressesGatewaysList = /*@__PURE__*/ S.Array(
+  Gateway,
+) as any as S.Schema<ControlPlaneIPAddressesGatewaysList>;
+
 /** List of IP addresses in the Atlas control plane. */
 export interface ControlPlaneIPAddresses {
+  /** List of gateways, each representing a group of service-specific IP addresses that customers can add to their allow lists independently. Includes the Atlas Gateway (data plane) group when present. */
+  gateways?: ControlPlaneIPAddressesGatewaysList;
   inbound?: InboundControlPlaneCloudProviderIPAddresses;
   outbound?: OutboundControlPlaneCloudProviderIPAddresses;
 }
 export const ControlPlaneIPAddresses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    gateways: S.optional(ControlPlaneIPAddressesGatewaysList),
     inbound: S.optional(InboundControlPlaneCloudProviderIPAddresses),
     outbound: S.optional(OutboundControlPlaneCloudProviderIPAddresses),
   }),
@@ -44512,6 +47263,72 @@ export const ListGroupAccessListEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupAccessListEntriesRequest",
 }) as any as S.Schema<ListGroupAccessListEntriesRequest>;
+
+export interface ListGroupAiModelApiKeysRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListGroupAiModelApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "ListGroupAiModelApiKeysRequest",
+}) as any as S.Schema<ListGroupAiModelApiKeysRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedAtlasAiModelApiKeysResponseLinksList = Array<Link>;
+export const PaginatedAtlasAiModelApiKeysResponseLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedAtlasAiModelApiKeysResponseLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedAtlasAiModelApiKeysResponseResultsList =
+  Array<AiModelApiKeyResponse>;
+export const PaginatedAtlasAiModelApiKeysResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    AiModelApiKeyResponse,
+  ) as any as S.Schema<PaginatedAtlasAiModelApiKeysResponseResultsList>;
+
+/** List response for AI Model API keys at the organization and project level. */
+export interface PaginatedAtlasAiModelApiKeysResponse {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedAtlasAiModelApiKeysResponseLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedAtlasAiModelApiKeysResponseResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedAtlasAiModelApiKeysResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      links: S.optional(PaginatedAtlasAiModelApiKeysResponseLinksList),
+      results: PaginatedAtlasAiModelApiKeysResponseResultsList,
+      totalCount: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "PaginatedAtlasAiModelApiKeysResponse",
+}) as any as S.Schema<PaginatedAtlasAiModelApiKeysResponse>;
 
 export interface ListGroupAlertConfigsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -45016,6 +47833,159 @@ export const PaginatedCloudBackupRestoreJobView = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedCloudBackupRestoreJobView",
 }) as any as S.Schema<PaginatedCloudBackupRestoreJobView>;
 
+export interface ListGroupClusterBackupSnapshotDatabaseCollectionsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the desired snapshot. */
+  snapshotId: string;
+  /** Human-readable label that identifies the database. */
+  databaseName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response returns the total number of items (`totalCount`) in the response. */
+  includeCount?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListGroupClusterBackupSnapshotDatabaseCollectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      snapshotId: S.String.pipe(T.Label()),
+      databaseName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      includeCount: S.optional(S.Boolean.pipe(T.Query())),
+      itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+      pageNum: S.optional(S.Number.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListGroupClusterBackupSnapshotDatabaseCollectionsRequest",
+  }) as any as S.Schema<ListGroupClusterBackupSnapshotDatabaseCollectionsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedApiAtlasDiskBackupCollectionViewLinksList = Array<Link>;
+export const PaginatedApiAtlasDiskBackupCollectionViewLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedApiAtlasDiskBackupCollectionViewLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedApiAtlasDiskBackupCollectionViewResultsList =
+  Array<DiskBackupCollectionResponse>;
+export const PaginatedApiAtlasDiskBackupCollectionViewResultsList =
+  /*@__PURE__*/ S.Array(
+    DiskBackupCollectionResponse,
+  ) as any as S.Schema<PaginatedApiAtlasDiskBackupCollectionViewResultsList>;
+
+export interface PaginatedApiAtlasDiskBackupCollectionView {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedApiAtlasDiskBackupCollectionViewLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedApiAtlasDiskBackupCollectionViewResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedApiAtlasDiskBackupCollectionView =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      links: S.optional(PaginatedApiAtlasDiskBackupCollectionViewLinksList),
+      results: PaginatedApiAtlasDiskBackupCollectionViewResultsList,
+      totalCount: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "PaginatedApiAtlasDiskBackupCollectionView",
+  }) as any as S.Schema<PaginatedApiAtlasDiskBackupCollectionView>;
+
+export interface ListGroupClusterBackupSnapshotDatabasesRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the desired snapshot. */
+  snapshotId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response returns the total number of items (`totalCount`) in the response. */
+  includeCount?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListGroupClusterBackupSnapshotDatabasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      snapshotId: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      includeCount: S.optional(S.Boolean.pipe(T.Query())),
+      itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+      pageNum: S.optional(S.Number.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListGroupClusterBackupSnapshotDatabasesRequest",
+  }) as any as S.Schema<ListGroupClusterBackupSnapshotDatabasesRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedApiAtlasDiskBackupDatabaseViewLinksList = Array<Link>;
+export const PaginatedApiAtlasDiskBackupDatabaseViewLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseViewLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedApiAtlasDiskBackupDatabaseViewResultsList =
+  Array<DiskBackupDatabaseResponse>;
+export const PaginatedApiAtlasDiskBackupDatabaseViewResultsList =
+  /*@__PURE__*/ S.Array(
+    DiskBackupDatabaseResponse,
+  ) as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseViewResultsList>;
+
+export interface PaginatedApiAtlasDiskBackupDatabaseView {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedApiAtlasDiskBackupDatabaseViewLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedApiAtlasDiskBackupDatabaseViewResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedApiAtlasDiskBackupDatabaseView = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      links: S.optional(PaginatedApiAtlasDiskBackupDatabaseViewLinksList),
+      results: PaginatedApiAtlasDiskBackupDatabaseViewResultsList,
+      totalCount: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "PaginatedApiAtlasDiskBackupDatabaseView",
+}) as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseView>;
+
 export interface ListGroupClusterBackupSnapshotsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
@@ -45161,6 +48131,179 @@ export const PaginatedCloudBackupShardedClusterSnapshotView =
   ).annotate({
     identifier: "PaginatedCloudBackupShardedClusterSnapshotView",
   }) as any as S.Schema<PaginatedCloudBackupShardedClusterSnapshotView>;
+
+/** Current state of this collection within the restore job. */
+export type ListGroupClusterCollectionRestoreJobCollectionsRequestState =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "FINALIZING"
+  | "NOT_FOUND"
+  | "UNSUPPORTED"
+  | "SUCCESSFUL"
+  | "ROLLBACK"
+  | "NOT_RESTORED"
+  | "FAILED";
+export const ListGroupClusterCollectionRestoreJobCollectionsRequestState =
+  /*@__PURE__*/ S.String;
+
+export interface ListGroupClusterCollectionRestoreJobCollectionsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster with the collection restore job you want to return. */
+  clusterName: string;
+  /** Unique 24-hexadecimal digit string that identifies the collection restore job. */
+  jobId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** Collection-level state to filter by. */
+  state?:
+    | ListGroupClusterCollectionRestoreJobCollectionsRequestState
+    | (string & {});
+  /** Source namespace to filter by (e.g. `db.collection`). */
+  sourceNamespace?: string;
+  /** Target namespace to filter by (e.g. `db.collection`). */
+  targetNamespace?: string;
+}
+export const ListGroupClusterCollectionRestoreJobCollectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      jobId: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+      pageNum: S.optional(S.Number.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+      state: S.optional(
+        ListGroupClusterCollectionRestoreJobCollectionsRequestState.pipe(
+          T.Query(),
+        ),
+      ),
+      sourceNamespace: S.optional(S.String.pipe(T.Query())),
+      targetNamespace: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListGroupClusterCollectionRestoreJobCollectionsRequest",
+  }) as any as S.Schema<ListGroupClusterCollectionRestoreJobCollectionsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList =
+  Array<Link>;
+export const PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedApiAtlasCollectionRestoreCollectionStateViewResultsList =
+  Array<ApiAtlasCollectionRestoreCollectionStateResponse>;
+export const PaginatedApiAtlasCollectionRestoreCollectionStateViewResultsList =
+  /*@__PURE__*/ S.Array(
+    ApiAtlasCollectionRestoreCollectionStateResponse,
+  ) as any as S.Schema<PaginatedApiAtlasCollectionRestoreCollectionStateViewResultsList>;
+
+export interface PaginatedApiAtlasCollectionRestoreCollectionStateView {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedApiAtlasCollectionRestoreCollectionStateViewResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedApiAtlasCollectionRestoreCollectionStateView =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      links: S.optional(
+        PaginatedApiAtlasCollectionRestoreCollectionStateViewLinksList,
+      ),
+      results: PaginatedApiAtlasCollectionRestoreCollectionStateViewResultsList,
+      totalCount: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "PaginatedApiAtlasCollectionRestoreCollectionStateView",
+  }) as any as S.Schema<PaginatedApiAtlasCollectionRestoreCollectionStateView>;
+
+export interface ListGroupClusterCollectionRestoreJobsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster with the collection restore jobs you want to return. */
+  clusterName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListGroupClusterCollectionRestoreJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+      pageNum: S.optional(S.Number.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListGroupClusterCollectionRestoreJobsRequest",
+  }) as any as S.Schema<ListGroupClusterCollectionRestoreJobsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedApiAtlasCollectionRestoreJobViewLinksList = Array<Link>;
+export const PaginatedApiAtlasCollectionRestoreJobViewLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedApiAtlasCollectionRestoreJobViewLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedApiAtlasCollectionRestoreJobViewResultsList =
+  Array<ApiAtlasCollectionRestoreJobResponse>;
+export const PaginatedApiAtlasCollectionRestoreJobViewResultsList =
+  /*@__PURE__*/ S.Array(
+    ApiAtlasCollectionRestoreJobResponse,
+  ) as any as S.Schema<PaginatedApiAtlasCollectionRestoreJobViewResultsList>;
+
+export interface PaginatedApiAtlasCollectionRestoreJobView {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedApiAtlasCollectionRestoreJobViewLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedApiAtlasCollectionRestoreJobViewResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedApiAtlasCollectionRestoreJobView =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      links: S.optional(PaginatedApiAtlasCollectionRestoreJobViewLinksList),
+      results: PaginatedApiAtlasCollectionRestoreJobViewResultsList,
+      totalCount: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "PaginatedApiAtlasCollectionRestoreJobView",
+  }) as any as S.Schema<PaginatedApiAtlasCollectionRestoreJobView>;
 
 export type ListGroupClusterCollStatMeasurementsRequestClusterView =
   | "PRIMARY"
@@ -45446,17 +48589,91 @@ export const PaginatedOnlineArchiveView = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedOnlineArchiveView",
 }) as any as S.Schema<PaginatedOnlineArchiveView>;
 
+export interface ListGroupClusterOverloadSimulationsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Human-readable label that identifies the cluster on which the overload protection simulations are running. */
+  clusterName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListGroupClusterOverloadSimulationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+      pageNum: S.optional(S.Number.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListGroupClusterOverloadSimulationsRequest",
+  }) as any as S.Schema<ListGroupClusterOverloadSimulationsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedOverloadProtectionSimulationResponseLinksList =
+  Array<Link>;
+export const PaginatedOverloadProtectionSimulationResponseLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedOverloadProtectionSimulationResponseLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedOverloadProtectionSimulationResponseResultsList =
+  Array<OverloadProtectionSimulationResponse>;
+export const PaginatedOverloadProtectionSimulationResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    OverloadProtectionSimulationResponse,
+  ) as any as S.Schema<PaginatedOverloadProtectionSimulationResponseResultsList>;
+
+/** List of overload protection simulations for a cluster. */
+export interface PaginatedOverloadProtectionSimulationResponse {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedOverloadProtectionSimulationResponseLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedOverloadProtectionSimulationResponseResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedOverloadProtectionSimulationResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      links: S.optional(PaginatedOverloadProtectionSimulationResponseLinksList),
+      results: PaginatedOverloadProtectionSimulationResponseResultsList,
+      totalCount: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "PaginatedOverloadProtectionSimulationResponse",
+  }) as any as S.Schema<PaginatedOverloadProtectionSimulationResponse>;
+
 export interface ListGroupClusterPerformanceAdvisorDropIndexSuggestionsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
   /** Human-readable label that identifies the cluster. */
   clusterName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
 }
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       groupId: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -45535,6 +48752,7 @@ export const DropIndexSuggestionsResponseUnusedIndexesList =
     DropIndexSuggestionsIndex,
   ) as any as S.Schema<DropIndexSuggestionsResponseUnusedIndexesList>;
 
+/** Response that contains Performance Advisor drop index suggestions. */
 export interface DropIndexSuggestionsResponse {
   /** List that contains the documents with information about the hidden indexes that the Performance Advisor suggests to remove. */
   hiddenIndexes?: DropIndexSuggestionsResponseHiddenIndexesList;
@@ -45555,17 +48773,56 @@ export const DropIndexSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DropIndexSuggestionsResponse",
 }) as any as S.Schema<DropIndexSuggestionsResponse>;
 
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type EnvelopedDropIndexSuggestionsResponseLinksList = Array<Link>;
+export const EnvelopedDropIndexSuggestionsResponseLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<EnvelopedDropIndexSuggestionsResponseLinksList>;
+
+/** URLs of resources created by this request. */
+export type EnvelopedDropIndexSuggestionsResponseLocationsList = Array<string>;
+export const EnvelopedDropIndexSuggestionsResponseLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EnvelopedDropIndexSuggestionsResponseLocationsList>;
+
+/** Response envelope that wraps the response payload in `content` and includes response metadata such as `status` and `locations`. */
+export interface EnvelopedDropIndexSuggestionsResponse {
+  content: DropIndexSuggestionsResponse;
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: EnvelopedDropIndexSuggestionsResponseLinksList;
+  /** URLs of resources created by this request. */
+  locations?: EnvelopedDropIndexSuggestionsResponseLocationsList;
+  /** HTTP status code returned with this response. */
+  status: number;
+}
+export const EnvelopedDropIndexSuggestionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      content: DropIndexSuggestionsResponse,
+      links: S.optional(EnvelopedDropIndexSuggestionsResponseLinksList),
+      locations: S.optional(EnvelopedDropIndexSuggestionsResponseLocationsList),
+      status: S.Number,
+    }),
+).annotate({
+  identifier: "EnvelopedDropIndexSuggestionsResponse",
+}) as any as S.Schema<EnvelopedDropIndexSuggestionsResponse>;
+
 export interface ListGroupClusterPerformanceAdvisorSchemaAdviceRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
   groupId: string;
   /** Human-readable label that identifies the cluster. */
   clusterName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
 }
 export const ListGroupClusterPerformanceAdvisorSchemaAdviceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       groupId: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -45673,6 +48930,7 @@ export const SchemaAdvisorResponseRecommendationsList = /*@__PURE__*/ S.Array(
   SchemaAdvisorItemRecommendation,
 ) as any as S.Schema<SchemaAdvisorResponseRecommendationsList>;
 
+/** Response that contains Performance Advisor schema suggestions. */
 export interface SchemaAdvisorResponse {
   /** List that contains the documents with information about the schema advice that Performance Advisor suggests. */
   recommendations?: SchemaAdvisorResponseRecommendationsList;
@@ -45684,6 +48942,40 @@ export const SchemaAdvisorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SchemaAdvisorResponse",
 }) as any as S.Schema<SchemaAdvisorResponse>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type EnvelopedSchemaAdvisorResponseLinksList = Array<Link>;
+export const EnvelopedSchemaAdvisorResponseLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<EnvelopedSchemaAdvisorResponseLinksList>;
+
+/** URLs of resources created by this request. */
+export type EnvelopedSchemaAdvisorResponseLocationsList = Array<string>;
+export const EnvelopedSchemaAdvisorResponseLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EnvelopedSchemaAdvisorResponseLocationsList>;
+
+/** Response envelope that wraps the response payload in `content` and includes response metadata such as `status` and `locations`. */
+export interface EnvelopedSchemaAdvisorResponse {
+  content: SchemaAdvisorResponse;
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: EnvelopedSchemaAdvisorResponseLinksList;
+  /** URLs of resources created by this request. */
+  locations?: EnvelopedSchemaAdvisorResponseLocationsList;
+  /** HTTP status code returned with this response. */
+  status: number;
+}
+export const EnvelopedSchemaAdvisorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: SchemaAdvisorResponse,
+    links: S.optional(EnvelopedSchemaAdvisorResponseLinksList),
+    locations: S.optional(EnvelopedSchemaAdvisorResponseLocationsList),
+    status: S.Number,
+  }),
+).annotate({
+  identifier: "EnvelopedSchemaAdvisorResponse",
+}) as any as S.Schema<EnvelopedSchemaAdvisorResponse>;
 
 export type ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestProcessIdsList =
   Array<string>;
@@ -45704,6 +48996,8 @@ export interface ListGroupClusterPerformanceAdvisorSuggestedIndexesRequest {
   groupId: string;
   /** Human-readable label that identifies the cluster. */
   clusterName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
   /** Process IDs from which to retrieve suggested indexes. A `processId` is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple `processIds`, pass the parameter multiple times delimited with an ampersand (`&`) between each `processId`. */
   processIds?: ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestProcessIdsList;
   /** Namespaces from which to retrieve suggested indexes. A namespace consists of one database and one collection resource written as `.`: `<database>.<collection>`. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (`&`) between each namespace. Omit this parameter to return results for all namespaces. */
@@ -45718,6 +49012,7 @@ export const ListGroupClusterPerformanceAdvisorSuggestedIndexesRequest =
     S.Struct({
       groupId: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
       processIds: S.optional(
         ListGroupClusterPerformanceAdvisorSuggestedIndexesRequestProcessIdsList.pipe(
           T.Query(),
@@ -45887,6 +49182,7 @@ export const PerformanceAdvisorResponseSuggestedIndexesList =
     PerformanceAdvisorIndex,
   ) as any as S.Schema<PerformanceAdvisorResponseSuggestedIndexesList>;
 
+/** Response that contains Performance Advisor suggested indexes and query shapes. */
 export interface PerformanceAdvisorResponse {
   /** List of query predicates, sorts, and projections that the Performance Advisor suggests. */
   shapes?: PerformanceAdvisorResponseShapesList;
@@ -45903,6 +49199,41 @@ export const PerformanceAdvisorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PerformanceAdvisorResponse",
 }) as any as S.Schema<PerformanceAdvisorResponse>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type EnvelopedPerformanceAdvisorResponseLinksList = Array<Link>;
+export const EnvelopedPerformanceAdvisorResponseLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<EnvelopedPerformanceAdvisorResponseLinksList>;
+
+/** URLs of resources created by this request. */
+export type EnvelopedPerformanceAdvisorResponseLocationsList = Array<string>;
+export const EnvelopedPerformanceAdvisorResponseLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EnvelopedPerformanceAdvisorResponseLocationsList>;
+
+/** Response envelope that wraps the response payload in `content` and includes response metadata such as `status` and `locations`. */
+export interface EnvelopedPerformanceAdvisorResponse {
+  content: PerformanceAdvisorResponse;
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: EnvelopedPerformanceAdvisorResponseLinksList;
+  /** URLs of resources created by this request. */
+  locations?: EnvelopedPerformanceAdvisorResponseLocationsList;
+  /** HTTP status code returned with this response. */
+  status: number;
+}
+export const EnvelopedPerformanceAdvisorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: PerformanceAdvisorResponse,
+    links: S.optional(EnvelopedPerformanceAdvisorResponseLinksList),
+    locations: S.optional(EnvelopedPerformanceAdvisorResponseLocationsList),
+    status: S.Number,
+  }),
+).annotate({
+  identifier: "EnvelopedPerformanceAdvisorResponse",
+}) as any as S.Schema<EnvelopedPerformanceAdvisorResponse>;
 
 export type ListGroupClusterProviderRegionsRequestProvidersList = Array<string>;
 export const ListGroupClusterProviderRegionsRequestProvidersList =
@@ -46517,14 +49848,14 @@ export const CollStatsLatencyNamespaceMetricUnits = /*@__PURE__*/ S.String;
 /** Coll Stats Latency metric name and its unit of measurement. */
 export interface CollStatsLatencyNamespaceMetric {
   /** Human-readable label that identifies this metric. */
-  metricName: CollStatsLatencyNamespaceMetricMetricName;
+  metricName: CollStatsLatencyNamespaceMetricMetricName | null;
   /** Unit of measurement that applies to this metric. */
-  units: CollStatsLatencyNamespaceMetricUnits;
+  units: CollStatsLatencyNamespaceMetricUnits | null;
 }
 export const CollStatsLatencyNamespaceMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metricName: CollStatsLatencyNamespaceMetricMetricName,
-    units: CollStatsLatencyNamespaceMetricUnits,
+    metricName: S.NullOr(CollStatsLatencyNamespaceMetricMetricName),
+    units: S.NullOr(CollStatsLatencyNamespaceMetricUnits),
   }),
 ).annotate({
   identifier: "CollStatsLatencyNamespaceMetric",
@@ -47629,14 +50960,14 @@ export const FTSMetricUnits = /*@__PURE__*/ S.String;
 /** Measurement of one Atlas Search status when MongoDB Atlas received this request. */
 export interface FTSMetric {
   /** Human-readable label that identifies this Atlas Search hardware, status, or index measurement. */
-  metricName: FTSMetricMetricName;
+  metricName: FTSMetricMetricName | null;
   /** Unit of measurement that applies to this Atlas Search metric. */
-  units: FTSMetricUnits;
+  units: FTSMetricUnits | null;
 }
 export const FTSMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metricName: FTSMetricMetricName,
-    units: FTSMetricUnits,
+    metricName: S.NullOr(FTSMetricMetricName),
+    units: S.NullOr(FTSMetricUnits),
   }),
 ).annotate({ identifier: "FTSMetric" }) as any as S.Schema<FTSMetric>;
 
@@ -47800,35 +51131,244 @@ export const ListGroupLogIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupLogIntegrationsRequest>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-export type PaginatedLogIntegrationResponseLinksList = Array<Link>;
-export const PaginatedLogIntegrationResponseLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PaginatedLogIntegrationResponseLinksList>;
+export type PaginatedLogIntegrationResponseOutputLinksList = Array<Link>;
+export const PaginatedLogIntegrationResponseOutputLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedLogIntegrationResponseOutputLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
-export type PaginatedLogIntegrationResponseResultsList =
-  Array<LogIntegrationResponse>;
-export const PaginatedLogIntegrationResponseResultsList = /*@__PURE__*/ S.Array(
-  LogIntegrationResponse,
-) as any as S.Schema<PaginatedLogIntegrationResponseResultsList>;
+export type PaginatedLogIntegrationResponseOutputResultsList =
+  Array<LogIntegrationResponseOutput>;
+export const PaginatedLogIntegrationResponseOutputResultsList =
+  /*@__PURE__*/ S.Array(
+    LogIntegrationResponseOutput,
+  ) as any as S.Schema<PaginatedLogIntegrationResponseOutputResultsList>;
 
-export interface PaginatedLogIntegrationResponse {
+export interface PaginatedLogIntegrationResponseOutput {
   /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-  links?: PaginatedLogIntegrationResponseLinksList;
+  links?: PaginatedLogIntegrationResponseOutputLinksList;
   /** List of returned documents that MongoDB Cloud provides when completing this request. */
-  results: PaginatedLogIntegrationResponseResultsList;
+  results: PaginatedLogIntegrationResponseOutputResultsList;
   /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
   totalCount?: number;
 }
-export const PaginatedLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedLogIntegrationResponseOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      links: S.optional(PaginatedLogIntegrationResponseOutputLinksList),
+      results: PaginatedLogIntegrationResponseOutputResultsList,
+      totalCount: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "PaginatedLogIntegrationResponseOutput",
+}) as any as S.Schema<PaginatedLogIntegrationResponseOutput>;
+
+export interface ListGroupMcpConfigsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Flag that indicates whether the response returns the total number of items (`totalCount`) in the response. */
+  includeCount?: boolean;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListGroupMcpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    links: S.optional(PaginatedLogIntegrationResponseLinksList),
-    results: PaginatedLogIntegrationResponseResultsList,
+    groupId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    includeCount: S.optional(S.Boolean.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "ListGroupMcpConfigsRequest",
+}) as any as S.Schema<ListGroupMcpConfigsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedGroupMcpConfigViewLinksList = Array<Link>;
+export const PaginatedGroupMcpConfigViewLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<PaginatedGroupMcpConfigViewLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedGroupMcpConfigViewResultsList =
+  Array<GroupMcpConfigResponse>;
+export const PaginatedGroupMcpConfigViewResultsList = /*@__PURE__*/ S.Array(
+  GroupMcpConfigResponse,
+) as any as S.Schema<PaginatedGroupMcpConfigViewResultsList>;
+
+export interface PaginatedGroupMcpConfigView {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedGroupMcpConfigViewLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedGroupMcpConfigViewResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedGroupMcpConfigView = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    links: S.optional(PaginatedGroupMcpConfigViewLinksList),
+    results: PaginatedGroupMcpConfigViewResultsList,
     totalCount: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "PaginatedLogIntegrationResponse",
-}) as any as S.Schema<PaginatedLogIntegrationResponse>;
+  identifier: "PaginatedGroupMcpConfigView",
+}) as any as S.Schema<PaginatedGroupMcpConfigView>;
+
+export interface ListGroupMcpConfigSecretsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Flag that indicates whether the response returns the total number of items (`totalCount`) in the response. */
+  includeCount?: boolean;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListGroupMcpConfigSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    includeCount: S.optional(S.Boolean.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "ListGroupMcpConfigSecretsRequest",
+}) as any as S.Schema<ListGroupMcpConfigSecretsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedMcpConfigSecretViewLinksList = Array<Link>;
+export const PaginatedMcpConfigSecretViewLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<PaginatedMcpConfigSecretViewLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedMcpConfigSecretViewResultsList =
+  Array<ServiceAccountSecret>;
+export const PaginatedMcpConfigSecretViewResultsList = /*@__PURE__*/ S.Array(
+  ServiceAccountSecret,
+) as any as S.Schema<PaginatedMcpConfigSecretViewResultsList>;
+
+export interface PaginatedMcpConfigSecretView {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedMcpConfigSecretViewLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedMcpConfigSecretViewResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedMcpConfigSecretView = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    links: S.optional(PaginatedMcpConfigSecretViewLinksList),
+    results: PaginatedMcpConfigSecretViewResultsList,
+    totalCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PaginatedMcpConfigSecretView",
+}) as any as S.Schema<PaginatedMcpConfigSecretView>;
+
+export interface ListGroupMetricIntegrationsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response returns the total number of items (`totalCount`) in the response. */
+  includeCount?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** Optional filter by integration type (e.g., `OTEL`). */
+  integrationType?: string;
+  /** Optional filter by provider type (e.g., `CUSTOM`). When specified, `integrationType` must also be specified. */
+  providerType?: string;
+}
+export const ListGroupMetricIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    includeCount: S.optional(S.Boolean.pipe(T.Query())),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+    integrationType: S.optional(S.String.pipe(T.Query())),
+    providerType: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "ListGroupMetricIntegrationsRequest",
+}) as any as S.Schema<ListGroupMetricIntegrationsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedMetricIntegrationResponseLinksList = Array<Link>;
+export const PaginatedMetricIntegrationResponseLinksList =
+  /*@__PURE__*/ S.Array(
+    Link,
+  ) as any as S.Schema<PaginatedMetricIntegrationResponseLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedMetricIntegrationResponseResultsList =
+  Array<MetricIntegrationResponse>;
+export const PaginatedMetricIntegrationResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    MetricIntegrationResponse,
+  ) as any as S.Schema<PaginatedMetricIntegrationResponseResultsList>;
+
+export interface PaginatedMetricIntegrationResponse {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedMetricIntegrationResponseLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedMetricIntegrationResponseResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedMetricIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    links: S.optional(PaginatedMetricIntegrationResponseLinksList),
+    results: PaginatedMetricIntegrationResponseResultsList,
+    totalCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PaginatedMetricIntegrationResponse",
+}) as any as S.Schema<PaginatedMetricIntegrationResponse>;
 
 export type ListGroupPeersRequestProviderName = "AWS" | "AZURE" | "GCP";
 export const ListGroupPeersRequestProviderName = /*@__PURE__*/ S.String;
@@ -48477,8 +52017,12 @@ export interface PerformanceAdvisorSlowQueryMetrics {
   docsReturned?: number;
   /** This boolean will be true when the server can identify the query source as non-server. This field is only available for MDB 8.0+. */
   fromUserConnection?: boolean;
+  /** Flag that indicates whether the slow query used automated embedding, where MongoDB Cloud generates embeddings from raw text at query time instead of the client supplying a precomputed vector. */
+  hasAutoEmbedding?: boolean;
   /** Indicates if the query has index coverage. */
   hasIndexCoverage?: boolean;
+  /** Flag that indicates whether the slow query used the `$rerank` aggregation stage, which reorders results using Voyage AI reranking models. Always `false` for MongoDB deployments earlier than 8.3. */
+  hasRerank?: boolean;
   /** This boolean will be true when a query cannot use the ordering in the index to return the requested sorted results; i.e. MongoDB must sort the documents after it receives the documents from a cursor. */
   hasSort?: boolean;
   /** The number of index keys that MongoDB scanned in order to carry out the operation. */
@@ -48491,6 +52035,8 @@ export interface PerformanceAdvisorSlowQueryMetrics {
   operationExecutionTime?: number;
   /** The length in bytes of the operation's result document. */
   responseLength?: number;
+  /** The total inference tokens consumed by this operation, including tokens used by `$rerank`. Returned only for inference queries that consumed tokens; it is omitted otherwise, including for MongoDB deployments earlier than 8.3. */
+  tokensUsed?: number;
 }
 export const PerformanceAdvisorSlowQueryMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -48498,13 +52044,16 @@ export const PerformanceAdvisorSlowQueryMetrics = /*@__PURE__*/ S.suspend(() =>
     docsExaminedReturnedRatio: S.optional(S.Number),
     docsReturned: S.optional(S.Number),
     fromUserConnection: S.optional(S.Boolean),
+    hasAutoEmbedding: S.optional(S.Boolean),
     hasIndexCoverage: S.optional(S.Boolean),
+    hasRerank: S.optional(S.Boolean),
     hasSort: S.optional(S.Boolean),
     keysExamined: S.optional(S.Number),
     keysExaminedReturnedRatio: S.optional(S.Number),
     numYields: S.optional(S.Number),
     operationExecutionTime: S.optional(S.Number),
     responseLength: S.optional(S.Number),
+    tokensUsed: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "PerformanceAdvisorSlowQueryMetrics",
@@ -48698,6 +52247,8 @@ export interface ListGroupServiceAccountsRequest {
   pretty?: boolean;
   /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
   envelope?: boolean;
+  /** Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned. */
+  includeSystemManaged?: boolean;
 }
 export const ListGroupServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -48706,6 +52257,7 @@ export const ListGroupServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
     pageNum: S.optional(S.Number.pipe(T.Query())),
     pretty: S.optional(S.Boolean.pipe(T.Query())),
     envelope: S.optional(S.Boolean.pipe(T.Query())),
+    includeSystemManaged: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -48935,10 +52487,10 @@ export const PaginatedApiStreamsFailoverConnectionOutputLinksList =
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */
 export type PaginatedApiStreamsFailoverConnectionOutputResultsList =
-  Array<StreamsConnectionOutput>;
+  Array<StreamsFailoverConnectionOutput>;
 export const PaginatedApiStreamsFailoverConnectionOutputResultsList =
   /*@__PURE__*/ S.Array(
-    StreamsConnectionOutput,
+    StreamsFailoverConnectionOutput,
   ) as any as S.Schema<PaginatedApiStreamsFailoverConnectionOutputResultsList>;
 
 export interface PaginatedApiStreamsFailoverConnectionOutput {
@@ -49323,6 +52875,37 @@ export const PaginatedGroupUserView = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedGroupUserView",
 }) as any as S.Schema<PaginatedGroupUserView>;
 
+export interface ListOrgAiModelApiKeysRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListOrgAiModelApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/aiModelApiKeys",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrgAiModelApiKeysRequest",
+}) as any as S.Schema<ListOrgAiModelApiKeysRequest>;
+
 export interface ListOrgApiKeyAccessListEntriesRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
   orgId: string;
@@ -49530,6 +53113,74 @@ export const PaginatedApiInvoiceView = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaginatedApiInvoiceView",
 }) as any as S.Schema<PaginatedApiInvoiceView>;
+
+export interface ListOrgInvoiceReportsRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique string that identifies the invoice to list reports for. */
+  invoiceId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response returns the total number of items (`totalCount`) in the response. */
+  includeCount?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListOrgInvoiceReportsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    invoiceId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    includeCount: S.optional(S.Boolean.pipe(T.Query())),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrgInvoiceReportsRequest",
+}) as any as S.Schema<ListOrgInvoiceReportsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedInvoiceReportViewLinksList = Array<Link>;
+export const PaginatedInvoiceReportViewLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<PaginatedInvoiceReportViewLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedInvoiceReportViewResultsList =
+  Array<InvoiceReportResponse>;
+export const PaginatedInvoiceReportViewResultsList = /*@__PURE__*/ S.Array(
+  InvoiceReportResponse,
+) as any as S.Schema<PaginatedInvoiceReportViewResultsList>;
+
+export interface PaginatedInvoiceReportView {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedInvoiceReportViewLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedInvoiceReportViewResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedInvoiceReportView = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    links: S.optional(PaginatedInvoiceReportViewLinksList),
+    results: PaginatedInvoiceReportViewResultsList,
+    totalCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PaginatedInvoiceReportView",
+}) as any as S.Schema<PaginatedInvoiceReportView>;
 
 export type ListOrgInvoicesRequestStatusNamesItem =
   | "PENDING"
@@ -49841,6 +53492,107 @@ export const ListOrgLiveMigrationAvailableProjectsResponse =
     identifier: "ListOrgLiveMigrationAvailableProjectsResponse",
   }) as any as S.Schema<ListOrgLiveMigrationAvailableProjectsResponse>;
 
+export interface ListOrgMcpConfigsRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Flag that indicates whether the response returns the total number of items (`totalCount`) in the response. */
+  includeCount?: boolean;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListOrgMcpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    includeCount: S.optional(S.Boolean.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrgMcpConfigsRequest",
+}) as any as S.Schema<ListOrgMcpConfigsRequest>;
+
+/** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+export type PaginatedOrgMcpConfigViewLinksList = Array<Link>;
+export const PaginatedOrgMcpConfigViewLinksList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<PaginatedOrgMcpConfigViewLinksList>;
+
+/** List of returned documents that MongoDB Cloud provides when completing this request. */
+export type PaginatedOrgMcpConfigViewResultsList = Array<OrgMcpConfigResponse>;
+export const PaginatedOrgMcpConfigViewResultsList = /*@__PURE__*/ S.Array(
+  OrgMcpConfigResponse,
+) as any as S.Schema<PaginatedOrgMcpConfigViewResultsList>;
+
+export interface PaginatedOrgMcpConfigView {
+  /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
+  links?: PaginatedOrgMcpConfigViewLinksList;
+  /** List of returned documents that MongoDB Cloud provides when completing this request. */
+  results: PaginatedOrgMcpConfigViewResultsList;
+  /** Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact. */
+  totalCount?: number;
+}
+export const PaginatedOrgMcpConfigView = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    links: S.optional(PaginatedOrgMcpConfigViewLinksList),
+    results: PaginatedOrgMcpConfigViewResultsList,
+    totalCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PaginatedOrgMcpConfigView",
+}) as any as S.Schema<PaginatedOrgMcpConfigView>;
+
+export interface ListOrgMcpConfigSecretsRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique identifier of the MCP configuration. */
+  mcpConfigId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Number of items that the response returns per page. */
+  itemsPerPage?: number;
+  /** Flag that indicates whether the response returns the total number of items (`totalCount`) in the response. */
+  includeCount?: boolean;
+  /** Number of the page that displays the current set of the total objects that the response returns. */
+  pageNum?: number;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ListOrgMcpConfigSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+    includeCount: S.optional(S.Boolean.pipe(T.Query())),
+    pageNum: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrgMcpConfigSecretsRequest",
+}) as any as S.Schema<ListOrgMcpConfigSecretsRequest>;
+
 export interface ListOrgResourcePoliciesRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
   orgId: string;
@@ -49993,6 +53745,8 @@ export interface ListOrgServiceAccountsRequest {
   pretty?: boolean;
   /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
   envelope?: boolean;
+  /** Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned. */
+  includeSystemManaged?: boolean;
 }
 export const ListOrgServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -50001,6 +53755,7 @@ export const ListOrgServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
     pageNum: S.optional(S.Number.pipe(T.Query())),
     pretty: S.optional(S.Boolean.pipe(T.Query())),
     envelope: S.optional(S.Boolean.pipe(T.Query())),
+    includeSystemManaged: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -50847,7 +54602,8 @@ export const RenameOrgTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenameOrgTeamRequest>;
 
 export type RequestGroupEncryptionAtRestPrivateEndpointDeletionRequestCloudProvider =
-  "AZURE" | "AWS";
+  | "AZURE"
+  | "AWS";
 export const RequestGroupEncryptionAtRestPrivateEndpointDeletionRequestCloudProvider =
   /*@__PURE__*/ S.String;
 
@@ -50919,6 +54675,88 @@ export const RequestGroupSampleDatasetLoadRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RequestGroupSampleDatasetLoadRequest",
 }) as any as S.Schema<RequestGroupSampleDatasetLoadRequest>;
+
+export type ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud =
+  "ANY";
+export const ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud =
+  /*@__PURE__*/ S.String;
+
+export type ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography =
+  "ANY";
+export const ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography =
+  /*@__PURE__*/ S.String;
+
+export interface ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Cloud provider scope. Must be "ANY". Additional values will be supported in future API versions. */
+  cloud:
+    | ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud
+    | (string & {});
+  /** Geography scope. Must be "ANY". Additional values will be supported in future API versions. */
+  geography:
+    | ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography
+    | (string & {});
+  /** The name of the model group to be reset to default rate limits. */
+  modelGroupName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      cloud:
+        ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud.pipe(
+          T.Label(),
+        ),
+      geography:
+        ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography.pipe(
+          T.Label(),
+        ),
+      modelGroupName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits:reset",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
+  }) as any as S.Schema<ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest>;
+
+export interface ResetGroupAiModelApiRateLimitsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+}
+export const ResetGroupAiModelApiRateLimitsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits:reset",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+).annotate({
+  identifier: "ResetGroupAiModelApiRateLimitsRequest",
+}) as any as S.Schema<ResetGroupAiModelApiRateLimitsRequest>;
 
 export interface ResetGroupMaintenanceWindowRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -51081,7 +54919,7 @@ export type UsageDetailsFilterRequestSkuServicesItem =
   | "Cloud Manager"
   | "Cloud Manager Standard/Premium"
   | "Legacy Backup"
-  | "AI Models"
+  | "AI Model APIs"
   | "Automated Embedding"
   | "Native Reranking"
   | "Flex Consulting"
@@ -51207,10 +55045,21 @@ export const AdditionalData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdditionalData" }) as any as S.Schema<AdditionalData>;
 
+/** Code identifying the cloud provider this line item's usage is attributed to. Values map as follows: AWS is Amazon Web Services, GCP is Google Cloud, AZURE is Microsoft Azure, and ATLAS is other Atlas usage not tied to a specific cloud provider. */
+export type PublicApiUsageDetailsLineItemViewCloudProvider =
+  | "AWS"
+  | "GCP"
+  | "AZURE"
+  | "ATLAS";
+export const PublicApiUsageDetailsLineItemViewCloudProvider =
+  /*@__PURE__*/ S.String;
+
 export interface PublicApiUsageDetailsLineItemView {
   additionalData?: AdditionalData;
   /** Billing date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   billDate?: string;
+  /** Code identifying the cloud provider this line item's usage is attributed to. Values map as follows: AWS is Amazon Web Services, GCP is Google Cloud, AZURE is Microsoft Azure, and ATLAS is other Atlas usage not tied to a specific cloud provider. */
+  cloudProvider?: PublicApiUsageDetailsLineItemViewCloudProvider;
   /** Cluster associated with the line item. */
   clusterName?: string;
   /** Description of the line item, which can include SKU name and other identifying information. */
@@ -51230,6 +55079,7 @@ export const PublicApiUsageDetailsLineItemView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalData: S.optional(AdditionalData),
     billDate: S.optional(S.String),
+    cloudProvider: S.optional(PublicApiUsageDetailsLineItemViewCloudProvider),
     clusterName: S.optional(S.String),
     description: S.optional(S.String),
     groupId: S.optional(S.String),
@@ -51453,6 +55303,8 @@ export const StreamsStartProcessorFailoverMode = /*@__PURE__*/ S.String;
 
 /** Failover options for starting a stream processor. */
 export interface StreamsStartProcessorFailover {
+  /** If true, clears the checkpoint so the failover processor does not resume from it. Applies only to FORCED failover; clearing may cause duplicate or missing records in the output. */
+  clearCheckpoint?: boolean;
   /** If true, simulates the operation without making any changes. */
   dryRun?: boolean;
   /** Strategy for the processor: GRACEFUL - attempt to stop the processor, error if processor cannot be stopped. if stop was successful, start the processor in the new region with the latest checkpoint. FORCED - attempt to stop the processor, proceed to starting the processor in the new region with checkpoints disabled regardless of whether or not the stop succeeds. */
@@ -51462,6 +55314,7 @@ export interface StreamsStartProcessorFailover {
 }
 export const StreamsStartProcessorFailover = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    clearCheckpoint: S.optional(S.Boolean),
     dryRun: S.optional(S.Boolean),
     mode: S.optional(StreamsStartProcessorFailoverMode),
     region: S.String,
@@ -51470,7 +55323,7 @@ export const StreamsStartProcessorFailover = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsStartProcessorFailover",
 }) as any as S.Schema<StreamsStartProcessorFailover>;
 
-/** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
 export type StartGroupStreamProcessorWithRequestTier =
   | "SP50"
   | "SP30"
@@ -51490,12 +55343,13 @@ export interface StartGroupStreamProcessorWithRequest {
   envelope?: boolean;
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
+  autoscaling?: StreamsAutoscalingInput | null;
   failover?: StreamsStartProcessorFailover;
   /** When true or not specified, the stream processor resumes from its last checkpoint. When false, the stream processor starts fresh. */
   resumeFromCheckpoint?: boolean;
   /** The operation time after which the change stream source should begin reporting. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
   startAtOperationTime?: string;
-  /** Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. */
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
   tier?: StartGroupStreamProcessorWithRequestTier | (string & {});
 }
 export const StartGroupStreamProcessorWithRequest = /*@__PURE__*/ S.suspend(
@@ -51506,6 +55360,7 @@ export const StartGroupStreamProcessorWithRequest = /*@__PURE__*/ S.suspend(
       processorName: S.String.pipe(T.Label()),
       envelope: S.optional(S.Boolean.pipe(T.Query())),
       pretty: S.optional(S.Boolean.pipe(T.Query())),
+      autoscaling: S.optional(S.NullOr(StreamsAutoscalingInput)),
       failover: S.optional(StreamsStartProcessorFailover),
       resumeFromCheckpoint: S.optional(S.Boolean),
       startAtOperationTime: S.optional(S.String),
@@ -51808,7 +55663,6 @@ export interface TenantGroupFlexClusterUpgradeRequest {
   globalClusterSelfManagedSharding?: boolean;
   /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
   labels?: TenantGroupFlexClusterUpgradeRequestLabelsList;
-  mongoDBEmployeeAccessGrant?: EmployeeAccessGrantViewInput;
   /** MongoDB major version of the cluster. Set to the binary major version. On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions). On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version. */
   mongoDBMajorVersion?: string;
   /** Human-readable label that identifies the cluster. */
@@ -51869,7 +55723,6 @@ export const TenantGroupFlexClusterUpgradeRequest = /*@__PURE__*/ S.suspend(
       ),
       globalClusterSelfManagedSharding: S.optional(S.Boolean),
       labels: S.optional(TenantGroupFlexClusterUpgradeRequestLabelsList),
-      mongoDBEmployeeAccessGrant: S.optional(EmployeeAccessGrantViewInput),
       mongoDBMajorVersion: S.optional(S.String),
       name: S.String,
       paused: S.optional(S.Boolean),
@@ -52118,13 +55971,13 @@ export const UpdateFederationSettingConnectedOrgConfigRequestDomainAllowListList
   ) as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRequestDomainAllowListList>;
 
 export type UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsItem =
-    | "ORG_OWNER"
-    | "ORG_MEMBER"
-    | "ORG_GROUP_CREATOR"
-    | "ORG_BILLING_ADMIN"
-    | "ORG_BILLING_READ_ONLY"
-    | "ORG_STREAM_PROCESSING_ADMIN"
-    | "ORG_READ_ONLY";
+  | "ORG_OWNER"
+  | "ORG_MEMBER"
+  | "ORG_GROUP_CREATOR"
+  | "ORG_BILLING_ADMIN"
+  | "ORG_BILLING_READ_ONLY"
+  | "ORG_STREAM_PROCESSING_ADMIN"
+  | "ORG_READ_ONLY";
 export const UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsItem =
   /*@__PURE__*/ S.String;
 
@@ -52215,7 +56068,9 @@ export interface UpdateFederationSettingConnectedOrgConfigRequest {
   /** Value that indicates whether domain restriction is enabled for this connected organization. */
   domainRestrictionEnabled: boolean;
   /** Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. */
-  identityProviderId?: string;
+  identityProviderId?: string | null;
+  /** Flag that indicates whether instant user provisioning is disabled for this connected organization. */
+  instantUserProvisioningDisabled?: boolean | null;
   /** Atlas roles that are granted to a user in this organization after authenticating. Roles are a human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific MongoDB Cloud user. These roles can only be organization specific roles. */
   postAuthRoleGrants?: UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsList;
   /** Role mappings that are configured in this organization. */
@@ -52236,7 +56091,8 @@ export const UpdateFederationSettingConnectedOrgConfigRequest =
         UpdateFederationSettingConnectedOrgConfigRequestDomainAllowListList,
       ),
       domainRestrictionEnabled: S.Boolean,
-      identityProviderId: S.optional(S.String),
+      identityProviderId: S.optional(S.NullOr(S.String)),
+      instantUserProvisioningDisabled: S.optional(S.NullOr(S.Boolean)),
       postAuthRoleGrants: S.optional(
         UpdateFederationSettingConnectedOrgConfigRequestPostAuthRoleGrantsList,
       ),
@@ -52324,7 +56180,7 @@ export interface UpdateFederationSettingIdentityProviderRequest {
   /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
   envelope?: boolean;
   /** The description of the identity provider. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that identifies the identity provider. */
   displayName?: string;
   /** String enum that indicates the type of the identity provider. Default is WORKFORCE. */
@@ -52344,7 +56200,7 @@ export const UpdateFederationSettingIdentityProviderRequest =
       federationSettingsId: S.String.pipe(T.Label()),
       identityProviderId: S.String.pipe(T.Label()),
       envelope: S.optional(S.Boolean.pipe(T.Query())),
-      description: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
       displayName: S.optional(S.String),
       idpType: S.optional(
         UpdateFederationSettingIdentityProviderRequestIdpType,
@@ -52404,6 +56260,99 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateGroupRequest",
 }) as any as S.Schema<UpdateGroupRequest>;
+
+export type UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud =
+  "ANY";
+export const UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud =
+  /*@__PURE__*/ S.String;
+
+export type UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography =
+  "ANY";
+export const UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography =
+  /*@__PURE__*/ S.String;
+
+export interface UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Cloud provider scope. Must be "ANY". Additional values will be supported in future API versions. */
+  cloud:
+    | UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud
+    | (string & {});
+  /** Geography scope. Must be "ANY". Additional values will be supported in future API versions. */
+  geography:
+    | UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography
+    | (string & {});
+  /** The name of the model group to be updated. */
+  modelGroupName: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** The number of requests per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model. */
+  requestsPerMinuteLimit: number;
+  /** The number of tokens per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model. */
+  tokensPerMinuteLimit: number;
+}
+export const UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      cloud:
+        UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestCloud.pipe(
+          T.Label(),
+        ),
+      geography:
+        UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequestGeography.pipe(
+          T.Label(),
+        ),
+      modelGroupName: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+      requestsPerMinuteLimit: S.Number,
+      tokensPerMinuteLimit: S.Number,
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
+  }) as any as S.Schema<UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest>;
+
+export interface UpdateGroupAiModelApiKeyRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** The id of the API key to be updated. */
+  apiKeyId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** A new name for the API key. */
+  name: string;
+}
+export const UpdateGroupAiModelApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    apiKeyId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateGroupAiModelApiKeyRequest",
+}) as any as S.Schema<UpdateGroupAiModelApiKeyRequest>;
 
 export interface UpdateGroupAlertConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -52942,7 +56891,6 @@ export interface UpdateGroupClusterRequest {
   globalClusterSelfManagedSharding?: boolean;
   /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
   labels?: UpdateGroupClusterRequestLabelsList;
-  mongoDBEmployeeAccessGrant?: EmployeeAccessGrantViewInput;
   /** MongoDB major version of the cluster. Set to the binary major version. On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions). On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version. */
   mongoDBMajorVersion?: string;
   /** Human-readable label that identifies the cluster. */
@@ -52997,7 +56945,6 @@ export const UpdateGroupClusterRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     globalClusterSelfManagedSharding: S.optional(S.Boolean),
     labels: S.optional(UpdateGroupClusterRequestLabelsList),
-    mongoDBEmployeeAccessGrant: S.optional(EmployeeAccessGrantViewInput),
     mongoDBMajorVersion: S.optional(S.String),
     name: S.optional(S.String),
     paused: S.optional(S.Boolean),
@@ -53515,8 +57462,8 @@ export const UpdateGroupClusterOnlineArchiveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateGroupClusterOnlineArchiveRequest>;
 
 export type UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12Item =
-    | "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
-    | "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256";
+  | "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+  | "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256";
 export const UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12Item =
   /*@__PURE__*/ S.String;
 
@@ -53532,10 +57479,10 @@ export const UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12L
   ) as any as S.Schema<UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12List>;
 
 export type UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13Item =
-    | "TLS_AES_256_GCM_SHA384"
-    | "TLS_CHACHA20_POLY1305_SHA256"
-    | "TLS_AES_128_GCM_SHA256"
-    | "TLS_AES_128_CCM_SHA256";
+  | "TLS_AES_256_GCM_SHA384"
+  | "TLS_CHACHA20_POLY1305_SHA256"
+  | "TLS_AES_128_GCM_SHA256"
+  | "TLS_AES_128_CCM_SHA256";
 export const UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13Item =
   /*@__PURE__*/ S.String;
 
@@ -53715,7 +57662,7 @@ export interface UpdateGroupClusterSearchDeploymentRequest {
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
   /** Default number of Search Nodes per region. Applied to a region without an explicit override. */
-  defaultNodeCount?: number;
+  defaultNodeCount?: number | null;
   /** List of settings that configure the Search Nodes for your cluster. Provide one element per region when configuring asymmetric deployments; a single element applies to all regions. */
   specs: UpdateGroupClusterSearchDeploymentRequestSpecsList;
 }
@@ -53726,7 +57673,7 @@ export const UpdateGroupClusterSearchDeploymentRequest =
       clusterName: S.String.pipe(T.Label()),
       envelope: S.optional(S.Boolean.pipe(T.Query())),
       pretty: S.optional(S.Boolean.pipe(T.Query())),
-      defaultNodeCount: S.optional(S.Number),
+      defaultNodeCount: S.optional(S.NullOr(S.Number)),
       specs: UpdateGroupClusterSearchDeploymentRequestSpecsList,
     }).pipe(
       T.Http({
@@ -54780,9 +58727,9 @@ export interface UpdateGroupMaintenanceWindowRequest {
   envelope?: boolean;
   /** Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. This setting controls the same underlying auto-deferral feature as the `/maintenanceWindow/autoDefer` endpoint. Use either this field (to set a specific value) or that endpoint (to toggle the current value). For most use cases, this field in the PATCH request is preferred because it allows setting an explicit value rather than toggling. */
   autoDeferOnceEnabled?: boolean;
-  /** One-based integer that represents the day of the week that the maintenance window starts. - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday. */
+  /** One-based integer that represents the day of the week, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts. - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday. */
   dayOfWeek: number;
-  /** Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon. */
+  /** Zero-based integer that represents the hour of the day, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon. If you haven't changed your project's time zone, this defaults to UTC. */
   hourOfDay?: number;
   protectedHours?: ProtectedHours;
   /** Flag that indicates whether MongoDB Cloud starts the maintenance window immediately upon receiving this request. To start the maintenance window immediately for your project, MongoDB Cloud must have maintenance scheduled and you must set a maintenance window. This flag resets to `false` after MongoDB Cloud completes maintenance. */
@@ -54815,6 +58762,156 @@ export const UpdateGroupMaintenanceWindowResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateGroupMaintenanceWindowResponse",
 }) as any as S.Schema<UpdateGroupMaintenanceWindowResponse>;
+
+/** List of IP access list entries that define allowed source addresses for this MCP configuration. If provided, replaces the existing IP access list. */
+export type UpdateGroupMcpConfigRequestIpAccessListList =
+  Array<ServiceAccountIPAccessListEntryInput>;
+export const UpdateGroupMcpConfigRequestIpAccessListList =
+  /*@__PURE__*/ S.Array(
+    ServiceAccountIPAccessListEntryInput,
+  ) as any as S.Schema<UpdateGroupMcpConfigRequestIpAccessListList>;
+
+/** List of project roles associated with this MCP configuration. If provided, replaces the existing list of roles. */
+export type UpdateGroupMcpConfigRequestRolesList = Array<string>;
+export const UpdateGroupMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateGroupMcpConfigRequestRolesList>;
+
+export interface UpdateGroupMcpConfigRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the MCP configuration to update. */
+  mcpConfigId: string;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** List of IP access list entries that define allowed source addresses for this MCP configuration. If provided, replaces the existing IP access list. */
+  ipAccessList?: UpdateGroupMcpConfigRequestIpAccessListList;
+  /** Updated human-readable name for this MCP configuration. */
+  mcpConfigName?: string | null;
+  /** List of project roles associated with this MCP configuration. If provided, replaces the existing list of roles. */
+  roles?: UpdateGroupMcpConfigRequestRolesList;
+}
+export const UpdateGroupMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+    ipAccessList: S.optional(UpdateGroupMcpConfigRequestIpAccessListList),
+    mcpConfigName: S.optional(S.NullOr(S.String)),
+    roles: S.optional(UpdateGroupMcpConfigRequestRolesList),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateGroupMcpConfigRequest",
+}) as any as S.Schema<UpdateGroupMcpConfigRequest>;
+
+/** The temporality to send to the metric integration. */
+export type UpdateGroupMetricIntegrationRequestAggregationTemporality =
+  | "DELTA"
+  | "CUMULATIVE";
+export const UpdateGroupMetricIntegrationRequestAggregationTemporality =
+  /*@__PURE__*/ S.String;
+
+/** Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used. */
+export type UpdateGroupMetricIntegrationRequestAuthType = "HEADER";
+export const UpdateGroupMetricIntegrationRequestAuthType =
+  /*@__PURE__*/ S.String;
+
+/** HTTP headers for authentication and configuration. Total size limit 2KB. Required when `authType` is `HEADER`. */
+export type UpdateGroupMetricIntegrationRequestHeadersList = Array<Header>;
+export const UpdateGroupMetricIntegrationRequestHeadersList =
+  /*@__PURE__*/ S.Array(
+    Header,
+  ) as any as S.Schema<UpdateGroupMetricIntegrationRequestHeadersList>;
+
+/** Type of metric integration. Identifies which protocol will be used for the integration. This value cannot be modified after the integration is created. */
+export type UpdateGroupMetricIntegrationRequestIntegrationType = "OTEL";
+export const UpdateGroupMetricIntegrationRequestIntegrationType =
+  /*@__PURE__*/ S.String;
+
+export type UpdateGroupMetricIntegrationRequestMetricSelectionItem =
+  | "ATLAS_STREAM_PROCESSING"
+  | "MONGODB_METRICS"
+  | "HARDWARE_METRICS";
+export const UpdateGroupMetricIntegrationRequestMetricSelectionItem =
+  /*@__PURE__*/ S.String;
+
+/** Array of metric categories to export. Determines which types of metrics are sent to the integration. */
+export type UpdateGroupMetricIntegrationRequestMetricSelectionList = Array<
+  UpdateGroupMetricIntegrationRequestMetricSelectionItem | (string & {})
+>;
+export const UpdateGroupMetricIntegrationRequestMetricSelectionList =
+  /*@__PURE__*/ S.Array(
+    UpdateGroupMetricIntegrationRequestMetricSelectionItem,
+  ) as any as S.Schema<UpdateGroupMetricIntegrationRequestMetricSelectionList>;
+
+/** The provider type for the metric integration. Identifies the third-party service provider. */
+export type UpdateGroupMetricIntegrationRequestProviderType =
+  | "CUSTOM"
+  | "DYNATRACE"
+  | "NEW_RELIC";
+export const UpdateGroupMetricIntegrationRequestProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface UpdateGroupMetricIntegrationRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique identifier of the metric integration configuration. */
+  metricIntegrationId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** The temporality to send to the metric integration. */
+  aggregationTemporality:
+    | UpdateGroupMetricIntegrationRequestAggregationTemporality
+    | (string & {});
+  /** Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used. */
+  authType: UpdateGroupMetricIntegrationRequestAuthType | (string & {});
+  /** OpenTelemetry collector endpoint URL. Must use HTTPS. */
+  endpoint: string;
+  /** HTTP headers for authentication and configuration. Total size limit 2KB. Required when `authType` is `HEADER`. */
+  headers?: UpdateGroupMetricIntegrationRequestHeadersList;
+  /** Type of metric integration. Identifies which protocol will be used for the integration. This value cannot be modified after the integration is created. */
+  integrationType:
+    | UpdateGroupMetricIntegrationRequestIntegrationType
+    | (string & {});
+  /** Array of metric categories to export. Determines which types of metrics are sent to the integration. */
+  metricSelection: UpdateGroupMetricIntegrationRequestMetricSelectionList;
+  /** The provider type for the metric integration. Identifies the third-party service provider. */
+  providerType: UpdateGroupMetricIntegrationRequestProviderType | (string & {});
+}
+export const UpdateGroupMetricIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    metricIntegrationId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+    aggregationTemporality:
+      UpdateGroupMetricIntegrationRequestAggregationTemporality,
+    authType: UpdateGroupMetricIntegrationRequestAuthType,
+    endpoint: S.String,
+    headers: S.optional(UpdateGroupMetricIntegrationRequestHeadersList),
+    integrationType: UpdateGroupMetricIntegrationRequestIntegrationType,
+    metricSelection: UpdateGroupMetricIntegrationRequestMetricSelectionList,
+    providerType: UpdateGroupMetricIntegrationRequestProviderType,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations/{metricIntegrationId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateGroupMetricIntegrationRequest",
+}) as any as S.Schema<UpdateGroupMetricIntegrationRequest>;
 
 /** Cloud service provider that serves the requested network peering connection. */
 export type UpdateGroupPeerRequestProviderName = "AWS" | "AZURE" | "GCP";
@@ -54926,9 +59023,9 @@ export interface UpdateGroupServiceAccountRequest {
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
   /** Human readable description for the Service Account. */
-  description?: string;
+  description?: string | null;
   /** Human-readable name for the Service Account. The name is modifiable and does not have to be unique. */
-  name?: string;
+  name?: string | null;
   /** A list of Project roles associated with the Service Account. */
   roles?: UpdateGroupServiceAccountRequestRolesList;
 }
@@ -54938,8 +59035,8 @@ export const UpdateGroupServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
     clientId: S.String.pipe(T.Label()),
     envelope: S.optional(S.Boolean.pipe(T.Query())),
     pretty: S.optional(S.Boolean.pipe(T.Query())),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
     roles: S.optional(UpdateGroupServiceAccountRequestRolesList),
   }).pipe(
     T.Http({
@@ -54960,6 +59057,8 @@ export interface UpdateGroupSettingsRequest {
   envelope?: boolean;
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
+  /** Flag that indicates whether the MongoDB Assistant on the Atlas Home Page is enabled for the specified project. */
+  isAtlasHomePageAiAssistantEnabled?: boolean;
   /** Flag that indicates whether the AI Cluster Assistant is enabled for the specified project. */
   isClusterAiAssistantEnabled?: boolean;
   /** Flag that indicates whether to collect database-specific metrics for the specified project. */
@@ -54988,6 +59087,7 @@ export const UpdateGroupSettingsRequest = /*@__PURE__*/ S.suspend(() =>
     groupId: S.String.pipe(T.Label()),
     envelope: S.optional(S.Boolean.pipe(T.Query())),
     pretty: S.optional(S.Boolean.pipe(T.Query())),
+    isAtlasHomePageAiAssistantEnabled: S.optional(S.Boolean),
     isClusterAiAssistantEnabled: S.optional(S.Boolean),
     isCollectDatabaseSpecificsStatisticsEnabled: S.optional(S.Boolean),
     isDataExplorerEnabled: S.optional(S.Boolean),
@@ -55011,7 +59111,7 @@ export const UpdateGroupSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGroupSettingsRequest",
 }) as any as S.Schema<UpdateGroupSettingsRequest>;
 
-/** Type of the connection. */
+/** Connection type. */
 export type UpdateGroupStreamConnectionRequestType =
   | "Kafka"
   | "Cluster"
@@ -55035,11 +59135,11 @@ export interface UpdateGroupStreamConnectionRequest {
   envelope?: boolean;
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** Type of the connection. */
+  /** Connection type. */
   type?: UpdateGroupStreamConnectionRequestType | (string & {});
 }
 export const UpdateGroupStreamConnectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -55064,17 +59164,10 @@ export const UpdateGroupStreamConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGroupStreamConnectionRequest",
 }) as any as S.Schema<UpdateGroupStreamConnectionRequest>;
 
-/** Type of the connection. */
+/** Connection type. */
 export type UpdateGroupStreamConnectionFailoverConnectionRequestType =
   | "Kafka"
-  | "Cluster"
-  | "Sample"
-  | "Https"
-  | "AzureBlobStorage"
-  | "AWSLambda"
-  | "AWSKinesisDataStreams"
-  | "SchemaRegistry"
-  | "GCPPubSub";
+  | "Cluster";
 export const UpdateGroupStreamConnectionFailoverConnectionRequestType =
   /*@__PURE__*/ S.String;
 
@@ -55091,11 +59184,11 @@ export interface UpdateGroupStreamConnectionFailoverConnectionRequest {
   envelope?: boolean;
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
-  /** Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. */
+  /** Human-readable label that identifies the stream connection. */
   name?: string;
-  /** The connection's region. */
+  /** Connection region. */
   region?: string;
-  /** Type of the connection. */
+  /** Connection type. */
   type?:
     | UpdateGroupStreamConnectionFailoverConnectionRequestType
     | (string & {});
@@ -55126,8 +59219,41 @@ export const UpdateGroupStreamConnectionFailoverConnectionRequest =
     identifier: "UpdateGroupStreamConnectionFailoverConnectionRequest",
   }) as any as S.Schema<UpdateGroupStreamConnectionFailoverConnectionRequest>;
 
+export interface UpdateGroupStreamPrivateLinkConnectionRequest {
+  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
+  groupId: string;
+  /** Unique ID that identifies the Private Link connection. */
+  connectionId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** The domain hostname for the AWS Confluent Serverless Private Link connection. Allowed only when no domain is currently set, or when the connection is in `IDLE` state. */
+  dnsDomain?: string;
+}
+export const UpdateGroupStreamPrivateLinkConnectionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      connectionId: S.String.pipe(T.Label()),
+      envelope: S.optional(S.Boolean.pipe(T.Query())),
+      pretty: S.optional(S.Boolean.pipe(T.Query())),
+      dnsDomain: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}",
+        code: 200,
+        accept: "application/vnd.atlas.2025-03-12+json",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateGroupStreamPrivateLinkConnectionRequest",
+  }) as any as S.Schema<UpdateGroupStreamPrivateLinkConnectionRequest>;
+
 /** Additional options for modifying a stream processor. */
 export interface StreamsModifyStreamProcessorOptionsInput {
+  autoscaling?: StreamsAutoscalingInput | null;
   dlq?: StreamsDLQInput;
   /** When true, the modified stream processor resumes from its last checkpoint. */
   resumeFromCheckpoint?: boolean;
@@ -55135,6 +59261,7 @@ export interface StreamsModifyStreamProcessorOptionsInput {
 export const StreamsModifyStreamProcessorOptionsInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      autoscaling: S.optional(S.NullOr(StreamsAutoscalingInput)),
       dlq: S.optional(StreamsDLQInput),
       resumeFromCheckpoint: S.optional(S.Boolean),
     }),
@@ -55148,6 +59275,15 @@ export const UpdateGroupStreamProcessorRequestPipelineList =
   /*@__PURE__*/ S.Array(
     Document,
   ) as any as S.Schema<UpdateGroupStreamProcessorRequestPipelineList>;
+
+/** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
+export type UpdateGroupStreamProcessorRequestTier =
+  | "SP50"
+  | "SP30"
+  | "SP10"
+  | "SP5"
+  | "SP2";
+export const UpdateGroupStreamProcessorRequestTier = /*@__PURE__*/ S.String;
 
 export interface UpdateGroupStreamProcessorRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -55167,6 +59303,8 @@ export interface UpdateGroupStreamProcessorRequest {
   options?: StreamsModifyStreamProcessorOptionsInput;
   /** New pipeline for the stream processor. */
   pipeline?: UpdateGroupStreamProcessorRequestPipelineList;
+  /** Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. */
+  tier?: UpdateGroupStreamProcessorRequestTier | (string & {});
 }
 export const UpdateGroupStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55179,6 +59317,7 @@ export const UpdateGroupStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     options: S.optional(StreamsModifyStreamProcessorOptionsInput),
     pipeline: S.optional(UpdateGroupStreamProcessorRequestPipelineList),
+    tier: S.optional(UpdateGroupStreamProcessorRequestTier),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -55223,16 +59362,16 @@ export const StreamsProcessorStatusInputStatus = /*@__PURE__*/ S.String;
 /** Desired status change to apply to a tenant's stream processors. */
 export interface StreamsProcessorStatusInput {
   /** Strategy for the processor: GRACEFUL - attempt to stop the processor, error if processor cannot be stopped. if stop was successful, start the processor in the new region with the latest checkpoint. FORCED - attempt to stop the processor, proceed to starting the processor in the new region with checkpoints disabled regardless of whether or not the stop succeeds. */
-  mode?: StreamsProcessorStatusInputMode | (string & {});
+  mode?: StreamsProcessorStatusInputMode | (string & {}) | null;
   /** Name of the region against which to apply the status change. Required when `status` is `FAILED_OVER`; optional otherwise. */
-  region?: string;
+  region?: string | null;
   /** Represents the desired action to apply to stream processors within a workspace, such as starting all processors, stopping all processors, or performing a bulk regional failover. */
   status: StreamsProcessorStatusInputStatus | (string & {});
 }
 export const StreamsProcessorStatusInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(StreamsProcessorStatusInputMode),
-    region: S.optional(S.String),
+    mode: S.optional(S.NullOr(StreamsProcessorStatusInputMode)),
+    region: S.optional(S.NullOr(S.String)),
     status: StreamsProcessorStatusInputStatus,
   }),
 ).annotate({
@@ -55497,6 +59636,128 @@ export const UpdateOrgApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateOrgApiKeyRequest",
 }) as any as S.Schema<UpdateOrgApiKeyRequest>;
 
+/** Policy that controls how MCP (Model Context Protocol) delegated access is permitted within this organization. Possible values are `DISALLOWED`, `READ_ONLY`, and `READ_WRITE`. Defaults to `DISALLOWED`. */
+export type UpdateOrgDelegationSettingsRequestDelegatedMcpAccess =
+  | "DISALLOWED"
+  | "READ_ONLY"
+  | "READ_WRITE";
+export const UpdateOrgDelegationSettingsRequestDelegatedMcpAccess =
+  /*@__PURE__*/ S.String;
+
+/** Policy that controls whether partner delegated access is permitted within this organization. Possible values are `DISALLOWED` and `READ_WRITE`. Defaults to `DISALLOWED`. */
+export type UpdateOrgDelegationSettingsRequestDelegatedPartnerAccess =
+  | "DISALLOWED"
+  | "READ_WRITE";
+export const UpdateOrgDelegationSettingsRequestDelegatedPartnerAccess =
+  /*@__PURE__*/ S.String;
+
+export interface UpdateOrgDelegationSettingsRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
+  envelope?: boolean;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** Policy that controls how MCP (Model Context Protocol) delegated access is permitted within this organization. Possible values are `DISALLOWED`, `READ_ONLY`, and `READ_WRITE`. Defaults to `DISALLOWED`. */
+  delegatedMcpAccess?:
+    | UpdateOrgDelegationSettingsRequestDelegatedMcpAccess
+    | (string & {})
+    | null;
+  /** Policy that controls whether partner delegated access is permitted within this organization. Possible values are `DISALLOWED` and `READ_WRITE`. Defaults to `DISALLOWED`. */
+  delegatedPartnerAccess?:
+    | UpdateOrgDelegationSettingsRequestDelegatedPartnerAccess
+    | (string & {})
+    | null;
+  /** Maximum number of seconds a refresh token may be idle before it expires. Omit to leave unchanged; set to null to reset to the system default. Must be between 1 and 31536000 (1 year) when provided. */
+  idleRefreshTokenLifetime?: number | null;
+  /** Maximum lifetime of a refresh token in seconds, regardless of activity. Omit to leave unchanged; set to null to reset to the system default. Must be between 1 and 31536000 (1 year) when provided. */
+  maximumRefreshTokenLifetime?: number | null;
+}
+export const UpdateOrgDelegationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    envelope: S.optional(S.Boolean.pipe(T.Query())),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+    delegatedMcpAccess: S.optional(
+      S.NullOr(UpdateOrgDelegationSettingsRequestDelegatedMcpAccess),
+    ),
+    delegatedPartnerAccess: S.optional(
+      S.NullOr(UpdateOrgDelegationSettingsRequestDelegatedPartnerAccess),
+    ),
+    idleRefreshTokenLifetime: S.optional(S.NullOr(S.Number)),
+    maximumRefreshTokenLifetime: S.optional(S.NullOr(S.Number)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/atlas/v2/orgs/{orgId}/delegationSettings",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOrgDelegationSettingsRequest",
+}) as any as S.Schema<UpdateOrgDelegationSettingsRequest>;
+
+/** List of IP access list entries that define allowed source addresses for this MCP configuration. If provided, replaces the existing IP access list. */
+export type UpdateOrgMcpConfigRequestIpAccessListList =
+  Array<ServiceAccountIPAccessListEntryInput>;
+export const UpdateOrgMcpConfigRequestIpAccessListList = /*@__PURE__*/ S.Array(
+  ServiceAccountIPAccessListEntryInput,
+) as any as S.Schema<UpdateOrgMcpConfigRequestIpAccessListList>;
+
+/** Organization roles available for Service Accounts. */
+export type UpdateOrgMcpConfigRequestRolesItem =
+  | "ORG_MEMBER"
+  | "ORG_READ_ONLY"
+  | "ORG_BILLING_ADMIN"
+  | "ORG_BILLING_READ_ONLY"
+  | "ORG_STREAM_PROCESSING_ADMIN"
+  | "ORG_GROUP_CREATOR"
+  | "ORG_OWNER";
+export const UpdateOrgMcpConfigRequestRolesItem = /*@__PURE__*/ S.String;
+
+/** List of organization roles associated with this MCP configuration. If provided, replaces the existing list of roles. */
+export type UpdateOrgMcpConfigRequestRolesList = Array<
+  UpdateOrgMcpConfigRequestRolesItem | (string & {})
+>;
+export const UpdateOrgMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
+  UpdateOrgMcpConfigRequestRolesItem,
+) as any as S.Schema<UpdateOrgMcpConfigRequestRolesList>;
+
+export interface UpdateOrgMcpConfigRequest {
+  /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
+  orgId: string;
+  /** Unique identifier of the MCP configuration to update. */
+  mcpConfigId: string;
+  /** Flag that indicates whether the response body should be in the prettyprint format. */
+  pretty?: boolean;
+  /** List of IP access list entries that define allowed source addresses for this MCP configuration. If provided, replaces the existing IP access list. */
+  ipAccessList?: UpdateOrgMcpConfigRequestIpAccessListList;
+  /** Updated human-readable name for this MCP configuration. */
+  mcpConfigName?: string | null;
+  /** List of organization roles associated with this MCP configuration. If provided, replaces the existing list of roles. */
+  roles?: UpdateOrgMcpConfigRequestRolesList;
+}
+export const UpdateOrgMcpConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orgId: S.String.pipe(T.Label()),
+    mcpConfigId: S.String.pipe(T.Label()),
+    pretty: S.optional(S.Boolean.pipe(T.Query())),
+    ipAccessList: S.optional(UpdateOrgMcpConfigRequestIpAccessListList),
+    mcpConfigName: S.optional(S.NullOr(S.String)),
+    roles: S.optional(UpdateOrgMcpConfigRequestRolesList),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}",
+      code: 200,
+      accept: "application/vnd.atlas.2025-03-12+json",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOrgMcpConfigRequest",
+}) as any as S.Schema<UpdateOrgMcpConfigRequest>;
+
 /** List of policies that make up the atlas resource policy. */
 export type UpdateOrgResourcePolicyRequestPoliciesList =
   Array<ApiAtlasPolicyCreateView>;
@@ -55514,9 +59775,9 @@ export interface UpdateOrgResourcePolicyRequest {
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
   /** Description of the atlas resource policy. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that describes the atlas resource policy. */
-  name?: string;
+  name?: string | null;
   /** List of policies that make up the atlas resource policy. */
   policies?: UpdateOrgResourcePolicyRequestPoliciesList;
 }
@@ -55526,8 +59787,8 @@ export const UpdateOrgResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     resourcePolicyId: S.String.pipe(T.Label()),
     envelope: S.optional(S.Boolean.pipe(T.Query())),
     pretty: S.optional(S.Boolean.pipe(T.Query())),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
     policies: S.optional(UpdateOrgResourcePolicyRequestPoliciesList),
   }).pipe(
     T.Http({
@@ -55570,9 +59831,9 @@ export interface UpdateOrgServiceAccountRequest {
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
   /** Human readable description for the Service Account. */
-  description?: string;
+  description?: string | null;
   /** Human-readable name for the Service Account. The name is modifiable and does not have to be unique. */
-  name?: string;
+  name?: string | null;
   /** A list of organization-level roles for the Service Account. */
   roles?: UpdateOrgServiceAccountRequestRolesList;
 }
@@ -55582,8 +59843,8 @@ export const UpdateOrgServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
     clientId: S.String.pipe(T.Label()),
     envelope: S.optional(S.Boolean.pipe(T.Query())),
     pretty: S.optional(S.Boolean.pipe(T.Query())),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
     roles: S.optional(UpdateOrgServiceAccountRequestRolesList),
   }).pipe(
     T.Http({
@@ -55613,6 +59874,8 @@ export interface UpdateOrgSettingsRequest {
   maxServiceAccountSecretValidityInHours?: number;
   /** Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/. */
   multiFactorAuthRequired?: boolean;
+  /** String that specifies a distribution list email address for the specified organization to receive proactive notifications about its infrastructure. The operations contact is used for notifications only and is not authorized to make decisions or approvals. Passing an explicit null clears the existing operations contact (if any). An empty string is invalid and is rejected with a validation error. */
+  operationsContact?: string | null;
   /** Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/. */
   restrictEmployeeAccess?: boolean;
   /** String that specifies a single email address for the specified organization to receive security-related notifications. Specifying a security contact does not grant them authorization or access to Atlas for security decisions or approvals. An empty string is valid and clears the existing security contact (if any). */
@@ -55630,6 +59893,7 @@ export const UpdateOrgSettingsRequest = /*@__PURE__*/ S.suspend(() =>
     genAIFeaturesEnabled: S.optional(S.Boolean),
     maxServiceAccountSecretValidityInHours: S.optional(S.Number),
     multiFactorAuthRequired: S.optional(S.Boolean),
+    operationsContact: S.optional(S.NullOr(S.String)),
     restrictEmployeeAccess: S.optional(S.Boolean),
     securityContact: S.optional(S.String),
     streamsCrossGroupEnabled: S.optional(S.Boolean),
@@ -56691,21 +60955,18 @@ export const UpgradeGroupClusterTenantUpgradeRequestReplicationSpecMap =
   ) as any as S.Schema<UpgradeGroupClusterTenantUpgradeRequestReplicationSpecMap>;
 
 /** Physical location where MongoDB Cloud provisions cluster nodes. */
-export type LegacyReplicationSpecRegionsConfigMap = {
-  [key: string]: RegionSpec | undefined;
-};
-export const LegacyReplicationSpecRegionsConfigMap = /*@__PURE__*/ S.Record(
+export type LegacyRegionsConfig = { [key: string]: RegionSpec | undefined };
+export const LegacyRegionsConfig = /*@__PURE__*/ S.Record(
   S.String,
   RegionSpec,
-) as any as S.Schema<LegacyReplicationSpecRegionsConfigMap>;
+) as any as S.Schema<LegacyRegionsConfig>;
 
 export interface LegacyReplicationSpec {
   /** Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster. - If you include existing zones in the request, you must specify this parameter. - If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request. */
   id?: string;
   /** Positive integer that specifies the number of shards to deploy in each specified zone If you set this value to `1` and `clusterType` is `SHARDED`, MongoDB Cloud deploys a single-shard sharded cluster. Don't create a sharded cluster with a single shard for production environments. Single-shard sharded clusters don't provide the same benefits as multi-shard configurations. If you are upgrading a replica set to a sharded cluster, you cannot increase the number of shards in the same update request. You should wait until after the cluster has completed upgrading to sharded and you have reconnected all application clients to the MongoDB router before adding additional shards. Otherwise, your data might become inconsistent once MongoDB Cloud begins distributing data across shards. */
   numShards?: number;
-  /** Physical location where MongoDB Cloud provisions cluster nodes. */
-  regionsConfig?: LegacyReplicationSpecRegionsConfigMap;
+  regionsConfig?: LegacyRegionsConfig;
   /** Human-readable label that identifies the zone in a Global Cluster. Provide this value only if `clusterType` is `GEOSHARDED`. */
   zoneName?: string;
 }
@@ -56713,7 +60974,7 @@ export const LegacyReplicationSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     numShards: S.optional(S.Number),
-    regionsConfig: S.optional(LegacyReplicationSpecRegionsConfigMap),
+    regionsConfig: S.optional(LegacyRegionsConfig),
     zoneName: S.optional(S.String),
   }),
 ).annotate({
@@ -56786,7 +61047,6 @@ export interface UpgradeGroupClusterTenantUpgradeRequest {
   globalClusterSelfManagedSharding?: boolean;
   /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
   labels?: UpgradeGroupClusterTenantUpgradeRequestLabelsList;
-  mongoDBEmployeeAccessGrant?: EmployeeAccessGrantViewInput;
   /** MongoDB major version of the cluster. On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions). On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version. */
   mongoDBMajorVersion?: string;
   /** Version of MongoDB that the cluster runs. */
@@ -56856,7 +61116,6 @@ export const UpgradeGroupClusterTenantUpgradeRequest = /*@__PURE__*/ S.suspend(
       ),
       globalClusterSelfManagedSharding: S.optional(S.Boolean),
       labels: S.optional(UpgradeGroupClusterTenantUpgradeRequestLabelsList),
-      mongoDBEmployeeAccessGrant: S.optional(EmployeeAccessGrantViewInput),
       mongoDBMajorVersion: S.optional(S.String),
       mongoDBVersion: S.optional(S.String),
       name: S.String,
@@ -57974,280 +62233,6 @@ export const LegacyAtlasCluster = /*@__PURE__*/ S.suspend(() =>
   identifier: "LegacyAtlasCluster",
 }) as any as S.Schema<LegacyAtlasCluster>;
 
-/** Governs adaptive capacity behavior of Azure nodes in single-cloud Azure clusters or multi-cloud clusters that include Azure nodes. Adaptive capacity enables fallback hardware selection when the primary instance family is unavailable. ``ENABLED`` means the cluster explicitly opts in to adaptive capacity. ``DISABLED`` means the cluster explicitly opts out; the cluster receives capacity errors instead of being placed on fallback hardware. ``null`` means the field is unset; Azure clusters use adaptive capacity by default when the feature is enabled at the group level. Setting this field for single-cloud AWS or GCP clusters is a no-op. */
-export type ClusterDescription20240805InputAdaptiveCapacity =
-  | "ENABLED"
-  | "DISABLED";
-export const ClusterDescription20240805InputAdaptiveCapacity =
-  /*@__PURE__*/ S.String;
-
-/** Configuration of nodes that comprise the cluster. */
-export type ClusterDescription20240805InputClusterType =
-  | "REPLICASET"
-  | "SHARDED"
-  | "GEOSHARDED";
-export const ClusterDescription20240805InputClusterType =
-  /*@__PURE__*/ S.String;
-
-/** Config Server Management Mode for creating or updating a sharded cluster. When configured as `ATLAS_MANAGED`, Atlas may automatically switch the cluster's config server type for optimal performance and savings. When configured as `FIXED_TO_DEDICATED`, the cluster will always use a dedicated config server. */
-export type ClusterDescription20240805InputConfigServerManagementMode =
-  | "ATLAS_MANAGED"
-  | "FIXED_TO_DEDICATED";
-export const ClusterDescription20240805InputConfigServerManagementMode =
-  /*@__PURE__*/ S.String;
-
-/** Disk warming mode selection. */
-export type ClusterDescription20240805InputDiskWarmingMode =
-  | "FULLY_WARMED"
-  | "VISIBLE_EARLIER"
-  | "ENHANCED_FULLY_WARMED";
-export const ClusterDescription20240805InputDiskWarmingMode =
-  /*@__PURE__*/ S.String;
-
-/** Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `"backupEnabled" : false` or omitted entirely. */
-export type ClusterDescription20240805InputEncryptionAtRestProvider =
-  | "NONE"
-  | "AWS"
-  | "AZURE"
-  | "GCP";
-export const ClusterDescription20240805InputEncryptionAtRestProvider =
-  /*@__PURE__*/ S.String;
-
-/** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
-export type ClusterDescription20240805InputLabelsList = Array<ComponentLabel>;
-export const ClusterDescription20240805InputLabelsList = /*@__PURE__*/ S.Array(
-  ComponentLabel,
-) as any as S.Schema<ClusterDescription20240805InputLabelsList>;
-
-/** Set this field to configure the replica set scaling mode for your cluster. By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes. When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads. When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. */
-export type ClusterDescription20240805InputReplicaSetScalingStrategy =
-  | "SEQUENTIAL"
-  | "WORKLOAD_TYPE"
-  | "NODE_TYPE";
-export const ClusterDescription20240805InputReplicaSetScalingStrategy =
-  /*@__PURE__*/ S.String;
-
-/** List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. */
-export type ClusterDescription20240805InputReplicationSpecsList =
-  Array<ReplicationSpec20240805Input>;
-export const ClusterDescription20240805InputReplicationSpecsList =
-  /*@__PURE__*/ S.Array(
-    ReplicationSpec20240805Input,
-  ) as any as S.Schema<ClusterDescription20240805InputReplicationSpecsList>;
-
-/** Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. */
-export type ClusterDescription20240805InputRootCertType = "ISRGROOTX1";
-export const ClusterDescription20240805InputRootCertType =
-  /*@__PURE__*/ S.String;
-
-/** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. */
-export type ClusterDescription20240805InputTagsList = Array<ResourceTag>;
-export const ClusterDescription20240805InputTagsList = /*@__PURE__*/ S.Array(
-  ResourceTag,
-) as any as S.Schema<ClusterDescription20240805InputTagsList>;
-
-/** Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`. */
-export type ClusterDescription20240805InputVersionReleaseSystem =
-  | "LTS"
-  | "CONTINUOUS";
-export const ClusterDescription20240805InputVersionReleaseSystem =
-  /*@__PURE__*/ S.String;
-
-/** Configuration of a MongoDB Atlas cluster, including its replication topology, instance sizing, storage, and operational settings. */
-export interface ClusterDescription20240805Input {
-  /** If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set `acceptDataRisksAndForceReplicaSetReconfig` to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  acceptDataRisksAndForceReplicaSetReconfig?: string;
-  /** Governs adaptive capacity behavior of Azure nodes in single-cloud Azure clusters or multi-cloud clusters that include Azure nodes. Adaptive capacity enables fallback hardware selection when the primary instance family is unavailable. ``ENABLED`` means the cluster explicitly opts in to adaptive capacity. ``DISABLED`` means the cluster explicitly opts out; the cluster receives capacity errors instead of being placed on fallback hardware. ``null`` means the field is unset; Azure clusters use adaptive capacity by default when the feature is enabled at the group level. Setting this field for single-cloud AWS or GCP clusters is a no-op. */
-  adaptiveCapacity?:
-    | ClusterDescription20240805InputAdaptiveCapacity
-    | (string & {})
-    | null;
-  advancedConfiguration?: ApiAtlasClusterAdvancedConfigurationView;
-  /** Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups. */
-  backupEnabled?: boolean;
-  biConnector?: BiConnector;
-  /** Configuration of nodes that comprise the cluster. */
-  clusterType?: ClusterDescription20240805InputClusterType | (string & {});
-  /** Config Server Management Mode for creating or updating a sharded cluster. When configured as `ATLAS_MANAGED`, Atlas may automatically switch the cluster's config server type for optimal performance and savings. When configured as `FIXED_TO_DEDICATED`, the cluster will always use a dedicated config server. */
-  configServerManagementMode?:
-    | ClusterDescription20240805InputConfigServerManagementMode
-    | (string & {});
-  /** Disk warming mode selection. */
-  diskWarmingMode?:
-    | ClusterDescription20240805InputDiskWarmingMode
-    | (string & {});
-  /** Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `"backupEnabled" : false` or omitted entirely. */
-  encryptionAtRestProvider?:
-    | ClusterDescription20240805InputEncryptionAtRestProvider
-    | (string & {});
-  /** Set this field to configure the Sharding Management Mode when creating a new Global Cluster. When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience. When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience. This setting cannot be changed once the cluster is deployed. */
-  globalClusterSelfManagedSharding?: boolean;
-  /** Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels. Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead. */
-  labels?: ClusterDescription20240805InputLabelsList;
-  mongoDBEmployeeAccessGrant?: EmployeeAccessGrantViewInput;
-  /** MongoDB major version of the cluster. Set to the binary major version. On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions). On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version. */
-  mongoDBMajorVersion?: string;
-  /** Human-readable label that identifies the cluster. */
-  name?: string;
-  /** Flag that indicates whether the cluster is paused. */
-  paused?: boolean;
-  /** Flag that indicates whether the cluster uses continuous cloud backups. */
-  pitEnabled?: boolean;
-  /** Enable or disable log redaction. This setting configures the ``mongod`` or ``mongos`` to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs. Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements. *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated. */
-  redactClientLogData?: boolean;
-  /** Set this field to configure the replica set scaling mode for your cluster. By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes. When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads. When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. */
-  replicaSetScalingStrategy?:
-    | ClusterDescription20240805InputReplicaSetScalingStrategy
-    | (string & {});
-  /** List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. */
-  replicationSpecs?: ClusterDescription20240805InputReplicationSpecsList;
-  /** Flag that indicates whether the cluster retains backups. */
-  retainBackups?: boolean;
-  /** Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. */
-  rootCertType?: ClusterDescription20240805InputRootCertType | (string & {});
-  /** List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. */
-  tags?: ClusterDescription20240805InputTagsList;
-  /** Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster. */
-  terminationProtectionEnabled?: boolean;
-  /** Flag that indicates whether AWS time-based snapshot copies will be used instead of slower standard snapshot copies during fast Atlas cross-region initial syncs. This flag is only relevant for clusters containing AWS nodes. */
-  useAwsTimeBasedSnapshotCopyForFastInitialSync?: boolean;
-  /** Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`. */
-  versionReleaseSystem?:
-    | ClusterDescription20240805InputVersionReleaseSystem
-    | (string & {});
-}
-export const ClusterDescription20240805Input = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
-    adaptiveCapacity: S.optional(
-      S.NullOr(ClusterDescription20240805InputAdaptiveCapacity),
-    ),
-    advancedConfiguration: S.optional(ApiAtlasClusterAdvancedConfigurationView),
-    backupEnabled: S.optional(S.Boolean),
-    biConnector: S.optional(BiConnector),
-    clusterType: S.optional(ClusterDescription20240805InputClusterType),
-    configServerManagementMode: S.optional(
-      ClusterDescription20240805InputConfigServerManagementMode,
-    ),
-    diskWarmingMode: S.optional(ClusterDescription20240805InputDiskWarmingMode),
-    encryptionAtRestProvider: S.optional(
-      ClusterDescription20240805InputEncryptionAtRestProvider,
-    ),
-    globalClusterSelfManagedSharding: S.optional(S.Boolean),
-    labels: S.optional(ClusterDescription20240805InputLabelsList),
-    mongoDBEmployeeAccessGrant: S.optional(EmployeeAccessGrantViewInput),
-    mongoDBMajorVersion: S.optional(S.String),
-    name: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    pitEnabled: S.optional(S.Boolean),
-    redactClientLogData: S.optional(S.Boolean),
-    replicaSetScalingStrategy: S.optional(
-      ClusterDescription20240805InputReplicaSetScalingStrategy,
-    ),
-    replicationSpecs: S.optional(
-      ClusterDescription20240805InputReplicationSpecsList,
-    ),
-    retainBackups: S.optional(S.Boolean),
-    rootCertType: S.optional(ClusterDescription20240805InputRootCertType),
-    tags: S.optional(ClusterDescription20240805InputTagsList),
-    terminationProtectionEnabled: S.optional(S.Boolean),
-    useAwsTimeBasedSnapshotCopyForFastInitialSync: S.optional(S.Boolean),
-    versionReleaseSystem: S.optional(
-      ClusterDescription20240805InputVersionReleaseSystem,
-    ),
-  }),
-).annotate({
-  identifier: "ClusterDescription20240805Input",
-}) as any as S.Schema<ClusterDescription20240805Input>;
-
-/** Optional list of resource tags. */
-export type ValidateGroupClusterConfigurationsRequestTagsList =
-  Array<ResourceTag>;
-export const ValidateGroupClusterConfigurationsRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    ResourceTag,
-  ) as any as S.Schema<ValidateGroupClusterConfigurationsRequestTagsList>;
-
-export interface ValidateGroupClusterConfigurationsRequest {
-  /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
-  groupId: string;
-  /** Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. */
-  envelope?: boolean;
-  /** Flag that indicates whether the response body should be in the prettyprint format. */
-  pretty?: boolean;
-  advancedConfiguration?: ClusterDescriptionProcessArgs20240805;
-  clusterDescription: ClusterDescription20240805Input;
-  /** Name of the existing cluster to validate against when editing is true. */
-  clusterName?: string;
-  /** When true, validates the configuration as an update to an existing cluster. When false, validates as a new cluster create. */
-  editing: boolean;
-  searchDeploymentSpec?: ApiSearchDeploymentSpecView;
-  /** Optional list of resource tags. */
-  tags?: ValidateGroupClusterConfigurationsRequestTagsList;
-}
-export const ValidateGroupClusterConfigurationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      groupId: S.String.pipe(T.Label()),
-      envelope: S.optional(S.Boolean.pipe(T.Query())),
-      pretty: S.optional(S.Boolean.pipe(T.Query())),
-      advancedConfiguration: S.optional(ClusterDescriptionProcessArgs20240805),
-      clusterDescription: ClusterDescription20240805Input,
-      clusterName: S.optional(S.String),
-      editing: S.Boolean,
-      searchDeploymentSpec: S.optional(ApiSearchDeploymentSpecView),
-      tags: S.optional(ValidateGroupClusterConfigurationsRequestTagsList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/atlas/v2/groups/{groupId}/clusterConfigurations:validate",
-        code: 200,
-        accept: "application/vnd.atlas.2025-03-12+json",
-      }),
-    ),
-  ).annotate({
-    identifier: "ValidateGroupClusterConfigurationsRequest",
-  }) as any as S.Schema<ValidateGroupClusterConfigurationsRequest>;
-
-export interface ClusterConfigurationValidationError {
-  /** Machine-readable error code identifying the type of validation failure. */
-  errorCode?: string;
-  /** Description of the validation failure. */
-  validationIssue?: string;
-}
-export const ClusterConfigurationValidationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: S.optional(S.String),
-    validationIssue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClusterConfigurationValidationError",
-}) as any as S.Schema<ClusterConfigurationValidationError>;
-
-/** List of validation errors, present only when valid is false. */
-export type ClusterConfigurationValidationResultErrorsList =
-  Array<ClusterConfigurationValidationError>;
-export const ClusterConfigurationValidationResultErrorsList =
-  /*@__PURE__*/ S.Array(
-    ClusterConfigurationValidationError,
-  ) as any as S.Schema<ClusterConfigurationValidationResultErrorsList>;
-
-export interface ClusterConfigurationValidationResult {
-  /** List of validation errors, present only when valid is false. */
-  errors?: ClusterConfigurationValidationResultErrorsList;
-  /** Whether the cluster configuration is valid. */
-  valid?: boolean;
-}
-export const ClusterConfigurationValidationResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      errors: S.optional(ClusterConfigurationValidationResultErrorsList),
-      valid: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "ClusterConfigurationValidationResult",
-}) as any as S.Schema<ClusterConfigurationValidationResult>;
-
 /** List of migration hosts used for this migration. */
 export type ValidateGroupLiveMigrationsRequestMigrationHostsList =
   Array<string>;
@@ -58309,7 +62294,7 @@ export interface ValidateOrgResourcePoliciesRequest {
   /** Flag that indicates whether the response body should be in the prettyprint format. */
   pretty?: boolean;
   /** Description of the atlas resource policy. */
-  description?: string;
+  description?: string | null;
   /** Human-readable label that describes the atlas resource policy. */
   name: string;
   /** List of policies that make up the atlas resource policy. */
@@ -58320,7 +62305,7 @@ export const ValidateOrgResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
     orgId: S.String.pipe(T.Label()),
     envelope: S.optional(S.Boolean.pipe(T.Query())),
     pretty: S.optional(S.Boolean.pipe(T.Query())),
-    description: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
     name: S.String,
     policies: ValidateOrgResourcePoliciesRequestPoliciesList,
   }).pipe(
@@ -58670,6 +62655,25 @@ export const createGroupAccessListEntry: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateGroupAiModelApiKeyError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Create New AI Model API Key Create a new AI model API key for the given group. */
+export const createGroupAiModelApiKey: API.OperationMethod<
+  CreateGroupAiModelApiKeyRequest,
+  AiModelApiKeyResponse,
+  CreateGroupAiModelApiKeyError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGroupAiModelApiKeyRequest,
+  output: AiModelApiKeyResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateGroupAlertConfigError =
   | BadRequest
   | Forbidden
@@ -58829,6 +62833,26 @@ export const createGroupClusterBackupRestoreJob: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateGroupClusterCollectionRestoreJobError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | MongodbAtlasOpError;
+/** Create One Collection Restore Job Creates one collection-level restore job for one cluster from the specified project. Collection-level restores allow restoring specific databases or collections from a snapshot or point-in-time. */
+export const createGroupClusterCollectionRestoreJob: API.OperationMethod<
+  CreateGroupClusterCollectionRestoreJobRequest,
+  ApiAtlasCollectionRestoreJobResponse,
+  CreateGroupClusterCollectionRestoreJobError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGroupClusterCollectionRestoreJobRequest,
+  output: ApiAtlasCollectionRestoreJobResponse,
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateGroupClusterGlobalWriteCustomZoneMappingError =
   | BadRequest
   | Forbidden
@@ -58902,6 +62926,26 @@ export const createGroupClusterOnlineArchive: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupClusterOnlineArchiveRequest,
   output: BackupOnlineArchive,
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateGroupClusterOverloadSimulationError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | MongodbAtlasOpError;
+/** Create One Overload Protection Simulation Starts an overload protection simulation for one cluster. Returns a 409 if a simulation is already in progress or completed; DELETE the existing simulation before starting a new one. */
+export const createGroupClusterOverloadSimulation: API.OperationMethod<
+  CreateGroupClusterOverloadSimulationRequest,
+  OverloadProtectionSimulationResponse,
+  CreateGroupClusterOverloadSimulationError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGroupClusterOverloadSimulationRequest,
+  output: OverloadProtectionSimulationResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -59159,12 +63203,70 @@ export type CreateGroupLogIntegrationError =
 /** Create One Log Integration Creates a new log integration configuration identified by a unique ID. */
 export const createGroupLogIntegration: API.OperationMethod<
   CreateGroupLogIntegrationRequest,
-  LogIntegrationResponse,
+  LogIntegrationResponseOutput,
   CreateGroupLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupLogIntegrationRequest,
-  output: LogIntegrationResponse,
+  output: LogIntegrationResponseOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateGroupMcpConfigError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Create One MCP Configuration for One Project Creates an MCP configuration for the specified project. Returns the configuration ID and ingress credentials. */
+export const createGroupMcpConfig: API.OperationMethod<
+  CreateGroupMcpConfigRequest,
+  GroupMcpConfigResponse,
+  CreateGroupMcpConfigError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGroupMcpConfigRequest,
+  output: GroupMcpConfigResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateGroupMcpConfigSecretError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | MongodbAtlasOpError;
+/** Create One Secret for One Project MCP Configuration Creates a new secret on the ingress service account of the specified project-level MCP configuration. The plain-text secret value is returned only in this response and is never shown again. */
+export const createGroupMcpConfigSecret: API.OperationMethod<
+  CreateGroupMcpConfigSecretRequest,
+  ServiceAccountSecret,
+  CreateGroupMcpConfigSecretError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGroupMcpConfigSecretRequest,
+  output: ServiceAccountSecret,
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateGroupMetricIntegrationError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Create One Metric Integration Creates a new metric integration configuration identified by a unique ID. */
+export const createGroupMetricIntegration: API.OperationMethod<
+  CreateGroupMetricIntegrationRequest,
+  MetricIntegrationResponse,
+  CreateGroupMetricIntegrationError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGroupMetricIntegrationRequest,
+  output: MetricIntegrationResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -59343,12 +63445,12 @@ export type CreateGroupStreamConnectionFailoverConnectionError =
 /** Create One Failover Stream Connection Creates one failover connection for a stream workspace in the specified project. */
 export const createGroupStreamConnectionFailoverConnection: API.OperationMethod<
   CreateGroupStreamConnectionFailoverConnectionRequest,
-  StreamsConnectionOutput,
+  StreamsFailoverConnectionOutput,
   CreateGroupStreamConnectionFailoverConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupStreamConnectionFailoverConnectionRequest,
-  output: StreamsConnectionOutput,
+  output: StreamsFailoverConnectionOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -59487,6 +63589,25 @@ export const createOrgBillingCostExplorerUsageProcess: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateOrgInvoiceReportError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Create One Invoice Report Requests asynchronous generation of a report for the specified invoice. Returns a report identifier that can be used to poll the report status. */
+export const createOrgInvoiceReport: API.OperationMethod<
+  CreateOrgInvoiceReportRequest,
+  InvoiceReportResponse,
+  CreateOrgInvoiceReportError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOrgInvoiceReportRequest,
+  output: InvoiceReportResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateOrgLiveMigrationLinkTokenError =
   | BadRequest
   | Forbidden
@@ -59502,6 +63623,45 @@ export const createOrgLiveMigrationLinkToken: API.OperationMethod<
   input: CreateOrgLiveMigrationLinkTokenRequest,
   output: TargetOrg,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateOrgMcpConfigError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Create One MCP Configuration for One Organization Creates an MCP configuration for the specified organization. Returns the configuration ID and ingress credentials. */
+export const createOrgMcpConfig: API.OperationMethod<
+  CreateOrgMcpConfigRequest,
+  OrgMcpConfigResponse,
+  CreateOrgMcpConfigError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOrgMcpConfigRequest,
+  output: OrgMcpConfigResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateOrgMcpConfigSecretError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | MongodbAtlasOpError;
+/** Create One Secret for One Organization MCP Configuration Creates a new secret on the ingress service account of the specified organization-level MCP configuration. The plain-text secret value is returned only in this response and is never shown again. */
+export const createOrgMcpConfigSecret: API.OperationMethod<
+  CreateOrgMcpConfigSecretRequest,
+  ServiceAccountSecret,
+  CreateOrgMcpConfigSecretError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOrgMcpConfigSecretRequest,
+  output: ServiceAccountSecret,
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
@@ -59775,6 +63935,25 @@ export const deleteGroupAccessListEntry: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type DeleteGroupAiModelApiKeyError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Delete Existing AI Model API Key Delete an existing AI model API key in the given group. */
+export const deleteGroupAiModelApiKey: API.OperationMethod<
+  DeleteGroupAiModelApiKeyRequest,
+  DeleteGroupAiModelApiKeyResponse,
+  DeleteGroupAiModelApiKeyError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGroupAiModelApiKeyRequest,
+  output: DeleteGroupAiModelApiKeyResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type DeleteGroupAlertConfigError =
   | Forbidden
   | NotFound
@@ -59957,6 +64136,26 @@ export const deleteGroupClusterOnlineArchive: API.OperationMethod<
   input: DeleteGroupClusterOnlineArchiveRequest,
   output: DeleteGroupClusterOnlineArchiveResponse,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteGroupClusterOverloadSimulationError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | MongodbAtlasOpError;
+/** Delete One Overload Protection Simulation Deletes the overload protection simulation for one cluster. */
+export const deleteGroupClusterOverloadSimulation: API.OperationMethod<
+  DeleteGroupClusterOverloadSimulationRequest,
+  DeleteGroupClusterOverloadSimulationResponse,
+  DeleteGroupClusterOverloadSimulationError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGroupClusterOverloadSimulationRequest,
+  output: DeleteGroupClusterOverloadSimulationResponse,
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
@@ -60187,6 +64386,63 @@ export const deleteGroupLogIntegration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupLogIntegrationRequest,
   output: DeleteGroupLogIntegrationResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteGroupMcpConfigError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Delete One MCP Configuration for One Project Deletes the MCP configuration with the specified ID for the specified project. */
+export const deleteGroupMcpConfig: API.OperationMethod<
+  DeleteGroupMcpConfigRequest,
+  DeleteGroupMcpConfigResponse,
+  DeleteGroupMcpConfigError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGroupMcpConfigRequest,
+  output: DeleteGroupMcpConfigResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteGroupMcpConfigSecretError =
+  | Forbidden
+  | NotFound
+  | Conflict
+  | MongodbAtlasOpError;
+/** Delete One Secret for One Project MCP Configuration Deletes the specified secret from the ingress service account of the specified project-level MCP configuration. */
+export const deleteGroupMcpConfigSecret: API.OperationMethod<
+  DeleteGroupMcpConfigSecretRequest,
+  DeleteGroupMcpConfigSecretResponse,
+  DeleteGroupMcpConfigSecretError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGroupMcpConfigSecretRequest,
+  output: DeleteGroupMcpConfigSecretResponse,
+  errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteGroupMetricIntegrationError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Remove One Metric Integration Removes the configuration for one metric integration identified by its unique ID. */
+export const deleteGroupMetricIntegration: API.OperationMethod<
+  DeleteGroupMetricIntegrationRequest,
+  DeleteGroupMetricIntegrationResponse,
+  DeleteGroupMetricIntegrationError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGroupMetricIntegrationRequest,
+  output: DeleteGroupMetricIntegrationResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -60526,6 +64782,44 @@ export const deleteOrgLiveMigrationLinkTokens: API.OperationMethod<
   input: DeleteOrgLiveMigrationLinkTokensRequest,
   output: DeleteOrgLiveMigrationLinkTokensResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteOrgMcpConfigError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Delete One MCP Configuration for One Organization Deletes the MCP configuration with the specified ID for the specified organization. */
+export const deleteOrgMcpConfig: API.OperationMethod<
+  DeleteOrgMcpConfigRequest,
+  DeleteOrgMcpConfigResponse,
+  DeleteOrgMcpConfigError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteOrgMcpConfigRequest,
+  output: DeleteOrgMcpConfigResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteOrgMcpConfigSecretError =
+  | Forbidden
+  | NotFound
+  | Conflict
+  | MongodbAtlasOpError;
+/** Delete One Secret for One Organization MCP Configuration Deletes the specified secret from the ingress service account of the specified organization-level MCP configuration. */
+export const deleteOrgMcpConfigSecret: API.OperationMethod<
+  DeleteOrgMcpConfigSecretRequest,
+  DeleteOrgMcpConfigSecretResponse,
+  DeleteOrgMcpConfigSecretError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteOrgMcpConfigSecretRequest,
+  output: DeleteOrgMcpConfigSecretResponse,
+  errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
@@ -60985,6 +65279,61 @@ export const getGroupActivityFeed: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return Single AI Model Rate Limit for One Group Retrieve a single scoped AI model rate limit for the given group. */
+export const getGroupAiModelApiCloudGeographyModelGroupNameRateLimits: API.OperationMethod<
+  GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest,
+  AiModelRateLimitResponse,
+  GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest,
+  output: AiModelRateLimitResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupAiModelApiKeyError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return Single AI Model API Key for One Group Retrieve a single AI model API key for the given group. */
+export const getGroupAiModelApiKey: API.OperationMethod<
+  GetGroupAiModelApiKeyRequest,
+  AiModelApiKeyResponse,
+  GetGroupAiModelApiKeyError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupAiModelApiKeyRequest,
+  output: AiModelApiKeyResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupAiModelApiRateLimitsError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return AI Model Rate Limits for One Group Retrieve AI model rate limits for the given group. */
+export const getGroupAiModelApiRateLimits: API.OperationMethod<
+  GetGroupAiModelApiRateLimitsRequest,
+  PaginatedAtlasAiModelRateLimitsResponse,
+  GetGroupAiModelApiRateLimitsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupAiModelApiRateLimitsRequest,
+  output: PaginatedAtlasAiModelRateLimitsResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetGroupAlertError = Forbidden | NotFound | MongodbAtlasOpError;
 /** Return One Alert from One Project Returns one alert. This alert applies to any component in one project. You receive an alert when a monitored component meets or exceeds a value you set. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access. This resource remains under revision and may change. */
 export const getGroupAlert: API.OperationMethod<
@@ -61271,6 +65620,42 @@ export const getGroupClusterBackupSnapshot: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetGroupClusterBackupSnapshotDatabaseError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Database in One Snapshot Returns one database that exists in the specified snapshot. Use this to confirm a known database exists before referencing it in a collection restore job. */
+export const getGroupClusterBackupSnapshotDatabase: API.OperationMethod<
+  GetGroupClusterBackupSnapshotDatabaseRequest,
+  DiskBackupDatabaseResponse,
+  GetGroupClusterBackupSnapshotDatabaseError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupClusterBackupSnapshotDatabaseRequest,
+  output: DiskBackupDatabaseResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupClusterBackupSnapshotDatabaseCollectionError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Collection in One Database in One Snapshot Returns one collection that exists in the specified database in the snapshot. Use this to confirm a known collection exists before referencing it in a collection restore job. */
+export const getGroupClusterBackupSnapshotDatabaseCollection: API.OperationMethod<
+  GetGroupClusterBackupSnapshotDatabaseCollectionRequest,
+  DiskBackupCollectionResponse,
+  GetGroupClusterBackupSnapshotDatabaseCollectionError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupClusterBackupSnapshotDatabaseCollectionRequest,
+  output: DiskBackupCollectionResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetGroupClusterBackupSnapshotShardedClusterError =
   | BadRequest
   | Forbidden
@@ -61285,6 +65670,44 @@ export const getGroupClusterBackupSnapshotShardedCluster: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupClusterBackupSnapshotShardedClusterRequest,
   output: DiskBackupShardedClusterSnapshot,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupClusterCollectionRestoreJobError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Collection Restore Job for One Cluster Returns one collection restore job for one cluster from the specified project. */
+export const getGroupClusterCollectionRestoreJob: API.OperationMethod<
+  GetGroupClusterCollectionRestoreJobRequest,
+  ApiAtlasCollectionRestoreJobResponse,
+  GetGroupClusterCollectionRestoreJobError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupClusterCollectionRestoreJobRequest,
+  output: ApiAtlasCollectionRestoreJobResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupClusterCollectionRestoreJobCollectionError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Collection State for One Collection Restore Job Returns one collection-level restore state for one collection restore job from the specified project. */
+export const getGroupClusterCollectionRestoreJobCollection: API.OperationMethod<
+  GetGroupClusterCollectionRestoreJobCollectionRequest,
+  ApiAtlasCollectionRestoreCollectionStateResponse,
+  GetGroupClusterCollectionRestoreJobCollectionError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupClusterCollectionRestoreJobCollectionRequest,
+  output: ApiAtlasCollectionRestoreCollectionStateResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -61359,6 +65782,25 @@ export const getGroupClusterOutageSimulation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupClusterOutageSimulationRequest,
   output: ClusterOutageSimulation,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupClusterOverloadSimulationError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Overload Protection Simulation Returns the overload protection simulation for one cluster. */
+export const getGroupClusterOverloadSimulation: API.OperationMethod<
+  GetGroupClusterOverloadSimulationRequest,
+  OverloadProtectionSimulationResponse,
+  GetGroupClusterOverloadSimulationError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupClusterOverloadSimulationRequest,
+  output: OverloadProtectionSimulationResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -61851,12 +66293,12 @@ export type GetGroupLogIntegrationError =
 /** Return One Log Integration Returns the configuration for one log integration identified by its unique ID. */
 export const getGroupLogIntegration: API.OperationMethod<
   GetGroupLogIntegrationRequest,
-  LogIntegrationResponse,
+  LogIntegrationResponseOutput,
   GetGroupLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupLogIntegrationRequest,
-  output: LogIntegrationResponse,
+  output: LogIntegrationResponseOutput,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -61894,6 +66336,58 @@ export const getGroupManagedSlowMs: API.OperationMethod<
   input: GetGroupManagedSlowMsRequest,
   output: GetGroupManagedSlowMsResponse,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupMcpConfigError = Forbidden | NotFound | MongodbAtlasOpError;
+/** Return One MCP Configuration for One Project Returns the MCP configuration with the specified ID for the specified project. */
+export const getGroupMcpConfig: API.OperationMethod<
+  GetGroupMcpConfigRequest,
+  GroupMcpConfigResponse,
+  GetGroupMcpConfigError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupMcpConfigRequest,
+  output: GroupMcpConfigResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupMcpConfigSecretError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Secret for One Project MCP Configuration Returns metadata for the specified secret on the ingress service account of a project-level MCP configuration. The secret value is never returned. */
+export const getGroupMcpConfigSecret: API.OperationMethod<
+  GetGroupMcpConfigSecretRequest,
+  ServiceAccountSecret,
+  GetGroupMcpConfigSecretError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupMcpConfigSecretRequest,
+  output: ServiceAccountSecret,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetGroupMetricIntegrationError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Metric Integration Returns the configuration for one metric integration identified by its unique ID. */
+export const getGroupMetricIntegration: API.OperationMethod<
+  GetGroupMetricIntegrationRequest,
+  MetricIntegrationResponse,
+  GetGroupMetricIntegrationError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupMetricIntegrationRequest,
+  output: MetricIntegrationResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
@@ -62229,12 +66723,12 @@ export type GetGroupStreamConnectionFailoverConnectionError =
 /** Return One Stream Failover Connection Get one failover connection of the specified stream workspace. */
 export const getGroupStreamConnectionFailoverConnection: API.OperationMethod<
   GetGroupStreamConnectionFailoverConnectionRequest,
-  StreamsConnectionOutput,
+  StreamsFailoverConnectionOutput,
   GetGroupStreamConnectionFailoverConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupStreamConnectionFailoverConnectionRequest,
-  output: StreamsConnectionOutput,
+  output: StreamsFailoverConnectionOutput,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -62428,6 +66922,61 @@ export const getOrgActivityFeed: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return Single AI Model Rate Limit for One Organization Retrieve a single scoped AI model rate limit for the given organization. */
+export const getOrgAiModelApiCloudGeographyModelGroupNameRateLimits: API.OperationMethod<
+  GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequest,
+  AiModelRateLimitResponse,
+  GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequest,
+  output: AiModelRateLimitResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOrgAiModelApiKeyError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return Single AI Model API Key for One Organization Retrieve a single AI model API key for the given organization. */
+export const getOrgAiModelApiKey: API.OperationMethod<
+  GetOrgAiModelApiKeyRequest,
+  AiModelApiKeyResponse,
+  GetOrgAiModelApiKeyError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgAiModelApiKeyRequest,
+  output: AiModelApiKeyResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOrgAiModelApiRateLimitsError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return AI Model Rate Limits for One Organization Retrieve AI model rate limits for the given organization. */
+export const getOrgAiModelApiRateLimits: API.OperationMethod<
+  GetOrgAiModelApiRateLimitsRequest,
+  PaginatedAtlasAiModelRateLimitsResponse,
+  GetOrgAiModelApiRateLimitsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgAiModelApiRateLimitsRequest,
+  output: PaginatedAtlasAiModelRateLimitsResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetOrgApiKeyError = Forbidden | NotFound | MongodbAtlasOpError;
 /** Return One Organization API Key Returns one organization API key. The organization API keys grant programmatic access to an organization. You can't use the API key to log into MongoDB Cloud through the user interface. */
 export const getOrgApiKey: API.OperationMethod<
@@ -62461,6 +67010,25 @@ export const getOrgApiKeyAccessListEntry: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetOrgAssociatedInvoicesError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return Associated Invoices Returns a list of invoice IDs for the specified organization and month/year. Optionally includes invoices from linked organizations. */
+export const getOrgAssociatedInvoices: API.OperationMethod<
+  GetOrgAssociatedInvoicesRequest,
+  OrgAssociatedInvoiceResponse,
+  GetOrgAssociatedInvoicesError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgAssociatedInvoicesRequest,
+  output: OrgAssociatedInvoiceResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetOrgBillingCostExplorerUsageError =
   | BadRequest
   | Forbidden
@@ -62476,6 +67044,24 @@ export const getOrgBillingCostExplorerUsage: API.OperationMethod<
   input: GetOrgBillingCostExplorerUsageRequest,
   output: GetOrgBillingCostExplorerUsageResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOrgDelegationSettingsError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return Delegation Settings for One Organization Returns the delegation settings for the specified organization. */
+export const getOrgDelegationSettings: API.OperationMethod<
+  GetOrgDelegationSettingsRequest,
+  OrgDelegationSettingsResponse,
+  GetOrgDelegationSettingsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgDelegationSettingsRequest,
+  output: OrgDelegationSettingsResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
@@ -62558,6 +67144,58 @@ export const getOrgInvoiceCsv: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetOrgInvoiceCsvRequest,
   output: GetOrgInvoiceCsvResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOrgInvoiceReportError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Invoice Report Returns the status and details of a previously requested invoice report. */
+export const getOrgInvoiceReport: API.OperationMethod<
+  GetOrgInvoiceReportRequest,
+  InvoiceReportResponse,
+  GetOrgInvoiceReportError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgInvoiceReportRequest,
+  output: InvoiceReportResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOrgMcpConfigError = Forbidden | NotFound | MongodbAtlasOpError;
+/** Return One MCP Configuration for One Organization Returns the MCP configuration with the specified ID for the specified organization. */
+export const getOrgMcpConfig: API.OperationMethod<
+  GetOrgMcpConfigRequest,
+  OrgMcpConfigResponse,
+  GetOrgMcpConfigError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgMcpConfigRequest,
+  output: OrgMcpConfigResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOrgMcpConfigSecretError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return One Secret for One Organization MCP Configuration Returns metadata for the specified secret on the ingress service account of an organization-level MCP configuration. The secret value is never returned. */
+export const getOrgMcpConfigSecret: API.OperationMethod<
+  GetOrgMcpConfigSecretRequest,
+  ServiceAccountSecret,
+  GetOrgMcpConfigSecretError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgMcpConfigSecretRequest,
+  output: ServiceAccountSecret,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -62933,6 +67571,24 @@ export const listGroupAccessListEntries: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ListGroupAiModelApiKeysError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return AI Model API Keys for One Group Retrieve AI model API keys for the given group. */
+export const listGroupAiModelApiKeys: API.OperationMethod<
+  ListGroupAiModelApiKeysRequest,
+  PaginatedAtlasAiModelApiKeysResponse,
+  ListGroupAiModelApiKeysError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupAiModelApiKeysRequest,
+  output: PaginatedAtlasAiModelApiKeysResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListGroupAlertConfigsError =
   | Forbidden
   | NotFound
@@ -63075,6 +67731,44 @@ export const listGroupClusterBackupRestoreJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ListGroupClusterBackupSnapshotDatabaseCollectionsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return Collections in One Database in One Snapshot Returns the list of collections in the specified database that exist in the snapshot. Use this to discover namespaces before creating a collection restore job. */
+export const listGroupClusterBackupSnapshotDatabaseCollections: API.OperationMethod<
+  ListGroupClusterBackupSnapshotDatabaseCollectionsRequest,
+  PaginatedApiAtlasDiskBackupCollectionView,
+  ListGroupClusterBackupSnapshotDatabaseCollectionsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupClusterBackupSnapshotDatabaseCollectionsRequest,
+  output: PaginatedApiAtlasDiskBackupCollectionView,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListGroupClusterBackupSnapshotDatabasesError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return Databases in One Snapshot Returns the list of databases that exist in the specified snapshot. Use this to discover namespaces before creating a collection restore job. */
+export const listGroupClusterBackupSnapshotDatabases: API.OperationMethod<
+  ListGroupClusterBackupSnapshotDatabasesRequest,
+  PaginatedApiAtlasDiskBackupDatabaseView,
+  ListGroupClusterBackupSnapshotDatabasesError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupClusterBackupSnapshotDatabasesRequest,
+  output: PaginatedApiAtlasDiskBackupDatabaseView,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListGroupClusterBackupSnapshotsError =
   | BadRequest
   | Forbidden
@@ -63108,6 +67802,44 @@ export const listGroupClusterBackupSnapshotShardedClusters: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListGroupClusterBackupSnapshotShardedClustersRequest,
   output: PaginatedCloudBackupShardedClusterSnapshotView,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListGroupClusterCollectionRestoreJobCollectionsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return All Collection States for One Collection Restore Job Returns all collection-level restore states for one collection restore job from the specified project. Note: If the restore job is in the INITIALIZING state, this endpoint returns an empty list because collection-level states have not yet been created. */
+export const listGroupClusterCollectionRestoreJobCollections: API.OperationMethod<
+  ListGroupClusterCollectionRestoreJobCollectionsRequest,
+  PaginatedApiAtlasCollectionRestoreCollectionStateView,
+  ListGroupClusterCollectionRestoreJobCollectionsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupClusterCollectionRestoreJobCollectionsRequest,
+  output: PaginatedApiAtlasCollectionRestoreCollectionStateView,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListGroupClusterCollectionRestoreJobsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return All Collection Restore Jobs for One Cluster Returns all collection restore jobs for one cluster from the specified project. */
+export const listGroupClusterCollectionRestoreJobs: API.OperationMethod<
+  ListGroupClusterCollectionRestoreJobsRequest,
+  PaginatedApiAtlasCollectionRestoreJobView,
+  ListGroupClusterCollectionRestoreJobsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupClusterCollectionRestoreJobsRequest,
+  output: PaginatedApiAtlasCollectionRestoreJobView,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -63169,6 +67901,25 @@ export const listGroupClusterOnlineArchives: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ListGroupClusterOverloadSimulationsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return All Overload Protection Simulations Returns all overload protection simulations for one cluster. */
+export const listGroupClusterOverloadSimulations: API.OperationMethod<
+  ListGroupClusterOverloadSimulationsRequest,
+  PaginatedOverloadProtectionSimulationResponse,
+  ListGroupClusterOverloadSimulationsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupClusterOverloadSimulationsRequest,
+  output: PaginatedOverloadProtectionSimulationResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsError =
   | BadRequest
   | Forbidden
@@ -63177,12 +67928,12 @@ export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsError =
 /** Return All Suggested Indexes to Drop Returns the indexes that the Performance Advisor suggests to drop. The Performance Advisor suggests dropping unused, redundant, and hidden indexes to improve write performance and increase storage space. */
 export const listGroupClusterPerformanceAdvisorDropIndexSuggestions: API.OperationMethod<
   ListGroupClusterPerformanceAdvisorDropIndexSuggestionsRequest,
-  DropIndexSuggestionsResponse,
+  EnvelopedDropIndexSuggestionsResponse,
   ListGroupClusterPerformanceAdvisorDropIndexSuggestionsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListGroupClusterPerformanceAdvisorDropIndexSuggestionsRequest,
-  output: DropIndexSuggestionsResponse,
+  output: EnvelopedDropIndexSuggestionsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -63196,12 +67947,12 @@ export type ListGroupClusterPerformanceAdvisorSchemaAdviceError =
 /** Return Schema Advice Returns the schema suggestions that the Performance Advisor detects. The Performance Advisor provides holistic schema recommendations for your cluster by sampling documents in your most active collections and collections with slow-running queries. */
 export const listGroupClusterPerformanceAdvisorSchemaAdvice: API.OperationMethod<
   ListGroupClusterPerformanceAdvisorSchemaAdviceRequest,
-  SchemaAdvisorResponse,
+  EnvelopedSchemaAdvisorResponse,
   ListGroupClusterPerformanceAdvisorSchemaAdviceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListGroupClusterPerformanceAdvisorSchemaAdviceRequest,
-  output: SchemaAdvisorResponse,
+  output: EnvelopedSchemaAdvisorResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -63215,12 +67966,12 @@ export type ListGroupClusterPerformanceAdvisorSuggestedIndexesError =
 /** Return All Suggested Indexes Returns the indexes that the Performance Advisor suggests. The Performance Advisor monitors queries that MongoDB considers slow and suggests new indexes to improve query performance. */
 export const listGroupClusterPerformanceAdvisorSuggestedIndexes: API.OperationMethod<
   ListGroupClusterPerformanceAdvisorSuggestedIndexesRequest,
-  PerformanceAdvisorResponse,
+  EnvelopedPerformanceAdvisorResponse,
   ListGroupClusterPerformanceAdvisorSuggestedIndexesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListGroupClusterPerformanceAdvisorSuggestedIndexesRequest,
-  output: PerformanceAdvisorResponse,
+  output: EnvelopedPerformanceAdvisorResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -63679,12 +68430,67 @@ export type ListGroupLogIntegrationsError =
 /** Return All Active Log Integrations Returns all log integration configurations for the project. Optionally filter by integration type. */
 export const listGroupLogIntegrations: API.OperationMethod<
   ListGroupLogIntegrationsRequest,
-  PaginatedLogIntegrationResponse,
+  PaginatedLogIntegrationResponseOutput,
   ListGroupLogIntegrationsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListGroupLogIntegrationsRequest,
-  output: PaginatedLogIntegrationResponse,
+  output: PaginatedLogIntegrationResponseOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListGroupMcpConfigsError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return All MCP Configurations for One Project Returns all MCP configurations associated with the specified project. */
+export const listGroupMcpConfigs: API.OperationMethod<
+  ListGroupMcpConfigsRequest,
+  PaginatedGroupMcpConfigView,
+  ListGroupMcpConfigsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupMcpConfigsRequest,
+  output: PaginatedGroupMcpConfigView,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListGroupMcpConfigSecretsError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return All Secrets for One Project MCP Configuration Returns metadata for all secrets on the ingress service account of the specified project-level MCP configuration. Secret values are never returned. */
+export const listGroupMcpConfigSecrets: API.OperationMethod<
+  ListGroupMcpConfigSecretsRequest,
+  PaginatedMcpConfigSecretView,
+  ListGroupMcpConfigSecretsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupMcpConfigSecretsRequest,
+  output: PaginatedMcpConfigSecretView,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListGroupMetricIntegrationsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return All Active Metric Integrations Returns all metric integration configurations for the project. Optionally filter by integration type and provider type. */
+export const listGroupMetricIntegrations: API.OperationMethod<
+  ListGroupMetricIntegrationsRequest,
+  PaginatedMetricIntegrationResponse,
+  ListGroupMetricIntegrationsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupMetricIntegrationsRequest,
+  output: PaginatedMetricIntegrationResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -63915,7 +68721,7 @@ export type ListGroupServiceAccountsError =
   | Forbidden
   | NotFound
   | MongodbAtlasOpError;
-/** Return All Project Service Accounts Returns all Service Accounts for the specified Project. */
+/** Return All Project Service Accounts Returns all Service Accounts for the specified Project. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them. */
 export const listGroupServiceAccounts: API.OperationMethod<
   ListGroupServiceAccountsRequest,
   PaginatedGroupServiceAccounts,
@@ -64072,6 +68878,24 @@ export const listGroupUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ListOrgAiModelApiKeysError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return AI Model API Keys for One Organization Retrieve AI model API keys for the given organization. */
+export const listOrgAiModelApiKeys: API.OperationMethod<
+  ListOrgAiModelApiKeysRequest,
+  PaginatedAtlasAiModelApiKeysResponse,
+  ListOrgAiModelApiKeysError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrgAiModelApiKeysRequest,
+  output: PaginatedAtlasAiModelApiKeysResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListOrgApiKeyAccessListEntriesError =
   | Forbidden
   | NotFound
@@ -64142,6 +68966,25 @@ export const listOrgInvoicePending: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ListOrgInvoiceReportsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return All Invoice Reports for One Invoice Returns all unexpired reports for the specified invoice, newest first. Listed reports never include a download URL; retrieve a single report to obtain one. */
+export const listOrgInvoiceReports: API.OperationMethod<
+  ListOrgInvoiceReportsRequest,
+  PaginatedInvoiceReportView,
+  ListOrgInvoiceReportsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrgInvoiceReportsRequest,
+  output: PaginatedInvoiceReportView,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListOrgInvoicesError = Forbidden | NotFound | MongodbAtlasOpError;
 /** Return All Invoices for One Organization Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner role. To compute the total owed amount of the invoices - sum up total owed of each invoice. It could be computed as a sum of owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`. */
 export const listOrgInvoices: API.OperationMethod<
@@ -64172,6 +69015,39 @@ export const listOrgLiveMigrationAvailableProjects: API.OperationMethod<
   input: ListOrgLiveMigrationAvailableProjectsRequest,
   output: ListOrgLiveMigrationAvailableProjectsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOrgMcpConfigsError = Forbidden | NotFound | MongodbAtlasOpError;
+/** Return All MCP Configurations for One Organization Returns all MCP configurations associated with the specified organization. */
+export const listOrgMcpConfigs: API.OperationMethod<
+  ListOrgMcpConfigsRequest,
+  PaginatedOrgMcpConfigView,
+  ListOrgMcpConfigsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrgMcpConfigsRequest,
+  output: PaginatedOrgMcpConfigView,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOrgMcpConfigSecretsError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Return All Secrets for One Organization MCP Configuration Returns metadata for all secrets on the ingress service account of the specified organization-level MCP configuration. Secret values are never returned. */
+export const listOrgMcpConfigSecrets: API.OperationMethod<
+  ListOrgMcpConfigSecretsRequest,
+  PaginatedMcpConfigSecretView,
+  ListOrgMcpConfigSecretsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrgMcpConfigSecretsRequest,
+  output: PaginatedMcpConfigSecretView,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
@@ -64237,7 +69113,7 @@ export type ListOrgServiceAccountsError =
   | Forbidden
   | NotFound
   | MongodbAtlasOpError;
-/** Return All Organization Service Accounts Returns all Service Accounts for the specified Organization. */
+/** Return All Organization Service Accounts Returns all Service Accounts for the specified Organization. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them. */
 export const listOrgServiceAccounts: API.OperationMethod<
   ListOrgServiceAccountsRequest,
   PaginatedOrgServiceAccounts,
@@ -64622,6 +69498,43 @@ export const requestGroupSampleDatasetLoad: API.OperationMethod<
   input: RequestGroupSampleDatasetLoadRequest,
   output: SampleDatasetStatus,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Reset AI Model Rate Limit for One Model Group Reset the scoped AI model rate limit for the given model group to default values. */
+export const resetGroupAiModelApiCloudGeographyModelGroupNameRateLimits: API.OperationMethod<
+  ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest,
+  AiModelRateLimitResponse,
+  ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest,
+  output: AiModelRateLimitResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ResetGroupAiModelApiRateLimitsError =
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Reset AI Model Rate Limits for Group Reset the AI Model rate limits for the given group to default values. */
+export const resetGroupAiModelApiRateLimits: API.OperationMethod<
+  ResetGroupAiModelApiRateLimitsRequest,
+  PaginatedAtlasAiModelRateLimitsResponse,
+  ResetGroupAiModelApiRateLimitsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ResetGroupAiModelApiRateLimitsRequest,
+  output: PaginatedAtlasAiModelRateLimitsResponse,
+  errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
@@ -65078,6 +69991,44 @@ export const updateGroup: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Update AI Model Rate Limit Update a scoped AI model rate limit for the given model group. */
+export const updateGroupAiModelApiCloudGeographyModelGroupNameRateLimits: API.OperationMethod<
+  UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest,
+  AiModelRateLimitResponse,
+  UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest,
+  output: AiModelRateLimitResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateGroupAiModelApiKeyError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Update Existing AI Model API Key Update an existing AI model API key in the given group. Only the name can be updated; scope is immutable after creation. */
+export const updateGroupAiModelApiKey: API.OperationMethod<
+  UpdateGroupAiModelApiKeyRequest,
+  AiModelApiKeyResponse,
+  UpdateGroupAiModelApiKeyError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGroupAiModelApiKeyRequest,
+  output: AiModelApiKeyResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UpdateGroupAlertConfigError =
   | BadRequest
   | Forbidden
@@ -65179,7 +70130,7 @@ export type UpdateGroupClusterError =
   | NotFound
   | Conflict
   | MongodbAtlasOpError;
-/** Update One Cluster in One Project Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01} */
+/** Update One Cluster in One Project Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role, the Project Cluster Resilience Tester role, or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01} */
 export const updateGroupCluster: API.OperationMethod<
   UpdateGroupClusterRequest,
   ClusterDescription20240805,
@@ -65522,12 +70473,12 @@ export type UpdateGroupLogIntegrationError =
 /** Update One Log Integration Updates the configuration for one log integration identified by its unique ID. */
 export const updateGroupLogIntegration: API.OperationMethod<
   UpdateGroupLogIntegrationRequest,
-  LogIntegrationResponse,
+  LogIntegrationResponseOutput,
   UpdateGroupLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupLogIntegrationRequest,
-  output: LogIntegrationResponse,
+  output: LogIntegrationResponseOutput,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -65547,6 +70498,44 @@ export const updateGroupMaintenanceWindow: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupMaintenanceWindowRequest,
   output: UpdateGroupMaintenanceWindowResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateGroupMcpConfigError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Update One MCP Configuration for One Project Updates the specified MCP configuration for the project. Supports partial updates: only provided fields are changed. */
+export const updateGroupMcpConfig: API.OperationMethod<
+  UpdateGroupMcpConfigRequest,
+  GroupMcpConfigResponse,
+  UpdateGroupMcpConfigError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGroupMcpConfigRequest,
+  output: GroupMcpConfigResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateGroupMetricIntegrationError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Update One Metric Integration Updates the configuration for one metric integration identified by its unique ID. */
+export const updateGroupMetricIntegration: API.OperationMethod<
+  UpdateGroupMetricIntegrationRequest,
+  MetricIntegrationResponse,
+  UpdateGroupMetricIntegrationError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGroupMetricIntegrationRequest,
+  output: MetricIntegrationResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -65655,13 +70644,33 @@ export type UpdateGroupStreamConnectionFailoverConnectionError =
 /** Update One Stream Failover Connection Update one failover connection of the specified stream workspace. */
 export const updateGroupStreamConnectionFailoverConnection: API.OperationMethod<
   UpdateGroupStreamConnectionFailoverConnectionRequest,
-  StreamsConnectionOutput,
+  StreamsFailoverConnectionOutput,
   UpdateGroupStreamConnectionFailoverConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupStreamConnectionFailoverConnectionRequest,
-  output: StreamsConnectionOutput,
+  output: StreamsFailoverConnectionOutput,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateGroupStreamPrivateLinkConnectionError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | MongodbAtlasOpError;
+/** Update One Private Link Connection Updates one Private Link connection in the specified project. */
+export const updateGroupStreamPrivateLinkConnection: API.OperationMethod<
+  UpdateGroupStreamPrivateLinkConnectionRequest,
+  StreamsPrivateLinkConnection,
+  UpdateGroupStreamPrivateLinkConnectionError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGroupStreamPrivateLinkConnectionRequest,
+  output: StreamsPrivateLinkConnection,
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
@@ -65781,6 +70790,44 @@ export const updateOrgApiKey: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type UpdateOrgDelegationSettingsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Update Delegation Settings for One Organization Updates the delegation settings for the specified organization. Only fields present in the request body are updated; omitted fields retain their current values. */
+export const updateOrgDelegationSettings: API.OperationMethod<
+  UpdateOrgDelegationSettingsRequest,
+  OrgDelegationSettingsResponse,
+  UpdateOrgDelegationSettingsError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateOrgDelegationSettingsRequest,
+  output: OrgDelegationSettingsResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateOrgMcpConfigError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | MongodbAtlasOpError;
+/** Update One MCP Configuration for One Organization Updates the specified MCP configuration for the organization. Supports partial updates: only provided fields are changed. */
+export const updateOrgMcpConfig: API.OperationMethod<
+  UpdateOrgMcpConfigRequest,
+  OrgMcpConfigResponse,
+  UpdateOrgMcpConfigError,
+  MongodbAtlasOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateOrgMcpConfigRequest,
+  output: OrgMcpConfigResponse,
+  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
+  protocol: MongodbAtlasProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UpdateOrgResourcePolicyError =
   | BadRequest
   | Forbidden
@@ -65881,25 +70928,6 @@ export const upgradeGroupClusterTenantUpgrade: API.OperationMethod<
     Conflict,
     UnknownMongodbAtlasError,
   ],
-  protocol: MongodbAtlasProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ValidateGroupClusterConfigurationsError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | MongodbAtlasOpError;
-/** Validate One Cluster Configuration Checks if the given cluster configuration is valid and ready to be used to create or edit a cluster. */
-export const validateGroupClusterConfigurations: API.OperationMethod<
-  ValidateGroupClusterConfigurationsRequest,
-  ClusterConfigurationValidationResult,
-  ValidateGroupClusterConfigurationsError,
-  MongodbAtlasOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ValidateGroupClusterConfigurationsRequest,
-  output: ClusterConfigurationValidationResult,
-  errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
 }));
