@@ -10,4 +10,4 @@
 
 ## OpenAPI
 
-<!-- OpenAPI source: `post /course_lessons/{lesson_id}/start` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `post /course_lessons/{lesson_id}/start` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped on download) -->

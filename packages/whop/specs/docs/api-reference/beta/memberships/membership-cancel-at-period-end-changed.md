@@ -15,4 +15,4 @@ Required permissions:
 
 ## OpenAPI
 
-<!-- OpenAPI source: `webhook membership.cancel_at_period_end_changed` in specs/api-v1-native.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `webhook membership.cancel_at_period_end_changed` in specs/api-v1-native.json (inlined by docs.whop.com; stripped on download) -->

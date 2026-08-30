@@ -156,7 +156,7 @@ const stripOpenApiFence = (
     (_all, _ref: string, file: string, route: string) => {
       stripped = true;
       const where = route.trim() ? `\`${route.trim()}\` in ` : "";
-      return `<!-- OpenAPI source: ${where}specs/${file} (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->`;
+      return `<!-- OpenAPI source: ${where}specs/${file} (inlined by docs.whop.com; stripped on download) -->`;
     },
   );
   return { text, stripped };

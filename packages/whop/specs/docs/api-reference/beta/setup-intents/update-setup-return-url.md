@@ -10,4 +10,4 @@
 
 ## OpenAPI
 
-<!-- OpenAPI source: `patch /setup_intents/{setup_intent_id}/return_url` in specs/api-v1-native.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `patch /setup_intents/{setup_intent_id}/return_url` in specs/api-v1-native.json (inlined by docs.whop.com; stripped on download) -->

@@ -10,4 +10,4 @@
 
 ## OpenAPI
 
-<!-- OpenAPI source: `post /webhooks/{id}/deliveries/{delivery_id}/replay` in specs/api-v1-native.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `post /webhooks/{id}/deliveries/{delivery_id}/replay` in specs/api-v1-native.json (inlined by docs.whop.com; stripped on download) -->

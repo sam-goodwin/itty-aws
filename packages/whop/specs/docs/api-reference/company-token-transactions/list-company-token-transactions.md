@@ -15,4 +15,4 @@ Required permissions:
 
 ## OpenAPI
 
-<!-- OpenAPI source: `get /company_token_transactions` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `get /company_token_transactions` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped on download) -->

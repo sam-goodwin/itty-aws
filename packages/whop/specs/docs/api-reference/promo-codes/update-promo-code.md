@@ -14,4 +14,4 @@ Required permissions:
 
 ## OpenAPI
 
-<!-- OpenAPI source: `patch /promo_codes/{id}` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `patch /promo_codes/{id}` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped on download) -->

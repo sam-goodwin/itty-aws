@@ -13,4 +13,4 @@ Required permissions:
 
 ## OpenAPI
 
-<!-- OpenAPI source: `post /app_builds/{id}/promote` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `post /app_builds/{id}/promote` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped on download) -->

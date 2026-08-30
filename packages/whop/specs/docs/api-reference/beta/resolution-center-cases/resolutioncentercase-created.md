@@ -14,4 +14,4 @@ Required permissions:
 
 ## OpenAPI
 
-<!-- OpenAPI source: `webhook resolution_center_case.created` in specs/api-v1-native.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `webhook resolution_center_case.created` in specs/api-v1-native.json (inlined by docs.whop.com; stripped on download) -->

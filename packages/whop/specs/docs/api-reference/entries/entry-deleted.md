@@ -15,4 +15,4 @@ Required permissions:
 
 ## OpenAPI
 
-<!-- OpenAPI source: `webhook entry.deleted` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `webhook entry.deleted` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped on download) -->

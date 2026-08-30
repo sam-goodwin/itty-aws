@@ -10,4 +10,4 @@
 
 ## OpenAPI
 
-<!-- OpenAPI source: `post /ad_campaigns` in specs/api-v1-native.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `post /ad_campaigns` in specs/api-v1-native.json (inlined by docs.whop.com; stripped on download) -->

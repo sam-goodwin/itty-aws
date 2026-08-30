@@ -10,4 +10,4 @@
 
 ## OpenAPI
 
-<!-- OpenAPI source: `patch /payments/{payment_id}/return_url` in specs/api-v1-native.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `patch /payments/{payment_id}/return_url` in specs/api-v1-native.json (inlined by docs.whop.com; stripped on download) -->

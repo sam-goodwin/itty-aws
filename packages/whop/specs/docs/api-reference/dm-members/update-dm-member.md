@@ -14,4 +14,4 @@ Required permissions (one of):
 
 ## OpenAPI
 
-<!-- OpenAPI source: `patch /dm_members/{id}` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `patch /dm_members/{id}` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped on download) -->

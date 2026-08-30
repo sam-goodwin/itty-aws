@@ -10,4 +10,4 @@
 
 ## OpenAPI
 
-<!-- OpenAPI source: `get /accounts/{account_id}/reserves` in specs/api-v1-native.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `get /accounts/{account_id}/reserves` in specs/api-v1-native.json (inlined by docs.whop.com; stripped on download) -->

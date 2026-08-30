@@ -10,4 +10,4 @@
 
 ## OpenAPI
 
-<!-- OpenAPI source: `get /ai_chats` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped by scripts/download-api-docs.ts) -->
+<!-- OpenAPI source: `get /ai_chats` in specs/api-v1-stable.json (inlined by docs.whop.com; stripped on download) -->
