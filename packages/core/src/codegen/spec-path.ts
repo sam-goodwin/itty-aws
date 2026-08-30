@@ -55,14 +55,18 @@ let announced = false;
  * Spec paths take one of two shapes — `specs/<mirror>/specs/<tail>` for a
  * submodule and `specs/<tail>` for a committed file — and in both the tail is
  * everything after the LAST `specs` segment. That one rule covers the
- * submodule form, the committed form, and the nested forms
- * (`specs/<mirror>/specs/models/<service>/...`) without needing to know which
- * it was handed.
+ * submodule form, the committed form, the nested forms
+ * (`specs/<mirror>/specs/models/<service>/...`) and the directory form
+ * (`specs/<mirror>/specs`, whose tail is empty — the mirror's `specs/`
+ * directory itself) without needing to know which it was handed.
+ *
+ * `undefined` means there is no `specs` segment at all, which local mode
+ * cannot interpret.
  */
 const tailWithinSpecs = (specPath: string): string | undefined => {
   const segments = specPath.split(/[/\\]/).filter((s) => s !== "" && s !== ".");
   const last = segments.lastIndexOf("specs");
-  if (last === -1 || last === segments.length - 1) return undefined;
+  if (last === -1) return undefined;
   return segments.slice(last + 1).join(path.sep);
 };
 

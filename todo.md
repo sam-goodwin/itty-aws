@@ -26,11 +26,16 @@
     workflow that refetches and commits.
   - REMAINING: rewire `.gitmodules` and each package's `specs:fetch` +
     generator spec paths onto the mirrors, once the mirrors have content.
-    Every convert script already resolves through `resolveSpecPath`, so each
-    rewire is a one-line change to the declared path. Until a package's path
-    is mirror-shaped (`specs/<mirror>/specs/<file>`), `pnpm specs:local` +
-    `DISTILLED_SPECS_LOCAL=1` cannot resolve it — that covers `aws`, `azure`,
-    `github`, `expo-eas` and `cloudflare`.
+    Nothing has moved yet: `.gitmodules` still points at the upstreams and at
+    the older `alchemy-run/distilled-spec-*` repos. Every convert script now
+    resolves through `resolveSpecPath`, so each rewire is a one-line change to
+    the declared path plus the `.gitmodules` swap (`pnpm specs:link <pkg>`).
+  - until a package's declared path lands where its mirror writes,
+    `DISTILLED_SPECS_LOCAL=1` cannot resolve it. Works today: discord, fly-io,
+    gcp, hetzner, huggingface, mongodb-atlas, neon, planetscale, posthog,
+    prisma-postgres, railway, supabase, vercel. Needs the rewire first: aws,
+    axiom, azure, coinbase, expo-eas, github, kubernetes, stripe, turso,
+    typesense, workos.
     That is the step that actually shrinks a clone.
   - cloudflare is blocked, see below.
 - cloudflare spec source is broken upstream

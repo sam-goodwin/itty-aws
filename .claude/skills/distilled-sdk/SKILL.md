@@ -213,14 +213,26 @@ upstream without touching submodules — use `pnpm specs:local <pkg>` and
 
 # Known boundaries
 
-Local mode re-roots a spec path by taking everything after its last `specs/`
-segment, which means it works for any package whose declared path is already
-mirror-shaped (`specs/<mirror>/specs/<file>`). Packages still pointing at an
-upstream submodule with its own internal layout — `aws`, `azure`, `github`,
-`expo-eas`, `cloudflare` — resolve to a path their mirror does not contain,
-and say so. Rewiring them onto the mirrors is tracked in `todo.md`; each is a
-one-line change to the declared path once its mirror has content.
+**No package submodules its mirror yet.** `.gitmodules` still points at the
+upstream repositories (and at the older `alchemy-run/distilled-spec-*` repos);
+the rewiring is the open item in `todo.md`. The mirrors exist and are
+populated — this is about which one each package reads.
 
-`aws` and `cloudflare` are not wired to `resolveSpecPath` at all: `aws`
-resolves its models directory inside `runGeneratorCli` rather than at the call
-site, and `cloudflare` already takes its spec root as a `--specs` flag.
+Local mode re-roots a spec path by taking everything after its last `specs`
+segment, so it works today for any package whose declared path already lands
+where its mirror writes:
+
+| | packages |
+| --- | --- |
+| Works today | `discord` `fly-io` `gcp` `hetzner` `huggingface` `mongodb-atlas` `neon` `planetscale` `posthog` `prisma-postgres` `railway` `supabase` `vercel` |
+| Needs its path rewired first | `aws` `axiom` `azure` `coinbase` `expo-eas` `github` `kubernetes` `stripe` `turso` `typesense` `workos` |
+
+The second group reads through an upstream repository's own internal layout —
+`specs/rest-api-description/descriptions/api.github.com/api.github.com.json`,
+where the mirror holds `api.github.com.json` — so the re-rooted path does not
+exist and `resolveSpecPath` says so. Each is a one-line change to the declared
+path, which is why every convert script is already wired to it.
+
+Two are not wired at all: `aws` resolves its models directory inside
+`runGeneratorCli` rather than at the call site, and `cloudflare` already takes
+its spec root as a `--specs` flag (and its mirror is `blocked` anyway).
