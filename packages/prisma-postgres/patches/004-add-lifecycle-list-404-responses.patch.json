@@ -1,0 +1,69 @@
+{
+  "description": "Add the 404 responses D3's consumers already handle but the spec omits: filtered list routes answer 404 when the filter's project is gone, and alchemy's destroy paths treat that as already-cleaned-up (ComputeLifecycle destroyProjectApps for /v1/apps, Compute destroyComputeEnvironment for /v1/environment-variables).",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1apps/get/responses/404",
+      "value": {
+        "description": "Project referenced by the projectId filter not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "hint": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1environment-variables/get/responses/404",
+      "value": {
+        "description": "Project referenced by the projectId filter not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "hint": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["code", "message"]
+                }
+              },
+              "required": ["error"]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
