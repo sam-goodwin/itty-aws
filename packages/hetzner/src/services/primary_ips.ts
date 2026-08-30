@@ -13,6 +13,19 @@ import * as Retry from "../retry.ts";
 
 export type { HetznerOpError, HetznerOpContext };
 
+/** The project has no remaining Primary IP quota (Hetzner `resource_limit_exceeded`, HTTP 403). Often transient — Servers hold auto-created Primary IP pairs that free up on delete — retry. */
+export class PrimaryIpLimitExceeded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<PrimaryIpLimitExceeded>()(
+      "PrimaryIpLimitExceeded",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 403, message: { includes: "IP limit" } }],
+  ) {}
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePrimaryIpRequestLabelsMap = {
   [key: string]: string | undefined;
@@ -755,7 +768,7 @@ export const UpdatePrimaryIpResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePrimaryIpResponse",
 }) as any as S.Schema<UpdatePrimaryIpResponse>;
 
-export type CreatePrimaryIpError = HetznerOpError;
+export type CreatePrimaryIpError = PrimaryIpLimitExceeded | HetznerOpError;
 /** Create a Primary IP Create a new [Primary IP](#tag/primary-ips). Can optionally be assigned to a resource by providing an `assignee_id` and `assignee_type`. If not assigned to a resource the `location` key needs to be provided. This can be either the ID or the name of the [Location](#tag/locations) this [Primary IP](#tag/primary-ips) shall be created in. A [Primary IP](#tag/primary-ips) can only be assigned to resource in the same [Location](#tag/locations) later on. #### Operation specific errors */
 export const createPrimaryIp: API.OperationMethod<
   CreatePrimaryIpRequest,
@@ -765,7 +778,7 @@ export const createPrimaryIp: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePrimaryIpRequest,
   output: CreatePrimaryIpResponse,
-  errors: [UnknownHetznerError],
+  errors: [PrimaryIpLimitExceeded, UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
 }));
