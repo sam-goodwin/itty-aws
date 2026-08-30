@@ -8,7 +8,6 @@
 - logging/otel/debug mode
 - unlisted properties
 - readme.md
-- agents.md
 - license.md
 - extract cf docs mirror into its own submodule
 - fix runaway spec-submodule size — DONE (stacks/distilled-submodules)
