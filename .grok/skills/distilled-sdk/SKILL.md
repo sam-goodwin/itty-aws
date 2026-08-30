@@ -1,1 +1,1 @@
-../../../.claude/skills/distilled-sdk/SKILL.md
+../../../.agents/skills/distilled-sdk/SKILL.md

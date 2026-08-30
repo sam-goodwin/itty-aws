@@ -16,10 +16,12 @@ Several spec submodules are enormous relative to what we read from them:
 | `azure` | `Azure/azure-rest-api-specs` | 338k files | ~780 files, 56 MB |
 | `stripe` | `stripe/openapi` | whole repo | 1 file, 7.3 MB |
 
-`specs:sync` at the repo root is a recursive `submodule update --init`, so it
-materialises every one of those in full. A mirror holds the subset instead, so
-submoduling it costs what the specs cost — that is the whole point of this
-stack.
+`specs:sync` at the repo root used to be a recursive `submodule update --init`
+over every one of those. Each package now submodules its mirror instead, which
+holds the subset — so a full `pnpm specs:sync` is 406 MB of working tree,
+shallow (`--depth=1`, `shallow = true` on every entry) and non-recursive.
+`pnpm specs:check` fails if a package drops back onto an upstream or an entry
+loses `shallow`.
 
 ## How it works
 

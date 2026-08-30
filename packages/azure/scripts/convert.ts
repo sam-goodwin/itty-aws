@@ -3,7 +3,7 @@
  * convert — turn the Azure ARM Swagger 2.0 specs into Smithy 2.0 JSON models,
  * one merged model per Azure service.
  *
- * Input:  specs/azure-rest-api-specs/specification/<service>/resource-manager/
+ * Input:  specs/spec-mirror-azure/specs/specification/<service>/resource-manager/
  *         <Microsoft.Provider>[/<subService>]/stable/<version>/*.json
  * Output: .generated-specs/<service>.json
  *
@@ -47,7 +47,7 @@ import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 const rootDir = path.resolve(import.meta.dir, "..");
 const specsRoot = resolveSpecPath(
   rootDir,
-  "specs/azure-rest-api-specs/specification",
+  "specs/spec-mirror-azure/specs/specification",
 );
 const outDir = path.join(rootDir, ".generated-specs");
 

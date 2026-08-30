@@ -3,7 +3,7 @@
  * convert — turn Railway's GraphQL introspection schema into a Smithy 2.0
  * JSON model.
  *
- * Input:  specs/distilled-spec-railway/specs/schema.json
+ * Input:  specs/spec-mirror-railway/specs/schema.json
  *         (a 24h mirror of `https://backboard.railway.com/graphql/v2`)
  * Output: .generated-specs/railway.json  (one Smithy model — Railway is a
  *         single GraphQL endpoint)
@@ -38,7 +38,7 @@ import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 const ROOT = path.resolve(import.meta.dir, "..");
 const SCHEMA_PATH = resolveSpecPath(
   ROOT,
-  "specs/distilled-spec-railway/specs/schema.json",
+  "specs/spec-mirror-railway/specs/schema.json",
 );
 const OUT_DIR = path.join(ROOT, ".generated-specs");
 const OUT_FILE = path.join(OUT_DIR, "railway.json");

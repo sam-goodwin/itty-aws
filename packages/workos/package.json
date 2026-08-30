@@ -56,7 +56,9 @@
     "build": "tsc -b",
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "specs:fetch": "git submodule update --force --init --depth=1 specs/spec-mirror-workos",
+    "specs:update": "git submodule update --remote --force --depth=1 specs/spec-mirror-workos"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*"

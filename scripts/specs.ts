@@ -286,9 +286,34 @@ const check = () => {
     }
   }
 
-  // 3. `.gitmodules` ↔ the naming convention.
+  // 3. `.gitmodules` ↔ the naming convention. Every mirror that has content
+  //    is submoduled — a package that quietly drops back to an upstream is
+  //    the regression this whole thing exists to prevent — and every entry is
+  //    shallow, so `specs:sync` never fetches more than the tip commit.
   const gitmodules = readFileSync(join(ROOT, ".gitmodules"), "utf8");
-  for (const [, name] of gitmodules.matchAll(/^\[submodule "([^"]+)"\]/gm)) {
+  const entries = new Set(
+    [...gitmodules.matchAll(/^\[submodule "([^"]+)"\]/gm)].map(([, n]) => n!),
+  );
+  for (const specRepo of SPEC_REPOS) {
+    if (specRepo.blocked !== undefined) continue;
+    const path = submodulePath(specRepo.package);
+    if (!entries.has(path)) {
+      errors.push(`.gitmodules has no entry for ${path}`);
+      continue;
+    }
+    const shallow = spawnSync(
+      "git",
+      ["config", "-f", ".gitmodules", `submodule.${path}.shallow`],
+      { cwd: ROOT, encoding: "utf8" },
+    ).stdout?.trim();
+    if (shallow !== "true") {
+      errors.push(
+        `.gitmodules: ${path} is not \`shallow = true\` — a full-history ` +
+          `clone of a mirror defeats the point of mirroring it`,
+      );
+    }
+  }
+  for (const name of entries) {
     const mirror = /\/specs\/spec-mirror-(.+)$/.exec(name!);
     if (!mirror) continue;
     const pkg = mirror[1]!;

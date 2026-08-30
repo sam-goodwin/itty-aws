@@ -4,7 +4,7 @@
  * .generated-specs.
  *
  * Hugging Face publishes ONE OpenAPI 3.1 document (downloaded to
- * `specs/openapi.json` by `scripts/download-spec.ts`) covering ~314 operations
+ * `specs/spec-mirror-huggingface/specs/openapi.json` by `scripts/download-spec.ts`) covering ~314 operations
  * across 27 tags; the v1 layout wants one Smithy model — one service module —
  * per tag. Following the Vercel pipeline, the ordering is load-bearing:
  *
@@ -35,7 +35,10 @@ import { convertOpenApiToSmithy } from "@distilled.cloud/core/codegen/openapi";
 import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 
 const rootDir = path.resolve(import.meta.dir, "..");
-const specPath = resolveSpecPath(rootDir, "specs/openapi.json");
+const specPath = resolveSpecPath(
+  rootDir,
+  "specs/spec-mirror-huggingface/specs/openapi.json",
+);
 const patchDir = path.join(rootDir, "patches");
 const outDir = path.join(rootDir, ".generated-specs");
 

@@ -11,33 +11,23 @@
 - agents.md
 - license.md
 - extract cf docs mirror into its own submodule
-- fix runaway spec-submodule size — IN PROGRESS (stacks/distilled-submodules)
-  - the general problem: `specs:sync` at the repo root is a plain recursive
-    `submodule update --init` over every package, so it materialises each
-    upstream repo's ENTIRE working tree — even though every generator reads a
-    handful of files. github is the worst case (~6.7 GB for one 13 MB file)
-    but not the only one: kubernetes/kubernetes (~1.5 GB for one 4.3 MB file),
-    Azure/azure-rest-api-specs (338k paths for ~780 documents) and
-    aws/api-models-aws are all large checkouts of which we consume a fraction.
-  - option 1 (mirror the consumed files into a spec repo) is the one being
-    built: `stacks/distilled-submodules` now manages one `distilled-mirror/spec-mirror-<pkg>`
+- fix runaway spec-submodule size — DONE (stacks/distilled-submodules)
+  - the general problem: `specs:sync` at the repo root was a recursive
+    `submodule update --init` over every package, so it materialised each
+    upstream in full — github/rest-api-description at ~6.7 GB checked out for
+    one 13 MB file, kubernetes/kubernetes ~1.5 GB for one, and
+    Azure/azure-rest-api-specs (338k paths for ~780 documents).
+  - `stacks/distilled-submodules` manages one `distilled-mirror/spec-mirror-<pkg>`
     repository per spec-consuming package, and an Alchemy Action commits the
     exact file set into each — a per-upstream `fetch-specs.ts` plus a daily
-    workflow that refetches and commits.
-  - REMAINING: rewire `.gitmodules` and each package's `specs:fetch` +
-    generator spec paths onto the mirrors, once the mirrors have content.
-    Nothing has moved yet: `.gitmodules` still points at the upstreams and at
-    the older `alchemy-run/distilled-spec-*` repos. Every convert script now
-    resolves through `resolveSpecPath`, so each rewire is a one-line change to
-    the declared path plus the `.gitmodules` swap (`pnpm specs:link <pkg>`).
-  - until a package's declared path lands where its mirror writes,
-    `DISTILLED_SPECS_LOCAL=1` cannot resolve it. Works today: discord, fly-io,
-    gcp, hetzner, huggingface, mongodb-atlas, neon, planetscale, posthog,
-    prisma-postgres, railway, supabase, vercel. Needs the rewire first: aws,
-    axiom, azure, coinbase, expo-eas, github, kubernetes, stripe, turso,
-    typesense, workos.
-    That is the step that actually shrinks a clone.
-  - cloudflare is blocked, see below.
+    refresh workflow.
+  - all 24 unblocked packages now submodule their mirror instead of the
+    upstream; `specs:sync` is 406 MB of working tree, shallow and
+    non-recursive. `pnpm specs:check` fails if a package drops back off its
+    mirror or loses `shallow = true`.
+  - contributors who cannot create a mirror develop against
+    `pnpm specs:local <pkg>` + `DISTILLED_SPECS_LOCAL=1`; see
+    `.agents/skills/distilled-sdk`.
 - cloudflare spec source is broken upstream
   - developers.cloudflare.com migrated to Astro/Starlight and now serves the
     full HTML page at every `<page>/index.md` URL — including the ones its own

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -b",
     "generate": "bun scripts/generate-all.ts",
-    "specs:sync": "git submodule sync --recursive && git submodule update --force --init --recursive --depth=1",
+    "specs:sync": "git submodule sync && git submodule update --force --init --depth=1",
     "specs:local": "bun scripts/specs.ts local",
     "specs:link": "bun scripts/specs.ts link",
     "specs:check": "bun scripts/specs.ts check",
