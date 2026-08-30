@@ -215,11 +215,18 @@ const link = (pkg: string) => {
     }
   }
   // Spec submodules are read-only inputs and several fetch scripts leave the
-  // working tree dirty; every existing entry sets this.
-  run(
-    ["git", "config", "-f", ".gitmodules", `submodule.${path}.ignore`, "dirty"],
-    ROOT,
-  );
+  // working tree dirty. `shallow` is what holds `specs:sync` to one commit
+  // per mirror — `specs:check` rejects an entry without it, so setting it
+  // here is not optional dressing.
+  for (const [key, value] of [
+    ["ignore", "dirty"],
+    ["shallow", "true"],
+  ] as const) {
+    run(
+      ["git", "config", "-f", ".gitmodules", `submodule.${path}.${key}`, value],
+      ROOT,
+    );
+  }
 
   if (!remoteExists) {
     console.log(
