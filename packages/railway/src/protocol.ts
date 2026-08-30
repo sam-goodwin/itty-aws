@@ -24,6 +24,7 @@
  *             On success the value of `data.<responsePath>` (see
  *             `T.ResponsePath`) is returned verbatim.
  */
+import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
@@ -41,6 +42,7 @@ import { type Config, Credentials } from "./credentials.ts";
 import {
   type DefaultErrors,
   RAILWAY_ERROR_CODE_MAP,
+  RAILWAY_ERROR_MATCHERS,
   RailwayParseError,
   RailwayRateLimited,
   UnknownRailwayError,
@@ -107,6 +109,21 @@ const RestErrorResponse = Schema.Struct({
 const decodeEnvelope = Schema.decodeUnknownOption(GraphQLEnvelope);
 const decodeRest = Schema.decodeUnknownOption(RestErrorResponse);
 
+/** GraphQL rate limits often arrive as HTTP 200 with no Retry-After header. */
+const retryAfterForRateLimit = (
+  message: string,
+  headers?: Record<string, string | undefined>,
+) => {
+  const fromHeader = parseRetryAfterForStatus(429, headers);
+  if (fromHeader !== undefined) return fromHeader;
+  const match =
+    /per (\d+) seconds/.exec(message) ?? /every (\d+)\s*s/.exec(message);
+  if (match !== null) {
+    return Duration.seconds(Number(match[1]) + 1);
+  }
+  return Duration.seconds(31);
+};
+
 type StatusClass = new (args: {
   message: string;
   retryAfter?: ReturnType<typeof parseRetryAfterForStatus>;
@@ -130,12 +147,30 @@ const matchError = (
     const code = first.extensions?.code ?? first.extensions?.errorCode;
     const message = first.message;
 
+    const matcher = RAILWAY_ERROR_MATCHERS.find((entry) => {
+      if (entry.code !== undefined && entry.code !== code) return false;
+      if (
+        entry.messageIncludes !== undefined &&
+        !message.includes(entry.messageIncludes)
+      ) {
+        return false;
+      }
+      return true;
+    });
+    if (matcher) {
+      if (matcher.error === RailwayRateLimited) {
+        const retryAfter = retryAfterForRateLimit(message, headers);
+        return fail(new RailwayRateLimited({ message, retryAfter }));
+      }
+      return fail(new matcher.error({ message }));
+    }
+
     if (code) {
       const TypedClass = RAILWAY_ERROR_CODE_MAP[code];
       if (TypedClass) {
         // Rate-limit errors carry a retry hint when the gateway sent one.
         if (TypedClass === RailwayRateLimited) {
-          const retryAfter = parseRetryAfterForStatus(429, headers);
+          const retryAfter = retryAfterForRateLimit(message, headers);
           return fail(new RailwayRateLimited({ message, retryAfter }));
         }
         return fail(new TypedClass({ message }));
@@ -180,7 +215,29 @@ const matchError = (
     );
   }
 
+  const StatusClass = (HTTP_STATUS_MAP as Record<number, unknown>)[status] as
+    | StatusClass
+    | undefined;
+  if (StatusClass && status >= 400) {
+    const message =
+      typeof errorBody === "string" && errorBody.trim().length > 0
+        ? errorBody
+        : `HTTP ${status}`;
+    return fail(
+      new StatusClass({
+        message,
+        retryAfter: parseRetryAfterForStatus(status, headers),
+      }),
+    );
+  }
+
   return fail(new UnknownRailwayError({ body: errorBody }));
+};
+
+/** Cloudflare's public GraphQL edge is 10 RPS; `source=` is an identified client. */
+const withClientSource = (url: string) => {
+  if (/[?&]source=/.test(url)) return url;
+  return url.includes("?") ? `${url}&source=alchemy` : `${url}?source=alchemy`;
 };
 
 // ============================================================================
@@ -221,13 +278,24 @@ const encode = ({
       if (v !== undefined) variables[k] = v;
     }
 
-    const token = Redacted.value(creds.token);
+    const token = Redacted.value(creds.token).trim();
+    // Public mutations (loginSessionCreate / verify / consume / cancel)
+    // run before the user has a token. An empty credential must not send a
+    // bogus `Authorization: Bearer ` header — Railway rejects that as
+    // UNAUTHENTICATED even for otherwise-unauthenticated fields.
     const auth =
-      creds.tokenKind === "project"
-        ? { "Project-Access-Token": token }
-        : { Authorization: `Bearer ${token}` };
+      token.length === 0
+        ? {}
+        : creds.tokenKind === "project"
+          ? { "Project-Access-Token": token }
+          : { Authorization: `Bearer ${token}` };
 
-    const url = `${creds.apiBaseUrl}${http?.uri ?? "/graphql/v2"}`;
+    // Terraform's Railway provider hits
+    // `.../graphql/v2?source=terraform_provider_railway` so Cloudflare's
+    // 10 RPS edge limit on anonymous GraphQL does not apply. Same shape.
+    const url = withClientSource(
+      `${creds.apiBaseUrl}${http?.uri ?? "/graphql/v2"}`,
+    );
     if (process.env.DISTILLED_DEBUG_HTTP) {
       console.error(
         `[distilled] POST ${url} op=${op.operationName} variables=${JSON.stringify(variables).slice(0, 400)}`,

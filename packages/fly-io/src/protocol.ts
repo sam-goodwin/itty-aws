@@ -18,8 +18,10 @@
  * The minted token is cached process-wide, then sent as
  * `Authorization: Bearer` on sprite ops. There is no `SPRITES_TOKEN`.
  */
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
+import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
@@ -127,17 +129,45 @@ const resolveFlyCreds = Effect.gen(function* () {
   return yield* resolve;
 });
 
-export const FlyIoProtocol: Layer.Layer<API.Protocol> =
-  makeRestProtocol<Config>({
-    credentials: resolveFlyCreds,
-    baseUrl: (creds) => creds.apiBaseUrl,
-    headers: (creds) => ({
-      Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
-    }),
-    errorEnvelope: flyErrorEnvelope,
-    unknownError: ({ message, body }) =>
-      new UnknownFlyIoError({ message, body }),
-  });
+/**
+ * Per-call signal that this Machines request is the Fly Machine itself
+ * (unix socket `/.fly/api`). Org tokens stay on {@link Credentials} for
+ * GetSecret in the same process; this service only changes headers:
+ * omit `Authorization`, send `Connection: close`.
+ */
+export class MachineIdentity extends Context.Service<MachineIdentity, true>()(
+  "FlyIoMachineIdentity",
+) {}
+
+const FlyIoProtocolRest: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+  credentials: resolveFlyCreds,
+  baseUrl: (creds) => creds.apiBaseUrl,
+  headers: (creds) => ({
+    Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
+  }),
+  errorEnvelope: flyErrorEnvelope,
+  unknownError: ({ message, body }) => new UnknownFlyIoError({ message, body }),
+});
+
+export const FlyIoProtocol: Layer.Layer<API.Protocol> = Layer.effect(
+  API.Protocol,
+  Effect.gen(function* () {
+    const rest = yield* API.Protocol;
+    return API.Protocol.of({
+      encode: (args) =>
+        Effect.gen(function* () {
+          const request = yield* rest.encode(args);
+          const machine = yield* Effect.serviceOption(MachineIdentity);
+          if (Option.isNone(machine)) return request;
+          return request.pipe(
+            HttpClientRequest.removeHeader("authorization"),
+            HttpClientRequest.setHeader("connection", "close"),
+          );
+        }),
+      decode: rest.decode,
+    });
+  }),
+).pipe(Layer.provide(FlyIoProtocolRest));
 
 /** MPG UI-EX REST at `https://api.fly.io` with the Machines bearer token. */
 export const FlyApiProtocol: Layer.Layer<API.Protocol> =

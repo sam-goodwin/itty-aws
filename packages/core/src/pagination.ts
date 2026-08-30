@@ -366,10 +366,19 @@ export const paginateRelay = <
       const emptyPage =
         pagination.items !== undefined &&
         getItems(response, pagination.items).length === 0;
+      // A connection that keeps returning the same `endCursor` with
+      // `hasNextPage: true` (Railway `projects` has done this) would
+      // otherwise paginate forever.
+      const stuckCursor =
+        state.cursor !== undefined &&
+        nextCursor !== undefined &&
+        nextCursor !== null &&
+        nextCursor === state.cursor;
 
       const nextState: State = {
         cursor: nextCursor ?? undefined,
-        done: !hasNext || isTerminalToken(nextCursor) || emptyPage,
+        done:
+          !hasNext || isTerminalToken(nextCursor) || emptyPage || stuckCursor,
       };
 
       return [response, nextState] as const;

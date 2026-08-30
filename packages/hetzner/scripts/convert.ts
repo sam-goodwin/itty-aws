@@ -16,7 +16,9 @@
  *      last. Stale targets warn+skip — the spec is refetched from a live URL
  *      and drifts — malformed patches fail the run). Patching per-slice
  *      would hard-fail: a patch targeting one tag's paths doesn't resolve
- *      against another tag's slice.
+ *      against another tag's slice. Ops whose path starts with `/shapes/`
+ *      are Smithy patches (typed errors) and apply AFTER conversion, per
+ *      tag — OpenAPI has no `/shapes/` tree.
  *   3. Bucket operations by PRIMARY (first) tag — every operation in this
  *      spec carries exactly one, so there is no untagged-routing table the
  *      way Vercel needs.
@@ -86,9 +88,12 @@ if (!fs.existsSync(specPath)) {
 const fullSpec = JSON.parse(fs.readFileSync(specPath, "utf-8"));
 
 // ---- 2. Apply the patch chain ONCE to the full spec ------------------------
-// Cloudflare layout: patches/<service>/<op>.json. Still applied to the
-// bundled OpenAPI document here (generate.ts leaves patchesDir: false).
+// Cloudflare layout: patches/<service>/<op>.json. OpenAPI ops (`/paths/`,
+// `/components/`, …) apply here; `/shapes/` ops apply to the converted
+// Smithy model per tag (generate.ts leaves patchesDir: false).
 const SKIP_PATCH_NAMES = new Set(["_metadata.json"]);
+const isSmithyPatchPath = (patchPath: unknown): boolean =>
+  typeof patchPath === "string" && patchPath.startsWith("/shapes/");
 
 const listPatchFiles = (root: string): string[] => {
   if (!fs.existsSync(root)) return [];
@@ -119,11 +124,23 @@ const listPatchFiles = (root: string): string[] => {
 let patchFiles = 0;
 let staleOps = 0;
 const badPatches: string[] = [];
+/** Smithy `/shapes/` ops, keyed by tag slug (`patches/<slug>/…`). */
+const smithyPatchesBySlug = new Map<
+  string,
+  Array<{ rel: string; op: PatchFile["patches"][number] }>
+>();
 for (const rel of listPatchFiles(patchDir)) {
   const parsed = JSON.parse(
     fs.readFileSync(path.join(patchDir, rel), "utf-8"),
   ) as PatchFile;
+  const slug = rel.split("/")[0]!;
   for (const patchOp of parsed.patches ?? []) {
+    if (isSmithyPatchPath(patchOp.path)) {
+      const list = smithyPatchesBySlug.get(slug) ?? [];
+      list.push({ rel, op: patchOp });
+      smithyPatchesBySlug.set(slug, list);
+      continue;
+    }
     try {
       applyOperation(fullSpec, patchOp);
     } catch (e) {
@@ -390,6 +407,20 @@ for (const slug of [...tagBuckets.keys()].sort()) {
     );
   }
 
+  for (const { rel, op: patchOp } of smithyPatchesBySlug.get(slug) ?? []) {
+    try {
+      applyOperation(model, patchOp);
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      if (isStaleTargetError(msg)) {
+        staleOps++;
+        console.warn(`   ⚠️  stale: ${rel} [${patchOp.op} ${patchOp.path}]`);
+      } else {
+        badPatches.push(`${rel} [${patchOp.op} ${patchOp.path}]: ${msg}`);
+      }
+    }
+  }
+
   fs.writeFileSync(
     path.join(outDir, `${slug}.json`),
     JSON.stringify(model, null, 2) + "\n",
@@ -408,6 +439,12 @@ if (deprecated.length) {
 if (emptyBuckets.length) {
   console.log(
     `   (${emptyBuckets.length} tag(s) dropped — every operation deprecated: ${emptyBuckets.join(", ")})`,
+  );
+}
+if (badPatches.length) {
+  for (const b of badPatches) console.error(`❌ bad patch: ${b}`);
+  throw new Error(
+    `${badPatches.length} malformed patch operation(s) — fix or remove them`,
   );
 }
 console.log(
