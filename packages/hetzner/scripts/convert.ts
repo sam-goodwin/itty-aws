@@ -4,7 +4,7 @@
  * .generated-specs.
  *
  * Hetzner publishes ONE ~3.4 MB OpenAPI 3.1 document (downloaded to
- * `specs/cloud.spec.json` by `scripts/download-spec.ts`) covering 189
+ * `specs/spec-mirror-hetzner/specs/cloud.spec.json` by `scripts/download-spec.ts`) covering 189
  * operations across 31 tags; the v1 layout wants one Smithy model — one
  * service module — per tag. Following the Vercel/GitHub pipeline, the
  * ordering is load-bearing:
@@ -44,9 +44,13 @@ import {
   type PatchFile,
 } from "@distilled.cloud/core/json-patch";
 import { convertOpenApiToSmithy } from "@distilled.cloud/core/codegen/openapi";
+import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 
 const rootDir = path.resolve(import.meta.dir, "..");
-const specPath = path.join(rootDir, "specs/cloud.spec.json");
+const specPath = resolveSpecPath(
+  rootDir,
+  "specs/spec-mirror-hetzner/specs/cloud.spec.json",
+);
 const patchDir = path.join(rootDir, "patches");
 const outDir = path.join(rootDir, ".generated-specs");
 

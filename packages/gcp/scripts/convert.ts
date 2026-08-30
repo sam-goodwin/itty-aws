@@ -2,8 +2,8 @@
 /**
  * convert — Google Discovery documents → Smithy 2.0 JSON models.
  *
- * Input:  specs/distilled-spec-gcp/specs/_manifest.json (drives the run)
- *         specs/distilled-spec-gcp/specs/{filename}     (one discovery doc per entry)
+ * Input:  specs/spec-mirror-gcp/specs/_manifest.json (drives the run)
+ *         specs/spec-mirror-gcp/specs/{filename}     (one discovery doc per entry)
  * Output: .generated-specs/stable/<name>_<version>.json   (manifest `preferred: true`)
  *         .generated-specs/unstable/<name>_<version>.json (everything else)
  *
@@ -45,6 +45,7 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 
 // =============================================================================
 // Discovery document types (the subset the converter reads)
@@ -693,7 +694,7 @@ const versionFilter = args.includes("--version")
   : undefined;
 
 const root = path.resolve(import.meta.dir, "..");
-const specsDir = path.join(root, "specs", "distilled-spec-gcp", "specs");
+const specsDir = resolveSpecPath(root, "specs/spec-mirror-gcp/specs");
 const manifestPath = path.join(specsDir, "_manifest.json");
 
 if (!fs.existsSync(manifestPath)) {

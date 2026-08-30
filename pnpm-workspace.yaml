@@ -1,8 +1,13 @@
 packages:
   - packages/*
+  # Deployment stacks. Not published, not part of `tsc -b` — but members so
+  # one `pnpm install` covers them and their versions live in one lockfile.
+  - stacks/*
 
 allowBuilds:
   msgpackr-extract: true
+  # alchemy pulls in miniflare for the Cloudflare state store.
+  workerd: true
 
 catalogs:
   aws:

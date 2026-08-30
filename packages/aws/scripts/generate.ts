@@ -2,7 +2,7 @@
 /**
  * generate — turn the AWS Smithy models into an Effect SDK.
  *
- * Input:  specs/api-models-aws/models/<service>/service/<version>/<service>-<version>.json
+ * Input:  specs/spec-mirror-aws/specs/models/<service>/service/<version>/<service>-<version>.json
  *         manual-specs/<service>.json  (hand-authored models for APIs AWS
  *         never published a Smithy model for — see manual-specs/README.md)
  * Output: src/services/<sdkId>.ts  +  services/index.ts
@@ -28,7 +28,7 @@ import { loadServiceSpecPatch } from "./spec-schema.ts";
 import { SmithyModel, type ServiceShape } from "./model-schema.ts";
 import { awsSpec } from "./spec.ts";
 
-const AWS_MODELS_PATH = "specs/api-models-aws";
+const AWS_MODELS_PATH = "specs/spec-mirror-aws/specs";
 
 /** The service shape and its sdkId — every AWS model has exactly one. */
 const serviceOf = (model: any): ServiceShape => {
@@ -86,10 +86,7 @@ runGeneratorCli({
     Effect.gen(function* () {
       const fs = yield* FileSystem.FileSystem;
       const p = yield* Path.Path;
-      const src = p.join(
-        root,
-        "specs/smithy/smithy-aws-endpoints/src/main/resources/software/amazon/smithy/rulesengine/aws/language/functions/partition/partitions.json",
-      );
+      const src = p.join(root, "specs/spec-mirror-aws/specs/partitions.json");
       if (
         !(yield* fs
           .exists(src)

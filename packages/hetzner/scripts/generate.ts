@@ -90,7 +90,8 @@ const spec: SdkSpec = {
     },
   },
 
-  sourceNote: ".generated-specs (specs/cloud.spec.json)",
+  sourceNote:
+    ".generated-specs (specs/spec-mirror-hetzner/specs/cloud.spec.json)",
 
   operationDecl: {
     contextType: "HetznerOpContext",

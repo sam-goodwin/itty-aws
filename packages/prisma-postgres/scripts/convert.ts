@@ -23,7 +23,7 @@ await runOpenApiConvert({
   specs: [
     {
       name: "management",
-      specPath: "specs/distilled-spec-prisma-postgres/specs/openapi.json",
+      specPath: "specs/spec-mirror-prisma-postgres/specs/openapi.json",
     },
   ],
   options: {

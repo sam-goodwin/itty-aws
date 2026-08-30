@@ -98,8 +98,8 @@
     "lint": "oxlint --fix src",
     "check": "tsc && oxlint src && oxfmt --check src",
     "generate": "bun run scripts/generate.ts",
-    "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/api-models-aws && git -C specs/api-models-aws checkout -- .",
-    "specs:update": "git -C specs/api-models-aws fetch && git -C specs/api-models-aws checkout main && git -C specs/api-models-aws pull"
+    "specs:fetch": "git submodule update --force --init --depth=1 specs/spec-mirror-aws",
+    "specs:update": "git submodule update --remote --force --depth=1 specs/spec-mirror-aws"
   },
   "dependencies": {
     "@aws-crypto/crc32": "catalog:aws",

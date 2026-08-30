@@ -68,7 +68,8 @@ const coinbaseSpec: SdkSpec = {
     retry: "Retry.Retry",
   },
 
-  sourceNote: ".generated-specs (specs/cdp-sdk/openapi.yaml)",
+  sourceNote:
+    ".generated-specs (specs/spec-mirror-coinbase/specs/openapi.yaml)",
 
   // Sensitive member types reference Redacted; pull the import in when used.
   postProcess: (code) =>

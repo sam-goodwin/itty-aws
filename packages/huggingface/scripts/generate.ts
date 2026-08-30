@@ -76,7 +76,8 @@ const spec: SdkSpec = {
     `export const ${name} = /*@__PURE__*/ S.Unknown as any as S.Schema<${name}>;\n`,
   ],
 
-  sourceNote: ".generated-specs (specs/openapi.json)",
+  sourceNote:
+    ".generated-specs (specs/spec-mirror-huggingface/specs/openapi.json)",
 
   operationDecl: {
     contextType: "HuggingFaceOpContext",

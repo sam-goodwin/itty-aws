@@ -3,7 +3,7 @@
  * convert — turn the aggregated Kubernetes Swagger 2.0 spec into Smithy 2.0
  * JSON models, one per Kubernetes API group.
  *
- * Input:  specs/kubernetes/api/openapi-spec/swagger.json  (spec submodule —
+ * Input:  specs/spec-mirror-kubernetes/specs/swagger.json  (spec submodule —
  *         the single aggregated Swagger 2.0 document, ~1069 operations)
  *         patches/*.patch.json  (RFC-6902 patches to the Swagger document —
  *         ported verbatim from distilled v0; they add the 404/409/422 error
@@ -46,7 +46,7 @@ import { convertOpenApiToSmithy } from "@distilled.cloud/core/codegen/openapi";
 const root = path.resolve(import.meta.dir, "..");
 const specPath = path.join(
   root,
-  "specs/kubernetes/api/openapi-spec/swagger.json",
+  "specs/spec-mirror-kubernetes/specs/swagger.json",
 );
 const patchesDir = path.join(root, "patches");
 const outDir = path.join(root, ".generated-specs");

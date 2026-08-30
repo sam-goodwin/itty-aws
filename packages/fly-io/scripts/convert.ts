@@ -2,7 +2,7 @@
 /**
  * convert — turn Fly.io specs into Smithy JSON models.
  *
- *   machines  OpenAPI  specs/distilled-spec-fly-io/specs/openapi.json
+ *   machines  OpenAPI  specs/spec-mirror-fly-io/specs/openapi.json
  *             → .generated-specs/machines.json
  *             patches: patches/*.patch.json then patches/machines/*.patch.json
  *
@@ -88,7 +88,7 @@ await runOpenApiConvert({
   specs: [
     {
       name: "machines",
-      specPath: "specs/distilled-spec-fly-io/specs/openapi.json",
+      specPath: "specs/spec-mirror-fly-io/specs/openapi.json",
       preprocess: (spec) => {
         let staleOps = 0;
         const badPatches: string[] = [];

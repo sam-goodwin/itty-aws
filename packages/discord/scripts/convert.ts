@@ -2,7 +2,7 @@
 /**
  * convert — turn the Discord OpenAPI spec into a Smithy 2.0 JSON model.
  *
- * Input:  specs/discord-api-spec/specs/openapi.json  (spec submodule — the
+ * Input:  specs/spec-mirror-discord/specs/openapi.json  (spec submodule — the
  *         STABLE spec; `openapi_preview.json` alongside it carries unstable /
  *         experimental surface Discord explicitly says not to ship)
  * Output: .generated-specs/discord.json
@@ -92,7 +92,7 @@ await runOpenApiConvert({
   specs: [
     {
       name: "discord",
-      specPath: "specs/discord-api-spec/specs/openapi.json",
+      specPath: "specs/spec-mirror-discord/specs/openapi.json",
       preprocess: normalizeEnums,
     },
   ],
