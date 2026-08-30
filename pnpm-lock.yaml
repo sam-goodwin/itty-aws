@@ -598,6 +598,25 @@ importers:
         specifier: catalog:tooling
         version: 26.4.0
 
+  packages/whop:
+    dependencies:
+      '@distilled.cloud/core':
+        specifier: workspace:*
+        version: link:../core
+      effect:
+        specifier: catalog:effect
+        version: 4.0.0-rc.111
+    devDependencies:
+      '@effect/platform-bun':
+        specifier: catalog:effect
+        version: 4.0.0-rc.111(effect@4.0.0-rc.111)
+      '@types/bun':
+        specifier: catalog:tooling
+        version: 1.4.0
+      '@types/node':
+        specifier: catalog:tooling
+        version: 26.3.0
+
   packages/workos:
     dependencies:
       '@distilled.cloud/core':

@@ -50,6 +50,8 @@
     { "path": "./packages/typesense/tsconfig.scripts.json" },
     { "path": "./packages/vercel/tsconfig.json" },
     { "path": "./packages/vercel/tsconfig.scripts.json" },
+    { "path": "./packages/whop/tsconfig.json" },
+    { "path": "./packages/whop/tsconfig.scripts.json" },
     { "path": "./packages/workos/tsconfig.json" },
     { "path": "./packages/workos/tsconfig.scripts.json" }
   ]
