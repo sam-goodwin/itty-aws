@@ -39,13 +39,46 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
+/** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type SubscriptionsCreateRequestDashboardExportInsightsList =
   Array<number>;
 export const SubscriptionsCreateRequestDashboardExportInsightsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<SubscriptionsCreateRequestDashboardExportInsightsList>;
+
+/** * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
+export type AIWindowConfigModeEnum =
+  | "since_last_sent"
+  | "last_n_days"
+  | "days_ago_range";
+export const AIWindowConfigModeEnum = /*@__PURE__*/ S.String;
+
+export interface AIWindowConfig {
+  /** What the report analyzes each run: * `since_last_sent` (default) — everything since the previous successful scheduled delivery (gap-free; test/manual sends don't move the anchor) * `last_n_days` — a fixed trailing window of start_days_ago days * `days_ago_range` — the explicit range from start_days_ago to end_days_ago days ago * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
+  mode?: AIWindowConfigModeEnum | (string & {});
+  /** Lower bound of the analysis window, in days before the run. Required for 'last_n_days' (the N) and 'days_ago_range'; ignored for 'since_last_sent'. 1-365. */
+  start_days_ago?: number | null;
+  /** Upper bound of the analysis window, in days before the run (0 = now). Required for 'days_ago_range' and must be less than start_days_ago; ignored for other modes. 0-365. */
+  end_days_ago?: number | null;
+}
+export const AIWindowConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(AIWindowConfigModeEnum),
+    start_days_ago: S.optional(S.NullOr(S.Number)),
+    end_days_ago: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({ identifier: "AIWindowConfig" }) as any as S.Schema<AIWindowConfig>;
+
+export interface AIPromptConfig {
+  /** Analysis window for the report. Omitted = 'since_last_sent' (everything since the previous scheduled delivery). */
+  window?: AIWindowConfig;
+}
+export const AIPromptConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    window: S.optional(AIWindowConfig),
+  }),
+).annotate({ identifier: "AIPromptConfig" }) as any as S.Schema<AIPromptConfig>;
 
 /** * `email` - Email * `slack` - Slack */
 export type TargetTypeEnum = "email" | "slack";
@@ -66,7 +99,7 @@ export type SubscriptionsCreateRequestByweekdayItem =
   | "sunday";
 export const SubscriptionsCreateRequestByweekdayItem = /*@__PURE__*/ S.String;
 
-/** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+/** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type SubscriptionsCreateRequestByweekdayList = Array<
   SubscriptionsCreateRequestByweekdayItem | (string & {})
 >;
@@ -81,10 +114,12 @@ export interface SubscriptionsCreateRequest {
   dashboard?: number | null;
   /** Insight ID to subscribe to (mutually exclusive with dashboard on create). */
   insight?: number | null;
-  /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
+  /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
   dashboard_export_insights?: SubscriptionsCreateRequestDashboardExportInsightsList;
   /** Free-text prompt that drives the AI-generated report. Required when resource_type is 'ai_prompt'. Max 4000 characters. */
   prompt?: string | null;
+  /** Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes. */
+  ai_prompt_config?: AIPromptConfig;
   /** Delivery channel: email or slack. * `email` - Email * `slack` - Slack */
   target_type?: TargetTypeEnum | (string & {});
   /** Recipient(s): comma-separated email addresses for email, or Slack channel name/ID for slack. */
@@ -93,7 +128,7 @@ export interface SubscriptionsCreateRequest {
   frequency?: RecurrenceIntervalEnum | (string & {});
   /** Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater. */
   interval?: number;
-  /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+  /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
   byweekday?: SubscriptionsCreateRequestByweekdayList | null;
   /** Position within byweekday set for monthly frequency (e.g. 1 for first, -1 for last). */
   bysetpos?: number | null;
@@ -113,6 +148,8 @@ export interface SubscriptionsCreateRequest {
   integration_id?: number | null;
   /** Optional message included in the invitation email when adding new recipients. */
   invite_message?: string | null;
+  /** Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected. */
+  send_test_now?: boolean;
   /** Whether to attach an AI-generated summary to each delivery (insight and dashboard subscriptions only). Requires the organization to have approved AI data processing, and is subject to the org's active-summary cap and AI credit budget; otherwise the write is rejected. Not applicable to prompt subscriptions, which are themselves AI-generated. */
   summary_enabled?: boolean;
   /** Optional free-text guidance (max 500 chars) steering the AI summary, e.g. which metrics to emphasize. Only settable when AI summary context is enabled for the organization; clearing it (empty string) is always allowed. */
@@ -127,6 +164,7 @@ export const SubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       SubscriptionsCreateRequestDashboardExportInsightsList,
     ),
     prompt: S.optional(S.NullOr(S.String)),
+    ai_prompt_config: S.optional(AIPromptConfig),
     target_type: S.optional(TargetTypeEnum),
     target_value: S.optional(S.String),
     frequency: S.optional(RecurrenceIntervalEnum),
@@ -141,6 +179,7 @@ export const SubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     title: S.optional(S.NullOr(S.String)),
     integration_id: S.optional(S.NullOr(S.Number)),
     invite_message: S.optional(S.NullOr(S.String)),
+    send_test_now: S.optional(S.Boolean),
     summary_enabled: S.optional(S.Boolean),
     summary_prompt_guide: S.optional(S.String),
   }).pipe(
@@ -158,14 +197,15 @@ export const SubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTypeEnum = "insight" | "dashboard" | "ai_prompt";
 export const ResourceTypeEnum = /*@__PURE__*/ S.String;
 
-/** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
-export type SubscriptionDashboardExportInsightsList = Array<number>;
-export const SubscriptionDashboardExportInsightsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SubscriptionDashboardExportInsightsList>;
+/** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
+export type SubscriptionOutputDashboardExportInsightsList = Array<number>;
+export const SubscriptionOutputDashboardExportInsightsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<SubscriptionOutputDashboardExportInsightsList>;
 
 /** * `monday` - Monday * `tuesday` - Tuesday * `wednesday` - Wednesday * `thursday` - Thursday * `friday` - Friday * `saturday` - Saturday * `sunday` - Sunday */
-export type SubscriptionByweekdayItem =
+export type SubscriptionOutputByweekdayItem =
   | "monday"
   | "tuesday"
   | "wednesday"
@@ -173,13 +213,14 @@ export type SubscriptionByweekdayItem =
   | "friday"
   | "saturday"
   | "sunday";
-export const SubscriptionByweekdayItem = /*@__PURE__*/ S.String;
+export const SubscriptionOutputByweekdayItem = /*@__PURE__*/ S.String;
 
-/** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-export type SubscriptionByweekdayList = Array<SubscriptionByweekdayItem>;
-export const SubscriptionByweekdayList = /*@__PURE__*/ S.Array(
-  SubscriptionByweekdayItem,
-) as any as S.Schema<SubscriptionByweekdayList>;
+/** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+export type SubscriptionOutputByweekdayList =
+  Array<SubscriptionOutputByweekdayItem>;
+export const SubscriptionOutputByweekdayList = /*@__PURE__*/ S.Array(
+  SubscriptionOutputByweekdayItem,
+) as any as S.Schema<SubscriptionOutputByweekdayList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -187,7 +228,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -196,6 +237,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -232,7 +274,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 /** Standard Subscription serializer. */
-export interface Subscription {
+export interface SubscriptionOutput {
   id?: number;
   /** What the subscription delivers: 'insight' (snapshot of one insight), 'dashboard' (snapshot of one dashboard), or 'ai_prompt' (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt). * `insight` - Insight * `dashboard` - Dashboard * `ai_prompt` - AI prompt */
   resource_type?: ResourceTypeEnum;
@@ -242,10 +284,12 @@ export interface Subscription {
   insight?: number | null;
   insight_short_id?: string | null;
   resource_name?: string | null;
-  /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
-  dashboard_export_insights?: SubscriptionDashboardExportInsightsList;
+  /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
+  dashboard_export_insights?: SubscriptionOutputDashboardExportInsightsList;
   /** Free-text prompt that drives the AI-generated report. Required when resource_type is 'ai_prompt'. Max 4000 characters. */
   prompt?: string | null;
+  /** Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes. */
+  ai_prompt_config?: AIPromptConfig;
   /** Delivery channel: email or slack. * `email` - Email * `slack` - Slack */
   target_type?: TargetTypeEnum;
   /** Recipient(s): comma-separated email addresses for email, or Slack channel name/ID for slack. */
@@ -254,8 +298,8 @@ export interface Subscription {
   frequency?: RecurrenceIntervalEnum;
   /** Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater. */
   interval?: number;
-  /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
-  byweekday?: SubscriptionByweekdayList | null;
+  /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+  byweekday?: SubscriptionOutputByweekdayList | null;
   /** Position within byweekday set for monthly frequency (e.g. 1 for first, -1 for last). */
   bysetpos?: number | null;
   /** Total number of deliveries before the subscription stops. Null for unlimited. */
@@ -284,7 +328,7 @@ export interface Subscription {
   /** Optional free-text guidance (max 500 chars) steering the AI summary, e.g. which metrics to emphasize. Only settable when AI summary context is enabled for the organization; clearing it (empty string) is always allowed. */
   summary_prompt_guide?: string;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+export const SubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     resource_type: S.optional(ResourceTypeEnum),
@@ -293,14 +337,15 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
     insight_short_id: S.optional(S.NullOr(S.String)),
     resource_name: S.optional(S.NullOr(S.String)),
     dashboard_export_insights: S.optional(
-      SubscriptionDashboardExportInsightsList,
+      SubscriptionOutputDashboardExportInsightsList,
     ),
     prompt: S.optional(S.NullOr(S.String)),
+    ai_prompt_config: S.optional(AIPromptConfig),
     target_type: S.optional(TargetTypeEnum),
     target_value: S.optional(S.String),
     frequency: S.optional(RecurrenceIntervalEnum),
     interval: S.optional(S.Number),
-    byweekday: S.optional(S.NullOr(SubscriptionByweekdayList)),
+    byweekday: S.optional(S.NullOr(SubscriptionOutputByweekdayList)),
     bysetpos: S.optional(S.NullOr(S.Number)),
     count: S.optional(S.NullOr(S.Number)),
     start_date: S.optional(S.String),
@@ -317,7 +362,9 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
     summary_enabled: S.optional(S.Boolean),
     summary_prompt_guide: S.optional(S.String),
   }),
-).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
+).annotate({
+  identifier: "SubscriptionOutput",
+}) as any as S.Schema<SubscriptionOutput>;
 
 export type SubscriptionsDeliveriesListRequestStatus =
   | "completed"
@@ -368,6 +415,60 @@ export type SubscriptionDeliveryStatusEnum =
   | "skipped";
 export const SubscriptionDeliveryStatusEnum = /*@__PURE__*/ S.String;
 
+export interface AIReportQueryDiagnostic {
+  /** What this query step was meant to compute. */
+  description: string;
+  /** The HogQL the assistant generated for this step. */
+  hogql: string;
+  /** Whether the query ran successfully. */
+  ok: boolean;
+  /** Exception class name when the query failed; null on success. */
+  error_type: string | null;
+  /** Human-readable failure reason, present only for query errors safe to surface to the subscription owner (e.g. an unresolved field name); null on success and for internal errors, which expose error_type only. */
+  human_readable_error?: string | null;
+}
+export const AIReportQueryDiagnostic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    hogql: S.String,
+    ok: S.Boolean,
+    error_type: S.NullOr(S.String),
+    human_readable_error: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "AIReportQueryDiagnostic",
+}) as any as S.Schema<AIReportQueryDiagnostic>;
+
+/** Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics. */
+export type SubscriptionDeliveryAiReportDiagnosticsList =
+  Array<AIReportQueryDiagnostic>;
+export const SubscriptionDeliveryAiReportDiagnosticsList =
+  /*@__PURE__*/ S.Array(
+    AIReportQueryDiagnostic,
+  ) as any as S.Schema<SubscriptionDeliveryAiReportDiagnosticsList>;
+
+export interface AIReportChart {
+  /** Id of the rendered PNG export backing this chart. */
+  export_asset_id: number;
+  /** Chart caption, taken from the plan step it illustrates. */
+  title: string;
+  /** Index of the plan step this chart came from. */
+  step_index: number;
+}
+export const AIReportChart = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    export_asset_id: S.Number,
+    title: S.String,
+    step_index: S.Number,
+  }),
+).annotate({ identifier: "AIReportChart" }) as any as S.Schema<AIReportChart>;
+
+/** Charts rendered for this report, in the order they were delivered. Empty when the report had no charts. Null for non-AI deliveries and for deliveries recorded before charts existed. */
+export type SubscriptionDeliveryAiReportChartsList = Array<AIReportChart>;
+export const SubscriptionDeliveryAiReportChartsList = /*@__PURE__*/ S.Array(
+  AIReportChart,
+) as any as S.Schema<SubscriptionDeliveryAiReportChartsList>;
+
 export interface SubscriptionDelivery {
   /** Primary key for this delivery row. */
   id?: string;
@@ -377,7 +478,7 @@ export interface SubscriptionDelivery {
   temporal_workflow_id?: string;
   /** Dedupes activity retries for the same logical run. */
   idempotency_key?: string;
-  /** Why the run started (e.g. scheduled, manual, target_change). */
+  /** Why the run started (e.g. scheduled, manual, subscription update). */
   trigger_type?: string;
   /** Planned send time when applicable. */
   scheduled_at?: string | null;
@@ -403,6 +504,14 @@ export interface SubscriptionDelivery {
   finished_at?: string | null;
   /** AI-generated summary included in this delivery, when one was produced. */
   change_summary?: string | null;
+  /** AI-generated report markdown delivered by this run. Null for non-AI deliveries or runs without a persisted report. */
+  ai_report?: string | null;
+  /** Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics. */
+  ai_report_diagnostics?: SubscriptionDeliveryAiReportDiagnosticsList | null;
+  /** Charts rendered for this report, in the order they were delivered. Empty when the report had no charts. Null for non-AI deliveries and for deliveries recorded before charts existed. */
+  ai_report_charts?: SubscriptionDeliveryAiReportChartsList | null;
+  /** The subscription's prompt as it was when this report was generated. Null for older deliveries and non-AI deliveries. */
+  ai_report_prompt?: string | null;
 }
 export const SubscriptionDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -423,6 +532,14 @@ export const SubscriptionDelivery = /*@__PURE__*/ S.suspend(() =>
     last_updated_at: S.optional(S.String),
     finished_at: S.optional(S.NullOr(S.String)),
     change_summary: S.optional(S.NullOr(S.String)),
+    ai_report: S.optional(S.NullOr(S.String)),
+    ai_report_diagnostics: S.optional(
+      S.NullOr(SubscriptionDeliveryAiReportDiagnosticsList),
+    ),
+    ai_report_charts: S.optional(
+      S.NullOr(SubscriptionDeliveryAiReportChartsList),
+    ),
+    ai_report_prompt: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SubscriptionDelivery",
@@ -518,8 +635,12 @@ export interface SubscriptionsListRequest {
   created_by?: string;
   /** Filter by dashboard ID. */
   dashboard?: number;
+  /** Filter to subscriptions on insights that are tiles of the given dashboard ID. */
+  dashboard_tiles?: number;
   /** Filter by insight ID. */
   insight?: number;
+  /** Filter by a comma-separated list of insight IDs. */
+  insights?: string;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -538,7 +659,9 @@ export const SubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
     project_id: S.String.pipe(T.Label()),
     created_by: S.optional(S.String.pipe(T.Query())),
     dashboard: S.optional(S.Number.pipe(T.Query())),
+    dashboard_tiles: S.optional(S.Number.pipe(T.Query())),
     insight: S.optional(S.Number.pipe(T.Query())),
+    insights: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     ordering: S.optional(S.String.pipe(T.Query())),
@@ -558,29 +681,30 @@ export const SubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionsListRequest",
 }) as any as S.Schema<SubscriptionsListRequest>;
 
-export type PaginatedSubscriptionListResultsList = Array<Subscription>;
-export const PaginatedSubscriptionListResultsList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<PaginatedSubscriptionListResultsList>;
+export type PaginatedSubscriptionListOutputResultsList =
+  Array<SubscriptionOutput>;
+export const PaginatedSubscriptionListOutputResultsList = /*@__PURE__*/ S.Array(
+  SubscriptionOutput,
+) as any as S.Schema<PaginatedSubscriptionListOutputResultsList>;
 
-export interface PaginatedSubscriptionList {
+export interface PaginatedSubscriptionListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedSubscriptionListResultsList;
+  results?: PaginatedSubscriptionListOutputResultsList;
 }
-export const PaginatedSubscriptionList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedSubscriptionListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedSubscriptionListResultsList),
+    results: S.optional(PaginatedSubscriptionListOutputResultsList),
   }),
 ).annotate({
-  identifier: "PaginatedSubscriptionList",
-}) as any as S.Schema<PaginatedSubscriptionList>;
+  identifier: "PaginatedSubscriptionListOutput",
+}) as any as S.Schema<PaginatedSubscriptionListOutput>;
 
-/** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
+/** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type SubscriptionsPartialUpdateRequestDashboardExportInsightsList =
   Array<number>;
 export const SubscriptionsPartialUpdateRequestDashboardExportInsightsList =
@@ -600,7 +724,7 @@ export type SubscriptionsPartialUpdateRequestByweekdayItem =
 export const SubscriptionsPartialUpdateRequestByweekdayItem =
   /*@__PURE__*/ S.String;
 
-/** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+/** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type SubscriptionsPartialUpdateRequestByweekdayList = Array<
   SubscriptionsPartialUpdateRequestByweekdayItem | (string & {})
 >;
@@ -618,10 +742,12 @@ export interface SubscriptionsPartialUpdateRequest {
   dashboard?: number | null;
   /** Insight ID to subscribe to (mutually exclusive with dashboard on create). */
   insight?: number | null;
-  /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
+  /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
   dashboard_export_insights?: SubscriptionsPartialUpdateRequestDashboardExportInsightsList;
   /** Free-text prompt that drives the AI-generated report. Required when resource_type is 'ai_prompt'. Max 4000 characters. */
   prompt?: string | null;
+  /** Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes. */
+  ai_prompt_config?: AIPromptConfig;
   /** Delivery channel: email or slack. * `email` - Email * `slack` - Slack */
   target_type?: TargetTypeEnum | (string & {});
   /** Recipient(s): comma-separated email addresses for email, or Slack channel name/ID for slack. */
@@ -630,7 +756,7 @@ export interface SubscriptionsPartialUpdateRequest {
   frequency?: RecurrenceIntervalEnum | (string & {});
   /** Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater. */
   interval?: number;
-  /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+  /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
   byweekday?: SubscriptionsPartialUpdateRequestByweekdayList | null;
   /** Position within byweekday set for monthly frequency (e.g. 1 for first, -1 for last). */
   bysetpos?: number | null;
@@ -650,6 +776,8 @@ export interface SubscriptionsPartialUpdateRequest {
   integration_id?: number | null;
   /** Optional message included in the invitation email when adding new recipients. */
   invite_message?: string | null;
+  /** Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected. */
+  send_test_now?: boolean;
   /** Whether to attach an AI-generated summary to each delivery (insight and dashboard subscriptions only). Requires the organization to have approved AI data processing, and is subject to the org's active-summary cap and AI credit budget; otherwise the write is rejected. Not applicable to prompt subscriptions, which are themselves AI-generated. */
   summary_enabled?: boolean;
   /** Optional free-text guidance (max 500 chars) steering the AI summary, e.g. which metrics to emphasize. Only settable when AI summary context is enabled for the organization; clearing it (empty string) is always allowed. */
@@ -665,6 +793,7 @@ export const SubscriptionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       SubscriptionsPartialUpdateRequestDashboardExportInsightsList,
     ),
     prompt: S.optional(S.NullOr(S.String)),
+    ai_prompt_config: S.optional(AIPromptConfig),
     target_type: S.optional(TargetTypeEnum),
     target_value: S.optional(S.String),
     frequency: S.optional(RecurrenceIntervalEnum),
@@ -681,6 +810,7 @@ export const SubscriptionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     title: S.optional(S.NullOr(S.String)),
     integration_id: S.optional(S.NullOr(S.Number)),
     invite_message: S.optional(S.NullOr(S.String)),
+    send_test_now: S.optional(S.Boolean),
     summary_enabled: S.optional(S.Boolean),
     summary_prompt_guide: S.optional(S.String),
   }).pipe(
@@ -779,7 +909,7 @@ export const SubscriptionsTestDeliveryCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionsTestDeliveryCreateResponse",
 }) as any as S.Schema<SubscriptionsTestDeliveryCreateResponse>;
 
-/** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
+/** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type SubscriptionsUpdateRequestDashboardExportInsightsList =
   Array<number>;
 export const SubscriptionsUpdateRequestDashboardExportInsightsList =
@@ -798,7 +928,7 @@ export type SubscriptionsUpdateRequestByweekdayItem =
   | "sunday";
 export const SubscriptionsUpdateRequestByweekdayItem = /*@__PURE__*/ S.String;
 
-/** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+/** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type SubscriptionsUpdateRequestByweekdayList = Array<
   SubscriptionsUpdateRequestByweekdayItem | (string & {})
 >;
@@ -815,10 +945,12 @@ export interface SubscriptionsUpdateRequest {
   dashboard?: number | null;
   /** Insight ID to subscribe to (mutually exclusive with dashboard on create). */
   insight?: number | null;
-  /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6. */
+  /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
   dashboard_export_insights?: SubscriptionsUpdateRequestDashboardExportInsightsList;
   /** Free-text prompt that drives the AI-generated report. Required when resource_type is 'ai_prompt'. Max 4000 characters. */
   prompt?: string | null;
+  /** Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes. */
+  ai_prompt_config?: AIPromptConfig;
   /** Delivery channel: email or slack. * `email` - Email * `slack` - Slack */
   target_type?: TargetTypeEnum | (string & {});
   /** Recipient(s): comma-separated email addresses for email, or Slack channel name/ID for slack. */
@@ -827,7 +959,7 @@ export interface SubscriptionsUpdateRequest {
   frequency?: RecurrenceIntervalEnum | (string & {});
   /** Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater. */
   interval?: number;
-  /** Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
+  /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
   byweekday?: SubscriptionsUpdateRequestByweekdayList | null;
   /** Position within byweekday set for monthly frequency (e.g. 1 for first, -1 for last). */
   bysetpos?: number | null;
@@ -847,6 +979,8 @@ export interface SubscriptionsUpdateRequest {
   integration_id?: number | null;
   /** Optional message included in the invitation email when adding new recipients. */
   invite_message?: string | null;
+  /** Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected. */
+  send_test_now?: boolean;
   /** Whether to attach an AI-generated summary to each delivery (insight and dashboard subscriptions only). Requires the organization to have approved AI data processing, and is subject to the org's active-summary cap and AI credit budget; otherwise the write is rejected. Not applicable to prompt subscriptions, which are themselves AI-generated. */
   summary_enabled?: boolean;
   /** Optional free-text guidance (max 500 chars) steering the AI summary, e.g. which metrics to emphasize. Only settable when AI summary context is enabled for the organization; clearing it (empty string) is always allowed. */
@@ -862,6 +996,7 @@ export const SubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       SubscriptionsUpdateRequestDashboardExportInsightsList,
     ),
     prompt: S.optional(S.NullOr(S.String)),
+    ai_prompt_config: S.optional(AIPromptConfig),
     target_type: S.optional(TargetTypeEnum),
     target_value: S.optional(S.String),
     frequency: S.optional(RecurrenceIntervalEnum),
@@ -876,6 +1011,7 @@ export const SubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     title: S.optional(S.NullOr(S.String)),
     integration_id: S.optional(S.NullOr(S.Number)),
     invite_message: S.optional(S.NullOr(S.String)),
+    send_test_now: S.optional(S.Boolean),
     summary_enabled: S.optional(S.Boolean),
     summary_prompt_guide: S.optional(S.String),
   }).pipe(
@@ -896,12 +1032,12 @@ export type SubscriptionsCreateError =
   | PosthogOpError;
 export const subscriptionsCreate: API.OperationMethod<
   SubscriptionsCreateRequest,
-  Subscription,
+  SubscriptionOutput,
   SubscriptionsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsCreateRequest,
-  output: Subscription,
+  output: SubscriptionOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -959,12 +1095,12 @@ export type SubscriptionsListError =
   | PosthogOpError;
 export const subscriptionsList: API.OperationMethod<
   SubscriptionsListRequest,
-  PaginatedSubscriptionList,
+  PaginatedSubscriptionListOutput,
   SubscriptionsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsListRequest,
-  output: PaginatedSubscriptionList,
+  output: PaginatedSubscriptionListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -977,12 +1113,12 @@ export type SubscriptionsPartialUpdateError =
   | PosthogOpError;
 export const subscriptionsPartialUpdate: API.OperationMethod<
   SubscriptionsPartialUpdateRequest,
-  Subscription,
+  SubscriptionOutput,
   SubscriptionsPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsPartialUpdateRequest,
-  output: Subscription,
+  output: SubscriptionOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -991,12 +1127,12 @@ export const subscriptionsPartialUpdate: API.OperationMethod<
 export type SubscriptionsRetrieveError = Forbidden | NotFound | PosthogOpError;
 export const subscriptionsRetrieve: API.OperationMethod<
   SubscriptionsRetrieveRequest,
-  Subscription,
+  SubscriptionOutput,
   SubscriptionsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsRetrieveRequest,
-  output: Subscription,
+  output: SubscriptionOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1040,12 +1176,12 @@ export type SubscriptionsUpdateError =
   | PosthogOpError;
 export const subscriptionsUpdate: API.OperationMethod<
   SubscriptionsUpdateRequest,
-  Subscription,
+  SubscriptionOutput,
   SubscriptionsUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsUpdateRequest,
-  output: Subscription,
+  output: SubscriptionOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

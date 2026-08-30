@@ -34,7 +34,7 @@ export const AmlFilesystemsArchiveRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -66,7 +66,7 @@ export const AmlFilesystemsCancelArchiveRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/cancelArchive",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -263,6 +263,7 @@ export const AmlFilesystemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type AmlFilesystemIdentityType = "UserAssigned" | "None";
 export const AmlFilesystemIdentityType = /*@__PURE__*/ S.String;
 
+/** User-assigned identity properties. */
 export interface UserAssignedIdentitiesValueInput {}
 export const UserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -352,7 +353,7 @@ export const AmlFilesystemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -645,6 +646,7 @@ export const AmlFilesystemProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "AmlFilesystemProperties",
 }) as any as S.Schema<AmlFilesystemProperties>;
 
+/** User-assigned identity properties. */
 export interface UserAssignedIdentitiesValue {
   /** The principal ID of the user-assigned identity. */
   principalId?: string;
@@ -759,7 +761,7 @@ export const AmlFilesystemsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -791,7 +793,7 @@ export const AmlFilesystemsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -864,7 +866,7 @@ export const AmlFilesystemsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/amlFilesystems",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -960,7 +962,7 @@ export const AmlFilesystemsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems",
         code: 200,
-        apiVersion: "2026-01-01",
+        apiVersion: "2026-08-01",
       }),
     ),
 ).annotate({
@@ -1025,7 +1027,7 @@ export const AmlFilesystemsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -1104,7 +1106,7 @@ export const AscOperationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/locations/{location}/ascOperations/{operationId}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -1193,7 +1195,7 @@ export const AscUsagesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/locations/{location}/usages",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -1327,7 +1329,7 @@ export const AutoExportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -1505,7 +1507,7 @@ export const AutoExportJobsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -1540,7 +1542,7 @@ export const AutoExportJobsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -1605,7 +1607,7 @@ export const AutoExportJobsListByAmlFilesystemRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs",
         code: 200,
-        apiVersion: "2026-01-01",
+        apiVersion: "2026-08-01",
       }),
     ),
 ).annotate({
@@ -1683,6 +1685,7 @@ export const AutoExportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type AutoExportJobAdminStatus = "Enable" | "Disable";
 export const AutoExportJobAdminStatus = /*@__PURE__*/ S.String;
 
+/** Properties for updating an auto export job. */
 export interface AutoExportJobUpdateProperties {
   /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
   adminStatus?: AutoExportJobAdminStatus | (string & {});
@@ -1721,7 +1724,7 @@ export const AutoExportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -1858,7 +1861,7 @@ export const AutoImportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -2120,7 +2123,7 @@ export const AutoImportJobsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -2155,7 +2158,7 @@ export const AutoImportJobsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -2220,7 +2223,7 @@ export const AutoImportJobsListByAmlFilesystemRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs",
         code: 200,
-        apiVersion: "2026-01-01",
+        apiVersion: "2026-08-01",
       }),
     ),
 ).annotate({
@@ -2298,6 +2301,7 @@ export const AutoImportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type AutoImportJobUpdatePropertiesAdminStatus = "Enable" | "Disable";
 export const AutoImportJobUpdatePropertiesAdminStatus = /*@__PURE__*/ S.String;
 
+/** Properties for updating an auto import job. */
 export interface AutoImportJobUpdateProperties {
   /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
   adminStatus?: AutoImportJobUpdatePropertiesAdminStatus | (string & {});
@@ -2336,7 +2340,7 @@ export const AutoImportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs/{autoImportJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -2821,7 +2825,7 @@ export const CachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3175,7 +3179,7 @@ export const CachesDebugInfoRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3207,7 +3211,7 @@ export const CachesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3239,7 +3243,7 @@ export const CachesFlushRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/flush",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3271,7 +3275,7 @@ export const CachesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3333,7 +3337,7 @@ export const CachesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/caches",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3419,7 +3423,7 @@ export const CachesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3447,7 +3451,7 @@ export const CachesPausePrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/pausePrimingJob",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3482,7 +3486,7 @@ export const CachesResumePrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/resumePrimingJob",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3522,7 +3526,7 @@ export const CachesSpaceAllocationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3554,7 +3558,7 @@ export const CachesStartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/start",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3592,7 +3596,7 @@ export const CachesStartPrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3624,7 +3628,7 @@ export const CachesStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stop",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3659,7 +3663,7 @@ export const CachesStopPrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stopPrimingJob",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3713,7 +3717,7 @@ export const CachesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3781,7 +3785,7 @@ export const CachesUpgradeFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3819,7 +3823,7 @@ export const CheckAmlFSSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3846,10 +3850,13 @@ export const ExpansionJobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export interface ExpansionJobPropertiesInput {
   /** The new storage capacity in TiB for the AML file system after expansion. This must be a multiple of the Sku step size, and greater than the current storage capacity of the AML file system. */
   newStorageCapacityTiB?: number;
+  /** When true, expansion creates a RebalanceJob after completing. Optional, defaults to true. */
+  runRebalanceJob?: boolean;
 }
 export const ExpansionJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newStorageCapacityTiB: S.optional(S.Number),
+    runRebalanceJob: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "ExpansionJobPropertiesInput",
@@ -3885,7 +3892,7 @@ export const ExpansionJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -3957,12 +3964,18 @@ export interface ExpansionJobProperties {
   newStorageCapacityTiB?: number;
   /** The status of the expansion job. */
   status?: ExpansionJobPropertiesStatus;
+  /** When true, expansion creates a RebalanceJob after completing. Optional, defaults to true. */
+  runRebalanceJob?: boolean;
+  /** Fully qualified ARM resource ID of the child rebalance job created by this expansion. Populated after RebalanceJob is created. */
+  rebalanceJobId?: string;
 }
 export const ExpansionJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ExpansionJobPropertiesProvisioningState),
     newStorageCapacityTiB: S.optional(S.Number),
     status: S.optional(ExpansionJobPropertiesStatus),
+    runRebalanceJob: S.optional(S.Boolean),
+    rebalanceJobId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ExpansionJobProperties",
@@ -4019,7 +4032,7 @@ export const ExpansionJobsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4054,7 +4067,7 @@ export const ExpansionJobsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4119,7 +4132,7 @@ export const ExpansionJobsListByAmlFilesystemRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs",
         code: 200,
-        apiVersion: "2026-01-01",
+        apiVersion: "2026-08-01",
       }),
     ),
 ).annotate({
@@ -4217,7 +4230,7 @@ export const ExpansionJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs/{expansionJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4281,7 +4294,7 @@ export const GetRequiredAmlFSSubnetsSizeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4385,7 +4398,7 @@ export const ImportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4578,7 +4591,7 @@ export const ImportJobsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4613,7 +4626,7 @@ export const ImportJobsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4678,7 +4691,7 @@ export const ImportJobsListByAmlFilesystemRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs",
         code: 200,
-        apiVersion: "2026-01-01",
+        apiVersion: "2026-08-01",
       }),
     ),
 ).annotate({
@@ -4756,6 +4769,7 @@ export const ImportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type ImportJobAdminStatus = "Active" | "Cancel";
 export const ImportJobAdminStatus = /*@__PURE__*/ S.String;
 
+/** Properties for updating an import job. */
 export interface ImportJobUpdateProperties {
   /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. */
   adminStatus?: ImportJobAdminStatus | (string & {});
@@ -4794,7 +4808,7 @@ export const ImportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4847,7 +4861,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.StorageCache/operations",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -4876,6 +4890,7 @@ export const ApiOperationDisplay = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiOperationDisplay",
 }) as any as S.Schema<ApiOperationDisplay>;
 
+/** Metric aggregation type. */
 export type MetricAggregationType =
   | "NotSpecified"
   | "None"
@@ -5071,6 +5086,334 @@ export const ApiOperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiOperationListResult",
 }) as any as S.Schema<ApiOperationListResult>;
 
+export interface RebalanceJobsDeleteRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
+  amlFilesystemName: string;
+  /** Name for the rebalance job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
+  rebalanceJobName: string;
+}
+export const RebalanceJobsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    amlFilesystemName: S.String.pipe(T.Label()),
+    rebalanceJobName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs/{rebalanceJobName}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "RebalanceJobsDeleteRequest",
+}) as any as S.Schema<RebalanceJobsDeleteRequest>;
+
+export interface RebalanceJobsDeleteResponse {}
+export const RebalanceJobsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RebalanceJobsDeleteResponse",
+}) as any as S.Schema<RebalanceJobsDeleteResponse>;
+
+export interface RebalanceJobsGetRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
+  amlFilesystemName: string;
+  /** Name for the rebalance job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
+  rebalanceJobName: string;
+}
+export const RebalanceJobsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    amlFilesystemName: S.String.pipe(T.Label()),
+    rebalanceJobName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs/{rebalanceJobName}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "RebalanceJobsGetRequest",
+}) as any as S.Schema<RebalanceJobsGetRequest>;
+
+/** ARM provisioning state for the rebalance job. */
+export type RebalanceJobPropertiesProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Creating"
+  | "Updating"
+  | "Deleting";
+export const RebalanceJobPropertiesProvisioningState = /*@__PURE__*/ S.String;
+
+/** The administrative status of the rebalance job. Active means the job is running normally. Cancel requests the job to stop. */
+export type RebalanceJobAdminStatus = "Active" | "Cancel";
+export const RebalanceJobAdminStatus = /*@__PURE__*/ S.String;
+
+/** The operational state of the rebalance job. InProgress indicates the rebalance is running on the cluster. Cancelling indicates a cancel has been requested. Canceled indicates the rebalance was cancelled. Completed indicates the rebalance finished successfully (imbalance below low watermark). Failed indicates the rebalance was unable to complete due to a fatal error. Deleting indicates the job is being cleaned up during deletion. RollingBack indicates the orchestrator is rolling back provisioned resources after a failure. */
+export type RebalanceJobStatusType =
+  | "InProgress"
+  | "Cancelling"
+  | "Canceled"
+  | "Completed"
+  | "Failed"
+  | "Deleting"
+  | "RollingBack";
+export const RebalanceJobStatusType = /*@__PURE__*/ S.String;
+
+/** The status of the rebalance job. */
+export interface RebalanceJobPropertiesStatus {
+  /** The operational state of the rebalance job. InProgress indicates the rebalance is running on the cluster. Cancelling indicates a cancel has been requested. Canceled indicates the rebalance was cancelled. Completed indicates the rebalance finished successfully. Failed indicates the rebalance was unable to complete due to a fatal error. Deleting indicates the job is being cleaned up during deletion. RollingBack indicates the orchestrator is rolling back provisioned resources after a failure. */
+  state?: RebalanceJobStatusType;
+  /** Server-defined status code for rebalance job. */
+  statusCode?: string;
+  /** Server-defined status message for rebalance job. */
+  statusMessage?: string;
+  /** The percentage of rebalance job completion. */
+  percentComplete?: number;
+  /** The balance percentage (0-100). Represents cumulative progress since the rebalance started. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts. */
+  balancePercent?: number;
+  /** Estimated remaining time in seconds. Omitted during initial assessment before the rebalancer has enough data to estimate. */
+  estimatedRemainingSeconds?: number;
+  /** Total number of files migrated since the rebalance started. Counts OST-phase (data) work items. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts. */
+  filesMigrated?: number;
+  /** Total number of directories migrated since the rebalance started. Counts MDT-phase (metadata) work items, reported separately from filesMigrated (OST-phase data migrations). Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts. */
+  dirsMigrated?: number;
+  /** Total number of bytes moved since the rebalance started. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts. */
+  bytesMoved?: number;
+  /** Average files moved per second over the most recent reporting interval. */
+  filesMovedPerSecond?: number;
+  /** Average throughput in mebibytes per second (1024x1024 bytes per second) over the most recent reporting interval. */
+  throughputMiBps?: number;
+  /** Total cumulative non-skip errors since the rebalance started. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts. */
+  totalErrors?: number;
+  /** Total cumulative benign skips since the rebalance started: files intentionally not migrated (for example, a lost migration lease or a stale layout), as distinct from the hard failures counted in totalErrors. Reported in periodic rebalance status updates. Resets to 0 if the rebalancer node restarts. */
+  totalSkipped?: number;
+  /** The time (in UTC) the rebalance job started. */
+  startTimeUTC?: string;
+  /** The time (in UTC) when the rebalance job completed. Only populated when the job reaches a terminal state (Completed, Failed, or Canceled). */
+  completionTimeUTC?: string;
+}
+export const RebalanceJobPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(RebalanceJobStatusType),
+    statusCode: S.optional(S.String),
+    statusMessage: S.optional(S.String),
+    percentComplete: S.optional(S.Number),
+    balancePercent: S.optional(S.Number),
+    estimatedRemainingSeconds: S.optional(S.Number),
+    filesMigrated: S.optional(S.Number),
+    dirsMigrated: S.optional(S.Number),
+    bytesMoved: S.optional(S.Number),
+    filesMovedPerSecond: S.optional(S.Number),
+    throughputMiBps: S.optional(S.Number),
+    totalErrors: S.optional(S.Number),
+    totalSkipped: S.optional(S.Number),
+    startTimeUTC: S.optional(S.String),
+    completionTimeUTC: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RebalanceJobPropertiesStatus",
+}) as any as S.Schema<RebalanceJobPropertiesStatus>;
+
+/** Properties of the rebalance job. */
+export interface RebalanceJobProperties {
+  /** ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property */
+  provisioningState?: RebalanceJobPropertiesProvisioningState;
+  /** The current administrative status of the rebalance job. 'Active' indicates the job is running normally; 'Cancel' indicates cancellation has been requested. */
+  adminStatus?: RebalanceJobAdminStatus;
+  /** Fully qualified ARM resource ID of the parent expansion job that initiated this rebalance. Populated when the rebalance was created as part of an expansion. */
+  expansionJobId?: string;
+  /** The status of the rebalance job. */
+  status?: RebalanceJobPropertiesStatus;
+}
+export const RebalanceJobProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(RebalanceJobPropertiesProvisioningState),
+    adminStatus: S.optional(RebalanceJobAdminStatus),
+    expansionJobId: S.optional(S.String),
+    status: S.optional(RebalanceJobPropertiesStatus),
+  }),
+).annotate({
+  identifier: "RebalanceJobProperties",
+}) as any as S.Schema<RebalanceJobProperties>;
+
+export interface RebalanceJobsGetResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the rebalance job. */
+  properties?: RebalanceJobProperties;
+}
+export const RebalanceJobsGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RebalanceJobProperties),
+  }),
+).annotate({
+  identifier: "RebalanceJobsGetResponse",
+}) as any as S.Schema<RebalanceJobsGetResponse>;
+
+export interface RebalanceJobsListByAmlFilesystemRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
+  amlFilesystemName: string;
+}
+export const RebalanceJobsListByAmlFilesystemRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      amlFilesystemName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs",
+        code: 200,
+        apiVersion: "2026-08-01",
+      }),
+    ),
+).annotate({
+  identifier: "RebalanceJobsListByAmlFilesystemRequest",
+}) as any as S.Schema<RebalanceJobsListByAmlFilesystemRequest>;
+
+/** A rebalance job instance. Rebalances OST data across storage targets after a cluster expansion. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md */
+export interface RebalanceJob {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the rebalance job. */
+  properties?: RebalanceJobProperties;
+}
+export const RebalanceJob = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RebalanceJobProperties),
+  }),
+).annotate({ identifier: "RebalanceJob" }) as any as S.Schema<RebalanceJob>;
+
+/** List of rebalance jobs. */
+export type RebalanceJobsListResultValueList = Array<RebalanceJob>;
+export const RebalanceJobsListResultValueList = /*@__PURE__*/ S.Array(
+  RebalanceJob,
+) as any as S.Schema<RebalanceJobsListResultValueList>;
+
+/** Result of the request to list rebalance jobs. It contains a list of rebalance jobs and a URL link to get the next set of results. */
+export interface RebalanceJobsListResult {
+  /** List of rebalance jobs. */
+  value?: RebalanceJobsListResultValueList;
+  /** URL to get the next set of rebalance job list results, if there are any. */
+  nextLink?: string;
+}
+export const RebalanceJobsListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(RebalanceJobsListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RebalanceJobsListResult",
+}) as any as S.Schema<RebalanceJobsListResult>;
+
+/** Properties for updating a rebalance job. */
+export interface RebalanceJobUpdateProperties {
+  /** The administrative status of the rebalance job. Passing in a value of 'Cancel' will cancel the current active rebalance job. */
+  adminStatus?: RebalanceJobAdminStatus | (string & {});
+}
+export const RebalanceJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminStatus: S.optional(RebalanceJobAdminStatus),
+  }),
+).annotate({
+  identifier: "RebalanceJobUpdateProperties",
+}) as any as S.Schema<RebalanceJobUpdateProperties>;
+
+export interface RebalanceJobsUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
+  amlFilesystemName: string;
+  /** Name for the rebalance job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
+  rebalanceJobName: string;
+  /** Properties for the rebalance job update. */
+  properties?: RebalanceJobUpdateProperties;
+}
+export const RebalanceJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    amlFilesystemName: S.String.pipe(T.Label()),
+    rebalanceJobName: S.String.pipe(T.Label()),
+    properties: S.optional(RebalanceJobUpdateProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs/{rebalanceJobName}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "RebalanceJobsUpdateRequest",
+}) as any as S.Schema<RebalanceJobsUpdateRequest>;
+
+export interface RebalanceJobsUpdateResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the rebalance job. */
+  properties?: RebalanceJobProperties;
+}
+export const RebalanceJobsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RebalanceJobProperties),
+  }),
+).annotate({
+  identifier: "RebalanceJobsUpdateResponse",
+}) as any as S.Schema<RebalanceJobsUpdateResponse>;
+
 export interface SkusListRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5083,7 +5426,7 @@ export const SkusListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/skus",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5248,7 +5591,7 @@ export const StorageTargetFlushRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5283,7 +5626,7 @@ export const StorageTargetInvalidateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5318,7 +5661,7 @@ export const StorageTargetResumeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5493,7 +5836,7 @@ export const StorageTargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5595,7 +5938,7 @@ export const StorageTargetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5630,7 +5973,7 @@ export const StorageTargetsDnsRefreshRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5665,7 +6008,7 @@ export const StorageTargetsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5717,7 +6060,7 @@ export const StorageTargetsListByCacheRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5794,7 +6137,7 @@ export const StorageTargetsRestoreDefaultsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/restoreDefaults",
         code: 200,
-        apiVersion: "2026-01-01",
+        apiVersion: "2026-08-01",
       }),
     ),
 ).annotate({
@@ -5829,7 +6172,7 @@ export const StorageTargetSuspendRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -5855,7 +6198,7 @@ export const UsageModelsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/usageModels",
       code: 200,
-      apiVersion: "2026-01-01",
+      apiVersion: "2026-08-01",
     }),
   ),
 ).annotate({
@@ -6644,6 +6987,66 @@ export const OperationsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: OperationsListRequest,
   output: ApiOperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RebalanceJobsDeleteError = AzureOpError;
+/** Schedules a rebalance job for deletion. */
+export const RebalanceJobsDelete: API.OperationMethod<
+  RebalanceJobsDeleteRequest,
+  RebalanceJobsDeleteResponse,
+  RebalanceJobsDeleteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RebalanceJobsDeleteRequest,
+  output: RebalanceJobsDeleteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RebalanceJobsGetError = AzureOpError;
+/** Returns a rebalance job. */
+export const RebalanceJobsGet: API.OperationMethod<
+  RebalanceJobsGetRequest,
+  RebalanceJobsGetResponse,
+  RebalanceJobsGetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RebalanceJobsGetRequest,
+  output: RebalanceJobsGetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RebalanceJobsListByAmlFilesystemError = AzureOpError;
+/** Returns all the rebalance jobs the user has access to under an AML File System. */
+export const RebalanceJobsListByAmlFilesystem: API.OperationMethod<
+  RebalanceJobsListByAmlFilesystemRequest,
+  RebalanceJobsListResult,
+  RebalanceJobsListByAmlFilesystemError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RebalanceJobsListByAmlFilesystemRequest,
+  output: RebalanceJobsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RebalanceJobsUpdateError = AzureOpError;
+/** Update a rebalance job instance. */
+export const RebalanceJobsUpdate: API.OperationMethod<
+  RebalanceJobsUpdateRequest,
+  RebalanceJobsUpdateResponse,
+  RebalanceJobsUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RebalanceJobsUpdateRequest,
+  output: RebalanceJobsUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

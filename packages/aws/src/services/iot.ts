@@ -4214,6 +4214,61 @@ export const LocationAction = /*@__PURE__*/ S.suspend(() =>
     longitude: S.String,
   }),
 ).annotate({ identifier: "LocationAction" }) as any as S.Schema<LocationAction>;
+export type InfluxDBDatabaseName = string;
+export type InfluxDBTableName = string;
+export type InfluxDBOrganization = string;
+export type InfluxDBTagName = string;
+export type InfluxDBTagValue = string;
+export type InfluxDBTagMap = { [key: string]: string | undefined };
+export const InfluxDBTagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export type InfluxDBTimestampUnit = "s" | "ms" | "us" | "ns" | (string & {});
+export const InfluxDBTimestampUnit = /*@__PURE__*/ S.String;
+
+export type InfluxDBMaxBatchSize = number;
+export type InfluxDBMaxBatchOpenMs = number;
+export type InfluxDBMaxBatchSizeBytes = number;
+export type InfluxDBBatchAcrossTopics = boolean;
+export interface InfluxDBBatchConfig {
+  maxBatchSize?: number;
+  maxBatchOpenMs?: number;
+  maxBatchSizeBytes?: number;
+  batchAcrossTopics?: boolean;
+}
+export const InfluxDBBatchConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxBatchSize: S.optional(S.Number),
+    maxBatchOpenMs: S.optional(S.Number),
+    maxBatchSizeBytes: S.optional(S.Number),
+    batchAcrossTopics: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "InfluxDBBatchConfig",
+}) as any as S.Schema<InfluxDBBatchConfig>;
+export interface InfluxDBAction {
+  destinationArn: string;
+  roleArn: string;
+  databaseName: string;
+  tableName: string;
+  organization?: string;
+  tags?: { [key: string]: string | undefined };
+  timestampUnit?: InfluxDBTimestampUnit;
+  batchConfig?: InfluxDBBatchConfig;
+}
+export const InfluxDBAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinationArn: S.String,
+    roleArn: S.String,
+    databaseName: S.String,
+    tableName: S.String,
+    organization: S.optional(S.String),
+    tags: S.optional(InfluxDBTagMap),
+    timestampUnit: S.optional(InfluxDBTimestampUnit),
+    batchConfig: S.optional(InfluxDBBatchConfig),
+  }),
+).annotate({ identifier: "InfluxDBAction" }) as any as S.Schema<InfluxDBAction>;
 export interface Action {
   dynamoDB?: DynamoDBAction;
   dynamoDBv2?: DynamoDBv2Action;
@@ -4238,6 +4293,7 @@ export interface Action {
   kafka?: KafkaAction;
   openSearch?: OpenSearchAction;
   location?: LocationAction;
+  influxDB?: InfluxDBAction;
 }
 export const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4264,6 +4320,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
     kafka: S.optional(KafkaAction),
     openSearch: S.optional(OpenSearchAction),
     location: S.optional(LocationAction),
+    influxDB: S.optional(InfluxDBAction),
   }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export type ActionList = Action[];
@@ -4352,14 +4409,45 @@ export const VpcDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcDestinationConfiguration",
 }) as any as S.Schema<VpcDestinationConfiguration>;
+export type InfluxDBVersion = "V2" | "V3" | (string & {});
+export const InfluxDBVersion = /*@__PURE__*/ S.String;
+
+export type InfluxDBSecretId = string;
+export type InfluxDBSecretType =
+  | "SecretString"
+  | "SecretBinary"
+  | (string & {});
+export const InfluxDBSecretType = /*@__PURE__*/ S.String;
+
+export type InfluxDBSecretKey = string;
+export interface InfluxDBDestinationConfiguration {
+  endpoint: string;
+  influxDBVersion: InfluxDBVersion;
+  secretId: string;
+  secretType?: InfluxDBSecretType;
+  secretKey?: string;
+}
+export const InfluxDBDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpoint: S.String,
+    influxDBVersion: InfluxDBVersion,
+    secretId: S.String,
+    secretType: S.optional(InfluxDBSecretType),
+    secretKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InfluxDBDestinationConfiguration",
+}) as any as S.Schema<InfluxDBDestinationConfiguration>;
 export interface TopicRuleDestinationConfiguration {
   httpUrlConfiguration?: HttpUrlDestinationConfiguration;
   vpcConfiguration?: VpcDestinationConfiguration;
+  influxDBConfiguration?: InfluxDBDestinationConfiguration;
 }
 export const TopicRuleDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpUrlConfiguration: S.optional(HttpUrlDestinationConfiguration),
     vpcConfiguration: S.optional(VpcDestinationConfiguration),
+    influxDBConfiguration: S.optional(InfluxDBDestinationConfiguration),
   }),
 ).annotate({
   identifier: "TopicRuleDestinationConfiguration",
@@ -4418,6 +4506,24 @@ export const VpcDestinationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcDestinationProperties",
 }) as any as S.Schema<VpcDestinationProperties>;
+export interface InfluxDBDestinationProperties {
+  endpoint?: string;
+  influxDBVersion?: InfluxDBVersion;
+  secretId?: string;
+  secretType?: InfluxDBSecretType;
+  secretKey?: string;
+}
+export const InfluxDBDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpoint: S.optional(S.String),
+    influxDBVersion: S.optional(InfluxDBVersion),
+    secretId: S.optional(S.String),
+    secretType: S.optional(InfluxDBSecretType),
+    secretKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InfluxDBDestinationProperties",
+}) as any as S.Schema<InfluxDBDestinationProperties>;
 export interface TopicRuleDestination {
   arn?: string;
   status?: TopicRuleDestinationStatus;
@@ -4426,6 +4532,7 @@ export interface TopicRuleDestination {
   statusReason?: string;
   httpUrlProperties?: HttpUrlDestinationProperties;
   vpcProperties?: VpcDestinationProperties;
+  influxDBProperties?: InfluxDBDestinationProperties;
 }
 export const TopicRuleDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4436,6 +4543,7 @@ export const TopicRuleDestination = /*@__PURE__*/ S.suspend(() =>
     statusReason: S.optional(S.String),
     httpUrlProperties: S.optional(HttpUrlDestinationProperties),
     vpcProperties: S.optional(VpcDestinationProperties),
+    influxDBProperties: S.optional(InfluxDBDestinationProperties),
   }),
 ).annotate({
   identifier: "TopicRuleDestination",
@@ -12449,6 +12557,24 @@ export const VpcDestinationSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcDestinationSummary",
 }) as any as S.Schema<VpcDestinationSummary>;
+export interface InfluxDBDestinationSummary {
+  endpoint?: string;
+  influxDBVersion?: InfluxDBVersion;
+  secretId?: string;
+  secretType?: InfluxDBSecretType;
+  secretKey?: string;
+}
+export const InfluxDBDestinationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpoint: S.optional(S.String),
+    influxDBVersion: S.optional(InfluxDBVersion),
+    secretId: S.optional(S.String),
+    secretType: S.optional(InfluxDBSecretType),
+    secretKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InfluxDBDestinationSummary",
+}) as any as S.Schema<InfluxDBDestinationSummary>;
 export interface TopicRuleDestinationSummary {
   arn?: string;
   status?: TopicRuleDestinationStatus;
@@ -12457,6 +12583,7 @@ export interface TopicRuleDestinationSummary {
   statusReason?: string;
   httpUrlSummary?: HttpUrlDestinationSummary;
   vpcDestinationSummary?: VpcDestinationSummary;
+  influxDBSummary?: InfluxDBDestinationSummary;
 }
 export const TopicRuleDestinationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12467,6 +12594,7 @@ export const TopicRuleDestinationSummary = /*@__PURE__*/ S.suspend(() =>
     statusReason: S.optional(S.String),
     httpUrlSummary: S.optional(HttpUrlDestinationSummary),
     vpcDestinationSummary: S.optional(VpcDestinationSummary),
+    influxDBSummary: S.optional(InfluxDBDestinationSummary),
   }),
 ).annotate({
   identifier: "TopicRuleDestinationSummary",
@@ -15209,6 +15337,8 @@ export type AttachSecurityProfileError =
   | VersionConflictException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Associates a Device Defender security profile with a thing group or this account. Each
  * thing group or account can have up to five security profiles associated with it.
  *
@@ -15383,6 +15513,8 @@ export type CancelDetectMitigationActionsTaskError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Cancels a Device Defender ML Detect mitigation action.
  *
  * Requires permission to access the CancelDetectMitigationActionsTask action.
@@ -15799,6 +15931,8 @@ export type CreateCustomMetricError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Use this API to define a
  * Custom
  * Metric
@@ -15834,6 +15968,8 @@ export type CreateDimensionError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device Defender.
  * For example, using a `TOPIC_FILTER` dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension.
  *
@@ -16489,6 +16625,8 @@ export type CreateSecurityProfileError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Creates a Device Defender security profile.
  *
  * Requires permission to access the CreateSecurityProfile action.
@@ -17046,6 +17184,8 @@ export type DeleteCustomMetricError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Deletes a Device Defender detect custom metric.
  *
  * Requires permission to access the DeleteCustomMetric action.
@@ -17081,6 +17221,8 @@ export type DeleteDimensionError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Removes the specified dimension from your Amazon Web Services accounts.
  *
  * Requires permission to access the DeleteDimension action.
@@ -17682,6 +17824,8 @@ export type DeleteSecurityProfileError =
   | VersionConflictException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Deletes a Device Defender security profile.
  *
  * Requires permission to access the DeleteSecurityProfile action.
@@ -18291,6 +18435,8 @@ export type DescribeCustomMetricError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Gets information about a Device Defender detect custom metric.
  *
  * Requires permission to access the DescribeCustomMetric action.
@@ -18355,6 +18501,8 @@ export type DescribeDetectMitigationActionsTaskError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Gets information about a Device Defender ML Detect mitigation action.
  *
  * Requires permission to access the DescribeDetectMitigationActionsTask action.
@@ -18385,6 +18533,8 @@ export type DescribeDimensionError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Provides details about a dimension that is defined in your Amazon Web Services accounts.
  *
  * Requires permission to access the DescribeDimension action.
@@ -18879,6 +19029,8 @@ export type DescribeSecurityProfileError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Gets information about a Device Defender security profile.
  *
  * Requires permission to access the DescribeSecurityProfile action.
@@ -19147,6 +19299,8 @@ export type DetachSecurityProfileError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Disassociates a Device Defender security profile from a thing group or from this account.
  *
  * Requires permission to access the DetachSecurityProfile action.
@@ -19312,6 +19466,8 @@ export type GetBehaviorModelTrainingSummariesError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Returns a Device Defender's ML Detect Security Profile training model's status.
  *
  * Requires permission to access the GetBehaviorModelTrainingSummaries action.
@@ -20051,6 +20207,8 @@ export type ListActiveViolationsError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Lists the active violations for a given Device Defender security profile.
  *
  * Requires permission to access the ListActiveViolations action.
@@ -20618,6 +20776,8 @@ export type ListCustomMetricsError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Lists your Device Defender detect custom metrics.
  *
  * Requires permission to access the ListCustomMetrics action.
@@ -20653,6 +20813,8 @@ export type ListDetectMitigationActionsExecutionsError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Lists mitigation actions executions for a Device Defender ML Detect Security Profile.
  *
  * Requires permission to access the ListDetectMitigationActionsExecutions action.
@@ -20688,6 +20850,8 @@ export type ListDetectMitigationActionsTasksError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * List of Device Defender ML Detect mitigation actions tasks.
  *
  * Requires permission to access the ListDetectMitigationActionsTasks action.
@@ -20723,6 +20887,8 @@ export type ListDimensionsError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * List the set of dimensions that are defined for your Amazon Web Services accounts.
  *
  * Requires permission to access the ListDimensions action.
@@ -21763,6 +21929,8 @@ export type ListSecurityProfilesError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Lists the Device Defender security profiles
  * you've
  * created. You can filter security profiles by dimension or custom metric.
@@ -21804,6 +21972,8 @@ export type ListSecurityProfilesForTargetError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Lists the Device Defender security profiles attached to a target (thing group).
  *
  * Requires permission to access the ListSecurityProfilesForTarget action.
@@ -21959,6 +22129,8 @@ export type ListTargetsForSecurityProfileError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Lists the targets (thing groups) associated with a given Device Defender security profile.
  *
  * Requires permission to access the ListTargetsForSecurityProfile action.
@@ -22495,6 +22667,8 @@ export type ListViolationEventsError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Lists the Device Defender security profile violations discovered during the given time period.
  * You can use filters to limit the results to those alerts issued for a particular security profile,
  * behavior, or thing (device).
@@ -22532,6 +22706,8 @@ export type PutVerificationStateOnViolationError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Set a verification state and provide a description of that verification state on a violation (detect alarm).
  */
 export const putVerificationStateOnViolation: API.OperationMethod<
@@ -23107,6 +23283,8 @@ export type StartDetectMitigationActionsTaskError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Starts a Device Defender ML Detect mitigation actions task.
  *
  * Requires permission to access the StartDetectMitigationActionsTask action.
@@ -23699,6 +23877,8 @@ export type UpdateCustomMetricError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Updates a
  * Device Defender detect custom metric.
  *
@@ -23730,6 +23910,8 @@ export type UpdateDimensionError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Updates the definition for a dimension. You
  * cannot
  * change the type of a dimension after
@@ -24231,6 +24413,8 @@ export type UpdateSecurityProfileError =
   | VersionConflictException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Updates a Device Defender security profile.
  *
  * Requires permission to access the UpdateSecurityProfile action.
@@ -24460,6 +24644,8 @@ export type ValidateSecurityProfileBehaviorsError =
   | ThrottlingException
   | CommonErrors;
 /**
+ * The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability.
+ *
  * Validates a Device Defender security profile behaviors specification.
  *
  * Requires permission to access the ValidateSecurityProfileBehaviors action.

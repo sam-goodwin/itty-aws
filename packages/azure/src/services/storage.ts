@@ -95,7 +95,7 @@ export const AdvancedPlatformMetricsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -245,7 +245,7 @@ export const AdvancedPlatformMetricsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -290,7 +290,7 @@ export const AdvancedPlatformMetricsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -339,7 +339,7 @@ export const AdvancedPlatformMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -430,7 +430,7 @@ export const BlobContainersClearLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -543,7 +543,7 @@ export const BlobContainersCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -873,7 +873,7 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicyRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -929,7 +929,7 @@ export const BlobContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -965,7 +965,7 @@ export const BlobContainersDeleteImmutabilityPolicyRequest =
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1025,7 +1025,7 @@ export const BlobContainersExtendImmutabilityPolicyRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1081,7 +1081,7 @@ export const BlobContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1137,7 +1137,7 @@ export const BlobContainersGetImmutabilityPolicyRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1217,7 +1217,7 @@ export const BlobContainersLeaseRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1272,7 +1272,7 @@ export const BlobContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1351,7 +1351,7 @@ export const BlobContainersLockImmutabilityPolicyRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1408,7 +1408,7 @@ export const BlobContainersObjectLevelWormRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1455,7 +1455,7 @@ export const BlobContainersSetLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1486,7 +1486,7 @@ export const BlobContainersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1726,7 +1726,7 @@ export const BlobInventoryPoliciesCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1831,7 +1831,7 @@ export const BlobInventoryPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1873,7 +1873,7 @@ export const BlobInventoryPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1922,7 +1922,7 @@ export const BlobInventoryPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1994,7 +1994,7 @@ export const BlobServicesGetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2307,7 +2307,7 @@ export const BlobServicesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2441,7 +2441,7 @@ export const BlobServicesSetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2565,7 +2565,7 @@ export const ConnectorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2680,7 +2680,7 @@ export const ConnectorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2715,7 +2715,7 @@ export const ConnectorsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2780,7 +2780,7 @@ export const ConnectorsListByStorageAccountRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2870,7 +2870,7 @@ export const ConnectorsTestExistingConnectionRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}/testExistingConnection",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2962,7 +2962,7 @@ export const ConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3007,6 +3007,940 @@ export const ConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectorsUpdateResponse",
 }) as any as S.Schema<ConnectorsUpdateResponse>;
+
+/** The AI provider associated with a container. */
+export type AiProvider = "OpenAI";
+export const AiProvider = /*@__PURE__*/ S.String;
+
+/** Details of a container within a Context Cache. */
+export interface ContextCacheContainerPropertiesInput {
+  /** Container description. */
+  description?: string;
+  /** The model name associated with this container (e.g., gpt-4, claude-3). */
+  modelName: string;
+  /** The AI provider associated with this container. */
+  provider: AiProvider | (string & {});
+  /** The Time to Live (TTL) in days (1–30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. If not specified at creation time, it defaults to 1 day. */
+  timeToLive?: number;
+}
+export const ContextCacheContainerPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      description: S.optional(S.String),
+      modelName: S.String,
+      provider: AiProvider,
+      timeToLive: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "ContextCacheContainerPropertiesInput",
+}) as any as S.Schema<ContextCacheContainerPropertiesInput>;
+
+export interface ContextCacheContainersCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+  /** The name of the context cache container */
+  contextCacheContainerName: string;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheContainerPropertiesInput;
+}
+export const ContextCacheContainersCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      contextCacheName: S.String.pipe(T.Label()),
+      contextCacheContainerName: S.String.pipe(T.Label()),
+      properties: ContextCacheContainerPropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ContextCacheContainersCreateOrUpdateRequest",
+  }) as any as S.Schema<ContextCacheContainersCreateOrUpdateRequest>;
+
+/** The status of the current operation. */
+export type ContextCacheProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Creating"
+  | "Updating"
+  | "Deleting"
+  | "Accepted";
+export const ContextCacheProvisioningState = /*@__PURE__*/ S.String;
+
+/** Details of a container within a Context Cache. */
+export interface ContextCacheContainerProperties {
+  /** Container description. */
+  description?: string;
+  /** The model name associated with this container (e.g., gpt-4, claude-3). */
+  modelName: string;
+  /** The AI provider associated with this container. */
+  provider: AiProvider;
+  /** The Time to Live (TTL) in days (1–30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. If not specified at creation time, it defaults to 1 day. */
+  timeToLive?: number;
+  /** The status of the last operation. */
+  provisioningState?: ContextCacheProvisioningState;
+}
+export const ContextCacheContainerProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    modelName: S.String,
+    provider: AiProvider,
+    timeToLive: S.optional(S.Number),
+    provisioningState: S.optional(ContextCacheProvisioningState),
+  }),
+).annotate({
+  identifier: "ContextCacheContainerProperties",
+}) as any as S.Schema<ContextCacheContainerProperties>;
+
+export interface ContextCacheContainersCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheContainerProperties;
+}
+export const ContextCacheContainersCreateOrUpdateResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: ContextCacheContainerProperties,
+    }),
+  ).annotate({
+    identifier: "ContextCacheContainersCreateOrUpdateResponse",
+  }) as any as S.Schema<ContextCacheContainersCreateOrUpdateResponse>;
+
+export interface ContextCacheContainersDeleteRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+  /** The name of the context cache container */
+  contextCacheContainerName: string;
+}
+export const ContextCacheContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    contextCacheName: S.String.pipe(T.Label()),
+    contextCacheContainerName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ContextCacheContainersDeleteRequest",
+}) as any as S.Schema<ContextCacheContainersDeleteRequest>;
+
+export interface ContextCacheContainersDeleteResponse {}
+export const ContextCacheContainersDeleteResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "ContextCacheContainersDeleteResponse",
+}) as any as S.Schema<ContextCacheContainersDeleteResponse>;
+
+export interface ContextCacheContainersGetRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+  /** The name of the context cache container */
+  contextCacheContainerName: string;
+}
+export const ContextCacheContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    contextCacheName: S.String.pipe(T.Label()),
+    contextCacheContainerName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ContextCacheContainersGetRequest",
+}) as any as S.Schema<ContextCacheContainersGetRequest>;
+
+export interface ContextCacheContainersGetResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheContainerProperties;
+}
+export const ContextCacheContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: ContextCacheContainerProperties,
+  }),
+).annotate({
+  identifier: "ContextCacheContainersGetResponse",
+}) as any as S.Schema<ContextCacheContainersGetResponse>;
+
+export interface ContextCacheContainersListByContextCacheRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+}
+export const ContextCacheContainersListByContextCacheRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      contextCacheName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ContextCacheContainersListByContextCacheRequest",
+  }) as any as S.Schema<ContextCacheContainersListByContextCacheRequest>;
+
+/** A container resource within a Context Cache */
+export interface ContextCacheContainer {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheContainerProperties;
+}
+export const ContextCacheContainer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: ContextCacheContainerProperties,
+  }),
+).annotate({
+  identifier: "ContextCacheContainer",
+}) as any as S.Schema<ContextCacheContainer>;
+
+/** The ContextCacheContainer items on this page */
+export type ContextCacheContainerListResultValueList =
+  Array<ContextCacheContainer>;
+export const ContextCacheContainerListResultValueList = /*@__PURE__*/ S.Array(
+  ContextCacheContainer,
+) as any as S.Schema<ContextCacheContainerListResultValueList>;
+
+/** The response of a ContextCacheContainer list operation. */
+export interface ContextCacheContainerListResult {
+  /** The ContextCacheContainer items on this page */
+  value: ContextCacheContainerListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ContextCacheContainerListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ContextCacheContainerListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContextCacheContainerListResult",
+}) as any as S.Schema<ContextCacheContainerListResult>;
+
+/** Updatable properties of a container within a Context Cache. */
+export interface ContextCacheContainerPropertiesUpdate {
+  /** Container description. */
+  description?: string;
+  /** The Time to Live (TTL) in days (1–30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. */
+  timeToLive?: number;
+}
+export const ContextCacheContainerPropertiesUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      description: S.optional(S.String),
+      timeToLive: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "ContextCacheContainerPropertiesUpdate",
+}) as any as S.Schema<ContextCacheContainerPropertiesUpdate>;
+
+export interface ContextCacheContainersUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+  /** The name of the context cache container */
+  contextCacheContainerName: string;
+  /** The updatable properties of the Context Cache Container. */
+  properties?: ContextCacheContainerPropertiesUpdate;
+}
+export const ContextCacheContainersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    contextCacheName: S.String.pipe(T.Label()),
+    contextCacheContainerName: S.String.pipe(T.Label()),
+    properties: S.optional(ContextCacheContainerPropertiesUpdate),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ContextCacheContainersUpdateRequest",
+}) as any as S.Schema<ContextCacheContainersUpdateRequest>;
+
+export interface ContextCacheContainersUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheContainerProperties;
+}
+export const ContextCacheContainersUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: ContextCacheContainerProperties,
+    }),
+).annotate({
+  identifier: "ContextCacheContainersUpdateResponse",
+}) as any as S.Schema<ContextCacheContainersUpdateResponse>;
+
+/** Resource tags. */
+export type ContextCachesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ContextCachesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ContextCachesCreateOrUpdateRequestTagsMap>;
+
+/** The kind of context cache account, determining storage topology. */
+export type ContextCacheAccountKind = "Regional" | "DataZone" | "Global";
+export const ContextCacheAccountKind = /*@__PURE__*/ S.String;
+
+/** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
+export type AzureResourceManagerCommonTypesInfrastructureEncryption =
+  | "enabled"
+  | "disabled";
+export const AzureResourceManagerCommonTypesInfrastructureEncryption =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity to use. */
+export type AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType =
+  | "systemAssignedIdentity"
+  | "userAssignedIdentity"
+  | "delegatedResourceIdentity";
+export const AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType =
+  /*@__PURE__*/ S.String;
+
+/** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
+export interface AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity {
+  /** The type of identity to use. Values can be systemAssignedIdentity, userAssignedIdentity, or delegatedResourceIdentity. */
+  identityType?:
+    | AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType
+    | (string & {});
+  /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity. */
+  userAssignedIdentityResourceId?: string;
+  /** application client identity to use for accessing key encryption key Url in a different tenant. Ex: f83c6b1b-4d34-47e4-bb34-9d83df58b540 */
+  federatedClientId?: string;
+  /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
+  delegatedIdentityClientId?: string;
+}
+export const AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      identityType: S.optional(
+        AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType,
+      ),
+      userAssignedIdentityResourceId: S.optional(S.String),
+      federatedClientId: S.optional(S.String),
+      delegatedIdentityClientId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity",
+  }) as any as S.Schema<AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity>;
+
+/** Customer-managed key encryption properties for the resource. */
+export interface AzureResourceManagerCommonTypesCustomerManagedKeyEncryption {
+  /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
+  keyEncryptionKeyIdentity?: AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity;
+  /** key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
+  keyEncryptionKeyUrl?: string;
+}
+export const AzureResourceManagerCommonTypesCustomerManagedKeyEncryption =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keyEncryptionKeyIdentity: S.optional(
+        AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity,
+      ),
+      keyEncryptionKeyUrl: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AzureResourceManagerCommonTypesCustomerManagedKeyEncryption",
+  }) as any as S.Schema<AzureResourceManagerCommonTypesCustomerManagedKeyEncryption>;
+
+/** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
+export interface AzureResourceManagerCommonTypesEncryption {
+  /** Values are enabled and disabled. */
+  infrastructureEncryption?:
+    | AzureResourceManagerCommonTypesInfrastructureEncryption
+    | (string & {});
+  /** All Customer-managed key encryption properties for the resource. */
+  customerManagedKeyEncryption?: AzureResourceManagerCommonTypesCustomerManagedKeyEncryption;
+}
+export const AzureResourceManagerCommonTypesEncryption =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      infrastructureEncryption: S.optional(
+        AzureResourceManagerCommonTypesInfrastructureEncryption,
+      ),
+      customerManagedKeyEncryption: S.optional(
+        AzureResourceManagerCommonTypesCustomerManagedKeyEncryption,
+      ),
+    }),
+  ).annotate({
+    identifier: "AzureResourceManagerCommonTypesEncryption",
+  }) as any as S.Schema<AzureResourceManagerCommonTypesEncryption>;
+
+/** Details of the Context Cache. */
+export interface ContextCachePropertiesInput {
+  /** The kind of account determining storage topology. */
+  accountKind: ContextCacheAccountKind | (string & {});
+  /** Account description. */
+  description?: string;
+  /** Encryption settings for the account. */
+  encryption?: AzureResourceManagerCommonTypesEncryption;
+}
+export const ContextCachePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountKind: ContextCacheAccountKind,
+    description: S.optional(S.String),
+    encryption: S.optional(AzureResourceManagerCommonTypesEncryption),
+  }),
+).annotate({
+  identifier: "ContextCachePropertiesInput",
+}) as any as S.Schema<ContextCachePropertiesInput>;
+
+/** Type of managed service identity (either system assigned, or none). */
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** Managed service identity (either system assigned, or none) */
+export interface ContextCachesCreateOrUpdateRequestIdentity {
+  type: SystemAssignedServiceIdentityType | (string & {});
+}
+export const ContextCachesCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: SystemAssignedServiceIdentityType,
+    }),
+  ).annotate({
+    identifier: "ContextCachesCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<ContextCachesCreateOrUpdateRequestIdentity>;
+
+export interface ContextCachesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+  /** Resource tags. */
+  tags?: ContextCachesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCachePropertiesInput;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ContextCachesCreateOrUpdateRequestIdentity;
+}
+export const ContextCachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    contextCacheName: S.String.pipe(T.Label()),
+    tags: S.optional(ContextCachesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: ContextCachePropertiesInput,
+    identity: S.optional(ContextCachesCreateOrUpdateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ContextCachesCreateOrUpdateRequest",
+}) as any as S.Schema<ContextCachesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type ContextCachesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ContextCachesCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ContextCachesCreateOrUpdateResponseTagsMap>;
+
+/** Details of the Context Cache. */
+export interface ContextCacheProperties {
+  /** The kind of account determining storage topology. */
+  accountKind: ContextCacheAccountKind;
+  /** Account description. */
+  description?: string;
+  /** The status of the last operation. */
+  provisioningState?: ContextCacheProvisioningState;
+  /** Encryption settings for the account. */
+  encryption?: AzureResourceManagerCommonTypesEncryption;
+}
+export const ContextCacheProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountKind: ContextCacheAccountKind,
+    description: S.optional(S.String),
+    provisioningState: S.optional(ContextCacheProvisioningState),
+    encryption: S.optional(AzureResourceManagerCommonTypesEncryption),
+  }),
+).annotate({
+  identifier: "ContextCacheProperties",
+}) as any as S.Schema<ContextCacheProperties>;
+
+/** Managed service identity (either system assigned, or none) */
+export interface ContextCachesCreateOrUpdateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: SystemAssignedServiceIdentityType;
+}
+export const ContextCachesCreateOrUpdateResponseIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      principalId: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      type: SystemAssignedServiceIdentityType,
+    }),
+  ).annotate({
+    identifier: "ContextCachesCreateOrUpdateResponseIdentity",
+  }) as any as S.Schema<ContextCachesCreateOrUpdateResponseIdentity>;
+
+export interface ContextCachesCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ContextCachesCreateOrUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheProperties;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ContextCachesCreateOrUpdateResponseIdentity;
+}
+export const ContextCachesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ContextCachesCreateOrUpdateResponseTagsMap),
+    location: S.String,
+    properties: ContextCacheProperties,
+    identity: S.optional(ContextCachesCreateOrUpdateResponseIdentity),
+  }),
+).annotate({
+  identifier: "ContextCachesCreateOrUpdateResponse",
+}) as any as S.Schema<ContextCachesCreateOrUpdateResponse>;
+
+export interface ContextCachesDeleteRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+}
+export const ContextCachesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    contextCacheName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ContextCachesDeleteRequest",
+}) as any as S.Schema<ContextCachesDeleteRequest>;
+
+export interface ContextCachesDeleteResponse {}
+export const ContextCachesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ContextCachesDeleteResponse",
+}) as any as S.Schema<ContextCachesDeleteResponse>;
+
+export interface ContextCachesGetRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+}
+export const ContextCachesGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    contextCacheName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ContextCachesGetRequest",
+}) as any as S.Schema<ContextCachesGetRequest>;
+
+/** Resource tags. */
+export type ContextCachesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ContextCachesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ContextCachesGetResponseTagsMap>;
+
+/** Managed service identity (either system assigned, or none) */
+export type ContextCachesGetResponseIdentity =
+  ContextCachesCreateOrUpdateResponseIdentity;
+export const ContextCachesGetResponseIdentity =
+  ContextCachesCreateOrUpdateResponseIdentity;
+
+export interface ContextCachesGetResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ContextCachesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheProperties;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ContextCachesCreateOrUpdateResponseIdentity;
+}
+export const ContextCachesGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ContextCachesGetResponseTagsMap),
+    location: S.String,
+    properties: ContextCacheProperties,
+    identity: S.optional(ContextCachesCreateOrUpdateResponseIdentity),
+  }),
+).annotate({
+  identifier: "ContextCachesGetResponse",
+}) as any as S.Schema<ContextCachesGetResponse>;
+
+export interface ContextCachesListByResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ContextCachesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ContextCachesListByResourceGroupRequest",
+}) as any as S.Schema<ContextCachesListByResourceGroupRequest>;
+
+/** Resource tags. */
+export type ContextCacheTagsMap = { [key: string]: string | undefined };
+export const ContextCacheTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ContextCacheTagsMap>;
+
+/** Managed service identity (either system assigned, or none) */
+export type ContextCacheIdentity = ContextCachesCreateOrUpdateResponseIdentity;
+export const ContextCacheIdentity = ContextCachesCreateOrUpdateResponseIdentity;
+
+/** A Context Cache resource */
+export interface ContextCache {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ContextCacheTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheProperties;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ContextCachesCreateOrUpdateResponseIdentity;
+}
+export const ContextCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ContextCacheTagsMap),
+    location: S.String,
+    properties: ContextCacheProperties,
+    identity: S.optional(ContextCachesCreateOrUpdateResponseIdentity),
+  }),
+).annotate({ identifier: "ContextCache" }) as any as S.Schema<ContextCache>;
+
+/** The ContextCache items on this page */
+export type ContextCacheListResultValueList = Array<ContextCache>;
+export const ContextCacheListResultValueList = /*@__PURE__*/ S.Array(
+  ContextCache,
+) as any as S.Schema<ContextCacheListResultValueList>;
+
+/** The response of a ContextCache list operation. */
+export interface ContextCacheListResult {
+  /** The ContextCache items on this page */
+  value: ContextCacheListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ContextCacheListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ContextCacheListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContextCacheListResult",
+}) as any as S.Schema<ContextCacheListResult>;
+
+export interface ContextCachesListBySubscriptionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ContextCachesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/contextCaches",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ContextCachesListBySubscriptionRequest",
+}) as any as S.Schema<ContextCachesListBySubscriptionRequest>;
+
+/** Resource tags. */
+export type ContextCachesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ContextCachesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ContextCachesUpdateRequestTagsMap>;
+
+/** Managed service identity (either system assigned, or none) */
+export type ContextCachesUpdateRequestIdentity =
+  ContextCachesCreateOrUpdateRequestIdentity;
+export const ContextCachesUpdateRequestIdentity =
+  ContextCachesCreateOrUpdateRequestIdentity;
+
+/** Updatable properties of the Context Cache. */
+export interface ContextCachePropertiesUpdate {
+  /** Account description. */
+  description?: string;
+  /** Encryption settings for the account. */
+  encryption?: AzureResourceManagerCommonTypesEncryption;
+}
+export const ContextCachePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    encryption: S.optional(AzureResourceManagerCommonTypesEncryption),
+  }),
+).annotate({
+  identifier: "ContextCachePropertiesUpdate",
+}) as any as S.Schema<ContextCachePropertiesUpdate>;
+
+export interface ContextCachesUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the context cache */
+  contextCacheName: string;
+  /** Resource tags. */
+  tags?: ContextCachesUpdateRequestTagsMap;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ContextCachesCreateOrUpdateRequestIdentity;
+  /** The updatable properties of the Context Cache. */
+  properties?: ContextCachePropertiesUpdate;
+}
+export const ContextCachesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    contextCacheName: S.String.pipe(T.Label()),
+    tags: S.optional(ContextCachesUpdateRequestTagsMap),
+    identity: S.optional(ContextCachesCreateOrUpdateRequestIdentity),
+    properties: S.optional(ContextCachePropertiesUpdate),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ContextCachesUpdateRequest",
+}) as any as S.Schema<ContextCachesUpdateRequest>;
+
+/** Resource tags. */
+export type ContextCachesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ContextCachesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ContextCachesUpdateResponseTagsMap>;
+
+/** Managed service identity (either system assigned, or none) */
+export type ContextCachesUpdateResponseIdentity =
+  ContextCachesCreateOrUpdateResponseIdentity;
+export const ContextCachesUpdateResponseIdentity =
+  ContextCachesCreateOrUpdateResponseIdentity;
+
+export interface ContextCachesUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ContextCachesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties: ContextCacheProperties;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ContextCachesCreateOrUpdateResponseIdentity;
+}
+export const ContextCachesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ContextCachesUpdateResponseTagsMap),
+    location: S.String,
+    properties: ContextCacheProperties,
+    identity: S.optional(ContextCachesCreateOrUpdateResponseIdentity),
+  }),
+).annotate({
+  identifier: "ContextCachesUpdateResponse",
+}) as any as S.Schema<ContextCachesUpdateResponse>;
 
 /** Resource tags. */
 export type DataSharesCreateRequestTagsMap = {
@@ -3120,7 +4054,7 @@ export const DataSharesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3229,7 +4163,7 @@ export const DataSharesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3264,7 +4198,7 @@ export const DataSharesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3329,7 +4263,7 @@ export const DataSharesListByStorageAccountRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -3466,7 +4400,7 @@ export const DataSharesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3530,7 +4464,7 @@ export const DeletedAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3598,7 +4532,7 @@ export const DeletedAccountsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3671,7 +4605,7 @@ export const EncryptionScopesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3789,7 +4723,7 @@ export const EncryptionScopesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3903,7 +4837,7 @@ export const EncryptionScopesPatchRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3958,7 +4892,7 @@ export const EncryptionScopesPutRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4008,7 +4942,7 @@ export const FileServicesGetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -4157,7 +5091,7 @@ export const FileServicesGetServiceUsageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages/default",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4362,7 +5296,7 @@ export const FileServicesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4437,7 +5371,7 @@ export const FileServicesListServiceUsagesRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -4513,7 +5447,7 @@ export const FileServicesSetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -4698,7 +5632,7 @@ export const FileSharesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4859,7 +5793,7 @@ export const FileSharesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4897,7 +5831,7 @@ export const FileSharesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4976,7 +5910,7 @@ export const FileSharesLeaseRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/lease",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5026,7 +5960,7 @@ export const FileSharesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5106,7 +6040,7 @@ export const FileSharesRestoreRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5144,7 +6078,7 @@ export const FileSharesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5296,7 +6230,7 @@ export const LocalUsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5412,7 +6346,7 @@ export const LocalUsersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5447,7 +6381,7 @@ export const LocalUsersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5510,7 +6444,7 @@ export const LocalUsersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5581,7 +6515,7 @@ export const LocalUsersListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/listKeys",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5629,7 +6563,7 @@ export const LocalUsersRegeneratePasswordRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -5947,7 +6881,7 @@ export const ManagementPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -6023,7 +6957,7 @@ export const ManagementPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6066,7 +7000,7 @@ export const ManagementPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6119,7 +7053,7 @@ export const NetworkSecurityPerimeterConfigurationsGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -6442,7 +7376,7 @@ export const NetworkSecurityPerimeterConfigurationsListRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -6522,7 +7456,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -6688,7 +7622,7 @@ export const ObjectReplicationPoliciesCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -6787,7 +7721,7 @@ export const ObjectReplicationPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -6822,7 +7756,7 @@ export const ObjectReplicationPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -6873,7 +7807,7 @@ export const ObjectReplicationPoliciesListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -6933,7 +7867,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Storage/operations",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -7118,7 +8052,7 @@ export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -7154,7 +8088,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -7272,7 +8206,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -7377,7 +8311,7 @@ export const PrivateEndpointConnectionsPutRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -7428,7 +8362,7 @@ export const PrivateLinkResourcesListByStorageAccountRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -7561,7 +8495,7 @@ export const QueueCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -7635,7 +8569,7 @@ export const QueueDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -7670,7 +8604,7 @@ export const QueueGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -7725,7 +8659,7 @@ export const QueueListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -7816,7 +8750,7 @@ export const QueueServicesGetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -7879,7 +8813,7 @@ export const QueueServicesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -7951,7 +8885,7 @@ export const QueueServicesSetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -8007,7 +8941,7 @@ export const QueueUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -8050,7 +8984,7 @@ export const SkusListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -8223,7 +9157,7 @@ export const StorageAccountsAbortHierarchicalNamespaceMigrationRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -8261,7 +9195,7 @@ export const StorageAccountsCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -8388,17 +9322,29 @@ export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 export type SasPolicyExpirationAction = "Log" | "Block";
 export const SasPolicyExpirationAction = /*@__PURE__*/ S.String;
 
+/** The action to perform when a user delegation SAS (shared access signature) policy requirement is violated. */
+export type PolicyViolationAction = "None" | "Log" | "Block";
+export const PolicyViolationAction = /*@__PURE__*/ S.String;
+
 /** SasPolicy assigned to the storage account. */
 export interface SasPolicy {
   /** The SAS expiration period, DD.HH:MM:SS. */
   sasExpirationPeriod: string;
   /** The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period. */
   expirationAction: SasPolicyExpirationAction | (string & {});
+  /** Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The default interpretation is false for this property. */
+  requireUserBoundUserDelegationSas?: boolean;
+  /** The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by requireUserBoundUserDelegationSas. */
+  requireUserBoundUserDelegationSasAction?:
+    | PolicyViolationAction
+    | (string & {});
 }
 export const SasPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sasExpirationPeriod: S.String,
     expirationAction: SasPolicyExpirationAction,
+    requireUserBoundUserDelegationSas: S.optional(S.Boolean),
+    requireUserBoundUserDelegationSasAction: S.optional(PolicyViolationAction),
   }),
 ).annotate({ identifier: "SasPolicy" }) as any as S.Schema<SasPolicy>;
 
@@ -8959,6 +9905,8 @@ export interface StorageAccountPropertiesCreateParametersInput {
   allowSharedKeyAccessForServices?: StorageAccountSharedKeyAccessProperties;
   /** Data Collaboration policy for the storage account. */
   dataCollaborationPolicyProperties?: StorageDataCollaborationPolicyProperties;
+  /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
+  allowCrossTenantDelegationSas?: boolean;
 }
 export const StorageAccountPropertiesCreateParametersInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -8997,6 +9945,7 @@ export const StorageAccountPropertiesCreateParametersInput =
       dataCollaborationPolicyProperties: S.optional(
         StorageDataCollaborationPolicyProperties,
       ),
+      allowCrossTenantDelegationSas: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "StorageAccountPropertiesCreateParametersInput",
@@ -9047,7 +9996,7 @@ export const StorageAccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -9628,6 +10577,8 @@ export interface StorageAccountProperties {
   allowSharedKeyAccessForServices?: StorageAccountSharedKeyAccessProperties;
   /** Data Collaboration policy for the storage account. */
   dataCollaborationPolicyProperties?: StorageDataCollaborationPolicyProperties;
+  /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
+  allowCrossTenantDelegationSas?: boolean;
 }
 export const StorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9686,6 +10637,7 @@ export const StorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
     dataCollaborationPolicyProperties: S.optional(
       StorageDataCollaborationPolicyProperties,
     ),
+    allowCrossTenantDelegationSas: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "StorageAccountProperties",
@@ -9826,7 +10778,7 @@ export const StorageAccountsCustomerInitiatedMigrationRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -9857,7 +10809,7 @@ export const StorageAccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -9898,7 +10850,7 @@ export const StorageAccountsFailoverRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -9944,7 +10896,7 @@ export const StorageAccountsGetCustomerInitiatedMigrationRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/accountMigrations/{migrationName}",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -10035,7 +10987,7 @@ export const StorageAccountsGetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -10130,7 +11082,7 @@ export const StorageAccountsHierarchicalNamespaceMigrationRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -10155,7 +11107,7 @@ export const StorageAccountsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -10303,7 +11255,7 @@ export const StorageAccountsListAccountSASRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listAccountSas",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -10339,7 +11291,7 @@ export const StorageAccountsListByResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -10372,7 +11324,7 @@ export const StorageAccountsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -10501,7 +11453,7 @@ export const StorageAccountsListServiceSASRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listServiceSas",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -10542,7 +11494,7 @@ export const StorageAccountsRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -10582,7 +11534,7 @@ export const StorageAccountsRestoreBlobRangesRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -10608,7 +11560,7 @@ export const StorageAccountsRevokeUserDelegationKeysRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -10684,6 +11636,8 @@ export interface StorageAccountPropertiesUpdateParametersInput {
   allowSharedKeyAccessForServices?: StorageAccountSharedKeyAccessProperties;
   /** Data Collaboration policy for the storage account. */
   dataCollaborationPolicyProperties?: StorageDataCollaborationPolicyProperties;
+  /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
+  allowCrossTenantDelegationSas?: boolean;
 }
 export const StorageAccountPropertiesUpdateParametersInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -10720,6 +11674,7 @@ export const StorageAccountPropertiesUpdateParametersInput =
       dataCollaborationPolicyProperties: S.optional(
         StorageDataCollaborationPolicyProperties,
       ),
+      allowCrossTenantDelegationSas: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "StorageAccountPropertiesUpdateParametersInput",
@@ -10770,7 +11725,7 @@ export const StorageAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -10868,7 +11823,7 @@ export const StorageTaskAssignmentInstancesReportListRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -11147,7 +12102,7 @@ export const StorageTaskAssignmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11243,7 +12198,7 @@ export const StorageTaskAssignmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11278,7 +12233,7 @@ export const StorageTaskAssignmentsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11334,7 +12289,7 @@ export const StorageTaskAssignmentsInstancesReportListRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -11362,7 +12317,7 @@ export const StorageTaskAssignmentsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11438,7 +12393,7 @@ export const StorageTaskAssignmentsStopAssignmentRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/stopAssignment",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -11572,7 +12527,7 @@ export const StorageTaskAssignmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11682,7 +12637,7 @@ export const TableCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11755,7 +12710,7 @@ export const TableDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11790,7 +12745,7 @@ export const TableGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11839,7 +12794,7 @@ export const TableListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -11910,7 +12865,7 @@ export const TableServicesGetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -11973,7 +12928,7 @@ export const TableServicesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -12045,7 +13000,7 @@ export const TableServicesSetServicePropertiesRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
         code: 200,
-        apiVersion: "2026-04-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -12101,7 +13056,7 @@ export const TableUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -12147,7 +13102,7 @@ export const UsagesListByLocationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
       code: 200,
-      apiVersion: "2026-04-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -12679,6 +13634,171 @@ export const ConnectorsUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ConnectorsUpdateRequest,
   output: ConnectorsUpdateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCacheContainersCreateOrUpdateError = AzureOpError;
+/** Create or update a container in a Context Cache. */
+export const ContextCacheContainersCreateOrUpdate: API.OperationMethod<
+  ContextCacheContainersCreateOrUpdateRequest,
+  ContextCacheContainersCreateOrUpdateResponse,
+  ContextCacheContainersCreateOrUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCacheContainersCreateOrUpdateRequest,
+  output: ContextCacheContainersCreateOrUpdateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCacheContainersDeleteError = AzureOpError;
+/** Delete a container from a Context Cache. */
+export const ContextCacheContainersDelete: API.OperationMethod<
+  ContextCacheContainersDeleteRequest,
+  ContextCacheContainersDeleteResponse,
+  ContextCacheContainersDeleteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCacheContainersDeleteRequest,
+  output: ContextCacheContainersDeleteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCacheContainersGetError = AzureOpError;
+/** Get a container in a Context Cache. */
+export const ContextCacheContainersGet: API.OperationMethod<
+  ContextCacheContainersGetRequest,
+  ContextCacheContainersGetResponse,
+  ContextCacheContainersGetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCacheContainersGetRequest,
+  output: ContextCacheContainersGetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCacheContainersListByContextCacheError = AzureOpError;
+/** List all containers in a Context Cache. */
+export const ContextCacheContainersListByContextCache: API.OperationMethod<
+  ContextCacheContainersListByContextCacheRequest,
+  ContextCacheContainerListResult,
+  ContextCacheContainersListByContextCacheError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCacheContainersListByContextCacheRequest,
+  output: ContextCacheContainerListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCacheContainersUpdateError = AzureOpError;
+/** Update a container in a Context Cache. */
+export const ContextCacheContainersUpdate: API.OperationMethod<
+  ContextCacheContainersUpdateRequest,
+  ContextCacheContainersUpdateResponse,
+  ContextCacheContainersUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCacheContainersUpdateRequest,
+  output: ContextCacheContainersUpdateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCachesCreateOrUpdateError = AzureOpError;
+/** Create or update a Context Cache. */
+export const ContextCachesCreateOrUpdate: API.OperationMethod<
+  ContextCachesCreateOrUpdateRequest,
+  ContextCachesCreateOrUpdateResponse,
+  ContextCachesCreateOrUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCachesCreateOrUpdateRequest,
+  output: ContextCachesCreateOrUpdateResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCachesDeleteError = AzureOpError;
+/** Delete a Context Cache. */
+export const ContextCachesDelete: API.OperationMethod<
+  ContextCachesDeleteRequest,
+  ContextCachesDeleteResponse,
+  ContextCachesDeleteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCachesDeleteRequest,
+  output: ContextCachesDeleteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCachesGetError = AzureOpError;
+/** Get a Context Cache. */
+export const ContextCachesGet: API.OperationMethod<
+  ContextCachesGetRequest,
+  ContextCachesGetResponse,
+  ContextCachesGetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCachesGetRequest,
+  output: ContextCachesGetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCachesListByResourceGroupError = AzureOpError;
+/** List Context Caches by resource group. */
+export const ContextCachesListByResourceGroup: API.OperationMethod<
+  ContextCachesListByResourceGroupRequest,
+  ContextCacheListResult,
+  ContextCachesListByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCachesListByResourceGroupRequest,
+  output: ContextCacheListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCachesListBySubscriptionError = AzureOpError;
+/** List Context Caches by subscription. */
+export const ContextCachesListBySubscription: API.OperationMethod<
+  ContextCachesListBySubscriptionRequest,
+  ContextCacheListResult,
+  ContextCachesListBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCachesListBySubscriptionRequest,
+  output: ContextCacheListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ContextCachesUpdateError = AzureOpError;
+/** Update a Context Cache. */
+export const ContextCachesUpdate: API.OperationMethod<
+  ContextCachesUpdateRequest,
+  ContextCachesUpdateResponse,
+  ContextCachesUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ContextCachesUpdateRequest,
+  output: ContextCachesUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

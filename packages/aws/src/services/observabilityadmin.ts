@@ -229,10 +229,17 @@ export type EncryptionConflictResolutionStrategy =
   | (string & {});
 export const EncryptionConflictResolutionStrategy = /*@__PURE__*/ S.String;
 
+export type EncryptionScope =
+  | "ENCRYPTED_SOURCE_ONLY"
+  | "NEW_DESTINATION_LOG_GROUPS"
+  | (string & {});
+export const EncryptionScope = /*@__PURE__*/ S.String;
+
 export interface LogsEncryptionConfiguration {
   EncryptionStrategy: EncryptionStrategy;
   KmsKeyArn?: string;
   EncryptionConflictResolutionStrategy?: EncryptionConflictResolutionStrategy;
+  EncryptionScope?: EncryptionScope;
 }
 export const LogsEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -241,6 +248,7 @@ export const LogsEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
     EncryptionConflictResolutionStrategy: S.optional(
       EncryptionConflictResolutionStrategy,
     ),
+    EncryptionScope: S.optional(EncryptionScope),
   }),
 ).annotate({
   identifier: "LogsEncryptionConfiguration",
@@ -263,16 +271,38 @@ export const LogGroupNameConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogGroupNameConfiguration",
 }) as any as S.Schema<LogGroupNameConfiguration>;
+export type IamRoleArn = string;
+export type TagConflictResolutionStrategy =
+  | "IN_SYNC"
+  | "ADD_ONLY"
+  | "UPDATE_SYNC"
+  | (string & {});
+export const TagConflictResolutionStrategy = /*@__PURE__*/ S.String;
+
+export interface TagPropagationConfiguration {
+  DestinationRoleArn: string;
+  TagConflictResolutionStrategy?: TagConflictResolutionStrategy;
+}
+export const TagPropagationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DestinationRoleArn: S.String,
+    TagConflictResolutionStrategy: S.optional(TagConflictResolutionStrategy),
+  }),
+).annotate({
+  identifier: "TagPropagationConfiguration",
+}) as any as S.Schema<TagPropagationConfiguration>;
 export interface DestinationLogsConfiguration {
   LogsEncryptionConfiguration?: LogsEncryptionConfiguration;
   BackupConfiguration?: LogsBackupConfiguration;
   LogGroupNameConfiguration?: LogGroupNameConfiguration;
+  TagPropagationConfiguration?: TagPropagationConfiguration;
 }
 export const DestinationLogsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LogsEncryptionConfiguration: S.optional(LogsEncryptionConfiguration),
     BackupConfiguration: S.optional(LogsBackupConfiguration),
     LogGroupNameConfiguration: S.optional(LogGroupNameConfiguration),
+    TagPropagationConfiguration: S.optional(TagPropagationConfiguration),
   }),
 ).annotate({
   identifier: "DestinationLogsConfiguration",
@@ -468,6 +498,8 @@ export type ResourceType =
   | "AWS::SecurityHub::HubV2"
   | "AWS::CloudWatch::OTelEnrichment"
   | "AWS::MSK::Cluster"
+  | "AWS::S3::Bucket"
+  | "AWS::Bedrock::KnowledgeBase"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 
@@ -680,6 +712,10 @@ export type LogType =
   | "SECURITY_FINDING_LOGS"
   | "ACCESS_LOGS"
   | "CONNECTION_LOGS"
+  | "S3_SERVER_ACCESS_LOGS"
+  | "ALB_ACCESS_LOGS"
+  | "ALB_CONNECTION_LOGS"
+  | "ALB_HEALTH_CHECK_LOGS"
   | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
 
@@ -709,6 +745,7 @@ export const MskMonitoringParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MskMonitoringParameters",
 }) as any as S.Schema<MskMonitoringParameters>;
+export type KmsKeyArn = string;
 export interface TelemetryDestinationConfiguration {
   DestinationType?: DestinationType;
   DestinationPattern?: string;
@@ -719,6 +756,7 @@ export interface TelemetryDestinationConfiguration {
   WAFLoggingParameters?: WAFLoggingParameters;
   LogDeliveryParameters?: LogDeliveryParameters;
   MskMonitoringParameters?: MskMonitoringParameters;
+  KmsKeyArn?: string;
 }
 export const TelemetryDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -733,6 +771,7 @@ export const TelemetryDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
     WAFLoggingParameters: S.optional(WAFLoggingParameters),
     LogDeliveryParameters: S.optional(LogDeliveryParameters),
     MskMonitoringParameters: S.optional(MskMonitoringParameters),
+    KmsKeyArn: S.optional(S.String),
   }),
 ).annotate({
   identifier: "TelemetryDestinationConfiguration",
@@ -980,6 +1019,15 @@ export type CentralizationFailureReason =
   | (string & {});
 export const CentralizationFailureReason = /*@__PURE__*/ S.String;
 
+export type TagPropagationStatus = "Healthy" | "Unhealthy" | (string & {});
+export const TagPropagationStatus = /*@__PURE__*/ S.String;
+
+export type TagPropagationFailureReason =
+  | "RoleNotAssumable"
+  | "RoleLacksPermissions"
+  | (string & {});
+export const TagPropagationFailureReason = /*@__PURE__*/ S.String;
+
 export interface GetCentralizationRuleForOrganizationOutput {
   RuleName?: string;
   RuleArn?: string;
@@ -989,6 +1037,8 @@ export interface GetCentralizationRuleForOrganizationOutput {
   LastUpdateTimeStamp?: number;
   RuleHealth?: RuleHealth;
   FailureReason?: CentralizationFailureReason;
+  TagPropagationStatus?: TagPropagationStatus;
+  TagPropagationFailureReason?: TagPropagationFailureReason;
   CentralizationRule?: CentralizationRule;
 }
 export const GetCentralizationRuleForOrganizationOutput =
@@ -1002,6 +1052,8 @@ export const GetCentralizationRuleForOrganizationOutput =
       LastUpdateTimeStamp: S.optional(S.Number),
       RuleHealth: S.optional(RuleHealth),
       FailureReason: S.optional(CentralizationFailureReason),
+      TagPropagationStatus: S.optional(TagPropagationStatus),
+      TagPropagationFailureReason: S.optional(TagPropagationFailureReason),
       CentralizationRule: S.optional(CentralizationRule),
     }),
   ).annotate({
@@ -1374,6 +1426,8 @@ export interface CentralizationRuleSummary {
   LastUpdateTimeStamp?: number;
   RuleHealth?: RuleHealth;
   FailureReason?: CentralizationFailureReason;
+  TagPropagationStatus?: TagPropagationStatus;
+  TagPropagationFailureReason?: TagPropagationFailureReason;
   DestinationAccountId?: string;
   DestinationRegion?: string;
 }
@@ -1387,6 +1441,8 @@ export const CentralizationRuleSummary = /*@__PURE__*/ S.suspend(() =>
     LastUpdateTimeStamp: S.optional(S.Number),
     RuleHealth: S.optional(RuleHealth),
     FailureReason: S.optional(CentralizationFailureReason),
+    TagPropagationStatus: S.optional(TagPropagationStatus),
+    TagPropagationFailureReason: S.optional(TagPropagationFailureReason),
     DestinationAccountId: S.optional(S.String),
     DestinationRegion: S.optional(S.String),
   }),
@@ -2013,14 +2069,19 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type Records = Record[];
 export const Records = /*@__PURE__*/ S.Array(Record);
+export type SignalType = "LOG" | "METRIC" | (string & {});
+export const SignalType = /*@__PURE__*/ S.String;
+
 export interface TestTelemetryPipelineInput {
   Records: Record[];
   Configuration: TelemetryPipelineConfiguration;
+  SignalType?: SignalType;
 }
 export const TestTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Records: Records,
     Configuration: TelemetryPipelineConfiguration,
+    SignalType: S.optional(SignalType),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/TestTelemetryPipeline" }),

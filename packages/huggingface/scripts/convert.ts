@@ -149,6 +149,7 @@ const OPERATION_NAMES: Readonly<Record<string, string>> = {
   "POST /api/collections/{namespace}/{slug}/items/batch":
     "batchUpdateItemsBySlug",
   "DELETE /api/collections/{namespace}/{slug}/items/{slug}": "deleteItemBySlug",
+  "PATCH /api/collections/{namespace}/{slug}/items/{slug}": "updateItemBySlug",
   "GET /api/collections/{namespace}/{slug}/resource-group":
     "getCollectionResourceGroupBySlug",
   "POST /api/collections/{namespace}/{slug}/resource-group":

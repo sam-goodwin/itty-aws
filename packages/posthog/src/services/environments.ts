@@ -887,19 +887,928 @@ export const BaseCurrencyEnum = /*@__PURE__*/ S.String;
 export interface TeamRevenueAnalyticsConfig {
   base_currency?: BaseCurrencyEnum | (string & {});
   events?: unknown;
-  goals?: unknown;
   filter_test_accounts?: boolean;
 }
 export const TeamRevenueAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base_currency: S.optional(BaseCurrencyEnum),
     events: S.optional(S.Unknown),
-    goals: S.optional(S.Unknown),
     filter_test_accounts: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "TeamRevenueAnalyticsConfig",
 }) as any as S.Schema<TeamRevenueAnalyticsConfig>;
+
+export interface SourceMap {
+  ad_group_id?: string | null;
+  ad_group_name?: string | null;
+  ad_id?: string | null;
+  ad_name?: string | null;
+  campaign?: string | null;
+  clicks?: string | null;
+  cost?: string | null;
+  currency?: string | null;
+  date?: string | null;
+  id?: string | null;
+  impressions?: string | null;
+  reported_conversion?: string | null;
+  reported_conversion_value?: string | null;
+  source?: string | null;
+}
+export const SourceMap = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ad_group_id: S.optional(S.NullOr(S.String)),
+    ad_group_name: S.optional(S.NullOr(S.String)),
+    ad_id: S.optional(S.NullOr(S.String)),
+    ad_name: S.optional(S.NullOr(S.String)),
+    campaign: S.optional(S.NullOr(S.String)),
+    clicks: S.optional(S.NullOr(S.String)),
+    cost: S.optional(S.NullOr(S.String)),
+    currency: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.NullOr(S.String)),
+    impressions: S.optional(S.NullOr(S.String)),
+    reported_conversion: S.optional(S.NullOr(S.String)),
+    reported_conversion_value: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({ identifier: "SourceMap" }) as any as S.Schema<SourceMap>;
+
+/** Mapping of external data source id to that source's column mapping. */
+export type MarketingAnalyticsSourceMapping = {
+  [key: string]: SourceMap | undefined;
+};
+export const MarketingAnalyticsSourceMapping = /*@__PURE__*/ S.Record(
+  S.String,
+  SourceMap,
+) as any as S.Schema<MarketingAnalyticsSourceMapping>;
+
+export type BaseMathType =
+  | "total"
+  | "dau"
+  | "weekly_active"
+  | "monthly_active"
+  | "unique_session"
+  | "first_time_for_user"
+  | "first_matching_event_for_user";
+export const BaseMathType = /*@__PURE__*/ S.String;
+
+export type FunnelMathType =
+  | "total"
+  | "first_time_for_user"
+  | "first_time_for_user_with_filters";
+export const FunnelMathType = /*@__PURE__*/ S.String;
+
+export type PropertyMathType =
+  | "avg"
+  | "sum"
+  | "min"
+  | "max"
+  | "median"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99";
+export const PropertyMathType = /*@__PURE__*/ S.String;
+
+export type CountPerActorMathType =
+  | "avg_count_per_actor"
+  | "min_count_per_actor"
+  | "max_count_per_actor"
+  | "median_count_per_actor"
+  | "p75_count_per_actor"
+  | "p90_count_per_actor"
+  | "p95_count_per_actor"
+  | "p99_count_per_actor";
+export const CountPerActorMathType = /*@__PURE__*/ S.String;
+
+export type GroupMathType =
+  | "unique_group"
+  | "first_time_for_group"
+  | "first_matching_event_for_group";
+export const GroupMathType = /*@__PURE__*/ S.String;
+
+export type ExperimentMetricMathType =
+  | "total"
+  | "sum"
+  | "unique_session"
+  | "min"
+  | "max"
+  | "avg"
+  | "dau"
+  | "unique_group"
+  | "hogql";
+export const ExperimentMetricMathType = /*@__PURE__*/ S.String;
+
+export type CalendarHeatmapMathType = "total" | "dau";
+export const CalendarHeatmapMathType = /*@__PURE__*/ S.String;
+
+export type MarketingAnalyticsEventConversionGoalMath =
+  | BaseMathType
+  | FunnelMathType
+  | PropertyMathType
+  | CountPerActorMathType
+  | GroupMathType
+  | ExperimentMetricMathType
+  | CalendarHeatmapMathType
+  | string;
+export const MarketingAnalyticsEventConversionGoalMath =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsEventConversionGoalMath>;
+
+export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
+export const MathGroupTypeIndex = /*@__PURE__*/ S.Number;
+
+export type CurrencyCode =
+  | "AED"
+  | "AFN"
+  | "ALL"
+  | "AMD"
+  | "ANG"
+  | "AOA"
+  | "ARS"
+  | "AUD"
+  | "AWG"
+  | "AZN"
+  | "BAM"
+  | "BBD"
+  | "BDT"
+  | "BGN"
+  | "BHD"
+  | "BIF"
+  | "BMD"
+  | "BND"
+  | "BOB"
+  | "BRL"
+  | "BSD"
+  | "BTC"
+  | "BTN"
+  | "BWP"
+  | "BYN"
+  | "BZD"
+  | "CAD"
+  | "CDF"
+  | "CHF"
+  | "CLP"
+  | "CNY"
+  | "COP"
+  | "CRC"
+  | "CVE"
+  | "CZK"
+  | "DJF"
+  | "DKK"
+  | "DOP"
+  | "DZD"
+  | "EGP"
+  | "ERN"
+  | "ETB"
+  | "EUR"
+  | "FJD"
+  | "GBP"
+  | "GEL"
+  | "GHS"
+  | "GIP"
+  | "GMD"
+  | "GNF"
+  | "GTQ"
+  | "GYD"
+  | "HKD"
+  | "HNL"
+  | "HRK"
+  | "HTG"
+  | "HUF"
+  | "IDR"
+  | "ILS"
+  | "INR"
+  | "IQD"
+  | "IRR"
+  | "ISK"
+  | "JMD"
+  | "JOD"
+  | "JPY"
+  | "KES"
+  | "KGS"
+  | "KHR"
+  | "KMF"
+  | "KRW"
+  | "KWD"
+  | "KYD"
+  | "KZT"
+  | "LAK"
+  | "LBP"
+  | "LKR"
+  | "LRD"
+  | "LTL"
+  | "LVL"
+  | "LSL"
+  | "LYD"
+  | "MAD"
+  | "MDL"
+  | "MGA"
+  | "MKD"
+  | "MMK"
+  | "MNT"
+  | "MOP"
+  | "MRU"
+  | "MTL"
+  | "MUR"
+  | "MVR"
+  | "MWK"
+  | "MXN"
+  | "MYR"
+  | "MZN"
+  | "NAD"
+  | "NGN"
+  | "NIO"
+  | "NOK"
+  | "NPR"
+  | "NZD"
+  | "OMR"
+  | "PAB"
+  | "PEN"
+  | "PGK"
+  | "PHP"
+  | "PKR"
+  | "PLN"
+  | "PYG"
+  | "QAR"
+  | "RON"
+  | "RSD"
+  | "RUB"
+  | "RWF"
+  | "SAR"
+  | "SBD"
+  | "SCR"
+  | "SDG"
+  | "SEK"
+  | "SGD"
+  | "SRD"
+  | "SSP"
+  | "STN"
+  | "SYP"
+  | "SZL"
+  | "THB"
+  | "TJS"
+  | "TMT"
+  | "TND"
+  | "TOP"
+  | "TRY"
+  | "TTD"
+  | "TWD"
+  | "TZS"
+  | "UAH"
+  | "UGX"
+  | "USD"
+  | "UYU"
+  | "UZS"
+  | "VES"
+  | "VND"
+  | "VUV"
+  | "WST"
+  | "XAF"
+  | "XCD"
+  | "XOF"
+  | "XPF"
+  | "YER"
+  | "ZAR"
+  | "ZMW";
+export const CurrencyCode = /*@__PURE__*/ S.String;
+
+export interface RevenueCurrencyPropertyConfig {
+  property?: string | null;
+  static?: CurrencyCode | (string & {}) | null;
+}
+export const RevenueCurrencyPropertyConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    property: S.optional(S.NullOr(S.String)),
+    static: S.optional(S.NullOr(CurrencyCode)),
+  }),
+).annotate({
+  identifier: "RevenueCurrencyPropertyConfig",
+}) as any as S.Schema<RevenueCurrencyPropertyConfig>;
+
+export type MarketingAnalyticsEventConversionGoalOrderByList = Array<string>;
+export const MarketingAnalyticsEventConversionGoalOrderByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MarketingAnalyticsEventConversionGoalOrderByList>;
+
+export type PropertyOperator =
+  | "exact"
+  | "is_not"
+  | "icontains"
+  | "not_icontains"
+  | "starts_with"
+  | "not_starts_with"
+  | "ends_with"
+  | "not_ends_with"
+  | "regex"
+  | "not_regex"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "is_set"
+  | "is_not_set"
+  | "is_date_exact"
+  | "is_date_before"
+  | "is_date_after"
+  | "between"
+  | "not_between"
+  | "min"
+  | "max"
+  | "in"
+  | "not_in"
+  | "is_cleaned_path_exact"
+  | "flag_evaluates_to"
+  | "semver_eq"
+  | "semver_neq"
+  | "semver_gt"
+  | "semver_gte"
+  | "semver_lt"
+  | "semver_lte"
+  | "semver_tilde"
+  | "semver_caret"
+  | "semver_wildcard"
+  | "icontains_multi"
+  | "not_icontains_multi";
+export const PropertyOperator = /*@__PURE__*/ S.String;
+
+export type EventPropertyFilterValueCase0Item = string | number | boolean;
+export const EventPropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
+
+export type EventPropertyFilterValueCase0List =
+  Array<EventPropertyFilterValueCase0Item>;
+export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  EventPropertyFilterValueCase0Item,
+) as any as S.Schema<EventPropertyFilterValueCase0List>;
+
+export type EventPropertyFilterValue =
+  | EventPropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const EventPropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValue>;
+
+export interface EventPropertyFilter {
+  key?: string;
+  label?: string | null;
+  operator?: PropertyOperator | (string & {}) | null;
+  /** Event properties */
+  type?: string;
+  value?: EventPropertyFilterValue | null;
+}
+export const EventPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(S.NullOr(PropertyOperator)),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(EventPropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "EventPropertyFilter",
+}) as any as S.Schema<EventPropertyFilter>;
+
+export type PersonPropertyFilterValueCase0Item = string | number | boolean;
+export const PersonPropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
+
+export type PersonPropertyFilterValueCase0List =
+  Array<PersonPropertyFilterValueCase0Item>;
+export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  PersonPropertyFilterValueCase0Item,
+) as any as S.Schema<PersonPropertyFilterValueCase0List>;
+
+export type PersonPropertyFilterValue =
+  | PersonPropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const PersonPropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValue>;
+
+export interface PersonPropertyFilter {
+  key?: string;
+  label?: string | null;
+  operator?: PropertyOperator | (string & {});
+  /** Person properties */
+  type?: string;
+  value?: PersonPropertyFilterValue | null;
+}
+export const PersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(PropertyOperator),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(PersonPropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "PersonPropertyFilter",
+}) as any as S.Schema<PersonPropertyFilter>;
+
+export interface CohortPropertyFilter {
+  cohort_name?: string | null;
+  key?: string;
+  label?: string | null;
+  operator?: PropertyOperator | (string & {}) | null;
+  type?: string;
+  value?: number;
+}
+export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cohort_name: S.optional(S.NullOr(S.String)),
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(S.NullOr(PropertyOperator)),
+    type: S.optional(S.String),
+    value: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CohortPropertyFilter",
+}) as any as S.Schema<CohortPropertyFilter>;
+
+export type Key10 = "tag_name" | "text" | "href" | "selector";
+export const Key10 = /*@__PURE__*/ S.String;
+
+export type ElementPropertyFilterValueCase0Item = string | number | boolean;
+export const ElementPropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
+
+export type ElementPropertyFilterValueCase0List =
+  Array<ElementPropertyFilterValueCase0Item>;
+export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  ElementPropertyFilterValueCase0Item,
+) as any as S.Schema<ElementPropertyFilterValueCase0List>;
+
+export type ElementPropertyFilterValue =
+  | ElementPropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const ElementPropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValue>;
+
+export interface ElementPropertyFilter {
+  key?: Key10 | (string & {});
+  label?: string | null;
+  operator?: PropertyOperator | (string & {});
+  type?: string;
+  value?: ElementPropertyFilterValue | null;
+}
+export const ElementPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(Key10),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(PropertyOperator),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(ElementPropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "ElementPropertyFilter",
+}) as any as S.Schema<ElementPropertyFilter>;
+
+export type HogQLPropertyFilterValueCase0Item = string | number | boolean;
+export const HogQLPropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
+
+export type HogQLPropertyFilterValueCase0List =
+  Array<HogQLPropertyFilterValueCase0Item>;
+export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  HogQLPropertyFilterValueCase0Item,
+) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
+
+export type HogQLPropertyFilterValue =
+  | HogQLPropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const HogQLPropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValue>;
+
+export interface HogQLPropertyFilter {
+  key?: string;
+  label?: string | null;
+  type?: string;
+  value?: HogQLPropertyFilterValue | null;
+}
+export const HogQLPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(HogQLPropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "HogQLPropertyFilter",
+}) as any as S.Schema<HogQLPropertyFilter>;
+
+export type DataWarehousePropertyFilterValueCase0Item =
+  | string
+  | number
+  | boolean;
+export const DataWarehousePropertyFilterValueCase0Item =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
+
+export type DataWarehousePropertyFilterValueCase0List =
+  Array<DataWarehousePropertyFilterValueCase0Item>;
+export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
+  DataWarehousePropertyFilterValueCase0Item,
+) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
+
+export type DataWarehousePropertyFilterValue =
+  | DataWarehousePropertyFilterValueCase0List
+  | string
+  | number
+  | boolean;
+export const DataWarehousePropertyFilterValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValue>;
+
+export interface DataWarehousePropertyFilter {
+  key?: string;
+  label?: string | null;
+  operator?: PropertyOperator | (string & {});
+  type?: string;
+  value?: DataWarehousePropertyFilterValue | null;
+}
+export const DataWarehousePropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    label: S.optional(S.NullOr(S.String)),
+    operator: S.optional(PropertyOperator),
+    type: S.optional(S.String),
+    value: S.optional(S.NullOr(DataWarehousePropertyFilterValue)),
+  }),
+).annotate({
+  identifier: "DataWarehousePropertyFilter",
+}) as any as S.Schema<DataWarehousePropertyFilter>;
+
+export type MarketingAnalyticsEventConversionGoalPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | CohortPropertyFilter
+  | ElementPropertyFilter
+  | HogQLPropertyFilter
+  | DataWarehousePropertyFilter;
+export const MarketingAnalyticsEventConversionGoalPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsEventConversionGoalPropertiesItem>;
+
+export type MarketingAnalyticsEventConversionGoalPropertiesList =
+  Array<MarketingAnalyticsEventConversionGoalPropertiesItem>;
+export const MarketingAnalyticsEventConversionGoalPropertiesList =
+  /*@__PURE__*/ S.Array(
+    MarketingAnalyticsEventConversionGoalPropertiesItem,
+  ) as any as S.Schema<MarketingAnalyticsEventConversionGoalPropertiesList>;
+
+export type MarketingAnalyticsEventConversionGoalResponseMap = {
+  [key: string]: unknown | undefined;
+};
+export const MarketingAnalyticsEventConversionGoalResponseMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MarketingAnalyticsEventConversionGoalResponseMap>;
+
+export type MarketingAnalyticsEventConversionGoalSchemaMapValue =
+  | string
+  | unknown;
+export const MarketingAnalyticsEventConversionGoalSchemaMapValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsEventConversionGoalSchemaMapValue>;
+
+export type MarketingAnalyticsEventConversionGoalSchemaMapMap = {
+  [key: string]:
+    | MarketingAnalyticsEventConversionGoalSchemaMapValue
+    | undefined;
+};
+export const MarketingAnalyticsEventConversionGoalSchemaMapMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    MarketingAnalyticsEventConversionGoalSchemaMapValue,
+  ) as any as S.Schema<MarketingAnalyticsEventConversionGoalSchemaMapMap>;
+
+/** A conversion goal counted from events. */
+export interface MarketingAnalyticsEventConversionGoal {
+  conversion_goal_id: string;
+  conversion_goal_name: string;
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  counts_as_customer?: boolean | null;
+  /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
+  counts_as_revenue?: boolean | null;
+  custom_name?: string | null;
+  /** The event or `null` for all events. */
+  event?: string | null;
+  kind: string;
+  limit?: number | null;
+  math?: MarketingAnalyticsEventConversionGoalMath | null;
+  math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
+  math_hogql?: string | null;
+  math_multiplier?: number | null;
+  math_property?: string | null;
+  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
+  math_property_type?: string | null;
+  name: string;
+  optionalInFunnel?: boolean | null;
+  /** Columns to order by */
+  orderBy?: MarketingAnalyticsEventConversionGoalOrderByList | null;
+  properties?: MarketingAnalyticsEventConversionGoalPropertiesList | null;
+  response?: MarketingAnalyticsEventConversionGoalResponseMap | null;
+  schema_map: MarketingAnalyticsEventConversionGoalSchemaMapMap;
+  /** version of the node, used for schema migrations */
+  version?: number | null;
+}
+export const MarketingAnalyticsEventConversionGoal = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      conversion_goal_id: S.String,
+      conversion_goal_name: S.String,
+      counts_as_customer: S.optional(S.NullOr(S.Boolean)),
+      counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
+      custom_name: S.optional(S.NullOr(S.String)),
+      event: S.optional(S.NullOr(S.String)),
+      kind: S.String,
+      limit: S.optional(S.NullOr(S.Number)),
+      math: S.optional(S.NullOr(MarketingAnalyticsEventConversionGoalMath)),
+      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+      math_hogql: S.optional(S.NullOr(S.String)),
+      math_multiplier: S.optional(S.NullOr(S.Number)),
+      math_property: S.optional(S.NullOr(S.String)),
+      math_property_revenue_currency: S.optional(
+        S.NullOr(RevenueCurrencyPropertyConfig),
+      ),
+      math_property_type: S.optional(S.NullOr(S.String)),
+      name: S.String,
+      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
+      orderBy: S.optional(
+        S.NullOr(MarketingAnalyticsEventConversionGoalOrderByList),
+      ),
+      properties: S.optional(
+        S.NullOr(MarketingAnalyticsEventConversionGoalPropertiesList),
+      ),
+      response: S.optional(
+        S.NullOr(MarketingAnalyticsEventConversionGoalResponseMap),
+      ),
+      schema_map: MarketingAnalyticsEventConversionGoalSchemaMapMap,
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+).annotate({
+  identifier: "MarketingAnalyticsEventConversionGoal",
+}) as any as S.Schema<MarketingAnalyticsEventConversionGoal>;
+
+export type MarketingAnalyticsActionConversionGoalMath =
+  | BaseMathType
+  | FunnelMathType
+  | PropertyMathType
+  | CountPerActorMathType
+  | GroupMathType
+  | ExperimentMetricMathType
+  | CalendarHeatmapMathType
+  | string;
+export const MarketingAnalyticsActionConversionGoalMath =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsActionConversionGoalMath>;
+
+export type MarketingAnalyticsActionConversionGoalPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | CohortPropertyFilter
+  | ElementPropertyFilter
+  | HogQLPropertyFilter
+  | DataWarehousePropertyFilter;
+export const MarketingAnalyticsActionConversionGoalPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsActionConversionGoalPropertiesItem>;
+
+export type MarketingAnalyticsActionConversionGoalPropertiesList =
+  Array<MarketingAnalyticsActionConversionGoalPropertiesItem>;
+export const MarketingAnalyticsActionConversionGoalPropertiesList =
+  /*@__PURE__*/ S.Array(
+    MarketingAnalyticsActionConversionGoalPropertiesItem,
+  ) as any as S.Schema<MarketingAnalyticsActionConversionGoalPropertiesList>;
+
+export type MarketingAnalyticsActionConversionGoalResponseMap = {
+  [key: string]: unknown | undefined;
+};
+export const MarketingAnalyticsActionConversionGoalResponseMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MarketingAnalyticsActionConversionGoalResponseMap>;
+
+export type MarketingAnalyticsActionConversionGoalSchemaMapValue =
+  | string
+  | unknown;
+export const MarketingAnalyticsActionConversionGoalSchemaMapValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsActionConversionGoalSchemaMapValue>;
+
+export type MarketingAnalyticsActionConversionGoalSchemaMapMap = {
+  [key: string]:
+    | MarketingAnalyticsActionConversionGoalSchemaMapValue
+    | undefined;
+};
+export const MarketingAnalyticsActionConversionGoalSchemaMapMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    MarketingAnalyticsActionConversionGoalSchemaMapValue,
+  ) as any as S.Schema<MarketingAnalyticsActionConversionGoalSchemaMapMap>;
+
+/** A conversion goal counted from an action. */
+export interface MarketingAnalyticsActionConversionGoal {
+  conversion_goal_id: string;
+  conversion_goal_name: string;
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  counts_as_customer?: boolean | null;
+  /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
+  counts_as_revenue?: boolean | null;
+  custom_name?: string | null;
+  id: number;
+  kind: string;
+  math?: MarketingAnalyticsActionConversionGoalMath | null;
+  math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
+  math_hogql?: string | null;
+  math_multiplier?: number | null;
+  math_property?: string | null;
+  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
+  math_property_type?: string | null;
+  name: string;
+  optionalInFunnel?: boolean | null;
+  properties?: MarketingAnalyticsActionConversionGoalPropertiesList | null;
+  response?: MarketingAnalyticsActionConversionGoalResponseMap | null;
+  schema_map: MarketingAnalyticsActionConversionGoalSchemaMapMap;
+  /** version of the node, used for schema migrations */
+  version?: number | null;
+}
+export const MarketingAnalyticsActionConversionGoal = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      conversion_goal_id: S.String,
+      conversion_goal_name: S.String,
+      counts_as_customer: S.optional(S.NullOr(S.Boolean)),
+      counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
+      custom_name: S.optional(S.NullOr(S.String)),
+      id: S.Number,
+      kind: S.String,
+      math: S.optional(S.NullOr(MarketingAnalyticsActionConversionGoalMath)),
+      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+      math_hogql: S.optional(S.NullOr(S.String)),
+      math_multiplier: S.optional(S.NullOr(S.Number)),
+      math_property: S.optional(S.NullOr(S.String)),
+      math_property_revenue_currency: S.optional(
+        S.NullOr(RevenueCurrencyPropertyConfig),
+      ),
+      math_property_type: S.optional(S.NullOr(S.String)),
+      name: S.String,
+      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
+      properties: S.optional(
+        S.NullOr(MarketingAnalyticsActionConversionGoalPropertiesList),
+      ),
+      response: S.optional(
+        S.NullOr(MarketingAnalyticsActionConversionGoalResponseMap),
+      ),
+      schema_map: MarketingAnalyticsActionConversionGoalSchemaMapMap,
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+).annotate({
+  identifier: "MarketingAnalyticsActionConversionGoal",
+}) as any as S.Schema<MarketingAnalyticsActionConversionGoal>;
+
+export type MarketingAnalyticsWarehouseConversionGoalMath =
+  | BaseMathType
+  | FunnelMathType
+  | PropertyMathType
+  | CountPerActorMathType
+  | GroupMathType
+  | ExperimentMetricMathType
+  | CalendarHeatmapMathType
+  | string;
+export const MarketingAnalyticsWarehouseConversionGoalMath =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalMath>;
+
+export type MarketingAnalyticsWarehouseConversionGoalPropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | CohortPropertyFilter
+  | ElementPropertyFilter
+  | HogQLPropertyFilter
+  | DataWarehousePropertyFilter;
+export const MarketingAnalyticsWarehouseConversionGoalPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalPropertiesItem>;
+
+export type MarketingAnalyticsWarehouseConversionGoalPropertiesList =
+  Array<MarketingAnalyticsWarehouseConversionGoalPropertiesItem>;
+export const MarketingAnalyticsWarehouseConversionGoalPropertiesList =
+  /*@__PURE__*/ S.Array(
+    MarketingAnalyticsWarehouseConversionGoalPropertiesItem,
+  ) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalPropertiesList>;
+
+export type MarketingAnalyticsWarehouseConversionGoalResponseMap = {
+  [key: string]: unknown | undefined;
+};
+export const MarketingAnalyticsWarehouseConversionGoalResponseMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalResponseMap>;
+
+export type MarketingAnalyticsWarehouseConversionGoalSchemaMapValue =
+  | string
+  | unknown;
+export const MarketingAnalyticsWarehouseConversionGoalSchemaMapValue =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalSchemaMapValue>;
+
+export type MarketingAnalyticsWarehouseConversionGoalSchemaMapMap = {
+  [key: string]:
+    | MarketingAnalyticsWarehouseConversionGoalSchemaMapValue
+    | undefined;
+};
+export const MarketingAnalyticsWarehouseConversionGoalSchemaMapMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    MarketingAnalyticsWarehouseConversionGoalSchemaMapValue,
+  ) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoalSchemaMapMap>;
+
+/** A conversion goal counted from a data warehouse table. */
+export interface MarketingAnalyticsWarehouseConversionGoal {
+  conversion_goal_id: string;
+  conversion_goal_name: string;
+  /** Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal's conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false. */
+  counts_as_customer?: boolean | null;
+  /** Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false. */
+  counts_as_revenue?: boolean | null;
+  custom_name?: string | null;
+  distinct_id_field: string;
+  dw_source_type?: string | null;
+  id: string;
+  id_field: string;
+  kind: string;
+  math?: MarketingAnalyticsWarehouseConversionGoalMath | null;
+  math_group_type_index?: MathGroupTypeIndex | (number & {}) | null;
+  math_hogql?: string | null;
+  math_multiplier?: number | null;
+  math_property?: string | null;
+  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
+  math_property_type?: string | null;
+  name: string;
+  optionalInFunnel?: boolean | null;
+  properties?: MarketingAnalyticsWarehouseConversionGoalPropertiesList | null;
+  response?: MarketingAnalyticsWarehouseConversionGoalResponseMap | null;
+  schema_map: MarketingAnalyticsWarehouseConversionGoalSchemaMapMap;
+  table_name: string;
+  timestamp_field: string;
+  /** version of the node, used for schema migrations */
+  version?: number | null;
+}
+export const MarketingAnalyticsWarehouseConversionGoal =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      conversion_goal_id: S.String,
+      conversion_goal_name: S.String,
+      counts_as_customer: S.optional(S.NullOr(S.Boolean)),
+      counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
+      custom_name: S.optional(S.NullOr(S.String)),
+      distinct_id_field: S.String,
+      dw_source_type: S.optional(S.NullOr(S.String)),
+      id: S.String,
+      id_field: S.String,
+      kind: S.String,
+      math: S.optional(S.NullOr(MarketingAnalyticsWarehouseConversionGoalMath)),
+      math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+      math_hogql: S.optional(S.NullOr(S.String)),
+      math_multiplier: S.optional(S.NullOr(S.Number)),
+      math_property: S.optional(S.NullOr(S.String)),
+      math_property_revenue_currency: S.optional(
+        S.NullOr(RevenueCurrencyPropertyConfig),
+      ),
+      math_property_type: S.optional(S.NullOr(S.String)),
+      name: S.String,
+      optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
+      properties: S.optional(
+        S.NullOr(MarketingAnalyticsWarehouseConversionGoalPropertiesList),
+      ),
+      response: S.optional(
+        S.NullOr(MarketingAnalyticsWarehouseConversionGoalResponseMap),
+      ),
+      schema_map: MarketingAnalyticsWarehouseConversionGoalSchemaMapMap,
+      table_name: S.String,
+      timestamp_field: S.String,
+      version: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "MarketingAnalyticsWarehouseConversionGoal",
+  }) as any as S.Schema<MarketingAnalyticsWarehouseConversionGoal>;
+
+export type MarketingAnalyticsConversionGoalListItem =
+  | MarketingAnalyticsEventConversionGoal
+  | MarketingAnalyticsActionConversionGoal
+  | MarketingAnalyticsWarehouseConversionGoal;
+export const MarketingAnalyticsConversionGoalListItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsConversionGoalListItem>;
+
+/** The conversion goals configured for marketing analytics, in display order. */
+export type MarketingAnalyticsConversionGoalList =
+  Array<MarketingAnalyticsConversionGoalListItem>;
+export const MarketingAnalyticsConversionGoalList = /*@__PURE__*/ S.Array(
+  MarketingAnalyticsConversionGoalListItem,
+) as any as S.Schema<MarketingAnalyticsConversionGoalList>;
 
 /** * `first_touch` - First Touch * `last_touch` - Last Touch * `linear` - Linear * `time_decay` - Time Decay * `position_based` - Position Based */
 export type AttributionModeEnum =
@@ -910,24 +1819,99 @@ export type AttributionModeEnum =
   | "position_based";
 export const AttributionModeEnum = /*@__PURE__*/ S.String;
 
+export type MarketingAnalyticsCampaignNameMappingsValueValueList =
+  Array<string>;
+export const MarketingAnalyticsCampaignNameMappingsValueValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MarketingAnalyticsCampaignNameMappingsValueValueList>;
+
+export type MarketingAnalyticsCampaignNameMappingsValueMap = {
+  [key: string]:
+    | MarketingAnalyticsCampaignNameMappingsValueValueList
+    | undefined;
+};
+export const MarketingAnalyticsCampaignNameMappingsValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    MarketingAnalyticsCampaignNameMappingsValueValueList,
+  ) as any as S.Schema<MarketingAnalyticsCampaignNameMappingsValueMap>;
+
+/** Mapping of integration type to canonical campaign name to the aliases folded into it. */
+export type MarketingAnalyticsCampaignNameMappings = {
+  [key: string]: MarketingAnalyticsCampaignNameMappingsValueMap | undefined;
+};
+export const MarketingAnalyticsCampaignNameMappings = /*@__PURE__*/ S.Record(
+  S.String,
+  MarketingAnalyticsCampaignNameMappingsValueMap,
+) as any as S.Schema<MarketingAnalyticsCampaignNameMappings>;
+
+export type MarketingAnalyticsCustomSourceMappingsValueList = Array<string>;
+export const MarketingAnalyticsCustomSourceMappingsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MarketingAnalyticsCustomSourceMappingsValueList>;
+
+/** Mapping of integration type to the custom UTM source values folded into it. */
+export type MarketingAnalyticsCustomSourceMappings = {
+  [key: string]: MarketingAnalyticsCustomSourceMappingsValueList | undefined;
+};
+export const MarketingAnalyticsCustomSourceMappings = /*@__PURE__*/ S.Record(
+  S.String,
+  MarketingAnalyticsCustomSourceMappingsValueList,
+) as any as S.Schema<MarketingAnalyticsCustomSourceMappings>;
+
+export type MatchField = "campaign_name" | "campaign_id";
+export const MatchField = /*@__PURE__*/ S.String;
+
+export interface CampaignFieldPreference {
+  match_field: MatchField | (string & {});
+}
+export const CampaignFieldPreference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    match_field: MatchField,
+  }),
+).annotate({
+  identifier: "CampaignFieldPreference",
+}) as any as S.Schema<CampaignFieldPreference>;
+
+/** Mapping of integration type to the campaign field used when matching campaigns. */
+export type MarketingAnalyticsCampaignFieldPreferences = {
+  [key: string]: CampaignFieldPreference | undefined;
+};
+export const MarketingAnalyticsCampaignFieldPreferences =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    CampaignFieldPreference,
+  ) as any as S.Schema<MarketingAnalyticsCampaignFieldPreferences>;
+
 export interface TeamMarketingAnalyticsConfig {
-  sources_map?: unknown;
-  conversion_goals?: unknown;
+  /** Column mapping per external data source, keyed by source id. Tells marketing analytics which column holds campaign, source, cost, clicks and impressions for that source. */
+  sources_map?: MarketingAnalyticsSourceMapping;
+  /** Conversion goals to attribute against, in display order. Each goal points at an event, an action or a data warehouse table, and carries a schema_map describing which fields hold the UTM parameters, the timestamp and the distinct id. Replaces the whole list on write. */
+  conversion_goals?: MarketingAnalyticsConversionGoalList;
+  /** How many days back a touchpoint can be credited for a conversion. Between 1 and 90. */
   attribution_window_days?: number;
+  /** How credit is split across touchpoints when a person saw several campaigns before converting. * `first_touch` - First Touch * `last_touch` - Last Touch * `linear` - Linear * `time_decay` - Time Decay * `position_based` - Position Based */
   attribution_mode?: AttributionModeEnum | (string & {});
-  campaign_name_mappings?: unknown;
-  custom_source_mappings?: unknown;
-  campaign_field_preferences?: unknown;
+  /** Manual campaign name aliases, keyed by integration type then by canonical campaign name, with the list of names that should be folded into it. Applied before automatic matching. */
+  campaign_name_mappings?: MarketingAnalyticsCampaignNameMappings;
+  /** Custom UTM source values to fold into an integration, keyed by integration type. A UTM source can only belong to one integration. */
+  custom_source_mappings?: MarketingAnalyticsCustomSourceMappings;
+  /** Which field to match campaigns on per integration type, campaign_name or campaign_id. Manual mappings in campaign_name_mappings still take precedence. */
+  campaign_field_preferences?: MarketingAnalyticsCampaignFieldPreferences;
 }
 export const TeamMarketingAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sources_map: S.optional(S.Unknown),
-    conversion_goals: S.optional(S.Unknown),
+    sources_map: S.optional(MarketingAnalyticsSourceMapping),
+    conversion_goals: S.optional(MarketingAnalyticsConversionGoalList),
     attribution_window_days: S.optional(S.Number),
     attribution_mode: S.optional(AttributionModeEnum),
-    campaign_name_mappings: S.optional(S.Unknown),
-    custom_source_mappings: S.optional(S.Unknown),
-    campaign_field_preferences: S.optional(S.Unknown),
+    campaign_name_mappings: S.optional(MarketingAnalyticsCampaignNameMappings),
+    custom_source_mappings: S.optional(MarketingAnalyticsCustomSourceMappings),
+    campaign_field_preferences: S.optional(
+      MarketingAnalyticsCampaignFieldPreferences,
+    ),
   }),
 ).annotate({
   identifier: "TeamMarketingAnalyticsConfig",
@@ -974,13 +1958,20 @@ export type EnvironmentsAddProductIntentPartialUpdateRequestBusinessModel =
 export const EnvironmentsAddProductIntentPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EnvironmentsAddProductIntentPartialUpdateRequestBusinessModel>;
 
+/** * `off` - Off * `opt_out` - Opt Out * `opt_in` - Opt In */
+export type EmailTrackingConsentModeEnum = "off" | "opt_out" | "opt_in";
+export const EmailTrackingConsentModeEnum = /*@__PURE__*/ S.String;
+
 export interface TeamWorkflowsConfig {
   /** When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_*) alongside the existing workflow metrics. */
   capture_workflows_engagement_events?: boolean;
+  /** Recipient-consent enforcement for open/click tracking on marketing workflow emails. 'off': no enforcement, tracking follows each email step's own setting. 'opt_out': track by default but not recipients who have opted out. 'opt_in': only track recipients who have explicitly opted in. Transactional emails are exempt from consent enforcement. * `off` - Off * `opt_out` - Opt Out * `opt_in` - Opt In */
+  email_tracking_consent_mode?: EmailTrackingConsentModeEnum | (string & {});
 }
 export const TeamWorkflowsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capture_workflows_engagement_events: S.optional(S.Boolean),
+    email_tracking_consent_mode: S.optional(EmailTrackingConsentModeEnum),
   }),
 ).annotate({
   identifier: "TeamWorkflowsConfig",
@@ -1245,7 +2236,8 @@ export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestRecordingD
 
 /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type EnvironmentsCompleteProductOnboardingPartialUpdateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const EnvironmentsCompleteProductOnboardingPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateRequestBusinessModel>;
 
@@ -1459,622 +2451,6 @@ export const EnvironmentsCompleteProductOnboardingPartialUpdateResponse =
     identifier: "EnvironmentsCompleteProductOnboardingPartialUpdateResponse",
   }) as any as S.Schema<EnvironmentsCompleteProductOnboardingPartialUpdateResponse>;
 
-export type EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList =
-  Array<string>;
-export const EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList>;
-
-export type EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList =
-  Array<string>;
-export const EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList>;
-
-export type EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList =
-  Array<unknown>;
-export const EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList>;
-
-export type EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList =
-  Array<unknown>;
-export const EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList>;
-
-export type EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList =
-  Array<string>;
-export const EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList>;
-
-export type EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList =
-  Array<string>;
-export const EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList>;
-
-export type EnvironmentsDefaultEvaluationContextsCreateRequestRecordingDomainsList =
-  Array<string>;
-export const EnvironmentsDefaultEvaluationContextsCreateRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestRecordingDomainsList>;
-
-/** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
-export type EnvironmentsDefaultEvaluationContextsCreateRequestBusinessModel =
-  | BusinessModelEnum
-  | BlankEnum;
-export const EnvironmentsDefaultEvaluationContextsCreateRequestBusinessModel =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequestBusinessModel>;
-
-export interface EnvironmentsDefaultEvaluationContextsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this environment (aka team). */
-  id: number;
-  name?: string;
-  access_control?: boolean;
-  app_urls?: EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList;
-  anonymize_ips?: boolean;
-  completed_snippet_onboarding?: boolean;
-  /** Filters used to identify internal/test users. Each entry is a property filter. Supported entry types and the exact shape each accepts: # Person property — match (or exclude) by a person property {"key": "email", "type": "person", "value": "@example.com", "operator": "icontains"} # Event property — match by an event property {"key": "$host", "type": "event", "value": "localhost", "operator": "icontains"} # Cohort membership — match (or exclude) members of a cohort. # Use operator "in" for inclusion and "not_in" for exclusion. Do NOT use a # `negation` field here — `negation` is specific to cohort *definitions* # (the inner sub-filters that build a cohort) and is rejected by the # property-filter schema. {"key": "id", "type": "cohort", "value": 8814, "operator": "not_in"} Common operators: "exact", "is_not", "icontains", "not_icontains", "regex", "not_regex", "gt", "lt", "gte", "lte", "is_set", "is_not_set", "in", "not_in". */
-  test_account_filters?: unknown;
-  test_account_filters_default_checked?: boolean | null;
-  path_cleaning_filters?: unknown;
-  is_demo?: boolean;
-  timezone?: TimezoneEnum | (string & {});
-  data_attributes?: unknown;
-  person_display_name_properties?: EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList | null;
-  correlation_config?: unknown;
-  autocapture_opt_out?: boolean | null;
-  autocapture_exceptions_opt_in?: boolean | null;
-  autocapture_web_vitals_opt_in?: boolean | null;
-  autocapture_web_vitals_allowed_metrics?: unknown;
-  autocapture_exceptions_errors_to_ignore?: unknown;
-  capture_console_log_opt_in?: boolean | null;
-  logs_settings?: unknown;
-  capture_performance_opt_in?: boolean | null;
-  session_recording_opt_in?: boolean;
-  session_recording_sample_rate?: string | null;
-  session_recording_minimum_duration_milliseconds?: number | null;
-  session_recording_linked_flag?: unknown;
-  session_recording_network_payload_capture_config?: unknown;
-  session_recording_masking_config?: unknown;
-  session_recording_url_trigger_config?: EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList | null;
-  session_recording_url_blocklist_config?: EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList | null;
-  session_recording_event_trigger_config?: EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList | null;
-  session_recording_trigger_match_type_config?: string | null;
-  /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
-  session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?:
-    | SessionRecordingRetentionPeriodEnum
-    | (string & {});
-  session_replay_config?: unknown;
-  survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | (number & {}) | null;
-  primary_dashboard?: number | null;
-  live_events_columns?: EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList | null;
-  recording_domains?: EnvironmentsDefaultEvaluationContextsCreateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?:
-    | CookielessServerHashModeEnum
-    | (number & {})
-    | null;
-  human_friendly_comparison_periods?: boolean | null;
-  inject_web_apps?: boolean | null;
-  extra_settings?: unknown;
-  modifiers?: unknown;
-  has_completed_onboarding_for?: unknown;
-  surveys_opt_in?: boolean | null;
-  heatmaps_opt_in?: boolean | null;
-  flags_persistence_default?: boolean | null;
-  feature_flag_confirmation_enabled?: boolean | null;
-  feature_flag_confirmation_message?: string | null;
-  /** Whether to automatically apply default evaluation contexts to new feature flags */
-  default_evaluation_contexts_enabled?: boolean | null;
-  /** Whether to require at least one evaluation context tag when creating new feature flags */
-  require_evaluation_contexts?: boolean | null;
-  capture_dead_clicks?: boolean | null;
-  default_data_theme?: number | null;
-  revenue_analytics_config?: TeamRevenueAnalyticsConfig;
-  marketing_analytics_config?: TeamMarketingAnalyticsConfig;
-  customer_analytics_config?: TeamCustomerAnalyticsConfig;
-  onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum | (string & {});
-  web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  receive_org_level_activity_logs?: boolean | null;
-  /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
-  business_model?: EnvironmentsDefaultEvaluationContextsCreateRequestBusinessModel | null;
-  conversations_enabled?: boolean | null;
-  conversations_settings?: unknown;
-  proactive_tasks_enabled?: boolean | null;
-  workflows_config?: TeamWorkflowsConfig;
-}
-export const EnvironmentsDefaultEvaluationContextsCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      name: S.optional(S.String),
-      access_control: S.optional(S.Boolean),
-      app_urls: S.optional(
-        EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList,
-      ),
-      anonymize_ips: S.optional(S.Boolean),
-      completed_snippet_onboarding: S.optional(S.Boolean),
-      test_account_filters: S.optional(S.Unknown),
-      test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-      path_cleaning_filters: S.optional(S.Unknown),
-      is_demo: S.optional(S.Boolean),
-      timezone: S.optional(TimezoneEnum),
-      data_attributes: S.optional(S.Unknown),
-      person_display_name_properties: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList,
-        ),
-      ),
-      correlation_config: S.optional(S.Unknown),
-      autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-      autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-      autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-      autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-      autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-      capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-      logs_settings: S.optional(S.Unknown),
-      capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-      session_recording_opt_in: S.optional(S.Boolean),
-      session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-      session_recording_minimum_duration_milliseconds: S.optional(
-        S.NullOr(S.Number),
-      ),
-      session_recording_linked_flag: S.optional(S.Unknown),
-      session_recording_network_payload_capture_config: S.optional(S.Unknown),
-      session_recording_masking_config: S.optional(S.Unknown),
-      session_recording_url_trigger_config: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList,
-        ),
-      ),
-      session_recording_url_blocklist_config: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList,
-        ),
-      ),
-      session_recording_event_trigger_config: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList,
-        ),
-      ),
-      session_recording_trigger_match_type_config: S.optional(
-        S.NullOr(S.String),
-      ),
-      session_recording_trigger_groups: S.optional(S.Unknown),
-      session_recording_retention_period: S.optional(
-        SessionRecordingRetentionPeriodEnum,
-      ),
-      session_replay_config: S.optional(S.Unknown),
-      survey_config: S.optional(S.Unknown),
-      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
-      primary_dashboard: S.optional(S.NullOr(S.Number)),
-      live_events_columns: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList,
-        ),
-      ),
-      recording_domains: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultEvaluationContextsCreateRequestRecordingDomainsList,
-        ),
-      ),
-      cookieless_server_hash_mode: S.optional(
-        S.NullOr(CookielessServerHashModeEnum),
-      ),
-      human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-      inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-      extra_settings: S.optional(S.Unknown),
-      modifiers: S.optional(S.Unknown),
-      has_completed_onboarding_for: S.optional(S.Unknown),
-      surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-      heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-      feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-      default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-      require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-      capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      default_data_theme: S.optional(S.NullOr(S.Number)),
-      revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
-      marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
-      customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
-      onboarding_tasks: S.optional(S.Unknown),
-      base_currency: S.optional(BaseCurrencyEnum),
-      web_analytics_pre_aggregated_tables_enabled: S.optional(
-        S.NullOr(S.Boolean),
-      ),
-      receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-      business_model: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultEvaluationContextsCreateRequestBusinessModel,
-        ),
-      ),
-      conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-      conversations_settings: S.optional(S.Unknown),
-      proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      workflows_config: S.optional(TeamWorkflowsConfig),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/environments/{id}/default_evaluation_contexts/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EnvironmentsDefaultEvaluationContextsCreateRequest",
-  }) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateRequest>;
-
-export interface EnvironmentsDefaultEvaluationContextsCreateResponse {}
-export const EnvironmentsDefaultEvaluationContextsCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnvironmentsDefaultEvaluationContextsCreateResponse",
-  }) as any as S.Schema<EnvironmentsDefaultEvaluationContextsCreateResponse>;
-
-export interface EnvironmentsDefaultEvaluationContextsDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this environment (aka team). */
-  id: number;
-}
-export const EnvironmentsDefaultEvaluationContextsDestroyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/api/projects/{project_id}/environments/{id}/default_evaluation_contexts/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EnvironmentsDefaultEvaluationContextsDestroyRequest",
-  }) as any as S.Schema<EnvironmentsDefaultEvaluationContextsDestroyRequest>;
-
-export interface EnvironmentsDefaultEvaluationContextsDestroyResponse {}
-export const EnvironmentsDefaultEvaluationContextsDestroyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnvironmentsDefaultEvaluationContextsDestroyResponse",
-  }) as any as S.Schema<EnvironmentsDefaultEvaluationContextsDestroyResponse>;
-
-export interface EnvironmentsDefaultEvaluationContextsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this environment (aka team). */
-  id: number;
-}
-export const EnvironmentsDefaultEvaluationContextsRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/environments/{id}/default_evaluation_contexts/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EnvironmentsDefaultEvaluationContextsRetrieveRequest",
-  }) as any as S.Schema<EnvironmentsDefaultEvaluationContextsRetrieveRequest>;
-
-export interface EnvironmentsDefaultEvaluationContextsRetrieveResponse {}
-export const EnvironmentsDefaultEvaluationContextsRetrieveResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnvironmentsDefaultEvaluationContextsRetrieveResponse",
-  }) as any as S.Schema<EnvironmentsDefaultEvaluationContextsRetrieveResponse>;
-
-export interface EnvironmentsDefaultReleaseConditionsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this environment (aka team). */
-  id: number;
-}
-export const EnvironmentsDefaultReleaseConditionsRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/environments/{id}/default_release_conditions/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EnvironmentsDefaultReleaseConditionsRetrieveRequest",
-  }) as any as S.Schema<EnvironmentsDefaultReleaseConditionsRetrieveRequest>;
-
-export interface EnvironmentsDefaultReleaseConditionsRetrieveResponse {}
-export const EnvironmentsDefaultReleaseConditionsRetrieveResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnvironmentsDefaultReleaseConditionsRetrieveResponse",
-  }) as any as S.Schema<EnvironmentsDefaultReleaseConditionsRetrieveResponse>;
-
-export type EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList =
-  Array<string>;
-export const EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList>;
-
-export type EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList =
-  Array<string>;
-export const EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList>;
-
-export type EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList =
-  Array<unknown>;
-export const EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList>;
-
-export type EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  Array<unknown>;
-export const EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList>;
-
-export type EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList =
-  Array<string>;
-export const EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList>;
-
-export type EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList =
-  Array<string>;
-export const EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList>;
-
-export type EnvironmentsDefaultReleaseConditionsUpdateRequestRecordingDomainsList =
-  Array<string>;
-export const EnvironmentsDefaultReleaseConditionsUpdateRequestRecordingDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestRecordingDomainsList>;
-
-/** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
-export type EnvironmentsDefaultReleaseConditionsUpdateRequestBusinessModel =
-  | BusinessModelEnum
-  | BlankEnum;
-export const EnvironmentsDefaultReleaseConditionsUpdateRequestBusinessModel =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequestBusinessModel>;
-
-export interface EnvironmentsDefaultReleaseConditionsUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this environment (aka team). */
-  id: number;
-  name?: string;
-  access_control?: boolean;
-  app_urls?: EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList;
-  anonymize_ips?: boolean;
-  completed_snippet_onboarding?: boolean;
-  /** Filters used to identify internal/test users. Each entry is a property filter. Supported entry types and the exact shape each accepts: # Person property — match (or exclude) by a person property {"key": "email", "type": "person", "value": "@example.com", "operator": "icontains"} # Event property — match by an event property {"key": "$host", "type": "event", "value": "localhost", "operator": "icontains"} # Cohort membership — match (or exclude) members of a cohort. # Use operator "in" for inclusion and "not_in" for exclusion. Do NOT use a # `negation` field here — `negation` is specific to cohort *definitions* # (the inner sub-filters that build a cohort) and is rejected by the # property-filter schema. {"key": "id", "type": "cohort", "value": 8814, "operator": "not_in"} Common operators: "exact", "is_not", "icontains", "not_icontains", "regex", "not_regex", "gt", "lt", "gte", "lte", "is_set", "is_not_set", "in", "not_in". */
-  test_account_filters?: unknown;
-  test_account_filters_default_checked?: boolean | null;
-  path_cleaning_filters?: unknown;
-  is_demo?: boolean;
-  timezone?: TimezoneEnum | (string & {});
-  data_attributes?: unknown;
-  person_display_name_properties?: EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList | null;
-  correlation_config?: unknown;
-  autocapture_opt_out?: boolean | null;
-  autocapture_exceptions_opt_in?: boolean | null;
-  autocapture_web_vitals_opt_in?: boolean | null;
-  autocapture_web_vitals_allowed_metrics?: unknown;
-  autocapture_exceptions_errors_to_ignore?: unknown;
-  capture_console_log_opt_in?: boolean | null;
-  logs_settings?: unknown;
-  capture_performance_opt_in?: boolean | null;
-  session_recording_opt_in?: boolean;
-  session_recording_sample_rate?: string | null;
-  session_recording_minimum_duration_milliseconds?: number | null;
-  session_recording_linked_flag?: unknown;
-  session_recording_network_payload_capture_config?: unknown;
-  session_recording_masking_config?: unknown;
-  session_recording_url_trigger_config?: EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList | null;
-  session_recording_url_blocklist_config?: EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList | null;
-  session_recording_event_trigger_config?: EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList | null;
-  session_recording_trigger_match_type_config?: string | null;
-  /** V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields. */
-  session_recording_trigger_groups?: unknown;
-  session_recording_retention_period?:
-    | SessionRecordingRetentionPeriodEnum
-    | (string & {});
-  session_replay_config?: unknown;
-  survey_config?: unknown;
-  week_start_day?: WeekStartDayEnum | (number & {}) | null;
-  primary_dashboard?: number | null;
-  live_events_columns?: EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList | null;
-  recording_domains?: EnvironmentsDefaultReleaseConditionsUpdateRequestRecordingDomainsList | null;
-  cookieless_server_hash_mode?:
-    | CookielessServerHashModeEnum
-    | (number & {})
-    | null;
-  human_friendly_comparison_periods?: boolean | null;
-  inject_web_apps?: boolean | null;
-  extra_settings?: unknown;
-  modifiers?: unknown;
-  has_completed_onboarding_for?: unknown;
-  surveys_opt_in?: boolean | null;
-  heatmaps_opt_in?: boolean | null;
-  flags_persistence_default?: boolean | null;
-  feature_flag_confirmation_enabled?: boolean | null;
-  feature_flag_confirmation_message?: string | null;
-  /** Whether to automatically apply default evaluation contexts to new feature flags */
-  default_evaluation_contexts_enabled?: boolean | null;
-  /** Whether to require at least one evaluation context tag when creating new feature flags */
-  require_evaluation_contexts?: boolean | null;
-  capture_dead_clicks?: boolean | null;
-  default_data_theme?: number | null;
-  revenue_analytics_config?: TeamRevenueAnalyticsConfig;
-  marketing_analytics_config?: TeamMarketingAnalyticsConfig;
-  customer_analytics_config?: TeamCustomerAnalyticsConfig;
-  onboarding_tasks?: unknown;
-  base_currency?: BaseCurrencyEnum | (string & {});
-  web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  receive_org_level_activity_logs?: boolean | null;
-  /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
-  business_model?: EnvironmentsDefaultReleaseConditionsUpdateRequestBusinessModel | null;
-  conversations_enabled?: boolean | null;
-  conversations_settings?: unknown;
-  proactive_tasks_enabled?: boolean | null;
-  workflows_config?: TeamWorkflowsConfig;
-}
-export const EnvironmentsDefaultReleaseConditionsUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      name: S.optional(S.String),
-      access_control: S.optional(S.Boolean),
-      app_urls: S.optional(
-        EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList,
-      ),
-      anonymize_ips: S.optional(S.Boolean),
-      completed_snippet_onboarding: S.optional(S.Boolean),
-      test_account_filters: S.optional(S.Unknown),
-      test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-      path_cleaning_filters: S.optional(S.Unknown),
-      is_demo: S.optional(S.Boolean),
-      timezone: S.optional(TimezoneEnum),
-      data_attributes: S.optional(S.Unknown),
-      person_display_name_properties: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList,
-        ),
-      ),
-      correlation_config: S.optional(S.Unknown),
-      autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-      autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-      autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-      autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-      autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-      capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-      logs_settings: S.optional(S.Unknown),
-      capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-      session_recording_opt_in: S.optional(S.Boolean),
-      session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-      session_recording_minimum_duration_milliseconds: S.optional(
-        S.NullOr(S.Number),
-      ),
-      session_recording_linked_flag: S.optional(S.Unknown),
-      session_recording_network_payload_capture_config: S.optional(S.Unknown),
-      session_recording_masking_config: S.optional(S.Unknown),
-      session_recording_url_trigger_config: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList,
-        ),
-      ),
-      session_recording_url_blocklist_config: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList,
-        ),
-      ),
-      session_recording_event_trigger_config: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList,
-        ),
-      ),
-      session_recording_trigger_match_type_config: S.optional(
-        S.NullOr(S.String),
-      ),
-      session_recording_trigger_groups: S.optional(S.Unknown),
-      session_recording_retention_period: S.optional(
-        SessionRecordingRetentionPeriodEnum,
-      ),
-      session_replay_config: S.optional(S.Unknown),
-      survey_config: S.optional(S.Unknown),
-      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
-      primary_dashboard: S.optional(S.NullOr(S.Number)),
-      live_events_columns: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList,
-        ),
-      ),
-      recording_domains: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultReleaseConditionsUpdateRequestRecordingDomainsList,
-        ),
-      ),
-      cookieless_server_hash_mode: S.optional(
-        S.NullOr(CookielessServerHashModeEnum),
-      ),
-      human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-      inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-      extra_settings: S.optional(S.Unknown),
-      modifiers: S.optional(S.Unknown),
-      has_completed_onboarding_for: S.optional(S.Unknown),
-      surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-      heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-      feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-      default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-      require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-      capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      default_data_theme: S.optional(S.NullOr(S.Number)),
-      revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
-      marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
-      customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
-      onboarding_tasks: S.optional(S.Unknown),
-      base_currency: S.optional(BaseCurrencyEnum),
-      web_analytics_pre_aggregated_tables_enabled: S.optional(
-        S.NullOr(S.Boolean),
-      ),
-      receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-      business_model: S.optional(
-        S.NullOr(
-          EnvironmentsDefaultReleaseConditionsUpdateRequestBusinessModel,
-        ),
-      ),
-      conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-      conversations_settings: S.optional(S.Unknown),
-      proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      workflows_config: S.optional(TeamWorkflowsConfig),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/api/projects/{project_id}/environments/{id}/default_release_conditions/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EnvironmentsDefaultReleaseConditionsUpdateRequest",
-  }) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateRequest>;
-
-export interface EnvironmentsDefaultReleaseConditionsUpdateResponse {}
-export const EnvironmentsDefaultReleaseConditionsUpdateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnvironmentsDefaultReleaseConditionsUpdateResponse",
-  }) as any as S.Schema<EnvironmentsDefaultReleaseConditionsUpdateResponse>;
-
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
   Array<string>;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
@@ -2126,7 +2502,8 @@ export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestRecordingDom
 
 /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel>;
 
@@ -2408,13 +2785,13 @@ export const EnvironmentsEvaluationContextSuggestionsDestroyRequest =
     identifier: "EnvironmentsEvaluationContextSuggestionsDestroyRequest",
   }) as any as S.Schema<EnvironmentsEvaluationContextSuggestionsDestroyRequest>;
 
-export interface EnvironmentsEventIngestionRestrictionsRetrieveRequest {
+export interface EnvironmentsEventIngestionRestrictionsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this environment (aka team). */
   id: number;
 }
-export const EnvironmentsEventIngestionRestrictionsRetrieveRequest =
+export const EnvironmentsEventIngestionRestrictionsListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -2427,14 +2804,101 @@ export const EnvironmentsEventIngestionRestrictionsRetrieveRequest =
       }),
     ),
   ).annotate({
-    identifier: "EnvironmentsEventIngestionRestrictionsRetrieveRequest",
-  }) as any as S.Schema<EnvironmentsEventIngestionRestrictionsRetrieveRequest>;
+    identifier: "EnvironmentsEventIngestionRestrictionsListRequest",
+  }) as any as S.Schema<EnvironmentsEventIngestionRestrictionsListRequest>;
 
-export interface EnvironmentsEventIngestionRestrictionsRetrieveResponse {}
-export const EnvironmentsEventIngestionRestrictionsRetrieveResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnvironmentsEventIngestionRestrictionsRetrieveResponse",
-  }) as any as S.Schema<EnvironmentsEventIngestionRestrictionsRetrieveResponse>;
+/** * `skip_person_processing` - Skip Person Processing * `drop_event_from_ingestion` - Drop Event From Ingestion * `force_overflow_from_ingestion` - Force Overflow From Ingestion * `redirect_to_dlq` - Redirect To Dlq * `redirect_to_topic` - Redirect To Topic */
+export type RestrictionTypeEnum =
+  | "skip_person_processing"
+  | "drop_event_from_ingestion"
+  | "force_overflow_from_ingestion"
+  | "redirect_to_dlq"
+  | "redirect_to_topic";
+export const RestrictionTypeEnum = /*@__PURE__*/ S.String;
+
+/** Distinct IDs the restriction applies to. Empty means it is not filtered by distinct ID. */
+export type EventIngestionRestrictionDistinctIdsList = Array<string>;
+export const EventIngestionRestrictionDistinctIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventIngestionRestrictionDistinctIdsList>;
+
+/** Session IDs the restriction applies to. Empty means it is not filtered by session ID. */
+export type EventIngestionRestrictionSessionIdsList = Array<string>;
+export const EventIngestionRestrictionSessionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventIngestionRestrictionSessionIdsList>;
+
+/** Event names the restriction applies to. Empty means it is not filtered by event name. */
+export type EventIngestionRestrictionEventNamesList = Array<string>;
+export const EventIngestionRestrictionEventNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventIngestionRestrictionEventNamesList>;
+
+/** Event UUIDs the restriction applies to. Empty means it is not filtered by event UUID. */
+export type EventIngestionRestrictionEventUuidsList = Array<string>;
+export const EventIngestionRestrictionEventUuidsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventIngestionRestrictionEventUuidsList>;
+
+/** * `analytics` - Analytics * `session_recordings` - Session Recordings * `errortracking` - Errortracking * `clientwarnings` - Clientwarnings * `ai` - Ai */
+export type PipelinesEnum =
+  | "analytics"
+  | "session_recordings"
+  | "errortracking"
+  | "clientwarnings"
+  | "ai";
+export const PipelinesEnum = /*@__PURE__*/ S.String;
+
+/** Ingestion pipelines the restriction applies to. Filters combine with AND; values within a filter combine with OR. */
+export type EventIngestionRestrictionPipelinesList = Array<PipelinesEnum>;
+export const EventIngestionRestrictionPipelinesList = /*@__PURE__*/ S.Array(
+  PipelinesEnum,
+) as any as S.Schema<EventIngestionRestrictionPipelinesList>;
+
+export interface EventIngestionRestriction {
+  /** What happens to matching events: dropped, sent to the overflow lane, or ingested without person processing. * `skip_person_processing` - Skip Person Processing * `drop_event_from_ingestion` - Drop Event From Ingestion * `force_overflow_from_ingestion` - Force Overflow From Ingestion * `redirect_to_dlq` - Redirect To Dlq * `redirect_to_topic` - Redirect To Topic */
+  restriction_type: RestrictionTypeEnum;
+  /** Distinct IDs the restriction applies to. Empty means it is not filtered by distinct ID. */
+  distinct_ids: EventIngestionRestrictionDistinctIdsList;
+  /** Session IDs the restriction applies to. Empty means it is not filtered by session ID. */
+  session_ids: EventIngestionRestrictionSessionIdsList;
+  /** Event names the restriction applies to. Empty means it is not filtered by event name. */
+  event_names: EventIngestionRestrictionEventNamesList;
+  /** Event UUIDs the restriction applies to. Empty means it is not filtered by event UUID. */
+  event_uuids: EventIngestionRestrictionEventUuidsList;
+  /** Ingestion pipelines the restriction applies to. Filters combine with AND; values within a filter combine with OR. */
+  pipelines: EventIngestionRestrictionPipelinesList;
+}
+export const EventIngestionRestriction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    restriction_type: RestrictionTypeEnum,
+    distinct_ids: EventIngestionRestrictionDistinctIdsList,
+    session_ids: EventIngestionRestrictionSessionIdsList,
+    event_names: EventIngestionRestrictionEventNamesList,
+    event_uuids: EventIngestionRestrictionEventUuidsList,
+    pipelines: EventIngestionRestrictionPipelinesList,
+  }),
+).annotate({
+  identifier: "EventIngestionRestriction",
+}) as any as S.Schema<EventIngestionRestriction>;
+
+export type EnvironmentsEventIngestionRestrictionsListResponseBodyList =
+  Array<EventIngestionRestriction>;
+export const EnvironmentsEventIngestionRestrictionsListResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    EventIngestionRestriction,
+  ) as any as S.Schema<EnvironmentsEventIngestionRestrictionsListResponseBodyList>;
+
+export type EnvironmentsEventIngestionRestrictionsListResponse =
+  EnvironmentsEventIngestionRestrictionsListResponseBodyList;
+export const EnvironmentsEventIngestionRestrictionsListResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    EnvironmentsEventIngestionRestrictionsListResponseBodyList.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
+    identifier: "EnvironmentsEventIngestionRestrictionsListResponse",
+  }) as any as S.Schema<EnvironmentsEventIngestionRestrictionsListResponse>;
 
 export type EnvironmentsExperimentsConfigPartialUpdateRequestAppUrlsList =
   Array<string>;
@@ -2781,7 +3245,8 @@ export const EnvironmentsGenerateConversationsPublicTokenCreateRequestRecordingD
 
 /** Whether this project serves B2B or B2C customers, used to optimize the UI layout. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type EnvironmentsGenerateConversationsPublicTokenCreateRequestBusinessModel =
-  BusinessModelEnum | BlankEnum;
+  | BusinessModelEnum
+  | BlankEnum;
 export const EnvironmentsGenerateConversationsPublicTokenCreateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EnvironmentsGenerateConversationsPublicTokenCreateRequestBusinessModel>;
 
@@ -3931,98 +4396,6 @@ export const environmentsCompleteProductOnboardingPartialUpdate: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type EnvironmentsDefaultEvaluationContextsCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Manage default evaluation contexts for a team. */
-export const environmentsDefaultEvaluationContextsCreate: API.OperationMethod<
-  EnvironmentsDefaultEvaluationContextsCreateRequest,
-  EnvironmentsDefaultEvaluationContextsCreateResponse,
-  EnvironmentsDefaultEvaluationContextsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsDefaultEvaluationContextsCreateRequest,
-  output: EnvironmentsDefaultEvaluationContextsCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentsDefaultEvaluationContextsDestroyError =
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Manage default evaluation contexts for a team. */
-export const environmentsDefaultEvaluationContextsDestroy: API.OperationMethod<
-  EnvironmentsDefaultEvaluationContextsDestroyRequest,
-  EnvironmentsDefaultEvaluationContextsDestroyResponse,
-  EnvironmentsDefaultEvaluationContextsDestroyError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsDefaultEvaluationContextsDestroyRequest,
-  output: EnvironmentsDefaultEvaluationContextsDestroyResponse,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentsDefaultEvaluationContextsRetrieveError =
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Manage default evaluation contexts for a team. */
-export const environmentsDefaultEvaluationContextsRetrieve: API.OperationMethod<
-  EnvironmentsDefaultEvaluationContextsRetrieveRequest,
-  EnvironmentsDefaultEvaluationContextsRetrieveResponse,
-  EnvironmentsDefaultEvaluationContextsRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsDefaultEvaluationContextsRetrieveRequest,
-  output: EnvironmentsDefaultEvaluationContextsRetrieveResponse,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentsDefaultReleaseConditionsRetrieveError =
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Manage default release conditions for new feature flags in this team. */
-export const environmentsDefaultReleaseConditionsRetrieve: API.OperationMethod<
-  EnvironmentsDefaultReleaseConditionsRetrieveRequest,
-  EnvironmentsDefaultReleaseConditionsRetrieveResponse,
-  EnvironmentsDefaultReleaseConditionsRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsDefaultReleaseConditionsRetrieveRequest,
-  output: EnvironmentsDefaultReleaseConditionsRetrieveResponse,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentsDefaultReleaseConditionsUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Manage default release conditions for new feature flags in this team. */
-export const environmentsDefaultReleaseConditionsUpdate: API.OperationMethod<
-  EnvironmentsDefaultReleaseConditionsUpdateRequest,
-  EnvironmentsDefaultReleaseConditionsUpdateResponse,
-  EnvironmentsDefaultReleaseConditionsUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsDefaultReleaseConditionsUpdateRequest,
-  output: EnvironmentsDefaultReleaseConditionsUpdateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateError =
   | BadRequest
   | Forbidden
@@ -4074,19 +4447,19 @@ export const environmentsEvaluationContextSuggestionsDestroy: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type EnvironmentsEventIngestionRestrictionsRetrieveError =
+export type EnvironmentsEventIngestionRestrictionsListError =
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** Deprecated: use /api/environments/{id}/ instead. */
-export const environmentsEventIngestionRestrictionsRetrieve: API.OperationMethod<
-  EnvironmentsEventIngestionRestrictionsRetrieveRequest,
-  EnvironmentsEventIngestionRestrictionsRetrieveResponse,
-  EnvironmentsEventIngestionRestrictionsRetrieveError,
+export const environmentsEventIngestionRestrictionsList: API.OperationMethod<
+  EnvironmentsEventIngestionRestrictionsListRequest,
+  EnvironmentsEventIngestionRestrictionsListResponse,
+  EnvironmentsEventIngestionRestrictionsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsEventIngestionRestrictionsRetrieveRequest,
-  output: EnvironmentsEventIngestionRestrictionsRetrieveResponse,
+  input: EnvironmentsEventIngestionRestrictionsListRequest,
+  output: EnvironmentsEventIngestionRestrictionsListResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4167,7 +4540,7 @@ export const environmentsIsGeneratingDemoDataRetrieve: API.OperationMethod<
 }));
 
 export type EnvironmentsLogsConfigPartialUpdateError = PosthogOpError;
-/** Manage logs product configuration for this environment. */
+/** Manage logs product configuration for this environment. Members can read; writing requires project admin, matching the admin-only settings UI. */
 export const environmentsLogsConfigPartialUpdate: API.OperationMethod<
   EnvironmentsLogsConfigPartialUpdateRequest,
   EnvironmentsLogsConfigPartialUpdateResponse,
@@ -4182,7 +4555,7 @@ export const environmentsLogsConfigPartialUpdate: API.OperationMethod<
 }));
 
 export type EnvironmentsLogsConfigRetrieveError = PosthogOpError;
-/** Manage logs product configuration for this environment. */
+/** Manage logs product configuration for this environment. Members can read; writing requires project admin, matching the admin-only settings UI. */
 export const environmentsLogsConfigRetrieve: API.OperationMethod<
   EnvironmentsLogsConfigRetrieveRequest,
   EnvironmentsLogsConfigRetrieveResponse,

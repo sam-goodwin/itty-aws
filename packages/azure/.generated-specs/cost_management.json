@@ -30,10 +30,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers generation of a benefit utilization summaries report for the provided reservation.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BenefitUtilizationSummariesOperationStatus": {
@@ -375,10 +375,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers generation of a benefit utilization summaries report for the provided reservation order.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdRequest": {
@@ -461,10 +461,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers generation of a benefit utilization summaries report for the provided savings plan.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdRequest": {
@@ -555,10 +555,10 @@
           "method": "GET",
           "uri": "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the savings plan utilization summaries for daily or monthly grain.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BenefitUtilizationSummariesListResult": {
@@ -812,10 +812,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers generation of a benefit utilization summaries report for the provided savings plan order.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdRequest": {
@@ -898,10 +898,10 @@
           "method": "GET",
           "uri": "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the savings plan utilization summaries for daily or monthly grain.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BenefitUtilizationSummariesListBySavingsPlanOrderRequest": {
@@ -971,10 +971,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateReservationDetailsReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Generates the reservations details report for provided date range asynchronously based on enrollment id. The Reservation usage details can be viewed only by certain enterprise roles. For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#OperationStatus": {
@@ -1136,10 +1136,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers generation of a benefit utilization summaries report for the provided billing account. This API supports only enrollment accounts.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountRequest": {
@@ -1216,10 +1216,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Checks availability and correctness of a name for a cost allocation rule",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#CostAllocationRuleCheckNameAvailabilityResponse": {
@@ -1315,10 +1315,10 @@
           "method": "DELETE",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete cost allocation rule for billing account or enterprise enrollment.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#CostAllocationRulesDeleteRequest": {
@@ -1358,10 +1358,10 @@
           "method": "PUT",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create/Update a rule to allocate cost between different resources within a billing account or enterprise enrollment.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#CostAllocationRulesCreateOrUpdateResponse": {
@@ -1716,10 +1716,10 @@
           "method": "GET",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules/{ruleName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get a cost allocation rule by rule name and billing account or enterprise enrollment.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#CostAllocationRulesGetResponse": {
@@ -1797,10 +1797,10 @@
           "method": "GET",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get the list of all cost allocation rules for a billing account or enterprise enrollment.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#CostAllocationRuleList": {
@@ -1899,10 +1899,10 @@
           "method": "GET",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists savings plan utilization summaries for the enterprise agreement scope. Supported at grain values: 'Daily' and 'Monthly'.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BenefitUtilizationSummariesListByBillingAccountIdRequest": {
@@ -1972,10 +1972,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.CostManagement/pricesheets/default/download",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a URL to download the current month's pricesheet for a billing profile. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement.\n\nYou can use the new 2023-09-01 API version for billing periods January 2023 onwards. Azure Reserved Instance (RI) pricing is only available through the new version of the API.\n\nDue to Azure product growth, the Azure price sheet download experience in this preview version will be updated from a single csv/json file to a Zip file containing multiple csv/json files, each with max size of 75MB.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#PricesheetDownloadProperties": {
@@ -2205,10 +2205,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateReservationDetailsReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Generates the reservations details report for provided date range asynchronously by billing profile. The Reservation usage details can be viewed by only certain enterprise roles by default. For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/reservations/reservation-utilization#view-utilization-in-the-azure-portal-with-azure-rbac-access",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateReservationDetailsReportByBillingProfileIdRequest": {
@@ -2264,10 +2264,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers generation of a benefit utilization summaries report for the provided billing account and billing profile.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileRequest": {
@@ -2346,10 +2346,10 @@
           "method": "GET",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists savings plan utilization summaries for billing profile. Supported at grain values: 'Daily' and 'Monthly'.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BenefitUtilizationSummariesListByBillingProfileIdRequest": {
@@ -2427,10 +2427,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices/{invoiceName}/providers/Microsoft.CostManagement/pricesheets/default/download",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a URL to download the pricesheet for an invoice. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#DownloadURL": {
@@ -2504,10 +2504,10 @@
           "method": "POST",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.CostManagement/pricesheets/default/download",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Generates the pricesheet for the provided billing period asynchronously based on the Enrollment ID. This is for Enterprise Agreement customers.\n\n**Migrate to version 2025-03-01**\n\nYou can use the 2025-03-01 API version with the new URI:\n\n'/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.CostManagement/pricesheets/default/download'\n\nWith a new schema detailed below, the new version of the price sheet provides additional information and includes prices for Azure Reserved Instances (RI) for the current billing period. We recommend downloading an Azure Price Sheet for when entering a new billing period if you would maintain an ongoing record of past Azure Reserved Instance (RI) pricing.\n\nThe EA Azure price sheet is available for billing periods in the past 13 months. To request a price sheet for a billing period older than 13 months, please contact support.\n\nThe Azure price sheet download experience has been updated from a single .csv file to a zip file containing multiple .csv files, each with max size of 75MB. The 2023-11-01 version has been upgraded to use http POST method; details can be found below.\n\nAll versions of the Microsoft.Consumption Azure Price Sheet - Download by Billing Account (including 2022-06-01, 2021-10-01, 2020-01-01-preview, 2019-10-01, 2019-05-01) are scheduled to be retired on 01 June 2026 and will no longer be supported after this date.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#PriceSheetDownloadByBillingAccountRequest": {
@@ -2547,10 +2547,10 @@
           "method": "DELETE",
           "uri": "/providers/Microsoft.CostManagement/views/{viewName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to delete a view.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ViewsDeleteRequest": {
@@ -2582,10 +2582,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.CostManagement/views/{viewName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to create or update a view. Update operation requires latest eTag to be set in the request. You may obtain the latest eTag by performing a get operation. Create operation does not require eTag.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ViewsCreateOrUpdateResponse": {
@@ -3479,10 +3479,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/views/{viewName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the view by view name.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ViewsGetResponse": {
@@ -3558,10 +3558,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/views",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all views by tenant and object.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ViewListResult": {
@@ -3650,10 +3650,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Processes a private scheduled action.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsRunRequest": {
@@ -3685,10 +3685,10 @@
           "method": "DELETE",
           "uri": "/providers/Microsoft.CostManagement/scheduledActions/{name}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a private scheduled action.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsDeleteRequest": {
@@ -3720,10 +3720,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.CostManagement/scheduledActions/{name}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create or update a private scheduled action.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsCreateOrUpdateResponse": {
@@ -4201,10 +4201,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/scheduledActions/{name}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get the private scheduled action by name.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsGetResponse": {
@@ -4286,10 +4286,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/scheduledActions",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List all private scheduled actions.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionListResult": {
@@ -4399,10 +4399,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/operations",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#OperationListResult": {
@@ -4563,10 +4563,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.CostManagement/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Checks availability and correctness of the name for a scheduled action.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsCheckNameAvailabilityResponse": {
@@ -4648,10 +4648,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/query",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Query the usage data for external cloud provider type defined.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#QueryUsageByExternalCloudProviderTypeResponse": {
@@ -5251,10 +5251,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/forecast",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the forecast charges for external cloud provider type defined.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ForecastExternalCloudProviderUsageResponse": {
@@ -5783,10 +5783,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the dimensions by the external cloud provider type.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#DimensionsListResult": {
@@ -6040,10 +6040,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/alerts",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the Alerts for external cloud provider type defined.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#AlertsResult": {
@@ -6781,6 +6781,414 @@
       },
       "traits": {}
     },
+    "com.azure.cost_management#MarkupRulesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cost_management#MarkupRulesDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Delete a markup rule for a billing account and billing profile.",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.cost_management#MarkupRulesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "billingAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "BillingAccount ID"
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "BillingProfile ID"
+          }
+        },
+        "ruleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Markup rule name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#MarkupRulesCreateOrUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cost_management#MarkupRulesCreateOrUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.cost_management#MarkupRulesCreateOrUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Create or update a markup rule for a billing account and billing profile.",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.cost_management#MarkupRulesCreateOrUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.cost_management#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cost_management#MarkupRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "Markup rule properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cost_management#MarkupRuleProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the markup rule."
+          }
+        },
+        "percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The markup percentage of the rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Starting date of the markup rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Ending date of the markup rule."
+          }
+        },
+        "customerDetails": {
+          "target": "com.azure.cost_management#CustomerMetadata",
+          "traits": {
+            "smithy.api#documentation": "Customer information for the markup rule.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the markup rule."
+      }
+    },
+    "com.azure.cost_management#CustomerMetadata": {
+      "type": "structure",
+      "members": {
+        "billingAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer billing account id",
+            "smithy.api#required": {}
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer billing profile id",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The customer billing metadata"
+      }
+    },
+    "com.azure.cost_management#MarkupRulesCreateOrUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "billingAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "BillingAccount ID"
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "BillingProfile ID"
+          }
+        },
+        "ruleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Markup rule name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cost_management#MarkupRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "Markup rule properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#MarkupRulesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cost_management#MarkupRulesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cost_management#MarkupRulesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules/{ruleName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Get a markup rule by name for a billing account and billing profile.",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.cost_management#MarkupRulesGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.cost_management#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cost_management#MarkupRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "Markup rule properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cost_management#MarkupRulesGetRequest": {
+      "type": "structure",
+      "members": {
+        "billingAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "BillingAccount ID"
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "BillingProfile ID"
+          }
+        },
+        "ruleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Markup rule name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#MarkupRulesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cost_management#MarkupRulesListRequest"
+      },
+      "output": {
+        "target": "com.azure.cost_management#MarkupRulePagedResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List all markup rules for a billing account and billing profile.",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.cost_management#MarkupRulePagedResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cost_management#MarkupRulePagedResponseValueList",
+          "traits": {
+            "smithy.api#documentation": "The list of markup rules."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link (url) to the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Markup rule list result. It contains a list of Markup rules."
+      }
+    },
+    "com.azure.cost_management#MarkupRulePagedResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cost_management#MarkupRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of markup rules."
+      }
+    },
+    "com.azure.cost_management#MarkupRule": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.cost_management#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cost_management#MarkupRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "Markup rule properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Markup rule"
+      }
+    },
+    "com.azure.cost_management#MarkupRulesListRequest": {
+      "type": "structure",
+      "members": {
+        "billingAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "BillingAccount ID"
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "BillingProfile ID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.cost_management#ViewsDeleteByScope": {
       "type": "operation",
       "input": {
@@ -6794,10 +7202,10 @@
           "method": "DELETE",
           "uri": "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to delete a view.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ViewsDeleteByScopeRequest": {
@@ -6837,10 +7245,10 @@
           "method": "PUT",
           "uri": "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to create or update a view. Update operation requires latest eTag to be set in the request. You may obtain the latest eTag by performing a get operation. Create operation does not require eTag.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ViewsCreateOrUpdateByScopeResponse": {
@@ -6936,10 +7344,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/views/{viewName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the view for the defined scope by view name.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ViewsGetByScopeResponse": {
@@ -7023,10 +7431,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/views",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all views at the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ViewsListByScopeRequest": {
@@ -7058,10 +7466,10 @@
           "method": "DELETE",
           "uri": "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a setting within the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#SettingsDeleteByScopeRequest": {
@@ -7113,10 +7521,10 @@
           "method": "PUT",
           "uri": "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create or update a setting within the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#SettingsCreateOrUpdateByScopeResponse": {
@@ -7228,10 +7636,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/settings/{type}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get the setting from the given scope by name.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#SettingsGetByScopeResponse": {
@@ -7322,10 +7730,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/settings",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List all cost management settings in the requested scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#SettingsListResult": {
@@ -7419,10 +7827,10 @@
           "method": "POST",
           "uri": "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}/execute",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Runs a shared scheduled action within the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsRunByScopeRequest": {
@@ -7462,10 +7870,10 @@
           "method": "DELETE",
           "uri": "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a scheduled action within the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsDeleteByScopeRequest": {
@@ -7505,10 +7913,10 @@
           "method": "PUT",
           "uri": "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create or update a shared scheduled action within the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsCreateOrUpdateByScopeResponse": {
@@ -7616,10 +8024,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get the shared scheduled action from the given scope by name.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsGetByScopeResponse": {
@@ -7709,10 +8117,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/scheduledActions",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List all shared scheduled actions within the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsListByScopeRequest": {
@@ -7751,10 +8159,10 @@
           "method": "POST",
           "uri": "/{scope}/providers/Microsoft.CostManagement/query",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Query the usage data for scope defined.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#QueryUsageResponse": {
@@ -7881,10 +8289,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/operationStatus/{operationId}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get the status of the specified operation. This link is provided in the GenerateDetailedCostReport creation request response header.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateDetailedCostReportOperationStatusGetResponse": {
@@ -8070,10 +8478,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/operationResults/{operationId}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the result of the specified operation. The link with this operationId is provided as a response header of the initial request.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateDetailedCostReportOperationResultsGetResponse": {
@@ -8151,10 +8559,10 @@
           "method": "POST",
           "uri": "/{scope}/providers/Microsoft.CostManagement/generateDetailedCostReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Generates the detailed cost report for provided date range, billing period(only enterprise customers) or Invoice ID asynchronously at a certain scope. Call returns a 202 with header Azure-Consumption-AsyncOperation providing a link to the operation created. A call on the operation will provide the status and if the operation is completed the blob file where generated detailed cost report is being stored.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateDetailedCostReportCreateOperationResponse": {
@@ -8296,10 +8704,10 @@
           "method": "POST",
           "uri": "/{scope}/providers/Microsoft.CostManagement/generateCostDetailsReport",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This API is the replacement for all previously release Usage Details APIs. Request to generate a cost details report for the provided date range, billing period (Only enterprise customers) or Invoice Id asynchronously at a certain scope. The initial call to request a report will return a 202 with a 'Location' and 'Retry-After' header. The 'Location' header will provide the endpoint to poll to get the result of the report generation. The 'Retry-After' provides the duration to wait before polling for the generated report. A call to poll the report operation will provide a 202 response with a 'Location' header if the operation is still in progress. Once the report generation operation completes, the polling endpoint will provide a 200 response along with details on the report blob(s) that are available for download. The details on the file(s) available for download will be available in the polling response body. To Understand cost details (formerly known as usage details) fields found in files ,see https://learn.microsoft.com/en-us/azure/cost-management-billing/automate/understand-usage-details-fields",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#CostDetailsOperationResults": {
@@ -8618,10 +9026,10 @@
           "method": "POST",
           "uri": "/{scope}/providers/Microsoft.CostManagement/forecast",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the forecast charges for scope defined.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ForecastUsageResponse": {
@@ -8767,10 +9175,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to get the run history of an export for the defined scope and export name.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ExportExecutionListResult": {
@@ -9423,10 +9831,10 @@
           "method": "POST",
           "uri": "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/run",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to run an export.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ExportsExecuteRequest": {
@@ -9472,10 +9880,10 @@
           "method": "DELETE",
           "uri": "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to delete a export.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ExportsDeleteRequest": {
@@ -9515,10 +9923,10 @@
           "method": "PUT",
           "uri": "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to create or update a export. Update operation requires latest eTag to be set in the request. You may obtain the latest eTag by performing a get operation. Create operation does not require eTag.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ExportsCreateOrUpdateResponse": {
@@ -9944,10 +10352,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/exports/{exportName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to get the export for the defined scope by export name.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ExportsGetResponse": {
@@ -10076,10 +10484,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/exports",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to list all exports at the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ExportListResult": {
@@ -10223,10 +10631,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/dimensions",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the dimensions by the defined scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#DimensionsListRequest": {
@@ -10286,10 +10694,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/costDetailsOperationResults/{operationId}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get the result of the specified operation. This link is provided in the CostDetails creation request response Location header.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#GenerateCostDetailsReportGetOperationResultsRequest": {
@@ -10329,10 +10737,10 @@
           "method": "POST",
           "uri": "/{scope}/providers/Microsoft.CostManagement/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Checks availability and correctness of the name for a scheduled action within the given scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#ScheduledActionsCheckNameAvailabilityByScopeResponse": {
@@ -10422,10 +10830,10 @@
           "method": "DELETE",
           "uri": "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to delete a budget.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BudgetsDeleteRequest": {
@@ -10465,10 +10873,10 @@
           "method": "PUT",
           "uri": "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "The operation to create or update a budget. You can optionally provide an eTag if desired as a form of concurrency control. To obtain the latest eTag for a given budget, perform a get operation prior to your put operation.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BudgetsCreateOrUpdateResponse": {
@@ -11243,10 +11651,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/budgets/{budgetName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the budget for the scope by budget name.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BudgetsGetResponse": {
@@ -11330,10 +11738,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/budgets",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all budgets for the defined scope.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BudgetsListResult": {
@@ -11445,10 +11853,10 @@
           "method": "GET",
           "uri": "/{billingScope}/providers/Microsoft.CostManagement/benefitRecommendations",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List of recommendations for purchasing savings plan.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#BenefitRecommendationsListResult": {
@@ -11624,6 +12032,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Shared"
+          }
+        },
+        "MANAGEMENTGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManagementGroup"
           }
         }
       },
@@ -11847,10 +12261,10 @@
           "method": "PATCH",
           "uri": "/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Dismisses the specified alert",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#AlertsDismissResponse": {
@@ -11940,10 +12354,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the alert for the scope by alert ID.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#AlertsGetResponse": {
@@ -12027,10 +12441,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/alerts",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the alerts for scope defined.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.cost_management#AlertsListRequest": {
@@ -12157,6 +12571,18 @@
         },
         {
           "target": "com.azure.cost_management#AlertsListExternal"
+        },
+        {
+          "target": "com.azure.cost_management#MarkupRulesDelete"
+        },
+        {
+          "target": "com.azure.cost_management#MarkupRulesCreateOrUpdate"
+        },
+        {
+          "target": "com.azure.cost_management#MarkupRulesGet"
+        },
+        {
+          "target": "com.azure.cost_management#MarkupRulesList"
         },
         {
           "target": "com.azure.cost_management#ViewsDeleteByScope"

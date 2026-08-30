@@ -403,7 +403,8 @@ export const FluidRelayServerPropertiesInputProvisioningState =
 
 /** Values can be SystemAssigned or UserAssigned */
 export type CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType =
-  "SystemAssigned" | "UserAssigned";
+  | "SystemAssigned"
+  | "UserAssigned";
 export const CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -661,7 +662,10 @@ export const FluidRelayServersCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type FluidRelayServersCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const FluidRelayServersCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

@@ -59,9 +59,10 @@
           }
         },
         "created_by": {
-          "target": "smithy.api#Integer",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "created_by"
+            "smithy.api#httpQuery": "created_by",
+            "smithy.api#documentation": "Filter to workflows created by the user with this uuid."
           }
         },
         "id": {
@@ -82,6 +83,13 @@
           "traits": {
             "smithy.api#httpQuery": "offset",
             "smithy.api#documentation": "The initial index from which to return the results."
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "Case-insensitive search across workflow name and description."
           }
         },
         "status": {
@@ -171,6 +179,9 @@
         "exit_condition": {
           "target": "com.posthog.hog_flows#ExitConditionEnum"
         },
+        "email_sending_rate_limit": {
+          "target": "smithy.api#Document"
+        },
         "edges": {
           "target": "smithy.api#Document"
         },
@@ -188,9 +199,18 @@
         },
         "billable_action_types": {
           "target": "smithy.api#Document"
+        },
+        "user_access_level": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The effective access level the user has for this object",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
+      }
     },
     "com.posthog.hog_flows#HogFlowStatusEnum": {
       "type": "enum",
@@ -318,6 +338,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -326,7 +352,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.hog_flows#BlankEnum": {
@@ -567,10 +593,16 @@
           "traits": {
             "smithy.api#enumValue": "data-warehouse-table"
           }
+        },
+        "DATA_WAREHOUSE_VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "data-warehouse-view"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `events` - events\n* `person-updates` - person-updates\n* `data-warehouse-table` - data-warehouse-table"
+        "smithy.api#documentation": "* `events` - events\n* `person-updates` - person-updates\n* `data-warehouse-table` - data-warehouse-table\n* `data-warehouse-view` - data-warehouse-view"
       }
     },
     "com.posthog.hog_flows#HogFunctionFiltersActionsItemMap": {
@@ -650,6 +682,46 @@
         "smithy.api#documentation": "Event-based conversion goals: [{filters: {events: [{id, name, type: 'events'}], ...}}]."
       }
     },
+    "com.posthog.hog_flows#HogFlowEmailSendingRateLimit": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of emails this workflow sends per period.",
+            "smithy.api#required": {}
+          }
+        },
+        "period": {
+          "target": "com.posthog.hog_flows#PeriodEnum",
+          "traits": {
+            "smithy.api#documentation": "Window the count applies to. Sends over the limit are delayed until capacity frees up, not dropped.\n\n* `minute` - minute\n* `hour` - hour",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#PeriodEnum": {
+      "type": "enum",
+      "members": {
+        "MINUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "minute"
+          }
+        },
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `minute` - minute\n* `hour` - hour"
+      }
+    },
     "com.posthog.hog_flows#HogFlowEdge": {
       "type": "structure",
       "members": {
@@ -670,7 +742,7 @@
         "index": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Required for type='branch'. conditional_branch: index into config.conditions[index]. wait_until_condition: use index:0 — it advances via the index:0 branch edge when it resolves (a condition match or an events entry firing)."
+            "smithy.api#documentation": "Required for type='branch'. conditional_branch: index into config.conditions[index]. random_cohort_branch: index into config.cohorts[index]. wait_until_condition: use index:0 — it advances via the index:0 branch edge when it resolves (a condition match or an events entry firing)."
           }
         },
         "from": {
@@ -760,21 +832,21 @@
           }
         },
         "type": {
-          "target": "smithy.api#String",
+          "target": "com.posthog.hog_flows#HogFlowActionTypeEnum",
           "traits": {
-            "smithy.api#documentation": "trigger | function | function_email | function_sms | delay | conditional_branch | wait_until_condition | wait_until_time_window | random_cohort_branch | exit."
+            "smithy.api#documentation": "One of: trigger | function | function_email | function_sms | function_push | delay | wait_until_condition | wait_until_time_window | conditional_branch | random_cohort_branch | exit.\n\n* `trigger` - trigger\n* `function` - function\n* `function_email` - function_email\n* `function_sms` - function_sms\n* `function_push` - function_push\n* `delay` - delay\n* `wait_until_condition` - wait_until_condition\n* `wait_until_time_window` - wait_until_time_window\n* `conditional_branch` - conditional_branch\n* `random_cohort_branch` - random_cohort_branch\n* `exit` - exit"
           }
         },
         "config": {
           "target": "com.posthog.hog_flows#HogFlowActionConfig",
           "traits": {
-            "smithy.api#documentation": "Type-specific config keyed by action type. trigger: {type: event|webhook|manual|batch|schedule|tracking_pixel, filters?}. filters shape: {events: [{id, name, type:'events', properties:[<cond>]}], properties:[<cond>], actions:[...], filter_test_accounts:<bool>}. <cond>: {key, value, operator, type: event|person|group}. function*: {template_id, inputs: {<key>: {value: <str>}}}. Wrap values in {value:...} to enable hog templating ({person.x}, {event.x}); flat strings won't interpolate. Dictionary input values are template strings too — write booleans/numbers as single-expression templates ('{true}', '{42}'), which evaluate to the typed value. delay: {delay_duration: '<number><unit>'} where unit is m|h|d. Fractions OK ('0.5m'=30s; seconds unsupported). Per-unit max m<=60, h<=24, d<=30; values above are SILENTLY CLAMPED. Max 30d. conditional_branch: {conditions: [{filters}, ...]}. Index N matches the 'branch' edge with index:N. wait_until_condition: {condition: {filters}, events?: [{filters: {events: [{id, name, type: 'events'}], actions?: [...]}, name?}], max_wait_duration: <duration>} (same rules as delay). Continues when condition.filters match OR any events entry fires; each events entry must target at least one event or action. On resolution (a condition match or any events entry firing) it advances via the 'branch' edge with index:0; the max_wait_duration timeout falls through the 'continue' edge. exit: {reason}."
+            "smithy.api#documentation": "Type-specific config keyed by action type. trigger: {type: event|webhook|manual|batch|schedule|tracking_pixel|slack-message, filters?}. slack-message runs once per message posted in a connected Slack channel, and takes only filters: {properties: [<cond>]} over the message properties (channel, user, bot_id, text, subtype, is_thread_reply). Runs are person-less, so person-dependent steps are rejected. webhook and manual triggers also require template_id: 'template-source-webhook', and tracking_pixel requires template_id: 'template-source-webhook-pixel'. filters shape: {events: [{id, name, type:'events', properties:[<cond>]}], properties:[<cond>], actions:[...], filter_test_accounts:<bool>}. <cond>: {key, value, operator, type: event|person|group}, or {key: 'id', type: 'cohort', value: <cohort_id>, operator: 'in'} to reference a cohort. batch triggers may set filters.audience_type: 'persons' (default) or 'accounts'. An accounts audience fans out one run per customer analytics account and takes account filters instead: properties entries of type 'account_custom_property' (key = definition id), plus tag_names: [<str>], assigned_to_user_ids: [<int>], all_roles_unassigned: <bool>. function*: {template_id, inputs: {<key>: {value: <str>}}}. Wrap values in {value:...} to enable hog templating ({person.x}, {event.x}); flat strings won't interpolate. function_email also accepts tracking_enabled?: <bool> (default true) - when false, no open pixel is injected, links are not rewritten, and the send skips ESP-level open/click tracking, so opens and clicks are not recorded for that step (delivery/bounce/unsubscribe still are). Dictionary input values are template strings too — write booleans/numbers as single-expression templates ('{true}', '{42}'), which evaluate to the typed value. delay: waits a fixed span or until a per-person/-event date — set EXACTLY ONE of delay_duration or delay_until. {delay_duration: '<number><unit>'} where unit is s|m|h|d. Fractions OK ('1.5d'=36h). Per-unit max s<=60, m<=60, h<=24, d<=30; values above are SILENTLY CLAMPED. Max 30d. delay_until: {expression: '<SQL>', offset?: '<±number><unit>'} waits until the date expression evaluates to (an ISO string, unix seconds, or a date value all resolve to the same instant); offset is a signed duration shifting it ('-1d' a day before, '2h' two hours after). expression is compiled server-side, so any bytecode sent with it is discarded. A person property is person.properties.<key>; an event property is properties.<key>, as the 'event.' prefix resolves to nothing and aborts the run. Optional timezone (IANA name), use_person_timezone (read $geoip_time_zone) and fallback_timezone decide which zone a date with no offset of its own is read in; a date that states an offset, and unix seconds, ignore them. Default UTC. Optional sibling max_delay_duration (default 30d, same '<number><unit>' format) caps how far past the step's start the wait may run. conditional_branch: {conditions: [{filters}, ...]}. Index N matches the 'branch' edge with index:N. random_cohort_branch: {cohorts: [{percentage: <number>, name?}, ...]}. Index N matches the 'branch' edge with index:N; percentages are relative weights, so they should sum to 100 but a total above or below that still splits traffic in the given proportions. wait_until_condition: {condition: {filters}, events?: [{filters: {events: [{id, name, type: 'events'}], actions?: [...]}, name?}], max_wait_duration: <duration>} (same rules as delay). Continues when condition.filters match OR any events entry fires; each events entry must target at least one event or action. On resolution (a condition match or any events entry firing) it advances via the 'branch' edge with index:0; the max_wait_duration timeout falls through the 'continue' edge. exit: {reason}."
           }
         },
         "output_variable": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "Output variable definition for downstream actions."
+            "smithy.api#documentation": "Output variable for downstream actions: {key, result_path?, spread?, label?} or a list of those."
           }
         }
       },
@@ -798,6 +870,80 @@
       },
       "traits": {
         "smithy.api#documentation": "* `continue` - continue\n* `abort` - abort"
+      }
+    },
+    "com.posthog.hog_flows#HogFlowActionTypeEnum": {
+      "type": "enum",
+      "members": {
+        "TRIGGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trigger"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "function"
+          }
+        },
+        "FUNCTION_EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "function_email"
+          }
+        },
+        "FUNCTION_SMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "function_sms"
+          }
+        },
+        "FUNCTION_PUSH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "function_push"
+          }
+        },
+        "DELAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delay"
+          }
+        },
+        "WAIT_UNTIL_CONDITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wait_until_condition"
+          }
+        },
+        "WAIT_UNTIL_TIME_WINDOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wait_until_time_window"
+          }
+        },
+        "CONDITIONAL_BRANCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conditional_branch"
+          }
+        },
+        "RANDOM_COHORT_BRANCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random_cohort_branch"
+          }
+        },
+        "EXIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exit"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `trigger` - trigger\n* `function` - function\n* `function_email` - function_email\n* `function_sms` - function_sms\n* `function_push` - function_push\n* `delay` - delay\n* `wait_until_condition` - wait_until_condition\n* `wait_until_time_window` - wait_until_time_window\n* `conditional_branch` - conditional_branch\n* `random_cohort_branch` - random_cohort_branch\n* `exit` - exit"
       }
     },
     "com.posthog.hog_flows#HogFlowActionConfigCase0Map": {
@@ -879,7 +1025,7 @@
         "max_wait_duration": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "'<number><unit>' with unit m|h|d, e.g. '30m' (same rules as delay).",
+            "smithy.api#documentation": "'<number><unit>' with unit s|m|h|d, e.g. '30m' (same rules as delay).",
             "smithy.api#required": {}
           }
         }
@@ -899,7 +1045,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Type-specific config keyed by action type. trigger: {type: event|webhook|manual|batch|schedule|tracking_pixel, filters?}. filters shape: {events: [{id, name, type:'events', properties:[<cond>]}], properties:[<cond>], actions:[...], filter_test_accounts:<bool>}. <cond>: {key, value, operator, type: event|person|group}. function*: {template_id, inputs: {<key>: {value: <str>}}}. Wrap values in {value:...} to enable hog templating ({person.x}, {event.x}); flat strings won't interpolate. Dictionary input values are template strings too — write booleans/numbers as single-expression templates ('{true}', '{42}'), which evaluate to the typed value. delay: {delay_duration: '<number><unit>'} where unit is m|h|d. Fractions OK ('0.5m'=30s; seconds unsupported). Per-unit max m<=60, h<=24, d<=30; values above are SILENTLY CLAMPED. Max 30d. conditional_branch: {conditions: [{filters}, ...]}. Index N matches the 'branch' edge with index:N. wait_until_condition: {condition: {filters}, events?: [{filters: {events: [{id, name, type: 'events'}], actions?: [...]}, name?}], max_wait_duration: <duration>} (same rules as delay). Continues when condition.filters match OR any events entry fires; each events entry must target at least one event or action. On resolution (a condition match or any events entry firing) it advances via the 'branch' edge with index:0; the max_wait_duration timeout falls through the 'continue' edge. exit: {reason}."
+        "smithy.api#documentation": "Type-specific config keyed by action type. trigger: {type: event|webhook|manual|batch|schedule|tracking_pixel|slack-message, filters?}. slack-message runs once per message posted in a connected Slack channel, and takes only filters: {properties: [<cond>]} over the message properties (channel, user, bot_id, text, subtype, is_thread_reply). Runs are person-less, so person-dependent steps are rejected. webhook and manual triggers also require template_id: 'template-source-webhook', and tracking_pixel requires template_id: 'template-source-webhook-pixel'. filters shape: {events: [{id, name, type:'events', properties:[<cond>]}], properties:[<cond>], actions:[...], filter_test_accounts:<bool>}. <cond>: {key, value, operator, type: event|person|group}, or {key: 'id', type: 'cohort', value: <cohort_id>, operator: 'in'} to reference a cohort. batch triggers may set filters.audience_type: 'persons' (default) or 'accounts'. An accounts audience fans out one run per customer analytics account and takes account filters instead: properties entries of type 'account_custom_property' (key = definition id), plus tag_names: [<str>], assigned_to_user_ids: [<int>], all_roles_unassigned: <bool>. function*: {template_id, inputs: {<key>: {value: <str>}}}. Wrap values in {value:...} to enable hog templating ({person.x}, {event.x}); flat strings won't interpolate. function_email also accepts tracking_enabled?: <bool> (default true) - when false, no open pixel is injected, links are not rewritten, and the send skips ESP-level open/click tracking, so opens and clicks are not recorded for that step (delivery/bounce/unsubscribe still are). Dictionary input values are template strings too — write booleans/numbers as single-expression templates ('{true}', '{42}'), which evaluate to the typed value. delay: waits a fixed span or until a per-person/-event date — set EXACTLY ONE of delay_duration or delay_until. {delay_duration: '<number><unit>'} where unit is s|m|h|d. Fractions OK ('1.5d'=36h). Per-unit max s<=60, m<=60, h<=24, d<=30; values above are SILENTLY CLAMPED. Max 30d. delay_until: {expression: '<SQL>', offset?: '<±number><unit>'} waits until the date expression evaluates to (an ISO string, unix seconds, or a date value all resolve to the same instant); offset is a signed duration shifting it ('-1d' a day before, '2h' two hours after). expression is compiled server-side, so any bytecode sent with it is discarded. A person property is person.properties.<key>; an event property is properties.<key>, as the 'event.' prefix resolves to nothing and aborts the run. Optional timezone (IANA name), use_person_timezone (read $geoip_time_zone) and fallback_timezone decide which zone a date with no offset of its own is read in; a date that states an offset, and unix seconds, ignore them. Default UTC. Optional sibling max_delay_duration (default 30d, same '<number><unit>' format) caps how far past the step's start the wait may run. conditional_branch: {conditions: [{filters}, ...]}. Index N matches the 'branch' edge with index:N. random_cohort_branch: {cohorts: [{percentage: <number>, name?}, ...]}. Index N matches the 'branch' edge with index:N; percentages are relative weights, so they should sum to 100 but a total above or below that still splits traffic in the given proportions. wait_until_condition: {condition: {filters}, events?: [{filters: {events: [{id, name, type: 'events'}], actions?: [...]}, name?}], max_wait_duration: <duration>} (same rules as delay). Continues when condition.filters match OR any events entry fires; each events entry must target at least one event or action. On resolution (a condition match or any events entry firing) it advances via the 'branch' edge with index:0; the max_wait_duration timeout falls through the 'continue' edge. exit: {reason}."
       }
     },
     "com.posthog.hog_flows#HogFlowsCreateRequestActionsList": {
@@ -980,6 +1126,13 @@
           "target": "com.posthog.hog_flows#ExitConditionEnum",
           "traits": {
             "smithy.api#documentation": "exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion').\n\n* `exit_on_conversion` - Conversion\n* `exit_on_trigger_not_matched` - Trigger Not Matched\n* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion\n* `exit_only_at_end` - Only At End"
+          }
+        },
+        "email_sending_rate_limit": {
+          "target": "com.posthog.hog_flows#HogFlowEmailSendingRateLimit",
+          "traits": {
+            "smithy.api#documentation": "Optional email pacing for deliverability: {count, period: 'minute' | 'hour'}. The email worker spreads this workflow's sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "edges": {
@@ -1068,6 +1221,13 @@
             "smithy.api#documentation": "exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion').\n\n* `exit_on_conversion` - Conversion\n* `exit_on_trigger_not_matched` - Trigger Not Matched\n* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion\n* `exit_only_at_end` - Only At End"
           }
         },
+        "email_sending_rate_limit": {
+          "target": "com.posthog.hog_flows#HogFlowEmailSendingRateLimit",
+          "traits": {
+            "smithy.api#documentation": "Optional email pacing for deliverability: {count, period: 'minute' | 'hour'}. The email worker spreads this workflow's sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "edges": {
           "target": "com.posthog.hog_flows#HogFlowEdgesList",
           "traits": {
@@ -1100,9 +1260,38 @@
           "traits": {
             "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
           }
+        },
+        "user_access_level": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The effective access level the user has for this object",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "draft": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Staged content changes awaiting publish — a full snapshot of the workflow's actions, edges and settings. Null when there's nothing staged. Test it with a use_draft test run, then promote it with the publish endpoint or throw it away with discard_draft."
+          }
+        },
+        "draft_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the draft was last written; null when there's no staged draft. Pass this to publish (and as base_updated_at on further draft edits) so a concurrent editor's changes aren't clobbered — a mismatch returns 409.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "action_redirects": {
+          "target": "com.posthog.hog_flows#HogFlowActionRedirectsMap",
+          "traits": {
+            "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
+      }
     },
     "com.posthog.hog_flows#HogFlowEdgesList": {
       "type": "list",
@@ -1228,6 +1417,18 @@
       },
       "traits": {
         "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowActionRedirectsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred."
       }
     },
     "com.posthog.hog_flows#HogFlowsCreate": {
@@ -1402,6 +1603,13 @@
             "smithy.api#documentation": "exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion').\n\n* `exit_on_conversion` - Conversion\n* `exit_on_trigger_not_matched` - Trigger Not Matched\n* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion\n* `exit_only_at_end` - Only At End"
           }
         },
+        "email_sending_rate_limit": {
+          "target": "com.posthog.hog_flows#HogFlowEmailSendingRateLimit",
+          "traits": {
+            "smithy.api#documentation": "Optional email pacing for deliverability: {count, period: 'minute' | 'hour'}. The email worker spreads this workflow's sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "edges": {
           "target": "com.posthog.hog_flows#HogFlowsUpdateRequestEdgesList",
           "traits": {
@@ -1549,6 +1757,13 @@
             "smithy.api#documentation": "exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion').\n\n* `exit_on_conversion` - Conversion\n* `exit_on_trigger_not_matched` - Trigger Not Matched\n* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion\n* `exit_only_at_end` - Only At End"
           }
         },
+        "email_sending_rate_limit": {
+          "target": "com.posthog.hog_flows#HogFlowEmailSendingRateLimit",
+          "traits": {
+            "smithy.api#documentation": "Optional email pacing for deliverability: {count, period: 'minute' | 'hour'}. The email worker spreads this workflow's sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "edges": {
           "target": "com.posthog.hog_flows#HogFlowsPartialUpdateRequestEdgesList",
           "traits": {
@@ -1647,6 +1862,462 @@
         }
       }
     },
+    "com.posthog.hog_flows#DesignOperation": {
+      "type": "structure",
+      "members": {
+        "op": {
+          "target": "com.posthog.hog_flows#EmailTemplateDesignOperationEnum",
+          "traits": {
+            "smithy.api#documentation": "Design edit. update_content {id, patch}: deep-merge patch into the content block's fields (a null leaf deletes that key) — the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row.\n\n* `update_content` - update_content\n* `update_column` - update_column\n* `update_row` - update_row\n* `update_body` - update_body\n* `add_content` - add_content\n* `remove_content` - remove_content\n* `move_content` - move_content\n* `add_row` - add_row\n* `remove_row` - remove_row",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target node id. Required for update_content/column/row, remove_content, remove_row, move_content."
+          }
+        },
+        "column_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target column id. Required for add_content and move_content."
+          }
+        },
+        "patch": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "update_* only. Partial fields deep-merged into the existing node; a null leaf deletes that key. e.g. {values: {text: '<p>Hi</p>'}} changes only the block's text."
+          }
+        },
+        "content": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "add_content only. A content block {type, values: {...}}; omit id and values._meta — they're assigned server-side. type is one of text, heading, button, image, divider, html, etc."
+          }
+        },
+        "row": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "add_row only. A full row {cells, columns: [{contents: [...], values}], values}; ids and Unlayer numbering are assigned server-side for the row and everything nested in it."
+          }
+        },
+        "index": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "add_*/move_content only. 0-based insert position; omit to append to the end."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#EmailTemplateDesignOperationEnum": {
+      "type": "enum",
+      "members": {
+        "UPDATE_CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "update_content"
+          }
+        },
+        "UPDATE_COLUMN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "update_column"
+          }
+        },
+        "UPDATE_ROW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "update_row"
+          }
+        },
+        "UPDATE_BODY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "update_body"
+          }
+        },
+        "ADD_CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "add_content"
+          }
+        },
+        "REMOVE_CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "remove_content"
+          }
+        },
+        "MOVE_CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "move_content"
+          }
+        },
+        "ADD_ROW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "add_row"
+          }
+        },
+        "REMOVE_ROW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "remove_row"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `update_content` - update_content\n* `update_column` - update_column\n* `update_row` - update_row\n* `update_body` - update_body\n* `add_content` - add_content\n* `remove_content` - remove_content\n* `move_content` - move_content\n* `add_row` - add_row\n* `remove_row` - remove_row"
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdateRequestOperationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#DesignOperation"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ordered design edits applied atomically to this step's email design - the same operations as the email template patch. The result is re-rendered to HTML server-side, so the sent email always matches the patched design."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "action_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Id of the function_email step to edit."
+          }
+        },
+        "base_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optimistic concurrency: the updated_at (or draft_updated_at) last loaded. If the stored workflow is newer, the patch is rejected with 409 instead of clobbering a concurrent edit."
+          }
+        },
+        "operations": {
+          "target": "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdateRequestOperationsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered design edits applied atomically to this step's email design - the same operations as the email template patch. The result is re-rendered to HTML server-side, so the sent email always matches the patched design."
+          }
+        },
+        "email_patch": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Partial email fields deep-merged into the step's email (a null leaf deletes the key): subject, preheader, text, to, from, replyTo, cc, bcc. The sender is from: {integrationId, email?, name?}, where email and name are optional templated overrides resolved per invocation; the address must resolve to the selected sender's verified domain or the send fails. The design is edited via operations, and html is always re-rendered from it."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogFlow"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/actions/{action_id}/email/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsAssetsRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "action_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "action_id",
+            "smithy.api#documentation": "Only return assets sent by this email step (action node id) — used to drill in from a step's metric."
+          }
+        },
+        "after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "after",
+            "smithy.api#documentation": "Start of the time range, matched on sent time. Relative ('-30d', '-24h') or ISO 8601. Defaults to -30d (the retention window) — bounds the ClickHouse partition scan."
+          }
+        },
+        "before": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "before",
+            "smithy.api#documentation": "End of the time range, matched on sent time. Same format as 'after'. Defaults to now."
+          }
+        },
+        "distinct_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "distinct_id",
+            "smithy.api#documentation": "Only return assets sent to this distinct_id."
+          }
+        },
+        "invocation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "invocation_id",
+            "smithy.api#documentation": "Only return the asset for this specific workflow run — used to deep-link from a single log entry to the email it sent. Returns 0 rows when the send had no captured asset (text-only, kill-switch off, or standalone email)."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Maximum number of assets to return (1-500, default 50)."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "Number of assets to skip, for pagination."
+          }
+        },
+        "parent_run_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "parent_run_id",
+            "smithy.api#documentation": "Only return assets for this batch run (HogFlowBatchJob id). Pass an empty string to return only event-triggered (non-batch) assets; omit to return all."
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "Case-insensitive substring match on recipient email or subject."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#MessageAsset": {
+      "type": "structure",
+      "members": {
+        "invocation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The workflow run this email was sent in.",
+            "smithy.api#required": {}
+          }
+        },
+        "action_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email step (action node) within the workflow that sent this email.",
+            "smithy.api#required": {}
+          }
+        },
+        "function_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The workflow id that sent this email — used to navigate from a person's Emails tab back into the originating workflow.",
+            "smithy.api#required": {}
+          }
+        },
+        "function_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable workflow name for display. Empty when the workflow has been deleted; clients should fall back to function_id in that case.",
+            "smithy.api#required": {}
+          }
+        },
+        "parent_run_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The batch run this email belongs to, for batch-triggered workflows. Empty for event-triggered runs.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Message channel this asset was sent on: 'email' or 'push'. The per-person endpoints return one channel each.",
+            "smithy.api#required": {}
+          }
+        },
+        "distinct_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The recipient's distinct_id.",
+            "smithy.api#required": {}
+          }
+        },
+        "person_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The recipient's person UUID, if resolved.",
+            "smithy.api#required": {}
+          }
+        },
+        "recipient": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Who the message went to: the email address for 'email', or the recipient's distinct ID for 'push'.",
+            "smithy.api#required": {}
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email subject line, or the push notification title.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Delivery status at capture time. Currently always 'sent' - only delivered messages are captured.",
+            "smithy.api#required": {}
+          }
+        },
+        "sent_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the message was sent.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowsAssetsRetrieveResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#MessageAsset"
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowsAssetsRetrieveResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.posthog.hog_flows#HogFlowsAssetsRetrieveResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsAssetsRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsAssetsRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogFlowsAssetsRetrieveResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/assets/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsAssetContentRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "action_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "action_id",
+            "smithy.api#documentation": "The email step (action node) that sent the email. Defaults to empty for standalone email sends."
+          }
+        },
+        "invocation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "invocation_id",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workflow run the email was sent in."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsAssetContentRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsAssetContentRetrieveRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/assets/content/",
+          "code": 200
+        }
+      }
+    },
     "com.posthog.hog_flows#HogFlowsBatchJobsListRequest": {
       "type": "structure",
       "members": {
@@ -1696,7 +2367,8 @@
         "filters": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "Audience snapshot the run fanned out to, taken from the workflow's batch trigger filters."
+            "smithy.api#documentation": "Audience snapshot the run fanned out to, taken from the workflow's batch trigger filters.",
+            "smithy.api#required": {}
           }
         },
         "variables": {
@@ -1848,12 +2520,6 @@
             "smithy.api#required": {}
           }
         },
-        "filters": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Audience snapshot the run fanned out to, taken from the workflow's batch trigger filters."
-          }
-        },
         "variables": {
           "target": "smithy.api#Document",
           "traits": {
@@ -1892,13 +2558,138 @@
         }
       }
     },
+    "com.posthog.hog_flows#HogFlowsBatchJobsCancelCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "batch_job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the batch run to stop."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogFlowBatchJobCancelResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.posthog.hog_flows#HogFlowBatchJobStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "The batch run's status after this request. 'cancelled' once every in-flight run is flagged; a completion that raced the stop wins and is reported instead.\n\n* `waiting` - Waiting\n* `queued` - Queued\n* `active` - Active\n* `completed` - Completed\n* `cancelled` - Cancelled\n* `failed` - Failed",
+            "smithy.api#required": {}
+          }
+        },
+        "marked": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "In-flight runs newly flagged for cancellation by this request.",
+            "smithy.api#required": {}
+          }
+        },
+        "remaining": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "In-flight runs of this batch not yet flagged. Non-zero on very large runs; call again.",
+            "smithy.api#required": {}
+          }
+        },
+        "done": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when no in-flight runs of this batch remain unflagged.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response from the batch job cancel endpoint. Stopping is asynchronous: this call flags the\nrun's audience fan-out and its in-flight child runs, and the workflow workers terminate\nthem shortly after. Messages already sent are not recalled."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsBatchJobsCancelCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsBatchJobsCancelCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogFlowBatchJobCancelResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/batch_jobs/{batch_job_id}/cancel/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Stop a batch run: no more of its audience is enrolled, and every run of it\nstill in flight is canceled.\n\nStopping is asynchronous: runs are flagged here, then terminated by the\nworkflow workers. Steps that already executed, like sent messages, are not\nundone. Already-finished batch runs are left untouched."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsDiscardDraftCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsDiscardDraftCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsDiscardDraftCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogFlow"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/discard_draft/",
+          "code": 200
+        }
+      }
+    },
     "com.posthog.hog_flows#HogFlowGraphOperation": {
       "type": "structure",
       "members": {
         "op": {
           "target": "com.posthog.hog_flows#HogFlowGraphOperationOpEnum",
           "traits": {
-            "smithy.api#documentation": "Graph edit. update_action {id, patch}: deep-merge patch into the action's fields (a null leaf deletes that key) — the surgical path for tweaking one config value. add_action {action}: append a full action node. remove_action {id}: delete a node and reconnect its incoming edges to its first outgoer. add_edge {edge} / remove_edge {edge}: add or delete one edge. replace_action_edges {id, edges}: replace this action's outgoing edges with the given set (use when adding/removing branch conditions); incoming edges are left intact.\n\n* `update_action` - update_action\n* `add_action` - add_action\n* `remove_action` - remove_action\n* `add_edge` - add_edge\n* `remove_edge` - remove_edge\n* `replace_action_edges` - replace_action_edges",
+            "smithy.api#documentation": "Graph edit. update_action {id, patch}: deep-merge patch into the action's fields (a null leaf deletes that key) — the surgical path for tweaking one config value. add_action {action, edges?}: append a full action node, optionally wiring its edges in the same op. remove_action {id}: delete a node and reconnect its incoming edges to its first outgoer. add_edge {edge} / remove_edge {edge}: add or delete one edge. replace_action_edges {id, edges}: replace this action's outgoing edges with the given set (use when adding/removing branch conditions); incoming edges are left intact.\n\n* `update_action` - update_action\n* `add_action` - add_action\n* `remove_action` - remove_action\n* `add_edge` - add_edge\n* `remove_edge` - remove_edge\n* `replace_action_edges` - replace_action_edges",
             "smithy.api#required": {}
           }
         },
@@ -1929,7 +2720,7 @@
         "edges": {
           "target": "com.posthog.hog_flows#HogFlowGraphOperationEdgesList",
           "traits": {
-            "smithy.api#documentation": "replace_action_edges only. The complete set of the action's outgoing edges; incoming edges are preserved."
+            "smithy.api#documentation": "replace_action_edges: the complete set of the action's outgoing edges (incoming edges are preserved). add_action: optional edges to wire the new node in the same op."
           }
         }
       },
@@ -1985,7 +2776,7 @@
         "target": "com.posthog.hog_flows#HogFlowEdge"
       },
       "traits": {
-        "smithy.api#documentation": "replace_action_edges only. The complete set of the action's outgoing edges; incoming edges are preserved."
+        "smithy.api#documentation": "replace_action_edges: the complete set of the action's outgoing edges (incoming edges are preserved). add_action: optional edges to wire the new node in the same op."
       }
     },
     "com.posthog.hog_flows#HogFlowsGraphPartialUpdateRequestOperationsList": {
@@ -2014,6 +2805,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "base_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optimistic concurrency: the updated_at (or draft_updated_at) last loaded. If the stored graph is newer, the patch is rejected with 409 instead of clobbering a concurrent edit."
           }
         },
         "operations": {
@@ -2081,6 +2878,13 @@
           "traits": {
             "smithy.api#httpQuery": "distinct_id",
             "smithy.api#documentation": "Only return invocations triggered for this distinct_id (the person the run executed for)."
+          }
+        },
+        "error_message_contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "error_message_contains",
+            "smithy.api#documentation": "Only return invocations whose latest error_message contains this substring (case-insensitive). Matches the rerun endpoint's filter of the same name, so callers can check what a rerun would target."
           }
         },
         "limit": {
@@ -2368,6 +3172,95 @@
         }
       }
     },
+    "com.posthog.hog_flows#HogFlowsInvocationResultsCountRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "after",
+            "smithy.api#documentation": "Start of the time range, matched on scheduled time. Relative ('-7d', '-24h') or ISO 8601. Defaults to -7d — bounds the ClickHouse partition scan, so widen it explicitly for older runs."
+          }
+        },
+        "before": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "before",
+            "smithy.api#documentation": "End of the time range, matched on scheduled time. Same format as 'after'. Defaults to now."
+          }
+        },
+        "distinct_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "distinct_id",
+            "smithy.api#documentation": "Only return invocations triggered for this distinct_id (the person the run executed for)."
+          }
+        },
+        "error_message_contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "error_message_contains",
+            "smithy.api#documentation": "Only return invocations whose latest error_message contains this substring (case-insensitive). Matches the rerun endpoint's filter of the same name, so callers can check what a rerun would target."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "status",
+            "smithy.api#documentation": "Comma-separated invocation statuses to include, e.g. 'failed' or 'success,failed'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogInvocationResultsCount": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of invocations matching the filters, without the list endpoint's 500-row cap.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowsInvocationResultsCountRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsInvocationResultsCountRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogInvocationResultsCount"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/invocation_results_count/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Count invocations matching the same filters as the list endpoint,\nwithout its 500-row cap."
+      }
+    },
     "com.posthog.hog_flows#HogFlowInput": {
       "type": "structure",
       "members": {
@@ -2410,6 +3303,13 @@
             "smithy.api#documentation": "exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion').\n\n* `exit_on_conversion` - Conversion\n* `exit_on_trigger_not_matched` - Trigger Not Matched\n* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion\n* `exit_only_at_end` - Only At End"
           }
         },
+        "email_sending_rate_limit": {
+          "target": "com.posthog.hog_flows#HogFlowEmailSendingRateLimit",
+          "traits": {
+            "smithy.api#documentation": "Optional email pacing for deliverability: {count, period: 'minute' | 'hour'}. The email worker spreads this workflow's sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "edges": {
           "target": "com.posthog.hog_flows#HogFlowInputEdgesList",
           "traits": {
@@ -2429,7 +3329,9 @@
           }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
+      }
     },
     "com.posthog.hog_flows#HogFlowInputEdgesList": {
       "type": "list",
@@ -2524,6 +3426,12 @@
           "traits": {
             "smithy.api#documentation": "Start execution from this action ID instead of the trigger. Each test run executes a single node and returns the next action id."
           }
+        },
+        "use_draft": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Test the workflow's staged draft instead of its live config. Set this only when workflows-get returns a non-null 'draft'; it can't be combined with an explicit configuration override."
+          }
         }
       },
       "traits": {
@@ -2557,6 +3465,97 @@
         }
       }
     },
+    "com.posthog.hog_flows#HogFlowsInvocationsCancelCreateRequestInvocationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Cancel these specific invocations. Capped at 10000 per request. Invocations that already finished are skipped rather than failing the request."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsInvocationsCancelCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "invocation_ids": {
+          "target": "com.posthog.hog_flows#HogFlowsInvocationsCancelCreateRequestInvocationIdsList",
+          "traits": {
+            "smithy.api#documentation": "Cancel these specific invocations. Capped at 10000 per request. Invocations that already finished are skipped rather than failing the request."
+          }
+        },
+        "all": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Cancel every in-flight invocation of this workflow, including parked delays and waits."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogInvocationCancelResponse": {
+      "type": "structure",
+      "members": {
+        "marked": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "In-flight runs newly flagged for cancellation by this request.",
+            "smithy.api#required": {}
+          }
+        },
+        "remaining": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Matching in-flight runs not yet flagged. Non-zero on very large workflows; call again.",
+            "smithy.api#required": {}
+          }
+        },
+        "done": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when no matching in-flight runs remain unflagged.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response from the cancel endpoint. Cancellation is asynchronous: this call flags runs, and\nthe workflow workers terminate them shortly after (immediately for parked runs, at the next\nstep boundary for runs mid-execution). A run stays 'running' in listings until that happens."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsInvocationsCancelCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsInvocationsCancelCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogInvocationCancelResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/invocations/cancel/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Cancel in-flight invocations of this workflow, by id or all at once.\n\nCancellation is asynchronous: runs are flagged here, then terminated by\nthe workflow workers, promptly for parked runs (delays and waits) and at\nthe next step boundary for runs mid-execution. Steps that already\nexecuted are not undone. Canceled runs can be re-run later via `rerun`."
+      }
+    },
     "com.posthog.hog_flows#HogFlowsLogsRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -2580,7 +3579,7 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "after",
-            "smithy.api#documentation": "Only return entries after this ISO 8601 timestamp."
+            "smithy.api#documentation": "Only return entries after this ISO 8601 timestamp. Defaults to 7 days ago; pass an explicit value to read further back."
           }
         },
         "before": {
@@ -2998,6 +3997,759 @@
         }
       }
     },
+    "com.posthog.hog_flows#HogFlowsPublishCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "confirm": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "False (default) previews the publish: returns the impact on people in-flight without changing anything. True applies the staged draft to the live workflow."
+          }
+        },
+        "confirm_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "From the preview response — required when confirm=true. Expires after 15 minutes, and any draft edit invalidates it (409), so you always publish the exact draft you previewed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogFlowPublishResponse": {
+      "type": "structure",
+      "members": {
+        "published": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the draft was applied to the live workflow.",
+            "smithy.api#required": {}
+          }
+        },
+        "in_flight_runs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Runs currently in flight (parked on waits/delays or executing) that will follow the new config once published. Null when the count is unavailable.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "draft_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staged draft's timestamp, for reference; publishing is confirmed via confirm_token.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "confirm_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Echo this back with confirm=true to publish the previewed draft. Only set on previews.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "impact": {
+          "target": "com.posthog.hog_flows#HogFlowPublishImpact",
+          "traits": {
+            "smithy.api#documentation": "What publishing does to people in-flight. Only set on previews; counts are approximate.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "workflow": {
+          "target": "com.posthog.hog_flows#HogFlow",
+          "traits": {
+            "smithy.api#documentation": "The workflow after publishing (only set when published=true).",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpact": {
+      "type": "structure",
+      "members": {
+        "deleted_steps": {
+          "target": "com.posthog.hog_flows#HogFlowPublishImpactDeletedStepsList",
+          "traits": {
+            "smithy.api#documentation": "Per deleted step: how many runs are parked there and where they go. Empty for content-only edits.",
+            "smithy.api#required": {}
+          }
+        },
+        "position_unknown": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "In-flight runs whose current step is unknown. Null when the count is unavailable.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "empty_variables": {
+          "target": "com.posthog.hog_flows#HogFlowPublishImpactEmptyVariablesList",
+          "traits": {
+            "smithy.api#documentation": "Variables that render empty for runs predating their producer.",
+            "smithy.api#required": {}
+          }
+        },
+        "schedule_conflicts": {
+          "target": "com.posthog.hog_flows#HogFlowPublishImpactScheduleConflictsList",
+          "traits": {
+            "smithy.api#documentation": "Schedules overriding variables the draft removes.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactDeletedStep": {
+      "type": "structure",
+      "members": {
+        "action_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the step this publish deletes.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the deleted step.",
+            "smithy.api#required": {}
+          }
+        },
+        "runs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "About how many in-flight runs are parked on this step. Null when the count is unavailable.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "moves_to": {
+          "target": "com.posthog.hog_flows#HogFlowPublishImpactMoveTarget",
+          "traits": {
+            "smithy.api#documentation": "Where those runs continue (skip-forward). Null when nothing downstream survives.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "exits": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when runs parked here exit the workflow instead of moving forward.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactMoveTarget": {
+      "type": "structure",
+      "members": {
+        "action_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the surviving step runs will continue at.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the surviving step.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactDeletedStepsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#HogFlowPublishImpactDeletedStep"
+      },
+      "traits": {
+        "smithy.api#documentation": "Per deleted step: how many runs are parked there and where they go. Empty for content-only edits."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactEmptyVariable": {
+      "type": "structure",
+      "members": {
+        "variable": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variable that renders empty for runs already past its producer.",
+            "smithy.api#required": {}
+          }
+        },
+        "set_by": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the new action that sets it; null when the draft newly declares it as a workflow variable.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "referenced_by": {
+          "target": "com.posthog.hog_flows#HogFlowPublishImpactEmptyVariableReferencedByList",
+          "traits": {
+            "smithy.api#documentation": "Ids of steps whose content references the variable.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactEmptyVariableReferencedByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ids of steps whose content references the variable."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactEmptyVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#HogFlowPublishImpactEmptyVariable"
+      },
+      "traits": {
+        "smithy.api#documentation": "Variables that render empty for runs predating their producer."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactScheduleConflict": {
+      "type": "structure",
+      "members": {
+        "schedule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schedule whose variable overrides reference removed variables.",
+            "smithy.api#required": {}
+          }
+        },
+        "variables": {
+          "target": "com.posthog.hog_flows#HogFlowPublishImpactScheduleConflictVariablesList",
+          "traits": {
+            "smithy.api#documentation": "Override keys the draft no longer declares as workflow variables.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactScheduleConflictVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Override keys the draft no longer declares as workflow variables."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowPublishImpactScheduleConflictsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#HogFlowPublishImpactScheduleConflict"
+      },
+      "traits": {
+        "smithy.api#documentation": "Schedules overriding variables the draft removes."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsPublishCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsPublishCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogFlowPublishResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/publish/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.hog_flows#HogInvocationRerunFilter": {
+      "type": "structure",
+      "members": {
+        "window_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Inclusive lower bound on `scheduled_at` (UTC).",
+            "smithy.api#required": {}
+          }
+        },
+        "window_end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Exclusive upper bound on `scheduled_at` (UTC).",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.posthog.hog_flows#HogInvocationRerunFilterStatusList",
+          "traits": {
+            "smithy.api#documentation": "Restrict to invocations whose latest status is one of these. Defaults to ['failed']."
+          }
+        },
+        "error_kind": {
+          "target": "com.posthog.hog_flows#HogInvocationRerunFilterErrorKindList",
+          "traits": {
+            "smithy.api#documentation": "Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout')."
+          }
+        },
+        "error_message_contains": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Restrict to invocations whose error_message contains this substring (case-insensitive). Use to isolate one failure mode when error_kind is too coarse (most app-level errors share the 'hog_error' kind)."
+          }
+        },
+        "max_attempts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Skip invocations that have already been attempted this many times or more."
+          }
+        },
+        "max_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of invocations to rerun in this request. Server-side cap is 10000."
+          }
+        },
+        "invocation_ids": {
+          "target": "com.posthog.hog_flows#HogInvocationRerunFilterInvocationIdsList",
+          "traits": {
+            "smithy.api#documentation": "Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Filter shape for the rerun endpoint. `window_start`/`window_end` are required."
+      }
+    },
+    "com.posthog.hog_flows#HogInvocationRerunFilterStatusEnum": {
+      "type": "enum",
+      "members": {
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `running` - running\n* `succeeded` - succeeded\n* `failed` - failed\n* `canceled` - canceled"
+      }
+    },
+    "com.posthog.hog_flows#HogInvocationRerunFilterStatusList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#HogInvocationRerunFilterStatusEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Restrict to invocations whose latest status is one of these. Defaults to ['failed']."
+      }
+    },
+    "com.posthog.hog_flows#HogInvocationRerunFilterErrorKindList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout')."
+      }
+    },
+    "com.posthog.hog_flows#HogInvocationRerunFilterInvocationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsRerunCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "filter": {
+          "target": "com.posthog.hog_flows#HogInvocationRerunFilter",
+          "traits": {
+            "smithy.api#documentation": "Required. `window_start` / `window_end` pin the query to a small set of date partitions on the `hog_invocation_results` table. Optional `invocation_ids` restricts to specific invocations within that window.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogInvocationRerunResponse": {
+      "type": "structure",
+      "members": {
+        "rerun_job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the cyclotron wrapper job that will run the rerun. Use this to poll status.",
+            "smithy.api#required": {}
+          }
+        },
+        "queued_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Always 0 — rerun runs asynchronously. Kept for response shape stability.",
+            "smithy.api#required": {}
+          }
+        },
+        "skipped_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Always 0 — rerun runs asynchronously. Kept for response shape stability.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response from the rerun endpoint. The endpoint only enqueues a wrapper\njob onto the cyclotron `rerun` queue — the actual ClickHouse paging and\nre-enqueue work happens asynchronously in the `cdp-rerun-worker` service.\nUse `rerun_job_id` to look up progress on the wrapper job later."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsRerunCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsRerunCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogInvocationRerunResponse"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.hog_flows#BadRequest"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/rerun/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Rerun past invocations of this hog flow from their stored payloads.\n\nSame shape and semantics as the hog function rerun endpoint —\nproxies through to the CDP worker, which reads matching rows from\nClickHouse, rehydrates from `invocation_globals`, and re-enqueues\nonto cyclotron with `is_retry=1`.\n\nBecause rerun replays historical event/person/group data, it requires\n`person:read` and `group:read` on top of `hog_flow:write`."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsRevisionsListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of results to return per page."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "The initial index from which to return the results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#PaginatedHogFlowRevisionBasicList": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "previous": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "results": {
+          "target": "com.posthog.hog_flows#PaginatedHogFlowRevisionBasicListResultsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowRevisionBasic": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Workflow version this snapshot was published as.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_by": {
+          "target": "com.posthog.hog_flows#UserBasic",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#PaginatedHogFlowRevisionBasicListResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#HogFlowRevisionBasic"
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowsRevisionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsRevisionsListRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#PaginatedHogFlowRevisionBasicList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/revisions/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsRevisionsRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Workflow version to fetch."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogFlowRevision": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Workflow version this snapshot was published as.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_by": {
+          "target": "com.posthog.hog_flows#UserBasic",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Full snapshot of the workflow's content fields (actions, edges, trigger, etc.) at this version.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowsRevisionsRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsRevisionsRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogFlowRevision"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/revisions/{version}/",
+          "code": 200
+        }
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsRevisionsRestoreCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this hog flow."
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Workflow version to restore."
+          }
+        },
+        "overwrite": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Replace the open staged draft with this revision's content. Without it, restoring while a draft is open returns 409."
+          }
+        },
+        "expected_draft_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The draft_updated_at of the staged draft this overwrite was confirmed against. If a draft exists with a different stamp (it was staged or edited since the confirmation was shown), the restore returns 409 instead of overwriting it. Omit to overwrite unconditionally.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsRevisionsRestoreCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsRevisionsRestoreCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#HogFlow"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/hog_flows/{id}/revisions/{version}/restore/",
+          "code": 200
+        }
+      }
+    },
     "com.posthog.hog_flows#HogFlowsSchedulesListRequest": {
       "type": "structure",
       "members": {
@@ -3372,6 +5124,13 @@
             "smithy.api#documentation": "exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion').\n\n* `exit_on_conversion` - Conversion\n* `exit_on_trigger_not_matched` - Trigger Not Matched\n* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion\n* `exit_only_at_end` - Only At End"
           }
         },
+        "email_sending_rate_limit": {
+          "target": "com.posthog.hog_flows#HogFlowEmailSendingRateLimit",
+          "traits": {
+            "smithy.api#documentation": "Optional email pacing for deliverability: {count, period: 'minute' | 'hour'}. The email worker spreads this workflow's sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "edges": {
           "target": "com.posthog.hog_flows#HogFlowsBulkDeleteCreateRequestEdgesList",
           "traits": {
@@ -3420,6 +5179,69 @@
           "uri": "/api/projects/{project_id}/hog_flows/bulk_delete/",
           "code": 200
         }
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsEmailSendingSuspensionRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#EmailSendingSuspensionStatus": {
+      "type": "structure",
+      "members": {
+        "email_sending_suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True while workflow email sending is suspended for this project to protect deliverability.",
+            "smithy.api#required": {}
+          }
+        },
+        "email_sending_suspended_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When email sending was suspended; null while sending is enabled.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "email_sending_suspension_reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Staff-authored reason shown to customers alongside the suspension notice; empty when not suspended.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cheap suspension-only read for the persistent scene-wide banner — no reputation computation."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsEmailSendingSuspensionRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsEmailSendingSuspensionRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#EmailSendingSuspensionStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/hog_flows/email_sending_suspension/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Cheap read for the scene-wide suspension banner: single-row `TeamWorkflowsConfig` lookup\nwith no reputation computation. Every project member sees this — a suspension stops\neveryone's email, so hiding it would leave silent send failures unexplained."
       }
     },
     "com.posthog.hog_flows#HogFlowsMetricsGlobalRetrieveRequest": {
@@ -3517,6 +5339,387 @@
         }
       }
     },
+    "com.posthog.hog_flows#HogFlowsReputationRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "Case-insensitive workflow name filter. Applied before the worst-50 cap, so it finds workflows the unfiltered response cuts off."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.hog_flows#TeamEmailReputationResponse": {
+      "type": "structure",
+      "members": {
+        "aws": {
+          "target": "com.posthog.hog_flows#AwsTenantReputation",
+          "traits": {
+            "smithy.api#documentation": "Sending health as judged and enforced by AWS SES for this project's tenant; null when the caller lacks project-wide workflow access, no tenant is provisioned, or AWS is unreachable.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "reputation": {
+          "target": "com.posthog.hog_flows#EmailSendingRates",
+          "traits": {
+            "smithy.api#documentation": "Project-wide rates across all workflow email in the last 30 days (including sends from since-deleted workflows); null when nothing was sent.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "workflows": {
+          "target": "com.posthog.hog_flows#TeamEmailReputationResponseWorkflowsList",
+          "traits": {
+            "smithy.api#documentation": "Rates per workflow, worst first (complaint rate, then bounce rate), capped at the worst 50.",
+            "smithy.api#required": {}
+          }
+        },
+        "email_sending_suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True while workflow email sending is suspended for this project to protect deliverability.",
+            "smithy.api#required": {}
+          }
+        },
+        "email_sending_suspended_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When email sending was suspended; null while sending is enabled.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "email_sending_suspension_reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Staff-authored reason shown to customers alongside the suspension notice; empty when not suspended.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#AwsTenantReputation": {
+      "type": "structure",
+      "members": {
+        "health": {
+          "target": "com.posthog.hog_flows#AwsTenantReputationHealthEnum",
+          "traits": {
+            "smithy.api#documentation": "Overall health derived from AWS's verdicts: healthy (no findings), warning (low-impact findings), critical (high-impact findings — sending may be paused), suspended (the SES tenant's sending is paused). Reflects AWS state only; PostHog-initiated suspensions are reported separately via email_sending_suspended.\n\n* `healthy` - healthy\n* `warning` - warning\n* `critical` - critical\n* `suspended` - suspended",
+            "smithy.api#required": {}
+          }
+        },
+        "sending_status": {
+          "target": "com.posthog.hog_flows#SendingStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "The tenant's aggregate sending status. REINSTATED means sending was re-enabled after a pause and AWS is re-monitoring it.\n\n* `ENABLED` - ENABLED\n* `REINSTATED` - REINSTATED\n* `DISABLED` - DISABLED",
+            "smithy.api#required": {}
+          }
+        },
+        "findings": {
+          "target": "com.posthog.hog_flows#AwsTenantReputationFindingsList",
+          "traits": {
+            "smithy.api#documentation": "Open findings, if any, with AWS's remediation guidance.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Authoritative reputation for this project's SES tenant, as judged and enforced by AWS."
+      }
+    },
+    "com.posthog.hog_flows#AwsTenantReputationHealthEnum": {
+      "type": "enum",
+      "members": {
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthy"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `healthy` - healthy\n* `warning` - warning\n* `critical` - critical\n* `suspended` - suspended"
+      }
+    },
+    "com.posthog.hog_flows#SendingStatusEnum": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENABLED"
+          }
+        },
+        "REINSTATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REINSTATED"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISABLED"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `ENABLED` - ENABLED\n* `REINSTATED` - REINSTATED\n* `DISABLED` - DISABLED"
+      }
+    },
+    "com.posthog.hog_flows#AwsTenantFinding": {
+      "type": "structure",
+      "members": {
+        "finding_type": {
+          "target": "com.posthog.hog_flows#FindingTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "What the finding is about: authentication setup (DKIM/DMARC/SPF/BIMI), recipient signals (COMPLAINT/BOUNCE/FEEDBACK_3P), or a blocklist listing (IP_LISTING).\n\n* `DKIM` - DKIM\n* `DMARC` - DMARC\n* `SPF` - SPF\n* `BIMI` - BIMI\n* `COMPLAINT` - COMPLAINT\n* `BOUNCE` - BOUNCE\n* `FEEDBACK_3P` - FEEDBACK_3P\n* `IP_LISTING` - IP_LISTING",
+            "smithy.api#required": {}
+          }
+        },
+        "impact": {
+          "target": "com.posthog.hog_flows#ImpactEnum",
+          "traits": {
+            "smithy.api#documentation": "AWS's impact rating. HIGH-impact findings can pause the project's sending automatically.\n\n* `LOW` - LOW\n* `HIGH` - HIGH",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AWS's short description of the finding. Often a terse disambiguator (e.g. DKIM1) rather than full remediation prose — finding_type carries the remediation category.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When AWS last updated this finding.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An open reputation finding AWS SES raised for this project's email sending."
+      }
+    },
+    "com.posthog.hog_flows#FindingTypeEnum": {
+      "type": "enum",
+      "members": {
+        "DKIM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DKIM"
+          }
+        },
+        "DMARC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMARC"
+          }
+        },
+        "SPF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPF"
+          }
+        },
+        "BIMI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BIMI"
+          }
+        },
+        "COMPLAINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COMPLAINT"
+          }
+        },
+        "BOUNCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BOUNCE"
+          }
+        },
+        "FEEDBACK_3P": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FEEDBACK_3P"
+          }
+        },
+        "IP_LISTING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IP_LISTING"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `DKIM` - DKIM\n* `DMARC` - DMARC\n* `SPF` - SPF\n* `BIMI` - BIMI\n* `COMPLAINT` - COMPLAINT\n* `BOUNCE` - BOUNCE\n* `FEEDBACK_3P` - FEEDBACK_3P\n* `IP_LISTING` - IP_LISTING"
+      }
+    },
+    "com.posthog.hog_flows#ImpactEnum": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LOW"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HIGH"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `LOW` - LOW\n* `HIGH` - HIGH"
+      }
+    },
+    "com.posthog.hog_flows#AwsTenantReputationFindingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#AwsTenantFinding"
+      },
+      "traits": {
+        "smithy.api#documentation": "Open findings, if any, with AWS's remediation guidance."
+      }
+    },
+    "com.posthog.hog_flows#EmailSendingRates": {
+      "type": "structure",
+      "members": {
+        "bounce_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Hard (permanent) bounces / emails sent over the last 30 days (0-1), matching how AWS counts its bounce rate — transient bounces (greylisting, mailbox full) are excluded. Bounces are counted when the feedback arrives, so the ratio is approximate at the window boundary and capped at 1.",
+            "smithy.api#required": {}
+          }
+        },
+        "complaint_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Spam complaints / emails sent over the last 30 days (0-1). Complaints are counted when the feedback arrives, so the ratio is approximate at the window boundary and capped at 1.",
+            "smithy.api#required": {}
+          }
+        },
+        "emails_sent": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Emails sent in the last 30 days.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounce/complaint rates over the last 30 days of workflow email, computed on the fly from app metrics."
+      }
+    },
+    "com.posthog.hog_flows#WorkflowEmailSendingRates": {
+      "type": "structure",
+      "members": {
+        "bounce_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Hard (permanent) bounces / emails sent over the last 30 days (0-1), matching how AWS counts its bounce rate — transient bounces (greylisting, mailbox full) are excluded. Bounces are counted when the feedback arrives, so the ratio is approximate at the window boundary and capped at 1.",
+            "smithy.api#required": {}
+          }
+        },
+        "complaint_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Spam complaints / emails sent over the last 30 days (0-1). Complaints are counted when the feedback arrives, so the ratio is approximate at the window boundary and capped at 1.",
+            "smithy.api#required": {}
+          }
+        },
+        "emails_sent": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Emails sent in the last 30 days.",
+            "smithy.api#required": {}
+          }
+        },
+        "hog_flow_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The workflow these rates are for.",
+            "smithy.api#required": {}
+          }
+        },
+        "hog_flow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the workflow; empty for unnamed workflows.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounce/complaint rates over the last 30 days of workflow email, computed on the fly from app metrics."
+      }
+    },
+    "com.posthog.hog_flows#TeamEmailReputationResponseWorkflowsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#WorkflowEmailSendingRates"
+      },
+      "traits": {
+        "smithy.api#documentation": "Rates per workflow, worst first (complaint rate, then bounce rate), capped at the worst 50."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowsReputationRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.hog_flows#HogFlowsReputationRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.hog_flows#TeamEmailReputationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/hog_flows/reputation/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Bounce/complaint rates for this project's workflow email over the last 30 days, computed on\nthe fly from app metrics (a project-wide aggregate plus per-workflow rows, worst first,\ncapped), together with the authoritative AWS SES tenant verdict — sending status and open\nreputation findings. Our rates are the per-workflow diagnosis; AWS judges and enforces."
+      }
+    },
     "com.posthog.hog_flows#HogFlowsUserBlastRadiusCreateRequestFiltersMap": {
       "type": "map",
       "key": {
@@ -3527,6 +5730,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Property filters to apply"
+      }
+    },
+    "com.posthog.hog_flows#DedupeKeyEnum": {
+      "type": "enum",
+      "members": {
+        "EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `email` - email"
       }
     },
     "com.posthog.hog_flows#HogFlowsUserBlastRadiusCreateRequest": {
@@ -3550,6 +5767,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Group type index for group-based targeting",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "dedupe_key": {
+          "target": "com.posthog.hog_flows#DedupeKeyEnum",
+          "traits": {
+            "smithy.api#documentation": "When 'email', count unique email addresses instead of persons, matching how batch email sends deduplicate recipients.\n\n* `email` - email",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -3577,6 +5801,19 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Maximum allowed audience size for batch triggers for this team."
+          }
+        },
+        "dedupe_key": {
+          "target": "com.posthog.hog_flows#DedupeKeyEnum",
+          "traits": {
+            "smithy.api#documentation": "The dedupe key that was actually applied to 'affected'. 'email' means it counts unique email addresses; null means it counts persons.\n\n* `email` - email",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "confirm_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Proof this audience was previewed: pass it to the batch dispatch (confirm_token) after echoing 'affected' to the user. Signs these exact filters; expires in 15 minutes."
           }
         }
       },
@@ -3671,10 +5908,25 @@
           "target": "com.posthog.hog_flows#HogFlowsDestroy"
         },
         {
+          "target": "com.posthog.hog_flows#HogFlowsActionsEmailPartialUpdate"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsAssetsRetrieve"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsAssetContentRetrieve"
+        },
+        {
           "target": "com.posthog.hog_flows#HogFlowsBatchJobsList"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsBatchJobsCreate"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsBatchJobsCancelCreate"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsDiscardDraftCreate"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsGraphPartialUpdate"
@@ -3686,7 +5938,13 @@
           "target": "com.posthog.hog_flows#HogFlowsInvocationResultRetrieve"
         },
         {
+          "target": "com.posthog.hog_flows#HogFlowsInvocationResultsCountRetrieve"
+        },
+        {
           "target": "com.posthog.hog_flows#HogFlowsInvocationsCreate"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsInvocationsCancelCreate"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsLogsRetrieve"
@@ -3696,6 +5954,21 @@
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsMetricsTotalsRetrieve"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsPublishCreate"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsRerunCreate"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsRevisionsList"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsRevisionsRetrieve"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsRevisionsRestoreCreate"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsSchedulesList"
@@ -3713,7 +5986,13 @@
           "target": "com.posthog.hog_flows#HogFlowsBulkDeleteCreate"
         },
         {
+          "target": "com.posthog.hog_flows#HogFlowsEmailSendingSuspensionRetrieve"
+        },
+        {
           "target": "com.posthog.hog_flows#HogFlowsMetricsGlobalRetrieve"
+        },
+        {
+          "target": "com.posthog.hog_flows#HogFlowsReputationRetrieve"
         },
         {
           "target": "com.posthog.hog_flows#HogFlowsUserBlastRadiusCreate"

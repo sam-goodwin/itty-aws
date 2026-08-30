@@ -117,6 +117,18 @@ export class AutoScalingGroupNotFound
       message: { includes: "not found" },
     }),
   ) {}
+export class IdempotentCallInProgressFault
+  extends /*@__PURE__*/ S.TaggedError<IdempotentCallInProgressFault>()(
+    "IdempotentCallInProgressFault",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.all(
+      T.AwsQueryError({
+        code: "IdempotentCallInProgress",
+        httpResponseCode: 500,
+      }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
 export class IdempotentParameterMismatchError
   extends /*@__PURE__*/ S.TaggedError<IdempotentParameterMismatchError>()(
     "IdempotentParameterMismatchError",
@@ -846,6 +858,26 @@ export type OnDemandBaseCapacity = number;
 export type OnDemandPercentageAboveBaseCapacity = number;
 export type SpotInstancePools = number;
 export type MixedInstanceSpotPrice = string;
+export type TargetCapacityType =
+  | "on-demand-capacity-reservation"
+  | "capacity-block"
+  | "interruptible-capacity-reservation"
+  | "on-demand"
+  | (string & {});
+export const TargetCapacityType = /*@__PURE__*/ S.String;
+
+export type TargetCapacityTypes = TargetCapacityType[];
+export const TargetCapacityTypes = /*@__PURE__*/ S.Array(TargetCapacityType);
+export interface DistributionSegment {
+  TargetCapacityTypes?: TargetCapacityType[];
+}
+export const DistributionSegment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TargetCapacityTypes: S.optional(TargetCapacityTypes) }),
+).annotate({
+  identifier: "DistributionSegment",
+}) as any as S.Schema<DistributionSegment>;
+export type DistributionSegments = DistributionSegment[];
+export const DistributionSegments = /*@__PURE__*/ S.Array(DistributionSegment);
 export interface InstancesDistribution {
   OnDemandAllocationStrategy?: string;
   OnDemandBaseCapacity?: number;
@@ -853,6 +885,7 @@ export interface InstancesDistribution {
   SpotAllocationStrategy?: string;
   SpotInstancePools?: number;
   SpotMaxPrice?: string;
+  DistributionSegments?: DistributionSegment[];
 }
 export const InstancesDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -862,6 +895,7 @@ export const InstancesDistribution = /*@__PURE__*/ S.suspend(() =>
     SpotAllocationStrategy: S.optional(S.String),
     SpotInstancePools: S.optional(S.Number),
     SpotMaxPrice: S.optional(S.String),
+    DistributionSegments: S.optional(DistributionSegments),
   }),
 ).annotate({
   identifier: "InstancesDistribution",
@@ -968,6 +1002,7 @@ export const InstanceMaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
 export type CapacityDistributionStrategy =
   | "balanced-only"
   | "balanced-best-effort"
+  | "reservations-then-balanced"
   | (string & {});
 export const CapacityDistributionStrategy = /*@__PURE__*/ S.String;
 
@@ -1061,6 +1096,13 @@ export const InstanceLifecyclePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceLifecyclePolicy",
 }) as any as S.Schema<InstanceLifecyclePolicy>;
+export type ManagerIdentifier = string;
+export interface Operator {
+  Principal?: string;
+}
+export const Operator = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Principal: S.optional(S.String) }),
+).annotate({ identifier: "Operator" }) as any as S.Schema<Operator>;
 export interface CreateAutoScalingGroupType {
   AutoScalingGroupName?: string;
   LaunchConfigurationName?: string;
@@ -1097,6 +1139,7 @@ export interface CreateAutoScalingGroupType {
   SkipZonalShiftValidation?: boolean;
   CapacityReservationSpecification?: CapacityReservationSpecification;
   InstanceLifecyclePolicy?: InstanceLifecyclePolicy;
+  Operator?: Operator;
 }
 export const CreateAutoScalingGroupType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1139,6 +1182,7 @@ export const CreateAutoScalingGroupType = /*@__PURE__*/ S.suspend(() =>
       CapacityReservationSpecification,
     ),
     InstanceLifecyclePolicy: S.optional(InstanceLifecyclePolicy),
+    Operator: S.optional(Operator),
   }).pipe(
     T.all(
       ns,
@@ -1848,6 +1892,7 @@ export interface AutoScalingGroup {
   AvailabilityZoneImpairmentPolicy?: AvailabilityZoneImpairmentPolicy;
   CapacityReservationSpecification?: CapacityReservationSpecification;
   InstanceLifecyclePolicy?: InstanceLifecyclePolicy;
+  Operator?: Operator;
 }
 export const AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1898,6 +1943,7 @@ export const AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
       CapacityReservationSpecification,
     ),
     InstanceLifecyclePolicy: S.optional(InstanceLifecyclePolicy),
+    Operator: S.optional(Operator),
   }),
 ).annotate({
   identifier: "AutoScalingGroup",
@@ -1934,6 +1980,7 @@ export interface AutoScalingGroupsType {
     TrafficSources: (TrafficSourceIdentifier & {
       Identifier: XmlStringMaxLen511;
     })[];
+    Operator: Operator & { Principal: ManagerIdentifier };
   })[];
   NextToken?: string;
 }
@@ -4573,14 +4620,20 @@ export const SuspendProcessesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SuspendProcessesResponse",
 }) as any as S.Schema<SuspendProcessesResponse>;
+export type TerminationInstanceIds = string[];
+export const TerminationInstanceIds = /*@__PURE__*/ S.Array(S.String);
 export interface TerminateInstanceInAutoScalingGroupType {
   InstanceId?: string;
+  InstanceIds?: string[];
+  AutoScalingGroupName?: string;
   ShouldDecrementDesiredCapacity?: boolean;
 }
 export const TerminateInstanceInAutoScalingGroupType = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       InstanceId: S.optional(S.String),
+      InstanceIds: S.optional(TerminationInstanceIds),
+      AutoScalingGroupName: S.optional(S.String),
       ShouldDecrementDesiredCapacity: S.optional(S.Boolean),
     }).pipe(
       T.all(
@@ -4604,9 +4657,19 @@ export interface ActivityType {
     StartTime: Date;
     StatusCode: ScalingActivityStatusCode;
   };
+  Activities?: (Activity & {
+    ActivityId: XmlString;
+    AutoScalingGroupName: XmlStringMaxLen255;
+    Cause: XmlStringMaxLen1023;
+    StartTime: Date;
+    StatusCode: ScalingActivityStatusCode;
+  })[];
 }
 export const ActivityType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Activity: S.optional(Activity) }).pipe(ns),
+  S.Struct({
+    Activity: S.optional(Activity),
+    Activities: S.optional(Activities),
+  }).pipe(ns),
 ).annotate({ identifier: "ActivityType" }) as any as S.Schema<ActivityType>;
 export type UpdatePlacementGroupParam = string;
 export interface UpdateAutoScalingGroupType {
@@ -6278,6 +6341,7 @@ export const getPredictiveScalingForecast: API.OperationMethod<
 }));
 
 export type LaunchInstancesError =
+  | IdempotentCallInProgressFault
   | IdempotentParameterMismatchError
   | ResourceContentionFault
   | CommonErrors;
@@ -6293,7 +6357,11 @@ export const launchInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: LaunchInstancesRequest,
   output: LaunchInstancesResult,
-  errors: [IdempotentParameterMismatchError, ResourceContentionFault],
+  errors: [
+    IdempotentCallInProgressFault,
+    IdempotentParameterMismatchError,
+    ResourceContentionFault,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "LaunchInstances",
@@ -6807,13 +6875,18 @@ export type TerminateInstanceInAutoScalingGroupError =
  * Terminates the specified instance and optionally adjusts the desired group size. This
  * operation cannot be called on instances in a warm pool.
  *
- * This call simply makes a termination request. The instance is not terminated
+ * This call simply makes a termination request. The instances are not terminated
  * immediately. When an instance is terminated, the instance status changes to
  * `terminated`. You can't connect to or start an instance after you've
  * terminated it.
  *
  * If you do not specify the option to decrement the desired capacity, Amazon EC2 Auto Scaling launches
  * instances to replace the ones that are terminated.
+ *
+ * To terminate multiple instances in a single call, use the `InstanceIds`
+ * and `AutoScalingGroupName` parameters instead of `InstanceId`.
+ * When terminating multiple instances, the response populates
+ * `Activities` instead of `Activity`.
  *
  * By default, Amazon EC2 Auto Scaling balances instances across all Availability Zones. If you
  * decrement the desired capacity, your Auto Scaling group can become unbalanced between

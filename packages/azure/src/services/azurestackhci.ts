@@ -8731,7 +8731,8 @@ export const SecurityPropertiesInputWdacComplianceAssignment =
 
 /** SMB encryption for intra-cluster traffic Compliance Assignment */
 export type SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment =
-  "Audit" | "ApplyAndAutoCorrect";
+  | "Audit"
+  | "ApplyAndAutoCorrect";
 export const SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment =
   /*@__PURE__*/ S.String;
 
@@ -8814,7 +8815,8 @@ export const SecurityPropertiesWdacComplianceAssignment =
 
 /** SMB encryption for intra-cluster traffic Compliance Assignment */
 export type SecurityPropertiesSmbEncryptionForIntraClusterTrafficComplianceAssignment =
-  "Audit" | "ApplyAndAutoCorrect";
+  | "Audit"
+  | "ApplyAndAutoCorrect";
 export const SecurityPropertiesSmbEncryptionForIntraClusterTrafficComplianceAssignment =
   /*@__PURE__*/ S.String;
 

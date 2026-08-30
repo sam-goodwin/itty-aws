@@ -89,7 +89,13 @@
         "icon_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Lowercase key from the linked template for brand icons. Empty if custom install (no template)."
+            "smithy.api#documentation": "Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template)."
+          }
+        },
+        "icon_domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template)."
           }
         },
         "display_name": {
@@ -99,13 +105,25 @@
           "target": "smithy.api#String"
         },
         "description": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Installation description, falling back to the linked template description."
+          }
         },
         "auth_type": {
           "target": "com.posthog.mcp_server_installations#MCPAuthTypeEnum"
         },
         "is_enabled": {
           "target": "smithy.api#Boolean"
+        },
+        "scope": {
+          "target": "com.posthog.mcp_server_installations#MCPServerInstallationScopeEnum"
+        },
+        "is_owner": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s."
+          }
         },
         "needs_reauth": {
           "target": "smithy.api#Boolean"
@@ -154,6 +172,26 @@
         "smithy.api#documentation": "* `api_key` - API Key\n* `oauth` - OAuth"
       }
     },
+    "com.posthog.mcp_server_installations#MCPServerInstallationScopeEnum": {
+      "type": "enum",
+      "members": {
+        "PERSONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personal"
+          }
+        },
+        "SHARED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shared"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `personal` - Personal\n* `shared` - Shared"
+      }
+    },
     "com.posthog.mcp_server_installations#PaginatedMCPServerInstallationListResultsList": {
       "type": "list",
       "member": {
@@ -192,9 +230,6 @@
           "target": "smithy.api#String"
         },
         "url": {
-          "target": "smithy.api#String"
-        },
-        "description": {
           "target": "smithy.api#String"
         },
         "auth_type": {
@@ -287,9 +322,6 @@
           "target": "smithy.api#String"
         },
         "url": {
-          "target": "smithy.api#String"
-        },
-        "description": {
           "target": "smithy.api#String"
         },
         "auth_type": {
@@ -408,6 +440,138 @@
         }
       }
     },
+    "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreateRequestArgumentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Arguments object passed straight to the tool, matching its input schema."
+      }
+    },
+    "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this mcp server installation."
+          }
+        },
+        "tool_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the tool to invoke, exactly as the upstream server reports it.",
+            "smithy.api#required": {}
+          }
+        },
+        "arguments": {
+          "target": "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreateRequestArgumentsMap",
+          "traits": {
+            "smithy.api#documentation": "Arguments object passed straight to the tool, matching its input schema."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.mcp_server_installations#CallToolResponse": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "com.posthog.mcp_server_installations#CallToolResponseContentList",
+          "traits": {
+            "smithy.api#documentation": "MCP content blocks the tool returned, in upstream order.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_error": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when the tool itself reported failure (for example bad arguments). The call reached the server; read `content` for the reason.",
+            "smithy.api#required": {}
+          }
+        },
+        "structured_content": {
+          "target": "com.posthog.mcp_server_installations#CallToolResponseStructuredContentMap",
+          "traits": {
+            "smithy.api#documentation": "Structured result the tool returned alongside `content`, when it provides one.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.mcp_server_installations#CallToolResponseContentItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.mcp_server_installations#CallToolResponseContentList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.mcp_server_installations#CallToolResponseContentItemMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "MCP content blocks the tool returned, in upstream order."
+      }
+    },
+    "com.posthog.mcp_server_installations#CallToolResponseStructuredContentMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Structured result the tool returned alongside `content`, when it provides one."
+      }
+    },
+    "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.mcp_server_installations#CallToolResponse"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.mcp_server_installations#Forbidden"
+        },
+        {
+          "target": "com.posthog.mcp_server_installations#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/mcp_server_installations/{id}/call_tool/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke one tool on a connected MCP server.\n\nThe request/response shape is plain REST rather than the JSON-RPC envelope\n`proxy` speaks, because the caller here is an agent surface (the PostHog MCP's\n`exec`) that wants one tool result, not an MCP transport of its own."
+      }
+    },
     "com.posthog.mcp_server_installations#McpServerInstallationsProxyCreateRequest": {
       "type": "structure",
       "members": {
@@ -431,9 +595,6 @@
           "target": "smithy.api#String"
         },
         "url": {
-          "target": "smithy.api#String"
-        },
-        "description": {
           "target": "smithy.api#String"
         },
         "auth_type": {
@@ -461,6 +622,47 @@
           "uri": "/api/projects/{project_id}/mcp_server_installations/{id}/proxy/",
           "code": 200
         }
+      }
+    },
+    "com.posthog.mcp_server_installations#McpServerInstallationsShareCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this mcp server installation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.mcp_server_installations#McpServerInstallationsShareCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.mcp_server_installations#McpServerInstallationsShareCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/mcp_server_installations/{id}/share/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Escalate a personal installation to a team-wide shared one.\n\nOwner-only AND admin-only: sharing exposes the owner's credential to\nproject members, so it carries the same gate as creating a shared\ninstall outright. Agents require separate explicit grants."
       }
     },
     "com.posthog.mcp_server_installations#McpServerInstallationsToolsRetrieveRequest": {
@@ -530,7 +732,29 @@
           "target": "smithy.api#Document"
         },
         "approval_state": {
-          "target": "com.posthog.mcp_server_installations#MCPServerInstallationToolApprovalStateEnum"
+          "target": "com.posthog.mcp_server_installations#MCPToolApprovalStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Effective state after applying the team ceiling."
+          }
+        },
+        "team_state": {
+          "target": "com.posthog.mcp_server_installations#MCPToolApprovalStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Team-admin ceiling for this tool. Null when the team imposes no ceiling.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when a rule or Blocked team ceiling leaves no editable state."
+          }
+        },
+        "decided_by": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Policy layer that decided the effective state."
+          }
         },
         "last_seen_at": {
           "target": "smithy.api#String"
@@ -553,7 +777,7 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_server_installations#MCPServerInstallationToolApprovalStateEnum": {
+    "com.posthog.mcp_server_installations#MCPToolApprovalStateEnum": {
       "type": "enum",
       "members": {
         "APPROVED": {
@@ -703,9 +927,6 @@
         "url": {
           "target": "smithy.api#String"
         },
-        "description": {
-          "target": "smithy.api#String"
-        },
         "auth_type": {
           "target": "com.posthog.mcp_server_installations#MCPAuthTypeEnum"
         },
@@ -731,6 +952,47 @@
           "uri": "/api/projects/{project_id}/mcp_server_installations/{id}/tools/refresh/",
           "code": 200
         }
+      }
+    },
+    "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this mcp server installation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/mcp_server_installations/{id}/unshare/",
+          "code": 200
+        },
+        "smithy.api#documentation": "De-escalate a shared installation back to personal.\n\nAllowed for the credential owner OR a project admin (the reclaim path\nfor shared credentials). The row always stays owned by the ORIGINAL\nowner — an admin unsharing someone else's install must not capture\ntheir credential."
       }
     },
     "com.posthog.mcp_server_installations#McpServerInstallationsAuthorizeRetrieveRequestInstallSource": {
@@ -781,6 +1043,13 @@
             "smithy.api#httpQuery": "posthog_code_callback_url"
           }
         },
+        "return_path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "return_path",
+            "smithy.api#documentation": "In-app path to land back on after the OAuth round-trip. Must be a same-app relative path."
+          }
+        },
         "template_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -807,6 +1076,169 @@
           "code": 200
         },
         "smithy.api#documentation": "Start (or re-start) an OAuth flow.\n\nPass ``template_id`` to (re)connect a catalog template, or\n``installation_id`` to reconnect an existing custom install using its\ncached metadata and per-user DCR creds."
+      }
+    },
+    "com.posthog.mcp_server_installations#McpServerInstallationsAvailableToolsRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.mcp_server_installations#AvailableToolsResponse": {
+      "type": "structure",
+      "members": {
+        "servers": {
+          "target": "com.posthog.mcp_server_installations#AvailableToolsResponseServersList",
+          "traits": {
+            "smithy.api#documentation": "Connected servers the caller can reach.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.mcp_server_installations#AvailableServer": {
+      "type": "structure",
+      "members": {
+        "installation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Installation to send `call_tool` requests to.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable server name.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stable lowercase identifier used to namespace tool names.",
+            "smithy.api#required": {}
+          }
+        },
+        "tools": {
+          "target": "com.posthog.mcp_server_installations#AvailableServerToolsList",
+          "traits": {
+            "smithy.api#documentation": "Callable tools on this server.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.mcp_server_installations#AvailableTool": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tool name as the upstream server reports it.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Upstream tool description.",
+            "smithy.api#required": {}
+          }
+        },
+        "input_schema": {
+          "target": "com.posthog.mcp_server_installations#AvailableToolInputSchemaMap",
+          "traits": {
+            "smithy.api#documentation": "JSON Schema for the tool's arguments.",
+            "smithy.api#required": {}
+          }
+        },
+        "annotations": {
+          "target": "com.posthog.mcp_server_installations#AvailableToolAnnotationsMap",
+          "traits": {
+            "smithy.api#documentation": "MCP tool annotations the upstream server declared (destructiveHint, readOnlyHint, ...). Advisory only — policy may escalate them, never loosen them.",
+            "smithy.api#required": {}
+          }
+        },
+        "approval_state": {
+          "target": "com.posthog.mcp_server_installations#MCPToolApprovalStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Effective gateway state. `needs_approval` tools are listed so callers can explain why a call would fail rather than pretending the capability is missing.\n\n* `approved` - Approved\n* `needs_approval` - Needs approval\n* `do_not_use` - Do not use",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.mcp_server_installations#AvailableToolInputSchemaMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "JSON Schema for the tool's arguments."
+      }
+    },
+    "com.posthog.mcp_server_installations#AvailableToolAnnotationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "MCP tool annotations the upstream server declared (destructiveHint, readOnlyHint, ...). Advisory only — policy may escalate them, never loosen them."
+      }
+    },
+    "com.posthog.mcp_server_installations#AvailableServerToolsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.mcp_server_installations#AvailableTool"
+      },
+      "traits": {
+        "smithy.api#documentation": "Callable tools on this server."
+      }
+    },
+    "com.posthog.mcp_server_installations#AvailableToolsResponseServersList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.mcp_server_installations#AvailableServer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Connected servers the caller can reach."
+      }
+    },
+    "com.posthog.mcp_server_installations#McpServerInstallationsAvailableToolsRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.mcp_server_installations#McpServerInstallationsAvailableToolsRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.mcp_server_installations#AvailableToolsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/mcp_server_installations/available_tools/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Every tool the caller can currently reach, across all their connections.\n\nOne request instead of one per connection: an agent surface resolving its\ntool list on each session cannot afford a fan-out. `do_not_use` and removed\ntools are omitted — an agent should not see what it cannot call — while\n`needs_approval` tools are listed with their state so the caller can explain\nthe block rather than report the capability as missing."
       }
     },
     "com.posthog.mcp_server_installations#InstallCustomAuthTypeEnum": {
@@ -847,6 +1279,46 @@
       },
       "traits": {
         "smithy.api#documentation": "* `posthog` - posthog\n* `posthog-code` - posthog-code"
+      }
+    },
+    "com.posthog.mcp_server_installations#MCPInstallationScopeEnum": {
+      "type": "enum",
+      "members": {
+        "PERSONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personal"
+          }
+        },
+        "SHARED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shared"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `personal` - personal\n* `shared` - shared"
+      }
+    },
+    "com.posthog.mcp_server_installations#MCPAgentGrantScopeEnum": {
+      "type": "enum",
+      "members": {
+        "PERSONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personal"
+          }
+        },
+        "TEAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "team"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `personal` - Personal\n* `team` - Team"
       }
     },
     "com.posthog.mcp_server_installations#McpServerInstallationsInstallCustomCreateRequest": {
@@ -892,6 +1364,30 @@
         },
         "posthog_code_callback_url": {
           "target": "smithy.api#String"
+        },
+        "scope": {
+          "target": "com.posthog.mcp_server_installations#MCPInstallationScopeEnum",
+          "traits": {
+            "smithy.api#documentation": "'personal' is per-user; 'shared' makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.\n\n* `personal` - personal\n* `shared` - shared"
+          }
+        },
+        "team_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the server starts enabled for the whole team. Non-default values are admin-only."
+          }
+        },
+        "agent_scope": {
+          "target": "com.posthog.mcp_server_installations#MCPAgentGrantScopeEnum",
+          "traits": {
+            "smithy.api#documentation": "How far the automatic agent grants for this connection reach. 'personal' (the default) lets PostHog agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.\n\n* `personal` - Personal\n* `team` - Team"
+          }
+        },
+        "return_path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "In-app path to land back on after the OAuth round-trip. Must be a same-app relative path."
+          }
         }
       },
       "traits": {
@@ -948,6 +1444,30 @@
         },
         "posthog_code_callback_url": {
           "target": "smithy.api#String"
+        },
+        "scope": {
+          "target": "com.posthog.mcp_server_installations#MCPInstallationScopeEnum",
+          "traits": {
+            "smithy.api#documentation": "'personal' is per-user; 'shared' makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.\n\n* `personal` - personal\n* `shared` - shared"
+          }
+        },
+        "team_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the server starts enabled for the whole team. Non-default values are admin-only."
+          }
+        },
+        "agent_scope": {
+          "target": "com.posthog.mcp_server_installations#MCPAgentGrantScopeEnum",
+          "traits": {
+            "smithy.api#documentation": "How far the automatic agent grants for this connection reach. 'personal' (the default) lets PostHog agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.\n\n* `personal` - Personal\n* `team` - Team"
+          }
+        },
+        "return_path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "In-app path to land back on after the OAuth round-trip. Must be a same-app relative path."
+          }
         }
       },
       "traits": {
@@ -968,6 +1488,32 @@
           "uri": "/api/projects/{project_id}/mcp_server_installations/install_template/",
           "code": 200
         }
+      }
+    },
+    "com.posthog.mcp_server_installations#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.posthog.mcp_server_installations#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
       }
     },
     "com.posthog.mcp_server_installations#McpServerInstallations": {
@@ -993,7 +1539,13 @@
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsDestroy"
         },
         {
+          "target": "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreate"
+        },
+        {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsProxyCreate"
+        },
+        {
+          "target": "com.posthog.mcp_server_installations#McpServerInstallationsShareCreate"
         },
         {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsRetrieve"
@@ -1005,7 +1557,13 @@
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsRefreshCreate"
         },
         {
+          "target": "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreate"
+        },
+        {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsAuthorizeRetrieve"
+        },
+        {
+          "target": "com.posthog.mcp_server_installations#McpServerInstallationsAvailableToolsRetrieve"
         },
         {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsInstallCustomCreate"

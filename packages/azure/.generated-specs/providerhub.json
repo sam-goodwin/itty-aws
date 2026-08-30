@@ -30,10 +30,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes a provider monitor setting.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderMonitorSettingsDeleteRequest": {
@@ -81,10 +81,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Updates the provider monitor setting properties as specified in the request body. Update fails if the specified provider monitor setting does not already exist.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderMonitorSettingsUpdateResponse": {
@@ -396,10 +396,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates the provider monitor setting.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderMonitorSettingsCreateResponse": {
@@ -535,10 +535,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the provider monitor setting details.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderMonitorSettingsGetResponse": {
@@ -646,10 +646,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of the provider monitor settings in the resource group.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderMonitorSettingArrayResponseWithContinuation": {
@@ -779,10 +779,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes a resource type sku.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusDeleteRequest": {
@@ -838,10 +838,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the resource type skus in the given resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusCreateOrUpdateResponse": {
@@ -1330,10 +1330,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the sku details for the given resource type and sku name.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusGetResponse": {
@@ -1424,10 +1424,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of skus for the given resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkuResourceArrayResponseWithContinuation": {
@@ -1540,10 +1540,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes a resource type sku.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusDeleteNestedResourceTypeFirstRequest": {
@@ -1607,10 +1607,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the resource type skus in the given resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusCreateOrUpdateNestedResourceTypeFirstResponse": {
@@ -1712,10 +1712,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the sku details for the given resource type and sku name.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusGetNestedResourceTypeFirstResponse": {
@@ -1814,10 +1814,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of skus for the given resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest": {
@@ -1873,10 +1873,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes a resource type sku.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusDeleteNestedResourceTypeSecondRequest": {
@@ -1948,10 +1948,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the resource type skus in the given resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusCreateOrUpdateNestedResourceTypeSecondResponse": {
@@ -2061,10 +2061,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the sku details for the given resource type and sku name.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusGetNestedResourceTypeSecondResponse": {
@@ -2171,10 +2171,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of skus for the given resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest": {
@@ -2238,10 +2238,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes a resource type sku.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusDeleteNestedResourceTypeThirdRequest": {
@@ -2321,10 +2321,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the resource type skus in the given resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusCreateOrUpdateNestedResourceTypeThirdResponse": {
@@ -2442,10 +2442,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the sku details for the given resource type and sku name.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusGetNestedResourceTypeThirdResponse": {
@@ -2560,10 +2560,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of skus for the given resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest": {
@@ -2635,10 +2635,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes a resource type",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ResourceTypeRegistrationsDeleteRequest": {
@@ -2686,10 +2686,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates a resource type.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ResourceTypeRegistrationsCreateOrUpdateResponse": {
@@ -2949,9 +2949,39 @@
           }
         },
         "resourceDeletionPolicy": {
-          "target": "com.azure.providerhub#ResourceDeletionPolicy",
+          "target": "com.azure.providerhub#RPaaSResourceDeletionPolicy",
           "traits": {
             "smithy.api#documentation": "The resource deletion policy."
+          }
+        },
+        "resourceDeletionPolicies": {
+          "target": "com.azure.providerhub#ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "List of resource deletion policies added."
+          }
+        },
+        "managedResourceGroupConfiguration": {
+          "target": "com.azure.providerhub#ResourceTypeManagedResourceGroupConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The managed resource group configuration."
+          }
+        },
+        "privateEndpointConfiguration": {
+          "target": "com.azure.providerhub#PrivateEndpointConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint configuration."
+          }
+        },
+        "writeLock": {
+          "target": "com.azure.providerhub#WriteLockConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The write lock configuration."
+          }
+        },
+        "superScaleEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether super scale is enabled."
           }
         },
         "resourceConcurrencyControlOptions": {
@@ -3393,10 +3423,78 @@
           "traits": {
             "smithy.api#documentation": "Supported operations."
           }
+        },
+        "maxBatchSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum batch size."
+          }
+        },
+        "batchContractVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Batch contract version."
+          }
+        },
+        "maxNestedBatchSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum nested batch size."
+          }
+        },
+        "requiredFeatures": {
+          "target": "com.azure.providerhub#ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The required features."
+          }
+        },
+        "actionConfigurations": {
+          "target": "com.azure.providerhub#ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportActionConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "Action Configurations."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Batch provisioning support."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportActionConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#ActionConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "Action Configurations."
+      }
+    },
+    "com.azure.providerhub#ActionConfiguration": {
+      "type": "structure",
+      "members": {
+        "authorizationAction": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Authorization action."
+          }
+        },
+        "maxBatchSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum batch size."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch action configuration."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The required features."
       }
     },
     "com.azure.providerhub#SupportedOperations": {
@@ -4631,9 +4729,24 @@
           "traits": {
             "smithy.api#documentation": "The profit center program id for the subscription."
           }
+        },
+        "featureManagementOwners": {
+          "target": "com.azure.providerhub#ResourceProviderManagementFeatureManagementOwnersList",
+          "traits": {
+            "smithy.api#documentation": "List of feature management owners."
+          }
         }
       },
       "traits": {}
+    },
+    "com.azure.providerhub#ResourceProviderManagementFeatureManagementOwnersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of feature management owners."
+      }
     },
     "com.azure.providerhub#ResourceProviderManagementCanaryManifestOwnersList": {
       "type": "list",
@@ -4982,7 +5095,274 @@
         "smithy.api#documentation": "The policy."
       }
     },
+    "com.azure.providerhub#WriteLockConfiguration": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.providerhub#WriteLockConfigurationState",
+          "traits": {
+            "smithy.api#documentation": "The state of write lock feature. The feature will ensure a deterministic sequence of write-operation within and across the verbs. Also the feature will ensure that the semantics of synchronous and long-running operations are honored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The write lock configuration."
+      }
+    },
+    "com.azure.providerhub#WriteLockConfigurationState": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of write lock feature. The feature will ensure a deterministic sequence of write-operation within and across the verbs. Also the feature will ensure that the semantics of synchronous and long-running operations are honored."
+      }
+    },
+    "com.azure.providerhub#PrivateEndpointConfiguration": {
+      "type": "structure",
+      "members": {
+        "minApiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The first api version that support private endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "groupConnectivityInformation": {
+          "target": "com.azure.providerhub#PrivateEndpointConfigurationGroupConnectivityInformationList",
+          "traits": {
+            "smithy.api#documentation": "The list of group connectivity information.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private endpoint configuration."
+      }
+    },
+    "com.azure.providerhub#PrivateEndpointConfigurationGroupConnectivityInformationList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#GroupConnectivityInformation"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of group connectivity information."
+      }
+    },
+    "com.azure.providerhub#GroupConnectivityInformation": {
+      "type": "structure",
+      "members": {
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group id.",
+            "smithy.api#required": {}
+          }
+        },
+        "requiredMembers": {
+          "target": "com.azure.providerhub#GroupConnectivityInformationRequiredMembersList",
+          "traits": {
+            "smithy.api#documentation": "List of required members for the group id.",
+            "smithy.api#required": {}
+          }
+        },
+        "requiredZoneNames": {
+          "target": "com.azure.providerhub#GroupConnectivityInformationRequiredZoneNamesList",
+          "traits": {
+            "smithy.api#documentation": "List of required zone names for the group id.",
+            "smithy.api#required": {}
+          }
+        },
+        "redirectMapId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The redirect map id."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#GroupConnectivityInformationRequiredZoneNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of required zone names for the group id."
+      }
+    },
+    "com.azure.providerhub#GroupConnectivityInformationRequiredMembersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of required members for the group id."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeManagedResourceGroupConfiguration": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the managed resource group configuration is enabled."
+          }
+        },
+        "resourceGroupLocationOverride": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource group location override."
+          }
+        },
+        "applicationIds": {
+          "target": "com.azure.providerhub#ResourceTypeManagedResourceGroupConfigurationApplicationIdsList",
+          "traits": {
+            "smithy.api#documentation": "The application ids."
+          }
+        },
+        "denyAssignmentConfiguration": {
+          "target": "com.azure.providerhub#ManagedResourceGroupDenyAssignmentConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The deny assignment configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The managed resource group configuration for the resource type."
+      }
+    },
+    "com.azure.providerhub#ManagedResourceGroupDenyAssignmentConfiguration": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the deny assignment configuration is enabled."
+          }
+        },
+        "notActions": {
+          "target": "com.azure.providerhub#ManagedResourceGroupDenyAssignmentConfigurationNotActionsList",
+          "traits": {
+            "smithy.api#documentation": "The actions excluded from the deny assignment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The deny assignment configuration for the managed resource group."
+      }
+    },
+    "com.azure.providerhub#ManagedResourceGroupDenyAssignmentConfigurationNotActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The actions excluded from the deny assignment."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeManagedResourceGroupConfigurationApplicationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The application ids."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#ResourceDeletionPolicyAndProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resource deletion policies added."
+      }
+    },
+    "com.azure.providerhub#ResourceDeletionPolicyAndProperties": {
+      "type": "structure",
+      "members": {
+        "policyName": {
+          "target": "com.azure.providerhub#ResourceDeletionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The resource deletion policy name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.providerhub#ResourceDeletionPolicyProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource deletion policy properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The individual resource deletion policy."
+      }
+    },
+    "com.azure.providerhub#ResourceDeletionPolicyProperties": {
+      "type": "structure",
+      "members": {
+        "minimumRetentionTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The minimum retention time."
+          }
+        },
+        "maximumRetentionTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The maximum retention time."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource deletion policy properties."
+      }
+    },
     "com.azure.providerhub#ResourceDeletionPolicy": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "CASCADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cascade"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Force"
+          }
+        },
+        "SOFTDELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SoftDelete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource deletion policy."
+      }
+    },
+    "com.azure.providerhub#RPaaSResourceDeletionPolicy": {
       "type": "enum",
       "members": {
         "NOTSPECIFIED": {
@@ -5001,6 +5381,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "CascadeDeleteProxyOnlyChildren"
+          }
+        },
+        "CASCADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cascade"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Force"
           }
         }
       },
@@ -5763,6 +6155,12 @@
           "traits": {
             "smithy.api#documentation": "The interval."
           }
+        },
+        "bucketSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The bucket size."
+          }
         }
       },
       "traits": {}
@@ -5958,9 +6356,35 @@
           "traits": {
             "smithy.api#documentation": "The linked type."
           }
+        },
+        "options": {
+          "target": "com.azure.providerhub#LinkedAccessCheckOptions",
+          "traits": {
+            "smithy.api#documentation": "The options for the linked access check."
+          }
         }
       },
       "traits": {}
+    },
+    "com.azure.providerhub#LinkedAccessCheckOptions": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "IGNOREEMPTYSTRINGLINKEDTYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IgnoreEmptyStringLinkedType"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The options for the linked access check."
+      }
     },
     "com.azure.providerhub#ResourceTypeRegistrationPropertiesAuthorizationActionMappingsList": {
       "type": "list",
@@ -6118,6 +6542,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Store"
+          }
+        },
+        "PROVIDERHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ProviderHub"
           }
         }
       },
@@ -6533,6 +6963,12 @@
           "traits": {
             "smithy.api#enumValue": "SubscriptionLifecycleNotificationDeletion"
           }
+        },
+        "RESOURCEBILLINGNOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceBillingNotification"
+          }
         }
       },
       "traits": {}
@@ -6822,10 +7258,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets a resource type details in the given subscription and provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ResourceTypeRegistrationsGetResponse": {
@@ -6940,10 +7376,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of the resource types for the given provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ResourceTypeRegistrationArrayResponseWithContinuation": {
@@ -7080,10 +7516,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourceActions/{resourceActionName}/deleteResources",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes resources.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ResourceActionsDeleteResourcesRequest": {
@@ -7171,10 +7607,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes an operation.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#OperationsDeleteRequest": {
@@ -7214,10 +7650,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the operation supported by the given provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#OperationsCreateOrUpdateResponse": {
@@ -7309,6 +7745,12 @@
           "target": "com.azure.providerhub#OperationActionType",
           "traits": {
             "smithy.api#documentation": "The action type."
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Anything"
           }
         }
       },
@@ -7445,6 +7887,12 @@
           "traits": {
             "smithy.api#documentation": "Display information of the operation for zh-Hant locale."
           }
+        },
+        "qpsPloc": {
+          "target": "com.azure.providerhub#OperationsDisplayDefinition",
+          "traits": {
+            "smithy.api#documentation": "Display information of the operation for qps-Ploc pseudo locale."
+          }
         }
       },
       "traits": {}
@@ -7549,78 +7997,45 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the operations supported by the given provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#OperationsListByProviderRegistrationResponse": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "com.azure.providerhub#OperationsListByProviderRegistrationResponseBodyList",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.distilled.openapi#rawResponse": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
           }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.providerhub#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.providerhub#OperationsContentProperties"
         }
       },
       "traits": {
         "smithy.api#output": {}
-      }
-    },
-    "com.azure.providerhub#OperationsListByProviderRegistrationResponseBodyList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.providerhub#OperationsDefinition"
-      },
-      "traits": {}
-    },
-    "com.azure.providerhub#OperationsDefinition": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the operation.",
-            "smithy.api#required": {}
-          }
-        },
-        "isDataAction": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether the operation applies to data-plane."
-          }
-        },
-        "origin": {
-          "target": "com.azure.providerhub#OperationOrigins",
-          "traits": {
-            "smithy.api#documentation": "The origin."
-          }
-        },
-        "display": {
-          "target": "com.azure.providerhub#OperationsDisplayDefinition",
-          "traits": {
-            "smithy.api#documentation": "Display information of the operation.",
-            "smithy.api#required": {}
-          }
-        },
-        "actionType": {
-          "target": "com.azure.providerhub#OperationActionType",
-          "traits": {
-            "smithy.api#documentation": "The action type."
-          }
-        },
-        "properties": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Anything"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Properties of an Operation."
       }
     },
     "com.azure.providerhub#OperationsListByProviderRegistrationRequest": {
@@ -7660,10 +8075,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes a notification registration.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#NotificationRegistrationsDeleteRequest": {
@@ -7711,10 +8126,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates a notification registration.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#NotificationRegistrationsCreateOrUpdateResponse": {
@@ -7927,10 +8342,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the notification registration details.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#NotificationRegistrationsGetResponse": {
@@ -8013,10 +8428,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of the notification registrations for the given provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#NotificationRegistrationArrayResponseWithContinuation": {
@@ -8121,10 +8536,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}/stop",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Stops a new region frontload release.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#NewRegionFrontloadReleaseStopRequest": {
@@ -8172,10 +8587,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates a new region frontload release.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#NewRegionFrontloadReleaseCreateOrUpdateResponse": {
@@ -8562,9 +8977,75 @@
           "traits": {
             "smithy.api#documentation": "The auto provisioning config."
           }
+        },
+        "manifestCheckinSpecification": {
+          "target": "com.azure.providerhub#ManifestCheckinSpecification",
+          "traits": {
+            "smithy.api#documentation": "The manifest checkin specification."
+          }
         }
       },
       "traits": {}
+    },
+    "com.azure.providerhub#ManifestCheckinSpecification": {
+      "type": "structure",
+      "members": {
+        "manifestCheckinOption": {
+          "target": "com.azure.providerhub#ManifestCheckinSpecificationManifestCheckinOption",
+          "traits": {
+            "smithy.api#documentation": "The manifest checkin option."
+          }
+        },
+        "manifestCheckinParams": {
+          "target": "com.azure.providerhub#CheckinManifestParams",
+          "traits": {
+            "smithy.api#documentation": "The manifest checkin params."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The manifest checkin specification."
+      }
+    },
+    "com.azure.providerhub#CheckinManifestParams": {
+      "type": "structure",
+      "members": {
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The environment supplied to the checkin manifest operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "baselineArmManifestLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The baseline ARM manifest location supplied to the checkin manifest operation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#ManifestCheckinSpecificationManifestCheckinOption": {
+      "type": "enum",
+      "members": {
+        "ATTEMPTAUTOMATICMANIFESTCHECKIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AttemptAutomaticManifestCheckin"
+          }
+        },
+        "DONOTATTEMPTAUTOMATICMANIFESTCHECKIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DoNotAttemptAutomaticManifestCheckin"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The manifest checkin option."
+      }
     },
     "com.azure.providerhub#DefaultRolloutSpecificationAutoProvisionConfig": {
       "type": "structure",
@@ -8880,6 +9361,18 @@
           "target": "com.azure.providerhub#TokenAuthConfiguration",
           "traits": {
             "smithy.api#documentation": "The token auth configuration."
+          }
+        },
+        "oboSubscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The on behalf of subscription id for the resource provider."
+          }
+        },
+        "enablePresetResourceTypes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether automatic registration for the preset resource types is enabled or disabled."
           }
         }
       },
@@ -9743,6 +10236,12 @@
           "traits": {
             "smithy.api#enumValue": "AuthorizationFree"
           }
+        },
+        "DECOMMISSIONED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Decommissioned"
+          }
         }
       },
       "traits": {
@@ -10250,10 +10749,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets a new region frontload release.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#NewRegionFrontloadReleaseGetResponse": {
@@ -10326,6 +10825,236 @@
         "smithy.api#input": {}
       }
     },
+    "com.azure.providerhub#ManifestsCreateOrUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.providerhub#ManifestsCreateOrUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.providerhub#ManifestsCreateOrUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/manifests/{environment}",
+          "code": 200,
+          "apiVersion": "2025-10-01"
+        },
+        "smithy.api#documentation": "Creates or Updates a manifest in manifest repository.",
+        "com.distilled.openapi#apiVersion": "2025-10-01"
+      }
+    },
+    "com.azure.providerhub#ManifestsCreateOrUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.providerhub#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.providerhub#ManifestInfoProperties",
+          "traits": {
+            "smithy.api#documentation": "The manifest properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.providerhub#ManifestInfoProperties": {
+      "type": "structure",
+      "members": {
+        "manifest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The manifest."
+          }
+        },
+        "manifestUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI the manifest content is read from when the manifest is not supplied inline."
+          }
+        },
+        "commitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The manifest commit identifier."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The manifest properties."
+      }
+    },
+    "com.azure.providerhub#ManifestsCreateOrUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "providerNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The environment supplied to the manifests operation."
+          }
+        },
+        "properties": {
+          "target": "com.azure.providerhub#ManifestInfoPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The manifest properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.providerhub#ManifestInfoPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "manifest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The manifest."
+          }
+        },
+        "manifestUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI the manifest content is read from when the manifest is not supplied inline."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The manifest properties."
+      }
+    },
+    "com.azure.providerhub#ManifestsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.providerhub#ManifestsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.providerhub#ManifestsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/manifests/{environment}",
+          "code": 200,
+          "apiVersion": "2025-10-01"
+        },
+        "smithy.api#documentation": "Gets the manifest from the manifest repository.",
+        "com.distilled.openapi#apiVersion": "2025-10-01"
+      }
+    },
+    "com.azure.providerhub#ManifestsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.providerhub#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.providerhub#ManifestInfoProperties",
+          "traits": {
+            "smithy.api#documentation": "The manifest properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.providerhub#ManifestsGetRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "providerNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The environment supplied to the manifests operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.providerhub#ProviderRegistrationsGenerateOperations": {
       "type": "operation",
       "input": {
@@ -10339,10 +11068,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateOperations",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Generates the operations api for the given provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderRegistrationsGenerateOperationsResponse": {
@@ -10366,6 +11095,52 @@
         "target": "com.azure.providerhub#OperationsDefinition"
       },
       "traits": {}
+    },
+    "com.azure.providerhub#OperationsDefinition": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "isDataAction": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the operation applies to data-plane."
+          }
+        },
+        "origin": {
+          "target": "com.azure.providerhub#OperationOrigins",
+          "traits": {
+            "smithy.api#documentation": "The origin."
+          }
+        },
+        "display": {
+          "target": "com.azure.providerhub#OperationsDisplayDefinition",
+          "traits": {
+            "smithy.api#documentation": "Display information of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "actionType": {
+          "target": "com.azure.providerhub#OperationActionType",
+          "traits": {
+            "smithy.api#documentation": "The action type."
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Anything"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an Operation."
+      }
     },
     "com.azure.providerhub#ProviderRegistrationsGenerateOperationsRequest": {
       "type": "structure",
@@ -10404,10 +11179,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateNewRegionFrontloadManifest",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Generates the new region frontload manifest.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ResourceProviderManifest": {
@@ -10538,6 +11313,12 @@
           "target": "com.azure.providerhub#ResourceProviderAuthorizationRules",
           "traits": {
             "smithy.api#documentation": "The resource provider authorization rules."
+          }
+        },
+        "tokenAuthConfiguration": {
+          "target": "com.azure.providerhub#TokenAuthConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The token auth configuration."
           }
         }
       },
@@ -10767,9 +11548,15 @@
           }
         },
         "resourceDeletionPolicy": {
-          "target": "com.azure.providerhub#ManifestResourceDeletionPolicy",
+          "target": "com.azure.providerhub#ResourceDeletionPolicy",
           "traits": {
             "smithy.api#documentation": "The resource deletion policy."
+          }
+        },
+        "resourceDeletionPolicies": {
+          "target": "com.azure.providerhub#ResourceTypeResourceDeletionPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "List of resource deletion policies added."
           }
         },
         "quotaRule": {
@@ -10817,30 +11604,13 @@
         "smithy.api#documentation": "The notifications."
       }
     },
-    "com.azure.providerhub#ManifestResourceDeletionPolicy": {
-      "type": "enum",
-      "members": {
-        "NOTSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NotSpecified"
-          }
-        },
-        "CASCADE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Cascade"
-          }
-        },
-        "FORCE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Force"
-          }
-        }
+    "com.azure.providerhub#ResourceTypeResourceDeletionPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#ResourceDeletionPolicyAndProperties"
       },
       "traits": {
-        "smithy.api#documentation": "The resource deletion policy."
+        "smithy.api#documentation": "List of resource deletion policies added."
       }
     },
     "com.azure.providerhub#ResourceTypeLinkedOperationRulesList": {
@@ -11063,10 +11833,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateManifest",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Generates the manifest for the given provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#GenerateManifestRequest": {
@@ -11106,10 +11876,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}/stop",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Stops or cancels the rollout, if in progress.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#DefaultRolloutsStopRequest": {
@@ -11157,10 +11927,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes the rollout resource. Rollout must be in terminal state.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#DefaultRolloutsDeleteRequest": {
@@ -11208,10 +11978,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the rollout details.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#DefaultRolloutsCreateOrUpdateResponse": {
@@ -11504,6 +12274,12 @@
           "traits": {
             "smithy.api#documentation": "The auto provisioning config."
           }
+        },
+        "manifestCheckinSpecification": {
+          "target": "com.azure.providerhub#ManifestCheckinSpecification",
+          "traits": {
+            "smithy.api#documentation": "The manifest checkin specification."
+          }
         }
       },
       "traits": {}
@@ -11616,10 +12392,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the default rollout details.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#DefaultRolloutsGetResponse": {
@@ -11705,10 +12481,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of the rollouts for the given provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#DefaultRolloutArrayResponseWithContinuation": {
@@ -11816,10 +12592,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}/stop",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Stops or cancels the custom rollout, if in progress.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#CustomRolloutsStopRequest": {
@@ -11867,10 +12643,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes the custom rollout resource. Custom rollout must be in terminal state.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#CustomRolloutsDeleteRequest": {
@@ -11918,10 +12694,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the rollout details.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#CustomRolloutsCreateOrUpdateResponse": {
@@ -12008,9 +12784,56 @@
           "traits": {
             "smithy.api#documentation": "The manifest checkin status."
           }
+        },
+        "completedRegionsInfo": {
+          "target": "com.azure.providerhub#CustomRolloutStatusCompletedRegionsInfoList",
+          "traits": {
+            "smithy.api#documentation": "Information about the manifests applied to the completed regions."
+          }
         }
       },
       "traits": {}
+    },
+    "com.azure.providerhub#CustomRolloutStatusCompletedRegionsInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#AppliedManifestInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the manifests applied to the completed regions."
+      }
+    },
+    "com.azure.providerhub#AppliedManifestInfo": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region to which the manifest was applied."
+          }
+        },
+        "manifestAppliedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time at which the manifest was applied."
+          }
+        },
+        "previousCommitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Commit id of previous manifest."
+          }
+        },
+        "appliedCommitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Commit id of manifest being applied."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about a manifest applied to a region."
+      }
     },
     "com.azure.providerhub#CustomRolloutStatusFailedOrSkippedRegionsMap": {
       "type": "map",
@@ -12076,6 +12899,18 @@
           "target": "com.azure.providerhub#CustomRolloutSpecificationResourceTypeRegistrationsList",
           "traits": {
             "smithy.api#documentation": "The resource type registrations."
+          }
+        },
+        "rolloutId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The rollout id."
+          }
+        },
+        "manifestCheckinSpecification": {
+          "target": "com.azure.providerhub#ManifestCheckinSpecification",
+          "traits": {
+            "smithy.api#documentation": "The manifest checkin specification."
           }
         }
       },
@@ -12207,9 +13042,24 @@
           "traits": {
             "smithy.api#documentation": "The manifest checkin status."
           }
+        },
+        "completedRegionsInfo": {
+          "target": "com.azure.providerhub#CustomRolloutStatusInputCompletedRegionsInfoList",
+          "traits": {
+            "smithy.api#documentation": "Information about the manifests applied to the completed regions."
+          }
         }
       },
       "traits": {}
+    },
+    "com.azure.providerhub#CustomRolloutStatusInputCompletedRegionsInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#AppliedManifestInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the manifests applied to the completed regions."
+      }
     },
     "com.azure.providerhub#CustomRolloutStatusInputFailedOrSkippedRegionsMap": {
       "type": "map",
@@ -12276,6 +13126,18 @@
           "traits": {
             "smithy.api#documentation": "The resource type registrations."
           }
+        },
+        "rolloutId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The rollout id."
+          }
+        },
+        "manifestCheckinSpecification": {
+          "target": "com.azure.providerhub#ManifestCheckinSpecification",
+          "traits": {
+            "smithy.api#documentation": "The manifest checkin specification."
+          }
         }
       },
       "traits": {}
@@ -12311,10 +13173,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the custom rollout details.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#CustomRolloutsGetResponse": {
@@ -12401,10 +13263,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of the custom rollouts for the given provider.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#CustomRolloutArrayResponseWithContinuation": {
@@ -12513,10 +13375,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/checkinManifest",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Checkin the manifest.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#CheckinManifestRequest": {
@@ -12570,10 +13432,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes an authorized application.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#AuthorizedApplicationsDeleteRequest": {
@@ -12621,10 +13483,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the authorized application.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#AuthorizedApplicationsCreateOrUpdateResponse": {
@@ -12706,6 +13568,12 @@
           "target": "com.azure.providerhub#ApplicationDataAuthorizationResourceTypesList",
           "traits": {
             "smithy.api#documentation": "The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types"
+          }
+        },
+        "excludeApplicationIdFromManifest": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Exclude application id from 'providerAuthorizations' section of manifest?"
           }
         }
       },
@@ -12806,10 +13674,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the authorized application details.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#AuthorizedApplicationsGetResponse": {
@@ -12892,10 +13760,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of the authorized applications in the provider namespace.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#AuthorizedApplicationArrayResponseWithContinuation": {
@@ -13000,10 +13868,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Deletes a provider registration.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderRegistrationsDeleteRequest": {
@@ -13043,10 +13911,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Creates or updates the provider registration.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderRegistrationsCreateOrUpdateResponse": {
@@ -13188,10 +14056,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the provider registration details.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderRegistrationsGetResponse": {
@@ -13298,10 +14166,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of the provider registrations in the subscription.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderRegistrationArrayResponseWithContinuation": {
@@ -13363,10 +14231,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerMonitorSettings",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "Gets the list of the provider monitor settings in the subscription.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#ProviderMonitorSettingsListBySubscriptionRequest": {
@@ -13398,10 +14266,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ProviderHub/operations",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2025-10-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
     "com.azure.providerhub#OperationsDefinitionArrayResponseWithContinuation": {
@@ -13542,6 +14410,12 @@
         },
         {
           "target": "com.azure.providerhub#NewRegionFrontloadReleaseGet"
+        },
+        {
+          "target": "com.azure.providerhub#ManifestsCreateOrUpdate"
+        },
+        {
+          "target": "com.azure.providerhub#ManifestsGet"
         },
         {
           "target": "com.azure.providerhub#ProviderRegistrationsGenerateOperations"

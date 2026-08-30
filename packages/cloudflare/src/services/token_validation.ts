@@ -653,7 +653,12 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPatchRulesResponse>;
 
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+  | "RS256"
+  | "RS384"
+  | "RS512"
+  | "PS256"
+  | "PS384"
+  | "PS512";
 export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   /*@__PURE__*/ S.String;
 
@@ -851,7 +856,12 @@ export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConfigurationRequest>;
 
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+  | "RS256"
+  | "RS384"
+  | "RS512"
+  | "PS256"
+  | "PS384"
+  | "PS512";
 export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   /*@__PURE__*/ S.String;
 
@@ -1355,7 +1365,12 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConfigurationRequest>;
 
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+  | "RS256"
+  | "RS384"
+  | "RS512"
+  | "PS256"
+  | "PS384"
+  | "PS512";
 export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   /*@__PURE__*/ S.String;
 
@@ -1699,7 +1714,12 @@ export const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConfigurationsRequest>;
 
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+  | "RS256"
+  | "RS384"
+  | "RS512"
+  | "PS256"
+  | "PS384"
+  | "PS512";
 export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   /*@__PURE__*/ S.String;
 
@@ -2409,7 +2429,12 @@ export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchRuleResponse>;
 
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+  | "RS256"
+  | "RS384"
+  | "RS512"
+  | "PS256"
+  | "PS384"
+  | "PS512";
 export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   /*@__PURE__*/ S.String;
 
@@ -2580,7 +2605,12 @@ export const PutConfigurationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigurationCredentialRequest>;
 
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+  | "RS256"
+  | "RS384"
+  | "RS512"
+  | "PS256"
+  | "PS384"
+  | "PS512";
 export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   /*@__PURE__*/ S.String;
 

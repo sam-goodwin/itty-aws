@@ -253,6 +253,38 @@ export const RepositorySubscription = /*@__PURE__*/ S.suspend(() =>
   identifier: "RepositorySubscription",
 }) as any as S.Schema<RepositorySubscription>;
 
+export interface GetStargazerCountForRepoRequest {
+  /** The account owner of the repository. The name is not case sensitive. */
+  owner: string;
+  /** The name of the repository without the `.git` extension. The name is not case sensitive. */
+  repo: string;
+}
+export const GetStargazerCountForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    owner: S.String.pipe(T.Label()),
+    repo: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/repos/{owner}/{repo}/stargazers/count",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetStargazerCountForRepoRequest",
+}) as any as S.Schema<GetStargazerCountForRepoRequest>;
+
+export interface GetStargazerCountForRepoResponse {
+  count: number;
+}
+export const GetStargazerCountForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+  }),
+).annotate({
+  identifier: "GetStargazerCountForRepoResponse",
+}) as any as S.Schema<GetStargazerCountForRepoResponse>;
+
 export interface GetThreadRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
@@ -553,13 +585,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -4125,6 +4159,21 @@ export const getRepoSubscription: API.OperationMethod<
   input: GetRepoSubscriptionRequest,
   output: RepositorySubscription,
   errors: [Forbidden, NotFound],
+  protocol: GithubProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetStargazerCountForRepoError = NotFound | GithubOpError;
+/** Get stargazer count Gets the current number of users who have starred the repository. Users who previously starred the repository but later removed their star are not included. */
+export const getStargazerCountForRepo: API.OperationMethod<
+  GetStargazerCountForRepoRequest,
+  GetStargazerCountForRepoResponse,
+  GetStargazerCountForRepoError,
+  GithubOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetStargazerCountForRepoRequest,
+  output: GetStargazerCountForRepoResponse,
+  errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
 }));

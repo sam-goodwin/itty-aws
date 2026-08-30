@@ -438,26 +438,6 @@ export const GetOfferInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetOfferInput" }) as any as S.Schema<GetOfferInput>;
-export type AgreementResourceId = string;
-export type PurchaseOptionBadgeType =
-  | "PRIVATE_PRICING"
-  | "FUTURE_DATED"
-  | "REPLACEMENT_OFFER"
-  | (string & {});
-export const PurchaseOptionBadgeType = /*@__PURE__*/ S.String;
-
-export interface PurchaseOptionBadge {
-  displayName: string;
-  badgeType: PurchaseOptionBadgeType;
-}
-export const PurchaseOptionBadge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ displayName: S.String, badgeType: PurchaseOptionBadgeType }),
-).annotate({
-  identifier: "PurchaseOptionBadge",
-}) as any as S.Schema<PurchaseOptionBadge>;
-export type PurchaseOptionBadgeList = PurchaseOptionBadge[];
-export const PurchaseOptionBadgeList =
-  /*@__PURE__*/ S.Array(PurchaseOptionBadge);
 export type OfferSetId = string;
 export interface OfferSetInformation {
   offerSetId: string;
@@ -484,34 +464,54 @@ export type OfferAssociatedEntityList = OfferAssociatedEntity[];
 export const OfferAssociatedEntityList = /*@__PURE__*/ S.Array(
   OfferAssociatedEntity,
 );
+export type AgreementResourceId = string;
+export type PurchaseOptionBadgeType =
+  | "PRIVATE_PRICING"
+  | "FUTURE_DATED"
+  | "REPLACEMENT_OFFER"
+  | (string & {});
+export const PurchaseOptionBadgeType = /*@__PURE__*/ S.String;
+
+export interface PurchaseOptionBadge {
+  displayName: string;
+  badgeType: PurchaseOptionBadgeType;
+}
+export const PurchaseOptionBadge = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ displayName: S.String, badgeType: PurchaseOptionBadgeType }),
+).annotate({
+  identifier: "PurchaseOptionBadge",
+}) as any as S.Schema<PurchaseOptionBadge>;
+export type PurchaseOptionBadgeList = PurchaseOptionBadge[];
+export const PurchaseOptionBadgeList =
+  /*@__PURE__*/ S.Array(PurchaseOptionBadge);
 export interface GetOfferOutput {
   offerId: string;
   catalog: string;
   offerName?: string;
-  agreementProposalId: string;
   expirationTime?: Date;
   availableFromTime?: Date;
   sellerOfRecord: SellerInformation;
+  associatedEntities: OfferAssociatedEntity[];
+  agreementProposalId: string;
   replacementAgreementId?: string;
   pricingModel: PricingModel;
   badges: PurchaseOptionBadge[];
-  associatedEntities: OfferAssociatedEntity[];
 }
 export const GetOfferOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.String,
     catalog: S.String,
     offerName: S.optional(S.String),
-    agreementProposalId: S.String,
     expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     availableFromTime: S.optional(
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
     sellerOfRecord: SellerInformation,
+    associatedEntities: OfferAssociatedEntityList,
+    agreementProposalId: S.String,
     replacementAgreementId: S.optional(S.String),
     pricingModel: PricingModel,
     badges: PurchaseOptionBadgeList,
-    associatedEntities: OfferAssociatedEntityList,
   }),
 ).annotate({ identifier: "GetOfferOutput" }) as any as S.Schema<GetOfferOutput>;
 export interface GetOfferSetInput {
@@ -610,6 +610,7 @@ export type TermType =
   | "SupportTerm"
   | "ValidityTerm"
   | "VariablePaymentTerm"
+  | "NetPaymentTerm"
   | (string & {});
 export const TermType = /*@__PURE__*/ S.String;
 
@@ -933,6 +934,14 @@ export const VariablePaymentTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VariablePaymentTerm",
 }) as any as S.Schema<VariablePaymentTerm>;
+export interface NetPaymentTerm {
+  id: string;
+  type: TermType;
+  paymentDuePeriod: string;
+}
+export const NetPaymentTerm = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String, type: TermType, paymentDuePeriod: S.String }),
+).annotate({ identifier: "NetPaymentTerm" }) as any as S.Schema<NetPaymentTerm>;
 export type OfferTerm =
   | {
       byolPricingTerm: ByolPricingTerm;
@@ -947,6 +956,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -961,6 +971,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -975,6 +986,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -989,6 +1001,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -1003,6 +1016,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -1017,6 +1031,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -1031,6 +1046,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -1045,6 +1061,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -1059,6 +1076,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -1073,6 +1091,7 @@ export type OfferTerm =
       usageBasedPricingTerm: UsageBasedPricingTerm;
       validityTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -1087,6 +1106,7 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm: ValidityTerm;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       byolPricingTerm?: never;
@@ -1101,6 +1121,22 @@ export type OfferTerm =
       usageBasedPricingTerm?: never;
       validityTerm?: never;
       variablePaymentTerm: VariablePaymentTerm;
+      netPaymentTerm?: never;
+    }
+  | {
+      byolPricingTerm?: never;
+      configurableUpfrontPricingTerm?: never;
+      fixedUpfrontPricingTerm?: never;
+      freeTrialPricingTerm?: never;
+      legalTerm?: never;
+      paymentScheduleTerm?: never;
+      recurringPaymentTerm?: never;
+      renewalTerm?: never;
+      supportTerm?: never;
+      usageBasedPricingTerm?: never;
+      validityTerm?: never;
+      variablePaymentTerm?: never;
+      netPaymentTerm: NetPaymentTerm;
     };
 export const OfferTerm = /*@__PURE__*/ S.Union([
   S.Struct({ byolPricingTerm: ByolPricingTerm }),
@@ -1115,6 +1151,7 @@ export const OfferTerm = /*@__PURE__*/ S.Union([
   S.Struct({ usageBasedPricingTerm: UsageBasedPricingTerm }),
   S.Struct({ validityTerm: ValidityTerm }),
   S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
+  S.Struct({ netPaymentTerm: NetPaymentTerm }),
 ]);
 export type OfferTermsList = OfferTerm[];
 export const OfferTermsList = /*@__PURE__*/ S.Array(OfferTerm);
@@ -1155,10 +1192,10 @@ export interface GetProductOutput {
   productId: string;
   catalog: string;
   productName: string;
+  manufacturer: SellerInformation;
   deployedOnAws: DeployedOnAwsStatus;
   shortDescription: string;
   longDescription: string;
-  manufacturer: SellerInformation;
   logoThumbnailUrl: string;
   fulfillmentOptionSummaries: FulfillmentOptionSummary[];
   categories: Category[];
@@ -1172,10 +1209,10 @@ export const GetProductOutput = /*@__PURE__*/ S.suspend(() =>
     productId: S.String,
     catalog: S.String,
     productName: S.String,
+    manufacturer: SellerInformation,
     deployedOnAws: DeployedOnAwsStatus,
     shortDescription: S.String,
     longDescription: S.String,
-    manufacturer: SellerInformation,
     logoThumbnailUrl: S.String,
     fulfillmentOptionSummaries: FulfillmentOptionSummaryList,
     categories: CategoryList,
@@ -2096,11 +2133,11 @@ export interface ListingSummary {
   listingId: string;
   listingName: string;
   publisher: SellerInformation;
+  fulfillmentOptionSummaries: FulfillmentOptionSummary[];
   catalog: string;
   shortDescription: string;
   logoThumbnailUrl: string;
   categories: Category[];
-  fulfillmentOptionSummaries: FulfillmentOptionSummary[];
   badges: ListingBadge[];
   reviewSummary: ReviewSummary;
   pricingModels: PricingModel[];
@@ -2112,11 +2149,11 @@ export const ListingSummary = /*@__PURE__*/ S.suspend(() =>
     listingId: S.String,
     listingName: S.String,
     publisher: SellerInformation,
+    fulfillmentOptionSummaries: FulfillmentOptionSummaryList,
     catalog: S.String,
     shortDescription: S.String,
     logoThumbnailUrl: S.String,
     categories: CategoryList,
-    fulfillmentOptionSummaries: FulfillmentOptionSummaryList,
     badges: ListingBadgeList,
     reviewSummary: ReviewSummary,
     pricingModels: PricingModelList,
@@ -2216,6 +2253,7 @@ export const getOfferTerms: API.PaginatedOperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "offerTerms",
+    pageSize: "maxResults",
   } as const,
 })) as any;
 

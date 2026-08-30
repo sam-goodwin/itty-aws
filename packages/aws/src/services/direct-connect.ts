@@ -361,6 +361,8 @@ export const RateLimiterStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "RateLimiterStatus",
 }) as any as S.Schema<RateLimiterStatus>;
 export type PartnerInterconnectMacSecCapable = boolean;
+export type PrefixPoolSize = number;
+export type PrefixPoolUnallocatedCount = number;
 export interface Connection {
   ownerAccount?: string;
   connectionId?: string;
@@ -386,6 +388,10 @@ export interface Connection {
   macSecKeys?: MacSecKey[];
   rateLimiterStatus?: RateLimiterStatus;
   partnerInterconnectMacSecCapable?: boolean;
+  prefixPoolSizeIpv4?: number;
+  prefixPoolSizeIpv6?: number;
+  prefixPoolUnallocatedCountIpv4?: number;
+  prefixPoolUnallocatedCountIpv6?: number;
 }
 export const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -413,6 +419,10 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
     macSecKeys: S.optional(MacSecKeyList),
     rateLimiterStatus: S.optional(RateLimiterStatus),
     partnerInterconnectMacSecCapable: S.optional(S.Boolean),
+    prefixPoolSizeIpv4: S.optional(S.Number),
+    prefixPoolSizeIpv6: S.optional(S.Number),
+    prefixPoolUnallocatedCountIpv4: S.optional(S.Number),
+    prefixPoolUnallocatedCountIpv6: S.optional(S.Number),
   }).pipe(ns),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 export interface AllocateHostedConnectionRequest {
@@ -574,6 +584,7 @@ export const BGPPeer = /*@__PURE__*/ S.suspend(() =>
 export type BGPPeerList = BGPPeer[];
 export const BGPPeerList = /*@__PURE__*/ S.Array(BGPPeer);
 export type SiteLinkEnabled = boolean;
+export type PrefixPoolAllocatedCount = number;
 export interface VirtualInterface {
   ownerAccount?: string;
   virtualInterfaceId?: string;
@@ -602,6 +613,8 @@ export interface VirtualInterface {
   awsLogicalDeviceId?: string;
   tags?: Tag[];
   siteLinkEnabled?: boolean;
+  prefixPoolAllocatedCountIpv4?: number;
+  prefixPoolAllocatedCountIpv6?: number;
   rateLimit?: string;
 }
 export const VirtualInterface = /*@__PURE__*/ S.suspend(() =>
@@ -633,6 +646,8 @@ export const VirtualInterface = /*@__PURE__*/ S.suspend(() =>
     awsLogicalDeviceId: S.optional(S.String),
     tags: S.optional(TagList),
     siteLinkEnabled: S.optional(S.Boolean),
+    prefixPoolAllocatedCountIpv4: S.optional(S.Number),
+    prefixPoolAllocatedCountIpv6: S.optional(S.Number),
     rateLimit: S.optional(S.String),
   }).pipe(ns),
 ).annotate({
@@ -1129,6 +1144,7 @@ export interface DirectConnectGateway {
   ownerAccount?: string;
   directConnectGatewayState?: DirectConnectGatewayState;
   stateChangeError?: string;
+  totalPrefixPoolAllocations?: number;
   tags?: Tag[];
 }
 export const DirectConnectGateway = /*@__PURE__*/ S.suspend(() =>
@@ -1139,6 +1155,7 @@ export const DirectConnectGateway = /*@__PURE__*/ S.suspend(() =>
     ownerAccount: S.optional(S.String),
     directConnectGatewayState: S.optional(DirectConnectGatewayState),
     stateChangeError: S.optional(S.String),
+    totalPrefixPoolAllocations: S.optional(S.Number),
     tags: S.optional(TagList),
   }),
 ).annotate({
@@ -1437,6 +1454,10 @@ export interface Lag {
   macSecCapable?: boolean;
   encryptionMode?: string;
   macSecKeys?: MacSecKey[];
+  prefixPoolSizeIpv4?: number;
+  prefixPoolSizeIpv6?: number;
+  prefixPoolUnallocatedCountIpv4?: number;
+  prefixPoolUnallocatedCountIpv6?: number;
   rateLimiterStatus?: RateLimiterStatus;
 }
 export const Lag = /*@__PURE__*/ S.suspend(() =>
@@ -1462,6 +1483,10 @@ export const Lag = /*@__PURE__*/ S.suspend(() =>
     macSecCapable: S.optional(S.Boolean),
     encryptionMode: S.optional(S.String),
     macSecKeys: S.optional(MacSecKeyList),
+    prefixPoolSizeIpv4: S.optional(S.Number),
+    prefixPoolSizeIpv6: S.optional(S.Number),
+    prefixPoolUnallocatedCountIpv4: S.optional(S.Number),
+    prefixPoolUnallocatedCountIpv6: S.optional(S.Number),
     rateLimiterStatus: S.optional(RateLimiterStatus),
   }).pipe(ns),
 ).annotate({ identifier: "Lag" }) as any as S.Schema<Lag>;
@@ -1480,6 +1505,8 @@ export interface NewPrivateVirtualInterface {
   directConnectGatewayId?: string;
   tags?: Tag[];
   enableSiteLink?: boolean;
+  prefixPoolAllocatedCountIpv4?: number;
+  prefixPoolAllocatedCountIpv6?: number;
   rateLimit?: string;
 }
 export const NewPrivateVirtualInterface = /*@__PURE__*/ S.suspend(() =>
@@ -1497,6 +1524,8 @@ export const NewPrivateVirtualInterface = /*@__PURE__*/ S.suspend(() =>
     directConnectGatewayId: S.optional(S.String),
     tags: S.optional(TagList),
     enableSiteLink: S.optional(S.Boolean),
+    prefixPoolAllocatedCountIpv4: S.optional(S.Number),
+    prefixPoolAllocatedCountIpv6: S.optional(S.Number),
     rateLimit: S.optional(S.String),
   }),
 ).annotate({
@@ -1590,6 +1619,8 @@ export interface NewTransitVirtualInterface {
   directConnectGatewayId?: string;
   tags?: Tag[];
   enableSiteLink?: boolean;
+  prefixPoolAllocatedCountIpv4?: number;
+  prefixPoolAllocatedCountIpv6?: number;
   rateLimit?: string;
 }
 export const NewTransitVirtualInterface = /*@__PURE__*/ S.suspend(() =>
@@ -1606,6 +1637,8 @@ export const NewTransitVirtualInterface = /*@__PURE__*/ S.suspend(() =>
     directConnectGatewayId: S.optional(S.String),
     tags: S.optional(TagList),
     enableSiteLink: S.optional(S.Boolean),
+    prefixPoolAllocatedCountIpv4: S.optional(S.Number),
+    prefixPoolAllocatedCountIpv6: S.optional(S.Number),
     rateLimit: S.optional(S.String),
   }),
 ).annotate({
@@ -2663,6 +2696,111 @@ export const DisassociateMacSecKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateMacSecKeyResponse",
 }) as any as S.Schema<DisassociateMacSecKeyResponse>;
+export type RouteDirection = "accepted" | "advertised" | (string & {});
+export const RouteDirection = /*@__PURE__*/ S.String;
+
+export type RouteFilterCidrString = string;
+export type RouteFilterCidrStringList = string[];
+export const RouteFilterCidrStringList = /*@__PURE__*/ S.Array(S.String);
+export type AsPathList = number[];
+export const AsPathList = /*@__PURE__*/ S.Array(S.Number);
+export type CommunityEntry = string;
+export type CommunityList = string[];
+export const CommunityList = /*@__PURE__*/ S.Array(S.String);
+export interface RouteFilters {
+  routeDirection?: RouteDirection;
+  addressFamily?: AddressFamily;
+  cidrs?: string[];
+  asPath?: number[];
+  communities?: string[];
+}
+export const RouteFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    routeDirection: S.optional(RouteDirection),
+    addressFamily: S.optional(AddressFamily),
+    cidrs: S.optional(RouteFilterCidrStringList),
+    asPath: S.optional(AsPathList),
+    communities: S.optional(CommunityList),
+  }),
+).annotate({ identifier: "RouteFilters" }) as any as S.Schema<RouteFilters>;
+export interface ListVirtualInterfaceRoutesRequest {
+  virtualInterfaceId?: string;
+  filters?: RouteFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListVirtualInterfaceRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    virtualInterfaceId: S.optional(S.String),
+    filters: S.optional(RouteFilters),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListVirtualInterfaceRoutesRequest",
+}) as any as S.Schema<ListVirtualInterfaceRoutesRequest>;
+export type RouteCidr = string;
+export type AsPathType = "seq" | "set" | (string & {});
+export const AsPathType = /*@__PURE__*/ S.String;
+
+export interface AsPathSegment {
+  pathType?: AsPathType;
+  path?: number[];
+}
+export const AsPathSegment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pathType: S.optional(AsPathType), path: S.optional(AsPathList) }),
+).annotate({ identifier: "AsPathSegment" }) as any as S.Schema<AsPathSegment>;
+export type AsPathSegmentList = AsPathSegment[];
+export const AsPathSegmentList = /*@__PURE__*/ S.Array(AsPathSegment);
+export type RouteInstalledAt = Date;
+export interface Route {
+  cidr?: string;
+  routeDirection?: RouteDirection;
+  addressFamily?: AddressFamily;
+  asPath?: AsPathSegment[];
+  communities?: string[];
+  awsLogicalDeviceId?: string;
+  routeInstalledAt?: Date;
+}
+export const Route = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cidr: S.optional(S.String),
+    routeDirection: S.optional(RouteDirection),
+    addressFamily: S.optional(AddressFamily),
+    asPath: S.optional(AsPathSegmentList),
+    communities: S.optional(CommunityList),
+    awsLogicalDeviceId: S.optional(S.String),
+    routeInstalledAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
+export type RouteList = Route[];
+export const RouteList = /*@__PURE__*/ S.Array(Route);
+export interface ListVirtualInterfaceRoutesResponse {
+  virtualInterfaceId?: string;
+  routes?: Route[];
+  nextToken?: string;
+}
+export const ListVirtualInterfaceRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    virtualInterfaceId: S.optional(S.String),
+    routes: S.optional(RouteList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListVirtualInterfaceRoutesResponse",
+}) as any as S.Schema<ListVirtualInterfaceRoutesResponse>;
 export type TestId = string;
 export type BGPPeerIdList = string[];
 export const BGPPeerIdList = /*@__PURE__*/ S.Array(S.String);
@@ -2983,6 +3121,8 @@ export interface UpdateVirtualInterfaceAttributesRequest {
   mtu?: number;
   enableSiteLink?: boolean;
   virtualInterfaceName?: string;
+  prefixPoolAllocatedCountIpv4?: number;
+  prefixPoolAllocatedCountIpv6?: number;
   rateLimit?: string;
 }
 export const UpdateVirtualInterfaceAttributesRequest = /*@__PURE__*/ S.suspend(
@@ -2992,6 +3132,8 @@ export const UpdateVirtualInterfaceAttributesRequest = /*@__PURE__*/ S.suspend(
       mtu: S.optional(S.Number),
       enableSiteLink: S.optional(S.Boolean),
       virtualInterfaceName: S.optional(S.String),
+      prefixPoolAllocatedCountIpv4: S.optional(S.Number),
+      prefixPoolAllocatedCountIpv6: S.optional(S.Number),
       rateLimit: S.optional(S.String),
     }).pipe(
       T.all(
@@ -4473,6 +4615,33 @@ export const disassociateMacSecKey: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DisassociateMacSecKey",
+}));
+
+export type ListVirtualInterfaceRoutesError =
+  | DirectConnectClientException
+  | DirectConnectServerException
+  | CommonErrors;
+/**
+ * Lists the routes for the specified virtual interface.
+ *
+ * Use the `routeDirection` filter to control which routes are returned:
+ *
+ * - `accepted`: routes received from the customer network over the virtual interface.
+ *
+ * - `advertised`: routes advertised to the customer network over the virtual interface.
+ */
+export const listVirtualInterfaceRoutes: API.OperationMethod<
+  ListVirtualInterfaceRoutesRequest,
+  ListVirtualInterfaceRoutesResponse,
+  ListVirtualInterfaceRoutesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListVirtualInterfaceRoutesRequest,
+  output: ListVirtualInterfaceRoutesResponse,
+  errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListVirtualInterfaceRoutes",
 }));
 
 export type ListVirtualInterfaceTestHistoryError =

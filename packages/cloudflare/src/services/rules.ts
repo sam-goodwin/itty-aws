@@ -146,7 +146,10 @@ export const ListsItemsCreateRequestBodyItemListsListItemIPComment =
   }) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemIPComment>;
 
 export type ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
-  301 | 302 | 307 | 308;
+  | 301
+  | 302
+  | 307
+  | 308;
 export const ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -487,7 +490,8 @@ export const GetListBulkOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetListBulkOperationRequest>;
 
 export type ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus =
-  "pending" | "running";
+  | "pending"
+  | "running";
 export const ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus =
   /*@__PURE__*/ S.String;
 
@@ -841,7 +845,10 @@ export const ListsItemsListResultItemListsListItemHostnameFull =
   ListsItemsGetResultListsListItemHostnameFull;
 
 export type ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode =
-  301 | 302 | 307 | 308;
+  | 301
+  | 302
+  | 307
+  | 308;
 export const ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode =
   /*@__PURE__*/ S.Number;
 
@@ -1090,7 +1097,10 @@ export const ListsItemsUpdateRequestBodyItemListsListItemIPComment =
   ListsItemsCreateRequestBodyItemListsListItemIPComment;
 
 export type ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
-  301 | 302 | 307 | 308;
+  | 301
+  | 302
+  | 307
+  | 308;
 export const ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
   /*@__PURE__*/ S.Number;
 

@@ -18969,53 +18969,53 @@ export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionR
   }) as any as S.Schema<PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionRequest>;
 
 export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionResponseBody =
-    | "Continue"
-    | "SwitchingProtocols"
-    | "OK"
-    | "Created"
-    | "Accepted"
-    | "NonAuthoritativeInformation"
-    | "NoContent"
-    | "ResetContent"
-    | "PartialContent"
-    | "MultipleChoices"
-    | "Ambiguous"
-    | "MovedPermanently"
-    | "Moved"
-    | "Found"
-    | "Redirect"
-    | "SeeOther"
-    | "RedirectMethod"
-    | "NotModified"
-    | "UseProxy"
-    | "Unused"
-    | "TemporaryRedirect"
-    | "RedirectKeepVerb"
-    | "BadRequest"
-    | "Unauthorized"
-    | "PaymentRequired"
-    | "Forbidden"
-    | "NotFound"
-    | "MethodNotAllowed"
-    | "NotAcceptable"
-    | "ProxyAuthenticationRequired"
-    | "RequestTimeout"
-    | "Conflict"
-    | "Gone"
-    | "LengthRequired"
-    | "PreconditionFailed"
-    | "RequestEntityTooLarge"
-    | "RequestUriTooLong"
-    | "UnsupportedMediaType"
-    | "RequestedRangeNotSatisfiable"
-    | "ExpectationFailed"
-    | "UpgradeRequired"
-    | "InternalServerError"
-    | "NotImplemented"
-    | "BadGateway"
-    | "ServiceUnavailable"
-    | "GatewayTimeout"
-    | "HttpVersionNotSupported";
+  | "Continue"
+  | "SwitchingProtocols"
+  | "OK"
+  | "Created"
+  | "Accepted"
+  | "NonAuthoritativeInformation"
+  | "NoContent"
+  | "ResetContent"
+  | "PartialContent"
+  | "MultipleChoices"
+  | "Ambiguous"
+  | "MovedPermanently"
+  | "Moved"
+  | "Found"
+  | "Redirect"
+  | "SeeOther"
+  | "RedirectMethod"
+  | "NotModified"
+  | "UseProxy"
+  | "Unused"
+  | "TemporaryRedirect"
+  | "RedirectKeepVerb"
+  | "BadRequest"
+  | "Unauthorized"
+  | "PaymentRequired"
+  | "Forbidden"
+  | "NotFound"
+  | "MethodNotAllowed"
+  | "NotAcceptable"
+  | "ProxyAuthenticationRequired"
+  | "RequestTimeout"
+  | "Conflict"
+  | "Gone"
+  | "LengthRequired"
+  | "PreconditionFailed"
+  | "RequestEntityTooLarge"
+  | "RequestUriTooLong"
+  | "UnsupportedMediaType"
+  | "RequestedRangeNotSatisfiable"
+  | "ExpectationFailed"
+  | "UpgradeRequired"
+  | "InternalServerError"
+  | "NotImplemented"
+  | "BadGateway"
+  | "ServiceUnavailable"
+  | "GatewayTimeout"
+  | "HttpVersionNotSupported";
 export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionResponseBody =
   /*@__PURE__*/ S.String;
 
@@ -25174,25 +25174,34 @@ export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaState =
 
 /** ReplicaSyncStatus */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSyncStatus =
-  "Unknown" | "Synchronized" | "Unsynchronized";
+  | "Unknown"
+  | "Synchronized"
+  | "Unsynchronized";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSyncStatus =
   /*@__PURE__*/ S.String;
 
 /** ReplicaCommitMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaCommitMode =
-  "Unknown" | "Synchronous" | "Asynchronous";
+  | "Unknown"
+  | "Synchronous"
+  | "Asynchronous";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaCommitMode =
   /*@__PURE__*/ S.String;
 
 /** ReplicaReadMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaReadMode =
-  "Unknown" | "None" | "ReadOnly" | "ReadWrite";
+  | "Unknown"
+  | "None"
+  | "ReadOnly"
+  | "ReadWrite";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaReadMode =
   /*@__PURE__*/ S.String;
 
 /** ReplicaSeedMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSeedMode =
-  "Unknown" | "Manual" | "Automatic";
+  | "Unknown"
+  | "Manual"
+  | "Automatic";
 export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSeedMode =
   /*@__PURE__*/ S.String;
 

@@ -534,6 +534,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type StringList = string[];
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface CheckSummary {
   id: string;
   arn: string;
@@ -543,6 +545,10 @@ export interface CheckSummary {
   awsServices: string[];
   source: RecommendationSource;
   metadata: { [key: string]: string | undefined };
+  resourceArnQueryable?: boolean;
+  awsResourceTypes?: string[];
+  checkGranularity?: string;
+  recommendationId?: string;
 }
 export const CheckSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -554,6 +560,10 @@ export const CheckSummary = /*@__PURE__*/ S.suspend(() =>
     awsServices: RecommendationAwsServiceList,
     source: RecommendationSource,
     metadata: StringMap,
+    resourceArnQueryable: S.optional(S.Boolean),
+    awsResourceTypes: S.optional(StringList),
+    checkGranularity: S.optional(S.String),
+    recommendationId: S.optional(S.String),
   }),
 ).annotate({ identifier: "CheckSummary" }) as any as S.Schema<CheckSummary>;
 export type CheckSummaryList = CheckSummary[];
@@ -1036,6 +1046,86 @@ export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationsResponse",
 }) as any as S.Schema<ListRecommendationsResponse>;
+export type AwsResourceArn = string;
+export interface ListRecommendationsForResourceRequest {
+  nextToken?: string;
+  maxResults?: number;
+  awsResourceArn: string;
+  pillar?: RecommendationPillar;
+  status?: ResourceStatus;
+  checkArn?: string;
+  language?: RecommendationLanguage;
+}
+export const ListRecommendationsForResourceRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      awsResourceArn: S.String.pipe(T.HttpLabel("awsResourceArn")),
+      pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
+      status: S.optional(ResourceStatus).pipe(T.HttpQuery("status")),
+      checkArn: S.optional(S.String).pipe(T.HttpQuery("checkArn")),
+      language: S.optional(RecommendationLanguage).pipe(
+        T.HttpQuery("language"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/v1/recommendations-for-resource/{awsResourceArn}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListRecommendationsForResourceRequest",
+}) as any as S.Schema<ListRecommendationsForResourceRequest>;
+export interface RecommendationForResourceSummary {
+  checkArn: string;
+  recommendationArn: string;
+  awsResourceArn: string;
+  status: ResourceStatus;
+  lastUpdatedAt: Date;
+  exclusionStatus: ExclusionStatus;
+  metadata: { [key: string]: string | undefined };
+  pillars: RecommendationPillar[];
+}
+export const RecommendationForResourceSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    checkArn: S.String,
+    recommendationArn: S.String,
+    awsResourceArn: S.String,
+    status: ResourceStatus,
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    exclusionStatus: ExclusionStatus,
+    metadata: StringMap,
+    pillars: RecommendationPillarList,
+  }),
+).annotate({
+  identifier: "RecommendationForResourceSummary",
+}) as any as S.Schema<RecommendationForResourceSummary>;
+export type RecommendationForResourceSummaryList =
+  RecommendationForResourceSummary[];
+export const RecommendationForResourceSummaryList = /*@__PURE__*/ S.Array(
+  RecommendationForResourceSummary,
+);
+export interface ListRecommendationsForResourceResponse {
+  nextToken?: string;
+  recommendationForResourceSummaries: RecommendationForResourceSummary[];
+}
+export const ListRecommendationsForResourceResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      recommendationForResourceSummaries: RecommendationForResourceSummaryList,
+    }),
+).annotate({
+  identifier: "ListRecommendationsForResourceResponse",
+}) as any as S.Schema<ListRecommendationsForResourceResponse>;
 export type UpdateRecommendationLifecycleStage =
   | "pending_response"
   | "in_progress"
@@ -1423,6 +1513,41 @@ export const listRecommendations: API.PaginatedOperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "recommendationSummaries",
+    pageSize: "maxResults",
+  } as const,
+})) as any;
+
+export type ListRecommendationsForResourceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * List all Trusted Advisor recommendations for a given AWS resource ARN.
+ */
+export const listRecommendationsForResource: API.PaginatedOperationMethod<
+  ListRecommendationsForResourceRequest,
+  ListRecommendationsForResourceResponse,
+  ListRecommendationsForResourceError,
+  Credentials | HttpClient.HttpClient,
+  RecommendationForResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListRecommendationsForResourceRequest,
+  output: ListRecommendationsForResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListRecommendationsForResource",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "recommendationForResourceSummaries",
     pageSize: "maxResults",
   } as const,
 })) as any;

@@ -697,7 +697,9 @@ export type RoleAssignmentPropertiesInputPrincipalType =
   | "Group"
   | "ServicePrincipal"
   | "ForeignGroup"
-  | "Device";
+  | "Device"
+  | "AgentUser"
+  | "AgentServicePrincipal";
 export const RoleAssignmentPropertiesInputPrincipalType =
   /*@__PURE__*/ S.String;
 
@@ -805,7 +807,9 @@ export type RoleAssignmentPropertiesPrincipalType =
   | "Group"
   | "ServicePrincipal"
   | "ForeignGroup"
-  | "Device";
+  | "Device"
+  | "AgentUser"
+  | "AgentServicePrincipal";
 export const RoleAssignmentPropertiesPrincipalType = /*@__PURE__*/ S.String;
 
 /** Role assignment properties. */
@@ -855,7 +859,7 @@ export const RoleAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentProperties>;
 
 export interface RoleAssignmentsCreateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -901,7 +905,7 @@ export const RoleAssignmentsCreateByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentsCreateByIdRequest>;
 
 export interface RoleAssignmentsCreateByIdResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -950,7 +954,7 @@ export const RoleAssignmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentsDeleteRequest>;
 
 export interface RoleAssignmentsDeleteResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -996,7 +1000,7 @@ export const RoleAssignmentsDeleteByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentsDeleteByIdRequest>;
 
 export interface RoleAssignmentsDeleteByIdResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -1045,7 +1049,7 @@ export const RoleAssignmentsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentsGetRequest>;
 
 export interface RoleAssignmentsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -1091,7 +1095,7 @@ export const RoleAssignmentsGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentsGetByIdRequest>;
 
 export interface RoleAssignmentsGetByIdResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -1154,7 +1158,7 @@ export const RoleAssignmentsListForResourceRequest = /*@__PURE__*/ S.suspend(
 
 /** Role Assignments */
 export interface RoleAssignment {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -1198,7 +1202,7 @@ export const RoleAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentListResult>;
 
 export interface RoleAssignmentsListForResourceGroupRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
@@ -1255,7 +1259,7 @@ export const RoleAssignmentsListForScopeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentsListForScopeRequest>;
 
 export interface RoleAssignmentsListForSubscriptionRequest {
-  /** The ID of the target subscription. */
+  /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The filter to apply on the operation. Use $filter=atScope() to return all role assignments at or above the scope. Use $filter=principalId eq {id} to return all role assignments at, above or below the scope for the specified principal. */
   _filter?: string;

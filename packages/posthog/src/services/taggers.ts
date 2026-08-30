@@ -119,7 +119,7 @@ export const TaggersCreateRequestConditionsList = /*@__PURE__*/ S.Array(
   TaggerCondition,
 ) as any as S.Schema<TaggersCreateRequestConditionsList>;
 
-/** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI */
+/** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub */
 export type LLMProviderEnum =
   | "openai"
   | "anthropic"
@@ -127,11 +127,13 @@ export type LLMProviderEnum =
   | "openrouter"
   | "fireworks"
   | "azure_openai"
-  | "together_ai";
+  | "together_ai"
+  | "minimax"
+  | "zeabur";
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 export interface TaggerModelConfigurationWrite {
-  /** LLM provider to use for this tagger. * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI */
+  /** LLM provider to use for this tagger. * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub */
   provider: LLMProviderEnum | (string & {});
   /** Provider model identifier to use for this tagger. */
   model: string;
@@ -190,7 +192,7 @@ export const TaggerConditionsList = /*@__PURE__*/ S.Array(
 
 /** Nested serializer for model configuration. */
 export interface TaggerModelConfiguration {
-  /** LLM provider to use for this tagger. * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI */
+  /** LLM provider to use for this tagger. * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub */
   provider: LLMProviderEnum;
   /** Provider model identifier to use for this tagger. */
   model: string;
@@ -215,7 +217,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -224,6 +226,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 

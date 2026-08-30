@@ -39,7 +39,7 @@ export const BackupEnginesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEngines/{backupEngineName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -257,7 +257,7 @@ export const BackupEnginesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEngines",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -353,7 +353,7 @@ export const BackupJobsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -473,7 +473,7 @@ export const BackupOperationResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperationResults/{operationId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -508,7 +508,7 @@ export const BackupOperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperations/{operationId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -605,7 +605,7 @@ export const BackupPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -729,7 +729,7 @@ export const BackupProtectableItemsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -860,7 +860,7 @@ export const BackupProtectedItemsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectedItems",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -897,6 +897,39 @@ export const ProtectedItemResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProtectedItemResourceGuardOperationRequestsList>;
+
+/** Threat status of the container */
+export type SourceSideScanStatus =
+  | "Configured"
+  | "NotConfigured"
+  | "NotApplicable"
+  | "ConfigurationFailed";
+export const SourceSideScanStatus = /*@__PURE__*/ S.String;
+
+/** Threat summary for the container */
+export type SourceSideScanSummary =
+  | "Unknown"
+  | "NotApplicable"
+  | "Suspicious"
+  | "Healthy"
+  | "NoThreatsReported";
+export const SourceSideScanSummary = /*@__PURE__*/ S.String;
+
+/** Source side threat information */
+export interface SourceSideScanInfo {
+  /** Threat status of the container */
+  sourceSideScanStatus?: SourceSideScanStatus | (string & {});
+  /** Threat summary for the container */
+  sourceSideScanSummary?: SourceSideScanSummary | (string & {});
+}
+export const SourceSideScanInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceSideScanStatus: S.optional(SourceSideScanStatus),
+    sourceSideScanSummary: S.optional(SourceSideScanSummary),
+  }),
+).annotate({
+  identifier: "SourceSideScanInfo",
+}) as any as S.Schema<SourceSideScanInfo>;
 
 /** Base class for backup items. */
 export interface ProtectedItem {
@@ -936,8 +969,12 @@ export interface ProtectedItem {
   policyName?: string;
   /** Soft delete retention period in days */
   softDeleteRetentionPeriodInDays?: number;
+  /** Source location of the protected item datasource. */
+  sourceLocation?: string;
   /** ID of the vault which protects this item */
   vaultId?: string;
+  /** Source side threat information */
+  sourceSideScanInfo?: SourceSideScanInfo;
 }
 export const ProtectedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -961,7 +998,9 @@ export const ProtectedItem = /*@__PURE__*/ S.suspend(() =>
     isArchiveEnabled: S.optional(S.Boolean),
     policyName: S.optional(S.String),
     softDeleteRetentionPeriodInDays: S.optional(S.Number),
+    sourceLocation: S.optional(S.String),
     vaultId: S.optional(S.String),
+    sourceSideScanInfo: S.optional(SourceSideScanInfo),
   }),
 ).annotate({ identifier: "ProtectedItem" }) as any as S.Schema<ProtectedItem>;
 
@@ -1052,7 +1091,7 @@ export const BackupProtectionContainersListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionContainers",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -1086,15 +1125,17 @@ export interface ProtectionContainer {
   /** Friendly name of the container. */
   friendlyName?: string;
   /** Type of backup management for the container. */
-  backupManagementType?: BackupManagementType | (string & {});
+  backupManagementType?: BackupManagementType;
   /** Status of registration of the container with the Recovery Services Vault. */
   registrationStatus?: string;
   /** Status of health of the container. */
   healthStatus?: string;
   /** Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2. Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload Backup is VMAppContainer */
-  containerType: ProtectableContainerType | (string & {});
+  containerType: ProtectableContainerType;
   /** Type of the protectable object associated with this container */
   protectableObjectType?: string;
+  /** Source location of the container */
+  sourceLocation?: string;
 }
 export const ProtectionContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1104,6 +1145,7 @@ export const ProtectionContainer = /*@__PURE__*/ S.suspend(() =>
     healthStatus: S.optional(S.String),
     containerType: ProtectableContainerType,
     protectableObjectType: S.optional(S.String),
+    sourceLocation: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ProtectionContainer",
@@ -1200,7 +1242,7 @@ export const BackupProtectionIntentListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1330,7 +1372,7 @@ export const BackupResourceEncryptionConfigsGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1494,7 +1536,7 @@ export const BackupResourceEncryptionConfigsUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1526,7 +1568,7 @@ export const BackupResourceStorageConfigsNonCRRGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1667,7 +1709,7 @@ export const BackupResourceStorageConfigsNonCRRPatchRequest =
         method: "PATCH",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1721,7 +1763,7 @@ export const BackupResourceStorageConfigsNonCRRUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1791,7 +1833,7 @@ export const BackupResourceVaultConfigsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -1939,7 +1981,7 @@ export const BackupResourceVaultConfigsPutRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -2031,7 +2073,7 @@ export const BackupResourceVaultConfigsUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PATCH",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -2106,7 +2148,7 @@ export const BackupStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupStatus",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2216,7 +2258,7 @@ export const BackupsTriggerRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2254,7 +2296,7 @@ export const BackupUsageSummariesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2365,7 +2407,7 @@ export const BackupWorkloadItemsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/items",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2504,7 +2546,7 @@ export const BMSPrepareDataMoveRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/prepareDataMove",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2540,7 +2582,7 @@ export const BMSPrepareDataMoveOperationResultGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -2606,7 +2648,7 @@ export const BMSTriggerDataMoveRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/triggerDataMove",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2619,6 +2661,47 @@ export const BMSTriggerDataMoveResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BMSTriggerDataMoveResponse",
 }) as any as S.Schema<BMSTriggerDataMoveResponse>;
+
+/** Source scan configuration status for enabling or disabling source scan */
+export type SourceScanAction = "Enable" | "Disable";
+export const SourceScanAction = /*@__PURE__*/ S.String;
+
+export interface ConfigureSourceScanExecuteRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the VaultResource */
+  vaultName: string;
+  /** The name of the BackupFabricResource */
+  fabricName: string;
+  /** Name of the container whose details need to be fetched. */
+  containerName: string;
+  /** Backed up item name whose details are to be fetched. */
+  protectedItemName: string;
+  /** Source scan action to perform */
+  sourceScanAction?: SourceScanAction | (string & {});
+}
+export const ConfigureSourceScanExecuteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    vaultName: S.String.pipe(T.Label()),
+    fabricName: S.String.pipe(T.Label()),
+    containerName: S.String.pipe(T.Label()),
+    protectedItemName: S.String.pipe(T.Label()),
+    sourceScanAction: S.optional(SourceScanAction),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/configureSourceScan",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ConfigureSourceScanExecuteRequest",
+}) as any as S.Schema<ConfigureSourceScanExecuteRequest>;
 
 export interface DeletedProtectionContainersListRequest {
   /** The ID of the target subscription. */
@@ -2642,7 +2725,7 @@ export const DeletedProtectionContainersListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupDeletedProtectionContainers",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -2695,7 +2778,7 @@ export const ExportJobsOperationResultsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -2813,7 +2896,7 @@ export const FeatureSupportValidateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2878,7 +2961,7 @@ export const FetchTieringCostPostRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/fetchTieringCost",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2919,7 +3002,7 @@ export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationStatus/{operationId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2947,7 +3030,7 @@ export const GetTieringCostOperationResultGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -3011,7 +3094,7 @@ export const ItemLevelRecoveryConnectionsProvisionRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/provisionInstantItemRecovery",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -3055,7 +3138,7 @@ export const ItemLevelRecoveryConnectionsRevokeRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/revokeInstantItemRecovery",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -3089,7 +3172,7 @@ export const JobCancellationsTriggerRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/cancel",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3124,7 +3207,7 @@ export const JobDetailsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3197,7 +3280,7 @@ export const JobOperationResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/operationResults/{operationId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3232,7 +3315,7 @@ export const JobsExportRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobsExport",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3285,7 +3368,7 @@ export const MoveRecoveryPointRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3306,7 +3389,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.RecoveryServices/operations",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3464,7 +3547,7 @@ export const OperationValidateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperation",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3550,7 +3633,7 @@ export const PrivateEndpointConnectionDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -3585,7 +3668,7 @@ export const PrivateEndpointConnectionGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3762,7 +3845,7 @@ export const PrivateEndpointConnectionPutRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3838,7 +3921,7 @@ export const PrivateEndpointGetOperationStatusRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}/operationsStatus/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -3868,7 +3951,7 @@ export const ProtectableContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectableContainers",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3996,7 +4079,7 @@ export const ProtectedItemOperationResultsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -4078,7 +4161,7 @@ export const ProtectedItemOperationStatusesGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationsStatus/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -4127,6 +4210,8 @@ export interface ProtectedItemInput {
   policyName?: string;
   /** Soft delete retention period in days */
   softDeleteRetentionPeriodInDays?: number;
+  /** Source side threat information */
+  sourceSideScanInfo?: SourceSideScanInfo;
 }
 export const ProtectedItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4148,6 +4233,7 @@ export const ProtectedItemInput = /*@__PURE__*/ S.suspend(() =>
     isArchiveEnabled: S.optional(S.Boolean),
     policyName: S.optional(S.String),
     softDeleteRetentionPeriodInDays: S.optional(S.Number),
+    sourceSideScanInfo: S.optional(SourceSideScanInfo),
   }),
 ).annotate({
   identifier: "ProtectedItemInput",
@@ -4202,7 +4288,7 @@ export const ProtectedItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4280,7 +4366,7 @@ export const ProtectedItemsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4324,7 +4410,7 @@ export const ProtectedItemsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4401,7 +4487,7 @@ export const ProtectionContainerOperationResultsGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -4477,7 +4563,7 @@ export const ProtectionContainerRefreshOperationResultsGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -4514,7 +4600,7 @@ export const ProtectionContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4590,7 +4676,7 @@ export const ProtectionContainersInquireRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4628,7 +4714,7 @@ export const ProtectionContainersRefreshRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4641,6 +4727,34 @@ export const ProtectionContainersRefreshResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProtectionContainersRefreshResponse",
 }) as any as S.Schema<ProtectionContainersRefreshResponse>;
+
+/** Base class for container with backup items. Containers with specific workloads are derived from this class. */
+export interface ProtectionContainerInput {
+  /** Friendly name of the container. */
+  friendlyName?: string;
+  /** Type of backup management for the container. */
+  backupManagementType?: BackupManagementType | (string & {});
+  /** Status of registration of the container with the Recovery Services Vault. */
+  registrationStatus?: string;
+  /** Status of health of the container. */
+  healthStatus?: string;
+  /** Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2. Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload Backup is VMAppContainer */
+  containerType: ProtectableContainerType | (string & {});
+  /** Type of the protectable object associated with this container */
+  protectableObjectType?: string;
+}
+export const ProtectionContainerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    friendlyName: S.optional(S.String),
+    backupManagementType: S.optional(BackupManagementType),
+    registrationStatus: S.optional(S.String),
+    healthStatus: S.optional(S.String),
+    containerType: ProtectableContainerType,
+    protectableObjectType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProtectionContainerInput",
+}) as any as S.Schema<ProtectionContainerInput>;
 
 /** Resource tags. */
 export type ProtectionContainersRegisterRequestTagsMap = {
@@ -4664,7 +4778,7 @@ export interface ProtectionContainersRegisterRequest {
   /** Name of the container whose details need to be fetched. */
   containerName: string;
   /** ProtectionContainerResource properties */
-  properties?: ProtectionContainer;
+  properties?: ProtectionContainerInput;
   /** Resource tags. */
   tags?: ProtectionContainersRegisterRequestTagsMap;
   /** The geo-location where the resource lives */
@@ -4679,7 +4793,7 @@ export const ProtectionContainersRegisterRequest = /*@__PURE__*/ S.suspend(() =>
     vaultName: S.String.pipe(T.Label()),
     fabricName: S.String.pipe(T.Label()),
     containerName: S.String.pipe(T.Label()),
-    properties: S.optional(ProtectionContainer),
+    properties: S.optional(ProtectionContainerInput),
     tags: S.optional(ProtectionContainersRegisterRequestTagsMap),
     location: S.optional(S.String),
     eTag: S.optional(S.String),
@@ -4688,7 +4802,7 @@ export const ProtectionContainersRegisterRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4764,7 +4878,7 @@ export const ProtectionContainersUnregisterRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -4825,7 +4939,7 @@ export const ProtectionIntentCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -4900,7 +5014,7 @@ export const ProtectionIntentDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4938,7 +5052,7 @@ export const ProtectionIntentGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5014,7 +5128,7 @@ export const ProtectionIntentValidateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupPreValidateProtection",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5097,7 +5211,7 @@ export const ProtectionPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -5169,7 +5283,7 @@ export const ProtectionPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5204,7 +5318,7 @@ export const ProtectionPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5278,7 +5392,7 @@ export const ProtectionPolicyOperationResultsGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operationResults/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -5354,7 +5468,7 @@ export const ProtectionPolicyOperationStatusesGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operations/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -5391,16 +5505,84 @@ export const RecoveryPointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
   identifier: "RecoveryPointsGetRequest",
 }) as any as S.Schema<RecoveryPointsGetRequest>;
 
+/** Threat status of the recovery point */
+export type ThreatStatus =
+  | "Unknown"
+  | "Healthy"
+  | "UnHealthy"
+  | "Warning"
+  | "NotAvailable";
+export const ThreatStatus = /*@__PURE__*/ S.String;
+
+/** Threat Status Types */
+export type ThreatState = "Active" | "InProgress" | "Ignored" | "Resolved";
+export const ThreatState = /*@__PURE__*/ S.String;
+
+/** Threat Severity Types */
+export type ThreatSeverity = "Critical" | "High" | "Warning" | "Informational";
+export const ThreatSeverity = /*@__PURE__*/ S.String;
+
+/** Recovery Point Threat information */
+export interface ThreatInfo {
+  /** Threat Subject */
+  threatTitle?: string;
+  /** Threat Description */
+  threatDescription?: string;
+  /** Timestamp when the last (latest)threat information was sent */
+  lastUpdatedTime?: string;
+  /** Threat Status Types */
+  threatState?: ThreatState;
+  /** Start timestamp of the threat */
+  threatStartTime?: string;
+  /** End timestamp of the threat */
+  threatEndTime?: string;
+  /** threat details link */
+  threatURI?: string;
+  /** Threat Severity Types */
+  threatSeverity?: ThreatSeverity;
+}
+export const ThreatInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    threatTitle: S.optional(S.String),
+    threatDescription: S.optional(S.String),
+    lastUpdatedTime: S.optional(S.String),
+    threatState: S.optional(ThreatState),
+    threatStartTime: S.optional(S.String),
+    threatEndTime: S.optional(S.String),
+    threatURI: S.optional(S.String),
+    threatSeverity: S.optional(ThreatSeverity),
+  }),
+).annotate({ identifier: "ThreatInfo" }) as any as S.Schema<ThreatInfo>;
+
+/** Recovery point threat information. */
+export type RecoveryPointThreatInfoList = Array<ThreatInfo>;
+export const RecoveryPointThreatInfoList = /*@__PURE__*/ S.Array(
+  ThreatInfo,
+) as any as S.Schema<RecoveryPointThreatInfoList>;
+
 /** Base class for backup copies. Workload-specific backup copies are derived from this class. */
-export type RecoveryPoint = OperationStatusExtendedInfo;
-export const RecoveryPoint = OperationStatusExtendedInfo;
+export interface RecoveryPoint {
+  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
+  objectType: string;
+  /** Threat status of the recovery point */
+  threatStatus?: ThreatStatus;
+  /** Recovery point threat information. */
+  threatInfo?: RecoveryPointThreatInfoList;
+}
+export const RecoveryPoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectType: S.String,
+    threatStatus: S.optional(ThreatStatus),
+    threatInfo: S.optional(RecoveryPointThreatInfoList),
+  }),
+).annotate({ identifier: "RecoveryPoint" }) as any as S.Schema<RecoveryPoint>;
 
 /** Resource tags. */
 export type RecoveryPointsGetResponseTagsMap = {
@@ -5421,7 +5603,7 @@ export interface RecoveryPointsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** RecoveryPointResource properties */
-  properties?: OperationStatusExtendedInfo;
+  properties?: RecoveryPoint;
   /** Resource tags. */
   tags?: RecoveryPointsGetResponseTagsMap;
   /** The geo-location where the resource lives */
@@ -5435,7 +5617,7 @@ export const RecoveryPointsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(OperationStatusExtendedInfo),
+    properties: S.optional(RecoveryPoint),
     tags: S.optional(RecoveryPointsGetResponseTagsMap),
     location: S.optional(S.String),
     eTag: S.optional(S.String),
@@ -5474,7 +5656,7 @@ export const RecoveryPointsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5501,7 +5683,7 @@ export interface RecoveryPointResource {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** RecoveryPointResource properties */
-  properties?: OperationStatusExtendedInfo;
+  properties?: RecoveryPoint;
   /** Resource tags. */
   tags?: RecoveryPointResourceTagsMap;
   /** The geo-location where the resource lives */
@@ -5515,7 +5697,7 @@ export const RecoveryPointResource = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(OperationStatusExtendedInfo),
+    properties: S.optional(RecoveryPoint),
     tags: S.optional(RecoveryPointResourceTagsMap),
     location: S.optional(S.String),
     eTag: S.optional(S.String),
@@ -5589,7 +5771,7 @@ export const RecoveryPointsRecommendedForMoveListRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPointsRecommendedForMove",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -5638,7 +5820,7 @@ export const ResourceGuardProxiesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5768,7 +5950,7 @@ export const ResourceGuardProxyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5802,7 +5984,7 @@ export const ResourceGuardProxyGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5892,7 +6074,7 @@ export const ResourceGuardProxyPutRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5975,7 +6157,7 @@ export const ResourceGuardProxyUnlockDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -6069,7 +6251,7 @@ export const RestoresTriggerRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6114,7 +6296,7 @@ export const SecurityPINsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupSecurityPIN",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6161,7 +6343,7 @@ export const TieringCostOperationStatusGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationsStatus/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -6189,7 +6371,7 @@ export const ValidateOperationResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationResults/{operationId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6217,7 +6399,7 @@ export const ValidateOperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationsStatuses/{operationId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6248,7 +6430,7 @@ export const ValidateOperationTriggerRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTriggerValidateOperation",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6632,6 +6814,21 @@ export const BMSTriggerDataMove: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: BMSTriggerDataMoveRequest,
   output: BMSTriggerDataMoveResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ConfigureSourceScanExecuteError = AzureOpError;
+/** Configures source scan for a protected item. This is an asynchronous operation. To know the status of the operation, call GetProtectedItemOperationResult API. */
+export const ConfigureSourceScanExecute: API.OperationMethod<
+  ConfigureSourceScanExecuteRequest,
+  OperationStatus,
+  ConfigureSourceScanExecuteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ConfigureSourceScanExecuteRequest,
+  output: OperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

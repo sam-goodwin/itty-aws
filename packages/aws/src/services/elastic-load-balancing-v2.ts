@@ -1539,11 +1539,18 @@ export const HttpRequestMethodConditionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HttpRequestMethodConditionConfig",
 }) as any as S.Schema<HttpRequestMethodConditionConfig>;
+export type SourceIpAddressTypeEnum = "ipv4" | "ipv6" | (string & {});
+export const SourceIpAddressTypeEnum = /*@__PURE__*/ S.String;
+
 export interface SourceIpConditionConfig {
   Values?: string[];
+  IpAddressType?: SourceIpAddressTypeEnum;
 }
 export const SourceIpConditionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Values: S.optional(ListOfString) }),
+  S.Struct({
+    Values: S.optional(ListOfString),
+    IpAddressType: S.optional(SourceIpAddressTypeEnum),
+  }),
 ).annotate({
   identifier: "SourceIpConditionConfig",
 }) as any as S.Schema<SourceIpConditionConfig>;
@@ -4128,13 +4135,13 @@ export type CreateRuleError =
   | CommonErrors;
 /**
  * Creates a rule for the specified listener. The listener must be associated with an
- * Application Load Balancer.
+ * Application Load Balancer or a dual-stack Network Load Balancer.
  *
- * Each rule consists of a priority, one or more actions, one or more conditions, and
- * up to two optional transforms. Rules are evaluated in priority order, from the lowest value
- * to the highest value. When the conditions for a rule are met, its actions are performed.
- * If the conditions for no rules are met, the actions for the default rule are performed.
- * For more information, see Listener rules in the *Application Load Balancers Guide*.
+ * Each rule consists of a priority, one or more actions, and one or more conditions. Rules
+ * are evaluated in priority order, from the lowest value to the highest value. When the
+ * conditions for a rule are met, its actions are performed. If the conditions for no rules are
+ * met, the actions for the default rule are performed. For more information, see Listener rules in the *Application Load Balancers Guide* or
+ * Listener rules in the *Network Load Balancers Guide*.
  */
 export const createRule: API.OperationMethod<
   CreateRuleInput,

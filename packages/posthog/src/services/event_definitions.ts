@@ -39,6 +39,102 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
+/** List of event definition UUIDs to update. */
+export type EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList =
+  Array<string>;
+export const EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList>;
+
+export interface EventDefinitionsBulkUpdateVerifiedCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** List of event definition UUIDs to update. */
+  ids: EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList;
+  /** Target verified state to apply to every matched event. `true` marks the events as verified (and unhides them, since an event cannot be both hidden and verified); `false` unverifies them. */
+  verified: boolean;
+}
+export const EventDefinitionsBulkUpdateVerifiedCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      ids: EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList,
+      verified: S.Boolean,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/event_definitions/bulk_update_verified/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "EventDefinitionsBulkUpdateVerifiedCreateRequest",
+  }) as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequest>;
+
+export interface EventDefinitionBulkUpdateVerifiedItem {
+  /** UUID of the event definition whose verified state changed. */
+  id: string;
+  /** The event's verified state after the update. */
+  verified: boolean;
+}
+export const EventDefinitionBulkUpdateVerifiedItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      verified: S.Boolean,
+    }),
+).annotate({
+  identifier: "EventDefinitionBulkUpdateVerifiedItem",
+}) as any as S.Schema<EventDefinitionBulkUpdateVerifiedItem>;
+
+/** Events whose verified state was changed. Events already in the target state are omitted. */
+export type EventDefinitionBulkUpdateVerifiedResponseUpdatedList =
+  Array<EventDefinitionBulkUpdateVerifiedItem>;
+export const EventDefinitionBulkUpdateVerifiedResponseUpdatedList =
+  /*@__PURE__*/ S.Array(
+    EventDefinitionBulkUpdateVerifiedItem,
+  ) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponseUpdatedList>;
+
+export interface BulkUpdateTagsUUIDError {
+  /** UUID of the object that was skipped. */
+  id: string;
+  /** Why the object was skipped, e.g. 'Not found'. */
+  reason: string;
+}
+export const BulkUpdateTagsUUIDError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    reason: S.String,
+  }),
+).annotate({
+  identifier: "BulkUpdateTagsUUIDError",
+}) as any as S.Schema<BulkUpdateTagsUUIDError>;
+
+/** Events that were skipped (e.g. not found in this project), with a reason each. */
+export type EventDefinitionBulkUpdateVerifiedResponseSkippedList =
+  Array<BulkUpdateTagsUUIDError>;
+export const EventDefinitionBulkUpdateVerifiedResponseSkippedList =
+  /*@__PURE__*/ S.Array(
+    BulkUpdateTagsUUIDError,
+  ) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponseSkippedList>;
+
+export interface EventDefinitionBulkUpdateVerifiedResponse {
+  /** Events whose verified state was changed. Events already in the target state are omitted. */
+  updated: EventDefinitionBulkUpdateVerifiedResponseUpdatedList;
+  /** Events that were skipped (e.g. not found in this project), with a reason each. */
+  skipped: EventDefinitionBulkUpdateVerifiedResponseSkippedList;
+}
+export const EventDefinitionBulkUpdateVerifiedResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updated: EventDefinitionBulkUpdateVerifiedResponseUpdatedList,
+      skipped: EventDefinitionBulkUpdateVerifiedResponseSkippedList,
+    }),
+  ).annotate({
+    identifier: "EventDefinitionBulkUpdateVerifiedResponse",
+  }) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponse>;
+
 export interface EventDefinitionsByNameRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -76,7 +172,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -85,6 +181,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -343,6 +440,11 @@ export const EventDefinitionsGolangRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "EventDefinitionsGolangRetrieveResponse",
 }) as any as S.Schema<EventDefinitionsGolangRetrieveResponse>;
 
+export type EventDefinitionsListRequestNamesList = Array<string>;
+export const EventDefinitionsListRequestNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventDefinitionsListRequestNamesList>;
+
 export interface EventDefinitionsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -352,6 +454,8 @@ export interface EventDefinitionsListRequest {
   exclude_stale?: boolean;
   /** Number of results to return per page. */
   limit?: number;
+  /** Return exact matches for these event names. Pass names as repeated or comma-separated values. */
+  names?: EventDefinitionsListRequestNamesList;
   /** The initial index from which to return the results. */
   offset?: number;
 }
@@ -361,6 +465,7 @@ export const EventDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
     exclude_hidden: S.optional(S.Boolean.pipe(T.Query())),
     exclude_stale: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
+    names: S.optional(EventDefinitionsListRequestNamesList.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -637,6 +742,21 @@ export const EventDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EventDefinitionsUpdateRequest",
 }) as any as S.Schema<EventDefinitionsUpdateRequest>;
+
+export type EventDefinitionsBulkUpdateVerifiedCreateError = PosthogOpError;
+/** Mark multiple event definitions as verified or unverified in one request. In the same vein as ``bulk_update_tags``, but ``verified`` lives on the enterprise ``EnterpriseEventDefinition`` extension rather than the base row, so this action: - requires an enterprise license; - scopes by project (``team__project_id``) and relies on project membership — the same boundary the single-object update path uses — rather than object-level RBAC; - lazily promotes ingestion-created base rows to ``EnterpriseEventDefinition`` (mirroring ``_get_event_definition``) before setting ``verified``; - mirrors the single-object semantics: verifying stamps ``verified_by``/``verified_at`` and unhides the event (an event cannot be both hidden and verified); unverifying clears them; - logs a "changed" activity per event so the History tab matches the single-object path. Events already in the target state are skipped (not re-written, not logged). */
+export const eventDefinitionsBulkUpdateVerifiedCreate: API.OperationMethod<
+  EventDefinitionsBulkUpdateVerifiedCreateRequest,
+  EventDefinitionBulkUpdateVerifiedResponse,
+  EventDefinitionsBulkUpdateVerifiedCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EventDefinitionsBulkUpdateVerifiedCreateRequest,
+  output: EventDefinitionBulkUpdateVerifiedResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type EventDefinitionsByNameRetrieveError =
   | BadRequest

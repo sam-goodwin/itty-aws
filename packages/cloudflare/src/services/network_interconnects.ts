@@ -659,18 +659,18 @@ export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBody =
   }) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectPhysicalBody>;
 
 export type InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed =
-    | "50M"
-    | "100M"
-    | "200M"
-    | "300M"
-    | "400M"
-    | "500M"
-    | "1G"
-    | "2G"
-    | "5G"
-    | "10G"
-    | "20G"
-    | "50G";
+  | "50M"
+  | "100M"
+  | "200M"
+  | "300M"
+  | "400M"
+  | "500M"
+  | "1G"
+  | "2G"
+  | "5G"
+  | "10G"
+  | "20G"
+  | "50G";
 export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed =
   /*@__PURE__*/ S.String;
 

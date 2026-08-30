@@ -506,7 +506,8 @@ export const ListHostnameIpfsUniversalPathContentListEntriesRequest =
   }) as any as S.Schema<ListHostnameIpfsUniversalPathContentListEntriesRequest>;
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType =
-  "cid" | "content_path";
+  | "cid"
+  | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType =
   /*@__PURE__*/ S.String;
 
@@ -730,7 +731,8 @@ export const HostnamesIpfsUniversalPathsContentListsUpdateRequestAction =
   /*@__PURE__*/ S.String;
 
 export type HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType =
-  "cid" | "content_path";
+  | "cid"
+  | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType =
   /*@__PURE__*/ S.String;
 

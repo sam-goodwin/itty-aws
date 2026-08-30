@@ -117,6 +117,12 @@
             "smithy.api#documentation": "Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is."
           }
         },
+        "notification_locks": {
+          "target": "com.posthog.users#UserOutputNotificationLocksList",
+          "traits": {
+            "smithy.api#documentation": "Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only."
+          }
+        },
         "anonymize_data": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -163,6 +169,13 @@
         "is_impersonated_read_only": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "is_impersonated_reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -236,6 +249,12 @@
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
         },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
+        },
         "onboarding_skipped_at": {
           "target": "smithy.api#String",
           "traits": {
@@ -291,7 +310,7 @@
         "requires_credential_review": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
+            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey, or a third-party OAuth application that can currently act as them, and has not yet acknowledged that access. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -307,6 +326,110 @@
       },
       "traits": {
         "smithy.api#documentation": "Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is."
+      }
+    },
+    "com.posthog.users#OrganizationNotificationLock": {
+      "type": "structure",
+      "members": {
+        "setting": {
+          "target": "com.posthog.users#SettingEnum",
+          "traits": {
+            "smithy.api#documentation": "Notification setting this rule enforces.\n\n* `discussions_mentioned` - discussions_mentioned\n* `error_tracking_issue_assigned` - error_tracking_issue_assigned\n* `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled\n* `materialized_view_sync_failed` - materialized_view_sync_failed\n* `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily\n* `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate\n* `organization_member_join_email_disabled` - organization_member_join_email_disabled\n* `pipeline_notifications_disabled` - pipeline_notifications_disabled\n* `project_weekly_digest_disabled` - project_weekly_digest_disabled\n* `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled",
+            "smithy.api#required": {}
+          }
+        },
+        "scope_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "What the setting applies to: a project ID or an organization ID. Empty for a setting that is a single switch.",
+            "smithy.api#required": {}
+          }
+        },
+        "locked_value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value the organization enforces.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.users#SettingEnum": {
+      "type": "enum",
+      "members": {
+        "DISCUSSIONS_MENTIONED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "discussions_mentioned"
+          }
+        },
+        "ERROR_TRACKING_ISSUE_ASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error_tracking_issue_assigned"
+          }
+        },
+        "ERROR_TRACKING_WEEKLY_DIGEST_PROJECT_ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error_tracking_weekly_digest_project_enabled"
+          }
+        },
+        "MATERIALIZED_VIEW_SYNC_FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "materialized_view_sync_failed"
+          }
+        },
+        "MATERIALIZED_VIEW_SYNC_FAILED_DAILY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "materialized_view_sync_failed_daily"
+          }
+        },
+        "MATERIALIZED_VIEW_SYNC_FAILED_IMMEDIATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "materialized_view_sync_failed_immediate"
+          }
+        },
+        "ORGANIZATION_MEMBER_JOIN_EMAIL_DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "organization_member_join_email_disabled"
+          }
+        },
+        "PIPELINE_NOTIFICATIONS_DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pipeline_notifications_disabled"
+          }
+        },
+        "PROJECT_WEEKLY_DIGEST_DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "project_weekly_digest_disabled"
+          }
+        },
+        "WEB_ANALYTICS_WEEKLY_DIGEST_PROJECT_ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "web_analytics_weekly_digest_project_enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `discussions_mentioned` - discussions_mentioned\n* `error_tracking_issue_assigned` - error_tracking_issue_assigned\n* `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled\n* `materialized_view_sync_failed` - materialized_view_sync_failed\n* `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily\n* `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate\n* `organization_member_join_email_disabled` - organization_member_join_email_disabled\n* `pipeline_notifications_disabled` - pipeline_notifications_disabled\n* `project_weekly_digest_disabled` - project_weekly_digest_disabled\n* `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled"
+      }
+    },
+    "com.posthog.users#UserOutputNotificationLocksList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.users#OrganizationNotificationLock"
+      },
+      "traits": {
+        "smithy.api#documentation": "Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only."
       }
     },
     "com.posthog.users#ToolbarModeEnum": {
@@ -4047,6 +4170,13 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "enforce_verified_domains": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "members_can_invite": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -4063,8 +4193,21 @@
         "members_can_use_personal_api_keys": {
           "target": "smithy.api#Boolean"
         },
+        "members_can_see_org_members": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When False, members (below admin) only see themselves in the members list and only project members in access control."
+          }
+        },
         "allow_publicly_shared_resources": {
           "target": "smithy.api#Boolean"
+        },
+        "read_only_mcp_access": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When True, requests through the PostHog MCP server can read but not change this organization's data.",
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "member_count": {
           "target": "smithy.api#Integer"
@@ -4487,6 +4630,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -4495,7 +4644,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.users#OnboardingSkippedReasonEnum": {
@@ -4518,10 +4667,16 @@
           "traits": {
             "smithy.api#enumValue": "other"
           }
+        },
+        "PROVISIONED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "provisioned"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `delegated` - Delegated to teammate\n* `later` - Skipped for later\n* `other` - Other"
+        "smithy.api#documentation": "* `delegated` - Delegated to teammate\n* `later` - Skipped for later\n* `other` - Other\n* `provisioned` - Account provisioned by a partner"
       }
     },
     "com.posthog.users#UserOutputActiveRealtimeNotificationTypesList": {
@@ -5092,6 +5247,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -5285,6 +5446,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -5405,13 +5572,27 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.users#UserGithubLogin": {
+      "type": "structure",
+      "members": {
+        "github_login": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user's resolved GitHub login, or null when no GitHub identity is linked.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.users#UsersGithubLoginRetrieve": {
       "type": "operation",
       "input": {
         "target": "com.posthog.users#UsersGithubLoginRetrieveRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.posthog.users#UserGithubLogin"
       },
       "errors": [
         {
@@ -5627,6 +5808,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -5795,10 +5982,31 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "github_login": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The connected user's own GitHub login (distinct from the installation account).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "uses_shared_installation": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "True when this installation id matches a team-level GitHub integration on the active project.",
+            "smithy.api#required": {}
+          }
+        },
+        "installation_shared": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether any other PostHog project or personal connection references the same App installation. When false, disconnecting this integration also uninstalls the GitHub App from the connected account or organization.",
+            "smithy.api#required": {}
+          }
+        },
+        "installation_status": {
+          "target": "com.posthog.users#InstallationStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "`unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise.\n\n* `connected` - connected\n* `unavailable` - unavailable",
             "smithy.api#required": {}
           }
         },
@@ -5831,6 +6039,26 @@
         }
       },
       "traits": {}
+    },
+    "com.posthog.users#InstallationStatusEnum": {
+      "type": "enum",
+      "members": {
+        "CONNECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connected"
+          }
+        },
+        "UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unavailable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `connected` - connected\n* `unavailable` - unavailable"
+      }
     },
     "com.posthog.users#UserGitHubIntegrationListResponseResultsList": {
       "type": "list",
@@ -6060,6 +6288,12 @@
           "traits": {
             "smithy.api#documentation": "Whether more repositories are available beyond this page."
           }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of repositories matching the search query, across all pages."
+          }
         }
       },
       "traits": {}
@@ -6068,13 +6302,58 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Integer"
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "GitHub repository numeric identifier."
+          }
         },
         "name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Repository short name (without the owner prefix)."
+          }
         },
         "full_name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified repository name as 'owner/repo'."
+          }
+        },
+        "private": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the repository is private."
+          }
+        },
+        "default_branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The repository's default branch (e.g. 'main')."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Primary programming language GitHub detected for the repository."
+          }
+        },
+        "pushed_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 timestamp of the most recent push, useful for sorting by recent activity."
+          }
+        },
+        "archived": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the repository is archived."
+          }
+        },
+        "can_push": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the PostHog GitHub App has write access — required to open pull requests."
+          }
         }
       },
       "traits": {}
@@ -6133,6 +6412,12 @@
           "traits": {
             "smithy.api#documentation": "The refreshed repository cache."
           }
+        },
+        "installation_status": {
+          "target": "com.posthog.users#InstallationStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "`unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one.\n\n* `connected` - connected\n* `unavailable` - unavailable"
+          }
         }
       },
       "traits": {}
@@ -6161,6 +6446,194 @@
           "code": 200
         },
         "smithy.api#documentation": "Refresh repositories for a personal GitHub installation\n\nRefresh repositories accessible to a specific GitHub installation."
+      }
+    },
+    "com.posthog.users#UsersIntegrationsGithubInstallRequestsRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.users#GitHubInstallRequestListResponse": {
+      "type": "structure",
+      "members": {
+        "results": {
+          "target": "com.posthog.users#GitHubInstallRequestListResponseResultsList",
+          "traits": {
+            "smithy.api#documentation": "The user's GitHub App install-approval requests, newest first.",
+            "smithy.api#required": {}
+          }
+        },
+        "install_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shareable GitHub App install URL with no PostHog session state, for an org owner who needs to approve the install. Null when the GitHub App is not configured on this instance.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.users#GitHubInstallRequestItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PostHog GitHubInstallRequest row id.",
+            "smithy.api#required": {}
+          }
+        },
+        "github_login": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub login the install was requested under. Blank if it could not be resolved.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.posthog.users#GitHubInstallRequestItemStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "`pending` while waiting on an org owner's approval, `approved` once the installation webhook confirms it, `unidentified` when the requesting GitHub account could not be resolved. Approval can't be detected for an unidentified request, so the user has to start the connect flow again.\n\n* `pending` - Pending\n* `approved` - Approved\n* `unidentified` - Unidentified",
+            "smithy.api#required": {}
+          }
+        },
+        "installation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub App installation id, set once the request is approved.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "account_login": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub organization or user login the installation was approved under, once known.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "account_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub account type (`Organization` or `User`) the installation was approved under, once known.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "requested_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the install approval was requested.",
+            "smithy.api#required": {}
+          }
+        },
+        "resolved_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When an org owner approved the request.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.users#GitHubInstallRequestItemStatusEnum": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "approved"
+          }
+        },
+        "UNIDENTIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unidentified"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `pending` - Pending\n* `approved` - Approved\n* `unidentified` - Unidentified"
+      }
+    },
+    "com.posthog.users#GitHubInstallRequestListResponseResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.users#GitHubInstallRequestItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user's GitHub App install-approval requests, newest first."
+      }
+    },
+    "com.posthog.users#UsersIntegrationsGithubInstallRequestsRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.users#UsersIntegrationsGithubInstallRequestsRetrieveRequest"
+      },
+      "output": {
+        "target": "com.posthog.users#GitHubInstallRequestListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/users/{uuid}/integrations/github/install_requests/",
+          "code": 200
+        },
+        "smithy.api#documentation": "List the user's GitHub install-approval requests\n\nReturn the requesting user's GitHub App install-approval requests, newest first.\n\nThis is the durable server-side \"awaiting org owner approval\" state (see\n``posthog.models.user_integration.GitHubInstallRequest``), distinct from the in-flight\nconnect spinner, which never touches this table."
+      }
+    },
+    "com.posthog.users#UsersIntegrationsGithubInstallRequestsDestroyRequest": {
+      "type": "structure",
+      "members": {
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "request_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.users#UsersIntegrationsGithubInstallRequestsDestroy": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.users#UsersIntegrationsGithubInstallRequestsDestroyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/users/{uuid}/integrations/github/install_requests/{request_id}/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Dismiss a GitHub install-approval request\n\nDelete one of the requesting user's install-approval requests, whatever its status.\n\nUser-facing bookkeeping only: a later connect attempt records a fresh row."
       }
     },
     "com.posthog.users#UsersIntegrationsGithubPrepareCallbackCreateRequest": {
@@ -6215,7 +6688,7 @@
         "team_id": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Optional team/project id (e.g. PostHog Code); web UI uses the session's current team.",
+            "smithy.api#documentation": "Optional team/project id (e.g. PostHog Desktop); web UI uses the session's current team.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -6668,7 +7141,7 @@
         "smithy.api#documentation": "Revoke every login session for the current user except the one making this request. Self-only.\n\nRequires recent auth (TimeSensitiveActionPermission) so a stolen cookie can't weaponize the\n\"log out everywhere else\" lock-out, and is blocked while impersonating."
       }
     },
-    "com.posthog.users#ReasonEnum": {
+    "com.posthog.users#OnboardingSkipRequestReasonEnum": {
       "type": "enum",
       "members": {
         "LATER": {
@@ -6699,7 +7172,7 @@
           }
         },
         "reason": {
-          "target": "com.posthog.users#ReasonEnum",
+          "target": "com.posthog.users#OnboardingSkipRequestReasonEnum",
           "traits": {
             "smithy.api#documentation": "Why the user is leaving onboarding. 'later' keeps them able to return; 'other' is a catch-all. 'delegated' is rejected here — use the delegate endpoint so the delegation invite is created atomically.\n\n* `later` - Later\n* `other` - Other",
             "smithy.api#required": {}
@@ -7037,6 +7510,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -7268,6 +7747,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -7460,6 +7945,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
+          }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
           }
         }
       },
@@ -7733,6 +8224,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -7925,6 +8422,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -8110,6 +8613,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -8292,6 +8801,12 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
+        },
+        "ui_configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown."
+          }
         }
       },
       "traits": {
@@ -8322,157 +8837,26 @@
         }
       }
     },
-    "com.posthog.users#UsersVerifyEmailCreateRequestNotificationSettingsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {
-        "smithy.api#documentation": "Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is."
-      }
-    },
-    "com.posthog.users#UsersVerifyEmailCreateRequestToolbarMode": {
-      "type": "union",
-      "members": {
-        "ToolbarModeEnum": {
-          "target": "com.posthog.users#ToolbarModeEnum"
-        },
-        "BlankEnum": {
-          "target": "com.posthog.users#BlankEnum"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersVerifyEmailCreateRequestThemeMode": {
-      "type": "union",
-      "members": {
-        "ThemeModeEnum": {
-          "target": "com.posthog.users#ThemeModeEnum"
-        },
-        "BlankEnum": {
-          "target": "com.posthog.users#BlankEnum"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersVerifyEmailCreateRequestShortcutPosition": {
-      "type": "union",
-      "members": {
-        "ShortcutPositionEnum": {
-          "target": "com.posthog.users#ShortcutPositionEnum"
-        },
-        "BlankEnum": {
-          "target": "com.posthog.users#BlankEnum"
-        }
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersVerifyEmailCreateRequest": {
       "type": "structure",
       "members": {
-        "first_name": {
-          "target": "smithy.api#String"
-        },
-        "last_name": {
-          "target": "smithy.api#String"
-        },
-        "email": {
-          "target": "smithy.api#String"
-        },
-        "notification_settings": {
-          "target": "com.posthog.users#UsersVerifyEmailCreateRequestNotificationSettingsMap",
-          "traits": {
-            "smithy.api#documentation": "Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is."
-          }
-        },
-        "anonymize_data": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether PostHog should anonymize events captured for this user when identified.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "allow_impersonation": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "toolbar_mode": {
-          "target": "com.posthog.users#UsersVerifyEmailCreateRequestToolbarMode",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_staff": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Designates whether the user can log into this admin site."
-          }
-        },
-        "set_current_organization": {
-          "target": "smithy.api#String"
-        },
-        "set_current_team": {
-          "target": "smithy.api#String"
-        },
-        "password": {
+        "uuid": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#sensitive": {}
+            "smithy.api#documentation": "UUID of the user whose email is being verified.",
+            "smithy.api#required": {}
           }
         },
-        "current_password": {
+        "token": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The user's current password. Required when changing `password` if the user already has a usable password set.",
-            "smithy.api#sensitive": {}
+            "smithy.api#documentation": "Verification token from the emailed link. Required unless a code is provided."
           }
         },
-        "events_column_config": {
-          "target": "smithy.api#Document"
-        },
-        "has_seen_product_intro_for": {
-          "target": "smithy.api#Document"
-        },
-        "theme_mode": {
-          "target": "com.posthog.users#UsersVerifyEmailCreateRequestThemeMode",
+        "code": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "hedgehog_config": {
-          "target": "smithy.api#Document"
-        },
-        "allow_sidebar_suggestions": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "shortcut_position": {
-          "target": "com.posthog.users#UsersVerifyEmailCreateRequestShortcutPosition",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "role_at_organization": {
-          "target": "com.posthog.users#RoleAtOrganizationEnum"
-        },
-        "passkeys_enabled_for_2fa": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether passkeys are enabled for 2FA authentication. Users can disable this to use only TOTP for 2FA while keeping passkeys for login.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "hide_mcp_hints": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
+            "smithy.api#documentation": "The 6-digit verification code emailed at signup. Whitespace, invisible characters, and grouping hyphens are removed and compatibility digits are folded to ASCII before checking."
           }
         }
       },
@@ -8597,6 +8981,12 @@
         },
         {
           "target": "com.posthog.users#UsersIntegrationsGithubReposRefreshCreate"
+        },
+        {
+          "target": "com.posthog.users#UsersIntegrationsGithubInstallRequestsRetrieve"
+        },
+        {
+          "target": "com.posthog.users#UsersIntegrationsGithubInstallRequestsDestroy"
         },
         {
           "target": "com.posthog.users#UsersIntegrationsGithubPrepareCallbackCreate"

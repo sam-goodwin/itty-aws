@@ -1366,7 +1366,8 @@ export const ZoneRedundantHighAvailabilitySupport = /*@__PURE__*/ S.String;
 
 /** Indicates if high availability with zone redundancy is supported in conjunction with geographically redundant backups in this location. Will be deprecated in the future. Look to Supported Features for 'ZoneRedundantHaAndGeoBackup'. */
 export type ZoneRedundantHighAvailabilityAndGeographicallyRedundantBackupSupport =
-  "Enabled" | "Disabled";
+  | "Enabled"
+  | "Disabled";
 export const ZoneRedundantHighAvailabilityAndGeographicallyRedundantBackupSupport =
   /*@__PURE__*/ S.String;
 

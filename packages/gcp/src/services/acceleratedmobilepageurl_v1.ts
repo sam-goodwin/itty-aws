@@ -65,27 +65,27 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type BatchGetAmpUrlsRequestLookupStrategyEnum =
-  | "FETCH_LIVE_DOC"
-  | "IN_INDEX_DOC";
-export const BatchGetAmpUrlsRequestLookupStrategyEnum = /*@__PURE__*/ S.String;
-
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
+export type BatchGetAmpUrlsRequestLookupStrategyEnum =
+  | "FETCH_LIVE_DOC"
+  | "IN_INDEX_DOC";
+export const BatchGetAmpUrlsRequestLookupStrategyEnum = /*@__PURE__*/ S.String;
+
 /** AMP URL request for a batch of URLs. */
 export interface BatchGetAmpUrlsRequest {
-  /** The lookup_strategy being requested. */
-  lookupStrategy?: BatchGetAmpUrlsRequestLookupStrategyEnum | (string & {});
   /** List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)). */
   urls?: StringList;
+  /** The lookup_strategy being requested. */
+  lookupStrategy?: BatchGetAmpUrlsRequestLookupStrategyEnum | (string & {});
 }
 export const BatchGetAmpUrlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lookupStrategy: S.optional(BatchGetAmpUrlsRequestLookupStrategyEnum),
     urls: S.optional(StringList),
+    lookupStrategy: S.optional(BatchGetAmpUrlsRequestLookupStrategyEnum),
   }),
 ).annotate({
   identifier: "BatchGetAmpUrlsRequest",
@@ -111,18 +111,18 @@ export const BatchGetAmpUrlsRequest_ = /*@__PURE__*/ S.suspend(() =>
 
 /** AMP URL response for a requested URL. */
 export interface AmpUrl {
+  /** The original non-AMP URL. */
+  originalUrl?: string;
   /** The AMP URL pointing to the publisher's web server. */
   ampUrl?: string;
   /** The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache. */
   cdnAmpUrl?: string;
-  /** The original non-AMP URL. */
-  originalUrl?: string;
 }
 export const AmpUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    originalUrl: S.optional(S.String),
     ampUrl: S.optional(S.String),
     cdnAmpUrl: S.optional(S.String),
-    originalUrl: S.optional(S.String),
   }),
 ).annotate({ identifier: "AmpUrl" }) as any as S.Schema<AmpUrl>;
 

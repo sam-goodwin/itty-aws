@@ -255,16 +255,28 @@
           "target": "smithy.api#String"
         },
         "company": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "blog": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "location": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "email": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "twitter_username": {
           "target": "smithy.api#String",

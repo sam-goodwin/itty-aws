@@ -30,10 +30,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes a snapshot.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#SnapshotsDeleteRequest": {
@@ -81,10 +81,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Updates tags on a snapshot.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#SnapshotsUpdateTagsResponse": {
@@ -493,10 +493,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates a snapshot.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#SnapshotsCreateOrUpdateResponse": {
@@ -672,10 +672,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a snapshot.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#SnapshotsGetResponse": {
@@ -786,10 +786,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists snapshots in the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#SnapshotListResult": {
@@ -922,10 +922,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/upgradeProfiles/default",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the upgrade profile of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetUpgradeProfileResponse": {
@@ -1126,10 +1126,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a trusted access role binding.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingsDeleteRequest": {
@@ -1185,10 +1185,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create or update a trusted access role binding",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingsCreateOrUpdateResponse": {
@@ -1396,10 +1396,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get a trusted access role binding.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingsGetResponse": {
@@ -1494,10 +1494,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List trusted access role bindings.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingListResult": {
@@ -1614,10 +1614,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/stop",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Stops a Managed Cluster\n\nThis can only be performed on Azure Virtual Machine Scale set backed clusters. Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state. A cluster does not accrue charges while it is stopped. See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersStopRequest": {
@@ -1665,10 +1665,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/start",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Starts a previously stopped Managed Cluster\n\nSee [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersStartRequest": {
@@ -1716,10 +1716,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/runCommand",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Submits a command to run against the Managed Cluster.\n\nAKS will create a pod to run the command. This is primarily useful for private clusters. For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#RunCommandResult": {
@@ -1850,10 +1850,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateServiceAccountSigningKeys",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Rotates the service account signing keys of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersRotateServiceAccountSigningKeysRequest": {
@@ -1901,10 +1901,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateClusterCertificates",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Rotates the certificates of a managed cluster.\n\nSee [Certificate rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for more details about rotating managed cluster certificates.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersRotateClusterCertificatesRequest": {
@@ -1952,10 +1952,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resolvePrivateLinkServiceId",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the private link service ID for the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#PrivateLinkResource": {
@@ -2095,10 +2095,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetServicePrincipalProfile",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Reset the Service Principal Profile of a managed cluster.\n\nThis action cannot be performed on a cluster that is not using a service principal",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersResetServicePrincipalProfileRequest": {
@@ -2160,10 +2160,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of private link resources in the specified managed cluster.\n\nTo learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#PrivateLinkResourcesListResult": {
@@ -2234,10 +2234,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes a private endpoint connection.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionsDeleteRequest": {
@@ -2293,10 +2293,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Updates a private endpoint connection.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionsUpdateResponse": {
@@ -2548,10 +2548,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the specified private endpoint connection.\n\nTo learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionsGetResponse": {
@@ -2645,10 +2645,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of private endpoint connections in the specified managed cluster.\n\nTo learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionListResult": {
@@ -2757,10 +2757,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/outboundNetworkDependenciesEndpoints",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster.\n\nGets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#OutboundEnvironmentEndpointCollection": {
@@ -2928,10 +2928,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles/{mode}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets available upgrades for a service mesh in a cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetMeshUpgradeProfileResponse": {
@@ -3098,10 +3098,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists available upgrades for all service meshes in a specific cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#MeshUpgradeProfileList": {
@@ -3217,10 +3217,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}/listCredential",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the credentials of a namespace.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#CredentialResults": {
@@ -3319,10 +3319,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes a namespace.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedNamespacesDeleteRequest": {
@@ -3378,10 +3378,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Updates tags on a managed namespace.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedNamespacesUpdateResponse": {
@@ -3798,10 +3798,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates a namespace managed by ARM for the specified managed cluster. Users can configure aspects like resource quotas, network ingress/egress policies, and more. See aka.ms/aks/managed-namespaces for more details.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedNamespacesCreateOrUpdateResponse": {
@@ -4025,10 +4025,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the specified namespace of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedNamespacesGetResponse": {
@@ -4153,10 +4153,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of managed namespaces in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedNamespaceListResult": {
@@ -4303,10 +4303,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes a maintenance configuration.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#MaintenanceConfigurationsDeleteRequest": {
@@ -4362,10 +4362,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates a maintenance configuration in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#MaintenanceConfigurationsCreateOrUpdateResponse": {
@@ -4844,10 +4844,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the specified maintenance configuration of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#MaintenanceConfigurationsGetResponse": {
@@ -4941,10 +4941,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of maintenance configurations in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#MaintenanceConfigurationListResult": {
@@ -5060,10 +5060,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterUserCredential",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the user credentials of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersListClusterUserCredentialsRequest": {
@@ -5143,10 +5143,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterMonitoringUserCredential",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the cluster monitoring user credentials of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersListClusterMonitoringUserCredentialsRequest": {
@@ -5201,10 +5201,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterAdminCredential",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the admin credentials of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersListClusterAdminCredentialsRequest": {
@@ -5259,10 +5259,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes an identity binding in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#IdentityBindingsDeleteRequest": {
@@ -5318,10 +5318,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates an identity binding in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#IdentityBindingsCreateOrUpdateResponse": {
@@ -5575,10 +5575,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the specified Identity Binding.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#IdentityBindingsGetResponse": {
@@ -5678,10 +5678,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of identity bindings in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#IdentityBindingListResult": {
@@ -5803,10 +5803,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/commandResults/{commandId}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the results of a command which has been run on the Managed Cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetCommandResultRequest": {
@@ -5862,10 +5862,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/availableAgentPoolVersions",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of supported Kubernetes versions for the specified agent pool.\n\nSee [supported Kubernetes versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) for more details about the version lifecycle.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolAvailableVersions": {
@@ -5995,10 +5995,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeProfiles/default",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the upgrade profile for an agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolsGetUpgradeProfileResponse": {
@@ -6217,10 +6217,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeNodeImageVersion",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Upgrades the node image version of an agent pool to the latest.\n\nUpgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolsUpgradeNodeImageVersionRequest": {
@@ -6276,10 +6276,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines/{machineName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get a specific machine in the specified agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#MachinesGetResponse": {
@@ -6479,10 +6479,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of machines in the specified agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#MachineListResult": {
@@ -6621,10 +6621,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/deleteMachines",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes specific machines in an agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolsDeleteMachinesRequest": {
@@ -6696,10 +6696,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/abort",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Aborts last operation running on agent pool.\n\nAborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolsAbortLatestOperationRequest": {
@@ -6755,10 +6755,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes an agent pool in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolsDeleteRequest": {
@@ -6821,10 +6821,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates an agent pool in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolsCreateOrUpdateResponse": {
@@ -7670,10 +7670,51 @@
           "traits": {
             "smithy.api#documentation": "Specifications on how to scale the VirtualMachines agent pool to a fixed size."
           }
+        },
+        "autoscale": {
+          "target": "com.azure.containerservice#ScaleProfileAutoscaleList",
+          "traits": {
+            "smithy.api#documentation": "Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range.\nEach profile targets a specific VM SKU and is evaluated independently.\nScaling decisions across profiles are governed by the cluster autoscaler expander,\nconfigurable via `ManagedCluster.properties.autoScalerProfile.expander`."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Specifications on how to scale a VirtualMachines agent pool."
+      }
+    },
+    "com.azure.containerservice#ScaleProfileAutoscaleList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#AutoScaleProfile"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range.\nEach profile targets a specific VM SKU and is evaluated independently.\nScaling decisions across profiles are governed by the cluster autoscaler expander,\nconfigurable via `ManagedCluster.properties.autoScalerProfile.expander`."
+      }
+    },
+    "com.azure.containerservice#AutoScaleProfile": {
+      "type": "structure",
+      "members": {
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'."
+          }
+        },
+        "minCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes of the specified sizes."
+          }
+        },
+        "maxCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes of the specified sizes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifications on auto-scaling."
       }
     },
     "com.azure.containerservice#ScaleProfileManualList": {
@@ -7807,6 +7848,12 @@
           "traits": {
             "smithy.api#enumValue": "Disabled"
           }
+        },
+        "ENTRAID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntraId"
+          }
         }
       },
       "traits": {
@@ -7847,10 +7894,50 @@
           "traits": {
             "smithy.api#documentation": "The IDs of the application security groups which agent pool will associate when created."
           }
+        },
+        "dranet": {
+          "target": "com.azure.containerservice#DRANETProfile",
+          "traits": {
+            "smithy.api#documentation": "DRANET settings of an agent pool."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Network settings of an agent pool."
+      }
+    },
+    "com.azure.containerservice#DRANETProfile": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.azure.containerservice#DRANETMode",
+          "traits": {
+            "smithy.api#documentation": "The DRANET mode for the agent pool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DRANET settings of an agent pool."
+      }
+    },
+    "com.azure.containerservice#DRANETMode": {
+      "type": "enum",
+      "members": {
+        "UNMANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unmanaged"
+          }
+        },
+        "MANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Managed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The DRANET mode for the agent pool."
       }
     },
     "com.azure.containerservice#AgentPoolNetworkProfileApplicationSecurityGroupsList": {
@@ -9138,10 +9225,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the specified managed cluster agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolsGetResponse": {
@@ -9235,10 +9322,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of agent pools in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AgentPoolListResult": {
@@ -9354,10 +9441,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/abort",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Aborts last operation running on managed cluster.\n\nAborts the currently running operation on the managed cluster. The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersAbortLatestOperationRequest": {
@@ -9405,10 +9492,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersDeleteRequest": {
@@ -9456,10 +9543,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Updates tags on a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersUpdateTagsResponse": {
@@ -10050,6 +10137,12 @@
             "smithy.api#documentation": "AI toolchain operator settings that apply to the whole cluster."
           }
         },
+        "schedulerProfile": {
+          "target": "com.azure.containerservice#SchedulerProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile."
+          }
+        },
         "hostedSystemProfile": {
           "target": "com.azure.containerservice#ManagedClusterHostedSystemProfile",
           "traits": {
@@ -10161,6 +10254,54 @@
       },
       "traits": {
         "smithy.api#documentation": "Settings for hosted system addons."
+      }
+    },
+    "com.azure.containerservice#SchedulerProfile": {
+      "type": "structure",
+      "members": {
+        "upstream": {
+          "target": "com.azure.containerservice#SchedulerInstanceProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile with settings related to upstream variant of kube-scheduler (https://github.com/kubernetes/kubernetes/tree/master/pkg/scheduler)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile."
+      }
+    },
+    "com.azure.containerservice#SchedulerInstanceProfile": {
+      "type": "structure",
+      "members": {
+        "schedulerConfigMode": {
+          "target": "com.azure.containerservice#SchedulerConfigMode",
+          "traits": {
+            "smithy.api#documentation": "The configuration mode to be used by the AKS-managed scheduler."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile with settings related to a specific instance of an AKS-managed scheduler."
+      }
+    },
+    "com.azure.containerservice#SchedulerConfigMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "MANAGEDBYCRD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManagedByCRD"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The config customization mode for this scheduler instance."
       }
     },
     "com.azure.containerservice#ManagedClusterAIToolchainOperatorProfile": {
@@ -10582,6 +10723,12 @@
             "smithy.api#documentation": "Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See aka.ms/AzureManagedPrometheus for an overview."
           }
         },
+        "containerInsights": {
+          "target": "com.azure.containerservice#ManagedClusterAzureMonitorProfileContainerInsights",
+          "traits": {
+            "smithy.api#documentation": "Set this to enable and configure Azure Monitor Container Insights for the cluster, which collects Kubernetes events, inventory, and container stdout & stderr logs. See aka.ms/AzureMonitorContainerInsights for an overview."
+          }
+        },
         "appMonitoring": {
           "target": "com.azure.containerservice#ManagedClusterAzureMonitorProfileAppMonitoring",
           "traits": {
@@ -10601,10 +10748,74 @@
           "traits": {
             "smithy.api#documentation": "Application Monitoring auto-instrumentation for AKS. Deploys a webhook that auto-instruments workloads with Microsoft OpenTelemetry Distros to collect OpenTelemetry metrics, logs, and traces. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview."
           }
+        },
+        "openTelemetryMetrics": {
+          "target": "com.azure.containerservice#ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics",
+          "traits": {
+            "smithy.api#documentation": "Application Monitoring OpenTelemetry Metrics Profile for AKS. Collects OpenTelemetry metrics of the application using Azure Monitor OpenTelemetry based SDKs. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview."
+          }
+        },
+        "openTelemetryLogsAndTraces": {
+          "target": "com.azure.containerservice#ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryLogsAndTraces",
+          "traits": {
+            "smithy.api#documentation": "Application Monitoring OpenTelemetry logs and traces profile for AKS. Collects OpenTelemetry logs and traces of the application using Azure Monitor OpenTelemetry based SDKs. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Application Monitoring profile for AKS."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryLogsAndTraces": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if Application Monitoring OpenTelemetry Logs and traces is enabled or not."
+          }
+        },
+        "httpPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The host port for OpenTelemetry HTTP/PROTOBUF logs and traces. If not specified, the default port is 28331."
+          }
+        },
+        "grpcPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The host port for OpenTelemetry GRPC logs and traces. If not specified, the default port is 28332."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Application Monitoring OpenTelemetry logs and traces profile for AKS. Collects OpenTelemetry logs and traces of the application using Azure Monitor OpenTelemetry based SDKs. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if Application Monitoring OpenTelemetry Metrics is enabled or not."
+          }
+        },
+        "httpPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The host port for OpenTelemetry HTTP/PROTOBUF metrics. If not specified, the default port is 28333."
+          }
+        },
+        "grpcPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The host port for OpenTelemetry GRPC metrics. If not specified, the default port is 28334."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Application Monitoring OpenTelemetry Metrics Profile for AKS. Collects OpenTelemetry metrics of the application using Azure Monitor OpenTelemetry based SDKs. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview."
       }
     },
     "com.azure.containerservice#ManagedClusterAzureMonitorProfileAppMonitoringAutoInstrumentation": {
@@ -10619,6 +10830,64 @@
       },
       "traits": {
         "smithy.api#documentation": "Application Monitoring auto-instrumentation for AKS. Deploys a webhook that auto-instruments workloads with Microsoft OpenTelemetry Distros to collect OpenTelemetry metrics, logs, and traces. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAzureMonitorProfileContainerInsights": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if Azure Monitor Container Insights Logs Addon is enabled or not."
+          }
+        },
+        "logAnalyticsWorkspaceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully Qualified ARM Resource Id of Azure Log Analytics Workspace for storing Azure Monitor Container Insights Logs."
+          }
+        },
+        "syslogPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The syslog host port. If not specified, the default port is 28330."
+          }
+        },
+        "disablePrometheusMetricsScraping": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether prometheus metrics scraping is disabled or not. If not specified the default is false i.e. the prometheus scraping is enabled."
+          }
+        },
+        "containerNetworkLogs": {
+          "target": "com.azure.containerservice#ContainerNetworkLogs",
+          "traits": {
+            "smithy.api#documentation": "Configures container network logs ingestion with Azure Monitor. The log types ingested are controlled by the associated CRD; if unspecified, defaults to `Disabled`. See https://aka.ms/ContainerNetworkLogsDoc and https://aka.ms/acns/howtoenablecnl for details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Monitor Container Insights profile. Represents the configuration for collecting Kubernetes events, inventory, and container stdout & stderr logs. See aka.ms/AzureMonitorContainerInsights for an overview."
+      }
+    },
+    "com.azure.containerservice#ContainerNetworkLogs": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Allowed values for container network logs ingestion with Azure Monitor. When `Enabled`, the specific log types ingested are controlled by the associated CRD; defaults to `Disabled`. See https://aka.ms/ContainerNetworkLogsDoc and https://aka.ms/acns/howtoenablecnl for details."
       }
     },
     "com.azure.containerservice#ManagedClusterAzureMonitorProfileMetrics": {
@@ -11208,10 +11477,71 @@
           "traits": {
             "smithy.api#documentation": "Microsoft Defender threat detection for Cloud settings for the security profile."
           }
+        },
+        "securityGating": {
+          "target": "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGating",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Defender settings for security gating. This validates container images eligibility for deployment based on Defender for Containers security findings. Using Admission Controller, it either audits or prevents deployment of images that do not meet security standards. For more information, see https://aka.ms/KubernetesDefenderAuditRule."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Microsoft Defender settings for the security profile."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGating": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Defender security gating. When enabled, the gating feature scans container images and audits or blocks deployment of images that do not meet security standards according to configured security rules. For more information, see https://aka.ms/KubernetesDefenderAuditRule."
+          }
+        },
+        "identities": {
+          "target": "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of identities that the admission controller uses to pull security artifacts from registries. These are the same identities used by the cluster to pull container images. For more information on configuring this identity, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/gated-deployment-infrastructure-as-code."
+          }
+        },
+        "allowSecretAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "In use only while registry access is granted by secret rather than managed identity. Sets whether to grant the Defender gating agent access to cluster secrets for pulling images from registries. If secret access is denied and the registry requires pull secrets, the add-on will not perform image validation. Default value is false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Microsoft Defender settings for security gating. This validates container image eligibility for deployment based on Defender for Containers security findings. Using Admission Controller, it either audits or prevents deployment of images that do not meet security standards."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGatingIdentity"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of identities that the admission controller uses to pull security artifacts from registries. These are the same identities used by the cluster to pull container images. For more information on configuring this identity, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/gated-deployment-infrastructure-as-code."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGatingIdentity": {
+      "type": "structure",
+      "members": {
+        "azureContainerRegistry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The container registry for which the identity will be used; the identity specified here should have a federated identity credential attached to it."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerservice#UserAssignedIdentity",
+          "traits": {
+            "smithy.api#documentation": "The identity object used to access the registry"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity mapping used by Defender security gating for registry access."
       }
     },
     "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityMonitoring": {
@@ -11871,6 +12201,12 @@
     "com.azure.containerservice#ManagedClusterNATGatewayProfile": {
       "type": "structure",
       "members": {
+        "sku": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewaySku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the managed cluster NAT Gateway. Defaults to 'StandardV2' where available in the region, otherwise 'Standard'."
+          }
+        },
         "managedOutboundIPProfile": {
           "target": "com.azure.containerservice#ManagedClusterManagedOutboundIPProfile",
           "traits": {
@@ -11883,6 +12219,18 @@
             "smithy.api#documentation": "The effective outbound IP resources of the cluster NAT gateway."
           }
         },
+        "outboundIPPrefixes": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileOutboundIPPrefixes",
+          "traits": {
+            "smithy.api#documentation": "Desired outbound IP Prefix resources for the managed NAT Gateway. Only compatible with NAT Gateway V2."
+          }
+        },
+        "outboundIPs": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileOutboundIPs",
+          "traits": {
+            "smithy.api#documentation": "Desired outbound IP resources for the managed NAT Gateway."
+          }
+        },
         "idleTimeoutInMinutes": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -11892,6 +12240,52 @@
       },
       "traits": {
         "smithy.api#documentation": "Profile of the managed cluster NAT gateway."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileOutboundIPs": {
+      "type": "structure",
+      "members": {
+        "publicIPs": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileOutboundIPsPublicIPsList",
+          "traits": {
+            "smithy.api#documentation": "A list of public IP resources."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Desired outbound IP resources for the managed NAT Gateway."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileOutboundIPsPublicIPsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of public IP resources."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileOutboundIPPrefixes": {
+      "type": "structure",
+      "members": {
+        "publicIPPrefixes": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileOutboundIPPrefixesPublicIPPrefixesList",
+          "traits": {
+            "smithy.api#documentation": "A list of public IP prefix resources."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Desired outbound IP Prefix resources for the managed NAT Gateway. Only compatible with NAT Gateway V2."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileOutboundIPPrefixesPublicIPPrefixesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of public IP prefix resources."
       }
     },
     "com.azure.containerservice#ManagedClusterNATGatewayProfileEffectiveOutboundIPsList": {
@@ -11925,10 +12319,36 @@
           "traits": {
             "smithy.api#documentation": "The desired number of outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). The default value is 1."
           }
+        },
+        "countIPv6": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The desired number of IPv6 outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive)."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Profile of the managed outbound IP resources of the managed cluster."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewaySku": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "STANDARDV2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StandardV2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SKU of a managed cluster NAT Gateway."
       }
     },
     "com.azure.containerservice#ManagedClusterLoadBalancerProfile": {
@@ -13503,10 +13923,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersCreateOrUpdateResponse": {
@@ -13985,6 +14405,12 @@
             "smithy.api#documentation": "AI toolchain operator settings that apply to the whole cluster."
           }
         },
+        "schedulerProfile": {
+          "target": "com.azure.containerservice#SchedulerProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile."
+          }
+        },
         "hostedSystemProfile": {
           "target": "com.azure.containerservice#ManagedClusterHostedSystemProfile",
           "traits": {
@@ -14231,10 +14657,28 @@
     "com.azure.containerservice#ManagedClusterNATGatewayProfileInput": {
       "type": "structure",
       "members": {
+        "sku": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewaySku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the managed cluster NAT Gateway. Defaults to 'StandardV2' where available in the region, otherwise 'Standard'."
+          }
+        },
         "managedOutboundIPProfile": {
           "target": "com.azure.containerservice#ManagedClusterManagedOutboundIPProfile",
           "traits": {
             "smithy.api#documentation": "Profile of the managed outbound IP resources of the cluster NAT gateway."
+          }
+        },
+        "outboundIPPrefixes": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileInputOutboundIPPrefixes",
+          "traits": {
+            "smithy.api#documentation": "Desired outbound IP Prefix resources for the managed NAT Gateway. Only compatible with NAT Gateway V2."
+          }
+        },
+        "outboundIPs": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileInputOutboundIPs",
+          "traits": {
+            "smithy.api#documentation": "Desired outbound IP resources for the managed NAT Gateway."
           }
         },
         "idleTimeoutInMinutes": {
@@ -14246,6 +14690,52 @@
       },
       "traits": {
         "smithy.api#documentation": "Profile of the managed cluster NAT gateway."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileInputOutboundIPs": {
+      "type": "structure",
+      "members": {
+        "publicIPs": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileInputOutboundIPsPublicIPsList",
+          "traits": {
+            "smithy.api#documentation": "A list of public IP resources."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Desired outbound IP resources for the managed NAT Gateway."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileInputOutboundIPsPublicIPsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of public IP resources."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileInputOutboundIPPrefixes": {
+      "type": "structure",
+      "members": {
+        "publicIPPrefixes": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileInputOutboundIPPrefixesPublicIPPrefixesList",
+          "traits": {
+            "smithy.api#documentation": "A list of public IP prefix resources."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Desired outbound IP Prefix resources for the managed NAT Gateway. Only compatible with NAT Gateway V2."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileInputOutboundIPPrefixesPublicIPPrefixesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of public IP prefix resources."
       }
     },
     "com.azure.containerservice#ManagedClusterLoadBalancerProfileInput": {
@@ -14939,10 +15429,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetResponse": {
@@ -15083,10 +15573,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists managed clusters in the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClusterListResult": {
@@ -15249,10 +15739,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/snapshots",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of snapshots in the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#SnapshotsListRequest": {
@@ -15284,10 +15774,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of managed clusters in the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersListRequest": {
@@ -15319,10 +15809,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/trustedAccessRoles",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List supported trusted access roles.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleListResult": {
@@ -15510,10 +16000,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles/{mode}",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a mesh revision profile for a specified mesh in the specified location.\n\nContains extra metadata on the revision, including supported revisions, cluster compatibility and available upgrades",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetMeshRevisionProfileResponse": {
@@ -15622,10 +16112,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists mesh revision profiles for all meshes in the specified location.\n\nContains extra metadata on each revision, including supported revisions, cluster compatibility and available upgrades",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#MeshRevisionProfileList": {
@@ -15733,10 +16223,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/kubernetesVersions",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of supported Kubernetes versions in the specified subscription.\n\nContains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#KubernetesVersionListResult": {
@@ -15895,10 +16385,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ContainerService/operations",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of operations.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#OperationListResult": {
@@ -16494,10 +16984,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a FleetUpdateStrategy",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetUpdateStrategiesDeleteRequest": {
@@ -16553,10 +17043,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create a FleetUpdateStrategy",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetUpdateStrategiesCreateOrUpdateResponse": {
@@ -16669,10 +17159,81 @@
           "traits": {
             "smithy.api#documentation": "The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified."
           }
+        },
+        "maxConcurrency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The max number of upgrades that can run concurrently across all groups in this stage.\nActs as a ceiling (and not a quota) for the number of concurrent upgrades within the stage you want to tolerate at a time.\nActual concurrency may be lower depending on group-level concurrency limits or individual member conditions.\nStage maxConcurrency has a min value of \"1\".\nAccepts either:\n    • A fixed count, e.g., \"3\"\n    • A percentage, e.g., \"25%\" (range 1–100). Percentage is of the total number of clusters across all groups in the stage.\n      Fractional results are rounded down. A minimum of 1 upgrade is enforced.\nExamples:\n    • \"3\"     --> up to 3 clusters from this stage upgrade at once (across all groups).\n    • \"100%\"  --> “all at once”; up to all clusters in this stage upgrade at the same time.\n    • \"25%\"   --> up to 25% of the stage’s total clusters upgrade at the same time."
+          }
+        },
+        "beforeGates": {
+          "target": "com.azure.containerservice#UpdateStageBeforeGatesList",
+          "traits": {
+            "smithy.api#documentation": "A list of Gates that will be created before this Stage is executed."
+          }
+        },
+        "afterGates": {
+          "target": "com.azure.containerservice#UpdateStageAfterGatesList",
+          "traits": {
+            "smithy.api#documentation": "A list of Gates that will be created after this Stage is executed."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage."
+      }
+    },
+    "com.azure.containerservice#UpdateStageAfterGatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#GateConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of Gates that will be created after this Stage is executed."
+      }
+    },
+    "com.azure.containerservice#GateConfiguration": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable display name of the Gate."
+          }
+        },
+        "type": {
+          "target": "com.azure.containerservice#GateType",
+          "traits": {
+            "smithy.api#documentation": "The type of the Gate determines how it is completed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "GateConfiguration is used to define where Gates should be placed within the Update Run."
+      }
+    },
+    "com.azure.containerservice#GateType": {
+      "type": "enum",
+      "members": {
+        "APPROVAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Approval"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the Gate determines how it is completed."
+      }
+    },
+    "com.azure.containerservice#UpdateStageBeforeGatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#GateConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of Gates that will be created before this Stage is executed."
       }
     },
     "com.azure.containerservice#UpdateStageGroupsList": {
@@ -16693,10 +17254,46 @@
             "smithy.api#documentation": "Name of the group.\nIt must match a group name of an existing fleet member. ",
             "smithy.api#required": {}
           }
+        },
+        "maxConcurrency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The max number of upgrades that can run concurrently in this specific group.\nActs as a ceiling (and not a quota) for the number of concurrent upgrades within the group you want to tolerate at a time.\nActual concurrency may be lower depending on stage-level concurrency limits or individual member conditions.\nGroup maxConcurrency has a min value of \"1\". The max value is min(number of clusters in the group, the stage maxConcurrency).\nIf no value is provided, defaults to 1.\nAccepts either:\n    • A fixed count, e.g. \"3\"\n    • A percentage, e.g. \"25%\" (range 1–100). Percentage is of the number of clusters in the group. \n      Fractional results are rounded down. A minimum of 1 upgrade is enforced.\nExamples:\n    • \"3\" --> up to 3 members from this group upgrade at once.\n    • \"100%\" --> “all at once”, up to all members for this group upgrade at the same time.\n    • \"25%\" --> up to 25% of the members in the group will be upgraded at the same time."
+          }
+        },
+        "beforeGates": {
+          "target": "com.azure.containerservice#UpdateGroupBeforeGatesList",
+          "traits": {
+            "smithy.api#documentation": "A list of Gates that will be created before this Group is executed."
+          }
+        },
+        "afterGates": {
+          "target": "com.azure.containerservice#UpdateGroupAfterGatesList",
+          "traits": {
+            "smithy.api#documentation": "A list of Gates that will be created after this Group is executed."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "A group to be updated."
+      }
+    },
+    "com.azure.containerservice#UpdateGroupAfterGatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#GateConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of Gates that will be created after this Group is executed."
+      }
+    },
+    "com.azure.containerservice#UpdateGroupBeforeGatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#GateConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of Gates that will be created before this Group is executed."
       }
     },
     "com.azure.containerservice#FleetUpdateStrategyProvisioningState": {
@@ -16799,10 +17396,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get a FleetUpdateStrategy",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetUpdateStrategiesGetResponse": {
@@ -16902,10 +17499,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List FleetUpdateStrategy resources by Fleet",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetUpdateStrategyListResult": {
@@ -17041,10 +17638,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/stop",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Stops an UpdateRun.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#UpdateRunsStopResponse": {
@@ -17223,10 +17820,28 @@
             "smithy.api#documentation": "The name of the UpdateStage."
           }
         },
+        "maxConcurrency": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The max number of upgrades that can run concurrently across all groups in this stage, resolved from the UpdateStrategy.UpdateStage.maxConcurrency value."
+          }
+        },
         "groups": {
           "target": "com.azure.containerservice#UpdateStageStatusGroupsList",
           "traits": {
             "smithy.api#documentation": "The list of groups to be updated as part of this UpdateStage."
+          }
+        },
+        "beforeGates": {
+          "target": "com.azure.containerservice#UpdateStageStatusBeforeGatesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Gates that will run before this UpdateStage."
+          }
+        },
+        "afterGates": {
+          "target": "com.azure.containerservice#UpdateStageStatusAfterGatesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Gates that will run after this UpdateStage."
           }
         },
         "afterStageWaitStatus": {
@@ -17404,6 +18019,50 @@
         "smithy.api#documentation": "The state of the UpdateRun, UpdateStage, UpdateGroup, or MemberUpdate."
       }
     },
+    "com.azure.containerservice#UpdateStageStatusAfterGatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#UpdateRunGateStatus"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Gates that will run after this UpdateStage."
+      }
+    },
+    "com.azure.containerservice#UpdateRunGateStatus": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable display name of the Gate."
+          }
+        },
+        "gateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the Gate."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerservice#UpdateStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Gate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the Gate, as represented in the Update Run."
+      }
+    },
+    "com.azure.containerservice#UpdateStageStatusBeforeGatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#UpdateRunGateStatus"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Gates that will run before this UpdateStage."
+      }
+    },
     "com.azure.containerservice#UpdateStageStatusGroupsList": {
       "type": "list",
       "member": {
@@ -17428,15 +18087,51 @@
             "smithy.api#documentation": "The name of the UpdateGroup."
           }
         },
+        "maxConcurrency": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "  The max number of upgrades that can run concurrently in this group, resolved from the UpdateStrategy.UpdateGroup.maxConcurrency value. If no value was provided, this value defaults to \"1\"."
+          }
+        },
         "members": {
           "target": "com.azure.containerservice#UpdateGroupStatusMembersList",
           "traits": {
             "smithy.api#documentation": "The list of member this UpdateGroup updates."
           }
+        },
+        "beforeGates": {
+          "target": "com.azure.containerservice#UpdateGroupStatusBeforeGatesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Gates that will run before this UpdateGroup."
+          }
+        },
+        "afterGates": {
+          "target": "com.azure.containerservice#UpdateGroupStatusAfterGatesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Gates that will run after this UpdateGroup."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "The status of a UpdateGroup."
+      }
+    },
+    "com.azure.containerservice#UpdateGroupStatusAfterGatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#UpdateRunGateStatus"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Gates that will run after this UpdateGroup."
+      }
+    },
+    "com.azure.containerservice#UpdateGroupStatusBeforeGatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#UpdateRunGateStatus"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Gates that will run before this UpdateGroup."
       }
     },
     "com.azure.containerservice#UpdateGroupStatusMembersList": {
@@ -17689,10 +18384,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/start",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Starts an UpdateRun.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#UpdateRunsStartResponse": {
@@ -17792,10 +18487,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/skip",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Skips one or a combination of member/group/stage/afterStageWait(s) of an update run.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#UpdateRunsSkipResponse": {
@@ -17965,10 +18660,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a UpdateRun",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#UpdateRunsDeleteRequest": {
@@ -18024,10 +18719,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create a UpdateRun",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#UpdateRunsCreateOrUpdateResponse": {
@@ -18218,10 +18913,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get a UpdateRun",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#UpdateRunsGetResponse": {
@@ -18321,10 +19016,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List UpdateRun resources by Fleet",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#UpdateRunListResult": {
@@ -18460,10 +19155,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a FleetMember",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetMembersDeleteRequest": {
@@ -18519,10 +19214,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Update a FleetMember",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetMembersUpdateResponse": {
@@ -18589,6 +19284,12 @@
           "target": "com.azure.containerservice#FleetMemberProvisioningState",
           "traits": {
             "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "labels": {
+          "target": "com.azure.containerservice#FleetMemberPropertiesLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The labels for the fleet member."
           }
         },
         "status": {
@@ -18676,6 +19377,18 @@
       },
       "traits": {
         "smithy.api#documentation": "The error details."
+      }
+    },
+    "com.azure.containerservice#FleetMemberPropertiesLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The labels for the fleet member."
       }
     },
     "com.azure.containerservice#FleetMemberProvisioningState": {
@@ -18776,10 +19489,28 @@
           "traits": {
             "smithy.api#documentation": "The group this member belongs to for multi-cluster update management."
           }
+        },
+        "labels": {
+          "target": "com.azure.containerservice#FleetMemberUpdatePropertiesLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The labels for the fleet member."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "The updatable properties of the FleetMember."
+      }
+    },
+    "com.azure.containerservice#FleetMemberUpdatePropertiesLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The labels for the fleet member."
       }
     },
     "com.azure.containerservice#FleetMembersCreate": {
@@ -18795,10 +19526,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create a FleetMember",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetMembersCreateResponse": {
@@ -18906,10 +19637,28 @@
           "traits": {
             "smithy.api#documentation": "The group this member belongs to for multi-cluster update management."
           }
+        },
+        "labels": {
+          "target": "com.azure.containerservice#FleetMemberPropertiesInputLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The labels for the fleet member."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure."
+      }
+    },
+    "com.azure.containerservice#FleetMemberPropertiesInputLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The labels for the fleet member."
       }
     },
     "com.azure.containerservice#FleetMembersGet": {
@@ -18925,10 +19674,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get a FleetMember",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetMembersGetResponse": {
@@ -19028,10 +19777,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List FleetMember resources by Fleet",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetMemberListResult": {
@@ -19161,6 +19910,1521 @@
         "smithy.api#input": {}
       }
     },
+    "com.azure.containerservice#FleetManagedNamespacesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerservice#FleetManagedNamespacesDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/managedNamespaces/{managedNamespaceName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Delete a FleetManagedNamespace",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "fleetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Fleet resource."
+          }
+        },
+        "managedNamespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the fleet managed namespace resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerservice#FleetManagedNamespacesUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.containerservice#FleetManagedNamespacesUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/managedNamespaces/{managedNamespaceName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Update a FleetManagedNamespace",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.containerservice#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerservice#FleetManagedNamespacesUpdateResponseTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceProperties": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "managedNamespaceProperties": {
+          "target": "com.azure.containerservice#ManagedNamespaceProperties",
+          "traits": {
+            "smithy.api#documentation": "The namespace properties for the fleet managed namespace."
+          }
+        },
+        "adoptionPolicy": {
+          "target": "com.azure.containerservice#AdoptionPolicy_2",
+          "traits": {
+            "smithy.api#documentation": "Action if the managed namespace with the same name already exists. Default is Never.",
+            "smithy.api#required": {}
+          }
+        },
+        "deletePolicy": {
+          "target": "com.azure.containerservice#DeletePolicy_2",
+          "traits": {
+            "smithy.api#documentation": "Delete options of a fleet managed namespace. Default is Keep.",
+            "smithy.api#required": {}
+          }
+        },
+        "propagationPolicy": {
+          "target": "com.azure.containerservice#PropagationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The profile of the propagation to create the namespace."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceStatus",
+          "traits": {
+            "smithy.api#documentation": "Status information of the last operation for fleet managed namespace."
+          }
+        },
+        "portalFqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Portal FQDN of the Fleet hub."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a fleet managed namespace."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceStatus": {
+      "type": "structure",
+      "members": {
+        "lastOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last operation ID for the fleet managed namespace"
+          }
+        },
+        "lastOperationError": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceStatusLastOperationError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status information for the fleet managed namespace."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceStatusLastOperationError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error target."
+          }
+        },
+        "details": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceStatusLastOperationErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The error details."
+          }
+        },
+        "additionalInfo": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceStatusLastOperationErrorAdditionalInfoList",
+          "traits": {
+            "smithy.api#documentation": "The error additional info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceStatusLastOperationErrorAdditionalInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#ErrorAdditionalInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error additional info."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceStatusLastOperationErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#ErrorDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error details."
+      }
+    },
+    "com.azure.containerservice#PropagationPolicy": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerservice#PropagationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the policy to be used. Default is Placement.",
+            "smithy.api#required": {}
+          }
+        },
+        "placementProfile": {
+          "target": "com.azure.containerservice#PlacementProfile",
+          "traits": {
+            "smithy.api#documentation": "The profile to be used for propagation via placement."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The propagation to be used for provisioning the namespace among the fleet."
+      }
+    },
+    "com.azure.containerservice#PlacementProfile": {
+      "type": "structure",
+      "members": {
+        "defaultClusterResourcePlacement": {
+          "target": "com.azure.containerservice#PlacementV1ClusterResourcePlacementSpec",
+          "traits": {
+            "smithy.api#documentation": "The default ClusterResourcePlacement policy configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration profile for default ClusterResourcePlacement for placement."
+      }
+    },
+    "com.azure.containerservice#PlacementV1ClusterResourcePlacementSpec": {
+      "type": "structure",
+      "members": {
+        "policy": {
+          "target": "com.azure.containerservice#PlacementV1PlacementPolicy",
+          "traits": {
+            "smithy.api#documentation": "Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ClusterResourcePlacementSpec defines the desired state of ClusterResourcePlacement."
+      }
+    },
+    "com.azure.containerservice#PlacementV1PlacementPolicy": {
+      "type": "structure",
+      "members": {
+        "placementType": {
+          "target": "com.azure.containerservice#PlacementV1PlacementType",
+          "traits": {
+            "smithy.api#documentation": "Type of placement. Can be \"PickAll\", \"PickN\" or \"PickFixed\". Default is PickAll."
+          }
+        },
+        "clusterNames": {
+          "target": "com.azure.containerservice#PlacementV1PlacementPolicyClusterNamesList",
+          "traits": {
+            "smithy.api#documentation": "ClusterNames contains a list of names of MemberCluster to place the selected resources. Only valid if the placement type is \"PickFixed\""
+          }
+        },
+        "affinity": {
+          "target": "com.azure.containerservice#PlacementV1Affinity",
+          "traits": {
+            "smithy.api#documentation": "Affinity contains cluster affinity scheduling rules. Defines which member clusters to place the selected resources. Only valid if the placement type is \"PickAll\" or \"PickN\"."
+          }
+        },
+        "tolerations": {
+          "target": "com.azure.containerservice#PlacementV1PlacementPolicyTolerationsList",
+          "traits": {
+            "smithy.api#documentation": "If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PlacementPolicy contains the rules to select target member clusters to place the selected resources. Note that only clusters that are both joined and satisfying the rules will be selected. You can only specify at most one of the two fields: ClusterNames and Affinity. If none is specified, all the joined clusters are selected."
+      }
+    },
+    "com.azure.containerservice#PlacementV1PlacementPolicyTolerationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#PlacementV1Toleration"
+      },
+      "traits": {
+        "smithy.api#documentation": "If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature."
+      }
+    },
+    "com.azure.containerservice#PlacementV1Toleration": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys."
+          }
+        },
+        "operator": {
+          "target": "com.azure.containerservice#CoreV1TolerationOperator",
+          "traits": {
+            "smithy.api#documentation": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string."
+          }
+        },
+        "effect": {
+          "target": "com.azure.containerservice#CoreV1TaintEffect",
+          "traits": {
+            "smithy.api#documentation": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple <key,value,effect> using the matching operator <operator>."
+      }
+    },
+    "com.azure.containerservice#CoreV1TaintEffect": {
+      "type": "enum",
+      "members": {
+        "NOSCHEDULE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoSchedule"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "TaintEffect"
+      }
+    },
+    "com.azure.containerservice#CoreV1TolerationOperator": {
+      "type": "enum",
+      "members": {
+        "EXISTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Exists"
+          }
+        },
+        "EQUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Equal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A toleration operator is the set of operators that can be used in a toleration."
+      }
+    },
+    "com.azure.containerservice#PlacementV1Affinity": {
+      "type": "structure",
+      "members": {
+        "clusterAffinity": {
+          "target": "com.azure.containerservice#PlacementV1ClusterAffinity",
+          "traits": {
+            "smithy.api#documentation": "ClusterAffinity contains cluster affinity scheduling rules for the selected resources."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Affinity is a group of cluster affinity scheduling rules. More to be added."
+      }
+    },
+    "com.azure.containerservice#PlacementV1ClusterAffinity": {
+      "type": "structure",
+      "members": {
+        "requiredDuringSchedulingIgnoredDuringExecution": {
+          "target": "com.azure.containerservice#PlacementV1ClusterSelector",
+          "traits": {
+            "smithy.api#documentation": "If the affinity requirements specified by this field are not met at scheduling time, the resource will not be scheduled onto the cluster. If the affinity requirements specified by this field cease to be met at some point after the placement (e.g. due to an update), the system may or may not try to eventually remove the resource from the cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ClusterAffinity contains cluster affinity scheduling rules for the selected resources."
+      }
+    },
+    "com.azure.containerservice#PlacementV1ClusterSelector": {
+      "type": "structure",
+      "members": {
+        "clusterSelectorTerms": {
+          "target": "com.azure.containerservice#PlacementV1ClusterSelectorClusterSelectorTermsList",
+          "traits": {
+            "smithy.api#documentation": "ClusterSelectorTerms is a list of cluster selector terms. The terms are `ORed`.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ClusterSelector"
+      }
+    },
+    "com.azure.containerservice#PlacementV1ClusterSelectorClusterSelectorTermsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#PlacementV1ClusterSelectorTerm"
+      },
+      "traits": {
+        "smithy.api#documentation": "ClusterSelectorTerms is a list of cluster selector terms. The terms are `ORed`."
+      }
+    },
+    "com.azure.containerservice#PlacementV1ClusterSelectorTerm": {
+      "type": "structure",
+      "members": {
+        "labelSelector": {
+          "target": "com.azure.containerservice#MetaV1LabelSelector",
+          "traits": {
+            "smithy.api#documentation": "LabelSelector is a label query over all the joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd."
+          }
+        },
+        "propertySelector": {
+          "target": "com.azure.containerservice#PlacementV1PropertySelector",
+          "traits": {
+            "smithy.api#documentation": "PropertySelector is a property query over all joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd. At this moment, PropertySelector can only be used with `RequiredDuringSchedulingIgnoredDuringExecution` affinity terms. This field is beta-level; it is for the property-based scheduling feature and is only functional when a property provider is enabled in the deployment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ClusterSelectorTerm"
+      }
+    },
+    "com.azure.containerservice#PlacementV1PropertySelector": {
+      "type": "structure",
+      "members": {
+        "matchExpressions": {
+          "target": "com.azure.containerservice#PlacementV1PropertySelectorMatchExpressionsList",
+          "traits": {
+            "smithy.api#documentation": "MatchExpressions is an array of PropertySelectorRequirements. The requirements are AND'd.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PropertySelector helps user specify property requirements when picking clusters for resource placement."
+      }
+    },
+    "com.azure.containerservice#PlacementV1PropertySelectorMatchExpressionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#PlacementV1PropertySelectorRequirement"
+      },
+      "traits": {
+        "smithy.api#documentation": "MatchExpressions is an array of PropertySelectorRequirements. The requirements are AND'd."
+      }
+    },
+    "com.azure.containerservice#PlacementV1PropertySelectorRequirement": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name is the name of the property; it should be a Kubernetes label name.",
+            "smithy.api#required": {}
+          }
+        },
+        "operator": {
+          "target": "com.azure.containerservice#PlacementV1PropertySelectorOperator",
+          "traits": {
+            "smithy.api#documentation": "Operator specifies the relationship between a cluster's observed value of the specified property and the values given in the requirement.",
+            "smithy.api#required": {}
+          }
+        },
+        "values": {
+          "target": "com.azure.containerservice#PlacementV1PropertySelectorRequirementValuesList",
+          "traits": {
+            "smithy.api#documentation": "Values are a list of values of the specified property which Fleet will compare against the observed values of individual member clusters in accordance with the given operator. At this moment, each value should be a Kubernetes quantity. For more information, see https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity. If the operator is Gt (greater than), Ge (greater than or equal to), Lt (less than), or `Le` (less than or equal to), Eq (equal to), or Ne (ne), exactly one value must be specified in the list.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PropertySelectorRequirement is a specific property requirement when picking clusters for resource placement."
+      }
+    },
+    "com.azure.containerservice#PlacementV1PropertySelectorRequirementValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Values are a list of values of the specified property which Fleet will compare against the observed values of individual member clusters in accordance with the given operator. At this moment, each value should be a Kubernetes quantity. For more information, see https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity. If the operator is Gt (greater than), Ge (greater than or equal to), Lt (less than), or `Le` (less than or equal to), Eq (equal to), or Ne (ne), exactly one value must be specified in the list."
+      }
+    },
+    "com.azure.containerservice#PlacementV1PropertySelectorOperator": {
+      "type": "enum",
+      "members": {
+        "GT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gt"
+          }
+        },
+        "GE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ge"
+          }
+        },
+        "EQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Eq"
+          }
+        },
+        "NE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ne"
+          }
+        },
+        "LT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lt"
+          }
+        },
+        "LE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Le"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PropertySelectorOperator is the operator that can be used with PropertySelectorRequirements."
+      }
+    },
+    "com.azure.containerservice#MetaV1LabelSelector": {
+      "type": "structure",
+      "members": {
+        "matchLabels": {
+          "target": "com.azure.containerservice#MetaV1LabelSelectorMatchLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
+          }
+        },
+        "matchExpressions": {
+          "target": "com.azure.containerservice#MetaV1LabelSelectorMatchExpressionsList",
+          "traits": {
+            "smithy.api#documentation": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects."
+      }
+    },
+    "com.azure.containerservice#MetaV1LabelSelectorMatchExpressionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#MetaV1LabelSelectorRequirement"
+      },
+      "traits": {
+        "smithy.api#documentation": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+      }
+    },
+    "com.azure.containerservice#MetaV1LabelSelectorRequirement": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "key is the label key that the selector applies to.",
+            "smithy.api#required": {}
+          }
+        },
+        "operator": {
+          "target": "com.azure.containerservice#MetaV1LabelSelectorOperator",
+          "traits": {
+            "smithy.api#documentation": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+            "smithy.api#required": {}
+          }
+        },
+        "values": {
+          "target": "com.azure.containerservice#MetaV1LabelSelectorRequirementValuesList",
+          "traits": {
+            "smithy.api#documentation": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values."
+      }
+    },
+    "com.azure.containerservice#MetaV1LabelSelectorRequirementValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+      }
+    },
+    "com.azure.containerservice#MetaV1LabelSelectorOperator": {
+      "type": "enum",
+      "members": {
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "In"
+          }
+        },
+        "NOTIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotIn"
+          }
+        },
+        "EXISTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Exists"
+          }
+        },
+        "DOESNOTEXIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DoesNotExist"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A label selector operator is the set of operators that can be used in a selector requirement."
+      }
+    },
+    "com.azure.containerservice#MetaV1LabelSelectorMatchLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
+      }
+    },
+    "com.azure.containerservice#PlacementV1PlacementPolicyClusterNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ClusterNames contains a list of names of MemberCluster to place the selected resources. Only valid if the placement type is \"PickFixed\""
+      }
+    },
+    "com.azure.containerservice#PlacementV1PlacementType": {
+      "type": "enum",
+      "members": {
+        "PICKALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PickAll"
+          }
+        },
+        "PICKFIXED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PickFixed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PlacementType identifies the type of placement."
+      }
+    },
+    "com.azure.containerservice#PropagationType": {
+      "type": "enum",
+      "members": {
+        "PLACEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Placement"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "How the namespace will be provisioned among the fleet members."
+      }
+    },
+    "com.azure.containerservice#DeletePolicy_2": {
+      "type": "enum",
+      "members": {
+        "KEEP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Keep"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Delete options for the ARM managed namespace."
+      }
+    },
+    "com.azure.containerservice#AdoptionPolicy_2": {
+      "type": "enum",
+      "members": {
+        "NEVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Never"
+          }
+        },
+        "IFIDENTICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IfIdentical"
+          }
+        },
+        "ALWAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Always"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Action if the Namespace with the same name already exists."
+      }
+    },
+    "com.azure.containerservice#ManagedNamespaceProperties": {
+      "type": "structure",
+      "members": {
+        "labels": {
+          "target": "com.azure.containerservice#ManagedNamespacePropertiesLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The labels for the fleet managed namespace."
+          }
+        },
+        "annotations": {
+          "target": "com.azure.containerservice#ManagedNamespacePropertiesAnnotationsMap",
+          "traits": {
+            "smithy.api#documentation": "The annotations for the fleet managed namespace."
+          }
+        },
+        "defaultResourceQuota": {
+          "target": "com.azure.containerservice#ResourceQuota_2",
+          "traits": {
+            "smithy.api#documentation": "The default resource quota for the fleet managed namespace."
+          }
+        },
+        "defaultNetworkPolicy": {
+          "target": "com.azure.containerservice#NetworkPolicy_2",
+          "traits": {
+            "smithy.api#documentation": "The default network policy for the fleet managed namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The namespace properties for the fleet managed namespace."
+      }
+    },
+    "com.azure.containerservice#NetworkPolicy_2": {
+      "type": "structure",
+      "members": {
+        "ingress": {
+          "target": "com.azure.containerservice#PolicyRule",
+          "traits": {
+            "smithy.api#documentation": "The ingress policy for the managed namespace."
+          }
+        },
+        "egress": {
+          "target": "com.azure.containerservice#PolicyRule",
+          "traits": {
+            "smithy.api#documentation": "The egress policy for the managed namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The network policy for the managed namespace."
+      }
+    },
+    "com.azure.containerservice#PolicyRule": {
+      "type": "enum",
+      "members": {
+        "ALLOWALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllowAll"
+          }
+        },
+        "DENYALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DenyAll"
+          }
+        },
+        "ALLOWSAMENAMESPACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllowSameNamespace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The possible values representing different network policy rules."
+      }
+    },
+    "com.azure.containerservice#ResourceQuota_2": {
+      "type": "structure",
+      "members": {
+        "cpuRequest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CPU request for the managed namespace. See more at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu"
+          }
+        },
+        "cpuLimit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CPU limit for the managed namespace. See more at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu"
+          }
+        },
+        "memoryRequest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The memory request for the managed namespace. See more at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory"
+          }
+        },
+        "memoryLimit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The memory limit for the managed namespace. See more at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource quota for the managed namespace."
+      }
+    },
+    "com.azure.containerservice#ManagedNamespacePropertiesAnnotationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The annotations for the fleet managed namespace."
+      }
+    },
+    "com.azure.containerservice#ManagedNamespacePropertiesLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The labels for the fleet managed namespace."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceProvisioningState": {
+      "type": "enum",
+      "members": {
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        },
+        "CREATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Creating"
+          }
+        },
+        "UPDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updating"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleting"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning state of the fleet managed namespace resource"
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesUpdateResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "fleetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Fleet resource."
+          }
+        },
+        "managedNamespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the fleet managed namespace resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerservice#FleetManagedNamespacesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/managedNamespaces/{managedNamespaceName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Create a FleetManagedNamespace",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.containerservice#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdateResponseTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdateResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "fleetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Fleet resource."
+          }
+        },
+        "managedNamespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the fleet managed namespace resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#FleetManagedNamespacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "managedNamespaceProperties": {
+          "target": "com.azure.containerservice#ManagedNamespaceProperties",
+          "traits": {
+            "smithy.api#documentation": "The namespace properties for the fleet managed namespace."
+          }
+        },
+        "adoptionPolicy": {
+          "target": "com.azure.containerservice#AdoptionPolicy_2",
+          "traits": {
+            "smithy.api#documentation": "Action if the managed namespace with the same name already exists. Default is Never.",
+            "smithy.api#required": {}
+          }
+        },
+        "deletePolicy": {
+          "target": "com.azure.containerservice#DeletePolicy_2",
+          "traits": {
+            "smithy.api#documentation": "Delete options of a fleet managed namespace. Default is Keep.",
+            "smithy.api#required": {}
+          }
+        },
+        "propagationPolicy": {
+          "target": "com.azure.containerservice#PropagationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The profile of the propagation to create the namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a fleet managed namespace."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerservice#FleetManagedNamespacesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.containerservice#FleetManagedNamespacesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/managedNamespaces/{managedNamespaceName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Get a FleetManagedNamespace",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.containerservice#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerservice#FleetManagedNamespacesGetResponseTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesGetResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesGetRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "fleetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Fleet resource."
+          }
+        },
+        "managedNamespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the fleet managed namespace resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesListByFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerservice#FleetManagedNamespacesListByFleetRequest"
+      },
+      "output": {
+        "target": "com.azure.containerservice#FleetManagedNamespaceListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/managedNamespaces",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List FleetManagedNamespace resources by Fleet",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "The FleetManagedNamespace items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response of a FleetManagedNamespace list operation."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#FleetManagedNamespace"
+      },
+      "traits": {
+        "smithy.api#documentation": "The FleetManagedNamespace items on this page"
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespace": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.containerservice#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#FleetManagedNamespaceProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A fleet managed namespace."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespaceTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.containerservice#FleetManagedNamespacesListByFleetRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "fleetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Fleet resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.containerservice#FleetsListCredentials": {
       "type": "operation",
       "input": {
@@ -19174,10 +21438,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/listCredentials",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists the user credentials of a Fleet.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetCredentialResults": {
@@ -19255,6 +21519,546 @@
         "smithy.api#input": {}
       }
     },
+    "com.azure.containerservice#GatesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerservice#GatesUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.containerservice#GatesUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/gates/{gateName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Update a Gate",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.containerservice#GatesUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.containerservice#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#GateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerservice#GateProperties": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.containerservice#GateProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The provisioning state of the Gate resource."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable display name of the Gate."
+          }
+        },
+        "gateType": {
+          "target": "com.azure.containerservice#GateType",
+          "traits": {
+            "smithy.api#documentation": "The type of the Gate determines how it is completed.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "com.azure.containerservice#GateTarget",
+          "traits": {
+            "smithy.api#documentation": "The target that the Gate is controlling, e.g. an Update Run.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.azure.containerservice#GateState",
+          "traits": {
+            "smithy.api#documentation": "The state of the Gate.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Gate controls the progression during a staged rollout, e.g. in an Update Run."
+      }
+    },
+    "com.azure.containerservice#GateState": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Skipped"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Completed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of the Gate."
+      }
+    },
+    "com.azure.containerservice#GateTarget": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id that the Gate is controlling the rollout of.",
+            "smithy.api#required": {}
+          }
+        },
+        "updateRunProperties": {
+          "target": "com.azure.containerservice#UpdateRunGateTargetProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Update Run that the Gate is targeting."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The target that the Gate is controlling, e.g. an Update Run. Exactly one of the properties objects will be set."
+      }
+    },
+    "com.azure.containerservice#UpdateRunGateTargetProperties": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Update Run.",
+            "smithy.api#required": {}
+          }
+        },
+        "stage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Update Stage of the Update Run."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Update Group of the Update Run."
+          }
+        },
+        "timing": {
+          "target": "com.azure.containerservice#Timing",
+          "traits": {
+            "smithy.api#documentation": "Whether the Gate is placed before or after the update itself.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Update Run that the Gate is targeting."
+      }
+    },
+    "com.azure.containerservice#Timing": {
+      "type": "enum",
+      "members": {
+        "BEFORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Before"
+          }
+        },
+        "AFTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "After"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the Gate is placed before or after the target."
+      }
+    },
+    "com.azure.containerservice#GateProvisioningState": {
+      "type": "enum",
+      "members": {
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning state of the Gate resource."
+      }
+    },
+    "com.azure.containerservice#GatesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "fleetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Fleet resource."
+          }
+        },
+        "gateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Gate resource, a GUID."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#GatePatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of a Gate that can be patched."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#GatePatchProperties": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.containerservice#GateState",
+          "traits": {
+            "smithy.api#documentation": "The state of the Gate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a Gate that can be patched."
+      }
+    },
+    "com.azure.containerservice#GatesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerservice#GatesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.containerservice#GatesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/gates/{gateName}",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Get a Gate",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.containerservice#GatesGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.containerservice#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#GateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerservice#GatesGetRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "fleetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Fleet resource."
+          }
+        },
+        "gateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Gate resource, a GUID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#GatesListByFleet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerservice#GatesListByFleetRequest"
+      },
+      "output": {
+        "target": "com.azure.containerservice#GateListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/gates",
+          "code": 200,
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List Gate resources by Fleet",
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.containerservice#GateListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.containerservice#GateListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "The Gate items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response of a Gate list operation."
+      }
+    },
+    "com.azure.containerservice#GateListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#Gate"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Gate items on this page"
+      }
+    },
+    "com.azure.containerservice#Gate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.containerservice#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#GateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Gate controls the progression during a staged rollout, e.g. in an Update Run."
+      }
+    },
+    "com.azure.containerservice#GatesListByFleetRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "fleetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Fleet resource."
+          }
+        },
+        "_filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter the result list using the given expression."
+          }
+        },
+        "_top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "_skipToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$skipToken",
+            "smithy.api#documentation": "The page-continuation token to use with a paged version of this API."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.containerservice#AutoUpgradeProfileOperationsGenerateUpdateRun": {
       "type": "operation",
       "input": {
@@ -19268,10 +22072,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}/generateUpdateRun",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Generates an update run for a given auto upgrade profile.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#GenerateResponse": {
@@ -19342,10 +22146,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a AutoUpgradeProfile",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AutoUpgradeProfilesDeleteRequest": {
@@ -19401,10 +22205,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create a AutoUpgradeProfile",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AutoUpgradeProfilesCreateOrUpdateResponse": {
@@ -19489,6 +22293,18 @@
           "target": "com.azure.containerservice#AutoUpgradeProfileStatus",
           "traits": {
             "smithy.api#documentation": "The status of the auto upgrade profile."
+          }
+        },
+        "targetKubernetesVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "  This is the target Kubernetes version for auto-upgrade. The format must be `{major version}.{minor version}`. For example, \"1.30\".\n  By default, this is empty.\n  If upgrade channel is set to TargetKubernetesVersion, this field must not be empty.\n  If upgrade channel is Rapid, Stable or NodeImage, this field must be empty."
+          }
+        },
+        "longTermSupport": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "  If upgrade channel is not TargetKubernetesVersion, this field must be False.\n  If set to True: Fleet auto upgrade will continue generate update runs for patches of minor versions earlier than N-2 \n  (where N is the latest supported minor version) if those minor versions support Long-Term Support (LTS).\n  By default, this is set to False.\n  For more information on AKS LTS, please see https://learn.microsoft.com/en-us/azure/aks/long-term-support"
           }
         }
       },
@@ -19668,6 +22484,12 @@
           "traits": {
             "smithy.api#enumValue": "NodeImage"
           }
+        },
+        "TARGETKUBERNETESVERSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TargetKubernetesVersion"
+          }
         }
       },
       "traits": {
@@ -19779,6 +22601,18 @@
           "traits": {
             "smithy.api#documentation": "The status of the auto upgrade profile."
           }
+        },
+        "targetKubernetesVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "  This is the target Kubernetes version for auto-upgrade. The format must be `{major version}.{minor version}`. For example, \"1.30\".\n  By default, this is empty.\n  If upgrade channel is set to TargetKubernetesVersion, this field must not be empty.\n  If upgrade channel is Rapid, Stable or NodeImage, this field must be empty."
+          }
+        },
+        "longTermSupport": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "  If upgrade channel is not TargetKubernetesVersion, this field must be False.\n  If set to True: Fleet auto upgrade will continue generate update runs for patches of minor versions earlier than N-2 \n  (where N is the latest supported minor version) if those minor versions support Long-Term Support (LTS).\n  By default, this is set to False.\n  For more information on AKS LTS, please see https://learn.microsoft.com/en-us/azure/aks/long-term-support"
+          }
         }
       },
       "traits": {
@@ -19819,10 +22653,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get a AutoUpgradeProfile",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AutoUpgradeProfilesGetResponse": {
@@ -19922,10 +22756,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List AutoUpgradeProfile resources by Fleet",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#AutoUpgradeProfileListResult": {
@@ -20061,10 +22895,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a Fleet",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetsDeleteRequest": {
@@ -20112,10 +22946,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Update a Fleet",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetsUpdateResponse": {
@@ -20627,10 +23461,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates a Fleet.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetsCreateOrUpdateResponse": {
@@ -20876,10 +23710,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a Fleet.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetsGetResponse": {
@@ -21031,10 +23865,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists fleets in the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetListResult": {
@@ -21208,10 +24042,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/fleets",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists fleets in the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.containerservice#FleetsListBySubscriptionRequest": {
@@ -21510,7 +24344,31 @@
           "target": "com.azure.containerservice#FleetMembersListByFleet"
         },
         {
+          "target": "com.azure.containerservice#FleetManagedNamespacesDelete"
+        },
+        {
+          "target": "com.azure.containerservice#FleetManagedNamespacesUpdate"
+        },
+        {
+          "target": "com.azure.containerservice#FleetManagedNamespacesCreateOrUpdate"
+        },
+        {
+          "target": "com.azure.containerservice#FleetManagedNamespacesGet"
+        },
+        {
+          "target": "com.azure.containerservice#FleetManagedNamespacesListByFleet"
+        },
+        {
           "target": "com.azure.containerservice#FleetsListCredentials"
+        },
+        {
+          "target": "com.azure.containerservice#GatesUpdate"
+        },
+        {
+          "target": "com.azure.containerservice#GatesGet"
+        },
+        {
+          "target": "com.azure.containerservice#GatesListByFleet"
         },
         {
           "target": "com.azure.containerservice#AutoUpgradeProfileOperationsGenerateUpdateRun"

@@ -477,6 +477,13 @@ export const DockerServer = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(DockerServerStatus),
   }),
 ).annotate({ identifier: "DockerServer" }) as any as S.Schema<DockerServer>;
+export type HostKernel =
+  | "LINUX_KERNEL_4"
+  | "LINUX_KERNEL_6"
+  | "LINUX_KERNEL_LATEST"
+  | (string & {});
+export const HostKernel = /*@__PURE__*/ S.String;
+
 export interface ProjectEnvironment {
   type: EnvironmentType;
   image: string;
@@ -489,6 +496,7 @@ export interface ProjectEnvironment {
   registryCredential?: RegistryCredential;
   imagePullCredentialsType?: ImagePullCredentialsType;
   dockerServer?: DockerServer;
+  hostKernel?: HostKernel;
 }
 export const ProjectEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -503,6 +511,7 @@ export const ProjectEnvironment = /*@__PURE__*/ S.suspend(() =>
     registryCredential: S.optional(RegistryCredential),
     imagePullCredentialsType: S.optional(ImagePullCredentialsType),
     dockerServer: S.optional(DockerServer),
+    hostKernel: S.optional(HostKernel),
   }),
 ).annotate({
   identifier: "ProjectEnvironment",
@@ -3104,6 +3113,7 @@ export interface StartBuildInput {
   debugSessionEnabled?: boolean;
   fleetOverride?: ProjectFleet;
   autoRetryLimitOverride?: number;
+  hostKernelOverride?: HostKernel;
 }
 export const StartBuildInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3140,6 +3150,7 @@ export const StartBuildInput = /*@__PURE__*/ S.suspend(() =>
     debugSessionEnabled: S.optional(S.Boolean),
     fleetOverride: S.optional(ProjectFleet),
     autoRetryLimitOverride: S.optional(S.Number),
+    hostKernelOverride: S.optional(HostKernel),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),

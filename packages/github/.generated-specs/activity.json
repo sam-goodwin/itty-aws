@@ -7148,6 +7148,66 @@
         "smithy.api#documentation": "List stargazers\n\nLists the people that have starred the repository.\n\nThis endpoint supports the following custom media types. For more information, see \"[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).\"\n\n- **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created."
       }
     },
+    "com.github.activity#GetStargazerCountForRepoRequest": {
+      "type": "structure",
+      "members": {
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The account owner of the repository. The name is not case sensitive."
+          }
+        },
+        "repo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the repository without the `.git` extension. The name is not case sensitive."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.github.activity#GetStargazerCountForRepoResponse": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.github.activity#GetStargazerCountForRepo": {
+      "type": "operation",
+      "input": {
+        "target": "com.github.activity#GetStargazerCountForRepoRequest"
+      },
+      "output": {
+        "target": "com.github.activity#GetStargazerCountForRepoResponse"
+      },
+      "errors": [
+        {
+          "target": "com.github.activity#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/repos/{owner}/{repo}/stargazers/count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get stargazer count\n\nGets the current number of users who have starred the repository. Users who previously starred the repository but later removed their star are not included."
+      }
+    },
     "com.github.activity#ListWatchersForRepoRequest": {
       "type": "structure",
       "members": {
@@ -8414,6 +8474,9 @@
         },
         {
           "target": "com.github.activity#ListStargazersForRepo"
+        },
+        {
+          "target": "com.github.activity#GetStargazerCountForRepo"
         },
         {
           "target": "com.github.activity#ListWatchersForRepo"

@@ -30,7 +30,7 @@ export const DeletedVaultsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -143,7 +143,7 @@ export const DeletedVaultsGetOperationStatusRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/operations/{operationId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -245,7 +245,7 @@ export const DeletedVaultsListBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -331,7 +331,7 @@ export const DeletedVaultsUndeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/undelete",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -383,7 +383,7 @@ export const GetOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/operationResults/{operationId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -935,6 +935,19 @@ export const VaultPropertiesResourceGuardOperationRequestsList =
     S.String,
   ) as any as S.Schema<VaultPropertiesResourceGuardOperationRequestsList>;
 
+/** Region of choice settings at vault level. This setting allows customers to configure backups for datasources from different region. */
+export interface RegionOfChoiceSettings {
+  /** The status of region of choice settings - Enabled or Disabled. */
+  status?: State | (string & {});
+}
+export const RegionOfChoiceSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(State),
+  }),
+).annotate({
+  identifier: "RegionOfChoiceSettings",
+}) as any as S.Schema<RegionOfChoiceSettings>;
+
 /** Properties of the vault. */
 export interface VaultProperties {
   /** Provisioning State. */
@@ -973,6 +986,8 @@ export interface VaultProperties {
   bcdrSecurityLevel?: BCDRSecurityLevel;
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: VaultPropertiesResourceGuardOperationRequestsList;
+  /** Region of choice settings for this vault. */
+  regionOfChoiceSettings?: RegionOfChoiceSettings;
 }
 export const VaultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -998,6 +1013,7 @@ export const VaultProperties = /*@__PURE__*/ S.suspend(() =>
     resourceGuardOperationRequests: S.optional(
       VaultPropertiesResourceGuardOperationRequestsList,
     ),
+    regionOfChoiceSettings: S.optional(RegionOfChoiceSettings),
   }),
 ).annotate({
   identifier: "VaultProperties",
@@ -1140,7 +1156,7 @@ export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/operationStatus/{operationId}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1154,7 +1170,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.RecoveryServices/operations",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1304,7 +1320,7 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources/{privateLinkResourceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1390,7 +1406,7 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1493,7 +1509,7 @@ export const RecoveryServicesCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/capabilities",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1580,7 +1596,7 @@ export const RecoveryServicesCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/locations/{location}/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1624,7 +1640,7 @@ export const RegisteredIdentitiesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/{identityName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1656,7 +1672,7 @@ export const ReplicationUsagesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/replicationUsages",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1775,7 +1791,7 @@ export const UsagesListByVaultsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1900,7 +1916,7 @@ export const VaultCertificatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/certificates/{certificateName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2013,7 +2029,7 @@ export const VaultExtendedInfoCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -2066,7 +2082,7 @@ export const VaultExtendedInfoGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2124,7 +2140,7 @@ export const VaultExtendedInfoUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2209,6 +2225,8 @@ export interface VaultPropertiesInput {
   securitySettings?: SecuritySettings;
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: VaultPropertiesInputResourceGuardOperationRequestsList;
+  /** Region of choice settings for this vault. */
+  regionOfChoiceSettings?: RegionOfChoiceSettings;
 }
 export const VaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2224,6 +2242,7 @@ export const VaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     resourceGuardOperationRequests: S.optional(
       VaultPropertiesInputResourceGuardOperationRequestsList,
     ),
+    regionOfChoiceSettings: S.optional(RegionOfChoiceSettings),
   }),
 ).annotate({
   identifier: "VaultPropertiesInput",
@@ -2297,7 +2316,7 @@ export const VaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2370,7 +2389,7 @@ export const VaultsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2402,7 +2421,7 @@ export const VaultsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2470,7 +2489,7 @@ export const VaultsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2554,7 +2573,7 @@ export const VaultsListBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/vaults",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2604,7 +2623,7 @@ export const VaultsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({

@@ -3811,7 +3811,10 @@ export const CreateMonitoringSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMonitoringSubscriptionResult",
 }) as any as S.Schema<CreateMonitoringSubscriptionResult>;
-export type OriginAccessControlSigningProtocols = "sigv4" | (string & {});
+export type OriginAccessControlSigningProtocols =
+  | "sigv4"
+  | "sigv4a"
+  | (string & {});
 export const OriginAccessControlSigningProtocols = /*@__PURE__*/ S.String;
 
 export type OriginAccessControlSigningBehaviors =

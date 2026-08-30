@@ -182,19 +182,19 @@
     "com.gcp.mybusinessnotifications_v1#UpdateNotificationSettingAccountsRequest": {
       "type": "structure",
       "members": {
-        "updateMask": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The specific fields that should be updated. The only editable field is notification_setting.",
-            "smithy.api#httpQuery": "updateMask"
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "updateMask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The specific fields that should be updated. The only editable field is notification_setting.",
+            "smithy.api#httpQuery": "updateMask"
           }
         },
         "body": {

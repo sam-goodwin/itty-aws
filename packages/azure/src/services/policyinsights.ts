@@ -2610,7 +2610,8 @@ export const PolicyStatesListQueryResultsForManagementGroupRequestManagementGrou
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource =
-  "default" | "latest";
+  | "default"
+  | "latest";
 export const PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2883,7 +2884,8 @@ export const PolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorization
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource =
-  "default" | "latest";
+  | "default"
+  | "latest";
 export const PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2956,7 +2958,8 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionRequestAuthorizat
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForPolicySetDefinitionRequestPolicyStatesResource =
-  "default" | "latest";
+  | "default"
+  | "latest";
 export const PolicyStatesListQueryResultsForPolicySetDefinitionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3024,7 +3027,8 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForPolicySetDefinitionRequest>;
 
 export type PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
-  "default" | "latest";
+  | "default"
+  | "latest";
 export const PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3084,7 +3088,8 @@ export const PolicyStatesListQueryResultsForResourceRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForResourceRequest>;
 
 export type PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
-  "default" | "latest";
+  | "default"
+  | "latest";
 export const PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3149,7 +3154,8 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRe
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
-  "default" | "latest";
+  | "default"
+  | "latest";
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3221,7 +3227,8 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRe
   }) as any as S.Schema<PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
-  "default" | "latest";
+  | "default"
+  | "latest";
 export const PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3283,7 +3290,8 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentReq
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
-  "default" | "latest";
+  | "default"
+  | "latest";
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 

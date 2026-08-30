@@ -82,7 +82,7 @@ export type UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
 export const UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -91,6 +91,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -122,6 +123,8 @@ export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersCancelEmailChangeRequestPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -157,6 +160,7 @@ export const UsersCancelEmailChangeRequestPartialUpdateRequest =
       role_at_organization: S.optional(RoleAtOrganizationEnum),
       passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
       hide_mcp_hints: S.optional(S.Boolean),
+      ui_configuration: S.optional(S.Unknown),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -233,12 +237,17 @@ export const UsersGithubLoginRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsersGithubLoginRetrieveRequest",
 }) as any as S.Schema<UsersGithubLoginRetrieveRequest>;
 
-export interface UsersGithubLoginRetrieveResponse {}
-export const UsersGithubLoginRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+export interface UserGithubLogin {
+  /** The user's resolved GitHub login, or null when no GitHub identity is linked. */
+  github_login: string | null;
+}
+export const UserGithubLogin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    github_login: S.NullOr(S.String),
+  }),
 ).annotate({
-  identifier: "UsersGithubLoginRetrieveResponse",
-}) as any as S.Schema<UsersGithubLoginRetrieveResponse>;
+  identifier: "UserGithubLogin",
+}) as any as S.Schema<UserGithubLogin>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
 export type UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap = {
@@ -297,6 +306,8 @@ export interface UsersHedgehogConfigPartialUpdateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersHedgehogConfigPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -331,6 +342,7 @@ export const UsersHedgehogConfigPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       role_at_organization: S.optional(RoleAtOrganizationEnum),
       passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
       hide_mcp_hints: S.optional(S.Boolean),
+      ui_configuration: S.optional(S.Unknown),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -456,6 +468,113 @@ export const UsersIntegrationsGithubDestroyResponse = /*@__PURE__*/ S.suspend(
   identifier: "UsersIntegrationsGithubDestroyResponse",
 }) as any as S.Schema<UsersIntegrationsGithubDestroyResponse>;
 
+export interface UsersIntegrationsGithubInstallRequestsDestroyRequest {
+  uuid: string;
+  request_id: string;
+}
+export const UsersIntegrationsGithubInstallRequestsDestroyRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      request_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/api/users/{uuid}/integrations/github/install_requests/{request_id}/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersIntegrationsGithubInstallRequestsDestroyRequest",
+  }) as any as S.Schema<UsersIntegrationsGithubInstallRequestsDestroyRequest>;
+
+export interface UsersIntegrationsGithubInstallRequestsDestroyResponse {}
+export const UsersIntegrationsGithubInstallRequestsDestroyResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "UsersIntegrationsGithubInstallRequestsDestroyResponse",
+  }) as any as S.Schema<UsersIntegrationsGithubInstallRequestsDestroyResponse>;
+
+export interface UsersIntegrationsGithubInstallRequestsRetrieveRequest {
+  uuid: string;
+}
+export const UsersIntegrationsGithubInstallRequestsRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/users/{uuid}/integrations/github/install_requests/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersIntegrationsGithubInstallRequestsRetrieveRequest",
+  }) as any as S.Schema<UsersIntegrationsGithubInstallRequestsRetrieveRequest>;
+
+/** * `pending` - Pending * `approved` - Approved * `unidentified` - Unidentified */
+export type GitHubInstallRequestItemStatusEnum =
+  | "pending"
+  | "approved"
+  | "unidentified";
+export const GitHubInstallRequestItemStatusEnum = /*@__PURE__*/ S.String;
+
+export interface GitHubInstallRequestItem {
+  /** PostHog GitHubInstallRequest row id. */
+  id: string;
+  /** GitHub login the install was requested under. Blank if it could not be resolved. */
+  github_login: string;
+  /** `pending` while waiting on an org owner's approval, `approved` once the installation webhook confirms it, `unidentified` when the requesting GitHub account could not be resolved. Approval can't be detected for an unidentified request, so the user has to start the connect flow again. * `pending` - Pending * `approved` - Approved * `unidentified` - Unidentified */
+  status: GitHubInstallRequestItemStatusEnum;
+  /** GitHub App installation id, set once the request is approved. */
+  installation_id?: string | null;
+  /** GitHub organization or user login the installation was approved under, once known. */
+  account_login?: string | null;
+  /** GitHub account type (`Organization` or `User`) the installation was approved under, once known. */
+  account_type?: string | null;
+  /** When the install approval was requested. */
+  requested_at: string;
+  /** When an org owner approved the request. */
+  resolved_at?: string | null;
+}
+export const GitHubInstallRequestItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    github_login: S.String,
+    status: GitHubInstallRequestItemStatusEnum,
+    installation_id: S.optional(S.NullOr(S.String)),
+    account_login: S.optional(S.NullOr(S.String)),
+    account_type: S.optional(S.NullOr(S.String)),
+    requested_at: S.String,
+    resolved_at: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "GitHubInstallRequestItem",
+}) as any as S.Schema<GitHubInstallRequestItem>;
+
+/** The user's GitHub App install-approval requests, newest first. */
+export type GitHubInstallRequestListResponseResultsList =
+  Array<GitHubInstallRequestItem>;
+export const GitHubInstallRequestListResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    GitHubInstallRequestItem,
+  ) as any as S.Schema<GitHubInstallRequestListResponseResultsList>;
+
+export interface GitHubInstallRequestListResponse {
+  /** The user's GitHub App install-approval requests, newest first. */
+  results: GitHubInstallRequestListResponseResultsList;
+  /** Shareable GitHub App install URL with no PostHog session state, for an org owner who needs to approve the install. Null when the GitHub App is not configured on this instance. */
+  install_url?: string | null;
+}
+export const GitHubInstallRequestListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: GitHubInstallRequestListResponseResultsList,
+    install_url: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "GitHubInstallRequestListResponse",
+}) as any as S.Schema<GitHubInstallRequestListResponse>;
+
 export interface UsersIntegrationsGithubPrepareCallbackCreateRequest {
   uuid: string;
   /** GitHub App installation id being managed on github.com. */
@@ -504,15 +623,36 @@ export const UsersIntegrationsGithubReposRefreshCreateRequest =
   }) as any as S.Schema<UsersIntegrationsGithubReposRefreshCreateRequest>;
 
 export interface GitHubRepo {
+  /** GitHub repository numeric identifier. */
   id?: number;
+  /** Repository short name (without the owner prefix). */
   name?: string;
+  /** Fully-qualified repository name as 'owner/repo'. */
   full_name?: string;
+  /** Whether the repository is private. */
+  private?: boolean;
+  /** The repository's default branch (e.g. 'main'). */
+  default_branch?: string;
+  /** Primary programming language GitHub detected for the repository. */
+  language?: string;
+  /** ISO 8601 timestamp of the most recent push, useful for sorting by recent activity. */
+  pushed_at?: string;
+  /** Whether the repository is archived. */
+  archived?: boolean;
+  /** Whether the PostHog GitHub App has write access — required to open pull requests. */
+  can_push?: boolean;
 }
 export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
     full_name: S.optional(S.String),
+    private: S.optional(S.Boolean),
+    default_branch: S.optional(S.String),
+    language: S.optional(S.String),
+    pushed_at: S.optional(S.String),
+    archived: S.optional(S.Boolean),
+    can_push: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
 
@@ -522,13 +662,20 @@ export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
 
+/** * `connected` - connected * `unavailable` - unavailable */
+export type InstallationStatusEnum = "connected" | "unavailable";
+export const InstallationStatusEnum = /*@__PURE__*/ S.String;
+
 export interface GitHubReposRefreshResponse {
   /** The refreshed repository cache. */
   repositories?: GitHubReposRefreshResponseRepositoriesList;
+  /** `unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one. * `connected` - connected * `unavailable` - unavailable */
+  installation_status?: InstallationStatusEnum;
 }
 export const GitHubReposRefreshResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(GitHubReposRefreshResponseRepositoriesList),
+    installation_status: S.optional(InstallationStatusEnum),
   }),
 ).annotate({
   identifier: "GitHubReposRefreshResponse",
@@ -572,11 +719,14 @@ export interface GitHubReposResponse {
   repositories?: GitHubReposResponseRepositoriesList;
   /** Whether more repositories are available beyond this page. */
   has_more?: boolean;
+  /** Total number of repositories matching the search query, across all pages. */
+  total?: number;
 }
 export const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(GitHubReposResponseRepositoriesList),
     has_more: S.optional(S.Boolean),
+    total: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "GitHubReposResponse",
@@ -584,7 +734,7 @@ export const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface UsersIntegrationsGithubStartCreateRequest {
   uuid: string;
-  /** Optional team/project id (e.g. PostHog Code); web UI uses the session's current team. */
+  /** Optional team/project id (e.g. PostHog Desktop); web UI uses the session's current team. */
   team_id?: number | null;
   /** Optional client hint (e.g. posthog_code) for return routing after OAuth. */
   connect_from?: string;
@@ -676,8 +826,14 @@ export interface UserGitHubIntegrationItem {
   repository_selection?: string | null;
   /** Installation account metadata from GitHub. */
   account?: UserGitHubAccount | null;
+  /** The connected user's own GitHub login (distinct from the installation account). */
+  github_login?: string | null;
   /** True when this installation id matches a team-level GitHub integration on the active project. */
   uses_shared_installation: boolean;
+  /** Whether any other PostHog project or personal connection references the same App installation. When false, disconnecting this integration also uninstalls the GitHub App from the connected account or organization. */
+  installation_shared: boolean;
+  /** `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise. * `connected` - connected * `unavailable` - unavailable */
+  installation_status: InstallationStatusEnum;
   /** When this integration row was created. */
   created_at: string;
 }
@@ -688,7 +844,10 @@ export const UserGitHubIntegrationItem = /*@__PURE__*/ S.suspend(() =>
     installation_id: S.String,
     repository_selection: S.optional(S.NullOr(S.String)),
     account: S.optional(S.NullOr(UserGitHubAccount)),
+    github_login: S.optional(S.NullOr(S.String)),
     uses_shared_installation: S.Boolean,
+    installation_shared: S.Boolean,
+    installation_status: InstallationStatusEnum,
     created_at: S.String,
   }),
 ).annotate({
@@ -893,6 +1052,45 @@ export const UserOutputNotificationSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserOutputNotificationSettingsMap>;
+
+/** * `discussions_mentioned` - discussions_mentioned * `error_tracking_issue_assigned` - error_tracking_issue_assigned * `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled * `materialized_view_sync_failed` - materialized_view_sync_failed * `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily * `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate * `organization_member_join_email_disabled` - organization_member_join_email_disabled * `pipeline_notifications_disabled` - pipeline_notifications_disabled * `project_weekly_digest_disabled` - project_weekly_digest_disabled * `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled */
+export type SettingEnum =
+  | "discussions_mentioned"
+  | "error_tracking_issue_assigned"
+  | "error_tracking_weekly_digest_project_enabled"
+  | "materialized_view_sync_failed"
+  | "materialized_view_sync_failed_daily"
+  | "materialized_view_sync_failed_immediate"
+  | "organization_member_join_email_disabled"
+  | "pipeline_notifications_disabled"
+  | "project_weekly_digest_disabled"
+  | "web_analytics_weekly_digest_project_enabled";
+export const SettingEnum = /*@__PURE__*/ S.String;
+
+export interface OrganizationNotificationLock {
+  /** Notification setting this rule enforces. * `discussions_mentioned` - discussions_mentioned * `error_tracking_issue_assigned` - error_tracking_issue_assigned * `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled * `materialized_view_sync_failed` - materialized_view_sync_failed * `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily * `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate * `organization_member_join_email_disabled` - organization_member_join_email_disabled * `pipeline_notifications_disabled` - pipeline_notifications_disabled * `project_weekly_digest_disabled` - project_weekly_digest_disabled * `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled */
+  setting: SettingEnum;
+  /** What the setting applies to: a project ID or an organization ID. Empty for a setting that is a single switch. */
+  scope_id: string;
+  /** The value the organization enforces. */
+  locked_value: boolean;
+}
+export const OrganizationNotificationLock = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    setting: SettingEnum,
+    scope_id: S.String,
+    locked_value: S.Boolean,
+  }),
+).annotate({
+  identifier: "OrganizationNotificationLock",
+}) as any as S.Schema<OrganizationNotificationLock>;
+
+/** Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only. */
+export type UserOutputNotificationLocksList =
+  Array<OrganizationNotificationLock>;
+export const UserOutputNotificationLocksList = /*@__PURE__*/ S.Array(
+  OrganizationNotificationLock,
+) as any as S.Schema<UserOutputNotificationLocksList>;
 
 export type UserOutputToolbarMode = ToolbarModeEnum | BlankEnum;
 export const UserOutputToolbarMode =
@@ -1600,11 +1798,17 @@ export interface Organization {
   metadata?: OrganizationMetadataMap;
   customer_id?: string | null;
   enforce_2fa?: boolean | null;
+  /** When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains. */
+  enforce_verified_domains?: boolean | null;
   members_can_invite?: boolean | null;
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
+  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
+  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
+  /** When True, requests through the PostHog MCP server can read but not change this organization's data. */
+  read_only_mcp_access?: boolean | null;
   member_count?: number;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
@@ -1646,10 +1850,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
     metadata: S.optional(OrganizationMetadataMap),
     customer_id: S.optional(S.NullOr(S.String)),
     enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+    enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
+    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
+    read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
     member_count: S.optional(S.Number),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
@@ -1730,8 +1937,12 @@ export type UserOutputShortcutPosition = ShortcutPositionEnum | BlankEnum;
 export const UserOutputShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UserOutputShortcutPosition>;
 
-/** * `delegated` - Delegated to teammate * `later` - Skipped for later * `other` - Other */
-export type OnboardingSkippedReasonEnum = "delegated" | "later" | "other";
+/** * `delegated` - Delegated to teammate * `later` - Skipped for later * `other` - Other * `provisioned` - Account provisioned by a partner */
+export type OnboardingSkippedReasonEnum =
+  | "delegated"
+  | "later"
+  | "other"
+  | "provisioned";
 export const OnboardingSkippedReasonEnum = /*@__PURE__*/ S.String;
 
 /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
@@ -1775,6 +1986,8 @@ export interface UserOutput {
   is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UserOutputNotificationSettingsMap;
+  /** Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only. */
+  notification_locks?: UserOutputNotificationLocksList;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
@@ -1786,6 +1999,8 @@ export interface UserOutput {
   is_impersonated?: boolean | null;
   is_impersonated_until?: string | null;
   is_impersonated_read_only?: boolean | null;
+  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
+  is_impersonated_reason?: string | null;
   sensitive_session_expires_at?: string | null;
   team?: TeamBasic;
   organization?: Organization;
@@ -1805,6 +2020,8 @@ export interface UserOutput {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
   onboarding_skipped_at?: string | null;
   onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
   onboarding_skipped_organization_id?: string | null;
@@ -1816,7 +2033,7 @@ export interface UserOutput {
   /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
   active_realtime_notification_types?: UserOutputActiveRealtimeNotificationTypesList;
   pending_invites?: UserOutputPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
+  /** True if the user has at least one Personal API Key or passkey, or a third-party OAuth application that can currently act as them, and has not yet acknowledged that access. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
   requires_credential_review?: boolean;
 }
 export const UserOutput = /*@__PURE__*/ S.suspend(() =>
@@ -1830,6 +2047,7 @@ export const UserOutput = /*@__PURE__*/ S.suspend(() =>
     pending_email: S.optional(S.NullOr(S.String)),
     is_email_verified: S.optional(S.NullOr(S.Boolean)),
     notification_settings: S.optional(UserOutputNotificationSettingsMap),
+    notification_locks: S.optional(UserOutputNotificationLocksList),
     anonymize_data: S.optional(S.NullOr(S.Boolean)),
     allow_impersonation: S.optional(S.NullOr(S.Boolean)),
     toolbar_mode: S.optional(S.NullOr(UserOutputToolbarMode)),
@@ -1839,6 +2057,7 @@ export const UserOutput = /*@__PURE__*/ S.suspend(() =>
     is_impersonated: S.optional(S.NullOr(S.Boolean)),
     is_impersonated_until: S.optional(S.NullOr(S.String)),
     is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
+    is_impersonated_reason: S.optional(S.NullOr(S.String)),
     sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
     team: S.optional(TeamBasic),
     organization: S.optional(Organization),
@@ -1856,6 +2075,7 @@ export const UserOutput = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
+    ui_configuration: S.optional(S.Unknown),
     onboarding_skipped_at: S.optional(S.NullOr(S.String)),
     onboarding_skipped_reason: S.optional(
       S.NullOr(OnboardingSkippedReasonEnum),
@@ -2017,20 +2237,20 @@ export const RevokeOtherSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeOtherSessionsResponse>;
 
 /** * `later` - Later * `other` - Other */
-export type ReasonEnum = "later" | "other";
-export const ReasonEnum = /*@__PURE__*/ S.String;
+export type OnboardingSkipRequestReasonEnum = "later" | "other";
+export const OnboardingSkipRequestReasonEnum = /*@__PURE__*/ S.String;
 
 export interface UsersOnboardingSkipCreateRequest {
   uuid: string;
   /** Why the user is leaving onboarding. 'later' keeps them able to return; 'other' is a catch-all. 'delegated' is rejected here — use the delegate endpoint so the delegation invite is created atomically. * `later` - Later * `other` - Other */
-  reason: ReasonEnum | (string & {});
+  reason: OnboardingSkipRequestReasonEnum | (string & {});
   /** Onboarding step key the user was on when skipping, for analytics only. */
   step_at_skip?: string;
 }
 export const UsersOnboardingSkipCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
-    reason: ReasonEnum,
+    reason: OnboardingSkipRequestReasonEnum,
     step_at_skip: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -2096,6 +2316,8 @@ export interface UsersPartialUpdateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2125,6 +2347,7 @@ export const UsersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
+    ui_configuration: S.optional(S.Unknown),
   }).pipe(T.Http({ method: "PATCH", uri: "/api/users/{uuid}/", code: 200 })),
 ).annotate({
   identifier: "UsersPartialUpdateRequest",
@@ -2261,6 +2484,8 @@ export interface UsersRequestEmailVerificationCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersRequestEmailVerificationCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2294,6 +2519,7 @@ export const UsersRequestEmailVerificationCreateRequest =
       role_at_organization: S.optional(RoleAtOrganizationEnum),
       passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
       hide_mcp_hints: S.optional(S.Boolean),
+      ui_configuration: S.optional(S.Unknown),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2379,6 +2605,8 @@ export interface UsersScenePersonalisationCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersScenePersonalisationCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2413,6 +2641,7 @@ export const UsersScenePersonalisationCreateRequest = /*@__PURE__*/ S.suspend(
       role_at_organization: S.optional(RoleAtOrganizationEnum),
       passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
       hide_mcp_hints: S.optional(S.Boolean),
+      ui_configuration: S.optional(S.Unknown),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2661,6 +2890,8 @@ export interface UsersTwoFactorBackupCodesCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersTwoFactorBackupCodesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2695,6 +2926,7 @@ export const UsersTwoFactorBackupCodesCreateRequest = /*@__PURE__*/ S.suspend(
       role_at_organization: S.optional(RoleAtOrganizationEnum),
       passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
       hide_mcp_hints: S.optional(S.Boolean),
+      ui_configuration: S.optional(S.Unknown),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2770,6 +3002,8 @@ export interface UsersTwoFactorDisableCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2803,6 +3037,7 @@ export const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
+    ui_configuration: S.optional(S.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2927,6 +3162,8 @@ export interface UsersTwoFactorValidateCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2960,6 +3197,7 @@ export const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
+    ui_configuration: S.optional(S.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3030,6 +3268,8 @@ export interface UsersUpdateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3057,6 +3297,7 @@ export const UsersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
+    ui_configuration: S.optional(S.Unknown),
   }).pipe(T.Http({ method: "PUT", uri: "/api/users/{uuid}/", code: 200 })),
 ).annotate({
   identifier: "UsersUpdateRequest",
@@ -3117,6 +3358,8 @@ export interface UsersValidate2faCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
+  /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. */
+  ui_configuration?: unknown;
 }
 export const UsersValidate2faCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3148,6 +3391,7 @@ export const UsersValidate2faCreateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
+    ui_configuration: S.optional(S.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3166,90 +3410,19 @@ export const UsersValidate2faCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsersValidate2faCreateResponse",
 }) as any as S.Schema<UsersValidate2faCreateResponse>;
 
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
-export type UsersVerifyEmailCreateRequestNotificationSettingsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UsersVerifyEmailCreateRequestNotificationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UsersVerifyEmailCreateRequestNotificationSettingsMap>;
-
-export type UsersVerifyEmailCreateRequestToolbarMode =
-  | ToolbarModeEnum
-  | BlankEnum;
-export const UsersVerifyEmailCreateRequestToolbarMode =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersVerifyEmailCreateRequestToolbarMode>;
-
-export type UsersVerifyEmailCreateRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const UsersVerifyEmailCreateRequestThemeMode =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersVerifyEmailCreateRequestThemeMode>;
-
-export type UsersVerifyEmailCreateRequestShortcutPosition =
-  | ShortcutPositionEnum
-  | BlankEnum;
-export const UsersVerifyEmailCreateRequestShortcutPosition =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersVerifyEmailCreateRequestShortcutPosition>;
-
 export interface UsersVerifyEmailCreateRequest {
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
-  notification_settings?: UsersVerifyEmailCreateRequestNotificationSettingsMap;
-  /** Whether PostHog should anonymize events captured for this user when identified. */
-  anonymize_data?: boolean | null;
-  allow_impersonation?: boolean | null;
-  toolbar_mode?: UsersVerifyEmailCreateRequestToolbarMode | null;
-  /** Designates whether the user can log into this admin site. */
-  is_staff?: boolean;
-  set_current_organization?: string;
-  set_current_team?: string;
-  password?: string | Redacted.Redacted<string>;
-  /** The user's current password. Required when changing `password` if the user already has a usable password set. */
-  current_password?: string | Redacted.Redacted<string>;
-  events_column_config?: unknown;
-  has_seen_product_intro_for?: unknown;
-  theme_mode?: UsersVerifyEmailCreateRequestThemeMode | null;
-  hedgehog_config?: unknown;
-  allow_sidebar_suggestions?: boolean | null;
-  shortcut_position?: UsersVerifyEmailCreateRequestShortcutPosition | null;
-  role_at_organization?: RoleAtOrganizationEnum | (string & {});
-  /** Whether passkeys are enabled for 2FA authentication. Users can disable this to use only TOTP for 2FA while keeping passkeys for login. */
-  passkeys_enabled_for_2fa?: boolean | null;
-  /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
-  hide_mcp_hints?: boolean;
+  /** UUID of the user whose email is being verified. */
+  uuid: string;
+  /** Verification token from the emailed link. Required unless a code is provided. */
+  token?: string;
+  /** The 6-digit verification code emailed at signup. Whitespace, invisible characters, and grouping hyphens are removed and compatibility digits are folded to ASCII before checking. */
+  code?: string;
 }
 export const UsersVerifyEmailCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-    notification_settings: S.optional(
-      UsersVerifyEmailCreateRequestNotificationSettingsMap,
-    ),
-    anonymize_data: S.optional(S.NullOr(S.Boolean)),
-    allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-    toolbar_mode: S.optional(
-      S.NullOr(UsersVerifyEmailCreateRequestToolbarMode),
-    ),
-    is_staff: S.optional(S.Boolean),
-    set_current_organization: S.optional(S.String),
-    set_current_team: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    events_column_config: S.optional(S.Unknown),
-    has_seen_product_intro_for: S.optional(S.Unknown),
-    theme_mode: S.optional(S.NullOr(UsersVerifyEmailCreateRequestThemeMode)),
-    hedgehog_config: S.optional(S.Unknown),
-    allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-    shortcut_position: S.optional(
-      S.NullOr(UsersVerifyEmailCreateRequestShortcutPosition),
-    ),
-    role_at_organization: S.optional(RoleAtOrganizationEnum),
-    passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
-    hide_mcp_hints: S.optional(S.Boolean),
+    uuid: S.String,
+    token: S.optional(S.String),
+    code: S.optional(S.String),
   }).pipe(
     T.Http({ method: "POST", uri: "/api/users/verify_email/", code: 200 }),
   ),
@@ -3316,12 +3489,12 @@ export type UsersGithubLoginRetrieveError =
   | PosthogOpError;
 export const usersGithubLoginRetrieve: API.OperationMethod<
   UsersGithubLoginRetrieveRequest,
-  UsersGithubLoginRetrieveResponse,
+  UserGithubLogin,
   UsersGithubLoginRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsersGithubLoginRetrieveRequest,
-  output: UsersGithubLoginRetrieveResponse,
+  output: UserGithubLogin,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3387,6 +3560,37 @@ export const usersIntegrationsGithubDestroy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UsersIntegrationsGithubDestroyRequest,
   output: UsersIntegrationsGithubDestroyResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UsersIntegrationsGithubInstallRequestsDestroyError = PosthogOpError;
+/** Dismiss a GitHub install-approval request Delete one of the requesting user's install-approval requests, whatever its status. User-facing bookkeeping only: a later connect attempt records a fresh row. */
+export const usersIntegrationsGithubInstallRequestsDestroy: API.OperationMethod<
+  UsersIntegrationsGithubInstallRequestsDestroyRequest,
+  UsersIntegrationsGithubInstallRequestsDestroyResponse,
+  UsersIntegrationsGithubInstallRequestsDestroyError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UsersIntegrationsGithubInstallRequestsDestroyRequest,
+  output: UsersIntegrationsGithubInstallRequestsDestroyResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UsersIntegrationsGithubInstallRequestsRetrieveError =
+  PosthogOpError;
+/** List the user's GitHub install-approval requests Return the requesting user's GitHub App install-approval requests, newest first. This is the durable server-side "awaiting org owner approval" state (see ``posthog.models.user_integration.GitHubInstallRequest``), distinct from the in-flight connect spinner, which never touches this table. */
+export const usersIntegrationsGithubInstallRequestsRetrieve: API.OperationMethod<
+  UsersIntegrationsGithubInstallRequestsRetrieveRequest,
+  GitHubInstallRequestListResponse,
+  UsersIntegrationsGithubInstallRequestsRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UsersIntegrationsGithubInstallRequestsRetrieveRequest,
+  output: GitHubInstallRequestListResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

@@ -498,7 +498,10 @@ export const InstancesChatCompletionsRequestAiSearchOptionsReranking =
   }) as any as S.Schema<InstancesChatCompletionsRequestAiSearchOptionsReranking>;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -539,17 +542,21 @@ export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap =
   ) as any as S.Schema<InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
-  "max" | "rrf";
+  | "max"
+  | "rrf";
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
-  "and" | "or";
+  | "and"
+  | "or";
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
-  "vector" | "keyword" | "hybrid";
+  | "vector"
+  | "keyword"
+  | "hybrid";
 export const InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -749,8 +756,8 @@ export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemC
   }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
 export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
-    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
+  | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
+  | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -844,7 +851,8 @@ export const InstancesChatCompletionsResponseChunksItemItem =
   }) as any as S.Schema<InstancesChatCompletionsResponseChunksItemItem>;
 
 export type InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
-  "rrf" | "max";
+  | "rrf"
+  | "max";
 export const InstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -940,7 +948,10 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList =
   ) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
-  "super_strict_match" | "close_enough" | "flexible_friend" | "anything_goes";
+  | "super_strict_match"
+  | "close_enough"
+  | "flexible_friend"
+  | "anything_goes";
 export const NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -1045,7 +1056,10 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsReranking =
   }) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsReranking>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -1086,17 +1100,21 @@ export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap 
   ) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
-  "max" | "rrf";
+  | "max"
+  | "rrf";
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
-  "and" | "or";
+  | "and"
+  | "or";
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
-  "vector" | "keyword" | "hybrid";
+  | "vector"
+  | "keyword"
+  | "hybrid";
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -1402,8 +1420,8 @@ export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item
   }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
-    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
+  | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
+  | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -1497,7 +1515,8 @@ export const NamespacesChatCompletionsResponseChunksItemItem =
   }) as any as S.Schema<NamespacesChatCompletionsResponseChunksItemItem>;
 
 export type NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
-  "rrf" | "max";
+  | "rrf"
+  | "max";
 export const NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -1637,8 +1656,8 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1It
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1>;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item =
-    | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0
-    | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1;
+  | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0
+  | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1;
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -1695,7 +1714,10 @@ export const NamespacesInstancesChatCompletionsRequestMessagesList =
   ) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesList>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
-  "super_strict_match" | "close_enough" | "flexible_friend" | "anything_goes";
+  | "super_strict_match"
+  | "close_enough"
+  | "flexible_friend"
+  | "anything_goes";
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -1720,36 +1742,36 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
-    | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
-    | "@cf/zai-org/glm-4.7-flash"
-    | "@cf/meta/llama-3.1-8b-instruct-fast"
-    | "@cf/meta/llama-3.1-8b-instruct-fp8"
-    | "@cf/meta/llama-4-scout-17b-16e-instruct"
-    | "@cf/qwen/qwen3-30b-a3b-fp8"
-    | "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
-    | "@cf/moonshotai/kimi-k2-instruct"
-    | "@cf/google/gemma-3-12b-it"
-    | "@cf/google/gemma-4-26b-a4b-it"
-    | "@cf/moonshotai/kimi-k2.5"
-    | "anthropic/claude-3-7-sonnet"
-    | "anthropic/claude-sonnet-4"
-    | "anthropic/claude-opus-4"
-    | "anthropic/claude-3-5-haiku"
-    | "cerebras/qwen-3-235b-a22b-instruct"
-    | "cerebras/qwen-3-235b-a22b-thinking"
-    | "cerebras/llama-3.3-70b"
-    | "cerebras/llama-4-maverick-17b-128e-instruct"
-    | "cerebras/llama-4-scout-17b-16e-instruct"
-    | "cerebras/gpt-oss-120b"
-    | "google-ai-studio/gemini-2.5-flash"
-    | "google-ai-studio/gemini-2.5-pro"
-    | "grok/grok-4"
-    | "groq/llama-3.3-70b-versatile"
-    | "groq/llama-3.1-8b-instant"
-    | "openai/gpt-5"
-    | "openai/gpt-5-mini"
-    | "openai/gpt-5-nano"
-    | "";
+  | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+  | "@cf/zai-org/glm-4.7-flash"
+  | "@cf/meta/llama-3.1-8b-instruct-fast"
+  | "@cf/meta/llama-3.1-8b-instruct-fp8"
+  | "@cf/meta/llama-4-scout-17b-16e-instruct"
+  | "@cf/qwen/qwen3-30b-a3b-fp8"
+  | "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+  | "@cf/moonshotai/kimi-k2-instruct"
+  | "@cf/google/gemma-3-12b-it"
+  | "@cf/google/gemma-4-26b-a4b-it"
+  | "@cf/moonshotai/kimi-k2.5"
+  | "anthropic/claude-3-7-sonnet"
+  | "anthropic/claude-sonnet-4"
+  | "anthropic/claude-opus-4"
+  | "anthropic/claude-3-5-haiku"
+  | "cerebras/qwen-3-235b-a22b-instruct"
+  | "cerebras/qwen-3-235b-a22b-thinking"
+  | "cerebras/llama-3.3-70b"
+  | "cerebras/llama-4-maverick-17b-128e-instruct"
+  | "cerebras/llama-4-scout-17b-16e-instruct"
+  | "cerebras/gpt-oss-120b"
+  | "google-ai-studio/gemini-2.5-flash"
+  | "google-ai-studio/gemini-2.5-pro"
+  | "grok/grok-4"
+  | "groq/llama-3.3-70b-versatile"
+  | "groq/llama-3.1-8b-instant"
+  | "openai/gpt-5"
+  | "openai/gpt-5-mini"
+  | "openai/gpt-5-nano"
+  | "";
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewriteModel =
   /*@__PURE__*/ S.String;
 
@@ -1775,7 +1797,8 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrit
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsQueryRewrite>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRerankingModel =
-  "@cf/baai/bge-reranker-base" | "";
+  | "@cf/baai/bge-reranker-base"
+  | "";
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRerankingModel =
   /*@__PURE__*/ S.String;
 
@@ -1801,7 +1824,10 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsReranking>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -1842,17 +1868,21 @@ export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFi
   ) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
-  "max" | "rrf";
+  | "max"
+  | "rrf";
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
-  "and" | "or";
+  | "and"
+  | "or";
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
-  "vector" | "keyword" | "hybrid";
+  | "vector"
+  | "keyword"
+  | "hybrid";
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -2059,8 +2089,8 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
-    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
+  | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
+  | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -2077,8 +2107,8 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent
   ) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1List>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent =
-    | string
-    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1List;
+  | string
+  | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1List;
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
@@ -2156,7 +2186,8 @@ export const NamespacesInstancesChatCompletionsResponseChunksItemItem =
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChunksItemItem>;
 
 export type NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
-  "rrf" | "max";
+  | "rrf"
+  | "max";
 export const NamespacesInstancesChatCompletionsResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -3981,7 +4012,8 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsMcp =
   InstancesCreateRequestPublicEndpointParamsMcp;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  | "fixed"
+  | "sliding";
 export const NamespacesInstancesCreateRequestPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -4062,7 +4094,10 @@ export const NamespacesInstancesCreateRequestRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesCreateRequestRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -4630,7 +4665,8 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  | "fixed"
+  | "sliding";
 export const NamespacesInstancesCreateResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -4712,7 +4748,10 @@ export const NamespacesInstancesCreateResponseRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesCreateResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -6216,7 +6255,8 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  | "fixed"
+  | "sliding";
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -6298,7 +6338,10 @@ export const NamespacesInstancesDeleteResponseRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -8207,7 +8250,8 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  | "fixed"
+  | "sliding";
 export const NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -8289,7 +8333,10 @@ export const NamespacesInstancesListResultItemRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesListResultItemRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesListResultItemRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -9989,7 +10036,8 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  | "fixed"
+  | "sliding";
 export const NamespacesInstancesReadResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -10070,7 +10118,10 @@ export const NamespacesInstancesReadResponseRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -10639,7 +10690,10 @@ export const InstancesSearchRequestAiSearchOptionsReranking =
   }) as any as S.Schema<InstancesSearchRequestAiSearchOptionsReranking>;
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -11128,7 +11182,10 @@ export const NamespacesSearchRequestAiSearchOptionsReranking =
   }) as any as S.Schema<NamespacesSearchRequestAiSearchOptionsReranking>;
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -11532,7 +11589,10 @@ export const SearchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchNamespaceResponse>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold =
-  "super_strict_match" | "close_enough" | "flexible_friend" | "anything_goes";
+  | "super_strict_match"
+  | "close_enough"
+  | "flexible_friend"
+  | "anything_goes";
 export const NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold =
   /*@__PURE__*/ S.String;
 
@@ -11637,7 +11697,10 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsReranking =
   }) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsReranking>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -11678,17 +11741,21 @@ export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap 
   ) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod =
-  "max" | "rrf";
+  | "max"
+  | "rrf";
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode =
-  "and" | "or";
+  | "and"
+  | "or";
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalType =
-  "vector" | "keyword" | "hybrid";
+  | "vector"
+  | "keyword"
+  | "hybrid";
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalType =
   /*@__PURE__*/ S.String;
 
@@ -11938,7 +12005,8 @@ export const NamespacesInstancesSearchResponseChunksItemItem =
   }) as any as S.Schema<NamespacesInstancesSearchResponseChunksItemItem>;
 
 export type NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod =
-  "rrf" | "max";
+  | "rrf"
+  | "max";
 export const NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod =
   /*@__PURE__*/ S.String;
 
@@ -13851,7 +13919,8 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsMcp =
   InstancesCreateRequestPublicEndpointParamsMcp;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  | "fixed"
+  | "sliding";
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -13932,7 +14001,10 @@ export const NamespacesInstancesUpdateRequestRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 
@@ -14547,7 +14619,8 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
-  "fixed" | "sliding";
+  | "fixed"
+  | "sliding";
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique =
   /*@__PURE__*/ S.String;
 
@@ -14629,7 +14702,10 @@ export const NamespacesInstancesUpdateResponseRerankingModel =
   /*@__PURE__*/ S.String;
 
 export type NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection =
-  "asc" | "desc" | "exists" | "not_exists";
+  | "asc"
+  | "desc"
+  | "exists"
+  | "not_exists";
 export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection =
   /*@__PURE__*/ S.String;
 

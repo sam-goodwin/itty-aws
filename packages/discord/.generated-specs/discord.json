@@ -25738,7 +25738,7 @@
           }
         },
         "after": {
-          "target": "smithy.api#Integer",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "after"
           }

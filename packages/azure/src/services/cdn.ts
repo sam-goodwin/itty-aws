@@ -82,6 +82,30 @@ export const AFDDomainHttpsCustomizedCipherSuiteSet = /*@__PURE__*/ S.suspend(
   identifier: "AFDDomainHttpsCustomizedCipherSuiteSet",
 }) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSet>;
 
+/** Server TLS group policy that will be used for Https. Standard and Enhanced are service-managed sets; Custom allows specifying serverTlsGroups explicitly. */
+export type AfdServerTlsGroupPolicy = "Standard" | "Enhanced" | "Custom";
+export const AfdServerTlsGroupPolicy = /*@__PURE__*/ S.String;
+
+/** Supported key-exchange groups and curves. The ML-KEM groups are hybrid post-quantum groups. */
+export type AfdServerTlsGroup =
+  | "SecP256r1MLKEM768"
+  | "SecP384r1MLKEM1024"
+  | "X25519MLKEM768"
+  | "prime256v1"
+  | "X25519"
+  | "secp384r1"
+  | "secp521r1";
+export const AfdServerTlsGroup = /*@__PURE__*/ S.String;
+
+/** Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom. */
+export type AFDDomainHttpsParametersServerTlsGroupsList = Array<
+  AfdServerTlsGroup | (string & {})
+>;
+export const AFDDomainHttpsParametersServerTlsGroupsList =
+  /*@__PURE__*/ S.Array(
+    AfdServerTlsGroup,
+  ) as any as S.Schema<AFDDomainHttpsParametersServerTlsGroupsList>;
+
 /** Reference to another resource. */
 export interface ResourceReference {
   /** Resource ID. */
@@ -105,6 +129,10 @@ export interface AFDDomainHttpsParameters {
   minimumTlsVersion?: AfdMinimumTlsVersion | (string & {});
   /** Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized. */
   customizedCipherSuiteSet?: AFDDomainHttpsCustomizedCipherSuiteSet;
+  /** Server TLS group policy that will be used for Https. */
+  serverTlsGroupPolicy?: AfdServerTlsGroupPolicy | (string & {});
+  /** Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom. */
+  serverTlsGroups?: AFDDomainHttpsParametersServerTlsGroupsList;
   /** Resource reference to the secret. ie. subs/rg/profile/secret */
   secret?: ResourceReference;
 }
@@ -116,11 +144,34 @@ export const AFDDomainHttpsParameters = /*@__PURE__*/ S.suspend(() =>
     customizedCipherSuiteSet: S.optional(
       AFDDomainHttpsCustomizedCipherSuiteSet,
     ),
+    serverTlsGroupPolicy: S.optional(AfdServerTlsGroupPolicy),
+    serverTlsGroups: S.optional(AFDDomainHttpsParametersServerTlsGroupsList),
     secret: S.optional(ResourceReference),
   }),
 ).annotate({
   identifier: "AFDDomainHttpsParameters",
 }) as any as S.Schema<AFDDomainHttpsParameters>;
+
+/** Supported scenarios for establishing mTLS connection. */
+export type MtlsScenarioType =
+  | "ClientCertificateRequiredAndValidated"
+  | "ClientCertificateRequiredAndOriginValidates"
+  | "ClientCertificateValidatedIfPresented"
+  | "CompleteMtlsPassthroughToOrigin";
+export const MtlsScenarioType = /*@__PURE__*/ S.String;
+
+/** Contains the properties to configure mutual TLS for a custom domain with FQDN. Mutual TLS cannot be configured for custom domains with wildcard host names. */
+export interface AFDDomainMtlsParameters {
+  /** Supported scenarios for establishing mTLS connection. */
+  scenario: MtlsScenarioType | (string & {});
+}
+export const AFDDomainMtlsParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scenario: MtlsScenarioType,
+  }),
+).annotate({
+  identifier: "AFDDomainMtlsParameters",
+}) as any as S.Schema<AFDDomainMtlsParameters>;
 
 /** Key-Value pair representing migration properties for domains. */
 export type AFDDomainPropertiesInputExtendedPropertiesMap = {
@@ -136,6 +187,8 @@ export const AFDDomainPropertiesInputExtendedPropertiesMap =
 export interface AFDDomainPropertiesInput {
   /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
   tlsSettings?: AFDDomainHttpsParameters;
+  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
+  mtlsSettings?: AFDDomainMtlsParameters;
   /** Resource reference to the Azure DNS zone */
   azureDnsZone?: ResourceReference;
   /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
@@ -148,6 +201,7 @@ export interface AFDDomainPropertiesInput {
 export const AFDDomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tlsSettings: S.optional(AFDDomainHttpsParameters),
+    mtlsSettings: S.optional(AFDDomainMtlsParameters),
     azureDnsZone: S.optional(ResourceReference),
     preValidatedCustomDomainResourceId: S.optional(ResourceReference),
     hostName: S.String,
@@ -183,7 +237,7 @@ export const AFDCustomDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -292,6 +346,8 @@ export interface AFDDomainProperties {
   profileName?: string;
   /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
   tlsSettings?: AFDDomainHttpsParameters;
+  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
+  mtlsSettings?: AFDDomainMtlsParameters;
   /** Resource reference to the Azure DNS zone */
   azureDnsZone?: ResourceReference;
   /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
@@ -312,6 +368,7 @@ export const AFDDomainProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileName: S.optional(S.String),
     tlsSettings: S.optional(AFDDomainHttpsParameters),
+    mtlsSettings: S.optional(AFDDomainMtlsParameters),
     azureDnsZone: S.optional(ResourceReference),
     preValidatedCustomDomainResourceId: S.optional(ResourceReference),
     provisioningState: S.optional(AfdProvisioningState),
@@ -370,7 +427,7 @@ export const AFDCustomDomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -405,7 +462,7 @@ export const AFDCustomDomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -455,7 +512,7 @@ export const AFDCustomDomainsListByProfileRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -529,7 +586,7 @@ export const AFDCustomDomainsRefreshValidationTokenRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}/refreshValidationToken",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -546,6 +603,8 @@ export const AFDCustomDomainsRefreshValidationTokenResponse =
 export interface AFDDomainUpdatePropertiesParametersInput {
   /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
   tlsSettings?: AFDDomainHttpsParameters;
+  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
+  mtlsSettings?: AFDDomainMtlsParameters;
   /** Resource reference to the Azure DNS zone */
   azureDnsZone?: ResourceReference;
   /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
@@ -555,6 +614,7 @@ export const AFDDomainUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       tlsSettings: S.optional(AFDDomainHttpsParameters),
+      mtlsSettings: S.optional(AFDDomainMtlsParameters),
       azureDnsZone: S.optional(ResourceReference),
       preValidatedCustomDomainResourceId: S.optional(ResourceReference),
     }),
@@ -586,7 +646,7 @@ export const AFDCustomDomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -630,6 +690,10 @@ export const AFDEndpointsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 export type EnabledState = "Enabled" | "Disabled";
 export const EnabledState = /*@__PURE__*/ S.String;
 
+/** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
+export type EnforceMtlsEnabledState = "Enabled" | "Disabled";
+export const EnforceMtlsEnabledState = /*@__PURE__*/ S.String;
+
 /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
 export type AutoGeneratedDomainNameLabelScope =
   | "TenantReuse"
@@ -642,6 +706,8 @@ export const AutoGeneratedDomainNameLabelScope = /*@__PURE__*/ S.String;
 export interface AFDEndpointPropertiesInput {
   /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
   enabledState?: EnabledState | (string & {});
+  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
+  enforceMtls?: EnforceMtlsEnabledState | (string & {});
   /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
   autoGeneratedDomainNameLabelScope?:
     | AutoGeneratedDomainNameLabelScope
@@ -650,6 +716,7 @@ export interface AFDEndpointPropertiesInput {
 export const AFDEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledState: S.optional(EnabledState),
+    enforceMtls: S.optional(EnforceMtlsEnabledState),
     autoGeneratedDomainNameLabelScope: S.optional(
       AutoGeneratedDomainNameLabelScope,
     ),
@@ -688,7 +755,7 @@ export const AFDEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -710,6 +777,8 @@ export interface AFDEndpointProperties {
   profileName?: string;
   /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
   enabledState?: EnabledState;
+  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
+  enforceMtls?: EnforceMtlsEnabledState;
   /** Provisioning status */
   provisioningState?: AfdProvisioningState;
   deploymentStatus?: DeploymentStatus;
@@ -722,6 +791,7 @@ export const AFDEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileName: S.optional(S.String),
     enabledState: S.optional(EnabledState),
+    enforceMtls: S.optional(EnforceMtlsEnabledState),
     provisioningState: S.optional(AfdProvisioningState),
     deploymentStatus: S.optional(DeploymentStatus),
     hostName: S.optional(S.String),
@@ -784,7 +854,7 @@ export const AFDEndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -819,7 +889,7 @@ export const AFDEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -883,7 +953,7 @@ export const AFDEndpointsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -970,7 +1040,7 @@ export const AFDEndpointsListResourceUsageRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/usages",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -1080,7 +1150,7 @@ export const AFDEndpointsPurgeContentRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/purge",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1107,11 +1177,14 @@ export const AFDEndpointsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 export interface AFDEndpointPropertiesUpdateParametersInput {
   /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
   enabledState?: EnabledState | (string & {});
+  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
+  enforceMtls?: EnforceMtlsEnabledState | (string & {});
 }
 export const AFDEndpointPropertiesUpdateParametersInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabledState: S.optional(EnabledState),
+      enforceMtls: S.optional(EnforceMtlsEnabledState),
     }),
   ).annotate({
     identifier: "AFDEndpointPropertiesUpdateParametersInput",
@@ -1144,7 +1217,7 @@ export const AFDEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1215,7 +1288,7 @@ export const AFDEndpointsValidateCustomDomainRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/validateCustomDomain",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -1296,6 +1369,13 @@ export type OriginAuthenticationType =
   | "UserAssignedIdentity";
 export const OriginAuthenticationType = /*@__PURE__*/ S.String;
 
+/** The HTTP request header where the origin authentication token is placed when forwarding the request to the origin. */
+export type OriginAuthenticationTokenDestinationHeader =
+  | "Authorization"
+  | "X-Azure-Authorization";
+export const OriginAuthenticationTokenDestinationHeader =
+  /*@__PURE__*/ S.String;
+
 /** The JSON object that contains the properties of the origin authentication settings. */
 export interface OriginAuthenticationProperties {
   /** The type of the authentication for the origin. */
@@ -1304,12 +1384,19 @@ export interface OriginAuthenticationProperties {
   userAssignedIdentity?: ResourceReference;
   /** The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default". */
   scope?: string;
+  /** The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility. */
+  tokenDestinationHeader?:
+    | OriginAuthenticationTokenDestinationHeader
+    | (string & {});
 }
 export const OriginAuthenticationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(OriginAuthenticationType),
     userAssignedIdentity: S.optional(ResourceReference),
     scope: S.optional(S.String),
+    tokenDestinationHeader: S.optional(
+      OriginAuthenticationTokenDestinationHeader,
+    ),
   }),
 ).annotate({
   identifier: "OriginAuthenticationProperties",
@@ -1364,7 +1451,7 @@ export const AFDOriginGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1449,7 +1536,7 @@ export const AFDOriginGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1484,7 +1571,7 @@ export const AFDOriginGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1533,7 +1620,7 @@ export const AFDOriginGroupsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1607,7 +1694,7 @@ export const AFDOriginGroupsListResourceUsageRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/usages",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -1644,7 +1731,7 @@ export const AFDOriginGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1709,6 +1796,21 @@ export const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharedPrivateLinkResourceProperties",
 }) as any as S.Schema<SharedPrivateLinkResourceProperties>;
 
+/** The validation mode for certificate name check at origin level. Only applicable when enforceCertificateNameCheck is true. */
+export type CertificateNameCheckValidationMode =
+  | "OriginHostname"
+  | "CustomCertificateSubject"
+  | "IncomingHostHeader";
+export const CertificateNameCheckValidationMode = /*@__PURE__*/ S.String;
+
+/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+export type AFDOriginPropertiesInputCustomCertificateSubjectsList =
+  Array<string>;
+export const AFDOriginPropertiesInputCustomCertificateSubjectsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AFDOriginPropertiesInputCustomCertificateSubjectsList>;
+
 /** The JSON object that contains the properties of the origin. */
 export interface AFDOriginPropertiesInput {
   /** Resource reference to the Azure origin resource. */
@@ -1731,6 +1833,12 @@ export interface AFDOriginPropertiesInput {
   enabledState?: EnabledState | (string & {});
   /** Whether to enable certificate name check at origin level */
   enforceCertificateNameCheck?: boolean;
+  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
+  certificateNameCheckValidationMode?:
+    | CertificateNameCheckValidationMode
+    | (string & {});
+  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+  customCertificateSubjects?: AFDOriginPropertiesInputCustomCertificateSubjectsList;
 }
 export const AFDOriginPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1744,6 +1852,12 @@ export const AFDOriginPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
     enabledState: S.optional(EnabledState),
     enforceCertificateNameCheck: S.optional(S.Boolean),
+    certificateNameCheckValidationMode: S.optional(
+      CertificateNameCheckValidationMode,
+    ),
+    customCertificateSubjects: S.optional(
+      AFDOriginPropertiesInputCustomCertificateSubjectsList,
+    ),
   }),
 ).annotate({
   identifier: "AFDOriginPropertiesInput",
@@ -1776,12 +1890,19 @@ export const AFDOriginsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
   identifier: "AFDOriginsCreateRequest",
 }) as any as S.Schema<AFDOriginsCreateRequest>;
+
+/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+export type AFDOriginPropertiesCustomCertificateSubjectsList = Array<string>;
+export const AFDOriginPropertiesCustomCertificateSubjectsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AFDOriginPropertiesCustomCertificateSubjectsList>;
 
 /** The JSON object that contains the properties of the origin. */
 export interface AFDOriginProperties {
@@ -1807,6 +1928,10 @@ export interface AFDOriginProperties {
   enabledState?: EnabledState;
   /** Whether to enable certificate name check at origin level */
   enforceCertificateNameCheck?: boolean;
+  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
+  certificateNameCheckValidationMode?: CertificateNameCheckValidationMode;
+  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+  customCertificateSubjects?: AFDOriginPropertiesCustomCertificateSubjectsList;
   /** Provisioning status */
   provisioningState?: AfdProvisioningState;
   deploymentStatus?: DeploymentStatus;
@@ -1824,6 +1949,12 @@ export const AFDOriginProperties = /*@__PURE__*/ S.suspend(() =>
     sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
     enabledState: S.optional(EnabledState),
     enforceCertificateNameCheck: S.optional(S.Boolean),
+    certificateNameCheckValidationMode: S.optional(
+      CertificateNameCheckValidationMode,
+    ),
+    customCertificateSubjects: S.optional(
+      AFDOriginPropertiesCustomCertificateSubjectsList,
+    ),
     provisioningState: S.optional(AfdProvisioningState),
     deploymentStatus: S.optional(DeploymentStatus),
   }),
@@ -1879,7 +2010,7 @@ export const AFDOriginsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1917,7 +2048,7 @@ export const AFDOriginsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1969,7 +2100,7 @@ export const AFDOriginsListByOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2021,10 +2152,68 @@ export const AFDOriginListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AFDOriginListResult",
 }) as any as S.Schema<AFDOriginListResult>;
 
+/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+export type AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList =
+  Array<string>;
+export const AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList>;
+
 /** The JSON object that contains the properties of the origin. */
-export type AFDOriginUpdatePropertiesParametersInput = AFDOriginPropertiesInput;
-export const AFDOriginUpdatePropertiesParametersInput =
-  AFDOriginPropertiesInput;
+export interface AFDOriginUpdatePropertiesParametersInput {
+  /** Resource reference to the Azure origin resource. */
+  azureOrigin?: ResourceReference;
+  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
+  hostName?: string;
+  /** The value of the HTTP port. Must be between 1 and 65535. */
+  httpPort?: number;
+  /** The value of the HTTPS port. Must be between 1 and 65535. */
+  httpsPort?: number;
+  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
+  originHostHeader?: string;
+  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
+  priority?: number;
+  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
+  weight?: number;
+  /** The properties of the private link resource for private origin. */
+  sharedPrivateLinkResource?: SharedPrivateLinkResourceProperties;
+  /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
+  enabledState?: EnabledState | (string & {});
+  /** Whether to enable certificate name check at origin level */
+  enforceCertificateNameCheck?: boolean;
+  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
+  certificateNameCheckValidationMode?:
+    | CertificateNameCheckValidationMode
+    | (string & {});
+  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+  customCertificateSubjects?: AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList;
+}
+export const AFDOriginUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      azureOrigin: S.optional(ResourceReference),
+      hostName: S.optional(S.String),
+      httpPort: S.optional(S.Number),
+      httpsPort: S.optional(S.Number),
+      originHostHeader: S.optional(S.String),
+      priority: S.optional(S.Number),
+      weight: S.optional(S.Number),
+      sharedPrivateLinkResource: S.optional(
+        SharedPrivateLinkResourceProperties,
+      ),
+      enabledState: S.optional(EnabledState),
+      enforceCertificateNameCheck: S.optional(S.Boolean),
+      certificateNameCheckValidationMode: S.optional(
+        CertificateNameCheckValidationMode,
+      ),
+      customCertificateSubjects: S.optional(
+        AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList,
+      ),
+    }),
+).annotate({
+  identifier: "AFDOriginUpdatePropertiesParametersInput",
+}) as any as S.Schema<AFDOriginUpdatePropertiesParametersInput>;
 
 export interface AFDOriginsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2038,7 +2227,7 @@ export interface AFDOriginsUpdateRequest {
   /** Name of the origin which is unique within the profile. */
   originName: string;
   /** The JSON object that contains the properties of the origin. */
-  properties?: AFDOriginPropertiesInput;
+  properties?: AFDOriginUpdatePropertiesParametersInput;
 }
 export const AFDOriginsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2047,13 +2236,13 @@ export const AFDOriginsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     profileName: S.String.pipe(T.Label()),
     originGroupName: S.String.pipe(T.Label()),
     originName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDOriginPropertiesInput),
+    properties: S.optional(AFDOriginUpdatePropertiesParametersInput),
   }).pipe(
     T.Http({
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2122,7 +2311,7 @@ export const AFDProfilesCheckEndpointNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkEndpointNameAvailability",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -2173,7 +2362,7 @@ export const AFDProfilesCheckHostNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkHostNameAvailability",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -2217,7 +2406,7 @@ export const AFDProfilesListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/usages",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2269,7 +2458,7 @@ export const AFDProfilesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/upgrade",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2537,7 +2726,8 @@ export type SecretType =
   | "UrlSigningKey"
   | "CustomerCertificate"
   | "ManagedCertificate"
-  | "AzureFirstPartyManagedCertificate";
+  | "AzureFirstPartyManagedCertificate"
+  | "MtlsCertificateChain";
 export const SecretType = /*@__PURE__*/ S.String;
 
 export interface AFDProfilesValidateSecretRequest {
@@ -2567,7 +2757,7 @@ export const AFDProfilesValidateSecretRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/validateSecret",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2627,7 +2817,7 @@ export const CheckEndpointNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/checkEndpointNameAvailability",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -2649,7 +2839,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/providers/Microsoft.Cdn/checkNameAvailability",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2675,7 +2865,7 @@ export const CheckNameAvailabilityWithSubscriptionRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkNameAvailability",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -2722,7 +2912,7 @@ export const CustomDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2868,7 +3058,7 @@ export const CustomDomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -2907,7 +3097,7 @@ export const CustomDomainsDisableCustomHttpsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -2973,7 +3163,7 @@ export const CustomDomainsEnableCustomHttpsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -3029,7 +3219,7 @@ export const CustomDomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3081,7 +3271,7 @@ export const CustomDomainsListByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3140,7 +3330,7 @@ export const EdgeNodesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Cdn/edgenodes",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -3421,7 +3611,9 @@ export type DeliveryRuleActionName =
   | "UrlRewrite"
   | "UrlSigning"
   | "OriginGroupOverride"
-  | "RouteConfigurationOverride";
+  | "RouteConfigurationOverride"
+  | "EdgeAction"
+  | "AfdUrlSigning";
 export const DeliveryRuleActionName = /*@__PURE__*/ S.String;
 
 /** An action for the delivery rule. */
@@ -3779,7 +3971,7 @@ export const EndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4020,7 +4212,7 @@ export const EndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4055,7 +4247,7 @@ export const EndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4117,7 +4309,7 @@ export const EndpointsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4203,7 +4395,7 @@ export const EndpointsListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4287,7 +4479,7 @@ export const EndpointsLoadContentRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4332,7 +4524,7 @@ export const EndpointsPurgeContentRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4367,7 +4559,7 @@ export const EndpointsStartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4434,7 +4626,7 @@ export const EndpointsStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4610,7 +4802,7 @@ export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -4681,7 +4873,7 @@ export const EndpointsValidateCustomDomainRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/validateCustomDomain",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -4707,7 +4899,7 @@ export const LogAnalyticsGetLogAnalyticsLocationsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsLocations",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -4891,7 +5083,7 @@ export const LogAnalyticsGetLogAnalyticsMetricsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsMetrics",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -5070,7 +5262,7 @@ export const LogAnalyticsGetLogAnalyticsRankingsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsRankings",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -5173,7 +5365,7 @@ export const LogAnalyticsGetLogAnalyticsResourcesRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getLogAnalyticsResources",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -5365,7 +5557,7 @@ export const LogAnalyticsGetWafLogAnalyticsMetricsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsMetrics",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -5549,7 +5741,7 @@ export const LogAnalyticsGetWafLogAnalyticsRankingsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getWafLogAnalyticsRankings",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -5625,7 +5817,7 @@ export const ManagedRuleSetsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/cdnWebApplicationFirewallManagedRuleSets",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -5761,7 +5953,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Cdn/operations",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6075,7 +6267,7 @@ export const OriginGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6130,7 +6322,7 @@ export const OriginGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6168,7 +6360,7 @@ export const OriginGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6220,7 +6412,7 @@ export const OriginGroupsListByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6334,7 +6526,7 @@ export const OriginGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6457,7 +6649,7 @@ export const OriginsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6512,7 +6704,7 @@ export const OriginsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6550,7 +6742,7 @@ export const OriginsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6602,7 +6794,7 @@ export const OriginsListByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -6724,7 +6916,7 @@ export const OriginsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7155,7 +7347,7 @@ export const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7307,7 +7499,7 @@ export const PoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7339,7 +7531,7 @@ export const PoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7404,7 +7596,7 @@ export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7511,7 +7703,7 @@ export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7581,7 +7773,7 @@ export const ProfilesCanMigrateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/canMigrate",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7674,7 +7866,7 @@ export const ProfilesCdnCanMigrateToAfdRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnCanMigrateToAfd",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7731,7 +7923,7 @@ export const ProfilesCdnMigrateToAfdRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnMigrateToAfd",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7859,7 +8051,7 @@ export const ProfilesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7965,7 +8157,7 @@ export const ProfilesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -7997,7 +8189,7 @@ export const ProfilesGenerateSsoUriRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/generateSsoUri",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8033,7 +8225,7 @@ export const ProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8131,7 +8323,7 @@ export const ProfilesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8252,7 +8444,7 @@ export const ProfilesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8277,7 +8469,7 @@ export const ProfilesListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8303,7 +8495,7 @@ export const ProfilesListSupportedOptimizationTypesRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getSupportedOptimizationTypes",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -8388,7 +8580,7 @@ export const ProfilesMigrateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/migrate",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8413,7 +8605,7 @@ export const ProfilesMigrationAbortRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationAbort",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8445,7 +8637,7 @@ export const ProfilesMigrationCommitRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationCommit",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8538,7 +8730,7 @@ export const ProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8638,7 +8830,7 @@ export const ResourceUsageListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8816,7 +9008,7 @@ export const RoutesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -8978,7 +9170,7 @@ export const RoutesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9016,7 +9208,7 @@ export const RoutesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9068,7 +9260,7 @@ export const RoutesListByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9264,7 +9456,7 @@ export const RoutesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9365,7 +9557,7 @@ export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9464,7 +9656,7 @@ export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9573,7 +9765,7 @@ export const RuleSetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9702,7 +9894,7 @@ export const RuleSetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9737,7 +9929,7 @@ export const RuleSetsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9786,7 +9978,7 @@ export const RuleSetsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9859,7 +10051,7 @@ export const RuleSetsListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/usages",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9890,7 +10082,7 @@ export const RulesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -9942,7 +10134,7 @@ export const RulesListByRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10068,7 +10260,7 @@ export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10149,7 +10341,7 @@ export const SecretsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10222,7 +10414,7 @@ export const SecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10257,7 +10449,7 @@ export const SecretsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10306,7 +10498,7 @@ export const SecretsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10412,7 +10604,7 @@ export const SecurityPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10485,7 +10677,7 @@ export const SecurityPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10520,7 +10712,7 @@ export const SecurityPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10570,7 +10762,7 @@ export const SecurityPoliciesListByProfileRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -10650,7 +10842,7 @@ export const SecurityPoliciesPatchRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -10696,7 +10888,7 @@ export const ValidateProbeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/validateProbe",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({

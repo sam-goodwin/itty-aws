@@ -43,12 +43,16 @@ export class NotFound
 export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
 export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
 
-/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
 export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "exact"
   | "is_not"
   | "icontains"
   | "not_icontains"
+  | "starts_with"
+  | "not_starts_with"
+  | "ends_with"
+  | "not_ends_with"
   | "regex"
   | "not_regex"
   | "gt"
@@ -61,15 +65,15 @@ export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
 export interface FeatureFlagFilterPropertyGenericSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
   value?: unknown;
-  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
   operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum | (string & {});
 }
 export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
@@ -93,11 +97,11 @@ export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
 export interface FeatureFlagFilterPropertyExistsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Existence operator. * `is_set` - is_set * `is_not_set` - is_not_set */
   operator?: ExistenceOperatorEnum | (string & {});
@@ -128,11 +132,11 @@ export const DateOperatorEnum = /*@__PURE__*/ S.String;
 export interface FeatureFlagFilterPropertyDateSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before */
   operator?: DateOperatorEnum | (string & {});
@@ -169,11 +173,11 @@ export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
 export interface FeatureFlagFilterPropertySemverSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Semantic version comparison operator. * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
   operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum | (string & {});
@@ -212,11 +216,11 @@ export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
 export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
-  /** Property filter type. Common values are 'person' and 'cohort'. * `cohort` - cohort * `person` - person * `group` - group */
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
   type?: PropertyGroupTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Multi-contains operator. * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
   operator?:
@@ -260,7 +264,7 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Membership operator for cohort properties. * `in` - in * `not_in` - not_in */
   operator?:
@@ -301,7 +305,7 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum | (string & {});
   /** Resolved cohort name for cohort-type filters. */
   cohort_name?: string | null;
-  /** Group type index when using group-based filters. */
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
   group_type_index?: number | null;
   /** Operator for feature flag dependency evaluation. * `flag_evaluates_to` - flag_evaluates_to */
   operator?:
@@ -413,7 +417,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -422,6 +426,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 

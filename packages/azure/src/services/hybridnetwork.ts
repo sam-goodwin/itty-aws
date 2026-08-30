@@ -764,7 +764,8 @@ export const ArtifactStorePropertiesFormatInputStoreType =
 
 /** The backing resource network access type. */
 export type ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess =
-  "Enabled" | "Disabled";
+  | "Enabled"
+  | "Disabled";
 export const ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -3352,7 +3353,9 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap =
 
 /** The network function type. */
 export type NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType =
-  "Unknown" | "VirtualNetworkFunction" | "ContainerizedNetworkFunction";
+  | "Unknown"
+  | "VirtualNetworkFunction"
+  | "ContainerizedNetworkFunction";
 export const NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType =
   /*@__PURE__*/ S.String;
 
@@ -3459,7 +3462,9 @@ export const VersionState = /*@__PURE__*/ S.String;
 
 /** The network function type. */
 export type NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType =
-  "Unknown" | "VirtualNetworkFunction" | "ContainerizedNetworkFunction";
+  | "Unknown"
+  | "VirtualNetworkFunction"
+  | "ContainerizedNetworkFunction";
 export const NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType =
   /*@__PURE__*/ S.String;
 

@@ -133,6 +133,12 @@ export class ResourceNotFoundException
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(404),
   ).pipe(C.withBadRequestError) {}
+export class RetryableConflictException
+  extends /*@__PURE__*/ S.TaggedError<RetryableConflictException>()(
+    "RetryableConflictException",
+    { message: S.String.pipe(T.ErrorMessage()) },
+    T.all(T.HttpError(409), T.Retryable()),
+  ).pipe(C.withConflictError, C.withRetryableError) {}
 export class ServiceException
   extends /*@__PURE__*/ S.TaggedError<ServiceException>()(
     "ServiceException",
@@ -145,6 +151,16 @@ export class ServiceQuotaExceededException
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(402),
   ).pipe(C.withQuotaError) {}
+export class SubscriptionRequiredException
+  extends /*@__PURE__*/ S.TaggedError<SubscriptionRequiredException>()(
+    "SubscriptionRequiredException",
+    {
+      message: S.String.pipe(T.ErrorMessage()),
+      subscriptionUrl: S.optional(S.String),
+      productName: S.optional(S.String),
+    },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
 export class ThrottledException
   extends /*@__PURE__*/ S.TaggedError<ThrottledException>()(
     "ThrottledException",
@@ -264,6 +280,132 @@ export const AddDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddDatasetExamplesResponse",
 }) as any as S.Schema<AddDatasetExamplesResponse>;
+export type GatewayIdentifier = string;
+export type GatewayRateLimitId = string;
+export type GatewayRateLimitDescription = string;
+export type DimensionKey = string;
+export type DimensionKeys = string[];
+export const DimensionKeys = /*@__PURE__*/ S.Array(S.String);
+export type DimensionValue = string;
+export type Dimensions = { [key: string]: string | undefined };
+export const Dimensions = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export type Period = "second" | "minute" | (string & {});
+export const Period = /*@__PURE__*/ S.String;
+
+export interface RateConfig {
+  rate: number;
+  period: Period;
+}
+export const RateConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ rate: S.Number, period: Period }),
+).annotate({ identifier: "RateConfig" }) as any as S.Schema<RateConfig>;
+export type RateConfigs = RateConfig[];
+export const RateConfigs = /*@__PURE__*/ S.Array(RateConfig);
+export interface LimitEntry {
+  dimensions: { [key: string]: string | undefined };
+  requests?: RateConfig[];
+  tokens?: RateConfig[];
+  connections?: RateConfig[];
+}
+export const LimitEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: Dimensions,
+    requests: S.optional(RateConfigs),
+    tokens: S.optional(RateConfigs),
+    connections: S.optional(RateConfigs),
+  }),
+).annotate({ identifier: "LimitEntry" }) as any as S.Schema<LimitEntry>;
+export type LimitEntries = LimitEntry[];
+export const LimitEntries = /*@__PURE__*/ S.Array(LimitEntry);
+export interface BatchPutLimitEntry {
+  rateLimitId?: string;
+  description?: string;
+  dimensionKeys: string[];
+  entries: LimitEntry[];
+}
+export const BatchPutLimitEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rateLimitId: S.optional(S.String),
+    description: S.optional(S.String),
+    dimensionKeys: DimensionKeys,
+    entries: LimitEntries,
+  }),
+).annotate({
+  identifier: "BatchPutLimitEntry",
+}) as any as S.Schema<BatchPutLimitEntry>;
+export type BatchPutLimitEntries = BatchPutLimitEntry[];
+export const BatchPutLimitEntries = /*@__PURE__*/ S.Array(BatchPutLimitEntry);
+export interface BatchPutGatewayRateLimitsRequest {
+  gatewayIdentifier: string;
+  clientToken?: string;
+  rateLimits: BatchPutLimitEntry[];
+}
+export const BatchPutGatewayRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    rateLimits: BatchPutLimitEntries,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/gateways/{gatewayIdentifier}/rate-limits/batch",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "BatchPutGatewayRateLimitsRequest",
+}) as any as S.Schema<BatchPutGatewayRateLimitsRequest>;
+export type GatewayRateLimitStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | (string & {});
+export const GatewayRateLimitStatus = /*@__PURE__*/ S.String;
+
+export interface GatewayRateLimitDetail {
+  rateLimitId: string;
+  gatewayIdentifier: string;
+  description?: string;
+  dimensionKeys: string[];
+  entries: LimitEntry[];
+  status: GatewayRateLimitStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const GatewayRateLimitDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rateLimitId: S.String,
+    gatewayIdentifier: S.String,
+    description: S.optional(S.String),
+    dimensionKeys: DimensionKeys,
+    entries: LimitEntries,
+    status: GatewayRateLimitStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "GatewayRateLimitDetail",
+}) as any as S.Schema<GatewayRateLimitDetail>;
+export type GatewayRateLimits = GatewayRateLimitDetail[];
+export const GatewayRateLimits = /*@__PURE__*/ S.Array(GatewayRateLimitDetail);
+export interface BatchPutGatewayRateLimitsResponse {
+  rateLimits: GatewayRateLimitDetail[];
+}
+export const BatchPutGatewayRateLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ rateLimits: GatewayRateLimits }),
+).annotate({
+  identifier: "BatchPutGatewayRateLimitsResponse",
+}) as any as S.Schema<BatchPutGatewayRateLimitsResponse>;
 export type AgentRuntimeName = string;
 export type RuntimeContainerUri = string;
 export interface ContainerConfiguration {
@@ -370,6 +512,11 @@ export const AllowedClientsList = /*@__PURE__*/ S.Array(S.String);
 export type AllowedScopeType = string;
 export type AllowedScopesType = string[];
 export const AllowedScopesType = /*@__PURE__*/ S.Array(S.String);
+export type AdvertisedScopeMappingType = { [key: string]: string | undefined };
+export const AdvertisedScopeMappingType = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export type InboundTokenClaimNameType = string;
 export type InboundTokenClaimValueType =
   | "STRING"
@@ -527,6 +674,7 @@ export interface CustomJWTAuthorizerConfiguration {
   allowedAudience?: string[];
   allowedClients?: string[];
   allowedScopes?: string[];
+  advertisedScopeMapping?: { [key: string]: string | undefined };
   customClaims?: CustomClaimValidationType[];
   privateEndpoint?: PrivateEndpoint;
   privateEndpointOverrides?: PrivateEndpointOverride[];
@@ -538,6 +686,7 @@ export const CustomJWTAuthorizerConfiguration = /*@__PURE__*/ S.suspend(() =>
     allowedAudience: S.optional(AllowedAudienceList),
     allowedClients: S.optional(AllowedClientsList),
     allowedScopes: S.optional(AllowedScopesType),
+    advertisedScopeMapping: S.optional(AdvertisedScopeMappingType),
     customClaims: S.optional(CustomClaimValidationsType),
     privateEndpoint: S.optional(PrivateEndpoint),
     privateEndpointOverrides: S.optional(PrivateEndpointOverrides),
@@ -618,36 +767,65 @@ export const EfsAccessPointConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EfsAccessPointConfiguration",
 }) as any as S.Schema<EfsAccessPointConfiguration>;
+export type CapacityProviderVolumeName = string;
+export interface CapacityProviderVolumeConfiguration {
+  volumeName: string;
+  mountPath: string;
+}
+export const CapacityProviderVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ volumeName: S.String, mountPath: S.String }),
+).annotate({
+  identifier: "CapacityProviderVolumeConfiguration",
+}) as any as S.Schema<CapacityProviderVolumeConfiguration>;
 export type FilesystemConfiguration =
   | {
       sessionStorage: SessionStorageConfiguration;
       s3FilesAccessPoint?: never;
       efsAccessPoint?: never;
+      capacityProviderVolume?: never;
     }
   | {
       sessionStorage?: never;
       s3FilesAccessPoint: S3FilesAccessPointConfiguration;
       efsAccessPoint?: never;
+      capacityProviderVolume?: never;
     }
   | {
       sessionStorage?: never;
       s3FilesAccessPoint?: never;
       efsAccessPoint: EfsAccessPointConfiguration;
+      capacityProviderVolume?: never;
+    }
+  | {
+      sessionStorage?: never;
+      s3FilesAccessPoint?: never;
+      efsAccessPoint?: never;
+      capacityProviderVolume: CapacityProviderVolumeConfiguration;
     };
 export const FilesystemConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ sessionStorage: SessionStorageConfiguration }),
   S.Struct({ s3FilesAccessPoint: S3FilesAccessPointConfiguration }),
   S.Struct({ efsAccessPoint: EfsAccessPointConfiguration }),
+  S.Struct({ capacityProviderVolume: CapacityProviderVolumeConfiguration }),
 ]);
 export type FilesystemConfigurations = FilesystemConfiguration[];
 export const FilesystemConfigurations = /*@__PURE__*/ S.Array(
   FilesystemConfiguration,
 );
+export type CapacityProviderArn = string;
+export interface CapacityProviderConfiguration {
+  capacityProviderArn?: string;
+}
+export const CapacityProviderConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ capacityProviderArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CapacityProviderConfiguration",
+}) as any as S.Schema<CapacityProviderConfiguration>;
 export interface CreateAgentRuntimeRequest {
   agentRuntimeName: string;
   agentRuntimeArtifact: AgentRuntimeArtifact;
   roleArn: string;
-  networkConfiguration: NetworkConfiguration;
+  networkConfiguration?: NetworkConfiguration;
   clientToken?: string;
   description?: string | redacted.Redacted<string>;
   authorizerConfiguration?: AuthorizerConfiguration;
@@ -656,6 +834,7 @@ export interface CreateAgentRuntimeRequest {
   lifecycleConfiguration?: LifecycleConfiguration;
   environmentVariables?: { [key: string]: string | undefined };
   filesystemConfigurations?: FilesystemConfiguration[];
+  capacityProviderConfiguration?: CapacityProviderConfiguration;
   tags?: { [key: string]: string | undefined };
 }
 export const CreateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -663,7 +842,7 @@ export const CreateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
     agentRuntimeName: S.String,
     agentRuntimeArtifact: AgentRuntimeArtifact,
     roleArn: S.String,
-    networkConfiguration: NetworkConfiguration,
+    networkConfiguration: S.optional(NetworkConfiguration),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     description: S.optional(SensitiveString),
     authorizerConfiguration: S.optional(AuthorizerConfiguration),
@@ -672,6 +851,7 @@ export const CreateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
     lifecycleConfiguration: S.optional(LifecycleConfiguration),
     environmentVariables: S.optional(EnvironmentVariablesMap),
     filesystemConfigurations: S.optional(FilesystemConfigurations),
+    capacityProviderConfiguration: S.optional(CapacityProviderConfiguration),
     tags: S.optional(TagsMap),
   }).pipe(
     T.all(
@@ -952,6 +1132,47 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 export type Certificates = Certificate[];
 export const Certificates = /*@__PURE__*/ S.Array(Certificate);
+export type S3FilesFileSystemArn = string;
+export interface S3FilesConfiguration {
+  accessPointArn: string;
+  mountPath: string;
+  fileSystemArn: string;
+}
+export const S3FilesConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessPointArn: S.String,
+    mountPath: S.String,
+    fileSystemArn: S.String,
+  }),
+).annotate({
+  identifier: "S3FilesConfiguration",
+}) as any as S.Schema<S3FilesConfiguration>;
+export type EfsFileSystemArn = string;
+export interface EfsConfiguration {
+  accessPointArn: string;
+  mountPath: string;
+  fileSystemArn: string;
+}
+export const EfsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessPointArn: S.String,
+    mountPath: S.String,
+    fileSystemArn: S.String,
+  }),
+).annotate({
+  identifier: "EfsConfiguration",
+}) as any as S.Schema<EfsConfiguration>;
+export type ToolsFileSystemConfiguration =
+  | { s3FilesConfiguration: S3FilesConfiguration; efsConfiguration?: never }
+  | { s3FilesConfiguration?: never; efsConfiguration: EfsConfiguration };
+export const ToolsFileSystemConfiguration = /*@__PURE__*/ S.Union([
+  S.Struct({ s3FilesConfiguration: S3FilesConfiguration }),
+  S.Struct({ efsConfiguration: EfsConfiguration }),
+]);
+export type ToolsFileSystemConfigurations = ToolsFileSystemConfiguration[];
+export const ToolsFileSystemConfigurations = /*@__PURE__*/ S.Array(
+  ToolsFileSystemConfiguration,
+);
 export interface CreateBrowserRequest {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -961,6 +1182,7 @@ export interface CreateBrowserRequest {
   browserSigning?: BrowserSigningConfigInput;
   enterprisePolicies?: BrowserEnterprisePolicy[];
   certificates?: Certificate[];
+  filesystemConfigurations?: ToolsFileSystemConfiguration[];
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -974,6 +1196,7 @@ export const CreateBrowserRequest = /*@__PURE__*/ S.suspend(() =>
     browserSigning: S.optional(BrowserSigningConfigInput),
     enterprisePolicies: S.optional(BrowserEnterprisePolicies),
     certificates: S.optional(Certificates),
+    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     tags: S.optional(TagsMap),
   }).pipe(
@@ -1069,6 +1292,331 @@ export const CreateBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBrowserProfileResponse",
 }) as any as S.Schema<CreateBrowserProfileResponse>;
+export type CapacityProviderName = string;
+export interface PermissionsConfiguration {
+  capacityProviderOperatorRoleArn: string;
+}
+export const PermissionsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ capacityProviderOperatorRoleArn: S.String }),
+).annotate({
+  identifier: "PermissionsConfiguration",
+}) as any as S.Schema<PermissionsConfiguration>;
+export type OperatingSystem = "LINUX_X86_64" | "LINUX_ARM64" | (string & {});
+export const OperatingSystem = /*@__PURE__*/ S.String;
+
+export type EC2InstanceType = string;
+export type InstanceTypeList = string[];
+export const InstanceTypeList = /*@__PURE__*/ S.Array(S.String);
+export interface InstanceRequirements {
+  allowedInstanceTypes: string[];
+}
+export const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ allowedInstanceTypes: InstanceTypeList }),
+).annotate({
+  identifier: "InstanceRequirements",
+}) as any as S.Schema<InstanceRequirements>;
+export type DeviceName = string;
+export type VirtualDeviceName = string;
+export type EbsVolumeType =
+  | "standard"
+  | "io1"
+  | "io2"
+  | "gp2"
+  | "sc1"
+  | "st1"
+  | "gp3"
+  | (string & {});
+export const EbsVolumeType = /*@__PURE__*/ S.String;
+
+export type VolumeIops = number;
+export type VolumeThroughput = number;
+export type KmsKeyId = string;
+export type EbsSnapshotId = string;
+export type VolumeSizeGiB = number;
+export type EbsVolumeInitializationRate = number;
+export type EbsCardIndex = number;
+export interface EphemeralEBSVolumeConfiguration {
+  volumeType?: EbsVolumeType;
+  iops?: number;
+  throughput?: number;
+  encrypted?: boolean;
+  kmsKeyId?: string;
+  snapshotId?: string;
+  volumeSize?: number;
+  volumeInitializationRate?: number;
+  ebsCardIndex?: number;
+}
+export const EphemeralEBSVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    volumeType: S.optional(EbsVolumeType),
+    iops: S.optional(S.Number),
+    throughput: S.optional(S.Number),
+    encrypted: S.optional(S.Boolean),
+    kmsKeyId: S.optional(S.String),
+    snapshotId: S.optional(S.String),
+    volumeSize: S.optional(S.Number),
+    volumeInitializationRate: S.optional(S.Number),
+    ebsCardIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "EphemeralEBSVolumeConfiguration",
+}) as any as S.Schema<EphemeralEBSVolumeConfiguration>;
+export interface EphemeralBlockDeviceMapping {
+  deviceName?: string;
+  virtualName?: string;
+  ebs?: EphemeralEBSVolumeConfiguration;
+}
+export const EphemeralBlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceName: S.optional(S.String),
+    virtualName: S.optional(S.String),
+    ebs: S.optional(EphemeralEBSVolumeConfiguration),
+  }),
+).annotate({
+  identifier: "EphemeralBlockDeviceMapping",
+}) as any as S.Schema<EphemeralBlockDeviceMapping>;
+export type EphemeralBlockDeviceMappingList = EphemeralBlockDeviceMapping[];
+export const EphemeralBlockDeviceMappingList = /*@__PURE__*/ S.Array(
+  EphemeralBlockDeviceMapping,
+);
+export type Monitoring = "BASIC" | "DETAILED" | (string & {});
+export const Monitoring = /*@__PURE__*/ S.String;
+
+export type LicenseConfigurationArn = string;
+export interface LicenseSpecification {
+  licenseConfigurationArn: string;
+}
+export const LicenseSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ licenseConfigurationArn: S.String }),
+).annotate({
+  identifier: "LicenseSpecification",
+}) as any as S.Schema<LicenseSpecification>;
+export type LicenseSpecificationList = LicenseSpecification[];
+export const LicenseSpecificationList =
+  /*@__PURE__*/ S.Array(LicenseSpecification);
+export type CapacityReservationPreference =
+  | "capacity-reservations-only"
+  | "open"
+  | "none"
+  | (string & {});
+export const CapacityReservationPreference = /*@__PURE__*/ S.String;
+
+export type CapacityReservationId = string;
+export type CapacityReservationResourceGroupArn = string;
+export interface CapacityReservationTarget {
+  capacityReservationId?: string;
+  capacityReservationResourceGroupArn?: string;
+}
+export const CapacityReservationTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityReservationId: S.optional(S.String),
+    capacityReservationResourceGroupArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CapacityReservationTarget",
+}) as any as S.Schema<CapacityReservationTarget>;
+export interface CapacityReservationSpecification {
+  capacityReservationPreference?: CapacityReservationPreference;
+  capacityReservationTarget?: CapacityReservationTarget;
+}
+export const CapacityReservationSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityReservationPreference: S.optional(CapacityReservationPreference),
+    capacityReservationTarget: S.optional(CapacityReservationTarget),
+  }),
+).annotate({
+  identifier: "CapacityReservationSpecification",
+}) as any as S.Schema<CapacityReservationSpecification>;
+export type SSHKeyName = string;
+export type InstanceProfileArn = string;
+export interface LaunchParameters {
+  operatingSystem: OperatingSystem;
+  instanceRequirements: InstanceRequirements;
+  ephemeralVolumes?: EphemeralBlockDeviceMapping[];
+  monitoring?: Monitoring;
+  licenseSpecifications?: LicenseSpecification[];
+  capacityReservationSpecification?: CapacityReservationSpecification;
+  sshKeyName?: string;
+  instanceProfileArn?: string;
+  propagatedTags?: { [key: string]: string | undefined };
+}
+export const LaunchParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operatingSystem: OperatingSystem,
+    instanceRequirements: InstanceRequirements,
+    ephemeralVolumes: S.optional(EphemeralBlockDeviceMappingList),
+    monitoring: S.optional(Monitoring),
+    licenseSpecifications: S.optional(LicenseSpecificationList),
+    capacityReservationSpecification: S.optional(
+      CapacityReservationSpecification,
+    ),
+    sshKeyName: S.optional(S.String),
+    instanceProfileArn: S.optional(S.String),
+    propagatedTags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "LaunchParameters",
+}) as any as S.Schema<LaunchParameters>;
+export type LaunchTemplateSource = { launchParameters: LaunchParameters };
+export const LaunchTemplateSource = /*@__PURE__*/ S.Union([
+  S.Struct({ launchParameters: LaunchParameters }),
+]);
+export type SubnetIdList = string[];
+export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupIdList = string[];
+export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export interface VpcConfiguration {
+  subnets: string[];
+  securityGroups: string[];
+}
+export const VpcConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ subnets: SubnetIdList, securityGroups: SecurityGroupIdList }),
+).annotate({
+  identifier: "VpcConfiguration",
+}) as any as S.Schema<VpcConfiguration>;
+export type VolumeName = string;
+export interface EbsVolumeConfiguration {
+  name: string;
+  sizeGiB: number;
+  volumeType?: EbsVolumeType;
+  iops?: number;
+  throughput?: number;
+  encrypted?: boolean;
+  kmsKeyId?: string;
+  snapshotId?: string;
+}
+export const EbsVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    sizeGiB: S.Number,
+    volumeType: S.optional(EbsVolumeType),
+    iops: S.optional(S.Number),
+    throughput: S.optional(S.Number),
+    encrypted: S.optional(S.Boolean),
+    kmsKeyId: S.optional(S.String),
+    snapshotId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EbsVolumeConfiguration",
+}) as any as S.Schema<EbsVolumeConfiguration>;
+export type VolumeConfiguration = { ebsConfiguration: EbsVolumeConfiguration };
+export const VolumeConfiguration = /*@__PURE__*/ S.Union([
+  S.Struct({ ebsConfiguration: EbsVolumeConfiguration }),
+]);
+export type VolumeConfigurationList = VolumeConfiguration[];
+export const VolumeConfigurationList =
+  /*@__PURE__*/ S.Array(VolumeConfiguration);
+export interface InstanceLifecycleConfiguration {
+  idleInstanceTimeout?: number;
+  maxLifetime?: number;
+}
+export const InstanceLifecycleConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    idleInstanceTimeout: S.optional(S.Number),
+    maxLifetime: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "InstanceLifecycleConfiguration",
+}) as any as S.Schema<InstanceLifecycleConfiguration>;
+export interface RootVolumeConfiguration {
+  volumeType?: EbsVolumeType;
+  iops?: number;
+  throughput?: number;
+  encrypted?: boolean;
+  kmsKeyId?: string;
+  freeSpaceGiB?: number;
+}
+export const RootVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    volumeType: S.optional(EbsVolumeType),
+    iops: S.optional(S.Number),
+    throughput: S.optional(S.Number),
+    encrypted: S.optional(S.Boolean),
+    kmsKeyId: S.optional(S.String),
+    freeSpaceGiB: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RootVolumeConfiguration",
+}) as any as S.Schema<RootVolumeConfiguration>;
+export interface Ec2Configuration {
+  launchTemplateSource: LaunchTemplateSource;
+  vpcConfiguration: VpcConfiguration;
+  volumes?: VolumeConfiguration[];
+  lifecycleConfiguration?: InstanceLifecycleConfiguration;
+  rootVolume?: RootVolumeConfiguration;
+}
+export const Ec2Configuration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    launchTemplateSource: LaunchTemplateSource,
+    vpcConfiguration: VpcConfiguration,
+    volumes: S.optional(VolumeConfigurationList),
+    lifecycleConfiguration: S.optional(InstanceLifecycleConfiguration),
+    rootVolume: S.optional(RootVolumeConfiguration),
+  }),
+).annotate({
+  identifier: "Ec2Configuration",
+}) as any as S.Schema<Ec2Configuration>;
+export type ComputeConfiguration = { ec2Configuration: Ec2Configuration };
+export const ComputeConfiguration = /*@__PURE__*/ S.Union([
+  S.Struct({ ec2Configuration: Ec2Configuration }),
+]);
+export interface CreateCapacityProviderInput {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  permissionsConfiguration: PermissionsConfiguration;
+  clientToken?: string;
+  tags?: { [key: string]: string | undefined };
+  computeConfiguration: ComputeConfiguration;
+}
+export const CreateCapacityProviderInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    permissionsConfiguration: PermissionsConfiguration,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    tags: S.optional(TagsMap),
+    computeConfiguration: ComputeConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/capacity-providers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateCapacityProviderInput",
+}) as any as S.Schema<CreateCapacityProviderInput>;
+export type CapacityProviderId = string;
+export type CapacityProviderStatus =
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "READY"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | (string & {});
+export const CapacityProviderStatus = /*@__PURE__*/ S.String;
+
+export interface CreateCapacityProviderOutput {
+  capacityProviderId: string;
+  capacityProviderArn: string;
+  name: string;
+  status: CapacityProviderStatus;
+}
+export const CreateCapacityProviderOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProviderId: S.String,
+    capacityProviderArn: S.String,
+    name: S.String,
+    status: CapacityProviderStatus,
+  }),
+).annotate({
+  identifier: "CreateCapacityProviderOutput",
+}) as any as S.Schema<CreateCapacityProviderOutput>;
 export type CodeInterpreterNetworkMode =
   | "PUBLIC"
   | "SANDBOX"
@@ -1094,6 +1642,7 @@ export interface CreateCodeInterpreterRequest {
   executionRoleArn?: string;
   networkConfiguration: CodeInterpreterNetworkConfiguration;
   certificates?: Certificate[];
+  filesystemConfigurations?: ToolsFileSystemConfiguration[];
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -1104,6 +1653,7 @@ export const CreateCodeInterpreterRequest = /*@__PURE__*/ S.suspend(() =>
     executionRoleArn: S.optional(S.String),
     networkConfiguration: CodeInterpreterNetworkConfiguration,
     certificates: S.optional(Certificates),
+    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     tags: S.optional(TagsMap),
   }).pipe(
@@ -1234,6 +1784,7 @@ export type DatasetName = string;
 export type DatasetSchemaType =
   | "AGENTCORE_EVALUATION_PREDEFINED_V1"
   | "AGENTCORE_EVALUATION_SIMULATED_V1"
+  | "THIRD_PARTY_EVALUATION_V1"
   | (string & {});
 export const DatasetSchemaType = /*@__PURE__*/ S.String;
 
@@ -1396,11 +1947,46 @@ export const BedrockEvaluatorModelConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BedrockEvaluatorModelConfig",
 }) as any as S.Schema<BedrockEvaluatorModelConfig>;
-export type EvaluatorModelConfig = {
-  bedrockEvaluatorModelConfig: BedrockEvaluatorModelConfig;
-};
+export interface ReasoningConfiguration {
+  effort?: string;
+}
+export const ReasoningConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ effort: S.optional(S.String) }),
+).annotate({
+  identifier: "ReasoningConfiguration",
+}) as any as S.Schema<ReasoningConfiguration>;
+export interface OpenResponsesEvaluatorModelConfig {
+  modelId: string;
+  maxOutputTokens?: number;
+  temperature?: number;
+  topP?: number;
+  reasoning?: ReasoningConfiguration;
+}
+export const OpenResponsesEvaluatorModelConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelId: S.String,
+    maxOutputTokens: S.optional(S.Number),
+    temperature: S.optional(S.Number),
+    topP: S.optional(S.Number),
+    reasoning: S.optional(ReasoningConfiguration),
+  }),
+).annotate({
+  identifier: "OpenResponsesEvaluatorModelConfig",
+}) as any as S.Schema<OpenResponsesEvaluatorModelConfig>;
+export type EvaluatorModelConfig =
+  | {
+      bedrockEvaluatorModelConfig: BedrockEvaluatorModelConfig;
+      responsesEvaluatorModelConfig?: never;
+    }
+  | {
+      bedrockEvaluatorModelConfig?: never;
+      responsesEvaluatorModelConfig: OpenResponsesEvaluatorModelConfig;
+    };
 export const EvaluatorModelConfig = /*@__PURE__*/ S.Union([
   S.Struct({ bedrockEvaluatorModelConfig: BedrockEvaluatorModelConfig }),
+  S.Struct({
+    responsesEvaluatorModelConfig: OpenResponsesEvaluatorModelConfig,
+  }),
 ]);
 export interface LlmAsAJudgeEvaluatorConfig {
   instructions: string | redacted.Redacted<string>;
@@ -1433,12 +2019,32 @@ export type CodeBasedEvaluatorConfig = { lambdaConfig: LambdaEvaluatorConfig };
 export const CodeBasedEvaluatorConfig = /*@__PURE__*/ S.Union([
   S.Struct({ lambdaConfig: LambdaEvaluatorConfig }),
 ]);
+export type EvaluatorId = string;
+export interface DerivedEvaluatorConfig {
+  baseEvaluatorId: string;
+  modelConfig: EvaluatorModelConfig;
+}
+export const DerivedEvaluatorConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ baseEvaluatorId: S.String, modelConfig: EvaluatorModelConfig }),
+).annotate({
+  identifier: "DerivedEvaluatorConfig",
+}) as any as S.Schema<DerivedEvaluatorConfig>;
 export type EvaluatorConfig =
-  | { llmAsAJudge: LlmAsAJudgeEvaluatorConfig; codeBased?: never }
-  | { llmAsAJudge?: never; codeBased: CodeBasedEvaluatorConfig };
+  | {
+      llmAsAJudge: LlmAsAJudgeEvaluatorConfig;
+      codeBased?: never;
+      derived?: never;
+    }
+  | {
+      llmAsAJudge?: never;
+      codeBased: CodeBasedEvaluatorConfig;
+      derived?: never;
+    }
+  | { llmAsAJudge?: never; codeBased?: never; derived: DerivedEvaluatorConfig };
 export const EvaluatorConfig = /*@__PURE__*/ S.Union([
   S.Struct({ llmAsAJudge: LlmAsAJudgeEvaluatorConfig }),
   S.Struct({ codeBased: CodeBasedEvaluatorConfig }),
+  S.Struct({ derived: DerivedEvaluatorConfig }),
 ]);
 export type EvaluatorLevel = "TOOL_CALL" | "TRACE" | "SESSION" | (string & {});
 export const EvaluatorLevel = /*@__PURE__*/ S.String;
@@ -1475,7 +2081,6 @@ export const CreateEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEvaluatorRequest",
 }) as any as S.Schema<CreateEvaluatorRequest>;
 export type CustomEvaluatorArn = string;
-export type EvaluatorId = string;
 export type EvaluatorStatus =
   | "ACTIVE"
   | "CREATING"
@@ -1790,7 +2395,62 @@ export const CreateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGatewayResponse",
 }) as any as S.Schema<CreateGatewayResponse>;
-export type GatewayIdentifier = string;
+export interface CreateGatewayRateLimitRequest {
+  gatewayIdentifier: string;
+  clientToken?: string;
+  rateLimitId?: string;
+  description?: string;
+  dimensionKeys: string[];
+  entries: LimitEntry[];
+}
+export const CreateGatewayRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    rateLimitId: S.optional(S.String),
+    description: S.optional(S.String),
+    dimensionKeys: DimensionKeys,
+    entries: LimitEntries,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/gateways/{gatewayIdentifier}/rate-limits",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateGatewayRateLimitRequest",
+}) as any as S.Schema<CreateGatewayRateLimitRequest>;
+export interface CreateGatewayRateLimitResponse {
+  rateLimitId: string;
+  gatewayIdentifier: string;
+  description?: string;
+  dimensionKeys: string[];
+  entries: LimitEntry[];
+  status: GatewayRateLimitStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const CreateGatewayRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rateLimitId: S.String,
+    gatewayIdentifier: S.String,
+    description: S.optional(S.String),
+    dimensionKeys: DimensionKeys,
+    entries: LimitEntries,
+    status: GatewayRateLimitStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "CreateGatewayRateLimitResponse",
+}) as any as S.Schema<CreateGatewayRateLimitResponse>;
 export type GatewayRulePriority = number;
 export type IamPrincipalArn = string;
 export type PrincipalMatchOperator =
@@ -2220,11 +2880,13 @@ export const ApiGatewayTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiGatewayTargetConfiguration",
 }) as any as S.Schema<ApiGatewayTargetConfiguration>;
 export type ConnectorId = string;
+export type ConnectorVersion = string;
 export interface ConnectorSource {
   connectorId: string;
+  version?: string;
 }
 export const ConnectorSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectorId: S.String }),
+  S.Struct({ connectorId: S.String, version: S.optional(S.String) }),
 ).annotate({
   identifier: "ConnectorSource",
 }) as any as S.Schema<ConnectorSource>;
@@ -2373,20 +3035,47 @@ export type PassthroughProtocolType =
 export const PassthroughProtocolType = /*@__PURE__*/ S.String;
 
 export type StickinessTimeout = number;
+export type CompositeIdentifierEntry = string;
+export type CompositeIdentifierList = string[];
+export const CompositeIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface StickinessConfiguration {
   identifier: string;
   timeout?: number;
+  compositeIdentifier?: string[];
 }
 export const StickinessConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String, timeout: S.optional(S.Number) }),
+  S.Struct({
+    identifier: S.String,
+    timeout: S.optional(S.Number),
+    compositeIdentifier: S.optional(CompositeIdentifierList),
+  }),
 ).annotate({
   identifier: "StickinessConfiguration",
 }) as any as S.Schema<StickinessConfiguration>;
+export type StaticQueryParameterName = string;
+export type StaticQueryParameterValue = string | redacted.Redacted<string>;
+export type StaticQueryParameters = {
+  [key: string]: string | redacted.Redacted<string> | undefined;
+};
+export const StaticQueryParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  SensitiveString.pipe(S.optional),
+);
+export type StaticQueryParameterConflictResolution =
+  | "CLIENT_OVERRIDE"
+  | "STATIC_OVERRIDE"
+  | (string & {});
+export const StaticQueryParameterConflictResolution = /*@__PURE__*/ S.String;
+
 export interface PassthroughTargetConfiguration {
   endpoint: string;
   protocolType: PassthroughProtocolType;
   schema?: HttpApiSchemaConfiguration;
   stickinessConfiguration?: StickinessConfiguration;
+  staticQueryParameters?: {
+    [key: string]: string | redacted.Redacted<string> | undefined;
+  };
+  staticQueryParameterConflictResolution?: StaticQueryParameterConflictResolution;
 }
 export const PassthroughTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2394,16 +3083,61 @@ export const PassthroughTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
     protocolType: PassthroughProtocolType,
     schema: S.optional(HttpApiSchemaConfiguration),
     stickinessConfiguration: S.optional(StickinessConfiguration),
+    staticQueryParameters: S.optional(StaticQueryParameters),
+    staticQueryParameterConflictResolution: S.optional(
+      StaticQueryParameterConflictResolution,
+    ),
   }),
 ).annotate({
   identifier: "PassthroughTargetConfiguration",
 }) as any as S.Schema<PassthroughTargetConfiguration>;
+export interface HttpConnectorSource {
+  connectorId: string;
+}
+export const HttpConnectorSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ connectorId: S.String }),
+).annotate({
+  identifier: "HttpConnectorSource",
+}) as any as S.Schema<HttpConnectorSource>;
+export type ConnectorParameterName = string;
+export type ConnectorParameterValue = string;
+export type HttpConnectorParameters = { [key: string]: string | undefined };
+export const HttpConnectorParameters = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface HttpConnectorTargetConfiguration {
+  source: HttpConnectorSource;
+  parameters?: { [key: string]: string | undefined };
+}
+export const HttpConnectorTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    source: HttpConnectorSource,
+    parameters: S.optional(HttpConnectorParameters),
+  }),
+).annotate({
+  identifier: "HttpConnectorTargetConfiguration",
+}) as any as S.Schema<HttpConnectorTargetConfiguration>;
 export type HttpTargetConfiguration =
-  | { agentcoreRuntime: RuntimeTargetConfiguration; passthrough?: never }
-  | { agentcoreRuntime?: never; passthrough: PassthroughTargetConfiguration };
+  | {
+      agentcoreRuntime: RuntimeTargetConfiguration;
+      passthrough?: never;
+      connector?: never;
+    }
+  | {
+      agentcoreRuntime?: never;
+      passthrough: PassthroughTargetConfiguration;
+      connector?: never;
+    }
+  | {
+      agentcoreRuntime?: never;
+      passthrough?: never;
+      connector: HttpConnectorTargetConfiguration;
+    };
 export const HttpTargetConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ agentcoreRuntime: RuntimeTargetConfiguration }),
   S.Struct({ passthrough: PassthroughTargetConfiguration }),
+  S.Struct({ connector: HttpConnectorTargetConfiguration }),
 ]);
 export type InferenceConnectorId = string;
 export interface InferenceConnectorSource {
@@ -2868,6 +3602,7 @@ export interface HarnessGeminiModelConfig {
   temperature?: number;
   topP?: number;
   topK?: number;
+  additionalParams?: any;
 }
 export const HarnessGeminiModelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2877,6 +3612,7 @@ export const HarnessGeminiModelConfig = /*@__PURE__*/ S.suspend(() =>
     temperature: S.optional(S.Number),
     topP: S.optional(S.Number),
     topK: S.optional(S.Number),
+    additionalParams: S.optional(S.Any),
   }),
 ).annotate({
   identifier: "HarnessGeminiModelConfig",
@@ -4073,6 +4809,34 @@ export const IndexedKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexedKey" }) as any as S.Schema<IndexedKey>;
 export type IndexedKeysList = IndexedKey[];
 export const IndexedKeysList = /*@__PURE__*/ S.Array(IndexedKey);
+export type NamespaceVariableKey = string;
+export type NamespaceAllowedValue = string;
+export type NamespaceAllowedValuesList = string[];
+export const NamespaceAllowedValuesList = /*@__PURE__*/ S.Array(S.String);
+export type NamespaceRegexPattern = string;
+export interface NamespaceKeyValidation {
+  allowedValues?: string[];
+  regexPattern?: string;
+}
+export const NamespaceKeyValidation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedValues: S.optional(NamespaceAllowedValuesList),
+    regexPattern: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NamespaceKeyValidation",
+}) as any as S.Schema<NamespaceKeyValidation>;
+export interface NamespaceKeyEntry {
+  key: string;
+  validation?: NamespaceKeyValidation;
+}
+export const NamespaceKeyEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.String, validation: S.optional(NamespaceKeyValidation) }),
+).annotate({
+  identifier: "NamespaceKeyEntry",
+}) as any as S.Schema<NamespaceKeyEntry>;
+export type NamespaceKeysList = NamespaceKeyEntry[];
+export const NamespaceKeysList = /*@__PURE__*/ S.Array(NamespaceKeyEntry);
 export type ContentType = "MEMORY_RECORDS" | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
 
@@ -4128,6 +4892,7 @@ export interface CreateMemoryInput {
   eventExpiryDuration: number;
   memoryStrategies?: MemoryStrategyInput[];
   indexedKeys?: IndexedKey[];
+  namespaceKeys?: NamespaceKeyEntry[];
   streamDeliveryResources?: StreamDeliveryResources;
   tags?: { [key: string]: string | undefined };
 }
@@ -4141,6 +4906,7 @@ export const CreateMemoryInput = /*@__PURE__*/ S.suspend(() =>
     eventExpiryDuration: S.Number,
     memoryStrategies: S.optional(MemoryStrategyInputList),
     indexedKeys: S.optional(IndexedKeysList),
+    namespaceKeys: S.optional(NamespaceKeysList),
     streamDeliveryResources: S.optional(StreamDeliveryResources),
     tags: S.optional(TagsMap),
   }).pipe(
@@ -4511,6 +5277,7 @@ export interface Memory {
   updatedAt: Date;
   strategies?: MemoryStrategy[];
   indexedKeys?: IndexedKey[];
+  namespaceKeys?: NamespaceKeyEntry[];
   streamDeliveryResources?: StreamDeliveryResources;
   managedByResourceArn?: string;
 }
@@ -4529,6 +5296,7 @@ export const Memory = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     strategies: S.optional(MemoryStrategyList),
     indexedKeys: S.optional(IndexedKeysList),
+    namespaceKeys: S.optional(NamespaceKeysList),
     streamDeliveryResources: S.optional(StreamDeliveryResources),
     managedByResourceArn: S.optional(S.String),
   }),
@@ -4654,9 +5422,54 @@ export type ClientAuthenticationMethodType =
   | "CLIENT_SECRET_BASIC"
   | "CLIENT_SECRET_POST"
   | "AWS_IAM_ID_TOKEN_JWT"
+  | "PRIVATE_KEY_JWT"
   | (string & {});
 export const ClientAuthenticationMethodType = /*@__PURE__*/ S.String;
 
+export interface KmsKeySourceType {
+  kmsKeyArn: string;
+}
+export const KmsKeySourceType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ kmsKeyArn: S.String }),
+).annotate({
+  identifier: "KmsKeySourceType",
+}) as any as S.Schema<KmsKeySourceType>;
+export type PrivateKeySource = { kmsKeySource: KmsKeySourceType };
+export const PrivateKeySource = /*@__PURE__*/ S.Union([
+  S.Struct({ kmsKeySource: KmsKeySourceType }),
+]);
+export type SigningAlgorithm = "RS256" | "PS256" | "ES256" | (string & {});
+export const SigningAlgorithm = /*@__PURE__*/ S.String;
+
+export type AdditionalClaimName = string;
+export type AdditionalClaimValue = string | redacted.Redacted<string>;
+export type AdditionalClaims = {
+  [key: string]: string | redacted.Redacted<string> | undefined;
+};
+export const AdditionalClaims = /*@__PURE__*/ S.Record(
+  S.String,
+  SensitiveString.pipe(S.optional),
+);
+export interface PrivateKeyJwtConfig {
+  privateKeySource?: PrivateKeySource;
+  signingAlgorithm?: SigningAlgorithm;
+  additionalHeaderClaims?: {
+    [key: string]: string | redacted.Redacted<string> | undefined;
+  };
+  additionalPayloadClaims?: {
+    [key: string]: string | redacted.Redacted<string> | undefined;
+  };
+}
+export const PrivateKeyJwtConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateKeySource: S.optional(PrivateKeySource),
+    signingAlgorithm: S.optional(SigningAlgorithm),
+    additionalHeaderClaims: S.optional(AdditionalClaims),
+    additionalPayloadClaims: S.optional(AdditionalClaims),
+  }),
+).annotate({
+  identifier: "PrivateKeyJwtConfig",
+}) as any as S.Schema<PrivateKeyJwtConfig>;
 export interface CustomOauth2ProviderConfigInput {
   oauthDiscovery: Oauth2Discovery;
   clientId?: string;
@@ -4665,6 +5478,7 @@ export interface CustomOauth2ProviderConfigInput {
   clientSecretSource?: SecretSourceType;
   onBehalfOfTokenExchangeConfig?: OnBehalfOfTokenExchangeConfigType;
   clientAuthenticationMethod?: ClientAuthenticationMethodType;
+  privateKeyJwtConfig?: PrivateKeyJwtConfig;
   privateEndpoint?: PrivateEndpoint;
   privateEndpointOverrides?: PrivateEndpointOverride[];
 }
@@ -4679,6 +5493,7 @@ export const CustomOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
       OnBehalfOfTokenExchangeConfigType,
     ),
     clientAuthenticationMethod: S.optional(ClientAuthenticationMethodType),
+    privateKeyJwtConfig: S.optional(PrivateKeyJwtConfig),
     privateEndpoint: S.optional(PrivateEndpoint),
     privateEndpointOverrides: S.optional(PrivateEndpointOverrides),
   }),
@@ -4973,21 +5788,23 @@ export type CredentialProviderArnType = string;
 export interface CustomOauth2ProviderConfigOutput {
   oauthDiscovery: Oauth2Discovery;
   clientId?: string;
-  privateEndpoint?: PrivateEndpoint;
-  privateEndpointOverrides?: PrivateEndpointOverride[];
   onBehalfOfTokenExchangeConfig?: OnBehalfOfTokenExchangeConfigType;
   clientAuthenticationMethod?: ClientAuthenticationMethodType;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointOverrides?: PrivateEndpointOverride[];
+  privateKeyJwtConfig?: PrivateKeyJwtConfig;
 }
 export const CustomOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthDiscovery: Oauth2Discovery,
     clientId: S.optional(S.String),
-    privateEndpoint: S.optional(PrivateEndpoint),
-    privateEndpointOverrides: S.optional(PrivateEndpointOverrides),
     onBehalfOfTokenExchangeConfig: S.optional(
       OnBehalfOfTokenExchangeConfigType,
     ),
     clientAuthenticationMethod: S.optional(ClientAuthenticationMethodType),
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateEndpointOverrides: S.optional(PrivateEndpointOverrides),
+    privateKeyJwtConfig: S.optional(PrivateKeyJwtConfig),
   }),
 ).annotate({
   identifier: "CustomOauth2ProviderConfigOutput",
@@ -5466,12 +6283,19 @@ export type CredentialsProviderConfigurations =
 export const CredentialsProviderConfigurations = /*@__PURE__*/ S.Array(
   CredentialsProviderConfiguration,
 );
+export type PaymentConnectorProvisionMode =
+  | "MANUAL"
+  | "QUICK_CREATE"
+  | (string & {});
+export const PaymentConnectorProvisionMode = /*@__PURE__*/ S.String;
+
 export interface CreatePaymentConnectorRequest {
   paymentManagerId: string;
   name: string;
   description?: string;
   type: PaymentConnectorType;
   credentialProviderConfigurations: CredentialsProviderConfiguration[];
+  provisionMode?: PaymentConnectorProvisionMode;
   clientToken?: string;
 }
 export const CreatePaymentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5481,6 +6305,7 @@ export const CreatePaymentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     type: PaymentConnectorType,
     credentialProviderConfigurations: CredentialsProviderConfigurations,
+    provisionMode: S.optional(PaymentConnectorProvisionMode),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(
@@ -5507,9 +6332,15 @@ export type PaymentConnectorStatus =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
   | "DELETE_FAILED"
+  | "AWS_MARKETPLACE_SUBSCRIPTION_REQUIRED"
+  | "PENDING_AUTHENTICATION"
+  | "PROVISIONING"
+  | "AUTHENTICATION_EXPIRED"
+  | "AUTHENTICATION_FAILED"
   | (string & {});
 export const PaymentConnectorStatus = /*@__PURE__*/ S.String;
 
+export type PaymentConnectorAuthorizationUrl = string;
 export interface CreatePaymentConnectorResponse {
   paymentConnectorId: string;
   paymentManagerId: string;
@@ -5518,6 +6349,7 @@ export interface CreatePaymentConnectorResponse {
   credentialProviderConfigurations: CredentialsProviderConfiguration[];
   createdAt: Date;
   status: PaymentConnectorStatus;
+  authorizationUrl?: string;
 }
 export const CreatePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5528,6 +6360,7 @@ export const CreatePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     credentialProviderConfigurations: CredentialsProviderConfigurations,
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     status: PaymentConnectorStatus,
+    authorizationUrl: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreatePaymentConnectorResponse",
@@ -5730,6 +6563,7 @@ export interface CreatePaymentManagerRequest {
   roleArn: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
+  kmsKeyArn?: string;
 }
 export const CreatePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5740,6 +6574,7 @@ export const CreatePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
     roleArn: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     tags: S.optional(TagsMap),
+    kmsKeyArn: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/payments/managers" }),
@@ -5776,6 +6611,7 @@ export interface CreatePaymentManagerResponse {
   createdAt: Date;
   status: PaymentManagerStatus;
   tags?: { [key: string]: string | undefined };
+  kmsKeyArn?: string;
 }
 export const CreatePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5789,6 +6625,7 @@ export const CreatePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     status: PaymentManagerStatus,
     tags: S.optional(TagsMap),
+    kmsKeyArn: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreatePaymentManagerResponse",
@@ -6362,11 +7199,13 @@ export const CreateWorkloadIdentityResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkloadIdentityResponse>;
 export interface DeleteAgentRuntimeRequest {
   agentRuntimeId: string;
+  agentRuntimeVersion?: string;
   clientToken?: string;
 }
 export const DeleteAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    agentRuntimeVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
     clientToken: S.optional(S.String).pipe(
       T.HttpQuery("clientToken"),
       T.IdempotencyToken(),
@@ -6387,11 +7226,13 @@ export const DeleteAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAgentRuntimeResponse {
   status: AgentRuntimeStatus;
   agentRuntimeId?: string;
+  agentRuntimeVersion?: string;
 }
 export const DeleteAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: AgentRuntimeStatus,
     agentRuntimeId: S.optional(S.String),
+    agentRuntimeVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DeleteAgentRuntimeResponse",
@@ -6548,6 +7389,42 @@ export const DeleteBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBrowserProfileResponse",
 }) as any as S.Schema<DeleteBrowserProfileResponse>;
+export interface DeleteCapacityProviderInput {
+  capacityProviderId: string;
+  clientToken?: string;
+}
+export const DeleteCapacityProviderInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProviderId: S.String.pipe(T.HttpLabel("capacityProviderId")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/capacity-providers/{capacityProviderId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteCapacityProviderInput",
+}) as any as S.Schema<DeleteCapacityProviderInput>;
+export interface DeleteCapacityProviderOutput {
+  capacityProviderId: string;
+  status: CapacityProviderStatus;
+}
+export const DeleteCapacityProviderOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ capacityProviderId: S.String, status: CapacityProviderStatus }),
+).annotate({
+  identifier: "DeleteCapacityProviderOutput",
+}) as any as S.Schema<DeleteCapacityProviderOutput>;
 export interface DeleteCodeInterpreterRequest {
   codeInterpreterId: string;
   clientToken?: string;
@@ -6771,6 +7648,39 @@ export const DeleteGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteGatewayResponse",
 }) as any as S.Schema<DeleteGatewayResponse>;
+export interface DeleteGatewayRateLimitRequest {
+  gatewayIdentifier: string;
+  rateLimitId: string;
+}
+export const DeleteGatewayRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    rateLimitId: S.String.pipe(T.HttpLabel("rateLimitId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteGatewayRateLimitRequest",
+}) as any as S.Schema<DeleteGatewayRateLimitRequest>;
+export interface DeleteGatewayRateLimitResponse {
+  rateLimitId: string;
+  status: GatewayRateLimitStatus;
+}
+export const DeleteGatewayRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ rateLimitId: S.String, status: GatewayRateLimitStatus }),
+).annotate({
+  identifier: "DeleteGatewayRateLimitResponse",
+}) as any as S.Schema<DeleteGatewayRateLimitResponse>;
 export interface DeleteGatewayRuleRequest {
   gatewayIdentifier: string;
   ruleId: string;
@@ -7372,7 +8282,7 @@ export interface GetAgentRuntimeResponse {
   createdAt: Date;
   lastUpdatedAt: Date;
   roleArn: string;
-  networkConfiguration: NetworkConfiguration;
+  networkConfiguration?: NetworkConfiguration;
   status: AgentRuntimeStatus;
   lifecycleConfiguration: LifecycleConfiguration;
   failureReason?: string;
@@ -7385,6 +8295,9 @@ export interface GetAgentRuntimeResponse {
   requestHeaderConfiguration?: RequestHeaderConfiguration;
   metadataConfiguration?: RuntimeMetadataConfiguration;
   filesystemConfigurations?: FilesystemConfiguration[];
+  capacityProviderConfiguration?: CapacityProviderConfiguration & {
+    capacityProviderArn: CapacityProviderArn;
+  };
 }
 export const GetAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7395,7 +8308,7 @@ export const GetAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     roleArn: S.String,
-    networkConfiguration: NetworkConfiguration,
+    networkConfiguration: S.optional(NetworkConfiguration),
     status: AgentRuntimeStatus,
     lifecycleConfiguration: LifecycleConfiguration,
     failureReason: S.optional(S.String),
@@ -7408,6 +8321,7 @@ export const GetAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
     requestHeaderConfiguration: S.optional(RequestHeaderConfiguration),
     metadataConfiguration: S.optional(RuntimeMetadataConfiguration),
     filesystemConfigurations: S.optional(FilesystemConfigurations),
+    capacityProviderConfiguration: S.optional(CapacityProviderConfiguration),
   }),
 ).annotate({
   identifier: "GetAgentRuntimeResponse",
@@ -7545,6 +8459,7 @@ export interface GetBrowserResponse {
   browserSigning?: BrowserSigningConfigOutput;
   enterprisePolicies?: BrowserEnterprisePolicy[];
   certificates?: Certificate[];
+  filesystemConfigurations?: ToolsFileSystemConfiguration[];
   status: BrowserStatus;
   failureReason?: string;
   createdAt: Date;
@@ -7562,6 +8477,7 @@ export const GetBrowserResponse = /*@__PURE__*/ S.suspend(() =>
     browserSigning: S.optional(BrowserSigningConfigOutput),
     enterprisePolicies: S.optional(BrowserEnterprisePolicies),
     certificates: S.optional(Certificates),
+    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
     status: BrowserStatus,
     failureReason: S.optional(S.String),
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -7618,6 +8534,66 @@ export const GetBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBrowserProfileResponse",
 }) as any as S.Schema<GetBrowserProfileResponse>;
+export interface GetCapacityProviderInput {
+  capacityProviderId: string;
+}
+export const GetCapacityProviderInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProviderId: S.String.pipe(T.HttpLabel("capacityProviderId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/capacity-providers/{capacityProviderId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCapacityProviderInput",
+}) as any as S.Schema<GetCapacityProviderInput>;
+export type CapacityProviderStatusCode =
+  | "VALIDATION_ERROR"
+  | "QUOTA_EXCEEDED"
+  | "THROTTLED"
+  | "INTERNAL_SERVER_EXCEPTION"
+  | (string & {});
+export const CapacityProviderStatusCode = /*@__PURE__*/ S.String;
+
+export interface GetCapacityProviderOutput {
+  capacityProviderId: string;
+  capacityProviderArn: string;
+  name: string;
+  status: CapacityProviderStatus;
+  description?: string | redacted.Redacted<string>;
+  statusCode?: CapacityProviderStatusCode;
+  statusReason?: string;
+  permissionsConfiguration: PermissionsConfiguration;
+  computeConfiguration: ComputeConfiguration;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+}
+export const GetCapacityProviderOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProviderId: S.String,
+    capacityProviderArn: S.String,
+    name: S.String,
+    status: CapacityProviderStatus,
+    description: S.optional(SensitiveString),
+    statusCode: S.optional(CapacityProviderStatusCode),
+    statusReason: S.optional(S.String),
+    permissionsConfiguration: PermissionsConfiguration,
+    computeConfiguration: ComputeConfiguration,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "GetCapacityProviderOutput",
+}) as any as S.Schema<GetCapacityProviderOutput>;
 export interface GetCodeInterpreterRequest {
   codeInterpreterId: string;
 }
@@ -7646,6 +8622,7 @@ export interface GetCodeInterpreterResponse {
   networkConfiguration: CodeInterpreterNetworkConfiguration;
   status: CodeInterpreterStatus;
   certificates?: Certificate[];
+  filesystemConfigurations?: ToolsFileSystemConfiguration[];
   failureReason?: string;
   createdAt: Date;
   lastUpdatedAt: Date;
@@ -7660,6 +8637,7 @@ export const GetCodeInterpreterResponse = /*@__PURE__*/ S.suspend(() =>
     networkConfiguration: CodeInterpreterNetworkConfiguration,
     status: CodeInterpreterStatus,
     certificates: S.optional(Certificates),
+    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
     failureReason: S.optional(S.String),
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -7880,12 +8858,31 @@ export const GetEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEvaluatorRequest",
 }) as any as S.Schema<GetEvaluatorRequest>;
 export type EvaluatorName = string;
+export type EvaluatorType =
+  | "Builtin"
+  | "ThirdParty"
+  | "Custom"
+  | "CustomCode"
+  | "CustomDerived"
+  | (string & {});
+export const EvaluatorType = /*@__PURE__*/ S.String;
+
+export type Provider =
+  | "AWS"
+  | "DeepEval"
+  | "AutoEval"
+  | "Custom"
+  | (string & {});
+export const Provider = /*@__PURE__*/ S.String;
+
 export interface GetEvaluatorResponse {
   evaluatorArn: string;
   evaluatorId: string;
   evaluatorName: string;
   description?: string | redacted.Redacted<string>;
   evaluatorConfig: EvaluatorConfig;
+  evaluatorType?: EvaluatorType;
+  provider?: Provider;
   level: EvaluatorLevel;
   status: EvaluatorStatus;
   createdAt: Date;
@@ -7900,6 +8897,8 @@ export const GetEvaluatorResponse = /*@__PURE__*/ S.suspend(() =>
     evaluatorName: S.String,
     description: S.optional(SensitiveString),
     evaluatorConfig: EvaluatorConfig,
+    evaluatorType: S.optional(EvaluatorType),
+    provider: S.optional(Provider),
     level: EvaluatorLevel,
     status: EvaluatorStatus,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -7981,6 +8980,54 @@ export const GetGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGatewayResponse",
 }) as any as S.Schema<GetGatewayResponse>;
+export interface GetGatewayRateLimitRequest {
+  gatewayIdentifier: string;
+  rateLimitId: string;
+}
+export const GetGatewayRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    rateLimitId: S.String.pipe(T.HttpLabel("rateLimitId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetGatewayRateLimitRequest",
+}) as any as S.Schema<GetGatewayRateLimitRequest>;
+export interface GetGatewayRateLimitResponse {
+  rateLimitId: string;
+  gatewayIdentifier: string;
+  description?: string;
+  dimensionKeys: string[];
+  entries: LimitEntry[];
+  status: GatewayRateLimitStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const GetGatewayRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rateLimitId: S.String,
+    gatewayIdentifier: S.String,
+    description: S.optional(S.String),
+    dimensionKeys: DimensionKeys,
+    entries: LimitEntries,
+    status: GatewayRateLimitStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "GetGatewayRateLimitResponse",
+}) as any as S.Schema<GetGatewayRateLimitResponse>;
 export interface GetGatewayRuleRequest {
   gatewayIdentifier: string;
   ruleId: string;
@@ -8343,6 +9390,7 @@ export interface GetPaymentConnectorResponse {
   createdAt: Date;
   lastUpdatedAt: Date;
   status: PaymentConnectorStatus;
+  authorizationUrl?: string;
 }
 export const GetPaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8354,6 +9402,7 @@ export const GetPaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     status: PaymentConnectorStatus,
+    authorizationUrl: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GetPaymentConnectorResponse",
@@ -8433,6 +9482,7 @@ export interface GetPaymentManagerResponse {
   lastUpdatedAt: Date;
   status: PaymentManagerStatus;
   tags?: { [key: string]: string | undefined };
+  kmsKeyArn?: string;
 }
 export const GetPaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8448,6 +9498,7 @@ export const GetPaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     status: PaymentManagerStatus,
     tags: S.optional(TagsMap),
+    kmsKeyArn: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GetPaymentManagerResponse",
@@ -9131,6 +10182,64 @@ export const ListAgentRuntimeVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAgentRuntimeVersionsResponse",
 }) as any as S.Schema<ListAgentRuntimeVersionsResponse>;
+export interface ListAgentRuntimeVersionsByCapacityProviderInput {
+  capacityProviderId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListAgentRuntimeVersionsByCapacityProviderInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      capacityProviderId: S.String.pipe(T.HttpLabel("capacityProviderId")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/capacity-providers/{capacityProviderId}/runtime-versions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListAgentRuntimeVersionsByCapacityProviderInput",
+  }) as any as S.Schema<ListAgentRuntimeVersionsByCapacityProviderInput>;
+export interface AgentRuntimeVersionSummary {
+  agentRuntimeArn: string;
+  agentRuntimeVersion: string;
+  status: AgentRuntimeStatus;
+}
+export const AgentRuntimeVersionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeArn: S.String,
+    agentRuntimeVersion: S.String,
+    status: AgentRuntimeStatus,
+  }),
+).annotate({
+  identifier: "AgentRuntimeVersionSummary",
+}) as any as S.Schema<AgentRuntimeVersionSummary>;
+export type AgentRuntimeVersionSummaryList = AgentRuntimeVersionSummary[];
+export const AgentRuntimeVersionSummaryList = /*@__PURE__*/ S.Array(
+  AgentRuntimeVersionSummary,
+);
+export interface ListAgentRuntimeVersionsByCapacityProviderOutput {
+  agentRuntimes: AgentRuntimeVersionSummary[];
+  nextToken?: string;
+}
+export const ListAgentRuntimeVersionsByCapacityProviderOutput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      agentRuntimes: AgentRuntimeVersionSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListAgentRuntimeVersionsByCapacityProviderOutput",
+  }) as any as S.Schema<ListAgentRuntimeVersionsByCapacityProviderOutput>;
 export interface ListApiKeyCredentialProvidersRequest {
   nextToken?: string;
   maxResults?: number;
@@ -9320,6 +10429,61 @@ export const ListBrowsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBrowsersResponse",
 }) as any as S.Schema<ListBrowsersResponse>;
+export interface ListCapacityProvidersInput {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListCapacityProvidersInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/capacity-providers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCapacityProvidersInput",
+}) as any as S.Schema<ListCapacityProvidersInput>;
+export interface CapacityProviderSummary {
+  capacityProviderId: string;
+  capacityProviderArn: string;
+  name: string;
+  status: CapacityProviderStatus;
+  lastUpdatedAt: Date;
+}
+export const CapacityProviderSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProviderId: S.String,
+    capacityProviderArn: S.String,
+    name: S.String,
+    status: CapacityProviderStatus,
+    lastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "CapacityProviderSummary",
+}) as any as S.Schema<CapacityProviderSummary>;
+export type CapacityProviderList = CapacityProviderSummary[];
+export const CapacityProviderList = /*@__PURE__*/ S.Array(
+  CapacityProviderSummary,
+);
+export interface ListCapacityProvidersOutput {
+  capacityProviders: CapacityProviderSummary[];
+  nextToken?: string;
+}
+export const ListCapacityProvidersOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProviders: CapacityProviderList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCapacityProvidersOutput",
+}) as any as S.Schema<ListCapacityProvidersOutput>;
 export interface ListCodeInterpretersRequest {
   maxResults?: number;
   nextToken?: string;
@@ -9690,15 +10854,13 @@ export const ListEvaluatorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEvaluatorsRequest",
 }) as any as S.Schema<ListEvaluatorsRequest>;
-export type EvaluatorType = "Builtin" | "Custom" | "CustomCode" | (string & {});
-export const EvaluatorType = /*@__PURE__*/ S.String;
-
 export interface EvaluatorSummary {
   evaluatorArn: string;
   evaluatorId: string;
   evaluatorName: string;
   description?: string | redacted.Redacted<string>;
   evaluatorType: EvaluatorType;
+  provider?: Provider;
   level?: EvaluatorLevel;
   status: EvaluatorStatus;
   createdAt: Date;
@@ -9713,6 +10875,7 @@ export const EvaluatorSummary = /*@__PURE__*/ S.suspend(() =>
     evaluatorName: S.String,
     description: S.optional(SensitiveString),
     evaluatorType: EvaluatorType,
+    provider: S.optional(Provider),
     level: S.optional(EvaluatorLevel),
     status: EvaluatorStatus,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -9737,6 +10900,43 @@ export const ListEvaluatorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEvaluatorsResponse",
 }) as any as S.Schema<ListEvaluatorsResponse>;
+export type GatewayRateLimitMaxResults = number;
+export type GatewayRateLimitNextToken = string;
+export interface ListGatewayRateLimitsRequest {
+  gatewayIdentifier: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListGatewayRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/gateways/{gatewayIdentifier}/rate-limits",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListGatewayRateLimitsRequest",
+}) as any as S.Schema<ListGatewayRateLimitsRequest>;
+export interface ListGatewayRateLimitsResponse {
+  rateLimits: GatewayRateLimitDetail[];
+  nextToken?: string;
+}
+export const ListGatewayRateLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ rateLimits: GatewayRateLimits, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListGatewayRateLimitsResponse",
+}) as any as S.Schema<ListGatewayRateLimitsResponse>;
 export type GatewayRuleMaxResults = number;
 export type GatewayRuleNextToken = string;
 export interface ListGatewayRulesRequest {
@@ -9894,6 +11094,7 @@ export type TargetType =
   | "AGENTCORE_RUNTIME"
   | "PASSTHROUGH"
   | "PROVIDER"
+  | "HTTP_CONNECTOR"
   | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
 
@@ -10415,6 +11616,7 @@ export interface PaymentManagerSummary {
   status: PaymentManagerStatus;
   createdAt?: Date;
   lastUpdatedAt: Date;
+  kmsKeyArn?: string;
 }
 export const PaymentManagerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10429,6 +11631,7 @@ export const PaymentManagerSummary = /*@__PURE__*/ S.suspend(() =>
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
     lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    kmsKeyArn: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PaymentManagerSummary",
@@ -11435,7 +12638,7 @@ export interface UpdateAgentRuntimeRequest {
   agentRuntimeId: string;
   agentRuntimeArtifact: AgentRuntimeArtifact;
   roleArn: string;
-  networkConfiguration: NetworkConfiguration;
+  networkConfiguration?: NetworkConfiguration;
   description?: string | redacted.Redacted<string>;
   authorizerConfiguration?: AuthorizerConfiguration;
   requestHeaderConfiguration?: RequestHeaderConfiguration;
@@ -11444,6 +12647,7 @@ export interface UpdateAgentRuntimeRequest {
   metadataConfiguration?: RuntimeMetadataConfiguration;
   environmentVariables?: { [key: string]: string | undefined };
   filesystemConfigurations?: FilesystemConfiguration[];
+  capacityProviderConfiguration?: CapacityProviderConfiguration;
   clientToken?: string;
 }
 export const UpdateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11451,7 +12655,7 @@ export const UpdateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
     agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
     agentRuntimeArtifact: AgentRuntimeArtifact,
     roleArn: S.String,
-    networkConfiguration: NetworkConfiguration,
+    networkConfiguration: S.optional(NetworkConfiguration),
     description: S.optional(SensitiveString),
     authorizerConfiguration: S.optional(AuthorizerConfiguration),
     requestHeaderConfiguration: S.optional(RequestHeaderConfiguration),
@@ -11460,6 +12664,7 @@ export const UpdateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
     metadataConfiguration: S.optional(RuntimeMetadataConfiguration),
     environmentVariables: S.optional(EnvironmentVariablesMap),
     filesystemConfigurations: S.optional(FilesystemConfigurations),
+    capacityProviderConfiguration: S.optional(CapacityProviderConfiguration),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(
@@ -11600,6 +12805,60 @@ export const UpdateApiKeyCredentialProviderResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateApiKeyCredentialProviderResponse",
 }) as any as S.Schema<UpdateApiKeyCredentialProviderResponse>;
+export interface UpdatedDescription {
+  optionalValue?: string | redacted.Redacted<string>;
+}
+export const UpdatedDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(SensitiveString) }),
+).annotate({
+  identifier: "UpdatedDescription",
+}) as any as S.Schema<UpdatedDescription>;
+export interface UpdateCapacityProviderInput {
+  capacityProviderId: string;
+  description?: UpdatedDescription;
+  clientToken?: string;
+}
+export const UpdateCapacityProviderInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProviderId: S.String.pipe(T.HttpLabel("capacityProviderId")),
+    description: S.optional(UpdatedDescription),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/capacity-providers/{capacityProviderId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateCapacityProviderInput",
+}) as any as S.Schema<UpdateCapacityProviderInput>;
+export interface UpdateCapacityProviderOutput {
+  capacityProviderId: string;
+  capacityProviderArn: string;
+  name: string;
+  status: CapacityProviderStatus;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+}
+export const UpdateCapacityProviderOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProviderId: S.String,
+    capacityProviderArn: S.String,
+    name: S.String,
+    status: CapacityProviderStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "UpdateCapacityProviderOutput",
+}) as any as S.Schema<UpdateCapacityProviderOutput>;
 export interface UpdateConfigurationBundleRequest {
   clientToken?: string;
   bundleId: string;
@@ -11873,6 +13132,58 @@ export const UpdateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateGatewayResponse",
 }) as any as S.Schema<UpdateGatewayResponse>;
+export interface UpdateGatewayRateLimitRequest {
+  gatewayIdentifier: string;
+  rateLimitId: string;
+  description?: string;
+  entries: LimitEntry[];
+}
+export const UpdateGatewayRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    rateLimitId: S.String.pipe(T.HttpLabel("rateLimitId")),
+    description: S.optional(S.String),
+    entries: LimitEntries,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateGatewayRateLimitRequest",
+}) as any as S.Schema<UpdateGatewayRateLimitRequest>;
+export interface UpdateGatewayRateLimitResponse {
+  rateLimitId: string;
+  gatewayIdentifier: string;
+  description?: string;
+  dimensionKeys: string[];
+  entries: LimitEntry[];
+  status: GatewayRateLimitStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const UpdateGatewayRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rateLimitId: S.String,
+    gatewayIdentifier: S.String,
+    description: S.optional(S.String),
+    dimensionKeys: DimensionKeys,
+    entries: LimitEntries,
+    status: GatewayRateLimitStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "UpdateGatewayRateLimitResponse",
+}) as any as S.Schema<UpdateGatewayRateLimitResponse>;
 export interface UpdateGatewayRuleRequest {
   gatewayIdentifier: string;
   ruleId: string;
@@ -12350,6 +13661,7 @@ export interface UpdateMemoryInput {
   memoryExecutionRoleArn?: string;
   memoryStrategies?: ModifyMemoryStrategies;
   addIndexedKeys?: IndexedKey[];
+  namespaceKeys?: NamespaceKeyEntry[];
   streamDeliveryResources?: StreamDeliveryResources;
 }
 export const UpdateMemoryInput = /*@__PURE__*/ S.suspend(() =>
@@ -12361,6 +13673,7 @@ export const UpdateMemoryInput = /*@__PURE__*/ S.suspend(() =>
     memoryExecutionRoleArn: S.optional(S.String),
     memoryStrategies: S.optional(ModifyMemoryStrategies),
     addIndexedKeys: S.optional(IndexedKeysList),
+    namespaceKeys: S.optional(NamespaceKeysList),
     streamDeliveryResources: S.optional(StreamDeliveryResources),
   }).pipe(
     T.all(
@@ -12546,6 +13859,7 @@ export interface UpdatePaymentConnectorResponse {
   credentialProviderConfigurations: CredentialsProviderConfiguration[];
   lastUpdatedAt: Date;
   status: PaymentConnectorStatus;
+  authorizationUrl?: string;
 }
 export const UpdatePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12556,6 +13870,7 @@ export const UpdatePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
     credentialProviderConfigurations: CredentialsProviderConfigurations,
     lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     status: PaymentConnectorStatus,
+    authorizationUrl: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdatePaymentConnectorResponse",
@@ -12615,6 +13930,7 @@ export interface UpdatePaymentManagerRequest {
   authorizerConfiguration?: AuthorizerConfiguration;
   roleArn?: string;
   clientToken?: string;
+  kmsKeyArn?: string;
 }
 export const UpdatePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12624,6 +13940,7 @@ export const UpdatePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
     authorizerConfiguration: S.optional(AuthorizerConfiguration),
     roleArn: S.optional(S.String),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    kmsKeyArn: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({ method: "PATCH", uri: "/payments/managers/{paymentManagerId}" }),
@@ -12646,6 +13963,7 @@ export interface UpdatePaymentManagerResponse {
   workloadIdentityDetails?: WorkloadIdentityDetails;
   lastUpdatedAt: Date;
   status: PaymentManagerStatus;
+  kmsKeyArn?: string;
 }
 export const UpdatePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12657,18 +13975,11 @@ export const UpdatePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
     workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
     lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     status: PaymentManagerStatus,
+    kmsKeyArn: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdatePaymentManagerResponse",
 }) as any as S.Schema<UpdatePaymentManagerResponse>;
-export interface UpdatedDescription {
-  optionalValue?: string | redacted.Redacted<string>;
-}
-export const UpdatedDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "UpdatedDescription",
-}) as any as S.Schema<UpdatedDescription>;
 export interface UpdatePolicyRequest {
   policyEngineId: string;
   policyId: string;
@@ -13197,6 +14508,40 @@ export const addDatasetExamples: API.OperationMethod<
   operationName: "AddDatasetExamples",
 }));
 
+export type BatchPutGatewayRateLimitsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Atomically creates or updates multiple rate limits for a gateway. The operation updates existing limits with matching keys and creates new limits for new keys. If the operation fails, the service applies no changes. Retry the request after resolving the issue.
+ */
+export const batchPutGatewayRateLimits: API.OperationMethod<
+  BatchPutGatewayRateLimitsRequest,
+  BatchPutGatewayRateLimitsResponse,
+  BatchPutGatewayRateLimitsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchPutGatewayRateLimitsRequest,
+  output: BatchPutGatewayRateLimitsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "BatchPutGatewayRateLimits",
+}));
+
 export type CreateAgentRuntimeError =
   | AccessDeniedException
   | ConflictException
@@ -13367,6 +14712,44 @@ export const createBrowserProfile: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateBrowserProfile",
+}));
+
+export type CreateCapacityProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | RetryableConflictException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a capacity provider. A capacity provider defines the Amazon EC2 infrastructure for AgentCore Runtime, including the operating system, allowed instance types, networking, and storage. It also specifies the IAM permissions that AgentCore uses to manage those instances.
+ *
+ * The capacity provider name must be unique within your account. After you create the capacity provider, it enters a `CREATING` state and transitions to `READY` when it is available for use.
+ */
+export const createCapacityProvider: API.OperationMethod<
+  CreateCapacityProviderInput,
+  CreateCapacityProviderOutput,
+  CreateCapacityProviderError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCapacityProviderInput,
+  output: CreateCapacityProviderOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    RetryableConflictException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateCapacityProvider",
 }));
 
 export type CreateCodeInterpreterError =
@@ -13563,6 +14946,40 @@ export const createGateway: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateGateway",
+}));
+
+export type CreateGatewayRateLimitError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a rate limit for a gateway. Rate limits define throttling rules for each dimension that control request rates, token consumption rates, and concurrent connections through the gateway.
+ */
+export const createGatewayRateLimit: API.OperationMethod<
+  CreateGatewayRateLimitRequest,
+  CreateGatewayRateLimitResponse,
+  CreateGatewayRateLimitError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGatewayRateLimitRequest,
+  output: CreateGatewayRateLimitResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateGatewayRateLimit",
 }));
 
 export type CreateGatewayRuleError =
@@ -13813,6 +15230,7 @@ export type CreatePaymentConnectorError =
   | InternalServerException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | SubscriptionRequiredException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -13833,6 +15251,7 @@ export const createPaymentConnector: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    SubscriptionRequiredException,
     ThrottlingException,
     ValidationException,
   ],
@@ -13928,6 +15347,8 @@ export type CreatePolicyError =
   | CommonErrors;
 /**
  * Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the `status` field to track completion.
+ *
+ * If the new policy is a temporal policy, creating it invalidates the policy engine's active temporal sessions. For more information about temporal policy sessions, see session-based temporal policies. The policy engine returns an HTTP 409 `ConflictException` to in-flight sessions. To resume, you must start a new session with a new session ID.
  */
 export const createPolicy: API.OperationMethod<
   CreatePolicyRequest,
@@ -14093,7 +15514,7 @@ export type DeleteAgentRuntimeError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes an Amazon Bedrock AgentCore Runtime.
+ * Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an AgentCore Runtime when you provide the version qualifier.
  */
 export const deleteAgentRuntime: API.OperationMethod<
   DeleteAgentRuntimeRequest,
@@ -14123,7 +15544,7 @@ export type DeleteAgentRuntimeEndpointError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes an AAgentCore Runtime endpoint.
+ * Deletes an AgentCore Runtime endpoint.
  */
 export const deleteAgentRuntimeEndpoint: API.OperationMethod<
   DeleteAgentRuntimeEndpointRequest,
@@ -14241,6 +15662,40 @@ export const deleteBrowserProfile: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteBrowserProfile",
+}));
+
+export type DeleteCapacityProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | RetryableConflictException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a capacity provider. Before you delete a capacity provider, disassociate all agent runtimes and runtime versions that reference it. If any references remain, the operation fails.
+ */
+export const deleteCapacityProvider: API.OperationMethod<
+  DeleteCapacityProviderInput,
+  DeleteCapacityProviderOutput,
+  DeleteCapacityProviderError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCapacityProviderInput,
+  output: DeleteCapacityProviderOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    RetryableConflictException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteCapacityProvider",
 }));
 
 export type DeleteCodeInterpreterError =
@@ -14437,6 +15892,38 @@ export const deleteGateway: API.OperationMethod<
   operationName: "DeleteGateway",
 }));
 
+export type DeleteGatewayRateLimitError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a gateway rate limit.
+ */
+export const deleteGatewayRateLimit: API.OperationMethod<
+  DeleteGatewayRateLimitRequest,
+  DeleteGatewayRateLimitResponse,
+  DeleteGatewayRateLimitError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGatewayRateLimitRequest,
+  output: DeleteGatewayRateLimitResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGatewayRateLimit",
+}));
+
 export type DeleteGatewayRuleError =
   | AccessDeniedException
   | ConflictException
@@ -14576,7 +16063,7 @@ export type DeleteMemoryError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes an Amazon Bedrock AgentCore Memory resource.
+ * Deletes an Amazon Bedrock AgentCore Memory resource. When you delete a memory resource, it is permanently removed.
  */
 export const deleteMemory: API.OperationMethod<
   DeleteMemoryInput,
@@ -15103,6 +16590,36 @@ export const getBrowserProfile: API.OperationMethod<
   operationName: "GetBrowserProfile",
 }));
 
+export type GetCapacityProviderError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a capacity provider, including its status, permissions configuration, and compute configuration.
+ */
+export const getCapacityProvider: API.OperationMethod<
+  GetCapacityProviderInput,
+  GetCapacityProviderOutput,
+  GetCapacityProviderError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCapacityProviderInput,
+  output: GetCapacityProviderOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetCapacityProvider",
+}));
+
 export type GetCodeInterpreterError =
   | AccessDeniedException
   | InternalServerException
@@ -15283,6 +16800,36 @@ export const getGateway: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetGateway",
+}));
+
+export type GetGatewayRateLimitError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a gateway rate limit.
+ */
+export const getGatewayRateLimit: API.OperationMethod<
+  GetGatewayRateLimitRequest,
+  GetGatewayRateLimitResponse,
+  GetGatewayRateLimitError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGatewayRateLimitRequest,
+  output: GetGatewayRateLimitResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetGatewayRateLimit",
 }));
 
 export type GetGatewayRuleError =
@@ -16038,6 +17585,41 @@ export const listAgentRuntimeVersions: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
+export type ListAgentRuntimeVersionsByCapacityProviderError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the agent runtime versions that are associated with a capacity provider. Use this operation to identify the runtimes you must disassociate before you can delete the capacity provider. Results are paginated; use the `nextToken` parameter to retrieve additional results.
+ */
+export const listAgentRuntimeVersionsByCapacityProvider: API.PaginatedOperationMethod<
+  ListAgentRuntimeVersionsByCapacityProviderInput,
+  ListAgentRuntimeVersionsByCapacityProviderOutput,
+  ListAgentRuntimeVersionsByCapacityProviderError,
+  Credentials | HttpClient.HttpClient,
+  AgentRuntimeVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListAgentRuntimeVersionsByCapacityProviderInput,
+  output: ListAgentRuntimeVersionsByCapacityProviderOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAgentRuntimeVersionsByCapacityProvider",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "agentRuntimes",
+    pageSize: "maxResults",
+  } as const,
+})) as any;
+
 export type ListApiKeyCredentialProvidersError =
   | AccessDeniedException
   | InternalServerException
@@ -16143,6 +17725,41 @@ export const listBrowsers: API.PaginatedOperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "browserSummaries",
+    pageSize: "maxResults",
+  } as const,
+})) as any;
+
+export type ListCapacityProvidersError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the capacity providers in your account and returns summary information for each one. To retrieve the full configuration for a specific capacity provider, use `GetCapacityProvider`. Results are paginated; use the `nextToken` parameter to retrieve additional results.
+ */
+export const listCapacityProviders: API.PaginatedOperationMethod<
+  ListCapacityProvidersInput,
+  ListCapacityProvidersOutput,
+  ListCapacityProvidersError,
+  Credentials | HttpClient.HttpClient,
+  CapacityProviderSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListCapacityProvidersInput,
+  output: ListCapacityProvidersOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListCapacityProviders",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "capacityProviders",
     pageSize: "maxResults",
   } as const,
 })) as any;
@@ -16396,6 +18013,43 @@ export const listEvaluators: API.PaginatedOperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "evaluators",
+    pageSize: "maxResults",
+  } as const,
+})) as any;
+
+export type ListGatewayRateLimitsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all rate limits for a gateway. Results are paginated. Use the `nextToken` parameter to retrieve additional results.
+ */
+export const listGatewayRateLimits: API.PaginatedOperationMethod<
+  ListGatewayRateLimitsRequest,
+  ListGatewayRateLimitsResponse,
+  ListGatewayRateLimitsError,
+  Credentials | HttpClient.HttpClient,
+  GatewayRateLimitDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListGatewayRateLimitsRequest,
+  output: ListGatewayRateLimitsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListGatewayRateLimits",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "rateLimits",
     pageSize: "maxResults",
   } as const,
 })) as any;
@@ -17582,6 +19236,40 @@ export const updateApiKeyCredentialProvider: API.OperationMethod<
   operationName: "UpdateApiKeyCredentialProvider",
 }));
 
+export type UpdateCapacityProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | RetryableConflictException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a capacity provider. Only the description can be changed. To change other configuration, such as instance types, networking, or storage, create a new capacity provider.
+ */
+export const updateCapacityProvider: API.OperationMethod<
+  UpdateCapacityProviderInput,
+  UpdateCapacityProviderOutput,
+  UpdateCapacityProviderError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCapacityProviderInput,
+  output: UpdateCapacityProviderOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    RetryableConflictException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateCapacityProvider",
+}));
+
 export type UpdateConfigurationBundleError =
   | AccessDeniedException
   | ConflictException
@@ -17746,6 +19434,38 @@ export const updateGateway: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateGateway",
+}));
+
+export type UpdateGatewayRateLimitError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the entries of a gateway rate limit. The dimension keys are immutable after creation.
+ */
+export const updateGatewayRateLimit: API.OperationMethod<
+  UpdateGatewayRateLimitRequest,
+  UpdateGatewayRateLimitResponse,
+  UpdateGatewayRateLimitError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGatewayRateLimitRequest,
+  output: UpdateGatewayRateLimitResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateGatewayRateLimit",
 }));
 
 export type UpdateGatewayRuleError =
@@ -17996,6 +19716,7 @@ export type UpdatePaymentConnectorError =
   | InternalServerException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
+  | SubscriptionRequiredException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -18016,6 +19737,7 @@ export const updatePaymentConnector: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    SubscriptionRequiredException,
     ThrottlingException,
     ValidationException,
   ],
@@ -18103,11 +19825,14 @@ export type UpdatePolicyError =
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
  * Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the `GetPolicy` operation to poll the `status` field to track completion.
+ *
+ * If the updated policy is a temporal policy, the policy engine invalidates all active temporal sessions. If the update adds or removes temporal operators, the policy engine also invalidates active temporal sessions. For more information about temporal policy sessions, see session-based temporal policies. The policy engine returns an HTTP 409 `ConflictException` to in-flight sessions. To resume, you must start a new session with a new session ID.
  */
 export const updatePolicy: API.OperationMethod<
   UpdatePolicyRequest,
@@ -18122,6 +19847,7 @@ export const updatePolicy: API.OperationMethod<
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],

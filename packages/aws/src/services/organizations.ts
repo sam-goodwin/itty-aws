@@ -3178,6 +3178,9 @@ export type ConstraintViolationExceptionReason =
   | "TRANSFER_RESPONSIBILITY_TARGET_DELETION_IN_PROGRESS"
   | "TRANSFER_RESPONSIBILITY_SOURCE_DELETION_IN_PROGRESS"
   | "UNSUPPORTED_PRICING"
+  | "UNMET_BILLING_PREREQUISITE"
+  | "ACCOUNT_NOT_ACTIVE_FOR_TRANSFER_RESPONSIBILITY"
+  | "TRANSFER_RESPONSIBILITY_UPDATE_NOT_ALLOWED"
   | (string & {});
 export const ConstraintViolationExceptionReason = /*@__PURE__*/ S.String;
 
@@ -3196,6 +3199,8 @@ export type HandshakeConstraintViolationExceptionReason =
   | "SOURCE_AND_TARGET_CANNOT_MATCH"
   | "UNUSED_PREPAYMENT_BALANCE"
   | "LEGACY_PERMISSIONS_STILL_IN_USE"
+  | "PAST_DUE_INVOICE"
+  | "TARGET_ACCOUNT_VALIDATION_FAILURE"
   | (string & {});
 export const HandshakeConstraintViolationExceptionReason =
   /*@__PURE__*/ S.String;
@@ -3240,6 +3245,7 @@ export type InvalidInputExceptionReason =
   | "INVALID_START_DATE"
   | "END_DATE_NOT_END_OF_MONTH"
   | "END_DATE_TOO_EARLY"
+  | "END_DATE_TOO_LATE"
   | "INVALID_END_DATE"
   | (string & {});
 export const InvalidInputExceptionReason = /*@__PURE__*/ S.String;
@@ -3288,12 +3294,18 @@ export type AcceptHandshakeError =
  * When a handshake is accepted, Organizations logs membership events in CloudTrail, available
  * only in the management account's event history. If the account was standalone and joined
  * a new organization, an `AccountJoinedOrganization` event is logged with
- * `joinedMethod:Invited` and `joinedTime` fields. If the account
+ * `joinedMethod:INVITED` and `joinedTime` fields. If the account
  * departed one organization and joined another, both an
- * `AccountDepartedOrganization` event with `departedMethod:Left`
- * and `departedTime` and an `AccountJoinedOrganization` event with
- * `joinedMethod:Invited` and `joinedTime` are logged in their
+ * `AccountDepartedOrganization` event with `departureMethod:LEFT`
+ * and `departureTime` and an `AccountJoinedOrganization` event with
+ * `joinedMethod:INVITED` and `joinedTime` are logged in their
  * respective management accounts.
+ *
+ * When a billing transfer (`TRANSFER_RESPONSIBILITY`) handshake is accepted,
+ * Organizations publishes a `ResponsibilityTransferAccepted` service event to CloudTrail.
+ * Each affected account receives this event, including upstream participants such as
+ * distributors in a chained transfer. For an example log entry, see Example log entries: AcceptResponsibilityTransfer in the
+ * *Organizations User Guide*.
  */
 export const acceptHandshake: API.OperationMethod<
   AcceptHandshakeRequest,
@@ -3500,7 +3512,7 @@ export type CloseAccountError =
  * After the permanent termination of the account after the 90-day waiting period,
  * Organizations logs a membership event in CloudTrail. The event is an
  * `AccountDepartedOrganization` event with
- * `departedMethod:Cleaned` and `departedTime`. This event is
+ * `departureMethod:CLEANED` and `departureTime`. This event is
  * available only in the management account's event history.
  */
 export const closeAccount: API.OperationMethod<
@@ -3697,7 +3709,7 @@ export type CreateGovCloudAccountError =
  * you can successfully access the account. To check the status of the request, do one of
  * the following:
  *
- * - Use the `OperationId` response element from this operation to
+ * - Use the `Id` response element from this operation to
  * provide as a parameter to the DescribeCreateAccountStatus
  * operation.
  *
@@ -3814,7 +3826,7 @@ export type CreateOrganizationError =
  *
  * The `AccountJoinedOrganization` event is logged in CloudTrail and
  * is available only in the management account's event history. This event includes
- * `joinedMethod:Invited` and `joinedTime` fields to provide
+ * `joinedMethod:INVITED` and `joinedTime` fields to provide
  * context on how and when the account joined the organization.
  */
 export const createOrganization: API.OperationMethod<
@@ -3999,7 +4011,7 @@ export type DeleteOrganizationError =
  *
  * When an organization is deleted, Organizations logs a membership event in CloudTrail. The
  * event is an `AccountDepartedOrganization` event with
- * `departedMethod:Left` and `departedTime`. This event is available
+ * `departureMethod:LEFT` and `departureTime`. This event is available
  * only in the management account's event history.
  */
 export const deleteOrganization: API.OperationMethod<
@@ -5033,7 +5045,7 @@ export type LeaveOrganizationError =
  *
  * When an account leaves an organization, Organizations logs a membership event in
  * CloudTrail. The event is an `AccountDepartedOrganization` event with
- * `departedMethod:Left` and `departedTime`. This event is available
+ * `departureMethod:LEFT` and `departureTime`. This event is available
  * only in the management account's event history.
  *
  * - The management account in an organization with all features enabled can
@@ -6179,7 +6191,7 @@ export type RemoveAccountFromOrganizationError =
  * When an account is removed from an organization, Organizations logs a membership
  * event in CloudTrail. The event is an
  * `AccountDepartedOrganization` event with
- * `departedMethod:Removed` and `departedTime`. This event is
+ * `departureMethod:REMOVED` and `departureTime`. This event is
  * available only in the management account's event history.
  *
  * - You can remove an account from your organization only if the account is
@@ -6289,6 +6301,12 @@ export type TerminateResponsibilityTransferError =
  * Ends a transfer. A *transfer* is an arrangement between two
  * management accounts where one account designates the other with specified
  * responsibilities for their organization.
+ *
+ * When a transfer ends, Organizations publishes a
+ * `ResponsibilityTransferTerminated` service event to CloudTrail. Each affected
+ * account receives this event, including upstream participants such as distributors in a
+ * chained transfer. For an example log entry, see Example log entries: TerminateResponsibilityTransfer in the
+ * *Organizations User Guide*.
  */
 export const terminateResponsibilityTransfer: API.OperationMethod<
   TerminateResponsibilityTransferRequest,

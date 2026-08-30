@@ -27,6 +27,20 @@
         "smithy.api#documentation": "Signed ChallengeResponse."
       }
     },
+    "com.gcp.verifiedaccess_v2#Challenge": {
+      "type": "structure",
+      "members": {
+        "challenge": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Generated challenge, the bytes representation of SignedData."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Result message for VerifiedAccess.GenerateChallenge."
+      }
+    },
     "com.gcp.verifiedaccess_v2#CrowdStrikeAgent": {
       "type": "structure",
       "members": {
@@ -45,6 +59,13 @@
       },
       "traits": {
         "smithy.api#documentation": "Properties of the CrowdStrike agent installed on a device."
+      }
+    },
+    "com.gcp.verifiedaccess_v2#Empty": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
       }
     },
     "com.gcp.verifiedaccess_v2#VerifyChallengeResponseResult": {
@@ -68,16 +89,10 @@
             "smithy.api#documentation": "Output only. The client-provided ID of a profile on the device."
           }
         },
-        "profileCustomerId": {
+        "attestedDeviceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. Unique customer id that this profile belongs to, as defined by the Google Admin SDK at https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers"
-          }
-        },
-        "keyTrustLevel": {
-          "target": "com.gcp.verifiedaccess_v2#VerifyChallengeResponseResultKeyTrustLevelEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. Device attested key trust level."
+            "smithy.api#documentation": "Output only. Attested device ID (ADID)."
           }
         },
         "devicePermanentId": {
@@ -86,16 +101,16 @@
             "smithy.api#documentation": "Output only. Device permanent id is returned in this field (for the machine response only)."
           }
         },
-        "attestedDeviceId": {
+        "virtualDeviceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. Attested device ID (ADID)."
+            "smithy.api#documentation": "Output only. Virtual device id of the device. The definition of virtual device id is platform-specific."
           }
         },
-        "profileKeyTrustLevel": {
-          "target": "com.gcp.verifiedaccess_v2#VerifyChallengeResponseResultProfileKeyTrustLevelEnum",
+        "keyTrustLevel": {
+          "target": "com.gcp.verifiedaccess_v2#VerifyChallengeResponseResultKeyTrustLevelEnum",
           "traits": {
-            "smithy.api#documentation": "Output only. Profile attested key trust level."
+            "smithy.api#documentation": "Output only. Device attested key trust level."
           }
         },
         "profilePermanentId": {
@@ -110,22 +125,28 @@
             "smithy.api#documentation": "Output only. Unique customer id that this device belongs to, as defined by the Google Admin SDK at https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers"
           }
         },
+        "deviceSignal": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Deprecated. Device signal in json string representation. Prefer using `device_signals` instead."
+          }
+        },
         "deviceEnrollmentId": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Output only. Device enrollment id for ChromeOS devices."
           }
         },
-        "virtualDeviceId": {
+        "profileCustomerId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. Virtual device id of the device. The definition of virtual device id is platform-specific."
+            "smithy.api#documentation": "Output only. Unique customer id that this profile belongs to, as defined by the Google Admin SDK at https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers"
           }
         },
-        "deviceSignal": {
-          "target": "smithy.api#String",
+        "profileKeyTrustLevel": {
+          "target": "com.gcp.verifiedaccess_v2#VerifyChallengeResponseResultProfileKeyTrustLevelEnum",
           "traits": {
-            "smithy.api#documentation": "Output only. Deprecated. Device signal in json string representation. Prefer using `device_signals` instead."
+            "smithy.api#documentation": "Output only. Profile attested key trust level."
           }
         }
       },
@@ -270,94 +291,13 @@
         }
       }
     },
-    "com.gcp.verifiedaccess_v2#Empty": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
-      }
-    },
-    "com.gcp.verifiedaccess_v2#Challenge": {
-      "type": "structure",
-      "members": {
-        "challenge": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Generated challenge, the bytes representation of SignedData."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Result message for VerifiedAccess.GenerateChallenge."
-      }
-    },
     "com.gcp.verifiedaccess_v2#DeviceSignals": {
       "type": "structure",
       "members": {
-        "operatingSystem": {
-          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsOperatingSystemEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The type of the Operating System currently running on the device."
-          }
-        },
-        "screenLockSecured": {
-          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsScreenLockSecuredEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The state of the Screen Lock password protection. On ChromeOS, this value will always be ENABLED as there is not way to disable requiring a password or pin when unlocking the device."
-          }
-        },
-        "windowsMachineDomain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Windows domain that the current machine has joined. Available on Windows only."
-          }
-        },
         "browserVersion": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Output only. Current version of the Chrome browser which generated this set of signals. Example value: \"107.0.5286.0\"."
-          }
-        },
-        "systemDnsServers": {
-          "target": "com.gcp.verifiedaccess_v2#StringList",
-          "traits": {
-            "smithy.api#documentation": "List of the addesses of all OS level DNS servers configured in the device's network settings."
-          }
-        },
-        "osFirewall": {
-          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsOsFirewallEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The state of the OS level firewall. On ChromeOS, the value will always be ENABLED on regular devices and UNKNOWN on devices in developer mode. Support for MacOS 15 (Sequoia) and later has been introduced in Chrome M131."
-          }
-        },
-        "profileAffiliationIds": {
-          "target": "com.gcp.verifiedaccess_v2#StringList",
-          "traits": {
-            "smithy.api#documentation": "Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the Chrome Profile’s user or ChromeOS user."
-          }
-        },
-        "imei": {
-          "target": "com.gcp.verifiedaccess_v2#StringList",
-          "traits": {
-            "smithy.api#documentation": "Output only. International Mobile Equipment Identity (IMEI) of the device. Available on ChromeOS only."
-          }
-        },
-        "osVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The current version of the Operating System. On Windows and linux, the value will also include the security patch information."
-          }
-        },
-        "hostname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Hostname of the device."
-          }
-        },
-        "macAddresses": {
-          "target": "com.gcp.verifiedaccess_v2#StringList",
-          "traits": {
-            "smithy.api#documentation": "Output only. MAC addresses of the device."
           }
         },
         "secureBootMode": {
@@ -366,52 +306,16 @@
             "smithy.api#documentation": "Output only. Whether the device's startup software has its Secure Boot feature enabled. Available on Windows only."
           }
         },
-        "windowsUserDomain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Windows domain for the current OS user. Available on Windows only."
-          }
-        },
-        "passwordProtectionWarningTrigger": {
-          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsPasswordProtectionWarningTriggerEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. Whether the Password Protection Warning feature is enabled or not. Password protection alerts users when they reuse their protected password on potentially suspicious sites. This setting is controlled by an enterprise policy: https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger. Note that the policy unset does not have the same effects as having the policy explicitly set to `PASSWORD_PROTECTION_OFF`."
-          }
-        },
-        "profileEnrollmentDomain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Enrollment domain of the customer which is currently managing the profile."
-          }
-        },
-        "deviceModel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The name of the device's model."
-          }
-        },
-        "trigger": {
-          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsTriggerEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The trigger which generated this set of signals."
-          }
-        },
-        "realtimeUrlCheckMode": {
-          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsRealtimeUrlCheckModeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. Whether Enterprise-grade (i.e. custom) unsafe URL scanning is enabled or not. This setting may be controlled by an enterprise policy: https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode"
-          }
-        },
-        "allowScreenLock": {
+        "thirdPartyBlockingEnabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Output only. Value of the AllowScreenLock policy on the device. See https://chromeenterprise.google/policies/?policy=AllowScreenLock for more details. Available on ChromeOS only."
+            "smithy.api#documentation": "Output only. Deprecated. The corresponding policy is now deprecated. Whether Chrome is blocking third-party software injection or not. This setting may be controlled by an enterprise policy: https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled. Available on Windows only."
           }
         },
-        "deviceAffiliationIds": {
-          "target": "com.gcp.verifiedaccess_v2#StringList",
+        "screenLockSecured": {
+          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsScreenLockSecuredEnum",
           "traits": {
-            "smithy.api#documentation": "Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the device. When the sets of device and profile affiliation IDs overlap, it means that the organizations managing the device and user are affiliated. To learn more about user affiliation, visit https://support.google.com/chrome/a/answer/12801245?ref_topic=9027936."
+            "smithy.api#documentation": "Output only. The state of the Screen Lock password protection. On ChromeOS, this value will always be ENABLED as there is not way to disable requiring a password or pin when unlocking the device."
           }
         },
         "meid": {
@@ -420,34 +324,22 @@
             "smithy.api#documentation": "Output only. Mobile Equipment Identifier (MEID) of the device. Available on ChromeOS only."
           }
         },
-        "deviceManufacturer": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The name of the device's manufacturer."
-          }
-        },
-        "serialNumber": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The serial number of the device. On Windows, this represents the BIOS's serial number. Not available on most Linux distributions."
-          }
-        },
-        "displayName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The display name of the device, as defined by the user."
-          }
-        },
-        "thirdPartyBlockingEnabled": {
+        "allowScreenLock": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Output only. Deprecated. The corresponding policy is now deprecated. Whether Chrome is blocking third-party software injection or not. This setting may be controlled by an enterprise policy: https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled. Available on Windows only."
+            "smithy.api#documentation": "Output only. Value of the AllowScreenLock policy on the device. See https://chromeenterprise.google/policies/?policy=AllowScreenLock for more details. Available on ChromeOS only."
           }
         },
-        "diskEncryption": {
-          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsDiskEncryptionEnum",
+        "trigger": {
+          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsTriggerEnum",
           "traits": {
-            "smithy.api#documentation": "Output only. The encryption state of the disk. On ChromeOS, the main disk is always ENCRYPTED."
+            "smithy.api#documentation": "Output only. The trigger which generated this set of signals."
+          }
+        },
+        "windowsMachineDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Windows domain that the current machine has joined. Available on Windows only."
           }
         },
         "siteIsolationEnabled": {
@@ -456,10 +348,16 @@
             "smithy.api#documentation": "Output only. Whether the Site Isolation (a.k.a Site Per Process) setting is enabled. That setting may be controlled by an enterprise policy: https://chromeenterprise.google/policies/#SitePerProcess"
           }
         },
-        "builtInDnsClientEnabled": {
-          "target": "smithy.api#Boolean",
+        "deviceModel": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. Whether Chrome's built-in DNS client is used. The OS DNS client is otherwise used. This value may be controlled by an enterprise policy: https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled."
+            "smithy.api#documentation": "Output only. The name of the device's model."
+          }
+        },
+        "deviceAffiliationIds": {
+          "target": "com.gcp.verifiedaccess_v2#StringList",
+          "traits": {
+            "smithy.api#documentation": "Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the device. When the sets of device and profile affiliation IDs overlap, it means that the organizations managing the device and user are affiliated. To learn more about user affiliation, visit https://support.google.com/chrome/a/answer/12801245?ref_topic=9027936."
           }
         },
         "chromeRemoteDesktopAppBlocked": {
@@ -468,16 +366,22 @@
             "smithy.api#documentation": "Output only. Whether access to the Chrome Remote Desktop application is blocked via a policy."
           }
         },
-        "deviceEnrollmentDomain": {
-          "target": "smithy.api#String",
+        "builtInDnsClientEnabled": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Output only. Enrollment domain of the customer which is currently managing the device."
+            "smithy.api#documentation": "Output only. Whether Chrome's built-in DNS client is used. The OS DNS client is otherwise used. This value may be controlled by an enterprise policy: https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled."
           }
         },
-        "antivirus": {
-          "target": "com.gcp.verifiedaccess_v2#Antivirus",
+        "crowdStrikeAgent": {
+          "target": "com.gcp.verifiedaccess_v2#CrowdStrikeAgent",
           "traits": {
-            "smithy.api#documentation": "Output only. Information about Antivirus software on the device. Available on Windows only."
+            "smithy.api#documentation": "Output only. Crowdstrike agent properties installed on the device, if any. Available on Windows and MacOS only."
+          }
+        },
+        "passwordProtectionWarningTrigger": {
+          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsPasswordProtectionWarningTriggerEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. Whether the Password Protection Warning feature is enabled or not. Password protection alerts users when they reuse their protected password on potentially suspicious sites. This setting is controlled by an enterprise policy: https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger. Note that the policy unset does not have the same effects as having the policy explicitly set to `PASSWORD_PROTECTION_OFF`."
           }
         },
         "safeBrowsingProtectionLevel": {
@@ -486,10 +390,106 @@
             "smithy.api#documentation": "Output only. Safe Browsing Protection Level. That setting may be controlled by an enterprise policy: https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel."
           }
         },
-        "crowdStrikeAgent": {
-          "target": "com.gcp.verifiedaccess_v2#CrowdStrikeAgent",
+        "profileAffiliationIds": {
+          "target": "com.gcp.verifiedaccess_v2#StringList",
           "traits": {
-            "smithy.api#documentation": "Output only. Crowdstrike agent properties installed on the device, if any. Available on Windows and MacOS only."
+            "smithy.api#documentation": "Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the Chrome Profile’s user or ChromeOS user."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The display name of the device, as defined by the user."
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The serial number of the device. On Windows, this represents the BIOS's serial number. Not available on most Linux distributions."
+          }
+        },
+        "systemDnsServers": {
+          "target": "com.gcp.verifiedaccess_v2#StringList",
+          "traits": {
+            "smithy.api#documentation": "List of the addesses of all OS level DNS servers configured in the device's network settings."
+          }
+        },
+        "antivirus": {
+          "target": "com.gcp.verifiedaccess_v2#Antivirus",
+          "traits": {
+            "smithy.api#documentation": "Output only. Information about Antivirus software on the device. Available on Windows only."
+          }
+        },
+        "operatingSystem": {
+          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsOperatingSystemEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The type of the Operating System currently running on the device."
+          }
+        },
+        "osVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The current version of the Operating System. On Windows and linux, the value will also include the security patch information."
+          }
+        },
+        "deviceManufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The name of the device's manufacturer."
+          }
+        },
+        "windowsUserDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Windows domain for the current OS user. Available on Windows only."
+          }
+        },
+        "deviceEnrollmentDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Enrollment domain of the customer which is currently managing the device."
+          }
+        },
+        "imei": {
+          "target": "com.gcp.verifiedaccess_v2#StringList",
+          "traits": {
+            "smithy.api#documentation": "Output only. International Mobile Equipment Identity (IMEI) of the device. Available on ChromeOS only."
+          }
+        },
+        "profileEnrollmentDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Enrollment domain of the customer which is currently managing the profile."
+          }
+        },
+        "macAddresses": {
+          "target": "com.gcp.verifiedaccess_v2#StringList",
+          "traits": {
+            "smithy.api#documentation": "Output only. MAC addresses of the device."
+          }
+        },
+        "realtimeUrlCheckMode": {
+          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsRealtimeUrlCheckModeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. Whether Enterprise-grade (i.e. custom) unsafe URL scanning is enabled or not. This setting may be controlled by an enterprise policy: https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode"
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Hostname of the device."
+          }
+        },
+        "diskEncryption": {
+          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsDiskEncryptionEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The encryption state of the disk. On ChromeOS, the main disk is always ENCRYPTED."
+          }
+        },
+        "osFirewall": {
+          "target": "com.gcp.verifiedaccess_v2#DeviceSignalsOsFirewallEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The state of the OS level firewall. On ChromeOS, the value will always be ENABLED on regular devices and UNKNOWN on devices in developer mode. Support for MacOS 15 (Sequoia) and later has been introduced in Chrome M131."
           }
         }
       },
@@ -497,43 +497,31 @@
         "smithy.api#documentation": "The device signals as reported by Chrome. Unless otherwise specified, signals are available on all platforms."
       }
     },
-    "com.gcp.verifiedaccess_v2#DeviceSignalsOperatingSystemEnum": {
+    "com.gcp.verifiedaccess_v2#DeviceSignalsSecureBootModeEnum": {
       "type": "enum",
       "members": {
-        "OPERATING_SYSTEM_UNSPECIFIED": {
+        "SECURE_BOOT_MODE_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "OPERATING_SYSTEM_UNSPECIFIED"
+            "smithy.api#enumValue": "SECURE_BOOT_MODE_UNSPECIFIED"
           }
         },
-        "CHROME_OS": {
+        "SECURE_BOOT_MODE_UNKNOWN": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "CHROME_OS"
+            "smithy.api#enumValue": "SECURE_BOOT_MODE_UNKNOWN"
           }
         },
-        "CHROMIUM_OS": {
+        "SECURE_BOOT_MODE_DISABLED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "CHROMIUM_OS"
+            "smithy.api#enumValue": "SECURE_BOOT_MODE_DISABLED"
           }
         },
-        "WINDOWS": {
+        "SECURE_BOOT_MODE_ENABLED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "WINDOWS"
-          }
-        },
-        "MAC_OS_X": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "MAC_OS_X"
-          }
-        },
-        "LINUX": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINUX"
+            "smithy.api#enumValue": "SECURE_BOOT_MODE_ENABLED"
           }
         }
       }
@@ -573,60 +561,25 @@
         "target": "smithy.api#String"
       }
     },
-    "com.gcp.verifiedaccess_v2#DeviceSignalsOsFirewallEnum": {
+    "com.gcp.verifiedaccess_v2#DeviceSignalsTriggerEnum": {
       "type": "enum",
       "members": {
-        "OS_FIREWALL_UNSPECIFIED": {
+        "TRIGGER_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "OS_FIREWALL_UNSPECIFIED"
+            "smithy.api#enumValue": "TRIGGER_UNSPECIFIED"
           }
         },
-        "OS_FIREWALL_UNKNOWN": {
+        "TRIGGER_BROWSER_NAVIGATION": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "OS_FIREWALL_UNKNOWN"
+            "smithy.api#enumValue": "TRIGGER_BROWSER_NAVIGATION"
           }
         },
-        "OS_FIREWALL_DISABLED": {
+        "TRIGGER_LOGIN_SCREEN": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "OS_FIREWALL_DISABLED"
-          }
-        },
-        "OS_FIREWALL_ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OS_FIREWALL_ENABLED"
-          }
-        }
-      }
-    },
-    "com.gcp.verifiedaccess_v2#DeviceSignalsSecureBootModeEnum": {
-      "type": "enum",
-      "members": {
-        "SECURE_BOOT_MODE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SECURE_BOOT_MODE_UNSPECIFIED"
-          }
-        },
-        "SECURE_BOOT_MODE_UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SECURE_BOOT_MODE_UNKNOWN"
-          }
-        },
-        "SECURE_BOOT_MODE_DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SECURE_BOOT_MODE_DISABLED"
-          }
-        },
-        "SECURE_BOOT_MODE_ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SECURE_BOOT_MODE_ENABLED"
+            "smithy.api#enumValue": "TRIGGER_LOGIN_SCREEN"
           }
         }
       }
@@ -666,25 +619,72 @@
         }
       }
     },
-    "com.gcp.verifiedaccess_v2#DeviceSignalsTriggerEnum": {
+    "com.gcp.verifiedaccess_v2#DeviceSignalsSafeBrowsingProtectionLevelEnum": {
       "type": "enum",
       "members": {
-        "TRIGGER_UNSPECIFIED": {
+        "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "TRIGGER_UNSPECIFIED"
+            "smithy.api#enumValue": "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED"
           }
         },
-        "TRIGGER_BROWSER_NAVIGATION": {
+        "INACTIVE": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "TRIGGER_BROWSER_NAVIGATION"
+            "smithy.api#enumValue": "INACTIVE"
           }
         },
-        "TRIGGER_LOGIN_SCREEN": {
+        "STANDARD": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "TRIGGER_LOGIN_SCREEN"
+            "smithy.api#enumValue": "STANDARD"
+          }
+        },
+        "ENHANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENHANCED"
+          }
+        }
+      }
+    },
+    "com.gcp.verifiedaccess_v2#DeviceSignalsOperatingSystemEnum": {
+      "type": "enum",
+      "members": {
+        "OPERATING_SYSTEM_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPERATING_SYSTEM_UNSPECIFIED"
+          }
+        },
+        "CHROME_OS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHROME_OS"
+          }
+        },
+        "CHROMIUM_OS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHROMIUM_OS"
+          }
+        },
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WINDOWS"
+          }
+        },
+        "MAC_OS_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MAC_OS_X"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINUX"
           }
         }
       }
@@ -741,40 +741,40 @@
         }
       }
     },
-    "com.gcp.verifiedaccess_v2#DeviceSignalsSafeBrowsingProtectionLevelEnum": {
+    "com.gcp.verifiedaccess_v2#DeviceSignalsOsFirewallEnum": {
       "type": "enum",
       "members": {
-        "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED": {
+        "OS_FIREWALL_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED"
+            "smithy.api#enumValue": "OS_FIREWALL_UNSPECIFIED"
           }
         },
-        "INACTIVE": {
+        "OS_FIREWALL_UNKNOWN": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "INACTIVE"
+            "smithy.api#enumValue": "OS_FIREWALL_UNKNOWN"
           }
         },
-        "STANDARD": {
+        "OS_FIREWALL_DISABLED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "STANDARD"
+            "smithy.api#enumValue": "OS_FIREWALL_DISABLED"
           }
         },
-        "ENHANCED": {
+        "OS_FIREWALL_ENABLED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "ENHANCED"
+            "smithy.api#enumValue": "OS_FIREWALL_ENABLED"
           }
         }
       }
     },
-    "com.gcp.verifiedaccess_v2#VerifyChallengeRequest": {
+    "com.gcp.verifiedaccess_v2#GenerateChallengeRequest": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.gcp.verifiedaccess_v2#VerifyChallengeResponseRequest",
+          "target": "com.gcp.verifiedaccess_v2#Empty",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -834,48 +834,6 @@
         ]
       }
     },
-    "com.gcp.verifiedaccess_v2#VerifyChallenge": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.verifiedaccess_v2#VerifyChallengeRequest"
-      },
-      "output": {
-        "target": "com.gcp.verifiedaccess_v2#VerifyChallengeResponseResult"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.verifiedaccess_v2#NotFound"
-        },
-        {
-          "target": "com.gcp.verifiedaccess_v2#Forbidden"
-        },
-        {
-          "target": "com.gcp.verifiedaccess_v2#BadRequest"
-        },
-        {
-          "target": "com.gcp.verifiedaccess_v2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v2/challenge:verify"
-        },
-        "smithy.api#documentation": "Verifies the challenge response."
-      }
-    },
-    "com.gcp.verifiedaccess_v2#GenerateChallengeRequest": {
-      "type": "structure",
-      "members": {
-        "body": {
-          "target": "com.gcp.verifiedaccess_v2#Empty",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
     "com.gcp.verifiedaccess_v2#GenerateChallenge": {
       "type": "operation",
       "input": {
@@ -904,6 +862,48 @@
           "uri": "v2/challenge:generate"
         },
         "smithy.api#documentation": "Generates a new challenge."
+      }
+    },
+    "com.gcp.verifiedaccess_v2#VerifyChallengeRequest": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.gcp.verifiedaccess_v2#VerifyChallengeResponseRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.verifiedaccess_v2#VerifyChallenge": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.verifiedaccess_v2#VerifyChallengeRequest"
+      },
+      "output": {
+        "target": "com.gcp.verifiedaccess_v2#VerifyChallengeResponseResult"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.verifiedaccess_v2#NotFound"
+        },
+        {
+          "target": "com.gcp.verifiedaccess_v2#Forbidden"
+        },
+        {
+          "target": "com.gcp.verifiedaccess_v2#BadRequest"
+        },
+        {
+          "target": "com.gcp.verifiedaccess_v2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v2/challenge:verify"
+        },
+        "smithy.api#documentation": "Verifies the challenge response."
       }
     }
   }

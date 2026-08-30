@@ -308,7 +308,9 @@ export const CertificatePacksCreateResponseCertificatesItemHostsList =
   ) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemHostsList>;
 
 export type CertificatePacksCreateResponseCertificatesItemGeoRestrictionsLabel =
-  "us" | "eu" | "highest_security";
+  | "us"
+  | "eu"
+  | "highest_security";
 export const CertificatePacksCreateResponseCertificatesItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 
@@ -1356,7 +1358,9 @@ export const CertificatePacksListResultItemCertificatesItemHostsList =
   ) as any as S.Schema<CertificatePacksListResultItemCertificatesItemHostsList>;
 
 export type CertificatePacksListResultItemCertificatesItemGeoRestrictionsLabel =
-  "us" | "eu" | "highest_security";
+  | "us"
+  | "eu"
+  | "highest_security";
 export const CertificatePacksListResultItemCertificatesItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 

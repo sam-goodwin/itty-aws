@@ -2,6 +2,7 @@
 export * as accessGroups from "./access_groups.ts";
 export * as aiGateway from "./ai_gateway.ts";
 export * as aliases from "./aliases.ts";
+export * as apiAiGateway from "./api_ai_gateway.ts";
 export * as artifacts from "./artifacts.ts";
 export * as authentication from "./authentication.ts";
 export * as billing from "./billing.ts";
@@ -19,6 +20,7 @@ export * as environment from "./environment.ts";
 export * as featureFlags from "./feature_flags.ts";
 export * as globalConfig from "./global_config.ts";
 export * as integrations from "./integrations.ts";
+export * as kms from "./kms.ts";
 export * as logDrains from "./log_drains.ts";
 export * as logs from "./logs.ts";
 export * as marketplace from "./marketplace.ts";

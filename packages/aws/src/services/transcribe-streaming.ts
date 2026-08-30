@@ -349,7 +349,14 @@ export type CallAnalyticsLanguageCode =
 export const CallAnalyticsLanguageCode = /*@__PURE__*/ S.String;
 
 export type MediaSampleRateHertz = number;
-export type MediaEncoding = "pcm" | "ogg-opus" | "flac" | (string & {});
+export type MediaEncoding =
+  | "pcm"
+  | "ogg-opus"
+  | "flac"
+  | "g711-alaw"
+  | "g711-ulaw"
+  | "g729"
+  | (string & {});
 export const MediaEncoding = /*@__PURE__*/ S.String;
 
 export type AudioChunk = Uint8Array;
@@ -1580,6 +1587,9 @@ export const StartMedicalStreamTranscriptionResponse = /*@__PURE__*/ S.suspend(
   identifier: "StartMedicalStreamTranscriptionResponse",
 }) as any as S.Schema<StartMedicalStreamTranscriptionResponse>;
 export type SessionResumeWindow = number;
+export type TranscriptFormat = "spoken" | "written" | (string & {});
+export const TranscriptFormat = /*@__PURE__*/ S.String;
+
 export interface StartStreamTranscriptionRequest {
   LanguageCode?: LanguageCode;
   MediaSampleRateHertz: number;
@@ -1605,6 +1615,7 @@ export interface StartStreamTranscriptionRequest {
   VocabularyNames?: string;
   VocabularyFilterNames?: string;
   SessionResumeWindow?: number;
+  TranscriptFormat?: TranscriptFormat;
 }
 export const StartStreamTranscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1677,6 +1688,9 @@ export const StartStreamTranscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     SessionResumeWindow: S.optional(S.Number).pipe(
       T.HttpHeader("x-amzn-transcribe-session-resume-window"),
+    ),
+    TranscriptFormat: S.optional(TranscriptFormat).pipe(
+      T.HttpHeader("x-amzn-transcribe-transcript-format"),
     ),
   }).pipe(
     T.all(
@@ -1906,6 +1920,7 @@ export interface StartStreamTranscriptionResponse {
   VocabularyNames?: string;
   VocabularyFilterNames?: string;
   SessionResumeWindow?: number;
+  TranscriptFormat?: TranscriptFormat;
 }
 export const StartStreamTranscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1981,6 +1996,9 @@ export const StartStreamTranscriptionResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     SessionResumeWindow: S.optional(S.Number).pipe(
       T.HttpHeader("x-amzn-transcribe-session-resume-window"),
+    ),
+    TranscriptFormat: S.optional(TranscriptFormat).pipe(
+      T.HttpHeader("x-amzn-transcribe-transcript-format"),
     ),
   }),
 ).annotate({

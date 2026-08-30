@@ -101,8 +101,26 @@
         "allowed_domains": {
           "target": "com.posthog.sandbox_environments#SandboxEnvironmentDTOAllowedDomainsList"
         },
+        "include_default_domains": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "repositories": {
           "target": "com.posthog.sandbox_environments#SandboxEnvironmentDTORepositoriesList"
+        },
+        "has_environment_variables": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether any environment variables are set on this environment."
+          }
+        },
+        "environment_variable_keys": {
+          "target": "com.posthog.sandbox_environments#SandboxEnvironmentDTOEnvironmentVariableKeysList",
+          "traits": {
+            "smithy.api#documentation": "Names of the environment variables that are set, sorted. Values are write-only and never returned."
+          }
         },
         "private": {
           "target": "smithy.api#Boolean",
@@ -115,6 +133,9 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "effective_domains": {
+          "target": "com.posthog.sandbox_environments#SandboxEnvironmentDTOEffectiveDomainsList"
         },
         "created_by": {
           "target": "com.posthog.sandbox_environments#TaskUserBasicInfo",
@@ -133,10 +154,28 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
+        },
+        "custom_image_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "custom_image_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "custom_image_status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "List response for sandbox environments (subset of fields)."
+        "smithy.api#documentation": "A sandbox environment, as returned by list, detail, create and update."
       }
     },
     "com.posthog.sandbox_environments#SandboxEnvironmentDTOAllowedDomainsList": {
@@ -147,6 +186,22 @@
       "traits": {}
     },
     "com.posthog.sandbox_environments#SandboxEnvironmentDTORepositoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.posthog.sandbox_environments#SandboxEnvironmentDTOEnvironmentVariableKeysList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Names of the environment variables that are set, sorted. Values are write-only and never returned."
+      }
+    },
+    "com.posthog.sandbox_environments#SandboxEnvironmentDTOEffectiveDomainsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -357,6 +412,13 @@
           "traits": {
             "smithy.api#documentation": "If true, only the creator can see this environment; otherwise the whole team can."
           }
+        },
+        "custom_image_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {
@@ -515,6 +577,13 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If true, only the creator can see this environment; otherwise the whole team can."
+          }
+        },
+        "custom_image_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },

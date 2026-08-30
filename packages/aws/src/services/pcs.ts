@@ -537,6 +537,82 @@ export const ComputeNodeGroupSlurmConfigurationRequest =
   ).annotate({
     identifier: "ComputeNodeGroupSlurmConfigurationRequest",
   }) as any as S.Schema<ComputeNodeGroupSlurmConfigurationRequest>;
+export interface ScriptSource {
+  scriptLocation: string;
+  s3VersionId?: string;
+  checksum?: string;
+}
+export const ScriptSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scriptLocation: S.String,
+    s3VersionId: S.optional(S.String),
+    checksum: S.optional(S.String),
+  }),
+).annotate({ identifier: "ScriptSource" }) as any as S.Schema<ScriptSource>;
+export type NodeLifecycleScriptArgument = string;
+export type NodeLifecycleScriptArguments = string[];
+export const NodeLifecycleScriptArguments = /*@__PURE__*/ S.Array(S.String);
+export type OnError =
+  | "TERMINATE"
+  | "STOP_SEQUENCE"
+  | "CONTINUE"
+  | (string & {});
+export const OnError = /*@__PURE__*/ S.String;
+
+export type ExecutionPolicy = "FIRST_BOOT_ONLY" | "EVERY_BOOT" | (string & {});
+export const ExecutionPolicy = /*@__PURE__*/ S.String;
+
+export interface NodeLifecycleScript {
+  name: string;
+  scriptSource: ScriptSource;
+  arguments?: string[];
+  onError?: OnError;
+  executionPolicy?: ExecutionPolicy;
+}
+export const NodeLifecycleScript = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    scriptSource: ScriptSource,
+    arguments: S.optional(NodeLifecycleScriptArguments),
+    onError: S.optional(OnError),
+    executionPolicy: S.optional(ExecutionPolicy),
+  }),
+).annotate({
+  identifier: "NodeLifecycleScript",
+}) as any as S.Schema<NodeLifecycleScript>;
+export type NodeLifecycleScriptList = NodeLifecycleScript[];
+export const NodeLifecycleScriptList =
+  /*@__PURE__*/ S.Array(NodeLifecycleScript);
+export interface NodeLifecycleStages {
+  nodeBootstrapped?: NodeLifecycleScript[];
+  nodeReady?: NodeLifecycleScript[];
+}
+export const NodeLifecycleStages = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeBootstrapped: S.optional(NodeLifecycleScriptList),
+    nodeReady: S.optional(NodeLifecycleScriptList),
+  }),
+).annotate({
+  identifier: "NodeLifecycleStages",
+}) as any as S.Schema<NodeLifecycleStages>;
+export type ScriptCachingPolicy =
+  | "CACHE_ONCE"
+  | "REFRESH_ON_REBOOT"
+  | (string & {});
+export const ScriptCachingPolicy = /*@__PURE__*/ S.String;
+
+export interface NodeLifecycleActionsRequest {
+  stages: NodeLifecycleStages;
+  scriptCachingPolicy?: ScriptCachingPolicy;
+}
+export const NodeLifecycleActionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stages: NodeLifecycleStages,
+    scriptCachingPolicy: S.optional(ScriptCachingPolicy),
+  }),
+).annotate({
+  identifier: "NodeLifecycleActionsRequest",
+}) as any as S.Schema<NodeLifecycleActionsRequest>;
 export interface CreateComputeNodeGroupRequest {
   clusterIdentifier: string;
   computeNodeGroupName: string;
@@ -549,6 +625,7 @@ export interface CreateComputeNodeGroupRequest {
   instanceConfigs: InstanceConfig[];
   spotOptions?: SpotOptions;
   slurmConfiguration?: ComputeNodeGroupSlurmConfigurationRequest;
+  nodeLifecycleActions?: NodeLifecycleActionsRequest;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -565,6 +642,7 @@ export const CreateComputeNodeGroupRequest = /*@__PURE__*/ S.suspend(() =>
     instanceConfigs: InstanceList,
     spotOptions: S.optional(SpotOptions),
     slurmConfiguration: S.optional(ComputeNodeGroupSlurmConfigurationRequest),
+    nodeLifecycleActions: S.optional(NodeLifecycleActionsRequest),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     tags: S.optional(RequestTagMap),
   }).pipe(
@@ -609,6 +687,18 @@ export const ComputeNodeGroupSlurmConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputeNodeGroupSlurmConfiguration",
 }) as any as S.Schema<ComputeNodeGroupSlurmConfiguration>;
+export interface NodeLifecycleActions {
+  stages: NodeLifecycleStages;
+  scriptCachingPolicy?: ScriptCachingPolicy;
+}
+export const NodeLifecycleActions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stages: NodeLifecycleStages,
+    scriptCachingPolicy: S.optional(ScriptCachingPolicy),
+  }),
+).annotate({
+  identifier: "NodeLifecycleActions",
+}) as any as S.Schema<NodeLifecycleActions>;
 export interface ComputeNodeGroup {
   name: string;
   id: string;
@@ -626,6 +716,7 @@ export interface ComputeNodeGroup {
   instanceConfigs: InstanceConfig[];
   spotOptions?: SpotOptions;
   slurmConfiguration?: ComputeNodeGroupSlurmConfiguration;
+  nodeLifecycleActions?: NodeLifecycleActions;
   errorInfo?: ErrorInfo[];
 }
 export const ComputeNodeGroup = /*@__PURE__*/ S.suspend(() =>
@@ -646,6 +737,7 @@ export const ComputeNodeGroup = /*@__PURE__*/ S.suspend(() =>
     instanceConfigs: InstanceList,
     spotOptions: S.optional(SpotOptions),
     slurmConfiguration: S.optional(ComputeNodeGroupSlurmConfiguration),
+    nodeLifecycleActions: S.optional(NodeLifecycleActions),
     errorInfo: S.optional(ErrorInfoList),
   }),
 ).annotate({
@@ -1072,6 +1164,10 @@ export interface RegisterComputeNodeGroupInstanceResponse {
   nodeID: string;
   sharedSecret: string | redacted.Redacted<string>;
   endpoints: Endpoint[];
+  clusterName?: string;
+  computeNodeGroupId?: string;
+  computeNodeGroupName?: string;
+  nodeLifecycleActions?: NodeLifecycleActions;
 }
 export const RegisterComputeNodeGroupInstanceResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -1079,6 +1175,10 @@ export const RegisterComputeNodeGroupInstanceResponse = /*@__PURE__*/ S.suspend(
       nodeID: S.String,
       sharedSecret: SensitiveString,
       endpoints: Endpoints,
+      clusterName: S.optional(S.String),
+      computeNodeGroupId: S.optional(S.String),
+      computeNodeGroupName: S.optional(S.String),
+      nodeLifecycleActions: S.optional(NodeLifecycleActions),
     }),
 ).annotate({
   identifier: "RegisterComputeNodeGroupInstanceResponse",
@@ -1210,6 +1310,18 @@ export const UpdateComputeNodeGroupSlurmConfigurationRequest =
   ).annotate({
     identifier: "UpdateComputeNodeGroupSlurmConfigurationRequest",
   }) as any as S.Schema<UpdateComputeNodeGroupSlurmConfigurationRequest>;
+export interface UpdateNodeLifecycleActionsRequest {
+  stages: NodeLifecycleStages;
+  scriptCachingPolicy?: ScriptCachingPolicy;
+}
+export const UpdateNodeLifecycleActionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stages: NodeLifecycleStages,
+    scriptCachingPolicy: S.optional(ScriptCachingPolicy),
+  }),
+).annotate({
+  identifier: "UpdateNodeLifecycleActionsRequest",
+}) as any as S.Schema<UpdateNodeLifecycleActionsRequest>;
 export interface UpdateComputeNodeGroupRequest {
   clusterIdentifier: string;
   computeNodeGroupIdentifier: string;
@@ -1221,6 +1333,7 @@ export interface UpdateComputeNodeGroupRequest {
   scalingConfiguration?: ScalingConfigurationRequest;
   iamInstanceProfileArn?: string;
   slurmConfiguration?: UpdateComputeNodeGroupSlurmConfigurationRequest;
+  nodeLifecycleActions?: UpdateNodeLifecycleActionsRequest;
   clientToken?: string;
 }
 export const UpdateComputeNodeGroupRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1237,6 +1350,7 @@ export const UpdateComputeNodeGroupRequest = /*@__PURE__*/ S.suspend(() =>
     slurmConfiguration: S.optional(
       UpdateComputeNodeGroupSlurmConfigurationRequest,
     ),
+    nodeLifecycleActions: S.optional(UpdateNodeLifecycleActionsRequest),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1811,7 +1925,7 @@ export type UpdateClusterError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates a cluster configuration. You can upgrade the Slurm version, modify scheduler settings, and update accounting configuration for an existing cluster. For more information about upgrading the Slurm version, see Upgrading the Slurm version on a cluster in the *PCS User Guide*.
+ * Updates a cluster configuration. You can update the scheduler version, modify scheduler settings, and update accounting configuration for an existing cluster. For more information about updating the scheduler version, see Updating the scheduler version on a cluster in the *PCS User Guide*.
  *
  * You can only update clusters that are in `ACTIVE`, `UPDATE_FAILED`, or `SUSPENDED` state. All associated resources (queues and compute node groups) must be in `ACTIVE` state before you can update the cluster.
  */

@@ -70,15 +70,15 @@ export const TagActionActionEnum = /*@__PURE__*/ S.String;
 
 /** Message for edit tag action */
 export interface TagAction {
-  /** Required. Action to be applied */
-  action?: TagActionActionEnum | (string & {});
   /** Required. Tag to be added or removed */
   tag?: string;
+  /** Required. Action to be applied */
+  action?: TagActionActionEnum | (string & {});
 }
 export const TagAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    action: S.optional(TagActionActionEnum),
     tag: S.optional(S.String),
+    action: S.optional(TagActionActionEnum),
   }),
 ).annotate({ identifier: "TagAction" }) as any as S.Schema<TagAction>;
 
@@ -145,6 +145,11 @@ export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest
       "BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest",
   }) as any as S.Schema<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
 export type ApiObservationStyleEnum =
   | "STYLE_UNSPECIFIED"
   | "REST"
@@ -152,46 +157,41 @@ export type ApiObservationStyleEnum =
   | "GRAPHQL";
 export const ApiObservationStyleEnum = /*@__PURE__*/ S.String;
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
 /** Message describing ApiObservation object */
 export interface ApiObservation {
-  /** Style of ApiObservation */
-  style?: ApiObservationStyleEnum;
-  /** The number of observed API Operations. */
-  apiOperationCount?: string;
-  /** Identifier. Name of resource */
-  name?: string;
   /** The IP address (IPv4 or IPv6) of the origin server that the request was sent to. This field can include port information. Examples: `"192.168.1.1"`, `"10.0.0.1:80"`, `"FE80::0202:B3FF:FE1E:8329"`. */
   serverIps?: StringList;
-  /** Create time stamp */
-  createTime?: string;
-  /** Update time stamp */
-  updateTime?: string;
-  /** The hostname of requests processed for this Observation. */
-  hostname?: string;
   /** Last event detected time stamp */
   lastEventDetectedTime?: string;
-  /** Location of the Observation Source, for example "us-central1" or "europe-west1." */
-  sourceLocations?: StringList;
+  /** Update time stamp */
+  updateTime?: string;
+  /** The number of observed API Operations. */
+  apiOperationCount?: string;
+  /** Create time stamp */
+  createTime?: string;
+  /** The hostname of requests processed for this Observation. */
+  hostname?: string;
+  /** Style of ApiObservation */
+  style?: ApiObservationStyleEnum;
+  /** Identifier. Name of resource */
+  name?: string;
   /** User-defined tags to organize and sort */
   tags?: StringList;
+  /** Location of the Observation Source, for example "us-central1" or "europe-west1." */
+  sourceLocations?: StringList;
 }
 export const ApiObservation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    style: S.optional(ApiObservationStyleEnum),
-    apiOperationCount: S.optional(S.String),
-    name: S.optional(S.String),
     serverIps: S.optional(StringList),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    hostname: S.optional(S.String),
     lastEventDetectedTime: S.optional(S.String),
-    sourceLocations: S.optional(StringList),
+    updateTime: S.optional(S.String),
+    apiOperationCount: S.optional(S.String),
+    createTime: S.optional(S.String),
+    hostname: S.optional(S.String),
+    style: S.optional(ApiObservationStyleEnum),
+    name: S.optional(S.String),
     tags: S.optional(StringList),
+    sourceLocations: S.optional(StringList),
   }),
 ).annotate({ identifier: "ApiObservation" }) as any as S.Schema<ApiObservation>;
 
@@ -263,34 +263,34 @@ export const ObservationJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing ObservationJob object */
 export interface ObservationJob {
-  /** Output only. [Output only] Update time stamp */
-  updateTime?: string;
-  /** Identifier. name of resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
-  name?: string;
-  /** Optional. These should be of the same kind of source. */
-  sources?: StringList;
   /** Output only. [Output only] Create time stamp */
   createTime?: string;
   /** Output only. The observation job state */
   state?: ObservationJobStateEnum | (string & {});
+  /** Optional. These should be of the same kind of source. */
+  sources?: StringList;
+  /** Output only. [Output only] Update time stamp */
+  updateTime?: string;
+  /** Identifier. name of resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
+  name?: string;
 }
 export const ObservationJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    sources: S.optional(StringList),
     createTime: S.optional(S.String),
     state: S.optional(ObservationJobStateEnum),
+    sources: S.optional(StringList),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "ObservationJob" }) as any as S.Schema<ObservationJob>;
 
 export interface CreateProjectsLocationsObservationJobsRequest {
   /** Required. The parent resource where this ObservationJob will be created. Format: projects/{project}/locations/{location} */
   parent: string;
-  /** Required. The ID to use for the Observation Job. This value should be 4-63 characters, and valid characters are /a-z-/. */
-  observationJobId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. The ID to use for the Observation Job. This value should be 4-63 characters, and valid characters are /a-z-/. */
+  observationJobId?: string;
   /** Request body */
   body?: ObservationJob;
 }
@@ -298,8 +298,8 @@ export const CreateProjectsLocationsObservationJobsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      observationJobId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
+      observationJobId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(ObservationJob.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -327,41 +327,49 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
-    message: S.optional(S.String),
     details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     response: S.optional(DocumentMap),
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
+    name: S.optional(S.String),
     error: S.optional(Status),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+export type ObservationSourceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "CREATED"
+  | "DELETING"
+  | "ERROR";
+export const ObservationSourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Network information for setting up a PSC connection. */
 export interface GclbObservationSourcePscNetworkConfig {
@@ -399,55 +407,47 @@ export const GclbObservationSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "GclbObservationSource",
 }) as any as S.Schema<GclbObservationSource>;
 
-export type ObservationSourceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "CREATED"
-  | "DELETING"
-  | "ERROR";
-export const ObservationSourceStateEnum = /*@__PURE__*/ S.String;
-
 /** Observation source configuration types */
 export interface ObservationSource {
-  /** Identifier. name of resource For MVP, each region can only have 1 source. */
-  name?: string;
-  /** Output only. [Output only] Update time stamp */
-  updateTime?: string;
+  /** Output only. The observation source state */
+  state?: ObservationSourceStateEnum | (string & {});
   /** The GCLB observation source */
   gclbObservationSource?: GclbObservationSource;
   /** Output only. [Output only] Create time stamp */
   createTime?: string;
-  /** Output only. The observation source state */
-  state?: ObservationSourceStateEnum | (string & {});
+  /** Identifier. name of resource For MVP, each region can only have 1 source. */
+  name?: string;
+  /** Output only. [Output only] Update time stamp */
+  updateTime?: string;
 }
 export const ObservationSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
+    state: S.optional(ObservationSourceStateEnum),
     gclbObservationSource: S.optional(GclbObservationSource),
     createTime: S.optional(S.String),
-    state: S.optional(ObservationSourceStateEnum),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ObservationSource",
 }) as any as S.Schema<ObservationSource>;
 
 export interface CreateProjectsLocationsObservationSourcesRequest {
-  /** Required. Value for parent. */
-  parent: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. The ID to use for the Observation Source. This value should be 4-63 characters, and valid characters are /a-z-/. */
   observationSourceId?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. Value for parent. */
+  parent: string;
   /** Request body */
   body?: ObservationSource;
 }
 export const CreateProjectsLocationsObservationSourcesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
       observationSourceId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(ObservationSource.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -590,24 +590,24 @@ export const GetEntitlementProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
 
 /** Entitlement stores data related to API Observation entitlement for a given project */
 export interface Entitlement {
-  /** Identifier. The entitlement resource name `projects/{project}/locations/{location}/entitlement` */
-  name?: string;
-  /** Whether API Observation is entitled. */
-  apiObservationEntitled?: boolean;
-  /** Output only. The time of the entitlement update. */
-  updateTime?: string;
-  /** Output only. The time of the entitlement creation. */
-  createTime?: string;
   /** Project number of associated billing project that has Apigee and Advanced API Security entitled. */
   billingProjectNumber?: string;
+  /** Output only. The time of the entitlement update. */
+  updateTime?: string;
+  /** Identifier. The entitlement resource name `projects/{project}/locations/{location}/entitlement` */
+  name?: string;
+  /** Output only. The time of the entitlement creation. */
+  createTime?: string;
+  /** Whether API Observation is entitled. */
+  apiObservationEntitled?: boolean;
 }
 export const Entitlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    apiObservationEntitled: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
     billingProjectNumber: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    apiObservationEntitled: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 
@@ -637,24 +637,24 @@ export const StringMap = /*@__PURE__*/ S.Record(
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locationId: S.optional(S.String),
     metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
     labels: S.optional(StringMap),
-    name: S.optional(S.String),
     displayName: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -716,72 +716,6 @@ export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequ
       "GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest",
   }) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
-export type HttpOperationPathParamDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "BOOL"
-  | "INTEGER"
-  | "FLOAT"
-  | "STRING"
-  | "UUID";
-export const HttpOperationPathParamDataTypeEnum = /*@__PURE__*/ S.String;
-
-/** HTTP Path parameter. */
-export interface HttpOperationPathParam {
-  /** Segment location in the path, 1-indexed */
-  position?: number;
-  /** Data type of path param */
-  dataType?: HttpOperationPathParamDataTypeEnum;
-}
-export const HttpOperationPathParam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    position: S.optional(S.Number),
-    dataType: S.optional(HttpOperationPathParamDataTypeEnum),
-  }),
-).annotate({
-  identifier: "HttpOperationPathParam",
-}) as any as S.Schema<HttpOperationPathParam>;
-
-export type HttpOperationPathParamList = Array<HttpOperationPathParam>;
-export const HttpOperationPathParamList = /*@__PURE__*/ S.Array(
-  HttpOperationPathParam,
-) as any as S.Schema<HttpOperationPathParamList>;
-
-export type HttpOperationQueryParamDataTypeEnum =
-  | "DATA_TYPE_UNSPECIFIED"
-  | "BOOL"
-  | "INTEGER"
-  | "FLOAT"
-  | "STRING"
-  | "UUID";
-export const HttpOperationQueryParamDataTypeEnum = /*@__PURE__*/ S.String;
-
-/** An aggregation of HTTP query parameter occurrences. */
-export interface HttpOperationQueryParam {
-  /** Name of query param */
-  name?: string;
-  /** The number of occurrences of this query parameter across transactions. */
-  count?: string;
-  /** Data type of path param */
-  dataType?: HttpOperationQueryParamDataTypeEnum;
-}
-export const HttpOperationQueryParam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    count: S.optional(S.String),
-    dataType: S.optional(HttpOperationQueryParamDataTypeEnum),
-  }),
-).annotate({
-  identifier: "HttpOperationQueryParam",
-}) as any as S.Schema<HttpOperationQueryParam>;
-
-export type HttpOperationQueryParamMap = {
-  [key: string]: HttpOperationQueryParam | undefined;
-};
-export const HttpOperationQueryParamMap = /*@__PURE__*/ S.Record(
-  S.String,
-  HttpOperationQueryParam,
-) as any as S.Schema<HttpOperationQueryParamMap>;
-
 export type HttpOperationMethodEnum =
   | "HTTP_METHOD_UNSPECIFIED"
   | "GET"
@@ -808,16 +742,16 @@ export const HttpOperationHeaderDataTypeEnum = /*@__PURE__*/ S.String;
 export interface HttpOperationHeader {
   /** Header name. */
   name?: string;
-  /** The number of occurrences of this Header across transactions. */
-  count?: string;
   /** Data type of header */
   dataType?: HttpOperationHeaderDataTypeEnum;
+  /** The number of occurrences of this Header across transactions. */
+  count?: string;
 }
 export const HttpOperationHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    count: S.optional(S.String),
     dataType: S.optional(HttpOperationHeaderDataTypeEnum),
+    count: S.optional(S.String),
   }),
 ).annotate({
   identifier: "HttpOperationHeader",
@@ -833,15 +767,15 @@ export const HttpOperationHeaderMap = /*@__PURE__*/ S.Record(
 
 /** An aggregation of HTTP responses. */
 export interface HttpOperationHttpResponse {
-  /** Unordered map from header name to header metadata */
-  headers?: HttpOperationHeaderMap;
   /** Map of status code to observed count */
   responseCodes?: StringMap;
+  /** Unordered map from header name to header metadata */
+  headers?: HttpOperationHeaderMap;
 }
 export const HttpOperationHttpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(HttpOperationHeaderMap),
     responseCodes: S.optional(StringMap),
+    headers: S.optional(HttpOperationHeaderMap),
   }),
 ).annotate({
   identifier: "HttpOperationHttpResponse",
@@ -860,52 +794,118 @@ export const HttpOperationHttpRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpOperationHttpRequest",
 }) as any as S.Schema<HttpOperationHttpRequest>;
 
+export type HttpOperationPathParamDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "BOOL"
+  | "INTEGER"
+  | "FLOAT"
+  | "STRING"
+  | "UUID";
+export const HttpOperationPathParamDataTypeEnum = /*@__PURE__*/ S.String;
+
+/** HTTP Path parameter. */
+export interface HttpOperationPathParam {
+  /** Data type of path param */
+  dataType?: HttpOperationPathParamDataTypeEnum;
+  /** Segment location in the path, 1-indexed */
+  position?: number;
+}
+export const HttpOperationPathParam = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataType: S.optional(HttpOperationPathParamDataTypeEnum),
+    position: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "HttpOperationPathParam",
+}) as any as S.Schema<HttpOperationPathParam>;
+
+export type HttpOperationPathParamList = Array<HttpOperationPathParam>;
+export const HttpOperationPathParamList = /*@__PURE__*/ S.Array(
+  HttpOperationPathParam,
+) as any as S.Schema<HttpOperationPathParamList>;
+
+export type HttpOperationQueryParamDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "BOOL"
+  | "INTEGER"
+  | "FLOAT"
+  | "STRING"
+  | "UUID";
+export const HttpOperationQueryParamDataTypeEnum = /*@__PURE__*/ S.String;
+
+/** An aggregation of HTTP query parameter occurrences. */
+export interface HttpOperationQueryParam {
+  /** The number of occurrences of this query parameter across transactions. */
+  count?: string;
+  /** Name of query param */
+  name?: string;
+  /** Data type of path param */
+  dataType?: HttpOperationQueryParamDataTypeEnum;
+}
+export const HttpOperationQueryParam = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.String),
+    name: S.optional(S.String),
+    dataType: S.optional(HttpOperationQueryParamDataTypeEnum),
+  }),
+).annotate({
+  identifier: "HttpOperationQueryParam",
+}) as any as S.Schema<HttpOperationQueryParam>;
+
+export type HttpOperationQueryParamMap = {
+  [key: string]: HttpOperationQueryParam | undefined;
+};
+export const HttpOperationQueryParamMap = /*@__PURE__*/ S.Record(
+  S.String,
+  HttpOperationQueryParam,
+) as any as S.Schema<HttpOperationQueryParamMap>;
+
 /** An HTTP-based API Operation, sometimes called a "REST" Operation. */
 export interface HttpOperation {
-  /** Path params of HttpOperation */
-  pathParams?: HttpOperationPathParamList;
-  /** Query params of HttpOperation */
-  queryParams?: HttpOperationQueryParamMap;
   /** HTTP Method. */
   method?: HttpOperationMethodEnum;
-  /** Path of the HTTP request. */
-  path?: string;
   /** Response metadata. */
   response?: HttpOperationHttpResponse;
   /** Request metadata. */
   request?: HttpOperationHttpRequest;
+  /** Path params of HttpOperation */
+  pathParams?: HttpOperationPathParamList;
+  /** Path of the HTTP request. */
+  path?: string;
+  /** Query params of HttpOperation */
+  queryParams?: HttpOperationQueryParamMap;
 }
 export const HttpOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pathParams: S.optional(HttpOperationPathParamList),
-    queryParams: S.optional(HttpOperationQueryParamMap),
     method: S.optional(HttpOperationMethodEnum),
-    path: S.optional(S.String),
     response: S.optional(HttpOperationHttpResponse),
     request: S.optional(HttpOperationHttpRequest),
+    pathParams: S.optional(HttpOperationPathParamList),
+    path: S.optional(S.String),
+    queryParams: S.optional(HttpOperationQueryParamMap),
   }),
 ).annotate({ identifier: "HttpOperation" }) as any as S.Schema<HttpOperation>;
 
 /** Message describing ApiOperation object */
 export interface ApiOperation {
-  /** First seen time stamp */
-  firstSeenTime?: string;
-  /** Last seen time stamp */
-  lastSeenTime?: string;
-  /** An HTTP Operation. */
-  httpOperation?: HttpOperation;
   /** Identifier. Name of resource */
   name?: string;
+  /** First seen time stamp */
+  firstSeenTime?: string;
+  /** An HTTP Operation. */
+  httpOperation?: HttpOperation;
   /** The number of occurrences of this API Operation. */
   count?: string;
+  /** Last seen time stamp */
+  lastSeenTime?: string;
 }
 export const ApiOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    firstSeenTime: S.optional(S.String),
-    lastSeenTime: S.optional(S.String),
-    httpOperation: S.optional(HttpOperation),
     name: S.optional(S.String),
+    firstSeenTime: S.optional(S.String),
+    httpOperation: S.optional(HttpOperation),
     count: S.optional(S.String),
+    lastSeenTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "ApiOperation" }) as any as S.Schema<ApiOperation>;
 
@@ -948,19 +948,19 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListApiObservationTagsProjectsLocationsRequest {
-  /** Required. The parent, which owns this collection of tags. Format: projects/{project}/locations/{location} */
-  parent: string;
-  /** Optional. The maximum number of tags to return. The service may return fewer than this value. If unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
   /** Optional. A page token, received from a previous `ListApiObservationTags` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservationTags` must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. The maximum number of tags to return. The service may return fewer than this value. If unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Required. The parent, which owns this collection of tags. Format: projects/{project}/locations/{location} */
+  parent: string;
 }
 export const ListApiObservationTagsProjectsLocationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -974,39 +974,39 @@ export const ListApiObservationTagsProjectsLocationsRequest =
 
 /** Message for response to listing tags */
 export interface ListApiObservationTagsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The tags from the specified project */
   apiObservationTags?: StringList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListApiObservationTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     apiObservationTags: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListApiObservationTagsResponse",
 }) as any as S.Schema<ListApiObservationTagsResponse>;
 
 export interface ListProjectsLocationsRequest {
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1040,19 +1040,19 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsObservationJobsRequest {
-  /** Optional. A page token, received from a previous `ListObservationJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationJobs` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. The maximum number of ObservationJobs to return. The service may return fewer than this value. If unspecified, at most 10 ObservationJobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
   /** Required. The parent, which owns this collection of ObservationJobs. Format: projects/{project}/locations/{location} */
   parent: string;
+  /** Optional. The maximum number of ObservationJobs to return. The service may return fewer than this value. If unspecified, at most 10 ObservationJobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. A page token, received from a previous `ListObservationJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationJobs` must match the call that provided the page token. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsObservationJobsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1071,37 +1071,37 @@ export const ObservationJobList = /*@__PURE__*/ S.Array(
 
 /** Message for response to listing ObservationJobs */
 export interface ListObservationJobsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The ObservationJob from the specified project and location. */
   observationJobs?: ObservationJobList;
   /** Locations that could not be reached. */
   unreachable?: StringList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListObservationJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     observationJobs: S.optional(ObservationJobList),
     unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListObservationJobsResponse",
 }) as any as S.Schema<ListObservationJobsResponse>;
 
 export interface ListProjectsLocationsObservationJobsApiObservationsRequest {
-  /** Optional. The maximum number of ApiObservations to return. The service may return fewer than this value. If unspecified, at most 10 ApiObservations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** Required. The parent, which owns this collection of ApiObservations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
-  parent: string;
   /** Optional. A page token, received from a previous `ListApiObservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservations` must match the call that provided the page token. */
   pageToken?: string;
+  /** Required. The parent, which owns this collection of ApiObservations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
+  parent: string;
+  /** Optional. The maximum number of ApiObservations to return. The service may return fewer than this value. If unspecified, at most 10 ApiObservations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsObservationJobsApiObservationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1115,34 +1115,34 @@ export const ListProjectsLocationsObservationJobsApiObservationsRequest =
 
 /** Message for response to listing ApiObservations */
 export interface ListApiObservationsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The ApiObservation from the specified project and location and ObservationJobs. */
   apiObservations?: ApiObservationList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListApiObservationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     apiObservations: S.optional(ApiObservationList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListApiObservationsResponse",
 }) as any as S.Schema<ListApiObservationsResponse>;
 
 export interface ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest {
-  /** Optional. The maximum number of ApiOperations to return. The service may return fewer than this value. If unspecified, at most 10 ApiOperations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
   /** Required. The parent, which owns this collection of ApiOperations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} */
   parent: string;
   /** Optional. A page token, received from a previous `ListApiApiOperations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiApiOperations` must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. The maximum number of ApiOperations to return. The service may return fewer than this value. If unspecified, at most 10 ApiOperations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1162,34 +1162,34 @@ export const ApiOperationList = /*@__PURE__*/ S.Array(
 
 /** Message for response to listing ApiOperations */
 export interface ListApiOperationsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The ApiOperations from the specified project and location and ObservationJob and ApiObservation. */
   apiOperations?: ApiOperationList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListApiOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     apiOperations: S.optional(ApiOperationList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListApiOperationsResponse",
 }) as any as S.Schema<ListApiOperationsResponse>;
 
 export interface ListProjectsLocationsObservationSourcesRequest {
-  /** Optional. The maximum number of ObservationSources to return. The service may return fewer than this value. If unspecified, at most 10 ObservationSources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** Required. The parent, which owns this collection of ObservationSources. Format: projects/{project}/locations/{location} */
-  parent: string;
   /** Optional. A page token, received from a previous `ListObservationSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationSources` must match the call that provided the page token. */
   pageToken?: string;
+  /** Required. The parent, which owns this collection of ObservationSources. Format: projects/{project}/locations/{location} */
+  parent: string;
+  /** Optional. The maximum number of ObservationSources to return. The service may return fewer than this value. If unspecified, at most 10 ObservationSources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsObservationSourcesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1208,43 +1208,43 @@ export const ObservationSourceList = /*@__PURE__*/ S.Array(
 
 /** Message for response to listing ObservationSources */
 export interface ListObservationSourcesResponse {
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** The ObservationSource from the specified project and location. */
   observationSources?: ObservationSourceList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListObservationSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
     observationSources: S.optional(ObservationSourceList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListObservationSourcesResponse",
 }) as any as S.Schema<ListObservationSourcesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
   /** The standard list page size. */
   pageSize?: number;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
-  /** The name of the operation's parent resource. */
-  name: string;
   /** The standard list page token. */
   pageToken?: string;
+  /** The standard list filter. */
+  filter?: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1263,17 +1263,17 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
   }),
 ).annotate({
@@ -1530,7 +1530,9 @@ export const getProjectsLocationsObservationJobsApiObservations: API.OperationMe
 }));
 
 export type GetProjectsLocationsObservationJobsApiObservationsApiOperationsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** GetApiOperation retrieves a single ApiOperation by name. */
 export const getProjectsLocationsObservationJobsApiObservationsApiOperations: API.OperationMethod<
   GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
@@ -1671,7 +1673,9 @@ export const listProjectsLocationsObservationJobsApiObservations: API.PaginatedO
 })) as any;
 
 export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsError =
-  NotFound | Forbidden | GcpOpError;
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** ListApiOperations gets all ApiOperations for a given project and location and ObservationJob and ApiObservation. */
 export const listProjectsLocationsObservationJobsApiObservationsApiOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,

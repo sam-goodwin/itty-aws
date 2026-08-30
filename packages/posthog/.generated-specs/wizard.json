@@ -94,6 +94,14 @@
     "com.posthog.wizard#WizardSessionDTO": {
       "type": "structure",
       "members": {
+        "pending_input": {
+          "target": "com.posthog.wizard#PendingInput",
+          "traits": {
+            "smithy.api#documentation": "The question the wizard is currently blocked on, or null when nothing is pending.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "session_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -150,6 +158,22 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "handoff_text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Markdown handoff doc the wizard produced for this run (its setup report), or null while the run hasn't written one. Sticky once set.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "created_by": {
+          "target": "com.posthog.wizard#WizardSessionUserDTO",
+          "traits": {
+            "smithy.api#documentation": "The user who initiated this wizard run (null for runs created before attribution existed). Lets the UI name whose run it is.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "created_at": {
           "target": "smithy.api#String",
           "traits": {
@@ -171,6 +195,54 @@
       },
       "traits": {
         "smithy.api#documentation": "Output: serialises a WizardSessionDTO returned by the facade."
+      }
+    },
+    "com.posthog.wizard#PendingInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier the wizard mints for this question. Changes when a new question is asked.",
+            "smithy.api#required": {}
+          }
+        },
+        "asked_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UTC timestamp when the wizard asked. Defaults to the session's update time when absent."
+          }
+        },
+        "question_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How many questions this single ask covers."
+          }
+        },
+        "sensitive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the answer is a secret. Sensitive questions never carry prompt text."
+          }
+        },
+        "prompts": {
+          "target": "com.posthog.wizard#PendingInputPromptsList",
+          "traits": {
+            "smithy.api#documentation": "The question text shown to the user. Always empty for sensitive questions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The in-flight `wizard_ask` question. Typed rather than a free-form dict so the shape the\nwidget renders is enforced at the edge instead of trusted from the producer."
+      }
+    },
+    "com.posthog.wizard#PendingInputPromptsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The question text shown to the user. Always empty for sensitive questions."
       }
     },
     "com.posthog.wizard#RunPhaseEnum": {
@@ -294,6 +366,30 @@
       },
       "traits": {}
     },
+    "com.posthog.wizard#WizardSessionUserDTO": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "first_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.wizard#PaginatedWizardSessionDTOListResultsList": {
       "type": "list",
       "member": {
@@ -358,6 +454,20 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "pending_input": {
+          "target": "com.posthog.wizard#PendingInput",
+          "traits": {
+            "smithy.api#documentation": "Populated while the wizard is blocked on a question in the terminal. Null/absent means no input is pending; a push without it clears the previous prompt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "handoff_text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Markdown handoff doc for the run (the wizard's setup report). Send it once the run has produced one; omitting it on later pushes keeps the stored value.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "session_id": {
@@ -428,6 +538,11 @@
       "output": {
         "target": "com.posthog.wizard#WizardSessionDTO"
       },
+      "errors": [
+        {
+          "target": "com.posthog.wizard#Forbidden"
+        }
+      ],
       "traits": {
         "smithy.api#http": {
           "method": "POST",
@@ -574,6 +689,19 @@
           "code": 200
         },
         "smithy.api#documentation": "Server-Sent Events stream of wizard session updates for a (workflow_id, skill_id) pair. On connect, the current latest session (if any) is emitted as the first event; subsequent upserts are streamed in real time. The server closes the connection after 900 seconds with an `event: end` line so the client (EventSource) can reconnect.\n\n**SDK consumers**: do not call the generated fetch wrapper for this path — it will buffer the entire infinite stream. Use the URL builder (`getWizardSessionsStreamRetrieveUrl`) with the browser's `EventSource` API instead."
+      }
+    },
+    "com.posthog.wizard#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
       }
     },
     "com.posthog.wizard#NotFound": {

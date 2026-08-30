@@ -138,6 +138,27 @@
       },
       "traits": {}
     },
+    "com.huggingface.resource_groups#GetResourceGroupResponseSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer"
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer"
+        },
+        "spaces": {
+          "target": "smithy.api#Integer"
+        },
+        "jobs": {
+          "target": "smithy.api#Integer"
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {}
+    },
     "com.huggingface.resource_groups#GetResourceGroupResponseUsersItemRole": {
       "type": "enum",
       "members": {
@@ -467,6 +488,9 @@
         "autoJoin": {
           "target": "com.huggingface.resource_groups#GetResourceGroupResponseAutoJoin"
         },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#GetResourceGroupResponseSpendLimits"
+        },
         "users": {
           "target": "com.huggingface.resource_groups#GetResourceGroupResponseUsersList",
           "traits": {
@@ -501,6 +525,42 @@
         "smithy.api#documentation": "Get resource group\n\nRetrieve a single resource group by id.\n\nRequires the org to have a Team plan or higher."
       }
     },
+    "com.huggingface.resource_groups#UpdateResourceGroupRequestSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "spaces": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "jobs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.huggingface.resource_groups#UpdateResourceGroupRequest": {
       "type": "structure",
       "members": {
@@ -520,6 +580,9 @@
         },
         "description": {
           "target": "smithy.api#String"
+        },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#UpdateResourceGroupRequestSpendLimits"
         }
       },
       "traits": {
@@ -621,6 +684,27 @@
         },
         "Case1": {
           "target": "com.huggingface.resource_groups#UpdateResourceGroupResponseAutoJoinCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.huggingface.resource_groups#UpdateResourceGroupResponseSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer"
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer"
+        },
+        "spaces": {
+          "target": "smithy.api#Integer"
+        },
+        "jobs": {
+          "target": "smithy.api#Integer"
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer"
         }
       },
       "traits": {}
@@ -954,6 +1038,9 @@
         "autoJoin": {
           "target": "com.huggingface.resource_groups#UpdateResourceGroupResponseAutoJoin"
         },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#UpdateResourceGroupResponseSpendLimits"
+        },
         "users": {
           "target": "com.huggingface.resource_groups#UpdateResourceGroupResponseUsersList",
           "traits": {
@@ -985,7 +1072,7 @@
           "uri": "/api/organizations/{name}/resource-groups/{resourceGroupId}",
           "code": 200
         },
-        "smithy.api#documentation": "Update resource group\n\nUpdate the name and/or description of a resource group.\n\nRequires the org to have a Team plan or higher."
+        "smithy.api#documentation": "Update resource group\n\nUpdate the name, description and/or monthly spend limits (in cents, `null` to remove) of a resource group.\n\n`spendLimits.total` caps the group's combined spend across every product; the per-product limits cap each product on top of it.\n\nRequires the org to have a Team plan or higher."
       }
     },
     "com.huggingface.resource_groups#DeleteResourceGroupRequest": {
@@ -1260,6 +1347,27 @@
         },
         "Case1": {
           "target": "com.huggingface.resource_groups#ConfigureAutoJoinResponseAutoJoinCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.huggingface.resource_groups#ConfigureAutoJoinResponseSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer"
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer"
+        },
+        "spaces": {
+          "target": "smithy.api#Integer"
+        },
+        "jobs": {
+          "target": "smithy.api#Integer"
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer"
         }
       },
       "traits": {}
@@ -1593,6 +1701,9 @@
         "autoJoin": {
           "target": "com.huggingface.resource_groups#ConfigureAutoJoinResponseAutoJoin"
         },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#ConfigureAutoJoinResponseSpendLimits"
+        },
         "users": {
           "target": "com.huggingface.resource_groups#ConfigureAutoJoinResponseUsersList",
           "traits": {
@@ -1877,6 +1988,27 @@
         },
         "Case1": {
           "target": "com.huggingface.resource_groups#AddUsersResponseAutoJoinCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.huggingface.resource_groups#AddUsersResponseSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer"
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer"
+        },
+        "spaces": {
+          "target": "smithy.api#Integer"
+        },
+        "jobs": {
+          "target": "smithy.api#Integer"
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer"
         }
       },
       "traits": {}
@@ -2210,6 +2342,9 @@
         "autoJoin": {
           "target": "com.huggingface.resource_groups#AddUsersResponseAutoJoin"
         },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#AddUsersResponseSpendLimits"
+        },
         "users": {
           "target": "com.huggingface.resource_groups#AddUsersResponseUsersList",
           "traits": {
@@ -2410,6 +2545,27 @@
         },
         "Case1": {
           "target": "com.huggingface.resource_groups#ChangeUserRoleResponseAutoJoinCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.huggingface.resource_groups#ChangeUserRoleResponseSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer"
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer"
+        },
+        "spaces": {
+          "target": "smithy.api#Integer"
+        },
+        "jobs": {
+          "target": "smithy.api#Integer"
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer"
         }
       },
       "traits": {}
@@ -2743,6 +2899,9 @@
         "autoJoin": {
           "target": "com.huggingface.resource_groups#ChangeUserRoleResponseAutoJoin"
         },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#ChangeUserRoleResponseSpendLimits"
+        },
         "users": {
           "target": "com.huggingface.resource_groups#ChangeUserRoleResponseUsersList",
           "traits": {
@@ -2901,6 +3060,27 @@
         },
         "Case1": {
           "target": "com.huggingface.resource_groups#RemoveUserResponseAutoJoinCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.huggingface.resource_groups#RemoveUserResponseSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer"
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer"
+        },
+        "spaces": {
+          "target": "smithy.api#Integer"
+        },
+        "jobs": {
+          "target": "smithy.api#Integer"
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer"
         }
       },
       "traits": {}
@@ -3234,6 +3414,9 @@
         "autoJoin": {
           "target": "com.huggingface.resource_groups#RemoveUserResponseAutoJoin"
         },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#RemoveUserResponseSpendLimits"
+        },
         "users": {
           "target": "com.huggingface.resource_groups#RemoveUserResponseUsersList",
           "traits": {
@@ -3378,6 +3561,27 @@
         },
         "Case1": {
           "target": "com.huggingface.resource_groups#GetResourceGroupsResponseBodyItemAutoJoinCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.huggingface.resource_groups#GetResourceGroupsResponseBodyItemSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer"
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer"
+        },
+        "spaces": {
+          "target": "smithy.api#Integer"
+        },
+        "jobs": {
+          "target": "smithy.api#Integer"
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer"
         }
       },
       "traits": {}
@@ -3710,6 +3914,9 @@
         },
         "autoJoin": {
           "target": "com.huggingface.resource_groups#GetResourceGroupsResponseBodyItemAutoJoin"
+        },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#GetResourceGroupsResponseBodyItemSpendLimits"
         },
         "users": {
           "target": "com.huggingface.resource_groups#GetResourceGroupsResponseBodyItemUsersList",
@@ -4112,6 +4319,27 @@
       },
       "traits": {}
     },
+    "com.huggingface.resource_groups#CreateResourceGroupResponseSpendLimits": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer"
+        },
+        "inferenceProviders": {
+          "target": "smithy.api#Integer"
+        },
+        "spaces": {
+          "target": "smithy.api#Integer"
+        },
+        "jobs": {
+          "target": "smithy.api#Integer"
+        },
+        "endpoints": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {}
+    },
     "com.huggingface.resource_groups#CreateResourceGroupResponseUsersItemRole": {
       "type": "enum",
       "members": {
@@ -4440,6 +4668,9 @@
         },
         "autoJoin": {
           "target": "com.huggingface.resource_groups#CreateResourceGroupResponseAutoJoin"
+        },
+        "spendLimits": {
+          "target": "com.huggingface.resource_groups#CreateResourceGroupResponseSpendLimits"
         },
         "users": {
           "target": "com.huggingface.resource_groups#CreateResourceGroupResponseUsersList",

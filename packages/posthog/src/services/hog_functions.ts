@@ -39,7 +39,7 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+/** * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
 export type HogFunctionTypeEnum =
   | "destination"
   | "site_destination"
@@ -47,10 +47,11 @@ export type HogFunctionTypeEnum =
   | "source_webhook"
   | "warehouse_source_webhook"
   | "site_app"
-  | "transformation";
+  | "transformation"
+  | "transformation_log";
 export const HogFunctionTypeEnum = /*@__PURE__*/ S.String;
 
-/** * `string` - string * `number` - number * `boolean` - boolean * `dictionary` - dictionary * `choice` - choice * `json` - json * `integration` - integration * `integration_field` - integration_field * `email` - email * `native_email` - native_email * `posthog_assignee` - posthog_assignee * `posthog_ticket_tags` - posthog_ticket_tags * `posthog_business_hours` - posthog_business_hours * `non_failure_status_codes` - non_failure_status_codes */
+/** * `string` - string * `number` - number * `boolean` - boolean * `dictionary` - dictionary * `choice` - choice * `json` - json * `integration` - integration * `integration_multi` - integration_multi * `integration_field` - integration_field * `email` - email * `native_email` - native_email * `posthog_assignee` - posthog_assignee * `posthog_ticket_tags` - posthog_ticket_tags * `posthog_business_hours` - posthog_business_hours * `non_failure_status_codes` - non_failure_status_codes * `customer_analytics_account_properties` - customer_analytics_account_properties * `customer_analytics_account_relationships` - customer_analytics_account_relationships * `task_model` - task_model * `task_repository` - task_repository * `task_mcp_installations` - task_mcp_installations */
 export type InputsSchemaItemTypeEnum =
   | "string"
   | "number"
@@ -59,13 +60,19 @@ export type InputsSchemaItemTypeEnum =
   | "choice"
   | "json"
   | "integration"
+  | "integration_multi"
   | "integration_field"
   | "email"
   | "native_email"
   | "posthog_assignee"
   | "posthog_ticket_tags"
   | "posthog_business_hours"
-  | "non_failure_status_codes";
+  | "non_failure_status_codes"
+  | "customer_analytics_account_properties"
+  | "customer_analytics_account_relationships"
+  | "task_model"
+  | "task_repository"
+  | "task_mcp_installations";
 export const InputsSchemaItemTypeEnum = /*@__PURE__*/ S.String;
 
 export type InputsSchemaItemChoicesItemMap = {
@@ -163,11 +170,12 @@ export const HogFunctionsCreateRequestInputsMap = /*@__PURE__*/ S.Record(
   InputsItemInput,
 ) as any as S.Schema<HogFunctionsCreateRequestInputsMap>;
 
-/** * `events` - events * `person-updates` - person-updates * `data-warehouse-table` - data-warehouse-table */
+/** * `events` - events * `person-updates` - person-updates * `data-warehouse-table` - data-warehouse-table * `data-warehouse-view` - data-warehouse-view */
 export type HogFunctionFiltersSourceEnum =
   | "events"
   | "person-updates"
-  | "data-warehouse-table";
+  | "data-warehouse-table"
+  | "data-warehouse-view";
 export const HogFunctionFiltersSourceEnum = /*@__PURE__*/ S.String;
 
 export type HogFunctionFiltersActionsItemMap = {
@@ -311,7 +319,7 @@ export const HogFunctionsCreateRequestMappingsList = /*@__PURE__*/ S.Array(
 export interface HogFunctionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
   type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
@@ -340,6 +348,8 @@ export interface HogFunctionsCreateRequest {
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   _create_in_folder?: string;
+  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
+  base_updated_at?: string;
 }
 export const HogFunctionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -359,6 +369,7 @@ export const HogFunctionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     template_id: S.optional(S.NullOr(S.String)),
     execution_order: S.optional(S.NullOr(S.Number)),
     _create_in_folder: S.optional(S.String),
+    base_updated_at: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -376,7 +387,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -385,6 +396,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -598,7 +610,7 @@ export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface HogFunctionOutput {
   id?: string;
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
   type?: HogFunctionTypeEnum | null;
   /** Display name for the function. */
   name?: string | null;
@@ -630,8 +642,14 @@ export interface HogFunctionOutput {
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   batch_export_id?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
+  /** Incremented every time the live config changes. See the revisions endpoint. */
+  version?: number;
+  /** Config staged for review but not live yet: a full snapshot of hog, inputs_schema, inputs, filters, mappings and masking. Null when nothing is staged. Publish or discard it to clear. */
+  draft?: unknown;
+  /** When config was last staged for review, or null when nothing is staged. */
+  draft_updated_at?: string | null;
 }
 export const HogFunctionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -657,6 +675,9 @@ export const HogFunctionOutput = /*@__PURE__*/ S.suspend(() =>
     execution_order: S.optional(S.NullOr(S.Number)),
     batch_export_id: S.optional(S.NullOr(S.String)),
     search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+    version: S.optional(S.Number),
+    draft: S.optional(S.Unknown),
+    draft_updated_at: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HogFunctionOutput",
@@ -690,6 +711,28 @@ export const HogFunctionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionsDestroyResponse",
 }) as any as S.Schema<HogFunctionsDestroyResponse>;
 
+export interface HogFunctionsDiscardDraftCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+}
+export const HogFunctionsDiscardDraftCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/hog_functions/{id}/discard_draft/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "HogFunctionsDiscardDraftCreateRequest",
+}) as any as S.Schema<HogFunctionsDiscardDraftCreateRequest>;
+
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
   Array<InputsSchemaItem>;
@@ -721,7 +764,7 @@ export interface HogFunctionsEnableBackfillsCreateRequest {
   project_id: string;
   /** A UUID string identifying this hog function. */
   id: string;
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
   type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
@@ -750,6 +793,8 @@ export interface HogFunctionsEnableBackfillsCreateRequest {
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   _create_in_folder?: string;
+  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
+  base_updated_at?: string;
 }
 export const HogFunctionsEnableBackfillsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -775,6 +820,7 @@ export const HogFunctionsEnableBackfillsCreateRequest = /*@__PURE__*/ S.suspend(
       template_id: S.optional(S.NullOr(S.String)),
       execution_order: S.optional(S.NullOr(S.Number)),
       _create_in_folder: S.optional(S.String),
+      base_updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -864,7 +910,7 @@ export const HogFunctionInputMappingsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HogFunctionInputMappingsList>;
 
 export interface HogFunctionInput {
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
   type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
@@ -893,6 +939,8 @@ export interface HogFunctionInput {
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   _create_in_folder?: string;
+  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
+  base_updated_at?: string;
 }
 export const HogFunctionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -911,6 +959,7 @@ export const HogFunctionInput = /*@__PURE__*/ S.suspend(() =>
     template_id: S.optional(S.NullOr(S.String)),
     execution_order: S.optional(S.NullOr(S.Number)),
     _create_in_folder: S.optional(S.String),
+    base_updated_at: S.optional(S.String),
   }),
 ).annotate({
   identifier: "HogFunctionInput",
@@ -941,8 +990,10 @@ export interface HogFunctionsInvocationsCreateRequest {
   project_id: string;
   /** A UUID string identifying this hog function. */
   id: string;
-  /** Full function configuration to test. */
+  /** Full function configuration to test. Omit when use_draft is true. */
   configuration?: HogFunctionInput;
+  /** Test the function's staged draft instead of passing a configuration. Staged secret inputs are used; secrets the draft doesn't change fall back to the live values. 400 when nothing is staged. */
+  use_draft?: boolean;
   /** Mock global variables available during test invocation. */
   globals?: HogFunctionsInvocationsCreateRequestGlobalsMap;
   /** Mock ClickHouse event data to test the function with. */
@@ -958,6 +1009,7 @@ export const HogFunctionsInvocationsCreateRequest = /*@__PURE__*/ S.suspend(
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       configuration: S.optional(HogFunctionInput),
+      use_draft: S.optional(S.Boolean),
       globals: S.optional(HogFunctionsInvocationsCreateRequestGlobalsMap),
       clickhouse_event: S.optional(
         HogFunctionsInvocationsCreateRequestClickhouseEventMap,
@@ -1056,8 +1108,10 @@ export interface HogFunctionMinimal {
   template?: HogFunctionTemplate;
   status?: HogFunctionStatus | null;
   execution_order?: number | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
+  /** When config was last staged for review, or null when nothing is staged. */
+  draft_updated_at?: string | null;
 }
 export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1076,6 +1130,7 @@ export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(S.NullOr(HogFunctionStatus)),
     execution_order: S.optional(S.NullOr(S.Number)),
     search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+    draft_updated_at: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "HogFunctionMinimal",
@@ -1109,7 +1164,7 @@ export interface HogFunctionsLogsRetrieveRequest {
   project_id: string;
   /** A UUID string identifying this hog function. */
   id: string;
-  /** Only return entries after this ISO 8601 timestamp. */
+  /** Only return entries after this ISO 8601 timestamp. Defaults to 7 days ago; pass an explicit value to read further back. */
   after?: string;
   /** Only return entries before this ISO 8601 timestamp. */
   before?: string;
@@ -1149,6 +1204,80 @@ export const HogFunctionsLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HogFunctionsLogsRetrieveResponse",
 }) as any as S.Schema<HogFunctionsLogsRetrieveResponse>;
+
+export interface HogFunctionsMaskedSecretsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const HogFunctionsMaskedSecretsRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/hog_functions/masked_secrets/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "HogFunctionsMaskedSecretsRetrieveRequest",
+}) as any as S.Schema<HogFunctionsMaskedSecretsRetrieveRequest>;
+
+/** Keys of the live secret inputs to enter again. Only keys are returned, never values. */
+export type HogFunctionMaskedSecretInputKeysList = Array<string>;
+export const HogFunctionMaskedSecretInputKeysList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<HogFunctionMaskedSecretInputKeysList>;
+
+/** Keys of the staged draft's secret inputs to enter again. Only keys are returned. */
+export type HogFunctionMaskedSecretDraftInputKeysList = Array<string>;
+export const HogFunctionMaskedSecretDraftInputKeysList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<HogFunctionMaskedSecretDraftInputKeysList>;
+
+export interface HogFunctionMaskedSecret {
+  /** ID of the hog function. */
+  id: string;
+  /** Name of the hog function. */
+  name: string;
+  /** Hog function type, for example 'destination'. */
+  type: string;
+  /** Whether the hog function is enabled. */
+  enabled: boolean;
+  /** Keys of the live secret inputs to enter again. Only keys are returned, never values. */
+  input_keys: HogFunctionMaskedSecretInputKeysList;
+  /** Keys of the staged draft's secret inputs to enter again. Only keys are returned. */
+  draft_input_keys: HogFunctionMaskedSecretDraftInputKeysList;
+}
+export const HogFunctionMaskedSecret = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    type: S.String,
+    enabled: S.Boolean,
+    input_keys: HogFunctionMaskedSecretInputKeysList,
+    draft_input_keys: HogFunctionMaskedSecretDraftInputKeysList,
+  }),
+).annotate({
+  identifier: "HogFunctionMaskedSecret",
+}) as any as S.Schema<HogFunctionMaskedSecret>;
+
+export type HogFunctionsMaskedSecretsRetrieveResponseBodyList =
+  Array<HogFunctionMaskedSecret>;
+export const HogFunctionsMaskedSecretsRetrieveResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    HogFunctionMaskedSecret,
+  ) as any as S.Schema<HogFunctionsMaskedSecretsRetrieveResponseBodyList>;
+
+export type HogFunctionsMaskedSecretsRetrieveResponse =
+  HogFunctionsMaskedSecretsRetrieveResponseBodyList;
+export const HogFunctionsMaskedSecretsRetrieveResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    HogFunctionsMaskedSecretsRetrieveResponseBodyList.pipe(T.RawResponseRoot()),
+  ).annotate({
+    identifier: "HogFunctionsMaskedSecretsRetrieveResponse",
+  }) as any as S.Schema<HogFunctionsMaskedSecretsRetrieveResponse>;
 
 export type HogFunctionsMetricsRetrieveRequestBreakdownBy = "name" | "kind";
 export const HogFunctionsMetricsRetrieveRequestBreakdownBy =
@@ -1358,7 +1487,7 @@ export interface HogFunctionsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this hog function. */
   id: string;
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
   type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
@@ -1387,6 +1516,8 @@ export interface HogFunctionsPartialUpdateRequest {
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   _create_in_folder?: string;
+  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
+  base_updated_at?: string;
 }
 export const HogFunctionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1409,6 +1540,7 @@ export const HogFunctionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     template_id: S.optional(S.NullOr(S.String)),
     execution_order: S.optional(S.NullOr(S.Number)),
     _create_in_folder: S.optional(S.String),
+    base_updated_at: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1419,6 +1551,64 @@ export const HogFunctionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HogFunctionsPartialUpdateRequest",
 }) as any as S.Schema<HogFunctionsPartialUpdateRequest>;
+
+export interface HogFunctionsPublishCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** False (default) previews the publish: returns which config fields would change without changing anything. True applies the staged draft to the live function. */
+  confirm?: boolean;
+  /** From the preview response, and required when confirm=true on an enabled function. Expires after 15 minutes, and any edit to the draft or the live config invalidates it (409), so you always publish the exact draft you previewed. */
+  confirm_token?: string;
+}
+export const HogFunctionsPublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    confirm: S.optional(S.Boolean),
+    confirm_token: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/hog_functions/{id}/publish/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "HogFunctionsPublishCreateRequest",
+}) as any as S.Schema<HogFunctionsPublishCreateRequest>;
+
+/** Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews. */
+export type HogFunctionPublishResponseOutputChangedFieldsList = Array<string>;
+export const HogFunctionPublishResponseOutputChangedFieldsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HogFunctionPublishResponseOutputChangedFieldsList>;
+
+export interface HogFunctionPublishResponseOutput {
+  /** Whether the draft was applied to the live function. */
+  published: boolean;
+  /** The staged draft's timestamp, for reference; publishing is confirmed via confirm_token. */
+  draft_updated_at: string | null;
+  /** Echo this back with confirm=true to publish the previewed draft. Only set on previews. */
+  confirm_token: string | null;
+  /** Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews. */
+  changed_fields: HogFunctionPublishResponseOutputChangedFieldsList | null;
+  /** The function after publishing (only set when published=true). */
+  function?: HogFunctionOutput | null;
+}
+export const HogFunctionPublishResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    published: S.Boolean,
+    draft_updated_at: S.NullOr(S.String),
+    confirm_token: S.NullOr(S.String),
+    changed_fields: S.NullOr(HogFunctionPublishResponseOutputChangedFieldsList),
+    function: S.optional(S.NullOr(HogFunctionOutput)),
+  }),
+).annotate({
+  identifier: "HogFunctionPublishResponseOutput",
+}) as any as S.Schema<HogFunctionPublishResponseOutput>;
 
 /** Map of hog function UUIDs to their new execution_order values. */
 export type HogFunctionsRearrangePartialUpdateRequestOrdersMap = {
@@ -1470,6 +1660,111 @@ export const HogFunctionsRearrangePartialUpdateResponse =
     identifier: "HogFunctionsRearrangePartialUpdateResponse",
   }) as any as S.Schema<HogFunctionsRearrangePartialUpdateResponse>;
 
+/** * `running` - running * `succeeded` - succeeded * `failed` - failed * `canceled` - canceled */
+export type HogInvocationRerunFilterStatusEnum =
+  | "running"
+  | "succeeded"
+  | "failed"
+  | "canceled";
+export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
+
+/** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
+export type HogInvocationRerunFilterStatusList = Array<
+  HogInvocationRerunFilterStatusEnum | (string & {})
+>;
+export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
+  HogInvocationRerunFilterStatusEnum,
+) as any as S.Schema<HogInvocationRerunFilterStatusList>;
+
+/** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
+export type HogInvocationRerunFilterErrorKindList = Array<string>;
+export const HogInvocationRerunFilterErrorKindList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<HogInvocationRerunFilterErrorKindList>;
+
+/** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
+export type HogInvocationRerunFilterInvocationIdsList = Array<string>;
+export const HogInvocationRerunFilterInvocationIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<HogInvocationRerunFilterInvocationIdsList>;
+
+/** Filter shape for the rerun endpoint. `window_start`/`window_end` are required. */
+export interface HogInvocationRerunFilter {
+  /** Inclusive lower bound on `scheduled_at` (UTC). */
+  window_start: string;
+  /** Exclusive upper bound on `scheduled_at` (UTC). */
+  window_end: string;
+  /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
+  status?: HogInvocationRerunFilterStatusList;
+  /** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
+  error_kind?: HogInvocationRerunFilterErrorKindList;
+  /** Restrict to invocations whose error_message contains this substring (case-insensitive). Use to isolate one failure mode when error_kind is too coarse (most app-level errors share the 'hog_error' kind). */
+  error_message_contains?: string;
+  /** Skip invocations that have already been attempted this many times or more. */
+  max_attempts?: number;
+  /** Maximum number of invocations to rerun in this request. Server-side cap is 10000. */
+  max_count?: number;
+  /** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
+  invocation_ids?: HogInvocationRerunFilterInvocationIdsList;
+}
+export const HogInvocationRerunFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    window_start: S.String,
+    window_end: S.String,
+    status: S.optional(HogInvocationRerunFilterStatusList),
+    error_kind: S.optional(HogInvocationRerunFilterErrorKindList),
+    error_message_contains: S.optional(S.String),
+    max_attempts: S.optional(S.Number),
+    max_count: S.optional(S.Number),
+    invocation_ids: S.optional(HogInvocationRerunFilterInvocationIdsList),
+  }),
+).annotate({
+  identifier: "HogInvocationRerunFilter",
+}) as any as S.Schema<HogInvocationRerunFilter>;
+
+export interface HogFunctionsRerunCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** Required. `window_start` / `window_end` pin the query to a small set of date partitions on the `hog_invocation_results` table. Optional `invocation_ids` restricts to specific invocations within that window. */
+  filter: HogInvocationRerunFilter;
+}
+export const HogFunctionsRerunCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    filter: HogInvocationRerunFilter,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/hog_functions/{id}/rerun/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "HogFunctionsRerunCreateRequest",
+}) as any as S.Schema<HogFunctionsRerunCreateRequest>;
+
+/** Response from the rerun endpoint. The endpoint only enqueues a wrapper job onto the cyclotron `rerun` queue — the actual ClickHouse paging and re-enqueue work happens asynchronously in the `cdp-rerun-worker` service. Use `rerun_job_id` to look up progress on the wrapper job later. */
+export interface HogInvocationRerunResponse {
+  /** ID of the cyclotron wrapper job that will run the rerun. Use this to poll status. */
+  rerun_job_id: string;
+  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
+  queued_count: number;
+  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
+  skipped_count: number;
+}
+export const HogInvocationRerunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rerun_job_id: S.String,
+    queued_count: S.Number,
+    skipped_count: S.Number,
+  }),
+).annotate({
+  identifier: "HogInvocationRerunResponse",
+}) as any as S.Schema<HogInvocationRerunResponse>;
+
 export interface HogFunctionsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1490,6 +1785,146 @@ export const HogFunctionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HogFunctionsRetrieveRequest",
 }) as any as S.Schema<HogFunctionsRetrieveRequest>;
+
+export interface HogFunctionsRevisionsListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const HogFunctionsRevisionsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/hog_functions/{id}/revisions/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "HogFunctionsRevisionsListRequest",
+}) as any as S.Schema<HogFunctionsRevisionsListRequest>;
+
+export interface HogFunctionRevisionBasic {
+  /** Function version this snapshot was published as. */
+  version: number;
+  created_at: string;
+  created_by: UserBasic | null;
+}
+export const HogFunctionRevisionBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.Number,
+    created_at: S.String,
+    created_by: S.NullOr(UserBasic),
+  }),
+).annotate({
+  identifier: "HogFunctionRevisionBasic",
+}) as any as S.Schema<HogFunctionRevisionBasic>;
+
+export type PaginatedHogFunctionRevisionBasicListResultsList =
+  Array<HogFunctionRevisionBasic>;
+export const PaginatedHogFunctionRevisionBasicListResultsList =
+  /*@__PURE__*/ S.Array(
+    HogFunctionRevisionBasic,
+  ) as any as S.Schema<PaginatedHogFunctionRevisionBasicListResultsList>;
+
+export interface PaginatedHogFunctionRevisionBasicList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedHogFunctionRevisionBasicListResultsList;
+}
+export const PaginatedHogFunctionRevisionBasicList = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      count: S.Number,
+      next: S.optional(S.NullOr(S.String)),
+      previous: S.optional(S.NullOr(S.String)),
+      results: PaginatedHogFunctionRevisionBasicListResultsList,
+    }),
+).annotate({
+  identifier: "PaginatedHogFunctionRevisionBasicList",
+}) as any as S.Schema<PaginatedHogFunctionRevisionBasicList>;
+
+export interface HogFunctionsRevisionsRestoreCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** Function version to restore. */
+  version: number;
+  /** Replace the open staged draft with this revision's config. Without it, restoring while a draft is open returns 409. */
+  overwrite?: boolean;
+}
+export const HogFunctionsRevisionsRestoreCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      version: S.Number.pipe(T.Label()),
+      overwrite: S.optional(S.Boolean),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/hog_functions/{id}/revisions/{version}/restore/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "HogFunctionsRevisionsRestoreCreateRequest",
+  }) as any as S.Schema<HogFunctionsRevisionsRestoreCreateRequest>;
+
+export interface HogFunctionsRevisionsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this hog function. */
+  id: string;
+  /** Function version to fetch. */
+  version: number;
+}
+export const HogFunctionsRevisionsRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      version: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/hog_functions/{id}/revisions/{version}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "HogFunctionsRevisionsRetrieveRequest",
+}) as any as S.Schema<HogFunctionsRevisionsRetrieveRequest>;
+
+export interface HogFunctionRevision {
+  /** Function version this snapshot was published as. */
+  version: number;
+  created_at: string;
+  created_by: UserBasic | null;
+  /** Full snapshot of the function's config fields (hog, inputs_schema, inputs, filters, mappings, masking) at this version. */
+  content: unknown;
+}
+export const HogFunctionRevision = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.Number,
+    created_at: S.String,
+    created_by: S.NullOr(UserBasic),
+    content: S.Unknown,
+  }),
+).annotate({
+  identifier: "HogFunctionRevision",
+}) as any as S.Schema<HogFunctionRevision>;
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsUpdateRequestInputsSchemaList = Array<InputsSchemaItem>;
@@ -1517,7 +1952,7 @@ export interface HogFunctionsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this hog function. */
   id: string;
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation * `transformation_log` - Transformation Log */
   type?: HogFunctionTypeEnum | (string & {}) | null;
   /** Display name for the function. */
   name?: string | null;
@@ -1546,6 +1981,8 @@ export interface HogFunctionsUpdateRequest {
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   _create_in_folder?: string;
+  /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
+  base_updated_at?: string;
 }
 export const HogFunctionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1566,6 +2003,7 @@ export const HogFunctionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     template_id: S.optional(S.NullOr(S.String)),
     execution_order: S.optional(S.NullOr(S.Number)),
     _create_in_folder: S.optional(S.String),
+    base_updated_at: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1606,6 +2044,20 @@ export const hogFunctionsDestroy: API.OperationMethod<
   input: HogFunctionsDestroyRequest,
   output: HogFunctionsDestroyResponse,
   errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type HogFunctionsDiscardDraftCreateError = PosthogOpError;
+export const hogFunctionsDiscardDraftCreate: API.OperationMethod<
+  HogFunctionsDiscardDraftCreateRequest,
+  HogFunctionOutput,
+  HogFunctionsDiscardDraftCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: HogFunctionsDiscardDraftCreateRequest,
+  output: HogFunctionOutput,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -1716,6 +2168,21 @@ export const hogFunctionsLogsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type HogFunctionsMaskedSecretsRetrieveError = PosthogOpError;
+/** Hog functions storing the secret mask in place of a real credential. Such a function authenticates against nothing and fails every send. The original value cannot be restored from our side, so each listed input has to be entered again. */
+export const hogFunctionsMaskedSecretsRetrieve: API.OperationMethod<
+  HogFunctionsMaskedSecretsRetrieveRequest,
+  HogFunctionsMaskedSecretsRetrieveResponse,
+  HogFunctionsMaskedSecretsRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: HogFunctionsMaskedSecretsRetrieveRequest,
+  output: HogFunctionsMaskedSecretsRetrieveResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type HogFunctionsMetricsRetrieveError =
   | BadRequest
   | Forbidden
@@ -1770,6 +2237,20 @@ export const hogFunctionsPartialUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type HogFunctionsPublishCreateError = PosthogOpError;
+export const hogFunctionsPublishCreate: API.OperationMethod<
+  HogFunctionsPublishCreateRequest,
+  HogFunctionPublishResponseOutput,
+  HogFunctionsPublishCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: HogFunctionsPublishCreateRequest,
+  output: HogFunctionPublishResponseOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type HogFunctionsRearrangePartialUpdateError =
   | BadRequest
   | Forbidden
@@ -1789,6 +2270,21 @@ export const hogFunctionsRearrangePartialUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type HogFunctionsRerunCreateError = BadRequest | PosthogOpError;
+/** Rerun past invocations of this hog function from their stored payloads. The CDP worker reads matching rows from the `hog_invocation_results` ClickHouse table, rehydrates the invocation from the stored `invocation_globals`, and re-enqueues onto cyclotron. Each rerun run reuses the original `invocation_id` with `is_retry=1` set on the new lifecycle row so the UI can surface that it was a rerun. Only types a cyclotron worker executes (`TYPES_THAT_CAN_RERUN`) can be rerun: rerun re-enqueues onto the cyclotron hog queue, and other types run elsewhere (source webhooks inline in the cdp-api HTTP handler, transformations during ingestion, `site_*` transpiled to client-side JS). A re-enqueued invocation of one of those would never drain and wedges the partition, so a rerun of a non-rerunnable type is rejected with a 400 here. A disabled function is rejected the same way: the worker skips its invocations, so the rerun could never execute. Because rerun replays historical event/person/group data, it requires `person:read` and `group:read` on top of `hog_function:write`. */
+export const hogFunctionsRerunCreate: API.OperationMethod<
+  HogFunctionsRerunCreateRequest,
+  HogInvocationRerunResponse,
+  HogFunctionsRerunCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: HogFunctionsRerunCreateRequest,
+  output: HogInvocationRerunResponse,
+  errors: [BadRequest],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type HogFunctionsRetrieveError = Forbidden | NotFound | PosthogOpError;
 export const hogFunctionsRetrieve: API.OperationMethod<
   HogFunctionsRetrieveRequest,
@@ -1799,6 +2295,48 @@ export const hogFunctionsRetrieve: API.OperationMethod<
   input: HogFunctionsRetrieveRequest,
   output: HogFunctionOutput,
   errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type HogFunctionsRevisionsListError = PosthogOpError;
+export const hogFunctionsRevisionsList: API.OperationMethod<
+  HogFunctionsRevisionsListRequest,
+  PaginatedHogFunctionRevisionBasicList,
+  HogFunctionsRevisionsListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: HogFunctionsRevisionsListRequest,
+  output: PaginatedHogFunctionRevisionBasicList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type HogFunctionsRevisionsRestoreCreateError = PosthogOpError;
+export const hogFunctionsRevisionsRestoreCreate: API.OperationMethod<
+  HogFunctionsRevisionsRestoreCreateRequest,
+  HogFunctionOutput,
+  HogFunctionsRevisionsRestoreCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: HogFunctionsRevisionsRestoreCreateRequest,
+  output: HogFunctionOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type HogFunctionsRevisionsRetrieveError = PosthogOpError;
+export const hogFunctionsRevisionsRetrieve: API.OperationMethod<
+  HogFunctionsRevisionsRetrieveRequest,
+  HogFunctionRevision,
+  HogFunctionsRevisionsRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: HogFunctionsRevisionsRetrieveRequest,
+  output: HogFunctionRevision,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

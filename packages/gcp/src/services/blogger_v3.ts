@@ -86,9 +86,6 @@ export const ApproveCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApproveCommentsRequest",
 }) as any as S.Schema<ApproveCommentsRequest>;
 
-export type CommentStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
-export const CommentStatusEnum = /*@__PURE__*/ S.String;
-
 export interface CommentInReplyTo {
   /** The identified of the parent of this comment. */
   id?: string;
@@ -100,26 +97,6 @@ export const CommentInReplyTo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CommentInReplyTo",
 }) as any as S.Schema<CommentInReplyTo>;
-
-export interface CommentPost {
-  /** The identifier of the post containing this comment. */
-  id?: string;
-}
-export const CommentPost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommentPost" }) as any as S.Schema<CommentPost>;
-
-export interface CommentBlog {
-  /** The identifier of the blog containing this comment. */
-  id?: string;
-}
-export const CommentBlog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommentBlog" }) as any as S.Schema<CommentBlog>;
 
 export interface CommentAuthorImage {
   /** The creator's avatar URL. */
@@ -134,61 +111,84 @@ export const CommentAuthorImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommentAuthorImage>;
 
 export interface CommentAuthor {
-  /** The identifier of the creator. */
-  id?: string;
   /** The display name. */
   displayName?: string;
-  /** The URL of the creator's Profile page. */
-  url?: string;
   /** The creator's avatar. */
   image?: CommentAuthorImage;
+  /** The URL of the creator's Profile page. */
+  url?: string;
+  /** The identifier of the creator. */
+  id?: string;
 }
 export const CommentAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
     displayName: S.optional(S.String),
-    url: S.optional(S.String),
     image: S.optional(CommentAuthorImage),
+    url: S.optional(S.String),
+    id: S.optional(S.String),
   }),
 ).annotate({ identifier: "CommentAuthor" }) as any as S.Schema<CommentAuthor>;
 
-export interface Comment {
-  /** The kind of this entry. Always blogger#comment. */
-  kind?: string;
-  /** The identifier for this resource. */
+export interface CommentPost {
+  /** The identifier of the post containing this comment. */
   id?: string;
-  /** The status of the comment (only populated for admin users). */
-  status?: CommentStatusEnum | (string & {});
+}
+export const CommentPost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({ identifier: "CommentPost" }) as any as S.Schema<CommentPost>;
+
+export type CommentStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
+export const CommentStatusEnum = /*@__PURE__*/ S.String;
+
+export interface CommentBlog {
+  /** The identifier of the blog containing this comment. */
+  id?: string;
+}
+export const CommentBlog = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({ identifier: "CommentBlog" }) as any as S.Schema<CommentBlog>;
+
+export interface Comment {
   /** Data about the comment this is in reply to. */
   inReplyTo?: CommentInReplyTo;
-  /** Data about the post containing this comment. */
-  post?: CommentPost;
-  /** Data about the blog containing this comment. */
-  blog?: CommentBlog;
-  /** RFC 3339 date-time when this comment was published. */
-  published?: string;
-  /** RFC 3339 date-time when this comment was last updated. */
-  updated?: string;
-  /** The API REST URL to fetch this resource from. */
-  selfLink?: string;
-  /** The actual content of the comment. May include HTML markup. */
-  content?: string;
+  /** The identifier for this resource. */
+  id?: string;
   /** The author of this Comment. */
   author?: CommentAuthor;
+  /** Data about the post containing this comment. */
+  post?: CommentPost;
+  /** The actual content of the comment. May include HTML markup. */
+  content?: string;
+  /** RFC 3339 date-time when this comment was last updated. */
+  updated?: string;
+  /** RFC 3339 date-time when this comment was published. */
+  published?: string;
+  /** The kind of this entry. Always blogger#comment. */
+  kind?: string;
+  /** The API REST URL to fetch this resource from. */
+  selfLink?: string;
+  /** The status of the comment (only populated for admin users). */
+  status?: CommentStatusEnum | (string & {});
+  /** Data about the blog containing this comment. */
+  blog?: CommentBlog;
 }
 export const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    status: S.optional(CommentStatusEnum),
     inReplyTo: S.optional(CommentInReplyTo),
-    post: S.optional(CommentPost),
-    blog: S.optional(CommentBlog),
-    published: S.optional(S.String),
-    updated: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    content: S.optional(S.String),
+    id: S.optional(S.String),
     author: S.optional(CommentAuthor),
+    post: S.optional(CommentPost),
+    content: S.optional(S.String),
+    updated: S.optional(S.String),
+    published: S.optional(S.String),
+    kind: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    status: S.optional(CommentStatusEnum),
+    blog: S.optional(CommentBlog),
   }),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
@@ -221,16 +221,16 @@ export const DeleteCommentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCommentsResponse>;
 
 export interface DeletePagesRequest {
-  blogId: string;
-  pageId: string;
   /** Move to Trash if possible */
   useTrash?: boolean;
+  blogId: string;
+  pageId: string;
 }
 export const DeletePagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    useTrash: S.optional(S.Boolean.pipe(T.Query())),
     blogId: S.String.pipe(T.Label()),
     pageId: S.String.pipe(T.Label()),
-    useTrash: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -286,16 +286,16 @@ export type GetBlogsViewEnum =
 export const GetBlogsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetBlogsRequest {
-  blogId: string;
   maxPosts?: number;
   /** Unspecified is interpreted as READER. */
   view?: GetBlogsViewEnum | (string & {});
+  blogId: string;
 }
 export const GetBlogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    blogId: S.String.pipe(T.Label()),
     maxPosts: S.optional(S.Number.pipe(T.Query())),
     view: S.optional(GetBlogsViewEnum.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -307,12 +307,6 @@ export const GetBlogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBlogsRequest",
 }) as any as S.Schema<GetBlogsRequest>;
 
-export type BlogStatusEnum = "LIVE" | "DELETED";
-export const BlogStatusEnum = /*@__PURE__*/ S.String;
-
-export type PostStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
-export const PostStatusEnum = /*@__PURE__*/ S.String;
-
 export interface PostBlog {
   /** The identifier of the Blog that contains this Post. */
   id?: string;
@@ -322,6 +316,52 @@ export const PostBlog = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
   }),
 ).annotate({ identifier: "PostBlog" }) as any as S.Schema<PostBlog>;
+
+export type PostStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
+export const PostStatusEnum = /*@__PURE__*/ S.String;
+
+export type CommentList_ = Array<Comment>;
+export const CommentList_ = /*@__PURE__*/ S.Array(
+  Comment,
+) as any as S.Schema<CommentList_>;
+
+export interface PostReplies {
+  /** The List of Comments for this Post. */
+  items?: CommentList_;
+  /** The URL of the comments on this post. */
+  selfLink?: string;
+  /** The count of comments on this post. */
+  totalItems?: string;
+}
+export const PostReplies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(CommentList_),
+    selfLink: S.optional(S.String),
+    totalItems: S.optional(S.String),
+  }),
+).annotate({ identifier: "PostReplies" }) as any as S.Schema<PostReplies>;
+
+export type PostAuthorImage = CommentAuthorImage;
+export const PostAuthorImage = CommentAuthorImage;
+
+export interface PostAuthor {
+  /** The URL of the creator's Profile page. */
+  url?: string;
+  /** The display name. */
+  displayName?: string;
+  /** The identifier of the creator. */
+  id?: string;
+  /** The creator's avatar. */
+  image?: CommentAuthorImage;
+}
+export const PostAuthor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.optional(S.String),
+    displayName: S.optional(S.String),
+    id: S.optional(S.String),
+    image: S.optional(CommentAuthorImage),
+  }),
+).annotate({ identifier: "PostAuthor" }) as any as S.Schema<PostAuthor>;
 
 export interface PostImagesItem {
   url?: string;
@@ -337,56 +377,29 @@ export const PostImagesItemList = /*@__PURE__*/ S.Array(
   PostImagesItem,
 ) as any as S.Schema<PostImagesItemList>;
 
-export type PostAuthorImage = CommentAuthorImage;
-export const PostAuthorImage = CommentAuthorImage;
-
-export type PostAuthor = CommentAuthor;
-export const PostAuthor = CommentAuthor;
-
-export type CommentList_ = Array<Comment>;
-export const CommentList_ = /*@__PURE__*/ S.Array(
-  Comment,
-) as any as S.Schema<CommentList_>;
-
-export interface PostReplies {
-  /** The count of comments on this post. */
-  totalItems?: string;
-  /** The URL of the comments on this post. */
-  selfLink?: string;
-  /** The List of Comments for this Post. */
-  items?: CommentList_;
+export interface PostLocation {
+  /** Location's viewport span. Can be used when rendering a map preview. */
+  span?: string;
+  /** Location's latitude. */
+  lat?: number;
+  /** Location's longitude. */
+  lng?: number;
+  /** Location name. */
+  name?: string;
 }
-export const PostReplies = /*@__PURE__*/ S.suspend(() =>
+export const PostLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    totalItems: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    items: S.optional(CommentList_),
+    span: S.optional(S.String),
+    lat: S.optional(S.Number),
+    lng: S.optional(S.Number),
+    name: S.optional(S.String),
   }),
-).annotate({ identifier: "PostReplies" }) as any as S.Schema<PostReplies>;
+).annotate({ identifier: "PostLocation" }) as any as S.Schema<PostLocation>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
-
-export interface PostLocation {
-  /** Location name. */
-  name?: string;
-  /** Location's latitude. */
-  lat?: number;
-  /** Location's longitude. */
-  lng?: number;
-  /** Location's viewport span. Can be used when rendering a map preview. */
-  span?: string;
-}
-export const PostLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    lat: S.optional(S.Number),
-    lng: S.optional(S.Number),
-    span: S.optional(S.String),
-  }),
-).annotate({ identifier: "PostLocation" }) as any as S.Schema<PostLocation>;
 
 export type PostReaderCommentsEnum =
   | "ALLOW"
@@ -395,69 +408,69 @@ export type PostReaderCommentsEnum =
 export const PostReaderCommentsEnum = /*@__PURE__*/ S.String;
 
 export interface Post {
-  /** The kind of this entity. Always blogger#post. */
-  kind?: string;
-  /** The identifier of this Post. */
-  id?: string;
-  /** Status of the post. Only set for admin-level requests. */
-  status?: PostStatusEnum | (string & {});
   /** Data about the blog containing this Post. */
   blog?: PostBlog;
   /** RFC 3339 date-time when this Post was published. */
   published?: string;
-  /** RFC 3339 date-time when this Post was last updated. */
-  updated?: string;
+  /** The JSON meta-data for the Post. */
+  customMetaData?: string;
+  /** The identifier of this Post. */
+  id?: string;
+  /** Status of the post. Only set for admin-level requests. */
+  status?: PostStatusEnum | (string & {});
   /** RFC 3339 date-time when this Post was last trashed. */
   trashed?: string;
-  /** The URL where this Post is displayed. */
-  url?: string;
+  /** The container of comments on this Post. */
+  replies?: PostReplies;
+  /** The author of this Post. */
+  author?: PostAuthor;
+  /** Display image for the Post. */
+  images?: PostImagesItemList;
   /** The API REST URL to fetch this resource from. */
   selfLink?: string;
+  /** The location for geotagged posts. */
+  location?: PostLocation;
+  /** Etag of the resource. */
+  etag?: string;
   /** The title of the Post. */
   title?: string;
+  /** The kind of this entity. Always blogger#post. */
+  kind?: string;
+  /** The list of labels this Post was tagged with. */
+  labels?: StringList;
+  /** The URL where this Post is displayed. */
+  url?: string;
+  /** RFC 3339 date-time when this Post was last updated. */
+  updated?: string;
   /** The title link URL, similar to atom's related link. */
   titleLink?: string;
   /** The content of the Post. May contain HTML markup. */
   content?: string;
-  /** Display image for the Post. */
-  images?: PostImagesItemList;
-  /** The JSON meta-data for the Post. */
-  customMetaData?: string;
-  /** The author of this Post. */
-  author?: CommentAuthor;
-  /** The container of comments on this Post. */
-  replies?: PostReplies;
-  /** The list of labels this Post was tagged with. */
-  labels?: StringList;
-  /** The location for geotagged posts. */
-  location?: PostLocation;
   /** Comment control and display setting for readers of this post. */
   readerComments?: PostReaderCommentsEnum | (string & {});
-  /** Etag of the resource. */
-  etag?: string;
 }
 export const Post = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
-    status: S.optional(PostStatusEnum),
     blog: S.optional(PostBlog),
     published: S.optional(S.String),
-    updated: S.optional(S.String),
+    customMetaData: S.optional(S.String),
+    id: S.optional(S.String),
+    status: S.optional(PostStatusEnum),
     trashed: S.optional(S.String),
-    url: S.optional(S.String),
+    replies: S.optional(PostReplies),
+    author: S.optional(PostAuthor),
+    images: S.optional(PostImagesItemList),
     selfLink: S.optional(S.String),
+    location: S.optional(PostLocation),
+    etag: S.optional(S.String),
     title: S.optional(S.String),
+    kind: S.optional(S.String),
+    labels: S.optional(StringList),
+    url: S.optional(S.String),
+    updated: S.optional(S.String),
     titleLink: S.optional(S.String),
     content: S.optional(S.String),
-    images: S.optional(PostImagesItemList),
-    customMetaData: S.optional(S.String),
-    author: S.optional(CommentAuthor),
-    replies: S.optional(PostReplies),
-    labels: S.optional(StringList),
-    location: S.optional(PostLocation),
     readerComments: S.optional(PostReaderCommentsEnum),
-    etag: S.optional(S.String),
   }),
 ).annotate({ identifier: "Post" }) as any as S.Schema<Post>;
 
@@ -467,20 +480,36 @@ export const PostList_ = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PostList_>;
 
 export interface BlogPosts {
+  /** The List of Posts for this Blog. */
+  items?: PostList_;
   /** The count of posts in this blog. */
   totalItems?: number;
   /** The URL of the container for posts in this blog. */
   selfLink?: string;
-  /** The List of Posts for this Blog. */
-  items?: PostList_;
 }
 export const BlogPosts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    items: S.optional(PostList_),
     totalItems: S.optional(S.Number),
     selfLink: S.optional(S.String),
-    items: S.optional(PostList_),
   }),
 ).annotate({ identifier: "BlogPosts" }) as any as S.Schema<BlogPosts>;
+
+export interface BlogLocale {
+  /** The language variant this blog is authored in. */
+  variant?: string;
+  /** The language this blog is authored in. */
+  language?: string;
+  /** The country this blog's locale is set to. */
+  country?: string;
+}
+export const BlogLocale = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    variant: S.optional(S.String),
+    language: S.optional(S.String),
+    country: S.optional(S.String),
+  }),
+).annotate({ identifier: "BlogLocale" }) as any as S.Schema<BlogLocale>;
 
 export interface BlogPages {
   /** The count of pages in this blog. */
@@ -495,78 +524,65 @@ export const BlogPages = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BlogPages" }) as any as S.Schema<BlogPages>;
 
-export interface BlogLocale {
-  /** The language this blog is authored in. */
-  language?: string;
-  /** The country this blog's locale is set to. */
-  country?: string;
-  /** The language variant this blog is authored in. */
-  variant?: string;
-}
-export const BlogLocale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    language: S.optional(S.String),
-    country: S.optional(S.String),
-    variant: S.optional(S.String),
-  }),
-).annotate({ identifier: "BlogLocale" }) as any as S.Schema<BlogLocale>;
+export type BlogStatusEnum = "LIVE" | "DELETED";
+export const BlogStatusEnum = /*@__PURE__*/ S.String;
 
 export interface Blog {
-  /** The kind of this entry. Always blogger#blog. */
-  kind?: string;
+  /** The container of posts in this blog. */
+  posts?: BlogPosts;
+  /** The locale this Blog is set to. */
+  locale?: BlogLocale;
+  /** The URL where this blog is published. */
+  url?: string;
+  /** The container of pages in this blog. */
+  pages?: BlogPages;
+  /** RFC 3339 date-time when this blog was published. */
+  published?: string;
   /** The identifier for this resource. */
   id?: string;
+  /** The JSON custom meta-data for the Blog. */
+  customMetaData?: string;
   /** The status of the blog. */
   status?: BlogStatusEnum;
   /** The name of this blog. This is displayed as the title. */
   name?: string;
-  /** The description of this blog. This is displayed underneath the title. */
-  description?: string;
-  /** RFC 3339 date-time when this blog was published. */
-  published?: string;
   /** RFC 3339 date-time when this blog was last updated. */
   updated?: string;
-  /** The URL where this blog is published. */
-  url?: string;
   /** The API REST URL to fetch this resource from. */
   selfLink?: string;
-  /** The JSON custom meta-data for the Blog. */
-  customMetaData?: string;
-  /** The container of posts in this blog. */
-  posts?: BlogPosts;
-  /** The container of pages in this blog. */
-  pages?: BlogPages;
-  /** The locale this Blog is set to. */
-  locale?: BlogLocale;
+  /** The kind of this entry. Always blogger#blog. */
+  kind?: string;
+  /** The description of this blog. This is displayed underneath the title. */
+  description?: string;
 }
 export const Blog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
+    posts: S.optional(BlogPosts),
+    locale: S.optional(BlogLocale),
+    url: S.optional(S.String),
+    pages: S.optional(BlogPages),
+    published: S.optional(S.String),
     id: S.optional(S.String),
+    customMetaData: S.optional(S.String),
     status: S.optional(BlogStatusEnum),
     name: S.optional(S.String),
-    description: S.optional(S.String),
-    published: S.optional(S.String),
     updated: S.optional(S.String),
-    url: S.optional(S.String),
     selfLink: S.optional(S.String),
-    customMetaData: S.optional(S.String),
-    posts: S.optional(BlogPosts),
-    pages: S.optional(BlogPages),
-    locale: S.optional(BlogLocale),
+    kind: S.optional(S.String),
+    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "Blog" }) as any as S.Schema<Blog>;
 
 export interface GetBlogUserInfosRequest {
-  userId: string;
   blogId: string;
   maxPosts?: number;
+  userId: string;
 }
 export const GetBlogUserInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    userId: S.String.pipe(T.Label()),
     blogId: S.String.pipe(T.Label()),
     maxPosts: S.optional(S.Number.pipe(T.Query())),
+    userId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -586,45 +602,45 @@ export type BlogPerUserInfoRoleEnum =
 export const BlogPerUserInfoRoleEnum = /*@__PURE__*/ S.String;
 
 export interface BlogPerUserInfo {
-  /** The kind of this entity. Always blogger#blogPerUserInfo. */
-  kind?: string;
-  /** ID of the User. */
-  userId?: string;
   /** ID of the Blog resource. */
   blogId?: string;
-  /** The Photo Album Key for the user when adding photos to the blog. */
-  photosAlbumKey?: string;
+  /** ID of the User. */
+  userId?: string;
   /** True if the user has Admin level access to the blog. */
   hasAdminAccess?: boolean;
+  /** The kind of this entity. Always blogger#blogPerUserInfo. */
+  kind?: string;
   /** Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER). */
   role?: BlogPerUserInfoRoleEnum;
+  /** The Photo Album Key for the user when adding photos to the blog. */
+  photosAlbumKey?: string;
 }
 export const BlogPerUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    userId: S.optional(S.String),
     blogId: S.optional(S.String),
-    photosAlbumKey: S.optional(S.String),
+    userId: S.optional(S.String),
     hasAdminAccess: S.optional(S.Boolean),
+    kind: S.optional(S.String),
     role: S.optional(BlogPerUserInfoRoleEnum),
+    photosAlbumKey: S.optional(S.String),
   }),
 ).annotate({
   identifier: "BlogPerUserInfo",
 }) as any as S.Schema<BlogPerUserInfo>;
 
 export interface BlogUserInfo {
-  /** The kind of this entity. Always blogger#blogUserInfo. */
-  kind?: string;
   /** The Blog resource. */
   blog?: Blog;
   /** Information about a User for the Blog. */
   blog_user_info?: BlogPerUserInfo;
+  /** The kind of this entity. Always blogger#blogUserInfo. */
+  kind?: string;
 }
 export const BlogUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     blog: S.optional(Blog),
     blog_user_info: S.optional(BlogPerUserInfo),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "BlogUserInfo" }) as any as S.Schema<BlogUserInfo>;
 
@@ -636,17 +652,17 @@ export type GetByPathPostsViewEnum =
 export const GetByPathPostsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetByPathPostsRequest {
-  blogId: string;
   path: string;
   maxComments?: number;
   view?: GetByPathPostsViewEnum | (string & {});
+  blogId: string;
 }
 export const GetByPathPostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    blogId: S.String.pipe(T.Label()),
     path: S.String.pipe(T.Query()),
     maxComments: S.optional(S.Number.pipe(T.Query())),
     view: S.optional(GetByPathPostsViewEnum.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -695,15 +711,15 @@ export const GetCommentsViewEnum = /*@__PURE__*/ S.String;
 export interface GetCommentsRequest {
   blogId: string;
   postId: string;
-  commentId: string;
   view?: GetCommentsViewEnum | (string & {});
+  commentId: string;
 }
 export const GetCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blogId: S.String.pipe(T.Label()),
     postId: S.String.pipe(T.Label()),
-    commentId: S.String.pipe(T.Label()),
     view: S.optional(GetCommentsViewEnum.pipe(T.Query())),
+    commentId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -723,15 +739,15 @@ export type GetPagesViewEnum =
 export const GetPagesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPagesRequest {
+  view?: GetPagesViewEnum | (string & {});
   blogId: string;
   pageId: string;
-  view?: GetPagesViewEnum | (string & {});
 }
 export const GetPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    view: S.optional(GetPagesViewEnum.pipe(T.Query())),
     blogId: S.String.pipe(T.Label()),
     pageId: S.String.pipe(T.Label()),
-    view: S.optional(GetPagesViewEnum.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -759,52 +775,68 @@ export const PageBlog = /*@__PURE__*/ S.suspend(() =>
 export type PageAuthorImage = CommentAuthorImage;
 export const PageAuthorImage = CommentAuthorImage;
 
-export type PageAuthor = CommentAuthor;
-export const PageAuthor = CommentAuthor;
+export interface PageAuthor {
+  /** The creator's avatar. */
+  image?: CommentAuthorImage;
+  /** The display name. */
+  displayName?: string;
+  /** The URL of the creator's Profile page. */
+  url?: string;
+  /** The identifier of the creator. */
+  id?: string;
+}
+export const PageAuthor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    image: S.optional(CommentAuthorImage),
+    displayName: S.optional(S.String),
+    url: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
+).annotate({ identifier: "PageAuthor" }) as any as S.Schema<PageAuthor>;
 
 export interface Page {
-  /** The kind of this entity. Always blogger#page. */
-  kind?: string;
-  /** The identifier for this resource. */
-  id?: string;
   /** The status of the page for admin resources (either LIVE or DRAFT). */
   status?: PageStatusEnum | (string & {});
   /** Data about the blog containing this Page. */
   blog?: PageBlog;
-  /** RFC 3339 date-time when this Page was published. */
-  published?: string;
-  /** RFC 3339 date-time when this Page was last updated. */
-  updated?: string;
+  /** The author of this Page. */
+  author?: PageAuthor;
   /** RFC 3339 date-time when this Page was trashed. */
   trashed?: string;
-  /** The URL that this Page is displayed at. */
-  url?: string;
+  /** RFC 3339 date-time when this Page was last updated. */
+  updated?: string;
+  /** RFC 3339 date-time when this Page was published. */
+  published?: string;
   /** The API REST URL to fetch this resource from. */
   selfLink?: string;
-  /** The title of this entity. This is the name displayed in the Admin user interface. */
-  title?: string;
+  /** The URL that this Page is displayed at. */
+  url?: string;
   /** The body content of this Page, in HTML. */
   content?: string;
-  /** The author of this Page. */
-  author?: CommentAuthor;
+  /** The title of this entity. This is the name displayed in the Admin user interface. */
+  title?: string;
   /** Etag of the resource. */
   etag?: string;
+  /** The identifier for this resource. */
+  id?: string;
+  /** The kind of this entity. Always blogger#page. */
+  kind?: string;
 }
 export const Page = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    id: S.optional(S.String),
     status: S.optional(PageStatusEnum),
     blog: S.optional(PageBlog),
-    published: S.optional(S.String),
-    updated: S.optional(S.String),
+    author: S.optional(PageAuthor),
     trashed: S.optional(S.String),
-    url: S.optional(S.String),
+    updated: S.optional(S.String),
+    published: S.optional(S.String),
     selfLink: S.optional(S.String),
-    title: S.optional(S.String),
+    url: S.optional(S.String),
     content: S.optional(S.String),
-    author: S.optional(CommentAuthor),
+    title: S.optional(S.String),
     etag: S.optional(S.String),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
@@ -887,21 +919,21 @@ export type GetPostsViewEnum =
 export const GetPostsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPostsRequest {
-  blogId: string;
-  postId: string;
   fetchBody?: boolean;
+  view?: GetPostsViewEnum | (string & {});
+  postId: string;
+  blogId: string;
   fetchImages?: boolean;
   maxComments?: number;
-  view?: GetPostsViewEnum | (string & {});
 }
 export const GetPostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    blogId: S.String.pipe(T.Label()),
-    postId: S.String.pipe(T.Label()),
     fetchBody: S.optional(S.Boolean.pipe(T.Query())),
+    view: S.optional(GetPostsViewEnum.pipe(T.Query())),
+    postId: S.String.pipe(T.Label()),
+    blogId: S.String.pipe(T.Label()),
     fetchImages: S.optional(S.Boolean.pipe(T.Query())),
     maxComments: S.optional(S.Number.pipe(T.Query())),
-    view: S.optional(GetPostsViewEnum.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -937,24 +969,24 @@ export const GetPostUserInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPostUserInfosRequest>;
 
 export interface PostPerUserInfo {
+  /** True if the user has Author level access to the post. */
+  hasEditAccess?: boolean;
+  /** ID of the Blog that the post resource belongs to. */
+  blogId?: string;
   /** The kind of this entity. Always blogger#postPerUserInfo. */
   kind?: string;
   /** ID of the User. */
   userId?: string;
-  /** ID of the Blog that the post resource belongs to. */
-  blogId?: string;
   /** ID of the Post resource. */
   postId?: string;
-  /** True if the user has Author level access to the post. */
-  hasEditAccess?: boolean;
 }
 export const PostPerUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    hasEditAccess: S.optional(S.Boolean),
+    blogId: S.optional(S.String),
     kind: S.optional(S.String),
     userId: S.optional(S.String),
-    blogId: S.optional(S.String),
     postId: S.optional(S.String),
-    hasEditAccess: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "PostPerUserInfo",
@@ -993,6 +1025,22 @@ export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersRequest",
 }) as any as S.Schema<GetUsersRequest>;
 
+export interface UserLocale {
+  /** The country this blog's locale is set to. */
+  country?: string;
+  /** The language variant this blog is authored in. */
+  variant?: string;
+  /** The language this blog is authored in. */
+  language?: string;
+}
+export const UserLocale = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    country: S.optional(S.String),
+    variant: S.optional(S.String),
+    language: S.optional(S.String),
+  }),
+).annotate({ identifier: "UserLocale" }) as any as S.Schema<UserLocale>;
+
 export interface UserBlogs {
   /** The URL of the Blogs for this user. */
   selfLink?: string;
@@ -1003,40 +1051,37 @@ export const UserBlogs = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBlogs" }) as any as S.Schema<UserBlogs>;
 
-export type UserLocale = BlogLocale;
-export const UserLocale = BlogLocale;
-
 export interface User {
+  /** This user's locale */
+  locale?: UserLocale;
   /** The kind of this entity. Always blogger#user. */
   kind?: string;
+  /** The display name. */
+  displayName?: string;
+  /** The container of blogs for this user. */
+  blogs?: UserBlogs;
+  /** Profile summary information. */
+  about?: string;
   /** The identifier for this User. */
   id?: string;
-  /** The timestamp of when this profile was created, in seconds since epoch. */
-  created?: string;
   /** The user's profile page. */
   url?: string;
   /** The API REST URL to fetch this resource from. */
   selfLink?: string;
-  /** The container of blogs for this user. */
-  blogs?: UserBlogs;
-  /** The display name. */
-  displayName?: string;
-  /** Profile summary information. */
-  about?: string;
-  /** This user's locale */
-  locale?: BlogLocale;
+  /** The timestamp of when this profile was created, in seconds since epoch. */
+  created?: string;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    locale: S.optional(UserLocale),
     kind: S.optional(S.String),
+    displayName: S.optional(S.String),
+    blogs: S.optional(UserBlogs),
+    about: S.optional(S.String),
     id: S.optional(S.String),
-    created: S.optional(S.String),
     url: S.optional(S.String),
     selfLink: S.optional(S.String),
-    blogs: S.optional(UserBlogs),
-    displayName: S.optional(S.String),
-    about: S.optional(S.String),
-    locale: S.optional(BlogLocale),
+    created: S.optional(S.String),
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
@@ -1064,18 +1109,18 @@ export const InsertPagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface InsertPostsRequest {
   blogId: string;
-  fetchBody?: boolean;
   fetchImages?: boolean;
   isDraft?: boolean;
+  fetchBody?: boolean;
   /** Request body */
   body?: Post;
 }
 export const InsertPostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blogId: S.String.pipe(T.Label()),
-    fetchBody: S.optional(S.Boolean.pipe(T.Query())),
     fetchImages: S.optional(S.Boolean.pipe(T.Query())),
     isDraft: S.optional(S.Boolean.pipe(T.Query())),
+    fetchBody: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Post.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -1103,23 +1148,23 @@ export const ListByBlogCommentsStatusEnumList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListByBlogCommentsStatusEnumList>;
 
 export interface ListByBlogCommentsRequest {
-  blogId: string;
-  startDate?: string;
-  endDate?: string;
   maxResults?: number;
+  endDate?: string;
   fetchBodies?: boolean;
-  pageToken?: string;
+  blogId: string;
   status?: ListByBlogCommentsStatusEnumList;
+  startDate?: string;
+  pageToken?: string;
 }
 export const ListByBlogCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    blogId: S.String.pipe(T.Label()),
-    startDate: S.optional(S.String.pipe(T.Query())),
-    endDate: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
+    endDate: S.optional(S.String.pipe(T.Query())),
     fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
     status: S.optional(ListByBlogCommentsStatusEnumList.pipe(T.Query())),
+    startDate: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1132,40 +1177,26 @@ export const ListByBlogCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListByBlogCommentsRequest>;
 
 export interface CommentList {
+  /** Etag of the response. */
+  etag?: string;
+  /** The List of Comments for a Post. */
+  items: CommentList_;
   /** The kind of this entry. Always blogger#commentList. */
   kind?: string;
   /** Pagination token to fetch the next page, if one exists. */
   nextPageToken?: string;
   /** Pagination token to fetch the previous page, if one exists. */
   prevPageToken?: string;
-  /** The List of Comments for a Post. */
-  items: CommentList_;
-  /** Etag of the response. */
-  etag?: string;
 }
 export const CommentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    etag: S.optional(S.String),
+    items: CommentList_,
     kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
     prevPageToken: S.optional(S.String),
-    items: CommentList_,
-    etag: S.optional(S.String),
   }),
 ).annotate({ identifier: "CommentList" }) as any as S.Schema<CommentList>;
-
-export type ListByUserBlogsRoleEnum =
-  | "VIEW_TYPE_UNSPECIFIED"
-  | "READER"
-  | "AUTHOR"
-  | "ADMIN";
-export const ListByUserBlogsRoleEnum = /*@__PURE__*/ S.String;
-
-export type ListByUserBlogsRoleEnumList = Array<
-  ListByUserBlogsRoleEnum | (string & {})
->;
-export const ListByUserBlogsRoleEnumList = /*@__PURE__*/ S.Array(
-  ListByUserBlogsRoleEnum,
-) as any as S.Schema<ListByUserBlogsRoleEnumList>;
 
 export type ListByUserBlogsStatusEnum = "LIVE" | "DELETED";
 export const ListByUserBlogsStatusEnum = /*@__PURE__*/ S.String;
@@ -1184,22 +1215,36 @@ export type ListByUserBlogsViewEnum =
   | "ADMIN";
 export const ListByUserBlogsViewEnum = /*@__PURE__*/ S.String;
 
+export type ListByUserBlogsRoleEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
+export const ListByUserBlogsRoleEnum = /*@__PURE__*/ S.String;
+
+export type ListByUserBlogsRoleEnumList = Array<
+  ListByUserBlogsRoleEnum | (string & {})
+>;
+export const ListByUserBlogsRoleEnumList = /*@__PURE__*/ S.Array(
+  ListByUserBlogsRoleEnum,
+) as any as S.Schema<ListByUserBlogsRoleEnumList>;
+
 export interface ListByUserBlogsRequest {
-  userId: string;
-  fetchUserInfo?: boolean;
-  role?: ListByUserBlogsRoleEnumList;
   /** Default value of status is LIVE. */
   status?: ListByUserBlogsStatusEnumList;
+  userId: string;
+  fetchUserInfo?: boolean;
   /** Unspecified is interpreted as the user's role on the blog. */
   view?: ListByUserBlogsViewEnum | (string & {});
+  role?: ListByUserBlogsRoleEnumList;
 }
 export const ListByUserBlogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    status: S.optional(ListByUserBlogsStatusEnumList.pipe(T.Query())),
     userId: S.String.pipe(T.Label()),
     fetchUserInfo: S.optional(S.Boolean.pipe(T.Query())),
-    role: S.optional(ListByUserBlogsRoleEnumList.pipe(T.Query())),
-    status: S.optional(ListByUserBlogsStatusEnumList.pipe(T.Query())),
     view: S.optional(ListByUserBlogsViewEnum.pipe(T.Query())),
+    role: S.optional(ListByUserBlogsRoleEnumList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1211,29 +1256,29 @@ export const ListByUserBlogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListByUserBlogsRequest",
 }) as any as S.Schema<ListByUserBlogsRequest>;
 
-export type BlogList_ = Array<Blog>;
-export const BlogList_ = /*@__PURE__*/ S.Array(
-  Blog,
-) as any as S.Schema<BlogList_>;
-
 export type BlogUserInfoList = Array<BlogUserInfo>;
 export const BlogUserInfoList = /*@__PURE__*/ S.Array(
   BlogUserInfo,
 ) as any as S.Schema<BlogUserInfoList>;
 
+export type BlogList_ = Array<Blog>;
+export const BlogList_ = /*@__PURE__*/ S.Array(
+  Blog,
+) as any as S.Schema<BlogList_>;
+
 export interface BlogList {
-  /** The kind of this entity. Always blogger#blogList. */
-  kind?: string;
-  /** The list of Blogs this user has Authorship or Admin rights over. */
-  items?: BlogList_;
   /** Admin level list of blog per-user information. */
   blogUserInfos?: BlogUserInfoList;
+  /** The list of Blogs this user has Authorship or Admin rights over. */
+  items?: BlogList_;
+  /** The kind of this entity. Always blogger#blogList. */
+  kind?: string;
 }
 export const BlogList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    items: S.optional(BlogList_),
     blogUserInfos: S.optional(BlogUserInfoList),
+    items: S.optional(BlogList_),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "BlogList" }) as any as S.Schema<BlogList>;
 
@@ -1248,27 +1293,27 @@ export type ListCommentsStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
 export const ListCommentsStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListCommentsRequest {
-  blogId: string;
-  postId: string;
-  startDate?: string;
-  endDate?: string;
-  maxResults?: number;
+  view?: ListCommentsViewEnum | (string & {});
   fetchBodies?: boolean;
   pageToken?: string;
-  view?: ListCommentsViewEnum | (string & {});
+  maxResults?: number;
+  endDate?: string;
+  blogId: string;
   status?: ListCommentsStatusEnum | (string & {});
+  postId: string;
+  startDate?: string;
 }
 export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    blogId: S.String.pipe(T.Label()),
-    postId: S.String.pipe(T.Label()),
-    startDate: S.optional(S.String.pipe(T.Query())),
-    endDate: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
+    view: S.optional(ListCommentsViewEnum.pipe(T.Query())),
     fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
-    view: S.optional(ListCommentsViewEnum.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    endDate: S.optional(S.String.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
     status: S.optional(ListCommentsStatusEnum.pipe(T.Query())),
+    postId: S.String.pipe(T.Label()),
+    startDate: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1298,21 +1343,21 @@ export type ListPagesViewEnum =
 export const ListPagesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListPagesRequest {
-  blogId: string;
   fetchBodies?: boolean;
-  maxResults?: number;
-  pageToken?: string;
+  blogId: string;
   status?: ListPagesStatusEnumList;
+  maxResults?: number;
   view?: ListPagesViewEnum | (string & {});
+  pageToken?: string;
 }
 export const ListPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    blogId: S.String.pipe(T.Label()),
     fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
     status: S.optional(ListPagesStatusEnumList.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
     view: S.optional(ListPagesViewEnum.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1330,23 +1375,29 @@ export const PageList_ = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PageList_>;
 
 export interface PageList {
-  /** The kind of this entity. Always blogger#pageList. */
-  kind?: string;
   /** The list of Pages for a Blog. */
   items: PageList_;
-  /** Pagination token to fetch the next page, if one exists. */
-  nextPageToken?: string;
   /** Etag of the response. */
   etag?: string;
+  /** The kind of this entity. Always blogger#pageList. */
+  kind?: string;
+  /** Pagination token to fetch the next page, if one exists. */
+  nextPageToken?: string;
 }
 export const PageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     items: PageList_,
-    nextPageToken: S.optional(S.String),
     etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({ identifier: "PageList" }) as any as S.Schema<PageList>;
+
+export type ListPostsSortOptionEnum =
+  | "SORT_OPTION_UNSPECIFIED"
+  | "DESCENDING"
+  | "ASCENDING";
+export const ListPostsSortOptionEnum = /*@__PURE__*/ S.String;
 
 export type ListPostsOrderByEnum =
   | "ORDER_BY_UNSPECIFIED"
@@ -1375,41 +1426,35 @@ export type ListPostsViewEnum =
   | "ADMIN";
 export const ListPostsViewEnum = /*@__PURE__*/ S.String;
 
-export type ListPostsSortOptionEnum =
-  | "SORT_OPTION_UNSPECIFIED"
-  | "DESCENDING"
-  | "ASCENDING";
-export const ListPostsSortOptionEnum = /*@__PURE__*/ S.String;
-
 export interface ListPostsRequest {
-  blogId: string;
-  endDate?: string;
-  fetchBodies?: boolean;
-  fetchImages?: boolean;
-  labels?: string;
-  maxResults?: number;
-  orderBy?: ListPostsOrderByEnum | (string & {});
-  pageToken?: string;
-  startDate?: string;
-  status?: ListPostsStatusEnumList;
-  view?: ListPostsViewEnum | (string & {});
   /** Sort direction applied to post list. */
   sortOption?: ListPostsSortOptionEnum | (string & {});
+  pageToken?: string;
+  endDate?: string;
+  orderBy?: ListPostsOrderByEnum | (string & {});
+  blogId: string;
+  status?: ListPostsStatusEnumList;
+  labels?: string;
+  maxResults?: number;
+  startDate?: string;
+  fetchBodies?: boolean;
+  view?: ListPostsViewEnum | (string & {});
+  fetchImages?: boolean;
 }
 export const ListPostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    blogId: S.String.pipe(T.Label()),
+    sortOption: S.optional(ListPostsSortOptionEnum.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
     endDate: S.optional(S.String.pipe(T.Query())),
-    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
-    fetchImages: S.optional(S.Boolean.pipe(T.Query())),
+    orderBy: S.optional(ListPostsOrderByEnum.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+    status: S.optional(ListPostsStatusEnumList.pipe(T.Query())),
     labels: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(ListPostsOrderByEnum.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
     startDate: S.optional(S.String.pipe(T.Query())),
-    status: S.optional(ListPostsStatusEnumList.pipe(T.Query())),
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
     view: S.optional(ListPostsViewEnum.pipe(T.Query())),
-    sortOption: S.optional(ListPostsSortOptionEnum.pipe(T.Query())),
+    fetchImages: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1422,24 +1467,24 @@ export const ListPostsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPostsRequest>;
 
 export interface PostList {
+  /** Etag of the response. */
+  etag?: string;
   /** The kind of this entity. Always blogger#postList. */
   kind?: string;
   /** Pagination token to fetch the next page, if one exists. */
   nextPageToken?: string;
-  /** The list of Posts for this Blog. */
-  items: PostList_;
-  /** Etag of the response. */
-  etag?: string;
   /** Pagination token to fetch the previous page, if one exists. */
   prevPageToken?: string;
+  /** The list of Posts for this Blog. */
+  items: PostList_;
 }
 export const PostList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    etag: S.optional(S.String),
     kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
-    items: PostList_,
-    etag: S.optional(S.String),
     prevPageToken: S.optional(S.String),
+    items: PostList_,
   }),
 ).annotate({ identifier: "PostList" }) as any as S.Schema<PostList>;
 
@@ -1472,30 +1517,30 @@ export const ListPostUserInfosStatusEnumList = /*@__PURE__*/ S.Array(
 
 export interface ListPostUserInfosRequest {
   userId: string;
-  blogId: string;
-  startDate?: string;
-  endDate?: string;
-  fetchBodies?: boolean;
-  labels?: string;
-  maxResults?: number;
   pageToken?: string;
   orderBy?: ListPostUserInfosOrderByEnum | (string & {});
   view?: ListPostUserInfosViewEnum | (string & {});
+  endDate?: string;
+  fetchBodies?: boolean;
+  labels?: string;
+  blogId: string;
   status?: ListPostUserInfosStatusEnumList;
+  startDate?: string;
+  maxResults?: number;
 }
 export const ListPostUserInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
-    blogId: S.String.pipe(T.Label()),
-    startDate: S.optional(S.String.pipe(T.Query())),
-    endDate: S.optional(S.String.pipe(T.Query())),
-    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
-    labels: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(ListPostUserInfosOrderByEnum.pipe(T.Query())),
     view: S.optional(ListPostUserInfosViewEnum.pipe(T.Query())),
+    endDate: S.optional(S.String.pipe(T.Query())),
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
+    labels: S.optional(S.String.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
     status: S.optional(ListPostUserInfosStatusEnumList.pipe(T.Query())),
+    startDate: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1513,33 +1558,33 @@ export const PostUserInfoList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PostUserInfoList>;
 
 export interface PostUserInfosList {
-  /** The kind of this entity. Always blogger#postList. */
-  kind?: string;
   /** Pagination token to fetch the next page, if one exists. */
   nextPageToken?: string;
   /** The list of Posts with User information for the post, for this Blog. */
   items: PostUserInfoList;
+  /** The kind of this entity. Always blogger#postList. */
+  kind?: string;
 }
 export const PostUserInfosList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
     items: PostUserInfoList,
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PostUserInfosList",
 }) as any as S.Schema<PostUserInfosList>;
 
 export interface MarkAsSpamCommentsRequest {
+  commentId: string;
   blogId: string;
   postId: string;
-  commentId: string;
 }
 export const MarkAsSpamCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    commentId: S.String.pipe(T.Label()),
     blogId: S.String.pipe(T.Label()),
     postId: S.String.pipe(T.Label()),
-    commentId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1553,8 +1598,8 @@ export const MarkAsSpamCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface PatchPagesRequest {
   blogId: string;
-  pageId: string;
   publish?: boolean;
+  pageId: string;
   revert?: boolean;
   /** Request body */
   body?: Page;
@@ -1562,8 +1607,8 @@ export interface PatchPagesRequest {
 export const PatchPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blogId: S.String.pipe(T.Label()),
-    pageId: S.String.pipe(T.Label()),
     publish: S.optional(S.Boolean.pipe(T.Query())),
+    pageId: S.String.pipe(T.Label()),
     revert: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Page.pipe(T.HttpBody())),
   }).pipe(
@@ -1579,11 +1624,11 @@ export const PatchPagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface PatchPostsRequest {
   blogId: string;
-  postId: string;
   fetchBody?: boolean;
   fetchImages?: boolean;
   maxComments?: number;
   publish?: boolean;
+  postId: string;
   revert?: boolean;
   /** Request body */
   body?: Post;
@@ -1591,11 +1636,11 @@ export interface PatchPostsRequest {
 export const PatchPostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blogId: S.String.pipe(T.Label()),
-    postId: S.String.pipe(T.Label()),
     fetchBody: S.optional(S.Boolean.pipe(T.Query())),
     fetchImages: S.optional(S.Boolean.pipe(T.Query())),
     maxComments: S.optional(S.Number.pipe(T.Query())),
     publish: S.optional(S.Boolean.pipe(T.Query())),
+    postId: S.String.pipe(T.Label()),
     revert: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Post.pipe(T.HttpBody())),
   }).pipe(
@@ -1629,15 +1674,15 @@ export const PublishPagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublishPagesRequest>;
 
 export interface PublishPostsRequest {
+  publishDate?: string;
   blogId: string;
   postId: string;
-  publishDate?: string;
 }
 export const PublishPostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    publishDate: S.optional(S.String.pipe(T.Query())),
     blogId: S.String.pipe(T.Label()),
     postId: S.String.pipe(T.Label()),
-    publishDate: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1715,17 +1760,17 @@ export type SearchPostsOrderByEnum =
 export const SearchPostsOrderByEnum = /*@__PURE__*/ S.String;
 
 export interface SearchPostsRequest {
-  blogId: string;
-  q: string;
-  fetchBodies?: boolean;
   orderBy?: SearchPostsOrderByEnum | (string & {});
+  blogId: string;
+  fetchBodies?: boolean;
+  q: string;
 }
 export const SearchPostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    blogId: S.String.pipe(T.Label()),
-    q: S.String.pipe(T.Query()),
-    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
     orderBy: S.optional(SearchPostsOrderByEnum.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
+    q: S.String.pipe(T.Query()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1739,8 +1784,8 @@ export const SearchPostsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdatePagesRequest {
   blogId: string;
-  pageId: string;
   publish?: boolean;
+  pageId: string;
   revert?: boolean;
   /** Request body */
   body?: Page;
@@ -1748,8 +1793,8 @@ export interface UpdatePagesRequest {
 export const UpdatePagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blogId: S.String.pipe(T.Label()),
-    pageId: S.String.pipe(T.Label()),
     publish: S.optional(S.Boolean.pipe(T.Query())),
+    pageId: S.String.pipe(T.Label()),
     revert: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Page.pipe(T.HttpBody())),
   }).pipe(
@@ -1765,24 +1810,24 @@ export const UpdatePagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdatePostsRequest {
   blogId: string;
+  publish?: boolean;
   postId: string;
-  fetchBody?: boolean;
+  revert?: boolean;
   fetchImages?: boolean;
   maxComments?: number;
-  publish?: boolean;
-  revert?: boolean;
+  fetchBody?: boolean;
   /** Request body */
   body?: Post;
 }
 export const UpdatePostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blogId: S.String.pipe(T.Label()),
+    publish: S.optional(S.Boolean.pipe(T.Query())),
     postId: S.String.pipe(T.Label()),
-    fetchBody: S.optional(S.Boolean.pipe(T.Query())),
+    revert: S.optional(S.Boolean.pipe(T.Query())),
     fetchImages: S.optional(S.Boolean.pipe(T.Query())),
     maxComments: S.optional(S.Number.pipe(T.Query())),
-    publish: S.optional(S.Boolean.pipe(T.Query())),
-    revert: S.optional(S.Boolean.pipe(T.Query())),
+    fetchBody: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Post.pipe(T.HttpBody())),
   }).pipe(
     T.Http({

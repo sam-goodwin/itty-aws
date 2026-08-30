@@ -69,6 +69,19 @@
             "smithy.api#documentation": "The CNAME target to add as a DNS record for your domain. Point your domain's CNAME to this value."
           }
         },
+        "root_redirect_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTPS URL that requests to the proxy domain root redirect to, or null when disabled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "root_redirect_supported": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this managed proxy supports a redirect from its root URL."
+          }
+        },
         "status": {
           "target": "com.posthog.reverse_proxy#ProxyRecordStatusEnum",
           "traits": {
@@ -160,35 +173,13 @@
       },
       "traits": {}
     },
-    "com.posthog.reverse_proxy#ProxyRecordsListResponseBodyList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.reverse_proxy#ProxyRecordListResponse"
-      },
-      "traits": {}
-    },
-    "com.posthog.reverse_proxy#ProxyRecordsListResponse": {
-      "type": "structure",
-      "members": {
-        "body": {
-          "target": "com.posthog.reverse_proxy#ProxyRecordsListResponseBodyList",
-          "traits": {
-            "com.distilled.openapi#rawResponse": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
     "com.posthog.reverse_proxy#ProxyRecordsList": {
       "type": "operation",
       "input": {
         "target": "com.posthog.reverse_proxy#ProxyRecordsListRequest"
       },
       "output": {
-        "target": "com.posthog.reverse_proxy#ProxyRecordsListResponse"
+        "target": "com.posthog.reverse_proxy#ProxyRecordListResponse"
       },
       "errors": [
         {
@@ -304,6 +295,54 @@
           "code": 200
         },
         "smithy.api#documentation": "Get details of a specific reverse proxy by ID. Returns the full configuration including domain, CNAME target, and current provisioning status."
+      }
+    },
+    "com.posthog.reverse_proxy#ProxyRecordsPartialUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this proxy record."
+          }
+        },
+        "root_redirect_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTPS URL that requests to the proxy domain root redirect to, or null to disable the redirect. The URL must use the same registrable domain as the managed proxy.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.reverse_proxy#ProxyRecordsPartialUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.reverse_proxy#ProxyRecordsPartialUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.reverse_proxy#ProxyRecord"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/api/organizations/{organization_id}/proxy_records/{id}/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Set or clear the HTTPS redirect for requests to the managed proxy domain root."
       }
     },
     "com.posthog.reverse_proxy#ProxyRecordsDestroyRequest": {
@@ -755,6 +794,9 @@
         },
         {
           "target": "com.posthog.reverse_proxy#ProxyRecordsRetrieve"
+        },
+        {
+          "target": "com.posthog.reverse_proxy#ProxyRecordsPartialUpdate"
         },
         {
           "target": "com.posthog.reverse_proxy#ProxyRecordsDestroy"

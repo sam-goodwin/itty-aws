@@ -7570,6 +7570,13 @@ export const FleetspaceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FleetspaceUpdateResponse",
 }) as any as S.Schema<FleetspaceUpdateResponse>;
 
+/** Resource tags. */
+export type FleetUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const FleetUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FleetUpdateRequestTagsMap>;
+
 export interface FleetUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7577,6 +7584,8 @@ export interface FleetUpdateRequest {
   resourceGroupName: string;
   /** Cosmos DB fleet name. Needs to be unique under a subscription. */
   fleetName: string;
+  /** Resource tags. */
+  tags?: FleetUpdateRequestTagsMap;
   /** Properties to update Azure Cosmos DB fleet resource. */
   properties?: FleetResourceProperties;
 }
@@ -7585,6 +7594,7 @@ export const FleetUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     fleetName: S.String.pipe(T.Label()),
+    tags: S.optional(FleetUpdateRequestTagsMap),
     properties: S.optional(FleetResourceProperties),
   }).pipe(
     T.Http({

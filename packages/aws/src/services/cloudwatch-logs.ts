@@ -665,10 +665,12 @@ export const CreateLogStreamResponse = /*@__PURE__*/ S.suspend(() =>
 export type LookupTableName = string;
 export type LookupTableDescription = string;
 export type TableBody = string;
+export type QueryId = string;
 export interface CreateLookupTableRequest {
   lookupTableName: string;
   description?: string;
-  tableBody: string;
+  tableBody?: string;
+  queryId?: string;
   kmsKeyId?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -676,7 +678,8 @@ export const CreateLookupTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lookupTableName: S.String,
     description: S.optional(S.String),
-    tableBody: S.String,
+    tableBody: S.optional(S.String),
+    queryId: S.optional(S.String),
     kmsKeyId: S.optional(S.String),
     tags: S.optional(Tags),
   }).pipe(
@@ -738,11 +741,33 @@ export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3Configuration",
 }) as any as S.Schema<S3Configuration>;
+export interface LookupTableConfiguration {
+  tableName: string;
+  roleArn: string;
+  description?: string;
+  kmsKeyId?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const LookupTableConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableName: S.String,
+    roleArn: S.String,
+    description: S.optional(S.String),
+    kmsKeyId: S.optional(S.String),
+    tags: S.optional(Tags),
+  }),
+).annotate({
+  identifier: "LookupTableConfiguration",
+}) as any as S.Schema<LookupTableConfiguration>;
 export interface DestinationConfiguration {
-  s3Configuration: S3Configuration;
+  s3Configuration?: S3Configuration;
+  lookupTableConfiguration?: LookupTableConfiguration;
 }
 export const DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Configuration: S3Configuration }),
+  S.Struct({
+    s3Configuration: S.optional(S3Configuration),
+    lookupTableConfiguration: S.optional(LookupTableConfiguration),
+  }),
 ).annotate({
   identifier: "DestinationConfiguration",
 }) as any as S.Schema<DestinationConfiguration>;
@@ -1165,7 +1190,6 @@ export const DeleteMetricFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteMetricFilterResponse",
 }) as any as S.Schema<DeleteMetricFilterResponse>;
-export type QueryId = string;
 export interface DeleteQueryDefinitionRequest {
   queryDefinitionId: string;
 }
@@ -1945,13 +1969,25 @@ export type DescribeFieldIndexesLogGroupIdentifiers = string[];
 export const DescribeFieldIndexesLogGroupIdentifiers = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type IndexCategory =
+  | "DEFAULT"
+  | "CUSTOM"
+  | "AUTO"
+  | "INACTIVE"
+  | (string & {});
+export const IndexCategory = /*@__PURE__*/ S.String;
+
+export type IndexCategories = IndexCategory[];
+export const IndexCategories = /*@__PURE__*/ S.Array(IndexCategory);
 export interface DescribeFieldIndexesRequest {
   logGroupIdentifiers: string[];
+  indexCategories?: IndexCategory[];
   nextToken?: string;
 }
 export const DescribeFieldIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logGroupIdentifiers: DescribeFieldIndexesLogGroupIdentifiers,
+    indexCategories: S.optional(IndexCategories),
     nextToken: S.optional(S.String),
   }).pipe(
     T.all(
@@ -1978,6 +2014,7 @@ export interface FieldIndex {
   firstEventTime?: number;
   lastEventTime?: number;
   type?: IndexType;
+  indexCategory?: IndexCategory;
 }
 export const FieldIndex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1987,6 +2024,7 @@ export const FieldIndex = /*@__PURE__*/ S.suspend(() =>
     firstEventTime: S.optional(S.Number),
     lastEventTime: S.optional(S.Number),
     type: S.optional(IndexType),
+    indexCategory: S.optional(IndexCategory),
   }),
 ).annotate({ identifier: "FieldIndex" }) as any as S.Schema<FieldIndex>;
 export type FieldIndexes = FieldIndex[];
@@ -3766,6 +3804,7 @@ export interface QueryStatistics {
   bytesScanned?: number;
   estimatedBytesSkipped?: number;
   logGroupsScanned?: number;
+  resultCount?: number;
 }
 export const QueryStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3775,6 +3814,7 @@ export const QueryStatistics = /*@__PURE__*/ S.suspend(() =>
     bytesScanned: S.optional(S.Number),
     estimatedBytesSkipped: S.optional(S.Number),
     logGroupsScanned: S.optional(S.Number),
+    resultCount: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "QueryStatistics",
@@ -3911,7 +3951,10 @@ export const GetScheduledQueryHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetScheduledQueryHistoryRequest",
 }) as any as S.Schema<GetScheduledQueryHistoryRequest>;
-export type ScheduledQueryDestinationType = "S3" | (string & {});
+export type ScheduledQueryDestinationType =
+  | "S3"
+  | "LOOKUP_TABLE"
+  | (string & {});
 export const ScheduledQueryDestinationType = /*@__PURE__*/ S.String;
 
 export type ActionStatus =
@@ -3981,6 +4024,37 @@ export const GetScheduledQueryHistoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetScheduledQueryHistoryResponse",
 }) as any as S.Schema<GetScheduledQueryHistoryResponse>;
+export interface GetStorageTierPolicyRequest {}
+export const GetStorageTierPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetStorageTierPolicyRequest",
+}) as any as S.Schema<GetStorageTierPolicyRequest>;
+export type StorageTier = "STANDARD" | "INTELLIGENT_TIERING" | (string & {});
+export const StorageTier = /*@__PURE__*/ S.String;
+
+export interface GetStorageTierPolicyResponse {
+  storageTier?: StorageTier;
+  lastUpdatedTime?: number;
+}
+export const GetStorageTierPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageTier: S.optional(StorageTier),
+    lastUpdatedTime: S.optional(S.Number),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetStorageTierPolicyResponse",
+}) as any as S.Schema<GetStorageTierPolicyResponse>;
 export interface GetTransformerRequest {
   logGroupIdentifier: string;
 }
@@ -5791,6 +5865,36 @@ export const PutRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutRetentionPolicyResponse",
 }) as any as S.Schema<PutRetentionPolicyResponse>;
+export interface PutStorageTierPolicyRequest {
+  storageTier: StorageTier;
+}
+export const PutStorageTierPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ storageTier: StorageTier }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutStorageTierPolicyRequest",
+}) as any as S.Schema<PutStorageTierPolicyRequest>;
+export interface PutStorageTierPolicyResponse {
+  storageTier?: StorageTier;
+  lastUpdatedTime?: number;
+}
+export const PutStorageTierPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageTier: S.optional(StorageTier),
+    lastUpdatedTime: S.optional(S.Number),
+  }).pipe(ns),
+).annotate({
+  identifier: "PutStorageTierPolicyResponse",
+}) as any as S.Schema<PutStorageTierPolicyResponse>;
 export interface PutSubscriptionFilterRequest {
   logGroupName: string;
   filterName: string;
@@ -6442,14 +6546,16 @@ export const UpdateLogAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLookupTableRequest {
   lookupTableArn: string;
   description?: string;
-  tableBody: string;
+  tableBody?: string;
+  queryId?: string;
   kmsKeyId?: string;
 }
 export const UpdateLookupTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lookupTableArn: S.String,
     description: S.optional(S.String),
-    tableBody: S.String,
+    tableBody: S.optional(S.String),
+    queryId: S.optional(S.String),
     kmsKeyId: S.optional(S.String),
   }).pipe(
     T.all(
@@ -7119,12 +7225,14 @@ export type CreateLookupTableError =
   | ValidationException
   | CommonErrors;
 /**
- * Creates a lookup table by uploading CSV data. You can use lookup tables to enrich log
- * data in CloudWatch Logs Insights queries with reference data such as user details, application
- * names, or error descriptions.
+ * Creates a lookup table by uploading CSV data or from CloudWatch Logs query
+ * results. You can use lookup tables to enrich log data in CloudWatch Logs queries with
+ * reference data such as user details, application names, or error descriptions.
  *
- * The table name must be unique within your account and Region. The CSV content must include
- * a header row with column names, use UTF-8 encoding, and not exceed 10 MB.
+ * The table name must be unique within your account and Region. You must specify either
+ * `tableBody` or `queryId`, but not both. If you use
+ * `tableBody`, the CSV content must include a header row with column names, use
+ * UTF-8 encoding, and not exceed 10 MB.
  */
 export const createLookupTable: API.OperationMethod<
   CreateLookupTableRequest,
@@ -8149,8 +8257,11 @@ export type DescribeFieldIndexesError =
   | ServiceUnavailableException
   | CommonErrors;
 /**
- * Returns a list of custom and default field indexes which are discovered in log data. For
- * more information about field index policies, see PutIndexPolicy.
+ * Returns a list of field indexes discovered in log data. By default, the response includes
+ * the `DEFAULT`, `CUSTOM`, and `INACTIVE` index categories. To
+ * return indexes from other categories, use the `indexCategories` parameter.
+ *
+ * For more information about field index policies, see PutIndexPolicy.
  */
 export const describeFieldIndexes: API.OperationMethod<
   DescribeFieldIndexesRequest,
@@ -9280,6 +9391,36 @@ export const getScheduledQueryHistory: API.PaginatedOperationMethod<
     pageSize: "maxResults",
   } as const,
 })) as any;
+
+export type GetStorageTierPolicyError =
+  | AccessDeniedException
+  | InvalidParameterException
+  | OperationAbortedException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | CommonErrors;
+/**
+ * Returns the storage tier policy for the account.
+ */
+export const getStorageTierPolicy: API.OperationMethod<
+  GetStorageTierPolicyRequest,
+  GetStorageTierPolicyResponse,
+  GetStorageTierPolicyError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetStorageTierPolicyRequest,
+  output: GetStorageTierPolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidParameterException,
+    OperationAbortedException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetStorageTierPolicy",
+}));
 
 export type GetTransformerError =
   | InvalidOperationException
@@ -10823,6 +10964,38 @@ export const putRetentionPolicy: API.OperationMethod<
   operationName: "PutRetentionPolicy",
 }));
 
+export type PutStorageTierPolicyError =
+  | AccessDeniedException
+  | InvalidParameterException
+  | OperationAbortedException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | CommonErrors;
+/**
+ * Sets the storage tier policy for the account. When you set the storage tier to
+ * `INTELLIGENT_TIERING`, the service automatically moves log data to the most
+ * cost-effective storage tier based on access frequency.
+ */
+export const putStorageTierPolicy: API.OperationMethod<
+  PutStorageTierPolicyRequest,
+  PutStorageTierPolicyResponse,
+  PutStorageTierPolicyError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutStorageTierPolicyRequest,
+  output: PutStorageTierPolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidParameterException,
+    OperationAbortedException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutStorageTierPolicy",
+}));
+
 export type PutSubscriptionFilterError =
   | InvalidOperationException
   | InvalidParameterException
@@ -11457,11 +11630,12 @@ export type UpdateLookupTableError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates an existing lookup table by replacing all of its CSV content. After the update
- * completes, queries that use this table will use the new data.
+ * Updates an existing lookup table by replacing all of its content with new CSV data or
+ * CloudWatch Logs query results. After the update completes, queries that use this table
+ * use the new data.
  *
- * This is a full replacement operation. All existing content is replaced with the new CSV
- * data.
+ * This is a full replacement operation. All existing content is replaced. You must specify
+ * either `tableBody` or `queryId`, but not both.
  */
 export const updateLookupTable: API.OperationMethod<
   UpdateLookupTableRequest,

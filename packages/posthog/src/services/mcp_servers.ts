@@ -40,14 +40,14 @@ export type MCPAuthTypeEnum = "api_key" | "oauth";
 export const MCPAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
-export type MCPServerTemplateCategoryEnum =
+export type MCPServerCategoryEnum =
   | "business"
   | "data"
   | "design"
   | "dev"
   | "infra"
   | "productivity";
-export const MCPServerTemplateCategoryEnum = /*@__PURE__*/ S.String;
+export const MCPServerCategoryEnum = /*@__PURE__*/ S.String;
 
 export interface MCPServerTemplate {
   id?: string;
@@ -56,8 +56,11 @@ export interface MCPServerTemplate {
   docs_url?: string;
   description?: string;
   auth_type?: MCPAuthTypeEnum;
+  /** Deprecated: use icon_domain instead. Lowercase key for clients that still render bundled icon assets. */
   icon_key?: string;
-  category?: MCPServerTemplateCategoryEnum;
+  /** The vendor's brand domain (e.g. 'linear.app'), resolved to an icon at render time via the logo.dev proxy endpoint. Empty when no brand icon is known. */
+  icon_domain?: string;
+  category?: MCPServerCategoryEnum;
 }
 export const MCPServerTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -68,7 +71,8 @@ export const MCPServerTemplate = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     auth_type: S.optional(MCPAuthTypeEnum),
     icon_key: S.optional(S.String),
-    category: S.optional(MCPServerTemplateCategoryEnum),
+    icon_domain: S.optional(S.String),
+    category: S.optional(MCPServerCategoryEnum),
   }),
 ).annotate({
   identifier: "MCPServerTemplate",

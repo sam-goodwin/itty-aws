@@ -446,6 +446,32 @@
         "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email."
       }
     },
+    "com.vercel.domains#ClaimDomainOwnershipResponseDomainEchMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment."
+      }
+    },
     "com.vercel.domains#ClaimDomainOwnershipResponseDomainServiceType": {
       "type": "enum",
       "members": {
@@ -514,6 +540,13 @@
           "target": "com.vercel.domains#ClaimDomainOwnershipResponseDomainCreator",
           "traits": {
             "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email.",
+            "smithy.api#required": {}
+          }
+        },
+        "echMode": {
+          "target": "com.vercel.domains#ClaimDomainOwnershipResponseDomainEchMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.",
             "smithy.api#required": {}
           }
         },
@@ -997,6 +1030,32 @@
         "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email."
       }
     },
+    "com.vercel.domains#GetDomainResponseDomainEchMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment."
+      }
+    },
     "com.vercel.domains#GetDomainResponseDomainServiceType": {
       "type": "enum",
       "members": {
@@ -1071,6 +1130,13 @@
           "target": "com.vercel.domains#GetDomainResponseDomainCreator",
           "traits": {
             "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email.",
+            "smithy.api#required": {}
+          }
+        },
+        "echMode": {
+          "target": "com.vercel.domains#GetDomainResponseDomainEchMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.",
             "smithy.api#required": {}
           }
         },
@@ -1292,6 +1358,32 @@
         "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email."
       }
     },
+    "com.vercel.domains#GetDomainsResponseDomainsItemEchMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment."
+      }
+    },
     "com.vercel.domains#GetDomainsResponseDomainsItemServiceType": {
       "type": "enum",
       "members": {
@@ -1360,6 +1452,13 @@
           "target": "com.vercel.domains#GetDomainsResponseDomainsItemCreator",
           "traits": {
             "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email.",
+            "smithy.api#required": {}
+          }
+        },
+        "echMode": {
+          "target": "com.vercel.domains#GetDomainsResponseDomainsItemEchMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.",
             "smithy.api#required": {}
           }
         },
@@ -1579,6 +1678,32 @@
         "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email."
       }
     },
+    "com.vercel.domains#CreateOrTransferDomainResponseDomainEchMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment."
+      }
+    },
     "com.vercel.domains#CreateOrTransferDomainResponseDomainServiceType": {
       "type": "enum",
       "members": {
@@ -1647,6 +1772,13 @@
           "target": "com.vercel.domains#CreateOrTransferDomainResponseDomainCreator",
           "traits": {
             "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email.",
+            "smithy.api#required": {}
+          }
+        },
+        "echMode": {
+          "target": "com.vercel.domains#CreateOrTransferDomainResponseDomainEchMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment.",
             "smithy.api#required": {}
           }
         },
@@ -1778,6 +1910,26 @@
         "smithy.api#documentation": "This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/nameservers instead."
       }
     },
+    "com.vercel.domains#PatchDomainRequestBodyCase0EchMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'disabled' never enrolls and opts out of automatic enrollment."
+      }
+    },
     "com.vercel.domains#PatchDomainRequestBodyCase0": {
       "type": "structure",
       "members": {
@@ -1800,6 +1952,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Specifies whether this is a DNS zone that intends to use Vercel's nameservers."
+          }
+        },
+        "echMode": {
+          "target": "com.vercel.domains#PatchDomainRequestBodyCase0EchMode",
+          "traits": {
+            "smithy.api#documentation": "Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'disabled' never enrolls and opts out of automatic enrollment."
           }
         }
       },
@@ -1909,6 +2067,30 @@
       },
       "traits": {}
     },
+    "com.vercel.domains#PatchDomainResponseBodyCase2EchMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.vercel.domains#PatchDomainResponseBodyCase2": {
       "type": "structure",
       "members": {
@@ -1920,6 +2102,12 @@
         },
         "zone": {
           "target": "smithy.api#Boolean"
+        },
+        "echMode": {
+          "target": "com.vercel.domains#PatchDomainResponseBodyCase2EchMode",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {}

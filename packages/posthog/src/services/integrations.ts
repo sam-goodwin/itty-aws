@@ -313,10 +313,11 @@ export const IntegrationsClickupWorkspacesRetrieveResponse =
     identifier: "IntegrationsClickupWorkspacesRetrieveResponse",
   }) as any as S.Schema<IntegrationsClickupWorkspacesRetrieveResponse>;
 
-/** * `anthropic` - Anthropic * `apns` - Apple Push * `aws-s3` - Aws S3 * `azure-blob` - Azure Blob * `bing-ads` - Bing Ads * `clickup` - Clickup * `customerio-app` - Customerio App * `customerio-track` - Customerio Track * `customerio-webhook` - Customerio Webhook * `databricks` - Databricks * `email` - Email * `firebase` - Firebase * `github` - Github * `gitlab` - Gitlab * `google-ads` - Google Ads * `google-analytics` - Google Analytics * `google-cloud-service-account` - Google Cloud Service Account * `google-cloud-storage` - Google Cloud Storage * `google-pubsub` - Google Pubsub * `google-search-console` - Google Search Console * `google-sheets` - Google Sheets * `hubspot` - Hubspot * `intercom` - Intercom * `jira` - Jira * `linear` - Linear * `linkedin-ads` - Linkedin Ads * `meta-ads` - Meta Ads * `pinterest-ads` - Pinterest Ads * `postgresql` - Postgresql * `reddit-ads` - Reddit Ads * `s3-compatible` - S3 Compatible * `salesforce` - Salesforce * `slack` - Slack * `slack-posthog-code` - Slack Posthog Code * `snapchat` - Snapchat * `stripe` - Stripe * `tiktok-ads` - Tiktok Ads * `twilio` - Twilio * `vercel` - Vercel */
+/** * `anthropic` - Anthropic * `apns` - Apple Push * `aws-redshift` - Aws Redshift * `aws-s3` - Aws S3 * `azure-blob` - Azure Blob * `bing-ads` - Bing Ads * `clickup` - Clickup * `customerio-app` - Customerio App * `customerio-track` - Customerio Track * `customerio-webhook` - Customerio Webhook * `databricks` - Databricks * `email` - Email * `firebase` - Firebase * `github` - Github * `gitlab` - Gitlab * `google-ads` - Google Ads * `google-analytics` - Google Analytics * `google-calendar` - Google Calendar * `google-cloud-service-account` - Google Cloud Service Account * `google-cloud-storage` - Google Cloud Storage * `google-pubsub` - Google Pubsub * `google-search-console` - Google Search Console * `google-sheets` - Google Sheets * `hubspot` - Hubspot * `instagram` - Instagram * `intercom` - Intercom * `jira` - Jira * `linear` - Linear * `linkedin-ads` - Linkedin Ads * `meta-ads` - Meta Ads * `pardot` - Pardot * `pinterest-ads` - Pinterest Ads * `postgresql` - Postgresql * `posthog` - Posthog * `reddit-ads` - Reddit Ads * `resend` - Resend * `s3-compatible` - S3 Compatible * `salesforce` - Salesforce * `slack` - Slack * `slack-posthog-code` - Slack Posthog Code * `snapchat` - Snapchat * `snowflake` - Snowflake * `stripe` - Stripe * `tiktok-ads` - Tiktok Ads * `twilio` - Twilio * `vercel` - Vercel * `youtube-analytics` - Youtube Analytics */
 export type IntegrationKindEnum =
   | "anthropic"
   | "apns"
+  | "aws-redshift"
   | "aws-s3"
   | "azure-blob"
   | "bing-ads"
@@ -331,29 +332,36 @@ export type IntegrationKindEnum =
   | "gitlab"
   | "google-ads"
   | "google-analytics"
+  | "google-calendar"
   | "google-cloud-service-account"
   | "google-cloud-storage"
   | "google-pubsub"
   | "google-search-console"
   | "google-sheets"
   | "hubspot"
+  | "instagram"
   | "intercom"
   | "jira"
   | "linear"
   | "linkedin-ads"
   | "meta-ads"
+  | "pardot"
   | "pinterest-ads"
   | "postgresql"
+  | "posthog"
   | "reddit-ads"
+  | "resend"
   | "s3-compatible"
   | "salesforce"
   | "slack"
   | "slack-posthog-code"
   | "snapchat"
+  | "snowflake"
   | "stripe"
   | "tiktok-ads"
   | "twilio"
-  | "vercel";
+  | "vercel"
+  | "youtube-analytics";
 export const IntegrationKindEnum = /*@__PURE__*/ S.String;
 
 export interface IntegrationsCreateRequest {
@@ -384,7 +392,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -393,6 +401,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -428,6 +437,10 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
+/** * `connected` - connected * `unavailable` - unavailable */
+export type InstallationStatusEnum = "connected" | "unavailable";
+export const InstallationStatusEnum = /*@__PURE__*/ S.String;
+
 /** Standard Integration serializer. */
 export interface IntegrationConfig {
   id?: number;
@@ -437,6 +450,10 @@ export interface IntegrationConfig {
   created_by?: UserBasic | null;
   errors?: string;
   display_name?: string;
+  /** GitHub only, null otherwise. Whether another project's GitHub integration references the same App installation. When false, disconnecting this integration also uninstalls the GitHub App from the connected account or organization and removes personal GitHub connections that share it. */
+  installation_shared?: boolean | null;
+  /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise. */
+  installation_status?: InstallationStatusEnum | null;
 }
 export const IntegrationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -447,6 +464,8 @@ export const IntegrationConfig = /*@__PURE__*/ S.suspend(() =>
     created_by: S.optional(S.NullOr(UserBasic)),
     errors: S.optional(S.String),
     display_name: S.optional(S.String),
+    installation_shared: S.optional(S.NullOr(S.Boolean)),
+    installation_status: S.optional(S.NullOr(InstallationStatusEnum)),
   }),
 ).annotate({
   identifier: "IntegrationConfig",
@@ -593,6 +612,70 @@ export const IntegrationsEmailVerifyCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "IntegrationsEmailVerifyCreateResponse",
 }) as any as S.Schema<IntegrationsEmailVerifyCreateResponse>;
 
+export interface IntegrationsGithubAvailableInstallationsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const IntegrationsGithubAvailableInstallationsRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/integrations/github/available_installations/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "IntegrationsGithubAvailableInstallationsRetrieveRequest",
+  }) as any as S.Schema<IntegrationsGithubAvailableInstallationsRetrieveRequest>;
+
+export interface GitHubAvailableInstallation {
+  /** GitHub installation ID to pass to github/link_existing when linking this installation. */
+  installation_id: string;
+  /** GitHub account (organization or user) the installation belongs to, for display in the picker. */
+  account_name: string | null;
+  /** GitHub account type, e.g. 'Organization' or 'User'. */
+  account_type: string | null;
+  /** A project in the organization that already has this installation linked. Null when the installation isn't linked to any project yet — it was found via the user's personal GitHub link and can be adopted by linking it here. */
+  source_team_id: number | null;
+}
+export const GitHubAvailableInstallation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    installation_id: S.String,
+    account_name: S.NullOr(S.String),
+    account_type: S.NullOr(S.String),
+    source_team_id: S.NullOr(S.Number),
+  }),
+).annotate({
+  identifier: "GitHubAvailableInstallation",
+}) as any as S.Schema<GitHubAvailableInstallation>;
+
+/** GitHub installations available to link to this project: the organization's existing installations plus any the user's personal GitHub link can see but that aren't linked to any project yet. */
+export type GitHubAvailableInstallationsResponseInstallationsList =
+  Array<GitHubAvailableInstallation>;
+export const GitHubAvailableInstallationsResponseInstallationsList =
+  /*@__PURE__*/ S.Array(
+    GitHubAvailableInstallation,
+  ) as any as S.Schema<GitHubAvailableInstallationsResponseInstallationsList>;
+
+export interface GitHubAvailableInstallationsResponse {
+  /** GitHub installations available to link to this project: the organization's existing installations plus any the user's personal GitHub link can see but that aren't linked to any project yet. */
+  installations: GitHubAvailableInstallationsResponseInstallationsList;
+  /** Whether the requesting user has a personal GitHub account linked (via Linked Accounts). Used to prompt for that link when it would surface more installations to adopt. */
+  personal_github_connected: boolean;
+}
+export const GitHubAvailableInstallationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      installations: GitHubAvailableInstallationsResponseInstallationsList,
+      personal_github_connected: S.Boolean,
+    }),
+).annotate({
+  identifier: "GitHubAvailableInstallationsResponse",
+}) as any as S.Schema<GitHubAvailableInstallationsResponse>;
+
 export interface IntegrationsGithubBranchesRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -723,7 +806,7 @@ export const GitHubOAuthAuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
 export interface IntegrationsGithubPrepareCallbackCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Relative URL to redirect to after GitHub setup completes (e.g. account-connected for PostHog Code). */
+  /** Relative URL to redirect to after GitHub setup completes (e.g. account-connected for PostHog Desktop). */
   next?: string;
   /** GitHub installation ID being managed; binds the seeded update state so a callback can't swap in a different installation. */
   installation_id?: string;
@@ -774,15 +857,36 @@ export const IntegrationsGithubReposRefreshCreateRequest =
   }) as any as S.Schema<IntegrationsGithubReposRefreshCreateRequest>;
 
 export interface GitHubRepo {
+  /** GitHub repository numeric identifier. */
   id?: number;
+  /** Repository short name (without the owner prefix). */
   name?: string;
+  /** Fully-qualified repository name as 'owner/repo'. */
   full_name?: string;
+  /** Whether the repository is private. */
+  private?: boolean;
+  /** The repository's default branch (e.g. 'main'). */
+  default_branch?: string;
+  /** Primary programming language GitHub detected for the repository. */
+  language?: string;
+  /** ISO 8601 timestamp of the most recent push, useful for sorting by recent activity. */
+  pushed_at?: string;
+  /** Whether the repository is archived. */
+  archived?: boolean;
+  /** Whether the PostHog GitHub App has write access — required to open pull requests. */
+  can_push?: boolean;
 }
 export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
     full_name: S.optional(S.String),
+    private: S.optional(S.Boolean),
+    default_branch: S.optional(S.String),
+    language: S.optional(S.String),
+    pushed_at: S.optional(S.String),
+    archived: S.optional(S.Boolean),
+    can_push: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
 
@@ -795,10 +899,13 @@ export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
 export interface GitHubReposRefreshResponse {
   /** The refreshed repository cache. */
   repositories?: GitHubReposRefreshResponseRepositoriesList;
+  /** `unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one. * `connected` - connected * `unavailable` - unavailable */
+  installation_status?: InstallationStatusEnum;
 }
 export const GitHubReposRefreshResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(GitHubReposRefreshResponseRepositoriesList),
+    installation_status: S.optional(InstallationStatusEnum),
   }),
 ).annotate({
   identifier: "GitHubReposRefreshResponse",
@@ -844,11 +951,14 @@ export interface GitHubReposResponse {
   repositories?: GitHubReposResponseRepositoriesList;
   /** Whether more repositories are available beyond this page. */
   has_more?: boolean;
+  /** Total number of repositories matching the search query, across all pages. */
+  total?: number;
 }
 export const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(GitHubReposResponseRepositoriesList),
     has_more: S.optional(S.Boolean),
+    total: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "GitHubReposResponse",
@@ -977,60 +1087,6 @@ export const IntegrationsGoogleConversionActionsRetrieveResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "IntegrationsGoogleConversionActionsRetrieveResponse",
   }) as any as S.Schema<IntegrationsGoogleConversionActionsRetrieveResponse>;
-
-export interface IntegrationsGoogleSearchConsoleSitesRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this integration. */
-  id: number;
-}
-export const IntegrationsGoogleSearchConsoleSitesRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/integrations/{id}/google_search_console_sites/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "IntegrationsGoogleSearchConsoleSitesRetrieveRequest",
-  }) as any as S.Schema<IntegrationsGoogleSearchConsoleSitesRetrieveRequest>;
-
-export interface GoogleSearchConsoleSite {
-  /** Site URL in canonical Google format — `https://example.com/` for URL-prefix properties (trailing slash mandatory) or `sc-domain:example.com` for Domain properties. */
-  siteUrl: string;
-  /** The connected user's permission level for this site. One of `siteOwner`, `siteFullUser`, `siteRestrictedUser`, `siteUnverifiedUser`. */
-  permissionLevel: string;
-}
-export const GoogleSearchConsoleSite = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    siteUrl: S.String,
-    permissionLevel: S.String,
-  }),
-).annotate({
-  identifier: "GoogleSearchConsoleSite",
-}) as any as S.Schema<GoogleSearchConsoleSite>;
-
-export type GoogleSearchConsoleSitesResponseSitesList =
-  Array<GoogleSearchConsoleSite>;
-export const GoogleSearchConsoleSitesResponseSitesList = /*@__PURE__*/ S.Array(
-  GoogleSearchConsoleSite,
-) as any as S.Schema<GoogleSearchConsoleSitesResponseSitesList>;
-
-export interface GoogleSearchConsoleSitesResponse {
-  sites: GoogleSearchConsoleSitesResponseSitesList;
-}
-export const GoogleSearchConsoleSitesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sites: GoogleSearchConsoleSitesResponseSitesList,
-  }),
-).annotate({
-  identifier: "GoogleSearchConsoleSitesResponse",
-}) as any as S.Schema<GoogleSearchConsoleSitesResponse>;
 
 export interface IntegrationsJiraProjectsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1200,6 +1256,7 @@ export const IntegrationsLinkedinAdsConversionRulesRetrieveResponse =
 export type IntegrationsListRequestKind =
   | "anthropic"
   | "apns"
+  | "aws-redshift"
   | "aws-s3"
   | "azure-blob"
   | "bing-ads"
@@ -1214,35 +1271,42 @@ export type IntegrationsListRequestKind =
   | "gitlab"
   | "google-ads"
   | "google-analytics"
+  | "google-calendar"
   | "google-cloud-service-account"
   | "google-cloud-storage"
   | "google-pubsub"
   | "google-search-console"
   | "google-sheets"
   | "hubspot"
+  | "instagram"
   | "intercom"
   | "jira"
   | "linear"
   | "linkedin-ads"
   | "meta-ads"
+  | "pardot"
   | "pinterest-ads"
   | "postgresql"
+  | "posthog"
   | "reddit-ads"
+  | "resend"
   | "s3-compatible"
   | "salesforce"
   | "slack"
   | "slack-posthog-code"
   | "snapchat"
+  | "snowflake"
   | "stripe"
   | "tiktok-ads"
   | "twilio"
-  | "vercel";
+  | "vercel"
+  | "youtube-analytics";
 export const IntegrationsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface IntegrationsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** * `anthropic` - Anthropic * `apns` - Apple Push * `aws-s3` - Aws S3 * `azure-blob` - Azure Blob * `bing-ads` - Bing Ads * `clickup` - Clickup * `customerio-app` - Customerio App * `customerio-track` - Customerio Track * `customerio-webhook` - Customerio Webhook * `databricks` - Databricks * `email` - Email * `firebase` - Firebase * `github` - Github * `gitlab` - Gitlab * `google-ads` - Google Ads * `google-analytics` - Google Analytics * `google-cloud-service-account` - Google Cloud Service Account * `google-cloud-storage` - Google Cloud Storage * `google-pubsub` - Google Pubsub * `google-search-console` - Google Search Console * `google-sheets` - Google Sheets * `hubspot` - Hubspot * `intercom` - Intercom * `jira` - Jira * `linear` - Linear * `linkedin-ads` - Linkedin Ads * `meta-ads` - Meta Ads * `pinterest-ads` - Pinterest Ads * `postgresql` - Postgresql * `reddit-ads` - Reddit Ads * `s3-compatible` - S3 Compatible * `salesforce` - Salesforce * `slack` - Slack * `slack-posthog-code` - Slack Posthog Code * `snapchat` - Snapchat * `stripe` - Stripe * `tiktok-ads` - Tiktok Ads * `twilio` - Twilio * `vercel` - Vercel */
+  /** * `anthropic` - Anthropic * `apns` - Apple Push * `aws-redshift` - Aws Redshift * `aws-s3` - Aws S3 * `azure-blob` - Azure Blob * `bing-ads` - Bing Ads * `clickup` - Clickup * `customerio-app` - Customerio App * `customerio-track` - Customerio Track * `customerio-webhook` - Customerio Webhook * `databricks` - Databricks * `email` - Email * `firebase` - Firebase * `github` - Github * `gitlab` - Gitlab * `google-ads` - Google Ads * `google-analytics` - Google Analytics * `google-calendar` - Google Calendar * `google-cloud-service-account` - Google Cloud Service Account * `google-cloud-storage` - Google Cloud Storage * `google-pubsub` - Google Pubsub * `google-search-console` - Google Search Console * `google-sheets` - Google Sheets * `hubspot` - Hubspot * `instagram` - Instagram * `intercom` - Intercom * `jira` - Jira * `linear` - Linear * `linkedin-ads` - Linkedin Ads * `meta-ads` - Meta Ads * `pardot` - Pardot * `pinterest-ads` - Pinterest Ads * `postgresql` - Postgresql * `posthog` - Posthog * `reddit-ads` - Reddit Ads * `resend` - Resend * `s3-compatible` - S3 Compatible * `salesforce` - Salesforce * `slack` - Slack * `slack-posthog-code` - Slack Posthog Code * `snapchat` - Snapchat * `snowflake` - Snowflake * `stripe` - Stripe * `tiktok-ads` - Tiktok Ads * `twilio` - Twilio * `vercel` - Vercel * `youtube-analytics` - Youtube Analytics */
   kind?: IntegrationsListRequestKind | (string & {});
   /** Number of results to return per page. */
   limit?: number;
@@ -1292,7 +1356,7 @@ export const PaginatedIntegrationConfigList = /*@__PURE__*/ S.suspend(() =>
 export interface IntegrationsRequestAccessCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** The kind of integration the member is requesting be connected (e.g. 'slack', 'github'). * `anthropic` - Anthropic * `apns` - Apple Push * `aws-s3` - Aws S3 * `azure-blob` - Azure Blob * `bing-ads` - Bing Ads * `clickup` - Clickup * `customerio-app` - Customerio App * `customerio-track` - Customerio Track * `customerio-webhook` - Customerio Webhook * `databricks` - Databricks * `email` - Email * `firebase` - Firebase * `github` - Github * `gitlab` - Gitlab * `google-ads` - Google Ads * `google-analytics` - Google Analytics * `google-cloud-service-account` - Google Cloud Service Account * `google-cloud-storage` - Google Cloud Storage * `google-pubsub` - Google Pubsub * `google-search-console` - Google Search Console * `google-sheets` - Google Sheets * `hubspot` - Hubspot * `intercom` - Intercom * `jira` - Jira * `linear` - Linear * `linkedin-ads` - Linkedin Ads * `meta-ads` - Meta Ads * `pinterest-ads` - Pinterest Ads * `postgresql` - Postgresql * `reddit-ads` - Reddit Ads * `s3-compatible` - S3 Compatible * `salesforce` - Salesforce * `slack` - Slack * `slack-posthog-code` - Slack Posthog Code * `snapchat` - Snapchat * `stripe` - Stripe * `tiktok-ads` - Tiktok Ads * `twilio` - Twilio * `vercel` - Vercel */
+  /** The kind of integration the member is requesting be connected (e.g. 'slack', 'github'). * `anthropic` - Anthropic * `apns` - Apple Push * `aws-redshift` - Aws Redshift * `aws-s3` - Aws S3 * `azure-blob` - Azure Blob * `bing-ads` - Bing Ads * `clickup` - Clickup * `customerio-app` - Customerio App * `customerio-track` - Customerio Track * `customerio-webhook` - Customerio Webhook * `databricks` - Databricks * `email` - Email * `firebase` - Firebase * `github` - Github * `gitlab` - Gitlab * `google-ads` - Google Ads * `google-analytics` - Google Analytics * `google-calendar` - Google Calendar * `google-cloud-service-account` - Google Cloud Service Account * `google-cloud-storage` - Google Cloud Storage * `google-pubsub` - Google Pubsub * `google-search-console` - Google Search Console * `google-sheets` - Google Sheets * `hubspot` - Hubspot * `instagram` - Instagram * `intercom` - Intercom * `jira` - Jira * `linear` - Linear * `linkedin-ads` - Linkedin Ads * `meta-ads` - Meta Ads * `pardot` - Pardot * `pinterest-ads` - Pinterest Ads * `postgresql` - Postgresql * `posthog` - Posthog * `reddit-ads` - Reddit Ads * `resend` - Resend * `s3-compatible` - S3 Compatible * `salesforce` - Salesforce * `slack` - Slack * `slack-posthog-code` - Slack Posthog Code * `snapchat` - Snapchat * `snowflake` - Snowflake * `stripe` - Stripe * `tiktok-ads` - Tiktok Ads * `twilio` - Twilio * `vercel` - Vercel * `youtube-analytics` - Youtube Analytics */
   kind: IntegrationKindEnum | (string & {});
   /** Explanation from the requester of why this integration is needed. Shown to admins in the notification email. */
   reason: string;
@@ -1607,6 +1671,22 @@ export const integrationsEmailVerifyCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type IntegrationsGithubAvailableInstallationsRetrieveError =
+  PosthogOpError;
+/** List GitHub installations this project can link. A GitHub App installs once per organization, so a second project links an existing installation rather than reinstalling. This backs the picker: when more than one option exists, the client passes the chosen installation_id to github/link_existing. The list also includes installations the user's personal GitHub link can see but that aren't linked to any project yet (``source_team_id: null``) — orphan installations approved on GitHub outside PostHog's callback, which ``github/link_existing`` can adopt. */
+export const integrationsGithubAvailableInstallationsRetrieve: API.OperationMethod<
+  IntegrationsGithubAvailableInstallationsRetrieveRequest,
+  GitHubAvailableInstallationsResponse,
+  IntegrationsGithubAvailableInstallationsRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: IntegrationsGithubAvailableInstallationsRetrieveRequest,
+  output: GitHubAvailableInstallationsResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type IntegrationsGithubBranchesRetrieveError =
   | BadRequest
   | Forbidden
@@ -1749,21 +1829,6 @@ export const integrationsGoogleConversionActionsRetrieve: API.OperationMethod<
   input: IntegrationsGoogleConversionActionsRetrieveRequest,
   output: IntegrationsGoogleConversionActionsRetrieveResponse,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IntegrationsGoogleSearchConsoleSitesRetrieveError = PosthogOpError;
-/** List the Search Console properties the connected Google account has access to. */
-export const integrationsGoogleSearchConsoleSitesRetrieve: API.OperationMethod<
-  IntegrationsGoogleSearchConsoleSitesRetrieveRequest,
-  GoogleSearchConsoleSitesResponse,
-  IntegrationsGoogleSearchConsoleSitesRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationsGoogleSearchConsoleSitesRetrieveRequest,
-  output: GoogleSearchConsoleSitesResponse,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

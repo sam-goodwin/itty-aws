@@ -730,7 +730,8 @@ export const NullableSimpleUser = SimpleUser;
 export type CodeScanningAlertDismissedReason =
   | "false positive"
   | "won't fix"
-  | "used in tests";
+  | "used in tests"
+  | "mitigated";
 export const CodeScanningAlertDismissedReason = /*@__PURE__*/ S.String;
 
 /** The severity of the alert. */

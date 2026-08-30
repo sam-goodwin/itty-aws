@@ -403,7 +403,11 @@ export type LicenseInfoList = LicenseInfo[];
 export const LicenseInfoList = /*@__PURE__*/ S.Array(LicenseInfo);
 export type HostName = string;
 export type KeyName = string;
-export type InstanceType = "i4i.metal" | "i7i.metal-24xl" | (string & {});
+export type InstanceType =
+  | "i4i.metal"
+  | "i7i.metal-24xl"
+  | "i7i.metal-48xl"
+  | (string & {});
 export const InstanceType = /*@__PURE__*/ S.String;
 
 export type PlacementGroupId = string;

@@ -107,6 +107,12 @@
         "egressIpAddresses": {
           "target": "com.vercel.networking#NetworkEgressIpAddressesList"
         },
+        "reservedEgressIpAddresses": {
+          "target": "com.vercel.networking#NetworkReservedEgressIpAddressesList",
+          "traits": {
+            "smithy.api#documentation": "The BYOIP egress (NAT gateway) IP addresses pre-allocated for this network from the region's egress IPAM pool. Present in regions that have an egress pool. Customers can allowlist these addresses before egress is switched over to them, since they are reserved ahead of the switch."
+          }
+        },
         "egressCidrBlock": {
           "target": "smithy.api#String",
           "traits": {
@@ -189,6 +195,15 @@
         "target": "smithy.api#String"
       },
       "traits": {}
+    },
+    "com.vercel.networking#NetworkReservedEgressIpAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The BYOIP egress (NAT gateway) IP addresses pre-allocated for this network from the region's egress IPAM pool. Present in regions that have an egress pool. Customers can allowlist these addresses before egress is switched over to them, since they are reserved ahead of the switch."
+      }
     },
     "com.vercel.networking#NetworkHostedZones": {
       "type": "structure",

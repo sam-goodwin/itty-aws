@@ -303,32 +303,64 @@ export const PersonFilterBytecodeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PersonFilterBytecodeList>;
 
 export interface PersonFilter {
+  operator?: string | null;
+  value?: unknown;
   bytecode?: PersonFilterBytecodeList | null;
   bytecode_error?: string | null;
   conditionHash?: string | null;
   type?: string;
   key?: string;
-  operator?: string | null;
-  value?: unknown;
   negation?: boolean;
 }
 export const PersonFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    operator: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.Unknown),
     bytecode: S.optional(S.NullOr(PersonFilterBytecodeList)),
     bytecode_error: S.optional(S.NullOr(S.String)),
     conditionHash: S.optional(S.NullOr(S.String)),
     type: S.optional(S.String),
     key: S.optional(S.String),
-    operator: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.Unknown),
     negation: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "PersonFilter" }) as any as S.Schema<PersonFilter>;
+
+export type PersonMetadataFilterBytecodeList = Array<unknown>;
+export const PersonMetadataFilterBytecodeList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PersonMetadataFilterBytecodeList>;
+
+/** Filter on a top-level persons-table column (e.g. created_at) rather than the properties JSON. The matching key must be one of PERSON_METADATA_FIELDS. */
+export interface PersonMetadataFilter {
+  operator?: string | null;
+  value?: unknown;
+  bytecode?: PersonMetadataFilterBytecodeList | null;
+  bytecode_error?: string | null;
+  conditionHash?: string | null;
+  type: string;
+  key: string;
+  negation?: boolean;
+}
+export const PersonMetadataFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operator: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.Unknown),
+    bytecode: S.optional(S.NullOr(PersonMetadataFilterBytecodeList)),
+    bytecode_error: S.optional(S.NullOr(S.String)),
+    conditionHash: S.optional(S.NullOr(S.String)),
+    type: S.String,
+    key: S.String,
+    negation: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PersonMetadataFilter",
+}) as any as S.Schema<PersonMetadataFilter>;
 
 export type CohortFilterGroupValuesItem =
   | BehavioralFilter
   | CohortFilter
   | PersonFilter
+  | PersonMetadataFilter
   | CohortFilterGroup;
 export const CohortFilterGroupValuesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CohortFilterGroupValuesItem>;
@@ -354,10 +386,12 @@ export const CohortFilterGroup = /*@__PURE__*/ S.suspend(() =>
 
 export interface CohortFilters {
   properties?: CohortFilterGroup;
+  filterTestAccounts?: boolean | null;
 }
 export const CohortFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(CohortFilterGroup),
+    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({ identifier: "CohortFilters" }) as any as S.Schema<CohortFilters>;
 
@@ -431,7 +465,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -440,6 +474,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -477,10 +512,34 @@ export type CohortOutputCohortType = CohortTypeEnum | BlankEnum;
 export const CohortOutputCohortType =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CohortOutputCohortType>;
 
+export interface CohortConditionTypeFlags {
+  /** The filters include a person property or person_metadata condition. */
+  person_properties: boolean;
+  /** The filters include a behavioral condition that is not lifecycle-style (e.g. performed_event, performed_event_multiple, performed_event_sequence, or their negations). */
+  behavioral: boolean;
+  /** The filters include a lifecycle-style behavioral condition (first-seen/regularly/stopped/restarted performing an event). */
+  lifecycle: boolean;
+  /** The filters include a nested reference to another cohort. */
+  cohorts: boolean;
+}
+export const CohortConditionTypeFlags = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    person_properties: S.Boolean,
+    behavioral: S.Boolean,
+    lifecycle: S.Boolean,
+    cohorts: S.Boolean,
+  }),
+).annotate({
+  identifier: "CohortConditionTypeFlags",
+}) as any as S.Schema<CohortConditionTypeFlags>;
+
 export type CohortOutputExperimentSetList = Array<number>;
 export const CohortOutputExperimentSetList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CohortOutputExperimentSetList>;
+
+export type SearchMatchTypeEnum = "exact" | "similar";
+export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface CohortOutput {
   id?: number;
@@ -500,10 +559,18 @@ export interface CohortOutput {
   errors_calculating?: number;
   last_error_message?: string | null;
   count?: number | null;
+  /** Number of IDs supplied by the most recent static cohort import. Null if the cohort was never populated from a list of IDs. */
+  last_import_total_count?: number | null;
+  /** How many of the IDs in the most recent static cohort import matched no person, and so were not added to the cohort. */
+  last_import_unmatched_count?: number | null;
   is_static?: boolean;
   /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
   cohort_type?: CohortOutputCohortType | null;
+  /** Flags describing which kinds of conditions the cohort's filters contain. Null when the cohort has no filters to classify. */
+  condition_type?: CohortConditionTypeFlags | null;
   experiment_set?: CohortOutputExperimentSetList;
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
+  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const CohortOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -524,9 +591,13 @@ export const CohortOutput = /*@__PURE__*/ S.suspend(() =>
     errors_calculating: S.optional(S.Number),
     last_error_message: S.optional(S.NullOr(S.String)),
     count: S.optional(S.NullOr(S.Number)),
+    last_import_total_count: S.optional(S.NullOr(S.Number)),
+    last_import_unmatched_count: S.optional(S.NullOr(S.Number)),
     is_static: S.optional(S.Boolean),
     cohort_type: S.optional(S.NullOr(CohortOutputCohortType)),
+    condition_type: S.optional(S.NullOr(CohortConditionTypeFlags)),
     experiment_set: S.optional(CohortOutputExperimentSetList),
+    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }),
 ).annotate({ identifier: "CohortOutput" }) as any as S.Schema<CohortOutput>;
 
@@ -561,7 +632,7 @@ export const CohortsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CohortsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Return a basic payload that omits the heavy `filters`, `query`, and `groups` fields. Useful for pickers that only need id/name/count. */
+  /** Return a basic payload that omits the `query`, `groups`, `last_error_message`, and `experiment_set` fields (`filters` is kept). Useful for pickers that only need id/name/count. */
   basic?: boolean;
   /** Set true to exclude behavioral (event-based) cohorts, which can't be used in feature flags or batch workflow audiences. */
   hide_behavioral_cohorts?: boolean;
@@ -569,6 +640,8 @@ export interface CohortsListRequest {
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
+  /** Optional. Match against cohort `name`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, transpositions, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Results are ordered by relevance. When omitted, cohorts are ordered newest-first. Capped at 200 characters; longer queries return a 400 error. */
+  search?: string;
 }
 export const CohortsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -577,6 +650,7 @@ export const CohortsListRequest = /*@__PURE__*/ S.suspend(() =>
     hide_behavioral_cohorts: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",

@@ -1561,6 +1561,34 @@ export const CitationsContentBlock = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CitationsContentBlock",
 }) as any as S.Schema<CitationsContentBlock>;
+export interface ToolReference {
+  type?: string;
+  name?: string;
+  serverName?: string;
+}
+export const ToolReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    name: S.optional(S.String),
+    serverName: S.optional(S.String),
+  }),
+).annotate({ identifier: "ToolReference" }) as any as S.Schema<ToolReference>;
+export interface ToolAdditionBlock {
+  tool: ToolReference;
+}
+export const ToolAdditionBlock = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tool: ToolReference }),
+).annotate({
+  identifier: "ToolAdditionBlock",
+}) as any as S.Schema<ToolAdditionBlock>;
+export interface ToolRemovalBlock {
+  tool: ToolReference;
+}
+export const ToolRemovalBlock = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tool: ToolReference }),
+).annotate({
+  identifier: "ToolRemovalBlock",
+}) as any as S.Schema<ToolRemovalBlock>;
 export type ContentBlock =
   | {
       text: string;
@@ -1575,6 +1603,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1589,6 +1619,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1603,6 +1635,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1617,6 +1651,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1631,6 +1667,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1645,6 +1683,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1659,6 +1699,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1673,6 +1715,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1687,6 +1731,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1701,6 +1747,8 @@ export type ContentBlock =
       reasoningContent: ReasoningContentBlock;
       citationsContent?: never;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1715,6 +1763,8 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent: CitationsContentBlock;
       searchResult?: never;
+      toolAddition?: never;
+      toolRemoval?: never;
     }
   | {
       text?: never;
@@ -1729,6 +1779,40 @@ export type ContentBlock =
       reasoningContent?: never;
       citationsContent?: never;
       searchResult: SearchResultBlock;
+      toolAddition?: never;
+      toolRemoval?: never;
+    }
+  | {
+      text?: never;
+      image?: never;
+      document?: never;
+      video?: never;
+      audio?: never;
+      toolUse?: never;
+      toolResult?: never;
+      guardContent?: never;
+      cachePoint?: never;
+      reasoningContent?: never;
+      citationsContent?: never;
+      searchResult?: never;
+      toolAddition: ToolAdditionBlock;
+      toolRemoval?: never;
+    }
+  | {
+      text?: never;
+      image?: never;
+      document?: never;
+      video?: never;
+      audio?: never;
+      toolUse?: never;
+      toolResult?: never;
+      guardContent?: never;
+      cachePoint?: never;
+      reasoningContent?: never;
+      citationsContent?: never;
+      searchResult?: never;
+      toolAddition?: never;
+      toolRemoval: ToolRemovalBlock;
     };
 export const ContentBlock = /*@__PURE__*/ S.Union([
   S.Struct({ text: S.String }),
@@ -1743,6 +1827,8 @@ export const ContentBlock = /*@__PURE__*/ S.Union([
   S.Struct({ reasoningContent: ReasoningContentBlock }),
   S.Struct({ citationsContent: CitationsContentBlock }),
   S.Struct({ searchResult: SearchResultBlock }),
+  S.Struct({ toolAddition: ToolAdditionBlock }),
+  S.Struct({ toolRemoval: ToolRemovalBlock }),
 ]);
 export type ContentBlocks = ContentBlock[];
 export const ContentBlocks = /*@__PURE__*/ S.Array(ContentBlock);
@@ -1956,9 +2042,13 @@ export const OutputFormat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OutputFormat" }) as any as S.Schema<OutputFormat>;
 export interface OutputConfig {
   textFormat?: OutputFormat;
+  effort?: string;
 }
 export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ textFormat: S.optional(OutputFormat) }),
+  S.Struct({
+    textFormat: S.optional(OutputFormat),
+    effort: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
 export interface ConverseRequest {
   modelId: string;

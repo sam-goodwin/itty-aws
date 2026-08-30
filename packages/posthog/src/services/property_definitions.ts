@@ -48,8 +48,8 @@ export const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
   ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type ActionEnum = "add" | "remove" | "set";
-export const ActionEnum = /*@__PURE__*/ S.String;
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
+export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
 export type PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
@@ -65,7 +65,7 @@ export interface PropertyDefinitionsBulkUpdateTagsCreateRequest {
   /** List of object IDs to update tags on. */
   ids?: PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList;
   /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
-  action?: ActionEnum | (string & {});
+  action?: BulkUpdateTagsActionEnum | (string & {});
   /** Tag names to add, remove, or set. */
   tags?: PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList;
 }
@@ -74,7 +74,7 @@ export const PropertyDefinitionsBulkUpdateTagsCreateRequest =
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       ids: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList),
-      action: S.optional(ActionEnum),
+      action: S.optional(BulkUpdateTagsActionEnum),
       tags: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList),
     }).pipe(
       T.Http({
@@ -250,7 +250,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -259,6 +259,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -324,6 +325,8 @@ export interface EnterprisePropertyDefinition {
   verified_at?: string | null;
   verified_by?: UserBasic | null;
   hidden?: boolean | null;
+  /** Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only. */
+  warehouse_origin?: unknown;
 }
 export const EnterprisePropertyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -342,6 +345,7 @@ export const EnterprisePropertyDefinition = /*@__PURE__*/ S.suspend(() =>
     verified_at: S.optional(S.NullOr(S.String)),
     verified_by: S.optional(S.NullOr(UserBasic)),
     hidden: S.optional(S.NullOr(S.Boolean)),
+    warehouse_origin: S.optional(S.Unknown),
   }),
 ).annotate({
   identifier: "EnterprisePropertyDefinition",

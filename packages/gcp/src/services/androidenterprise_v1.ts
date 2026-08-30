@@ -180,6 +180,12 @@ export const CompleteSignupEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompleteSignupEnterprisesRequest",
 }) as any as S.Schema<CompleteSignupEnterprisesRequest>;
 
+export type EnterpriseManagedGoogleDomainTypeEnum =
+  | "managedGoogleDomainTypeUnspecified"
+  | "typeTeam"
+  | "typeDomain";
+export const EnterpriseManagedGoogleDomainTypeEnum = /*@__PURE__*/ S.String;
+
 /** This represents an enterprise admin who can manage the enterprise in the managed Google Play store. */
 export interface Administrator {
   /** The admin's email address. */
@@ -196,24 +202,11 @@ export const AdministratorList = /*@__PURE__*/ S.Array(
   Administrator,
 ) as any as S.Schema<AdministratorList>;
 
-export type EnterpriseEnterpriseTypeEnum =
-  | "enterpriseTypeUnspecified"
-  | "managedGoogleDomain"
-  | "managedGooglePlayAccountsEnterprise";
-export const EnterpriseEnterpriseTypeEnum = /*@__PURE__*/ S.String;
-
 export type GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   | "googleAuthenticationRequiredUnspecified"
   | "notRequired"
   | "required";
 export const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleAuthenticationSettingsDedicatedDevicesAllowedEnum =
-  | "dedicatedDevicesAllowedUnspecified"
-  | "disallowed"
-  | "allowed";
-export const GoogleAuthenticationSettingsDedicatedDevicesAllowedEnum =
   /*@__PURE__*/ S.String;
 
 /** Contains settings for Google-provided user authentication. */
@@ -222,60 +215,81 @@ export interface GoogleAuthenticationSettings {
   googleAuthenticationRequired?:
     | GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum
     | (string & {});
-  /** Whether dedicated devices are allowed. */
-  dedicatedDevicesAllowed?:
-    | GoogleAuthenticationSettingsDedicatedDevicesAllowedEnum
-    | (string & {});
 }
 export const GoogleAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAuthenticationRequired: S.optional(
       GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum,
     ),
-    dedicatedDevicesAllowed: S.optional(
-      GoogleAuthenticationSettingsDedicatedDevicesAllowedEnum,
-    ),
   }),
 ).annotate({
   identifier: "GoogleAuthenticationSettings",
 }) as any as S.Schema<GoogleAuthenticationSettings>;
 
-export type EnterpriseManagedGoogleDomainTypeEnum =
-  | "managedGoogleDomainTypeUnspecified"
-  | "typeTeam"
-  | "typeDomain";
-export const EnterpriseManagedGoogleDomainTypeEnum = /*@__PURE__*/ S.String;
+export type EnterpriseEnterpriseTypeEnum =
+  | "enterpriseTypeUnspecified"
+  | "managedGoogleDomain"
+  | "managedGooglePlayAccountsEnterprise";
+export const EnterpriseEnterpriseTypeEnum = /*@__PURE__*/ S.String;
 
 /** An Enterprises resource represents the binding between an EMM and a specific organization. That binding can be instantiated in one of two different ways using this API as follows: - For Google managed domain customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-or-less manual process. - For managed Google Play Accounts customers, the process involves using Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the managed Google Play sign-up UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or both approaches in your EMM console. See Create an Enterprise for details. */
 export interface Enterprise {
-  /** The name of the enterprise, for example, "Example, Inc". */
-  name?: string;
-  /** The unique ID for the enterprise. */
-  id?: string;
-  /** The enterprise's primary domain, such as "example.com". */
-  primaryDomain?: string;
-  /** Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated flow. */
-  administrator?: AdministratorList;
-  /** The type of the enterprise. */
-  enterpriseType?: EnterpriseEnterpriseTypeEnum | (string & {});
-  /** Output only. Settings for Google-provided user authentication. */
-  googleAuthenticationSettings?: GoogleAuthenticationSettings;
   /** The type of managed Google domain */
   managedGoogleDomainType?:
     | EnterpriseManagedGoogleDomainTypeEnum
     | (string & {});
+  /** Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated flow. */
+  administrator?: AdministratorList;
+  /** The unique ID for the enterprise. */
+  id?: string;
+  /** The name of the enterprise, for example, "Example, Inc". */
+  name?: string;
+  /** The enterprise's primary domain, such as "example.com". */
+  primaryDomain?: string;
+  /** Output only. Settings for Google-provided user authentication. */
+  googleAuthenticationSettings?: GoogleAuthenticationSettings;
+  /** The type of the enterprise. */
+  enterpriseType?: EnterpriseEnterpriseTypeEnum | (string & {});
 }
 export const Enterprise = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    id: S.optional(S.String),
-    primaryDomain: S.optional(S.String),
-    administrator: S.optional(AdministratorList),
-    enterpriseType: S.optional(EnterpriseEnterpriseTypeEnum),
-    googleAuthenticationSettings: S.optional(GoogleAuthenticationSettings),
     managedGoogleDomainType: S.optional(EnterpriseManagedGoogleDomainTypeEnum),
+    administrator: S.optional(AdministratorList),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    primaryDomain: S.optional(S.String),
+    googleAuthenticationSettings: S.optional(GoogleAuthenticationSettings),
+    enterpriseType: S.optional(EnterpriseEnterpriseTypeEnum),
   }),
 ).annotate({ identifier: "Enterprise" }) as any as S.Schema<Enterprise>;
+
+export type EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
+  | "authenticationRequirementUnspecified"
+  | "optional"
+  | "required";
+export const EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
+  /*@__PURE__*/ S.String;
+
+/** Options for Google authentication during the enrollment. */
+export interface EnrollmentTokenGoogleAuthenticationOptions {
+  /** [Optional] Specifies the managed Google account that the user must use during enrollment.`AuthenticationRequirement` must be set to`REQUIRED` if this field is set. */
+  requiredAccountEmail?: string;
+  /** [Optional] Specifies whether user should authenticate with Google during enrollment. This setting, if specified,`GoogleAuthenticationSettings` specified for the enterprise resource is ignored for devices enrolled with this token. */
+  authenticationRequirement?:
+    | EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum
+    | (string & {});
+}
+export const EnrollmentTokenGoogleAuthenticationOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requiredAccountEmail: S.optional(S.String),
+      authenticationRequirement: S.optional(
+        EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "EnrollmentTokenGoogleAuthenticationOptions",
+  }) as any as S.Schema<EnrollmentTokenGoogleAuthenticationOptions>;
 
 export type EnrollmentTokenEnrollmentTokenTypeEnum =
   | "enrollmentTokenTypeUnspecified"
@@ -283,51 +297,25 @@ export type EnrollmentTokenEnrollmentTokenTypeEnum =
   | "userDevice";
 export const EnrollmentTokenEnrollmentTokenTypeEnum = /*@__PURE__*/ S.String;
 
-export type EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
-  "authenticationRequirementUnspecified" | "optional" | "required";
-export const EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
-  /*@__PURE__*/ S.String;
-
-/** Options for Google authentication during the enrollment. */
-export interface EnrollmentTokenGoogleAuthenticationOptions {
-  /** [Optional] Specifies whether user should authenticate with Google during enrollment. This setting, if specified,`GoogleAuthenticationSettings` specified for the enterprise resource is ignored for devices enrolled with this token. */
-  authenticationRequirement?:
-    | EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum
-    | (string & {});
-  /** [Optional] Specifies the managed Google account that the user must use during enrollment.`AuthenticationRequirement` must be set to`REQUIRED` if this field is set. */
-  requiredAccountEmail?: string;
-}
-export const EnrollmentTokenGoogleAuthenticationOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authenticationRequirement: S.optional(
-        EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum,
-      ),
-      requiredAccountEmail: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EnrollmentTokenGoogleAuthenticationOptions",
-  }) as any as S.Schema<EnrollmentTokenGoogleAuthenticationOptions>;
-
 /** A token used to enroll a device. */
 export interface EnrollmentToken {
-  /** The token value that's passed to the device and authorizes the device to enroll. This is a read-only field generated by the server. */
-  token?: string;
-  /** [Required] The type of the enrollment token. */
-  enrollmentTokenType?: EnrollmentTokenEnrollmentTokenTypeEnum | (string & {});
-  /** [Optional] The length of time the enrollment token is valid, ranging from 1 minute to [`Durations.MAX_VALUE`](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE), approximately 10,000 years. If not specified, the default duration is 1 hour. */
+  /** [Optional] The length of time the enrollment token is valid, ranging from 1 minute to [`Durations.MAX_VALUE`](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE), approximately 10,000 years. If not specified, the default duration is 1 hour. In the JSON REST API, this is represented as a string (e.g., `3600s`). */
   duration?: string;
   /** [Optional] Provides options related to Google authentication during the enrollment. */
   googleAuthenticationOptions?: EnrollmentTokenGoogleAuthenticationOptions;
+  /** [Required] The type of the enrollment token. */
+  enrollmentTokenType?: EnrollmentTokenEnrollmentTokenTypeEnum | (string & {});
+  /** The token value that's passed to the device and authorizes the device to enroll. This is a read-only field generated by the server. */
+  token?: string;
 }
 export const EnrollmentToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    token: S.optional(S.String),
-    enrollmentTokenType: S.optional(EnrollmentTokenEnrollmentTokenTypeEnum),
     duration: S.optional(S.String),
     googleAuthenticationOptions: S.optional(
       EnrollmentTokenGoogleAuthenticationOptions,
     ),
+    enrollmentTokenType: S.optional(EnrollmentTokenEnrollmentTokenTypeEnum),
+    token: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EnrollmentToken",
@@ -354,6 +342,44 @@ export const CreateEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEnrollmentTokensRequest",
 }) as any as S.Schema<CreateEnrollmentTokensRequest>;
 
+export interface AdministratorWebTokenSpecStoreBuilder {
+  /** Whether the Organize apps page is displayed. Default is true. */
+  enabled?: boolean;
+}
+export const AdministratorWebTokenSpecStoreBuilder = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "AdministratorWebTokenSpecStoreBuilder",
+}) as any as S.Schema<AdministratorWebTokenSpecStoreBuilder>;
+
+export interface AdministratorWebTokenSpecZeroTouch {
+  /** Whether zero-touch embedded UI is usable with this token. If enabled, the admin can link zero-touch customers to this enterprise. */
+  enabled?: boolean;
+}
+export const AdministratorWebTokenSpecZeroTouch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AdministratorWebTokenSpecZeroTouch",
+}) as any as S.Schema<AdministratorWebTokenSpecZeroTouch>;
+
+export interface AdministratorWebTokenSpecPrivateApps {
+  /** Whether the Private Apps page is displayed. Default is true. */
+  enabled?: boolean;
+}
+export const AdministratorWebTokenSpecPrivateApps = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "AdministratorWebTokenSpecPrivateApps",
+}) as any as S.Schema<AdministratorWebTokenSpecPrivateApps>;
+
 export type AdministratorWebTokenSpecPermissionItemEnum =
   | "unknown"
   | "approveApps"
@@ -369,29 +395,16 @@ export const AdministratorWebTokenSpecPermissionItemEnumList =
     AdministratorWebTokenSpecPermissionItemEnum,
   ) as any as S.Schema<AdministratorWebTokenSpecPermissionItemEnumList>;
 
-export interface AdministratorWebTokenSpecPrivateApps {
-  /** Whether the Private Apps page is displayed. Default is true. */
-  enabled?: boolean;
-}
-export const AdministratorWebTokenSpecPrivateApps = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "AdministratorWebTokenSpecPrivateApps",
-}) as any as S.Schema<AdministratorWebTokenSpecPrivateApps>;
-
 export interface AdministratorWebTokenSpecPlaySearch {
-  /** Allow access to the iframe in approve mode. Default is false. */
-  approveApps?: boolean;
   /** Whether the managed Play Search apps page is displayed. Default is true. */
   enabled?: boolean;
+  /** Allow access to the iframe in approve mode. Default is false. */
+  approveApps?: boolean;
 }
 export const AdministratorWebTokenSpecPlaySearch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    approveApps: S.optional(S.Boolean),
     enabled: S.optional(S.Boolean),
+    approveApps: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "AdministratorWebTokenSpecPlaySearch",
@@ -422,37 +435,16 @@ export const AdministratorWebTokenSpecWebApps = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdministratorWebTokenSpecWebApps",
 }) as any as S.Schema<AdministratorWebTokenSpecWebApps>;
 
-export interface AdministratorWebTokenSpecStoreBuilder {
-  /** Whether the Organize apps page is displayed. Default is true. */
-  enabled?: boolean;
-}
-export const AdministratorWebTokenSpecStoreBuilder = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "AdministratorWebTokenSpecStoreBuilder",
-}) as any as S.Schema<AdministratorWebTokenSpecStoreBuilder>;
-
-export interface AdministratorWebTokenSpecZeroTouch {
-  /** Whether zero-touch embedded UI is usable with this token. If enabled, the admin can link zero-touch customers to this enterprise. */
-  enabled?: boolean;
-}
-export const AdministratorWebTokenSpecZeroTouch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdministratorWebTokenSpecZeroTouch",
-}) as any as S.Schema<AdministratorWebTokenSpecZeroTouch>;
-
 /** Specification for a token used to generate iframes. The token specifies what data the admin is allowed to modify and the URI the iframe is allowed to communiate with. */
 export interface AdministratorWebTokenSpec {
-  /** Deprecated. Use PlaySearch.approveApps. */
-  permission?: AdministratorWebTokenSpecPermissionItemEnumList;
+  /** Options for displaying the Organize apps page. */
+  storeBuilder?: AdministratorWebTokenSpecStoreBuilder;
+  /** Options for displaying the Zero Touch page. */
+  zeroTouch?: AdministratorWebTokenSpecZeroTouch;
   /** Options for displaying the Private Apps page. */
   privateApps?: AdministratorWebTokenSpecPrivateApps;
+  /** Deprecated. Use PlaySearch.approveApps. */
+  permission?: AdministratorWebTokenSpecPermissionItemEnumList;
   /** Options for displaying the managed Play Search apps page. */
   playSearch?: AdministratorWebTokenSpecPlaySearch;
   /** The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may not be hosted at other URIs. This URI must be https. Use whitespaces to separate multiple parent URIs. */
@@ -461,23 +453,19 @@ export interface AdministratorWebTokenSpec {
   managedConfigurations?: AdministratorWebTokenSpecManagedConfigurations;
   /** Options for displaying the Web Apps page. */
   webApps?: AdministratorWebTokenSpecWebApps;
-  /** Options for displaying the Organize apps page. */
-  storeBuilder?: AdministratorWebTokenSpecStoreBuilder;
-  /** Options for displaying the Zero Touch page. */
-  zeroTouch?: AdministratorWebTokenSpecZeroTouch;
 }
 export const AdministratorWebTokenSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    permission: S.optional(AdministratorWebTokenSpecPermissionItemEnumList),
+    storeBuilder: S.optional(AdministratorWebTokenSpecStoreBuilder),
+    zeroTouch: S.optional(AdministratorWebTokenSpecZeroTouch),
     privateApps: S.optional(AdministratorWebTokenSpecPrivateApps),
+    permission: S.optional(AdministratorWebTokenSpecPermissionItemEnumList),
     playSearch: S.optional(AdministratorWebTokenSpecPlaySearch),
     parent: S.optional(S.String),
     managedConfigurations: S.optional(
       AdministratorWebTokenSpecManagedConfigurations,
     ),
     webApps: S.optional(AdministratorWebTokenSpecWebApps),
-    storeBuilder: S.optional(AdministratorWebTokenSpecStoreBuilder),
-    zeroTouch: S.optional(AdministratorWebTokenSpecZeroTouch),
   }),
 ).annotate({
   identifier: "AdministratorWebTokenSpec",
@@ -518,18 +506,18 @@ export const AdministratorWebToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdministratorWebToken>;
 
 export interface DeleteEntitlementsRequest {
+  /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
+  entitlementId: string;
   /** The ID of the user. */
   userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
-  /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
-  entitlementId: string;
 }
 export const DeleteEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    entitlementId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
     enterpriseId: S.String.pipe(T.Label()),
-    entitlementId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -553,17 +541,17 @@ export interface DeleteInstallsRequest {
   userId: string;
   /** The ID of the product represented by the install, e.g. "app:com.google.android.gm". */
   installId: string;
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The Android ID of the device. */
   deviceId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const DeleteInstallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     installId: S.String.pipe(T.Label()),
-    enterpriseId: S.String.pipe(T.Label()),
     deviceId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -583,22 +571,22 @@ export const DeleteInstallsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInstallsResponse>;
 
 export interface DeleteManagedconfigurationsfordeviceRequest {
-  /** The ID of the user. */
-  userId: string;
-  /** The ID of the enterprise. */
-  enterpriseId: string;
-  /** The Android ID of the device. */
-  deviceId: string;
   /** The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". */
   managedConfigurationForDeviceId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
+  /** The ID of the user. */
+  userId: string;
+  /** The Android ID of the device. */
+  deviceId: string;
 }
 export const DeleteManagedconfigurationsfordeviceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      userId: S.String.pipe(T.Label()),
-      enterpriseId: S.String.pipe(T.Label()),
-      deviceId: S.String.pipe(T.Label()),
       managedConfigurationForDeviceId: S.String.pipe(T.Label()),
+      enterpriseId: S.String.pipe(T.Label()),
+      userId: S.String.pipe(T.Label()),
+      deviceId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -617,19 +605,19 @@ export const DeleteManagedconfigurationsfordeviceResponse =
   }) as any as S.Schema<DeleteManagedconfigurationsfordeviceResponse>;
 
 export interface DeleteManagedconfigurationsforuserRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the user. */
   userId: string;
   /** The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". */
   managedConfigurationForUserId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const DeleteManagedconfigurationsforuserRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enterpriseId: S.String.pipe(T.Label()),
       userId: S.String.pipe(T.Label()),
       managedConfigurationForUserId: S.String.pipe(T.Label()),
+      enterpriseId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -676,18 +664,18 @@ export const DeleteServiceaccountkeysResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceaccountkeysResponse>;
 
 export interface DeleteStorelayoutclustersRequest {
-  /** The ID of the cluster. */
-  clusterId: string;
   /** The ID of the page. */
   pageId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
+  /** The ID of the cluster. */
+  clusterId: string;
 }
 export const DeleteStorelayoutclustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    clusterId: S.String.pipe(T.Label()),
     pageId: S.String.pipe(T.Label()),
     enterpriseId: S.String.pipe(T.Label()),
+    clusterId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -735,15 +723,15 @@ export const DeleteStorelayoutpagesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorelayoutpagesResponse>;
 
 export interface DeleteUsersRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the user. */
   userId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -763,15 +751,15 @@ export const DeleteUsersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersResponse>;
 
 export interface DeleteWebappsRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the web app. */
   webAppId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const DeleteWebappsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
     webAppId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -812,18 +800,18 @@ export const EnrollEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnrollEnterprisesRequest>;
 
 export interface ForceReportUploadDevicesRequest {
+  /** The ID of the user. */
+  userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the device. */
   deviceId: string;
-  /** The ID of the user. */
-  userId: string;
 }
 export const ForceReportUploadDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    userId: S.String.pipe(T.Label()),
     enterpriseId: S.String.pipe(T.Label()),
     deviceId: S.String.pipe(T.Label()),
-    userId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -843,18 +831,18 @@ export const ForceReportUploadDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForceReportUploadDevicesResponse>;
 
 export interface GenerateApprovalUrlProductsRequest {
+  /** The ID of the product. */
+  productId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The BCP 47 language code used for permission names and descriptions in the returned iframe, for instance "en-US". */
   languageCode?: string;
-  /** The ID of the product. */
-  productId: string;
 }
 export const GenerateApprovalUrlProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    productId: S.String.pipe(T.Label()),
     enterpriseId: S.String.pipe(T.Label()),
     languageCode: S.optional(S.String.pipe(T.Query())),
-    productId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -879,16 +867,16 @@ export const ProductsGenerateApprovalUrlResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductsGenerateApprovalUrlResponse>;
 
 export interface GenerateAuthenticationTokenUsersRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the user. */
   userId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const GenerateAuthenticationTokenUsersRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      enterpriseId: S.String.pipe(T.Label()),
       userId: S.String.pipe(T.Label()),
+      enterpriseId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "POST",
@@ -919,19 +907,19 @@ export const StringList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StringList>;
 
 export interface GenerateEnterpriseUpgradeUrlEnterprisesRequest {
-  /** Optional. Email address used to prefill the admin field of the enterprise signup form as part of the upgrade process. This value is a hint only and can be altered by the user. Personal email addresses are not allowed. If `allowedDomains` is non-empty then this must belong to one of the `allowedDomains`. */
-  adminEmail?: string;
   /** Required. The ID of the enterprise. */
   enterpriseId: string;
   /** Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email address with a domain name that is not in this list. Subdomains of domains in this list are not allowed but can be allowed by adding a second entry which has `*.` prefixed to the domain name (e.g. *.example.com). If the field is not present or is an empty list then the IT admin is free to use any valid domain name. Personal email domains are not allowed. */
   allowedDomains?: StringList;
+  /** Optional. Email address used to prefill the admin field of the enterprise signup form as part of the upgrade process. This value is a hint only and can be altered by the user. Personal email addresses are not allowed. If `allowedDomains` is non-empty then this must belong to one of the `allowedDomains`. */
+  adminEmail?: string;
 }
 export const GenerateEnterpriseUpgradeUrlEnterprisesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      adminEmail: S.optional(S.String.pipe(T.Query())),
       enterpriseId: S.String.pipe(T.Label()),
       allowedDomains: S.optional(StringList.pipe(T.Query())),
+      adminEmail: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "POST",
@@ -960,16 +948,16 @@ export const GenerateEnterpriseUpgradeUrlResponse = /*@__PURE__*/ S.suspend(
 export interface GenerateSignupUrlEnterprisesRequest {
   /** Optional. Email address used to prefill the admin field of the enterprise signup form. This value is a hint only and can be altered by the user. If `allowedDomains` is non-empty then this must belong to one of the `allowedDomains`. */
   adminEmail?: string;
-  /** Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email address with a domain name that is not in this list. Subdomains of domains in this list are not allowed but can be allowed by adding a second entry which has `*.` prefixed to the domain name (e.g. *.example.com). If the field is not present or is an empty list then the IT admin is free to use any valid domain name. Personal email domains are always allowed, but will result in the creation of a managed Google Play Accounts enterprise. */
-  allowedDomains?: StringList;
   /** The callback URL to which the Admin will be redirected after successfully creating an enterprise. Before redirecting there the system will add a single query parameter to this URL named "enterpriseToken" which will contain an opaque token to be used for the CompleteSignup request. Beware that this means that the URL will be parsed, the parameter added and then a new URL formatted, i.e. there may be some minor formatting changes and, more importantly, the URL must be well-formed so that it can be parsed. */
   callbackUrl?: string;
+  /** Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email address with a domain name that is not in this list. Subdomains of domains in this list are not allowed but can be allowed by adding a second entry which has `*.` prefixed to the domain name (e.g. *.example.com). If the field is not present or is an empty list then the IT admin is free to use any valid domain name. Personal email domains are always allowed, but will result in the creation of a managed Google Play Accounts enterprise. */
+  allowedDomains?: StringList;
 }
 export const GenerateSignupUrlEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminEmail: S.optional(S.String.pipe(T.Query())),
-    allowedDomains: S.optional(StringList.pipe(T.Query())),
     callbackUrl: S.optional(S.String.pipe(T.Query())),
+    allowedDomains: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -999,19 +987,19 @@ export const SignupInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignupInfo" }) as any as S.Schema<SignupInfo>;
 
 export interface GetAppRestrictionsSchemaProductsRequest {
-  /** The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). */
-  language?: string;
   /** The ID of the product. */
   productId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
+  /** The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). */
+  language?: string;
 }
 export const GetAppRestrictionsSchemaProductsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      language: S.optional(S.String.pipe(T.Query())),
       productId: S.String.pipe(T.Label()),
       enterpriseId: S.String.pipe(T.Label()),
+      language: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1022,18 +1010,6 @@ export const GetAppRestrictionsSchemaProductsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetAppRestrictionsSchemaProductsRequest",
 }) as any as S.Schema<GetAppRestrictionsSchemaProductsRequest>;
-
-export type AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
-  | "bool"
-  | "string"
-  | "integer"
-  | "choice"
-  | "multiselect"
-  | "hidden"
-  | "bundle"
-  | "bundleArray";
-export const AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
-  /*@__PURE__*/ S.String;
 
 export type AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum =
   | "bool"
@@ -1049,65 +1025,77 @@ export const AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum =
 
 /** A typed value for the restriction. */
 export interface AppRestrictionsSchemaRestrictionRestrictionValue {
-  /** The integer value - this will only be present if type is integer. */
-  valueInteger?: number;
-  /** The string value - this will be present for types string, choice and hidden. */
-  valueString?: string;
   /** The type of the value being provided. */
   type?: AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum;
-  /** The list of string values - this will only be present if type is multiselect. */
-  valueMultiselect?: StringList;
+  /** The string value - this will be present for types string, choice and hidden. */
+  valueString?: string;
   /** The boolean value - this will only be present if type is bool. */
   valueBool?: boolean;
+  /** The integer value - this will only be present if type is integer. */
+  valueInteger?: number;
+  /** The list of string values - this will only be present if type is multiselect. */
+  valueMultiselect?: StringList;
 }
 export const AppRestrictionsSchemaRestrictionRestrictionValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      valueInteger: S.optional(S.Number),
-      valueString: S.optional(S.String),
       type: S.optional(
         AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum,
       ),
-      valueMultiselect: S.optional(StringList),
+      valueString: S.optional(S.String),
       valueBool: S.optional(S.Boolean),
+      valueInteger: S.optional(S.Number),
+      valueMultiselect: S.optional(StringList),
     }),
   ).annotate({
     identifier: "AppRestrictionsSchemaRestrictionRestrictionValue",
   }) as any as S.Schema<AppRestrictionsSchemaRestrictionRestrictionValue>;
 
+export type AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
+  | "bool"
+  | "string"
+  | "integer"
+  | "choice"
+  | "multiselect"
+  | "hidden"
+  | "bundle"
+  | "bundleArray";
+export const AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
+  /*@__PURE__*/ S.String;
+
 /** A restriction in the App Restriction Schema represents a piece of configuration that may be pre-applied. */
 export interface AppRestrictionsSchemaRestriction {
+  /** For choice or multiselect restrictions, the list of possible entries' human-readable names. */
+  entry?: StringList;
+  /** The default value of the restriction. bundle and bundleArray restrictions never have a default value. */
+  defaultValue?: AppRestrictionsSchemaRestrictionRestrictionValue;
+  /** For choice or multiselect restrictions, the list of possible entries' machine-readable values. These values should be used in the configuration, either as a single string value for a choice restriction or in a stringArray for a multiselect restriction. */
+  entryValue?: StringList;
   /** The name of the restriction. */
   title?: string;
+  /** For bundle or bundleArray restrictions, the list of nested restrictions. A bundle restriction is always nested within a bundleArray restriction, and a bundleArray restriction is at most two levels deep. */
+  nestedRestriction?: AppRestrictionsSchemaRestrictionList;
+  /** A longer description of the restriction, giving more detail of what it affects. */
+  description?: string;
   /** The unique key that the product uses to identify the restriction, e.g. "com.google.android.gm.fieldname". */
   key?: string;
   /** The type of the restriction. */
   restrictionType?: AppRestrictionsSchemaRestrictionRestrictionTypeEnum;
-  /** For choice or multiselect restrictions, the list of possible entries' human-readable names. */
-  entry?: StringList;
-  /** A longer description of the restriction, giving more detail of what it affects. */
-  description?: string;
-  /** For choice or multiselect restrictions, the list of possible entries' machine-readable values. These values should be used in the configuration, either as a single string value for a choice restriction or in a stringArray for a multiselect restriction. */
-  entryValue?: StringList;
-  /** For bundle or bundleArray restrictions, the list of nested restrictions. A bundle restriction is always nested within a bundleArray restriction, and a bundleArray restriction is at most two levels deep. */
-  nestedRestriction?: AppRestrictionsSchemaRestrictionList;
-  /** The default value of the restriction. bundle and bundleArray restrictions never have a default value. */
-  defaultValue?: AppRestrictionsSchemaRestrictionRestrictionValue;
 }
 export const AppRestrictionsSchemaRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    entry: S.optional(StringList),
+    defaultValue: S.optional(AppRestrictionsSchemaRestrictionRestrictionValue),
+    entryValue: S.optional(StringList),
     title: S.optional(S.String),
+    nestedRestriction: S.optional(
+      S.suspend(() => AppRestrictionsSchemaRestrictionList),
+    ),
+    description: S.optional(S.String),
     key: S.optional(S.String),
     restrictionType: S.optional(
       AppRestrictionsSchemaRestrictionRestrictionTypeEnum,
     ),
-    entry: S.optional(StringList),
-    description: S.optional(S.String),
-    entryValue: S.optional(StringList),
-    nestedRestriction: S.optional(
-      S.suspend(() => AppRestrictionsSchemaRestrictionList),
-    ),
-    defaultValue: S.optional(AppRestrictionsSchemaRestrictionRestrictionValue),
   }),
 ).annotate({
   identifier: "AppRestrictionsSchemaRestriction",
@@ -1121,15 +1109,15 @@ export const AppRestrictionsSchemaRestrictionList = /*@__PURE__*/ S.Array(
 
 /** Represents the list of app restrictions available to be pre-configured for the product. */
 export interface AppRestrictionsSchema {
-  /** Deprecated. */
-  kind?: string;
   /** The set of restrictions that make up this schema. */
   restrictions?: AppRestrictionsSchemaRestrictionList;
+  /** Deprecated. */
+  kind?: string;
 }
 export const AppRestrictionsSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     restrictions: S.optional(AppRestrictionsSchemaRestrictionList),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AppRestrictionsSchema",
@@ -1172,17 +1160,17 @@ export const ProductVisibilityTracksItemEnumList = /*@__PURE__*/ S.Array(
 
 /** A product to be made visible to a user. */
 export interface ProductVisibility {
-  /** The product ID to make visible to the user. Required for each item in the productVisibility list. */
-  productId?: string;
   /** Deprecated. Use trackIds instead. */
   tracks?: ProductVisibilityTracksItemEnumList;
+  /** The product ID to make visible to the user. Required for each item in the productVisibility list. */
+  productId?: string;
   /** Grants the user visibility to the specified product track(s), identified by trackIds. */
   trackIds?: StringList;
 }
 export const ProductVisibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    productId: S.optional(S.String),
     tracks: S.optional(ProductVisibilityTracksItemEnumList),
+    productId: S.optional(S.String),
     trackIds: S.optional(StringList),
   }),
 ).annotate({
@@ -1205,16 +1193,16 @@ export const ProductSetProductSetBehaviorEnum = /*@__PURE__*/ S.String;
 export interface ProductSet {
   /** Additional list of product IDs making up the product set. Unlike the productID array, in this list It's possible to specify which tracks (alpha, beta, production) of a product are visible to the user. See ProductVisibility and its fields for more information. Specifying the same product ID both here and in the productId array is not allowed and it will result in an error. */
   productVisibility?: ProductVisibilityList;
-  /** The list of product IDs making up the set of products. */
-  productId?: StringList;
   /** The interpretation of this product set. "unknown" should never be sent and is ignored if received. "whitelist" means that the user is entitled to access the product set. "includeAll" means that all products are accessible, including products that are approved, products with revoked approval, and products that have never been approved. "allApproved" means that the user is entitled to access all products that are approved for the enterprise. If the value is "allApproved" or "includeAll", the productId field is ignored. If no value is provided, it is interpreted as "whitelist" for backwards compatibility. Further "allApproved" or "includeAll" does not enable automatic visibility of "alpha" or "beta" tracks for Android app. Use ProductVisibility to enable "alpha" or "beta" tracks per user. */
   productSetBehavior?: ProductSetProductSetBehaviorEnum | (string & {});
+  /** The list of product IDs making up the set of products. */
+  productId?: StringList;
 }
 export const ProductSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productVisibility: S.optional(ProductVisibilityList),
-    productId: S.optional(StringList),
     productSetBehavior: S.optional(ProductSetProductSetBehaviorEnum),
+    productId: S.optional(StringList),
   }),
 ).annotate({ identifier: "ProductSet" }) as any as S.Schema<ProductSet>;
 
@@ -1248,138 +1236,38 @@ export type PolicyProductAvailabilityPolicyEnum =
   | "all";
 export const PolicyProductAvailabilityPolicyEnum = /*@__PURE__*/ S.String;
 
-/** Maintenance window for managed Google Play Accounts. This allows Play store to update the apps on the foreground in the designated window. */
-export interface MaintenanceWindow {
-  /** Start time of the maintenance window, in milliseconds after midnight on the device. Windows can span midnight. */
-  startTimeAfterMidnightMs?: string;
-  /** Duration of the maintenance window, in milliseconds. The duration must be between 30 minutes and 24 hours (inclusive). */
-  durationMs?: string;
-}
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTimeAfterMidnightMs: S.optional(S.String),
-    durationMs: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaintenanceWindow",
-}) as any as S.Schema<MaintenanceWindow>;
+export type ProductPolicyTracksItemEnum =
+  | "appTrackUnspecified"
+  | "production"
+  | "beta"
+  | "alpha";
+export const ProductPolicyTracksItemEnum = /*@__PURE__*/ S.String;
 
-export type AutoInstallPolicyAutoInstallModeEnum =
-  | "autoInstallModeUnspecified"
-  | "doNotAutoInstall"
-  | "autoInstallOnce"
-  | "forceAutoInstall";
-export const AutoInstallPolicyAutoInstallModeEnum = /*@__PURE__*/ S.String;
+export type ProductPolicyTracksItemEnumList = Array<
+  ProductPolicyTracksItemEnum | (string & {})
+>;
+export const ProductPolicyTracksItemEnumList = /*@__PURE__*/ S.Array(
+  ProductPolicyTracksItemEnum,
+) as any as S.Schema<ProductPolicyTracksItemEnumList>;
 
-export type AutoInstallConstraintNetworkTypeConstraintEnum =
-  | "networkTypeConstraintUnspecified"
-  | "anyNetwork"
-  | "unmeteredNetwork";
-export const AutoInstallConstraintNetworkTypeConstraintEnum =
-  /*@__PURE__*/ S.String;
-
-export type AutoInstallConstraintDeviceIdleStateConstraintEnum =
-  | "deviceIdleStateConstraintUnspecified"
-  | "deviceIdleNotRequired"
-  | "deviceIdleRequired";
-export const AutoInstallConstraintDeviceIdleStateConstraintEnum =
-  /*@__PURE__*/ S.String;
-
-export type AutoInstallConstraintChargingStateConstraintEnum =
-  | "chargingStateConstraintUnspecified"
-  | "chargingNotRequired"
-  | "chargingRequired";
-export const AutoInstallConstraintChargingStateConstraintEnum =
-  /*@__PURE__*/ S.String;
-
-/** The auto-install constraint. Defines a set of restrictions for installation. At least one of the fields must be set. */
-export interface AutoInstallConstraint {
-  /** Network type constraint. */
-  networkTypeConstraint?:
-    | AutoInstallConstraintNetworkTypeConstraintEnum
-    | (string & {});
-  /** Device idle state constraint. */
-  deviceIdleStateConstraint?:
-    | AutoInstallConstraintDeviceIdleStateConstraintEnum
-    | (string & {});
-  /** Charging state constraint. */
-  chargingStateConstraint?:
-    | AutoInstallConstraintChargingStateConstraintEnum
-    | (string & {});
-}
-export const AutoInstallConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkTypeConstraint: S.optional(
-      AutoInstallConstraintNetworkTypeConstraintEnum,
-    ),
-    deviceIdleStateConstraint: S.optional(
-      AutoInstallConstraintDeviceIdleStateConstraintEnum,
-    ),
-    chargingStateConstraint: S.optional(
-      AutoInstallConstraintChargingStateConstraintEnum,
-    ),
-  }),
-).annotate({
-  identifier: "AutoInstallConstraint",
-}) as any as S.Schema<AutoInstallConstraint>;
-
-export type AutoInstallConstraintList = Array<AutoInstallConstraint>;
-export const AutoInstallConstraintList = /*@__PURE__*/ S.Array(
-  AutoInstallConstraint,
-) as any as S.Schema<AutoInstallConstraintList>;
-
-export interface AutoInstallPolicy {
-  /** The auto-install mode. If unset, defaults to "doNotAutoInstall". An app is automatically installed regardless of a set maintenance window. */
-  autoInstallMode?: AutoInstallPolicyAutoInstallModeEnum | (string & {});
-  /** The priority of the install, as an unsigned integer. A lower number means higher priority. */
-  autoInstallPriority?: number;
-  /** The constraints for auto-installing the app. You can specify a maximum of one constraint. */
-  autoInstallConstraint?: AutoInstallConstraintList;
-  /** The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You can set a minimum version code for at most 20 apps per device. */
-  minimumVersionCode?: number;
-}
-export const AutoInstallPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoInstallMode: S.optional(AutoInstallPolicyAutoInstallModeEnum),
-    autoInstallPriority: S.optional(S.Number),
-    autoInstallConstraint: S.optional(AutoInstallConstraintList),
-    minimumVersionCode: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutoInstallPolicy",
-}) as any as S.Schema<AutoInstallPolicy>;
-
-/** An authentication URL configuration for the authenticator app of an identity provider. */
-export interface EnterpriseAuthenticationAppLinkConfig {
-  /** An authentication url. */
-  uri?: string;
-}
-export const EnterpriseAuthenticationAppLinkConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "EnterpriseAuthenticationAppLinkConfig",
-}) as any as S.Schema<EnterpriseAuthenticationAppLinkConfig>;
-
-export type EnterpriseAuthenticationAppLinkConfigList =
-  Array<EnterpriseAuthenticationAppLinkConfig>;
-export const EnterpriseAuthenticationAppLinkConfigList = /*@__PURE__*/ S.Array(
-  EnterpriseAuthenticationAppLinkConfig,
-) as any as S.Schema<EnterpriseAuthenticationAppLinkConfigList>;
+export type ProductPolicyAutoUpdateModeEnum =
+  | "autoUpdateModeUnspecified"
+  | "autoUpdateDefault"
+  | "autoUpdatePostponed"
+  | "autoUpdateHighPriority";
+export const ProductPolicyAutoUpdateModeEnum = /*@__PURE__*/ S.String;
 
 /** A variable set is a key-value pair of EMM-provided placeholders and its corresponding value, which is attributed to a user. For example, $FIRSTNAME could be a placeholder, and its value could be Alice. Placeholders should start with a '$' sign and should be alphanumeric only. */
 export interface VariableSet {
-  /** The value of the placeholder, specific to the user. */
-  userValue?: string;
   /** The placeholder string; defined by EMM. */
   placeholder?: string;
+  /** The value of the placeholder, specific to the user. */
+  userValue?: string;
 }
 export const VariableSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    userValue: S.optional(S.String),
     placeholder: S.optional(S.String),
+    userValue: S.optional(S.String),
   }),
 ).annotate({ identifier: "VariableSet" }) as any as S.Schema<VariableSet>;
 
@@ -1390,15 +1278,15 @@ export const VariableSetList = /*@__PURE__*/ S.Array(
 
 /** A configuration variables resource contains the managed configuration settings ID to be applied to a single user, as well as the variable set that is attributed to the user. The variable set will be used to replace placeholders in the managed configuration settings. */
 export interface ConfigurationVariables {
-  /** The ID of the managed configurations settings. */
-  mcmId?: string;
   /** The variable set that is attributed to the user. */
   variableSet?: VariableSetList;
+  /** The ID of the managed configurations settings. */
+  mcmId?: string;
 }
 export const ConfigurationVariables = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mcmId: S.optional(S.String),
     variableSet: S.optional(VariableSetList),
+    mcmId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConfigurationVariables",
@@ -1424,30 +1312,30 @@ export const ManagedPropertyBundleList = /*@__PURE__*/ S.Array(
 
 /** A managed property of a managed configuration. The property must match one of the properties in the app restrictions schema of the product. Exactly one of the value fields must be populated, and it must match the property's type in the app restrictions schema. */
 export interface ManagedProperty {
+  /** The unique key that identifies the property. */
+  key?: string;
+  /** The list of string values - this will only be present if type of the property is multiselect. */
+  valueStringArray?: StringList;
+  /** The integer value - this will only be present if type of the property is integer. */
+  valueInteger?: number;
+  /** The bundle of managed properties - this will only be present if type of the property is bundle. */
+  valueBundle?: ManagedPropertyBundle;
   /** The boolean value - this will only be present if type of the property is bool. */
   valueBool?: boolean;
   /** The list of bundles of properties - this will only be present if type of the property is bundle_array. */
   valueBundleArray?: ManagedPropertyBundleList;
-  /** The list of string values - this will only be present if type of the property is multiselect. */
-  valueStringArray?: StringList;
-  /** The unique key that identifies the property. */
-  key?: string;
   /** The string value - this will only be present if type of the property is string, choice or hidden. */
   valueString?: string;
-  /** The bundle of managed properties - this will only be present if type of the property is bundle. */
-  valueBundle?: ManagedPropertyBundle;
-  /** The integer value - this will only be present if type of the property is integer. */
-  valueInteger?: number;
 }
 export const ManagedProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    key: S.optional(S.String),
+    valueStringArray: S.optional(StringList),
+    valueInteger: S.optional(S.Number),
+    valueBundle: S.optional(ManagedPropertyBundle),
     valueBool: S.optional(S.Boolean),
     valueBundleArray: S.optional(ManagedPropertyBundleList),
-    valueStringArray: S.optional(StringList),
-    key: S.optional(S.String),
     valueString: S.optional(S.String),
-    valueBundle: S.optional(ManagedPropertyBundle),
-    valueInteger: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ManagedProperty",
@@ -1462,73 +1350,157 @@ export const ManagedPropertyList = /*@__PURE__*/ S.Array(
 export interface ManagedConfiguration {
   /** Deprecated. */
   kind?: string;
-  /** The ID of the product that the managed configuration is for, e.g. "app:com.google.android.gm". */
-  productId?: string;
   /** Contains the ID of the managed configuration profile and the set of configuration variables (if any) defined for the user. */
   configurationVariables?: ConfigurationVariables;
   /** The set of managed properties for this configuration. */
   managedProperty?: ManagedPropertyList;
+  /** The ID of the product that the managed configuration is for, e.g. "app:com.google.android.gm". */
+  productId?: string;
 }
 export const ManagedConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
-    productId: S.optional(S.String),
     configurationVariables: S.optional(ConfigurationVariables),
     managedProperty: S.optional(ManagedPropertyList),
+    productId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ManagedConfiguration",
 }) as any as S.Schema<ManagedConfiguration>;
 
-export type ProductPolicyTracksItemEnum =
-  | "appTrackUnspecified"
-  | "production"
-  | "beta"
-  | "alpha";
-export const ProductPolicyTracksItemEnum = /*@__PURE__*/ S.String;
+/** An authentication URL configuration for the authenticator app of an identity provider. */
+export interface EnterpriseAuthenticationAppLinkConfig {
+  /** An authentication url. */
+  uri?: string;
+}
+export const EnterpriseAuthenticationAppLinkConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uri: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "EnterpriseAuthenticationAppLinkConfig",
+}) as any as S.Schema<EnterpriseAuthenticationAppLinkConfig>;
 
-export type ProductPolicyTracksItemEnumList = Array<
-  ProductPolicyTracksItemEnum | (string & {})
->;
-export const ProductPolicyTracksItemEnumList = /*@__PURE__*/ S.Array(
-  ProductPolicyTracksItemEnum,
-) as any as S.Schema<ProductPolicyTracksItemEnumList>;
+export type EnterpriseAuthenticationAppLinkConfigList =
+  Array<EnterpriseAuthenticationAppLinkConfig>;
+export const EnterpriseAuthenticationAppLinkConfigList = /*@__PURE__*/ S.Array(
+  EnterpriseAuthenticationAppLinkConfig,
+) as any as S.Schema<EnterpriseAuthenticationAppLinkConfigList>;
 
-export type ProductPolicyAutoUpdateModeEnum =
-  | "autoUpdateModeUnspecified"
-  | "autoUpdateDefault"
-  | "autoUpdatePostponed"
-  | "autoUpdateHighPriority";
-export const ProductPolicyAutoUpdateModeEnum = /*@__PURE__*/ S.String;
+export type AutoInstallPolicyAutoInstallModeEnum =
+  | "autoInstallModeUnspecified"
+  | "doNotAutoInstall"
+  | "autoInstallOnce"
+  | "forceAutoInstall";
+export const AutoInstallPolicyAutoInstallModeEnum = /*@__PURE__*/ S.String;
+
+export type AutoInstallConstraintDeviceIdleStateConstraintEnum =
+  | "deviceIdleStateConstraintUnspecified"
+  | "deviceIdleNotRequired"
+  | "deviceIdleRequired";
+export const AutoInstallConstraintDeviceIdleStateConstraintEnum =
+  /*@__PURE__*/ S.String;
+
+export type AutoInstallConstraintNetworkTypeConstraintEnum =
+  | "networkTypeConstraintUnspecified"
+  | "anyNetwork"
+  | "unmeteredNetwork";
+export const AutoInstallConstraintNetworkTypeConstraintEnum =
+  /*@__PURE__*/ S.String;
+
+export type AutoInstallConstraintChargingStateConstraintEnum =
+  | "chargingStateConstraintUnspecified"
+  | "chargingNotRequired"
+  | "chargingRequired";
+export const AutoInstallConstraintChargingStateConstraintEnum =
+  /*@__PURE__*/ S.String;
+
+/** The auto-install constraint. Defines a set of restrictions for installation. At least one of the fields must be set. */
+export interface AutoInstallConstraint {
+  /** Device idle state constraint. */
+  deviceIdleStateConstraint?:
+    | AutoInstallConstraintDeviceIdleStateConstraintEnum
+    | (string & {});
+  /** Network type constraint. */
+  networkTypeConstraint?:
+    | AutoInstallConstraintNetworkTypeConstraintEnum
+    | (string & {});
+  /** Charging state constraint. */
+  chargingStateConstraint?:
+    | AutoInstallConstraintChargingStateConstraintEnum
+    | (string & {});
+}
+export const AutoInstallConstraint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceIdleStateConstraint: S.optional(
+      AutoInstallConstraintDeviceIdleStateConstraintEnum,
+    ),
+    networkTypeConstraint: S.optional(
+      AutoInstallConstraintNetworkTypeConstraintEnum,
+    ),
+    chargingStateConstraint: S.optional(
+      AutoInstallConstraintChargingStateConstraintEnum,
+    ),
+  }),
+).annotate({
+  identifier: "AutoInstallConstraint",
+}) as any as S.Schema<AutoInstallConstraint>;
+
+export type AutoInstallConstraintList = Array<AutoInstallConstraint>;
+export const AutoInstallConstraintList = /*@__PURE__*/ S.Array(
+  AutoInstallConstraint,
+) as any as S.Schema<AutoInstallConstraintList>;
+
+export interface AutoInstallPolicy {
+  /** The auto-install mode. If unset, defaults to "doNotAutoInstall". An app is automatically installed regardless of a set maintenance window. */
+  autoInstallMode?: AutoInstallPolicyAutoInstallModeEnum | (string & {});
+  /** The priority of the install, as an unsigned integer. A lower number means higher priority. */
+  autoInstallPriority?: number;
+  /** The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You can set a minimum version code for at most 20 apps per device. */
+  minimumVersionCode?: number;
+  /** The constraints for auto-installing the app. You can specify a maximum of one constraint. */
+  autoInstallConstraint?: AutoInstallConstraintList;
+}
+export const AutoInstallPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoInstallMode: S.optional(AutoInstallPolicyAutoInstallModeEnum),
+    autoInstallPriority: S.optional(S.Number),
+    minimumVersionCode: S.optional(S.Number),
+    autoInstallConstraint: S.optional(AutoInstallConstraintList),
+  }),
+).annotate({
+  identifier: "AutoInstallPolicy",
+}) as any as S.Schema<AutoInstallPolicy>;
 
 /** The policy for a product. */
 export interface ProductPolicy {
-  /** Grants the device visibility to the specified product release track(s), identified by trackIds. The list of release tracks of a product can be obtained by calling Products.Get. */
-  trackIds?: StringList;
-  /** The auto-install policy for the product. */
-  autoInstallPolicy?: AutoInstallPolicy;
   /** The ID of the product. For example, "app:com.google.android.gm". */
   productId?: string;
-  /** An authentication URL configuration for the authenticator app of an identity provider. This helps to launch the identity provider's authenticator app during the authentication happening in a private app using Android WebView. Authenticator app should already be the default handler for the authentication url on the device. */
-  enterpriseAuthenticationAppLinkConfigs?: EnterpriseAuthenticationAppLinkConfigList;
-  /** The managed configuration for the product. */
-  managedConfiguration?: ManagedConfiguration;
   /** Deprecated. Use trackIds instead. */
   tracks?: ProductPolicyTracksItemEnumList;
+  /** Grants the device visibility to the specified product release track(s), identified by trackIds. The list of release tracks of a product can be obtained by calling Products.Get. */
+  trackIds?: StringList;
   /** The auto-update mode for the product. When autoUpdateMode is used, it always takes precedence over the user's choice. So when a user makes changes to the device settings manually, these changes are ignored. */
   autoUpdateMode?: ProductPolicyAutoUpdateModeEnum | (string & {});
+  /** The managed configuration for the product. */
+  managedConfiguration?: ManagedConfiguration;
+  /** An authentication URL configuration for the authenticator app of an identity provider. This helps to launch the identity provider's authenticator app during the authentication happening in a private app using Android WebView. Authenticator app should already be the default handler for the authentication url on the device. */
+  enterpriseAuthenticationAppLinkConfigs?: EnterpriseAuthenticationAppLinkConfigList;
+  /** The auto-install policy for the product. */
+  autoInstallPolicy?: AutoInstallPolicy;
 }
 export const ProductPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    trackIds: S.optional(StringList),
-    autoInstallPolicy: S.optional(AutoInstallPolicy),
     productId: S.optional(S.String),
+    tracks: S.optional(ProductPolicyTracksItemEnumList),
+    trackIds: S.optional(StringList),
+    autoUpdateMode: S.optional(ProductPolicyAutoUpdateModeEnum),
+    managedConfiguration: S.optional(ManagedConfiguration),
     enterpriseAuthenticationAppLinkConfigs: S.optional(
       EnterpriseAuthenticationAppLinkConfigList,
     ),
-    managedConfiguration: S.optional(ManagedConfiguration),
-    tracks: S.optional(ProductPolicyTracksItemEnumList),
-    autoUpdateMode: S.optional(ProductPolicyAutoUpdateModeEnum),
+    autoInstallPolicy: S.optional(AutoInstallPolicy),
   }),
 ).annotate({ identifier: "ProductPolicy" }) as any as S.Schema<ProductPolicy>;
 
@@ -1536,6 +1508,22 @@ export type ProductPolicyList = Array<ProductPolicy>;
 export const ProductPolicyList = /*@__PURE__*/ S.Array(
   ProductPolicy,
 ) as any as S.Schema<ProductPolicyList>;
+
+/** Maintenance window for managed Google Play Accounts. This allows Play store to update the apps on the foreground in the designated window. */
+export interface MaintenanceWindow {
+  /** Start time of the maintenance window, in milliseconds after midnight on the device. Windows can span midnight. */
+  startTimeAfterMidnightMs?: string;
+  /** Duration of the maintenance window, in milliseconds. The duration must be between 30 minutes and 24 hours (inclusive). */
+  durationMs?: string;
+}
+export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTimeAfterMidnightMs: S.optional(S.String),
+    durationMs: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaintenanceWindow",
+}) as any as S.Schema<MaintenanceWindow>;
 
 export type PolicyAutoUpdatePolicyEnum =
   | "autoUpdatePolicyUnspecified"
@@ -1557,10 +1545,10 @@ export interface Policy {
   productAvailabilityPolicy?:
     | PolicyProductAvailabilityPolicyEnum
     | (string & {});
-  /** The maintenance window defining when apps running in the foreground should be updated. */
-  maintenanceWindow?: MaintenanceWindow;
   /** The list of product policies. The productAvailabilityPolicy needs to be set to WHITELIST or ALL for the product policies to be applied. */
   productPolicy?: ProductPolicyList;
+  /** The maintenance window defining when apps running in the foreground should be updated. */
+  maintenanceWindow?: MaintenanceWindow;
   /** Controls when automatic app updates on the device can be applied. Recommended alternative: autoUpdateMode which is set per app, provides greater flexibility around update frequency. When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, autoUpdatePolicy has no effect. - choiceToTheUser allows the device's user to configure the app update policy. - always enables auto updates. - never disables auto updates. - wifiOnly enables auto updates only when the device is connected to wifi. *Important:* Changes to app update policies don't affect updates that are in progress. Any policy changes will apply to subsequent app updates. */
   autoUpdatePolicy?: PolicyAutoUpdatePolicyEnum | (string & {});
   /** Whether the device reports app states to the EMM. The default value is "deviceReportDisabled". */
@@ -1571,8 +1559,8 @@ export interface Policy {
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productAvailabilityPolicy: S.optional(PolicyProductAvailabilityPolicyEnum),
-    maintenanceWindow: S.optional(MaintenanceWindow),
     productPolicy: S.optional(ProductPolicyList),
+    maintenanceWindow: S.optional(MaintenanceWindow),
     autoUpdatePolicy: S.optional(PolicyAutoUpdatePolicyEnum),
     deviceReportPolicy: S.optional(PolicyDeviceReportPolicyEnum),
     policyId: S.optional(S.String),
@@ -1594,24 +1582,24 @@ export const KeyedAppStateSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a keyed app state containing a key, timestamp, severity level, optional description, and optional data. */
 export interface KeyedAppState {
-  /** Timestamp of when the app set the state in milliseconds since epoch. This field will always be present. */
-  stateTimestampMillis?: string;
   /** Severity of the app state. This field will always be present. */
   severity?: KeyedAppStateSeverityEnum | (string & {});
-  /** Additional field intended for machine-readable data. For example, a number or JSON object. To prevent XSS, we recommend removing any HTML from the data before displaying it. */
-  data?: string;
-  /** Key indicating what the app is providing a state for. The content of the key is set by the app's developer. To prevent XSS, we recommend removing any HTML from the key before displaying it. This field will always be present. */
-  key?: string;
   /** Free-form, human-readable message describing the app state. For example, an error message. To prevent XSS, we recommend removing any HTML from the message before displaying it. */
   message?: string;
+  /** Timestamp of when the app set the state in milliseconds since epoch. This field will always be present. */
+  stateTimestampMillis?: string;
+  /** Key indicating what the app is providing a state for. The content of the key is set by the app's developer. To prevent XSS, we recommend removing any HTML from the key before displaying it. This field will always be present. */
+  key?: string;
+  /** Additional field intended for machine-readable data. For example, a number or JSON object. To prevent XSS, we recommend removing any HTML from the data before displaying it. */
+  data?: string;
 }
 export const KeyedAppState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    stateTimestampMillis: S.optional(S.String),
     severity: S.optional(KeyedAppStateSeverityEnum),
-    data: S.optional(S.String),
-    key: S.optional(S.String),
     message: S.optional(S.String),
+    stateTimestampMillis: S.optional(S.String),
+    key: S.optional(S.String),
+    data: S.optional(S.String),
   }),
 ).annotate({ identifier: "KeyedAppState" }) as any as S.Schema<KeyedAppState>;
 
@@ -1622,15 +1610,15 @@ export const KeyedAppStateList = /*@__PURE__*/ S.Array(
 
 /** List of states set by the app. */
 export interface AppState {
-  /** List of keyed app states. This field will always be present. */
-  keyedAppState?: KeyedAppStateList;
   /** The package name of the app. This field will always be present. */
   packageName?: string;
+  /** List of keyed app states. This field will always be present. */
+  keyedAppState?: KeyedAppStateList;
 }
 export const AppState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    keyedAppState: S.optional(KeyedAppStateList),
     packageName: S.optional(S.String),
+    keyedAppState: S.optional(KeyedAppStateList),
   }),
 ).annotate({ identifier: "AppState" }) as any as S.Schema<AppState>;
 
@@ -1641,56 +1629,56 @@ export const AppStateList = /*@__PURE__*/ S.Array(
 
 /** Device report updated with the latest app states for managed apps on the device. */
 export interface DeviceReport {
-  /** The timestamp of the last report update in milliseconds since epoch. This field will always be present. */
-  lastUpdatedTimestampMillis?: string;
   /** List of app states set by managed apps on the device. App states are defined by the app's developers. This field will always be present. */
   appState?: AppStateList;
+  /** The timestamp of the last report update in milliseconds since epoch. This field will always be present. */
+  lastUpdatedTimestampMillis?: string;
 }
 export const DeviceReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastUpdatedTimestampMillis: S.optional(S.String),
     appState: S.optional(AppStateList),
+    lastUpdatedTimestampMillis: S.optional(S.String),
   }),
 ).annotate({ identifier: "DeviceReport" }) as any as S.Schema<DeviceReport>;
 
 /** A Devices resource represents a mobile device managed by the EMM and belonging to a specific enterprise user. */
 export interface Device {
-  /** The manufacturer of the device. This comes from android.os.Build.MANUFACTURER. */
-  maker?: string;
+  /** The internal hardware codename of the device. This comes from android.os.Build.DEVICE. (field named "device" per logs/wireless/android/android_checkin.proto) */
+  device?: string;
+  /** The policy enforced on the device. */
+  policy?: Policy;
+  /** Identifies the extent to which the device is controlled by a managed Google Play EMM in various deployment configurations. Possible values include: - "managedDevice", a device that has the EMM's device policy controller (DPC) as the device owner. - "managedProfile", a device that has a profile managed by the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC. - "containerApp", no longer used (deprecated). - "unmanagedProfile", a device that has been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile is itself not owned by a DPC. */
+  managementType?: DeviceManagementTypeEnum | (string & {});
   /** The product name of the device. This comes from android.os.Build.PRODUCT. */
   product?: string;
   /** The Google Play Services Android ID for the device encoded as a lowercase hex string. For example, "123456789abcdef0". */
   androidId?: string;
   /** The model name of the device. This comes from android.os.Build.MODEL. */
   model?: string;
-  /** Retail brand for the device, if set. See android.os.Build.BRAND */
-  retailBrand?: string;
-  /** The policy enforced on the device. */
-  policy?: Policy;
-  /** The build fingerprint of the device if known. */
-  latestBuildFingerprint?: string;
-  /** API compatibility version. */
-  sdkVersion?: number;
-  /** Identifies the extent to which the device is controlled by a managed Google Play EMM in various deployment configurations. Possible values include: - "managedDevice", a device that has the EMM's device policy controller (DPC) as the device owner. - "managedProfile", a device that has a profile managed by the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC. - "containerApp", no longer used (deprecated). - "unmanagedProfile", a device that has been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile is itself not owned by a DPC. */
-  managementType?: DeviceManagementTypeEnum | (string & {});
   /** The device report updated with the latest app states. */
   report?: DeviceReport;
-  /** The internal hardware codename of the device. This comes from android.os.Build.DEVICE. (field named "device" per logs/wireless/android/android_checkin.proto) */
-  device?: string;
+  /** The manufacturer of the device. This comes from android.os.Build.MANUFACTURER. */
+  maker?: string;
+  /** API compatibility version. */
+  sdkVersion?: number;
+  /** The build fingerprint of the device if known. */
+  latestBuildFingerprint?: string;
+  /** Retail brand for the device, if set. See android.os.Build.BRAND */
+  retailBrand?: string;
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    maker: S.optional(S.String),
+    device: S.optional(S.String),
+    policy: S.optional(Policy),
+    managementType: S.optional(DeviceManagementTypeEnum),
     product: S.optional(S.String),
     androidId: S.optional(S.String),
     model: S.optional(S.String),
-    retailBrand: S.optional(S.String),
-    policy: S.optional(Policy),
-    latestBuildFingerprint: S.optional(S.String),
-    sdkVersion: S.optional(S.Number),
-    managementType: S.optional(DeviceManagementTypeEnum),
     report: S.optional(DeviceReport),
-    device: S.optional(S.String),
+    maker: S.optional(S.String),
+    sdkVersion: S.optional(S.Number),
+    latestBuildFingerprint: S.optional(S.String),
+    retailBrand: S.optional(S.String),
   }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
@@ -1715,16 +1703,16 @@ export const GetEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetEntitlementsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
-  /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
-  entitlementId: string;
   /** The ID of the user. */
   userId: string;
+  /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
+  entitlementId: string;
 }
 export const GetEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterpriseId: S.String.pipe(T.Label()),
-    entitlementId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
+    entitlementId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1741,15 +1729,15 @@ export const EntitlementReasonEnum = /*@__PURE__*/ S.String;
 
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations. */
 export interface Entitlement {
-  /** The reason for the entitlement. For example, "free" for free apps. This property is temporary: it will be replaced by the acquisition kind field of group licenses. */
-  reason?: EntitlementReasonEnum | (string & {});
   /** The ID of the product that the entitlement is for. For example, "app:com.google.android.gm". */
   productId?: string;
+  /** The reason for the entitlement. For example, "free" for free apps. This property is temporary: it will be replaced by the acquisition kind field of group licenses. */
+  reason?: EntitlementReasonEnum | (string & {});
 }
 export const Entitlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    reason: S.optional(EntitlementReasonEnum),
     productId: S.optional(S.String),
+    reason: S.optional(EntitlementReasonEnum),
   }),
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 
@@ -1790,44 +1778,44 @@ export const GroupLicenseApprovalEnum = /*@__PURE__*/ S.String;
 export interface GroupLicense {
   /** The permission approval status of the product. This field is only set if the product is approved. Possible states are: - "currentApproved", the current set of permissions is approved, but additional permissions will require the administrator to reapprove the product (If the product was approved without specifying the approved permissions setting, then this is the default behavior.), - "needsReapproval", the product has unapproved permissions. No additional product licenses can be assigned until the product is reapproved, - "allCurrentAndFutureApproved", the current permissions are approved and any future permission updates will be automatically approved without administrator review. */
   permissions?: GroupLicensePermissionsEnum;
-  /** The number of purchased licenses (possibly in multiple purchases). If this field is omitted, then there is no limit on the number of licenses that can be provisioned (for example, if the acquisition kind is "free"). */
-  numPurchased?: number;
-  /** The total number of provisioned licenses for this product. Returned by read operations, but ignored in write operations. */
-  numProvisioned?: number;
   /** The ID of the product that the license is for. For example, "app:com.google.android.gm". */
   productId?: string;
   /** How this group license was acquired. "bulkPurchase" means that this Grouplicenses resource was created because the enterprise purchased licenses for this product; otherwise, the value is "free" (for free products). */
   acquisitionKind?: GroupLicenseAcquisitionKindEnum;
   /** Whether the product to which this group license relates is currently approved by the enterprise. Products are approved when a group license is first created, but this approval may be revoked by an enterprise admin via Google Play. Unapproved products will not be visible to end users in collections, and new entitlements to them should not normally be created. */
   approval?: GroupLicenseApprovalEnum;
+  /** The number of purchased licenses (possibly in multiple purchases). If this field is omitted, then there is no limit on the number of licenses that can be provisioned (for example, if the acquisition kind is "free"). */
+  numPurchased?: number;
+  /** The total number of provisioned licenses for this product. Returned by read operations, but ignored in write operations. */
+  numProvisioned?: number;
 }
 export const GroupLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(GroupLicensePermissionsEnum),
-    numPurchased: S.optional(S.Number),
-    numProvisioned: S.optional(S.Number),
     productId: S.optional(S.String),
     acquisitionKind: S.optional(GroupLicenseAcquisitionKindEnum),
     approval: S.optional(GroupLicenseApprovalEnum),
+    numPurchased: S.optional(S.Number),
+    numProvisioned: S.optional(S.Number),
   }),
 ).annotate({ identifier: "GroupLicense" }) as any as S.Schema<GroupLicense>;
 
 export interface GetInstallsRequest {
-  /** The ID of the user. */
-  userId: string;
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The Android ID of the device. */
   deviceId: string;
+  /** The ID of the user. */
+  userId: string;
   /** The ID of the product represented by the install, e.g. "app:com.google.android.gm". */
   installId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const GetInstallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    userId: S.String.pipe(T.Label()),
-    enterpriseId: S.String.pipe(T.Label()),
     deviceId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
     installId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1844,38 +1832,38 @@ export const InstallInstallStateEnum = /*@__PURE__*/ S.String;
 
 /** The existence of an Installs resource indicates that an app is installed on a particular device (or that an install is pending). The API can be used to create an install resource using the update method. This triggers the actual install of the app on the device. If the user does not already have an entitlement for the app, then an attempt is made to create one. If this fails (for example, because the app is not free and there is no available license), then the creation of the install fails. The API can also be used to update an installed app. If the update method is used on an existing install, then the app will be updated to the latest available version. Note that it is not possible to force the installation of a specific version of an app: the version code is read-only. If a user installs an app themselves (as permitted by the enterprise), then again an install resource and possibly an entitlement resource are automatically created. The API can also be used to delete an install resource, which triggers the removal of the app from the device. Note that deleting an install does not automatically remove the corresponding entitlement, even if there are no remaining installs. The install resource will also be deleted if the user uninstalls the app themselves. */
 export interface Install {
-  /** Install state. The state "installPending" means that an install request has recently been made and download to the device is in progress. The state "installed" means that the app has been installed. This field is read-only. */
-  installState?: InstallInstallStateEnum | (string & {});
-  /** The ID of the product that the install is for. For example, "app:com.google.android.gm". */
-  productId?: string;
   /** The version of the installed product. Guaranteed to be set only if the install state is "installed". */
   versionCode?: number;
+  /** The ID of the product that the install is for. For example, "app:com.google.android.gm". */
+  productId?: string;
+  /** Install state. The state "installPending" means that an install request has recently been made and download to the device is in progress. The state "installed" means that the app has been installed. This field is read-only. */
+  installState?: InstallInstallStateEnum | (string & {});
 }
 export const Install = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    installState: S.optional(InstallInstallStateEnum),
-    productId: S.optional(S.String),
     versionCode: S.optional(S.Number),
+    productId: S.optional(S.String),
+    installState: S.optional(InstallInstallStateEnum),
   }),
 ).annotate({ identifier: "Install" }) as any as S.Schema<Install>;
 
 export interface GetManagedconfigurationsfordeviceRequest {
   /** The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". */
   managedConfigurationForDeviceId: string;
-  /** The ID of the enterprise. */
-  enterpriseId: string;
-  /** The Android ID of the device. */
-  deviceId: string;
   /** The ID of the user. */
   userId: string;
+  /** The Android ID of the device. */
+  deviceId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const GetManagedconfigurationsfordeviceRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       managedConfigurationForDeviceId: S.String.pipe(T.Label()),
-      enterpriseId: S.String.pipe(T.Label()),
-      deviceId: S.String.pipe(T.Label()),
       userId: S.String.pipe(T.Label()),
+      deviceId: S.String.pipe(T.Label()),
+      enterpriseId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1888,19 +1876,19 @@ export const GetManagedconfigurationsfordeviceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetManagedconfigurationsfordeviceRequest>;
 
 export interface GetManagedconfigurationsforuserRequest {
+  /** The ID of the enterprise. */
+  enterpriseId: string;
   /** The ID of the user. */
   userId: string;
   /** The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". */
   managedConfigurationForUserId: string;
-  /** The ID of the enterprise. */
-  enterpriseId: string;
 }
 export const GetManagedconfigurationsforuserRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      enterpriseId: S.String.pipe(T.Label()),
       userId: S.String.pipe(T.Label()),
       managedConfigurationForUserId: S.String.pipe(T.Label()),
-      enterpriseId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1976,15 +1964,15 @@ export const ProductPermissionStateEnum = /*@__PURE__*/ S.String;
 
 /** A product permissions resource represents the set of permissions required by a specific app and whether or not they have been accepted by an enterprise admin. The API can be used to read the set of permissions, and also to update the set to indicate that permissions have been accepted. */
 export interface ProductPermission {
-  /** Whether the permission has been accepted or not. */
-  state?: ProductPermissionStateEnum;
   /** An opaque string uniquely identifying the permission. */
   permissionId?: string;
+  /** Whether the permission has been accepted or not. */
+  state?: ProductPermissionStateEnum;
 }
 export const ProductPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    state: S.optional(ProductPermissionStateEnum),
     permissionId: S.optional(S.String),
+    state: S.optional(ProductPermissionStateEnum),
   }),
 ).annotate({
   identifier: "ProductPermission",
@@ -1997,33 +1985,33 @@ export const ProductPermissionList = /*@__PURE__*/ S.Array(
 
 /** Information about the permissions required by a specific app and whether they have been accepted by the enterprise. */
 export interface ProductPermissions {
-  /** The ID of the app that the permissions relate to, e.g. "app:com.google.android.gm". */
-  productId?: string;
   /** The permissions required by the app. */
   permission?: ProductPermissionList;
+  /** The ID of the app that the permissions relate to, e.g. "app:com.google.android.gm". */
+  productId?: string;
 }
 export const ProductPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    productId: S.optional(S.String),
     permission: S.optional(ProductPermissionList),
+    productId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ProductPermissions",
 }) as any as S.Schema<ProductPermissions>;
 
 export interface GetProductsRequest {
-  /** The ID of the product, e.g. "app:com.google.android.gm". */
-  productId: string;
   /** The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). */
   language?: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
+  /** The ID of the product, e.g. "app:com.google.android.gm". */
+  productId: string;
 }
 export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    productId: S.String.pipe(T.Label()),
     language: S.optional(S.String.pipe(T.Query())),
     enterpriseId: S.String.pipe(T.Label()),
+    productId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2034,86 +2022,6 @@ export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProductsRequest",
 }) as any as S.Schema<GetProductsRequest>;
-
-export type ProductAvailableTracksItemEnum =
-  | "appTrackUnspecified"
-  | "production"
-  | "beta"
-  | "alpha";
-export const ProductAvailableTracksItemEnum = /*@__PURE__*/ S.String;
-
-export type ProductAvailableTracksItemEnumList =
-  Array<ProductAvailableTracksItemEnum>;
-export const ProductAvailableTracksItemEnumList = /*@__PURE__*/ S.Array(
-  ProductAvailableTracksItemEnum,
-) as any as S.Schema<ProductAvailableTracksItemEnumList>;
-
-export type ProductProductPricingEnum =
-  | "unknown"
-  | "free"
-  | "freeWithInAppPurchase"
-  | "paid";
-export const ProductProductPricingEnum = /*@__PURE__*/ S.String;
-
-export type ProductFeaturesItemEnum = "featureUnknown" | "vpnApp";
-export const ProductFeaturesItemEnum = /*@__PURE__*/ S.String;
-
-export type ProductFeaturesItemEnumList = Array<ProductFeaturesItemEnum>;
-export const ProductFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  ProductFeaturesItemEnum,
-) as any as S.Schema<ProductFeaturesItemEnumList>;
-
-export type AppVersionTrackEnum =
-  | "appTrackUnspecified"
-  | "production"
-  | "beta"
-  | "alpha";
-export const AppVersionTrackEnum = /*@__PURE__*/ S.String;
-
-/** This represents a single version of the app. */
-export interface AppVersion {
-  /** The SDK version this app targets, as specified in the manifest of the APK. See http://developer.android.com/guide/topics/manifest/uses-sdk-element.html */
-  targetSdkVersion?: number;
-  /** The string used in the Play store by the app developer to identify the version. The string is not necessarily unique or localized (for example, the string could be "1.4"). */
-  versionString?: string;
-  /** Unique increasing identifier for the app version. */
-  versionCode?: number;
-  /** Deprecated, use trackId instead. */
-  track?: AppVersionTrackEnum;
-  /** True if this version is a production APK. */
-  isProduction?: boolean;
-  /** Track ids that the app version is published in. Replaces the track field (deprecated), but doesn't include the production track (see isProduction instead). */
-  trackId?: StringList;
-}
-export const AppVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetSdkVersion: S.optional(S.Number),
-    versionString: S.optional(S.String),
-    versionCode: S.optional(S.Number),
-    track: S.optional(AppVersionTrackEnum),
-    isProduction: S.optional(S.Boolean),
-    trackId: S.optional(StringList),
-  }),
-).annotate({ identifier: "AppVersion" }) as any as S.Schema<AppVersion>;
-
-export type AppVersionList = Array<AppVersion>;
-export const AppVersionList = /*@__PURE__*/ S.Array(
-  AppVersion,
-) as any as S.Schema<AppVersionList>;
-
-export type ProductDistributionChannelEnum =
-  | "publicGoogleHosted"
-  | "privateGoogleHosted"
-  | "privateSelfHosted";
-export const ProductDistributionChannelEnum = /*@__PURE__*/ S.String;
-
-export type ProductContentRatingEnum =
-  | "ratingUnknown"
-  | "all"
-  | "preTeen"
-  | "teen"
-  | "mature";
-export const ProductContentRatingEnum = /*@__PURE__*/ S.String;
 
 /** Id to name association of a track. */
 export interface TrackInfo {
@@ -2134,6 +2042,73 @@ export const TrackInfoList = /*@__PURE__*/ S.Array(
   TrackInfo,
 ) as any as S.Schema<TrackInfoList>;
 
+export type ProductFeaturesItemEnum = "featureUnknown" | "vpnApp";
+export const ProductFeaturesItemEnum = /*@__PURE__*/ S.String;
+
+export type ProductFeaturesItemEnumList = Array<ProductFeaturesItemEnum>;
+export const ProductFeaturesItemEnumList = /*@__PURE__*/ S.Array(
+  ProductFeaturesItemEnum,
+) as any as S.Schema<ProductFeaturesItemEnumList>;
+
+export type AppVersionTrackEnum =
+  | "appTrackUnspecified"
+  | "production"
+  | "beta"
+  | "alpha";
+export const AppVersionTrackEnum = /*@__PURE__*/ S.String;
+
+/** This represents a single version of the app. */
+export interface AppVersion {
+  /** True if this version is a production APK. */
+  isProduction?: boolean;
+  /** Deprecated, use trackId instead. */
+  track?: AppVersionTrackEnum;
+  /** The string used in the Play store by the app developer to identify the version. The string is not necessarily unique or localized (for example, the string could be "1.4"). */
+  versionString?: string;
+  /** The SDK version this app targets, as specified in the manifest of the APK. See http://developer.android.com/guide/topics/manifest/uses-sdk-element.html */
+  targetSdkVersion?: number;
+  /** Track ids that the app version is published in. Replaces the track field (deprecated), but doesn't include the production track (see isProduction instead). */
+  trackId?: StringList;
+  /** Unique increasing identifier for the app version. */
+  versionCode?: number;
+}
+export const AppVersion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isProduction: S.optional(S.Boolean),
+    track: S.optional(AppVersionTrackEnum),
+    versionString: S.optional(S.String),
+    targetSdkVersion: S.optional(S.Number),
+    trackId: S.optional(StringList),
+    versionCode: S.optional(S.Number),
+  }),
+).annotate({ identifier: "AppVersion" }) as any as S.Schema<AppVersion>;
+
+export type AppVersionList = Array<AppVersion>;
+export const AppVersionList = /*@__PURE__*/ S.Array(
+  AppVersion,
+) as any as S.Schema<AppVersionList>;
+
+export type ProductAvailableTracksItemEnum =
+  | "appTrackUnspecified"
+  | "production"
+  | "beta"
+  | "alpha";
+export const ProductAvailableTracksItemEnum = /*@__PURE__*/ S.String;
+
+export type ProductAvailableTracksItemEnumList =
+  Array<ProductAvailableTracksItemEnum>;
+export const ProductAvailableTracksItemEnumList = /*@__PURE__*/ S.Array(
+  ProductAvailableTracksItemEnum,
+) as any as S.Schema<ProductAvailableTracksItemEnumList>;
+
+export type ProductContentRatingEnum =
+  | "ratingUnknown"
+  | "all"
+  | "preTeen"
+  | "teen"
+  | "mature";
+export const ProductContentRatingEnum = /*@__PURE__*/ S.String;
+
 export interface ProductSigningCertificate {
   /** The base64 urlsafe encoded SHA2-256 hash of the certificate. */
   certificateHashSha256?: string;
@@ -2149,89 +2124,102 @@ export const ProductSigningCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductSigningCertificate",
 }) as any as S.Schema<ProductSigningCertificate>;
 
+export type ProductDistributionChannelEnum =
+  | "publicGoogleHosted"
+  | "privateGoogleHosted"
+  | "privateSelfHosted";
+export const ProductDistributionChannelEnum = /*@__PURE__*/ S.String;
+
+export type ProductProductPricingEnum =
+  | "unknown"
+  | "free"
+  | "freeWithInAppPurchase"
+  | "paid";
+export const ProductProductPricingEnum = /*@__PURE__*/ S.String;
+
 /** A Products resource represents an app in the Google Play store that is available to at least some users in the enterprise. (Some apps are restricted to a single enterprise, and no information about them is made available outside that enterprise.) The information provided for each product (localized name, icon, link to the full Google Play details page) is intended to allow a basic representation of the product within an EMM user interface. */
 export interface Product {
-  /** Deprecated, use appTracks instead. */
-  availableTracks?: ProductAvailableTracksItemEnumList;
-  /** A link to the managed Google Play details page for the product, for use by an Enterprise admin. */
-  workDetailsUrl?: string;
-  /** A link to an image that can be used as an icon for the product. This image is suitable for use at up to 512px x 512px. */
-  iconUrl?: string;
-  /** Deprecated. */
-  requiresContainerApp?: boolean;
   /** The approximate time (within 7 days) the app was last published, expressed in milliseconds since epoch. */
   lastUpdatedTimestampMillis?: string;
-  /** The name of the product. */
-  title?: string;
-  /** Whether this product is free, free with in-app purchases, or paid. If the pricing is unknown, this means the product is not generally available anymore (even though it might still be available to people who own it). */
-  productPricing?: ProductProductPricingEnum;
-  /** A string of the form *app:<package name>*. For example, app:com.google.android.gm represents the Gmail app. */
-  productId?: string;
-  /** The app restriction schema */
-  appRestrictionsSchema?: AppRestrictionsSchema;
-  /** A list of screenshot links representing the app. */
-  screenshotUrls?: StringList;
   /** The localized full app store description, if available. */
   fullDescription?: string;
-  /** The minimum Android SDK necessary to run the app. */
-  minAndroidSdkVersion?: number;
-  /** Noteworthy features (if any) of this product. */
-  features?: ProductFeaturesItemEnumList;
-  /** App versions currently available for this product. */
-  appVersion?: AppVersionList;
-  /** How and to whom the package is made available. The value publicGoogleHosted means that the package is available through the Play store and not restricted to a specific enterprise. The value privateGoogleHosted means that the package is a private app (restricted to an enterprise) but hosted by Google. The value privateSelfHosted means that the package is a private app (restricted to an enterprise) and is privately hosted. */
-  distributionChannel?: ProductDistributionChannelEnum;
-  /** The content rating for this app. */
-  contentRating?: ProductContentRatingEnum;
   /** The app category (e.g. RACING, SOCIAL, etc.) */
   category?: string;
-  /** A description of the recent changes made to the app. */
-  recentChanges?: string;
   /** The tracks visible to the enterprise. */
   appTracks?: TrackInfoList;
-  /** The localized promotional description, if available. */
-  description?: string;
   /** A link to the (consumer) Google Play details page for the product. */
   detailsUrl?: string;
+  /** A list of screenshot links representing the app. */
+  screenshotUrls?: StringList;
   /** A link to a smaller image that can be used as an icon for the product. This image is suitable for use at up to 128px x 128px. */
   smallIconUrl?: string;
+  /** A description of the recent changes made to the app. */
+  recentChanges?: string;
+  /** A link to the managed Google Play details page for the product, for use by an Enterprise admin. */
+  workDetailsUrl?: string;
+  /** Noteworthy features (if any) of this product. */
+  features?: ProductFeaturesItemEnumList;
   /** The name of the author of the product (for example, the app developer). */
   authorName?: string;
+  /** The localized promotional description, if available. */
+  description?: string;
+  /** Deprecated. */
+  requiresContainerApp?: boolean;
+  /** App versions currently available for this product. */
+  appVersion?: AppVersionList;
+  /** Deprecated, use appTracks instead. */
+  availableTracks?: ProductAvailableTracksItemEnumList;
+  /** The content rating for this app. */
+  contentRating?: ProductContentRatingEnum;
+  /** A link to an image that can be used as an icon for the product. This image is suitable for use at up to 512px x 512px. */
+  iconUrl?: string;
   /** A list of permissions required by the app. */
   permissions?: ProductPermissionList;
-  /** The certificate used to sign this product. */
-  signingCertificate?: ProductSigningCertificate;
   /** The countries which this app is available in. */
   availableCountries?: StringList;
+  /** The app restriction schema */
+  appRestrictionsSchema?: AppRestrictionsSchema;
+  /** The certificate used to sign this product. */
+  signingCertificate?: ProductSigningCertificate;
+  /** A string of the form *app:<package name>*. For example, app:com.google.android.gm represents the Gmail app. */
+  productId?: string;
+  /** How and to whom the package is made available. The value publicGoogleHosted means that the package is available through the Play store and not restricted to a specific enterprise. The value privateGoogleHosted means that the package is a private app (restricted to an enterprise) but hosted by Google. The value privateSelfHosted means that the package is a private app (restricted to an enterprise) and is privately hosted. */
+  distributionChannel?: ProductDistributionChannelEnum;
+  /** The name of the product. */
+  title?: string;
+  /** The minimum Android SDK necessary to run the app. */
+  minAndroidSdkVersion?: number;
+  /** Whether this product is free, free with in-app purchases, or paid. If the pricing is unknown, this means the product is not generally available anymore (even though it might still be available to people who own it). */
+  productPricing?: ProductProductPricingEnum;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    availableTracks: S.optional(ProductAvailableTracksItemEnumList),
-    workDetailsUrl: S.optional(S.String),
-    iconUrl: S.optional(S.String),
-    requiresContainerApp: S.optional(S.Boolean),
     lastUpdatedTimestampMillis: S.optional(S.String),
-    title: S.optional(S.String),
-    productPricing: S.optional(ProductProductPricingEnum),
-    productId: S.optional(S.String),
-    appRestrictionsSchema: S.optional(AppRestrictionsSchema),
-    screenshotUrls: S.optional(StringList),
     fullDescription: S.optional(S.String),
-    minAndroidSdkVersion: S.optional(S.Number),
-    features: S.optional(ProductFeaturesItemEnumList),
-    appVersion: S.optional(AppVersionList),
-    distributionChannel: S.optional(ProductDistributionChannelEnum),
-    contentRating: S.optional(ProductContentRatingEnum),
     category: S.optional(S.String),
-    recentChanges: S.optional(S.String),
     appTracks: S.optional(TrackInfoList),
-    description: S.optional(S.String),
     detailsUrl: S.optional(S.String),
+    screenshotUrls: S.optional(StringList),
     smallIconUrl: S.optional(S.String),
+    recentChanges: S.optional(S.String),
+    workDetailsUrl: S.optional(S.String),
+    features: S.optional(ProductFeaturesItemEnumList),
     authorName: S.optional(S.String),
+    description: S.optional(S.String),
+    requiresContainerApp: S.optional(S.Boolean),
+    appVersion: S.optional(AppVersionList),
+    availableTracks: S.optional(ProductAvailableTracksItemEnumList),
+    contentRating: S.optional(ProductContentRatingEnum),
+    iconUrl: S.optional(S.String),
     permissions: S.optional(ProductPermissionList),
-    signingCertificate: S.optional(ProductSigningCertificate),
     availableCountries: S.optional(StringList),
+    appRestrictionsSchema: S.optional(AppRestrictionsSchema),
+    signingCertificate: S.optional(ProductSigningCertificate),
+    productId: S.optional(S.String),
+    distributionChannel: S.optional(ProductDistributionChannelEnum),
+    title: S.optional(S.String),
+    minAndroidSdkVersion: S.optional(S.Number),
+    productPricing: S.optional(ProductProductPricingEnum),
   }),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
@@ -2270,19 +2258,19 @@ export const ServiceAccountKeyTypeEnum = /*@__PURE__*/ S.String;
 export interface ServiceAccountKey {
   /** An opaque, unique identifier for this ServiceAccountKey. Assigned by the server. */
   id?: string;
-  /** The file format of the generated key data. */
-  type?: ServiceAccountKeyTypeEnum | (string & {});
-  /** Public key data for the credentials file. This is an X.509 cert. If you are using the googleCredentials key type, this is identical to the cert that can be retrieved by using the X.509 cert url inside of the credentials file. */
-  publicData?: string;
   /** The body of the private key credentials file, in string format. This is only populated when the ServiceAccountKey is created, and is not stored by Google. When type is "pkcs12", the contents of the data field is base64 encoded and has the password "notasecret". */
   data?: string;
+  /** Public key data for the credentials file. This is an X.509 cert. If you are using the googleCredentials key type, this is identical to the cert that can be retrieved by using the X.509 cert url inside of the credentials file. */
+  publicData?: string;
+  /** The file format of the generated key data. */
+  type?: ServiceAccountKeyTypeEnum | (string & {});
 }
 export const ServiceAccountKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    type: S.optional(ServiceAccountKeyTypeEnum),
-    publicData: S.optional(S.String),
     data: S.optional(S.String),
+    publicData: S.optional(S.String),
+    type: S.optional(ServiceAccountKeyTypeEnum),
   }),
 ).annotate({
   identifier: "ServiceAccountKey",
@@ -2290,15 +2278,15 @@ export const ServiceAccountKey = /*@__PURE__*/ S.suspend(() =>
 
 /** A service account identity, including the name and credentials that can be used to authenticate as the service account. */
 export interface ServiceAccount {
-  /** The account name of the service account, in the form of an email address. Assigned by the server. */
-  name?: string;
   /** Credentials that can be used to authenticate as this ServiceAccount. */
   key?: ServiceAccountKey;
+  /** The account name of the service account, in the form of an email address. Assigned by the server. */
+  name?: string;
 }
 export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     key: S.optional(ServiceAccountKey),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
@@ -2341,18 +2329,18 @@ export const DeviceState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceState" }) as any as S.Schema<DeviceState>;
 
 export interface GetStorelayoutclustersRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the page. */
   pageId: string;
   /** The ID of the cluster. */
   clusterId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const GetStorelayoutclustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
     pageId: S.String.pipe(T.Label()),
     clusterId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2366,15 +2354,15 @@ export const GetStorelayoutclustersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A localized string with its locale. */
 export interface LocalizedText {
-  /** The text localized in the associated locale. */
-  text?: string;
   /** The BCP47 tag for a locale. (e.g. "en-US", "de"). */
   locale?: string;
+  /** The text localized in the associated locale. */
+  text?: string;
 }
 export const LocalizedText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    text: S.optional(S.String),
     locale: S.optional(S.String),
+    text: S.optional(S.String),
   }),
 ).annotate({ identifier: "LocalizedText" }) as any as S.Schema<LocalizedText>;
 
@@ -2385,21 +2373,21 @@ export const LocalizedTextList = /*@__PURE__*/ S.Array(
 
 /** Definition of a managed Google Play store cluster, a list of products displayed as part of a store page. */
 export interface StoreCluster {
-  /** List of products in the order they are displayed in the cluster. There should not be duplicates within a cluster. */
-  productId?: StringList;
-  /** Unique ID of this cluster. Assigned by the server. Immutable once assigned. */
-  id?: string;
   /** Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if there is no good match. There needs to be at least one entry. */
   name?: LocalizedTextList;
+  /** Unique ID of this cluster. Assigned by the server. Immutable once assigned. */
+  id?: string;
   /** String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering between elements with duplicate order is undefined. The value of this field is never visible to a user, it is used solely for the purpose of defining an ordering. Maximum length is 256 characters. */
   orderInPage?: string;
+  /** List of products in the order they are displayed in the cluster. There should not be duplicates within a cluster. */
+  productId?: StringList;
 }
 export const StoreCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    productId: S.optional(StringList),
-    id: S.optional(S.String),
     name: S.optional(LocalizedTextList),
+    id: S.optional(S.String),
     orderInPage: S.optional(S.String),
+    productId: S.optional(StringList),
   }),
 ).annotate({ identifier: "StoreCluster" }) as any as S.Schema<StoreCluster>;
 
@@ -2505,27 +2493,27 @@ export const UserManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Users resource represents an account associated with an enterprise. The account may be specific to a device or to an individual user (who can then use the account across multiple devices). The account may provide access to managed Google Play only, or to other Google services, depending on the identity model: - The Google managed domain identity model requires synchronization to Google account sources (via primaryEmail). - The managed Google Play Accounts identity model provides a dynamic means for enterprises to create user or device accounts as needed. These accounts provide access to managed Google Play. */
 export interface User {
-  /** The user's primary email address, for example, "jsmith@example.com". Will always be set for Google managed users and not set for EMM managed users. */
-  primaryEmail?: string;
   /** The unique ID for the user. */
   id?: string;
-  /** The name that will appear in user interfaces. Setting this property is optional when creating EMM-managed users. If you do set this property, use something generic about the organization (such as "Example, Inc.") or your name (as EMM). Not used for Google-managed user accounts. @mutable androidenterprise.users.update */
-  displayName?: string;
-  /** A unique identifier you create for this user, such as "user342" or "asset#44418". Do not use personally identifiable information (PII) for this property. Must always be set for EMM-managed users. Not set for Google-managed users. */
-  accountIdentifier?: string;
   /** The type of account that this user represents. A userAccount can be installed on multiple devices, but a deviceAccount is specific to a single device. An EMM-managed user (emmManaged) can be either type (userAccount, deviceAccount), but a Google-managed user (googleManaged) is always a userAccount. */
   accountType?: UserAccountTypeEnum | (string & {});
   /** The entity that manages the user. With googleManaged users, the source of truth is Google so EMMs have to make sure a Google Account exists for the user. With emmManaged users, the EMM is in charge. */
   managementType?: UserManagementTypeEnum | (string & {});
+  /** The name that will appear in user interfaces. Setting this property is optional when creating EMM-managed users. If you do set this property, use something generic about the organization (such as "Example, Inc.") or your name (as EMM). Not used for Google-managed user accounts. @mutable androidenterprise.users.update */
+  displayName?: string;
+  /** A unique identifier you create for this user, such as "user342" or "asset#44418". Do not use personally identifiable information (PII) for this property. Must always be set for EMM-managed users. Not set for Google-managed users. */
+  accountIdentifier?: string;
+  /** The user's primary email address, for example, "jsmith@example.com". Will always be set for Google managed users and not set for EMM managed users. */
+  primaryEmail?: string;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    primaryEmail: S.optional(S.String),
     id: S.optional(S.String),
-    displayName: S.optional(S.String),
-    accountIdentifier: S.optional(S.String),
     accountType: S.optional(UserAccountTypeEnum),
     managementType: S.optional(UserManagementTypeEnum),
+    displayName: S.optional(S.String),
+    accountIdentifier: S.optional(S.String),
+    primaryEmail: S.optional(S.String),
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
@@ -2575,30 +2563,30 @@ export const WebAppIconList = /*@__PURE__*/ S.Array(
 
 /** A WebApps resource represents a web app created for an enterprise. Web apps are published to managed Google Play and can be distributed like other Android apps. On a user's device, a web app opens its specified URL. */
 export interface WebApp {
-  /** The title of the web app as displayed to the user (e.g., amongst a list of other applications, or as a label for an icon). */
-  title?: string;
-  /** The start URL, i.e. the URL that should load when the user opens the application. */
-  startUrl?: string;
-  /** The display mode of the web app. Possible values include: - "minimalUi", the device's status bar, navigation bar, the app's URL, and a refresh button are visible when the app is open. For HTTP URLs, you can only select this option. - "standalone", the device's status bar and navigation bar are visible when the app is open. - "fullScreen", the app opens in full screen mode, hiding the device's status and navigation bars. All browser UI elements, page URL, system status bar and back button are not visible, and the web app takes up the entirety of the available display area. */
-  displayMode?: WebAppDisplayModeEnum | (string & {});
   /** A flag whether the app has been published to the Play store yet. */
   isPublished?: boolean;
+  /** The display mode of the web app. Possible values include: - "minimalUi", the device's status bar, navigation bar, the app's URL, and a refresh button are visible when the app is open. For HTTP URLs, you can only select this option. - "standalone", the device's status bar and navigation bar are visible when the app is open. - "fullScreen", the app opens in full screen mode, hiding the device's status and navigation bars. All browser UI elements, page URL, system status bar and back button are not visible, and the web app takes up the entirety of the available display area. */
+  displayMode?: WebAppDisplayModeEnum | (string & {});
+  /** A list of icons representing this website. If absent, a default icon (for create) or the current icon (for update) will be used. */
+  icons?: WebAppIconList;
   /** The current version of the app. Note that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date. */
   versionCode?: string;
   /** The ID of the application. A string of the form "app:<package name>" where the package name always starts with the prefix "com.google.enterprise.webapp." followed by a random id. */
   webAppId?: string;
-  /** A list of icons representing this website. If absent, a default icon (for create) or the current icon (for update) will be used. */
-  icons?: WebAppIconList;
+  /** The start URL, i.e. the URL that should load when the user opens the application. */
+  startUrl?: string;
+  /** The title of the web app as displayed to the user (e.g., amongst a list of other applications, or as a label for an icon). */
+  title?: string;
 }
 export const WebApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    title: S.optional(S.String),
-    startUrl: S.optional(S.String),
-    displayMode: S.optional(WebAppDisplayModeEnum),
     isPublished: S.optional(S.Boolean),
+    displayMode: S.optional(WebAppDisplayModeEnum),
+    icons: S.optional(WebAppIconList),
     versionCode: S.optional(S.String),
     webAppId: S.optional(S.String),
-    icons: S.optional(WebAppIconList),
+    startUrl: S.optional(S.String),
+    title: S.optional(S.String),
   }),
 ).annotate({ identifier: "WebApp" }) as any as S.Schema<WebApp>;
 
@@ -2624,17 +2612,17 @@ export const InsertServiceaccountkeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertServiceaccountkeysRequest>;
 
 export interface InsertStorelayoutclustersRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the page. */
   pageId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
   /** Request body */
   body?: StoreCluster;
 }
 export const InsertStorelayoutclustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
     pageId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
     body: S.optional(StoreCluster.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -2711,15 +2699,15 @@ export const InsertWebappsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertWebappsRequest>;
 
 export interface ListDevicesRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the user. */
   userId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2784,15 +2772,15 @@ export const EnterprisesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterprisesListResponse>;
 
 export interface ListEntitlementsRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the user. */
   userId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const ListEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2895,17 +2883,17 @@ export const GroupLicenseUsersListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupLicenseUsersListResponse>;
 
 export interface ListInstallsRequest {
-  /** The ID of the user. */
-  userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
+  /** The ID of the user. */
+  userId: string;
   /** The Android ID of the device. */
   deviceId: string;
 }
 export const ListInstallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    userId: S.String.pipe(T.Label()),
     enterpriseId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
     deviceId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -2936,19 +2924,19 @@ export const InstallsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstallsListResponse>;
 
 export interface ListManagedconfigurationsfordeviceRequest {
+  /** The Android ID of the device. */
+  deviceId: string;
   /** The ID of the user. */
   userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
-  /** The Android ID of the device. */
-  deviceId: string;
 }
 export const ListManagedconfigurationsfordeviceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      deviceId: S.String.pipe(T.Label()),
       userId: S.String.pipe(T.Label()),
       enterpriseId: S.String.pipe(T.Label()),
-      deviceId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2979,16 +2967,16 @@ export const ManagedConfigurationsForDeviceListResponse =
   }) as any as S.Schema<ManagedConfigurationsForDeviceListResponse>;
 
 export interface ListManagedconfigurationsforuserRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the user. */
   userId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const ListManagedconfigurationsforuserRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      enterpriseId: S.String.pipe(T.Label()),
       userId: S.String.pipe(T.Label()),
+      enterpriseId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3014,16 +3002,16 @@ export const ManagedConfigurationsForUserListResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedConfigurationsForUserListResponse>;
 
 export interface ListManagedconfigurationssettingsRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the product for which the managed configurations settings applies to. */
   productId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
 }
 export const ListManagedconfigurationssettingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      enterpriseId: S.String.pipe(T.Label()),
       productId: S.String.pipe(T.Label()),
+      enterpriseId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3037,18 +3025,18 @@ export const ListManagedconfigurationssettingsRequest = /*@__PURE__*/ S.suspend(
 
 /** A managed configurations settings resource contains the set of managed properties that have been configured for an Android app to be applied to a set of users. The app's developer would have defined configurable properties in the managed configurations schema. */
 export interface ManagedConfigurationsSettings {
-  /** The name of the managed configurations settings. */
-  name?: string;
-  /** The ID of the managed configurations settings. */
-  mcmId?: string;
   /** The last updated time of the managed configuration settings in milliseconds since 1970-01-01T00:00:00Z. */
   lastUpdatedTimestampMillis?: string;
+  /** The ID of the managed configurations settings. */
+  mcmId?: string;
+  /** The name of the managed configurations settings. */
+  name?: string;
 }
 export const ManagedConfigurationsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    mcmId: S.optional(S.String),
     lastUpdatedTimestampMillis: S.optional(S.String),
+    mcmId: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ManagedConfigurationsSettings",
@@ -3078,25 +3066,25 @@ export const ManagedConfigurationsSettingsListResponse =
 export interface ListProductsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
-  /** Specifies whether to search among all products (false) or among only products that have been approved (true). Only "true" is supported, and should be specified. */
-  approved?: boolean;
   /** The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). Results are returned in the language best matching the preferred language. */
   language?: string;
+  /** Specifies whether to search among all products (false) or among only products that have been approved (true). Only "true" is supported, and should be specified. */
+  approved?: boolean;
   /** Defines how many results the list operation should return. The default number depends on the resource collection. */
   maxResults?: number;
-  /** The search query as typed in the Google Play store search box. If omitted, all approved apps will be returned (using the pagination parameters), including apps that are not available in the store (e.g. unpublished apps). */
-  query?: string;
   /** Defines the token of the page to return, usually taken from TokenPagination. This can only be used if token paging is enabled. */
   token?: string;
+  /** The search query as typed in the Google Play store search box. If omitted, all approved apps will be returned (using the pagination parameters), including apps that are not available in the store (e.g. unpublished apps). */
+  query?: string;
 }
 export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterpriseId: S.String.pipe(T.Label()),
-    approved: S.optional(S.Boolean.pipe(T.Query())),
     language: S.optional(S.String.pipe(T.Query())),
+    approved: S.optional(S.Boolean.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
     token: S.optional(S.String.pipe(T.Query())),
+    query: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3108,20 +3096,25 @@ export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProductsRequest",
 }) as any as S.Schema<ListProductsRequest>;
 
+export type ProductList = Array<Product>;
+export const ProductList = /*@__PURE__*/ S.Array(
+  Product,
+) as any as S.Schema<ProductList>;
+
 /** Information about the current page. List operations that supports paging return only one "page" of results. This protocol buffer message describes the page that has been returned. */
 export interface PageInfo {
-  /** Index of the first result returned in the current page. */
-  startIndex?: number;
   /** Total number of results available on the backend ! The total number of results in the result set. */
   totalResults?: number;
   /** Maximum number of results returned in one page. ! The number of results included in the API response. */
   resultPerPage?: number;
+  /** Index of the first result returned in the current page. */
+  startIndex?: number;
 }
 export const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startIndex: S.optional(S.Number),
     totalResults: S.optional(S.Number),
     resultPerPage: S.optional(S.Number),
+    startIndex: S.optional(S.Number),
   }),
 ).annotate({ identifier: "PageInfo" }) as any as S.Schema<PageInfo>;
 
@@ -3140,24 +3133,19 @@ export const TokenPagination = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokenPagination",
 }) as any as S.Schema<TokenPagination>;
 
-export type ProductList = Array<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(
-  Product,
-) as any as S.Schema<ProductList>;
-
 export interface ProductsListResponse {
+  /** Information about a product (e.g. an app) in the Google Play store, for display to an enterprise admin. */
+  product?: ProductList;
   /** General pagination information. */
   pageInfo?: PageInfo;
   /** Pagination information for token pagination. */
   tokenPagination?: TokenPagination;
-  /** Information about a product (e.g. an app) in the Google Play store, for display to an enterprise admin. */
-  product?: ProductList;
 }
 export const ProductsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    product: S.optional(ProductList),
     pageInfo: S.optional(PageInfo),
     tokenPagination: S.optional(TokenPagination),
-    product: S.optional(ProductList),
   }),
 ).annotate({
   identifier: "ProductsListResponse",
@@ -3366,6 +3354,120 @@ export const PullNotificationSetEnterprisesRequest = /*@__PURE__*/ S.suspend(
   identifier: "PullNotificationSetEnterprisesRequest",
 }) as any as S.Schema<PullNotificationSetEnterprisesRequest>;
 
+export type InstallFailureEventFailureReasonEnum = "unknown" | "timeout";
+export const InstallFailureEventFailureReasonEnum = /*@__PURE__*/ S.String;
+
+/** An event generated when an app installation failed on a device */
+export interface InstallFailureEvent {
+  /** The Android ID of the device. This field will always be present. */
+  deviceId?: string;
+  /** The reason for the installation failure. This field will always be present. */
+  failureReason?: InstallFailureEventFailureReasonEnum;
+  /** The id of the product (e.g. "app:com.google.android.gm") for which the install failure event occured. This field will always be present. */
+  productId?: string;
+  /** The ID of the user. This field will always be present. */
+  userId?: string;
+  /** Additional details on the failure if applicable. */
+  failureDetails?: string;
+}
+export const InstallFailureEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceId: S.optional(S.String),
+    failureReason: S.optional(InstallFailureEventFailureReasonEnum),
+    productId: S.optional(S.String),
+    userId: S.optional(S.String),
+    failureDetails: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstallFailureEvent",
+}) as any as S.Schema<InstallFailureEvent>;
+
+/** An event generated when new permissions are added to an app. */
+export interface NewPermissionsEvent {
+  /** The set of permissions that the app is currently requesting. Use Permissions.Get on the EMM API to retrieve details about these permissions. */
+  requestedPermissions?: StringList;
+  /** The set of permissions that the enterprise admin has already approved for this application. Use Permissions.Get on the EMM API to retrieve details about these permissions. */
+  approvedPermissions?: StringList;
+  /** The id of the product (e.g. "app:com.google.android.gm") for which new permissions were added. This field will always be present. */
+  productId?: string;
+}
+export const NewPermissionsEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestedPermissions: S.optional(StringList),
+    approvedPermissions: S.optional(StringList),
+    productId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NewPermissionsEvent",
+}) as any as S.Schema<NewPermissionsEvent>;
+
+export type EnterpriseUpgradeEventUpgradeStateEnum =
+  | "upgradeStateUnspecified"
+  | "upgradeStateSucceeded";
+export const EnterpriseUpgradeEventUpgradeStateEnum = /*@__PURE__*/ S.String;
+
+/** An event generated when an enterprise is upgraded. */
+export interface EnterpriseUpgradeEvent {
+  /** The upgrade state. */
+  upgradeState?: EnterpriseUpgradeEventUpgradeStateEnum;
+}
+export const EnterpriseUpgradeEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    upgradeState: S.optional(EnterpriseUpgradeEventUpgradeStateEnum),
+  }),
+).annotate({
+  identifier: "EnterpriseUpgradeEvent",
+}) as any as S.Schema<EnterpriseUpgradeEvent>;
+
+export type NewDeviceEventManagementTypeEnum =
+  | "managedDevice"
+  | "managedProfile";
+export const NewDeviceEventManagementTypeEnum = /*@__PURE__*/ S.String;
+
+/** An event generated when a new device is ready to be managed. */
+export interface NewDeviceEvent {
+  /** Identifies the extent to which the device is controlled by an Android EMM in various deployment configurations. Possible values include: - "managedDevice", a device where the DPC is set as device owner, - "managedProfile", a device where the DPC is set as profile owner. */
+  managementType?: NewDeviceEventManagementTypeEnum;
+  /** Policy app on the device. */
+  dpcPackageName?: string;
+  /** The Android ID of the device. This field will always be present. */
+  deviceId?: string;
+  /** The ID of the user. This field will always be present. */
+  userId?: string;
+}
+export const NewDeviceEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managementType: S.optional(NewDeviceEventManagementTypeEnum),
+    dpcPackageName: S.optional(S.String),
+    deviceId: S.optional(S.String),
+    userId: S.optional(S.String),
+  }),
+).annotate({ identifier: "NewDeviceEvent" }) as any as S.Schema<NewDeviceEvent>;
+
+/** An event generated when a new app version is uploaded to Google Play and its app restrictions schema changed. To fetch the app restrictions schema for an app, use Products.getAppRestrictionsSchema on the EMM API. */
+export interface AppRestrictionsSchemaChangeEvent {
+  /** The id of the product (e.g. "app:com.google.android.gm") for which the app restriction schema changed. This field will always be present. */
+  productId?: string;
+}
+export const AppRestrictionsSchemaChangeEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppRestrictionsSchemaChangeEvent",
+}) as any as S.Schema<AppRestrictionsSchemaChangeEvent>;
+
+/** An event generated when a new version of an app is uploaded to Google Play. Notifications are sent for new public versions only: alpha, beta, or canary versions do not generate this event. To fetch up-to-date version history for an app, use Products.Get on the EMM API. */
+export interface AppUpdateEvent {
+  /** The id of the product (e.g. "app:com.google.android.gm") that was updated. This field will always be present. */
+  productId?: string;
+}
+export const AppUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productId: S.optional(S.String),
+  }),
+).annotate({ identifier: "AppUpdateEvent" }) as any as S.Schema<AppUpdateEvent>;
+
 export type NotificationNotificationTypeEnum =
   | "unknown"
   | "testNotification"
@@ -3379,6 +3481,25 @@ export type NotificationNotificationTypeEnum =
   | "deviceReportUpdate"
   | "enterpriseUpgrade";
 export const NotificationNotificationTypeEnum = /*@__PURE__*/ S.String;
+
+/** An event generated when an updated device report is available. */
+export interface DeviceReportUpdateEvent {
+  /** The Android ID of the device. This field will always be present. */
+  deviceId?: string;
+  /** The ID of the user. This field will always be present. */
+  userId?: string;
+  /** The device report updated with the latest app states. This field will always be present. */
+  report?: DeviceReport;
+}
+export const DeviceReportUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceId: S.optional(S.String),
+    userId: S.optional(S.String),
+    report: S.optional(DeviceReport),
+  }),
+).annotate({
+  identifier: "DeviceReportUpdateEvent",
+}) as any as S.Schema<DeviceReportUpdateEvent>;
 
 export type ProductAvailabilityChangeEventAvailabilityStatusEnum =
   | "unknown"
@@ -3406,108 +3527,6 @@ export const ProductAvailabilityChangeEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductAvailabilityChangeEvent",
 }) as any as S.Schema<ProductAvailabilityChangeEvent>;
 
-export type NewDeviceEventManagementTypeEnum =
-  | "managedDevice"
-  | "managedProfile";
-export const NewDeviceEventManagementTypeEnum = /*@__PURE__*/ S.String;
-
-/** An event generated when a new device is ready to be managed. */
-export interface NewDeviceEvent {
-  /** Policy app on the device. */
-  dpcPackageName?: string;
-  /** The Android ID of the device. This field will always be present. */
-  deviceId?: string;
-  /** Identifies the extent to which the device is controlled by an Android EMM in various deployment configurations. Possible values include: - "managedDevice", a device where the DPC is set as device owner, - "managedProfile", a device where the DPC is set as profile owner. */
-  managementType?: NewDeviceEventManagementTypeEnum;
-  /** The ID of the user. This field will always be present. */
-  userId?: string;
-}
-export const NewDeviceEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dpcPackageName: S.optional(S.String),
-    deviceId: S.optional(S.String),
-    managementType: S.optional(NewDeviceEventManagementTypeEnum),
-    userId: S.optional(S.String),
-  }),
-).annotate({ identifier: "NewDeviceEvent" }) as any as S.Schema<NewDeviceEvent>;
-
-/** An event generated when an updated device report is available. */
-export interface DeviceReportUpdateEvent {
-  /** The Android ID of the device. This field will always be present. */
-  deviceId?: string;
-  /** The device report updated with the latest app states. This field will always be present. */
-  report?: DeviceReport;
-  /** The ID of the user. This field will always be present. */
-  userId?: string;
-}
-export const DeviceReportUpdateEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceId: S.optional(S.String),
-    report: S.optional(DeviceReport),
-    userId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeviceReportUpdateEvent",
-}) as any as S.Schema<DeviceReportUpdateEvent>;
-
-/** An event generated when new permissions are added to an app. */
-export interface NewPermissionsEvent {
-  /** The id of the product (e.g. "app:com.google.android.gm") for which new permissions were added. This field will always be present. */
-  productId?: string;
-  /** The set of permissions that the app is currently requesting. Use Permissions.Get on the EMM API to retrieve details about these permissions. */
-  requestedPermissions?: StringList;
-  /** The set of permissions that the enterprise admin has already approved for this application. Use Permissions.Get on the EMM API to retrieve details about these permissions. */
-  approvedPermissions?: StringList;
-}
-export const NewPermissionsEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-    requestedPermissions: S.optional(StringList),
-    approvedPermissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "NewPermissionsEvent",
-}) as any as S.Schema<NewPermissionsEvent>;
-
-export type InstallFailureEventFailureReasonEnum = "unknown" | "timeout";
-export const InstallFailureEventFailureReasonEnum = /*@__PURE__*/ S.String;
-
-/** An event generated when an app installation failed on a device */
-export interface InstallFailureEvent {
-  /** The reason for the installation failure. This field will always be present. */
-  failureReason?: InstallFailureEventFailureReasonEnum;
-  /** The id of the product (e.g. "app:com.google.android.gm") for which the install failure event occured. This field will always be present. */
-  productId?: string;
-  /** The ID of the user. This field will always be present. */
-  userId?: string;
-  /** The Android ID of the device. This field will always be present. */
-  deviceId?: string;
-  /** Additional details on the failure if applicable. */
-  failureDetails?: string;
-}
-export const InstallFailureEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failureReason: S.optional(InstallFailureEventFailureReasonEnum),
-    productId: S.optional(S.String),
-    userId: S.optional(S.String),
-    deviceId: S.optional(S.String),
-    failureDetails: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstallFailureEvent",
-}) as any as S.Schema<InstallFailureEvent>;
-
-/** An event generated when a new version of an app is uploaded to Google Play. Notifications are sent for new public versions only: alpha, beta, or canary versions do not generate this event. To fetch up-to-date version history for an app, use Products.Get on the EMM API. */
-export interface AppUpdateEvent {
-  /** The id of the product (e.g. "app:com.google.android.gm") that was updated. This field will always be present. */
-  productId?: string;
-}
-export const AppUpdateEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-  }),
-).annotate({ identifier: "AppUpdateEvent" }) as any as S.Schema<AppUpdateEvent>;
-
 export type ProductApprovalEventApprovedEnum =
   | "unknown"
   | "approved"
@@ -3530,80 +3549,49 @@ export const ProductApprovalEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductApprovalEvent",
 }) as any as S.Schema<ProductApprovalEvent>;
 
-export type EnterpriseUpgradeEventUpgradeStateEnum =
-  | "upgradeStateUnspecified"
-  | "upgradeStateSucceeded";
-export const EnterpriseUpgradeEventUpgradeStateEnum = /*@__PURE__*/ S.String;
-
-/** An event generated when an enterprise is upgraded. */
-export interface EnterpriseUpgradeEvent {
-  /** The upgrade state. */
-  upgradeState?: EnterpriseUpgradeEventUpgradeStateEnum;
-}
-export const EnterpriseUpgradeEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upgradeState: S.optional(EnterpriseUpgradeEventUpgradeStateEnum),
-  }),
-).annotate({
-  identifier: "EnterpriseUpgradeEvent",
-}) as any as S.Schema<EnterpriseUpgradeEvent>;
-
-/** An event generated when a new app version is uploaded to Google Play and its app restrictions schema changed. To fetch the app restrictions schema for an app, use Products.getAppRestrictionsSchema on the EMM API. */
-export interface AppRestrictionsSchemaChangeEvent {
-  /** The id of the product (e.g. "app:com.google.android.gm") for which the app restriction schema changed. This field will always be present. */
-  productId?: string;
-}
-export const AppRestrictionsSchemaChangeEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppRestrictionsSchemaChangeEvent",
-}) as any as S.Schema<AppRestrictionsSchemaChangeEvent>;
-
 /** A notification of one event relating to an enterprise. */
 export interface Notification {
-  /** Type of the notification. */
-  notificationType?: NotificationNotificationTypeEnum;
-  /** Notifications about product availability changes. */
-  productAvailabilityChangeEvent?: ProductAvailabilityChangeEvent;
-  /** Notifications about new devices. */
-  newDeviceEvent?: NewDeviceEvent;
-  /** Notifications about device report updates. */
-  deviceReportUpdateEvent?: DeviceReportUpdateEvent;
-  /** Notifications about new app permissions. */
-  newPermissionsEvent?: NewPermissionsEvent;
   /** Notifications about an app installation failure. */
   installFailureEvent?: InstallFailureEvent;
-  /** Notifications about app updates. */
-  appUpdateEvent?: AppUpdateEvent;
+  /** Notifications about new app permissions. */
+  newPermissionsEvent?: NewPermissionsEvent;
   /** The time when the notification was published in milliseconds since 1970-01-01T00:00:00Z. This will always be present. */
   timestampMillis?: string;
-  /** Notifications about changes to a product's approval status. */
-  productApprovalEvent?: ProductApprovalEvent;
   /** Notifications about enterprise upgrade. */
   enterpriseUpgradeEvent?: EnterpriseUpgradeEvent;
-  /** The ID of the enterprise for which the notification is sent. This will always be present. */
-  enterpriseId?: string;
+  /** Notifications about new devices. */
+  newDeviceEvent?: NewDeviceEvent;
   /** Notifications about new app restrictions schema changes. */
   appRestrictionsSchemaChangeEvent?: AppRestrictionsSchemaChangeEvent;
+  /** The ID of the enterprise for which the notification is sent. This will always be present. */
+  enterpriseId?: string;
+  /** Notifications about app updates. */
+  appUpdateEvent?: AppUpdateEvent;
+  /** Type of the notification. */
+  notificationType?: NotificationNotificationTypeEnum;
+  /** Notifications about device report updates. */
+  deviceReportUpdateEvent?: DeviceReportUpdateEvent;
+  /** Notifications about product availability changes. */
+  productAvailabilityChangeEvent?: ProductAvailabilityChangeEvent;
+  /** Notifications about changes to a product's approval status. */
+  productApprovalEvent?: ProductApprovalEvent;
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    notificationType: S.optional(NotificationNotificationTypeEnum),
-    productAvailabilityChangeEvent: S.optional(ProductAvailabilityChangeEvent),
-    newDeviceEvent: S.optional(NewDeviceEvent),
-    deviceReportUpdateEvent: S.optional(DeviceReportUpdateEvent),
-    newPermissionsEvent: S.optional(NewPermissionsEvent),
     installFailureEvent: S.optional(InstallFailureEvent),
-    appUpdateEvent: S.optional(AppUpdateEvent),
+    newPermissionsEvent: S.optional(NewPermissionsEvent),
     timestampMillis: S.optional(S.String),
-    productApprovalEvent: S.optional(ProductApprovalEvent),
     enterpriseUpgradeEvent: S.optional(EnterpriseUpgradeEvent),
-    enterpriseId: S.optional(S.String),
+    newDeviceEvent: S.optional(NewDeviceEvent),
     appRestrictionsSchemaChangeEvent: S.optional(
       AppRestrictionsSchemaChangeEvent,
     ),
+    enterpriseId: S.optional(S.String),
+    appUpdateEvent: S.optional(AppUpdateEvent),
+    notificationType: S.optional(NotificationNotificationTypeEnum),
+    deviceReportUpdateEvent: S.optional(DeviceReportUpdateEvent),
+    productAvailabilityChangeEvent: S.optional(ProductAvailabilityChangeEvent),
+    productApprovalEvent: S.optional(ProductApprovalEvent),
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
@@ -3676,16 +3664,16 @@ export const SendTestPushNotificationEnterprisesRequest =
   }) as any as S.Schema<SendTestPushNotificationEnterprisesRequest>;
 
 export interface EnterprisesSendTestPushNotificationResponse {
-  /** The message ID of the test push notification that was sent. */
-  messageId?: string;
   /** The name of the Cloud Pub/Sub topic to which notifications for this enterprise's enrolled account will be sent. */
   topicName?: string;
+  /** The message ID of the test push notification that was sent. */
+  messageId?: string;
 }
 export const EnterprisesSendTestPushNotificationResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      messageId: S.optional(S.String),
       topicName: S.optional(S.String),
+      messageId: S.optional(S.String),
     }),
   ).annotate({
     identifier: "EnterprisesSendTestPushNotificationResponse",
@@ -3750,20 +3738,20 @@ export const SetAvailableProductSetUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetAvailableProductSetUsersRequest>;
 
 export interface SetStateDevicesRequest {
-  /** The ID of the enterprise. */
-  enterpriseId: string;
   /** The ID of the device. */
   deviceId: string;
   /** The ID of the user. */
   userId: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
   /** Request body */
   body?: DeviceState;
 }
 export const SetStateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enterpriseId: S.String.pipe(T.Label()),
     deviceId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
+    enterpriseId: S.String.pipe(T.Label()),
     body: S.optional(DeviceState.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -3851,23 +3839,23 @@ export const UnenrollEnterprisesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnenrollEnterprisesResponse>;
 
 export interface UpdateDevicesRequest {
-  /** The ID of the user. */
-  userId: string;
-  /** The ID of the enterprise. */
-  enterpriseId: string;
-  /** The ID of the device. */
-  deviceId: string;
   /** Mask that identifies which fields to update. If not set, all modifiable fields will be modified. When set in a query parameter, this field should be specified as updateMask=<field1>,<field2>,... */
   updateMask?: string;
+  /** The ID of the enterprise. */
+  enterpriseId: string;
+  /** The ID of the user. */
+  userId: string;
+  /** The ID of the device. */
+  deviceId: string;
   /** Request body */
   body?: Device;
 }
 export const UpdateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    userId: S.String.pipe(T.Label()),
-    enterpriseId: S.String.pipe(T.Label()),
-    deviceId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
+    enterpriseId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+    deviceId: S.String.pipe(T.Label()),
     body: S.optional(Device.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -3883,21 +3871,21 @@ export const UpdateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEntitlementsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
-  /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
-  entitlementId: string;
   /** The ID of the user. */
   userId: string;
   /** Set to true to also install the product on all the user's devices where possible. Failure to install on one or more devices will not prevent this operation from returning successfully, as long as the entitlement was successfully assigned to the user. */
   install?: boolean;
+  /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
+  entitlementId: string;
   /** Request body */
   body?: Entitlement;
 }
 export const UpdateEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterpriseId: S.String.pipe(T.Label()),
-    entitlementId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
     install: S.optional(S.Boolean.pipe(T.Query())),
+    entitlementId: S.String.pipe(T.Label()),
     body: S.optional(Entitlement.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -3911,23 +3899,23 @@ export const UpdateEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEntitlementsRequest>;
 
 export interface UpdateInstallsRequest {
+  /** The ID of the product represented by the install, e.g. "app:com.google.android.gm". */
+  installId: string;
+  /** The Android ID of the device. */
+  deviceId: string;
   /** The ID of the user. */
   userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
-  /** The Android ID of the device. */
-  deviceId: string;
-  /** The ID of the product represented by the install, e.g. "app:com.google.android.gm". */
-  installId: string;
   /** Request body */
   body?: Install;
 }
 export const UpdateInstallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    installId: S.String.pipe(T.Label()),
+    deviceId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
     enterpriseId: S.String.pipe(T.Label()),
-    deviceId: S.String.pipe(T.Label()),
-    installId: S.String.pipe(T.Label()),
     body: S.optional(Install.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -3941,24 +3929,24 @@ export const UpdateInstallsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateInstallsRequest>;
 
 export interface UpdateManagedconfigurationsfordeviceRequest {
-  /** The ID of the user. */
-  userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The Android ID of the device. */
   deviceId: string;
   /** The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". */
   managedConfigurationForDeviceId: string;
+  /** The ID of the user. */
+  userId: string;
   /** Request body */
   body?: ManagedConfiguration;
 }
 export const UpdateManagedconfigurationsfordeviceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      userId: S.String.pipe(T.Label()),
       enterpriseId: S.String.pipe(T.Label()),
       deviceId: S.String.pipe(T.Label()),
       managedConfigurationForDeviceId: S.String.pipe(T.Label()),
+      userId: S.String.pipe(T.Label()),
       body: S.optional(ManagedConfiguration.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -4000,10 +3988,10 @@ export const UpdateManagedconfigurationsforuserRequest =
   }) as any as S.Schema<UpdateManagedconfigurationsforuserRequest>;
 
 export interface UpdateStorelayoutclustersRequest {
-  /** The ID of the cluster. */
-  clusterId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
+  /** The ID of the cluster. */
+  clusterId: string;
   /** The ID of the page. */
   pageId: string;
   /** Request body */
@@ -4011,8 +3999,8 @@ export interface UpdateStorelayoutclustersRequest {
 }
 export const UpdateStorelayoutclustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    clusterId: S.String.pipe(T.Label()),
     enterpriseId: S.String.pipe(T.Label()),
+    clusterId: S.String.pipe(T.Label()),
     pageId: S.String.pipe(T.Label()),
     body: S.optional(StoreCluster.pipe(T.HttpBody())),
   }).pipe(

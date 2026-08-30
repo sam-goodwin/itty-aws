@@ -348,6 +348,7 @@ export interface CreateBrokerRequest {
   MaintenanceWindowStartTime?: WeeklyStartTime;
   PubliclyAccessible?: boolean;
   SecurityGroups?: string[];
+  StorageSize?: number;
   StorageType?: BrokerStorageType;
   SubnetIds?: string[];
   Tags?: { [key: string]: string | undefined };
@@ -372,6 +373,7 @@ export const CreateBrokerRequest = /*@__PURE__*/ S.suspend(() =>
     MaintenanceWindowStartTime: S.optional(WeeklyStartTime),
     PubliclyAccessible: S.optional(S.Boolean),
     SecurityGroups: S.optional(__listOf__string),
+    StorageSize: S.optional(S.Number),
     StorageType: S.optional(BrokerStorageType),
     SubnetIds: S.optional(__listOf__string),
     Tags: S.optional(__mapOf__string),
@@ -396,6 +398,7 @@ export const CreateBrokerRequest = /*@__PURE__*/ S.suspend(() =>
         MaintenanceWindowStartTime: "maintenanceWindowStartTime",
         PubliclyAccessible: "publiclyAccessible",
         SecurityGroups: "securityGroups",
+        StorageSize: "storageSize",
         StorageType: "storageType",
         SubnetIds: "subnetIds",
         Tags: "tags",
@@ -959,8 +962,10 @@ export interface DescribeBrokerResponse {
     UserSearchMatching: string;
   };
   PendingSecurityGroups?: string[];
+  PendingStorageSize?: number;
   PubliclyAccessible?: boolean;
   SecurityGroups?: string[];
+  StorageSize?: number;
   StorageType?: BrokerStorageType;
   SubnetIds?: string[];
   Tags?: { [key: string]: string | undefined };
@@ -1007,8 +1012,10 @@ export const DescribeBrokerResponse = /*@__PURE__*/ S.suspend(() =>
     PendingHostInstanceType: S.optional(S.String),
     PendingLdapServerMetadata: S.optional(LdapServerMetadataOutput),
     PendingSecurityGroups: S.optional(__listOf__string),
+    PendingStorageSize: S.optional(S.Number),
     PubliclyAccessible: S.optional(S.Boolean),
     SecurityGroups: S.optional(__listOf__string),
+    StorageSize: S.optional(S.Number),
     StorageType: S.optional(BrokerStorageType),
     SubnetIds: S.optional(__listOf__string),
     Tags: S.optional(__mapOf__string),
@@ -1042,8 +1049,10 @@ export const DescribeBrokerResponse = /*@__PURE__*/ S.suspend(() =>
       PendingHostInstanceType: "pendingHostInstanceType",
       PendingLdapServerMetadata: "pendingLdapServerMetadata",
       PendingSecurityGroups: "pendingSecurityGroups",
+      PendingStorageSize: "pendingStorageSize",
       PubliclyAccessible: "publiclyAccessible",
       SecurityGroups: "securityGroups",
+      StorageSize: "storageSize",
       StorageType: "storageType",
       SubnetIds: "subnetIds",
       Tags: "tags",
@@ -1892,6 +1901,7 @@ export interface UpdateBrokerRequest {
   MaintenanceWindowStartTime?: WeeklyStartTime;
   ResourceShareArns?: string[];
   SecurityGroups?: string[];
+  StorageSize?: number;
   DataReplicationMode?: DataReplicationMode;
 }
 export const UpdateBrokerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1907,6 +1917,7 @@ export const UpdateBrokerRequest = /*@__PURE__*/ S.suspend(() =>
     MaintenanceWindowStartTime: S.optional(WeeklyStartTime),
     ResourceShareArns: S.optional(__listOf__string),
     SecurityGroups: S.optional(__listOf__string),
+    StorageSize: S.optional(S.Number),
     DataReplicationMode: S.optional(DataReplicationMode),
   })
     .pipe(
@@ -1921,6 +1932,7 @@ export const UpdateBrokerRequest = /*@__PURE__*/ S.suspend(() =>
         MaintenanceWindowStartTime: "maintenanceWindowStartTime",
         ResourceShareArns: "resourceShareArns",
         SecurityGroups: "securityGroups",
+        StorageSize: "storageSize",
         DataReplicationMode: "dataReplicationMode",
       }),
     )
@@ -1975,6 +1987,7 @@ export interface UpdateBrokerResponse {
     };
   };
   PendingDataReplicationMode?: DataReplicationMode;
+  StorageSize?: number;
 }
 export const UpdateBrokerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1993,6 +2006,7 @@ export const UpdateBrokerResponse = /*@__PURE__*/ S.suspend(() =>
     DataReplicationMode: S.optional(DataReplicationMode),
     PendingDataReplicationMetadata: S.optional(DataReplicationMetadataOutput),
     PendingDataReplicationMode: S.optional(DataReplicationMode),
+    StorageSize: S.optional(S.Number),
   }).pipe(
     S.encodeKeys({
       AuthenticationStrategy: "authenticationStrategy",
@@ -2010,6 +2024,7 @@ export const UpdateBrokerResponse = /*@__PURE__*/ S.suspend(() =>
       DataReplicationMode: "dataReplicationMode",
       PendingDataReplicationMetadata: "pendingDataReplicationMetadata",
       PendingDataReplicationMode: "pendingDataReplicationMode",
+      StorageSize: "storageSize",
     }),
   ),
 ).annotate({

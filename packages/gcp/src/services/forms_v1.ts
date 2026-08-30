@@ -65,20 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** Provides control over how write requests are executed. */
-export interface WriteControl {
-  /** The revision ID of the form that the write request is applied to. If this is not the latest revision of the form, the request is not processed and returns a 400 bad request error. */
-  requiredRevisionId?: string;
-  /** The target revision ID of the form that the write request is applied to. If changes have occurred after this revision, the changes in this update request are transformed against those changes. This results in a new revision of the form that incorporates both the changes in the request and the intervening changes, with the server resolving conflicting changes. The target revision ID may only be used to write to recent versions of a form. If the target revision is too far behind the latest revision, the request is not processed and returns a 400 (Bad Request Error). The request may be retried after reading the latest version of the form. In most cases a target revision ID remains valid for several minutes after it is read, but for frequently-edited forms this window may be shorter. */
-  targetRevisionId?: string;
-}
-export const WriteControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requiredRevisionId: S.optional(S.String),
-    targetRevisionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "WriteControl" }) as any as S.Schema<WriteControl>;
-
 /** A specific location in a form. */
 export interface Location {
   /** The index of an item in the form. This must be in the range [0..*N*), where *N* is the number of items in the form. */
@@ -89,19 +75,6 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
     index: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
-
-/** Delete an item in a form. */
-export interface DeleteItemRequest {
-  /** Required. The location of the item to delete. */
-  location?: Location;
-}
-export const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-  }),
-).annotate({
-  identifier: "DeleteItemRequest",
-}) as any as S.Schema<DeleteItemRequest>;
 
 /** A page break. The title and description of this item are shown at the top of the new page. */
 export interface PageBreakItem {}
@@ -132,36 +105,33 @@ export const MediaProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "MediaProperties",
 }) as any as S.Schema<MediaProperties>;
 
-/** Data representing an image. */
-export interface Image {
-  /** Output only. A URI from which you can download the image; this is valid only for a limited time. */
-  contentUri?: string;
-  /** Input only. The source URI is the URI used to insert the image. The source URI can be empty when fetched. */
-  sourceUri?: string;
-  /** A description of the image that is shown on hover and read by screenreaders. */
-  altText?: string;
-  /** Properties of an image. */
+/** Data representing a video. */
+export interface Video {
+  /** Required. A YouTube URI. */
+  youtubeUri?: string;
+  /** Properties of a video. */
   properties?: MediaProperties;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+export const Video = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentUri: S.optional(S.String),
-    sourceUri: S.optional(S.String),
-    altText: S.optional(S.String),
+    youtubeUri: S.optional(S.String),
     properties: S.optional(MediaProperties),
   }),
-).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
+).annotate({ identifier: "Video" }) as any as S.Schema<Video>;
 
-/** An item containing an image. */
-export interface ImageItem {
-  /** Required. The image displayed in the item. */
-  image?: Image;
+/** An item containing a video. */
+export interface VideoItem {
+  /** The text displayed below the video. */
+  caption?: string;
+  /** Required. The video displayed in the item. */
+  video?: Video;
 }
-export const ImageItem = /*@__PURE__*/ S.suspend(() =>
+export const VideoItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    image: S.optional(Image),
+    caption: S.optional(S.String),
+    video: S.optional(Video),
   }),
-).annotate({ identifier: "ImageItem" }) as any as S.Schema<ImageItem>;
+).annotate({ identifier: "VideoItem" }) as any as S.Schema<VideoItem>;
 
 export type OptionGoToActionEnum =
   | "GO_TO_ACTION_UNSPECIFIED"
@@ -170,26 +140,46 @@ export type OptionGoToActionEnum =
   | "SUBMIT_FORM";
 export const OptionGoToActionEnum = /*@__PURE__*/ S.String;
 
+/** Data representing an image. */
+export interface Image {
+  /** A description of the image that is shown on hover and read by screenreaders. */
+  altText?: string;
+  /** Properties of an image. */
+  properties?: MediaProperties;
+  /** Input only. The source URI is the URI used to insert the image. The source URI can be empty when fetched. */
+  sourceUri?: string;
+  /** Output only. A URI from which you can download the image; this is valid only for a limited time. */
+  contentUri?: string;
+}
+export const Image = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    altText: S.optional(S.String),
+    properties: S.optional(MediaProperties),
+    sourceUri: S.optional(S.String),
+    contentUri: S.optional(S.String),
+  }),
+).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
+
 /** An option for a Choice question. */
 export interface Option {
   /** Section navigation type. */
   goToAction?: OptionGoToActionEnum | (string & {});
-  /** Display image as an option. */
-  image?: Image;
   /** Required. The choice as presented to the user. */
   value?: string;
-  /** Item ID of section header to go to. */
-  goToSectionId?: string;
   /** Whether the option is "other". Currently only applies to `RADIO` and `CHECKBOX` choice types, but is not allowed in a QuestionGroupItem. */
   isOther?: boolean;
+  /** Display image as an option. */
+  image?: Image;
+  /** Item ID of section header to go to. */
+  goToSectionId?: string;
 }
 export const Option = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     goToAction: S.optional(OptionGoToActionEnum),
-    image: S.optional(Image),
     value: S.optional(S.String),
-    goToSectionId: S.optional(S.String),
     isOther: S.optional(S.Boolean),
+    image: S.optional(Image),
+    goToSectionId: S.optional(S.String),
   }),
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
@@ -209,128 +199,32 @@ export const ChoiceQuestionTypeEnum = /*@__PURE__*/ S.String;
 export interface ChoiceQuestion {
   /** Required. List of options that a respondent must choose from. */
   options?: OptionList;
-  /** Required. The type of choice question. */
-  type?: ChoiceQuestionTypeEnum | (string & {});
   /** Whether the options should be displayed in random order for different instances of the quiz. This is often used to prevent cheating by respondents who might be looking at another respondent's screen, or to address bias in a survey that might be introduced by always putting the same options first or last. */
   shuffle?: boolean;
+  /** Required. The type of choice question. */
+  type?: ChoiceQuestionTypeEnum | (string & {});
 }
 export const ChoiceQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(OptionList),
-    type: S.optional(ChoiceQuestionTypeEnum),
     shuffle: S.optional(S.Boolean),
+    type: S.optional(ChoiceQuestionTypeEnum),
   }),
 ).annotate({ identifier: "ChoiceQuestion" }) as any as S.Schema<ChoiceQuestion>;
 
-/** A text-based question. */
-export interface TextQuestion {
-  /** Whether the question is a paragraph question or not. If not, the question is a short text question. */
-  paragraph?: boolean;
+/** A grid of choices (radio or check boxes) with each row constituting a separate question. Each row has the same choices, which are shown as the columns. */
+export interface Grid {
+  /** Required. The choices shared by each question in the grid. In other words, the values of the columns. Only `CHECK_BOX` and `RADIO` choices are allowed. */
+  columns?: ChoiceQuestion;
+  /** If `true`, the questions are randomly ordered. In other words, the rows appear in a different order for every respondent. */
+  shuffleQuestions?: boolean;
 }
-export const TextQuestion = /*@__PURE__*/ S.suspend(() =>
+export const Grid = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    paragraph: S.optional(S.Boolean),
+    columns: S.optional(ChoiceQuestion),
+    shuffleQuestions: S.optional(S.Boolean),
   }),
-).annotate({ identifier: "TextQuestion" }) as any as S.Schema<TextQuestion>;
-
-/** A time question. */
-export interface TimeQuestion {
-  /** `true` if the question is about an elapsed time. Otherwise it is about a time of day. */
-  duration?: boolean;
-}
-export const TimeQuestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    duration: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TimeQuestion" }) as any as S.Schema<TimeQuestion>;
-
-/** A date question. Date questions default to just month + day. */
-export interface DateQuestion {
-  /** Whether to include the time as part of the question. */
-  includeTime?: boolean;
-  /** Whether to include the year as part of the question. */
-  includeYear?: boolean;
-}
-export const DateQuestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeTime: S.optional(S.Boolean),
-    includeYear: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DateQuestion" }) as any as S.Schema<DateQuestion>;
-
-/** Configuration for a question that is part of a question group. */
-export interface RowQuestion {
-  /** Required. The title for the single row in the QuestionGroupItem. */
-  title?: string;
-}
-export const RowQuestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-  }),
-).annotate({ identifier: "RowQuestion" }) as any as S.Schema<RowQuestion>;
-
-export type RatingQuestionIconTypeEnum =
-  | "RATING_ICON_TYPE_UNSPECIFIED"
-  | "STAR"
-  | "HEART"
-  | "THUMB_UP";
-export const RatingQuestionIconTypeEnum = /*@__PURE__*/ S.String;
-
-/** A rating question. The user has a range of icons to choose from. */
-export interface RatingQuestion {
-  /** Required. The icon type to use for the rating. */
-  iconType?: RatingQuestionIconTypeEnum | (string & {});
-  /** Required. The rating scale level of the rating question. */
-  ratingScaleLevel?: number;
-}
-export const RatingQuestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iconType: S.optional(RatingQuestionIconTypeEnum),
-    ratingScaleLevel: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RatingQuestion" }) as any as S.Schema<RatingQuestion>;
-
-export type FileUploadQuestionTypesItemEnum =
-  | "FILE_TYPE_UNSPECIFIED"
-  | "ANY"
-  | "DOCUMENT"
-  | "PRESENTATION"
-  | "SPREADSHEET"
-  | "DRAWING"
-  | "PDF"
-  | "IMAGE"
-  | "VIDEO"
-  | "AUDIO";
-export const FileUploadQuestionTypesItemEnum = /*@__PURE__*/ S.String;
-
-export type FileUploadQuestionTypesItemEnumList = Array<
-  FileUploadQuestionTypesItemEnum | (string & {})
->;
-export const FileUploadQuestionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  FileUploadQuestionTypesItemEnum,
-) as any as S.Schema<FileUploadQuestionTypesItemEnumList>;
-
-/** A file upload question. The API currently does not support creating file upload questions. */
-export interface FileUploadQuestion {
-  /** File types accepted by this question. */
-  types?: FileUploadQuestionTypesItemEnumList;
-  /** Maximum number of bytes allowed for any single file uploaded to this question. */
-  maxFileSize?: string;
-  /** Required. The ID of the Drive folder where uploaded files are stored. */
-  folderId?: string;
-  /** Maximum number of files that can be uploaded for this question in a single response. */
-  maxFiles?: number;
-}
-export const FileUploadQuestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    types: S.optional(FileUploadQuestionTypesItemEnumList),
-    maxFileSize: S.optional(S.String),
-    folderId: S.optional(S.String),
-    maxFiles: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FileUploadQuestion",
-}) as any as S.Schema<FileUploadQuestion>;
+).annotate({ identifier: "Grid" }) as any as S.Schema<Grid>;
 
 /** Link to a video. */
 export interface VideoLink {
@@ -348,15 +242,15 @@ export const VideoLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Link for text. */
 export interface TextLink {
-  /** Required. The URI. */
-  uri?: string;
   /** Required. Display text for the URI. */
   displayText?: string;
+  /** Required. The URI. */
+  uri?: string;
 }
 export const TextLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uri: S.optional(S.String),
     displayText: S.optional(S.String),
+    uri: S.optional(S.String),
   }),
 ).annotate({ identifier: "TextLink" }) as any as S.Schema<TextLink>;
 
@@ -381,15 +275,15 @@ export const ExtraMaterialList = /*@__PURE__*/ S.Array(
 
 /** Feedback for a respondent about their response to a question. */
 export interface Feedback {
-  /** Required. The main text of the feedback. */
-  text?: string;
   /** Additional information provided as part of the feedback, often used to point the respondent to more reading and resources. */
   material?: ExtraMaterialList;
+  /** Required. The main text of the feedback. */
+  text?: string;
 }
 export const Feedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    text: S.optional(S.String),
     material: S.optional(ExtraMaterialList),
+    text: S.optional(S.String),
   }),
 ).annotate({ identifier: "Feedback" }) as any as S.Schema<Feedback>;
 
@@ -422,115 +316,197 @@ export const CorrectAnswers = /*@__PURE__*/ S.suspend(() =>
 
 /** Grading for a single question */
 export interface Grading {
-  /** Required. The maximum number of points a respondent can automatically get for a correct answer. This must not be negative. */
-  pointValue?: number;
-  /** The feedback displayed for correct responses. This feedback can only be set for multiple choice questions that have correct answers provided. */
-  whenRight?: Feedback;
-  /** The feedback displayed for all answers. This is commonly used for short answer questions when a quiz owner wants to quickly give respondents some sense of whether they answered the question correctly before they've had a chance to officially grade the response. General feedback cannot be set for automatically graded multiple choice questions. */
-  generalFeedback?: Feedback;
   /** The feedback displayed for incorrect responses. This feedback can only be set for multiple choice questions that have correct answers provided. */
   whenWrong?: Feedback;
+  /** The feedback displayed for all answers. This is commonly used for short answer questions when a quiz owner wants to quickly give respondents some sense of whether they answered the question correctly before they've had a chance to officially grade the response. General feedback cannot be set for automatically graded multiple choice questions. */
+  generalFeedback?: Feedback;
+  /** The feedback displayed for correct responses. This feedback can only be set for multiple choice questions that have correct answers provided. */
+  whenRight?: Feedback;
   /** Required. The answer key for the question. Responses are automatically graded based on this field. */
   correctAnswers?: CorrectAnswers;
+  /** Required. The maximum number of points a respondent can automatically get for a correct answer. This must not be negative. */
+  pointValue?: number;
 }
 export const Grading = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pointValue: S.optional(S.Number),
-    whenRight: S.optional(Feedback),
-    generalFeedback: S.optional(Feedback),
     whenWrong: S.optional(Feedback),
+    generalFeedback: S.optional(Feedback),
+    whenRight: S.optional(Feedback),
     correctAnswers: S.optional(CorrectAnswers),
+    pointValue: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Grading" }) as any as S.Schema<Grading>;
 
+export type RatingQuestionIconTypeEnum =
+  | "RATING_ICON_TYPE_UNSPECIFIED"
+  | "STAR"
+  | "HEART"
+  | "THUMB_UP";
+export const RatingQuestionIconTypeEnum = /*@__PURE__*/ S.String;
+
+/** A rating question. The user has a range of icons to choose from. */
+export interface RatingQuestion {
+  /** Required. The icon type to use for the rating. */
+  iconType?: RatingQuestionIconTypeEnum | (string & {});
+  /** Required. The rating scale level of the rating question. */
+  ratingScaleLevel?: number;
+}
+export const RatingQuestion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    iconType: S.optional(RatingQuestionIconTypeEnum),
+    ratingScaleLevel: S.optional(S.Number),
+  }),
+).annotate({ identifier: "RatingQuestion" }) as any as S.Schema<RatingQuestion>;
+
 /** A scale question. The user has a range of numeric values to choose from. */
 export interface ScaleQuestion {
-  /** Required. The highest possible value for the scale. */
-  high?: number;
-  /** The label to display describing the highest point on the scale. */
-  highLabel?: string;
   /** Required. The lowest possible value for the scale. */
   low?: number;
+  /** The label to display describing the highest point on the scale. */
+  highLabel?: string;
+  /** Required. The highest possible value for the scale. */
+  high?: number;
   /** The label to display describing the lowest point on the scale. */
   lowLabel?: string;
 }
 export const ScaleQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    high: S.optional(S.Number),
-    highLabel: S.optional(S.String),
     low: S.optional(S.Number),
+    highLabel: S.optional(S.String),
+    high: S.optional(S.Number),
     lowLabel: S.optional(S.String),
   }),
 ).annotate({ identifier: "ScaleQuestion" }) as any as S.Schema<ScaleQuestion>;
 
+/** A text-based question. */
+export interface TextQuestion {
+  /** Whether the question is a paragraph question or not. If not, the question is a short text question. */
+  paragraph?: boolean;
+}
+export const TextQuestion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paragraph: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "TextQuestion" }) as any as S.Schema<TextQuestion>;
+
+export type FileUploadQuestionTypesItemEnum =
+  | "FILE_TYPE_UNSPECIFIED"
+  | "ANY"
+  | "DOCUMENT"
+  | "PRESENTATION"
+  | "SPREADSHEET"
+  | "DRAWING"
+  | "PDF"
+  | "IMAGE"
+  | "VIDEO"
+  | "AUDIO";
+export const FileUploadQuestionTypesItemEnum = /*@__PURE__*/ S.String;
+
+export type FileUploadQuestionTypesItemEnumList = Array<
+  FileUploadQuestionTypesItemEnum | (string & {})
+>;
+export const FileUploadQuestionTypesItemEnumList = /*@__PURE__*/ S.Array(
+  FileUploadQuestionTypesItemEnum,
+) as any as S.Schema<FileUploadQuestionTypesItemEnumList>;
+
+/** A file upload question. The API currently does not support creating file upload questions. */
+export interface FileUploadQuestion {
+  /** Maximum number of files that can be uploaded for this question in a single response. */
+  maxFiles?: number;
+  /** Required. The ID of the Drive folder where uploaded files are stored. */
+  folderId?: string;
+  /** File types accepted by this question. */
+  types?: FileUploadQuestionTypesItemEnumList;
+  /** Maximum number of bytes allowed for any single file uploaded to this question. */
+  maxFileSize?: string;
+}
+export const FileUploadQuestion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxFiles: S.optional(S.Number),
+    folderId: S.optional(S.String),
+    types: S.optional(FileUploadQuestionTypesItemEnumList),
+    maxFileSize: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FileUploadQuestion",
+}) as any as S.Schema<FileUploadQuestion>;
+
+/** Configuration for a question that is part of a question group. */
+export interface RowQuestion {
+  /** Required. The title for the single row in the QuestionGroupItem. */
+  title?: string;
+}
+export const RowQuestion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.optional(S.String),
+  }),
+).annotate({ identifier: "RowQuestion" }) as any as S.Schema<RowQuestion>;
+
+/** A date question. Date questions default to just month + day. */
+export interface DateQuestion {
+  /** Whether to include the time as part of the question. */
+  includeTime?: boolean;
+  /** Whether to include the year as part of the question. */
+  includeYear?: boolean;
+}
+export const DateQuestion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    includeTime: S.optional(S.Boolean),
+    includeYear: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "DateQuestion" }) as any as S.Schema<DateQuestion>;
+
+/** A time question. */
+export interface TimeQuestion {
+  /** `true` if the question is about an elapsed time. Otherwise it is about a time of day. */
+  duration?: boolean;
+}
+export const TimeQuestion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    duration: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "TimeQuestion" }) as any as S.Schema<TimeQuestion>;
+
 /** Any question. The specific type of question is known by its `kind`. */
 export interface Question {
-  /** A respondent can choose from a pre-defined set of options. */
-  choiceQuestion?: ChoiceQuestion;
-  /** A respondent can enter a free text response. */
-  textQuestion?: TextQuestion;
-  /** A respondent can enter a time. */
-  timeQuestion?: TimeQuestion;
-  /** A respondent can enter a date. */
-  dateQuestion?: DateQuestion;
-  /** A row of a QuestionGroupItem. */
-  rowQuestion?: RowQuestion;
-  /** A respondent can choose a rating from a pre-defined set of icons. */
-  ratingQuestion?: RatingQuestion;
-  /** A respondent can upload one or more files. */
-  fileUploadQuestion?: FileUploadQuestion;
-  /** Read only. The question ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
-  questionId?: string;
   /** Grading setup for the question. */
   grading?: Grading;
   /** Whether the question must be answered in order for a respondent to submit their response. */
   required?: boolean;
+  /** A respondent can choose a rating from a pre-defined set of icons. */
+  ratingQuestion?: RatingQuestion;
   /** A respondent can choose a number from a range. */
   scaleQuestion?: ScaleQuestion;
+  /** A respondent can enter a free text response. */
+  textQuestion?: TextQuestion;
+  /** A respondent can upload one or more files. */
+  fileUploadQuestion?: FileUploadQuestion;
+  /** A row of a QuestionGroupItem. */
+  rowQuestion?: RowQuestion;
+  /** A respondent can enter a date. */
+  dateQuestion?: DateQuestion;
+  /** A respondent can choose from a pre-defined set of options. */
+  choiceQuestion?: ChoiceQuestion;
+  /** A respondent can enter a time. */
+  timeQuestion?: TimeQuestion;
+  /** Read only. The question ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
+  questionId?: string;
 }
 export const Question = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    choiceQuestion: S.optional(ChoiceQuestion),
-    textQuestion: S.optional(TextQuestion),
-    timeQuestion: S.optional(TimeQuestion),
-    dateQuestion: S.optional(DateQuestion),
-    rowQuestion: S.optional(RowQuestion),
-    ratingQuestion: S.optional(RatingQuestion),
-    fileUploadQuestion: S.optional(FileUploadQuestion),
-    questionId: S.optional(S.String),
     grading: S.optional(Grading),
     required: S.optional(S.Boolean),
+    ratingQuestion: S.optional(RatingQuestion),
     scaleQuestion: S.optional(ScaleQuestion),
+    textQuestion: S.optional(TextQuestion),
+    fileUploadQuestion: S.optional(FileUploadQuestion),
+    rowQuestion: S.optional(RowQuestion),
+    dateQuestion: S.optional(DateQuestion),
+    choiceQuestion: S.optional(ChoiceQuestion),
+    timeQuestion: S.optional(TimeQuestion),
+    questionId: S.optional(S.String),
   }),
 ).annotate({ identifier: "Question" }) as any as S.Schema<Question>;
-
-/** A form item containing a single question. */
-export interface QuestionItem {
-  /** Required. The displayed question. */
-  question?: Question;
-  /** The image displayed within the question. */
-  image?: Image;
-}
-export const QuestionItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    question: S.optional(Question),
-    image: S.optional(Image),
-  }),
-).annotate({ identifier: "QuestionItem" }) as any as S.Schema<QuestionItem>;
-
-/** A grid of choices (radio or check boxes) with each row constituting a separate question. Each row has the same choices, which are shown as the columns. */
-export interface Grid {
-  /** Required. The choices shared by each question in the grid. In other words, the values of the columns. Only `CHECK_BOX` and `RADIO` choices are allowed. */
-  columns?: ChoiceQuestion;
-  /** If `true`, the questions are randomly ordered. In other words, the rows appear in a different order for every respondent. */
-  shuffleQuestions?: boolean;
-}
-export const Grid = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(ChoiceQuestion),
-    shuffleQuestions: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "Grid" }) as any as S.Schema<Grid>;
 
 export type QuestionList = Array<Question>;
 export const QuestionList = /*@__PURE__*/ S.Array(
@@ -541,118 +517,147 @@ export const QuestionList = /*@__PURE__*/ S.Array(
 export interface QuestionGroupItem {
   /** The question group is a grid with rows of multiple choice questions that share the same options. When `grid` is set, all questions in the group must be of kind `row`. */
   grid?: Grid;
-  /** Required. A list of questions that belong in this question group. A question must only belong to one group. The `kind` of the group may affect what types of questions are allowed. */
-  questions?: QuestionList;
   /** The image displayed within the question group above the specific questions. */
   image?: Image;
+  /** Required. A list of questions that belong in this question group. A question must only belong to one group. The `kind` of the group may affect what types of questions are allowed. */
+  questions?: QuestionList;
 }
 export const QuestionGroupItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grid: S.optional(Grid),
-    questions: S.optional(QuestionList),
     image: S.optional(Image),
+    questions: S.optional(QuestionList),
   }),
 ).annotate({
   identifier: "QuestionGroupItem",
 }) as any as S.Schema<QuestionGroupItem>;
 
+/** A form item containing a single question. */
+export interface QuestionItem {
+  /** The image displayed within the question. */
+  image?: Image;
+  /** Required. The displayed question. */
+  question?: Question;
+}
+export const QuestionItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    image: S.optional(Image),
+    question: S.optional(Question),
+  }),
+).annotate({ identifier: "QuestionItem" }) as any as S.Schema<QuestionItem>;
+
+/** An item containing an image. */
+export interface ImageItem {
+  /** Required. The image displayed in the item. */
+  image?: Image;
+}
+export const ImageItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    image: S.optional(Image),
+  }),
+).annotate({ identifier: "ImageItem" }) as any as S.Schema<ImageItem>;
+
 /** A text item. */
 export type TextItem = PageBreakItem;
 export const TextItem = PageBreakItem;
-
-/** Data representing a video. */
-export interface Video {
-  /** Required. A YouTube URI. */
-  youtubeUri?: string;
-  /** Properties of a video. */
-  properties?: MediaProperties;
-}
-export const Video = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    youtubeUri: S.optional(S.String),
-    properties: S.optional(MediaProperties),
-  }),
-).annotate({ identifier: "Video" }) as any as S.Schema<Video>;
-
-/** An item containing a video. */
-export interface VideoItem {
-  /** Required. The video displayed in the item. */
-  video?: Video;
-  /** The text displayed below the video. */
-  caption?: string;
-}
-export const VideoItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    video: S.optional(Video),
-    caption: S.optional(S.String),
-  }),
-).annotate({ identifier: "VideoItem" }) as any as S.Schema<VideoItem>;
 
 /** A single item of the form. `kind` defines which kind of item it is. */
 export interface Item {
   /** Starts a new page with a title. */
   pageBreakItem?: PageBreakItem;
-  /** The description of the item. */
-  description?: string;
-  /** Displays an image on the page. */
-  imageItem?: ImageItem;
-  /** Poses a question to the user. */
-  questionItem?: QuestionItem;
-  /** Poses one or more questions to the user with a single major prompt. */
-  questionGroupItem?: QuestionGroupItem;
-  /** The item ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
-  itemId?: string;
-  /** Displays a title and description on the page. */
-  textItem?: PageBreakItem;
   /** Displays a video on the page. */
   videoItem?: VideoItem;
+  /** Poses one or more questions to the user with a single major prompt. */
+  questionGroupItem?: QuestionGroupItem;
+  /** Poses a question to the user. */
+  questionItem?: QuestionItem;
+  /** Displays an image on the page. */
+  imageItem?: ImageItem;
   /** The title of the item. */
   title?: string;
+  /** The item ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
+  itemId?: string;
+  /** The description of the item. */
+  description?: string;
+  /** Displays a title and description on the page. */
+  textItem?: PageBreakItem;
 }
 export const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageBreakItem: S.optional(PageBreakItem),
-    description: S.optional(S.String),
-    imageItem: S.optional(ImageItem),
-    questionItem: S.optional(QuestionItem),
-    questionGroupItem: S.optional(QuestionGroupItem),
-    itemId: S.optional(S.String),
-    textItem: S.optional(PageBreakItem),
     videoItem: S.optional(VideoItem),
+    questionGroupItem: S.optional(QuestionGroupItem),
+    questionItem: S.optional(QuestionItem),
+    imageItem: S.optional(ImageItem),
     title: S.optional(S.String),
+    itemId: S.optional(S.String),
+    description: S.optional(S.String),
+    textItem: S.optional(PageBreakItem),
   }),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 /** Create an item in a form. */
 export interface CreateItemRequest {
-  /** Required. The item to create. */
-  item?: Item;
   /** Required. Where to place the new item. */
   location?: Location;
+  /** Required. The item to create. */
+  item?: Item;
 }
 export const CreateItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    item: S.optional(Item),
     location: S.optional(Location),
+    item: S.optional(Item),
   }),
 ).annotate({
   identifier: "CreateItemRequest",
 }) as any as S.Schema<CreateItemRequest>;
 
+/** Delete an item in a form. */
+export interface DeleteItemRequest {
+  /** Required. The location of the item to delete. */
+  location?: Location;
+}
+export const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(Location),
+  }),
+).annotate({
+  identifier: "DeleteItemRequest",
+}) as any as S.Schema<DeleteItemRequest>;
+
+/** Update an item in a form. */
+export interface UpdateItemRequest {
+  /** Required. Only values named in this mask are changed. */
+  updateMask?: string;
+  /** Required. New values for the item. Note that item and question IDs are used if they are provided (and are in the field mask). If an ID is blank (and in the field mask) a new ID is generated. This means you can modify an item by getting the form via forms.get, modifying your local copy of that item to be how you want it, and using UpdateItemRequest to write it back, with the IDs being the same (or not in the field mask). */
+  item?: Item;
+  /** Required. The location identifying the item to update. */
+  location?: Location;
+}
+export const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String),
+    item: S.optional(Item),
+    location: S.optional(Location),
+  }),
+).annotate({
+  identifier: "UpdateItemRequest",
+}) as any as S.Schema<UpdateItemRequest>;
+
 /** The general information for a form. */
 export interface Info {
-  /** The description of the form. */
-  description?: string;
   /** Required. The title of the form which is visible to responders. */
   title?: string;
   /** Output only. The title of the document which is visible in Drive. If Info.title is empty, `document_title` may appear in its place in the Google Forms UI and be visible to responders. `document_title` can be set on create, but cannot be modified by a batchUpdate request. Please use the [Google Drive API](https://developers.google.com/drive/api/v3/reference/files/update) if you need to programmatically update `document_title`. */
   documentTitle?: string;
+  /** The description of the form. */
+  description?: string;
 }
 export const Info = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
     title: S.optional(S.String),
     documentTitle: S.optional(S.String),
+    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "Info" }) as any as S.Schema<Info>;
 
@@ -671,41 +676,6 @@ export const UpdateFormInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFormInfoRequest",
 }) as any as S.Schema<UpdateFormInfoRequest>;
-
-/** Move an item in a form. */
-export interface MoveItemRequest {
-  /** Required. The new location for the item. */
-  newLocation?: Location;
-  /** Required. The location of the item to move. */
-  originalLocation?: Location;
-}
-export const MoveItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newLocation: S.optional(Location),
-    originalLocation: S.optional(Location),
-  }),
-).annotate({
-  identifier: "MoveItemRequest",
-}) as any as S.Schema<MoveItemRequest>;
-
-/** Update an item in a form. */
-export interface UpdateItemRequest {
-  /** Required. New values for the item. Note that item and question IDs are used if they are provided (and are in the field mask). If an ID is blank (and in the field mask) a new ID is generated. This means you can modify an item by getting the form via forms.get, modifying your local copy of that item to be how you want it, and using UpdateItemRequest to write it back, with the IDs being the same (or not in the field mask). */
-  item?: Item;
-  /** Required. The location identifying the item to update. */
-  location?: Location;
-  /** Required. Only values named in this mask are changed. */
-  updateMask?: string;
-}
-export const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    item: S.optional(Item),
-    location: S.optional(Location),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateItemRequest",
-}) as any as S.Schema<UpdateItemRequest>;
 
 /** Settings related to quiz forms and grading. These must be updated with the UpdateSettingsRequest. */
 export interface QuizSettings {
@@ -755,29 +725,45 @@ export const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSettingsRequest",
 }) as any as S.Schema<UpdateSettingsRequest>;
 
+/** Move an item in a form. */
+export interface MoveItemRequest {
+  /** Required. The location of the item to move. */
+  originalLocation?: Location;
+  /** Required. The new location for the item. */
+  newLocation?: Location;
+}
+export const MoveItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    originalLocation: S.optional(Location),
+    newLocation: S.optional(Location),
+  }),
+).annotate({
+  identifier: "MoveItemRequest",
+}) as any as S.Schema<MoveItemRequest>;
+
 /** The kinds of update requests that can be made. */
 export interface Request {
-  /** Delete an item. */
-  deleteItem?: DeleteItemRequest;
   /** Create a new item. */
   createItem?: CreateItemRequest;
-  /** Update Form's Info. */
-  updateFormInfo?: UpdateFormInfoRequest;
-  /** Move an item to a specified location. */
-  moveItem?: MoveItemRequest;
+  /** Delete an item. */
+  deleteItem?: DeleteItemRequest;
   /** Update an item. */
   updateItem?: UpdateItemRequest;
+  /** Update Form's Info. */
+  updateFormInfo?: UpdateFormInfoRequest;
   /** Updates the Form's settings. */
   updateSettings?: UpdateSettingsRequest;
+  /** Move an item to a specified location. */
+  moveItem?: MoveItemRequest;
 }
 export const Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deleteItem: S.optional(DeleteItemRequest),
     createItem: S.optional(CreateItemRequest),
-    updateFormInfo: S.optional(UpdateFormInfoRequest),
-    moveItem: S.optional(MoveItemRequest),
+    deleteItem: S.optional(DeleteItemRequest),
     updateItem: S.optional(UpdateItemRequest),
+    updateFormInfo: S.optional(UpdateFormInfoRequest),
     updateSettings: S.optional(UpdateSettingsRequest),
+    moveItem: S.optional(MoveItemRequest),
   }),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
@@ -786,20 +772,34 @@ export const RequestList = /*@__PURE__*/ S.Array(
   Request,
 ) as any as S.Schema<RequestList>;
 
+/** Provides control over how write requests are executed. */
+export interface WriteControl {
+  /** The target revision ID of the form that the write request is applied to. If changes have occurred after this revision, the changes in this update request are transformed against those changes. This results in a new revision of the form that incorporates both the changes in the request and the intervening changes, with the server resolving conflicting changes. The target revision ID may only be used to write to recent versions of a form. If the target revision is too far behind the latest revision, the request is not processed and returns a 400 (Bad Request Error). The request may be retried after reading the latest version of the form. In most cases a target revision ID remains valid for several minutes after it is read, but for frequently-edited forms this window may be shorter. */
+  targetRevisionId?: string;
+  /** The revision ID of the form that the write request is applied to. If this is not the latest revision of the form, the request is not processed and returns a 400 bad request error. */
+  requiredRevisionId?: string;
+}
+export const WriteControl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetRevisionId: S.optional(S.String),
+    requiredRevisionId: S.optional(S.String),
+  }),
+).annotate({ identifier: "WriteControl" }) as any as S.Schema<WriteControl>;
+
 /** A batch of updates to perform on a form. All the specified updates are made or none of them are. */
 export interface BatchUpdateFormRequest {
-  /** Provides control over how write requests are executed. */
-  writeControl?: WriteControl;
   /** Required. The update requests of this batch. */
   requests?: RequestList;
   /** Whether to return an updated version of the model in the response. */
   includeFormInResponse?: boolean;
+  /** Provides control over how write requests are executed. */
+  writeControl?: WriteControl;
 }
 export const BatchUpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    writeControl: S.optional(WriteControl),
     requests: S.optional(RequestList),
     includeFormInResponse: S.optional(S.Boolean),
+    writeControl: S.optional(WriteControl),
   }),
 ).annotate({
   identifier: "BatchUpdateFormRequest",
@@ -825,70 +825,6 @@ export const BatchUpdateFormsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchUpdateFormsRequest",
 }) as any as S.Schema<BatchUpdateFormsRequest>;
-
-/** The publishing state of a form. */
-export interface PublishState {
-  /** Required. Whether the form is published and visible to others. */
-  isPublished?: boolean;
-  /** Required. Whether the form accepts responses. If `is_published` is set to `false`, this field is forced to `false`. */
-  isAcceptingResponses?: boolean;
-}
-export const PublishState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isPublished: S.optional(S.Boolean),
-    isAcceptingResponses: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PublishState" }) as any as S.Schema<PublishState>;
-
-/** The publishing settings of a form. */
-export interface PublishSettings {
-  /** Optional. The publishing state of a form. When updating `publish_state`, both `is_published` and `is_accepting_responses` must be set. However, setting `is_accepting_responses` to `true` and `is_published` to `false` isn't supported and returns an error. */
-  publishState?: PublishState;
-}
-export const PublishSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishState: S.optional(PublishState),
-  }),
-).annotate({
-  identifier: "PublishSettings",
-}) as any as S.Schema<PublishSettings>;
-
-export type ItemList = Array<Item>;
-export const ItemList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<ItemList>;
-
-/** A Google Forms document. A form is created in Drive, and deleting a form or changing its access protections is done via the [Drive API](https://developers.google.com/drive/api/v3/about-sdk). */
-export interface Form {
-  /** Output only. The form URI to share with responders. This opens a page that allows the user to submit responses but not edit the questions. For forms that have publish_settings value set, this is the published form URI. */
-  responderUri?: string;
-  /** Output only. The publishing settings for a form. This field isn't set for legacy forms because they don't have the publish_settings field. All newly created forms support publish settings. Forms with publish_settings value set can call SetPublishSettings API to publish or unpublish the form. */
-  publishSettings?: PublishSettings;
-  /** Output only. The revision ID of the form. Used in the WriteControl in update requests to identify the revision on which the changes are based. The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is unchanged between calls, then the form *content* has not changed. Conversely, a changed ID (for the same form and user) usually means the form *content* has been updated; however, a changed ID can also be due to internal factors such as ID format changes. Form content excludes form metadata, including: * sharing settings (who has access to the form) * publish_settings (if the form supports publishing and if it is published) */
-  revisionId?: string;
-  /** Output only. The ID of the linked Google Sheet which is accumulating responses from this Form (if such a Sheet exists). */
-  linkedSheetId?: string;
-  /** Required. The title and description of the form. */
-  info?: Info;
-  /** Output only. The form ID. */
-  formId?: string;
-  /** Required. A list of the form's items, which can include section headers, questions, embedded media, etc. */
-  items?: ItemList;
-  /** The form's settings. This must be updated with UpdateSettingsRequest; it is ignored during CreateForm and UpdateFormInfoRequest. */
-  settings?: FormSettings;
-}
-export const Form = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responderUri: S.optional(S.String),
-    publishSettings: S.optional(PublishSettings),
-    revisionId: S.optional(S.String),
-    linkedSheetId: S.optional(S.String),
-    info: S.optional(Info),
-    formId: S.optional(S.String),
-    items: S.optional(ItemList),
-    settings: S.optional(FormSettings),
-  }),
-).annotate({ identifier: "Form" }) as any as S.Schema<Form>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
@@ -927,19 +863,83 @@ export const ResponseList = /*@__PURE__*/ S.Array(
   Response,
 ) as any as S.Schema<ResponseList>;
 
+export type ItemList = Array<Item>;
+export const ItemList = /*@__PURE__*/ S.Array(
+  Item,
+) as any as S.Schema<ItemList>;
+
+/** The publishing state of a form. */
+export interface PublishState {
+  /** Required. Whether the form accepts responses. If `is_published` is set to `false`, this field is forced to `false`. */
+  isAcceptingResponses?: boolean;
+  /** Required. Whether the form is published and visible to others. */
+  isPublished?: boolean;
+}
+export const PublishState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isAcceptingResponses: S.optional(S.Boolean),
+    isPublished: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "PublishState" }) as any as S.Schema<PublishState>;
+
+/** The publishing settings of a form. */
+export interface PublishSettings {
+  /** Optional. The publishing state of a form. When updating `publish_state`, both `is_published` and `is_accepting_responses` must be set. However, setting `is_accepting_responses` to `true` and `is_published` to `false` isn't supported and returns an error. */
+  publishState?: PublishState;
+}
+export const PublishSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publishState: S.optional(PublishState),
+  }),
+).annotate({
+  identifier: "PublishSettings",
+}) as any as S.Schema<PublishSettings>;
+
+/** A Google Forms document. A form is created in Drive, and deleting a form or changing its access protections is done via the [Drive API](https://developers.google.com/drive/api/v3/about-sdk). */
+export interface Form {
+  /** Required. A list of the form's items, which can include section headers, questions, embedded media, etc. */
+  items?: ItemList;
+  /** The form's settings. This must be updated with UpdateSettingsRequest; it is ignored during CreateForm and UpdateFormInfoRequest. */
+  settings?: FormSettings;
+  /** Output only. The form URI to share with responders. This opens a page that allows the user to submit responses but not edit the questions. For forms that have publish_settings value set, this is the published form URI. */
+  responderUri?: string;
+  /** Output only. The revision ID of the form. Used in the WriteControl in update requests to identify the revision on which the changes are based. The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is unchanged between calls, then the form *content* has not changed. Conversely, a changed ID (for the same form and user) usually means the form *content* has been updated; however, a changed ID can also be due to internal factors such as ID format changes. Form content excludes form metadata, including: * sharing settings (who has access to the form) * publish_settings (if the form supports publishing and if it is published) */
+  revisionId?: string;
+  /** Required. The title and description of the form. */
+  info?: Info;
+  /** Output only. The form ID. */
+  formId?: string;
+  /** Output only. The ID of the linked Google Sheet which is accumulating responses from this Form (if such a Sheet exists). */
+  linkedSheetId?: string;
+  /** Output only. The publishing settings for a form. This field isn't set for legacy forms because they don't have the publish_settings field. All newly created forms support publish settings. Forms with publish_settings value set can call SetPublishSettings API to publish or unpublish the form. */
+  publishSettings?: PublishSettings;
+}
+export const Form = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(ItemList),
+    settings: S.optional(FormSettings),
+    responderUri: S.optional(S.String),
+    revisionId: S.optional(S.String),
+    info: S.optional(Info),
+    formId: S.optional(S.String),
+    linkedSheetId: S.optional(S.String),
+    publishSettings: S.optional(PublishSettings),
+  }),
+).annotate({ identifier: "Form" }) as any as S.Schema<Form>;
+
 /** Response to a BatchUpdateFormRequest. */
 export interface BatchUpdateFormResponse {
-  /** Based on the bool request field `include_form_in_response`, a form with all applied mutations/updates is returned or not. This may be later than the revision ID created by these changes. */
-  form?: Form;
   /** The reply of the updates. This maps 1:1 with the update requests, although replies to some requests may be empty. */
   replies?: ResponseList;
+  /** Based on the bool request field `include_form_in_response`, a form with all applied mutations/updates is returned or not. This may be later than the revision ID created by these changes. */
+  form?: Form;
   /** The updated write control after applying the request. */
   writeControl?: WriteControl;
 }
 export const BatchUpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    form: S.optional(Form),
     replies: S.optional(ResponseList),
+    form: S.optional(Form),
     writeControl: S.optional(WriteControl),
   }),
 ).annotate({
@@ -967,6 +967,15 @@ export const CreateFormsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateFormsRequest",
 }) as any as S.Schema<CreateFormsRequest>;
 
+export type WatchStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED";
+export const WatchStateEnum = /*@__PURE__*/ S.String;
+
+export type WatchEventTypeEnum =
+  | "EVENT_TYPE_UNSPECIFIED"
+  | "SCHEMA"
+  | "RESPONSES";
+export const WatchEventTypeEnum = /*@__PURE__*/ S.String;
+
 /** A Pub/Sub topic. */
 export interface CloudPubsubTopic {
   /** Required. A fully qualified Pub/Sub topic name to publish the events to. This topic must be owned by the calling project and already exist in Pub/Sub. */
@@ -991,15 +1000,6 @@ export const WatchTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WatchTarget" }) as any as S.Schema<WatchTarget>;
 
-export type WatchStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED";
-export const WatchStateEnum = /*@__PURE__*/ S.String;
-
-export type WatchEventTypeEnum =
-  | "EVENT_TYPE_UNSPECIFIED"
-  | "SCHEMA"
-  | "RESPONSES";
-export const WatchEventTypeEnum = /*@__PURE__*/ S.String;
-
 export type WatchErrorTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "PROJECT_NOT_AUTHORIZED"
@@ -1009,44 +1009,44 @@ export const WatchErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** A watch for events for a form. When the designated event happens, a notification will be published to the specified target. The notification's attributes will include a `formId` key that has the ID of the watched form and an `eventType` key that has the string of the type. Messages are sent with at-least-once delivery and are only dropped in extraordinary circumstances. Typically all notifications should be reliably delivered within a few seconds; however, in some situations notifications may be delayed. A watch expires seven days after it is created unless it is renewed with watches.renew */
 export interface Watch {
-  /** Output only. Timestamp of when this was created. */
-  createTime?: string;
-  /** Required. Where to send the notification. */
-  target?: WatchTarget;
   /** Output only. The current state of the watch. Additional details about suspended watches can be found by checking the `error_type`. */
   state?: WatchStateEnum | (string & {});
   /** Required. Which event type to watch for. */
   eventType?: WatchEventTypeEnum | (string & {});
-  /** Output only. The ID of this watch. See notes on CreateWatchRequest.watch_id. */
-  id?: string;
   /** Output only. Timestamp for when this will expire. Each watches.renew call resets this to seven days in the future. */
   expireTime?: string;
+  /** Output only. Timestamp of when this was created. */
+  createTime?: string;
+  /** Required. Where to send the notification. */
+  target?: WatchTarget;
   /** Output only. The most recent error type for an attempted delivery. To begin watching the form again a call can be made to watches.renew which also clears this error information. */
   errorType?: WatchErrorTypeEnum | (string & {});
+  /** Output only. The ID of this watch. See notes on CreateWatchRequest.watch_id. */
+  id?: string;
 }
 export const Watch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    target: S.optional(WatchTarget),
     state: S.optional(WatchStateEnum),
     eventType: S.optional(WatchEventTypeEnum),
-    id: S.optional(S.String),
     expireTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    target: S.optional(WatchTarget),
     errorType: S.optional(WatchErrorTypeEnum),
+    id: S.optional(S.String),
   }),
 ).annotate({ identifier: "Watch" }) as any as S.Schema<Watch>;
 
 /** Create a new watch. */
 export interface CreateWatchRequest {
-  /** Required. The watch object. No ID should be set on this object; use `watch_id` instead. */
-  watch?: Watch;
   /** The ID to use for the watch. If specified, the ID must not already be in use. If not specified, an ID is generated. This value should be 4-63 characters, and valid characters are /a-z-/. */
   watchId?: string;
+  /** Required. The watch object. No ID should be set on this object; use `watch_id` instead. */
+  watch?: Watch;
 }
 export const CreateWatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    watch: S.optional(Watch),
     watchId: S.optional(S.String),
+    watch: S.optional(Watch),
   }),
 ).annotate({
   identifier: "CreateWatchRequest",
@@ -1119,15 +1119,15 @@ export const GetFormsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFormsRequest>;
 
 export interface GetFormsResponsesRequest {
-  /** Required. The form ID. */
-  formId: string;
   /** Required. The response ID within the form. */
   responseId: string;
+  /** Required. The form ID. */
+  formId: string;
 }
 export const GetFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    formId: S.String.pipe(T.Label()),
     responseId: S.String.pipe(T.Label()),
+    formId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1138,23 +1138,6 @@ export const GetFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFormsResponsesRequest",
 }) as any as S.Schema<GetFormsResponsesRequest>;
-
-/** Grade information associated with a respondent's answer to a question. */
-export interface Grade {
-  /** Output only. The numeric score awarded for the answer. */
-  score?: number;
-  /** Output only. Whether the question was answered correctly or not. A zero-point score is not enough to infer incorrectness, since a correctly answered question could be worth zero points. */
-  correct?: boolean;
-  /** Output only. Additional feedback given for an answer. */
-  feedback?: Feedback;
-}
-export const Grade = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-    correct: S.optional(S.Boolean),
-    feedback: S.optional(Feedback),
-  }),
-).annotate({ identifier: "Grade" }) as any as S.Schema<Grade>;
 
 /** An answer to a question represented as text. */
 export interface TextAnswer {
@@ -1182,6 +1165,23 @@ export const TextAnswers = /*@__PURE__*/ S.suspend(() =>
     answers: S.optional(TextAnswerList),
   }),
 ).annotate({ identifier: "TextAnswers" }) as any as S.Schema<TextAnswers>;
+
+/** Grade information associated with a respondent's answer to a question. */
+export interface Grade {
+  /** Output only. Additional feedback given for an answer. */
+  feedback?: Feedback;
+  /** Output only. The numeric score awarded for the answer. */
+  score?: number;
+  /** Output only. Whether the question was answered correctly or not. A zero-point score is not enough to infer incorrectness, since a correctly answered question could be worth zero points. */
+  correct?: boolean;
+}
+export const Grade = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    feedback: S.optional(Feedback),
+    score: S.optional(S.Number),
+    correct: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "Grade" }) as any as S.Schema<Grade>;
 
 /** Info for a single file submitted to a file upload question. */
 export interface FileUploadAnswer {
@@ -1222,21 +1222,21 @@ export const FileUploadAnswers = /*@__PURE__*/ S.suspend(() =>
 
 /** The submitted answer for a question. */
 export interface Answer {
-  /** Output only. The grade for the answer if the form was a quiz. */
-  grade?: Grade;
-  /** Output only. The specific answers as text. */
-  textAnswers?: TextAnswers;
-  /** Output only. The answers to a file upload question. */
-  fileUploadAnswers?: FileUploadAnswers;
   /** Output only. The question's ID. See also Question.question_id. */
   questionId?: string;
+  /** Output only. The specific answers as text. */
+  textAnswers?: TextAnswers;
+  /** Output only. The grade for the answer if the form was a quiz. */
+  grade?: Grade;
+  /** Output only. The answers to a file upload question. */
+  fileUploadAnswers?: FileUploadAnswers;
 }
 export const Answer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    grade: S.optional(Grade),
-    textAnswers: S.optional(TextAnswers),
-    fileUploadAnswers: S.optional(FileUploadAnswers),
     questionId: S.optional(S.String),
+    textAnswers: S.optional(TextAnswers),
+    grade: S.optional(Grade),
+    fileUploadAnswers: S.optional(FileUploadAnswers),
   }),
 ).annotate({ identifier: "Answer" }) as any as S.Schema<Answer>;
 
@@ -1248,30 +1248,30 @@ export const AnswerMap = /*@__PURE__*/ S.Record(
 
 /** A form response. */
 export interface FormResponse {
-  /** Output only. The total number of points the respondent received for their submission Only set if the form was a quiz and the response was graded. This includes points automatically awarded via autograding adjusted by any manual corrections entered by the form owner. */
-  totalScore?: number;
-  /** Output only. The email address (if collected) for the respondent. */
-  respondentEmail?: string;
-  /** Output only. Timestamp for the most recent time the response was submitted. Does not track changes to grades. */
-  lastSubmittedTime?: string;
-  /** Output only. The actual answers to the questions, keyed by question_id. */
-  answers?: AnswerMap;
   /** Output only. The form ID. */
   formId?: string;
+  /** Output only. The total number of points the respondent received for their submission Only set if the form was a quiz and the response was graded. This includes points automatically awarded via autograding adjusted by any manual corrections entered by the form owner. */
+  totalScore?: number;
   /** Output only. The response ID. */
   responseId?: string;
   /** Output only. Timestamp for the first time the response was submitted. */
   createTime?: string;
+  /** Output only. Timestamp for the most recent time the response was submitted. Does not track changes to grades. */
+  lastSubmittedTime?: string;
+  /** Output only. The email address (if collected) for the respondent. */
+  respondentEmail?: string;
+  /** Output only. The actual answers to the questions, keyed by question_id. */
+  answers?: AnswerMap;
 }
 export const FormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    totalScore: S.optional(S.Number),
-    respondentEmail: S.optional(S.String),
-    lastSubmittedTime: S.optional(S.String),
-    answers: S.optional(AnswerMap),
     formId: S.optional(S.String),
+    totalScore: S.optional(S.Number),
     responseId: S.optional(S.String),
     createTime: S.optional(S.String),
+    lastSubmittedTime: S.optional(S.String),
+    respondentEmail: S.optional(S.String),
+    answers: S.optional(AnswerMap),
   }),
 ).annotate({ identifier: "FormResponse" }) as any as S.Schema<FormResponse>;
 
@@ -1426,15 +1426,15 @@ export const SetPublishSettingsFormsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response of a SetPublishSettings request. */
 export interface SetPublishSettingsResponse {
-  /** Required. The ID of the Form. This is same as the Form.form_id field. */
-  formId?: string;
   /** The publish settings of the form. */
   publishSettings?: PublishSettings;
+  /** Required. The ID of the Form. This is same as the Form.form_id field. */
+  formId?: string;
 }
 export const SetPublishSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    formId: S.optional(S.String),
     publishSettings: S.optional(PublishSettings),
+    formId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SetPublishSettingsResponse",

@@ -62,6 +62,207 @@ export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameAvailabilityResult",
 }) as any as S.Schema<CheckNameAvailabilityResult>;
 
+/** The provisioning state of the serviceGroup. For example, Running */
+export type ProvisioningState =
+  | "NotStarted"
+  | "Running"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled";
+export const ProvisioningState = /*@__PURE__*/ S.String;
+
+/** The attributes of the serviceGroup. */
+export interface ServiceGroupAttributes {
+  /** The criticality designation of the service group. Valid values range from 0 through 4. */
+  criticality?: number;
+}
+export const ServiceGroupAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    criticality: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ServiceGroupAttributes",
+}) as any as S.Schema<ServiceGroupAttributes>;
+
+/** The details of the parent serviceGroup. */
+export interface ParentServiceGroupProperties {
+  /** The fully qualified ID of the parent serviceGroup. For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup' */
+  resourceId?: string;
+}
+export const ParentServiceGroupProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ParentServiceGroupProperties",
+}) as any as S.Schema<ParentServiceGroupProperties>;
+
+/** ServiceGroup creation request body parameters. */
+export interface ServiceGroupProperties {
+  /** The provisioning state of the serviceGroup. For example, Running */
+  provisioningState?: ProvisioningState | (string & {});
+  /** The display name of the serviceGroup. For example, ServiceGroupTest1 */
+  displayName?: string;
+  /** The attributes of the serviceGroup. */
+  attributes?: ServiceGroupAttributes;
+  /** The details of the parent serviceGroup. */
+  parent?: ParentServiceGroupProperties;
+}
+export const ServiceGroupProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(ProvisioningState),
+    displayName: S.optional(S.String),
+    attributes: S.optional(ServiceGroupAttributes),
+    parent: S.optional(ParentServiceGroupProperties),
+  }),
+).annotate({
+  identifier: "ServiceGroupProperties",
+}) as any as S.Schema<ServiceGroupProperties>;
+
+/** The serviceGroup tags. */
+export type CreateOrUpdateServiceGroupRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CreateOrUpdateServiceGroupRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreateOrUpdateServiceGroupRequestTagsMap>;
+
+export interface CreateOrUpdateServiceGroupRequest {
+  /** ServiceGroup Name. */
+  serviceGroupName: string;
+  /** ServiceGroup creation request body parameters. */
+  properties?: ServiceGroupProperties;
+  /** The kind of the serviceGroup. */
+  kind?: string;
+  /** The serviceGroup tags. */
+  tags?: CreateOrUpdateServiceGroupRequestTagsMap;
+}
+export const CreateOrUpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceGroupName: S.String.pipe(T.Label()),
+    properties: S.optional(ServiceGroupProperties),
+    kind: S.optional(S.String),
+    tags: S.optional(CreateOrUpdateServiceGroupRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateOrUpdateServiceGroupRequest",
+}) as any as S.Schema<CreateOrUpdateServiceGroupRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** The serviceGroup tags. */
+export type CreateOrUpdateServiceGroupResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CreateOrUpdateServiceGroupResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreateOrUpdateServiceGroupResponseTagsMap>;
+
+export interface CreateOrUpdateServiceGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** ServiceGroup creation request body parameters. */
+  properties?: ServiceGroupProperties;
+  /** The kind of the serviceGroup. */
+  kind?: string;
+  /** The serviceGroup tags. */
+  tags?: CreateOrUpdateServiceGroupResponseTagsMap;
+}
+export const CreateOrUpdateServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ServiceGroupProperties),
+    kind: S.optional(S.String),
+    tags: S.optional(CreateOrUpdateServiceGroupResponseTagsMap),
+  }),
+).annotate({
+  identifier: "CreateOrUpdateServiceGroupResponse",
+}) as any as S.Schema<CreateOrUpdateServiceGroupResponse>;
+
+export interface DeleteServiceGroupRequest {
+  /** ServiceGroup Name. */
+  serviceGroupName: string;
+}
+export const DeleteServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteServiceGroupRequest",
+}) as any as S.Schema<DeleteServiceGroupRequest>;
+
+export interface DeleteServiceGroupResponse {}
+export const DeleteServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceGroupResponse",
+}) as any as S.Schema<DeleteServiceGroupResponse>;
+
 export type EntitiesListRequestSearch =
   | "AllowedParents"
   | "AllowedChildren"
@@ -274,48 +475,6 @@ export const HierarchySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "HierarchySettingsCreateOrUpdateRequest",
 }) as any as S.Schema<HierarchySettingsCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The generic properties of hierarchy settings. */
 export interface HierarchySettingsProperties {
@@ -1394,6 +1553,64 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+export interface ServiceGroupsGetRequest {
+  /** ServiceGroup Name. */
+  serviceGroupName: string;
+}
+export const ServiceGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ServiceGroupsGetRequest",
+}) as any as S.Schema<ServiceGroupsGetRequest>;
+
+/** The serviceGroup tags. */
+export type ServiceGroupsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServiceGroupsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServiceGroupsGetResponseTagsMap>;
+
+export interface ServiceGroupsGetResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** ServiceGroup creation request body parameters. */
+  properties?: ServiceGroupProperties;
+  /** The kind of the serviceGroup. */
+  kind?: string;
+  /** The serviceGroup tags. */
+  tags?: ServiceGroupsGetResponseTagsMap;
+}
+export const ServiceGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ServiceGroupProperties),
+    kind: S.optional(S.String),
+    tags: S.optional(ServiceGroupsGetResponseTagsMap),
+  }),
+).annotate({
+  identifier: "ServiceGroupsGetResponse",
+}) as any as S.Schema<ServiceGroupsGetResponse>;
+
 export interface StartTenantBackfillRequest {}
 export const StartTenantBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1448,6 +1665,82 @@ export const TenantBackfillStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TenantBackfillStatusRequest",
 }) as any as S.Schema<TenantBackfillStatusRequest>;
 
+/** The serviceGroup tags. */
+export type UpdateServiceGroupRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const UpdateServiceGroupRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<UpdateServiceGroupRequestTagsMap>;
+
+export interface UpdateServiceGroupRequest {
+  /** ServiceGroup Name. */
+  serviceGroupName: string;
+  /** ServiceGroup creation request body parameters. */
+  properties?: ServiceGroupProperties;
+  /** The kind of the serviceGroup. */
+  kind?: string;
+  /** The serviceGroup tags. */
+  tags?: UpdateServiceGroupRequestTagsMap;
+}
+export const UpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceGroupName: S.String.pipe(T.Label()),
+    properties: S.optional(ServiceGroupProperties),
+    kind: S.optional(S.String),
+    tags: S.optional(UpdateServiceGroupRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateServiceGroupRequest",
+}) as any as S.Schema<UpdateServiceGroupRequest>;
+
+/** The serviceGroup tags. */
+export type UpdateServiceGroupResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const UpdateServiceGroupResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<UpdateServiceGroupResponseTagsMap>;
+
+export interface UpdateServiceGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** ServiceGroup creation request body parameters. */
+  properties?: ServiceGroupProperties;
+  /** The kind of the serviceGroup. */
+  kind?: string;
+  /** The serviceGroup tags. */
+  tags?: UpdateServiceGroupResponseTagsMap;
+}
+export const UpdateServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ServiceGroupProperties),
+    kind: S.optional(S.String),
+    tags: S.optional(UpdateServiceGroupResponseTagsMap),
+  }),
+).annotate({
+  identifier: "UpdateServiceGroupResponse",
+}) as any as S.Schema<UpdateServiceGroupResponse>;
+
 export type CheckNameAvailabilityError = AzureOpError;
 /** Checks if the specified management group name is valid and unique */
 export const CheckNameAvailability: API.OperationMethod<
@@ -1458,6 +1751,36 @@ export const CheckNameAvailability: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CheckNameAvailabilityRequest,
   output: CheckNameAvailabilityResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateOrUpdateServiceGroupError = AzureOpError;
+/** Create or Update a serviceGroup */
+export const CreateOrUpdateServiceGroup: API.OperationMethod<
+  CreateOrUpdateServiceGroupRequest,
+  CreateOrUpdateServiceGroupResponse,
+  CreateOrUpdateServiceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOrUpdateServiceGroupRequest,
+  output: CreateOrUpdateServiceGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteServiceGroupError = AzureOpError;
+/** Delete a ServiceGroup */
+export const DeleteServiceGroup: API.OperationMethod<
+  DeleteServiceGroupRequest,
+  DeleteServiceGroupResponse,
+  DeleteServiceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServiceGroupRequest,
+  output: DeleteServiceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1720,6 +2043,21 @@ export const OperationsList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ServiceGroupsGetError = AzureOpError;
+/** Get the details of the serviceGroup */
+export const ServiceGroupsGet: API.OperationMethod<
+  ServiceGroupsGetRequest,
+  ServiceGroupsGetResponse,
+  ServiceGroupsGetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ServiceGroupsGetRequest,
+  output: ServiceGroupsGetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
 export type StartTenantBackfillError = AzureOpError;
 /** Starts backfilling subscriptions for the Tenant. */
 export const StartTenantBackfill: API.OperationMethod<
@@ -1745,6 +2083,21 @@ export const TenantBackfillStatus: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TenantBackfillStatusRequest,
   output: TenantBackfillStatusResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceGroupError = AzureOpError;
+/** Update a serviceGroup */
+export const UpdateServiceGroup: API.OperationMethod<
+  UpdateServiceGroupRequest,
+  UpdateServiceGroupResponse,
+  UpdateServiceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceGroupRequest,
+  output: UpdateServiceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

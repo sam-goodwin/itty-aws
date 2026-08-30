@@ -229,6 +229,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -237,7 +243,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.platform_features#BlankEnum": {
@@ -797,12 +803,6 @@
             "smithy.api#enumValue": "invalid"
           }
         },
-        "EXPIRED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "expired"
-          }
-        },
         "STALE": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -811,7 +811,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `valid` - Valid\n* `invalid` - Invalid\n* `expired` - Expired\n* `stale` - Stale (resource changed)"
+        "smithy.api#documentation": "* `valid` - Valid\n* `invalid` - Invalid\n* `stale` - Stale (resource changed)"
       }
     },
     "com.posthog.platform_features#ChangeRequestStateEnum": {
@@ -956,11 +956,50 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this change request."
           }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional note recorded with the approval vote explaining the decision."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.posthog.platform_features#ChangeRequestDecisionResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The change request's resulting state after the vote (e.g. 'pending', 'approved', 'applied', 'rejected').",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable summary of what happened.",
+            "smithy.api#required": {}
+          }
+        },
+        "change_request": {
+          "target": "com.posthog.platform_features#ChangeRequest",
+          "traits": {
+            "smithy.api#documentation": "The change request after the vote was recorded.",
+            "smithy.api#required": {}
+          }
+        },
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Present only when the vote reached quorum and the change was applied immediately: details of the affected resource (e.g. resource_id, resource_version)."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.posthog.platform_features#ChangeRequestsApproveCreate": {
       "type": "operation",
@@ -968,7 +1007,7 @@
         "target": "com.posthog.platform_features#ChangeRequestsApproveCreateRequest"
       },
       "output": {
-        "target": "com.posthog.platform_features#ChangeRequest"
+        "target": "com.posthog.platform_features#ChangeRequestDecisionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1038,6 +1077,13 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this change request."
           }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reason for rejecting the change request. Required — recorded with the rejection vote and shown to the requester.",
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -1050,7 +1096,7 @@
         "target": "com.posthog.platform_features#ChangeRequestsRejectCreateRequest"
       },
       "output": {
-        "target": "com.posthog.platform_features#ChangeRequest"
+        "target": "com.posthog.platform_features#ChangeRequestDecisionResponse"
       },
       "traits": {
         "smithy.api#http": {

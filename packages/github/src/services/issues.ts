@@ -1676,6 +1676,8 @@ export interface CreateRequest {
   issue_field_values?: CreateRequestIssueFieldValuesList;
   /** The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._ */
   type?: string | null;
+  /** The id of the parent issue to add this issue to as a sub-issue. _NOTE: Only users with triage access to both the parent issue's repository and this repository can set the parent issue._ */
+  parent_issue_id?: number;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1689,6 +1691,7 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
     assignees: S.optional(CreateRequestAssigneesList),
     issue_field_values: S.optional(CreateRequestIssueFieldValuesList),
     type: S.optional(S.NullOr(S.String)),
+    parent_issue_id: S.optional(S.Number),
   }).pipe(
     T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues", code: 200 }),
   ),
@@ -4528,6 +4531,38 @@ export const StateChangeIssueEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "StateChangeIssueEvent",
 }) as any as S.Schema<StateChangeIssueEvent>;
 
+/** Timeline Connected Event */
+export interface TimelineConnectedEvent {
+  id: number;
+  node_id: string;
+  url: string;
+  actor: NullableSimpleUser;
+  event: string;
+  commit_id: string | null;
+  commit_url: string | null;
+  created_at: string;
+  performed_via_github_app: NullableIntegration | null;
+}
+export const TimelineConnectedEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    node_id: S.String,
+    url: S.String,
+    actor: NullableSimpleUser,
+    event: S.String,
+    commit_id: S.NullOr(S.String),
+    commit_url: S.NullOr(S.String),
+    created_at: S.String,
+    performed_via_github_app: S.NullOr(NullableIntegration),
+  }),
+).annotate({
+  identifier: "TimelineConnectedEvent",
+}) as any as S.Schema<TimelineConnectedEvent>;
+
+/** Timeline Disconnected Event */
+export type TimelineDisconnectedEvent = TimelineConnectedEvent;
+export const TimelineDisconnectedEvent = TimelineConnectedEvent;
+
 /** Timeline Event */
 export type TimelineIssueEvents =
   | LabeledIssueEvent
@@ -4562,7 +4597,9 @@ export type TimelineIssueEvents =
   | BlockedByAddedIssueEvent
   | BlockedByAddedIssueEvent
   | BlockingAddedIssueEvent
-  | BlockingAddedIssueEvent;
+  | BlockingAddedIssueEvent
+  | TimelineConnectedEvent
+  | TimelineConnectedEvent;
 export const TimelineIssueEvents =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TimelineIssueEvents>;
 
@@ -6276,6 +6313,8 @@ export interface UpdateLabelRequest {
   color?: string;
   /** A short description of the label. Must be 100 characters or fewer. */
   description?: string;
+  /** Whether to archive or unarchive the label. Archived labels cannot be added to issues or pull requests. For more information, see "[Archiving labels](https://docs.github.com/issues/organizing-your-work-with-labels/managing-labels)." */
+  archived?: boolean;
 }
 export const UpdateLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6285,6 +6324,7 @@ export const UpdateLabelRequest = /*@__PURE__*/ S.suspend(() =>
     new_name: S.optional(S.String),
     color: S.optional(S.String),
     description: S.optional(S.String),
+    archived: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7126,7 +7166,11 @@ export const removeLabel: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveSubIssueError = BadRequest | NotFound | GithubOpError;
+export type RemoveSubIssueError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | GithubOpError;
 /** Remove sub-issue You can use the REST API to remove a sub-issue from an issue. Removing content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)." This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass a specific media type. - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`. - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`. - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`. */
 export const removeSubIssue: API.OperationMethod<
   RemoveSubIssueRequest,
@@ -7136,7 +7180,7 @@ export const removeSubIssue: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveSubIssueRequest,
   output: Issue,
-  errors: [BadRequest, NotFound],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
 }));

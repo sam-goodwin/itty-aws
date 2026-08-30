@@ -28,7 +28,7 @@ export const AggregatedCostGetByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -246,7 +246,7 @@ export const AggregatedCostGetForBillingPeriodByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -307,7 +307,7 @@ export const BalancesGetByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -478,7 +478,7 @@ export const BalancesGetForBillingPeriodByBillingAccountRequest =
         method: "GET",
         uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -767,7 +767,7 @@ export const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -887,7 +887,7 @@ export const BudgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -916,7 +916,7 @@ export const BudgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -962,7 +962,7 @@ export const BudgetsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Consumption/budgets",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1041,7 +1041,7 @@ export const ChargesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Consumption/charges",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1112,7 +1112,7 @@ export const CreditsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/credits/balanceSummary",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1277,7 +1277,7 @@ export const EventsListByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/events",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1451,7 +1451,7 @@ export const EventsListByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/events",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1473,7 +1473,7 @@ export const LotsListByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/lots",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1621,7 +1621,7 @@ export const LotsListByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/lots",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1646,7 +1646,7 @@ export const LotsListByCustomerRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}/providers/Microsoft.Consumption/lots",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1674,7 +1674,7 @@ export const MarketplacesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Consumption/marketplaces",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1834,7 +1834,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Consumption/operations",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1918,7 +1918,7 @@ export const PriceSheetDownloadByBillingAccountPeriodRequest =
         method: "POST",
         uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1982,7 +1982,7 @@ export const PriceSheetGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2169,7 +2169,7 @@ export const PriceSheetGetByBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2219,7 +2219,8 @@ export const PriceSheetGetByBillingPeriodResponse = /*@__PURE__*/ S.suspend(
 
 export type ReservationRecommendationDetailsGetRequestScope =
   | "Single"
-  | "Shared";
+  | "Shared"
+  | "ManagementGroup";
 export const ReservationRecommendationDetailsGetRequestScope =
   /*@__PURE__*/ S.String;
 
@@ -2254,6 +2255,8 @@ export interface ReservationRecommendationDetailsGetRequest {
   product: string;
   /** Used to filter reservation recommendation details by: properties/subscriptionId can be specified for billing account and billing profile paths. */
   _filter?: string;
+  /** Specify the management group ID. Required when recommendation scope is 'ManagementGroup'. */
+  managementGroupId?: string;
 }
 export const ReservationRecommendationDetailsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2268,12 +2271,13 @@ export const ReservationRecommendationDetailsGetRequest =
         ),
       product: S.String.pipe(T.Query()),
       _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      managementGroupId: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
         uri: "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendationDetails",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2426,6 +2430,20 @@ export const ReservationRecommendationDetailsUsageProperties =
     identifier: "ReservationRecommendationDetailsUsageProperties",
   }) as any as S.Schema<ReservationRecommendationDetailsUsageProperties>;
 
+/** Details about projected usage data that has been used for computing the recommendation. */
+export interface ReservationRecommendationDetailsProjectedUsageProperties {
+  /** Total projected retail usage in commitment units (CUs). */
+  totalRetailUsageInCUs?: number;
+}
+export const ReservationRecommendationDetailsProjectedUsageProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      totalRetailUsageInCUs: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "ReservationRecommendationDetailsProjectedUsageProperties",
+  }) as any as S.Schema<ReservationRecommendationDetailsProjectedUsageProperties>;
+
 /** The properties of the reservation recommendation. */
 export interface ReservationRecommendationDetailsProperties {
   /** An ISO 4217 currency code identifier for the costs and savings */
@@ -2440,6 +2458,12 @@ export interface ReservationRecommendationDetailsProperties {
   scope?: string;
   /** Historical usage details used to calculate the estimated savings. */
   usage?: ReservationRecommendationDetailsUsageProperties;
+  /** Management group id associated with management group scoped recommendation. */
+  managementGroupId?: string;
+  /** The tenant ID associated with the management group. Populated only when managementGroupId is populated. */
+  tenantId?: string;
+  /** Projected usage details used for generating the recommendation. */
+  projectedUsage?: ReservationRecommendationDetailsProjectedUsageProperties;
 }
 export const ReservationRecommendationDetailsProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -2450,6 +2474,11 @@ export const ReservationRecommendationDetailsProperties =
       savings: S.optional(ReservationRecommendationDetailsSavingsProperties),
       scope: S.optional(S.String),
       usage: S.optional(ReservationRecommendationDetailsUsageProperties),
+      managementGroupId: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      projectedUsage: S.optional(
+        ReservationRecommendationDetailsProjectedUsageProperties,
+      ),
     }),
   ).annotate({
     identifier: "ReservationRecommendationDetailsProperties",
@@ -2518,7 +2547,7 @@ export const ReservationRecommendationsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendations",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2678,7 +2707,7 @@ export const ReservationsDetailsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{resourceScope}/providers/Microsoft.Consumption/reservationDetails",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2804,7 +2833,7 @@ export const ReservationsDetailsListByReservationOrderRequest =
         method: "GET",
         uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2830,7 +2859,7 @@ export const ReservationsDetailsListByReservationOrderAndReservationRequest =
         method: "GET",
         uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2871,7 +2900,7 @@ export const ReservationsSummariesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{resourceScope}/providers/Microsoft.Consumption/reservationSummaries",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3022,7 +3051,7 @@ export const ReservationsSummariesListByReservationOrderRequest =
         method: "GET",
         uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationSummaries",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3030,7 +3059,8 @@ export const ReservationsSummariesListByReservationOrderRequest =
   }) as any as S.Schema<ReservationsSummariesListByReservationOrderRequest>;
 
 export type ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
-  "daily" | "monthly";
+  | "daily"
+  | "monthly";
 export const ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
   /*@__PURE__*/ S.String;
 
@@ -3061,7 +3091,7 @@ export const ReservationsSummariesListByReservationOrderAndReservationRequest =
         method: "GET",
         uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationSummaries",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3090,7 +3120,7 @@ export const ReservationTransactionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -3253,7 +3283,7 @@ export const ReservationTransactionsListByBillingProfileRequest =
         method: "GET",
         uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/reservationTransactions",
         code: 200,
-        apiVersion: "2024-08-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -3402,7 +3432,7 @@ export const TagsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Consumption/tags",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({ identifier: "TagsGetRequest" }) as any as S.Schema<TagsGetRequest>;
@@ -3510,7 +3540,7 @@ export const UsageDetailsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Consumption/usageDetails",
       code: 200,
-      apiVersion: "2024-08-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({

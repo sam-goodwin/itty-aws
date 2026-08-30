@@ -21,6 +21,15 @@ export class BadRequest
     [{ status: 400 }],
   ) {}
 
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
+      code: S.Number,
+      message: S.String,
+    }).pipe(C.withConflictError),
+    [{ status: 409 }],
+  ) {}
+
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
@@ -66,7 +75,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -75,6 +84,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -110,21 +120,42 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
+export interface CommentSlackThreadRef {
+  /** Slack channel ID this discussion is mirrored to. */
+  channel_id: string;
+  /** Slack channel name resolved from Slack when the discussion was sent (no leading #). Empty for private channels and when unknown; may lag behind a rename in Slack. */
+  channel_name: string;
+  /** Deep link that opens the mirrored Slack thread. */
+  url: string;
+}
+export const CommentSlackThreadRef = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    channel_id: S.String,
+    channel_name: S.String,
+    url: S.String,
+  }),
+).annotate({
+  identifier: "CommentSlackThreadRef",
+}) as any as S.Schema<CommentSlackThreadRef>;
+
 export interface CommentOutput {
   id?: string;
   created_by?: UserBasic | null;
+  scope?: string;
+  /** Metadata for the comment target, anchor, thread state, and owning task. */
+  item_context?: unknown;
   deleted?: boolean | null;
   /** Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation. */
   is_task?: boolean;
   /** The user who marked this task complete. Null for open tasks and non-task comments. */
   completed_by?: UserBasic | null;
+  /** The Slack thread this comment's discussion is mirrored to, or null. Set only on a tracked thread-root comment; used to surface an 'Open in Slack' link and hide re-sending. */
+  slack_thread?: CommentSlackThreadRef | null;
   content?: string | null;
   rich_content?: unknown;
   version?: number;
   created_at?: string;
   item_id?: string | null;
-  item_context?: unknown;
-  scope?: string;
   /** ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH. */
   completed_at?: string | null;
   source_comment?: string | null;
@@ -133,16 +164,17 @@ export const CommentOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_by: S.optional(S.NullOr(UserBasic)),
+    scope: S.optional(S.String),
+    item_context: S.optional(S.Unknown),
     deleted: S.optional(S.NullOr(S.Boolean)),
     is_task: S.optional(S.Boolean),
     completed_by: S.optional(S.NullOr(UserBasic)),
+    slack_thread: S.optional(S.NullOr(CommentSlackThreadRef)),
     content: S.optional(S.NullOr(S.String)),
     rich_content: S.optional(S.Unknown),
     version: S.optional(S.Number),
     created_at: S.optional(S.String),
     item_id: S.optional(S.NullOr(S.String)),
-    item_context: S.optional(S.Unknown),
-    scope: S.optional(S.String),
     completed_at: S.optional(S.NullOr(S.String)),
     source_comment: S.optional(S.NullOr(S.String)),
   }),
@@ -181,6 +213,9 @@ export const CommentsCreateRequestMentionsList = /*@__PURE__*/ S.Array(
 export interface CommentsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  scope?: string;
+  /** Metadata for the comment target, anchor, thread state, and owning task. */
+  item_context?: unknown;
   deleted?: boolean | null;
   mentions?: CommentsCreateRequestMentionsList;
   slug?: string;
@@ -189,13 +224,13 @@ export interface CommentsCreateRequest {
   content?: string | null;
   rich_content?: unknown;
   item_id?: string | null;
-  item_context?: unknown;
-  scope?: string;
   source_comment?: string | null;
 }
 export const CommentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
+    scope: S.optional(S.String),
+    item_context: S.optional(S.Unknown),
     deleted: S.optional(S.NullOr(S.Boolean)),
     mentions: S.optional(CommentsCreateRequestMentionsList),
     slug: S.optional(S.String),
@@ -203,8 +238,6 @@ export const CommentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     content: S.optional(S.NullOr(S.String)),
     rich_content: S.optional(S.Unknown),
     item_id: S.optional(S.NullOr(S.String)),
-    item_context: S.optional(S.Unknown),
-    scope: S.optional(S.String),
     source_comment: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -262,12 +295,14 @@ export interface CommentsListRequest {
   item_id?: string;
   /** Filter by comment kind. 'task' returns only items intentionally created as actionable. 'comment' excludes tasks. Defaults to 'any' (no filter). * `any` - any * `comment` - comment * `task` - task */
   kind?: CommentsListRequestKind | (string & {});
-  /** Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay). */
+  /** Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay). Support-ticket scopes (Ticket, conversations_ticket) additionally require ticket API scope access. */
   scope?: string;
   /** Full-text search within comment content. */
   search?: string;
   /** Filter replies to a specific parent comment. */
   source_comment?: string;
+  /** Owning task for task, task_artifact, and desktop_canvas comment scopes. */
+  task_id?: string;
 }
 export const CommentsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -279,6 +314,7 @@ export const CommentsListRequest = /*@__PURE__*/ S.suspend(() =>
     scope: S.optional(S.String.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
     source_comment: S.optional(S.String.pipe(T.Query())),
+    task_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -320,6 +356,9 @@ export interface CommentsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this comment. */
   id: string;
+  scope?: string;
+  /** Metadata for the comment target, anchor, thread state, and owning task. */
+  item_context?: unknown;
   deleted?: boolean | null;
   mentions?: CommentsPartialUpdateRequestMentionsList;
   slug?: string;
@@ -328,14 +367,14 @@ export interface CommentsPartialUpdateRequest {
   content?: string | null;
   rich_content?: unknown;
   item_id?: string | null;
-  item_context?: unknown;
-  scope?: string;
   source_comment?: string | null;
 }
 export const CommentsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
+    scope: S.optional(S.String),
+    item_context: S.optional(S.Unknown),
     deleted: S.optional(S.NullOr(S.Boolean)),
     mentions: S.optional(CommentsPartialUpdateRequestMentionsList),
     slug: S.optional(S.String),
@@ -343,8 +382,6 @@ export const CommentsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     content: S.optional(S.NullOr(S.String)),
     rich_content: S.optional(S.Unknown),
     item_id: S.optional(S.NullOr(S.String)),
-    item_context: S.optional(S.Unknown),
-    scope: S.optional(S.String),
     source_comment: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -399,6 +436,73 @@ export const CommentsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsRetrieveRequest",
 }) as any as S.Schema<CommentsRetrieveRequest>;
 
+export interface CommentsSendToSlackCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this comment. */
+  id: string;
+  /** ID of the Slack integration (kind='slack') whose bot posts the thread. */
+  integration_id: number;
+  /** Slack channel ID to create the mirrored thread in. The bot must be a member of the channel. The channel's display name is resolved server-side. */
+  channel_id: string;
+}
+export const CommentsSendToSlackCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    integration_id: S.Number,
+    channel_id: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/comments/{id}/send_to_slack/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CommentsSendToSlackCreateRequest",
+}) as any as S.Schema<CommentsSendToSlackCreateRequest>;
+
+export interface CommentSlackThread {
+  id: string;
+  /** Resource type of the mirrored discussion (e.g. Insight). */
+  scope: string;
+  /** ID of the resource the discussion is attached to. */
+  item_id: string | null;
+  /** The thread-root comment whose replies mirror to the Slack thread. */
+  source_comment: string;
+  /** Slack integration used to post to and read from the thread. */
+  integration: number;
+  /** Slack channel the mirrored thread lives in. */
+  slack_channel_id: string;
+  /** Slack channel name resolved from Slack at send time (no leading #). Empty for private channels and when unknown. */
+  slack_channel_name: string;
+  /** Slack thread timestamp anchoring the mirrored thread. */
+  slack_thread_ts: string;
+  /** Slack workspace ID, used to route inbound replies back. */
+  slack_team_id: string | null;
+  created_at: string;
+  /** User who mirrored the discussion. Null if since deleted. */
+  created_by: UserBasic | null;
+}
+export const CommentSlackThread = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    scope: S.String,
+    item_id: S.NullOr(S.String),
+    source_comment: S.String,
+    integration: S.Number,
+    slack_channel_id: S.String,
+    slack_channel_name: S.String,
+    slack_thread_ts: S.String,
+    slack_team_id: S.NullOr(S.String),
+    created_at: S.String,
+    created_by: S.NullOr(UserBasic),
+  }),
+).annotate({
+  identifier: "CommentSlackThread",
+}) as any as S.Schema<CommentSlackThread>;
+
 export interface CommentsThreadRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -437,6 +541,9 @@ export interface CommentsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this comment. */
   id: string;
+  scope?: string;
+  /** Metadata for the comment target, anchor, thread state, and owning task. */
+  item_context?: unknown;
   deleted?: boolean | null;
   mentions?: CommentsUpdateRequestMentionsList;
   slug?: string;
@@ -445,14 +552,14 @@ export interface CommentsUpdateRequest {
   content?: string | null;
   rich_content?: unknown;
   item_id?: string | null;
-  item_context?: unknown;
-  scope?: string;
   source_comment?: string | null;
 }
 export const CommentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
+    scope: S.optional(S.String),
+    item_context: S.optional(S.Unknown),
     deleted: S.optional(S.NullOr(S.Boolean)),
     mentions: S.optional(CommentsUpdateRequestMentionsList),
     slug: S.optional(S.String),
@@ -460,8 +567,6 @@ export const CommentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     content: S.optional(S.NullOr(S.String)),
     rich_content: S.optional(S.Unknown),
     item_id: S.optional(S.NullOr(S.String)),
-    item_context: S.optional(S.Unknown),
-    scope: S.optional(S.String),
     source_comment: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -507,7 +612,9 @@ export type CommentsCreateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | PosthogOpError;
+/** Create a comment. Support messages are deduplicated: an identical message from the same author on the same ticket within a short window returns the original comment with a 200 instead of creating a second one, and a 409 while a concurrent request is still creating it. */
 export const commentsCreate: API.OperationMethod<
   CommentsCreateRequest,
   CommentOutput,
@@ -516,7 +623,7 @@ export const commentsCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CommentsCreateRequest,
   output: CommentOutput,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -597,6 +704,21 @@ export const commentsRetrieve: API.OperationMethod<
   input: CommentsRetrieveRequest,
   output: CommentOutput,
   errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CommentsSendToSlackCreateError = PosthogOpError;
+/** Mirror this discussion thread to a Slack channel. Posts the comment (and its existing replies) as a new Slack thread; later replies on either side sync across. A discussion mirrors to exactly one Slack thread: re-calling with the same channel returns the existing mirror; a different channel is a 400 naming the existing one. 409 while a concurrent send is in flight. 404 when the feature is not enabled for the team. */
+export const commentsSendToSlackCreate: API.OperationMethod<
+  CommentsSendToSlackCreateRequest,
+  CommentSlackThread,
+  CommentsSendToSlackCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CommentsSendToSlackCreateRequest,
+  output: CommentSlackThread,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

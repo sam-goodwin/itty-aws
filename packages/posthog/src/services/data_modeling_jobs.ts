@@ -37,22 +37,31 @@ export const DataModelingJobsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataModelingJobsListRequest",
 }) as any as S.Schema<DataModelingJobsListRequest>;
 
-/** * `Cancelled` - Cancelled * `Completed` - Completed * `Failed` - Failed * `Running` - Running */
+/** * `Cancelled` - Cancelled * `Completed` - Completed * `Failed` - Failed * `Running` - Running * `Skipped` - Skipped */
 export type DataModelingJobStatusEnum =
   | "Cancelled"
   | "Completed"
   | "Failed"
-  | "Running";
+  | "Running"
+  | "Skipped";
 export const DataModelingJobStatusEnum = /*@__PURE__*/ S.String;
+
+/** * `full_refresh` - Full refresh * `incremental` - Incremental */
+export type DataModelingJobRunModeEnum = "full_refresh" | "incremental";
+export const DataModelingJobRunModeEnum = /*@__PURE__*/ S.String;
 
 export interface DataModelingJob {
   id: string;
   saved_query_id: string | null;
   status: DataModelingJobStatusEnum;
+  /** What this run wrote: full_refresh rebuilt the whole table, so rows_materialized is the table's size; incremental wrote only its window, so rows_materialized counts just the rows synced. Null for runs from before modes were recorded, or that failed before the plan resolved. * `full_refresh` - Full refresh * `incremental` - Incremental */
+  run_mode: DataModelingJobRunModeEnum | null;
   rows_materialized: number;
   error: string | null;
   created_at: string;
   last_run_at: string;
+  /** When the job row last changed. For finished jobs this is when the run reached its terminal status. */
+  updated_at: string;
   workflow_id: string | null;
   workflow_run_id: string | null;
   /** Total rows expected to be materialized */
@@ -63,10 +72,12 @@ export const DataModelingJob = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     saved_query_id: S.NullOr(S.String),
     status: DataModelingJobStatusEnum,
+    run_mode: S.NullOr(DataModelingJobRunModeEnum),
     rows_materialized: S.Number,
     error: S.NullOr(S.String),
     created_at: S.String,
     last_run_at: S.String,
+    updated_at: S.String,
     workflow_id: S.NullOr(S.String),
     workflow_run_id: S.NullOr(S.String),
     rows_expected: S.NullOr(S.Number),

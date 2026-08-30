@@ -3161,6 +3161,19 @@ export const RouterOutputStreamDetails = /*@__PURE__*/ S.Union([
   S.Struct({ MediaConnectFlow: MediaConnectFlowRouterOutputStreamDetails }),
   S.Struct({ MediaLiveInput: MediaLiveInputRouterOutputStreamDetails }),
 ]);
+export type FabricLatencyMode = "BALANCED" | "LOW_LATENCY" | (string & {});
+export const FabricLatencyMode = /*@__PURE__*/ S.String;
+
+export interface FabricConfiguration {
+  RecoveryLatencyMode: FabricLatencyMode;
+}
+export const FabricConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RecoveryLatencyMode: FabricLatencyMode }).pipe(
+    S.encodeKeys({ RecoveryLatencyMode: "recoveryLatencyMode" }),
+  ),
+).annotate({
+  identifier: "FabricConfiguration",
+}) as any as S.Schema<FabricConfiguration>;
 export interface RouterOutput {
   Name: string;
   Arn: string;
@@ -3185,6 +3198,7 @@ export interface RouterOutput {
   MaintenanceConfiguration: MaintenanceConfiguration;
   MaintenanceScheduleType?: MaintenanceScheduleType;
   MaintenanceSchedule?: MaintenanceSchedule;
+  FabricConfiguration?: FabricConfiguration;
 }
 export const RouterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3211,6 +3225,7 @@ export const RouterOutput = /*@__PURE__*/ S.suspend(() =>
     MaintenanceConfiguration: MaintenanceConfiguration,
     MaintenanceScheduleType: S.optional(MaintenanceScheduleType),
     MaintenanceSchedule: S.optional(MaintenanceSchedule),
+    FabricConfiguration: S.optional(FabricConfiguration),
   }).pipe(
     S.encodeKeys({
       Name: "name",
@@ -3236,6 +3251,7 @@ export const RouterOutput = /*@__PURE__*/ S.suspend(() =>
       MaintenanceConfiguration: "maintenanceConfiguration",
       MaintenanceScheduleType: "maintenanceScheduleType",
       MaintenanceSchedule: "maintenanceSchedule",
+      FabricConfiguration: "fabricConfiguration",
     }),
   ),
 ).annotate({ identifier: "RouterOutput" }) as any as S.Schema<RouterOutput>;
@@ -3258,7 +3274,9 @@ export const BatchGetRouterOutputErrorList = /*@__PURE__*/ S.Array(
   BatchGetRouterOutputError_,
 );
 export interface BatchGetRouterOutputResponse {
-  RouterOutputs: RouterOutput[];
+  RouterOutputs: (RouterOutput & {
+    FabricConfiguration: FabricConfiguration;
+  })[];
   Errors: BatchGetRouterOutputError_[];
 }
 export const BatchGetRouterOutputResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4262,6 +4280,7 @@ export interface CreateRouterOutputRequest {
   AvailabilityZone?: string;
   MaintenanceConfiguration?: MaintenanceConfiguration;
   Tags?: { [key: string]: string | undefined };
+  FabricConfiguration?: FabricConfiguration;
   ClientToken?: string;
 }
 export const CreateRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4275,6 +4294,7 @@ export const CreateRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
     AvailabilityZone: S.optional(S.String),
     MaintenanceConfiguration: S.optional(MaintenanceConfiguration),
     Tags: S.optional(__mapOfString),
+    FabricConfiguration: S.optional(FabricConfiguration),
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   })
     .pipe(
@@ -4288,6 +4308,7 @@ export const CreateRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
         AvailabilityZone: "availabilityZone",
         MaintenanceConfiguration: "maintenanceConfiguration",
         Tags: "tags",
+        FabricConfiguration: "fabricConfiguration",
         ClientToken: "clientToken",
       }),
     )
@@ -4305,7 +4326,7 @@ export const CreateRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRouterOutputRequest",
 }) as any as S.Schema<CreateRouterOutputRequest>;
 export interface CreateRouterOutputResponse {
-  RouterOutput: RouterOutput;
+  RouterOutput: RouterOutput & { FabricConfiguration: FabricConfiguration };
 }
 export const CreateRouterOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RouterOutput: RouterOutput }).pipe(
@@ -5540,7 +5561,7 @@ export const GetRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRouterOutputRequest",
 }) as any as S.Schema<GetRouterOutputRequest>;
 export interface GetRouterOutputResponse {
-  RouterOutput: RouterOutput;
+  RouterOutput: RouterOutput & { FabricConfiguration: FabricConfiguration };
 }
 export const GetRouterOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RouterOutput: RouterOutput }).pipe(
@@ -8306,6 +8327,7 @@ export interface UpdateRouterOutputRequest {
   RoutingScope?: RoutingScope;
   Tier?: RouterOutputTier;
   MaintenanceConfiguration?: MaintenanceConfiguration;
+  FabricConfiguration?: FabricConfiguration;
 }
 export const UpdateRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8316,6 +8338,7 @@ export const UpdateRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
     RoutingScope: S.optional(RoutingScope),
     Tier: S.optional(RouterOutputTier),
     MaintenanceConfiguration: S.optional(MaintenanceConfiguration),
+    FabricConfiguration: S.optional(FabricConfiguration),
   })
     .pipe(
       S.encodeKeys({
@@ -8325,6 +8348,7 @@ export const UpdateRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
         RoutingScope: "routingScope",
         Tier: "tier",
         MaintenanceConfiguration: "maintenanceConfiguration",
+        FabricConfiguration: "fabricConfiguration",
       }),
     )
     .pipe(
@@ -8341,7 +8365,7 @@ export const UpdateRouterOutputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRouterOutputRequest",
 }) as any as S.Schema<UpdateRouterOutputRequest>;
 export interface UpdateRouterOutputResponse {
-  RouterOutput: RouterOutput;
+  RouterOutput: RouterOutput & { FabricConfiguration: FabricConfiguration };
 }
 export const UpdateRouterOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RouterOutput: RouterOutput }).pipe(

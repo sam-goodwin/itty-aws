@@ -5162,7 +5162,9 @@ export const CreateObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateObservabilityDestinationRequest>;
 
 export type ObservabilityDestinationsCreateResponseConfigurationLogpushDataset =
-  "opentelemetry-traces" | "opentelemetry-logs" | "opentelemetry-metrics";
+  | "opentelemetry-traces"
+  | "opentelemetry-logs"
+  | "opentelemetry-metrics";
 export const ObservabilityDestinationsCreateResponseConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
@@ -5220,49 +5222,51 @@ export const CreateObservabilityDestinationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateObservabilityDestinationResponse>;
 
 export type ObservabilityQueriesCreateRequestParametersCalculationsItemOperator =
-    | "uniq"
-    | "count"
-    | "max"
-    | "min"
-    | "sum"
-    | "avg"
-    | "median"
-    | "p001"
-    | "p01"
-    | "p05"
-    | "p10"
-    | "p25"
-    | "p75"
-    | "p90"
-    | "p95"
-    | "p99"
-    | "p999"
-    | "stddev"
-    | "variance"
-    | "COUNT_DISTINCT"
-    | "COUNT"
-    | "MAX"
-    | "MIN"
-    | "SUM"
-    | "AVG"
-    | "MEDIAN"
-    | "P001"
-    | "P01"
-    | "P05"
-    | "P10"
-    | "P25"
-    | "P75"
-    | "P90"
-    | "P95"
-    | "P99"
-    | "P999"
-    | "STDDEV"
-    | "VARIANCE";
+  | "uniq"
+  | "count"
+  | "max"
+  | "min"
+  | "sum"
+  | "avg"
+  | "median"
+  | "p001"
+  | "p01"
+  | "p05"
+  | "p10"
+  | "p25"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99"
+  | "p999"
+  | "stddev"
+  | "variance"
+  | "COUNT_DISTINCT"
+  | "COUNT"
+  | "MAX"
+  | "MIN"
+  | "SUM"
+  | "AVG"
+  | "MEDIAN"
+  | "P001"
+  | "P01"
+  | "P05"
+  | "P10"
+  | "P25"
+  | "P75"
+  | "P90"
+  | "P95"
+  | "P99"
+  | "P999"
+  | "STDDEV"
+  | "VARIANCE";
 export const ObservabilityQueriesCreateRequestParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityQueriesCreateRequestParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -5314,7 +5318,10 @@ export const ObservabilityQueriesCreateRequestParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -5351,41 +5358,43 @@ export const ObservabilityQueriesCreateRequestParametersFiltersItemCase0 =
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersFiltersItemCase0>;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -5395,7 +5404,9 @@ export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObserv
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -5647,49 +5658,51 @@ export const CreateObservabilityQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateObservabilityQueryRequest>;
 
 export type ObservabilityQueriesCreateResponseParametersCalculationsItemOperator =
-    | "uniq"
-    | "count"
-    | "max"
-    | "min"
-    | "sum"
-    | "avg"
-    | "median"
-    | "p001"
-    | "p01"
-    | "p05"
-    | "p10"
-    | "p25"
-    | "p75"
-    | "p90"
-    | "p95"
-    | "p99"
-    | "p999"
-    | "stddev"
-    | "variance"
-    | "COUNT_DISTINCT"
-    | "COUNT"
-    | "MAX"
-    | "MIN"
-    | "SUM"
-    | "AVG"
-    | "MEDIAN"
-    | "P001"
-    | "P01"
-    | "P05"
-    | "P10"
-    | "P25"
-    | "P75"
-    | "P90"
-    | "P95"
-    | "P99"
-    | "P999"
-    | "STDDEV"
-    | "VARIANCE";
+  | "uniq"
+  | "count"
+  | "max"
+  | "min"
+  | "sum"
+  | "avg"
+  | "median"
+  | "p001"
+  | "p01"
+  | "p05"
+  | "p10"
+  | "p25"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99"
+  | "p999"
+  | "stddev"
+  | "variance"
+  | "COUNT_DISTINCT"
+  | "COUNT"
+  | "MAX"
+  | "MIN"
+  | "SUM"
+  | "AVG"
+  | "MEDIAN"
+  | "P001"
+  | "P01"
+  | "P05"
+  | "P10"
+  | "P25"
+  | "P75"
+  | "P90"
+  | "P95"
+  | "P99"
+  | "P999"
+  | "STDDEV"
+  | "VARIANCE";
 export const ObservabilityQueriesCreateResponseParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityQueriesCreateResponseParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -5739,7 +5752,10 @@ export const ObservabilityQueriesCreateResponseParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -5774,41 +5790,43 @@ export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0 =
   }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersFiltersItemCase0>;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -5818,7 +5836,9 @@ export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObser
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -6084,49 +6104,51 @@ export const ObservabilitySharedQueriesCreateRequestTimeframe =
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestTimeframe>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersCalculationsItemOperator =
-    | "uniq"
-    | "count"
-    | "max"
-    | "min"
-    | "sum"
-    | "avg"
-    | "median"
-    | "p001"
-    | "p01"
-    | "p05"
-    | "p10"
-    | "p25"
-    | "p75"
-    | "p90"
-    | "p95"
-    | "p99"
-    | "p999"
-    | "stddev"
-    | "variance"
-    | "COUNT_DISTINCT"
-    | "COUNT"
-    | "MAX"
-    | "MIN"
-    | "SUM"
-    | "AVG"
-    | "MEDIAN"
-    | "P001"
-    | "P01"
-    | "P05"
-    | "P10"
-    | "P25"
-    | "P75"
-    | "P90"
-    | "P95"
-    | "P99"
-    | "P999"
-    | "STDDEV"
-    | "VARIANCE";
+  | "uniq"
+  | "count"
+  | "max"
+  | "min"
+  | "sum"
+  | "avg"
+  | "median"
+  | "p001"
+  | "p01"
+  | "p05"
+  | "p10"
+  | "p25"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99"
+  | "p999"
+  | "stddev"
+  | "variance"
+  | "COUNT_DISTINCT"
+  | "COUNT"
+  | "MAX"
+  | "MIN"
+  | "SUM"
+  | "AVG"
+  | "MEDIAN"
+  | "P001"
+  | "P01"
+  | "P05"
+  | "P10"
+  | "P25"
+  | "P75"
+  | "P90"
+  | "P95"
+  | "P99"
+  | "P999"
+  | "STDDEV"
+  | "VARIANCE";
 export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -6175,17 +6197,26 @@ export const ObservabilitySharedQueriesCreateRequestParametersDatasetsList =
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersDatasetsList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilitySharedQueriesCreateRequestParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -6223,41 +6254,43 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -6267,7 +6300,9 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -6309,8 +6344,8 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem =
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0
-    | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
+  | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0
+  | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -6353,41 +6388,43 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0 =
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -6397,7 +6434,9 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkers
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -6489,7 +6528,12 @@ export const ObservabilitySharedQueriesCreateRequestParametersGroupBysList =
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersGroupBysList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation =
-  "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte";
 export const ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -10745,7 +10789,9 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  | "eu"
+  | "fedramp"
+  | "fedramp-high";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -11019,14 +11065,14 @@ export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
 export const ScriptsVersionsCreateResponseResourcesBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -11752,7 +11798,9 @@ export const DeleteObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteObservabilityDestinationRequest>;
 
 export type ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset =
-  "opentelemetry-traces" | "opentelemetry-logs" | "opentelemetry-metrics";
+  | "opentelemetry-traces"
+  | "opentelemetry-logs"
+  | "opentelemetry-metrics";
 export const ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
@@ -14215,49 +14263,51 @@ export const GetObservabilitySharedQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetObservabilitySharedQueryRequest>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemOperator =
-    | "uniq"
-    | "count"
-    | "max"
-    | "min"
-    | "sum"
-    | "avg"
-    | "median"
-    | "p001"
-    | "p01"
-    | "p05"
-    | "p10"
-    | "p25"
-    | "p75"
-    | "p90"
-    | "p95"
-    | "p99"
-    | "p999"
-    | "stddev"
-    | "variance"
-    | "COUNT_DISTINCT"
-    | "COUNT"
-    | "MAX"
-    | "MIN"
-    | "SUM"
-    | "AVG"
-    | "MEDIAN"
-    | "P001"
-    | "P01"
-    | "P05"
-    | "P10"
-    | "P25"
-    | "P75"
-    | "P90"
-    | "P95"
-    | "P99"
-    | "P999"
-    | "STDDEV"
-    | "VARIANCE";
+  | "uniq"
+  | "count"
+  | "max"
+  | "min"
+  | "sum"
+  | "avg"
+  | "median"
+  | "p001"
+  | "p01"
+  | "p05"
+  | "p10"
+  | "p25"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99"
+  | "p999"
+  | "stddev"
+  | "variance"
+  | "COUNT_DISTINCT"
+  | "COUNT"
+  | "MAX"
+  | "MIN"
+  | "SUM"
+  | "AVG"
+  | "MEDIAN"
+  | "P001"
+  | "P01"
+  | "P05"
+  | "P10"
+  | "P25"
+  | "P75"
+  | "P90"
+  | "P95"
+  | "P99"
+  | "P999"
+  | "STDDEV"
+  | "VARIANCE";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -14300,12 +14350,18 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -14341,41 +14397,43 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemC
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -14385,7 +14443,9 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemW
   /*@__PURE__*/ S.String;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -14425,8 +14485,8 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemW
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem =
-    | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0
-    | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf;
+  | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0
+  | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -14443,7 +14503,9 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList 
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItemType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
@@ -14470,7 +14532,12 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOperation =
-  "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -14516,7 +14583,8 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder =
-  "asc" | "desc";
+  | "asc"
+  | "desc";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
@@ -14772,7 +14840,9 @@ export const ObservabilitySharedQueriesGetResponseAgentsList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsList>;
 
 export type ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -14832,7 +14902,9 @@ export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList>;
 
 export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -14944,7 +15016,9 @@ export const ObservabilitySharedQueriesGetResponseCalculationsList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsList>;
 
 export type ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -15004,7 +15078,9 @@ export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesList>;
 
 export type ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -15239,18 +15315,18 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap 
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventType =
-    | "fetch"
-    | "scheduled"
-    | "alarm"
-    | "cron"
-    | "queue"
-    | "email"
-    | "tail"
-    | "rpc"
-    | "jsrpc"
-    | "websocket"
-    | "workflow"
-    | "unknown";
+  | "fetch"
+  | "scheduled"
+  | "alarm"
+  | "cron"
+  | "queue"
+  | "email"
+  | "tail"
+  | "rpc"
+  | "jsrpc"
+  | "websocket"
+  | "workflow"
+  | "unknown";
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventType =
   /*@__PURE__*/ S.String;
 
@@ -15263,7 +15339,8 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0Ev
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ExecutionModel =
-  "durableObject" | "stateless";
+  | "durableObject"
+  | "stateless";
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -15356,18 +15433,18 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0 =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventType =
-    | "fetch"
-    | "scheduled"
-    | "alarm"
-    | "cron"
-    | "queue"
-    | "email"
-    | "tail"
-    | "rpc"
-    | "jsrpc"
-    | "websocket"
-    | "workflow"
-    | "unknown";
+  | "fetch"
+  | "scheduled"
+  | "alarm"
+  | "cron"
+  | "queue"
+  | "email"
+  | "tail"
+  | "rpc"
+  | "jsrpc"
+  | "websocket"
+  | "workflow"
+  | "unknown";
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventType =
   /*@__PURE__*/ S.String;
 
@@ -15404,7 +15481,8 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1Ev
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ExecutionModel =
-  "durableObject" | "stateless";
+  | "durableObject"
+  | "stateless";
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -15618,7 +15696,9 @@ export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggreg
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates>;
 
 export type ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroups =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroups =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -15734,18 +15814,18 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemContainers
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventType =
-    | "fetch"
-    | "scheduled"
-    | "alarm"
-    | "cron"
-    | "queue"
-    | "email"
-    | "tail"
-    | "rpc"
-    | "jsrpc"
-    | "websocket"
-    | "workflow"
-    | "unknown";
+  | "fetch"
+  | "scheduled"
+  | "alarm"
+  | "cron"
+  | "queue"
+  | "email"
+  | "tail"
+  | "rpc"
+  | "jsrpc"
+  | "websocket"
+  | "workflow"
+  | "unknown";
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventType =
   /*@__PURE__*/ S.String;
 
@@ -15758,7 +15838,8 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCas
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ExecutionModel =
-  "durableObject" | "stateless";
+  | "durableObject"
+  | "stateless";
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -15827,18 +15908,18 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCas
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventType =
-    | "fetch"
-    | "scheduled"
-    | "alarm"
-    | "cron"
-    | "queue"
-    | "email"
-    | "tail"
-    | "rpc"
-    | "jsrpc"
-    | "websocket"
-    | "workflow"
-    | "unknown";
+  | "fetch"
+  | "scheduled"
+  | "alarm"
+  | "cron"
+  | "queue"
+  | "email"
+  | "tail"
+  | "rpc"
+  | "jsrpc"
+  | "websocket"
+  | "workflow"
+  | "unknown";
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventType =
   /*@__PURE__*/ S.String;
 
@@ -15863,7 +15944,8 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCas
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ExecutionModel =
-  "durableObject" | "stateless";
+  | "durableObject"
+  | "stateless";
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -17008,7 +17090,9 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketType 
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  | "eu"
+  | "fedramp"
+  | "fedramp-high";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -17275,7 +17359,10 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagship =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagship>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk";
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
@@ -17285,14 +17372,14 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyType
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -17904,7 +17991,8 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestin
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  | "authenticated"
+  | "accept";
 export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -18088,9 +18176,9 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItemH
   BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem =
-    | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemRegion
-    | BetaWorkersVersionsCreateRequestPlacementHostname
-    | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost;
+  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemRegion
+  | BetaWorkersVersionsCreateRequestPlacementHostname
+  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost;
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7TargetItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([["region"], ["hostname"], ["host"]]),
@@ -19252,7 +19340,9 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemR2BucketType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  | "eu"
+  | "fedramp"
+  | "fedramp-high";
 export const ScriptsVersionsGetResponseResourcesBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -19526,14 +19616,14 @@ export const ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyType =
   /*@__PURE__*/ S.String;
 
 export type ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
 export const ScriptsVersionsGetResponseResourcesBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -20031,12 +20121,18 @@ export const ObservabilityTelemetryKeysRequestDatasetsList =
   ) as any as S.Schema<ObservabilityTelemetryKeysRequestDatasetsList>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -20074,41 +20170,43 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0 =
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -20118,7 +20216,9 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkers
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -20201,41 +20301,43 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0 =
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -20245,7 +20347,9 @@ export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFil
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -22714,7 +22818,9 @@ export const ObservabilityDestinationsListResultItemConfigurationJobStatus =
   }) as any as S.Schema<ObservabilityDestinationsListResultItemConfigurationJobStatus>;
 
 export type ObservabilityDestinationsListResultItemConfigurationLogpushDataset =
-  "opentelemetry-traces" | "opentelemetry-logs" | "opentelemetry-metrics";
+  | "opentelemetry-traces"
+  | "opentelemetry-logs"
+  | "opentelemetry-metrics";
 export const ObservabilityDestinationsListResultItemConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
@@ -22828,49 +22934,51 @@ export const ListObservabilityQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListObservabilityQueriesRequest>;
 
 export type ObservabilityQueriesListResultItemParametersCalculationsItemOperator =
-    | "uniq"
-    | "count"
-    | "max"
-    | "min"
-    | "sum"
-    | "avg"
-    | "median"
-    | "p001"
-    | "p01"
-    | "p05"
-    | "p10"
-    | "p25"
-    | "p75"
-    | "p90"
-    | "p95"
-    | "p99"
-    | "p999"
-    | "stddev"
-    | "variance"
-    | "COUNT_DISTINCT"
-    | "COUNT"
-    | "MAX"
-    | "MIN"
-    | "SUM"
-    | "AVG"
-    | "MEDIAN"
-    | "P001"
-    | "P01"
-    | "P05"
-    | "P10"
-    | "P25"
-    | "P75"
-    | "P90"
-    | "P95"
-    | "P99"
-    | "P999"
-    | "STDDEV"
-    | "VARIANCE";
+  | "uniq"
+  | "count"
+  | "max"
+  | "min"
+  | "sum"
+  | "avg"
+  | "median"
+  | "p001"
+  | "p01"
+  | "p05"
+  | "p10"
+  | "p25"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99"
+  | "p999"
+  | "stddev"
+  | "variance"
+  | "COUNT_DISTINCT"
+  | "COUNT"
+  | "MAX"
+  | "MIN"
+  | "SUM"
+  | "AVG"
+  | "MEDIAN"
+  | "P001"
+  | "P01"
+  | "P05"
+  | "P10"
+  | "P25"
+  | "P75"
+  | "P90"
+  | "P95"
+  | "P99"
+  | "P999"
+  | "STDDEV"
+  | "VARIANCE";
 export const ObservabilityQueriesListResultItemParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityQueriesListResultItemParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -22920,7 +23028,10 @@ export const ObservabilityQueriesListResultItemParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -22955,41 +23066,43 @@ export const ObservabilityQueriesListResultItemParametersFiltersItemCase0 =
   }) as any as S.Schema<ObservabilityQueriesListResultItemParametersFiltersItemCase0>;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -22999,7 +23112,9 @@ export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObser
   /*@__PURE__*/ S.String;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -24334,12 +24449,18 @@ export const ObservabilityTelemetryLiveTailRequestFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -24377,41 +24498,43 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCas
   }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0>;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -24421,7 +24544,9 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWor
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -24504,41 +24629,43 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0 =
   }) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0>;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -24548,7 +24675,9 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilit
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -25136,7 +25265,9 @@ export const PatchObservabilityDestinationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchObservabilityDestinationRequest>;
 
 export type ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset =
-  "opentelemetry-traces" | "opentelemetry-logs" | "opentelemetry-metrics";
+  | "opentelemetry-traces"
+  | "opentelemetry-logs"
+  | "opentelemetry-metrics";
 export const ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset =
   /*@__PURE__*/ S.String;
 
@@ -25815,7 +25946,9 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketType
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketJurisdiction =
-  "eu" | "fedramp" | "fedramp-high";
+  | "eu"
+  | "fedramp"
+  | "fedramp-high";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketJurisdiction =
   /*@__PURE__*/ S.String;
 
@@ -26083,7 +26216,10 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyFormat =
-  "raw" | "pkcs8" | "spki" | "jwk";
+  | "raw"
+  | "pkcs8"
+  | "spki"
+  | "jwk";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyFormat =
   /*@__PURE__*/ S.String;
 
@@ -26093,14 +26229,14 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyTyp
   /*@__PURE__*/ S.String;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesItem =
-    | "encrypt"
-    | "decrypt"
-    | "sign"
-    | "verify"
-    | "deriveKey"
-    | "deriveBits"
-    | "wrapKey"
-    | "unwrapKey";
+  | "encrypt"
+  | "decrypt"
+  | "sign"
+  | "verify"
+  | "deriveKey"
+  | "deriveBits"
+  | "wrapKey"
+  | "unwrapKey";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesItem =
   /*@__PURE__*/ S.String;
 
@@ -26693,7 +26829,8 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDesti
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy =
-  "authenticated" | "accept";
+  | "authenticated"
+  | "accept";
 export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
@@ -26880,9 +27017,9 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem
   BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem =
-    | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemRegion
-    | BetaWorkersVersionsCreateRequestPlacementHostname
-    | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost;
+  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemRegion
+  | BetaWorkersVersionsCreateRequestPlacementHostname
+  | BetaWorkersVersionsCreateRequestPlacementCase7TargetItemHost;
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7TargetItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([["region"], ["hostname"], ["host"]]),
@@ -29158,49 +29295,51 @@ export const ObservabilityTelemetryQueryRequestTimeframe =
   ObservabilitySharedQueriesCreateRequestTimeframe;
 
 export type ObservabilityTelemetryQueryRequestParametersCalculationsItemOperator =
-    | "uniq"
-    | "count"
-    | "max"
-    | "min"
-    | "sum"
-    | "avg"
-    | "median"
-    | "p001"
-    | "p01"
-    | "p05"
-    | "p10"
-    | "p25"
-    | "p75"
-    | "p90"
-    | "p95"
-    | "p99"
-    | "p999"
-    | "stddev"
-    | "variance"
-    | "COUNT_DISTINCT"
-    | "COUNT"
-    | "MAX"
-    | "MIN"
-    | "SUM"
-    | "AVG"
-    | "MEDIAN"
-    | "P001"
-    | "P01"
-    | "P05"
-    | "P10"
-    | "P25"
-    | "P75"
-    | "P90"
-    | "P95"
-    | "P99"
-    | "P999"
-    | "STDDEV"
-    | "VARIANCE";
+  | "uniq"
+  | "count"
+  | "max"
+  | "min"
+  | "sum"
+  | "avg"
+  | "median"
+  | "p001"
+  | "p01"
+  | "p05"
+  | "p10"
+  | "p25"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99"
+  | "p999"
+  | "stddev"
+  | "variance"
+  | "COUNT_DISTINCT"
+  | "COUNT"
+  | "MAX"
+  | "MIN"
+  | "SUM"
+  | "AVG"
+  | "MEDIAN"
+  | "P001"
+  | "P01"
+  | "P05"
+  | "P10"
+  | "P25"
+  | "P75"
+  | "P90"
+  | "P95"
+  | "P99"
+  | "P999"
+  | "STDDEV"
+  | "VARIANCE";
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -29256,12 +29395,18 @@ export const ObservabilityTelemetryQueryRequestParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -29299,41 +29444,43 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -29343,7 +29490,9 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -29385,8 +29534,8 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem =
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0
-    | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
+  | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0
+  | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemWorkersObservabilityFilterLeaf;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -29428,41 +29577,43 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0 =
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -29472,7 +29623,9 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObser
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -29773,49 +29926,51 @@ export const QueryObservabilityTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryObservabilityTelemetryRequest>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemOperator =
-    | "uniq"
-    | "count"
-    | "max"
-    | "min"
-    | "sum"
-    | "avg"
-    | "median"
-    | "p001"
-    | "p01"
-    | "p05"
-    | "p10"
-    | "p25"
-    | "p75"
-    | "p90"
-    | "p95"
-    | "p99"
-    | "p999"
-    | "stddev"
-    | "variance"
-    | "COUNT_DISTINCT"
-    | "COUNT"
-    | "MAX"
-    | "MIN"
-    | "SUM"
-    | "AVG"
-    | "MEDIAN"
-    | "P001"
-    | "P01"
-    | "P05"
-    | "P10"
-    | "P25"
-    | "P75"
-    | "P90"
-    | "P95"
-    | "P99"
-    | "P999"
-    | "STDDEV"
-    | "VARIANCE";
+  | "uniq"
+  | "count"
+  | "max"
+  | "min"
+  | "sum"
+  | "avg"
+  | "median"
+  | "p001"
+  | "p01"
+  | "p05"
+  | "p10"
+  | "p25"
+  | "p75"
+  | "p90"
+  | "p95"
+  | "p99"
+  | "p999"
+  | "stddev"
+  | "variance"
+  | "COUNT_DISTINCT"
+  | "COUNT"
+  | "MAX"
+  | "MIN"
+  | "SUM"
+  | "AVG"
+  | "MEDIAN"
+  | "P001"
+  | "P01"
+  | "P05"
+  | "P10"
+  | "P25"
+  | "P75"
+  | "P90"
+  | "P95"
+  | "P99"
+  | "P999"
+  | "STDDEV"
+  | "VARIANCE";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemOperator =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemKeyType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemKeyType =
   /*@__PURE__*/ S.String;
 
@@ -29858,12 +30013,18 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -29899,41 +30060,43 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCas
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -29943,7 +30106,9 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWor
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -30001,7 +30166,9 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItemType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
@@ -30028,7 +30195,12 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItemOperation =
-  "eq" | "neq" | "gt" | "gte" | "lt" | "lte";
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -30301,7 +30473,9 @@ export const ObservabilityTelemetryQueryResponseAgentsList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsList>;
 
 export type ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -30361,7 +30535,9 @@ export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList>;
 
 export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -30472,7 +30648,9 @@ export const ObservabilityTelemetryQueryResponseCalculationsList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsList>;
 
 export type ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -30531,7 +30709,9 @@ export const ObservabilityTelemetryQueryResponseCompareItemAggregatesList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesList>;
 
 export type ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -30669,18 +30849,18 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventType =
-    | "fetch"
-    | "scheduled"
-    | "alarm"
-    | "cron"
-    | "queue"
-    | "email"
-    | "tail"
-    | "rpc"
-    | "jsrpc"
-    | "websocket"
-    | "workflow"
-    | "unknown";
+  | "fetch"
+  | "scheduled"
+  | "alarm"
+  | "cron"
+  | "queue"
+  | "email"
+  | "tail"
+  | "rpc"
+  | "jsrpc"
+  | "websocket"
+  | "workflow"
+  | "unknown";
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventType =
   /*@__PURE__*/ S.String;
 
@@ -30693,7 +30873,8 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0Even
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventMap>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ExecutionModel =
-  "durableObject" | "stateless";
+  | "durableObject"
+  | "stateless";
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -30762,18 +30943,18 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0 =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventType =
-    | "fetch"
-    | "scheduled"
-    | "alarm"
-    | "cron"
-    | "queue"
-    | "email"
-    | "tail"
-    | "rpc"
-    | "jsrpc"
-    | "websocket"
-    | "workflow"
-    | "unknown";
+  | "fetch"
+  | "scheduled"
+  | "alarm"
+  | "cron"
+  | "queue"
+  | "email"
+  | "tail"
+  | "rpc"
+  | "jsrpc"
+  | "websocket"
+  | "workflow"
+  | "unknown";
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventType =
   /*@__PURE__*/ S.String;
 
@@ -30798,7 +30979,8 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1Even
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventMap>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ExecutionModel =
-  "durableObject" | "stateless";
+  | "durableObject"
+  | "stateless";
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -31103,18 +31285,18 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMa
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventType =
-    | "fetch"
-    | "scheduled"
-    | "alarm"
-    | "cron"
-    | "queue"
-    | "email"
-    | "tail"
-    | "rpc"
-    | "jsrpc"
-    | "websocket"
-    | "workflow"
-    | "unknown";
+  | "fetch"
+  | "scheduled"
+  | "alarm"
+  | "cron"
+  | "queue"
+  | "email"
+  | "tail"
+  | "rpc"
+  | "jsrpc"
+  | "websocket"
+  | "workflow"
+  | "unknown";
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventType =
   /*@__PURE__*/ S.String;
 
@@ -31127,7 +31309,8 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventMap>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ExecutionModel =
-  "durableObject" | "stateless";
+  | "durableObject"
+  | "stateless";
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -31196,18 +31379,18 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventType =
-    | "fetch"
-    | "scheduled"
-    | "alarm"
-    | "cron"
-    | "queue"
-    | "email"
-    | "tail"
-    | "rpc"
-    | "jsrpc"
-    | "websocket"
-    | "workflow"
-    | "unknown";
+  | "fetch"
+  | "scheduled"
+  | "alarm"
+  | "cron"
+  | "queue"
+  | "email"
+  | "tail"
+  | "rpc"
+  | "jsrpc"
+  | "websocket"
+  | "workflow"
+  | "unknown";
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventType =
   /*@__PURE__*/ S.String;
 
@@ -31232,7 +31415,8 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventMap>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ExecutionModel =
-  "durableObject" | "stateless";
+  | "durableObject"
+  | "stateless";
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ExecutionModel =
   /*@__PURE__*/ S.String;
 
@@ -32105,12 +32289,18 @@ export type ObservabilityTelemetryValuesRequestType =
 export const ObservabilityTelemetryValuesRequestType = /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination =
-  "and" | "or" | "AND" | "OR";
+  | "and"
+  | "or"
+  | "AND"
+  | "OR";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FilterCombination =
   /*@__PURE__*/ S.String;
 
@@ -32148,41 +32338,43 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0>;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -32192,7 +32384,9 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorke
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
@@ -32275,41 +32469,43 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0 =
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0>;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation =
-    | "includes"
-    | "not_includes"
-    | "starts_with"
-    | "ends_with"
-    | "regex"
-    | "exists"
-    | "is_null"
-    | "in"
-    | "not_in"
-    | "eq"
-    | "neq"
-    | "gt"
-    | "gte"
-    | "lt"
-    | "lte"
-    | "="
-    | "!="
-    | ">"
-    | ">="
-    | "<"
-    | "<="
-    | "INCLUDES"
-    | "DOES_NOT_INCLUDE"
-    | "MATCH_REGEX"
-    | "EXISTS"
-    | "DOES_NOT_EXIST"
-    | "IN"
-    | "NOT_IN"
-    | "STARTS_WITH"
-    | "ENDS_WITH";
+  | "includes"
+  | "not_includes"
+  | "starts_with"
+  | "ends_with"
+  | "regex"
+  | "exists"
+  | "is_null"
+  | "in"
+  | "not_in"
+  | "eq"
+  | "neq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "="
+  | "!="
+  | ">"
+  | ">="
+  | "<"
+  | "<="
+  | "INCLUDES"
+  | "DOES_NOT_INCLUDE"
+  | "MATCH_REGEX"
+  | "EXISTS"
+  | "DOES_NOT_EXIST"
+  | "IN"
+  | "NOT_IN"
+  | "STARTS_WITH"
+  | "ENDS_WITH";
 export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafOperation =
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType =
-  "string" | "number" | "boolean";
+  | "string"
+  | "number"
+  | "boolean";
 export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafType =
   /*@__PURE__*/ S.String;
 
@@ -32319,7 +32515,9 @@ export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityF
   /*@__PURE__*/ S.String;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue =
-  string | number | boolean;
+  | string
+  | number
+  | boolean;
 export const ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeafValue =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 

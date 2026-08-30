@@ -64,9 +64,18 @@
         },
         "share_passwords": {
           "target": "com.posthog.session_recordings#SharingConfigurationSharePasswordsList"
+        },
+        "user_access_level": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The effective access level the user has for this object",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
+      }
     },
     "com.posthog.session_recordings#SharePassword": {
       "type": "structure",

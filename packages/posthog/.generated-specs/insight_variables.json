@@ -116,6 +116,26 @@
           "traits": {
             "smithy.api#documentation": "Allowed values for List variables. Null for other variable types."
           }
+        },
+        "is_multi": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a List variable accepts multiple selected values."
+          }
+        },
+        "values_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values_query_connection_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the external data source connection values_query runs against. Null runs it against PostHog.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}
@@ -225,6 +245,26 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Allowed values for List variables. Null for other variable types."
+          }
+        },
+        "is_multi": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a List variable accepts multiple selected values."
+          }
+        },
+        "values_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values_query_connection_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the external data source connection values_query runs against. Null runs it against PostHog.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -349,6 +389,26 @@
           "traits": {
             "smithy.api#documentation": "Allowed values for List variables. Null for other variable types."
           }
+        },
+        "is_multi": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a List variable accepts multiple selected values."
+          }
+        },
+        "values_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values_query_connection_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the external data source connection values_query runs against. Null runs it against PostHog.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {
@@ -423,6 +483,26 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Allowed values for List variables. Null for other variable types."
+          }
+        },
+        "is_multi": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a List variable accepts multiple selected values."
+          }
+        },
+        "values_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values_query_connection_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the external data source connection values_query runs against. Null runs it against PostHog.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },

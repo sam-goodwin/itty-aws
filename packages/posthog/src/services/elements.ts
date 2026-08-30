@@ -249,13 +249,47 @@ export const ElementsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementsRetrieveRequest",
 }) as any as S.Schema<ElementsRetrieveRequest>;
 
+export type ElementsStatsRetrieveRequestIncludeList = Array<string>;
+export const ElementsStatsRetrieveRequestIncludeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ElementsStatsRetrieveRequestIncludeList>;
+
 export interface ElementsStatsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  /** Comma-separated data attribute names (wildcards allowed, e.g. data-*). When provided, each element's attributes map is filtered to matching attr__* keys, shrinking the response. */
+  data_attributes?: string;
+  /** Start of the date range (e.g. -7d, 2024-01-01). Defaults to last 7 days. */
+  date_from?: string;
+  /** End of the date range (e.g. 2024-01-31). Defaults to now. */
+  date_to?: string;
+  /** When true, applies the project's internal-and-test-account filters to the underlying events. Pass the lowercase string true; other truthy spellings are ignored. */
+  filter_test_accounts?: boolean;
+  /** Event types to include: $autocapture, $rageclick, $dead_click. Defaults to all three. Accepts repeated parameters, a JSON array, or a comma-separated list. */
+  include?: ElementsStatsRetrieveRequestIncludeList;
+  /** Maximum rows per page */
+  limit?: number;
+  /** Pagination offset */
+  offset?: number;
+  /** JSON-encoded list of property filters to apply to the underlying events, e.g. [{"key": "$current_url", "value": "https://example.com/page"}] or [{"key": "email", "value": "@posthog.com", "operator": "icontains", "type": "person"}]. Supports event, person, cohort, element, and HogQL property filter types. */
+  properties?: string;
+  /** Sampling factor between 0 and 1 */
+  sampling_factor?: number;
 }
 export const ElementsStatsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
+    data_attributes: S.optional(S.String.pipe(T.Query())),
+    date_from: S.optional(S.String.pipe(T.Query())),
+    date_to: S.optional(S.String.pipe(T.Query())),
+    filter_test_accounts: S.optional(S.Boolean.pipe(T.Query())),
+    include: S.optional(
+      ElementsStatsRetrieveRequestIncludeList.pipe(T.Query()),
+    ),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    properties: S.optional(S.String.pipe(T.Query())),
+    sampling_factor: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -267,12 +301,54 @@ export const ElementsStatsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementsStatsRetrieveRequest",
 }) as any as S.Schema<ElementsStatsRetrieveRequest>;
 
-export interface ElementsStatsRetrieveResponse {}
-export const ElementsStatsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+/** Parsed elements of the chain, clicked element first */
+export type ElementStatsElementsList = Array<Element>;
+export const ElementStatsElementsList = /*@__PURE__*/ S.Array(
+  Element,
+) as any as S.Schema<ElementStatsElementsList>;
+
+export interface ElementStats {
+  /** Number of events matching this element chain */
+  count: number;
+  /** Stable identity of the raw element chain (hash computed before any attribute filtering), for deduplicating rows across pages */
+  hash: string | null;
+  /** Event type: $autocapture, $rageclick, or $dead_click */
+  type: string;
+  /** Parsed elements of the chain, clicked element first */
+  elements: ElementStatsElementsList;
+}
+export const ElementStats = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    hash: S.NullOr(S.String),
+    type: S.String,
+    elements: ElementStatsElementsList,
+  }),
+).annotate({ identifier: "ElementStats" }) as any as S.Schema<ElementStats>;
+
+/** Element chains with event counts, ordered by count */
+export type ElementStatsResponseResultsList = Array<ElementStats>;
+export const ElementStatsResponseResultsList = /*@__PURE__*/ S.Array(
+  ElementStats,
+) as any as S.Schema<ElementStatsResponseResultsList>;
+
+export interface ElementStatsResponse {
+  /** Element chains with event counts, ordered by count */
+  results: ElementStatsResponseResultsList;
+  /** URL for the next page of results, if any */
+  next: string | null;
+  /** URL for the previous page of results, if any */
+  previous: string | null;
+}
+export const ElementStatsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: ElementStatsResponseResultsList,
+    next: S.NullOr(S.String),
+    previous: S.NullOr(S.String),
+  }),
 ).annotate({
-  identifier: "ElementsStatsRetrieveResponse",
-}) as any as S.Schema<ElementsStatsRetrieveResponse>;
+  identifier: "ElementStatsResponse",
+}) as any as S.Schema<ElementStatsResponse>;
 
 export type ElementsUpdateRequestAttrClassList = Array<string>;
 export const ElementsUpdateRequestAttrClassList = /*@__PURE__*/ S.Array(
@@ -318,13 +394,19 @@ export const ElementsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementsUpdateRequest",
 }) as any as S.Schema<ElementsUpdateRequest>;
 
-export interface ElementsValuesRetrieveRequest {
+export interface ElementsValuesListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  /** Element property to list values for: tag_name, text, href, or attr_id. */
+  key: string;
+  /** Optional substring to filter values by (case-sensitive contains match). */
+  value?: string;
 }
-export const ElementsValuesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+export const ElementsValuesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
+    key: S.String.pipe(T.Query()),
+    value: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -333,15 +415,30 @@ export const ElementsValuesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ElementsValuesRetrieveRequest",
-}) as any as S.Schema<ElementsValuesRetrieveRequest>;
+  identifier: "ElementsValuesListRequest",
+}) as any as S.Schema<ElementsValuesListRequest>;
 
-export interface ElementsValuesRetrieveResponse {}
-export const ElementsValuesRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+export interface ElementValue {
+  /** A distinct value of the requested element property */
+  name: string;
+}
+export const ElementValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+  }),
+).annotate({ identifier: "ElementValue" }) as any as S.Schema<ElementValue>;
+
+export type ElementsValuesListResponseBodyList = Array<ElementValue>;
+export const ElementsValuesListResponseBodyList = /*@__PURE__*/ S.Array(
+  ElementValue,
+) as any as S.Schema<ElementsValuesListResponseBodyList>;
+
+export type ElementsValuesListResponse = ElementsValuesListResponseBodyList;
+export const ElementsValuesListResponse = /*@__PURE__*/ S.suspend(() =>
+  ElementsValuesListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "ElementsValuesRetrieveResponse",
-}) as any as S.Schema<ElementsValuesRetrieveResponse>;
+  identifier: "ElementsValuesListResponse",
+}) as any as S.Schema<ElementsValuesListResponse>;
 
 export type ElementsCreateError =
   | BadRequest
@@ -426,15 +523,15 @@ export const elementsRetrieve: API.OperationMethod<
 }));
 
 export type ElementsStatsRetrieveError = Forbidden | NotFound | PosthogOpError;
-/** The original version of this API always and only returned $autocapture elements If no include query parameter is sent this remains true. Now, you can pass a combination of include query parameters to get different types of elements Currently only $autocapture and $rageclick and $dead_click are supported */
+/** Counts of $autocapture, $rageclick, and $dead_click events grouped by the element chain they occurred on, ordered by count. Defaults to all three event types; narrow with the include parameter. */
 export const elementsStatsRetrieve: API.OperationMethod<
   ElementsStatsRetrieveRequest,
-  ElementsStatsRetrieveResponse,
+  ElementStatsResponse,
   ElementsStatsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ElementsStatsRetrieveRequest,
-  output: ElementsStatsRetrieveResponse,
+  output: ElementStatsResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -458,15 +555,15 @@ export const elementsUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ElementsValuesRetrieveError = Forbidden | NotFound | PosthogOpError;
-export const elementsValuesRetrieve: API.OperationMethod<
-  ElementsValuesRetrieveRequest,
-  ElementsValuesRetrieveResponse,
-  ElementsValuesRetrieveError,
+export type ElementsValuesListError = Forbidden | NotFound | PosthogOpError;
+export const elementsValuesList: API.OperationMethod<
+  ElementsValuesListRequest,
+  ElementsValuesListResponse,
+  ElementsValuesListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ElementsValuesRetrieveRequest,
-  output: ElementsValuesRetrieveResponse,
+  input: ElementsValuesListRequest,
+  output: ElementsValuesListResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

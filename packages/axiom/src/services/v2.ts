@@ -4601,6 +4601,44 @@ export const PatchDashboardChartRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDashboardChartRequest",
 }) as any as S.Schema<PatchDashboardChartRequest>;
 
+export interface ProvisionOrgRequest {
+  /** Optional display name for the organization. If omitted, a name is auto-generated and the owner can rename it later. */
+  name?: string;
+  /** Optional edge deployment (region) the organization is created in. If omitted, the environment's default region is used. */
+  edgeDeployment?: string;
+}
+export const ProvisionOrgRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    edgeDeployment: S.optional(S.String),
+  }).pipe(T.Http({ method: "POST", uri: "/v2/orgs/provision", code: 200 })),
+).annotate({
+  identifier: "ProvisionOrgRequest",
+}) as any as S.Schema<ProvisionOrgRequest>;
+
+export interface ProvisionOrgResponse {
+  id: string;
+  name: string;
+  defaultEdgeDeployment: string;
+  expiresAt: string;
+  /** URL a human follows to claim ownership of the temporary org. */
+  claimUrl: string;
+  /** Full-permission API token the agent uses to create datasets, ingest, and query. Returned once and never retrievable again. */
+  token: string;
+}
+export const ProvisionOrgResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    defaultEdgeDeployment: S.String,
+    expiresAt: S.String,
+    claimUrl: S.String,
+    token: S.String,
+  }),
+).annotate({
+  identifier: "ProvisionOrgResponse",
+}) as any as S.Schema<ProvisionOrgResponse>;
+
 export interface CreateAPIToken2 {
   datasetCapabilities?: DatasetCapabilities;
   /** Description of the token */
@@ -6345,6 +6383,21 @@ export const patchDashboardChart: API.OperationMethod<
   input: PatchDashboardChartRequest,
   output: DashboardWriteResponse,
   errors: [BadRequest, NotFound, UnknownAxiomError],
+  protocol: AxiomProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ProvisionOrgError = AxiomOpError;
+/** Provision a temporary organization for an agent Publicly provisions a temporary organization intended for automated agents. The organization is marked temporary with a TTL and is deleted automatically if it is not claimed before it expires. The response includes a claim URL that lets a human take ownership of the org. This endpoint is unauthenticated and strict rate limits apply. */
+export const provisionOrg: API.OperationMethod<
+  ProvisionOrgRequest,
+  ProvisionOrgResponse,
+  ProvisionOrgError,
+  AxiomOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ProvisionOrgRequest,
+  output: ProvisionOrgResponse,
+  errors: [UnknownAxiomError],
   protocol: AxiomProtocol,
   retry: Retry.Retry,
 }));

@@ -217,7 +217,7 @@ export class UnprocessableEntityException
     },
     T.HttpError(422),
   ).pipe(C.withBadRequestError) {}
-export type NonEmptyString = string;
+export type VoiceConnectorId = string;
 export type E164PhoneNumber = string | redacted.Redacted<string>;
 export type E164PhoneNumberList = (string | redacted.Redacted<string>)[];
 export const E164PhoneNumberList = /*@__PURE__*/ S.Array(SensitiveString);
@@ -266,6 +266,7 @@ export type ErrorCode =
   | "VoiceConnectorGroupAssociationsExist"
   | "PhoneNumberAssociationsExist"
   | "Gone"
+  | "Validation"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
 
@@ -294,6 +295,7 @@ export const AssociatePhoneNumbersWithVoiceConnectorResponse =
   ).annotate({
     identifier: "AssociatePhoneNumbersWithVoiceConnectorResponse",
   }) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorResponse>;
+export type NonEmptyString = string;
 export interface AssociatePhoneNumbersWithVoiceConnectorGroupRequest {
   VoiceConnectorGroupId: string;
   E164PhoneNumbers: (string | redacted.Redacted<string>)[];
@@ -486,7 +488,7 @@ export interface PhoneNumberOrder {
   OrderedPhoneNumbers?: OrderedPhoneNumber[];
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
-  FocDate?: Date;
+  FocDate?: string;
 }
 export const PhoneNumberOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -501,7 +503,7 @@ export const PhoneNumberOrder = /*@__PURE__*/ S.suspend(() =>
     UpdatedTimestamp: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
-    FocDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    FocDate: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PhoneNumberOrder",
@@ -514,7 +516,6 @@ export const CreatePhoneNumberOrderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePhoneNumberOrderResponse",
 }) as any as S.Schema<CreatePhoneNumberOrderResponse>;
-export type NonEmptyString128 = string;
 export type ParticipantPhoneNumberList = (string | redacted.Redacted<string>)[];
 export const ParticipantPhoneNumberList =
   /*@__PURE__*/ S.Array(SensitiveString);
@@ -579,6 +580,7 @@ export const CreateProxySessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProxySessionRequest",
 }) as any as S.Schema<CreateProxySessionRequest>;
+export type NonEmptyString128 = string;
 export type String128 = string;
 export type ProxySessionStatus =
   | "Open"
@@ -829,7 +831,7 @@ export interface CreateSipRuleRequest {
   TriggerType: SipRuleTriggerType;
   TriggerValue: string;
   Disabled?: boolean;
-  TargetApplications?: SipRuleTargetApplication[];
+  TargetApplications: SipRuleTargetApplication[];
 }
 export const CreateSipRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -837,7 +839,7 @@ export const CreateSipRuleRequest = /*@__PURE__*/ S.suspend(() =>
     TriggerType: SipRuleTriggerType,
     TriggerValue: S.String,
     Disabled: S.optional(S.Boolean),
-    TargetApplications: S.optional(SipRuleTargetApplicationList),
+    TargetApplications: SipRuleTargetApplicationList,
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/sip-rules" }),
@@ -980,23 +982,31 @@ export type VoiceConnectorGroupName = string;
 export type VoiceConnectorItemPriority = number;
 export interface VoiceConnectorItem {
   VoiceConnectorId: string;
-  Priority: number;
+  Priority?: number;
 }
 export const VoiceConnectorItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VoiceConnectorId: S.String, Priority: S.Number }),
+  S.Struct({ VoiceConnectorId: S.String, Priority: S.optional(S.Number) }),
 ).annotate({
   identifier: "VoiceConnectorItem",
 }) as any as S.Schema<VoiceConnectorItem>;
 export type VoiceConnectorItemList = VoiceConnectorItem[];
 export const VoiceConnectorItemList = /*@__PURE__*/ S.Array(VoiceConnectorItem);
+export type CallDistributionType =
+  | "PriorityWeightedDistribution"
+  | "LoadBalancedDistribution"
+  | (string & {});
+export const CallDistributionType = /*@__PURE__*/ S.String;
+
 export interface CreateVoiceConnectorGroupRequest {
   Name: string;
   VoiceConnectorItems?: VoiceConnectorItem[];
+  CallDistributionType?: CallDistributionType;
 }
 export const CreateVoiceConnectorGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     VoiceConnectorItems: S.optional(VoiceConnectorItemList),
+    CallDistributionType: S.optional(CallDistributionType),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/voice-connector-groups" }),
@@ -1017,6 +1027,7 @@ export interface VoiceConnectorGroup {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
   VoiceConnectorGroupArn?: string;
+  CallDistributionType?: CallDistributionType;
 }
 export const VoiceConnectorGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1030,6 +1041,7 @@ export const VoiceConnectorGroup = /*@__PURE__*/ S.suspend(() =>
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
     VoiceConnectorGroupArn: S.optional(S.String),
+    CallDistributionType: S.optional(CallDistributionType),
   }),
 ).annotate({
   identifier: "VoiceConnectorGroup",
@@ -1666,6 +1678,7 @@ export const GetGlobalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGlobalSettingsRequest",
 }) as any as S.Schema<GetGlobalSettingsRequest>;
+export type S3BucketName = string;
 export interface VoiceConnectorSettings {
   CdrBucket?: string;
 }
@@ -1778,6 +1791,7 @@ export const CallingNameStatus = /*@__PURE__*/ S.String;
 export interface PhoneNumber {
   PhoneNumberId?: string | redacted.Redacted<string>;
   E164PhoneNumber?: string | redacted.Redacted<string>;
+  PhoneNumberArn?: string;
   Country?: string;
   Type?: PhoneNumberType;
   ProductType?: PhoneNumberProductType;
@@ -1796,6 +1810,7 @@ export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumberId: S.optional(SensitiveString),
     E164PhoneNumber: S.optional(SensitiveString),
+    PhoneNumberArn: S.optional(S.String),
     Country: S.optional(S.String),
     Type: S.optional(PhoneNumberType),
     ProductType: S.optional(PhoneNumberProductType),
@@ -2846,6 +2861,7 @@ export const ListAvailableVoiceConnectorRegionsResponse =
   ).annotate({
     identifier: "ListAvailableVoiceConnectorRegionsResponse",
   }) as any as S.Schema<ListAvailableVoiceConnectorRegionsResponse>;
+export type NextTokenString = string;
 export type ResultMax = number;
 export interface ListPhoneNumberOrdersRequest {
   NextToken?: string;
@@ -2929,7 +2945,6 @@ export const ListPhoneNumbersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPhoneNumbersResponse",
 }) as any as S.Schema<ListPhoneNumbersResponse>;
-export type NextTokenString = string;
 export interface ListProxySessionsRequest {
   VoiceConnectorId: string;
   Status?: ProxySessionStatus;
@@ -3990,10 +4005,10 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export interface UpdateGlobalSettingsRequest {
-  VoiceConnector?: VoiceConnectorSettings;
+  VoiceConnector: VoiceConnectorSettings;
 }
 export const UpdateGlobalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VoiceConnector: S.optional(VoiceConnectorSettings) }).pipe(
+  S.Struct({ VoiceConnector: VoiceConnectorSettings }).pipe(
     T.all(
       T.Http({ method: "PUT", uri: "/settings" }),
       svc,
@@ -4251,12 +4266,14 @@ export interface UpdateVoiceConnectorGroupRequest {
   VoiceConnectorGroupId: string;
   Name: string;
   VoiceConnectorItems: VoiceConnectorItem[];
+  CallDistributionType?: CallDistributionType;
 }
 export const UpdateVoiceConnectorGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VoiceConnectorGroupId: S.String.pipe(T.HttpLabel("VoiceConnectorGroupId")),
     Name: S.String,
     VoiceConnectorItems: VoiceConnectorItemList,
+    CallDistributionType: S.optional(CallDistributionType),
   }).pipe(
     T.all(
       T.Http({
@@ -4641,6 +4658,8 @@ export type CreateProxySessionError =
 /**
  * Creates a proxy session for the specified Amazon Chime SDK Voice Connector for
  * the specified participant phone numbers.
+ *
+ * End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
  */
 export const createProxySession: API.OperationMethod<
   CreateProxySessionRequest,
@@ -4823,6 +4842,7 @@ export type CreateVoiceConnectorGroupError =
   | AccessDeniedException
   | BadRequestException
   | ForbiddenException
+  | NotFoundException
   | ResourceLimitExceededException
   | ServiceFailureException
   | ServiceUnavailableException
@@ -4850,6 +4870,7 @@ export const createVoiceConnectorGroup: API.OperationMethod<
     AccessDeniedException,
     BadRequestException,
     ForbiddenException,
+    NotFoundException,
     ResourceLimitExceededException,
     ServiceFailureException,
     ServiceUnavailableException,
@@ -5006,6 +5027,8 @@ export type DeleteProxySessionError =
 /**
  * Deletes the specified proxy session from the specified Amazon Chime SDK Voice
  * Connector.
+ *
+ * End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
  */
 export const deleteProxySession: API.OperationMethod<
   DeleteProxySessionRequest,
@@ -5294,6 +5317,8 @@ export type DeleteVoiceConnectorProxyError =
   | CommonErrors;
 /**
  * Deletes the proxy configuration from the specified Amazon Chime SDK Voice Connector.
+ *
+ * End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
  */
 export const deleteVoiceConnectorProxy: API.OperationMethod<
   DeleteVoiceConnectorProxyRequest,
@@ -5716,6 +5741,8 @@ export type GetProxySessionError =
   | CommonErrors;
 /**
  * Retrieves the specified proxy session details for the specified Amazon Chime SDK Voice Connector.
+ *
+ * End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
  */
 export const getProxySession: API.OperationMethod<
   GetProxySessionRequest,
@@ -5777,6 +5804,7 @@ export const getSipMediaApplication: API.OperationMethod<
 export type GetSipMediaApplicationAlexaSkillConfigurationError =
   | BadRequestException
   | ForbiddenException
+  | GoneException
   | NotFoundException
   | ServiceFailureException
   | ServiceUnavailableException
@@ -5800,6 +5828,7 @@ export const getSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
   errors: [
     BadRequestException,
     ForbiddenException,
+    GoneException,
     NotFoundException,
     ServiceFailureException,
     ServiceUnavailableException,
@@ -6138,6 +6167,8 @@ export type GetVoiceConnectorProxyError =
 /**
  * Retrieves the proxy configuration details for the specified Amazon Chime SDK Voice
  * Connector.
+ *
+ * End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
  */
 export const getVoiceConnectorProxy: API.OperationMethod<
   GetVoiceConnectorProxyRequest,
@@ -6500,6 +6531,8 @@ export type ListProxySessionsError =
   | CommonErrors;
 /**
  * Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector.
+ *
+ * End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
  */
 export const listProxySessions: API.PaginatedOperationMethod<
   ListProxySessionsRequest,
@@ -6571,6 +6604,7 @@ export const listSipMediaApplications: API.PaginatedOperationMethod<
 export type ListSipRulesError =
   | BadRequestException
   | ForbiddenException
+  | NotFoundException
   | ServiceFailureException
   | ServiceUnavailableException
   | ThrottledClientException
@@ -6591,6 +6625,7 @@ export const listSipRules: API.PaginatedOperationMethod<
   errors: [
     BadRequestException,
     ForbiddenException,
+    NotFoundException,
     ServiceFailureException,
     ServiceUnavailableException,
     ThrottledClientException,
@@ -6868,6 +6903,7 @@ export const listVoiceProfiles: API.PaginatedOperationMethod<
 export type PutSipMediaApplicationAlexaSkillConfigurationError =
   | BadRequestException
   | ForbiddenException
+  | GoneException
   | NotFoundException
   | ServiceFailureException
   | ServiceUnavailableException
@@ -6891,6 +6927,7 @@ export const putSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
   errors: [
     BadRequestException,
     ForbiddenException,
+    GoneException,
     NotFoundException,
     ServiceFailureException,
     ServiceUnavailableException,
@@ -7041,6 +7078,7 @@ export const putVoiceConnectorLoggingConfiguration: API.OperationMethod<
 }));
 
 export type PutVoiceConnectorOriginationError =
+  | AccessDeniedException
   | BadRequestException
   | ForbiddenException
   | NotFoundException
@@ -7061,6 +7099,7 @@ export const putVoiceConnectorOrigination: API.OperationMethod<
   input: PutVoiceConnectorOriginationRequest,
   output: PutVoiceConnectorOriginationResponse,
   errors: [
+    AccessDeniedException,
     BadRequestException,
     ForbiddenException,
     NotFoundException,
@@ -7086,6 +7125,8 @@ export type PutVoiceConnectorProxyError =
   | CommonErrors;
 /**
  * Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector.
+ *
+ * End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
  */
 export const putVoiceConnectorProxy: API.OperationMethod<
   PutVoiceConnectorProxyRequest,
@@ -7655,6 +7696,8 @@ export type UpdateProxySessionError =
   | CommonErrors;
 /**
  * Updates the specified proxy session details, such as voice or SMS capabilities.
+ *
+ * End of support notice: On April 7, 2026, AWS will end support for Amazon Chime SDK proxy sessions.
  */
 export const updateProxySession: API.OperationMethod<
   UpdateProxySessionRequest,

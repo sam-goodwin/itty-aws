@@ -670,6 +670,9 @@
         "cacheReason": {
           "target": "smithy.api#String"
         },
+        "pprState": {
+          "target": "smithy.api#String"
+        },
         "clientIp": {
           "target": "smithy.api#String"
         },
@@ -713,6 +716,9 @@
           "target": "smithy.api#String"
         },
         "wafRuleId": {
+          "target": "smithy.api#String"
+        },
+        "ruleCategory": {
           "target": "smithy.api#String"
         },
         "skewProtection": {
@@ -922,6 +928,9 @@
         "isByok": {
           "target": "smithy.api#String"
         },
+        "spendAttribution": {
+          "target": "smithy.api#String"
+        },
         "isPrivateModel": {
           "target": "smithy.api#String"
         },
@@ -965,6 +974,9 @@
           "target": "smithy.api#String"
         },
         "notificationUrl": {
+          "target": "smithy.api#String"
+        },
+        "queueRegion": {
           "target": "smithy.api#String"
         },
         "sandboxSessionId": {
@@ -1490,6 +1502,12 @@
             "smithy.api#required": {}
           }
         },
+        "pprState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "clientIp": {
           "target": "smithy.api#String",
           "traits": {
@@ -1575,6 +1593,12 @@
           }
         },
         "wafRuleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ruleCategory": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -1994,6 +2018,12 @@
             "smithy.api#required": {}
           }
         },
+        "spendAttribution": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "isPrivateModel": {
           "target": "smithy.api#String",
           "traits": {
@@ -2079,6 +2109,12 @@
           }
         },
         "notificationUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queueRegion": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -3112,6 +3148,9 @@
         "cacheReason": {
           "target": "smithy.api#String"
         },
+        "pprState": {
+          "target": "smithy.api#String"
+        },
         "clientIp": {
           "target": "smithy.api#String"
         },
@@ -3155,6 +3194,9 @@
           "target": "smithy.api#String"
         },
         "wafRuleId": {
+          "target": "smithy.api#String"
+        },
+        "ruleCategory": {
           "target": "smithy.api#String"
         },
         "skewProtection": {
@@ -3364,6 +3406,9 @@
         "isByok": {
           "target": "smithy.api#String"
         },
+        "spendAttribution": {
+          "target": "smithy.api#String"
+        },
         "isPrivateModel": {
           "target": "smithy.api#String"
         },
@@ -3407,6 +3452,9 @@
           "target": "smithy.api#String"
         },
         "notificationUrl": {
+          "target": "smithy.api#String"
+        },
+        "queueRegion": {
           "target": "smithy.api#String"
         },
         "sandboxSessionId": {
@@ -3932,6 +3980,12 @@
             "smithy.api#required": {}
           }
         },
+        "pprState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "clientIp": {
           "target": "smithy.api#String",
           "traits": {
@@ -4017,6 +4071,12 @@
           }
         },
         "wafRuleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ruleCategory": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -4436,6 +4496,12 @@
             "smithy.api#required": {}
           }
         },
+        "spendAttribution": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "isPrivateModel": {
           "target": "smithy.api#String",
           "traits": {
@@ -4521,6 +4587,12 @@
           }
         },
         "notificationUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queueRegion": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -5098,7 +5170,7 @@
       },
       "traits": {}
     },
-    "com.vercel.web_analytics#CountPageviewsResponseData": {
+    "com.vercel.web_analytics#CountPageviewsResponseDataCase0": {
       "type": "structure",
       "members": {
         "projectId": {
@@ -5407,6 +5479,12 @@
             "smithy.api#required": {}
           }
         },
+        "pprState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "clientIp": {
           "target": "smithy.api#String",
           "traits": {
@@ -5492,6 +5570,12 @@
           }
         },
         "wafRuleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ruleCategory": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -5911,6 +5995,12 @@
             "smithy.api#required": {}
           }
         },
+        "spendAttribution": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "isPrivateModel": {
           "target": "smithy.api#String",
           "traits": {
@@ -5996,6 +6086,12 @@
           }
         },
         "notificationUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queueRegion": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -6396,6 +6492,36 @@
           "traits": {
             "smithy.api#required": {}
           }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.web_analytics#CountPageviewsResponseDataCase1": {
+      "type": "structure",
+      "members": {
+        "visitors": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pageviews": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.web_analytics#CountPageviewsResponseData": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.web_analytics#CountPageviewsResponseDataCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.web_analytics#CountPageviewsResponseDataCase1"
         }
       },
       "traits": {}
@@ -6554,7 +6680,7 @@
       },
       "traits": {}
     },
-    "com.vercel.web_analytics#CountEventsResponseData": {
+    "com.vercel.web_analytics#CountEventsResponseDataCase0": {
       "type": "structure",
       "members": {
         "projectId": {
@@ -6863,6 +6989,12 @@
             "smithy.api#required": {}
           }
         },
+        "pprState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "clientIp": {
           "target": "smithy.api#String",
           "traits": {
@@ -6948,6 +7080,12 @@
           }
         },
         "wafRuleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ruleCategory": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -7367,6 +7505,12 @@
             "smithy.api#required": {}
           }
         },
+        "spendAttribution": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "isPrivateModel": {
           "target": "smithy.api#String",
           "traits": {
@@ -7452,6 +7596,12 @@
           }
         },
         "notificationUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queueRegion": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -7852,6 +8002,36 @@
           "traits": {
             "smithy.api#required": {}
           }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.web_analytics#CountEventsResponseDataCase1": {
+      "type": "structure",
+      "members": {
+        "visitors": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.web_analytics#CountEventsResponseData": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.web_analytics#CountEventsResponseDataCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.web_analytics#CountEventsResponseDataCase1"
         }
       },
       "traits": {}

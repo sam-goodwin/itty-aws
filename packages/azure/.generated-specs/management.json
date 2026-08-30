@@ -2474,6 +2474,490 @@
         "smithy.api#documentation": "fully qualified resource type which includes provider namespace"
       }
     },
+    "com.azure.management#DeleteServiceGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.management#DeleteServiceGroupRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+          "code": 200,
+          "apiVersion": "2026-08-01"
+        },
+        "smithy.api#documentation": "Delete a ServiceGroup",
+        "com.distilled.openapi#apiVersion": "2026-08-01"
+      }
+    },
+    "com.azure.management#DeleteServiceGroupRequest": {
+      "type": "structure",
+      "members": {
+        "serviceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ServiceGroup Name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.management#UpdateServiceGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.management#UpdateServiceGroupRequest"
+      },
+      "output": {
+        "target": "com.azure.management#UpdateServiceGroupResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+          "code": 200,
+          "apiVersion": "2026-08-01"
+        },
+        "smithy.api#documentation": "Update a serviceGroup",
+        "com.distilled.openapi#apiVersion": "2026-08-01"
+      }
+    },
+    "com.azure.management#UpdateServiceGroupResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.management#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.management#ServiceGroupProperties",
+          "traits": {
+            "smithy.api#documentation": "ServiceGroup creation request body parameters."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the serviceGroup."
+          }
+        },
+        "tags": {
+          "target": "com.azure.management#UpdateServiceGroupResponseTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The serviceGroup tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.management#UpdateServiceGroupResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The serviceGroup tags."
+      }
+    },
+    "com.azure.management#ServiceGroupProperties": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.management#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The provisioning state of the serviceGroup. For example, Running"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the serviceGroup. For example, ServiceGroupTest1"
+          }
+        },
+        "attributes": {
+          "target": "com.azure.management#ServiceGroupAttributes",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the serviceGroup."
+          }
+        },
+        "parent": {
+          "target": "com.azure.management#ParentServiceGroupProperties",
+          "traits": {
+            "smithy.api#documentation": "The details of the parent serviceGroup."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ServiceGroup creation request body parameters."
+      }
+    },
+    "com.azure.management#ParentServiceGroupProperties": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The details of the parent serviceGroup."
+      }
+    },
+    "com.azure.management#ServiceGroupAttributes": {
+      "type": "structure",
+      "members": {
+        "criticality": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The criticality designation of the service group. Valid values range from 0 through 4."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The attributes of the serviceGroup."
+      }
+    },
+    "com.azure.management#ProvisioningState": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning state of the serviceGroup. For example, Running"
+      }
+    },
+    "com.azure.management#UpdateServiceGroupRequest": {
+      "type": "structure",
+      "members": {
+        "serviceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ServiceGroup Name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.management#ServiceGroupProperties",
+          "traits": {
+            "smithy.api#documentation": "ServiceGroup creation request body parameters."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the serviceGroup."
+          }
+        },
+        "tags": {
+          "target": "com.azure.management#UpdateServiceGroupRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The serviceGroup tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.management#UpdateServiceGroupRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The serviceGroup tags."
+      }
+    },
+    "com.azure.management#CreateOrUpdateServiceGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.management#CreateOrUpdateServiceGroupRequest"
+      },
+      "output": {
+        "target": "com.azure.management#CreateOrUpdateServiceGroupResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+          "code": 200,
+          "apiVersion": "2026-08-01"
+        },
+        "smithy.api#documentation": "Create or Update a serviceGroup",
+        "com.distilled.openapi#apiVersion": "2026-08-01"
+      }
+    },
+    "com.azure.management#CreateOrUpdateServiceGroupResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.management#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.management#ServiceGroupProperties",
+          "traits": {
+            "smithy.api#documentation": "ServiceGroup creation request body parameters."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the serviceGroup."
+          }
+        },
+        "tags": {
+          "target": "com.azure.management#CreateOrUpdateServiceGroupResponseTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The serviceGroup tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.management#CreateOrUpdateServiceGroupResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The serviceGroup tags."
+      }
+    },
+    "com.azure.management#CreateOrUpdateServiceGroupRequest": {
+      "type": "structure",
+      "members": {
+        "serviceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ServiceGroup Name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.management#ServiceGroupProperties",
+          "traits": {
+            "smithy.api#documentation": "ServiceGroup creation request body parameters."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the serviceGroup."
+          }
+        },
+        "tags": {
+          "target": "com.azure.management#CreateOrUpdateServiceGroupRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The serviceGroup tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.management#CreateOrUpdateServiceGroupRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The serviceGroup tags."
+      }
+    },
+    "com.azure.management#ServiceGroupsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.management#ServiceGroupsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.management#ServiceGroupsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+          "code": 200,
+          "apiVersion": "2026-08-01"
+        },
+        "smithy.api#documentation": "Get the details of the serviceGroup",
+        "com.distilled.openapi#apiVersion": "2026-08-01"
+      }
+    },
+    "com.azure.management#ServiceGroupsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.management#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.management#ServiceGroupProperties",
+          "traits": {
+            "smithy.api#documentation": "ServiceGroup creation request body parameters."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the serviceGroup."
+          }
+        },
+        "tags": {
+          "target": "com.azure.management#ServiceGroupsGetResponseTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The serviceGroup tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.management#ServiceGroupsGetResponseTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The serviceGroup tags."
+      }
+    },
+    "com.azure.management#ServiceGroupsGetRequest": {
+      "type": "structure",
+      "members": {
+        "serviceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ServiceGroup Name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.management#Management": {
       "type": "service",
       "version": "1.0",
@@ -2537,6 +3021,18 @@
         },
         {
           "target": "com.azure.management#CheckNameAvailability"
+        },
+        {
+          "target": "com.azure.management#DeleteServiceGroup"
+        },
+        {
+          "target": "com.azure.management#UpdateServiceGroup"
+        },
+        {
+          "target": "com.azure.management#CreateOrUpdateServiceGroup"
+        },
+        {
+          "target": "com.azure.management#ServiceGroupsGet"
         }
       ],
       "traits": {

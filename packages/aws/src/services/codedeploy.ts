@@ -2000,6 +2000,9 @@ export const CreateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationOutput",
 }) as any as S.Schema<CreateApplicationOutput>;
+export type DeploymentMode = "STANDARD" | "RESTART" | (string & {});
+export const DeploymentMode = /*@__PURE__*/ S.String;
+
 export interface CreateDeploymentInput {
   applicationName: string;
   deploymentGroupName?: string;
@@ -2011,6 +2014,7 @@ export interface CreateDeploymentInput {
   autoRollbackConfiguration?: AutoRollbackConfiguration;
   updateOutdatedInstancesOnly?: boolean;
   fileExistsBehavior?: FileExistsBehavior;
+  deploymentMode?: DeploymentMode;
   overrideAlarmConfiguration?: AlarmConfiguration;
 }
 export const CreateDeploymentInput = /*@__PURE__*/ S.suspend(() =>
@@ -2025,6 +2029,7 @@ export const CreateDeploymentInput = /*@__PURE__*/ S.suspend(() =>
     autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
     updateOutdatedInstancesOnly: S.optional(S.Boolean),
     fileExistsBehavior: S.optional(FileExistsBehavior),
+    deploymentMode: S.optional(DeploymentMode),
     overrideAlarmConfiguration: S.optional(AlarmConfiguration),
   }).pipe(
     T.all(
@@ -3697,6 +3702,7 @@ export type CreateApplicationError =
   | InvalidApplicationNameException
   | InvalidComputePlatformException
   | InvalidTagsToAddException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Creates an application.
@@ -3716,6 +3722,7 @@ export const createApplication: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidComputePlatformException,
     InvalidTagsToAddException,
+    ThrottlingException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3735,11 +3742,14 @@ export type CreateDeploymentError =
   | InvalidApplicationNameException
   | InvalidAutoRollbackConfigException
   | InvalidAutoScalingGroupException
+  | InvalidComputePlatformException
   | InvalidDeploymentConfigNameException
   | InvalidDeploymentGroupNameException
+  | InvalidECSServiceException
   | InvalidFileExistsBehaviorException
   | InvalidGitHubAccountTokenException
   | InvalidIgnoreApplicationStopFailuresValueException
+  | InvalidInputException
   | InvalidLoadBalancerInfoException
   | InvalidRevisionException
   | InvalidRoleException
@@ -3774,11 +3784,14 @@ export const createDeployment: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidAutoRollbackConfigException,
     InvalidAutoScalingGroupException,
+    InvalidComputePlatformException,
     InvalidDeploymentConfigNameException,
     InvalidDeploymentGroupNameException,
+    InvalidECSServiceException,
     InvalidFileExistsBehaviorException,
     InvalidGitHubAccountTokenException,
     InvalidIgnoreApplicationStopFailuresValueException,
+    InvalidInputException,
     InvalidLoadBalancerInfoException,
     InvalidRevisionException,
     InvalidRoleException,
@@ -4457,7 +4470,9 @@ export const listDeploymentGroups: API.PaginatedOperationMethod<
 })) as any;
 
 export type ListDeploymentInstancesError =
+  | ApplicationDoesNotExistException
   | DeploymentDoesNotExistException
+  | DeploymentGroupDoesNotExistException
   | DeploymentIdRequiredException
   | DeploymentNotStartedException
   | InvalidComputePlatformException
@@ -4486,7 +4501,9 @@ export const listDeploymentInstances: API.PaginatedOperationMethod<
   input: ListDeploymentInstancesInput,
   output: ListDeploymentInstancesOutput,
   errors: [
+    ApplicationDoesNotExistException,
     DeploymentDoesNotExistException,
+    DeploymentGroupDoesNotExistException,
     DeploymentIdRequiredException,
     DeploymentNotStartedException,
     InvalidComputePlatformException,
@@ -4557,7 +4574,9 @@ export const listDeployments: API.PaginatedOperationMethod<
 })) as any;
 
 export type ListDeploymentTargetsError =
+  | ApplicationDoesNotExistException
   | DeploymentDoesNotExistException
+  | DeploymentGroupDoesNotExistException
   | DeploymentIdRequiredException
   | DeploymentNotStartedException
   | InvalidDeploymentIdException
@@ -4579,7 +4598,9 @@ export const listDeploymentTargets: API.OperationMethod<
   input: ListDeploymentTargetsInput,
   output: ListDeploymentTargetsOutput,
   errors: [
+    ApplicationDoesNotExistException,
     DeploymentDoesNotExistException,
+    DeploymentGroupDoesNotExistException,
     DeploymentIdRequiredException,
     DeploymentNotStartedException,
     InvalidDeploymentIdException,

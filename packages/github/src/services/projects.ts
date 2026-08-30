@@ -137,18 +137,18 @@ export const AddFieldForOrgRequestBodyCase3DataType = /*@__PURE__*/ S.String;
 
 export interface ProjectsV2FieldIterationConfigurationIterationsItem {
   /** The title of the iteration. */
-  title?: string;
+  title: string;
   /** The start date of the iteration. */
-  start_date?: string;
+  start_date: string;
   /** The duration of the iteration in days. */
-  duration?: number;
+  duration: number;
 }
 export const ProjectsV2FieldIterationConfigurationIterationsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      title: S.optional(S.String),
-      start_date: S.optional(S.String),
-      duration: S.optional(S.Number),
+      title: S.String,
+      start_date: S.String,
+      duration: S.Number,
     }),
   ).annotate({
     identifier: "ProjectsV2FieldIterationConfigurationIterationsItem",
@@ -165,17 +165,17 @@ export const ProjectsV2FieldIterationConfigurationIterationsList =
 /** The configuration for iteration fields. */
 export interface ProjectsV2FieldIterationConfiguration {
   /** The start date of the first iteration. */
-  start_date?: string;
+  start_date: string;
   /** The default duration for iterations in days. Individual iterations can override this value. */
-  duration?: number;
+  duration: number;
   /** Zero or more iterations for the field. */
   iterations?: ProjectsV2FieldIterationConfigurationIterationsList;
 }
 export const ProjectsV2FieldIterationConfiguration = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      start_date: S.optional(S.String),
-      duration: S.optional(S.Number),
+      start_date: S.String,
+      duration: S.Number,
       iterations: S.optional(
         ProjectsV2FieldIterationConfigurationIterationsList,
       ),

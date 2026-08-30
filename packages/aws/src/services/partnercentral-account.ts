@@ -497,6 +497,15 @@ export const LocalizedContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalizedContent>;
 export type LocalizedContentList = LocalizedContent[];
 export const LocalizedContentList = /*@__PURE__*/ S.Array(LocalizedContent);
+export type CountryCode = string;
+export type SubdivisionCode = string;
+export interface Headquarters {
+  CountryCode: string;
+  SubdivisionCode: string;
+}
+export const Headquarters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CountryCode: S.String, SubdivisionCode: S.String }),
+).annotate({ identifier: "Headquarters" }) as any as S.Schema<Headquarters>;
 export interface TaskDetails {
   DisplayName: string;
   Description: string;
@@ -506,6 +515,7 @@ export interface TaskDetails {
   IndustrySegments: IndustrySegment[];
   TranslationSourceLocale: string;
   LocalizedContents?: LocalizedContent[];
+  Headquarters?: Headquarters;
 }
 export const TaskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -517,6 +527,7 @@ export const TaskDetails = /*@__PURE__*/ S.suspend(() =>
     IndustrySegments: IndustrySegmentList,
     TranslationSourceLocale: S.String,
     LocalizedContents: S.optional(LocalizedContentList),
+    Headquarters: S.optional(Headquarters),
   }),
 ).annotate({ identifier: "TaskDetails" }) as any as S.Schema<TaskDetails>;
 export type ProfileTaskStatus =
@@ -700,6 +711,7 @@ export interface PartnerProfile {
   IndustrySegments: IndustrySegment[];
   TranslationSourceLocale: string;
   LocalizedContents?: LocalizedContent[];
+  Headquarters?: Headquarters;
   ProfileId?: string;
 }
 export const PartnerProfile = /*@__PURE__*/ S.suspend(() =>
@@ -712,6 +724,7 @@ export const PartnerProfile = /*@__PURE__*/ S.suspend(() =>
     IndustrySegments: IndustrySegmentList,
     TranslationSourceLocale: S.String,
     LocalizedContents: S.optional(LocalizedContentList),
+    Headquarters: S.optional(Headquarters),
     ProfileId: S.optional(S.String),
   }),
 ).annotate({ identifier: "PartnerProfile" }) as any as S.Schema<PartnerProfile>;
@@ -1026,6 +1039,157 @@ export const GetProfileVisibilityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProfileVisibilityResponse",
 }) as any as S.Schema<GetProfileVisibilityResponse>;
+export interface GetQualificationsAssociationDetailsRequest {
+  Catalog: string;
+  Identifier: string;
+}
+export const GetQualificationsAssociationDetailsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "GetQualificationsAssociationDetailsRequest",
+  }) as any as S.Schema<GetQualificationsAssociationDetailsRequest>;
+export type QualificationsAssociationStatus =
+  | "ASSOCIATED"
+  | "NOT_ASSOCIATED"
+  | (string & {});
+export const QualificationsAssociationStatus = /*@__PURE__*/ S.String;
+
+export interface QualificationsAssociationPartner {
+  ProfileId?: string;
+  AccountId?: string;
+}
+export const QualificationsAssociationPartner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProfileId: S.optional(S.String),
+    AccountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QualificationsAssociationPartner",
+}) as any as S.Schema<QualificationsAssociationPartner>;
+export type AssociatedPartnerList = QualificationsAssociationPartner[];
+export const AssociatedPartnerList = /*@__PURE__*/ S.Array(
+  QualificationsAssociationPartner,
+);
+export interface GetQualificationsAssociationDetailsResponse {
+  Catalog: string;
+  Arn: string;
+  Id: string;
+  Status: QualificationsAssociationStatus;
+  PrimaryPartner?: QualificationsAssociationPartner;
+  AssociatedPartners?: QualificationsAssociationPartner[];
+  UpdatedAt?: Date;
+}
+export const GetQualificationsAssociationDetailsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Catalog: S.String,
+      Arn: S.String,
+      Id: S.String,
+      Status: QualificationsAssociationStatus,
+      PrimaryPartner: S.optional(QualificationsAssociationPartner),
+      AssociatedPartners: S.optional(AssociatedPartnerList),
+      UpdatedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GetQualificationsAssociationDetailsResponse",
+  }) as any as S.Schema<GetQualificationsAssociationDetailsResponse>;
+export interface GetQualificationsAssociationTaskRequest {
+  Catalog: string;
+  Identifier: string;
+}
+export const GetQualificationsAssociationTaskRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "GetQualificationsAssociationTaskRequest",
+}) as any as S.Schema<GetQualificationsAssociationTaskRequest>;
+export type QualificationsAssociationTaskId = string;
+export type QualificationsAssociationTaskStatus =
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | (string & {});
+export const QualificationsAssociationTaskStatus = /*@__PURE__*/ S.String;
+
+export interface GetQualificationsAssociationTaskResponse {
+  Catalog: string;
+  Arn: string;
+  Id: string;
+  TaskId: string;
+  Status: QualificationsAssociationTaskStatus;
+  PrimaryPartner: QualificationsAssociationPartner;
+  StartedAt: Date;
+  EndedAt?: Date;
+}
+export const GetQualificationsAssociationTaskResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Catalog: S.String,
+      Arn: S.String,
+      Id: S.String,
+      TaskId: S.String,
+      Status: QualificationsAssociationTaskStatus,
+      PrimaryPartner: QualificationsAssociationPartner,
+      StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      EndedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+).annotate({
+  identifier: "GetQualificationsAssociationTaskResponse",
+}) as any as S.Schema<GetQualificationsAssociationTaskResponse>;
+export interface GetQualificationsDisassociationTaskRequest {
+  Catalog: string;
+  Identifier: string;
+}
+export const GetQualificationsDisassociationTaskRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "GetQualificationsDisassociationTaskRequest",
+  }) as any as S.Schema<GetQualificationsDisassociationTaskRequest>;
+export type QualificationsDisassociationTaskId = string;
+export type QualificationsDisassociationTaskStatus =
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | (string & {});
+export const QualificationsDisassociationTaskStatus = /*@__PURE__*/ S.String;
+
+export interface GetQualificationsDisassociationTaskResponse {
+  Catalog: string;
+  Arn: string;
+  Id: string;
+  TaskId: string;
+  Status: QualificationsDisassociationTaskStatus;
+  AssociatedPartner: QualificationsAssociationPartner;
+  StartedAt: Date;
+  EndedAt?: Date;
+}
+export const GetQualificationsDisassociationTaskResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Catalog: S.String,
+      Arn: S.String,
+      Id: S.String,
+      TaskId: S.String,
+      Status: QualificationsDisassociationTaskStatus,
+      AssociatedPartner: QualificationsAssociationPartner,
+      StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      EndedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GetQualificationsDisassociationTaskResponse",
+  }) as any as S.Schema<GetQualificationsDisassociationTaskResponse>;
 export type VerificationType =
   | "BUSINESS_VERIFICATION"
   | "REGISTRANT_VERIFICATION"
@@ -1054,7 +1218,6 @@ export const VerificationStatus = /*@__PURE__*/ S.String;
 export type VerificationStatusReason = string;
 export type LegalName = string | redacted.Redacted<string>;
 export type RegistrationId = string | redacted.Redacted<string>;
-export type CountryCode = string;
 export type JurisdictionCode = string;
 export interface BusinessVerificationDetails {
   LegalName: string | redacted.Redacted<string>;
@@ -1529,6 +1692,90 @@ export const StartProfileUpdateTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartProfileUpdateTaskResponse",
 }) as any as S.Schema<StartProfileUpdateTaskResponse>;
+export interface StartQualificationsAssociationTaskRequest {
+  Catalog: string;
+  Identifier: string;
+  ClientToken?: string;
+  PrimaryPartner: QualificationsAssociationPartner;
+}
+export const StartQualificationsAssociationTaskRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Catalog: S.String,
+      Identifier: S.String,
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      PrimaryPartner: QualificationsAssociationPartner,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "StartQualificationsAssociationTaskRequest",
+  }) as any as S.Schema<StartQualificationsAssociationTaskRequest>;
+export interface StartQualificationsAssociationTaskResponse {
+  Catalog: string;
+  Arn: string;
+  Id: string;
+  TaskId: string;
+  Status: QualificationsAssociationTaskStatus;
+  PrimaryPartner: QualificationsAssociationPartner;
+  StartedAt: Date;
+}
+export const StartQualificationsAssociationTaskResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Catalog: S.String,
+      Arn: S.String,
+      Id: S.String,
+      TaskId: S.String,
+      Status: QualificationsAssociationTaskStatus,
+      PrimaryPartner: QualificationsAssociationPartner,
+      StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+  ).annotate({
+    identifier: "StartQualificationsAssociationTaskResponse",
+  }) as any as S.Schema<StartQualificationsAssociationTaskResponse>;
+export interface StartQualificationsDisassociationTaskRequest {
+  Catalog: string;
+  Identifier: string;
+  ClientToken?: string;
+  AssociatedPartner: QualificationsAssociationPartner;
+}
+export const StartQualificationsDisassociationTaskRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Catalog: S.String,
+      Identifier: S.String,
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      AssociatedPartner: QualificationsAssociationPartner,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "StartQualificationsDisassociationTaskRequest",
+  }) as any as S.Schema<StartQualificationsDisassociationTaskRequest>;
+export interface StartQualificationsDisassociationTaskResponse {
+  Catalog: string;
+  Arn: string;
+  Id: string;
+  TaskId: string;
+  Status: QualificationsDisassociationTaskStatus;
+  AssociatedPartner: QualificationsAssociationPartner;
+  StartedAt: Date;
+}
+export const StartQualificationsDisassociationTaskResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Catalog: S.String,
+      Arn: S.String,
+      Id: S.String,
+      TaskId: S.String,
+      Status: QualificationsDisassociationTaskStatus,
+      AssociatedPartner: QualificationsAssociationPartner,
+      StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+  ).annotate({
+    identifier: "StartQualificationsDisassociationTaskResponse",
+  }) as any as S.Schema<StartQualificationsDisassociationTaskResponse>;
 export interface RegistrantVerificationDetails {}
 export const RegistrantVerificationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -1677,6 +1924,7 @@ export type ConflictExceptionReason =
   | "INCOMPATIBLE_CONNECTION_PREFERENCES_REVISION"
   | "ACCOUNT_ALREADY_VERIFIED"
   | "VERIFICATION_ALREADY_IN_PROGRESS"
+  | "INCOMPATIBLE_QUALIFICATIONS_ASSOCIATION_TASK_STATE"
   | (string & {});
 export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 
@@ -1690,6 +1938,8 @@ export type ResourceNotFoundExceptionReason =
   | "CONNECTION_INVITATION_NOT_FOUND"
   | "CONNECTION_NOT_FOUND"
   | "VERIFICATION_NOT_FOUND"
+  | "QUALIFICATIONS_ASSOCIATION_TASK_NOT_FOUND"
+  | "QUALIFICATIONS_DISASSOCIATION_TASK_NOT_FOUND"
   | (string & {});
 export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
 
@@ -1740,6 +1990,12 @@ export type BusinessValidationCode =
   | "INVALID_ACCOUNT_STATE"
   | "INCOMPATIBLE_DOMAIN"
   | "INELIGIBLE_ACCOUNT_TIER"
+  | "MISSING_ACTIVE_SUBSIDIARY_CONNECTION"
+  | "INCOMPATIBLE_SUBSIDIARY_CONNECTION"
+  | "INCOMPATIBLE_PRIMARY_PARTNER"
+  | "QUALIFICATIONS_ASSOCIATION_LIMIT_EXCEEDED"
+  | "QUALIFICATIONS_ASSOCIATION_NOT_FOUND"
+  | "QUALIFICATIONS_ASSOCIATION_EXISTS"
   | (string & {});
 export const BusinessValidationCode = /*@__PURE__*/ S.String;
 
@@ -2231,6 +2487,96 @@ export const getProfileVisibility: API.OperationMethod<
   operationName: "GetProfileVisibility",
 }));
 
+export type GetQualificationsAssociationDetailsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns your current qualifications association status, the primary partner, and the full list of partners associated under the primary partner.
+ */
+export const getQualificationsAssociationDetails: API.OperationMethod<
+  GetQualificationsAssociationDetailsRequest,
+  GetQualificationsAssociationDetailsResponse,
+  GetQualificationsAssociationDetailsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQualificationsAssociationDetailsRequest,
+  output: GetQualificationsAssociationDetailsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetQualificationsAssociationDetails",
+}));
+
+export type GetQualificationsAssociationTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the status and details of the most recent qualifications association task for your partner account. Use this operation to poll the progress of an association task initiated by `StartQualificationsAssociationTask`.
+ */
+export const getQualificationsAssociationTask: API.OperationMethod<
+  GetQualificationsAssociationTaskRequest,
+  GetQualificationsAssociationTaskResponse,
+  GetQualificationsAssociationTaskError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQualificationsAssociationTaskRequest,
+  output: GetQualificationsAssociationTaskResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetQualificationsAssociationTask",
+}));
+
+export type GetQualificationsDisassociationTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the status and details of the most recent qualifications disassociation task for your partner account. Use this operation to poll the progress of a disassociation task initiated by `StartQualificationsDisassociationTask`.
+ */
+export const getQualificationsDisassociationTask: API.OperationMethod<
+  GetQualificationsDisassociationTaskRequest,
+  GetQualificationsDisassociationTaskResponse,
+  GetQualificationsDisassociationTaskError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQualificationsDisassociationTaskRequest,
+  output: GetQualificationsDisassociationTaskResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetQualificationsDisassociationTask",
+}));
+
 export type GetVerificationError =
   | AccessDeniedException
   | InternalServerException
@@ -2551,6 +2897,70 @@ export const startProfileUpdateTask: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "StartProfileUpdateTask",
+}));
+
+export type StartQualificationsAssociationTaskError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Initiates an asynchronous task to associate your partner qualifications with a primary account. You must be a subsidiary of the primary account with an active subsidiary connection. Use `GetQualificationsAssociationTask` to monitor task progress.
+ */
+export const startQualificationsAssociationTask: API.OperationMethod<
+  StartQualificationsAssociationTaskRequest,
+  StartQualificationsAssociationTaskResponse,
+  StartQualificationsAssociationTaskError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartQualificationsAssociationTaskRequest,
+  output: StartQualificationsAssociationTaskResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartQualificationsAssociationTask",
+}));
+
+export type StartQualificationsDisassociationTaskError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Initiates an asynchronous task to disassociate your partner qualifications from a primary account. You must currently be associated and cannot disassociate if you are the primary partner. Use `GetQualificationsDisassociationTask` to monitor task progress.
+ */
+export const startQualificationsDisassociationTask: API.OperationMethod<
+  StartQualificationsDisassociationTaskRequest,
+  StartQualificationsDisassociationTaskResponse,
+  StartQualificationsDisassociationTaskError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartQualificationsDisassociationTaskRequest,
+  output: StartQualificationsDisassociationTaskResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartQualificationsDisassociationTask",
 }));
 
 export type StartVerificationError =

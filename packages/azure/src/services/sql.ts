@@ -8929,7 +8929,8 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVu
   /*@__PURE__*/ S.String;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
-  "master" | "default";
+  | "master"
+  | "default";
 export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9066,7 +9067,8 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVulnerabil
   /*@__PURE__*/ S.String;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
-  "master" | "default";
+  | "master"
+  | "default";
 export const DatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -9130,7 +9132,8 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulnerability
   /*@__PURE__*/ S.String;
 
 export type DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
-  "master" | "default";
+  | "master"
+  | "default";
 export const DatabaseVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -19876,7 +19879,10 @@ export const LongTermRetentionBackupsChangeAccessTierByResourceGroupResponse =
 
 /** The storage account type used to store backups for this database. */
 export type CopyLongTermRetentionBackupParametersPropertiesTargetBackupStorageRedundancy =
-  "Geo" | "Local" | "Zone" | "GeoZone";
+  | "Geo"
+  | "Local"
+  | "Zone"
+  | "GeoZone";
 export const CopyLongTermRetentionBackupParametersPropertiesTargetBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -19949,7 +19955,10 @@ export const LongTermRetentionBackupsCopyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage account type used to store backups for this database. */
 export type LongTermRetentionOperationResultPropertiesTargetBackupStorageRedundancy =
-  "Geo" | "Local" | "Zone" | "GeoZone";
+  | "Geo"
+  | "Local"
+  | "Zone"
+  | "GeoZone";
 export const LongTermRetentionOperationResultPropertiesTargetBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -20409,7 +20418,9 @@ export const LongTermRetentionBackupsListByLocationRequest =
   }) as any as S.Schema<LongTermRetentionBackupsListByLocationRequest>;
 
 export type LongTermRetentionBackupsListByResourceGroupDatabaseRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionBackupsListByResourceGroupDatabaseRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -20458,7 +20469,9 @@ export const LongTermRetentionBackupsListByResourceGroupDatabaseRequest =
   }) as any as S.Schema<LongTermRetentionBackupsListByResourceGroupDatabaseRequest>;
 
 export type LongTermRetentionBackupsListByResourceGroupLocationRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionBackupsListByResourceGroupLocationRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -20501,7 +20514,9 @@ export const LongTermRetentionBackupsListByResourceGroupLocationRequest =
   }) as any as S.Schema<LongTermRetentionBackupsListByResourceGroupLocationRequest>;
 
 export type LongTermRetentionBackupsListByResourceGroupServerRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionBackupsListByResourceGroupServerRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21069,7 +21084,10 @@ export const LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupResp
 
 /** The storage account type used to store backups for this database. */
 export type UpdateLongTermRetentionBackupParametersPropertiesRequestedBackupStorageRedundancy =
-  "Geo" | "Local" | "Zone" | "GeoZone";
+  | "Geo"
+  | "Local"
+  | "Zone"
+  | "GeoZone";
 export const UpdateLongTermRetentionBackupParametersPropertiesRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
@@ -21329,13 +21347,17 @@ export const LongTermRetentionManagedInstanceBackupsGetRequest =
 
 /** The storage account type used to store backups for this database. */
 export type ManagedInstanceLongTermRetentionBackupPropertiesBackupStorageRedundancy =
-  "Geo" | "Local" | "Zone" | "GeoZone";
+  | "Geo"
+  | "Local"
+  | "Zone"
+  | "GeoZone";
 export const ManagedInstanceLongTermRetentionBackupPropertiesBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
 /** The BackupStorageAccessTier for the LTR backup */
 export type ManagedInstanceLongTermRetentionBackupPropertiesBackupStorageAccessTier =
-  "Hot" | "Archive";
+  | "Hot"
+  | "Archive";
 export const ManagedInstanceLongTermRetentionBackupPropertiesBackupStorageAccessTier =
   /*@__PURE__*/ S.String;
 
@@ -21466,7 +21488,9 @@ export const LongTermRetentionManagedInstanceBackupsGetByResourceGroupResponse =
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsGetByResourceGroupResponse>;
 
 export type LongTermRetentionManagedInstanceBackupsListByDatabaseRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionManagedInstanceBackupsListByDatabaseRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21563,7 +21587,9 @@ export const ManagedInstanceLongTermRetentionBackupListResult =
   }) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>;
 
 export type LongTermRetentionManagedInstanceBackupsListByInstanceRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionManagedInstanceBackupsListByInstanceRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21606,7 +21632,9 @@ export const LongTermRetentionManagedInstanceBackupsListByInstanceRequest =
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByInstanceRequest>;
 
 export type LongTermRetentionManagedInstanceBackupsListByLocationRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionManagedInstanceBackupsListByLocationRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21655,7 +21683,9 @@ export const LongTermRetentionManagedInstanceBackupsListByLocationRequest =
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByLocationRequest>;
 
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21705,7 +21735,9 @@ export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseR
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseRequest>;
 
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -21752,7 +21784,9 @@ export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceR
   }) as any as S.Schema<LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceRequest>;
 
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationRequestDatabaseState =
-  "All" | "Live" | "Deleted";
+  | "All"
+  | "Live"
+  | "Deleted";
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationRequestDatabaseState =
   /*@__PURE__*/ S.String;
 
@@ -26410,7 +26444,8 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRe
   /*@__PURE__*/ S.String;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
-  "master" | "default";
+  | "master"
+  | "default";
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -26502,7 +26537,8 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestVul
   /*@__PURE__*/ S.String;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
-  "master" | "default";
+  | "master"
+  | "default";
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -26568,7 +26604,8 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestVulner
   /*@__PURE__*/ S.String;
 
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
-  "master" | "default";
+  | "master"
+  | "default";
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetRequestBaselineName =
   /*@__PURE__*/ S.String;
 
@@ -28866,7 +28903,8 @@ export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateRequestPolicy
 
 /** The BackupStorageAccessTier for the LTR backup */
 export type ManagedInstanceLongTermRetentionPolicyPropertiesBackupStorageAccessTier =
-  "Hot" | "Archive";
+  | "Hot"
+  | "Archive";
 export const ManagedInstanceLongTermRetentionPolicyPropertiesBackupStorageAccessTier =
   /*@__PURE__*/ S.String;
 

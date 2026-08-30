@@ -53,7 +53,7 @@ export const HybridConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -207,7 +207,7 @@ export const HybridConnectionsCreateOrUpdateAuthorizationRuleRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
   ).annotate({
@@ -263,7 +263,7 @@ export const HybridConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -302,7 +302,7 @@ export const HybridConnectionsDeleteAuthorizationRuleRequest =
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
   ).annotate({
@@ -336,7 +336,7 @@ export const HybridConnectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -395,7 +395,7 @@ export const HybridConnectionsGetAuthorizationRuleRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
   ).annotate({
@@ -452,7 +452,7 @@ export const HybridConnectionsListAuthorizationRulesRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
   ).annotate({
@@ -528,7 +528,7 @@ export const HybridConnectionsListByNamespaceRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -609,7 +609,7 @@ export const HybridConnectionsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/listKeys",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -674,7 +674,7 @@ export const HybridConnectionsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -697,7 +697,7 @@ export const NamespacesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/checkNameAvailability",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -837,6 +837,10 @@ export type RelayNamespacePropertiesInputPublicNetworkAccess =
 export const RelayNamespacePropertiesInputPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
+/** TLS versions supported by Relay namespaces. */
+export type TlsVersion = "1.2" | "1.3";
+export const TlsVersion = /*@__PURE__*/ S.String;
+
 /** Properties of the namespace. */
 export interface RelayNamespacePropertiesInput {
   /** List of private endpoint connections. */
@@ -845,6 +849,8 @@ export interface RelayNamespacePropertiesInput {
   publicNetworkAccess?:
     | RelayNamespacePropertiesInputPublicNetworkAccess
     | (string & {});
+  /** The minimum TLS version for the namespace. Supported values are 1.2 and 1.3. The service defaults to 1.2 when the property is omitted. Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2. */
+  minimumTlsVersion?: TlsVersion | (string & {});
 }
 export const RelayNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -854,6 +860,7 @@ export const RelayNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     publicNetworkAccess: S.optional(
       RelayNamespacePropertiesInputPublicNetworkAccess,
     ),
+    minimumTlsVersion: S.optional(TlsVersion),
   }),
 ).annotate({
   identifier: "RelayNamespacePropertiesInput",
@@ -911,7 +918,7 @@ export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -989,6 +996,8 @@ export interface RelayNamespaceProperties {
   privateEndpointConnections?: RelayNamespacePropertiesPrivateEndpointConnectionsList;
   /** This determines if traffic is allowed over public network. By default it is enabled. */
   publicNetworkAccess?: RelayNamespacePropertiesPublicNetworkAccess;
+  /** The minimum TLS version for the namespace. Supported values are 1.2 and 1.3. The service defaults to 1.2 when the property is omitted. Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2. */
+  minimumTlsVersion?: TlsVersion;
 }
 export const RelayNamespaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1004,6 +1013,7 @@ export const RelayNamespaceProperties = /*@__PURE__*/ S.suspend(() =>
     publicNetworkAccess: S.optional(
       RelayNamespacePropertiesPublicNetworkAccess,
     ),
+    minimumTlsVersion: S.optional(TlsVersion),
   }),
 ).annotate({
   identifier: "RelayNamespaceProperties",
@@ -1067,7 +1077,7 @@ export const NamespacesCreateOrUpdateAuthorizationRuleRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
   ).annotate({
@@ -1180,7 +1190,7 @@ export const NamespacesCreateOrUpdateNetworkRuleSetRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
   ).annotate({
@@ -1230,7 +1240,7 @@ export const NamespacesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -1266,7 +1276,7 @@ export const NamespacesDeleteAuthorizationRuleRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -1297,7 +1307,7 @@ export const NamespacesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -1368,7 +1378,7 @@ export const NamespacesGetAuthorizationRuleRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -1421,7 +1431,7 @@ export const NamespacesGetNetworkRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -1464,7 +1474,7 @@ export const NamespacesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -1551,7 +1561,7 @@ export const NamespacesListAuthorizationRulesRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -1574,7 +1584,7 @@ export const NamespacesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -1602,7 +1612,7 @@ export const NamespacesListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -1636,7 +1646,7 @@ export const NamespacesRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -1679,7 +1689,7 @@ export const NamespacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -1735,7 +1745,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Relay/operations",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -1841,7 +1851,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
   ).annotate({
@@ -1898,7 +1908,7 @@ export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -1934,7 +1944,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -1988,7 +1998,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -2040,7 +2050,7 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources/{privateLinkResourceName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -2126,7 +2136,7 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -2231,7 +2241,7 @@ export const WCFRelaysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -2327,7 +2337,7 @@ export const WCFRelaysCreateOrUpdateAuthorizationRuleRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
   ).annotate({
@@ -2383,7 +2393,7 @@ export const WCFRelaysDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -2422,7 +2432,7 @@ export const WCFRelaysDeleteAuthorizationRuleRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -2457,7 +2467,7 @@ export const WCFRelaysGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -2516,7 +2526,7 @@ export const WCFRelaysGetAuthorizationRuleRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -2573,7 +2583,7 @@ export const WCFRelaysListAuthorizationRulesRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules",
         code: 200,
-        apiVersion: "2024-01-01",
+        apiVersion: "2026-01-01",
       }),
     ),
 ).annotate({
@@ -2598,7 +2608,7 @@ export const WCFRelaysListByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -2677,7 +2687,7 @@ export const WCFRelaysListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/listKeys",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({
@@ -2714,7 +2724,7 @@ export const WCFRelaysRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
       code: 200,
-      apiVersion: "2024-01-01",
+      apiVersion: "2026-01-01",
     }),
   ),
 ).annotate({

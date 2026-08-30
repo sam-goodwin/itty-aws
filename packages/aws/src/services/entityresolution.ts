@@ -711,6 +711,7 @@ export interface ResolutionTechniques {
   resolutionType: ResolutionType;
   ruleBasedProperties?: RuleBasedProperties;
   ruleConditionProperties?: RuleConditionProperties;
+  enableRealTimeMatching?: boolean;
   providerProperties?: ProviderProperties;
 }
 export const ResolutionTechniques = /*@__PURE__*/ S.suspend(() =>
@@ -718,6 +719,7 @@ export const ResolutionTechniques = /*@__PURE__*/ S.suspend(() =>
     resolutionType: ResolutionType,
     ruleBasedProperties: S.optional(RuleBasedProperties),
     ruleConditionProperties: S.optional(RuleConditionProperties),
+    enableRealTimeMatching: S.optional(S.Boolean),
     providerProperties: S.optional(ProviderProperties),
   }),
 ).annotate({
@@ -2611,7 +2613,7 @@ export type CreateMatchingWorkflowError =
 /**
  * Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use `UpdateMatchingWorkflow`.
  *
- * For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER`, incremental processing is not supported.
+ * For workflows where `resolutionType` is `PROVIDER`, incremental processing is not supported.
  */
 export const createMatchingWorkflow: API.OperationMethod<
   CreateMatchingWorkflowInput,
@@ -2670,11 +2672,12 @@ export type DeleteIdMappingWorkflowError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Deletes the `IdMappingWorkflow` with a given name. This operation will succeed even if a workflow with the given name does not exist.
+ * Deletes the `IdMappingWorkflow` with a given name. This operation returns a `ResourceNotFoundException` if a workflow with the given name does not exist.
  */
 export const deleteIdMappingWorkflow: API.OperationMethod<
   DeleteIdMappingWorkflowInput,
@@ -2688,6 +2691,7 @@ export const deleteIdMappingWorkflow: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
@@ -2699,12 +2703,13 @@ export const deleteIdMappingWorkflow: API.OperationMethod<
 export type DeleteIdNamespaceError =
   | AccessDeniedException
   | InternalServerException
+  | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | ConflictException
   | CommonErrors;
 /**
- * Deletes the `IdNamespace` with a given name.
+ * Deletes the `IdNamespace` with a given name. This operation returns a `ResourceNotFoundException` if an ID namespace with the given name does not exist.
  */
 export const deleteIdNamespace: API.OperationMethod<
   DeleteIdNamespaceInput,
@@ -2717,6 +2722,7 @@ export const deleteIdNamespace: API.OperationMethod<
   errors: [
     AccessDeniedException,
     InternalServerException,
+    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
     ConflictException,
@@ -2730,11 +2736,12 @@ export type DeleteMatchingWorkflowError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Deletes the `MatchingWorkflow` with a given name. This operation will succeed even if a workflow with the given name does not exist.
+ * Deletes the `MatchingWorkflow` with a given name. This operation returns a `ResourceNotFoundException` if a workflow with the given name does not exist.
  */
 export const deleteMatchingWorkflow: API.OperationMethod<
   DeleteMatchingWorkflowInput,
@@ -2748,6 +2755,7 @@ export const deleteMatchingWorkflow: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
@@ -2792,11 +2800,12 @@ export type DeleteSchemaMappingError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Deletes the `SchemaMapping` with a given name. This operation will succeed even if a schema with the given name does not exist. This operation will fail if there is a `MatchingWorkflow` object that references the `SchemaMapping` in the workflow's `InputSourceConfig`.
+ * Deletes the `SchemaMapping` with a given name. This operation returns a `ResourceNotFoundException` if a schema with the given name does not exist. This operation will fail if there is a `MatchingWorkflow` object that references the `SchemaMapping` in the workflow's `InputSourceConfig`.
  */
 export const deleteSchemaMapping: API.OperationMethod<
   DeleteSchemaMappingInput,
@@ -2810,6 +2819,7 @@ export const deleteSchemaMapping: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
@@ -3616,7 +3626,7 @@ export type UpdateMatchingWorkflowError =
 /**
  * Updates an existing matching workflow. The workflow must already exist for this operation to succeed.
  *
- * For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER`, incremental processing is not supported.
+ * For workflows where `resolutionType` is `PROVIDER`, incremental processing is not supported.
  */
 export const updateMatchingWorkflow: API.OperationMethod<
   UpdateMatchingWorkflowInput,

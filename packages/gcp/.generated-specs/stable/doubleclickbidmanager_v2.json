@@ -7,146 +7,170 @@
     "baseUrl": "https://doubleclickbidmanager.googleapis.com/v2/"
   },
   "shapes": {
-    "com.gcp.doubleclickbidmanager_v2#Options": {
+    "com.gcp.doubleclickbidmanager_v2#RunQueryRequest": {
       "type": "structure",
       "members": {
-        "includeOnlyTargetedUserLists": {
-          "target": "smithy.api#Boolean",
+        "dataRange": {
+          "target": "com.gcp.doubleclickbidmanager_v2#DataRange",
           "traits": {
-            "smithy.api#documentation": "Whether to include data for audience lists specifically targeted by filtered line items or insertion orders. Requires the use of `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` filters."
+            "smithy.api#documentation": "The date range used by the query to generate the report. If unspecified, the query's original data_range is used."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Report parameter options."
+        "smithy.api#documentation": "Details specifying how to run a query."
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#QuerySchedule": {
+    "com.gcp.doubleclickbidmanager_v2#Parameters": {
       "type": "structure",
       "members": {
-        "endDate": {
-          "target": "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date",
+        "filters": {
+          "target": "com.gcp.doubleclickbidmanager_v2#FilterPairList",
           "traits": {
-            "smithy.api#documentation": "The date on which to end the scheduled runs. This field is required if frequency is not set to `ONE_TIME`. Otherwise, it will be ignored."
+            "smithy.api#documentation": "Filters to limit the scope of reported data."
           }
         },
-        "startDate": {
-          "target": "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date",
+        "options": {
+          "target": "com.gcp.doubleclickbidmanager_v2#Options",
           "traits": {
-            "smithy.api#documentation": "The date on which to begin the scheduled runs. This field is required if frequency is not set to `ONE_TIME`. Otherwise, it will be ignored."
+            "smithy.api#documentation": "Additional report parameter options."
           }
         },
-        "frequency": {
-          "target": "com.gcp.doubleclickbidmanager_v2#QueryScheduleFrequencyEnum",
+        "type": {
+          "target": "com.gcp.doubleclickbidmanager_v2#ParametersTypeEnum",
           "traits": {
-            "smithy.api#documentation": "How frequently to run the query. If set to `ONE_TIME`, the query will only be run when queries.run is called."
+            "smithy.api#documentation": "The type of the report. The type of the report determines the dimesions, filters, and metrics that can be used."
           }
         },
-        "nextRunTimezoneCode": {
-          "target": "smithy.api#String",
+        "groupBys": {
+          "target": "com.gcp.doubleclickbidmanager_v2#StringList",
           "traits": {
-            "smithy.api#documentation": "The canonical code for the timezone the query schedule is based on. Scheduled runs are usually conducted in the morning of a given day. Defaults to `America/New_York`."
+            "smithy.api#documentation": "Dimensions by which to segment and group the data. Defined by [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) values."
+          }
+        },
+        "metrics": {
+          "target": "com.gcp.doubleclickbidmanager_v2#StringList",
+          "traits": {
+            "smithy.api#documentation": "Metrics to define the data populating the report. Defined by [Metric](/bid-manager/reference/rest/v2/filters-metrics#metrics) values."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Settings on when and how frequently to run a query."
+        "smithy.api#documentation": "Parameters of a generated report."
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#QueryScheduleFrequencyEnum": {
+    "com.gcp.doubleclickbidmanager_v2#FilterPairList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.doubleclickbidmanager_v2#FilterPair"
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#ParametersTypeEnum": {
       "type": "enum",
       "members": {
-        "FREQUENCY_UNSPECIFIED": {
+        "REPORT_TYPE_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "FREQUENCY_UNSPECIFIED"
+            "smithy.api#enumValue": "REPORT_TYPE_UNSPECIFIED"
           }
         },
-        "ONE_TIME": {
+        "STANDARD": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "ONE_TIME"
+            "smithy.api#enumValue": "STANDARD"
           }
         },
-        "DAILY": {
+        "INVENTORY_AVAILABILITY": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "DAILY"
+            "smithy.api#enumValue": "INVENTORY_AVAILABILITY"
           }
         },
-        "WEEKLY": {
+        "AUDIENCE_COMPOSITION": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "WEEKLY"
+            "smithy.api#enumValue": "AUDIENCE_COMPOSITION"
           }
         },
-        "SEMI_MONTHLY": {
+        "FLOODLIGHT": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "SEMI_MONTHLY"
+            "smithy.api#enumValue": "FLOODLIGHT"
           }
         },
-        "MONTHLY": {
+        "YOUTUBE": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "MONTHLY"
+            "smithy.api#enumValue": "YOUTUBE"
           }
         },
-        "QUARTERLY": {
+        "GRP": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "QUARTERLY"
+            "smithy.api#enumValue": "GRP"
           }
         },
-        "YEARLY": {
+        "YOUTUBE_PROGRAMMATIC_GUARANTEED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "YEARLY"
+            "smithy.api#enumValue": "YOUTUBE_PROGRAMMATIC_GUARANTEED"
+          }
+        },
+        "REACH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REACH"
+          }
+        },
+        "UNIQUE_REACH_AUDIENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNIQUE_REACH_AUDIENCE"
+          }
+        },
+        "FULL_PATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FULL_PATH"
+          }
+        },
+        "PATH_ATTRIBUTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATH_ATTRIBUTION"
           }
         }
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date": {
+    "com.gcp.doubleclickbidmanager_v2#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#FilterPair": {
       "type": "structure",
       "members": {
-        "year": {
-          "target": "smithy.api#Integer",
+        "type": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."
+            "smithy.api#documentation": "The type of value to filter by. Defined by a [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) value."
           }
         },
-        "day": {
-          "target": "smithy.api#Integer",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."
-          }
-        },
-        "month": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
+            "smithy.api#documentation": "The identifying value to filter by, such as a relevant resource ID."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp"
+        "smithy.api#documentation": "Represents a single filter rule."
       }
     },
     "com.gcp.doubleclickbidmanager_v2#ReportMetadata": {
       "type": "structure",
       "members": {
-        "reportDataEndDate": {
-          "target": "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date",
-          "traits": {
-            "smithy.api#documentation": "The end date of the report data date range."
-          }
-        },
-        "reportDataStartDate": {
-          "target": "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date",
-          "traits": {
-            "smithy.api#documentation": "The start date of the report data date range."
-          }
-        },
         "googleCloudStoragePath": {
           "target": "smithy.api#String",
           "traits": {
@@ -158,6 +182,18 @@
           "traits": {
             "smithy.api#documentation": "The status of the report."
           }
+        },
+        "reportDataEndDate": {
+          "target": "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date",
+          "traits": {
+            "smithy.api#documentation": "The end date of the report data date range."
+          }
+        },
+        "reportDataStartDate": {
+          "target": "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date",
+          "traits": {
+            "smithy.api#documentation": "The start date of the report data date range."
+          }
         }
       },
       "traits": {
@@ -167,10 +203,10 @@
     "com.gcp.doubleclickbidmanager_v2#ReportStatus": {
       "type": "structure",
       "members": {
-        "finishTime": {
-          "target": "smithy.api#String",
+        "format": {
+          "target": "com.gcp.doubleclickbidmanager_v2#ReportStatusFormatEnum",
           "traits": {
-            "smithy.api#documentation": "Output only. The timestamp of when report generation finished successfully or in failure. This field will not be set unless state is `DONE` or `FAILED`."
+            "smithy.api#documentation": "The format of the generated report file."
           }
         },
         "state": {
@@ -179,15 +215,38 @@
             "smithy.api#documentation": "Output only. The state of the report generation."
           }
         },
-        "format": {
-          "target": "com.gcp.doubleclickbidmanager_v2#ReportStatusFormatEnum",
+        "finishTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The format of the generated report file."
+            "smithy.api#documentation": "Output only. The timestamp of when report generation finished successfully or in failure. This field will not be set unless state is `DONE` or `FAILED`."
           }
         }
       },
       "traits": {
         "smithy.api#documentation": "The status of a report."
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#ReportStatusFormatEnum": {
+      "type": "enum",
+      "members": {
+        "FORMAT_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FORMAT_UNSPECIFIED"
+          }
+        },
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CSV"
+          }
+        },
+        "XLSX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "XLSX"
+          }
+        }
       }
     },
     "com.gcp.doubleclickbidmanager_v2#ReportStatusStateEnum": {
@@ -225,27 +284,67 @@
         }
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#ReportStatusFormatEnum": {
-      "type": "enum",
+    "com.gcp.doubleclickbidmanager_v2#Options": {
+      "type": "structure",
       "members": {
-        "FORMAT_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
+        "includeOnlyTargetedUserLists": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#enumValue": "FORMAT_UNSPECIFIED"
-          }
-        },
-        "CSV": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CSV"
-          }
-        },
-        "XLSX": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "XLSX"
+            "smithy.api#documentation": "Whether to include data for audience lists specifically targeted by filtered line items or insertion orders. Requires the use of `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` filters."
           }
         }
+      },
+      "traits": {
+        "smithy.api#documentation": "Report parameter options."
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date": {
+      "type": "structure",
+      "members": {
+        "month": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
+          }
+        },
+        "year": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."
+          }
+        },
+        "day": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp"
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#ListReportsResponse": {
+      "type": "structure",
+      "members": {
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `queries.reports.list` method to retrieve the next page of results."
+          }
+        },
+        "reports": {
+          "target": "com.gcp.doubleclickbidmanager_v2#ReportList",
+          "traits": {
+            "smithy.api#documentation": "The list of reports. This field will be absent if empty."
+          }
+        }
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#ReportList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.doubleclickbidmanager_v2#Report"
       }
     },
     "com.gcp.doubleclickbidmanager_v2#QueryMetadata": {
@@ -257,10 +356,10 @@
             "smithy.api#documentation": "The display name of the query. This value will be used in the file name of reports generated by the query."
           }
         },
-        "dataRange": {
-          "target": "com.gcp.doubleclickbidmanager_v2#DataRange",
+        "format": {
+          "target": "com.gcp.doubleclickbidmanager_v2#QueryMetadataFormatEnum",
           "traits": {
-            "smithy.api#documentation": "The date range the report generated by the query will report on. This date range will be defined by the time zone as used by the advertiser."
+            "smithy.api#documentation": "The format of the report generated by the query."
           }
         },
         "sendNotification": {
@@ -269,10 +368,10 @@
             "smithy.api#documentation": "Whether an email notification is sent to the query creator when a report generated by the query is ready. This value is `false` by default."
           }
         },
-        "format": {
-          "target": "com.gcp.doubleclickbidmanager_v2#QueryMetadataFormatEnum",
+        "dataRange": {
+          "target": "com.gcp.doubleclickbidmanager_v2#DataRange",
           "traits": {
-            "smithy.api#documentation": "The format of the report generated by the query."
+            "smithy.api#documentation": "The date range the report generated by the query will report on. This date range will be defined by the time zone as used by the advertiser."
           }
         },
         "shareEmailAddress": {
@@ -309,33 +408,27 @@
         }
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#StringList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#ListReportsResponse": {
+    "com.gcp.doubleclickbidmanager_v2#ListQueriesResponse": {
       "type": "structure",
       "members": {
-        "reports": {
-          "target": "com.gcp.doubleclickbidmanager_v2#ReportList",
-          "traits": {
-            "smithy.api#documentation": "The list of reports. This field will be absent if empty."
-          }
-        },
         "nextPageToken": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `queries.reports.list` method to retrieve the next page of results."
+            "smithy.api#documentation": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `queries.list` method to retrieve the next page of results."
+          }
+        },
+        "queries": {
+          "target": "com.gcp.doubleclickbidmanager_v2#QueryList",
+          "traits": {
+            "smithy.api#documentation": "The list of queries. This field will be absent if empty."
           }
         }
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#ReportList": {
+    "com.gcp.doubleclickbidmanager_v2#QueryList": {
       "type": "list",
       "member": {
-        "target": "com.gcp.doubleclickbidmanager_v2#Report"
+        "target": "com.gcp.doubleclickbidmanager_v2#Query"
       }
     },
     "com.gcp.doubleclickbidmanager_v2#DataRange": {
@@ -483,153 +576,6 @@
         }
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#Parameters": {
-      "type": "structure",
-      "members": {
-        "metrics": {
-          "target": "com.gcp.doubleclickbidmanager_v2#StringList",
-          "traits": {
-            "smithy.api#documentation": "Metrics to define the data populating the report. Defined by [Metric](/bid-manager/reference/rest/v2/filters-metrics#metrics) values."
-          }
-        },
-        "groupBys": {
-          "target": "com.gcp.doubleclickbidmanager_v2#StringList",
-          "traits": {
-            "smithy.api#documentation": "Dimensions by which to segment and group the data. Defined by [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) values."
-          }
-        },
-        "filters": {
-          "target": "com.gcp.doubleclickbidmanager_v2#FilterPairList",
-          "traits": {
-            "smithy.api#documentation": "Filters to limit the scope of reported data."
-          }
-        },
-        "options": {
-          "target": "com.gcp.doubleclickbidmanager_v2#Options",
-          "traits": {
-            "smithy.api#documentation": "Additional report parameter options."
-          }
-        },
-        "type": {
-          "target": "com.gcp.doubleclickbidmanager_v2#ParametersTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "The type of the report. The type of the report determines the dimesions, filters, and metrics that can be used."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parameters of a generated report."
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#FilterPairList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.doubleclickbidmanager_v2#FilterPair"
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#ParametersTypeEnum": {
-      "type": "enum",
-      "members": {
-        "REPORT_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "REPORT_TYPE_UNSPECIFIED"
-          }
-        },
-        "STANDARD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STANDARD"
-          }
-        },
-        "INVENTORY_AVAILABILITY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "INVENTORY_AVAILABILITY"
-          }
-        },
-        "AUDIENCE_COMPOSITION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUDIENCE_COMPOSITION"
-          }
-        },
-        "FLOODLIGHT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FLOODLIGHT"
-          }
-        },
-        "YOUTUBE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "YOUTUBE"
-          }
-        },
-        "GRP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "GRP"
-          }
-        },
-        "YOUTUBE_PROGRAMMATIC_GUARANTEED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "YOUTUBE_PROGRAMMATIC_GUARANTEED"
-          }
-        },
-        "REACH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "REACH"
-          }
-        },
-        "UNIQUE_REACH_AUDIENCE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "UNIQUE_REACH_AUDIENCE"
-          }
-        },
-        "FULL_PATH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FULL_PATH"
-          }
-        },
-        "PATH_ATTRIBUTION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PATH_ATTRIBUTION"
-          }
-        }
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#Report": {
-      "type": "structure",
-      "members": {
-        "metadata": {
-          "target": "com.gcp.doubleclickbidmanager_v2#ReportMetadata",
-          "traits": {
-            "smithy.api#documentation": "The metadata of the report."
-          }
-        },
-        "params": {
-          "target": "com.gcp.doubleclickbidmanager_v2#Parameters",
-          "traits": {
-            "smithy.api#documentation": "The parameters of the report."
-          }
-        },
-        "key": {
-          "target": "com.gcp.doubleclickbidmanager_v2#ReportKey",
-          "traits": {
-            "smithy.api#documentation": "The key information identifying the report."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A single report generated by its parent report."
-      }
-    },
     "com.gcp.doubleclickbidmanager_v2#ReportKey": {
       "type": "structure",
       "members": {
@@ -650,68 +596,45 @@
         "smithy.api#documentation": "Identifying information of a report."
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#ListQueriesResponse": {
+    "com.gcp.doubleclickbidmanager_v2#Report": {
       "type": "structure",
       "members": {
-        "queries": {
-          "target": "com.gcp.doubleclickbidmanager_v2#QueryList",
+        "params": {
+          "target": "com.gcp.doubleclickbidmanager_v2#Parameters",
           "traits": {
-            "smithy.api#documentation": "The list of queries. This field will be absent if empty."
+            "smithy.api#documentation": "The parameters of the report."
           }
         },
-        "nextPageToken": {
-          "target": "smithy.api#String",
+        "key": {
+          "target": "com.gcp.doubleclickbidmanager_v2#ReportKey",
           "traits": {
-            "smithy.api#documentation": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `queries.list` method to retrieve the next page of results."
-          }
-        }
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#QueryList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.doubleclickbidmanager_v2#Query"
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#FilterPair": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of value to filter by. Defined by a [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) value."
+            "smithy.api#documentation": "The key information identifying the report."
           }
         },
-        "value": {
-          "target": "smithy.api#String",
+        "metadata": {
+          "target": "com.gcp.doubleclickbidmanager_v2#ReportMetadata",
           "traits": {
-            "smithy.api#documentation": "The identifying value to filter by, such as a relevant resource ID."
+            "smithy.api#documentation": "The metadata of the report."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Represents a single filter rule."
+        "smithy.api#documentation": "A single report generated by its parent report."
       }
     },
     "com.gcp.doubleclickbidmanager_v2#Query": {
       "type": "structure",
       "members": {
-        "metadata": {
-          "target": "com.gcp.doubleclickbidmanager_v2#QueryMetadata",
-          "traits": {
-            "smithy.api#documentation": "The metadata of the query."
-          }
-        },
         "params": {
           "target": "com.gcp.doubleclickbidmanager_v2#Parameters",
           "traits": {
             "smithy.api#documentation": "The parameters of the report generated by the query."
           }
         },
-        "schedule": {
-          "target": "com.gcp.doubleclickbidmanager_v2#QuerySchedule",
+        "metadata": {
+          "target": "com.gcp.doubleclickbidmanager_v2#QueryMetadata",
           "traits": {
-            "smithy.api#documentation": "When and how often the query is scheduled to run. If the frequency field is set to `ONE_TIME`, the query will only run when queries.run is called."
+            "smithy.api#documentation": "The metadata of the query."
           }
         },
         "queryId": {
@@ -719,35 +642,111 @@
           "traits": {
             "smithy.api#documentation": "Output only. The unique ID of the query."
           }
+        },
+        "schedule": {
+          "target": "com.gcp.doubleclickbidmanager_v2#QuerySchedule",
+          "traits": {
+            "smithy.api#documentation": "When and how often the query is scheduled to run. If the frequency field is set to `ONE_TIME`, the query will only run when queries.run is called."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "A single query used to generate a report."
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#RunQueryRequest": {
+    "com.gcp.doubleclickbidmanager_v2#QuerySchedule": {
       "type": "structure",
       "members": {
-        "dataRange": {
-          "target": "com.gcp.doubleclickbidmanager_v2#DataRange",
+        "nextRunTimezoneCode": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The date range used by the query to generate the report. If unspecified, the query's original data_range is used."
+            "smithy.api#documentation": "The canonical code for the timezone the query schedule is based on. Scheduled runs are usually conducted in the morning of a given day. Defaults to `America/New_York`."
+          }
+        },
+        "frequency": {
+          "target": "com.gcp.doubleclickbidmanager_v2#QueryScheduleFrequencyEnum",
+          "traits": {
+            "smithy.api#documentation": "How frequently to run the query. If set to `ONE_TIME`, the query will only be run when queries.run is called."
+          }
+        },
+        "startDate": {
+          "target": "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date",
+          "traits": {
+            "smithy.api#documentation": "The date on which to begin the scheduled runs. This field is required if frequency is not set to `ONE_TIME`. Otherwise, it will be ignored."
+          }
+        },
+        "endDate": {
+          "target": "com.gcp.doubleclickbidmanager_v2#Doubleclickbidmanager_Date",
+          "traits": {
+            "smithy.api#documentation": "The date on which to end the scheduled runs. This field is required if frequency is not set to `ONE_TIME`. Otherwise, it will be ignored."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Details specifying how to run a query."
+        "smithy.api#documentation": "Settings on when and how frequently to run a query."
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#DeleteQueriesRequest": {
+    "com.gcp.doubleclickbidmanager_v2#QueryScheduleFrequencyEnum": {
+      "type": "enum",
+      "members": {
+        "FREQUENCY_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FREQUENCY_UNSPECIFIED"
+          }
+        },
+        "ONE_TIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ONE_TIME"
+          }
+        },
+        "DAILY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DAILY"
+          }
+        },
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEEKLY"
+          }
+        },
+        "SEMI_MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEMI_MONTHLY"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MONTHLY"
+          }
+        },
+        "QUARTERLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QUARTERLY"
+          }
+        },
+        "YEARLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "YEARLY"
+          }
+        }
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#CreateQueriesRequest": {
       "type": "structure",
       "members": {
-        "queryId": {
-          "target": "smithy.api#String",
+        "body": {
+          "target": "com.gcp.doubleclickbidmanager_v2#Query",
           "traits": {
-            "smithy.api#documentation": "Required. The ID of the query to delete.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
           }
         }
       }
@@ -804,99 +803,6 @@
         ]
       }
     },
-    "com.gcp.doubleclickbidmanager_v2#DeleteQueries": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.doubleclickbidmanager_v2#DeleteQueriesRequest"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.doubleclickbidmanager_v2#NotFound"
-        },
-        {
-          "target": "com.gcp.doubleclickbidmanager_v2#Forbidden"
-        },
-        {
-          "target": "com.gcp.doubleclickbidmanager_v2#BadRequest"
-        },
-        {
-          "target": "com.gcp.doubleclickbidmanager_v2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "queries/{queryId}"
-        },
-        "smithy.api#documentation": "Deletes an existing query as well as its generated reports."
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#ListQueriesRequest": {
-      "type": "structure",
-      "members": {
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified.",
-            "smithy.api#httpQuery": "pageSize"
-          }
-        },
-        "orderBy": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Field to sort the list by. Accepts the following values: * `queryId` (default) * `metadata.title` The default sorting order is ascending. To specify descending order for a field, add the suffix `desc` to the field name. For example, `queryId desc`.",
-            "smithy.api#httpQuery": "orderBy"
-          }
-        },
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A token identifying which page of results the server should return. Typically, this is the value of nextPageToken, returned from the previous call to the `queries.list` method. If unspecified, the first page of results is returned.",
-            "smithy.api#httpQuery": "pageToken"
-          }
-        }
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#ListQueries": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.doubleclickbidmanager_v2#ListQueriesRequest"
-      },
-      "output": {
-        "target": "com.gcp.doubleclickbidmanager_v2#ListQueriesResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.doubleclickbidmanager_v2#NotFound"
-        },
-        {
-          "target": "com.gcp.doubleclickbidmanager_v2#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "queries"
-        },
-        "smithy.api#documentation": "Lists queries created by the current user.",
-        "smithy.api#paginated": {
-          "inputToken": "pageToken",
-          "outputToken": "nextPageToken"
-        }
-      }
-    },
-    "com.gcp.doubleclickbidmanager_v2#CreateQueriesRequest": {
-      "type": "structure",
-      "members": {
-        "body": {
-          "target": "com.gcp.doubleclickbidmanager_v2#Query",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
     "com.gcp.doubleclickbidmanager_v2#CreateQueries": {
       "type": "operation",
       "input": {
@@ -925,6 +831,46 @@
           "uri": "queries"
         },
         "smithy.api#documentation": "Creates a new query."
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#DeleteQueriesRequest": {
+      "type": "structure",
+      "members": {
+        "queryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The ID of the query to delete.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#DeleteQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.doubleclickbidmanager_v2#DeleteQueriesRequest"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.doubleclickbidmanager_v2#NotFound"
+        },
+        {
+          "target": "com.gcp.doubleclickbidmanager_v2#Forbidden"
+        },
+        {
+          "target": "com.gcp.doubleclickbidmanager_v2#BadRequest"
+        },
+        {
+          "target": "com.gcp.doubleclickbidmanager_v2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "queries/{queryId}"
+        },
+        "smithy.api#documentation": "Deletes an existing query as well as its generated reports."
       }
     },
     "com.gcp.doubleclickbidmanager_v2#GetQueriesRequest": {
@@ -964,22 +910,76 @@
         "smithy.api#documentation": "Retrieves a query."
       }
     },
+    "com.gcp.doubleclickbidmanager_v2#ListQueriesRequest": {
+      "type": "structure",
+      "members": {
+        "pageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified.",
+            "smithy.api#httpQuery": "pageSize"
+          }
+        },
+        "pageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A token identifying which page of results the server should return. Typically, this is the value of nextPageToken, returned from the previous call to the `queries.list` method. If unspecified, the first page of results is returned.",
+            "smithy.api#httpQuery": "pageToken"
+          }
+        },
+        "orderBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Field to sort the list by. Accepts the following values: * `queryId` (default) * `metadata.title` The default sorting order is ascending. To specify descending order for a field, add the suffix `desc` to the field name. For example, `queryId desc`.",
+            "smithy.api#httpQuery": "orderBy"
+          }
+        }
+      }
+    },
+    "com.gcp.doubleclickbidmanager_v2#ListQueries": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.doubleclickbidmanager_v2#ListQueriesRequest"
+      },
+      "output": {
+        "target": "com.gcp.doubleclickbidmanager_v2#ListQueriesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.doubleclickbidmanager_v2#NotFound"
+        },
+        {
+          "target": "com.gcp.doubleclickbidmanager_v2#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "queries"
+        },
+        "smithy.api#documentation": "Lists queries created by the current user.",
+        "smithy.api#paginated": {
+          "inputToken": "pageToken",
+          "outputToken": "nextPageToken"
+        }
+      }
+    },
     "com.gcp.doubleclickbidmanager_v2#RunQueriesRequest": {
       "type": "structure",
       "members": {
+        "synchronous": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the query should be run synchronously. When `true`, the request won't return until the resulting report has finished running. This parameter is `false` by default. Setting this parameter to `true` is **not recommended**.",
+            "smithy.api#httpQuery": "synchronous"
+          }
+        },
         "queryId": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Required. The ID of the query to run.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "synchronous": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the query should be run synchronously. When `true`, the request won't return until the resulting report has finished running. This parameter is `false` by default. Setting this parameter to `true` is **not recommended**.",
-            "smithy.api#httpQuery": "synchronous"
           }
         },
         "body": {
@@ -1024,6 +1024,13 @@
     "com.gcp.doubleclickbidmanager_v2#ListQueriesReportsRequest": {
       "type": "structure",
       "members": {
+        "pageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified.",
+            "smithy.api#httpQuery": "pageSize"
+          }
+        },
         "queryId": {
           "target": "smithy.api#String",
           "traits": {
@@ -1044,13 +1051,6 @@
           "traits": {
             "smithy.api#documentation": "Field to sort the list by. Accepts the following values: * `key.reportId` (default) The default sorting order is ascending. To specify descending order for a field, add the suffix `desc` to the field name. For example, `key.reportId desc`.",
             "smithy.api#httpQuery": "orderBy"
-          }
-        },
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified.",
-            "smithy.api#httpQuery": "pageSize"
           }
         }
       }

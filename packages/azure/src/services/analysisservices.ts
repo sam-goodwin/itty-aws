@@ -1201,7 +1201,8 @@ export const ServersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
-  "All" | "ReadOnly";
+  | "All"
+  | "ReadOnly";
 export const AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
   /*@__PURE__*/ S.String;
 

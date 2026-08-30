@@ -917,15 +917,15 @@ export const BatchGetJobEntityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetJobEntityRequest>;
 export type S3BucketName = string;
 export type S3Prefix = string;
-export interface JobAttachmentSettings {
+export interface JobDetailsJobAttachmentSettings {
   s3BucketName: string;
   rootPrefix: string;
 }
-export const JobAttachmentSettings = /*@__PURE__*/ S.suspend(() =>
+export const JobDetailsJobAttachmentSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3BucketName: S.String, rootPrefix: S.String }),
 ).annotate({
-  identifier: "JobAttachmentSettings",
-}) as any as S.Schema<JobAttachmentSettings>;
+  identifier: "JobDetailsJobAttachmentSettings",
+}) as any as S.Schema<JobDetailsJobAttachmentSettings>;
 export interface PosixUser {
   user: string;
   group: string;
@@ -977,7 +977,7 @@ export type PathMappingRules = PathMappingRule[];
 export const PathMappingRules = /*@__PURE__*/ S.Array(PathMappingRule);
 export interface JobDetailsEntity {
   jobId: string;
-  jobAttachmentSettings?: JobAttachmentSettings;
+  jobAttachmentSettings?: JobDetailsJobAttachmentSettings;
   jobRunAsUser?: JobRunAsUser;
   logGroupName: string;
   queueRoleArn?: string;
@@ -988,7 +988,7 @@ export interface JobDetailsEntity {
 export const JobDetailsEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String,
-    jobAttachmentSettings: S.optional(JobAttachmentSettings),
+    jobAttachmentSettings: S.optional(JobDetailsJobAttachmentSettings),
     jobRunAsUser: S.optional(JobRunAsUser),
     logGroupName: S.String,
     queueRoleArn: S.optional(S.String),
@@ -3190,6 +3190,15 @@ export type DefaultQueueBudgetAction =
   | (string & {});
 export const DefaultQueueBudgetAction = /*@__PURE__*/ S.String;
 
+export interface JobAttachmentSettings {
+  s3BucketName: string;
+  rootPrefix: string;
+}
+export const JobAttachmentSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ s3BucketName: S.String, rootPrefix: S.String }),
+).annotate({
+  identifier: "JobAttachmentSettings",
+}) as any as S.Schema<JobAttachmentSettings>;
 export type RequiredFileSystemLocationNames = string[];
 export const RequiredFileSystemLocationNames = /*@__PURE__*/ S.Array(S.String);
 export type AllowedStorageProfileIds = string[];
@@ -5048,7 +5057,11 @@ export const GetSessionsStatisticsAggregationRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetSessionsStatisticsAggregationRequest",
 }) as any as S.Schema<GetSessionsStatisticsAggregationRequest>;
 export type UserId = string;
-export type UsageType = "COMPUTE" | "LICENSE" | (string & {});
+export type UsageType =
+  | "COMPUTE"
+  | "LICENSE"
+  | "PERSISTENT_VOLUME"
+  | (string & {});
 export const UsageType = /*@__PURE__*/ S.String;
 
 export type LicenseProduct = string;

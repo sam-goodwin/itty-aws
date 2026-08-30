@@ -208,6 +208,11 @@ export class MaxNumberOfConformancePacksExceededException
     "MaxNumberOfConformancePacksExceededException",
     { message: S.optional(S.String).pipe(T.ErrorMessage()) },
   ) {}
+export class MaxNumberOfConnectorsExceededException
+  extends /*@__PURE__*/ S.TaggedError<MaxNumberOfConnectorsExceededException>()(
+    "MaxNumberOfConnectorsExceededException",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+  ) {}
 export class MaxNumberOfDeliveryChannelsExceededException
   extends /*@__PURE__*/ S.TaggedError<MaxNumberOfDeliveryChannelsExceededException>()(
     "MaxNumberOfDeliveryChannelsExceededException",
@@ -1011,6 +1016,29 @@ export type RecordingScope = "INTERNAL" | "PAID" | (string & {});
 export const RecordingScope = /*@__PURE__*/ S.String;
 
 export type ServicePrincipal = string;
+export type ScopeType = string;
+export type ScopeValue = string;
+export type ScopeValues = string[];
+export const ScopeValues = /*@__PURE__*/ S.Array(S.String);
+export type ThirdPartyCloudRegion = string;
+export type IncludedRegions = string[];
+export const IncludedRegions = /*@__PURE__*/ S.Array(S.String);
+export interface ScopeConfiguration {
+  scopeType: string;
+  scopeValues?: string[];
+  allRegions: boolean;
+  includedRegions?: string[];
+}
+export const ScopeConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scopeType: S.String,
+    scopeValues: S.optional(ScopeValues),
+    allRegions: S.Boolean,
+    includedRegions: S.optional(IncludedRegions),
+  }),
+).annotate({
+  identifier: "ScopeConfiguration",
+}) as any as S.Schema<ScopeConfiguration>;
 export interface ConfigurationRecorder {
   arn?: string;
   name?: string;
@@ -1019,6 +1047,8 @@ export interface ConfigurationRecorder {
   recordingMode?: RecordingMode;
   recordingScope?: RecordingScope;
   servicePrincipal?: string;
+  connectorArn?: string;
+  scopeConfiguration?: ScopeConfiguration;
 }
 export const ConfigurationRecorder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1029,6 +1059,8 @@ export const ConfigurationRecorder = /*@__PURE__*/ S.suspend(() =>
     recordingMode: S.optional(RecordingMode),
     recordingScope: S.optional(RecordingScope),
     servicePrincipal: S.optional(S.String),
+    connectorArn: S.optional(S.String),
+    scopeConfiguration: S.optional(ScopeConfiguration),
   }),
 ).annotate({
   identifier: "ConfigurationRecorder",
@@ -1351,6 +1383,30 @@ export const DeleteConformancePackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteConformancePackResponse",
 }) as any as S.Schema<DeleteConformancePackResponse>;
+export interface DeleteConnectorRequest {
+  Arn: string;
+}
+export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteConnectorRequest",
+}) as any as S.Schema<DeleteConnectorRequest>;
+export interface DeleteConnectorResponse {}
+export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteConnectorResponse",
+}) as any as S.Schema<DeleteConnectorResponse>;
 export type ChannelName = string;
 export interface DeleteDeliveryChannelRequest {
   DeliveryChannelName: string;
@@ -1630,11 +1686,15 @@ export const DeleteRetentionConfigurationResponse = /*@__PURE__*/ S.suspend(
   identifier: "DeleteRetentionConfigurationResponse",
 }) as any as S.Schema<DeleteRetentionConfigurationResponse>;
 export interface DeleteServiceLinkedConfigurationRecorderRequest {
-  ServicePrincipal: string;
+  ServicePrincipal?: string;
+  Arn?: string;
 }
 export const DeleteServiceLinkedConfigurationRecorderRequest =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ServicePrincipal: S.String }).pipe(
+    S.Struct({
+      ServicePrincipal: S.optional(S.String),
+      Arn: S.optional(S.String),
+    }).pipe(
       T.all(
         ns,
         T.Http({ method: "POST", uri: "/" }),
@@ -2213,14 +2273,14 @@ export const DescribeConfigRulesFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeConfigRulesFilters>;
 export interface DescribeConfigRulesRequest {
   ConfigRuleNames?: string[];
-  NextToken?: string;
   Filters?: DescribeConfigRulesFilters;
+  NextToken?: string;
 }
 export const DescribeConfigRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConfigRuleNames: S.optional(ConfigRuleNames),
-    NextToken: S.optional(S.String),
     Filters: S.optional(DescribeConfigRulesFilters),
+    NextToken: S.optional(S.String),
   }).pipe(
     T.all(
       ns,
@@ -4816,6 +4876,66 @@ export const GetConformancePackComplianceSummaryResponse =
   ).annotate({
     identifier: "GetConformancePackComplianceSummaryResponse",
   }) as any as S.Schema<GetConformancePackComplianceSummaryResponse>;
+export interface GetConnectorRequest {
+  Arn: string;
+}
+export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetConnectorRequest",
+}) as any as S.Schema<GetConnectorRequest>;
+export type ConnectorName = string;
+export type AzureTenantIdentifier = string;
+export type AzureClientIdentifier = string;
+export interface AzureConnectorConfiguration {
+  tenantIdentifier: string;
+  clientIdentifier: string;
+}
+export const AzureConnectorConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tenantIdentifier: S.String, clientIdentifier: S.String }),
+).annotate({
+  identifier: "AzureConnectorConfiguration",
+}) as any as S.Schema<AzureConnectorConfiguration>;
+export interface ConnectorConfiguration {
+  azure?: AzureConnectorConfiguration;
+}
+export const ConnectorConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ azure: S.optional(AzureConnectorConfiguration) }),
+).annotate({
+  identifier: "ConnectorConfiguration",
+}) as any as S.Schema<ConnectorConfiguration>;
+export interface Connector {
+  name: string;
+  arn: string;
+  connectorConfiguration: ConnectorConfiguration;
+  createdTime: Date;
+}
+export const Connector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    arn: S.String,
+    connectorConfiguration: ConnectorConfiguration,
+    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
+export interface GetConnectorResponse {
+  Connector: Connector;
+}
+export const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Connector: Connector }).pipe(ns),
+).annotate({
+  identifier: "GetConnectorResponse",
+}) as any as S.Schema<GetConnectorResponse>;
 export interface GetCustomRulePolicyRequest {
   ConfigRuleName?: string;
 }
@@ -5407,11 +5527,15 @@ export const ListConfigurationRecordersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListConfigurationRecordersRequest",
 }) as any as S.Schema<ListConfigurationRecordersRequest>;
+export type Provider = "AZURE" | (string & {});
+export const Provider = /*@__PURE__*/ S.String;
+
 export interface ConfigurationRecorderSummary {
   arn: string;
   name: string;
   servicePrincipal?: string;
   recordingScope: RecordingScope;
+  provider?: Provider;
 }
 export const ConfigurationRecorderSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5419,6 +5543,7 @@ export const ConfigurationRecorderSummary = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     servicePrincipal: S.optional(S.String),
     recordingScope: RecordingScope,
+    provider: S.optional(Provider),
   }),
 ).annotate({
   identifier: "ConfigurationRecorderSummary",
@@ -5519,6 +5644,82 @@ export const ListConformancePackComplianceScoresResponse =
   ).annotate({
     identifier: "ListConformancePackComplianceScoresResponse",
   }) as any as S.Schema<ListConformancePackComplianceScoresResponse>;
+export type ListConnectorsMaxResults = number;
+export type ConnectorFilterName = "provider" | (string & {});
+export const ConnectorFilterName = /*@__PURE__*/ S.String;
+
+export type FilterValueList = string[];
+export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+export interface ConnectorFilter {
+  filterName?: ConnectorFilterName;
+  filterValues?: string[];
+}
+export const ConnectorFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filterName: S.optional(ConnectorFilterName),
+    filterValues: S.optional(FilterValueList),
+  }),
+).annotate({
+  identifier: "ConnectorFilter",
+}) as any as S.Schema<ConnectorFilter>;
+export type ConnectorFilterList = ConnectorFilter[];
+export const ConnectorFilterList = /*@__PURE__*/ S.Array(ConnectorFilter);
+export interface ListConnectorsRequest {
+  MaxResults?: number;
+  NextToken?: string;
+  Filters?: ConnectorFilter[];
+}
+export const ListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    Filters: S.optional(ConnectorFilterList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListConnectorsRequest",
+}) as any as S.Schema<ListConnectorsRequest>;
+export interface ConnectorSummary {
+  arn: string;
+  name: string;
+  provider: Provider;
+  tenantIdentifier: string;
+  createdTime: Date;
+}
+export const ConnectorSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.String,
+    provider: Provider,
+    tenantIdentifier: S.String,
+    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "ConnectorSummary",
+}) as any as S.Schema<ConnectorSummary>;
+export type ConnectorSummaries = ConnectorSummary[];
+export const ConnectorSummaries = /*@__PURE__*/ S.Array(ConnectorSummary);
+export interface ListConnectorsResponse {
+  ConnectorSummaries: ConnectorSummary[];
+  NextToken?: string;
+}
+export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConnectorSummaries: ConnectorSummaries,
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListConnectorsResponse",
+}) as any as S.Schema<ListConnectorsResponse>;
 export type ResourceIdList = string[];
 export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ListDiscoveredResourcesRequest {
@@ -5933,6 +6134,36 @@ export const PutConformancePackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutConformancePackResponse",
 }) as any as S.Schema<PutConformancePackResponse>;
+export interface PutConnectorRequest {
+  ConnectorConfiguration: ConnectorConfiguration;
+  Tags?: Tag[];
+}
+export const PutConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConnectorConfiguration: ConnectorConfiguration,
+    Tags: S.optional(TagsList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutConnectorRequest",
+}) as any as S.Schema<PutConnectorRequest>;
+export interface PutConnectorResponse {
+  Arn: string;
+}
+export const PutConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String }).pipe(ns),
+).annotate({
+  identifier: "PutConnectorResponse",
+}) as any as S.Schema<PutConnectorResponse>;
 export interface PutDeliveryChannelRequest {
   DeliveryChannel: DeliveryChannel;
 }
@@ -6093,6 +6324,7 @@ export interface PutOrganizationConfigRuleRequest {
   OrganizationCustomRuleMetadata?: OrganizationCustomRuleMetadata;
   ExcludedAccounts?: string[];
   OrganizationCustomPolicyRuleMetadata?: OrganizationCustomPolicyRuleMetadata;
+  Tags?: Tag[];
 }
 export const PutOrganizationConfigRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6105,6 +6337,7 @@ export const PutOrganizationConfigRuleRequest = /*@__PURE__*/ S.suspend(() =>
     OrganizationCustomPolicyRuleMetadata: S.optional(
       OrganizationCustomPolicyRuleMetadata,
     ),
+    Tags: S.optional(TagsList),
   }).pipe(
     T.all(
       ns,
@@ -6135,6 +6368,7 @@ export interface PutOrganizationConformancePackRequest {
   DeliveryS3KeyPrefix?: string;
   ConformancePackInputParameters?: ConformancePackInputParameter[];
   ExcludedAccounts?: string[];
+  Tags?: Tag[];
 }
 export const PutOrganizationConformancePackRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6148,6 +6382,7 @@ export const PutOrganizationConformancePackRequest = /*@__PURE__*/ S.suspend(
         ConformancePackInputParameters,
       ),
       ExcludedAccounts: S.optional(ExcludedAccounts),
+      Tags: S.optional(TagsList),
     }).pipe(
       T.all(
         ns,
@@ -6391,6 +6626,43 @@ export const PutStoredQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutStoredQueryResponse",
 }) as any as S.Schema<PutStoredQueryResponse>;
+export interface PutThirdPartyServiceLinkedConfigurationRecorderRequest {
+  ServicePrincipal: string;
+  ConnectorArn: string;
+  ScopeConfiguration: ScopeConfiguration;
+  Tags?: Tag[];
+}
+export const PutThirdPartyServiceLinkedConfigurationRecorderRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ServicePrincipal: S.String,
+      ConnectorArn: S.String,
+      ScopeConfiguration: ScopeConfiguration,
+      Tags: S.optional(TagsList),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "PutThirdPartyServiceLinkedConfigurationRecorderRequest",
+  }) as any as S.Schema<PutThirdPartyServiceLinkedConfigurationRecorderRequest>;
+export interface PutThirdPartyServiceLinkedConfigurationRecorderResponse {
+  Arn: string;
+  Name: string;
+}
+export const PutThirdPartyServiceLinkedConfigurationRecorderResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ Arn: S.String, Name: S.String }).pipe(ns),
+  ).annotate({
+    identifier: "PutThirdPartyServiceLinkedConfigurationRecorderResponse",
+  }) as any as S.Schema<PutThirdPartyServiceLinkedConfigurationRecorderResponse>;
 export type Expression = string;
 export interface SelectAggregateResourceConfigRequest {
   Expression: string;
@@ -6922,6 +7194,27 @@ export const deleteConformancePack: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteConformancePack",
+}));
+
+export type DeleteConnectorError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified connector.
+ */
+export const deleteConnector: API.OperationMethod<
+  DeleteConnectorRequest,
+  DeleteConnectorResponse,
+  DeleteConnectorError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectorRequest,
+  output: DeleteConnectorResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteConnector",
 }));
 
 export type DeleteDeliveryChannelError =
@@ -8596,6 +8889,27 @@ export const getConformancePackComplianceSummary: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
+export type GetConnectorError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the details of the specified connector.
+ */
+export const getConnector: API.OperationMethod<
+  GetConnectorRequest,
+  GetConnectorResponse,
+  GetConnectorError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectorRequest,
+  output: GetConnectorResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetConnector",
+}));
+
 export type GetCustomRulePolicyError = NoSuchConfigRuleException | CommonErrors;
 /**
  * Returns the policy definition containing the logic for your Config Custom Policy rule.
@@ -8995,6 +9309,31 @@ export const listConformancePackComplianceScores: API.PaginatedOperationMethod<
     inputToken: "NextToken",
     outputToken: "NextToken",
     pageSize: "Limit",
+  } as const,
+})) as any;
+
+export type ListConnectorsError = ValidationException | CommonErrors;
+/**
+ * Returns a list of connectors depending on the filters you specify.
+ */
+export const listConnectors: API.PaginatedOperationMethod<
+  ListConnectorsRequest,
+  ListConnectorsResponse,
+  ListConnectorsError,
+  Credentials | HttpClient.HttpClient,
+  ConnectorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListConnectorsRequest,
+  output: ListConnectorsResponse,
+  errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListConnectors",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ConnectorSummaries",
+    pageSize: "MaxResults",
   } as const,
 })) as any;
 
@@ -9435,6 +9774,46 @@ export const putConformancePack: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "PutConformancePack",
+}));
+
+export type PutConnectorError =
+  | ConflictException
+  | InsufficientPermissionsException
+  | MaxNumberOfConnectorsExceededException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a connector that specifies the connection between a third-party cloud service provider and Config.
+ *
+ * A connector is required to create a service-linked configuration recorder for a third-party cloud service provider using the PutThirdPartyServiceLinkedConfigurationRecorder operation.
+ *
+ * This API creates a service-linked role `AWSServiceRoleForConfigThirdParty` in your account. The service-linked role is created only when the role does not exist in your account.
+ *
+ * **Connectors cannot be updated**
+ *
+ * To update the connector configuration, you must delete all associated configuration recorders, delete the connector, and recreate it with the updated configuration.
+ *
+ * **Tags are added at creation and cannot be updated with this operation**
+ *
+ * Use TagResource and UntagResource to update tags after creation.
+ */
+export const putConnector: API.OperationMethod<
+  PutConnectorRequest,
+  PutConnectorResponse,
+  PutConnectorError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutConnectorRequest,
+  output: PutConnectorResponse,
+  errors: [
+    ConflictException,
+    InsufficientPermissionsException,
+    MaxNumberOfConnectorsExceededException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutConnector",
 }));
 
 export type PutDeliveryChannelError =
@@ -9928,6 +10307,44 @@ export const putStoredQuery: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "PutStoredQuery",
+}));
+
+export type PutThirdPartyServiceLinkedConfigurationRecorderError =
+  | ConflictException
+  | InsufficientPermissionsException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates or updates a service-linked configuration recorder that is linked to a third-party cloud service provider based on the `ConnectorArn` you specify.
+ *
+ * The configuration recorder's `name`, `recordingGroup`, `recordingMode`, and `recordingScope` is set by the service that is linked to the configuration recorder.
+ *
+ * If a service-linked configuration recorder already exists for the specified service principal and connector, calling this operation again updates the `ScopeConfiguration`.
+ *
+ * **This operation can only be called by the Amazon Web Services service linked to the configuration recorder**
+ *
+ * Customers cannot call this operation directly. Only the linked Amazon Web Services service can create or update the service-linked configuration recorder.
+ *
+ * **Tags are added at creation and cannot be updated with this operation**
+ *
+ * Use TagResource and UntagResource to update tags after creation.
+ */
+export const putThirdPartyServiceLinkedConfigurationRecorder: API.OperationMethod<
+  PutThirdPartyServiceLinkedConfigurationRecorderRequest,
+  PutThirdPartyServiceLinkedConfigurationRecorderResponse,
+  PutThirdPartyServiceLinkedConfigurationRecorderError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutThirdPartyServiceLinkedConfigurationRecorderRequest,
+  output: PutThirdPartyServiceLinkedConfigurationRecorderResponse,
+  errors: [
+    ConflictException,
+    InsufficientPermissionsException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutThirdPartyServiceLinkedConfigurationRecorder",
 }));
 
 export type SelectAggregateResourceConfigError =

@@ -1967,12 +1967,37 @@ export const IncludedColumns = /*@__PURE__*/ S.Record(
   S.String,
   ColumnNamesList.pipe(S.optional),
 );
+export type DiversityCapType = "PERCENTAGE" | "VALUE" | (string & {});
+export const DiversityCapType = /*@__PURE__*/ S.String;
+
+export type DiversityTargetExpression = string;
+export interface DiversityColumn {
+  Name: string;
+  CapType: DiversityCapType;
+  Target: string;
+}
+export const DiversityColumn = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, CapType: DiversityCapType, Target: S.String }),
+).annotate({
+  identifier: "DiversityColumn",
+}) as any as S.Schema<DiversityColumn>;
+export type DiversityColumnsList = DiversityColumn[];
+export const DiversityColumnsList = /*@__PURE__*/ S.Array(DiversityColumn);
+export interface DiversityConfig {
+  DiversityColumns?: DiversityColumn[];
+}
+export const DiversityConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DiversityColumns: S.optional(DiversityColumnsList) }),
+).annotate({
+  identifier: "DiversityConfig",
+}) as any as S.Schema<DiversityConfig>;
 export interface RecommenderConfig {
   EventsConfig?: EventsConfig;
   TrainingFrequency?: number;
   InferenceConfig?: InferenceConfig;
   IncludedColumns?: { [key: string]: string[] | undefined };
   ExcludedColumns?: { [key: string]: string[] | undefined };
+  DiversityConfig?: DiversityConfig;
 }
 export const RecommenderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1981,6 +2006,7 @@ export const RecommenderConfig = /*@__PURE__*/ S.suspend(() =>
     InferenceConfig: S.optional(InferenceConfig),
     IncludedColumns: S.optional(IncludedColumns),
     ExcludedColumns: S.optional(IncludedColumns),
+    DiversityConfig: S.optional(DiversityConfig),
   }),
 ).annotate({
   identifier: "RecommenderConfig",
@@ -4246,6 +4272,22 @@ export interface MetadataConfig {
 export const MetadataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MetadataColumns: S.optional(MetadataColumnsList) }),
 ).annotate({ identifier: "MetadataConfig" }) as any as S.Schema<MetadataConfig>;
+export type DiversityPlaceholderName = string;
+export type DiversityCapValue = number;
+export type DiversityValuesMap = { [key: string]: number | undefined };
+export const DiversityValuesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number.pipe(S.optional),
+);
+export interface RecommendationDiversityConfig {
+  Enabled: boolean;
+  Values?: { [key: string]: number | undefined };
+}
+export const RecommendationDiversityConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Enabled: S.Boolean, Values: S.optional(DiversityValuesMap) }),
+).annotate({
+  identifier: "RecommendationDiversityConfig",
+}) as any as S.Schema<RecommendationDiversityConfig>;
 export interface GetProfileRecommendationsRequest {
   DomainName: string;
   ProfileId: string;
@@ -4256,6 +4298,7 @@ export interface GetProfileRecommendationsRequest {
   CandidateIds?: string[];
   MaxResults?: number;
   MetadataConfig?: MetadataConfig;
+  DiversityConfig?: RecommendationDiversityConfig;
 }
 export const GetProfileRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4268,6 +4311,7 @@ export const GetProfileRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
     CandidateIds: S.optional(CandidateIdList),
     MaxResults: S.optional(S.Number),
     MetadataConfig: S.optional(MetadataConfig),
+    DiversityConfig: S.optional(RecommendationDiversityConfig),
   }).pipe(
     T.all(
       T.Http({
@@ -4377,12 +4421,14 @@ export type RecommenderStatus =
   | (string & {});
 export const RecommenderStatus = /*@__PURE__*/ S.String;
 
+export type RecommenderVersionName = string;
 export interface RecommenderUpdate {
   RecommenderConfig?: RecommenderConfig;
   Status?: RecommenderStatus;
   CreatedAt?: Date;
   LastUpdatedAt?: Date;
   FailureReason?: string;
+  RecommenderVersionName?: string;
 }
 export const RecommenderUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4391,6 +4437,7 @@ export const RecommenderUpdate = /*@__PURE__*/ S.suspend(() =>
     CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     FailureReason: S.optional(S.String),
+    RecommenderVersionName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RecommenderUpdate",
@@ -4420,11 +4467,13 @@ export const Metrics = /*@__PURE__*/ S.Record(
 export interface TrainingMetrics {
   Time?: Date;
   Metrics?: { [key: string]: number | undefined };
+  RecommenderVersionName?: string;
 }
 export const TrainingMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Metrics: S.optional(Metrics),
+    RecommenderVersionName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "TrainingMetrics",
@@ -4442,6 +4491,7 @@ export interface GetRecommenderResponse {
   CreatedAt?: Date;
   FailureReason?: string;
   LatestRecommenderUpdate?: RecommenderUpdate;
+  ActiveRecommenderVersionName?: string;
   TrainingMetrics?: TrainingMetrics[];
   Tags?: { [key: string]: string | undefined };
 }
@@ -4457,6 +4507,7 @@ export const GetRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
     CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     FailureReason: S.optional(S.String),
     LatestRecommenderUpdate: S.optional(RecommenderUpdate),
+    ActiveRecommenderVersionName: S.optional(S.String),
     TrainingMetrics: S.optional(TrainingMetricsList),
     Tags: S.optional(TagMap),
   }),
@@ -7610,6 +7661,7 @@ export interface UpdateRecommenderRequest {
   RecommenderName: string;
   Description?: string | redacted.Redacted<string>;
   RecommenderConfig?: RecommenderConfig;
+  RecommenderVersionName?: string;
 }
 export const UpdateRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7617,6 +7669,7 @@ export const UpdateRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
     RecommenderName: S.String.pipe(T.HttpLabel("RecommenderName")),
     Description: S.optional(SensitiveString),
     RecommenderConfig: S.optional(RecommenderConfig),
+    RecommenderVersionName: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({

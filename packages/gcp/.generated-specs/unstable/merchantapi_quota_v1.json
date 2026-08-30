@@ -7,65 +7,110 @@
     "baseUrl": "https://merchantapi.googleapis.com/"
   },
   "shapes": {
-    "com.gcp.merchantapi_quota_v1#AccountLimit": {
+    "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessage": {
       "type": "structure",
       "members": {
-        "products": {
-          "target": "com.gcp.merchantapi_quota_v1#ProductLimit",
-          "traits": {
-            "smithy.api#documentation": "The limit for products."
-          }
-        },
-        "name": {
+        "managingAccount": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier. The limit part of the name will be a combination of the type and the scope. For example: `accounts/123/limits/products~ADS_NON_EEA` Format: `accounts/{account}/limits/{limit}`"
+            "smithy.api#documentation": "The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}`"
+          }
+        },
+        "eventTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications."
+          }
+        },
+        "changes": {
+          "target": "com.gcp.merchantapi_quota_v1#ProductChangeList",
+          "traits": {
+            "smithy.api#documentation": "A message to describe the change that happened to the product"
+          }
+        },
+        "attribute": {
+          "target": "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessageAttributeEnum",
+          "traits": {
+            "smithy.api#documentation": "The attribute in the resource that changed, in this case it will be always `Status`."
+          }
+        },
+        "account": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target account that owns the entity that changed. Format : `accounts/{merchant_id}`"
+          }
+        },
+        "resourceType": {
+          "target": "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessageResourceTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The resource that changed, in this case it will always be `Product`."
+          }
+        },
+        "resource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The product name. Format: `accounts/{account}/products/{product}`"
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The product id."
+          }
+        },
+        "expirationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "A limit of a certain type that is applied to an account."
+        "smithy.api#documentation": "The message that the merchant will receive to notify about product status change event"
       }
     },
-    "com.gcp.merchantapi_quota_v1#ProductLimit": {
-      "type": "structure",
-      "members": {
-        "scope": {
-          "target": "com.gcp.merchantapi_quota_v1#ProductLimitScopeEnum",
-          "traits": {
-            "smithy.api#documentation": "Required. The scope of the product limit."
-          }
-        },
-        "limit": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The maximum number of products that are allowed in the account in the given scope."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The limit for products."
+    "com.gcp.merchantapi_quota_v1#ProductChangeList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.merchantapi_quota_v1#ProductChange"
       }
     },
-    "com.gcp.merchantapi_quota_v1#ProductLimitScopeEnum": {
+    "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessageAttributeEnum": {
       "type": "enum",
       "members": {
-        "SCOPE_UNSPECIFIED": {
+        "ATTRIBUTE_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "SCOPE_UNSPECIFIED"
+            "smithy.api#enumValue": "ATTRIBUTE_UNSPECIFIED"
           }
         },
-        "ADS_NON_EEA": {
+        "STATUS": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "ADS_NON_EEA"
+            "smithy.api#enumValue": "STATUS"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessageResourceTypeEnum": {
+      "type": "enum",
+      "members": {
+        "RESOURCE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RESOURCE_UNSPECIFIED"
           }
         },
-        "ADS_EEA": {
+        "PRODUCT": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "ADS_EEA"
+            "smithy.api#enumValue": "PRODUCT"
+          }
+        },
+        "ACCOUNT_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ACCOUNT_SERVICE"
           }
         }
       }
@@ -96,39 +141,13 @@
         "target": "com.gcp.merchantapi_quota_v1#QuotaGroup"
       }
     },
-    "com.gcp.merchantapi_quota_v1#ListAccountLimitsResponse": {
-      "type": "structure",
-      "members": {
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."
-          }
-        },
-        "accountLimits": {
-          "target": "com.gcp.merchantapi_quota_v1#AccountLimitList",
-          "traits": {
-            "smithy.api#documentation": "The limits for the given account."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response message for the `ListAccountLimits` method."
-      }
-    },
-    "com.gcp.merchantapi_quota_v1#AccountLimitList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.merchantapi_quota_v1#AccountLimit"
-      }
-    },
     "com.gcp.merchantapi_quota_v1#QuotaGroup": {
       "type": "structure",
       "members": {
-        "quotaUsage": {
+        "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC."
+            "smithy.api#documentation": "Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Note: There is no guarantee on the format of {group}"
           }
         },
         "quotaMinuteLimit": {
@@ -143,16 +162,16 @@
             "smithy.api#documentation": "Output only. The maximum number of calls allowed per day for the group."
           }
         },
+        "quotaUsage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at 12:00 PM midday UTC."
+          }
+        },
         "methodDetails": {
           "target": "com.gcp.merchantapi_quota_v1#MethodDetailsList",
           "traits": {
             "smithy.api#documentation": "Output only. List of all methods group quota applies to."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Note: There is no guarantee on the format of {group}"
           }
         }
       },
@@ -166,15 +185,41 @@
         "target": "com.gcp.merchantapi_quota_v1#MethodDetails"
       }
     },
+    "com.gcp.merchantapi_quota_v1#MethodDetails": {
+      "type": "structure",
+      "members": {
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The path for the method such as `products/v1/productInputs.insert`"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The API version that the method belongs to."
+          }
+        },
+        "subapi": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The sub-API that the method belongs to."
+          }
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The name of the method for example `products.list`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The method details per method in the Merchant API."
+      }
+    },
     "com.gcp.merchantapi_quota_v1#ProductChange": {
       "type": "structure",
       "members": {
-        "reportingContext": {
-          "target": "com.gcp.merchantapi_quota_v1#ProductChangeReportingContextEnum",
-          "traits": {
-            "smithy.api#documentation": "Reporting contexts that have the change (if applicable). Currently this field supports only (`SHOPPING_ADS`, `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value [ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/ReportingContextEnum)"
-          }
-        },
         "newValue": {
           "target": "smithy.api#String",
           "traits": {
@@ -185,6 +230,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``)"
+          }
+        },
+        "reportingContext": {
+          "target": "com.gcp.merchantapi_quota_v1#ProductChangeReportingContextEnum",
+          "traits": {
+            "smithy.api#documentation": "Reporting contexts that have the change (if applicable). Currently this field supports only (`SHOPPING_ADS`, `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value [ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/ReportingContextEnum)"
           }
         },
         "regionCode": {
@@ -323,155 +374,118 @@
         }
       }
     },
-    "com.gcp.merchantapi_quota_v1#MethodDetails": {
+    "com.gcp.merchantapi_quota_v1#AccountLimit": {
       "type": "structure",
       "members": {
-        "version": {
-          "target": "smithy.api#String",
+        "products": {
+          "target": "com.gcp.merchantapi_quota_v1#ProductLimit",
           "traits": {
-            "smithy.api#documentation": "Output only. The API version that the method belongs to."
+            "smithy.api#documentation": "The limit for products."
           }
         },
-        "subapi": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The sub-API that the method belongs to."
-          }
-        },
-        "method": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The name of the method for example `products.list`."
-          }
-        },
-        "path": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The path for the method such as `products/v1/productInputs.insert`"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The method details per method in the Merchant API."
-      }
-    },
-    "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessage": {
-      "type": "structure",
-      "members": {
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The product id."
-          }
-        },
-        "changes": {
-          "target": "com.gcp.merchantapi_quota_v1#ProductChangeList",
-          "traits": {
-            "smithy.api#documentation": "A message to describe the change that happened to the product"
-          }
-        },
-        "resource": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The product name. Format: `accounts/{account}/products/{product}`"
-          }
-        },
-        "account": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The target account that owns the entity that changed. Format : `accounts/{merchant_id}`"
-          }
-        },
-        "resourceType": {
-          "target": "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessageResourceTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "The resource that changed, in this case it will always be `Product`."
-          }
-        },
-        "attribute": {
-          "target": "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessageAttributeEnum",
-          "traits": {
-            "smithy.api#documentation": "The attribute in the resource that changed, in this case it will be always `Status`."
-          }
-        },
-        "managingAccount": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}`"
-          }
-        },
-        "expirationTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event."
-          }
-        },
-        "eventTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The message that the merchant will receive to notify about product status change event"
-      }
-    },
-    "com.gcp.merchantapi_quota_v1#ProductChangeList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.merchantapi_quota_v1#ProductChange"
-      }
-    },
-    "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessageResourceTypeEnum": {
-      "type": "enum",
-      "members": {
-        "RESOURCE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "RESOURCE_UNSPECIFIED"
-          }
-        },
-        "PRODUCT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PRODUCT"
-          }
-        },
-        "ACCOUNT_SERVICE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACCOUNT_SERVICE"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_quota_v1#ProductStatusChangeMessageAttributeEnum": {
-      "type": "enum",
-      "members": {
-        "ATTRIBUTE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ATTRIBUTE_UNSPECIFIED"
-          }
-        },
-        "STATUS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STATUS"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_quota_v1#GetAccountsLimitsRequest": {
-      "type": "structure",
-      "members": {
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For example: `accounts/123/limits/products~ADS_NON_EEA`",
+            "smithy.api#documentation": "Identifier. The limit part of the name will be a combination of the type and the scope. For example: `accounts/123/limits/products~ADS_NON_EEA` Format: `accounts/{account}/limits/{limit}`"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A limit of a certain type that is applied to an account."
+      }
+    },
+    "com.gcp.merchantapi_quota_v1#ListAccountLimitsResponse": {
+      "type": "structure",
+      "members": {
+        "accountLimits": {
+          "target": "com.gcp.merchantapi_quota_v1#AccountLimitList",
+          "traits": {
+            "smithy.api#documentation": "The limits for the given account."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response message for the `ListAccountLimits` method."
+      }
+    },
+    "com.gcp.merchantapi_quota_v1#AccountLimitList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.merchantapi_quota_v1#AccountLimit"
+      }
+    },
+    "com.gcp.merchantapi_quota_v1#ProductLimit": {
+      "type": "structure",
+      "members": {
+        "scope": {
+          "target": "com.gcp.merchantapi_quota_v1#ProductLimitScopeEnum",
+          "traits": {
+            "smithy.api#documentation": "Required. The scope of the product limit."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The maximum number of products that are allowed in the account in the given scope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The limit for products."
+      }
+    },
+    "com.gcp.merchantapi_quota_v1#ProductLimitScopeEnum": {
+      "type": "enum",
+      "members": {
+        "SCOPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCOPE_UNSPECIFIED"
+          }
+        },
+        "ADS_NON_EEA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADS_NON_EEA"
+          }
+        },
+        "ADS_EEA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ADS_EEA"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_quota_v1#ListAccountsQuotasRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The merchant account who owns the collection of method quotas Format: accounts/{account}",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "pageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token.",
+            "smithy.api#httpQuery": "pageToken"
+          }
+        },
+        "pageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000.",
+            "smithy.api#httpQuery": "pageSize"
           }
         }
       }
@@ -502,6 +516,47 @@
         ]
       }
     },
+    "com.gcp.merchantapi_quota_v1#ListAccountsQuotas": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.merchantapi_quota_v1#ListAccountsQuotasRequest"
+      },
+      "output": {
+        "target": "com.gcp.merchantapi_quota_v1#ListQuotaGroupsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.merchantapi_quota_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.merchantapi_quota_v1#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "quota/v1/{+parent}/quotas"
+        },
+        "smithy.api#documentation": "Lists the daily call quota and usage per group for your Merchant Center account.",
+        "smithy.api#paginated": {
+          "inputToken": "pageToken",
+          "outputToken": "nextPageToken"
+        }
+      }
+    },
+    "com.gcp.merchantapi_quota_v1#GetAccountsLimitsRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For example: `accounts/123/limits/products~ADS_NON_EEA`",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.gcp.merchantapi_quota_v1#GetAccountsLimits": {
       "type": "operation",
       "input": {
@@ -529,18 +584,19 @@
     "com.gcp.merchantapi_quota_v1#ListAccountsLimitsRequest": {
       "type": "structure",
       "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The parent account. Format: `accounts/{account}`",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
         "filter": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Required. A filter on the limit `type` is required, for example, `type = \"products\"`.",
             "smithy.api#httpQuery": "filter"
-          }
-        },
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Optional. The maximum number of limits to return. The service may return fewer than this value. If unspecified, at most 100 limits will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
-            "smithy.api#httpQuery": "pageSize"
           }
         },
         "pageToken": {
@@ -550,12 +606,11 @@
             "smithy.api#httpQuery": "pageToken"
           }
         },
-        "parent": {
-          "target": "smithy.api#String",
+        "pageSize": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Required. The parent account. Format: `accounts/{account}`",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Optional. The maximum number of limits to return. The service may return fewer than this value. If unspecified, at most 100 limits will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
+            "smithy.api#httpQuery": "pageSize"
           }
         }
       }
@@ -582,61 +637,6 @@
           "uri": "quota/v1/{+parent}/limits"
         },
         "smithy.api#documentation": "Lists the limits of an account.",
-        "smithy.api#paginated": {
-          "inputToken": "pageToken",
-          "outputToken": "nextPageToken"
-        }
-      }
-    },
-    "com.gcp.merchantapi_quota_v1#ListAccountsQuotasRequest": {
-      "type": "structure",
-      "members": {
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token.",
-            "smithy.api#httpQuery": "pageToken"
-          }
-        },
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The merchant account who owns the collection of method quotas Format: accounts/{account}",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000.",
-            "smithy.api#httpQuery": "pageSize"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_quota_v1#ListAccountsQuotas": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.merchantapi_quota_v1#ListAccountsQuotasRequest"
-      },
-      "output": {
-        "target": "com.gcp.merchantapi_quota_v1#ListQuotaGroupsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.merchantapi_quota_v1#NotFound"
-        },
-        {
-          "target": "com.gcp.merchantapi_quota_v1#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "quota/v1/{+parent}/quotas"
-        },
-        "smithy.api#documentation": "Lists the daily call quota and usage per group for your Merchant Center account.",
         "smithy.api#paginated": {
           "inputToken": "pageToken",
           "outputToken": "nextPageToken"

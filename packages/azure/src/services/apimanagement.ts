@@ -4407,13 +4407,19 @@ export const ApiManagementServiceIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ApiManagementServiceApplyNetworkConfigurationUpdatesResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5136,7 +5142,10 @@ export const ApiManagementServiceCreateOrUpdateResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type ApiManagementServiceCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ApiManagementServiceCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -5695,7 +5704,10 @@ export const ApiManagementServiceMigrateToStv2ResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type ApiManagementServiceMigrateToStv2ResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ApiManagementServiceMigrateToStv2ResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -10820,7 +10832,8 @@ export const AuthorizationServerContractPropertiesAuthorizationMethodsList =
   ) as any as S.Schema<AuthorizationServerContractPropertiesAuthorizationMethodsList>;
 
 export type AuthorizationServerContractPropertiesClientAuthenticationMethodItem =
-  "Basic" | "Body";
+  | "Basic"
+  | "Body";
 export const AuthorizationServerContractPropertiesClientAuthenticationMethodItem =
   /*@__PURE__*/ S.String;
 
@@ -10860,7 +10873,8 @@ export const AuthorizationServerContractPropertiesTokenBodyParametersList =
   ) as any as S.Schema<AuthorizationServerContractPropertiesTokenBodyParametersList>;
 
 export type AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem =
-  "authorizationHeader" | "query";
+  | "authorizationHeader"
+  | "query";
 export const AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -11236,7 +11250,14 @@ export const AuthorizationServerListSecretsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuthorizationServerListSecretsResponse>;
 
 export type AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem =
-  "HEAD" | "OPTIONS" | "TRACE" | "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+  | "HEAD"
+  | "OPTIONS"
+  | "TRACE"
+  | "GET"
+  | "POST"
+  | "PUT"
+  | "PATCH"
+  | "DELETE";
 export const AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -11252,7 +11273,8 @@ export const AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList
   ) as any as S.Schema<AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList>;
 
 export type AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodItem =
-  "Basic" | "Body";
+  | "Basic"
+  | "Body";
 export const AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodItem =
   /*@__PURE__*/ S.String;
 
@@ -11276,7 +11298,8 @@ export const AuthorizationServerUpdateContractPropertiesTokenBodyParametersList 
   ) as any as S.Schema<AuthorizationServerUpdateContractPropertiesTokenBodyParametersList>;
 
 export type AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsItem =
-  "authorizationHeader" | "query";
+  | "authorizationHeader"
+  | "query";
 export const AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsItem =
   /*@__PURE__*/ S.String;
 
@@ -19219,13 +19242,13 @@ export const NotificationRecipientEmailDeleteResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NotificationRecipientEmailDeleteResponse>;
 
 export type NotificationRecipientEmailListByNotificationRequestNotificationName =
-    | "RequestPublisherNotificationMessage"
-    | "PurchasePublisherNotificationMessage"
-    | "NewApplicationNotificationMessage"
-    | "BCC"
-    | "NewIssuePublisherNotificationMessage"
-    | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "RequestPublisherNotificationMessage"
+  | "PurchasePublisherNotificationMessage"
+  | "NewApplicationNotificationMessage"
+  | "BCC"
+  | "NewIssuePublisherNotificationMessage"
+  | "AccountClosedPublisher"
+  | "QuotaLimitApproachingPublisherNotificationMessage";
 export const NotificationRecipientEmailListByNotificationRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -19451,13 +19474,13 @@ export const NotificationRecipientUserDeleteResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NotificationRecipientUserDeleteResponse>;
 
 export type NotificationRecipientUserListByNotificationRequestNotificationName =
-    | "RequestPublisherNotificationMessage"
-    | "PurchasePublisherNotificationMessage"
-    | "NewApplicationNotificationMessage"
-    | "BCC"
-    | "NewIssuePublisherNotificationMessage"
-    | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "RequestPublisherNotificationMessage"
+  | "PurchasePublisherNotificationMessage"
+  | "NewApplicationNotificationMessage"
+  | "BCC"
+  | "NewIssuePublisherNotificationMessage"
+  | "AccountClosedPublisher"
+  | "QuotaLimitApproachingPublisherNotificationMessage";
 export const NotificationRecipientUserListByNotificationRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -20341,7 +20364,8 @@ export const PerformConnectivityCheckAsyncRequestProtocol =
 
 /** The HTTP method to be used. */
 export type PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfigurationMethod =
-  "GET" | "POST";
+  | "GET"
+  | "POST";
 export const PerformConnectivityCheckAsyncRequestProtocolConfigurationHTTPConfigurationMethod =
   /*@__PURE__*/ S.String;
 
@@ -34029,13 +34053,13 @@ export const WorkspaceNotificationListByServiceResponse =
   }) as any as S.Schema<WorkspaceNotificationListByServiceResponse>;
 
 export type WorkspaceNotificationRecipientEmailCreateOrUpdateRequestNotificationName =
-    | "RequestPublisherNotificationMessage"
-    | "PurchasePublisherNotificationMessage"
-    | "NewApplicationNotificationMessage"
-    | "BCC"
-    | "NewIssuePublisherNotificationMessage"
-    | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "RequestPublisherNotificationMessage"
+  | "PurchasePublisherNotificationMessage"
+  | "NewApplicationNotificationMessage"
+  | "BCC"
+  | "NewIssuePublisherNotificationMessage"
+  | "AccountClosedPublisher"
+  | "QuotaLimitApproachingPublisherNotificationMessage";
 export const WorkspaceNotificationRecipientEmailCreateOrUpdateRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34159,13 +34183,13 @@ export const WorkspaceNotificationRecipientEmailDeleteResponse =
   }) as any as S.Schema<WorkspaceNotificationRecipientEmailDeleteResponse>;
 
 export type WorkspaceNotificationRecipientEmailListByNotificationRequestNotificationName =
-    | "RequestPublisherNotificationMessage"
-    | "PurchasePublisherNotificationMessage"
-    | "NewApplicationNotificationMessage"
-    | "BCC"
-    | "NewIssuePublisherNotificationMessage"
-    | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "RequestPublisherNotificationMessage"
+  | "PurchasePublisherNotificationMessage"
+  | "NewApplicationNotificationMessage"
+  | "BCC"
+  | "NewIssuePublisherNotificationMessage"
+  | "AccountClosedPublisher"
+  | "QuotaLimitApproachingPublisherNotificationMessage";
 export const WorkspaceNotificationRecipientEmailListByNotificationRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34236,13 +34260,13 @@ export const WorkspaceNotificationRecipientEmailListByNotificationResponse =
   }) as any as S.Schema<WorkspaceNotificationRecipientEmailListByNotificationResponse>;
 
 export type WorkspaceNotificationRecipientUserCreateOrUpdateRequestNotificationName =
-    | "RequestPublisherNotificationMessage"
-    | "PurchasePublisherNotificationMessage"
-    | "NewApplicationNotificationMessage"
-    | "BCC"
-    | "NewIssuePublisherNotificationMessage"
-    | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "RequestPublisherNotificationMessage"
+  | "PurchasePublisherNotificationMessage"
+  | "NewApplicationNotificationMessage"
+  | "BCC"
+  | "NewIssuePublisherNotificationMessage"
+  | "AccountClosedPublisher"
+  | "QuotaLimitApproachingPublisherNotificationMessage";
 export const WorkspaceNotificationRecipientUserCreateOrUpdateRequestNotificationName =
   /*@__PURE__*/ S.String;
 
@@ -34366,13 +34390,13 @@ export const WorkspaceNotificationRecipientUserDeleteResponse =
   }) as any as S.Schema<WorkspaceNotificationRecipientUserDeleteResponse>;
 
 export type WorkspaceNotificationRecipientUserListByNotificationRequestNotificationName =
-    | "RequestPublisherNotificationMessage"
-    | "PurchasePublisherNotificationMessage"
-    | "NewApplicationNotificationMessage"
-    | "BCC"
-    | "NewIssuePublisherNotificationMessage"
-    | "AccountClosedPublisher"
-    | "QuotaLimitApproachingPublisherNotificationMessage";
+  | "RequestPublisherNotificationMessage"
+  | "PurchasePublisherNotificationMessage"
+  | "NewApplicationNotificationMessage"
+  | "BCC"
+  | "NewIssuePublisherNotificationMessage"
+  | "AccountClosedPublisher"
+  | "QuotaLimitApproachingPublisherNotificationMessage";
 export const WorkspaceNotificationRecipientUserListByNotificationRequestNotificationName =
   /*@__PURE__*/ S.String;
 

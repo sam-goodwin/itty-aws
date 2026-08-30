@@ -30,10 +30,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests/{requestName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse": {
@@ -229,10 +229,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DppBaseResourceList": {
@@ -342,10 +342,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests/{requestName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse": {
@@ -433,10 +433,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest": {
@@ -484,10 +484,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests/{requestName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectResponse": {
@@ -575,10 +575,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetBackupSecurityPINRequestsObjectsRequest": {
@@ -626,10 +626,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests/{requestName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse": {
@@ -717,10 +717,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest": {
@@ -768,10 +768,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests/{requestName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse": {
@@ -859,10 +859,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest": {
@@ -910,10 +910,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests/{requestName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse": {
@@ -1001,10 +1001,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest": {
@@ -1052,10 +1052,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes a ResourceGuard resource from the resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsDeleteRequest": {
@@ -1103,10 +1103,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Updates a ResourceGuard resource belonging to a resource group. For example, updating tags for a resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsPatchResponse": {
@@ -1353,10 +1353,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates a ResourceGuard resource belonging to a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsPutResponse": {
@@ -1531,10 +1531,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns a ResourceGuard belonging to a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetResponse": {
@@ -1651,10 +1651,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns ResourceGuards collection belonging to a ResourceGroup.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetResourcesInResourceGroupResponse": {
@@ -1792,10 +1792,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/operationStatus/{operationId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the operation status for an operation over a ResourceGroup's context.\n\nGets the operation status for an operation over a ResourceGroup's context.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#OperationResource": {
@@ -1980,10 +1980,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/validateCrossRegionRestore",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Validates whether Cross Region Restore can be triggered for DataSource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesValidateCrossRegionRestoreResponse": {
@@ -2233,10 +2233,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchSecondaryRecoveryPoints",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns a list of Secondary Recovery Points for a DataSource in a vault, that can be used for Cross Region Restore.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#FetchSecondaryRecoveryPointsListResponse": {
@@ -2391,10 +2391,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchCrossRegionRestoreJobs",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Fetches list of Cross Region Restore job belonging to the vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#FetchCrossRegionRestoreJobsListResponse": {
@@ -3047,10 +3047,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchCrossRegionRestoreJob",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Fetches the Cross Region Restore Job",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#FetchCrossRegionRestoreJobGetResponse": {
@@ -3154,10 +3154,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/crossRegionRestore",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers Cross Region Restore for BackupInstance.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesTriggerCrossRegionRestoreResponse": {
@@ -3240,10 +3240,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "API to check for resource name availability\n\nAPI to check for resource name availability",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#CheckNameAvailabilityResult": {
@@ -3329,10 +3329,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/validateForBackup",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Validate whether adhoc backup will be successful or not",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesValidateForBackupResponse": {
@@ -3780,10 +3780,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationStatus/{operationId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the operation status for an operation over a BackupVault's context.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#OperationStatusBackupVaultContextGetRequest": {
@@ -3838,10 +3838,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/operationResults/{operationId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get a BackupVaultResource",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupVaultOperationResultsGetResponse": {
@@ -3979,6 +3979,12 @@
           "target": "com.azure.dataprotection#MonitoringSettings",
           "traits": {
             "smithy.api#documentation": "Monitoring Settings"
+          }
+        },
+        "costManagementSettings": {
+          "target": "com.azure.dataprotection#CostManagementSettings",
+          "traits": {
+            "smithy.api#documentation": "Cost Management Settings of the vault"
           }
         },
         "provisioningState": {
@@ -4666,6 +4672,44 @@
         "smithy.api#documentation": "Resource move state for backup vault"
       }
     },
+    "com.azure.dataprotection#CostManagementSettings": {
+      "type": "structure",
+      "members": {
+        "granularityLevel": {
+          "target": "com.azure.dataprotection#GranularityLevel",
+          "traits": {
+            "smithy.api#documentation": "Settings for granularity level"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cost Management Settings of the vault"
+      }
+    },
+    "com.azure.dataprotection#GranularityLevel": {
+      "type": "enum",
+      "members": {
+        "VAULTLEVEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VaultLevel"
+          }
+        },
+        "PROTECTEDITEMLEVEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ProtectedItemLevel"
+          }
+        },
+        "PROTECTEDITEMWITHPARENTTAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ProtectedItemWithParentTag"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.azure.dataprotection#MonitoringSettings": {
       "type": "structure",
       "members": {
@@ -4774,10 +4818,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/exportBackupJobs",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers export of jobs and returns an OperationID to track.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ExportJobsTriggerRequest": {
@@ -4825,10 +4869,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}/undelete",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "A long-running resource action.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DeletedBackupInstancesUndeleteRequest": {
@@ -4884,10 +4928,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a deleted backup instance with name in a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DeletedBackupInstancesGetResponse": {
@@ -5283,10 +5327,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets deleted backup instances belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DeletedBackupInstancesListResponse": {
@@ -5401,10 +5445,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "UnlockDelete call for ResourceGuardProxy, executed before one can delete it",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#UnlockDeleteResponse": {
@@ -5492,10 +5536,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes the ResourceGuardProxy",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DppResourceGuardProxyDeleteRequest": {
@@ -5551,10 +5595,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or Updates a ResourceGuardProxy",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DppResourceGuardProxyCreateOrUpdateResponse": {
@@ -5695,10 +5739,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns the ResourceGuardProxy object associated with the vault, and that matches the name in the request",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DppResourceGuardProxyGetResponse": {
@@ -5792,10 +5836,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns the list of ResourceGuardProxies associated with the vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DppResourceGuardProxyListResponse": {
@@ -5910,10 +5954,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes a backup policy belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupPoliciesDeleteRequest": {
@@ -5968,10 +6012,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or Updates a backup policy belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupPoliciesCreateOrUpdateResponse": {
@@ -6100,10 +6144,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies/{backupPolicyName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a backup policy belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupPoliciesGetResponse": {
@@ -6196,10 +6240,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns list of backup policies belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupPoliciesListResponse": {
@@ -6314,10 +6358,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs/operations/{operationId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the operation result of operation triggered by Export Jobs API. If the operation is successful, then it also contains URL of a Blob and a SAS key to access the same. The blob contains exported jobs in JSON serialized format.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ExportJobsResult": {
@@ -6405,10 +6449,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs/{jobId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a job with id in a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#JobsGetResponse": {
@@ -6502,10 +6546,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns list of jobs belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#JobsListResponse": {
@@ -6582,10 +6626,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateRestore",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Validates if Restore can be triggered for a DataSource",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesValidateForRestoreResponse": {
@@ -6669,10 +6713,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateForModifyBackup",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Validate whether update for backup instance will be successful or not",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesValidateForModifyBackupRequest": {
@@ -6735,10 +6779,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/sync",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Sync backup instance again in case of failure\nThis action will retry last failed operation and will bring backup instance to valid state",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesSyncBackupInstanceRequest": {
@@ -6820,10 +6864,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/suspendBackups",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation will stop backup for a backup instance and retains the backup data as per the policy (except latest Recovery point, which will be retained forever)",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesSuspendBackupsRequest": {
@@ -6894,10 +6938,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/stopProtection",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation will stop protection of a backup instance and data will be held forever",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesStopProtectionRequest": {
@@ -6968,10 +7012,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeProtection",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation will resume protection for a stopped backup instance",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesResumeProtectionRequest": {
@@ -7027,10 +7071,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeBackups",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation will resume backups for backup instance",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesResumeBackupsRequest": {
@@ -7086,10 +7130,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/restore",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Triggers restore for a BackupInstance",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesTriggerRestoreResponse": {
@@ -7213,10 +7257,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/rehydrate",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "rehydrate recovery point for restore for a BackupInstance",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesTriggerRehydrateRequest": {
@@ -7318,10 +7362,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints/{recoveryPointId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a Recovery Point using recoveryPointId for a Datasource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#RecoveryPointsGetResponse": {
@@ -7422,10 +7466,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns a list of Recovery Points for a DataSource in a vault.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#RecoveryPointsListResponse": {
@@ -7524,10 +7568,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/operationResults/{operationId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Get result of backup instance creation operation",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesGetBackupInstanceOperationResultResponse": {
@@ -7744,9 +7788,9 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#RestorableTimeRangesFindResponse": {
@@ -8042,10 +8086,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/backup",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Trigger adhoc backup",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesAdhocBackupResponse": {
@@ -8161,10 +8205,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Delete a backup instance in a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesDeleteRequest": {
@@ -8220,10 +8264,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Create or update a backup instance in a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesCreateOrUpdateResponse": {
@@ -8359,10 +8403,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a backup instance with name in a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesGetResponse": {
@@ -8474,10 +8518,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a backup instances belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesListResponse": {
@@ -8610,10 +8654,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Deletes a BackupVault resource from the resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupVaultsDeleteRequest": {
@@ -8661,10 +8705,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Updates a BackupVault resource belonging to a resource group. For example, updating tags for a resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupVaultsUpdateResponse": {
@@ -8826,6 +8870,12 @@
             "smithy.api#documentation": "Feature Settings"
           }
         },
+        "costManagementSettings": {
+          "target": "com.azure.dataprotection#CostManagementSettings",
+          "traits": {
+            "smithy.api#documentation": "Cost Management Settings of the vault"
+          }
+        },
         "resourceGuardOperationRequests": {
           "target": "com.azure.dataprotection#PatchBackupVaultInputResourceGuardOperationRequestsList",
           "traits": {
@@ -8898,10 +8948,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Creates or updates a BackupVault resource belonging to a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupVaultsCreateOrUpdateResponse": {
@@ -9053,6 +9103,12 @@
             "smithy.api#documentation": "Monitoring Settings"
           }
         },
+        "costManagementSettings": {
+          "target": "com.azure.dataprotection#CostManagementSettings",
+          "traits": {
+            "smithy.api#documentation": "Cost Management Settings of the vault"
+          }
+        },
         "securitySettings": {
           "target": "com.azure.dataprotection#SecuritySettings",
           "traits": {
@@ -9140,10 +9196,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns a resource belonging to a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupVaultsGetResponse": {
@@ -9267,10 +9323,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns resource collection belonging to a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupVaultsGetInResourceGroupResponse": {
@@ -9415,10 +9471,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/resourceGuards",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns ResourceGuards collection belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetResourcesInSubscriptionResponse": {
@@ -9479,10 +9535,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationStatus/{operationId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the operation status for a resource.\n\nGets the operation status for a resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#OperationStatusGetRequest": {
@@ -9529,10 +9585,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/operationResults/{operationId}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets the operation status for a resource.\n\nGets the operation result for a resource",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#OperationResultGetResponse": {
@@ -9600,10 +9656,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults/{deletedVaultName}",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a deleted backup vault",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DeletedBackupVaultsGetResponse": {
@@ -9651,6 +9707,12 @@
           "target": "com.azure.dataprotection#MonitoringSettings",
           "traits": {
             "smithy.api#documentation": "Monitoring Settings"
+          }
+        },
+        "costManagementSettings": {
+          "target": "com.azure.dataprotection#CostManagementSettings",
+          "traits": {
+            "smithy.api#documentation": "Cost Management Settings of the vault"
           }
         },
         "provisioningState": {
@@ -9850,10 +9912,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists deleted backup vaults by location",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DeletedBackupVaultResourceListResult": {
@@ -9961,10 +10023,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/checkFeatureSupport",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Validates if a feature is supported\n\nValidates if a feature is supported",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#FeatureValidationResponseBase": {
@@ -10026,10 +10088,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/backupVaults",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Returns resource collection belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupVaultsGetInSubscriptionResponse": {
@@ -10090,10 +10152,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DataProtection/operations",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#DataProtectionOperationsListResponse": {
@@ -10248,10 +10310,10 @@
           "method": "GET",
           "uri": "/{resourceId}/providers/Microsoft.DataProtection/backupInstances",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Gets a list of backup instances associated with a tracked resource",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.dataprotection#BackupInstancesExtensionRoutingListResponse": {

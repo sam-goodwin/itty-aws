@@ -5343,13 +5343,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -6136,7 +6138,8 @@ export const ListConcurrencyGroupsForWorkflowRunRequest =
   }) as any as S.Schema<ListConcurrencyGroupsForWorkflowRunRequest>;
 
 export type ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus =
-  "in_progress" | "pending";
+  | "in_progress"
+  | "pending";
 export const ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -8983,9 +8986,9 @@ export const SetCustomOidcSubClaimForRepoResponse = /*@__PURE__*/ S.suspend(
 
 /** The policy that controls when fork PR workflows require approval from a maintainer. */
 export type SetForkPrContributorApprovalPermissionsOrganizationRequestApprovalPolicy =
-    | "first_time_contributors_new_to_github"
-    | "first_time_contributors"
-    | "all_external_contributors";
+  | "first_time_contributors_new_to_github"
+  | "first_time_contributors"
+  | "all_external_contributors";
 export const SetForkPrContributorApprovalPermissionsOrganizationRequestApprovalPolicy =
   /*@__PURE__*/ S.String;
 
@@ -9022,9 +9025,9 @@ export const SetForkPrContributorApprovalPermissionsOrganizationResponse =
 
 /** The policy that controls when fork PR workflows require approval from a maintainer. */
 export type SetForkPrContributorApprovalPermissionsRepositoryRequestApprovalPolicy =
-    | "first_time_contributors_new_to_github"
-    | "first_time_contributors"
-    | "all_external_contributors";
+  | "first_time_contributors_new_to_github"
+  | "first_time_contributors"
+  | "all_external_contributors";
 export const SetForkPrContributorApprovalPermissionsRepositoryRequestApprovalPolicy =
   /*@__PURE__*/ S.String;
 
@@ -9511,7 +9514,9 @@ export const SetSelfHostedRunnersInGroupForOrgResponse =
 
 /** The policy that controls whether self-hosted runners can be used in the organization */
 export type SetSelfHostedRunnersPermissionsOrganizationRequestEnabledRepositories =
-  "all" | "selected" | "none";
+  | "all"
+  | "selected"
+  | "none";
 export const SetSelfHostedRunnersPermissionsOrganizationRequestEnabledRepositories =
   /*@__PURE__*/ S.String;
 

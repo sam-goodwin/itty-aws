@@ -587,6 +587,20 @@ export const SessionKeyVisa = /*@__PURE__*/ S.suspend(() =>
     PanSequenceNumber: S.String,
   }),
 ).annotate({ identifier: "SessionKeyVisa" }) as any as S.Schema<SessionKeyVisa>;
+export interface SessionKeyUnionPay {
+  PrimaryAccountNumber: string | redacted.Redacted<string>;
+  PanSequenceNumber: string;
+  ApplicationTransactionCounter: string;
+}
+export const SessionKeyUnionPay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrimaryAccountNumber: SensitiveString,
+    PanSequenceNumber: S.String,
+    ApplicationTransactionCounter: S.String,
+  }),
+).annotate({
+  identifier: "SessionKeyUnionPay",
+}) as any as S.Schema<SessionKeyUnionPay>;
 export type SessionKeyDerivation =
   | {
       EmvCommon: SessionKeyEmvCommon;
@@ -594,6 +608,7 @@ export type SessionKeyDerivation =
       Emv2000?: never;
       Amex?: never;
       Visa?: never;
+      UnionPay?: never;
     }
   | {
       EmvCommon?: never;
@@ -601,6 +616,7 @@ export type SessionKeyDerivation =
       Emv2000?: never;
       Amex?: never;
       Visa?: never;
+      UnionPay?: never;
     }
   | {
       EmvCommon?: never;
@@ -608,6 +624,7 @@ export type SessionKeyDerivation =
       Emv2000: SessionKeyEmv2000;
       Amex?: never;
       Visa?: never;
+      UnionPay?: never;
     }
   | {
       EmvCommon?: never;
@@ -615,6 +632,7 @@ export type SessionKeyDerivation =
       Emv2000?: never;
       Amex: SessionKeyAmex;
       Visa?: never;
+      UnionPay?: never;
     }
   | {
       EmvCommon?: never;
@@ -622,6 +640,15 @@ export type SessionKeyDerivation =
       Emv2000?: never;
       Amex?: never;
       Visa: SessionKeyVisa;
+      UnionPay?: never;
+    }
+  | {
+      EmvCommon?: never;
+      Mastercard?: never;
+      Emv2000?: never;
+      Amex?: never;
+      Visa?: never;
+      UnionPay: SessionKeyUnionPay;
     };
 export const SessionKeyDerivation = /*@__PURE__*/ S.Union([
   S.Struct({ EmvCommon: SessionKeyEmvCommon }),
@@ -629,6 +656,7 @@ export const SessionKeyDerivation = /*@__PURE__*/ S.Union([
   S.Struct({ Emv2000: SessionKeyEmv2000 }),
   S.Struct({ Amex: SessionKeyAmex }),
   S.Struct({ Visa: SessionKeyVisa }),
+  S.Struct({ UnionPay: SessionKeyUnionPay }),
 ]);
 export interface GenerateAuthRequestCryptogramInput {
   KeyIdentifier: string;
@@ -889,6 +917,7 @@ export type SessionKeyDerivationMode =
   | "AMEX"
   | "MASTERCARD_SESSION_KEY"
   | "VISA"
+  | "UNION_PAY"
   | (string & {});
 export const SessionKeyDerivationMode = /*@__PURE__*/ S.String;
 

@@ -115,23 +115,23 @@ export const AnnotationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing an Annotation */
 export interface Annotation {
-  /** Output only. Create time stamp. */
-  createTime?: string;
   /** Output only. Update time stamp. */
   updateTime?: string;
   /** Labels as key value pairs. */
   labels?: StringMap;
   /** name of resource. */
   name?: string;
+  /** Output only. Create time stamp. */
+  createTime?: string;
   /** Type of an annotation. */
   type?: AnnotationTypeEnum | (string & {});
 }
 export const Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
     labels: S.optional(StringMap),
     name: S.optional(S.String),
+    createTime: S.optional(S.String),
     type: S.optional(AnnotationTypeEnum),
   }),
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
@@ -174,18 +174,18 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    message: S.optional(S.String),
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
@@ -212,16 +212,16 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-/** Message describing a MC Source of type VSphere Scan. */
-export interface VSphereScan {
-  /** reference to the corresponding VSphere Scan in MC Source. */
+/** Message describing a MC Source of type Guest OS Scan. */
+export interface GuestOsScan {
+  /** reference to the corresponding Guest OS Scan in MC Source. */
   coreSource?: string;
 }
-export const VSphereScan = /*@__PURE__*/ S.suspend(() =>
+export const GuestOsScan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coreSource: S.optional(S.String),
   }),
-).annotate({ identifier: "VSphereScan" }) as any as S.Schema<VSphereScan>;
+).annotate({ identifier: "GuestOsScan" }) as any as S.Schema<GuestOsScan>;
 
 export type CollectorStateEnum =
   | "STATE_UNSPECIFIED"
@@ -235,86 +235,86 @@ export type CollectorStateEnum =
   | "STATE_ERROR";
 export const CollectorStateEnum = /*@__PURE__*/ S.String;
 
-/** Message describing a MC Source of type Guest OS Scan. */
-export interface GuestOsScan {
-  /** reference to the corresponding Guest OS Scan in MC Source. */
+/** Message describing a MC Source of type VSphere Scan. */
+export interface VSphereScan {
+  /** reference to the corresponding VSphere Scan in MC Source. */
   coreSource?: string;
 }
-export const GuestOsScan = /*@__PURE__*/ S.suspend(() =>
+export const VSphereScan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coreSource: S.optional(S.String),
   }),
-).annotate({ identifier: "GuestOsScan" }) as any as S.Schema<GuestOsScan>;
+).annotate({ identifier: "VSphereScan" }) as any as S.Schema<VSphereScan>;
 
 /** Message describing Collector object. */
 export interface Collector {
-  /** User specified description of the Collector. */
-  description?: string;
-  /** Output only. Reference to MC Source vsphere_scan. */
-  vsphereScan?: VSphereScan;
   /** Labels as key value pairs. */
   labels?: StringMap;
-  /** Output only. State of the Collector. */
-  state?: CollectorStateEnum | (string & {});
-  /** Output only. Create time stamp. */
-  createTime?: string;
-  /** User specified name of the Collector. */
-  displayName?: string;
-  /** How many days to collect data. */
-  collectionDays?: number;
-  /** Service Account email used to ingest data to this Collector. */
-  serviceAccount?: string;
-  /** Output only. Client version. */
-  clientVersion?: string;
   /** Output only. Reference to MC Source Guest Os Scan. */
   guestOsScan?: GuestOsScan;
-  /** Output only. Store cloud storage bucket name (which is a guid) created with this Collector. */
-  bucket?: string;
-  /** name of resource. */
-  name?: string;
-  /** User specified expected asset count. */
-  expectedAssetCount?: string;
   /** Output only. Update time stamp. */
   updateTime?: string;
   /** Uri for EULA (End User License Agreement) from customer. */
   eulaUri?: string;
+  /** name of resource. */
+  name?: string;
+  /** Output only. Create time stamp. */
+  createTime?: string;
+  /** User specified expected asset count. */
+  expectedAssetCount?: string;
+  /** Output only. Client version. */
+  clientVersion?: string;
+  /** How many days to collect data. */
+  collectionDays?: number;
+  /** User specified name of the Collector. */
+  displayName?: string;
+  /** Output only. State of the Collector. */
+  state?: CollectorStateEnum | (string & {});
+  /** User specified description of the Collector. */
+  description?: string;
+  /** Service Account email used to ingest data to this Collector. */
+  serviceAccount?: string;
+  /** Output only. Store cloud storage bucket name (which is a guid) created with this Collector. */
+  bucket?: string;
+  /** Output only. Reference to MC Source vsphere_scan. */
+  vsphereScan?: VSphereScan;
 }
 export const Collector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
-    vsphereScan: S.optional(VSphereScan),
     labels: S.optional(StringMap),
-    state: S.optional(CollectorStateEnum),
-    createTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    collectionDays: S.optional(S.Number),
-    serviceAccount: S.optional(S.String),
-    clientVersion: S.optional(S.String),
     guestOsScan: S.optional(GuestOsScan),
-    bucket: S.optional(S.String),
-    name: S.optional(S.String),
-    expectedAssetCount: S.optional(S.String),
     updateTime: S.optional(S.String),
     eulaUri: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    expectedAssetCount: S.optional(S.String),
+    clientVersion: S.optional(S.String),
+    collectionDays: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    state: S.optional(CollectorStateEnum),
+    description: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    bucket: S.optional(S.String),
+    vsphereScan: S.optional(VSphereScan),
   }),
 ).annotate({ identifier: "Collector" }) as any as S.Schema<Collector>;
 
 export interface CreateProjectsLocationsCollectorsRequest {
-  /** Required. Name of the parent (project+location). */
-  parent: string;
   /** Optional. An optional request ID to identify requests. */
   requestId?: string;
   /** Required. Id of the requesting object. */
   collectorId?: string;
+  /** Required. Name of the parent (project+location). */
+  parent: string;
   /** Request body */
   body?: Collector;
 }
 export const CreateProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
       collectorId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(Collector.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -328,16 +328,16 @@ export const CreateProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProjectsLocationsCollectorsRequest>;
 
 export interface DeleteProjectsLocationsCollectorsRequest {
-  /** Required. Name of the resource. */
-  name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Name of the resource. */
+  name: string;
 }
 export const DeleteProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -388,24 +388,24 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: StringMap;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: StringMap;
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
     locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
     metadata: S.optional(DocumentMap),
+    displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -474,22 +474,22 @@ export const StringList = /*@__PURE__*/ S.Array(
 export interface ListProjectsLocationsRequest {
   /** Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. */
   extraLocationTypes?: StringList;
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -525,23 +525,23 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsCollectorsRequest {
   /** Required. Parent value for ListCollectorsRequest. */
   parent: string;
-  /** A token identifying a page of results the server should return. */
-  pageToken?: string;
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
-  /** Hint for how to order the results. */
-  orderBy?: string;
   /** Filtering results. */
   filter?: string;
+  /** A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Hint for how to order the results. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -578,22 +578,22 @@ export const ListCollectorsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCollectorsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list page token. */
-  pageToken?: string;
   /** The standard list page size. */
   pageSize?: number;
+  /** The standard list filter. */
+  filter?: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -612,15 +612,15 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: OperationList;
   /** The standard List next-page token. */
   nextPageToken?: string;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",

@@ -60,6 +60,33 @@ export const GetRestApisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRestApisRequest",
 }) as any as S.Schema<GetRestApisRequest>;
 
+export interface RestDescriptionEndpointsItem {
+  /** Whether this endpoint is deprecated */
+  deprecated?: boolean;
+  /** The URL of the endpoint target host */
+  endpointUrl?: string;
+  /** The location of the endpoint */
+  location?: string;
+  /** A string describing the host designated by the URL */
+  description?: string;
+}
+export const RestDescriptionEndpointsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deprecated: S.optional(S.Boolean),
+    endpointUrl: S.optional(S.String),
+    location: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RestDescriptionEndpointsItem",
+}) as any as S.Schema<RestDescriptionEndpointsItem>;
+
+export type RestDescriptionEndpointsItemList =
+  Array<RestDescriptionEndpointsItem>;
+export const RestDescriptionEndpointsItemList = /*@__PURE__*/ S.Array(
+  RestDescriptionEndpointsItem,
+) as any as S.Schema<RestDescriptionEndpointsItemList>;
+
 export interface RestDescriptionIcons {
   /** The URL of the 16x16 icon. */
   x16?: string;
@@ -75,51 +102,116 @@ export const RestDescriptionIcons = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestDescriptionIcons",
 }) as any as S.Schema<RestDescriptionIcons>;
 
-export interface RestDescriptionEndpointsItem {
-  /** The location of the endpoint */
-  location?: string;
-  /** A string describing the host designated by the URL */
-  description?: string;
-  /** The URL of the endpoint target host */
-  endpointUrl?: string;
-  /** Whether this endpoint is deprecated */
-  deprecated?: boolean;
+export interface RestMethodMediaUploadProtocolsSimple {
+  /** True if this endpoint supports upload multipart media. */
+  multipart?: boolean;
+  /** The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level. */
+  path?: string;
 }
-export const RestDescriptionEndpointsItem = /*@__PURE__*/ S.suspend(() =>
+export const RestMethodMediaUploadProtocolsSimple = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      multipart: S.optional(S.Boolean),
+      path: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "RestMethodMediaUploadProtocolsSimple",
+}) as any as S.Schema<RestMethodMediaUploadProtocolsSimple>;
+
+export interface RestMethodMediaUploadProtocolsResumable {
+  /** The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level. */
+  path?: string;
+  /** True if this endpoint supports uploading multipart media. */
+  multipart?: boolean;
+}
+export const RestMethodMediaUploadProtocolsResumable = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.optional(S.String),
+      multipart: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "RestMethodMediaUploadProtocolsResumable",
+}) as any as S.Schema<RestMethodMediaUploadProtocolsResumable>;
+
+export interface RestMethodMediaUploadProtocols {
+  /** Supports uploading as a single HTTP request. */
+  simple?: RestMethodMediaUploadProtocolsSimple;
+  /** Supports the Resumable Media Upload protocol. */
+  resumable?: RestMethodMediaUploadProtocolsResumable;
+}
+export const RestMethodMediaUploadProtocols = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    location: S.optional(S.String),
-    description: S.optional(S.String),
-    endpointUrl: S.optional(S.String),
-    deprecated: S.optional(S.Boolean),
+    simple: S.optional(RestMethodMediaUploadProtocolsSimple),
+    resumable: S.optional(RestMethodMediaUploadProtocolsResumable),
   }),
 ).annotate({
-  identifier: "RestDescriptionEndpointsItem",
-}) as any as S.Schema<RestDescriptionEndpointsItem>;
-
-export type RestDescriptionEndpointsItemList =
-  Array<RestDescriptionEndpointsItem>;
-export const RestDescriptionEndpointsItemList = /*@__PURE__*/ S.Array(
-  RestDescriptionEndpointsItem,
-) as any as S.Schema<RestDescriptionEndpointsItemList>;
+  identifier: "RestMethodMediaUploadProtocols",
+}) as any as S.Schema<RestMethodMediaUploadProtocols>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
+export interface RestMethodMediaUpload {
+  /** Supported upload protocols. */
+  protocols?: RestMethodMediaUploadProtocols;
+  /** Maximum size of a media upload, such as "1MB", "2GB" or "3TB". */
+  maxSize?: string;
+  /** MIME Media Ranges for acceptable media uploads to this method. */
+  accept?: StringList;
+}
+export const RestMethodMediaUpload = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocols: S.optional(RestMethodMediaUploadProtocols),
+    maxSize: S.optional(S.String),
+    accept: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RestMethodMediaUpload",
+}) as any as S.Schema<RestMethodMediaUpload>;
+
+export interface RestMethodRequest {
+  /** parameter name. */
+  parameterName?: string;
+  /** Schema ID for the request schema. */
+  $ref?: string;
+}
+export const RestMethodRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameterName: S.optional(S.String),
+    $ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RestMethodRequest",
+}) as any as S.Schema<RestMethodRequest>;
+
 export type BooleanList = Array<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
 
+export interface JsonSchemaAnnotations {
+  /** A list of methods for which this property is required on requests. */
+  required?: StringList;
+}
+export const JsonSchemaAnnotations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    required: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "JsonSchemaAnnotations",
+}) as any as S.Schema<JsonSchemaAnnotations>;
+
 export interface JsonSchemaVariantMapItem {
-  type_value?: string;
   $ref?: string;
+  type_value?: string;
 }
 export const JsonSchemaVariantMapItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type_value: S.optional(S.String),
     $ref: S.optional(S.String),
+    type_value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "JsonSchemaVariantMapItem",
@@ -145,88 +237,76 @@ export const JsonSchemaVariant = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsonSchemaVariant",
 }) as any as S.Schema<JsonSchemaVariant>;
 
-export interface JsonSchemaAnnotations {
-  /** A list of methods for which this property is required on requests. */
-  required?: StringList;
-}
-export const JsonSchemaAnnotations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    required: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "JsonSchemaAnnotations",
-}) as any as S.Schema<JsonSchemaAnnotations>;
-
 export interface JsonSchema {
-  /** A reference to another schema. The value of this property is the "id" of another schema. */
-  $ref?: string;
-  /** The deprecation status for the enums. Each position maps to the corresponding value in the "enum" array. */
-  enumDeprecated?: BooleanList;
-  /** Whether the parameter is deprecated. */
-  deprecated?: boolean;
-  /** The descriptions for the enums. Each position maps to the corresponding value in the "enum" array. */
-  enumDescriptions?: StringList;
-  /** The value is read-only, generated by the service. The value cannot be modified by the client. If the value is included in a POST, PUT, or PATCH request, it is ignored by the service. */
-  readOnly?: boolean;
-  /** A description of this object. */
-  description?: string;
-  /** An additional regular expression or key that helps constrain the value. For more details see: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23 */
-  format?: string;
-  /** Unique identifier for this schema. */
-  id?: string;
-  /** In a variant data type, the value of one property is used to determine how to interpret the entire entity. Its value must exist in a map of descriminant values to schema names. */
-  variant?: JsonSchemaVariant;
-  /** Whether this parameter may appear multiple times. */
-  repeated?: boolean;
-  /** Whether the parameter is required. */
-  required?: boolean;
-  /** If this is a schema for an object, this property is the schema for any additional properties with dynamic keys on this object. */
-  additionalProperties?: JsonSchema;
-  /** Additional information about this property. */
-  annotations?: JsonSchemaAnnotations;
-  /** The value type for this schema. A list of values can be found here: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1 */
-  type?: string;
-  /** The minimum value of this parameter. */
-  minimum?: string;
-  /** If this is a schema for an object, list the schema for each property of this object. */
-  properties?: JsonSchemaMap;
-  /** The maximum value of this parameter. */
-  maximum?: string;
-  /** If this is a schema for an array, this property is the schema for each element in the array. */
-  items?: JsonSchema;
-  /** The default value of this property (if one exists). */
-  default?: string;
-  /** Values this parameter may take (if it is an enum). */
-  enum?: StringList;
-  /** The regular expression this parameter must conform to. Uses Java 6 regex format: http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html */
-  pattern?: string;
   /** Whether this parameter goes in the query or the path for REST requests. */
   location?: string;
+  /** The regular expression this parameter must conform to. Uses Java 6 regex format: http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html */
+  pattern?: string;
+  /** The value type for this schema. A list of values can be found here: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1 */
+  type?: string;
+  /** If this is a schema for an array, this property is the schema for each element in the array. */
+  items?: JsonSchema;
+  /** The value is read-only, generated by the service. The value cannot be modified by the client. If the value is included in a POST, PUT, or PATCH request, it is ignored by the service. */
+  readOnly?: boolean;
+  /** Whether this parameter may appear multiple times. */
+  repeated?: boolean;
+  /** Unique identifier for this schema. */
+  id?: string;
+  /** Whether the parameter is deprecated. */
+  deprecated?: boolean;
+  /** The minimum value of this parameter. */
+  minimum?: string;
+  /** Whether the parameter is required. */
+  required?: boolean;
+  /** The default value of this property (if one exists). */
+  default?: string;
+  /** A reference to another schema. The value of this property is the "id" of another schema. */
+  $ref?: string;
+  /** The descriptions for the enums. Each position maps to the corresponding value in the "enum" array. */
+  enumDescriptions?: StringList;
+  /** The deprecation status for the enums. Each position maps to the corresponding value in the "enum" array. */
+  enumDeprecated?: BooleanList;
+  /** An additional regular expression or key that helps constrain the value. For more details see: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23 */
+  format?: string;
+  /** Additional information about this property. */
+  annotations?: JsonSchemaAnnotations;
+  /** A description of this object. */
+  description?: string;
+  /** If this is a schema for an object, this property is the schema for any additional properties with dynamic keys on this object. */
+  additionalProperties?: JsonSchema;
+  /** Values this parameter may take (if it is an enum). */
+  enum?: StringList;
+  /** If this is a schema for an object, list the schema for each property of this object. */
+  properties?: JsonSchemaMap;
+  /** In a variant data type, the value of one property is used to determine how to interpret the entire entity. Its value must exist in a map of descriminant values to schema names. */
+  variant?: JsonSchemaVariant;
+  /** The maximum value of this parameter. */
+  maximum?: string;
 }
 export const JsonSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    $ref: S.optional(S.String),
-    enumDeprecated: S.optional(BooleanList),
-    deprecated: S.optional(S.Boolean),
-    enumDescriptions: S.optional(StringList),
-    readOnly: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    format: S.optional(S.String),
-    id: S.optional(S.String),
-    variant: S.optional(JsonSchemaVariant),
-    repeated: S.optional(S.Boolean),
-    required: S.optional(S.Boolean),
-    additionalProperties: S.optional(JsonSchema),
-    annotations: S.optional(JsonSchemaAnnotations),
-    type: S.optional(S.String),
-    minimum: S.optional(S.String),
-    properties: S.optional(S.suspend(() => JsonSchemaMap)),
-    maximum: S.optional(S.String),
-    items: S.optional(JsonSchema),
-    default: S.optional(S.String),
-    enum: S.optional(StringList),
-    pattern: S.optional(S.String),
     location: S.optional(S.String),
+    pattern: S.optional(S.String),
+    type: S.optional(S.String),
+    items: S.optional(JsonSchema),
+    readOnly: S.optional(S.Boolean),
+    repeated: S.optional(S.Boolean),
+    id: S.optional(S.String),
+    deprecated: S.optional(S.Boolean),
+    minimum: S.optional(S.String),
+    required: S.optional(S.Boolean),
+    default: S.optional(S.String),
+    $ref: S.optional(S.String),
+    enumDescriptions: S.optional(StringList),
+    enumDeprecated: S.optional(BooleanList),
+    format: S.optional(S.String),
+    annotations: S.optional(JsonSchemaAnnotations),
+    description: S.optional(S.String),
+    additionalProperties: S.optional(JsonSchema),
+    enum: S.optional(StringList),
+    properties: S.optional(S.suspend(() => JsonSchemaMap)),
+    variant: S.optional(JsonSchemaVariant),
+    maximum: S.optional(S.String),
   }),
 ).annotate({ identifier: "JsonSchema" }) as any as S.Schema<JsonSchema>;
 
@@ -235,6 +315,107 @@ export const JsonSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
   JsonSchema,
 ) as any as S.Schema<JsonSchemaMap>;
+
+export interface RestMethodResponse {
+  /** Schema ID for the response schema. */
+  $ref?: string;
+}
+export const RestMethodResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    $ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RestMethodResponse",
+}) as any as S.Schema<RestMethodResponse>;
+
+export interface RestMethod {
+  /** Description of this method. */
+  description?: string;
+  /** Indicates that downloads from this method should use the download service URL (i.e. "/download"). Only applies if the method supports media download. */
+  useMediaDownloadService?: boolean;
+  /** The API Version of this method, as passed in via the `X-Goog-Api-Version` header or `$apiVersion` query parameter. */
+  apiVersion?: string;
+  /** Media upload parameters. */
+  mediaUpload?: RestMethodMediaUpload;
+  /** Whether this method requires an ETag to be specified. The ETag is sent as an HTTP If-Match or If-None-Match header. */
+  etagRequired?: boolean;
+  /** Ordered list of required parameters, serves as a hint to clients on how to structure their method signatures. The array is ordered such that the "most-significant" parameter appears first. */
+  parameterOrder?: StringList;
+  /** The schema for the request. */
+  request?: RestMethodRequest;
+  /** Whether this method supports media uploads. */
+  supportsMediaUpload?: boolean;
+  /** Whether this method is deprecated. */
+  deprecated?: boolean;
+  /** HTTP method used by this method. */
+  httpMethod?: string;
+  /** Details for all parameters in this method. */
+  parameters?: JsonSchemaMap;
+  /** The schema for the response. */
+  response?: RestMethodResponse;
+  /** The URI path of this REST method in (RFC 6570) format without level 2 features ({+var}). Supplementary to the path property. */
+  flatPath?: string;
+  /** The URI path of this REST method. Should be used in conjunction with the basePath property at the api-level. */
+  path?: string;
+  /** OAuth 2.0 scopes applicable to this method. */
+  scopes?: StringList;
+  /** A unique ID for this method. This property can be used to match methods between different versions of Discovery. */
+  id?: string;
+  /** Whether this method supports subscriptions. */
+  supportsSubscription?: boolean;
+  /** Whether this method supports media downloads. */
+  supportsMediaDownload?: boolean;
+}
+export const RestMethod = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    useMediaDownloadService: S.optional(S.Boolean),
+    apiVersion: S.optional(S.String),
+    mediaUpload: S.optional(RestMethodMediaUpload),
+    etagRequired: S.optional(S.Boolean),
+    parameterOrder: S.optional(StringList),
+    request: S.optional(RestMethodRequest),
+    supportsMediaUpload: S.optional(S.Boolean),
+    deprecated: S.optional(S.Boolean),
+    httpMethod: S.optional(S.String),
+    parameters: S.optional(JsonSchemaMap),
+    response: S.optional(RestMethodResponse),
+    flatPath: S.optional(S.String),
+    path: S.optional(S.String),
+    scopes: S.optional(StringList),
+    id: S.optional(S.String),
+    supportsSubscription: S.optional(S.Boolean),
+    supportsMediaDownload: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "RestMethod" }) as any as S.Schema<RestMethod>;
+
+export type RestMethodMap = { [key: string]: RestMethod | undefined };
+export const RestMethodMap = /*@__PURE__*/ S.Record(
+  S.String,
+  RestMethod,
+) as any as S.Schema<RestMethodMap>;
+
+export interface RestResource {
+  /** Methods on this resource. */
+  methods?: RestMethodMap;
+  /** Whether this resource is deprecated. */
+  deprecated?: boolean;
+  /** Sub-resources on this resource. */
+  resources?: RestResourceMap;
+}
+export const RestResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    methods: S.optional(RestMethodMap),
+    deprecated: S.optional(S.Boolean),
+    resources: S.optional(S.suspend(() => RestResourceMap)),
+  }),
+).annotate({ identifier: "RestResource" }) as any as S.Schema<RestResource>;
+
+export type RestResourceMap = { [key: string]: RestResource | undefined };
+export const RestResourceMap = /*@__PURE__*/ S.Record(
+  S.String,
+  RestResource,
+) as any as S.Schema<RestResourceMap>;
 
 export interface RestDescriptionAuthOauth2ScopesValue {
   /** Description of scope. */
@@ -281,283 +462,102 @@ export const RestDescriptionAuth = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestDescriptionAuth",
 }) as any as S.Schema<RestDescriptionAuth>;
 
-export interface RestMethodMediaUploadProtocolsResumable {
-  /** True if this endpoint supports uploading multipart media. */
-  multipart?: boolean;
-  /** The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level. */
-  path?: string;
-}
-export const RestMethodMediaUploadProtocolsResumable = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      multipart: S.optional(S.Boolean),
-      path: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RestMethodMediaUploadProtocolsResumable",
-}) as any as S.Schema<RestMethodMediaUploadProtocolsResumable>;
-
-export interface RestMethodMediaUploadProtocolsSimple {
-  /** True if this endpoint supports upload multipart media. */
-  multipart?: boolean;
-  /** The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level. */
-  path?: string;
-}
-export const RestMethodMediaUploadProtocolsSimple = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      multipart: S.optional(S.Boolean),
-      path: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "RestMethodMediaUploadProtocolsSimple",
-}) as any as S.Schema<RestMethodMediaUploadProtocolsSimple>;
-
-export interface RestMethodMediaUploadProtocols {
-  /** Supports the Resumable Media Upload protocol. */
-  resumable?: RestMethodMediaUploadProtocolsResumable;
-  /** Supports uploading as a single HTTP request. */
-  simple?: RestMethodMediaUploadProtocolsSimple;
-}
-export const RestMethodMediaUploadProtocols = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resumable: S.optional(RestMethodMediaUploadProtocolsResumable),
-    simple: S.optional(RestMethodMediaUploadProtocolsSimple),
-  }),
-).annotate({
-  identifier: "RestMethodMediaUploadProtocols",
-}) as any as S.Schema<RestMethodMediaUploadProtocols>;
-
-export interface RestMethodMediaUpload {
-  /** Maximum size of a media upload, such as "1MB", "2GB" or "3TB". */
-  maxSize?: string;
-  /** MIME Media Ranges for acceptable media uploads to this method. */
-  accept?: StringList;
-  /** Supported upload protocols. */
-  protocols?: RestMethodMediaUploadProtocols;
-}
-export const RestMethodMediaUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxSize: S.optional(S.String),
-    accept: S.optional(StringList),
-    protocols: S.optional(RestMethodMediaUploadProtocols),
-  }),
-).annotate({
-  identifier: "RestMethodMediaUpload",
-}) as any as S.Schema<RestMethodMediaUpload>;
-
-export interface RestMethodResponse {
-  /** Schema ID for the response schema. */
-  $ref?: string;
-}
-export const RestMethodResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    $ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestMethodResponse",
-}) as any as S.Schema<RestMethodResponse>;
-
-export interface RestMethodRequest {
-  /** Schema ID for the request schema. */
-  $ref?: string;
-  /** parameter name. */
-  parameterName?: string;
-}
-export const RestMethodRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    $ref: S.optional(S.String),
-    parameterName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestMethodRequest",
-}) as any as S.Schema<RestMethodRequest>;
-
-export interface RestMethod {
-  /** Whether this method supports media uploads. */
-  supportsMediaUpload?: boolean;
-  /** Indicates that downloads from this method should use the download service URL (i.e. "/download"). Only applies if the method supports media download. */
-  useMediaDownloadService?: boolean;
-  /** The API Version of this method, as passed in via the `X-Goog-Api-Version` header or `$apiVersion` query parameter. */
-  apiVersion?: string;
-  /** The URI path of this REST method. Should be used in conjunction with the basePath property at the api-level. */
-  path?: string;
-  /** Media upload parameters. */
-  mediaUpload?: RestMethodMediaUpload;
-  /** The schema for the response. */
-  response?: RestMethodResponse;
-  /** Whether this method requires an ETag to be specified. The ETag is sent as an HTTP If-Match or If-None-Match header. */
-  etagRequired?: boolean;
-  /** Whether this method supports subscriptions. */
-  supportsSubscription?: boolean;
-  /** Details for all parameters in this method. */
-  parameters?: JsonSchemaMap;
-  /** OAuth 2.0 scopes applicable to this method. */
-  scopes?: StringList;
-  /** Whether this method supports media downloads. */
-  supportsMediaDownload?: boolean;
-  /** A unique ID for this method. This property can be used to match methods between different versions of Discovery. */
-  id?: string;
-  /** The URI path of this REST method in (RFC 6570) format without level 2 features ({+var}). Supplementary to the path property. */
-  flatPath?: string;
-  /** HTTP method used by this method. */
-  httpMethod?: string;
-  /** Whether this method is deprecated. */
-  deprecated?: boolean;
-  /** Description of this method. */
-  description?: string;
-  /** Ordered list of required parameters, serves as a hint to clients on how to structure their method signatures. The array is ordered such that the "most-significant" parameter appears first. */
-  parameterOrder?: StringList;
-  /** The schema for the request. */
-  request?: RestMethodRequest;
-}
-export const RestMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    supportsMediaUpload: S.optional(S.Boolean),
-    useMediaDownloadService: S.optional(S.Boolean),
-    apiVersion: S.optional(S.String),
-    path: S.optional(S.String),
-    mediaUpload: S.optional(RestMethodMediaUpload),
-    response: S.optional(RestMethodResponse),
-    etagRequired: S.optional(S.Boolean),
-    supportsSubscription: S.optional(S.Boolean),
-    parameters: S.optional(JsonSchemaMap),
-    scopes: S.optional(StringList),
-    supportsMediaDownload: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    flatPath: S.optional(S.String),
-    httpMethod: S.optional(S.String),
-    deprecated: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    parameterOrder: S.optional(StringList),
-    request: S.optional(RestMethodRequest),
-  }),
-).annotate({ identifier: "RestMethod" }) as any as S.Schema<RestMethod>;
-
-export type RestMethodMap = { [key: string]: RestMethod | undefined };
-export const RestMethodMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RestMethod,
-) as any as S.Schema<RestMethodMap>;
-
-export interface RestResource {
-  /** Whether this resource is deprecated. */
-  deprecated?: boolean;
-  /** Sub-resources on this resource. */
-  resources?: RestResourceMap;
-  /** Methods on this resource. */
-  methods?: RestMethodMap;
-}
-export const RestResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deprecated: S.optional(S.Boolean),
-    resources: S.optional(S.suspend(() => RestResourceMap)),
-    methods: S.optional(RestMethodMap),
-  }),
-).annotate({ identifier: "RestResource" }) as any as S.Schema<RestResource>;
-
-export type RestResourceMap = { [key: string]: RestResource | undefined };
-export const RestResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RestResource,
-) as any as S.Schema<RestResourceMap>;
-
 export interface RestDescription {
-  /** The title of this API. */
-  title?: string;
-  /** Indicates how the API name should be capitalized and split into various parts. Useful for generating pretty class names. */
-  canonicalName?: string;
-  /** The root URL under which all API services live. */
-  rootUrl?: string;
-  /** The name of the owner of this API. See ownerDomain. */
-  ownerName?: string;
-  /** The protocol described by this document. */
-  protocol?: string;
-  /** [DEPRECATED] The base URL for REST requests. */
-  baseUrl?: string;
-  /** Links to 16x16 and 32x32 icons representing the API. */
-  icons?: RestDescriptionIcons;
-  /** The package of the owner of this API. See ownerDomain. */
-  packagePath?: string;
-  /** The name of this API. */
-  name?: string;
-  /** The ETag for this response. */
-  etag?: string;
-  version_module?: boolean;
-  /** A list of location-based endpoint objects for this API. Each object contains the endpoint URL, location, description and deprecation status. */
-  endpoints?: RestDescriptionEndpointsItemList;
-  /** The description of this API. */
-  description?: string;
-  /** Labels for the status of this API, such as labs or deprecated. */
-  labels?: StringList;
-  /** A list of supported features for this API. */
-  features?: StringList;
-  /** Common parameters that apply across all apis. */
-  parameters?: JsonSchemaMap;
-  /** [DEPRECATED] The base path for REST requests. */
-  basePath?: string;
-  /** Indicate the version of the Discovery API used to generate this doc. */
-  discoveryVersion?: string;
-  /** The version of this API. */
-  version?: string;
-  /** Enable exponential backoff for suitable methods in the generated clients. */
-  exponentialBackoffDefault?: boolean;
-  /** The schemas for this API. */
-  schemas?: JsonSchemaMap;
-  /** Authentication information. */
-  auth?: RestDescriptionAuth;
-  /** The resources in this API. */
-  resources?: RestResourceMap;
-  /** The ID of this API. */
-  id?: string;
-  /** The base path for all REST requests. */
-  servicePath?: string;
-  /** The domain of the owner of this API. Together with the ownerName and a packagePath values, this can be used to generate a library for this API which would have a unique fully qualified name. */
-  ownerDomain?: string;
-  /** The kind for this response. */
-  kind?: string;
   /** The path for REST batch requests. */
   batchPath?: string;
+  /** The ID of this API. */
+  id?: string;
+  /** The root URL under which all API services live. */
+  rootUrl?: string;
+  /** The name of this API. */
+  name?: string;
+  /** A list of location-based endpoint objects for this API. Each object contains the endpoint URL, location, description and deprecation status. */
+  endpoints?: RestDescriptionEndpointsItemList;
+  /** The title of this API. */
+  title?: string;
+  /** The description of this API. */
+  description?: string;
+  /** [DEPRECATED] The base URL for REST requests. */
+  baseUrl?: string;
+  /** The ETag for this response. */
+  etag?: string;
+  /** Links to 16x16 and 32x32 icons representing the API. */
+  icons?: RestDescriptionIcons;
+  /** The name of the owner of this API. See ownerDomain. */
+  ownerName?: string;
+  /** Indicate the version of the Discovery API used to generate this doc. */
+  discoveryVersion?: string;
+  /** The package of the owner of this API. See ownerDomain. */
+  packagePath?: string;
   /** The version of this API. */
-  revision?: string;
-  /** A link to human readable documentation for the API. */
-  documentationLink?: string;
+  version?: string;
   /** API-level methods for this API. */
   methods?: RestMethodMap;
+  /** The schemas for this API. */
+  schemas?: JsonSchemaMap;
+  /** Common parameters that apply across all apis. */
+  parameters?: JsonSchemaMap;
+  /** The kind for this response. */
+  kind?: string;
+  /** The resources in this API. */
+  resources?: RestResourceMap;
+  version_module?: boolean;
+  /** A link to human readable documentation for the API. */
+  documentationLink?: string;
+  /** Labels for the status of this API, such as labs or deprecated. */
+  labels?: StringList;
+  /** Indicates how the API name should be capitalized and split into various parts. Useful for generating pretty class names. */
+  canonicalName?: string;
+  /** The version of this API. */
+  revision?: string;
+  /** Enable exponential backoff for suitable methods in the generated clients. */
+  exponentialBackoffDefault?: boolean;
+  /** The protocol described by this document. */
+  protocol?: string;
+  /** The base path for all REST requests. */
+  servicePath?: string;
+  /** [DEPRECATED] The base path for REST requests. */
+  basePath?: string;
+  /** A list of supported features for this API. */
+  features?: StringList;
+  /** Authentication information. */
+  auth?: RestDescriptionAuth;
+  /** The domain of the owner of this API. Together with the ownerName and a packagePath values, this can be used to generate a library for this API which would have a unique fully qualified name. */
+  ownerDomain?: string;
 }
 export const RestDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    title: S.optional(S.String),
-    canonicalName: S.optional(S.String),
-    rootUrl: S.optional(S.String),
-    ownerName: S.optional(S.String),
-    protocol: S.optional(S.String),
-    baseUrl: S.optional(S.String),
-    icons: S.optional(RestDescriptionIcons),
-    packagePath: S.optional(S.String),
-    name: S.optional(S.String),
-    etag: S.optional(S.String),
-    version_module: S.optional(S.Boolean),
-    endpoints: S.optional(RestDescriptionEndpointsItemList),
-    description: S.optional(S.String),
-    labels: S.optional(StringList),
-    features: S.optional(StringList),
-    parameters: S.optional(JsonSchemaMap),
-    basePath: S.optional(S.String),
-    discoveryVersion: S.optional(S.String),
-    version: S.optional(S.String),
-    exponentialBackoffDefault: S.optional(S.Boolean),
-    schemas: S.optional(JsonSchemaMap),
-    auth: S.optional(RestDescriptionAuth),
-    resources: S.optional(RestResourceMap),
-    id: S.optional(S.String),
-    servicePath: S.optional(S.String),
-    ownerDomain: S.optional(S.String),
-    kind: S.optional(S.String),
     batchPath: S.optional(S.String),
-    revision: S.optional(S.String),
-    documentationLink: S.optional(S.String),
+    id: S.optional(S.String),
+    rootUrl: S.optional(S.String),
+    name: S.optional(S.String),
+    endpoints: S.optional(RestDescriptionEndpointsItemList),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    baseUrl: S.optional(S.String),
+    etag: S.optional(S.String),
+    icons: S.optional(RestDescriptionIcons),
+    ownerName: S.optional(S.String),
+    discoveryVersion: S.optional(S.String),
+    packagePath: S.optional(S.String),
+    version: S.optional(S.String),
     methods: S.optional(RestMethodMap),
+    schemas: S.optional(JsonSchemaMap),
+    parameters: S.optional(JsonSchemaMap),
+    kind: S.optional(S.String),
+    resources: S.optional(RestResourceMap),
+    version_module: S.optional(S.Boolean),
+    documentationLink: S.optional(S.String),
+    labels: S.optional(StringList),
+    canonicalName: S.optional(S.String),
+    revision: S.optional(S.String),
+    exponentialBackoffDefault: S.optional(S.Boolean),
+    protocol: S.optional(S.String),
+    servicePath: S.optional(S.String),
+    basePath: S.optional(S.String),
+    features: S.optional(StringList),
+    auth: S.optional(RestDescriptionAuth),
+    ownerDomain: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RestDescription",
@@ -588,45 +588,45 @@ export type DirectoryListItemsItemIcons = RestDescriptionIcons;
 export const DirectoryListItemsItemIcons = RestDescriptionIcons;
 
 export interface DirectoryListItemsItem {
-  /** The id of this API. */
-  id?: string;
-  /** The title of this API. */
-  title?: string;
-  /** The kind for this response. */
-  kind?: string;
-  /** The description of this API. */
-  description?: string;
-  /** The URL for the discovery REST document. */
-  discoveryRestUrl?: string;
   /** True if this version is the preferred version to use. */
   preferred?: boolean;
-  /** The version of the API. */
-  version?: string;
-  /** A link to the discovery document. */
-  discoveryLink?: string;
-  /** Links to 16x16 and 32x32 icons representing the API. */
-  icons?: RestDescriptionIcons;
-  /** Labels for the status of this API, such as labs or deprecated. */
-  labels?: StringList;
+  /** The description of this API. */
+  description?: string;
+  /** The id of this API. */
+  id?: string;
   /** A link to human readable documentation for the API. */
   documentationLink?: string;
+  /** Links to 16x16 and 32x32 icons representing the API. */
+  icons?: RestDescriptionIcons;
+  /** The URL for the discovery REST document. */
+  discoveryRestUrl?: string;
+  /** A link to the discovery document. */
+  discoveryLink?: string;
+  /** The version of the API. */
+  version?: string;
+  /** The title of this API. */
+  title?: string;
   /** The name of the API. */
   name?: string;
+  /** The kind for this response. */
+  kind?: string;
+  /** Labels for the status of this API, such as labs or deprecated. */
+  labels?: StringList;
 }
 export const DirectoryListItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    title: S.optional(S.String),
-    kind: S.optional(S.String),
-    description: S.optional(S.String),
-    discoveryRestUrl: S.optional(S.String),
     preferred: S.optional(S.Boolean),
-    version: S.optional(S.String),
-    discoveryLink: S.optional(S.String),
-    icons: S.optional(RestDescriptionIcons),
-    labels: S.optional(StringList),
+    description: S.optional(S.String),
+    id: S.optional(S.String),
     documentationLink: S.optional(S.String),
+    icons: S.optional(RestDescriptionIcons),
+    discoveryRestUrl: S.optional(S.String),
+    discoveryLink: S.optional(S.String),
+    version: S.optional(S.String),
+    title: S.optional(S.String),
     name: S.optional(S.String),
+    kind: S.optional(S.String),
+    labels: S.optional(StringList),
   }),
 ).annotate({
   identifier: "DirectoryListItemsItem",

@@ -268,16 +268,65 @@ export const PostContactSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PostContactSummary",
 }) as any as S.Schema<PostContactSummary>;
+export type ExtractionDefinitionId = string;
+export type ExtractionDefinitionName = string;
+export type ExtractionDefinitionDisplayLabel = string;
+export type ExtractedInformationContent = string;
+export interface ExtractedInformationValue {
+  Content?: string;
+  PointsOfInterest?: PointOfInterest[];
+}
+export const ExtractedInformationValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Content: S.optional(S.String),
+    PointsOfInterest: S.optional(PointsOfInterest),
+  }),
+).annotate({
+  identifier: "ExtractedInformationValue",
+}) as any as S.Schema<ExtractedInformationValue>;
+export type ExtractedInformationValues = ExtractedInformationValue[];
+export const ExtractedInformationValues = /*@__PURE__*/ S.Array(
+  ExtractedInformationValue,
+);
+export type ExtractedInformationFailureCode =
+  | "QUOTA_EXCEEDED"
+  | "INSUFFICIENT_CONVERSATION_CONTENT"
+  | "FAILED_SAFETY_GUIDELINES"
+  | "INTERNAL_ERROR"
+  | "MAX_PACKAGE_FEATURE_ONLY"
+  | (string & {});
+export const ExtractedInformationFailureCode = /*@__PURE__*/ S.String;
+
+export interface ExtractedInformation {
+  ExtractionDefinitionId?: string;
+  ExtractionDefinitionName?: string;
+  ExtractionDefinitionDisplayLabel?: string;
+  ExtractedValues?: ExtractedInformationValue[];
+  FailureCode?: ExtractedInformationFailureCode;
+}
+export const ExtractedInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExtractionDefinitionId: S.optional(S.String),
+    ExtractionDefinitionName: S.optional(S.String),
+    ExtractionDefinitionDisplayLabel: S.optional(S.String),
+    ExtractedValues: S.optional(ExtractedInformationValues),
+    FailureCode: S.optional(ExtractedInformationFailureCode),
+  }),
+).annotate({
+  identifier: "ExtractedInformation",
+}) as any as S.Schema<ExtractedInformation>;
 export interface RealtimeContactAnalysisSegment {
   Transcript?: Transcript;
   Categories?: Categories;
   PostContactSummary?: PostContactSummary;
+  ExtractedInformation?: ExtractedInformation;
 }
 export const RealtimeContactAnalysisSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Transcript: S.optional(Transcript),
     Categories: S.optional(Categories),
     PostContactSummary: S.optional(PostContactSummary),
+    ExtractedInformation: S.optional(ExtractedInformation),
   }),
 ).annotate({
   identifier: "RealtimeContactAnalysisSegment",
@@ -318,6 +367,17 @@ export interface ListRealtimeContactAnalysisSegmentsResponse {
     PostContactSummary: PostContactSummary & {
       Status: PostContactSummaryStatus;
     };
+    ExtractedInformation: ExtractedInformation & {
+      ExtractionDefinitionId: ExtractionDefinitionId;
+      ExtractionDefinitionName: ExtractionDefinitionName;
+      ExtractedValues: (ExtractedInformationValue & {
+        Content: ExtractedInformationContent;
+        PointsOfInterest: (PointOfInterest & {
+          BeginOffsetMillis: OffsetMillis;
+          EndOffsetMillis: OffsetMillis;
+        })[];
+      })[];
+    };
   })[];
   NextToken?: string;
 }
@@ -339,7 +399,11 @@ export type ListRealtimeContactAnalysisSegmentsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides a list of analysis segments for a real-time analysis session.
+ * Provides a list of analysis segments for a real-time analysis session for
+ * voice.
+ *
+ * Voice data is retained for 24 hours. You must invoke this API during that
+ * time.
  */
 export const listRealtimeContactAnalysisSegments: API.PaginatedOperationMethod<
   ListRealtimeContactAnalysisSegmentsRequest,

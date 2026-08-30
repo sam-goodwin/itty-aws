@@ -380,12 +380,12 @@ export const OperationWarningsItemList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OperationWarningsItemList>;
 
 export type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum =
-    | "UNSPECIFIED"
-    | "PROPAGATING"
-    | "PROPAGATED"
-    | "ABANDONED"
-    | "FAILED"
-    | "DONE";
+  | "UNSPECIFIED"
+  | "PROPAGATING"
+  | "PROPAGATED"
+  | "ABANDONED"
+  | "FAILED"
+  | "DONE";
 export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum =
   /*@__PURE__*/ S.String;
 

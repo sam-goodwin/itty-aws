@@ -356,11 +356,14 @@ export const Authentication = /*@__PURE__*/ S.suspend(() =>
     value: S.optional(S.String),
   }),
 ).annotate({ identifier: "Authentication" }) as any as S.Schema<Authentication>;
+export type SensitiveEmailAddress = string | redacted.Redacted<string>;
 export interface Actor {
   identifier?: string;
   uris?: string[];
   authentication?: Authentication;
   description?: string;
+  enableEmailMfa?: boolean;
+  mfaForwardingAddress?: string | redacted.Redacted<string>;
 }
 export const Actor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -368,6 +371,8 @@ export const Actor = /*@__PURE__*/ S.suspend(() =>
     uris: S.optional(UriList),
     authentication: S.optional(Authentication),
     description: S.optional(S.String),
+    enableEmailMfa: S.optional(S.Boolean),
+    mfaForwardingAddress: S.optional(SensitiveString),
   }),
 ).annotate({ identifier: "Actor" }) as any as S.Schema<Actor>;
 export type ActorList = Actor[];
@@ -409,21 +414,52 @@ export const SourceCodeRepositoryList =
 export interface IntegratedRepository {
   integrationId: string;
   providerResourceId: string;
+  branch?: string;
 }
 export const IntegratedRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ integrationId: S.String, providerResourceId: S.String }),
+  S.Struct({
+    integrationId: S.String,
+    providerResourceId: S.String,
+    branch: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "IntegratedRepository",
 }) as any as S.Schema<IntegratedRepository>;
 export type IntegratedRepositoryList = IntegratedRepository[];
 export const IntegratedRepositoryList =
   /*@__PURE__*/ S.Array(IntegratedRepository);
+export type CaCertificatePem = string | redacted.Redacted<string>;
+export type CaCertificateSource =
+  | {
+      inlinePem: string | redacted.Redacted<string>;
+      artifactId?: never;
+      s3Location?: never;
+    }
+  | { inlinePem?: never; artifactId: string; s3Location?: never }
+  | { inlinePem?: never; artifactId?: never; s3Location: string };
+export const CaCertificateSource = /*@__PURE__*/ S.Union([
+  S.Struct({ inlinePem: SensitiveString }),
+  S.Struct({ artifactId: S.String }),
+  S.Struct({ s3Location: S.String }),
+]);
+export interface TrustedCaCertificate {
+  source: CaCertificateSource;
+}
+export const TrustedCaCertificate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ source: CaCertificateSource }),
+).annotate({
+  identifier: "TrustedCaCertificate",
+}) as any as S.Schema<TrustedCaCertificate>;
+export type TrustedCaCertificateList = TrustedCaCertificate[];
+export const TrustedCaCertificateList =
+  /*@__PURE__*/ S.Array(TrustedCaCertificate);
 export interface Assets {
   endpoints?: Endpoint[];
   actors?: Actor[];
   documents?: DocumentInfo[];
   sourceCode?: SourceCodeRepository[];
   integratedRepositories?: IntegratedRepository[];
+  trustedCaCertificates?: TrustedCaCertificate[];
 }
 export const Assets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -432,6 +468,7 @@ export const Assets = /*@__PURE__*/ S.suspend(() =>
     documents: S.optional(DocumentList),
     sourceCode: S.optional(SourceCodeRepositoryList),
     integratedRepositories: S.optional(IntegratedRepositoryList),
+    trustedCaCertificates: S.optional(TrustedCaCertificateList),
   }),
 ).annotate({ identifier: "Assets" }) as any as S.Schema<Assets>;
 export type RiskType =
@@ -568,6 +605,7 @@ export interface Pentest {
   codeRemediationStrategy?: CodeRemediationStrategy;
   cleanUpStrategy?: CleanUpStrategy;
   disableManagedSkills?: SkillType[];
+  maxTaskHours?: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -585,6 +623,7 @@ export const Pentest = /*@__PURE__*/ S.suspend(() =>
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     cleanUpStrategy: S.optional(CleanUpStrategy),
     disableManagedSkills: S.optional(SkillTypeList),
+    maxTaskHours: S.optional(S.Number),
     createdAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -984,6 +1023,7 @@ export interface CodeReviewJob {
   errorInformation?: ErrorInformation;
   integratedRepositories?: IntegratedRepository[];
   codeRemediationStrategy?: CodeRemediationStrategy;
+  maxTaskHours?: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -1003,6 +1043,7 @@ export const CodeReviewJob = /*@__PURE__*/ S.suspend(() =>
     errorInformation: S.optional(ErrorInformation),
     integratedRepositories: S.optional(IntegratedRepositoryList),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
+    maxTaskHours: S.optional(S.Number),
     createdAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -1156,6 +1197,7 @@ export interface CodeReview {
   logConfig?: CloudWatchLog;
   codeRemediationStrategy?: CodeRemediationStrategy;
   validationMode?: ValidationMode;
+  maxTaskHours?: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -1169,6 +1211,7 @@ export const CodeReview = /*@__PURE__*/ S.suspend(() =>
     logConfig: S.optional(CloudWatchLog),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     validationMode: S.optional(ValidationMode),
+    maxTaskHours: S.optional(S.Number),
     createdAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -1331,6 +1374,8 @@ export const VerificationScript = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerificationScript",
 }) as any as S.Schema<VerificationScript>;
+export type StringList = string[];
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface Finding {
   findingId: string;
   agentSpaceId: string;
@@ -1355,6 +1400,8 @@ export interface Finding {
   codeLocations?: CodeLocation[];
   verificationScript?: VerificationScript;
   alignmentRationale?: string;
+  revalidationJobIds?: string[];
+  originalFindingId?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -1383,6 +1430,8 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
     codeLocations: S.optional(CodeLocationList),
     verificationScript: S.optional(VerificationScript),
     alignmentRationale: S.optional(S.String),
+    revalidationJobIds: S.optional(StringList),
+    originalFindingId: S.optional(S.String),
     createdAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -1425,6 +1474,9 @@ export const BatchGetPentestJobsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetPentestJobsInput",
 }) as any as S.Schema<BatchGetPentestJobsInput>;
+export type JobType = "FULL" | "REVALIDATION" | (string & {});
+export const JobType = /*@__PURE__*/ S.String;
+
 export interface PentestJob {
   pentestJobId?: string;
   pentestId?: string;
@@ -1446,9 +1498,13 @@ export interface PentestJob {
   networkTrafficConfig?: NetworkTrafficConfig;
   errorInformation?: ErrorInformation;
   integratedRepositories?: IntegratedRepository[];
+  trustedCaCertificates?: TrustedCaCertificate[];
   codeRemediationStrategy?: CodeRemediationStrategy;
   cleanUpStrategy?: CleanUpStrategy;
   disableManagedSkills?: SkillType[];
+  maxTaskHours?: number;
+  jobType?: JobType;
+  selectedFindingIds?: string[];
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -1474,9 +1530,13 @@ export const PentestJob = /*@__PURE__*/ S.suspend(() =>
     networkTrafficConfig: S.optional(NetworkTrafficConfig),
     errorInformation: S.optional(ErrorInformation),
     integratedRepositories: S.optional(IntegratedRepositoryList),
+    trustedCaCertificates: S.optional(TrustedCaCertificateList),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     cleanUpStrategy: S.optional(CleanUpStrategy),
     disableManagedSkills: S.optional(SkillTypeList),
+    maxTaskHours: S.optional(S.Number),
+    jobType: S.optional(JobType),
+    selectedFindingIds: S.optional(StringList),
     createdAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -1529,6 +1589,7 @@ export interface Task {
   targetEndpoint?: Endpoint;
   executionStatus?: TaskExecutionStatus;
   logsLocation?: LogLocation;
+  taskHours?: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -1545,6 +1606,7 @@ export const Task = /*@__PURE__*/ S.suspend(() =>
     targetEndpoint: S.optional(Endpoint),
     executionStatus: S.optional(TaskExecutionStatus),
     logsLocation: S.optional(LogLocation),
+    taskHours: S.optional(S.Number),
     createdAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -2006,8 +2068,6 @@ export const ThreatSeverity = /*@__PURE__*/ S.String;
 export type ThreatStatus = "OPEN" | "RESOLVED" | "DISMISSED" | (string & {});
 export const ThreatStatus = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface ThreatAnchorShape {
   kind?: string;
   id?: string;
@@ -2286,6 +2346,7 @@ export interface CreateCodeReviewInput {
   logConfig?: CloudWatchLog;
   codeRemediationStrategy?: CodeRemediationStrategy;
   validationMode?: ValidationMode;
+  maxTaskHours?: number;
 }
 export const CreateCodeReviewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2296,6 +2357,7 @@ export const CreateCodeReviewInput = /*@__PURE__*/ S.suspend(() =>
     logConfig: S.optional(CloudWatchLog),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     validationMode: S.optional(ValidationMode),
+    maxTaskHours: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/CreateCodeReview" }),
@@ -2320,6 +2382,7 @@ export interface CreateCodeReviewOutput {
   agentSpaceId?: string;
   codeRemediationStrategy?: CodeRemediationStrategy;
   validationMode?: ValidationMode;
+  maxTaskHours?: number;
 }
 export const CreateCodeReviewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2337,6 +2400,7 @@ export const CreateCodeReviewOutput = /*@__PURE__*/ S.suspend(() =>
     agentSpaceId: S.optional(S.String),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     validationMode: S.optional(ValidationMode),
+    maxTaskHours: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "CreateCodeReviewOutput",
@@ -2557,6 +2621,7 @@ export interface CreatePentestInput {
   networkTrafficConfig?: NetworkTrafficConfig;
   codeRemediationStrategy?: CodeRemediationStrategy;
   disableManagedSkills?: SkillType[];
+  maxTaskHours?: number;
 }
 export const CreatePentestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2570,6 +2635,7 @@ export const CreatePentestInput = /*@__PURE__*/ S.suspend(() =>
     networkTrafficConfig: S.optional(NetworkTrafficConfig),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     disableManagedSkills: S.optional(SkillTypeList),
+    maxTaskHours: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/CreatePentest" }),
@@ -4598,6 +4664,7 @@ export interface TaskSummary {
   title?: string;
   riskType?: RiskType;
   executionStatus?: TaskExecutionStatus;
+  taskHours?: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -4610,6 +4677,7 @@ export const TaskSummary = /*@__PURE__*/ S.suspend(() =>
     title: S.optional(S.String),
     riskType: S.optional(RiskType),
     executionStatus: S.optional(TaskExecutionStatus),
+    taskHours: S.optional(S.Number),
     createdAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -5320,9 +5388,16 @@ export const StartCodeReviewJobOutput = /*@__PURE__*/ S.suspend(() =>
 export interface StartPentestJobInput {
   agentSpaceId: string;
   pentestId: string;
+  jobType?: JobType;
+  selectedFindingIds?: string[];
 }
 export const StartPentestJobInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentSpaceId: S.String, pentestId: S.String }).pipe(
+  S.Struct({
+    agentSpaceId: S.String,
+    pentestId: S.String,
+    jobType: S.optional(JobType),
+    selectedFindingIds: S.optional(StringList),
+  }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/StartPentestJob" }),
       svc,
@@ -5630,6 +5705,7 @@ export interface UpdateCodeReviewInput {
   logConfig?: CloudWatchLog;
   codeRemediationStrategy?: CodeRemediationStrategy;
   validationMode?: ValidationMode;
+  maxTaskHours?: number;
 }
 export const UpdateCodeReviewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5641,6 +5717,7 @@ export const UpdateCodeReviewInput = /*@__PURE__*/ S.suspend(() =>
     logConfig: S.optional(CloudWatchLog),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     validationMode: S.optional(ValidationMode),
+    maxTaskHours: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/UpdateCodeReview" }),
@@ -5665,6 +5742,7 @@ export interface UpdateCodeReviewOutput {
   agentSpaceId?: string;
   codeRemediationStrategy?: CodeRemediationStrategy;
   validationMode?: ValidationMode;
+  maxTaskHours?: number;
 }
 export const UpdateCodeReviewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5682,6 +5760,7 @@ export const UpdateCodeReviewOutput = /*@__PURE__*/ S.suspend(() =>
     agentSpaceId: S.optional(S.String),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     validationMode: S.optional(ValidationMode),
+    maxTaskHours: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "UpdateCodeReviewOutput",
@@ -5864,6 +5943,7 @@ export interface UpdatePentestInput {
   networkTrafficConfig?: NetworkTrafficConfig;
   codeRemediationStrategy?: CodeRemediationStrategy;
   disableManagedSkills?: SkillType[];
+  maxTaskHours?: number;
 }
 export const UpdatePentestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5878,6 +5958,7 @@ export const UpdatePentestInput = /*@__PURE__*/ S.suspend(() =>
     networkTrafficConfig: S.optional(NetworkTrafficConfig),
     codeRemediationStrategy: S.optional(CodeRemediationStrategy),
     disableManagedSkills: S.optional(SkillTypeList),
+    maxTaskHours: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/UpdatePentest" }),

@@ -330,6 +330,7 @@ export type AwsAccountId = string;
 export type TopicId = string;
 export type AnswerId = string;
 export type Arn = string;
+export type LimitedSensitiveString = string | redacted.Redacted<string>;
 export type LimitedString = string;
 export interface Identifier {
   Identity: string;
@@ -575,6 +576,7 @@ export type FilterClass =
   | "ENFORCED_VALUE_FILTER"
   | "CONDITIONAL_VALUE_FILTER"
   | "NAMED_VALUE_FILTER"
+  | "DASHBOARD_DEFAULT_FILTER"
   | (string & {});
 export const FilterClass = /*@__PURE__*/ S.String;
 
@@ -874,7 +876,7 @@ export const TopicTemplate = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTopicReviewedAnswer {
   AnswerId: string;
   DatasetArn: string;
-  Question: string;
+  Question: string | redacted.Redacted<string>;
   Mir?: TopicIR;
   PrimaryVisual?: TopicVisual;
   Template?: TopicTemplate;
@@ -883,7 +885,7 @@ export const CreateTopicReviewedAnswer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AnswerId: S.String,
     DatasetArn: S.String,
-    Question: S.String,
+    Question: SensitiveString,
     Mir: S.optional(TopicIR),
     PrimaryVisual: S.optional(TopicVisual),
     Template: S.optional(TopicTemplate),
@@ -1112,6 +1114,129 @@ export const BatchDeleteTopicReviewedAnswerResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchDeleteTopicReviewedAnswerResponse",
 }) as any as S.Schema<BatchDeleteTopicReviewedAnswerResponse>;
+export interface UserLimitsEntry {
+  userName: string;
+  namespace: string;
+}
+export const UserLimitsEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ userName: S.String, namespace: S.String }),
+).annotate({
+  identifier: "UserLimitsEntry",
+}) as any as S.Schema<UserLimitsEntry>;
+export type BatchDescribeUserLimitsRequestUsersList = UserLimitsEntry[];
+export const BatchDescribeUserLimitsRequestUsersList =
+  /*@__PURE__*/ S.Array(UserLimitsEntry);
+export type ResourceType = "INDEX_STORAGE" | "AGENT_HOURS" | (string & {});
+export const ResourceType = /*@__PURE__*/ S.String;
+
+export type ResourceTypeList = ResourceType[];
+export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
+export interface BatchDescribeUserLimitsRequest {
+  accountId: string;
+  users?: UserLimitsEntry[];
+  resourceTypes?: ResourceType[];
+}
+export const BatchDescribeUserLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    users: S.optional(BatchDescribeUserLimitsRequestUsersList),
+    resourceTypes: S.optional(ResourceTypeList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/governance/limits/accounts/{accountId}/user-limits",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "BatchDescribeUserLimitsRequest",
+}) as any as S.Schema<BatchDescribeUserLimitsRequest>;
+export type EffectiveLimitLimitValueLong = number;
+export type LimitUnit = "MB" | "GB" | "HOURS" | "DAYS" | (string & {});
+export const LimitUnit = /*@__PURE__*/ S.String;
+
+export type LimitSource =
+  | "DIRECT_USER"
+  | "GROUP"
+  | "ROLE"
+  | "ACCOUNT"
+  | "SYSTEM_DEFAULT"
+  | (string & {});
+export const LimitSource = /*@__PURE__*/ S.String;
+
+export type ProfileId = string;
+export interface EffectiveLimit {
+  resourceType: ResourceType;
+  limitValue: number;
+  limitUnit: LimitUnit;
+  source: LimitSource;
+  profileId: string;
+}
+export const EffectiveLimit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: ResourceType,
+    limitValue: S.Number,
+    limitUnit: LimitUnit,
+    source: LimitSource,
+    profileId: S.String,
+  }),
+).annotate({ identifier: "EffectiveLimit" }) as any as S.Schema<EffectiveLimit>;
+export type EffectiveLimitList = EffectiveLimit[];
+export const EffectiveLimitList = /*@__PURE__*/ S.Array(EffectiveLimit);
+export interface UserLimits {
+  userName: string;
+  namespace: string;
+  effectiveLimits: EffectiveLimit[];
+}
+export const UserLimits = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userName: S.String,
+    namespace: S.String,
+    effectiveLimits: EffectiveLimitList,
+  }),
+).annotate({ identifier: "UserLimits" }) as any as S.Schema<UserLimits>;
+export type UserLimitsList = UserLimits[];
+export const UserLimitsList = /*@__PURE__*/ S.Array(UserLimits);
+export interface BatchDescribeUserLimitsError_ {
+  userName?: string;
+  namespace?: string;
+  userArn?: string;
+  errorCode: string;
+  message: string;
+}
+export const BatchDescribeUserLimitsError_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userName: S.optional(S.String),
+    namespace: S.optional(S.String),
+    userArn: S.optional(S.String),
+    errorCode: S.String,
+    message: S.String,
+  }),
+).annotate({
+  identifier: "BatchDescribeUserLimitsError",
+}) as any as S.Schema<BatchDescribeUserLimitsError_>;
+export type BatchDescribeUserLimitsErrorList = BatchDescribeUserLimitsError_[];
+export const BatchDescribeUserLimitsErrorList = /*@__PURE__*/ S.Array(
+  BatchDescribeUserLimitsError_,
+);
+export interface BatchDescribeUserLimitsResponse {
+  userLimits: UserLimits[];
+  errors: BatchDescribeUserLimitsError_[];
+}
+export const BatchDescribeUserLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userLimits: UserLimitsList,
+    errors: BatchDescribeUserLimitsErrorList,
+  }),
+).annotate({
+  identifier: "BatchDescribeUserLimitsResponse",
+}) as any as S.Schema<BatchDescribeUserLimitsResponse>;
 export type IngestionId = string;
 export interface CancelIngestionRequest {
   AwsAccountId: string;
@@ -1867,12 +1992,27 @@ export const DataSetReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataSetReference>;
 export type DataSetReferenceList = DataSetReference[];
 export const DataSetReferenceList = /*@__PURE__*/ S.Array(DataSetReference);
+export type TopicIdentifier = string;
+export interface TopicReference {
+  TopicPlaceholder: string;
+  TopicArn: string;
+}
+export const TopicReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TopicPlaceholder: S.String, TopicArn: S.String }),
+).annotate({ identifier: "TopicReference" }) as any as S.Schema<TopicReference>;
+export type TopicReferenceList = TopicReference[];
+export const TopicReferenceList = /*@__PURE__*/ S.Array(TopicReference);
 export interface AnalysisSourceTemplate {
   DataSetReferences: DataSetReference[];
+  TopicReferences?: TopicReference[];
   Arn: string;
 }
 export const AnalysisSourceTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataSetReferences: DataSetReferenceList, Arn: S.String }),
+  S.Struct({
+    DataSetReferences: DataSetReferenceList,
+    TopicReferences: S.optional(TopicReferenceList),
+    Arn: S.String,
+  }),
 ).annotate({
   identifier: "AnalysisSourceTemplate",
 }) as any as S.Schema<AnalysisSourceTemplate>;
@@ -1897,6 +2037,19 @@ export const DataSetIdentifierDeclaration = /*@__PURE__*/ S.suspend(() =>
 export type DataSetIdentifierDeclarationList = DataSetIdentifierDeclaration[];
 export const DataSetIdentifierDeclarationList = /*@__PURE__*/ S.Array(
   DataSetIdentifierDeclaration,
+);
+export interface TopicIdentifierDeclaration {
+  Identifier: string;
+  TopicArn: string;
+}
+export const TopicIdentifierDeclaration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String, TopicArn: S.String }),
+).annotate({
+  identifier: "TopicIdentifierDeclaration",
+}) as any as S.Schema<TopicIdentifierDeclaration>;
+export type TopicIdentifierDeclarationList = TopicIdentifierDeclaration[];
+export const TopicIdentifierDeclarationList = /*@__PURE__*/ S.Array(
+  TopicIdentifierDeclaration,
 );
 export type SheetTitle = string;
 export type SheetDescription = string;
@@ -2077,11 +2230,16 @@ export type ParameterSelectableValueList = string[];
 export const ParameterSelectableValueList = /*@__PURE__*/ S.Array(S.String);
 export type ColumnName = string;
 export interface ColumnIdentifier {
-  DataSetIdentifier: string;
+  DataSetIdentifier?: string;
+  TopicIdentifier?: string;
   ColumnName: string;
 }
 export const ColumnIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataSetIdentifier: S.String, ColumnName: S.String }),
+  S.Struct({
+    DataSetIdentifier: S.optional(S.String),
+    TopicIdentifier: S.optional(S.String),
+    ColumnName: S.String,
+  }),
 ).annotate({
   identifier: "ColumnIdentifier",
 }) as any as S.Schema<ColumnIdentifier>;
@@ -7600,7 +7758,8 @@ export interface LayerMapVisual {
   Title?: VisualTitleLabelOptions;
   Subtitle?: VisualSubtitleLabelOptions;
   ChartConfiguration?: GeospatialLayerMapConfiguration;
-  DataSetIdentifier: string;
+  DataSetIdentifier?: string;
+  TopicIdentifier?: string;
   VisualContentAltText?: string;
 }
 export const LayerMapVisual = /*@__PURE__*/ S.suspend(() =>
@@ -7609,7 +7768,8 @@ export const LayerMapVisual = /*@__PURE__*/ S.suspend(() =>
     Title: S.optional(VisualTitleLabelOptions),
     Subtitle: S.optional(VisualSubtitleLabelOptions),
     ChartConfiguration: S.optional(GeospatialLayerMapConfiguration),
-    DataSetIdentifier: S.String,
+    DataSetIdentifier: S.optional(S.String),
+    TopicIdentifier: S.optional(S.String),
     VisualContentAltText: S.optional(S.String),
   }),
 ).annotate({ identifier: "LayerMapVisual" }) as any as S.Schema<LayerMapVisual>;
@@ -8774,7 +8934,8 @@ export interface InsightVisual {
   Subtitle?: VisualSubtitleLabelOptions;
   InsightConfiguration?: InsightConfiguration;
   Actions?: VisualCustomAction[];
-  DataSetIdentifier: string;
+  DataSetIdentifier?: string;
+  TopicIdentifier?: string;
   VisualContentAltText?: string;
 }
 export const InsightVisual = /*@__PURE__*/ S.suspend(() =>
@@ -8784,7 +8945,8 @@ export const InsightVisual = /*@__PURE__*/ S.suspend(() =>
     Subtitle: S.optional(VisualSubtitleLabelOptions),
     InsightConfiguration: S.optional(InsightConfiguration),
     Actions: S.optional(VisualCustomActionList),
-    DataSetIdentifier: S.String,
+    DataSetIdentifier: S.optional(S.String),
+    TopicIdentifier: S.optional(S.String),
     VisualContentAltText: S.optional(S.String),
   }),
 ).annotate({ identifier: "InsightVisual" }) as any as S.Schema<InsightVisual>;
@@ -8900,7 +9062,8 @@ export interface CustomContentVisual {
   Subtitle?: VisualSubtitleLabelOptions;
   ChartConfiguration?: CustomContentConfiguration;
   Actions?: VisualCustomAction[];
-  DataSetIdentifier: string;
+  DataSetIdentifier?: string;
+  TopicIdentifier?: string;
   VisualContentAltText?: string;
 }
 export const CustomContentVisual = /*@__PURE__*/ S.suspend(() =>
@@ -8910,7 +9073,8 @@ export const CustomContentVisual = /*@__PURE__*/ S.suspend(() =>
     Subtitle: S.optional(VisualSubtitleLabelOptions),
     ChartConfiguration: S.optional(CustomContentConfiguration),
     Actions: S.optional(VisualCustomActionList),
-    DataSetIdentifier: S.String,
+    DataSetIdentifier: S.optional(S.String),
+    TopicIdentifier: S.optional(S.String),
     VisualContentAltText: S.optional(S.String),
   }),
 ).annotate({
@@ -8918,13 +9082,15 @@ export const CustomContentVisual = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomContentVisual>;
 export interface EmptyVisual {
   VisualId: string;
-  DataSetIdentifier: string;
+  DataSetIdentifier?: string;
+  TopicIdentifier?: string;
   Actions?: VisualCustomAction[];
 }
 export const EmptyVisual = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VisualId: S.String,
-    DataSetIdentifier: S.String,
+    DataSetIdentifier: S.optional(S.String),
+    TopicIdentifier: S.optional(S.String),
     Actions: S.optional(VisualCustomActionList),
   }),
 ).annotate({ identifier: "EmptyVisual" }) as any as S.Schema<EmptyVisual>;
@@ -10051,13 +10217,15 @@ export const TooltipSheetDefinitionList = /*@__PURE__*/ S.Array(
 );
 export type CalculatedFieldExpression = string | redacted.Redacted<string>;
 export interface CalculatedField {
-  DataSetIdentifier: string;
+  DataSetIdentifier?: string;
+  TopicIdentifier?: string;
   Name: string;
   Expression: string | redacted.Redacted<string>;
 }
 export const CalculatedField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    DataSetIdentifier: S.String,
+    DataSetIdentifier: S.optional(S.String),
+    TopicIdentifier: S.optional(S.String),
     Name: S.String,
     Expression: SensitiveString,
   }),
@@ -11079,12 +11247,45 @@ export const QBusinessInsightsStatus = /*@__PURE__*/ S.String;
 
 export type DataSetArnsList = string[];
 export const DataSetArnsList = /*@__PURE__*/ S.Array(S.String);
+export type VisualMessageText = string;
+export type VisualMessageLinkUrl = string;
+export interface VisualMessageConfiguration {
+  Enabled?: boolean;
+  Title?: string;
+  TitleVisibility?: Visibility;
+  Description?: string;
+  DescriptionVisibility?: Visibility;
+  LinkText?: string;
+  LinkUrl?: string;
+  LinkVisibility?: Visibility;
+}
+export const VisualMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Enabled: S.optional(S.Boolean),
+    Title: S.optional(S.String),
+    TitleVisibility: S.optional(Visibility),
+    Description: S.optional(S.String),
+    DescriptionVisibility: S.optional(Visibility),
+    LinkText: S.optional(S.String),
+    LinkUrl: S.optional(S.String),
+    LinkVisibility: S.optional(Visibility),
+  }),
+).annotate({
+  identifier: "VisualMessageConfiguration",
+}) as any as S.Schema<VisualMessageConfiguration>;
+export interface VisualMessages {
+  NoDataMessage?: VisualMessageConfiguration;
+}
+export const VisualMessages = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ NoDataMessage: S.optional(VisualMessageConfiguration) }),
+).annotate({ identifier: "VisualMessages" }) as any as S.Schema<VisualMessages>;
 export interface AssetOptions {
   Timezone?: string;
   WeekStart?: DayOfTheWeek;
   QBusinessInsightsStatus?: QBusinessInsightsStatus;
   ExcludedDataSetArns?: string[];
   CustomActionDefaults?: VisualCustomActionDefaults;
+  VisualMessages?: VisualMessages;
 }
 export const AssetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11093,6 +11294,7 @@ export const AssetOptions = /*@__PURE__*/ S.suspend(() =>
     QBusinessInsightsStatus: S.optional(QBusinessInsightsStatus),
     ExcludedDataSetArns: S.optional(DataSetArnsList),
     CustomActionDefaults: S.optional(VisualCustomActionDefaults),
+    VisualMessages: S.optional(VisualMessages),
   }),
 ).annotate({ identifier: "AssetOptions" }) as any as S.Schema<AssetOptions>;
 export type QueryExecutionMode = "AUTO" | "MANUAL" | (string & {});
@@ -11168,6 +11370,7 @@ export type StaticFileList = StaticFile[];
 export const StaticFileList = /*@__PURE__*/ S.Array(StaticFile);
 export interface AnalysisDefinition {
   DataSetIdentifierDeclarations: DataSetIdentifierDeclaration[];
+  TopicIdentifierDeclarations?: TopicIdentifierDeclaration[];
   Sheets?: SheetDefinition[];
   TooltipSheets?: TooltipSheetDefinition[];
   CalculatedFields?: CalculatedField[];
@@ -11182,6 +11385,7 @@ export interface AnalysisDefinition {
 export const AnalysisDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataSetIdentifierDeclarations: DataSetIdentifierDeclarationList,
+    TopicIdentifierDeclarations: S.optional(TopicIdentifierDeclarationList),
     Sheets: S.optional(SheetDefinitionList),
     TooltipSheets: S.optional(TooltipSheetDefinitionList),
     CalculatedFields: S.optional(CalculatedFields),
@@ -11269,6 +11473,98 @@ export const CreateAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAnalysisResponse",
 }) as any as S.Schema<CreateAnalysisResponse>;
+export type PolicyId = string;
+export type PolicyName = string;
+export type PolicyDescription = string;
+export type GovernedAction = "SHARE" | (string & {});
+export const GovernedAction = /*@__PURE__*/ S.String;
+
+export type GovernedActionList = GovernedAction[];
+export const GovernedActionList = /*@__PURE__*/ S.Array(GovernedAction);
+export type AssetType = "AGENT" | "SPACE" | "KNOWLEDGE_BASE" | (string & {});
+export const AssetType = /*@__PURE__*/ S.String;
+
+export type AssetTypeList = AssetType[];
+export const AssetTypeList = /*@__PURE__*/ S.Array(AssetType);
+export type ApplicableToType = "GROUP" | (string & {});
+export const ApplicableToType = /*@__PURE__*/ S.String;
+
+export type GroupArnList = string[];
+export const GroupArnList = /*@__PURE__*/ S.Array(S.String);
+export interface ApplicableTo {
+  Type: ApplicableToType;
+  GroupArns?: string[];
+}
+export const ApplicableTo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: ApplicableToType, GroupArns: S.optional(GroupArnList) }),
+).annotate({ identifier: "ApplicableTo" }) as any as S.Schema<ApplicableTo>;
+export type ApprovalGroupList = string[];
+export const ApprovalGroupList = /*@__PURE__*/ S.Array(S.String);
+export interface CreateApprovalPolicyRequest {
+  PolicyId: string;
+  Name: string;
+  Description?: string;
+  Actions: GovernedAction[];
+  AssetTypes: AssetType[];
+  ApplicableTo: ApplicableTo;
+  ApprovalGroups: string[];
+}
+export const CreateApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyId: S.String,
+    Name: S.String,
+    Description: S.optional(S.String),
+    Actions: GovernedActionList,
+    AssetTypes: AssetTypeList,
+    ApplicableTo: ApplicableTo,
+    ApprovalGroups: ApprovalGroupList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/governance/approvalworkflows/policies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateApprovalPolicyRequest",
+}) as any as S.Schema<CreateApprovalPolicyRequest>;
+export interface ApprovalPolicy {
+  PolicyId: string;
+  PolicyArn: string;
+  Name: string;
+  Description?: string;
+  Actions: GovernedAction[];
+  AssetTypes: AssetType[];
+  ApplicableTo: ApplicableTo;
+  ApprovalGroups: string[];
+  CreatedAt: Date;
+  UpdatedAt: Date;
+}
+export const ApprovalPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyId: S.String,
+    PolicyArn: S.String,
+    Name: S.String,
+    Description: S.optional(S.String),
+    Actions: GovernedActionList,
+    AssetTypes: AssetTypeList,
+    ApplicableTo: ApplicableTo,
+    ApprovalGroups: ApprovalGroupList,
+    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "ApprovalPolicy" }) as any as S.Schema<ApprovalPolicy>;
+export interface CreateApprovalPolicyResponse {
+  Policy: ApprovalPolicy;
+}
+export const CreateApprovalPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: ApprovalPolicy }),
+).annotate({
+  identifier: "CreateApprovalPolicyResponse",
+}) as any as S.Schema<CreateApprovalPolicyResponse>;
 export type Name = string;
 export type Description = string;
 export interface Palette {
@@ -11540,7 +11836,7 @@ export const CreateBrandResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateBrandResponse",
 }) as any as S.Schema<CreateBrandResponse>;
 export type CustomPermissionsName = string;
-export type CapabilityState = "DENY" | (string & {});
+export type CapabilityState = "DENY" | "ALLOW" | (string & {});
 export const CapabilityState = /*@__PURE__*/ S.String;
 
 export interface Capabilities {
@@ -11582,6 +11878,48 @@ export interface Capabilities {
   ApproveFlowShareRequests?: CapabilityState;
   UseAgentWebSearch?: CapabilityState;
   KnowledgeBase?: CapabilityState;
+  CreateAndUpdateKnowledgeBases?: CapabilityState;
+  ShareKnowledgeBases?: CapabilityState;
+  SharePointKnowledgeBase?: CapabilityState;
+  CreateAndUpdateSharePointKnowledgeBase?: CapabilityState;
+  ShareSharePointKnowledgeBase?: CapabilityState;
+  UseSharePointKnowledgeBase?: CapabilityState;
+  GoogleDriveKnowledgeBase?: CapabilityState;
+  CreateAndUpdateGoogleDriveKnowledgeBase?: CapabilityState;
+  ShareGoogleDriveKnowledgeBase?: CapabilityState;
+  UseGoogleDriveKnowledgeBase?: CapabilityState;
+  WebCrawlerKnowledgeBase?: CapabilityState;
+  CreateAndUpdateWebCrawlerKnowledgeBase?: CapabilityState;
+  ShareWebCrawlerKnowledgeBase?: CapabilityState;
+  UseWebCrawlerKnowledgeBase?: CapabilityState;
+  S3KnowledgeBase?: CapabilityState;
+  CreateAndUpdateS3KnowledgeBase?: CapabilityState;
+  ShareS3KnowledgeBase?: CapabilityState;
+  UseS3KnowledgeBase?: CapabilityState;
+  ConfluenceKnowledgeBase?: CapabilityState;
+  CreateAndUpdateConfluenceKnowledgeBase?: CapabilityState;
+  ShareConfluenceKnowledgeBase?: CapabilityState;
+  UseConfluenceKnowledgeBase?: CapabilityState;
+  OneDriveKnowledgeBase?: CapabilityState;
+  CreateAndUpdateOneDriveKnowledgeBase?: CapabilityState;
+  ShareOneDriveKnowledgeBase?: CapabilityState;
+  UseOneDriveKnowledgeBase?: CapabilityState;
+  QBusinessKnowledgeBase?: CapabilityState;
+  CreateAndUpdateQBusinessKnowledgeBase?: CapabilityState;
+  ShareQBusinessKnowledgeBase?: CapabilityState;
+  UseQBusinessKnowledgeBase?: CapabilityState;
+  BedrockManagedKnowledgeBase?: CapabilityState;
+  CreateAndUpdateBedrockManagedKnowledgeBase?: CapabilityState;
+  ShareBedrockManagedKnowledgeBase?: CapabilityState;
+  UseBedrockManagedKnowledgeBase?: CapabilityState;
+  BoxKnowledgeBase?: CapabilityState;
+  CreateAndUpdateBoxKnowledgeBase?: CapabilityState;
+  ShareBoxKnowledgeBase?: CapabilityState;
+  UseBoxKnowledgeBase?: CapabilityState;
+  IDCKnowledgeBase?: CapabilityState;
+  CreateAndUpdateIDCKnowledgeBase?: CapabilityState;
+  ShareIDCKnowledgeBase?: CapabilityState;
+  UseIDCKnowledgeBase?: CapabilityState;
   Action?: CapabilityState;
   GenericHTTPAction?: CapabilityState;
   CreateAndUpdateGenericHTTPAction?: CapabilityState;
@@ -11768,10 +12106,19 @@ export interface Capabilities {
   Research?: CapabilityState;
   SelfUpgradeUserRole?: CapabilityState;
   Extension?: CapabilityState;
+  UseBrowserExtension?: CapabilityState;
+  UseWordAddInExtension?: CapabilityState;
+  UseOutlookAddInExtension?: CapabilityState;
+  UseExcelAddInExtension?: CapabilityState;
+  UsePowerpointAddInExtension?: CapabilityState;
   ManageSharedFolders?: CapabilityState;
   GenerateAnalyses?: CapabilityState;
   Story?: CapabilityState;
   Scenario?: CapabilityState;
+  Trigger?: CapabilityState;
+  ScheduleTrigger?: CapabilityState;
+  InboundEmailTrigger?: CapabilityState;
+  QuickEventTrigger?: CapabilityState;
 }
 export const Capabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11813,6 +12160,48 @@ export const Capabilities = /*@__PURE__*/ S.suspend(() =>
     ApproveFlowShareRequests: S.optional(CapabilityState),
     UseAgentWebSearch: S.optional(CapabilityState),
     KnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateKnowledgeBases: S.optional(CapabilityState),
+    ShareKnowledgeBases: S.optional(CapabilityState),
+    SharePointKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateSharePointKnowledgeBase: S.optional(CapabilityState),
+    ShareSharePointKnowledgeBase: S.optional(CapabilityState),
+    UseSharePointKnowledgeBase: S.optional(CapabilityState),
+    GoogleDriveKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateGoogleDriveKnowledgeBase: S.optional(CapabilityState),
+    ShareGoogleDriveKnowledgeBase: S.optional(CapabilityState),
+    UseGoogleDriveKnowledgeBase: S.optional(CapabilityState),
+    WebCrawlerKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateWebCrawlerKnowledgeBase: S.optional(CapabilityState),
+    ShareWebCrawlerKnowledgeBase: S.optional(CapabilityState),
+    UseWebCrawlerKnowledgeBase: S.optional(CapabilityState),
+    S3KnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateS3KnowledgeBase: S.optional(CapabilityState),
+    ShareS3KnowledgeBase: S.optional(CapabilityState),
+    UseS3KnowledgeBase: S.optional(CapabilityState),
+    ConfluenceKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateConfluenceKnowledgeBase: S.optional(CapabilityState),
+    ShareConfluenceKnowledgeBase: S.optional(CapabilityState),
+    UseConfluenceKnowledgeBase: S.optional(CapabilityState),
+    OneDriveKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateOneDriveKnowledgeBase: S.optional(CapabilityState),
+    ShareOneDriveKnowledgeBase: S.optional(CapabilityState),
+    UseOneDriveKnowledgeBase: S.optional(CapabilityState),
+    QBusinessKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateQBusinessKnowledgeBase: S.optional(CapabilityState),
+    ShareQBusinessKnowledgeBase: S.optional(CapabilityState),
+    UseQBusinessKnowledgeBase: S.optional(CapabilityState),
+    BedrockManagedKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateBedrockManagedKnowledgeBase: S.optional(CapabilityState),
+    ShareBedrockManagedKnowledgeBase: S.optional(CapabilityState),
+    UseBedrockManagedKnowledgeBase: S.optional(CapabilityState),
+    BoxKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateBoxKnowledgeBase: S.optional(CapabilityState),
+    ShareBoxKnowledgeBase: S.optional(CapabilityState),
+    UseBoxKnowledgeBase: S.optional(CapabilityState),
+    IDCKnowledgeBase: S.optional(CapabilityState),
+    CreateAndUpdateIDCKnowledgeBase: S.optional(CapabilityState),
+    ShareIDCKnowledgeBase: S.optional(CapabilityState),
+    UseIDCKnowledgeBase: S.optional(CapabilityState),
     Action: S.optional(CapabilityState),
     GenericHTTPAction: S.optional(CapabilityState),
     CreateAndUpdateGenericHTTPAction: S.optional(CapabilityState),
@@ -11999,16 +12388,43 @@ export const Capabilities = /*@__PURE__*/ S.suspend(() =>
     Research: S.optional(CapabilityState),
     SelfUpgradeUserRole: S.optional(CapabilityState),
     Extension: S.optional(CapabilityState),
+    UseBrowserExtension: S.optional(CapabilityState),
+    UseWordAddInExtension: S.optional(CapabilityState),
+    UseOutlookAddInExtension: S.optional(CapabilityState),
+    UseExcelAddInExtension: S.optional(CapabilityState),
+    UsePowerpointAddInExtension: S.optional(CapabilityState),
     ManageSharedFolders: S.optional(CapabilityState),
     GenerateAnalyses: S.optional(CapabilityState),
     Story: S.optional(CapabilityState),
     Scenario: S.optional(CapabilityState),
+    Trigger: S.optional(CapabilityState),
+    ScheduleTrigger: S.optional(CapabilityState),
+    InboundEmailTrigger: S.optional(CapabilityState),
+    QuickEventTrigger: S.optional(CapabilityState),
   }),
 ).annotate({ identifier: "Capabilities" }) as any as S.Schema<Capabilities>;
+export type GovernanceCategoryName = string;
+export type DefaultCategoryEffect = "DENY_BY_DEFAULT" | (string & {});
+export const DefaultCategoryEffect = /*@__PURE__*/ S.String;
+
+export type DefaultCategoryEffectsMap = {
+  [key: string]: DefaultCategoryEffect | undefined;
+};
+export const DefaultCategoryEffectsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DefaultCategoryEffect.pipe(S.optional),
+);
+export interface Governance {
+  DefaultCategoryEffects?: { [key: string]: DefaultCategoryEffect | undefined };
+}
+export const Governance = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DefaultCategoryEffects: S.optional(DefaultCategoryEffectsMap) }),
+).annotate({ identifier: "Governance" }) as any as S.Schema<Governance>;
 export interface CreateCustomPermissionsRequest {
   AwsAccountId: string;
   CustomPermissionsName: string;
   Capabilities?: Capabilities;
+  Governance?: Governance;
   Tags?: Tag[];
 }
 export const CreateCustomPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12016,6 +12432,7 @@ export const CreateCustomPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
     AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
     CustomPermissionsName: S.String,
     Capabilities: S.optional(Capabilities),
+    Governance: S.optional(Governance),
     Tags: S.optional(TagList),
   }).pipe(
     T.all(
@@ -12050,10 +12467,15 @@ export const CreateCustomPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type DashboardName = string;
 export interface DashboardSourceTemplate {
   DataSetReferences: DataSetReference[];
+  TopicReferences?: TopicReference[];
   Arn: string;
 }
 export const DashboardSourceTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataSetReferences: DataSetReferenceList, Arn: S.String }),
+  S.Struct({
+    DataSetReferences: DataSetReferenceList,
+    TopicReferences: S.optional(TopicReferenceList),
+    Arn: S.String,
+  }),
 ).annotate({
   identifier: "DashboardSourceTemplate",
 }) as any as S.Schema<DashboardSourceTemplate>;
@@ -12231,6 +12653,7 @@ export const DashboardPublishOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardPublishOptions>;
 export interface DashboardVersionDefinition {
   DataSetIdentifierDeclarations: DataSetIdentifierDeclaration[];
+  TopicIdentifierDeclarations?: TopicIdentifierDeclaration[];
   Sheets?: SheetDefinition[];
   TooltipSheets?: TooltipSheetDefinition[];
   CalculatedFields?: CalculatedField[];
@@ -12244,6 +12667,7 @@ export interface DashboardVersionDefinition {
 export const DashboardVersionDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataSetIdentifierDeclarations: DataSetIdentifierDeclarationList,
+    TopicIdentifierDeclarations: S.optional(TopicIdentifierDeclarationList),
     Sheets: S.optional(SheetDefinitionList),
     TooltipSheets: S.optional(TooltipSheetDefinitionList),
     CalculatedFields: S.optional(CalculatedFields),
@@ -12480,36 +12904,62 @@ export const SaaSTable = /*@__PURE__*/ S.suspend(() =>
     InputColumns: InputColumnList,
   }),
 ).annotate({ identifier: "SaaSTable" }) as any as S.Schema<SaaSTable>;
+export interface FileSource {
+  DataSourceArn: string;
+  UploadSettings?: UploadSettings;
+  SheetIndex: number;
+  InputColumns: InputColumn[];
+}
+export const FileSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataSourceArn: S.String,
+    UploadSettings: S.optional(UploadSettings),
+    SheetIndex: S.Number,
+    InputColumns: InputColumnList,
+  }),
+).annotate({ identifier: "FileSource" }) as any as S.Schema<FileSource>;
 export type PhysicalTable =
   | {
       RelationalTable: RelationalTable;
       CustomSql?: never;
       S3Source?: never;
       SaaSTable?: never;
+      FileSource?: never;
     }
   | {
       RelationalTable?: never;
       CustomSql: CustomSql;
       S3Source?: never;
       SaaSTable?: never;
+      FileSource?: never;
     }
   | {
       RelationalTable?: never;
       CustomSql?: never;
       S3Source: S3Source;
       SaaSTable?: never;
+      FileSource?: never;
     }
   | {
       RelationalTable?: never;
       CustomSql?: never;
       S3Source?: never;
       SaaSTable: SaaSTable;
+      FileSource?: never;
+    }
+  | {
+      RelationalTable?: never;
+      CustomSql?: never;
+      S3Source?: never;
+      SaaSTable?: never;
+      FileSource: FileSource;
     };
 export const PhysicalTable = /*@__PURE__*/ S.Union([
   S.Struct({ RelationalTable: RelationalTable }),
   S.Struct({ CustomSql: CustomSql }),
   S.Struct({ S3Source: S3Source }),
   S.Struct({ SaaSTable: SaaSTable }),
+  S.Struct({ FileSource: FileSource }),
 ]);
 export type PhysicalTableMap = { [key: string]: PhysicalTable | undefined };
 export const PhysicalTableMap = /*@__PURE__*/ S.Record(
@@ -14602,6 +15052,70 @@ export const QBusinessParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QBusinessParameters",
 }) as any as S.Schema<QBusinessParameters>;
+export type SharePointDomain = string;
+export type SharePointTenantId = string;
+export type SharePointClientId = string;
+export type AuthType =
+  | "THREE_LEGGED_OAUTH"
+  | "TWO_LEGGED_OAUTH"
+  | "SERVICE_ACCOUNT"
+  | (string & {});
+export const AuthType = /*@__PURE__*/ S.String;
+
+export interface SharePointParameters {
+  SharePointDomain: string;
+  TenantId?: string;
+  ClientId?: string;
+  AuthType?: AuthType;
+}
+export const SharePointParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SharePointDomain: S.String,
+    TenantId: S.optional(S.String),
+    ClientId: S.optional(S.String),
+    AuthType: S.optional(AuthType),
+  }),
+).annotate({
+  identifier: "SharePointParameters",
+}) as any as S.Schema<SharePointParameters>;
+export interface GoogleDriveParameters {
+  AuthType?: AuthType;
+}
+export const GoogleDriveParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AuthType: S.optional(AuthType) }),
+).annotate({
+  identifier: "GoogleDriveParameters",
+}) as any as S.Schema<GoogleDriveParameters>;
+export type OneDriveTenantId = string;
+export type OneDriveClientId = string;
+export interface OneDriveParameters {
+  TenantId?: string;
+  ClientId?: string;
+  AuthType?: AuthType;
+}
+export const OneDriveParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TenantId: S.optional(S.String),
+    ClientId: S.optional(S.String),
+    AuthType: S.optional(AuthType),
+  }),
+).annotate({
+  identifier: "OneDriveParameters",
+}) as any as S.Schema<OneDriveParameters>;
+export type FMKBKnowledgeBaseArn = string;
+export type LinkedDataSourceId = string;
+export type LinkedDataSourceIds = string[];
+export const LinkedDataSourceIds = /*@__PURE__*/ S.Array(S.String);
+export interface FMKBParameters {
+  KnowledgeBaseArn: string;
+  LinkedDataSourceIds?: string[];
+}
+export const FMKBParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KnowledgeBaseArn: S.String,
+    LinkedDataSourceIds: S.optional(LinkedDataSourceIds),
+  }),
+).annotate({ identifier: "FMKBParameters" }) as any as S.Schema<FMKBParameters>;
 export type DataSourceParameters =
   | {
       AmazonElasticsearchParameters: AmazonElasticsearchParameters;
@@ -14637,6 +15151,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14672,6 +15190,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14707,6 +15229,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14742,6 +15268,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14777,6 +15307,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14812,6 +15346,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14847,6 +15385,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14882,6 +15424,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14917,6 +15463,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14952,6 +15502,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -14987,6 +15541,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15022,6 +15580,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15057,6 +15619,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15092,6 +15658,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15127,6 +15697,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15162,6 +15736,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15197,6 +15775,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15232,6 +15814,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15267,6 +15853,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15302,6 +15892,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15337,6 +15931,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15372,6 +15970,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15407,6 +16009,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15442,6 +16048,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15477,6 +16087,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15512,6 +16126,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15547,6 +16165,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15582,6 +16204,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15617,6 +16243,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15652,6 +16282,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15687,6 +16321,10 @@ export type DataSourceParameters =
       WebCrawlerParameters: WebCrawlerParameters;
       ConfluenceParameters?: never;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15722,6 +16360,10 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters: ConfluenceParameters;
       QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
     }
   | {
       AmazonElasticsearchParameters?: never;
@@ -15757,6 +16399,166 @@ export type DataSourceParameters =
       WebCrawlerParameters?: never;
       ConfluenceParameters?: never;
       QBusinessParameters: QBusinessParameters;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
+    }
+  | {
+      AmazonElasticsearchParameters?: never;
+      AthenaParameters?: never;
+      AuroraParameters?: never;
+      AuroraPostgreSqlParameters?: never;
+      AwsIotAnalyticsParameters?: never;
+      JiraParameters?: never;
+      MariaDbParameters?: never;
+      MySqlParameters?: never;
+      OracleParameters?: never;
+      PostgreSqlParameters?: never;
+      PrestoParameters?: never;
+      RdsParameters?: never;
+      RedshiftParameters?: never;
+      S3Parameters?: never;
+      S3TablesParameters?: never;
+      S3KnowledgeBaseParameters?: never;
+      ServiceNowParameters?: never;
+      SnowflakeParameters?: never;
+      SparkParameters?: never;
+      SqlServerParameters?: never;
+      TeradataParameters?: never;
+      TwitterParameters?: never;
+      AmazonOpenSearchParameters?: never;
+      ExasolParameters?: never;
+      DatabricksParameters?: never;
+      StarburstParameters?: never;
+      TrinoParameters?: never;
+      BigQueryParameters?: never;
+      ImpalaParameters?: never;
+      CustomConnectionParameters?: never;
+      WebCrawlerParameters?: never;
+      ConfluenceParameters?: never;
+      QBusinessParameters?: never;
+      SharePointParameters: SharePointParameters;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
+    }
+  | {
+      AmazonElasticsearchParameters?: never;
+      AthenaParameters?: never;
+      AuroraParameters?: never;
+      AuroraPostgreSqlParameters?: never;
+      AwsIotAnalyticsParameters?: never;
+      JiraParameters?: never;
+      MariaDbParameters?: never;
+      MySqlParameters?: never;
+      OracleParameters?: never;
+      PostgreSqlParameters?: never;
+      PrestoParameters?: never;
+      RdsParameters?: never;
+      RedshiftParameters?: never;
+      S3Parameters?: never;
+      S3TablesParameters?: never;
+      S3KnowledgeBaseParameters?: never;
+      ServiceNowParameters?: never;
+      SnowflakeParameters?: never;
+      SparkParameters?: never;
+      SqlServerParameters?: never;
+      TeradataParameters?: never;
+      TwitterParameters?: never;
+      AmazonOpenSearchParameters?: never;
+      ExasolParameters?: never;
+      DatabricksParameters?: never;
+      StarburstParameters?: never;
+      TrinoParameters?: never;
+      BigQueryParameters?: never;
+      ImpalaParameters?: never;
+      CustomConnectionParameters?: never;
+      WebCrawlerParameters?: never;
+      ConfluenceParameters?: never;
+      QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters: GoogleDriveParameters;
+      OneDriveParameters?: never;
+      FMKBParameters?: never;
+    }
+  | {
+      AmazonElasticsearchParameters?: never;
+      AthenaParameters?: never;
+      AuroraParameters?: never;
+      AuroraPostgreSqlParameters?: never;
+      AwsIotAnalyticsParameters?: never;
+      JiraParameters?: never;
+      MariaDbParameters?: never;
+      MySqlParameters?: never;
+      OracleParameters?: never;
+      PostgreSqlParameters?: never;
+      PrestoParameters?: never;
+      RdsParameters?: never;
+      RedshiftParameters?: never;
+      S3Parameters?: never;
+      S3TablesParameters?: never;
+      S3KnowledgeBaseParameters?: never;
+      ServiceNowParameters?: never;
+      SnowflakeParameters?: never;
+      SparkParameters?: never;
+      SqlServerParameters?: never;
+      TeradataParameters?: never;
+      TwitterParameters?: never;
+      AmazonOpenSearchParameters?: never;
+      ExasolParameters?: never;
+      DatabricksParameters?: never;
+      StarburstParameters?: never;
+      TrinoParameters?: never;
+      BigQueryParameters?: never;
+      ImpalaParameters?: never;
+      CustomConnectionParameters?: never;
+      WebCrawlerParameters?: never;
+      ConfluenceParameters?: never;
+      QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters: OneDriveParameters;
+      FMKBParameters?: never;
+    }
+  | {
+      AmazonElasticsearchParameters?: never;
+      AthenaParameters?: never;
+      AuroraParameters?: never;
+      AuroraPostgreSqlParameters?: never;
+      AwsIotAnalyticsParameters?: never;
+      JiraParameters?: never;
+      MariaDbParameters?: never;
+      MySqlParameters?: never;
+      OracleParameters?: never;
+      PostgreSqlParameters?: never;
+      PrestoParameters?: never;
+      RdsParameters?: never;
+      RedshiftParameters?: never;
+      S3Parameters?: never;
+      S3TablesParameters?: never;
+      S3KnowledgeBaseParameters?: never;
+      ServiceNowParameters?: never;
+      SnowflakeParameters?: never;
+      SparkParameters?: never;
+      SqlServerParameters?: never;
+      TeradataParameters?: never;
+      TwitterParameters?: never;
+      AmazonOpenSearchParameters?: never;
+      ExasolParameters?: never;
+      DatabricksParameters?: never;
+      StarburstParameters?: never;
+      TrinoParameters?: never;
+      BigQueryParameters?: never;
+      ImpalaParameters?: never;
+      CustomConnectionParameters?: never;
+      WebCrawlerParameters?: never;
+      ConfluenceParameters?: never;
+      QBusinessParameters?: never;
+      SharePointParameters?: never;
+      GoogleDriveParameters?: never;
+      OneDriveParameters?: never;
+      FMKBParameters: FMKBParameters;
     };
 export const DataSourceParameters = /*@__PURE__*/ S.Union([
   S.Struct({ AmazonElasticsearchParameters: AmazonElasticsearchParameters }),
@@ -15792,6 +16594,10 @@ export const DataSourceParameters = /*@__PURE__*/ S.Union([
   S.Struct({ WebCrawlerParameters: WebCrawlerParameters }),
   S.Struct({ ConfluenceParameters: ConfluenceParameters }),
   S.Struct({ QBusinessParameters: QBusinessParameters }),
+  S.Struct({ SharePointParameters: SharePointParameters }),
+  S.Struct({ GoogleDriveParameters: GoogleDriveParameters }),
+  S.Struct({ OneDriveParameters: OneDriveParameters }),
+  S.Struct({ FMKBParameters: FMKBParameters }),
 ]);
 export type DbUsername = string;
 export type Password = string;
@@ -15937,6 +16743,107 @@ export const CreateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataSourceResponse",
 }) as any as S.Schema<CreateDataSourceResponse>;
+export type DlpSettingId = string;
+export type DlpSettingName = string;
+export type DlpProviderType = "MICROSOFT_PURVIEW" | (string & {});
+export const DlpProviderType = /*@__PURE__*/ S.String;
+
+export type SecretManagerArn = string;
+export interface MicrosoftPurviewCredentials {
+  SecretArn: string;
+}
+export const MicrosoftPurviewCredentials = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SecretArn: S.String }),
+).annotate({
+  identifier: "MicrosoftPurviewCredentials",
+}) as any as S.Schema<MicrosoftPurviewCredentials>;
+export type LabelId = string;
+export type LabelName = string;
+export type DlpAction = "ALLOW" | "WARN" | "BLOCK" | (string & {});
+export const DlpAction = /*@__PURE__*/ S.String;
+
+export interface LabelActionMapping {
+  LabelId: string;
+  LabelName: string;
+  Action: DlpAction;
+}
+export const LabelActionMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LabelId: S.String, LabelName: S.String, Action: DlpAction }),
+).annotate({
+  identifier: "LabelActionMapping",
+}) as any as S.Schema<LabelActionMapping>;
+export type LabelActionMappingList = LabelActionMapping[];
+export const LabelActionMappingList = /*@__PURE__*/ S.Array(LabelActionMapping);
+export interface MicrosoftPurviewProviderConfig {
+  Credentials: MicrosoftPurviewCredentials;
+  LabelActionMappings: LabelActionMapping[];
+  UnmappedAction: DlpAction;
+}
+export const MicrosoftPurviewProviderConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Credentials: MicrosoftPurviewCredentials,
+    LabelActionMappings: LabelActionMappingList,
+    UnmappedAction: DlpAction,
+  }),
+).annotate({
+  identifier: "MicrosoftPurviewProviderConfig",
+}) as any as S.Schema<MicrosoftPurviewProviderConfig>;
+export type ProviderConfig = {
+  MicrosoftPurview: MicrosoftPurviewProviderConfig;
+};
+export const ProviderConfig = /*@__PURE__*/ S.Union([
+  S.Struct({ MicrosoftPurview: MicrosoftPurviewProviderConfig }),
+]);
+export interface CreateDlpSettingRequest {
+  AwsAccountId: string;
+  DlpSettingId: string;
+  Name: string;
+  ProviderType: DlpProviderType;
+  ProviderConfig: ProviderConfig;
+  ProviderOutageAction: DlpAction;
+  Enabled: boolean;
+  Tags?: Tag[];
+}
+export const CreateDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    DlpSettingId: S.String.pipe(T.HttpLabel("DlpSettingId")),
+    Name: S.String,
+    ProviderType: DlpProviderType,
+    ProviderConfig: ProviderConfig,
+    ProviderOutageAction: DlpAction,
+    Enabled: S.Boolean,
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AwsAccountId}/data-loss-prevention/settings/{DlpSettingId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateDlpSettingRequest",
+}) as any as S.Schema<CreateDlpSettingRequest>;
+export interface CreateDlpSettingResponse {
+  Arn: string;
+  DlpSettingId: string;
+  RequestId?: string;
+}
+export const CreateDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    DlpSettingId: S.String,
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateDlpSettingResponse",
+}) as any as S.Schema<CreateDlpSettingResponse>;
 export type AccountId = string;
 export type TitleInput = string;
 export type FlowDescriptionInput = string;
@@ -16358,6 +17265,218 @@ export const CreateIngestionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIngestionResponse",
 }) as any as S.Schema<CreateIngestionResponse>;
+export type KnowledgeBaseName = string;
+export type DataSourceArn = string;
+export type KbTemplate = unknown;
+export interface KbTemplateConfiguration {
+  template?: any;
+}
+export const KbTemplateConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ template: S.optional(S.Any) }),
+).annotate({
+  identifier: "KbTemplateConfiguration",
+}) as any as S.Schema<KbTemplateConfiguration>;
+export interface KnowledgeBaseConfiguration {
+  templateConfiguration?: KbTemplateConfiguration;
+}
+export const KnowledgeBaseConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ templateConfiguration: S.optional(KbTemplateConfiguration) }),
+).annotate({
+  identifier: "KnowledgeBaseConfiguration",
+}) as any as S.Schema<KnowledgeBaseConfiguration>;
+export type KnowledgeBaseDescription = string;
+export type ImageExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+export const ImageExtractionStatus = /*@__PURE__*/ S.String;
+
+export interface ImageExtractionConfiguration {
+  imageExtractionStatus: ImageExtractionStatus;
+}
+export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ imageExtractionStatus: ImageExtractionStatus }),
+).annotate({
+  identifier: "ImageExtractionConfiguration",
+}) as any as S.Schema<ImageExtractionConfiguration>;
+export type AudioExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+export const AudioExtractionStatus = /*@__PURE__*/ S.String;
+
+export interface AudioExtractionConfiguration {
+  audioExtractionStatus: AudioExtractionStatus;
+}
+export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ audioExtractionStatus: AudioExtractionStatus }),
+).annotate({
+  identifier: "AudioExtractionConfiguration",
+}) as any as S.Schema<AudioExtractionConfiguration>;
+export type VideoExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+export const VideoExtractionStatus = /*@__PURE__*/ S.String;
+
+export type VideoExtractionType =
+  | "AUDIO_TRANSCRIPTION_ONLY"
+  | "VISUAL_CONTENT_AND_AUDIO_TRANSCRIPTION"
+  | (string & {});
+export const VideoExtractionType = /*@__PURE__*/ S.String;
+
+export interface VideoExtractionConfiguration {
+  videoExtractionStatus: VideoExtractionStatus;
+  videoExtractionType?: VideoExtractionType;
+}
+export const VideoExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    videoExtractionStatus: VideoExtractionStatus,
+    videoExtractionType: S.optional(VideoExtractionType),
+  }),
+).annotate({
+  identifier: "VideoExtractionConfiguration",
+}) as any as S.Schema<VideoExtractionConfiguration>;
+export interface MediaExtractionConfiguration {
+  imageExtractionConfiguration?: ImageExtractionConfiguration;
+  audioExtractionConfiguration?: AudioExtractionConfiguration;
+  videoExtractionConfiguration?: VideoExtractionConfiguration;
+}
+export const MediaExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageExtractionConfiguration: S.optional(ImageExtractionConfiguration),
+    audioExtractionConfiguration: S.optional(AudioExtractionConfiguration),
+    videoExtractionConfiguration: S.optional(VideoExtractionConfiguration),
+  }),
+).annotate({
+  identifier: "MediaExtractionConfiguration",
+}) as any as S.Schema<MediaExtractionConfiguration>;
+export interface AccessControlConfiguration {
+  isACLEnabled?: boolean;
+}
+export const AccessControlConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ isACLEnabled: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "AccessControlConfiguration",
+}) as any as S.Schema<AccessControlConfiguration>;
+export interface CreateKnowledgeBaseRequest {
+  AwsAccountId: string;
+  KnowledgeBaseId: string;
+  Name: string;
+  DataSourceArn: string;
+  KnowledgeBaseConfiguration: KnowledgeBaseConfiguration;
+  Description?: string;
+  Permissions?: ResourcePermission[];
+  MediaExtractionConfiguration?: MediaExtractionConfiguration;
+  AccessControlConfiguration?: AccessControlConfiguration;
+  PrimaryOwnerArn?: string;
+  Tags?: Tag[];
+}
+export const CreateKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    KnowledgeBaseId: S.String,
+    Name: S.String,
+    DataSourceArn: S.String,
+    KnowledgeBaseConfiguration: KnowledgeBaseConfiguration,
+    Description: S.optional(S.String),
+    Permissions: S.optional(ResourcePermissionList),
+    MediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
+    AccessControlConfiguration: S.optional(AccessControlConfiguration),
+    PrimaryOwnerArn: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v1/accounts/{AwsAccountId}/knowledge-bases",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateKnowledgeBaseRequest",
+}) as any as S.Schema<CreateKnowledgeBaseRequest>;
+export type DataSetStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "ACTIVE"
+  | "FAILED"
+  | "DELETING"
+  | (string & {});
+export const DataSetStatus = /*@__PURE__*/ S.String;
+
+export interface CreateKnowledgeBaseResponse {
+  KnowledgeBaseArn: string;
+  KnowledgeBaseId: string;
+  CreationStatus: DataSetStatus;
+  RequestId?: string;
+  Status?: number;
+}
+export const CreateKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KnowledgeBaseArn: S.String,
+    KnowledgeBaseId: S.String,
+    CreationStatus: DataSetStatus,
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "CreateKnowledgeBaseResponse",
+}) as any as S.Schema<CreateKnowledgeBaseResponse>;
+export type ProfileName = string;
+export type ProfileDescription = string;
+export type ProfileLimitValueMaxValueLong = number;
+export interface ProfileLimitValue {
+  maxValue: number;
+  unit: LimitUnit;
+}
+export const ProfileLimitValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ maxValue: S.Number, unit: LimitUnit }),
+).annotate({
+  identifier: "ProfileLimitValue",
+}) as any as S.Schema<ProfileLimitValue>;
+export type CreateLimitsProfileRequestResourceLimitsMap = {
+  [key in ResourceType]?: ProfileLimitValue;
+};
+export const CreateLimitsProfileRequestResourceLimitsMap =
+  /*@__PURE__*/ S.Record(ResourceType, ProfileLimitValue.pipe(S.optional));
+export type CreateLimitsProfileRequestClientTokenString = string;
+export interface CreateLimitsProfileRequest {
+  accountId: string;
+  profileName: string;
+  description?: string;
+  resourceLimits: { [key: string]: ProfileLimitValue | undefined };
+  clientToken: string;
+}
+export const CreateLimitsProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    profileName: S.String,
+    description: S.optional(S.String),
+    resourceLimits: CreateLimitsProfileRequestResourceLimitsMap,
+    clientToken: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/governance/limits/accounts/{accountId}/profiles",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateLimitsProfileRequest",
+}) as any as S.Schema<CreateLimitsProfileRequest>;
+export type ResourceArn = string;
+export interface CreateLimitsProfileResponse {
+  arn: string;
+  profileId: string;
+}
+export const CreateLimitsProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, profileId: S.String }),
+).annotate({
+  identifier: "CreateLimitsProfileResponse",
+}) as any as S.Schema<CreateLimitsProfileResponse>;
 export type IdentityStore = "QUICKSIGHT" | (string & {});
 export const IdentityStore = /*@__PURE__*/ S.String;
 
@@ -16698,9 +17817,14 @@ export type TemplateName = string;
 export interface TemplateSourceAnalysis {
   Arn: string;
   DataSetReferences: DataSetReference[];
+  TopicReferences?: TopicReference[];
 }
 export const TemplateSourceAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, DataSetReferences: DataSetReferenceList }),
+  S.Struct({
+    Arn: S.String,
+    DataSetReferences: DataSetReferenceList,
+    TopicReferences: S.optional(TopicReferenceList),
+  }),
 ).annotate({
   identifier: "TemplateSourceAnalysis",
 }) as any as S.Schema<TemplateSourceAnalysis>;
@@ -16787,8 +17911,25 @@ export const DataSetConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type DataSetConfigurationList = DataSetConfiguration[];
 export const DataSetConfigurationList =
   /*@__PURE__*/ S.Array(DataSetConfiguration);
+export interface TopicConfiguration {
+  Placeholder?: string;
+  DataSetSchema?: DataSetSchema;
+  ColumnGroupSchemaList?: ColumnGroupSchema[];
+}
+export const TopicConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Placeholder: S.optional(S.String),
+    DataSetSchema: S.optional(DataSetSchema),
+    ColumnGroupSchemaList: S.optional(ColumnGroupSchemaList),
+  }),
+).annotate({
+  identifier: "TopicConfiguration",
+}) as any as S.Schema<TopicConfiguration>;
+export type TopicConfigurationList = TopicConfiguration[];
+export const TopicConfigurationList = /*@__PURE__*/ S.Array(TopicConfiguration);
 export interface TemplateVersionDefinition {
   DataSetConfigurations: DataSetConfiguration[];
+  TopicConfigurations?: TopicConfiguration[];
   Sheets?: SheetDefinition[];
   TooltipSheets?: TooltipSheetDefinition[];
   CalculatedFields?: CalculatedField[];
@@ -16803,6 +17944,7 @@ export interface TemplateVersionDefinition {
 export const TemplateVersionDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataSetConfigurations: DataSetConfigurationList,
+    TopicConfigurations: S.optional(TopicConfigurationList),
     Sheets: S.optional(SheetDefinitionList),
     TooltipSheets: S.optional(TooltipSheetDefinitionList),
     CalculatedFields: S.optional(CalculatedFields),
@@ -17279,8 +18421,10 @@ export const DataAggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataAggregation",
 }) as any as S.Schema<DataAggregation>;
-export type Synonyms = string[];
-export const Synonyms = /*@__PURE__*/ S.Array(S.String);
+export type DescriptionSensitiveString = string | redacted.Redacted<string>;
+export type SynonymString = string | redacted.Redacted<string>;
+export type Synonyms = (string | redacted.Redacted<string>)[];
+export const Synonyms = /*@__PURE__*/ S.Array(SensitiveString);
 export type NamedFilterType =
   | "CATEGORY_FILTER"
   | "NUMERIC_EQUALITY_FILTER"
@@ -17313,23 +18457,31 @@ export const CollectiveConstant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectiveConstant>;
 export interface TopicCategoryFilterConstant {
   ConstantType?: ConstantType;
-  SingularConstant?: string;
+  SingularConstant?: string | redacted.Redacted<string>;
   CollectiveConstant?: CollectiveConstant;
 }
 export const TopicCategoryFilterConstant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConstantType: S.optional(ConstantType),
-    SingularConstant: S.optional(S.String),
+    SingularConstant: S.optional(SensitiveString),
     CollectiveConstant: S.optional(CollectiveConstant),
   }),
 ).annotate({
   identifier: "TopicCategoryFilterConstant",
 }) as any as S.Schema<TopicCategoryFilterConstant>;
+export type NullFilterType =
+  | "ALL_VALUES"
+  | "NON_NULLS_ONLY"
+  | "NULLS_ONLY"
+  | (string & {});
+export const NullFilterType = /*@__PURE__*/ S.String;
+
 export interface TopicCategoryFilter {
   CategoryFilterFunction?: CategoryFilterFunction;
   CategoryFilterType?: CategoryFilterType;
   Constant?: TopicCategoryFilterConstant;
   Inverse?: boolean;
+  NullFilter?: NullFilterType;
 }
 export const TopicCategoryFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17337,18 +18489,19 @@ export const TopicCategoryFilter = /*@__PURE__*/ S.suspend(() =>
     CategoryFilterType: S.optional(CategoryFilterType),
     Constant: S.optional(TopicCategoryFilterConstant),
     Inverse: S.optional(S.Boolean),
+    NullFilter: S.optional(NullFilterType),
   }),
 ).annotate({
   identifier: "TopicCategoryFilter",
 }) as any as S.Schema<TopicCategoryFilter>;
 export interface TopicSingularFilterConstant {
   ConstantType?: ConstantType;
-  SingularConstant?: string;
+  SingularConstant?: string | redacted.Redacted<string>;
 }
 export const TopicSingularFilterConstant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConstantType: S.optional(ConstantType),
-    SingularConstant: S.optional(S.String),
+    SingularConstant: S.optional(SensitiveString),
   }),
 ).annotate({
   identifier: "TopicSingularFilterConstant",
@@ -17372,21 +18525,28 @@ export const NamedFilterAggType = /*@__PURE__*/ S.String;
 export interface TopicNumericEqualityFilter {
   Constant?: TopicSingularFilterConstant;
   Aggregation?: NamedFilterAggType;
+  Inverse?: boolean;
+  NullFilter?: NullFilterType;
 }
 export const TopicNumericEqualityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Constant: S.optional(TopicSingularFilterConstant),
     Aggregation: S.optional(NamedFilterAggType),
+    Inverse: S.optional(S.Boolean),
+    NullFilter: S.optional(NullFilterType),
   }),
 ).annotate({
   identifier: "TopicNumericEqualityFilter",
 }) as any as S.Schema<TopicNumericEqualityFilter>;
 export interface RangeConstant {
-  Minimum?: string;
-  Maximum?: string;
+  Minimum?: string | redacted.Redacted<string>;
+  Maximum?: string | redacted.Redacted<string>;
 }
 export const RangeConstant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Minimum: S.optional(S.String), Maximum: S.optional(S.String) }),
+  S.Struct({
+    Minimum: S.optional(SensitiveString),
+    Maximum: S.optional(SensitiveString),
+  }),
 ).annotate({ identifier: "RangeConstant" }) as any as S.Schema<RangeConstant>;
 export interface TopicRangeFilterConstant {
   ConstantType?: ConstantType;
@@ -17404,12 +18564,16 @@ export interface TopicNumericRangeFilter {
   Inclusive?: boolean;
   Constant?: TopicRangeFilterConstant;
   Aggregation?: NamedFilterAggType;
+  Inverse?: boolean;
+  NullFilter?: NullFilterType;
 }
 export const TopicNumericRangeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Inclusive: S.optional(S.Boolean),
     Constant: S.optional(TopicRangeFilterConstant),
     Aggregation: S.optional(NamedFilterAggType),
+    Inverse: S.optional(S.Boolean),
+    NullFilter: S.optional(NullFilterType),
   }),
 ).annotate({
   identifier: "TopicNumericRangeFilter",
@@ -17417,11 +18581,13 @@ export const TopicNumericRangeFilter = /*@__PURE__*/ S.suspend(() =>
 export interface TopicDateRangeFilter {
   Inclusive?: boolean;
   Constant?: TopicRangeFilterConstant;
+  NullFilter?: NullFilterType;
 }
 export const TopicDateRangeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Inclusive: S.optional(S.Boolean),
     Constant: S.optional(TopicRangeFilterConstant),
+    NullFilter: S.optional(NullFilterType),
   }),
 ).annotate({
   identifier: "TopicDateRangeFilter",
@@ -17439,23 +18605,18 @@ export interface TopicRelativeDateFilter {
   TimeGranularity?: TopicTimeGranularity;
   RelativeDateFilterFunction?: TopicRelativeDateFilterFunction;
   Constant?: TopicSingularFilterConstant;
+  NullFilter?: NullFilterType;
 }
 export const TopicRelativeDateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TimeGranularity: S.optional(TopicTimeGranularity),
     RelativeDateFilterFunction: S.optional(TopicRelativeDateFilterFunction),
     Constant: S.optional(TopicSingularFilterConstant),
+    NullFilter: S.optional(NullFilterType),
   }),
 ).annotate({
   identifier: "TopicRelativeDateFilter",
 }) as any as S.Schema<TopicRelativeDateFilter>;
-export type NullFilterType =
-  | "ALL_VALUES"
-  | "NON_NULLS_ONLY"
-  | "NULLS_ONLY"
-  | (string & {});
-export const NullFilterType = /*@__PURE__*/ S.String;
-
 export interface TopicNullFilter {
   NullFilterType?: NullFilterType;
   Constant?: TopicSingularFilterConstant;
@@ -17471,10 +18632,10 @@ export const TopicNullFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "TopicNullFilter",
 }) as any as S.Schema<TopicNullFilter>;
 export interface TopicFilter {
-  FilterDescription?: string;
+  FilterDescription?: string | redacted.Redacted<string>;
   FilterClass?: FilterClass;
   FilterName: string;
-  FilterSynonyms?: string[];
+  FilterSynonyms?: (string | redacted.Redacted<string>)[];
   OperandFieldName: string;
   FilterType?: NamedFilterType;
   CategoryFilter?: TopicCategoryFilter;
@@ -17486,7 +18647,7 @@ export interface TopicFilter {
 }
 export const TopicFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FilterDescription: S.optional(S.String),
+    FilterDescription: S.optional(SensitiveString),
     FilterClass: S.optional(FilterClass),
     FilterName: S.String,
     FilterSynonyms: S.optional(Synonyms),
@@ -17602,13 +18763,13 @@ export const DefaultFormatting = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultFormatting",
 }) as any as S.Schema<DefaultFormatting>;
 export interface CellValueSynonym {
-  CellValue?: string;
-  Synonyms?: string[];
+  CellValue?: string | redacted.Redacted<string>;
+  Synonyms?: (string | redacted.Redacted<string>)[];
 }
 export const CellValueSynonym = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    CellValue: S.optional(S.String),
-    Synonyms: S.optional(StringList),
+    CellValue: S.optional(SensitiveString),
+    Synonyms: S.optional(SensitiveStringList),
   }),
 ).annotate({
   identifier: "CellValueSynonym",
@@ -17617,9 +18778,9 @@ export type CellValueSynonyms = CellValueSynonym[];
 export const CellValueSynonyms = /*@__PURE__*/ S.Array(CellValueSynonym);
 export interface TopicColumn {
   ColumnName: string;
-  ColumnFriendlyName?: string;
-  ColumnDescription?: string;
-  ColumnSynonyms?: string[];
+  ColumnFriendlyName?: string | redacted.Redacted<string>;
+  ColumnDescription?: string | redacted.Redacted<string>;
+  ColumnSynonyms?: (string | redacted.Redacted<string>)[];
   ColumnDataRole?: ColumnDataRole;
   Aggregation?: DefaultAggregation;
   IsIncludedInTopic?: boolean;
@@ -17637,8 +18798,8 @@ export interface TopicColumn {
 export const TopicColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ColumnName: S.String,
-    ColumnFriendlyName: S.optional(S.String),
-    ColumnDescription: S.optional(S.String),
+    ColumnFriendlyName: S.optional(SensitiveString),
+    ColumnDescription: S.optional(SensitiveString),
     ColumnSynonyms: S.optional(Synonyms),
     ColumnDataRole: S.optional(ColumnDataRole),
     Aggregation: S.optional(DefaultAggregation),
@@ -17658,10 +18819,10 @@ export const TopicColumn = /*@__PURE__*/ S.suspend(() =>
 export type TopicColumns = TopicColumn[];
 export const TopicColumns = /*@__PURE__*/ S.Array(TopicColumn);
 export interface TopicCalculatedField {
-  CalculatedFieldName: string;
-  CalculatedFieldDescription?: string;
+  CalculatedFieldName: string | redacted.Redacted<string>;
+  CalculatedFieldDescription?: string | redacted.Redacted<string>;
   Expression: string | redacted.Redacted<string>;
-  CalculatedFieldSynonyms?: string[];
+  CalculatedFieldSynonyms?: (string | redacted.Redacted<string>)[];
   IsIncludedInTopic?: boolean;
   DisableIndexing?: boolean;
   ColumnDataRole?: ColumnDataRole;
@@ -17678,8 +18839,8 @@ export interface TopicCalculatedField {
 }
 export const TopicCalculatedField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    CalculatedFieldName: S.String,
-    CalculatedFieldDescription: S.optional(S.String),
+    CalculatedFieldName: SensitiveString,
+    CalculatedFieldDescription: S.optional(SensitiveString),
     Expression: SensitiveString,
     CalculatedFieldSynonyms: S.optional(Synonyms),
     IsIncludedInTopic: S.optional(S.Boolean),
@@ -17764,6 +18925,9 @@ export interface NamedEntityDefinition {
   PropertyRole?: PropertyRole;
   PropertyUsage?: PropertyUsage;
   Metric?: NamedEntityDefinitionMetric;
+  RankOrder?: number;
+  PresentationOrder?: number;
+  IsHidden?: boolean;
 }
 export const NamedEntityDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17772,6 +18936,9 @@ export const NamedEntityDefinition = /*@__PURE__*/ S.suspend(() =>
     PropertyRole: S.optional(PropertyRole),
     PropertyUsage: S.optional(PropertyUsage),
     Metric: S.optional(NamedEntityDefinitionMetric),
+    RankOrder: S.optional(S.Number),
+    PresentationOrder: S.optional(S.Number),
+    IsHidden: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "NamedEntityDefinition",
@@ -17780,20 +18947,37 @@ export type NamedEntityDefinitions = NamedEntityDefinition[];
 export const NamedEntityDefinitions = /*@__PURE__*/ S.Array(
   NamedEntityDefinition,
 );
+export interface NamedEntitySort {
+  FieldName: string;
+  Direction: TopicSortDirection;
+}
+export const NamedEntitySort = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ FieldName: S.String, Direction: TopicSortDirection }),
+).annotate({
+  identifier: "NamedEntitySort",
+}) as any as S.Schema<NamedEntitySort>;
+export type NamedEntitySortList = NamedEntitySort[];
+export const NamedEntitySortList = /*@__PURE__*/ S.Array(NamedEntitySort);
 export interface TopicNamedEntity {
   EntityName: string;
-  EntityDescription?: string;
-  EntitySynonyms?: string[];
+  EntityDescription?: string | redacted.Redacted<string>;
+  EntitySynonyms?: (string | redacted.Redacted<string>)[];
   SemanticEntityType?: SemanticEntityType;
   Definition?: NamedEntityDefinition[];
+  Sort?: NamedEntitySort[];
+  RankOrder?: number;
+  PresentationOrder?: number;
 }
 export const TopicNamedEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EntityName: S.String,
-    EntityDescription: S.optional(S.String),
+    EntityDescription: S.optional(SensitiveString),
     EntitySynonyms: S.optional(Synonyms),
     SemanticEntityType: S.optional(SemanticEntityType),
     Definition: S.optional(NamedEntityDefinitions),
+    Sort: S.optional(NamedEntitySortList),
+    RankOrder: S.optional(S.Number),
+    PresentationOrder: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "TopicNamedEntity",
@@ -17982,6 +19166,110 @@ export const CreateTopicRefreshScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTopicRefreshScheduleResponse",
 }) as any as S.Schema<CreateTopicRefreshScheduleResponse>;
+export interface TopicV2DataSetReference {
+  DataSetArn: string;
+  DataSetName?: string;
+}
+export const TopicV2DataSetReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DataSetArn: S.String, DataSetName: S.optional(S.String) }),
+).annotate({
+  identifier: "TopicV2DataSetReference",
+}) as any as S.Schema<TopicV2DataSetReference>;
+export type TopicV2DataSetReferences = TopicV2DataSetReference[];
+export const TopicV2DataSetReferences = /*@__PURE__*/ S.Array(
+  TopicV2DataSetReference,
+);
+export type TopicV2DataSetRelationColumnNames = string[];
+export const TopicV2DataSetRelationColumnNames = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export interface TopicV2DataSetRelationEndpoint {
+  DataSetArn: string;
+  ColumnNames: string[];
+}
+export const TopicV2DataSetRelationEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataSetArn: S.String,
+    ColumnNames: TopicV2DataSetRelationColumnNames,
+  }),
+).annotate({
+  identifier: "TopicV2DataSetRelationEndpoint",
+}) as any as S.Schema<TopicV2DataSetRelationEndpoint>;
+export interface TopicV2DataSetRelation {
+  Left: TopicV2DataSetRelationEndpoint;
+  Right: TopicV2DataSetRelationEndpoint;
+}
+export const TopicV2DataSetRelation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Left: TopicV2DataSetRelationEndpoint,
+    Right: TopicV2DataSetRelationEndpoint,
+  }),
+).annotate({
+  identifier: "TopicV2DataSetRelation",
+}) as any as S.Schema<TopicV2DataSetRelation>;
+export type TopicV2DataSetRelationList = TopicV2DataSetRelation[];
+export const TopicV2DataSetRelationList = /*@__PURE__*/ S.Array(
+  TopicV2DataSetRelation,
+);
+export interface TopicV2Details {
+  Name: string;
+  Description?: string;
+  DataSets?: TopicV2DataSetReference[];
+  DataSetRelations?: TopicV2DataSetRelation[];
+}
+export const TopicV2Details = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(S.String),
+    DataSets: S.optional(TopicV2DataSetReferences),
+    DataSetRelations: S.optional(TopicV2DataSetRelationList),
+  }),
+).annotate({ identifier: "TopicV2Details" }) as any as S.Schema<TopicV2Details>;
+export interface CreateTopicV2Request {
+  AwsAccountId: string;
+  TopicId: string;
+  Topic: TopicV2Details;
+  Tags?: Tag[];
+  FolderArns?: string[];
+  CustomInstructions?: CustomInstructions;
+}
+export const CreateTopicV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    TopicId: S.String,
+    Topic: TopicV2Details,
+    Tags: S.optional(TagList),
+    FolderArns: S.optional(FolderArnList),
+    CustomInstructions: S.optional(CustomInstructions),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/accounts/{AwsAccountId}/topicsV2" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateTopicV2Request",
+}) as any as S.Schema<CreateTopicV2Request>;
+export interface CreateTopicV2Response {
+  Arn?: string;
+  TopicId?: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const CreateTopicV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    TopicId: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "CreateTopicV2Response",
+}) as any as S.Schema<CreateTopicV2Response>;
 export type VPCConnectionResourceIdRestricted = string;
 export type SubnetId = string;
 export type SubnetIdList = string[];
@@ -18287,6 +19575,32 @@ export const DeleteAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAnalysisResponse",
 }) as any as S.Schema<DeleteAnalysisResponse>;
+export interface DeleteApprovalPolicyRequest {
+  PolicyId: string;
+}
+export const DeleteApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PolicyId: S.String.pipe(T.HttpLabel("PolicyId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/governance/approvalworkflows/policies/{PolicyId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteApprovalPolicyRequest",
+}) as any as S.Schema<DeleteApprovalPolicyRequest>;
+export interface DeleteApprovalPolicyResponse {}
+export const DeleteApprovalPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteApprovalPolicyResponse",
+}) as any as S.Schema<DeleteApprovalPolicyResponse>;
 export interface DeleteBrandRequest {
   AwsAccountId: string;
   BrandId: string;
@@ -18583,6 +19897,44 @@ export const DeleteDefaultQBusinessApplicationResponse =
   ).annotate({
     identifier: "DeleteDefaultQBusinessApplicationResponse",
   }) as any as S.Schema<DeleteDefaultQBusinessApplicationResponse>;
+export interface DeleteDlpSettingRequest {
+  AwsAccountId: string;
+  DlpSettingId: string;
+}
+export const DeleteDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    DlpSettingId: S.String.pipe(T.HttpLabel("DlpSettingId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{AwsAccountId}/data-loss-prevention/settings/{DlpSettingId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDlpSettingRequest",
+}) as any as S.Schema<DeleteDlpSettingRequest>;
+export interface DeleteDlpSettingResponse {
+  Arn: string;
+  DlpSettingId: string;
+  RequestId?: string;
+}
+export const DeleteDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    DlpSettingId: S.String,
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteDlpSettingResponse",
+}) as any as S.Schema<DeleteDlpSettingResponse>;
 export interface DeleteFlowRequest {
   AwsAccountId: string;
   FlowId: string;
@@ -18814,7 +20166,12 @@ export const DeleteIAMPolicyAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIAMPolicyAssignmentResponse",
 }) as any as S.Schema<DeleteIAMPolicyAssignmentResponse>;
-export type ServiceType = "REDSHIFT" | "QBUSINESS" | "ATHENA" | (string & {});
+export type ServiceType =
+  | "REDSHIFT"
+  | "QBUSINESS"
+  | "ATHENA"
+  | "GLUE_DATA_CATALOG"
+  | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
 
 export interface DeleteIdentityPropagationConfigRequest {
@@ -18895,6 +20252,38 @@ export const DeleteKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteKnowledgeBaseResponse",
 }) as any as S.Schema<DeleteKnowledgeBaseResponse>;
+export interface DeleteLimitsProfileRequest {
+  profileId: string;
+  accountId: string;
+}
+export const DeleteLimitsProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String.pipe(T.HttpLabel("profileId")),
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/governance/limits/accounts/{accountId}/profiles/{profileId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteLimitsProfileRequest",
+}) as any as S.Schema<DeleteLimitsProfileRequest>;
+export interface DeleteLimitsProfileResponse {
+  arn: string;
+}
+export const DeleteLimitsProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }),
+).annotate({
+  identifier: "DeleteLimitsProfileResponse",
+}) as any as S.Schema<DeleteLimitsProfileResponse>;
 export interface DeleteNamespaceRequest {
   AwsAccountId: string;
   Namespace: string;
@@ -19385,6 +20774,46 @@ export const DeleteTopicRefreshScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTopicRefreshScheduleResponse",
 }) as any as S.Schema<DeleteTopicRefreshScheduleResponse>;
+export interface DeleteTopicV2Request {
+  AwsAccountId: string;
+  TopicId: string;
+}
+export const DeleteTopicV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    TopicId: S.String.pipe(T.HttpLabel("TopicId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{AwsAccountId}/topicsV2/{TopicId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteTopicV2Request",
+}) as any as S.Schema<DeleteTopicV2Request>;
+export interface DeleteTopicV2Response {
+  Arn?: string;
+  TopicId?: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const DeleteTopicV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    TopicId: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "DeleteTopicV2Response",
+}) as any as S.Schema<DeleteTopicV2Response>;
 export type UserName = string;
 export interface DeleteUserRequest {
   UserName: string;
@@ -19864,7 +21293,6 @@ export const ReadNoneConnectionMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReadNoneConnectionMetadata",
 }) as any as S.Schema<ReadNoneConnectionMetadata>;
-export type ResourceArn = string;
 export interface ReadIamConnectionMetadata {
   RoleArn: string;
   SourceArn: string;
@@ -20240,6 +21668,8 @@ export const AnalysisError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalysisError" }) as any as S.Schema<AnalysisError>;
 export type AnalysisErrorList = AnalysisError[];
 export const AnalysisErrorList = /*@__PURE__*/ S.Array(AnalysisError);
+export type TopicArnsList = string[];
+export const TopicArnsList = /*@__PURE__*/ S.Array(S.String);
 export interface Sheet {
   SheetId?: string;
   Name?: string;
@@ -20261,6 +21691,7 @@ export interface Analysis {
   Status?: ResourceStatus;
   Errors?: AnalysisError[];
   DataSetArns?: string[];
+  TopicArns?: string[];
   ThemeArn?: string;
   CreatedTime?: Date;
   LastUpdatedTime?: Date;
@@ -20274,6 +21705,7 @@ export const Analysis = /*@__PURE__*/ S.suspend(() =>
     Status: S.optional(ResourceStatus),
     Errors: S.optional(AnalysisErrorList),
     DataSetArns: S.optional(DataSetArnsList),
+    TopicArns: S.optional(TopicArnsList),
     ThemeArn: S.optional(S.String),
     CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     LastUpdatedTime: S.optional(
@@ -20389,6 +21821,34 @@ export const DescribeAnalysisPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAnalysisPermissionsResponse",
 }) as any as S.Schema<DescribeAnalysisPermissionsResponse>;
+export interface DescribeApprovalPolicyRequest {
+  PolicyId: string;
+}
+export const DescribeApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PolicyId: S.String.pipe(T.HttpLabel("PolicyId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/governance/approvalworkflows/policies/{PolicyId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeApprovalPolicyRequest",
+}) as any as S.Schema<DescribeApprovalPolicyRequest>;
+export interface DescribeApprovalPolicyResponse {
+  Policy: ApprovalPolicy;
+}
+export const DescribeApprovalPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: ApprovalPolicy }),
+).annotate({
+  identifier: "DescribeApprovalPolicyResponse",
+}) as any as S.Schema<DescribeApprovalPolicyResponse>;
 export interface DescribeAssetBundleExportJobRequest {
   AwsAccountId: string;
   AssetBundleExportJobId: string;
@@ -20696,6 +22156,34 @@ export type AssetBundleExportJobFolderOverridePropertiesList =
   AssetBundleExportJobFolderOverrideProperties[];
 export const AssetBundleExportJobFolderOverridePropertiesList =
   /*@__PURE__*/ S.Array(AssetBundleExportJobFolderOverrideProperties);
+export type AssetBundleExportJobTopicV2PropertyToOverride =
+  | "Name"
+  | "Description"
+  | (string & {});
+export const AssetBundleExportJobTopicV2PropertyToOverride =
+  /*@__PURE__*/ S.String;
+
+export type AssetBundleExportJobTopicV2PropertyToOverrideList =
+  AssetBundleExportJobTopicV2PropertyToOverride[];
+export const AssetBundleExportJobTopicV2PropertyToOverrideList =
+  /*@__PURE__*/ S.Array(AssetBundleExportJobTopicV2PropertyToOverride);
+export interface AssetBundleExportJobTopicV2OverrideProperties {
+  Arn: string;
+  Properties: AssetBundleExportJobTopicV2PropertyToOverride[];
+}
+export const AssetBundleExportJobTopicV2OverrideProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Arn: S.String,
+      Properties: AssetBundleExportJobTopicV2PropertyToOverrideList,
+    }),
+  ).annotate({
+    identifier: "AssetBundleExportJobTopicV2OverrideProperties",
+  }) as any as S.Schema<AssetBundleExportJobTopicV2OverrideProperties>;
+export type AssetBundleExportJobTopicV2OverridePropertiesList =
+  AssetBundleExportJobTopicV2OverrideProperties[];
+export const AssetBundleExportJobTopicV2OverridePropertiesList =
+  /*@__PURE__*/ S.Array(AssetBundleExportJobTopicV2OverrideProperties);
 export interface AssetBundleCloudFormationOverridePropertyConfiguration {
   ResourceIdOverrideConfiguration?: AssetBundleExportJobResourceIdOverrideConfiguration;
   VPCConnections?: AssetBundleExportJobVPCConnectionOverrideProperties[];
@@ -20706,6 +22194,7 @@ export interface AssetBundleCloudFormationOverridePropertyConfiguration {
   Analyses?: AssetBundleExportJobAnalysisOverrideProperties[];
   Dashboards?: AssetBundleExportJobDashboardOverrideProperties[];
   Folders?: AssetBundleExportJobFolderOverrideProperties[];
+  TopicsV2?: AssetBundleExportJobTopicV2OverrideProperties[];
 }
 export const AssetBundleCloudFormationOverridePropertyConfiguration =
   /*@__PURE__*/ S.suspend(() =>
@@ -20729,6 +22218,7 @@ export const AssetBundleCloudFormationOverridePropertyConfiguration =
         AssetBundleExportJobDashboardOverridePropertiesList,
       ),
       Folders: S.optional(AssetBundleExportJobFolderOverridePropertiesList),
+      TopicsV2: S.optional(AssetBundleExportJobTopicV2OverridePropertiesList),
     }),
   ).annotate({
     identifier: "AssetBundleCloudFormationOverridePropertyConfiguration",
@@ -21121,6 +22611,26 @@ export type AssetBundleImportJobFolderOverrideParametersList =
   AssetBundleImportJobFolderOverrideParameters[];
 export const AssetBundleImportJobFolderOverrideParametersList =
   /*@__PURE__*/ S.Array(AssetBundleImportJobFolderOverrideParameters);
+export type TopicDescription = string;
+export interface AssetBundleImportJobTopicV2OverrideParameters {
+  TopicId: string;
+  Name?: string;
+  Description?: string;
+}
+export const AssetBundleImportJobTopicV2OverrideParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TopicId: S.String,
+      Name: S.optional(S.String),
+      Description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AssetBundleImportJobTopicV2OverrideParameters",
+  }) as any as S.Schema<AssetBundleImportJobTopicV2OverrideParameters>;
+export type AssetBundleImportJobTopicV2OverrideParametersList =
+  AssetBundleImportJobTopicV2OverrideParameters[];
+export const AssetBundleImportJobTopicV2OverrideParametersList =
+  /*@__PURE__*/ S.Array(AssetBundleImportJobTopicV2OverrideParameters);
 export interface AssetBundleImportJobOverrideParameters {
   ResourceIdOverrideConfiguration?: AssetBundleImportJobResourceIdOverrideConfiguration;
   VPCConnections?: AssetBundleImportJobVPCConnectionOverrideParameters[];
@@ -21131,6 +22641,7 @@ export interface AssetBundleImportJobOverrideParameters {
   Analyses?: AssetBundleImportJobAnalysisOverrideParameters[];
   Dashboards?: AssetBundleImportJobDashboardOverrideParameters[];
   Folders?: AssetBundleImportJobFolderOverrideParameters[];
+  TopicsV2?: AssetBundleImportJobTopicV2OverrideParameters[];
 }
 export const AssetBundleImportJobOverrideParameters = /*@__PURE__*/ S.suspend(
   () =>
@@ -21154,6 +22665,7 @@ export const AssetBundleImportJobOverrideParameters = /*@__PURE__*/ S.suspend(
         AssetBundleImportJobDashboardOverrideParametersList,
       ),
       Folders: S.optional(AssetBundleImportJobFolderOverrideParametersList),
+      TopicsV2: S.optional(AssetBundleImportJobTopicV2OverrideParametersList),
     }),
 ).annotate({
   identifier: "AssetBundleImportJobOverrideParameters",
@@ -21295,6 +22807,23 @@ export type AssetBundleImportJobFolderOverridePermissionsList =
   AssetBundleImportJobFolderOverridePermissions[];
 export const AssetBundleImportJobFolderOverridePermissionsList =
   /*@__PURE__*/ S.Array(AssetBundleImportJobFolderOverridePermissions);
+export interface AssetBundleImportJobTopicV2OverridePermissions {
+  TopicIds: string[];
+  Permissions: AssetBundleResourcePermissions;
+}
+export const AssetBundleImportJobTopicV2OverridePermissions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TopicIds: AssetBundleRestrictiveResourceIdList,
+      Permissions: AssetBundleResourcePermissions,
+    }),
+  ).annotate({
+    identifier: "AssetBundleImportJobTopicV2OverridePermissions",
+  }) as any as S.Schema<AssetBundleImportJobTopicV2OverridePermissions>;
+export type AssetBundleImportJobTopicV2OverridePermissionsList =
+  AssetBundleImportJobTopicV2OverridePermissions[];
+export const AssetBundleImportJobTopicV2OverridePermissionsList =
+  /*@__PURE__*/ S.Array(AssetBundleImportJobTopicV2OverridePermissions);
 export interface AssetBundleImportJobOverridePermissions {
   DataSources?: AssetBundleImportJobDataSourceOverridePermissions[];
   DataSets?: AssetBundleImportJobDataSetOverridePermissions[];
@@ -21302,6 +22831,7 @@ export interface AssetBundleImportJobOverridePermissions {
   Analyses?: AssetBundleImportJobAnalysisOverridePermissions[];
   Dashboards?: AssetBundleImportJobDashboardOverridePermissions[];
   Folders?: AssetBundleImportJobFolderOverridePermissions[];
+  TopicsV2?: AssetBundleImportJobTopicV2OverridePermissions[];
 }
 export const AssetBundleImportJobOverridePermissions = /*@__PURE__*/ S.suspend(
   () =>
@@ -21316,6 +22846,7 @@ export const AssetBundleImportJobOverridePermissions = /*@__PURE__*/ S.suspend(
         AssetBundleImportJobDashboardOverridePermissionsList,
       ),
       Folders: S.optional(AssetBundleImportJobFolderOverridePermissionsList),
+      TopicsV2: S.optional(AssetBundleImportJobTopicV2OverridePermissionsList),
     }),
 ).annotate({
   identifier: "AssetBundleImportJobOverridePermissions",
@@ -21438,6 +22969,20 @@ export type AssetBundleImportJobFolderOverrideTagsList =
 export const AssetBundleImportJobFolderOverrideTagsList = /*@__PURE__*/ S.Array(
   AssetBundleImportJobFolderOverrideTags,
 );
+export interface AssetBundleImportJobTopicV2OverrideTags {
+  TopicIds: string[];
+  Tags: Tag[];
+}
+export const AssetBundleImportJobTopicV2OverrideTags = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ TopicIds: AssetBundleRestrictiveResourceIdList, Tags: TagList }),
+).annotate({
+  identifier: "AssetBundleImportJobTopicV2OverrideTags",
+}) as any as S.Schema<AssetBundleImportJobTopicV2OverrideTags>;
+export type AssetBundleImportJobTopicV2OverrideTagsList =
+  AssetBundleImportJobTopicV2OverrideTags[];
+export const AssetBundleImportJobTopicV2OverrideTagsList =
+  /*@__PURE__*/ S.Array(AssetBundleImportJobTopicV2OverrideTags);
 export interface AssetBundleImportJobOverrideTags {
   VPCConnections?: AssetBundleImportJobVPCConnectionOverrideTags[];
   DataSources?: AssetBundleImportJobDataSourceOverrideTags[];
@@ -21446,6 +22991,7 @@ export interface AssetBundleImportJobOverrideTags {
   Analyses?: AssetBundleImportJobAnalysisOverrideTags[];
   Dashboards?: AssetBundleImportJobDashboardOverrideTags[];
   Folders?: AssetBundleImportJobFolderOverrideTags[];
+  TopicsV2?: AssetBundleImportJobTopicV2OverrideTags[];
 }
 export const AssetBundleImportJobOverrideTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21458,6 +23004,7 @@ export const AssetBundleImportJobOverrideTags = /*@__PURE__*/ S.suspend(() =>
     Analyses: S.optional(AssetBundleImportJobAnalysisOverrideTagsList),
     Dashboards: S.optional(AssetBundleImportJobDashboardOverrideTagsList),
     Folders: S.optional(AssetBundleImportJobFolderOverrideTagsList),
+    TopicsV2: S.optional(AssetBundleImportJobTopicV2OverrideTagsList),
   }),
 ).annotate({
   identifier: "AssetBundleImportJobOverrideTags",
@@ -21735,12 +23282,14 @@ export interface CustomPermissions {
   Arn?: string;
   CustomPermissionsName?: string;
   Capabilities?: Capabilities;
+  Governance?: Governance;
 }
 export const CustomPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     CustomPermissionsName: S.optional(S.String),
     Capabilities: S.optional(Capabilities),
+    Governance: S.optional(Governance),
   }),
 ).annotate({
   identifier: "CustomPermissions",
@@ -21823,6 +23372,7 @@ export interface DashboardVersion {
   Arn?: string;
   SourceEntityArn?: string;
   DataSetArns?: string[];
+  TopicArns?: string[];
   Description?: string;
   ThemeArn?: string;
   Sheets?: Sheet[];
@@ -21836,6 +23386,7 @@ export const DashboardVersion = /*@__PURE__*/ S.suspend(() =>
     Arn: S.optional(S.String),
     SourceEntityArn: S.optional(S.String),
     DataSetArns: S.optional(DataSetArnsList),
+    TopicArns: S.optional(TopicArnsList),
     Description: S.optional(S.String),
     ThemeArn: S.optional(S.String),
     Sheets: S.optional(SheetList),
@@ -22605,6 +24156,13 @@ export const DataSourceErrorInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataSourceErrorInfo",
 }) as any as S.Schema<DataSourceErrorInfo>;
+export type CredentialStatus =
+  | "CONNECTED"
+  | "AUTH_FAILED"
+  | "NOT_VERIFIED"
+  | (string & {});
+export const CredentialStatus = /*@__PURE__*/ S.String;
+
 export interface DataSource {
   Arn: string;
   DataSourceId: string;
@@ -22619,6 +24177,8 @@ export interface DataSource {
   SslProperties?: SslProperties;
   ErrorInfo?: DataSourceErrorInfo;
   SecretArn?: string;
+  CredentialStatus?: CredentialStatus;
+  LastCredentialVerifiedAt?: Date;
 }
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22637,6 +24197,10 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
     SslProperties: S.optional(SslProperties),
     ErrorInfo: S.optional(DataSourceErrorInfo),
     SecretArn: S.optional(S.String),
+    CredentialStatus: S.optional(CredentialStatus),
+    LastCredentialVerifiedAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
   }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 export interface DescribeDataSourceResponse {
@@ -22737,6 +24301,68 @@ export const DescribeDefaultQBusinessApplicationResponse =
   ).annotate({
     identifier: "DescribeDefaultQBusinessApplicationResponse",
   }) as any as S.Schema<DescribeDefaultQBusinessApplicationResponse>;
+export interface DescribeDlpSettingRequest {
+  AwsAccountId: string;
+  DlpSettingId: string;
+}
+export const DescribeDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    DlpSettingId: S.String.pipe(T.HttpLabel("DlpSettingId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AwsAccountId}/data-loss-prevention/settings/{DlpSettingId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeDlpSettingRequest",
+}) as any as S.Schema<DescribeDlpSettingRequest>;
+export type DlpSettingStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export const DlpSettingStatus = /*@__PURE__*/ S.String;
+
+export interface DlpSettingDetails {
+  DlpSettingId: string;
+  Name: string;
+  Arn: string;
+  Status: DlpSettingStatus;
+  ProviderType: DlpProviderType;
+  ProviderConfig: ProviderConfig;
+  ProviderOutageAction: DlpAction;
+  CreatedAt: Date;
+  UpdatedAt: Date;
+}
+export const DlpSettingDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DlpSettingId: S.String,
+    Name: S.String,
+    Arn: S.String,
+    Status: DlpSettingStatus,
+    ProviderType: DlpProviderType,
+    ProviderConfig: ProviderConfig,
+    ProviderOutageAction: DlpAction,
+    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "DlpSettingDetails",
+}) as any as S.Schema<DlpSettingDetails>;
+export interface DescribeDlpSettingResponse {
+  DlpSetting: DlpSettingDetails;
+  RequestId?: string;
+}
+export const DescribeDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DlpSetting: DlpSettingDetails, RequestId: S.optional(S.String) }),
+).annotate({
+  identifier: "DescribeDlpSettingResponse",
+}) as any as S.Schema<DescribeDlpSettingResponse>;
 export type FlowPublishState =
   | "PUBLISHED"
   | "DRAFT"
@@ -23447,96 +25073,6 @@ export const DescribeKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeKnowledgeBaseRequest",
 }) as any as S.Schema<DescribeKnowledgeBaseRequest>;
-export type KnowledgeBaseName = string;
-export type DataSetStatus =
-  | "CREATING"
-  | "UPDATING"
-  | "ACTIVE"
-  | "FAILED"
-  | "DELETING"
-  | (string & {});
-export const DataSetStatus = /*@__PURE__*/ S.String;
-
-export type DataSourceArn = string;
-export type KbTemplate = unknown;
-export interface KbTemplateConfiguration {
-  template?: any;
-}
-export const KbTemplateConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ template: S.optional(S.Any) }),
-).annotate({
-  identifier: "KbTemplateConfiguration",
-}) as any as S.Schema<KbTemplateConfiguration>;
-export interface KnowledgeBaseConfiguration {
-  templateConfiguration?: KbTemplateConfiguration;
-  eventEnabled?: boolean;
-}
-export const KnowledgeBaseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateConfiguration: S.optional(KbTemplateConfiguration),
-    eventEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "KnowledgeBaseConfiguration",
-}) as any as S.Schema<KnowledgeBaseConfiguration>;
-export type ImageExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
-export const ImageExtractionStatus = /*@__PURE__*/ S.String;
-
-export interface ImageExtractionConfiguration {
-  imageExtractionStatus: ImageExtractionStatus;
-}
-export const ImageExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ imageExtractionStatus: ImageExtractionStatus }),
-).annotate({
-  identifier: "ImageExtractionConfiguration",
-}) as any as S.Schema<ImageExtractionConfiguration>;
-export type AudioExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
-export const AudioExtractionStatus = /*@__PURE__*/ S.String;
-
-export interface AudioExtractionConfiguration {
-  audioExtractionStatus: AudioExtractionStatus;
-}
-export const AudioExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ audioExtractionStatus: AudioExtractionStatus }),
-).annotate({
-  identifier: "AudioExtractionConfiguration",
-}) as any as S.Schema<AudioExtractionConfiguration>;
-export type VideoExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
-export const VideoExtractionStatus = /*@__PURE__*/ S.String;
-
-export type VideoExtractionType =
-  | "AUDIO_TRANSCRIPTION_ONLY"
-  | "VISUAL_CONTENT_AND_AUDIO_TRANSCRIPTION"
-  | (string & {});
-export const VideoExtractionType = /*@__PURE__*/ S.String;
-
-export interface VideoExtractionConfiguration {
-  videoExtractionStatus: VideoExtractionStatus;
-  videoExtractionType?: VideoExtractionType;
-}
-export const VideoExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoExtractionStatus: VideoExtractionStatus,
-    videoExtractionType: S.optional(VideoExtractionType),
-  }),
-).annotate({
-  identifier: "VideoExtractionConfiguration",
-}) as any as S.Schema<VideoExtractionConfiguration>;
-export interface MediaExtractionConfiguration {
-  imageExtractionConfiguration?: ImageExtractionConfiguration;
-  audioExtractionConfiguration?: AudioExtractionConfiguration;
-  videoExtractionConfiguration?: VideoExtractionConfiguration;
-}
-export const MediaExtractionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageExtractionConfiguration: S.optional(ImageExtractionConfiguration),
-    audioExtractionConfiguration: S.optional(AudioExtractionConfiguration),
-    videoExtractionConfiguration: S.optional(VideoExtractionConfiguration),
-  }),
-).annotate({
-  identifier: "MediaExtractionConfiguration",
-}) as any as S.Schema<MediaExtractionConfiguration>;
-export type KnowledgeBaseDescription = string;
 export type KbIngestionId = string;
 export type KbIngestionStatus =
   | "QUEUED"
@@ -23574,6 +25110,7 @@ export interface KnowledgeBase {
   DataSourceArn: string;
   KnowledgeBaseConfiguration: KnowledgeBaseConfiguration;
   MediaExtractionConfiguration?: MediaExtractionConfiguration;
+  AccessControlConfiguration?: AccessControlConfiguration;
   Type?: string;
   CreatedAt?: Date;
   UpdatedAt?: Date;
@@ -23596,6 +25133,7 @@ export const KnowledgeBase = /*@__PURE__*/ S.suspend(() =>
     DataSourceArn: S.String,
     KnowledgeBaseConfiguration: KnowledgeBaseConfiguration,
     MediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
+    AccessControlConfiguration: S.optional(AccessControlConfiguration),
     Type: S.optional(S.String),
     CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -23668,6 +25206,65 @@ export const DescribeKnowledgeBasePermissionsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeKnowledgeBasePermissionsResponse",
 }) as any as S.Schema<DescribeKnowledgeBasePermissionsResponse>;
+export interface DescribeLimitsProfileRequest {
+  profileId: string;
+  accountId: string;
+}
+export const DescribeLimitsProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String.pipe(T.HttpLabel("profileId")),
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/governance/limits/accounts/{accountId}/profiles/{profileId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeLimitsProfileRequest",
+}) as any as S.Schema<DescribeLimitsProfileRequest>;
+export type ResourceLimitsMap = { [key in ResourceType]?: ProfileLimitValue };
+export const ResourceLimitsMap = /*@__PURE__*/ S.Record(
+  ResourceType,
+  ProfileLimitValue.pipe(S.optional),
+);
+export interface LimitsProfile {
+  profileId: string;
+  arn: string;
+  accountId: string;
+  profileName: string;
+  description?: string;
+  resourceLimits: { [key: string]: ProfileLimitValue | undefined };
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const LimitsProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String,
+    arn: S.String,
+    accountId: S.String,
+    profileName: S.String,
+    description: S.optional(S.String),
+    resourceLimits: ResourceLimitsMap,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "LimitsProfile" }) as any as S.Schema<LimitsProfile>;
+export interface DescribeLimitsProfileResponse {
+  profile: LimitsProfile;
+}
+export const DescribeLimitsProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ profile: LimitsProfile }),
+).annotate({
+  identifier: "DescribeLimitsProfileResponse",
+}) as any as S.Schema<DescribeLimitsProfileResponse>;
 export interface DescribeNamespaceRequest {
   AwsAccountId: string;
   Namespace: string;
@@ -24248,6 +25845,7 @@ export interface TemplateVersion {
   VersionNumber?: number;
   Status?: ResourceStatus;
   DataSetConfigurations?: DataSetConfiguration[];
+  TopicConfigurations?: TopicConfiguration[];
   Description?: string;
   SourceEntityArn?: string;
   ThemeArn?: string;
@@ -24260,6 +25858,7 @@ export const TemplateVersion = /*@__PURE__*/ S.suspend(() =>
     VersionNumber: S.optional(S.Number),
     Status: S.optional(ResourceStatus),
     DataSetConfigurations: S.optional(DataSetConfigurationList),
+    TopicConfigurations: S.optional(TopicConfigurationList),
     Description: S.optional(S.String),
     SourceEntityArn: S.optional(S.String),
     ThemeArn: S.optional(S.String),
@@ -24706,6 +26305,48 @@ export const DescribeTopicPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTopicPermissionsResponse",
 }) as any as S.Schema<DescribeTopicPermissionsResponse>;
+export interface DescribeTopicPermissionsV2Request {
+  AwsAccountId: string;
+  TopicId: string;
+}
+export const DescribeTopicPermissionsV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    TopicId: S.String.pipe(T.HttpLabel("TopicId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AwsAccountId}/topicsV2/{TopicId}/permissions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeTopicPermissionsV2Request",
+}) as any as S.Schema<DescribeTopicPermissionsV2Request>;
+export interface DescribeTopicPermissionsV2Response {
+  TopicId?: string;
+  TopicArn?: string;
+  Permissions?: ResourcePermission[];
+  Status?: number;
+  RequestId?: string;
+}
+export const DescribeTopicPermissionsV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TopicId: S.optional(S.String),
+    TopicArn: S.optional(S.String),
+    Permissions: S.optional(ResourcePermissionList),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeTopicPermissionsV2Response",
+}) as any as S.Schema<DescribeTopicPermissionsV2Response>;
 export interface DescribeTopicRefreshRequest {
   AwsAccountId: string;
   TopicId: string;
@@ -24816,6 +26457,50 @@ export const DescribeTopicRefreshScheduleResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeTopicRefreshScheduleResponse",
 }) as any as S.Schema<DescribeTopicRefreshScheduleResponse>;
+export interface DescribeTopicV2Request {
+  AwsAccountId: string;
+  TopicId: string;
+}
+export const DescribeTopicV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    TopicId: S.String.pipe(T.HttpLabel("TopicId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AwsAccountId}/topicsV2/{TopicId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeTopicV2Request",
+}) as any as S.Schema<DescribeTopicV2Request>;
+export interface DescribeTopicV2Response {
+  Arn?: string;
+  TopicId?: string;
+  Topic?: TopicV2Details;
+  CustomInstructions?: CustomInstructions;
+  Status?: number;
+  RequestId?: string;
+}
+export const DescribeTopicV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    TopicId: S.optional(S.String),
+    Topic: S.optional(TopicV2Details),
+    CustomInstructions: S.optional(CustomInstructions),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeTopicV2Response",
+}) as any as S.Schema<DescribeTopicV2Response>;
 export interface DescribeUserRequest {
   UserName: string;
   AwsAccountId: string;
@@ -26006,6 +27691,39 @@ export const ListAnalysesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAnalysesResponse",
 }) as any as S.Schema<ListAnalysesResponse>;
+export type PaginationToken = string;
+export interface ListApprovalPoliciesRequest {
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListApprovalPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/governance/approvalworkflows/policies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListApprovalPoliciesRequest",
+}) as any as S.Schema<ListApprovalPoliciesRequest>;
+export type ApprovalPolicyList = ApprovalPolicy[];
+export const ApprovalPolicyList = /*@__PURE__*/ S.Array(ApprovalPolicy);
+export interface ListApprovalPoliciesResponse {
+  Policies: ApprovalPolicy[];
+  NextToken?: string;
+}
+export const ListApprovalPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policies: ApprovalPolicyList, NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListApprovalPoliciesResponse",
+}) as any as S.Schema<ListApprovalPoliciesResponse>;
 export interface ListAssetBundleExportJobsRequest {
   AwsAccountId: string;
   NextToken?: string;
@@ -26503,6 +28221,70 @@ export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDataSourcesResponse",
 }) as any as S.Schema<ListDataSourcesResponse>;
+export interface ListDlpSettingsRequest {
+  AwsAccountId: string;
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListDlpSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AwsAccountId}/data-loss-prevention/settings",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListDlpSettingsRequest",
+}) as any as S.Schema<ListDlpSettingsRequest>;
+export interface DlpSettingSummary {
+  DlpSettingId: string;
+  Name: string;
+  Arn: string;
+  Status: DlpSettingStatus;
+  ProviderType: DlpProviderType;
+  CreatedAt: Date;
+  UpdatedAt: Date;
+}
+export const DlpSettingSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DlpSettingId: S.String,
+    Name: S.String,
+    Arn: S.String,
+    Status: DlpSettingStatus,
+    ProviderType: DlpProviderType,
+    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "DlpSettingSummary",
+}) as any as S.Schema<DlpSettingSummary>;
+export type DlpSettingSummaryList = DlpSettingSummary[];
+export const DlpSettingSummaryList = /*@__PURE__*/ S.Array(DlpSettingSummary);
+export interface ListDlpSettingsResponse {
+  DlpSettingSummaries: DlpSettingSummary[];
+  NextToken?: string;
+  RequestId?: string;
+}
+export const ListDlpSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DlpSettingSummaries: DlpSettingSummaryList,
+    NextToken: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDlpSettingsResponse",
+}) as any as S.Schema<ListDlpSettingsResponse>;
 export type FlowMaxResults = number;
 export interface ListFlowsInput {
   AwsAccountId: string;
@@ -27153,6 +28935,46 @@ export const ListKnowledgeBasesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListKnowledgeBasesResponse",
 }) as any as S.Schema<ListKnowledgeBasesResponse>;
+export type ListLimitsProfilesRequestMaxResultsInteger = number;
+export interface ListLimitsProfilesRequest {
+  accountId: string;
+  resourceType?: ResourceType;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListLimitsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    resourceType: S.optional(ResourceType).pipe(T.HttpQuery("resourceType")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/governance/limits/accounts/{accountId}/profiles",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListLimitsProfilesRequest",
+}) as any as S.Schema<ListLimitsProfilesRequest>;
+export type LimitsProfileList = LimitsProfile[];
+export const LimitsProfileList = /*@__PURE__*/ S.Array(LimitsProfile);
+export interface ListLimitsProfilesResponse {
+  profiles: LimitsProfile[];
+  nextToken?: string;
+}
+export const ListLimitsProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ profiles: LimitsProfileList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListLimitsProfilesResponse",
+}) as any as S.Schema<ListLimitsProfilesResponse>;
 export interface ListNamespacesRequest {
   AwsAccountId: string;
   NextToken?: string;
@@ -28038,7 +29860,7 @@ export interface TopicReviewedAnswer {
   Arn?: string;
   AnswerId: string;
   DatasetArn: string;
-  Question: string;
+  Question: string | redacted.Redacted<string>;
   Mir?: TopicIR;
   PrimaryVisual?: TopicVisual;
   Template?: TopicTemplate;
@@ -28048,7 +29870,7 @@ export const TopicReviewedAnswer = /*@__PURE__*/ S.suspend(() =>
     Arn: S.optional(S.String),
     AnswerId: S.String,
     DatasetArn: S.String,
-    Question: S.String,
+    Question: SensitiveString,
     Mir: S.optional(TopicIR),
     PrimaryVisual: S.optional(TopicVisual),
     Template: S.optional(TopicTemplate),
@@ -28131,6 +29953,59 @@ export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTopicsResponse",
 }) as any as S.Schema<ListTopicsResponse>;
+export interface ListTopicsV2Request {
+  AwsAccountId: string;
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListTopicsV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/accounts/{AwsAccountId}/topicsV2" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTopicsV2Request",
+}) as any as S.Schema<ListTopicsV2Request>;
+export interface TopicV2Summary {
+  Arn?: string;
+  TopicId?: string;
+  Name?: string;
+}
+export const TopicV2Summary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    TopicId: S.optional(S.String),
+    Name: S.optional(S.String),
+  }),
+).annotate({ identifier: "TopicV2Summary" }) as any as S.Schema<TopicV2Summary>;
+export type TopicV2Summaries = TopicV2Summary[];
+export const TopicV2Summaries = /*@__PURE__*/ S.Array(TopicV2Summary);
+export interface ListTopicsV2Response {
+  TopicSummaryList?: TopicV2Summary[];
+  NextToken?: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const ListTopicsV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TopicSummaryList: S.optional(TopicV2Summaries),
+    NextToken: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "ListTopicsV2Response",
+}) as any as S.Schema<ListTopicsV2Response>;
 export interface ListUserGroupsRequest {
   UserName: string;
   AwsAccountId: string;
@@ -29374,6 +31249,7 @@ export type KnowledgeBaseSearchFilterName =
   | "DIRECT_QUICKSIGHT_SOLE_OWNER"
   | "KNOWLEDGE_BASE_SIZE_BYTES"
   | "PRIMARY_OWNER"
+  | "DATASOURCE_ARN"
   | (string & {});
 export const KnowledgeBaseSearchFilterName = /*@__PURE__*/ S.String;
 
@@ -29567,13 +31443,13 @@ export const TopicFilterAttribute = /*@__PURE__*/ S.String;
 export interface TopicSearchFilter {
   Operator: TopicFilterOperator;
   Name: TopicFilterAttribute;
-  Value: string;
+  Value: string | redacted.Redacted<string>;
 }
 export const TopicSearchFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Operator: TopicFilterOperator,
     Name: TopicFilterAttribute,
-    Value: S.String,
+    Value: SensitiveString,
   }),
 ).annotate({
   identifier: "TopicSearchFilter",
@@ -29621,6 +31497,50 @@ export const SearchTopicsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchTopicsResponse",
 }) as any as S.Schema<SearchTopicsResponse>;
+export interface SearchTopicsV2Request {
+  AwsAccountId: string;
+  Filters: TopicSearchFilter[];
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const SearchTopicsV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    Filters: TopicSearchFilterList,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AwsAccountId}/search/topicsV2",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SearchTopicsV2Request",
+}) as any as S.Schema<SearchTopicsV2Request>;
+export interface SearchTopicsV2Response {
+  TopicSummaryList?: TopicV2Summary[];
+  NextToken?: string;
+  Status?: number;
+  RequestId?: string;
+}
+export const SearchTopicsV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TopicSummaryList: S.optional(TopicV2Summaries),
+    NextToken: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchTopicsV2Response",
+}) as any as S.Schema<SearchTopicsV2Response>;
 export interface StartAssetBundleExportJobRequest {
   AwsAccountId: string;
   AssetBundleExportJobId: string;
@@ -30476,6 +32396,48 @@ export const UpdateApplicationWithTokenExchangeGrantResponse =
   ).annotate({
     identifier: "UpdateApplicationWithTokenExchangeGrantResponse",
   }) as any as S.Schema<UpdateApplicationWithTokenExchangeGrantResponse>;
+export interface UpdateApprovalPolicyRequest {
+  PolicyId: string;
+  Name?: string;
+  Description?: string;
+  Actions?: GovernedAction[];
+  AssetTypes?: AssetType[];
+  ApplicableTo?: ApplicableTo;
+  ApprovalGroups?: string[];
+}
+export const UpdateApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyId: S.String.pipe(T.HttpLabel("PolicyId")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Actions: S.optional(GovernedActionList),
+    AssetTypes: S.optional(AssetTypeList),
+    ApplicableTo: S.optional(ApplicableTo),
+    ApprovalGroups: S.optional(ApprovalGroupList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/governance/approvalworkflows/policies/{PolicyId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateApprovalPolicyRequest",
+}) as any as S.Schema<UpdateApprovalPolicyRequest>;
+export interface UpdateApprovalPolicyResponse {
+  Policy: ApprovalPolicy;
+}
+export const UpdateApprovalPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: ApprovalPolicy }),
+).annotate({
+  identifier: "UpdateApprovalPolicyResponse",
+}) as any as S.Schema<UpdateApprovalPolicyResponse>;
 export interface UpdateBrandRequest {
   AwsAccountId: string;
   BrandId: string;
@@ -30591,12 +32553,14 @@ export interface UpdateCustomPermissionsRequest {
   AwsAccountId: string;
   CustomPermissionsName: string;
   Capabilities?: Capabilities;
+  Governance?: Governance;
 }
 export const UpdateCustomPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
     CustomPermissionsName: S.String.pipe(T.HttpLabel("CustomPermissionsName")),
     Capabilities: S.optional(Capabilities),
+    Governance: S.optional(Governance),
   }).pipe(
     T.all(
       T.Http({
@@ -31122,6 +33086,54 @@ export const UpdateDefaultQBusinessApplicationResponse =
   ).annotate({
     identifier: "UpdateDefaultQBusinessApplicationResponse",
   }) as any as S.Schema<UpdateDefaultQBusinessApplicationResponse>;
+export interface UpdateDlpSettingRequest {
+  AwsAccountId: string;
+  DlpSettingId: string;
+  Name?: string;
+  ProviderType?: DlpProviderType;
+  ProviderConfig?: ProviderConfig;
+  ProviderOutageAction?: DlpAction;
+  Enabled?: boolean;
+}
+export const UpdateDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    DlpSettingId: S.String.pipe(T.HttpLabel("DlpSettingId")),
+    Name: S.optional(S.String),
+    ProviderType: S.optional(DlpProviderType),
+    ProviderConfig: S.optional(ProviderConfig),
+    ProviderOutageAction: S.optional(DlpAction),
+    Enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{AwsAccountId}/data-loss-prevention/settings/{DlpSettingId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateDlpSettingRequest",
+}) as any as S.Schema<UpdateDlpSettingRequest>;
+export interface UpdateDlpSettingResponse {
+  Arn: string;
+  DlpSettingId: string;
+  RequestId?: string;
+}
+export const UpdateDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    DlpSettingId: S.String,
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDlpSettingResponse",
+}) as any as S.Schema<UpdateDlpSettingResponse>;
 export type UpdateFlowRequestClientTokenString = string;
 export interface UpdateFlowRequest {
   AwsAccountId: string;
@@ -31565,6 +33577,58 @@ export const UpdateKeyRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateKeyRegistrationResponse",
 }) as any as S.Schema<UpdateKeyRegistrationResponse>;
+export interface UpdateKnowledgeBaseRequest {
+  AwsAccountId: string;
+  KnowledgeBaseId: string;
+  Name?: string;
+  Description?: string;
+  KnowledgeBaseConfiguration?: KnowledgeBaseConfiguration;
+  MediaExtractionConfiguration?: MediaExtractionConfiguration;
+  IsEmailNotificationOptedForIngestionFailures?: boolean;
+  AccessControlConfiguration?: AccessControlConfiguration;
+}
+export const UpdateKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    KnowledgeBaseId: S.String.pipe(T.HttpLabel("KnowledgeBaseId")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    KnowledgeBaseConfiguration: S.optional(KnowledgeBaseConfiguration),
+    MediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
+    IsEmailNotificationOptedForIngestionFailures: S.optional(S.Boolean),
+    AccessControlConfiguration: S.optional(AccessControlConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateKnowledgeBaseRequest",
+}) as any as S.Schema<UpdateKnowledgeBaseRequest>;
+export interface UpdateKnowledgeBaseResponse {
+  KnowledgeBaseArn: string;
+  KnowledgeBaseId: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const UpdateKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KnowledgeBaseArn: S.String,
+    KnowledgeBaseId: S.String,
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "UpdateKnowledgeBaseResponse",
+}) as any as S.Schema<UpdateKnowledgeBaseResponse>;
 export interface UpdateKnowledgeBasePermissionsRequest {
   AwsAccountId: string;
   KnowledgeBaseId: string;
@@ -31613,6 +33677,44 @@ export const UpdateKnowledgeBasePermissionsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateKnowledgeBasePermissionsResponse",
 }) as any as S.Schema<UpdateKnowledgeBasePermissionsResponse>;
+export interface UpdateLimitsProfileRequest {
+  profileId: string;
+  accountId: string;
+  profileName?: string;
+  description?: string;
+  resourceLimits?: { [key: string]: ProfileLimitValue | undefined };
+}
+export const UpdateLimitsProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String.pipe(T.HttpLabel("profileId")),
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    profileName: S.optional(S.String),
+    description: S.optional(S.String),
+    resourceLimits: S.optional(ResourceLimitsMap),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/governance/limits/accounts/{accountId}/profiles/{profileId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateLimitsProfileRequest",
+}) as any as S.Schema<UpdateLimitsProfileRequest>;
+export interface UpdateLimitsProfileResponse {
+  arn: string;
+}
+export const UpdateLimitsProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }),
+).annotate({
+  identifier: "UpdateLimitsProfileResponse",
+}) as any as S.Schema<UpdateLimitsProfileResponse>;
 export interface UpdateOAuthClientApplicationRequest {
   AwsAccountId: string;
   OAuthClientApplicationId: string;
@@ -32539,6 +34641,52 @@ export const UpdateTopicPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTopicPermissionsResponse",
 }) as any as S.Schema<UpdateTopicPermissionsResponse>;
+export interface UpdateTopicPermissionsV2Request {
+  AwsAccountId: string;
+  TopicId: string;
+  GrantPermissions?: ResourcePermission[];
+  RevokePermissions?: ResourcePermission[];
+}
+export const UpdateTopicPermissionsV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    TopicId: S.String.pipe(T.HttpLabel("TopicId")),
+    GrantPermissions: S.optional(UpdateResourcePermissionList),
+    RevokePermissions: S.optional(UpdateResourcePermissionList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{AwsAccountId}/topicsV2/{TopicId}/permissions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateTopicPermissionsV2Request",
+}) as any as S.Schema<UpdateTopicPermissionsV2Request>;
+export interface UpdateTopicPermissionsV2Response {
+  TopicId?: string;
+  TopicArn?: string;
+  Permissions?: ResourcePermission[];
+  Status?: number;
+  RequestId?: string;
+}
+export const UpdateTopicPermissionsV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TopicId: S.optional(S.String),
+    TopicArn: S.optional(S.String),
+    Permissions: S.optional(ResourcePermissionList),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateTopicPermissionsV2Response",
+}) as any as S.Schema<UpdateTopicPermissionsV2Response>;
 export interface UpdateTopicRefreshScheduleRequest {
   AwsAccountId: string;
   TopicId: string;
@@ -32585,6 +34733,55 @@ export const UpdateTopicRefreshScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTopicRefreshScheduleResponse",
 }) as any as S.Schema<UpdateTopicRefreshScheduleResponse>;
+export type TopicV2PublishOption = "DRAFT" | "PUBLISH" | (string & {});
+export const TopicV2PublishOption = /*@__PURE__*/ S.String;
+
+export interface UpdateTopicV2Request {
+  AwsAccountId: string;
+  TopicId: string;
+  Topic: TopicV2Details;
+  CustomInstructions?: CustomInstructions;
+  PublishOption?: TopicV2PublishOption;
+}
+export const UpdateTopicV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    TopicId: S.String.pipe(T.HttpLabel("TopicId")),
+    Topic: TopicV2Details,
+    CustomInstructions: S.optional(CustomInstructions),
+    PublishOption: S.optional(TopicV2PublishOption),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{AwsAccountId}/topicsV2/{TopicId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateTopicV2Request",
+}) as any as S.Schema<UpdateTopicV2Request>;
+export interface UpdateTopicV2Response {
+  Arn?: string;
+  TopicId?: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const UpdateTopicV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    TopicId: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "UpdateTopicV2Response",
+}) as any as S.Schema<UpdateTopicV2Response>;
 export interface UpdateUserRequest {
   UserName: string;
   AwsAccountId: string;
@@ -32840,6 +35037,34 @@ export const batchDeleteTopicReviewedAnswer: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "BatchDeleteTopicReviewedAnswer",
+}));
+
+export type BatchDescribeUserLimitsError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes the effective resource limits for one or more Amazon Quick Sight users, including the limits that apply to each user based on their profile assignments.
+ */
+export const batchDescribeUserLimits: API.OperationMethod<
+  BatchDescribeUserLimitsRequest,
+  BatchDescribeUserLimitsResponse,
+  BatchDescribeUserLimitsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchDescribeUserLimitsRequest,
+  output: BatchDescribeUserLimitsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "BatchDescribeUserLimits",
 }));
 
 export type CancelIngestionError =
@@ -33105,6 +35330,40 @@ export const createAnalysis: API.OperationMethod<
   operationName: "CreateAnalysis",
 }));
 
+export type CreateApprovalPolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates an approval policy in Quick Sight.
+ */
+export const createApprovalPolicy: API.OperationMethod<
+  CreateApprovalPolicyRequest,
+  CreateApprovalPolicyResponse,
+  CreateApprovalPolicyError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateApprovalPolicyRequest,
+  output: CreateApprovalPolicyResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateApprovalPolicy",
+}));
+
 export type CreateBrandError =
   | AccessDeniedException
   | ConflictException
@@ -33305,6 +35564,40 @@ export const createDataSource: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateDataSource",
+}));
+
+export type CreateDlpSettingError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidRequestException
+  | LimitExceededException
+  | ResourceExistsException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a data loss prevention (DLP) setting configuration for an Amazon Web Services account. A DLP setting defines the DLP provider, the enforcement behavior, and the Quick capabilities that the setting applies to.
+ */
+export const createDlpSetting: API.OperationMethod<
+  CreateDlpSettingRequest,
+  CreateDlpSettingResponse,
+  CreateDlpSettingError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDlpSettingRequest,
+  output: CreateDlpSettingResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidRequestException,
+    LimitExceededException,
+    ResourceExistsException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateDlpSetting",
 }));
 
 export type CreateFlowError =
@@ -33574,6 +35867,86 @@ export const createIngestion: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateIngestion",
+}));
+
+export type CreateKnowledgeBaseError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | InvalidRequestException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceExistsException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a knowledge base from a specified data source. Supported data source connector types include:
+ *
+ * - `S3_KNOWLEDGE_BASE` – Uses an Amazon S3 bucket as the data source.
+ *
+ * - `WEB_CRAWLER` – Uses web pages indexed by the built-in web crawler as the data source.
+ *
+ * - `GOOGLE_DRIVE` – Uses Google Drive as the data source. Supports service account authentication only.
+ *
+ * - `SHAREPOINT` – Uses SharePoint as the data source. Supports two-legged OAuth only.
+ *
+ * - `ONE_DRIVE` – Uses OneDrive as the data source. Supports two-legged OAuth only.
+ */
+export const createKnowledgeBase: API.OperationMethod<
+  CreateKnowledgeBaseRequest,
+  CreateKnowledgeBaseResponse,
+  CreateKnowledgeBaseError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateKnowledgeBaseRequest,
+  output: CreateKnowledgeBaseResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    InvalidRequestException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceExistsException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateKnowledgeBase",
+}));
+
+export type CreateLimitsProfileError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a limits profile that defines resource usage limits for Amazon Quick Sight users.
+ */
+export const createLimitsProfile: API.OperationMethod<
+  CreateLimitsProfileRequest,
+  CreateLimitsProfileResponse,
+  CreateLimitsProfileError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateLimitsProfileRequest,
+  output: CreateLimitsProfileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateLimitsProfile",
 }));
 
 export type CreateNamespaceError =
@@ -33992,6 +36365,42 @@ export const createTopicRefreshSchedule: API.OperationMethod<
   operationName: "CreateTopicRefreshSchedule",
 }));
 
+export type CreateTopicV2Error =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceExistsException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a new Q topic.
+ */
+export const createTopicV2: API.OperationMethod<
+  CreateTopicV2Request,
+  CreateTopicV2Response,
+  CreateTopicV2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTopicV2Request,
+  output: CreateTopicV2Response,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceExistsException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateTopicV2",
+}));
+
 export type CreateVPCConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -34263,6 +36672,36 @@ export const deleteAnalysis: API.OperationMethod<
   operationName: "DeleteAnalysis",
 }));
 
+export type DeleteApprovalPolicyError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes an approval policy in Quick Sight.
+ */
+export const deleteApprovalPolicy: API.OperationMethod<
+  DeleteApprovalPolicyRequest,
+  DeleteApprovalPolicyResponse,
+  DeleteApprovalPolicyError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteApprovalPolicyRequest,
+  output: DeleteApprovalPolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteApprovalPolicy",
+}));
+
 export type DeleteBrandError =
   | AccessDeniedException
   | ConflictException
@@ -34530,6 +36969,36 @@ export const deleteDefaultQBusinessApplication: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteDefaultQBusinessApplication",
+}));
+
+export type DeleteDlpSettingError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidRequestException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a DLP setting configuration from an Amazon Web Services account.
+ */
+export const deleteDlpSetting: API.OperationMethod<
+  DeleteDlpSettingRequest,
+  DeleteDlpSettingResponse,
+  DeleteDlpSettingError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDlpSettingRequest,
+  output: DeleteDlpSettingResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidRequestException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteDlpSetting",
 }));
 
 export type DeleteFlowError =
@@ -34802,6 +37271,38 @@ export const deleteKnowledgeBase: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteKnowledgeBase",
+}));
+
+export type DeleteLimitsProfileError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a limits profile.
+ */
+export const deleteLimitsProfile: API.OperationMethod<
+  DeleteLimitsProfileRequest,
+  DeleteLimitsProfileResponse,
+  DeleteLimitsProfileError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLimitsProfileRequest,
+  output: DeleteLimitsProfileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteLimitsProfile",
 }));
 
 export type DeleteNamespaceError =
@@ -35201,6 +37702,38 @@ export const deleteTopicRefreshSchedule: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteTopicRefreshSchedule",
+}));
+
+export type DeleteTopicV2Error =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a Q topic.
+ */
+export const deleteTopicV2: API.OperationMethod<
+  DeleteTopicV2Request,
+  DeleteTopicV2Response,
+  DeleteTopicV2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTopicV2Request,
+  output: DeleteTopicV2Response,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteTopicV2",
 }));
 
 export type DeleteUserError =
@@ -35735,6 +38268,36 @@ export const describeAnalysisPermissions: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeAnalysisPermissions",
+}));
+
+export type DescribeApprovalPolicyError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes an approval policy in Quick Sight.
+ */
+export const describeApprovalPolicy: API.OperationMethod<
+  DescribeApprovalPolicyRequest,
+  DescribeApprovalPolicyResponse,
+  DescribeApprovalPolicyError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeApprovalPolicyRequest,
+  output: DescribeApprovalPolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeApprovalPolicy",
 }));
 
 export type DescribeAssetBundleExportJobError =
@@ -36397,6 +38960,36 @@ export const describeDefaultQBusinessApplication: API.OperationMethod<
   operationName: "DescribeDefaultQBusinessApplication",
 }));
 
+export type DescribeDlpSettingError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidRequestException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes the full configuration of a DLP setting in an Amazon Web Services account.
+ */
+export const describeDlpSetting: API.OperationMethod<
+  DescribeDlpSettingRequest,
+  DescribeDlpSettingResponse,
+  DescribeDlpSettingError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeDlpSettingRequest,
+  output: DescribeDlpSettingResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidRequestException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeDlpSetting",
+}));
+
 export type DescribeFlowError =
   | AccessDeniedException
   | InternalFailureException
@@ -36804,6 +39397,36 @@ export const describeKnowledgeBasePermissions: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeKnowledgeBasePermissions",
+}));
+
+export type DescribeLimitsProfileError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes the properties of an existing limits profile.
+ */
+export const describeLimitsProfile: API.OperationMethod<
+  DescribeLimitsProfileRequest,
+  DescribeLimitsProfileResponse,
+  DescribeLimitsProfileError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeLimitsProfileRequest,
+  output: DescribeLimitsProfileResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeLimitsProfile",
 }));
 
 export type DescribeNamespaceError =
@@ -37390,6 +40013,36 @@ export const describeTopicPermissions: API.OperationMethod<
   operationName: "DescribeTopicPermissions",
 }));
 
+export type DescribeTopicPermissionsV2Error =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes the permissions of a topic.
+ */
+export const describeTopicPermissionsV2: API.OperationMethod<
+  DescribeTopicPermissionsV2Request,
+  DescribeTopicPermissionsV2Response,
+  DescribeTopicPermissionsV2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeTopicPermissionsV2Request,
+  output: DescribeTopicPermissionsV2Response,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeTopicPermissionsV2",
+}));
+
 export type DescribeTopicRefreshError =
   | AccessDeniedException
   | InternalFailureException
@@ -37454,6 +40107,36 @@ export const describeTopicRefreshSchedule: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeTopicRefreshSchedule",
+}));
+
+export type DescribeTopicV2Error =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes a Q topic.
+ */
+export const describeTopicV2: API.OperationMethod<
+  DescribeTopicV2Request,
+  DescribeTopicV2Response,
+  DescribeTopicV2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeTopicV2Request,
+  output: DescribeTopicV2Response,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeTopicV2",
 }));
 
 export type DescribeUserError =
@@ -38049,6 +40732,45 @@ export const listAnalyses: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
+export type ListApprovalPoliciesError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists all approval policies in the specified Quick Sight account. The results are paginated. If the
+ * response includes a `NextToken` value, pass it in a subsequent call to retrieve the next
+ * set of results.
+ */
+export const listApprovalPolicies: API.PaginatedOperationMethod<
+  ListApprovalPoliciesRequest,
+  ListApprovalPoliciesResponse,
+  ListApprovalPoliciesError,
+  Credentials | HttpClient.HttpClient,
+  ApprovalPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListApprovalPoliciesRequest,
+  output: ListApprovalPoliciesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListApprovalPolicies",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Policies",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
+
 export type ListAssetBundleExportJobsError =
   | AccessDeniedException
   | InvalidNextTokenException
@@ -38353,6 +41075,41 @@ export const listDataSources: API.PaginatedOperationMethod<
     inputToken: "NextToken",
     outputToken: "NextToken",
     items: "DataSources",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
+
+export type ListDlpSettingsError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidRequestException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists all DLP settings in an Amazon Web Services account.
+ */
+export const listDlpSettings: API.PaginatedOperationMethod<
+  ListDlpSettingsRequest,
+  ListDlpSettingsResponse,
+  ListDlpSettingsError,
+  Credentials | HttpClient.HttpClient,
+  DlpSettingSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListDlpSettingsRequest,
+  output: ListDlpSettingsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidRequestException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListDlpSettings",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "DlpSettingSummaries",
     pageSize: "MaxResults",
   } as const,
 })) as any;
@@ -38798,6 +41555,41 @@ export const listKnowledgeBases: API.PaginatedOperationMethod<
     outputToken: "NextToken",
     items: "KnowledgeBaseSummaries",
     pageSize: "MaxResults",
+  } as const,
+})) as any;
+
+export type ListLimitsProfilesError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists all limits profiles in an Amazon Quick Sight account. Results are paginated. Use the `maxResults` parameter to limit the number of results returned in a single call, and use the `nextToken` parameter to retrieve the next page of results.
+ */
+export const listLimitsProfiles: API.PaginatedOperationMethod<
+  ListLimitsProfilesRequest,
+  ListLimitsProfilesResponse,
+  ListLimitsProfilesError,
+  Credentials | HttpClient.HttpClient,
+  LimitsProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListLimitsProfilesRequest,
+  output: ListLimitsProfilesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListLimitsProfiles",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "profiles",
+    pageSize: "maxResults",
   } as const,
 })) as any;
 
@@ -39417,6 +42209,43 @@ export const listTopics: API.PaginatedOperationMethod<
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
+
+export type ListTopicsV2Error =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidNextTokenException
+  | InvalidParameterValueException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists all of the Q topics in the specified Amazon Web Services account in an Amazon Web Services Region.
+ */
+export const listTopicsV2: API.PaginatedOperationMethod<
+  ListTopicsV2Request,
+  ListTopicsV2Response,
+  ListTopicsV2Error,
+  Credentials | HttpClient.HttpClient,
+  TopicV2Summary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListTopicsV2Request,
+  output: ListTopicsV2Response,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidNextTokenException,
+    InvalidParameterValueException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTopicsV2",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "TopicSummaryList",
     pageSize: "MaxResults",
   } as const,
 })) as any;
@@ -40141,6 +42970,7 @@ export const searchSpaces: API.OperationMethod<
 }));
 
 export type SearchTopicsError =
+  | AccessDeniedException
   | InternalFailureException
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -40161,6 +42991,7 @@ export const searchTopics: API.PaginatedOperationMethod<
   input: SearchTopicsRequest,
   output: SearchTopicsResponse,
   errors: [
+    AccessDeniedException,
     InternalFailureException,
     InvalidNextTokenException,
     InvalidParameterValueException,
@@ -40171,6 +43002,45 @@ export const searchTopics: API.PaginatedOperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "SearchTopics",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "TopicSummaryList",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
+
+export type SearchTopicsV2Error =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidNextTokenException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Searches for any Q topic that exists in an Amazon Web Services account.
+ */
+export const searchTopicsV2: API.PaginatedOperationMethod<
+  SearchTopicsV2Request,
+  SearchTopicsV2Response,
+  SearchTopicsV2Error,
+  Credentials | HttpClient.HttpClient,
+  TopicV2Summary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: SearchTopicsV2Request,
+  output: SearchTopicsV2Response,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidNextTokenException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SearchTopicsV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40892,6 +43762,38 @@ export const updateApplicationWithTokenExchangeGrant: API.OperationMethod<
   operationName: "UpdateApplicationWithTokenExchangeGrant",
 }));
 
+export type UpdateApprovalPolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates an approval policy in Quick Sight.
+ */
+export const updateApprovalPolicy: API.OperationMethod<
+  UpdateApprovalPolicyRequest,
+  UpdateApprovalPolicyResponse,
+  UpdateApprovalPolicyError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateApprovalPolicyRequest,
+  output: UpdateApprovalPolicyResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateApprovalPolicy",
+}));
+
 export type UpdateBrandError =
   | AccessDeniedException
   | ConflictException
@@ -41368,6 +44270,38 @@ export const updateDefaultQBusinessApplication: API.OperationMethod<
   operationName: "UpdateDefaultQBusinessApplication",
 }));
 
+export type UpdateDlpSettingError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidRequestException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates an existing DLP setting configuration in an Amazon Web Services account. Fields that are omitted from the request retain their current values.
+ */
+export const updateDlpSetting: API.OperationMethod<
+  UpdateDlpSettingRequest,
+  UpdateDlpSettingResponse,
+  UpdateDlpSettingError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDlpSettingRequest,
+  output: UpdateDlpSettingResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidRequestException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateDlpSetting",
+}));
+
 export type UpdateFlowError =
   | AccessDeniedException
   | ConflictException
@@ -41662,6 +44596,44 @@ export const updateKeyRegistration: API.OperationMethod<
   operationName: "UpdateKeyRegistration",
 }));
 
+export type UpdateKnowledgeBaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | InvalidRequestException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates the properties of an existing knowledge base.
+ */
+export const updateKnowledgeBase: API.OperationMethod<
+  UpdateKnowledgeBaseRequest,
+  UpdateKnowledgeBaseResponse,
+  UpdateKnowledgeBaseError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateKnowledgeBaseRequest,
+  output: UpdateKnowledgeBaseResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    InvalidRequestException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateKnowledgeBase",
+}));
+
 export type UpdateKnowledgeBasePermissionsError =
   | AccessDeniedException
   | ConflictException
@@ -41698,6 +44670,38 @@ export const updateKnowledgeBasePermissions: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateKnowledgeBasePermissions",
+}));
+
+export type UpdateLimitsProfileError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates the properties of an existing limits profile.
+ */
+export const updateLimitsProfile: API.OperationMethod<
+  UpdateLimitsProfileRequest,
+  UpdateLimitsProfileResponse,
+  UpdateLimitsProfileError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateLimitsProfileRequest,
+  output: UpdateLimitsProfileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateLimitsProfile",
 }));
 
 export type UpdateOAuthClientApplicationError =
@@ -42445,6 +45449,42 @@ export const updateTopicPermissions: API.OperationMethod<
   operationName: "UpdateTopicPermissions",
 }));
 
+export type UpdateTopicPermissionsV2Error =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnsupportedUserEditionException
+  | CommonErrors;
+/**
+ * Updates the permissions of a topic.
+ */
+export const updateTopicPermissionsV2: API.OperationMethod<
+  UpdateTopicPermissionsV2Request,
+  UpdateTopicPermissionsV2Response,
+  UpdateTopicPermissionsV2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTopicPermissionsV2Request,
+  output: UpdateTopicPermissionsV2Response,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnsupportedUserEditionException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTopicPermissionsV2",
+}));
+
 export type UpdateTopicRefreshScheduleError =
   | AccessDeniedException
   | ConflictException
@@ -42479,6 +45519,42 @@ export const updateTopicRefreshSchedule: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateTopicRefreshSchedule",
+}));
+
+export type UpdateTopicV2Error =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceExistsException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates the definition of a Q topic.
+ */
+export const updateTopicV2: API.OperationMethod<
+  UpdateTopicV2Request,
+  UpdateTopicV2Response,
+  UpdateTopicV2Error,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTopicV2Request,
+  output: UpdateTopicV2Response,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceExistsException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTopicV2",
 }));
 
 export type UpdateUserError =

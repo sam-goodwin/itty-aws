@@ -69,6 +69,57 @@ export const FileSystemCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileSystemCreateRequest",
 }) as any as S.Schema<FileSystemCreateRequest>;
 
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "student"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+export const UserBasicRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
+export interface UserBasic {
+  id?: number;
+  uuid?: string;
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: UserBasicHedgehogConfigMap | null;
+  role_at_organization?: UserBasicRoleAtOrganization | null;
+}
+export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+  }),
+).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
+
 export interface FileSystem2 {
   id?: string;
   path?: string;
@@ -79,7 +130,10 @@ export interface FileSystem2 {
   meta?: unknown;
   shortcut?: boolean | null;
   created_at?: string;
+  created_by?: UserBasic | null;
   last_viewed_at?: string | null;
+  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
+  user_access_level?: string | null;
 }
 export const FileSystem2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -92,7 +146,9 @@ export const FileSystem2 = /*@__PURE__*/ S.suspend(() =>
     meta: S.optional(S.Unknown),
     shortcut: S.optional(S.NullOr(S.Boolean)),
     created_at: S.optional(S.String),
+    created_by: S.optional(S.NullOr(UserBasic)),
     last_viewed_at: S.optional(S.NullOr(S.String)),
+    user_access_level: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "FileSystem2" }) as any as S.Schema<FileSystem2>;
 

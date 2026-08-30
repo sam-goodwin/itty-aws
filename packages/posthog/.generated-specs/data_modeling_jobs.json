@@ -105,6 +105,14 @@
             "smithy.api#required": {}
           }
         },
+        "run_mode": {
+          "target": "com.posthog.data_modeling_jobs#DataModelingJobRunModeEnum",
+          "traits": {
+            "smithy.api#documentation": "What this run wrote: full_refresh rebuilt the whole table, so rows_materialized is the table's size; incremental wrote only its window, so rows_materialized counts just the rows synced. Null for runs from before modes were recorded, or that failed before the plan resolved.\n\n* `full_refresh` - Full refresh\n* `incremental` - Incremental",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "rows_materialized": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -127,6 +135,13 @@
         "last_run_at": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the job row last changed. For finished jobs this is when the run reached its terminal status.",
             "smithy.api#required": {}
           }
         },
@@ -181,10 +196,36 @@
           "traits": {
             "smithy.api#enumValue": "Running"
           }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Skipped"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `Cancelled` - Cancelled\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running"
+        "smithy.api#documentation": "* `Cancelled` - Cancelled\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running\n* `Skipped` - Skipped"
+      }
+    },
+    "com.posthog.data_modeling_jobs#DataModelingJobRunModeEnum": {
+      "type": "enum",
+      "members": {
+        "FULL_REFRESH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full_refresh"
+          }
+        },
+        "INCREMENTAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "incremental"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `full_refresh` - Full refresh\n* `incremental` - Incremental"
       }
     },
     "com.posthog.data_modeling_jobs#PaginatedDataModelingJobListResultsList": {

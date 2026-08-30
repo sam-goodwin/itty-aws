@@ -4187,6 +4187,8 @@ export type StartExperimentRunError =
   | CommonErrors;
 /**
  * Starts an experiment run for the specified experiment definition. An experiment run delivers treatments to the target audience and collects metrics. You can start multiple experiment runs from the same experiment definition.
+ *
+ * Billing for this experiment begins when you call this operation and continues until the experiment is stopped. For pricing details, see AppConfig pricing.
  */
 export const startExperimentRun: API.OperationMethod<
   StartExperimentRunRequest,
@@ -4240,6 +4242,7 @@ export const stopDeployment: API.OperationMethod<
 
 export type StopExperimentRunError =
   | BadRequestException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | CommonErrors;
@@ -4256,6 +4259,7 @@ export const stopExperimentRun: API.OperationMethod<
   output: ExperimentRun,
   errors: [
     BadRequestException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
   ],

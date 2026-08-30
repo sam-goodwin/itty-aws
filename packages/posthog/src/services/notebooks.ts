@@ -22,6 +22,15 @@ export class BadRequest
     [{ status: 400 }],
   ) {}
 
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
+      code: S.Number,
+      message: S.String,
+    }).pipe(C.withConflictError),
+    [{ status: 409 }],
+  ) {}
+
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
@@ -277,6 +286,31 @@ export const NotebooksCollabStreamRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksCollabStreamRetrieveResponse",
 }) as any as S.Schema<NotebooksCollabStreamRetrieveResponse>;
 
+/** One notebook-level variable. Shared by the notebook's own `variables` field and a run body. */
+export interface NotebookVariable {
+  /** Identifier the cell reads: `{name}` in a SQL cell, a plain global in a Python cell. */
+  name: string;
+  /** How to coerce the value: 'string', 'number', 'boolean', or 'date'. Unknown types read as 'string'. */
+  type: string;
+  /** The variable's current value. A 'date' accepts an absolute date or a relative expression ('-7d', 'mStart'), resolved against the project timezone. */
+  value?: unknown;
+}
+export const NotebookVariable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: S.String,
+    value: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "NotebookVariable",
+}) as any as S.Schema<NotebookVariable>;
+
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksCreateRequestVariablesList = Array<NotebookVariable>;
+export const NotebooksCreateRequestVariablesList = /*@__PURE__*/ S.Array(
+  NotebookVariable,
+) as any as S.Schema<NotebooksCreateRequestVariablesList>;
+
 export interface NotebooksCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -290,6 +324,8 @@ export interface NotebooksCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksCreateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -300,6 +336,7 @@ export const NotebooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksCreateRequestVariablesList),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -318,7 +355,7 @@ export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
   | "data"
@@ -327,6 +364,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
+  | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
@@ -379,6 +417,12 @@ export const NotebookOutputParentResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebookOutputParentResource",
 }) as any as S.Schema<NotebookOutputParentResource>;
 
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebookOutputVariablesList = Array<NotebookVariable>;
+export const NotebookOutputVariablesList = /*@__PURE__*/ S.Array(
+  NotebookVariable,
+) as any as S.Schema<NotebookOutputVariablesList>;
+
 export interface NotebookOutput {
   /** UUID of the notebook. */
   id?: string;
@@ -402,6 +446,8 @@ export interface NotebookOutput {
   user_access_level?: string | null;
   /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
   parent_resource?: NotebookOutputParentResource | null;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebookOutputVariablesList;
 }
 export const NotebookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -418,6 +464,7 @@ export const NotebookOutput = /*@__PURE__*/ S.suspend(() =>
     last_modified_by: S.optional(S.NullOr(UserBasic)),
     user_access_level: S.optional(S.NullOr(S.String)),
     parent_resource: S.optional(S.NullOr(NotebookOutputParentResource)),
+    variables: S.optional(NotebookOutputVariablesList),
   }),
 ).annotate({ identifier: "NotebookOutput" }) as any as S.Schema<NotebookOutput>;
 
@@ -448,6 +495,14 @@ export const NotebooksDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebooksDestroyResponse",
 }) as any as S.Schema<NotebooksDestroyResponse>;
 
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksHogqlExecuteCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksHogqlExecuteCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksHogqlExecuteCreateRequestVariablesList>;
+
 export interface NotebooksHogqlExecuteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -462,6 +517,8 @@ export interface NotebooksHogqlExecuteCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksHogqlExecuteCreateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksHogqlExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -473,6 +530,7 @@ export const NotebooksHogqlExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksHogqlExecuteCreateRequestVariablesList),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -496,28 +554,20 @@ export interface NotebooksKernelConfigCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** Title of the notebook. */
-  title?: string | null;
-  /** Notebook content as a ProseMirror JSON document structure. */
-  content?: unknown;
-  /** Plain text representation of the notebook content for search. */
-  text_content?: string | null;
-  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
-  version?: number;
-  /** Whether the notebook has been soft-deleted. */
-  deleted?: boolean;
-  _create_in_folder?: string;
+  /** CPU cores for the notebook's sandbox kernel; must be a supported option. */
+  cpu_cores?: number;
+  /** Memory in GB for the notebook's sandbox kernel; must be a supported option. */
+  memory_gb?: number;
+  /** Seconds of inactivity before the sandbox kernel shuts down. */
+  idle_timeout_seconds?: number;
 }
 export const NotebooksKernelConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    title: S.optional(S.NullOr(S.String)),
-    content: S.optional(S.Unknown),
-    text_content: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.Number),
-    deleted: S.optional(S.Boolean),
-    _create_in_folder: S.optional(S.String),
+    cpu_cores: S.optional(S.Number),
+    memory_gb: S.optional(S.Number),
+    idle_timeout_seconds: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -529,12 +579,26 @@ export const NotebooksKernelConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebooksKernelConfigCreateRequest",
 }) as any as S.Schema<NotebooksKernelConfigCreateRequest>;
 
-export interface NotebooksKernelConfigCreateResponse {}
-export const NotebooksKernelConfigCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+export interface NotebookKernelConfigResponse {
+  /** Configured CPU cores; null means the default applies. */
+  cpu_cores?: number | null;
+  /** Configured memory in GB; null means the default applies. */
+  memory_gb?: number | null;
+  /** Configured idle timeout in seconds; null means the default. */
+  idle_timeout_seconds?: number | null;
+  /** True when a kernel is currently active: config applies at sandbox provision time, so the running kernel keeps its old resources until restarted (restarting loses materialized dataframes). */
+  restart_required: boolean;
+}
+export const NotebookKernelConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cpu_cores: S.optional(S.NullOr(S.Number)),
+    memory_gb: S.optional(S.NullOr(S.Number)),
+    idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
+    restart_required: S.Boolean,
+  }),
 ).annotate({
-  identifier: "NotebooksKernelConfigCreateResponse",
-}) as any as S.Schema<NotebooksKernelConfigCreateResponse>;
+  identifier: "NotebookKernelConfigResponse",
+}) as any as S.Schema<NotebookKernelConfigResponse>;
 
 export interface NotebooksKernelDataframeRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -564,6 +628,14 @@ export const NotebooksKernelDataframeRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksKernelDataframeRetrieveResponse",
 }) as any as S.Schema<NotebooksKernelDataframeRetrieveResponse>;
 
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksKernelExecuteCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksKernelExecuteCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksKernelExecuteCreateRequestVariablesList>;
+
 export interface NotebooksKernelExecuteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -578,6 +650,8 @@ export interface NotebooksKernelExecuteCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksKernelExecuteCreateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksKernelExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -589,6 +663,7 @@ export const NotebooksKernelExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksKernelExecuteCreateRequestVariablesList),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -608,6 +683,14 @@ export const NotebooksKernelExecuteCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksKernelExecuteCreateResponse",
 }) as any as S.Schema<NotebooksKernelExecuteCreateResponse>;
 
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksKernelExecuteStreamCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksKernelExecuteStreamCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksKernelExecuteStreamCreateRequestVariablesList>;
+
 export interface NotebooksKernelExecuteStreamCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -622,6 +705,8 @@ export interface NotebooksKernelExecuteStreamCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksKernelExecuteStreamCreateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksKernelExecuteStreamCreateRequest =
@@ -634,6 +719,9 @@ export const NotebooksKernelExecuteStreamCreateRequest =
       text_content: S.optional(S.NullOr(S.String)),
       version: S.optional(S.Number),
       deleted: S.optional(S.Boolean),
+      variables: S.optional(
+        NotebooksKernelExecuteStreamCreateRequestVariablesList,
+      ),
       _create_in_folder: S.optional(S.String),
     }).pipe(
       T.Http({
@@ -652,6 +740,14 @@ export const NotebooksKernelExecuteStreamCreateResponse =
     identifier: "NotebooksKernelExecuteStreamCreateResponse",
   }) as any as S.Schema<NotebooksKernelExecuteStreamCreateResponse>;
 
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksKernelRestartCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksKernelRestartCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksKernelRestartCreateRequestVariablesList>;
+
 export interface NotebooksKernelRestartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -666,6 +762,8 @@ export interface NotebooksKernelRestartCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksKernelRestartCreateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksKernelRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -677,6 +775,7 @@ export const NotebooksKernelRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksKernelRestartCreateRequestVariablesList),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -696,6 +795,14 @@ export const NotebooksKernelRestartCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksKernelRestartCreateResponse",
 }) as any as S.Schema<NotebooksKernelRestartCreateResponse>;
 
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksKernelStartCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksKernelStartCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksKernelStartCreateRequestVariablesList>;
+
 export interface NotebooksKernelStartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -710,6 +817,8 @@ export interface NotebooksKernelStartCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksKernelStartCreateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksKernelStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -721,6 +830,7 @@ export const NotebooksKernelStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksKernelStartCreateRequestVariablesList),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -761,12 +871,104 @@ export const NotebooksKernelStatusRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksKernelStatusRetrieveRequest",
 }) as any as S.Schema<NotebooksKernelStatusRetrieveRequest>;
 
-export interface NotebooksKernelStatusRetrieveResponse {}
-export const NotebooksKernelStatusRetrieveResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+/** A [column name, DuckDB type] pair. */
+export type NotebookSQLV2FrameColumnsItemList = Array<string>;
+export const NotebookSQLV2FrameColumnsItemList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NotebookSQLV2FrameColumnsItemList>;
+
+/** DuckDB type per column, as [name, type] pairs. */
+export type NotebookSQLV2FrameColumnsList =
+  Array<NotebookSQLV2FrameColumnsItemList>;
+export const NotebookSQLV2FrameColumnsList = /*@__PURE__*/ S.Array(
+  NotebookSQLV2FrameColumnsItemList,
+) as any as S.Schema<NotebookSQLV2FrameColumnsList>;
+
+export interface NotebookSQLV2Frame {
+  /** Name a SQL node can SELECT from. */
+  name: string;
+  /** Where the object came from: 'frame' (a dataframe a node produced), or 'table'/'view' (created by SQL DDL in a DuckDB node). */
+  kind: string;
+  /** DuckDB type per column, as [name, type] pairs. */
+  columns?: NotebookSQLV2FrameColumnsList;
+  /** Rows available, or null when counting would require a table scan (a DDL view). */
+  row_count?: number | null;
+  /** True when row_count is DuckDB's optimizer estimate rather than a count. The estimate does not track deletes, so it must never be presented as exact. */
+  row_count_is_estimate?: boolean;
+}
+export const NotebookSQLV2Frame = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    kind: S.String,
+    columns: S.optional(NotebookSQLV2FrameColumnsList),
+    row_count: S.optional(S.NullOr(S.Number)),
+    row_count_is_estimate: S.optional(S.Boolean),
+  }),
 ).annotate({
-  identifier: "NotebooksKernelStatusRetrieveResponse",
-}) as any as S.Schema<NotebooksKernelStatusRetrieveResponse>;
+  identifier: "NotebookSQLV2Frame",
+}) as any as S.Schema<NotebookSQLV2Frame>;
+
+/** Dataframes and DuckDB tables a cell can currently reference, with column names and types. Empty unless the kernel is running and the caller has query access. */
+export type NotebookKernelStatusResponseFramesList = Array<NotebookSQLV2Frame>;
+export const NotebookKernelStatusResponseFramesList = /*@__PURE__*/ S.Array(
+  NotebookSQLV2Frame,
+) as any as S.Schema<NotebookKernelStatusResponseFramesList>;
+
+export interface NotebookKernelStatusResponse {
+  /** Sandbox backend the kernel runs on: 'modal' or 'docker'. */
+  backend?: string | null;
+  /** Live-checked kernel state: 'starting', 'running', 'stopped', 'timed_out', 'discarded', or 'error'. */
+  status: string;
+  /** When the kernel last executed anything. */
+  last_used_at?: string | null;
+  /** Most recent provisioning or runtime error, if any. */
+  last_error?: string | null;
+  /** Kernel runtime row identifier. */
+  runtime_id?: string | null;
+  /** Jupyter kernel identifier. */
+  kernel_id?: string | null;
+  /** Kernel process id inside the sandbox. */
+  kernel_pid?: number | null;
+  /** Sandbox container identifier. */
+  sandbox_id?: string | null;
+  /** Dataframes and DuckDB tables a cell can currently reference, with column names and types. Empty unless the kernel is running and the caller has query access. */
+  frames: NotebookKernelStatusResponseFramesList;
+  /** CPU cores the sandbox is configured with. */
+  cpu_cores: number;
+  /** Memory in GB the sandbox is configured with. */
+  memory_gb: number;
+  /** Disk size in GB the sandbox is configured with. */
+  disk_size_gb?: number | null;
+  /** Seconds of inactivity before the sandbox shuts down. */
+  idle_timeout_seconds?: number | null;
+}
+export const NotebookKernelStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backend: S.optional(S.NullOr(S.String)),
+    status: S.String,
+    last_used_at: S.optional(S.NullOr(S.String)),
+    last_error: S.optional(S.NullOr(S.String)),
+    runtime_id: S.optional(S.NullOr(S.String)),
+    kernel_id: S.optional(S.NullOr(S.String)),
+    kernel_pid: S.optional(S.NullOr(S.Number)),
+    sandbox_id: S.optional(S.NullOr(S.String)),
+    frames: NotebookKernelStatusResponseFramesList,
+    cpu_cores: S.Number,
+    memory_gb: S.Number,
+    disk_size_gb: S.optional(S.NullOr(S.Number)),
+    idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "NotebookKernelStatusResponse",
+}) as any as S.Schema<NotebookKernelStatusResponse>;
+
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksKernelStopCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksKernelStopCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksKernelStopCreateRequestVariablesList>;
 
 export interface NotebooksKernelStopCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -782,6 +984,8 @@ export interface NotebooksKernelStopCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksKernelStopCreateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksKernelStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -793,6 +997,7 @@ export const NotebooksKernelStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksKernelStopCreateRequestVariablesList),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -907,6 +1112,13 @@ export const PaginatedNotebookMinimalListOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedNotebookMinimalListOutput",
 }) as any as S.Schema<PaginatedNotebookMinimalListOutput>;
 
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksPartialUpdateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksPartialUpdateRequestVariablesList = /*@__PURE__*/ S.Array(
+  NotebookVariable,
+) as any as S.Schema<NotebooksPartialUpdateRequestVariablesList>;
+
 export interface NotebooksPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -921,6 +1133,8 @@ export interface NotebooksPartialUpdateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksPartialUpdateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -932,6 +1146,7 @@ export const NotebooksPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksPartialUpdateRequestVariablesList),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1031,6 +1246,7 @@ export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
 
+/** Mixin for serializers to add user access control fields */
 export interface SharingConfiguration {
   created_at?: string;
   enabled?: boolean;
@@ -1038,6 +1254,8 @@ export interface SharingConfiguration {
   settings?: unknown;
   password_required?: boolean;
   share_passwords?: SharingConfigurationSharePasswordsList;
+  /** The effective access level the user has for this object */
+  user_access_level?: string | null;
 }
 export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1047,6 +1265,7 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
     settings: S.optional(S.Unknown),
     password_required: S.optional(S.Boolean),
     share_passwords: S.optional(SharingConfigurationSharePasswordsList),
+    user_access_level: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SharingConfiguration",
@@ -1148,6 +1367,475 @@ export const NotebooksSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksSharingRefreshCreateRequest",
 }) as any as S.Schema<NotebooksSharingRefreshCreateRequest>;
 
+/** * `hogql` - hogql * `python` - python */
+export type NotebookSQLV2NodeTypeEnum = "hogql" | "python";
+export const NotebookSQLV2NodeTypeEnum = /*@__PURE__*/ S.String;
+
+/** * `hogql` - hogql * `local` - local */
+export type NotebookSQLV2RefKindEnum = "hogql" | "local";
+export const NotebookSQLV2RefKindEnum = /*@__PURE__*/ S.String;
+
+export interface NotebookSQLV2Ref {
+  /** ProseMirror node id of the upstream node this name points at. */
+  node_id: string;
+  /** What the name resolves to: 'hogql' is a SQL node's query definition (resolved to its last-run HogQL); 'local' is a dataframe a Python node bound in the kernel namespace. * `hogql` - hogql * `local` - local */
+  kind?: NotebookSQLV2RefKindEnum | (string & {});
+}
+export const NotebookSQLV2Ref = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    node_id: S.String,
+    kind: S.optional(NotebookSQLV2RefKindEnum),
+  }),
+).annotate({
+  identifier: "NotebookSQLV2Ref",
+}) as any as S.Schema<NotebookSQLV2Ref>;
+
+/** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
+export type NotebooksSqlV2RunCreateRequestRefsMap = {
+  [key: string]: NotebookSQLV2Ref | undefined;
+};
+export const NotebooksSqlV2RunCreateRequestRefsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  NotebookSQLV2Ref,
+) as any as S.Schema<NotebooksSqlV2RunCreateRequestRefsMap>;
+
+/** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
+export type NotebooksSqlV2RunCreateRequestVariablesList =
+  Array<NotebookVariable>;
+export const NotebooksSqlV2RunCreateRequestVariablesList =
+  /*@__PURE__*/ S.Array(
+    NotebookVariable,
+  ) as any as S.Schema<NotebooksSqlV2RunCreateRequestVariablesList>;
+
+export interface NotebooksSqlV2RunCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** ProseMirror node id of the SQLV2 node being run. */
+  node_id: string;
+  /** Execution kind. 'hogql' is a SQL node — pushed to ClickHouse, or rerouted to the sandbox's DuckDB when it references a local frame; 'python' runs the code in the sandbox kernel, materializing referenced upstream nodes as pandas frames first. * `hogql` - hogql * `python` - python */
+  node_type?: NotebookSQLV2NodeTypeEnum | (string & {});
+  /** The node's source — SQL for a hogql node, Python for a python node. Must not be blank. */
+  code: string;
+  /** Kernel nodes only: the dataframe variable to bind the result to in the kernel namespace (a python node falls back to the last expression for its preview). */
+  output_name?: string;
+  /** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
+  refs?: NotebooksSqlV2RunCreateRequestRefsMap;
+  /** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
+  variables?: NotebooksSqlV2RunCreateRequestVariablesList;
+  /** SQL nodes only: id of a direct-query-capable external data source to run against instead of PostHog's ClickHouse. Omit to query PostHog. */
+  connection_id?: string | null;
+  /** Send the code to the selected connection verbatim instead of compiling it from HogQL first. Ignored without connection_id, and incompatible with references to other cells. */
+  send_raw_query?: boolean;
+}
+export const NotebooksSqlV2RunCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    node_id: S.String,
+    node_type: S.optional(NotebookSQLV2NodeTypeEnum),
+    code: S.String,
+    output_name: S.optional(S.String),
+    refs: S.optional(NotebooksSqlV2RunCreateRequestRefsMap),
+    variables: S.optional(NotebooksSqlV2RunCreateRequestVariablesList),
+    connection_id: S.optional(S.NullOr(S.String)),
+    send_raw_query: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/sql_v2/run/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "NotebooksSqlV2RunCreateRequest",
+}) as any as S.Schema<NotebooksSqlV2RunCreateRequest>;
+
+export interface NotebookSQLV2RunResponse {
+  /** Identifier of the dispatched run. Poll the run result endpoint with it until the status is terminal. */
+  run_id: string;
+}
+export const NotebookSQLV2RunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    run_id: S.String,
+  }),
+).annotate({
+  identifier: "NotebookSQLV2RunResponse",
+}) as any as S.Schema<NotebookSQLV2RunResponse>;
+
+export interface NotebooksSqlV2RunsInterruptCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** ID of the run, as returned by the run dispatch endpoint. */
+  run_id: string;
+}
+export const NotebooksSqlV2RunsInterruptCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      short_id: S.String.pipe(T.Label()),
+      run_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/notebooks/{short_id}/sql_v2/runs/{run_id}/interrupt/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "NotebooksSqlV2RunsInterruptCreateRequest",
+}) as any as S.Schema<NotebooksSqlV2RunsInterruptCreateRequest>;
+
+export interface NotebookSQLV2InterruptResponse {
+  /** The run's status after the interrupt request. Already-terminal runs return their outcome unchanged (idempotent noop); a stopped kernel run reports its terminal state through the normal result poll. */
+  status: string;
+  /** Present when the interrupt could not take effect yet, e.g. the run has not reached the kernel. */
+  detail?: string;
+}
+export const NotebookSQLV2InterruptResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.String,
+    detail: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NotebookSQLV2InterruptResponse",
+}) as any as S.Schema<NotebookSQLV2InterruptResponse>;
+
+export interface NotebooksSqlV2RunsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+  /** ID of the run, as returned by the run dispatch endpoint. */
+  run_id: string;
+}
+export const NotebooksSqlV2RunsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+    run_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/sql_v2/runs/{run_id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "NotebooksSqlV2RunsRetrieveRequest",
+}) as any as S.Schema<NotebooksSqlV2RunsRetrieveRequest>;
+
+/** DuckDB objects a SQL node can SELECT from as of this run, for the schema browser. Only kernel runs (python/duckdb) report these; a hogql run never enters the kernel. */
+export type NotebookSQLV2EnvelopeFramesList = Array<NotebookSQLV2Frame>;
+export const NotebookSQLV2EnvelopeFramesList = /*@__PURE__*/ S.Array(
+  NotebookSQLV2Frame,
+) as any as S.Schema<NotebookSQLV2EnvelopeFramesList>;
+
+export interface NotebookSQLV2Media {
+  /** MIME type of the media, e.g. 'image/png' for a matplotlib figure. */
+  mime_type: string;
+  /** Base64-encoded media bytes. */
+  data: string;
+}
+export const NotebookSQLV2Media = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mime_type: S.String,
+    data: S.String,
+  }),
+).annotate({
+  identifier: "NotebookSQLV2Media",
+}) as any as S.Schema<NotebookSQLV2Media>;
+
+/** Rich outputs from a Python node run, e.g. matplotlib figures as PNGs. */
+export type NotebookSQLV2EnvelopeMediaList = Array<NotebookSQLV2Media>;
+export const NotebookSQLV2EnvelopeMediaList = /*@__PURE__*/ S.Array(
+  NotebookSQLV2Media,
+) as any as S.Schema<NotebookSQLV2EnvelopeMediaList>;
+
+/** Result column names. */
+export type NotebookSQLV2EnvelopeColumnsList = Array<string>;
+export const NotebookSQLV2EnvelopeColumnsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NotebookSQLV2EnvelopeColumnsList>;
+
+/** A [column name, ClickHouse type] pair. */
+export type NotebookSQLV2EnvelopeTypesItemList = Array<string>;
+export const NotebookSQLV2EnvelopeTypesItemList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NotebookSQLV2EnvelopeTypesItemList>;
+
+/** ClickHouse type per column, as [name, type] pairs; used by the visualization tab. */
+export type NotebookSQLV2EnvelopeTypesList =
+  Array<NotebookSQLV2EnvelopeTypesItemList>;
+export const NotebookSQLV2EnvelopeTypesList = /*@__PURE__*/ S.Array(
+  NotebookSQLV2EnvelopeTypesItemList,
+) as any as S.Schema<NotebookSQLV2EnvelopeTypesList>;
+
+/** A single result row as a list of cell values. */
+export type NotebookSQLV2EnvelopeFirstPageItemList = Array<unknown>;
+export const NotebookSQLV2EnvelopeFirstPageItemList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<NotebookSQLV2EnvelopeFirstPageItemList>;
+
+/** First page of result rows for display; each row is a list of cell values. */
+export type NotebookSQLV2EnvelopeFirstPageList =
+  Array<NotebookSQLV2EnvelopeFirstPageItemList>;
+export const NotebookSQLV2EnvelopeFirstPageList = /*@__PURE__*/ S.Array(
+  NotebookSQLV2EnvelopeFirstPageItemList,
+) as any as S.Schema<NotebookSQLV2EnvelopeFirstPageList>;
+
+/** Phase durations in seconds. From the sandbox: input_wait_s (waiting on the data plane), download_s (presigned frame downloads), kernel_boot_s (ensuring the ipykernel is up), exec_s (kernel cell execution), sandbox_total_s (the whole sandbox-side run). From the direct lane: queued_s (enqueue to Celery pickup), clickhouse_s (pickup to completion). Feeds the node-run metrics. */
+export type NotebookSQLV2EnvelopeTimingsMap = {
+  [key: string]: number | undefined;
+};
+export const NotebookSQLV2EnvelopeTimingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<NotebookSQLV2EnvelopeTimingsMap>;
+
+export interface NotebookSQLV2Envelope {
+  /** Run outcome: 'ok', 'error', or 'interrupted' (user-requested stop). */
+  status: string;
+  /** DuckDB objects a SQL node can SELECT from as of this run, for the schema browser. Only kernel runs (python/duckdb) report these; a hogql run never enters the kernel. */
+  frames?: NotebookSQLV2EnvelopeFramesList;
+  /** Captured stdout from a Python node run. */
+  stdout?: string;
+  /** Captured stderr (including tracebacks) from a Python node run. */
+  stderr?: string;
+  /** Rich outputs from a Python node run, e.g. matplotlib figures as PNGs. */
+  media?: NotebookSQLV2EnvelopeMediaList;
+  /** Result column names. */
+  columns?: NotebookSQLV2EnvelopeColumnsList;
+  /** ClickHouse type per column, as [name, type] pairs; used by the visualization tab. */
+  types?: NotebookSQLV2EnvelopeTypesList;
+  /** Number of rows in the result. */
+  row_count?: number;
+  /** Whether ClickHouse has more rows beyond first_page (detected by fetching limit+1). */
+  has_more?: boolean;
+  /** First page of result rows for display; each row is a list of cell values. */
+  first_page?: NotebookSQLV2EnvelopeFirstPageList;
+  /** Identifier of the materialized result, used as the paging key. */
+  result_id?: string | null;
+  /** Error message when status is 'error'. */
+  error?: string | null;
+  /** Phase durations in seconds. From the sandbox: input_wait_s (waiting on the data plane), download_s (presigned frame downloads), kernel_boot_s (ensuring the ipykernel is up), exec_s (kernel cell execution), sandbox_total_s (the whole sandbox-side run). From the direct lane: queued_s (enqueue to Celery pickup), clickhouse_s (pickup to completion). Feeds the node-run metrics. */
+  timings?: NotebookSQLV2EnvelopeTimingsMap;
+}
+export const NotebookSQLV2Envelope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.String,
+    frames: S.optional(NotebookSQLV2EnvelopeFramesList),
+    stdout: S.optional(S.String),
+    stderr: S.optional(S.String),
+    media: S.optional(NotebookSQLV2EnvelopeMediaList),
+    columns: S.optional(NotebookSQLV2EnvelopeColumnsList),
+    types: S.optional(NotebookSQLV2EnvelopeTypesList),
+    row_count: S.optional(S.Number),
+    has_more: S.optional(S.Boolean),
+    first_page: S.optional(NotebookSQLV2EnvelopeFirstPageList),
+    result_id: S.optional(S.NullOr(S.String)),
+    error: S.optional(S.NullOr(S.String)),
+    timings: S.optional(NotebookSQLV2EnvelopeTimingsMap),
+  }),
+).annotate({
+  identifier: "NotebookSQLV2Envelope",
+}) as any as S.Schema<NotebookSQLV2Envelope>;
+
+/** A single result row as a list of cell values. */
+export type NotebookSQLV2RunStatusResponseRowsItemList = Array<unknown>;
+export const NotebookSQLV2RunStatusResponseRowsItemList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<NotebookSQLV2RunStatusResponseRowsItemList>;
+
+/** SQL (hogql) runs only: the full capped row set for client-side paging, present while the query manager's transient result is alive (~20 minutes). Absent afterwards and for kernel (python/duckdb) runs, which keep only the envelope's first_page preview. */
+export type NotebookSQLV2RunStatusResponseRowsList =
+  Array<NotebookSQLV2RunStatusResponseRowsItemList>;
+export const NotebookSQLV2RunStatusResponseRowsList = /*@__PURE__*/ S.Array(
+  NotebookSQLV2RunStatusResponseRowsItemList,
+) as any as S.Schema<NotebookSQLV2RunStatusResponseRowsList>;
+
+export interface NotebookSQLV2RunStatusResponse {
+  /** Run state: 'running' (keep polling), or terminal — 'done', 'failed', or 'interrupted'. */
+  status: string;
+  /** The result envelope once the run is 'done' or 'interrupted' (an interrupted run keeps the stdout/stderr captured before the stop); null while running and for failed runs. */
+  result?: NotebookSQLV2Envelope | null;
+  /** Why the run failed when it never produced an envelope (dispatch or watchdog failure); execution errors arrive inside the envelope's error field instead. */
+  error?: string | null;
+  /** SQL (hogql) runs only: the full capped row set for client-side paging, present while the query manager's transient result is alive (~20 minutes). Absent afterwards and for kernel (python/duckdb) runs, which keep only the envelope's first_page preview. */
+  rows?: NotebookSQLV2RunStatusResponseRowsList;
+}
+export const NotebookSQLV2RunStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.String,
+    result: S.optional(S.NullOr(NotebookSQLV2Envelope)),
+    error: S.optional(S.NullOr(S.String)),
+    rows: S.optional(NotebookSQLV2RunStatusResponseRowsList),
+  }),
+).annotate({
+  identifier: "NotebookSQLV2RunStatusResponse",
+}) as any as S.Schema<NotebookSQLV2RunStatusResponse>;
+
+export interface NotebooksSqlV2StateRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  short_id: string;
+}
+export const NotebooksSqlV2StateRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    short_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/notebooks/{short_id}/sql_v2/state/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "NotebooksSqlV2StateRetrieveRequest",
+}) as any as S.Schema<NotebooksSqlV2StateRetrieveRequest>;
+
+export interface NotebookKernelState {
+  /** Kernel runtime state: 'starting', 'running', 'stopped', 'timed_out', 'discarded', or 'error'. */
+  status: string;
+  /** CPU cores the notebook's sandbox is configured with. */
+  cpu_cores?: number | null;
+  /** Memory in GB the notebook's sandbox is configured with. */
+  memory_gb?: number | null;
+  /** Seconds of inactivity before the sandbox shuts down. */
+  idle_timeout_seconds?: number | null;
+}
+export const NotebookKernelState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.String,
+    cpu_cores: S.optional(S.NullOr(S.Number)),
+    memory_gb: S.optional(S.NullOr(S.Number)),
+    idle_timeout_seconds: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "NotebookKernelState",
+}) as any as S.Schema<NotebookKernelState>;
+
+/** node_ids of cells whose dataframes this cell's code references. */
+export type NotebookCellStateDependsOnList = Array<string>;
+export const NotebookCellStateDependsOnList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NotebookCellStateDependsOnList>;
+
+/** node_ids of cells that reference this cell's dataframe. */
+export type NotebookCellStateDependentsList = Array<string>;
+export const NotebookCellStateDependentsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NotebookCellStateDependentsList>;
+
+/** Result column names. */
+export type NotebookCellLastRunColumnsList = Array<string>;
+export const NotebookCellLastRunColumnsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NotebookCellLastRunColumnsList>;
+
+export interface NotebookCellLastRun {
+  /** Identifier of the cell's most recent run. */
+  run_id: string;
+  /** The run's own state: 'running', 'done', 'failed', or 'interrupted'. */
+  status: string;
+  /** When the run last changed state. */
+  finished_at: string;
+  /** Rows in the result, when the run produced one. */
+  row_count?: number | null;
+  /** Result column names. */
+  columns?: NotebookCellLastRunColumnsList | null;
+  /** Error message when the run failed. */
+  error?: string | null;
+}
+export const NotebookCellLastRun = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    run_id: S.String,
+    status: S.String,
+    finished_at: S.String,
+    row_count: S.optional(S.NullOr(S.Number)),
+    columns: S.optional(S.NullOr(NotebookCellLastRunColumnsList)),
+    error: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "NotebookCellLastRun",
+}) as any as S.Schema<NotebookCellLastRun>;
+
+export interface NotebookCellState {
+  /** Durable cell identity, used by the cell run and edit endpoints. */
+  node_id: string;
+  /** Cell kind: 'sql', 'python', or 'saved_insight' (embedded insight, never runs). */
+  cell_type: string;
+  /** Name other cells reference this cell's result by; blank means display-only. */
+  dataframe_name: string;
+  /** The cell's source, truncated with a marker past 8KB. */
+  code: string;
+  /** Derived cell state: 'never_run', 'running', 'done', 'failed', 'interrupted', or 'stale' — stale means re-running now would execute different code than the last completed run (the cell or an upstream dependency changed). */
+  status: string;
+  /** node_ids of cells whose dataframes this cell's code references. */
+  depends_on: NotebookCellStateDependsOnList;
+  /** node_ids of cells that reference this cell's dataframe. */
+  dependents: NotebookCellStateDependentsList;
+  /** Summary of the most recent run; null when never run. */
+  last_run?: NotebookCellLastRun | null;
+}
+export const NotebookCellState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    node_id: S.String,
+    cell_type: S.String,
+    dataframe_name: S.String,
+    code: S.String,
+    status: S.String,
+    depends_on: NotebookCellStateDependsOnList,
+    dependents: NotebookCellStateDependentsList,
+    last_run: S.optional(S.NullOr(NotebookCellLastRun)),
+  }),
+).annotate({
+  identifier: "NotebookCellState",
+}) as any as S.Schema<NotebookCellState>;
+
+/** Every cell in document order, with its dependency edges and derived run state. */
+export type NotebookSQLV2StateResponseCellsList = Array<NotebookCellState>;
+export const NotebookSQLV2StateResponseCellsList = /*@__PURE__*/ S.Array(
+  NotebookCellState,
+) as any as S.Schema<NotebookSQLV2StateResponseCellsList>;
+
+export interface NotebookSQLV2StateResponse {
+  /** The notebook's short id. */
+  notebook_id: string;
+  /** The notebook's title. */
+  title: string | null;
+  /** Document version, the optimistic-concurrency baseline for edits. */
+  version: number | null;
+  /** The full markdown source — prose and cell tags. Null for legacy rich-text notebooks, which carry their document in `content` instead. */
+  markdown: string | null;
+  /** Legacy rich-text notebooks only: the raw ProseMirror document. Omitted for markdown notebooks — their document is the `markdown` field. */
+  content?: unknown;
+  /** The notebook's kernel runtime state and compute config. */
+  kernel: NotebookKernelState;
+  /** Every cell in document order, with its dependency edges and derived run state. */
+  cells: NotebookSQLV2StateResponseCellsList;
+}
+export const NotebookSQLV2StateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notebook_id: S.String,
+    title: S.NullOr(S.String),
+    version: S.NullOr(S.Number),
+    markdown: S.NullOr(S.String),
+    content: S.optional(S.Unknown),
+    kernel: NotebookKernelState,
+    cells: NotebookSQLV2StateResponseCellsList,
+  }),
+).annotate({
+  identifier: "NotebookSQLV2StateResponse",
+}) as any as S.Schema<NotebookSQLV2StateResponse>;
+
+/** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+export type NotebooksUpdateRequestVariablesList = Array<NotebookVariable>;
+export const NotebooksUpdateRequestVariablesList = /*@__PURE__*/ S.Array(
+  NotebookVariable,
+) as any as S.Schema<NotebooksUpdateRequestVariablesList>;
+
 export interface NotebooksUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1162,6 +1850,8 @@ export interface NotebooksUpdateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
+  /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
+  variables?: NotebooksUpdateRequestVariablesList;
   _create_in_folder?: string;
 }
 export const NotebooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1173,6 +1863,7 @@ export const NotebooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
+    variables: S.optional(NotebooksUpdateRequestVariablesList),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1346,15 +2037,15 @@ export type NotebooksKernelConfigCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+/** Set the notebook's kernel compute configuration. Applies at sandbox provision time: a currently running kernel keeps its resources until restarted. */
 export const notebooksKernelConfigCreate: API.OperationMethod<
   NotebooksKernelConfigCreateRequest,
-  NotebooksKernelConfigCreateResponse,
+  NotebookKernelConfigResponse,
   NotebooksKernelConfigCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksKernelConfigCreateRequest,
-  output: NotebooksKernelConfigCreateResponse,
+  output: NotebookKernelConfigResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1458,15 +2149,15 @@ export type NotebooksKernelStatusRetrieveError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
+/** Live-checked kernel runtime state for this notebook, its compute configuration, and the catalog of dataframes/tables a cell can currently reference (with column schemas). */
 export const notebooksKernelStatusRetrieve: API.OperationMethod<
   NotebooksKernelStatusRetrieveRequest,
-  NotebooksKernelStatusRetrieveResponse,
+  NotebookKernelStatusResponse,
   NotebooksKernelStatusRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksKernelStatusRetrieveRequest,
-  output: NotebooksKernelStatusRetrieveResponse,
+  output: NotebookKernelStatusResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1615,6 +2306,66 @@ export const notebooksSharingRefreshCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksSharingRefreshCreateRequest,
   output: SharingConfiguration,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type NotebooksSqlV2RunCreateError = Conflict | PosthogOpError;
+/** Dispatch an asynchronous run of a notebook SQL or Python cell. Returns a run_id immediately; poll the run result endpoint until the status is terminal. One run at a time per notebook. Flag-gated (revamped-py-notebooks). */
+export const notebooksSqlV2RunCreate: API.OperationMethod<
+  NotebooksSqlV2RunCreateRequest,
+  NotebookSQLV2RunResponse,
+  NotebooksSqlV2RunCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: NotebooksSqlV2RunCreateRequest,
+  output: NotebookSQLV2RunResponse,
+  errors: [Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type NotebooksSqlV2RunsInterruptCreateError = PosthogOpError;
+/** Stop a running cell. Idempotent: interrupting an already-finished run returns its outcome unchanged. Flag-gated (revamped-py-notebooks). */
+export const notebooksSqlV2RunsInterruptCreate: API.OperationMethod<
+  NotebooksSqlV2RunsInterruptCreateRequest,
+  NotebookSQLV2InterruptResponse,
+  NotebooksSqlV2RunsInterruptCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: NotebooksSqlV2RunsInterruptCreateRequest,
+  output: NotebookSQLV2InterruptResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type NotebooksSqlV2RunsRetrieveError = PosthogOpError;
+/** Read a run's durable state: its status, and — once done or interrupted — the result envelope (columns, first rows, stdout/stderr, media, error). Poll until terminal. Flag-gated (revamped-py-notebooks). */
+export const notebooksSqlV2RunsRetrieve: API.OperationMethod<
+  NotebooksSqlV2RunsRetrieveRequest,
+  NotebookSQLV2RunStatusResponse,
+  NotebooksSqlV2RunsRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: NotebooksSqlV2RunsRetrieveRequest,
+  output: NotebookSQLV2RunStatusResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type NotebooksSqlV2StateRetrieveError = PosthogOpError;
+/** The full notebook view for agents: title, document source (markdown, or raw content for legacy rich-text notebooks), every cell with its dependency edges and derived run status (including staleness), and the kernel's runtime state and compute config. Flag-gated (revamped-py-notebooks). */
+export const notebooksSqlV2StateRetrieve: API.OperationMethod<
+  NotebooksSqlV2StateRetrieveRequest,
+  NotebookSQLV2StateResponse,
+  NotebooksSqlV2StateRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: NotebooksSqlV2StateRetrieveRequest,
+  output: NotebookSQLV2StateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

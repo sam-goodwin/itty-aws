@@ -25,10 +25,16 @@
           "traits": {
             "smithy.api#enumValue": "revenue_analytics"
           }
+        },
+        "ENGINEERING_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "engineering_analytics"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `revenue_analytics` - Revenue Analytics"
+        "smithy.api#documentation": "* `revenue_analytics` - Revenue Analytics\n* `engineering_analytics` - Engineering Analytics"
       }
     },
     "com.posthog.managed_viewsets#ManagedViewsetsRetrieveRequest": {
@@ -79,10 +85,16 @@
           "traits": {
             "smithy.api#enumValue": "revenue_analytics"
           }
+        },
+        "ENGINEERING_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "engineering_analytics"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `revenue_analytics` - Revenue Analytics"
+        "smithy.api#documentation": "* `revenue_analytics` - Revenue Analytics\n* `engineering_analytics` - Engineering Analytics"
       }
     },
     "com.posthog.managed_viewsets#ManagedViewsetsUpdateRequest": {

@@ -135,7 +135,7 @@ export const AgentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -311,7 +311,7 @@ export const AgentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -346,7 +346,7 @@ export const AgentsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -394,7 +394,7 @@ export const AgentsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -481,7 +481,7 @@ export const AgentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -560,7 +560,7 @@ export const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -658,7 +658,7 @@ export const ConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -693,7 +693,7 @@ export const ConnectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -742,7 +742,7 @@ export const ConnectionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -893,7 +893,7 @@ export const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1016,7 +1016,7 @@ export const EndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1051,7 +1051,7 @@ export const EndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1109,7 +1109,7 @@ export const EndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1215,7 +1215,7 @@ export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1258,7 +1258,8 @@ export const EndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 /** The type of the Job. */
 export type JobDefinitionPropertiesInputJobType =
   | "OnPremToCloud"
-  | "CloudToCloud";
+  | "CloudToCloud"
+  | "OnPremToCloudAgentLess";
 export const JobDefinitionPropertiesInputJobType = /*@__PURE__*/ S.String;
 
 /** Strategy to use for copy. */
@@ -1279,7 +1280,13 @@ export const JobDefinitionPropertiesInputConnectionsList =
   ) as any as S.Schema<JobDefinitionPropertiesInputConnectionsList>;
 
 /** Type of schedule — Monthly, Weekly, or Daily */
-export type Frequency = "Monthly" | "Weekly" | "Daily" | "Onetime" | "None";
+export type Frequency =
+  | "Monthly"
+  | "Weekly"
+  | "Daily"
+  | "Onetime"
+  | "None"
+  | "Hourly";
 export const Frequency = /*@__PURE__*/ S.String;
 
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
@@ -1330,6 +1337,8 @@ export interface ScheduleInfo {
   cronExpression?: string;
   /** End time of the schedule (in UTC) */
   endDate?: string;
+  /** Repeat interval used for sub-daily schedules. */
+  repeatInterval?: string;
 }
 export const ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1341,6 +1350,7 @@ export const ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
     daysOfMonth: S.optional(ScheduleInfoDaysOfMonthList),
     cronExpression: S.optional(S.String),
     endDate: S.optional(S.String),
+    repeatInterval: S.optional(S.String),
   }),
 ).annotate({ identifier: "ScheduleInfo" }) as any as S.Schema<ScheduleInfo>;
 
@@ -1382,6 +1392,16 @@ export interface JobDefinitionPropertiesInput {
     | (string & {});
   /** Boolean to preserve permissions or not. */
   preservePermissions?: boolean;
+  /** Indicates that this Job Definition is a cross-tenant job where the counterpart endpoint resides in a different Azure AD tenant. When true, `crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must be provided. Defaults to false. Cannot be modified after the Job Definition is created. */
+  isCrossTenantJob?: boolean;
+  /** The Azure AD tenant ID of the cross-tenant source endpoint. Required when `isCrossTenantJob` is true. Cannot be modified after the Job Definition is created. */
+  crossTenantEndpointTenantId?: string;
+  /** Full ARM resource ID of the cross-tenant (foreign) endpoint. On the source-tenant copy this is the TARGET endpoint; on the target-tenant copy this is the SOURCE endpoint. */
+  crossTenantEndpointResourceId?: string;
+  /** The synchronization mode for the Job Definition. */
+  syncMode?: string;
+  /** The last time the mover was synchronized. */
+  moverSyncedUntil?: string;
 }
 export const JobDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1400,6 +1420,11 @@ export const JobDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
       JobDefinitionPropertiesInputDataIntegrityValidation,
     ),
     preservePermissions: S.optional(S.Boolean),
+    isCrossTenantJob: S.optional(S.Boolean),
+    crossTenantEndpointTenantId: S.optional(S.String),
+    crossTenantEndpointResourceId: S.optional(S.String),
+    syncMode: S.optional(S.String),
+    moverSyncedUntil: S.optional(S.String),
   }),
 ).annotate({
   identifier: "JobDefinitionPropertiesInput",
@@ -1432,7 +1457,7 @@ export const JobDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1440,7 +1465,10 @@ export const JobDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobDefinitionsCreateOrUpdateRequest>;
 
 /** The type of the Job. */
-export type JobDefinitionPropertiesJobType = "OnPremToCloud" | "CloudToCloud";
+export type JobDefinitionPropertiesJobType =
+  | "OnPremToCloud"
+  | "CloudToCloud"
+  | "OnPremToCloudAgentLess";
 export const JobDefinitionPropertiesJobType = /*@__PURE__*/ S.String;
 
 /** The current status of the Job Run in a non-terminal state, if exists. */
@@ -1609,6 +1637,16 @@ export interface JobDefinitionProperties {
   dataIntegrityValidation?: JobDefinitionPropertiesDataIntegrityValidation;
   /** Boolean to preserve permissions or not. */
   preservePermissions?: boolean;
+  /** Indicates that this Job Definition is a cross-tenant job where the counterpart endpoint resides in a different Azure AD tenant. When true, `crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must be provided. Defaults to false. Cannot be modified after the Job Definition is created. */
+  isCrossTenantJob?: boolean;
+  /** The Azure AD tenant ID of the cross-tenant source endpoint. Required when `isCrossTenantJob` is true. Cannot be modified after the Job Definition is created. */
+  crossTenantEndpointTenantId?: string;
+  /** Full ARM resource ID of the cross-tenant (foreign) endpoint. On the source-tenant copy this is the TARGET endpoint; on the target-tenant copy this is the SOURCE endpoint. */
+  crossTenantEndpointResourceId?: string;
+  /** The synchronization mode for the Job Definition. */
+  syncMode?: string;
+  /** The last time the mover was synchronized. */
+  moverSyncedUntil?: string;
 }
 export const JobDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1634,6 +1672,11 @@ export const JobDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
       JobDefinitionPropertiesDataIntegrityValidation,
     ),
     preservePermissions: S.optional(S.Boolean),
+    isCrossTenantJob: S.optional(S.Boolean),
+    crossTenantEndpointTenantId: S.optional(S.String),
+    crossTenantEndpointResourceId: S.optional(S.String),
+    syncMode: S.optional(S.String),
+    moverSyncedUntil: S.optional(S.String),
   }),
 ).annotate({
   identifier: "JobDefinitionProperties",
@@ -1688,7 +1731,7 @@ export const JobDefinitionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1726,7 +1769,7 @@ export const JobDefinitionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1778,7 +1821,7 @@ export const JobDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1830,6 +1873,50 @@ export const JobDefinitionList = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobDefinitionList",
 }) as any as S.Schema<JobDefinitionList>;
 
+export interface JobDefinitionsReconcileJobRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Storage Mover resource. */
+  storageMoverName: string;
+  /** The name of the Project resource. */
+  projectName: string;
+  /** The name of the Job Definition resource. */
+  jobDefinitionName: string;
+}
+export const JobDefinitionsReconcileJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    storageMoverName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    jobDefinitionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/reconcileJob",
+      code: 200,
+      apiVersion: "2026-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "JobDefinitionsReconcileJobRequest",
+}) as any as S.Schema<JobDefinitionsReconcileJobRequest>;
+
+/** Response that identifies a Job Run. */
+export interface JobRunResourceId {
+  /** Fully qualified resource id of the Job Run. */
+  jobRunResourceId?: string;
+}
+export const JobRunResourceId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobRunResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobRunResourceId",
+}) as any as S.Schema<JobRunResourceId>;
+
 export interface JobDefinitionsStartJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1854,25 +1941,12 @@ export const JobDefinitionsStartJobRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/startJob",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
   identifier: "JobDefinitionsStartJobRequest",
 }) as any as S.Schema<JobDefinitionsStartJobRequest>;
-
-/** Response that identifies a Job Run. */
-export interface JobRunResourceId {
-  /** Fully qualified resource id of the Job Run. */
-  jobRunResourceId?: string;
-}
-export const JobRunResourceId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobRunResourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobRunResourceId",
-}) as any as S.Schema<JobRunResourceId>;
 
 export interface JobDefinitionsStopJobRequest {
   /** The ID of the target subscription. */
@@ -1898,7 +1972,7 @@ export const JobDefinitionsStopJobRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -1933,6 +2007,10 @@ export interface JobDefinitionUpdateProperties {
   dataIntegrityValidation?: DataIntegrityValidation | (string & {});
   /** Schedule information for the Job Definition. */
   schedule?: ScheduleInfo;
+  /** The synchronization mode for the Job Definition. */
+  syncMode?: string;
+  /** The last time the mover was synchronized. */
+  moverSyncedUntil?: string;
 }
 export const JobDefinitionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1942,6 +2020,8 @@ export const JobDefinitionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
     connections: S.optional(JobDefinitionUpdatePropertiesConnectionsList),
     dataIntegrityValidation: S.optional(DataIntegrityValidation),
     schedule: S.optional(ScheduleInfo),
+    syncMode: S.optional(S.String),
+    moverSyncedUntil: S.optional(S.String),
   }),
 ).annotate({
   identifier: "JobDefinitionUpdateProperties",
@@ -1974,7 +2054,7 @@ export const JobDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2032,7 +2112,7 @@ export const JobRunsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns/{jobRunName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2238,7 +2318,7 @@ export const JobRunsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2295,7 +2375,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.StorageMover/operations",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2413,7 +2493,7 @@ export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2481,7 +2561,7 @@ export const ProjectsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2516,7 +2596,7 @@ export const ProjectsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2565,7 +2645,7 @@ export const ProjectsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2643,7 +2723,7 @@ export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2723,7 +2803,7 @@ export const StorageMoversCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2804,7 +2884,7 @@ export const StorageMoversDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2836,7 +2916,7 @@ export const StorageMoversGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2897,7 +2977,7 @@ export const StorageMoversListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -2975,7 +3055,7 @@ export const StorageMoversListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageMover/storageMovers",
         code: 200,
-        apiVersion: "2025-12-01",
+        apiVersion: "2026-05-01",
       }),
     ),
 ).annotate({
@@ -3019,7 +3099,7 @@ export const StorageMoversUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
       code: 200,
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-05-01",
     }),
   ),
 ).annotate({
@@ -3330,6 +3410,21 @@ export const JobDefinitionsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: JobDefinitionsListRequest,
   output: JobDefinitionList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type JobDefinitionsReconcileJobError = AzureOpError;
+/** Post action to reconcile the running job. */
+export const JobDefinitionsReconcileJob: API.OperationMethod<
+  JobDefinitionsReconcileJobRequest,
+  JobRunResourceId,
+  JobDefinitionsReconcileJobError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: JobDefinitionsReconcileJobRequest,
+  output: JobRunResourceId,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

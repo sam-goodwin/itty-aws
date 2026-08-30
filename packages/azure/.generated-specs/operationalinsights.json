@@ -30,10 +30,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/usages",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a list of usage metrics for a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspaceListUsagesResult": {
@@ -174,10 +174,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/migrate",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#TablesMigrateRequest": {
@@ -233,10 +233,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/cancelSearch",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Cancel a log analytics workspace search results table query run.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#TablesCancelSearchRequest": {
@@ -292,10 +292,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete a Log Analytics workspace table.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#TablesDeleteRequest": {
@@ -351,10 +351,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update a Log Analytics workspace table.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#TablesUpdateResponse": {
@@ -438,6 +438,12 @@
           "target": "com.azure.operationalinsights#TablePlanEnum",
           "traits": {
             "smithy.api#documentation": "Instruct the system how to handle and charge the logs ingested to this table."
+          }
+        },
+        "protectionLevel": {
+          "target": "com.azure.operationalinsights#TableProtectionLevelEnum",
+          "traits": {
+            "smithy.api#documentation": "The protection level of the table. Determines the default data access isolation behavior."
           }
         },
         "lastPlanModifiedDate": {
@@ -719,7 +725,7 @@
         "displayName": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Column display name."
+            "smithy.api#documentation": "Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name."
           }
         },
         "description": {
@@ -770,6 +776,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "VECTOR16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vector16"
           }
         }
       },
@@ -840,6 +852,26 @@
       },
       "traits": {
         "smithy.api#documentation": "A list of table custom columns."
+      }
+    },
+    "com.azure.operationalinsights#TableProtectionLevelEnum": {
+      "type": "enum",
+      "members": {
+        "GENERAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "General"
+          }
+        },
+        "PROTECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Protected"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The protection level of the table. Determines the default data access isolation behavior."
       }
     },
     "com.azure.operationalinsights#TablePlanEnum": {
@@ -1163,6 +1195,12 @@
             "smithy.api#documentation": "Instruct the system how to handle and charge the logs ingested to this table."
           }
         },
+        "protectionLevel": {
+          "target": "com.azure.operationalinsights#TableProtectionLevelEnum",
+          "traits": {
+            "smithy.api#documentation": "The protection level of the table. Determines the default data access isolation behavior."
+          }
+        },
         "schema": {
           "target": "com.azure.operationalinsights#SchemaInput",
           "traits": {
@@ -1239,7 +1277,7 @@
         "displayName": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Column display name."
+            "smithy.api#documentation": "Column display name. Can be set at creation time; after creation, updates must either match column name or set to null/empty. If not provided, defaults to column name."
           }
         },
         "description": {
@@ -1330,10 +1368,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update or Create a Log Analytics workspace table.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#TablesCreateOrUpdateResponse": {
@@ -1433,10 +1471,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a Log Analytics workspace table.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#TablesGetResponse": {
@@ -1530,10 +1568,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets all the tables for the specified Log Analytics workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#TablesListResult": {
@@ -1648,10 +1686,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/stop",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Stops an active Summary rule.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SummaryLogsStopRequest": {
@@ -1707,10 +1745,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/start",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Starts an inactive Summary rule.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SummaryLogsStartRequest": {
@@ -1766,10 +1804,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/retrybin",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Retries a failed Summary rule bin.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SummaryLogsRetryBinRequest": {
@@ -1846,10 +1884,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes Log Analytics workspace Summary rules.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SummaryLogsDeleteRequest": {
@@ -1905,10 +1943,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates or updates Log Analytics workspace Summary rules.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SummaryLogsCreateOrUpdateResponse": {
@@ -1943,10 +1981,101 @@
           "traits": {
             "smithy.api#documentation": "Summary rule properties."
           }
+        },
+        "identity": {
+          "target": "com.azure.operationalinsights#SummaryLogsIdentity",
+          "traits": {
+            "smithy.api#documentation": "The managed identity of the summary logs resource. Only user-assigned identity is supported."
+          }
         }
       },
       "traits": {
         "smithy.api#output": {}
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsIdentity": {
+      "type": "structure",
+      "members": {
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal ID of resource identity."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant ID of resource."
+          }
+        },
+        "type": {
+          "target": "com.azure.operationalinsights#SummaryLogsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.operationalinsights#SummaryLogsIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the summary logs resource."
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.operationalinsights#SummaryLogsUserIdentityProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsUserIdentityProperties": {
+      "type": "structure",
+      "members": {
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal id of user assigned identity."
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The client id of user assigned identity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties."
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsIdentityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of managed service identity."
       }
     },
     "com.azure.operationalinsights#SummaryLogsProperties": {
@@ -2169,10 +2298,56 @@
           "traits": {
             "smithy.api#documentation": "Summary rule properties."
           }
+        },
+        "identity": {
+          "target": "com.azure.operationalinsights#SummaryLogsIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity of the summary logs resource. Only user-assigned identity is supported."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.operationalinsights#SummaryLogsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.operationalinsights#SummaryLogsIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the summary logs resource."
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.operationalinsights#SummaryLogsUserIdentityPropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsUserIdentityPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties."
       }
     },
     "com.azure.operationalinsights#SummaryLogsPropertiesInput": {
@@ -2220,10 +2395,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets Log Analytics workspace Summary rules.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SummaryLogsGetResponse": {
@@ -2257,6 +2432,12 @@
           "target": "com.azure.operationalinsights#SummaryLogsProperties",
           "traits": {
             "smithy.api#documentation": "Summary rule properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.operationalinsights#SummaryLogsIdentity",
+          "traits": {
+            "smithy.api#documentation": "The managed identity of the summary logs resource. Only user-assigned identity is supported."
           }
         }
       },
@@ -2317,10 +2498,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets all summary rules for the specified Log Analytics workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SummaryLogsListResult": {
@@ -2385,6 +2566,12 @@
           "traits": {
             "smithy.api#documentation": "Summary rule properties."
           }
+        },
+        "identity": {
+          "target": "com.azure.operationalinsights#SummaryLogsIdentity",
+          "traits": {
+            "smithy.api#documentation": "The managed identity of the summary logs resource. Only user-assigned identity is supported."
+          }
         }
       },
       "traits": {
@@ -2436,10 +2623,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a storageInsightsConfigs resource",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#StorageInsightConfigsDeleteRequest": {
@@ -2495,10 +2682,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update a storage insight.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#StorageInsightConfigsCreateOrUpdateResponse": {
@@ -2760,10 +2947,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a storage insight instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#StorageInsightConfigsGetResponse": {
@@ -2881,10 +3068,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists the storage insight instances within a workspace",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#StorageInsightListResult": {
@@ -3024,10 +3211,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/sharedKeys",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the shared keys for a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SharedKeys": {
@@ -3095,10 +3282,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/schema",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the schema for a given workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SearchGetSchemaResponse": {
@@ -3446,10 +3633,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes the specified saved search in a given workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SavedSearchesDeleteRequest": {
@@ -3505,10 +3692,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates or updates a saved search for a given workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SavedSearchesCreateOrUpdateResponse": {
@@ -3706,10 +3893,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the specified saved search for a given workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SavedSearchesGetResponse": {
@@ -3810,10 +3997,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the saved searches for a given Log Analytics Workspace",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SavedSearchesListResult": {
@@ -3929,10 +4116,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/regenerateSharedKey",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Regenerates the shared keys for a Log Analytics Workspace. These keys are used to connect Microsoft Operational Insights agents to the workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#SharedKeysRegenerateRequest": {
@@ -3967,6 +4154,93 @@
         "smithy.api#input": {}
       }
     },
+    "com.azure.operationalinsights#WorkspacePurgePurgeLakeData": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.operationalinsights#WorkspacePurgePurgeLakeDataRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/purgeLakeData",
+          "code": 200,
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Purges data lake data in a Log Analytics workspace for a table over a specified time range.\n\nThis operation deletes data lake data (Auxiliary tables, or Analytics tables mirrored to the data lake) for the specified table within the given time range. The operation is long-running; poll the URL returned in the Azure-AsyncOperation response header to track its status.",
+        "com.distilled.openapi#apiVersion": "2026-03-01"
+      }
+    },
+    "com.azure.operationalinsights#WorkspacePurgePurgeLakeDataRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "workspaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the table from which to purge data lake data. Must be an Auxiliary table, or an Analytics table that is mirrored to the data lake.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeRange": {
+          "target": "com.azure.operationalinsights#WorkspacePurgeLakeDataTimeRange",
+          "traits": {
+            "smithy.api#documentation": "The time range over which data lake data is purged.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#WorkspacePurgeLakeDataTimeRange": {
+      "type": "structure",
+      "members": {
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The inclusive start of the time range, in UTC. Must fall on an hour boundary (minutes and seconds must be zero).",
+            "smithy.api#required": {}
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The exclusive end of the time range, in UTC. Must fall on an hour boundary and be earlier than the start of the current hour.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The time range over which a data lake purge request operates."
+      }
+    },
     "com.azure.operationalinsights#WorkspacePurgePurge": {
       "type": "operation",
       "input": {
@@ -3980,10 +4254,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/purge",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Purges data in an Log Analytics workspace by a set of user-defined filters.\n\nIn order to manage system resources, purge requests are throttled at 50 requests per hour. You should batch the execution of purge requests by sending a single command whose predicate includes all user identities that require purging. Use the in operator to specify multiple identities. You should run the query prior to using for a purge request to verify that the results are expected.\nLog Analytics only supports purge operations required for compliance with GDPR. The Log Analytics product team reserves the right to reject requests for purge operations that are not for the purpose of GDPR compliance. In the event of a dispute, please create a support ticket",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacePurgePurgeRequest": {
@@ -4086,10 +4360,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/operations/{purgeId}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets status of an ongoing purge operation.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacePurgeStatusResponse": {
@@ -4180,10 +4454,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Reconcile network security perimeter configuration for Workspace resource.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesReconcileNSPRequest": {
@@ -4239,10 +4513,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a network security perimeter configuration.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesGetNSPResponse": {
@@ -4820,10 +5094,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a list of NSP configurations for specified workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesListNSPResponse": {
@@ -4935,10 +5209,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/managementGroups",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a list of management groups connected to a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspaceListManagementGroupsResult": {
@@ -5085,10 +5359,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes all linked storage accounts of a specific data source type associated with the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LinkedStorageAccountsDeleteRequest": {
@@ -5180,10 +5454,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or Update a link relation between current workspace and a group of storage accounts of a specific data source type.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LinkedStorageAccountsCreateOrUpdateResponse": {
@@ -5388,10 +5662,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets all linked storage account of a specific data source type associated with the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LinkedStorageAccountsGetResponse": {
@@ -5522,10 +5796,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets all linked storage accounts associated with the specified workspace, storage accounts will be sorted by their data source type.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LinkedStorageAccountsListResult": {
@@ -5641,10 +5915,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a linked service instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LinkedServicesDeleteResponse": {
@@ -5815,10 +6089,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update a linked service.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LinkedServicesCreateOrUpdateResponse": {
@@ -5956,10 +6230,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a linked service instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LinkedServicesGetResponse": {
@@ -6072,10 +6346,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the linked services instances in a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LinkedServiceListResult": {
@@ -6209,10 +6483,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Enable",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Enables an intelligence pack for a given workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#IntelligencePacksEnableRequest": {
@@ -6268,10 +6542,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Disable",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Disables an intelligence pack for a given workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#IntelligencePacksDisableRequest": {
@@ -6327,10 +6601,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all the intelligence packs possible and whether they are enabled or disabled for a given workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#IntelligencePacksListResponse": {
@@ -6426,10 +6700,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/gateways/{gatewayId}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete a Log Analytics gateway.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#GatewaysDeleteRequest": {
@@ -6485,10 +6759,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/failback",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deactivates failover for the specified workspace.\n\nThe failback operation is asynchronous and can take up to 30 minutes to complete. The status of the operation can be checked using the operationId returned in the response.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesFailbackRequest": {
@@ -6536,10 +6810,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a data source instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DataSourcesDeleteRequest": {
@@ -6595,10 +6869,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update a data source.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DataSourcesCreateOrUpdateResponse": {
@@ -6968,10 +7242,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a datasource instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DataSourcesGetResponse": {
@@ -7097,10 +7371,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the first page of data source instances in a workspace with the link to the next page.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DataSourceListResult": {
@@ -7263,10 +7537,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes the specified data export in a given workspace..",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DataExportsDeleteRequest": {
@@ -7322,10 +7596,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update a data export.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DataExportsCreateOrUpdateResponse": {
@@ -7540,10 +7814,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a data export instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DataExportsGetResponse": {
@@ -7637,10 +7911,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists the data export instances within a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DataExportListResult": {
@@ -7755,10 +8029,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/availableServiceTiers",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the available service tiers for the workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#AvailableServiceTiersListByWorkspaceResponse": {
@@ -7928,10 +8202,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a workspace resource. To recover the workspace, create it again with the same name, in the same subscription, resource group and location. The name is kept for 14 days and cannot be used for another workspace. To remove the workspace completely and release the name, use the force flag.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesDeleteRequest": {
@@ -7986,10 +8260,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Updates a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesUpdateResponse": {
@@ -8452,6 +8726,13 @@
           "target": "com.azure.operationalinsights#WorkspaceFeaturesAssociationsList",
           "traits": {
             "smithy.api#documentation": "List of associations for the workspace. Indicates if the workspace is associated with any of the following experiences: MDC, Sentinel, SentinelGraph, etc."
+          }
+        },
+        "dataAuthorizationMode": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable Data authorization mode for the workspace.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -9000,6 +9281,13 @@
             "smithy.api#documentation": "Disable Non-AAD based Auth.",
             "com.distilled.openapi#nullable": {}
           }
+        },
+        "dataAuthorizationMode": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable Data authorization mode for the workspace.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {
@@ -9107,10 +9395,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesCreateOrUpdateResponse": {
@@ -9276,10 +9564,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a workspace instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesGetResponse": {
@@ -9402,10 +9690,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets workspaces in a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspaceListResult": {
@@ -9549,10 +9837,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/search",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Search a list of Queries defined within a Log Analytics QueryPack according to given search properties.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LogAnalyticsQueryPackQueryListResult": {
@@ -9915,10 +10203,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a specific Query defined within an Log Analytics QueryPack.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueriesDeleteRequest": {
@@ -9974,10 +10262,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Adds or Updates a specific Query within a Log Analytics QueryPack.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueriesUpdateResponse": {
@@ -10142,10 +10430,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Adds or Updates a specific Query within a Log Analytics QueryPack.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueriesPutResponse": {
@@ -10245,10 +10533,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueriesGetResponse": {
@@ -10342,10 +10630,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a list of Queries defined within a Log Analytics QueryPack.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueriesListRequest": {
@@ -10414,10 +10702,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a Log Analytics QueryPack.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueryPacksDeleteRequest": {
@@ -10465,10 +10753,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Updates an existing QueryPack's tags. To update other fields use the CreateOrUpdate method.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueryPacksUpdateTagsResponse": {
@@ -10630,10 +10918,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates (or updates) a Log Analytics QueryPack. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueryPacksCreateOrUpdateResponse": {
@@ -10784,10 +11072,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Returns a Log Analytics QueryPack.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueryPacksGetResponse": {
@@ -10899,10 +11187,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates a Log Analytics QueryPack. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueryPacksCreateOrUpdateWithoutNameResponse": {
@@ -11038,10 +11326,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a list of Log Analytics QueryPacks within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#LogAnalyticsQueryPackListResult": {
@@ -11175,10 +11463,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/locations/{location}/workspaces/{workspaceName}/failover",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Activates failover for the specified workspace.\n\nThe specified replication location must match the location of the enabled replication for this workspace. The failover operation is asynchronous and can take up to 30 minutes to complete. The status of the operation can be checked using the operationId returned in the response.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesFailoverRequest": {
@@ -11234,10 +11522,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets recently deleted workspaces in a resource group, available for recovery.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DeletedWorkspacesListByResourceGroupRequest": {
@@ -11277,10 +11565,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a cluster instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#ClustersDeleteRequest": {
@@ -11328,10 +11616,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Updates a Log Analytics cluster.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#ClustersUpdateResponse": {
@@ -12017,10 +12305,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update a Log Analytics cluster.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#ClustersCreateOrUpdateResponse": {
@@ -12331,10 +12619,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a Log Analytics cluster instance.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#ClustersGetResponse": {
@@ -12486,10 +12774,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets Log Analytics clusters in a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#ClusterListResult": {
@@ -12663,10 +12951,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/workspaces",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the workspaces in a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#WorkspacesListRequest": {
@@ -12698,10 +12986,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/queryPacks",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a list of all Log Analytics QueryPacks within a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#QueryPacksListRequest": {
@@ -12733,10 +13021,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/locations/{location}/operationStatuses/{asyncOperationId}",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get the status of a long running azure asynchronous operation.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#OperationStatus": {
@@ -12918,10 +13206,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets recently deleted workspaces in a subscription, available for recovery.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#DeletedWorkspacesListRequest": {
@@ -12953,10 +13241,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/clusters",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the Log Analytics clusters in a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#ClustersListRequest": {
@@ -12988,10 +13276,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.OperationalInsights/operations",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all of the available OperationalInsights Rest API operations.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.operationalinsights#OperationListResult": {
@@ -13157,6 +13445,9 @@
         },
         {
           "target": "com.azure.operationalinsights#SharedKeysRegenerate"
+        },
+        {
+          "target": "com.azure.operationalinsights#WorkspacePurgePurgeLakeData"
         },
         {
           "target": "com.azure.operationalinsights#WorkspacePurgePurge"

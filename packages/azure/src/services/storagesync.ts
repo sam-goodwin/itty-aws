@@ -37,7 +37,7 @@ export const CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/afsShareMetadataCertificatePublicKeys",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -71,6 +71,8 @@ export interface CloudEndpointCreateParametersProperties {
   storageAccountTenantId?: string;
   /** Friendly Name */
   friendlyName?: string;
+  /** The interval for enumerating changes on the cloud endpoint. */
+  changeEnumerationIntervalDays?: number;
 }
 export const CloudEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -79,6 +81,7 @@ export const CloudEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(
       azureFileShareName: S.optional(S.String),
       storageAccountTenantId: S.optional(S.String),
       friendlyName: S.optional(S.String),
+      changeEnumerationIntervalDays: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "CloudEndpointCreateParametersProperties",
@@ -111,7 +114,7 @@ export const CloudEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -299,6 +302,8 @@ export interface CloudEndpointProperties {
   lastOperationName?: string;
   /** Cloud endpoint change enumeration status */
   changeEnumerationStatus?: CloudEndpointChangeEnumerationStatus;
+  /** The interval for enumerating changes on the cloud endpoint. */
+  changeEnumerationIntervalDays?: number;
 }
 export const CloudEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -312,6 +317,7 @@ export const CloudEndpointProperties = /*@__PURE__*/ S.suspend(() =>
     lastWorkflowId: S.optional(S.String),
     lastOperationName: S.optional(S.String),
     changeEnumerationStatus: S.optional(CloudEndpointChangeEnumerationStatus),
+    changeEnumerationIntervalDays: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "CloudEndpointProperties",
@@ -365,7 +371,7 @@ export const CloudEndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -403,7 +409,7 @@ export const CloudEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -456,7 +462,7 @@ export const CloudEndpointsListBySyncGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
 ).annotate({
@@ -535,7 +541,7 @@ export const CloudEndpointsPostBackupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -642,7 +648,7 @@ export const CloudEndpointsPostRestoreRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postrestore",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -683,7 +689,7 @@ export const CloudEndpointsPreBackupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prebackup",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -758,7 +764,7 @@ export const CloudEndpointsPreRestoreRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -797,7 +803,7 @@ export const CloudEndpointsRestoreheartbeatRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/restoreheartbeat",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
 ).annotate({
@@ -857,7 +863,7 @@ export const CloudEndpointsTriggerChangeDetectionRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/triggerChangeDetection",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -869,6 +875,77 @@ export const CloudEndpointsTriggerChangeDetectionResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CloudEndpointsTriggerChangeDetectionResponse",
   }) as any as S.Schema<CloudEndpointsTriggerChangeDetectionResponse>;
+
+/** CloudEndpoint Update Properties object. */
+export interface CloudEndpointUpdateProperties {
+  /** The interval for enumerating changes on the cloud endpoint. */
+  changeEnumerationIntervalDays?: number;
+}
+export const CloudEndpointUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changeEnumerationIntervalDays: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CloudEndpointUpdateProperties",
+}) as any as S.Schema<CloudEndpointUpdateProperties>;
+
+export interface CloudEndpointsUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of Storage Sync Service resource. */
+  storageSyncServiceName: string;
+  /** Name of Sync Group resource. */
+  syncGroupName: string;
+  /** Name of Cloud Endpoint object. */
+  cloudEndpointName: string;
+  /** The properties of the cloud endpoint. */
+  properties?: CloudEndpointUpdateProperties;
+}
+export const CloudEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    storageSyncServiceName: S.String.pipe(T.Label()),
+    syncGroupName: S.String.pipe(T.Label()),
+    cloudEndpointName: S.String.pipe(T.Label()),
+    properties: S.optional(CloudEndpointUpdateProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+      code: 200,
+      apiVersion: "2025-12-01",
+    }),
+  ),
+).annotate({
+  identifier: "CloudEndpointsUpdateRequest",
+}) as any as S.Schema<CloudEndpointsUpdateRequest>;
+
+export interface CloudEndpointsUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Cloud Endpoint properties. */
+  properties?: CloudEndpointProperties;
+}
+export const CloudEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CloudEndpointProperties),
+  }),
+).annotate({
+  identifier: "CloudEndpointsUpdateResponse",
+}) as any as S.Schema<CloudEndpointsUpdateResponse>;
 
 export interface LocationOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -888,7 +965,7 @@ export const LocationOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -1014,7 +1091,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.StorageSync/operations",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -1226,7 +1303,7 @@ export const OperationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -1334,7 +1411,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
 ).annotate({
@@ -1439,7 +1516,7 @@ export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
 ).annotate({
@@ -1475,7 +1552,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
 ).annotate({
@@ -1526,7 +1603,7 @@ export const PrivateEndpointConnectionsListByStorageSyncServiceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -1602,7 +1679,7 @@ export const PrivateLinkResourcesListByStorageSyncServiceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -1762,7 +1839,7 @@ export const RegisteredServersCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -1917,7 +1994,7 @@ export const RegisteredServersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -1952,7 +2029,7 @@ export const RegisteredServersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -2002,7 +2079,7 @@ export const RegisteredServersListByStorageSyncServiceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -2081,7 +2158,7 @@ export const RegisteredServersTriggerRolloverRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}/triggerRollover",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
 ).annotate({
@@ -2135,7 +2212,7 @@ export const RegisteredServersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -2275,7 +2352,7 @@ export const ServerEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -2365,6 +2442,12 @@ export const ServerEndpointSyncSessionStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerEndpointSyncSessionStatus",
 }) as any as S.Schema<ServerEndpointSyncSessionStatus>;
 
+/** Warning types for sync sessions. */
+export type ServerEndpointSyncSessionWarningType =
+  | "NoWarning"
+  | "BlockedByLargeFile";
+export const ServerEndpointSyncSessionWarningType = /*@__PURE__*/ S.String;
+
 /** Sync Session status object. */
 export interface ServerEndpointSyncActivityStatus {
   /** Timestamp when properties were updated */
@@ -2383,6 +2466,28 @@ export interface ServerEndpointSyncActivityStatus {
   syncMode?: ServerEndpointSyncMode;
   /** Session minutes remaining (if available) */
   sessionMinutesRemaining?: number;
+  /** Remaining file count (if totals are final) */
+  remainingFileCount?: number;
+  /** Remaining directory count (if totals are final) */
+  remainingDirectoryCount?: number;
+  /** Remaining delete count (if totals are final) */
+  remainingDeleteCount?: number;
+  /** Remaining logical size in bytes (if totals are final) */
+  remainingLogicalSizeBytes?: number;
+  /** Whether the remaining counts are final */
+  isRemainingFinal?: boolean;
+  /** Recent throughput in items per second */
+  recentItemsPerSecond?: number;
+  /** Recent throughput in megabytes per second */
+  recentMegabytesPerSecond?: number;
+  /** Path of large file currently in progress */
+  inProgressLargeFilePath?: string;
+  /** Size in bytes of large file currently in progress */
+  inProgressLargeFileSizeBytes?: number;
+  /** Percent complete (0-100) of large file currently in progress */
+  inProgressLargeFilePercentComplete?: number;
+  /** Warning type (if any) */
+  warning?: ServerEndpointSyncSessionWarningType;
 }
 export const ServerEndpointSyncActivityStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2394,6 +2499,17 @@ export const ServerEndpointSyncActivityStatus = /*@__PURE__*/ S.suspend(() =>
     totalBytes: S.optional(S.Number),
     syncMode: S.optional(ServerEndpointSyncMode),
     sessionMinutesRemaining: S.optional(S.Number),
+    remainingFileCount: S.optional(S.Number),
+    remainingDirectoryCount: S.optional(S.Number),
+    remainingDeleteCount: S.optional(S.Number),
+    remainingLogicalSizeBytes: S.optional(S.Number),
+    isRemainingFinal: S.optional(S.Boolean),
+    recentItemsPerSecond: S.optional(S.Number),
+    recentMegabytesPerSecond: S.optional(S.Number),
+    inProgressLargeFilePath: S.optional(S.String),
+    inProgressLargeFileSizeBytes: S.optional(S.Number),
+    inProgressLargeFilePercentComplete: S.optional(S.Number),
+    warning: S.optional(ServerEndpointSyncSessionWarningType),
   }),
 ).annotate({
   identifier: "ServerEndpointSyncActivityStatus",
@@ -2947,7 +3063,7 @@ export const ServerEndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -2985,7 +3101,7 @@ export const ServerEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3038,7 +3154,7 @@ export const ServerEndpointsListBySyncGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
 ).annotate({
@@ -3120,7 +3236,7 @@ export const ServerEndpointsRecallActionRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3196,7 +3312,7 @@ export const ServerEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3252,7 +3368,7 @@ export const StorageSyncServicesCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/checkNameAvailability",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -3380,7 +3496,7 @@ export const StorageSyncServicesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3543,7 +3659,7 @@ export const StorageSyncServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3575,7 +3691,7 @@ export const StorageSyncServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3646,7 +3762,7 @@ export const StorageSyncServicesListByResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -3735,7 +3851,7 @@ export const StorageSyncServicesListBySubscriptionRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/storageSyncServices",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -3790,7 +3906,7 @@ export const StorageSyncServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3869,7 +3985,7 @@ export const SyncGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3937,7 +4053,7 @@ export const SyncGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -3972,7 +4088,7 @@ export const SyncGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -4022,7 +4138,7 @@ export const SyncGroupsListByStorageSyncServiceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
   ).annotate({
@@ -4093,7 +4209,7 @@ export const WorkflowsAbortRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}/abort",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -4128,7 +4244,7 @@ export const WorkflowsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}",
       code: 200,
-      apiVersion: "2022-09-01",
+      apiVersion: "2025-12-01",
     }),
   ),
 ).annotate({
@@ -4225,7 +4341,7 @@ export const WorkflowsListByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows",
         code: 200,
-        apiVersion: "2022-09-01",
+        apiVersion: "2025-12-01",
       }),
     ),
 ).annotate({
@@ -4436,6 +4552,21 @@ export const CloudEndpointsTriggerChangeDetection: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CloudEndpointsTriggerChangeDetectionRequest,
   output: CloudEndpointsTriggerChangeDetectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CloudEndpointsUpdateError = AzureOpError;
+/** Patch a given CloudEndpoint. */
+export const CloudEndpointsUpdate: API.OperationMethod<
+  CloudEndpointsUpdateRequest,
+  CloudEndpointsUpdateResponse,
+  CloudEndpointsUpdateError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CloudEndpointsUpdateRequest,
+  output: CloudEndpointsUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

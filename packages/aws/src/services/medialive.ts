@@ -1391,6 +1391,7 @@ export interface OutputDestinationSettings {
   StreamName?: string;
   Url?: string;
   Username?: string;
+  VirtualSourceAddress?: string;
 }
 export const OutputDestinationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1398,12 +1399,14 @@ export const OutputDestinationSettings = /*@__PURE__*/ S.suspend(() =>
     StreamName: S.optional(S.String),
     Url: S.optional(S.String),
     Username: S.optional(S.String),
+    VirtualSourceAddress: S.optional(S.String),
   }).pipe(
     S.encodeKeys({
       PasswordParam: "passwordParam",
       StreamName: "streamName",
       Url: "url",
       Username: "username",
+      VirtualSourceAddress: "virtualSourceAddress",
     }),
   ),
 ).annotate({
@@ -1643,21 +1646,42 @@ export const NielsenNaesIiNw = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NielsenNaesIiNw",
 }) as any as S.Schema<NielsenNaesIiNw>;
+export interface NielsenNwOnly {
+  CheckDigitString?: string;
+  Sid?: number;
+  Timezone?: NielsenWatermarkTimezones;
+}
+export const NielsenNwOnly = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CheckDigitString: S.optional(S.String),
+    Sid: S.optional(S.Number),
+    Timezone: S.optional(NielsenWatermarkTimezones),
+  }).pipe(
+    S.encodeKeys({
+      CheckDigitString: "checkDigitString",
+      Sid: "sid",
+      Timezone: "timezone",
+    }),
+  ),
+).annotate({ identifier: "NielsenNwOnly" }) as any as S.Schema<NielsenNwOnly>;
 export interface NielsenWatermarksSettings {
   NielsenCbetSettings?: NielsenCBET;
   NielsenDistributionType?: NielsenWatermarksDistributionTypes;
   NielsenNaesIiNwSettings?: NielsenNaesIiNw;
+  NielsenNwOnlySettings?: NielsenNwOnly;
 }
 export const NielsenWatermarksSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NielsenCbetSettings: S.optional(NielsenCBET),
     NielsenDistributionType: S.optional(NielsenWatermarksDistributionTypes),
     NielsenNaesIiNwSettings: S.optional(NielsenNaesIiNw),
+    NielsenNwOnlySettings: S.optional(NielsenNwOnly),
   }).pipe(
     S.encodeKeys({
       NielsenCbetSettings: "nielsenCbetSettings",
       NielsenDistributionType: "nielsenDistributionType",
       NielsenNaesIiNwSettings: "nielsenNaesIiNwSettings",
+      NielsenNwOnlySettings: "nielsenNwOnlySettings",
     }),
   ),
 ).annotate({
@@ -3730,6 +3754,7 @@ export const CmafNielsenId3Behavior = /*@__PURE__*/ S.String;
 export type Scte35Type =
   | "NONE"
   | "SCTE_35_WITHOUT_SEGMENTATION"
+  | "SCTE_35_WITHOUT_IDR"
   | (string & {});
 export const Scte35Type = /*@__PURE__*/ S.String;
 
@@ -4350,7 +4375,11 @@ export type __integerMin0Max65535 = number;
 export type M2tsRateMode = "CBR" | "VBR" | (string & {});
 export const M2tsRateMode = /*@__PURE__*/ S.String;
 
-export type M2tsScte35Control = "NONE" | "PASSTHROUGH" | (string & {});
+export type M2tsScte35Control =
+  | "NONE"
+  | "PASSTHROUGH"
+  | "SCTE_35_WITHOUT_IDR"
+  | (string & {});
 export const M2tsScte35Control = /*@__PURE__*/ S.String;
 
 export type M2tsSegmentationMarkers =
@@ -6321,6 +6350,24 @@ export type VideoDescriptionScalingBehavior =
   | (string & {});
 export const VideoDescriptionScalingBehavior = /*@__PURE__*/ S.String;
 
+export type __integerMin2Max8192 = number;
+export type __integerMin0Max8190 = number;
+export interface VideoPositionRectangle {
+  Height?: number;
+  Width?: number;
+  X?: number;
+  Y?: number;
+}
+export const VideoPositionRectangle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Height: S.optional(S.Number),
+    Width: S.optional(S.Number),
+    X: S.optional(S.Number),
+    Y: S.optional(S.Number),
+  }).pipe(S.encodeKeys({ Height: "height", Width: "width", X: "x", Y: "y" })),
+).annotate({
+  identifier: "VideoPositionRectangle",
+}) as any as S.Schema<VideoPositionRectangle>;
 export interface VideoDescription {
   CodecSettings?: VideoCodecSettings;
   Height?: number;
@@ -6329,6 +6376,8 @@ export interface VideoDescription {
   ScalingBehavior?: VideoDescriptionScalingBehavior;
   Sharpness?: number;
   Width?: number;
+  CropRectangle?: VideoPositionRectangle;
+  OutputPositionRectangle?: VideoPositionRectangle;
 }
 export const VideoDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6339,6 +6388,8 @@ export const VideoDescription = /*@__PURE__*/ S.suspend(() =>
     ScalingBehavior: S.optional(VideoDescriptionScalingBehavior),
     Sharpness: S.optional(S.Number),
     Width: S.optional(S.Number),
+    CropRectangle: S.optional(VideoPositionRectangle),
+    OutputPositionRectangle: S.optional(VideoPositionRectangle),
   }).pipe(
     S.encodeKeys({
       CodecSettings: "codecSettings",
@@ -6348,6 +6399,8 @@ export const VideoDescription = /*@__PURE__*/ S.suspend(() =>
       ScalingBehavior: "scalingBehavior",
       Sharpness: "sharpness",
       Width: "width",
+      CropRectangle: "cropRectangle",
+      OutputPositionRectangle: "outputPositionRectangle",
     }),
   ),
 ).annotate({
@@ -7809,6 +7862,10 @@ export interface CreateChannelResponse {
               CheckDigitString: __stringMin2Max2;
               Sid: __doubleMin1Max65535;
             };
+            NielsenNwOnlySettings: NielsenNwOnly & {
+              CheckDigitString: __stringMin2Max2;
+              Sid: __doubleMin1Max65535;
+            };
           };
         };
         RemixSettings: RemixSettings & {
@@ -7974,6 +8031,18 @@ export interface CreateChannelResponse {
               Position: TimecodeBurninPosition;
             };
           };
+        };
+        CropRectangle: VideoPositionRectangle & {
+          Height: __integerMin2Max8192;
+          Width: __integerMin2Max8192;
+          X: __integerMin0Max8190;
+          Y: __integerMin0Max8190;
+        };
+        OutputPositionRectangle: VideoPositionRectangle & {
+          Height: __integerMin2Max8192;
+          Width: __integerMin2Max8192;
+          X: __integerMin0Max8190;
+          Y: __integerMin0Max8190;
         };
       })[];
       AvailBlanking: AvailBlanking & {
@@ -10937,6 +11006,10 @@ export interface DeleteChannelResponse {
             CheckDigitString: __stringMin2Max2;
             Sid: __doubleMin1Max65535;
           };
+          NielsenNwOnlySettings: NielsenNwOnly & {
+            CheckDigitString: __stringMin2Max2;
+            Sid: __doubleMin1Max65535;
+          };
         };
       };
       RemixSettings: RemixSettings & {
@@ -11102,6 +11175,18 @@ export interface DeleteChannelResponse {
             Position: TimecodeBurninPosition;
           };
         };
+      };
+      CropRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
+      };
+      OutputPositionRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
       };
     })[];
     AvailBlanking: AvailBlanking & {
@@ -12180,6 +12265,10 @@ export interface DescribeChannelResponse {
             CheckDigitString: __stringMin2Max2;
             Sid: __doubleMin1Max65535;
           };
+          NielsenNwOnlySettings: NielsenNwOnly & {
+            CheckDigitString: __stringMin2Max2;
+            Sid: __doubleMin1Max65535;
+          };
         };
       };
       RemixSettings: RemixSettings & {
@@ -12345,6 +12434,18 @@ export interface DescribeChannelResponse {
             Position: TimecodeBurninPosition;
           };
         };
+      };
+      CropRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
+      };
+      OutputPositionRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
       };
     })[];
     AvailBlanking: AvailBlanking & {
@@ -16304,6 +16405,10 @@ export interface RestartChannelPipelinesResponse {
             CheckDigitString: __stringMin2Max2;
             Sid: __doubleMin1Max65535;
           };
+          NielsenNwOnlySettings: NielsenNwOnly & {
+            CheckDigitString: __stringMin2Max2;
+            Sid: __doubleMin1Max65535;
+          };
         };
       };
       RemixSettings: RemixSettings & {
@@ -16469,6 +16574,18 @@ export interface RestartChannelPipelinesResponse {
             Position: TimecodeBurninPosition;
           };
         };
+      };
+      CropRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
+      };
+      OutputPositionRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
       };
     })[];
     AvailBlanking: AvailBlanking & {
@@ -16706,6 +16823,10 @@ export interface StartChannelResponse {
             CheckDigitString: __stringMin2Max2;
             Sid: __doubleMin1Max65535;
           };
+          NielsenNwOnlySettings: NielsenNwOnly & {
+            CheckDigitString: __stringMin2Max2;
+            Sid: __doubleMin1Max65535;
+          };
         };
       };
       RemixSettings: RemixSettings & {
@@ -16871,6 +16992,18 @@ export interface StartChannelResponse {
             Position: TimecodeBurninPosition;
           };
         };
+      };
+      CropRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
+      };
+      OutputPositionRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
       };
     })[];
     AvailBlanking: AvailBlanking & {
@@ -17621,6 +17754,10 @@ export interface StopChannelResponse {
             CheckDigitString: __stringMin2Max2;
             Sid: __doubleMin1Max65535;
           };
+          NielsenNwOnlySettings: NielsenNwOnly & {
+            CheckDigitString: __stringMin2Max2;
+            Sid: __doubleMin1Max65535;
+          };
         };
       };
       RemixSettings: RemixSettings & {
@@ -17786,6 +17923,18 @@ export interface StopChannelResponse {
             Position: TimecodeBurninPosition;
           };
         };
+      };
+      CropRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
+      };
+      OutputPositionRectangle: VideoPositionRectangle & {
+        Height: __integerMin2Max8192;
+        Width: __integerMin2Max8192;
+        X: __integerMin0Max8190;
+        Y: __integerMin0Max8190;
       };
     })[];
     AvailBlanking: AvailBlanking & {
@@ -18259,6 +18408,10 @@ export interface UpdateChannelResponse {
               CheckDigitString: __stringMin2Max2;
               Sid: __doubleMin1Max65535;
             };
+            NielsenNwOnlySettings: NielsenNwOnly & {
+              CheckDigitString: __stringMin2Max2;
+              Sid: __doubleMin1Max65535;
+            };
           };
         };
         RemixSettings: RemixSettings & {
@@ -18424,6 +18577,18 @@ export interface UpdateChannelResponse {
               Position: TimecodeBurninPosition;
             };
           };
+        };
+        CropRectangle: VideoPositionRectangle & {
+          Height: __integerMin2Max8192;
+          Width: __integerMin2Max8192;
+          X: __integerMin0Max8190;
+          Y: __integerMin0Max8190;
+        };
+        OutputPositionRectangle: VideoPositionRectangle & {
+          Height: __integerMin2Max8192;
+          Width: __integerMin2Max8192;
+          X: __integerMin0Max8190;
+          Y: __integerMin0Max8190;
         };
       })[];
       AvailBlanking: AvailBlanking & {
@@ -18609,6 +18774,10 @@ export interface UpdateChannelClassResponse {
               CheckDigitString: __stringMin2Max2;
               Sid: __doubleMin1Max65535;
             };
+            NielsenNwOnlySettings: NielsenNwOnly & {
+              CheckDigitString: __stringMin2Max2;
+              Sid: __doubleMin1Max65535;
+            };
           };
         };
         RemixSettings: RemixSettings & {
@@ -18774,6 +18943,18 @@ export interface UpdateChannelClassResponse {
               Position: TimecodeBurninPosition;
             };
           };
+        };
+        CropRectangle: VideoPositionRectangle & {
+          Height: __integerMin2Max8192;
+          Width: __integerMin2Max8192;
+          X: __integerMin0Max8190;
+          Y: __integerMin0Max8190;
+        };
+        OutputPositionRectangle: VideoPositionRectangle & {
+          Height: __integerMin2Max8192;
+          Width: __integerMin2Max8192;
+          X: __integerMin0Max8190;
+          Y: __integerMin0Max8190;
         };
       })[];
       AvailBlanking: AvailBlanking & {

@@ -30,10 +30,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}/abort",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Abort the given workflow.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#WorkflowsAbortRequest": {
@@ -89,10 +89,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get Workflows resource",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#WorkflowsGetResponse": {
@@ -414,10 +414,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a Workflow List",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#WorkflowArray": {
@@ -532,10 +532,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Recall a server endpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#ServerEndpointsRecallActionRequest": {
@@ -611,10 +611,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Delete a given ServerEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#ServerEndpointsDeleteRequest": {
@@ -678,10 +678,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Patch a given ServerEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#ServerEndpointsUpdateResponse": {
@@ -1649,10 +1649,96 @@
           "traits": {
             "smithy.api#documentation": "Session minutes remaining (if available)"
           }
+        },
+        "remainingFileCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Remaining file count (if totals are final)"
+          }
+        },
+        "remainingDirectoryCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Remaining directory count (if totals are final)"
+          }
+        },
+        "remainingDeleteCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Remaining delete count (if totals are final)"
+          }
+        },
+        "remainingLogicalSizeBytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Remaining logical size in bytes (if totals are final)"
+          }
+        },
+        "isRemainingFinal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the remaining counts are final"
+          }
+        },
+        "recentItemsPerSecond": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Recent throughput in items per second"
+          }
+        },
+        "recentMegabytesPerSecond": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Recent throughput in megabytes per second"
+          }
+        },
+        "inProgressLargeFilePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path of large file currently in progress"
+          }
+        },
+        "inProgressLargeFileSizeBytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Size in bytes of large file currently in progress"
+          }
+        },
+        "inProgressLargeFilePercentComplete": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Percent complete (0-100) of large file currently in progress"
+          }
+        },
+        "warning": {
+          "target": "com.azure.storagesync#ServerEndpointSyncSessionWarningType",
+          "traits": {
+            "smithy.api#documentation": "Warning type (if any)"
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Sync Session status object."
+      }
+    },
+    "com.azure.storagesync#ServerEndpointSyncSessionWarningType": {
+      "type": "enum",
+      "members": {
+        "NOWARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoWarning"
+          }
+        },
+        "BLOCKEDBYLARGEFILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BlockedByLargeFile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Warning types for sync sessions."
       }
     },
     "com.azure.storagesync#ServerEndpointSyncMode": {
@@ -1941,10 +2027,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Create a new ServerEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#ServerEndpointsCreateResponse": {
@@ -2192,10 +2278,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a ServerEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#ServerEndpointsGetResponse": {
@@ -2297,10 +2383,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a ServerEndpoint list.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#ServerEndpointArray": {
@@ -2423,10 +2509,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/triggerChangeDetection",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Triggers detection of changes performed on Azure File share connected to the specified Azure File Sync Cloud Endpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequest": {
@@ -2537,10 +2623,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/restoreheartbeat",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Restore Heartbeat a given CloudEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointsRestoreheartbeatRequest": {
@@ -2604,10 +2690,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Pre Restore a given CloudEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointsPreRestoreRequest": {
@@ -2754,10 +2840,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prebackup",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Pre Backup a given CloudEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointsPreBackupRequest": {
@@ -2827,10 +2913,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postrestore",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Post Restore a given CloudEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointsPostRestoreRequest": {
@@ -2951,10 +3037,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Post Backup a given CloudEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#PostBackupResponse": {
@@ -3052,10 +3138,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/afsShareMetadataCertificatePublicKeys",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get the AFS file share metadata signing certificate public keys.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointAfsShareMetadataCertificatePublicKeys": {
@@ -3139,10 +3225,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Delete a given CloudEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointsDeleteRequest": {
@@ -3193,26 +3279,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#CloudEndpointsCreate": {
+    "com.azure.storagesync#CloudEndpointsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#CloudEndpointsCreateRequest"
+        "target": "com.azure.storagesync#CloudEndpointsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#CloudEndpointsCreateResponse"
+        "target": "com.azure.storagesync#CloudEndpointsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
-          "method": "PUT",
+          "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
-        "smithy.api#documentation": "Create a new CloudEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "smithy.api#documentation": "Patch a given CloudEndpoint.",
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#CloudEndpointsCreateResponse": {
+    "com.azure.storagesync#CloudEndpointsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3311,6 +3397,12 @@
           "target": "com.azure.storagesync#CloudEndpointChangeEnumerationStatus",
           "traits": {
             "smithy.api#documentation": "Cloud endpoint change enumeration status"
+          }
+        },
+        "changeEnumerationIntervalDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The interval for enumerating changes on the cloud endpoint."
           }
         }
       },
@@ -3514,6 +3606,131 @@
         "smithy.api#documentation": "Cloud endpoint change enumeration status object"
       }
     },
+    "com.azure.storagesync#CloudEndpointsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "storageSyncServiceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of Storage Sync Service resource."
+          }
+        },
+        "syncGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of Sync Group resource."
+          }
+        },
+        "cloudEndpointName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of Cloud Endpoint object."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagesync#CloudEndpointUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the cloud endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#CloudEndpointUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "changeEnumerationIntervalDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The interval for enumerating changes on the cloud endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "CloudEndpoint Update Properties object."
+      }
+    },
+    "com.azure.storagesync#CloudEndpointsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storagesync#CloudEndpointsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.storagesync#CloudEndpointsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+          "code": 200,
+          "apiVersion": "2025-12-01"
+        },
+        "smithy.api#documentation": "Create a new CloudEndpoint.",
+        "com.distilled.openapi#apiVersion": "2025-12-01"
+      }
+    },
+    "com.azure.storagesync#CloudEndpointsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+          }
+        },
+        "systemData": {
+          "target": "com.azure.storagesync#SystemData",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagesync#CloudEndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Cloud Endpoint properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
     "com.azure.storagesync#CloudEndpointsCreateRequest": {
       "type": "structure",
       "members": {
@@ -3594,6 +3811,12 @@
           "traits": {
             "smithy.api#documentation": "Friendly Name"
           }
+        },
+        "changeEnumerationIntervalDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The interval for enumerating changes on the cloud endpoint."
+          }
         }
       },
       "traits": {
@@ -3613,10 +3836,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a given CloudEndpoint.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointsGetResponse": {
@@ -3718,10 +3941,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a CloudEndpoint List.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CloudEndpointArray": {
@@ -3844,10 +4067,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Delete a given SyncGroup.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#SyncGroupsDeleteRequest": {
@@ -3903,10 +4126,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Create a new SyncGroup.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#SyncGroupsCreateResponse": {
@@ -4026,10 +4249,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a given SyncGroup.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#SyncGroupsGetResponse": {
@@ -4123,10 +4346,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a SyncGroup List.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#SyncGroupArray": {
@@ -4241,10 +4464,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}/triggerRollover",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Triggers Server certificate rollover.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#RegisteredServersTriggerRolloverRequest": {
@@ -4306,10 +4529,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Delete the given registered server.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#RegisteredServersDeleteRequest": {
@@ -4365,10 +4588,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Update registered server.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#RegisteredServersUpdateResponse": {
@@ -4710,10 +4933,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Add a new registered server.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#RegisteredServersCreateResponse": {
@@ -4887,10 +5110,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a given registered server.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#RegisteredServersGetResponse": {
@@ -4984,10 +5207,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a given registered server list.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#RegisteredServerArray": {
@@ -5102,10 +5325,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Gets the private link resources that need to be created for a storage sync service.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceResponse": {
@@ -5258,10 +5481,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Deletes the specified private endpoint connection associated with the storage sync service.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#PrivateEndpointConnectionsDeleteRequest": {
@@ -5317,10 +5540,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Update the state of specified private endpoint connection associated with the storage sync service.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#PrivateEndpointConnectionsCreateResponse": {
@@ -5588,10 +5811,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Gets the specified private endpoint connection associated with the storage sync service.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#PrivateEndpointConnectionsGetResponse": {
@@ -5685,10 +5908,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a PrivateEndpointConnection List.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#PrivateEndpointConnectionListResult": {
@@ -5803,10 +6026,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Delete a given StorageSyncService.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#StorageSyncServicesDeleteRequest": {
@@ -5854,10 +6077,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Patch a given StorageSyncService.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#StorageSyncServicesUpdateResponse": {
@@ -6276,10 +6499,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Create a new StorageSyncService.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#StorageSyncServicesCreateResponse": {
@@ -6499,10 +6722,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a given StorageSyncService.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#StorageSyncServicesGetResponse": {
@@ -6648,10 +6871,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a StorageSyncService list by Resource group name.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#StorageSyncServiceArray": {
@@ -6818,10 +7041,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get Operation status",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#OperationStatus": {
@@ -7049,10 +7272,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/storageSyncServices",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get a StorageSyncService list by subscription.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#StorageSyncServicesListBySubscriptionRequest": {
@@ -7084,10 +7307,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Get Operation status",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#LocationOperationStatus": {
@@ -7185,10 +7408,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "Check the give namespace name availability.",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#CheckNameAvailabilityResult": {
@@ -7300,10 +7523,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.StorageSync/operations",
           "code": 200,
-          "apiVersion": "2022-09-01"
+          "apiVersion": "2025-12-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2022-09-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
     "com.azure.storagesync#OperationEntityListResult": {
@@ -7597,6 +7820,9 @@
         },
         {
           "target": "com.azure.storagesync#CloudEndpointsDelete"
+        },
+        {
+          "target": "com.azure.storagesync#CloudEndpointsUpdate"
         },
         {
           "target": "com.azure.storagesync#CloudEndpointsCreate"

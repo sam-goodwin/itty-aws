@@ -231,7 +231,10 @@ export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512";
+  | "64"
+  | "128"
+  | "256"
+  | "512";
 export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -255,7 +258,8 @@ export const MaintenanceConfigsGetResponseMaintenanceConfigCompaction =
   }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled";
+  | "enabled"
+  | "disabled";
 export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -351,12 +355,16 @@ export const GetNamespaceTableMaintenanceConfigRequest =
   }) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
-  "enabled" | "disabled";
+  | "enabled"
+  | "disabled";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512";
+  | "64"
+  | "128"
+  | "256"
+  | "512";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -382,7 +390,8 @@ export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompa
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled";
+  | "enabled"
+  | "disabled";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -921,7 +930,8 @@ export const ListResponseWarehousesItemMaintenanceConfigCompaction =
   }) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigCompaction>;
 
 export type ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled";
+  | "enabled"
+  | "disabled";
 export const ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1203,7 +1213,10 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512";
+  | "64"
+  | "128"
+  | "256"
+  | "512";
 export const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -1234,7 +1247,8 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction =
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState =
-  "enabled" | "disabled";
+  | "enabled"
+  | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1311,7 +1325,10 @@ export const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512";
+  | "64"
+  | "128"
+  | "256"
+  | "512";
 export const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -1335,7 +1352,8 @@ export const NamespacesTablesMaintenanceConfigsUpdateResponseCompaction =
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState =
-  "enabled" | "disabled";
+  | "enabled"
+  | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 

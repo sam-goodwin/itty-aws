@@ -3903,7 +3903,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -5283,7 +5286,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -5349,7 +5355,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -5524,7 +5533,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {
@@ -5671,7 +5683,10 @@
           }
         },
         "extendedLocation": {
-          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation"
+          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the resource."
+          }
         }
       },
       "traits": {

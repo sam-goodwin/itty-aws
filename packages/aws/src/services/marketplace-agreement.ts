@@ -1349,6 +1349,18 @@ export const VariablePaymentTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VariablePaymentTerm",
 }) as any as S.Schema<VariablePaymentTerm>;
+export interface NetPaymentTerm {
+  type?: string;
+  id?: string;
+  paymentDuePeriod?: string;
+}
+export const NetPaymentTerm = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    id: S.optional(S.String),
+    paymentDuePeriod: S.optional(S.String),
+  }),
+).annotate({ identifier: "NetPaymentTerm" }) as any as S.Schema<NetPaymentTerm>;
 export type AcceptedTerm =
   | {
       legalTerm: LegalTerm;
@@ -1363,6 +1375,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1377,6 +1390,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1391,6 +1405,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1405,6 +1420,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1419,6 +1435,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1433,6 +1450,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1447,6 +1465,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1461,6 +1480,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1475,6 +1495,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1489,6 +1510,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm: FreeTrialPricingTerm;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1503,6 +1525,7 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm: FixedUpfrontPricingTerm;
       variablePaymentTerm?: never;
+      netPaymentTerm?: never;
     }
   | {
       legalTerm?: never;
@@ -1517,6 +1540,22 @@ export type AcceptedTerm =
       freeTrialPricingTerm?: never;
       fixedUpfrontPricingTerm?: never;
       variablePaymentTerm: VariablePaymentTerm;
+      netPaymentTerm?: never;
+    }
+  | {
+      legalTerm?: never;
+      supportTerm?: never;
+      renewalTerm?: never;
+      usageBasedPricingTerm?: never;
+      configurableUpfrontPricingTerm?: never;
+      byolPricingTerm?: never;
+      recurringPaymentTerm?: never;
+      validityTerm?: never;
+      paymentScheduleTerm?: never;
+      freeTrialPricingTerm?: never;
+      fixedUpfrontPricingTerm?: never;
+      variablePaymentTerm?: never;
+      netPaymentTerm: NetPaymentTerm;
     };
 export const AcceptedTerm = /*@__PURE__*/ S.Union([
   S.Struct({ legalTerm: LegalTerm }),
@@ -1531,6 +1570,7 @@ export const AcceptedTerm = /*@__PURE__*/ S.Union([
   S.Struct({ freeTrialPricingTerm: FreeTrialPricingTerm }),
   S.Struct({ fixedUpfrontPricingTerm: FixedUpfrontPricingTerm }),
   S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
+  S.Struct({ netPaymentTerm: NetPaymentTerm }),
 ]);
 export type AcceptedTermList = AcceptedTerm[];
 export const AcceptedTermList = /*@__PURE__*/ S.Array(AcceptedTerm);

@@ -1575,6 +1575,24 @@ export const CanaryConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CanaryConfiguration",
 }) as any as S.Schema<CanaryConfiguration>;
+export type HealthyPercentInteger = number;
+export type ServiceRevisionCleanup = "BLOCKING" | "DEFERRED" | (string & {});
+export const ServiceRevisionCleanup = /*@__PURE__*/ S.String;
+
+export interface DeploymentEarlySuccessCriteria {
+  enable: boolean;
+  healthyPercent?: number;
+  sourceServiceRevisionCleanup?: ServiceRevisionCleanup;
+}
+export const DeploymentEarlySuccessCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enable: S.Boolean,
+    healthyPercent: S.optional(S.Number),
+    sourceServiceRevisionCleanup: S.optional(ServiceRevisionCleanup),
+  }),
+).annotate({
+  identifier: "DeploymentEarlySuccessCriteria",
+}) as any as S.Schema<DeploymentEarlySuccessCriteria>;
 export interface DeploymentConfiguration {
   deploymentCircuitBreaker?: DeploymentCircuitBreaker;
   maximumPercent?: number;
@@ -1585,6 +1603,7 @@ export interface DeploymentConfiguration {
   lifecycleHooks?: DeploymentLifecycleHook[];
   linearConfiguration?: LinearConfiguration;
   canaryConfiguration?: CanaryConfiguration;
+  earlySuccessCriteria?: DeploymentEarlySuccessCriteria;
 }
 export const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1597,6 +1616,7 @@ export const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
     lifecycleHooks: S.optional(DeploymentLifecycleHookList),
     linearConfiguration: S.optional(LinearConfiguration),
     canaryConfiguration: S.optional(CanaryConfiguration),
+    earlySuccessCriteria: S.optional(DeploymentEarlySuccessCriteria),
   }),
 ).annotate({
   identifier: "DeploymentConfiguration",
@@ -3510,6 +3530,7 @@ export type InstanceHealthCheckType =
   | "CONTAINER_RUNTIME"
   | "ACCELERATED_COMPUTE"
   | "DAEMON"
+  | "AGENT_CONNECTIVITY"
   | (string & {});
 export const InstanceHealthCheckType = /*@__PURE__*/ S.String;
 
@@ -4841,6 +4862,22 @@ export const ECSManagedResources = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ECSManagedResources",
 }) as any as S.Schema<ECSManagedResources>;
+export interface RuntimePlatformOverride {
+  cpuArchitecture?: string;
+}
+export const RuntimePlatformOverride = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ cpuArchitecture: S.optional(S.String) }),
+).annotate({
+  identifier: "RuntimePlatformOverride",
+}) as any as S.Schema<RuntimePlatformOverride>;
+export interface ServiceRevisionOverrides {
+  runtimePlatform?: RuntimePlatformOverride;
+}
+export const ServiceRevisionOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ runtimePlatform: S.optional(RuntimePlatformOverride) }),
+).annotate({
+  identifier: "ServiceRevisionOverrides",
+}) as any as S.Schema<ServiceRevisionOverrides>;
 export interface ServiceRevision {
   serviceRevisionArn?: string;
   serviceArn?: string;
@@ -4862,6 +4899,7 @@ export interface ServiceRevision {
   vpcLatticeConfigurations?: VpcLatticeConfiguration[];
   resolvedConfiguration?: ResolvedConfiguration;
   ecsManagedResources?: ECSManagedResources;
+  overrides?: ServiceRevisionOverrides;
   monitoring?: MonitoringConfiguration;
 }
 export const ServiceRevision = /*@__PURE__*/ S.suspend(() =>
@@ -4886,6 +4924,7 @@ export const ServiceRevision = /*@__PURE__*/ S.suspend(() =>
     vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
     resolvedConfiguration: S.optional(ResolvedConfiguration),
     ecsManagedResources: S.optional(ECSManagedResources),
+    overrides: S.optional(ServiceRevisionOverrides),
     monitoring: S.optional(MonitoringConfiguration),
   }),
 ).annotate({
@@ -5195,6 +5234,7 @@ export type TaskStopCode =
   | "ServiceSchedulerInitiated"
   | "SpotInterruption"
   | "TerminationNotice"
+  | "InfrastructureHealth"
   | (string & {});
 export const TaskStopCode = /*@__PURE__*/ S.String;
 

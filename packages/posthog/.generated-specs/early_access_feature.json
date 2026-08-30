@@ -93,7 +93,7 @@
           }
         },
         "stage": {
-          "target": "com.posthog.early_access_feature#StageEnum",
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureStageEnum",
           "traits": {
             "smithy.api#documentation": "Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.\n\n* `draft` - draft\n* `concept` - concept\n* `alpha` - alpha\n* `beta` - beta\n* `general-availability` - general availability\n* `archived` - archived"
           }
@@ -112,9 +112,32 @@
         },
         "created_at": {
           "target": "smithy.api#String"
+        },
+        "created_by": {
+          "target": "com.posthog.early_access_feature#UserBasic",
+          "traits": {
+            "smithy.api#documentation": "The user who created this early access feature. Null for features created before creator tracking was added.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "assignee": {
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureAssignee",
+          "traits": {
+            "smithy.api#documentation": "The person or role responsible for this feature, e.g. {\"type\": \"user\", \"id\": 123} or {\"type\": \"role\", \"id\": \"<role uuid>\"}. Defaults to the creator. Send null to unassign.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "user_access_level": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The effective access level the user has for this object",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
+      }
     },
     "com.posthog.early_access_feature#MinimalFeatureFlag": {
       "type": "structure",
@@ -275,7 +298,7 @@
       },
       "traits": {}
     },
-    "com.posthog.early_access_feature#StageEnum": {
+    "com.posthog.early_access_feature#EarlyAccessFeatureStageEnum": {
       "type": "enum",
       "members": {
         "DRAFT": {
@@ -329,6 +352,179 @@
       },
       "traits": {
         "smithy.api#documentation": "Feature flag payload for this early access feature"
+      }
+    },
+    "com.posthog.early_access_feature#UserBasic": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer"
+        },
+        "uuid": {
+          "target": "smithy.api#String"
+        },
+        "distinct_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "first_name": {
+          "target": "smithy.api#String"
+        },
+        "last_name": {
+          "target": "smithy.api#String"
+        },
+        "email": {
+          "target": "smithy.api#String"
+        },
+        "is_email_verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hedgehog_config": {
+          "target": "com.posthog.early_access_feature#UserBasicHedgehogConfigMap",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "role_at_organization": {
+          "target": "com.posthog.early_access_feature#UserBasicRoleAtOrganization",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.early_access_feature#UserBasicHedgehogConfigMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.early_access_feature#RoleAtOrganizationEnum": {
+      "type": "enum",
+      "members": {
+        "ENGINEERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "engineering"
+          }
+        },
+        "DATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "data"
+          }
+        },
+        "PRODUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "product"
+          }
+        },
+        "FOUNDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "founder"
+          }
+        },
+        "LEADERSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "leadership"
+          }
+        },
+        "MARKETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketing"
+          }
+        },
+        "SALES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sales"
+          }
+        },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "other"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
+      }
+    },
+    "com.posthog.early_access_feature#UserBasicRoleAtOrganization": {
+      "type": "union",
+      "members": {
+        "RoleAtOrganizationEnum": {
+          "target": "com.posthog.early_access_feature#RoleAtOrganizationEnum"
+        },
+        "BlankEnum": {
+          "target": "com.posthog.early_access_feature#BlankEnum"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.early_access_feature#EarlyAccessFeatureAssigneeType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ROLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "role"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.early_access_feature#EarlyAccessFeatureAssigneeId": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Integer"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.early_access_feature#EarlyAccessFeatureAssignee": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureAssigneeType"
+        },
+        "id": {
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureAssigneeId"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The person or role responsible for this feature, e.g. {\"type\": \"user\", \"id\": 123} or {\"type\": \"role\", \"id\": \"<role uuid>\"}. Defaults to the creator. Send null to unassign."
       }
     },
     "com.posthog.early_access_feature#PaginatedEarlyAccessFeatureListResultsList": {
@@ -389,7 +585,7 @@
           }
         },
         "stage": {
-          "target": "com.posthog.early_access_feature#StageEnum",
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureStageEnum",
           "traits": {
             "smithy.api#documentation": "Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.\n\n* `draft` - draft\n* `concept` - concept\n* `alpha` - alpha\n* `beta` - beta\n* `general-availability` - general availability\n* `archived` - archived"
           }
@@ -439,7 +635,7 @@
           }
         },
         "stage": {
-          "target": "com.posthog.early_access_feature#StageEnum",
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureStageEnum",
           "traits": {
             "smithy.api#documentation": "Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.\n\n* `draft` - draft\n* `concept` - concept\n* `alpha` - alpha\n* `beta` - beta\n* `general-availability` - general availability\n* `archived` - archived"
           }
@@ -459,11 +655,78 @@
         "created_at": {
           "target": "smithy.api#String"
         },
+        "created_by": {
+          "target": "com.posthog.early_access_feature#UserBasic",
+          "traits": {
+            "smithy.api#documentation": "The user who created this early access feature. Null for features created before creator tracking was added.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "assignee": {
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnlyOutputAssignee",
+          "traits": {
+            "smithy.api#documentation": "The person or role responsible for this feature, e.g. {\"type\": \"user\", \"id\": 123} or {\"type\": \"role\", \"id\": \"<role uuid>\"}. Defaults to the creator. Send null to unassign.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "feature_flag": {
           "target": "com.posthog.early_access_feature#MinimalFeatureFlag"
+        },
+        "user_access_level": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The effective access level the user has for this object",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
+      }
+    },
+    "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ROLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "role"
+          }
         }
       },
       "traits": {}
+    },
+    "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Integer"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnlyOutputAssignee": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType"
+        },
+        "id": {
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The person or role responsible for this feature, e.g. {\"type\": \"user\", \"id\": 123} or {\"type\": \"role\", \"id\": \"<role uuid>\"}. Defaults to the creator. Send null to unassign."
+      }
     },
     "com.posthog.early_access_feature#EarlyAccessFeatureCreate": {
       "type": "operation",
@@ -572,7 +835,7 @@
           }
         },
         "stage": {
-          "target": "com.posthog.early_access_feature#StageEnum",
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureStageEnum",
           "traits": {
             "smithy.api#documentation": "Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.\n\n* `draft` - draft\n* `concept` - concept\n* `alpha` - alpha\n* `beta` - beta\n* `general-availability` - general availability\n* `archived` - archived"
           }
@@ -647,7 +910,7 @@
           }
         },
         "stage": {
-          "target": "com.posthog.early_access_feature#StageEnum",
+          "target": "com.posthog.early_access_feature#EarlyAccessFeatureStageEnum",
           "traits": {
             "smithy.api#documentation": "Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.\n\n* `draft` - draft\n* `concept` - concept\n* `alpha` - alpha\n* `beta` - beta\n* `general-availability` - general availability\n* `archived` - archived"
           }

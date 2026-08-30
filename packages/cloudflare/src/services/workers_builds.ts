@@ -1202,7 +1202,10 @@ export const GetBuildsByVersionResponseBuildsValueBuildOutcome =
   /*@__PURE__*/ S.String;
 
 export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataBuildTriggerSource =
-  "push" | "pull_request" | "manual" | "api";
+  | "push"
+  | "pull_request"
+  | "manual"
+  | "api";
 export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataBuildTriggerSource =
   /*@__PURE__*/ S.String;
 
@@ -1215,7 +1218,9 @@ export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataEnvironmen
   ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataEnvironmentVariablesMap>;
 
 export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataProviderType =
-  "github" | "gitlab" | "gitlab_internal";
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
 export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
@@ -1329,7 +1334,9 @@ export const GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList =
   ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList>;
 
 export type GetBuildsByVersionResponseBuildsValueTriggerRepoConnectionProviderType =
-  "github" | "gitlab" | "gitlab_internal";
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
 export const GetBuildsByVersionResponseBuildsValueTriggerRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
@@ -1546,7 +1553,10 @@ export const GetLatestBuildsResponseBuildsValueBuildOutcome =
   /*@__PURE__*/ S.String;
 
 export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataBuildTriggerSource =
-  "push" | "pull_request" | "manual" | "api";
+  | "push"
+  | "pull_request"
+  | "manual"
+  | "api";
 export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataBuildTriggerSource =
   /*@__PURE__*/ S.String;
 
@@ -1559,7 +1569,9 @@ export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataEnvironmentVa
   ) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadataEnvironmentVariablesMap>;
 
 export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataProviderType =
-  "github" | "gitlab" | "gitlab_internal";
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
 export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
@@ -1672,7 +1684,9 @@ export const GetLatestBuildsResponseBuildsValueTriggerPathIncludesList =
   ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerPathIncludesList>;
 
 export type GetLatestBuildsResponseBuildsValueTriggerRepoConnectionProviderType =
-  "github" | "gitlab" | "gitlab_internal";
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
 export const GetLatestBuildsResponseBuildsValueTriggerRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 

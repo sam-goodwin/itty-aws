@@ -208,6 +208,12 @@ export class ComplianceTypeCountLimitExceededException
       httpResponseCode: 400,
     }),
   ) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
+    "ConflictException",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+  ) {}
 export class CustomSchemaCountLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<CustomSchemaCountLimitExceededException>()(
     "CustomSchemaCountLimitExceededException",
@@ -1209,6 +1215,7 @@ export type ResourceTypeForTagging =
   | "OpsMetadata"
   | "Automation"
   | "Association"
+  | "CloudConnector"
   | (string & {});
 export const ResourceTypeForTagging = /*@__PURE__*/ S.String;
 
@@ -1520,6 +1527,8 @@ export const AlarmConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ExcludeAccount = string;
 export type ExcludeAccounts = string[];
 export const ExcludeAccounts = /*@__PURE__*/ S.Array(S.String);
+export type AutomationTargets = Target[];
+export const AutomationTargets = /*@__PURE__*/ S.Array(Target);
 export interface TargetLocation {
   Accounts?: string[];
   Regions?: string[];
@@ -1543,7 +1552,7 @@ export const TargetLocation = /*@__PURE__*/ S.suspend(() =>
     TargetLocationAlarmConfiguration: S.optional(AlarmConfiguration),
     IncludeChildOrganizationUnits: S.optional(S.Boolean),
     ExcludeAccounts: S.optional(ExcludeAccounts),
-    Targets: S.optional(Targets),
+    Targets: S.optional(AutomationTargets),
     TargetsMaxConcurrency: S.optional(S.String),
     TargetsMaxErrors: S.optional(S.String),
   }),
@@ -1897,6 +1906,94 @@ export const CreateAssociationBatchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssociationBatchResult",
 }) as any as S.Schema<CreateAssociationBatchResult>;
+export type DisplayName = string;
+export type CloudConnectorIamRoleArn = string;
+export type CloudConnectorDescription = string;
+export type AzureTenantId = string;
+export type AzureTenantDisplayName = string;
+export type AzureApplicationId = string;
+export type AzureApplicationDisplayName = string;
+export type AzureSubscriptionId = string;
+export type AzureSubscriptionDisplayName = string;
+export interface AzureSubscription {
+  Id: string;
+  DisplayName?: string;
+}
+export const AzureSubscription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String, DisplayName: S.optional(S.String) }),
+).annotate({
+  identifier: "AzureSubscription",
+}) as any as S.Schema<AzureSubscription>;
+export type AzureSubscriptionList = AzureSubscription[];
+export const AzureSubscriptionList = /*@__PURE__*/ S.Array(AzureSubscription);
+export type ConfigurationTargets = { Subscriptions: AzureSubscription[] };
+export const ConfigurationTargets = /*@__PURE__*/ S.Union([
+  S.Struct({ Subscriptions: AzureSubscriptionList }),
+]);
+export interface AzureConfiguration {
+  TenantId: string;
+  TenantDisplayName?: string;
+  ApplicationId: string;
+  ApplicationDisplayName?: string;
+  Targets?: ConfigurationTargets;
+}
+export const AzureConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TenantId: S.String,
+    TenantDisplayName: S.optional(S.String),
+    ApplicationId: S.String,
+    ApplicationDisplayName: S.optional(S.String),
+    Targets: S.optional(ConfigurationTargets),
+  }),
+).annotate({
+  identifier: "AzureConfiguration",
+}) as any as S.Schema<AzureConfiguration>;
+export type CloudConnectorConfiguration = {
+  AzureConfiguration: AzureConfiguration;
+};
+export const CloudConnectorConfiguration = /*@__PURE__*/ S.Union([
+  S.Struct({ AzureConfiguration: AzureConfiguration }),
+]);
+export type ConfigConnectorArn = string;
+export interface CreateCloudConnectorRequest {
+  DisplayName: string;
+  RoleArn: string;
+  Description?: string;
+  Configuration: CloudConnectorConfiguration;
+  ConfigConnectorArn: string;
+  Tags?: Tag[];
+}
+export const CreateCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DisplayName: S.String,
+    RoleArn: S.String,
+    Description: S.optional(S.String),
+    Configuration: CloudConnectorConfiguration,
+    ConfigConnectorArn: S.String,
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateCloudConnectorRequest",
+}) as any as S.Schema<CreateCloudConnectorRequest>;
+export type CloudConnectorId = string;
+export interface CreateCloudConnectorResult {
+  CloudConnectorId?: string;
+}
+export const CreateCloudConnectorResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CloudConnectorId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "CreateCloudConnectorResult",
+}) as any as S.Schema<CreateCloudConnectorResult>;
 export type DocumentContent = string;
 export type RequireType = string;
 export type DocumentVersionName = string;
@@ -2773,6 +2870,32 @@ export const DeleteAssociationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAssociationResult",
 }) as any as S.Schema<DeleteAssociationResult>;
+export interface DeleteCloudConnectorRequest {
+  CloudConnectorId: string;
+}
+export const DeleteCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CloudConnectorId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteCloudConnectorRequest",
+}) as any as S.Schema<DeleteCloudConnectorRequest>;
+export interface DeleteCloudConnectorResult {
+  CloudConnectorId?: string;
+}
+export const DeleteCloudConnectorResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CloudConnectorId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "DeleteCloudConnectorResult",
+}) as any as S.Schema<DeleteCloudConnectorResult>;
 export interface DeleteDocumentRequest {
   Name: string;
   DocumentVersion?: string;
@@ -3755,6 +3878,7 @@ export interface AutomationExecutionMetadata {
   CurrentStepName?: string;
   CurrentAction?: string;
   FailureMessage?: string;
+  WarningMessage?: string;
   TargetParameterName?: string;
   Targets?: Target[];
   TargetMaps?: { [key: string]: string[] | undefined }[];
@@ -3793,6 +3917,7 @@ export const AutomationExecutionMetadata = /*@__PURE__*/ S.suspend(() =>
     CurrentStepName: S.optional(S.String),
     CurrentAction: S.optional(S.String),
     FailureMessage: S.optional(S.String),
+    WarningMessage: S.optional(S.String),
     TargetParameterName: S.optional(S.String),
     Targets: S.optional(Targets),
     TargetMaps: S.optional(TargetMaps),
@@ -3945,6 +4070,7 @@ export interface StepExecution {
   Outputs?: { [key: string]: string[] | undefined };
   Response?: string;
   FailureMessage?: string;
+  WarningMessage?: string;
   FailureDetails?: FailureDetails;
   StepExecutionId?: string;
   OverriddenParameters?: { [key: string]: string[] | undefined };
@@ -3976,6 +4102,7 @@ export const StepExecution = /*@__PURE__*/ S.suspend(() =>
     Outputs: S.optional(AutomationParameterMap),
     Response: S.optional(S.String),
     FailureMessage: S.optional(S.String),
+    WarningMessage: S.optional(S.String),
     FailureDetails: S.optional(FailureDetails),
     StepExecutionId: S.optional(S.String),
     OverriddenParameters: S.optional(AutomationParameterMap),
@@ -4581,9 +4708,11 @@ export type SourceType =
   | "AWS::EC2::Instance"
   | "AWS::IoT::Thing"
   | "AWS::SSM::ManagedInstance"
+  | "Microsoft.Compute/virtualMachines"
   | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
 
+export type SourceLocation = string;
 export interface InstanceInformation {
   InstanceId?: string;
   PingStatus?: PingStatus;
@@ -4606,6 +4735,7 @@ export interface InstanceInformation {
   AssociationOverview?: InstanceAggregatedAssociationOverview;
   SourceId?: string;
   SourceType?: SourceType;
+  SourceLocation?: string;
 }
 export const InstanceInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4638,6 +4768,7 @@ export const InstanceInformation = /*@__PURE__*/ S.suspend(() =>
     AssociationOverview: S.optional(InstanceAggregatedAssociationOverview),
     SourceId: S.optional(S.String),
     SourceType: S.optional(SourceType),
+    SourceLocation: S.optional(S.String),
   }),
 ).annotate({
   identifier: "InstanceInformation",
@@ -5026,6 +5157,7 @@ export type InstanceState = string;
 export type Architecture = string;
 export type PlatformName = string;
 export type PlatformVersion = string;
+export type AvailabilityZone = string;
 export interface InstanceProperty {
   Name?: string;
   InstanceId?: string;
@@ -5053,6 +5185,8 @@ export interface InstanceProperty {
   AssociationOverview?: InstanceAggregatedAssociationOverview;
   SourceId?: string;
   SourceType?: SourceType;
+  SourceLocation?: string;
+  AvailabilityZone?: string;
 }
 export const InstanceProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5090,6 +5224,8 @@ export const InstanceProperty = /*@__PURE__*/ S.suspend(() =>
     AssociationOverview: S.optional(InstanceAggregatedAssociationOverview),
     SourceId: S.optional(S.String),
     SourceType: S.optional(SourceType),
+    SourceLocation: S.optional(S.String),
+    AvailabilityZone: S.optional(S.String),
   }),
 ).annotate({
   identifier: "InstanceProperty",
@@ -6659,6 +6795,7 @@ export interface AutomationExecution {
   Parameters?: { [key: string]: string[] | undefined };
   Outputs?: { [key: string]: string[] | undefined };
   FailureMessage?: string;
+  WarningMessage?: string;
   Mode?: ExecutionMode;
   ParentAutomationExecutionId?: string;
   ExecutedBy?: string;
@@ -6701,6 +6838,7 @@ export const AutomationExecution = /*@__PURE__*/ S.suspend(() =>
     Parameters: S.optional(AutomationParameterMap),
     Outputs: S.optional(AutomationParameterMap),
     FailureMessage: S.optional(S.String),
+    WarningMessage: S.optional(S.String),
     Mode: S.optional(ExecutionMode),
     ParentAutomationExecutionId: S.optional(S.String),
     ExecutedBy: S.optional(S.String),
@@ -6777,6 +6915,49 @@ export const GetCalendarStateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCalendarStateResponse",
 }) as any as S.Schema<GetCalendarStateResponse>;
+export interface GetCloudConnectorRequest {
+  CloudConnectorId: string;
+}
+export const GetCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CloudConnectorId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCloudConnectorRequest",
+}) as any as S.Schema<GetCloudConnectorRequest>;
+export type CloudConnectorArn = string;
+export interface GetCloudConnectorResult {
+  CloudConnectorArn?: string;
+  DisplayName?: string;
+  Description?: string;
+  RoleArn?: string;
+  Configuration?: CloudConnectorConfiguration;
+  ConfigConnectorArn?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const GetCloudConnectorResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudConnectorArn: S.optional(S.String),
+    DisplayName: S.optional(S.String),
+    Description: S.optional(S.String),
+    RoleArn: S.optional(S.String),
+    Configuration: S.optional(CloudConnectorConfiguration),
+    ConfigConnectorArn: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetCloudConnectorResult",
+}) as any as S.Schema<GetCloudConnectorResult>;
 export type CommandPluginName = string;
 export interface GetCommandInvocationRequest {
   CommandId: string;
@@ -8618,6 +8799,7 @@ export type AssociationFilterKey =
   | "LastExecutedAfter"
   | "AssociationName"
   | "ResourceGroupName"
+  | "CloudConnectorId"
   | (string & {});
 export const AssociationFilterKey = /*@__PURE__*/ S.String;
 
@@ -8803,6 +8985,91 @@ export const ListAssociationVersionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssociationVersionsResult",
 }) as any as S.Schema<ListAssociationVersionsResult>;
+export type CloudConnectorMaxResults = number;
+export type CloudConnectorFilterKey =
+  | "SubscriptionId"
+  | "TenantId"
+  | (string & {});
+export const CloudConnectorFilterKey = /*@__PURE__*/ S.String;
+
+export type CloudConnectorFilterValue = string;
+export type CloudConnectorFilterValues = string[];
+export const CloudConnectorFilterValues = /*@__PURE__*/ S.Array(S.String);
+export interface CloudConnectorFilter {
+  FilterKey?: CloudConnectorFilterKey;
+  FilterValues?: string[];
+}
+export const CloudConnectorFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FilterKey: S.optional(CloudConnectorFilterKey),
+    FilterValues: S.optional(CloudConnectorFilterValues),
+  }),
+).annotate({
+  identifier: "CloudConnectorFilter",
+}) as any as S.Schema<CloudConnectorFilter>;
+export type CloudConnectorFilterList = CloudConnectorFilter[];
+export const CloudConnectorFilterList =
+  /*@__PURE__*/ S.Array(CloudConnectorFilter);
+export interface ListCloudConnectorsRequest {
+  MaxResults?: number;
+  NextToken?: string;
+  Filters?: CloudConnectorFilter[];
+}
+export const ListCloudConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    Filters: S.optional(CloudConnectorFilterList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCloudConnectorsRequest",
+}) as any as S.Schema<ListCloudConnectorsRequest>;
+export interface CloudConnectorSummary {
+  CloudConnectorId?: string;
+  DisplayName?: string;
+  Description?: string;
+  RoleArn?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const CloudConnectorSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudConnectorId: S.optional(S.String),
+    DisplayName: S.optional(S.String),
+    Description: S.optional(S.String),
+    RoleArn: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "CloudConnectorSummary",
+}) as any as S.Schema<CloudConnectorSummary>;
+export type CloudConnectorSummaryList = CloudConnectorSummary[];
+export const CloudConnectorSummaryList = /*@__PURE__*/ S.Array(
+  CloudConnectorSummary,
+);
+export interface ListCloudConnectorsResult {
+  CloudConnectors?: CloudConnectorSummary[];
+  NextToken?: string;
+}
+export const ListCloudConnectorsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudConnectors: S.optional(CloudConnectorSummaryList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListCloudConnectorsResult",
+}) as any as S.Schema<ListCloudConnectorsResult>;
 export type CommandMaxResults = number;
 export type CommandFilterKey =
   | "InvokedAfter"
@@ -9677,6 +9944,11 @@ export type NodeFilterKey =
   | "OrganizationalUnitPath"
   | "Region"
   | "AccountId"
+  | "SourceType"
+  | "SourceId"
+  | "SourceLocation"
+  | "AvailabilityZone"
+  | "AvailabilityZoneId"
   | (string & {});
 export const NodeFilterKey = /*@__PURE__*/ S.String;
 
@@ -9760,6 +10032,8 @@ export type InstanceStatus = string;
 export type ManagedStatus = "All" | "Managed" | "Unmanaged" | (string & {});
 export const ManagedStatus = /*@__PURE__*/ S.String;
 
+export type NodeName = string;
+export type AvailabilityZoneId = string;
 export interface InstanceInfo {
   AgentType?: string;
   AgentVersion?: string;
@@ -9767,10 +10041,16 @@ export interface InstanceInfo {
   InstanceStatus?: string;
   IpAddress?: string | redacted.Redacted<string>;
   ManagedStatus?: ManagedStatus;
+  Name?: string;
   PlatformType?: PlatformType;
   PlatformName?: string;
   PlatformVersion?: string;
   ResourceType?: ResourceType;
+  SourceType?: SourceType;
+  SourceId?: string;
+  SourceLocation?: string;
+  AvailabilityZone?: string;
+  AvailabilityZoneId?: string;
 }
 export const InstanceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9780,10 +10060,16 @@ export const InstanceInfo = /*@__PURE__*/ S.suspend(() =>
     InstanceStatus: S.optional(S.String),
     IpAddress: S.optional(SensitiveString),
     ManagedStatus: S.optional(ManagedStatus),
+    Name: S.optional(S.String),
     PlatformType: S.optional(PlatformType),
     PlatformName: S.optional(S.String),
     PlatformVersion: S.optional(S.String),
     ResourceType: S.optional(ResourceType),
+    SourceType: S.optional(SourceType),
+    SourceId: S.optional(S.String),
+    SourceLocation: S.optional(S.String),
+    AvailabilityZone: S.optional(S.String),
+    AvailabilityZoneId: S.optional(S.String),
   }),
 ).annotate({ identifier: "InstanceInfo" }) as any as S.Schema<InstanceInfo>;
 export type NodeType = { Instance: InstanceInfo };
@@ -9833,6 +10119,8 @@ export type NodeAttributeName =
   | "PlatformVersion"
   | "Region"
   | "ResourceType"
+  | "SourceType"
+  | "AvailabilityZone"
   | (string & {});
 export const NodeAttributeName = /*@__PURE__*/ S.String;
 
@@ -11066,7 +11354,7 @@ export const StartAutomationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
     ClientToken: S.optional(S.String),
     Mode: S.optional(ExecutionMode),
     TargetParameterName: S.optional(S.String),
-    Targets: S.optional(Targets),
+    Targets: S.optional(AutomationTargets),
     TargetMaps: S.optional(TargetMaps),
     MaxConcurrency: S.optional(S.String),
     MaxErrors: S.optional(S.String),
@@ -11159,7 +11447,7 @@ export const AutomationExecutionInputs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Parameters: S.optional(AutomationParameterMap),
     TargetParameterName: S.optional(S.String),
-    Targets: S.optional(Targets),
+    Targets: S.optional(AutomationTargets),
     TargetMaps: S.optional(TargetMaps),
     TargetLocations: S.optional(TargetLocations),
     TargetLocationsURL: S.optional(S.String),
@@ -11451,6 +11739,40 @@ export const UpdateAssociationStatusResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAssociationStatusResult",
 }) as any as S.Schema<UpdateAssociationStatusResult>;
+export interface UpdateCloudConnectorRequest {
+  CloudConnectorId: string;
+  DisplayName?: string;
+  Configuration?: CloudConnectorConfiguration;
+  Description?: string;
+}
+export const UpdateCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudConnectorId: S.String,
+    DisplayName: S.optional(S.String),
+    Configuration: S.optional(CloudConnectorConfiguration),
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateCloudConnectorRequest",
+}) as any as S.Schema<UpdateCloudConnectorRequest>;
+export interface UpdateCloudConnectorResult {
+  CloudConnectorId?: string;
+}
+export const UpdateCloudConnectorResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CloudConnectorId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "UpdateCloudConnectorResult",
+}) as any as S.Schema<UpdateCloudConnectorResult>;
 export interface UpdateDocumentRequest {
   Content: string;
   Attachments?: AttachmentsSource[];
@@ -12070,6 +12392,97 @@ export const UpdateServiceSettingResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceSettingResult",
 }) as any as S.Schema<UpdateServiceSettingResult>;
+export type ValidateCloudConnectorMaxResults = number;
+export interface ValidateCloudConnectorRequest {
+  CloudConnectorId: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ValidateCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudConnectorId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ValidateCloudConnectorRequest",
+}) as any as S.Schema<ValidateCloudConnectorRequest>;
+export type ValidationFindingType = "INFO" | "WARN" | "ERROR" | (string & {});
+export const ValidationFindingType = /*@__PURE__*/ S.String;
+
+export type ValidationFindingCode =
+  | "TargetInaccessible"
+  | "TargetUnusable"
+  | "TargetStateWarning"
+  | "AwsRoleAssumptionFailed"
+  | "WebIdentityTokenFailed"
+  | "OutboundWebIdentityFederationDisabled"
+  | "ProviderCredentialCreationFailed"
+  | "TenantSummary"
+  | "SubscriptionAccessible"
+  | (string & {});
+export const ValidationFindingCode = /*@__PURE__*/ S.String;
+
+export type ValidationFindingScopeType =
+  | "azure:tenant"
+  | "azure:subscription"
+  | (string & {});
+export const ValidationFindingScopeType = /*@__PURE__*/ S.String;
+
+export interface ValidationFindingScope {
+  Type?: ValidationFindingScopeType;
+  Id?: string;
+}
+export const ValidationFindingScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.optional(ValidationFindingScopeType),
+    Id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ValidationFindingScope",
+}) as any as S.Schema<ValidationFindingScope>;
+export interface ValidationFinding {
+  Type?: ValidationFindingType;
+  Code?: ValidationFindingCode;
+  Message?: string;
+  ProviderMessage?: string;
+  Scope?: ValidationFindingScope;
+}
+export const ValidationFinding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.optional(ValidationFindingType),
+    Code: S.optional(ValidationFindingCode),
+    Message: S.optional(S.String),
+    ProviderMessage: S.optional(S.String),
+    Scope: S.optional(ValidationFindingScope),
+  }),
+).annotate({
+  identifier: "ValidationFinding",
+}) as any as S.Schema<ValidationFinding>;
+export type ValidationFindingList = ValidationFinding[];
+export const ValidationFindingList = /*@__PURE__*/ S.Array(ValidationFinding);
+export interface ValidateCloudConnectorResult {
+  ValidationFindings?: ValidationFinding[];
+  NextToken?: string;
+}
+export const ValidateCloudConnectorResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ValidationFindings: S.optional(ValidationFindingList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ValidateCloudConnectorResult",
+}) as any as S.Schema<ValidateCloudConnectorResult>;
 export type OpsItemParameterNamesList = string[];
 export const OpsItemParameterNamesList = /*@__PURE__*/ S.Array(S.String);
 export type ResourcePolicyParameterNamesList = string[];
@@ -12355,6 +12768,33 @@ export const createAssociationBatch: API.OperationMethod<
   operationName: "CreateAssociationBatch",
 }));
 
+export type CreateCloudConnectorError =
+  | ConflictException
+  | InternalServerError
+  | ServiceQuotaExceededException
+  | CommonErrors;
+/**
+ * Creates a cloud connector that establishes a connection between Systems Manager and a third-party
+ * cloud environment.
+ */
+export const createCloudConnector: API.OperationMethod<
+  CreateCloudConnectorRequest,
+  CreateCloudConnectorResult,
+  CreateCloudConnectorError,
+  Creds | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCloudConnectorRequest,
+  output: CreateCloudConnectorResult,
+  errors: [
+    ConflictException,
+    InternalServerError,
+    ServiceQuotaExceededException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateCloudConnector",
+}));
+
 export type CreateDocumentError =
   | DocumentAlreadyExists
   | DocumentLimitExceeded
@@ -12638,6 +13078,28 @@ export const deleteAssociation: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteAssociation",
+}));
+
+export type DeleteCloudConnectorError =
+  | ConflictException
+  | InternalServerError
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Deletes a cloud connector.
+ */
+export const deleteCloudConnector: API.OperationMethod<
+  DeleteCloudConnectorRequest,
+  DeleteCloudConnectorResult,
+  DeleteCloudConnectorError,
+  Creds | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCloudConnectorRequest,
+  output: DeleteCloudConnectorResult,
+  errors: [ConflictException, InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteCloudConnector",
 }));
 
 export type DeleteDocumentError =
@@ -14219,6 +14681,27 @@ export const getCalendarState: API.OperationMethod<
   operationName: "GetCalendarState",
 }));
 
+export type GetCloudConnectorError =
+  | InternalServerError
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Returns detailed information about a cloud connector.
+ */
+export const getCloudConnector: API.OperationMethod<
+  GetCloudConnectorRequest,
+  GetCloudConnectorResult,
+  GetCloudConnectorError,
+  Creds | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCloudConnectorRequest,
+  output: GetCloudConnectorResult,
+  errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetCloudConnector",
+}));
+
 export type GetCommandInvocationError =
   | InternalServerError
   | InvalidCommandId
@@ -14676,6 +15159,20 @@ export type GetParameterError =
  * between characters, the request fails with a `ValidationException` error.
  *
  * To get information about more than one parameter at a time, use the GetParameters operation.
+ *
+ * Parameter Store throughput defines the number of API transactions per second (TPS) that
+ * Systems Manager can process. This applies to `GetParameter`,
+ * `GetParameters`, and `PutParameter` API calls for your Amazon Web Services account and
+ * Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable
+ * for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently
+ * or operate at smaller scale can use this default setting without additional cost.
+ *
+ * For higher-volume workloads, you can enable higher throughput. This increases the maximum
+ * number of supported transactions per second for your account and Region. Increased throughput
+ * supports applications and workloads that need concurrent access to multiple parameters. If you
+ * experience `ThrottlingException: Rate exceeded` errors, enable higher throughput. For
+ * more information, see Changing Parameter Store
+ * throughput.
  */
 export const getParameter: API.OperationMethod<
   GetParameterRequest,
@@ -14752,6 +15249,20 @@ export type GetParametersError =
  * Parameter names can't contain spaces. The service removes any spaces specified for the
  * beginning or end of a parameter name. If the specified name for a parameter contains spaces
  * between characters, the request fails with a `ValidationException` error.
+ *
+ * Parameter Store throughput defines the number of API transactions per second (TPS) that
+ * Systems Manager can process. This applies to `GetParameter`,
+ * `GetParameters`, and `PutParameter` API calls for your Amazon Web Services account and
+ * Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable
+ * for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently
+ * or operate at smaller scale can use this default setting without additional cost.
+ *
+ * For higher-volume workloads, you can enable higher throughput. This increases the maximum
+ * number of supported transactions per second for your account and Region. Increased throughput
+ * supports applications and workloads that need concurrent access to multiple parameters. If you
+ * experience `ThrottlingException: Rate exceeded` errors, enable higher throughput. For
+ * more information, see Changing Parameter Store
+ * throughput.
  */
 export const getParameters: API.OperationMethod<
   GetParametersRequest,
@@ -15042,6 +15553,31 @@ export const listAssociationVersions: API.PaginatedOperationMethod<
     inputToken: "NextToken",
     outputToken: "NextToken",
     items: "AssociationVersions",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;
+
+export type ListCloudConnectorsError = InternalServerError | CommonErrors;
+/**
+ * Returns a list of cloud connectors in the current Amazon Web Services account and Amazon Web Services Region.
+ */
+export const listCloudConnectors: API.PaginatedOperationMethod<
+  ListCloudConnectorsRequest,
+  ListCloudConnectorsResult,
+  ListCloudConnectorsError,
+  Creds | HttpClient.HttpClient,
+  CloudConnectorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListCloudConnectorsRequest,
+  output: ListCloudConnectorsResult,
+  errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListCloudConnectors",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "CloudConnectors",
     pageSize: "MaxResults",
   } as const,
 })) as any;
@@ -15761,6 +16297,20 @@ export type PutParameterError =
   | CommonErrors;
 /**
  * Create or update a parameter in Parameter Store.
+ *
+ * Parameter Store throughput defines the number of API transactions per second (TPS) that
+ * Systems Manager can process. This applies to `GetParameter`,
+ * `GetParameters`, and `PutParameter` API calls for your Amazon Web Services account and
+ * Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable
+ * for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently
+ * or operate at smaller scale can use this default setting without additional cost.
+ *
+ * For higher-volume workloads, you can enable higher throughput. This increases the maximum
+ * number of supported transactions per second for your account and Region. Increased throughput
+ * supports applications and workloads that need concurrent access to multiple parameters. If you
+ * experience `ThrottlingException: Rate exceeded` errors, enable higher throughput. For
+ * more information, see Changing Parameter Store
+ * throughput.
  */
 export const putParameter: API.OperationMethod<
   PutParameterRequest,
@@ -16488,6 +17038,28 @@ export const updateAssociationStatus: API.OperationMethod<
   operationName: "UpdateAssociationStatus",
 }));
 
+export type UpdateCloudConnectorError =
+  | ConflictException
+  | InternalServerError
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Updates an existing cloud connector with new configuration details.
+ */
+export const updateCloudConnector: API.OperationMethod<
+  UpdateCloudConnectorRequest,
+  UpdateCloudConnectorResult,
+  UpdateCloudConnectorError,
+  Creds | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCloudConnectorRequest,
+  output: UpdateCloudConnectorResult,
+  errors: [ConflictException, InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateCloudConnector",
+}));
+
 export type UpdateDocumentError =
   | DocumentVersionLimitExceeded
   | DuplicateDocumentContent
@@ -16905,3 +17477,31 @@ export const updateServiceSetting: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateServiceSetting",
 }));
+
+export type ValidateCloudConnectorError =
+  | InternalServerError
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Validates the configuration and connectivity of a cloud connector.
+ */
+export const validateCloudConnector: API.PaginatedOperationMethod<
+  ValidateCloudConnectorRequest,
+  ValidateCloudConnectorResult,
+  ValidateCloudConnectorError,
+  Creds | HttpClient.HttpClient,
+  ValidationFinding
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ValidateCloudConnectorRequest,
+  output: ValidateCloudConnectorResult,
+  errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ValidateCloudConnector",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ValidationFindings",
+    pageSize: "MaxResults",
+  } as const,
+})) as any;

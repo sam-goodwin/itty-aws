@@ -821,7 +821,9 @@ export const GetCopilotCodingAgentPermissionsOrganizationRequest =
 
 /** The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`. */
 export type GetCopilotCodingAgentPermissionsOrganizationResponseEnabledRepositories =
-  "all" | "selected" | "none";
+  | "all"
+  | "selected"
+  | "none";
 export const GetCopilotCodingAgentPermissionsOrganizationResponseEnabledRepositories =
   /*@__PURE__*/ S.String;
 
@@ -1550,13 +1552,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypass =
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  "TEAM" | "ROLE";
+  | "TEAM"
+  | "ROLE";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   /*@__PURE__*/ S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  "ALWAYS" | "EXEMPT";
+  | "ALWAYS"
+  | "EXEMPT";
 export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   /*@__PURE__*/ S.String;
 
@@ -2000,7 +2004,9 @@ export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse =
 
 /** The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`. */
 export type SetCopilotCodingAgentPermissionsOrganizationRequestEnabledRepositories =
-  "all" | "selected" | "none";
+  | "all"
+  | "selected"
+  | "none";
 export const SetCopilotCodingAgentPermissionsOrganizationRequestEnabledRepositories =
   /*@__PURE__*/ S.String;
 

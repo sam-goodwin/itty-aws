@@ -1112,6 +1112,7 @@ export interface DescribeInstanceResponse {
   Status?: InstanceStatus;
   StatusReason?: string;
   EncryptionConfigurationDetails?: EncryptionConfigurationDetails;
+  PermissionSetsEnabled?: boolean;
 }
 export const DescribeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1123,6 +1124,7 @@ export const DescribeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     Status: S.optional(InstanceStatus),
     StatusReason: S.optional(S.String),
     EncryptionConfigurationDetails: S.optional(EncryptionConfigurationDetails),
+    PermissionSetsEnabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "DescribeInstanceResponse",
@@ -2234,6 +2236,22 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInstancesRequest",
 }) as any as S.Schema<ListInstancesRequest>;
+export interface RegionMetadata {
+  RegionName?: string;
+  Status?: RegionStatus;
+  AddedDate?: Date;
+  IsPrimaryRegion?: boolean;
+}
+export const RegionMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionName: S.optional(S.String),
+    Status: S.optional(RegionStatus),
+    AddedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    IsPrimaryRegion: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "RegionMetadata" }) as any as S.Schema<RegionMetadata>;
+export type RegionMetadataList = RegionMetadata[];
+export const RegionMetadataList = /*@__PURE__*/ S.Array(RegionMetadata);
 export interface InstanceMetadata {
   InstanceArn?: string;
   IdentityStoreId?: string;
@@ -2242,6 +2260,8 @@ export interface InstanceMetadata {
   CreatedDate?: Date;
   Status?: InstanceStatus;
   StatusReason?: string;
+  PrimaryRegion?: string;
+  Regions?: RegionMetadata[];
 }
 export const InstanceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2252,6 +2272,8 @@ export const InstanceMetadata = /*@__PURE__*/ S.suspend(() =>
     CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Status: S.optional(InstanceStatus),
     StatusReason: S.optional(S.String),
+    PrimaryRegion: S.optional(S.String),
+    Regions: S.optional(RegionMetadataList),
   }),
 ).annotate({
   identifier: "InstanceMetadata",
@@ -2449,22 +2471,6 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRegionsRequest",
 }) as any as S.Schema<ListRegionsRequest>;
-export interface RegionMetadata {
-  RegionName?: string;
-  Status?: RegionStatus;
-  AddedDate?: Date;
-  IsPrimaryRegion?: boolean;
-}
-export const RegionMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RegionName: S.optional(S.String),
-    Status: S.optional(RegionStatus),
-    AddedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IsPrimaryRegion: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RegionMetadata" }) as any as S.Schema<RegionMetadata>;
-export type RegionMetadataList = RegionMetadata[];
-export const RegionMetadataList = /*@__PURE__*/ S.Array(RegionMetadata);
 export interface ListRegionsResponse {
   Regions?: RegionMetadata[];
   NextToken?: string;
@@ -2847,12 +2853,14 @@ export interface UpdateInstanceRequest {
   Name?: string;
   InstanceArn: string;
   EncryptionConfiguration?: EncryptionConfiguration;
+  PermissionSetsEnabled?: boolean;
 }
 export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     InstanceArn: S.String,
     EncryptionConfiguration: S.optional(EncryptionConfiguration),
+    PermissionSetsEnabled: S.optional(S.Boolean),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -5560,6 +5568,14 @@ export type UpdateInstanceError =
   | CommonErrors;
 /**
  * Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account.
+ *
+ * In a single `UpdateInstance` request, you can perform only one of the following operations:
+ *
+ * - Update the encryption configuration of the instance by specifying `EncryptionConfiguration`.
+ *
+ * - Enable permission sets for the instance by specifying `PermissionSetsEnabled`.
+ *
+ * A request that specifies both `EncryptionConfiguration` and `PermissionSetsEnabled` returns a `ValidationException`. To perform both operations, call `UpdateInstance` separately for each. The two calls can be made in parallel.
  */
 export const updateInstance: API.OperationMethod<
   UpdateInstanceRequest,

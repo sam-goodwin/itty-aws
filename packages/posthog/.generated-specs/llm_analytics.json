@@ -517,6 +517,347 @@
         "smithy.api#documentation": "CRUD for clustering job configurations (max 10 per team)."
       }
     },
+    "com.posthog.llm_analytics#EmbeddingNormalizationEnum": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "L2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "l2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `none` - none\n* `l2` - l2"
+      }
+    },
+    "com.posthog.llm_analytics#DimensionalityReductionMethodEnum": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "UMAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "umap"
+          }
+        },
+        "PCA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pca"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `none` - none\n* `umap` - umap\n* `pca` - pca"
+      }
+    },
+    "com.posthog.llm_analytics#ClusteringMethodEnum": {
+      "type": "enum",
+      "members": {
+        "HDBSCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hdbscan"
+          }
+        },
+        "KMEANS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kmeans"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `hdbscan` - hdbscan\n* `kmeans` - kmeans"
+      }
+    },
+    "com.posthog.llm_analytics#VisualizationMethodEnum": {
+      "type": "enum",
+      "members": {
+        "UMAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "umap"
+          }
+        },
+        "PCA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pca"
+          }
+        },
+        "TSNE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tsne"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `umap` - umap\n* `pca` - pca\n* `tsne` - tsne"
+      }
+    },
+    "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreateRequestEventFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "Property filters to scope which traces are included in clustering (PostHog standard format)"
+      }
+    },
+    "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "lookback_days": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of days to look back for traces"
+          }
+        },
+        "max_samples": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of traces to sample for clustering"
+          }
+        },
+        "embedding_normalization": {
+          "target": "com.posthog.llm_analytics#EmbeddingNormalizationEnum",
+          "traits": {
+            "smithy.api#documentation": "Embedding normalization method: 'none' (raw embeddings) or 'l2' (L2 normalize before clustering)\n\n* `none` - none\n* `l2` - l2"
+          }
+        },
+        "dimensionality_reduction_method": {
+          "target": "com.posthog.llm_analytics#DimensionalityReductionMethodEnum",
+          "traits": {
+            "smithy.api#documentation": "Dimensionality reduction method: 'none' (cluster on raw), 'umap', or 'pca'\n\n* `none` - none\n* `umap` - umap\n* `pca` - pca"
+          }
+        },
+        "dimensionality_reduction_ndims": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Target dimensions for dimensionality reduction (ignored if method is 'none')"
+          }
+        },
+        "clustering_method": {
+          "target": "com.posthog.llm_analytics#ClusteringMethodEnum",
+          "traits": {
+            "smithy.api#documentation": "Clustering algorithm: 'hdbscan' (density-based, auto-determines k) or 'kmeans' (centroid-based)\n\n* `hdbscan` - hdbscan\n* `kmeans` - kmeans"
+          }
+        },
+        "min_cluster_size_fraction": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minimum cluster size as fraction of total samples (e.g., 0.02 = 2%)"
+          }
+        },
+        "hdbscan_min_samples": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "HDBSCAN min_samples parameter (higher = more conservative clustering)"
+          }
+        },
+        "kmeans_min_k": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum number of clusters to try for k-means"
+          }
+        },
+        "kmeans_max_k": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of clusters to try for k-means"
+          }
+        },
+        "run_label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional label/tag for the clustering run (used as suffix in run_id for tracking experiments)"
+          }
+        },
+        "visualization_method": {
+          "target": "com.posthog.llm_analytics#VisualizationMethodEnum",
+          "traits": {
+            "smithy.api#documentation": "Method for 2D scatter plot visualization: 'umap', 'pca', or 'tsne'\n\n* `umap` - umap\n* `pca` - pca\n* `tsne` - tsne"
+          }
+        },
+        "event_filters": {
+          "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreateRequestEventFiltersList",
+          "traits": {
+            "smithy.api#documentation": "Property filters to scope which traces are included in clustering (PostHog standard format)"
+          }
+        },
+        "clustering_job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If provided, use this clustering job's analysis_level and event_filters instead of request params",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.llm_analytics#ClusteringRunRequest": {
+      "type": "structure",
+      "members": {
+        "lookback_days": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of days to look back for traces"
+          }
+        },
+        "max_samples": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of traces to sample for clustering"
+          }
+        },
+        "embedding_normalization": {
+          "target": "com.posthog.llm_analytics#EmbeddingNormalizationEnum",
+          "traits": {
+            "smithy.api#documentation": "Embedding normalization method: 'none' (raw embeddings) or 'l2' (L2 normalize before clustering)\n\n* `none` - none\n* `l2` - l2"
+          }
+        },
+        "dimensionality_reduction_method": {
+          "target": "com.posthog.llm_analytics#DimensionalityReductionMethodEnum",
+          "traits": {
+            "smithy.api#documentation": "Dimensionality reduction method: 'none' (cluster on raw), 'umap', or 'pca'\n\n* `none` - none\n* `umap` - umap\n* `pca` - pca"
+          }
+        },
+        "dimensionality_reduction_ndims": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Target dimensions for dimensionality reduction (ignored if method is 'none')"
+          }
+        },
+        "clustering_method": {
+          "target": "com.posthog.llm_analytics#ClusteringMethodEnum",
+          "traits": {
+            "smithy.api#documentation": "Clustering algorithm: 'hdbscan' (density-based, auto-determines k) or 'kmeans' (centroid-based)\n\n* `hdbscan` - hdbscan\n* `kmeans` - kmeans"
+          }
+        },
+        "min_cluster_size_fraction": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minimum cluster size as fraction of total samples (e.g., 0.02 = 2%)"
+          }
+        },
+        "hdbscan_min_samples": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "HDBSCAN min_samples parameter (higher = more conservative clustering)"
+          }
+        },
+        "kmeans_min_k": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum number of clusters to try for k-means"
+          }
+        },
+        "kmeans_max_k": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of clusters to try for k-means"
+          }
+        },
+        "run_label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional label/tag for the clustering run (used as suffix in run_id for tracking experiments)"
+          }
+        },
+        "visualization_method": {
+          "target": "com.posthog.llm_analytics#VisualizationMethodEnum",
+          "traits": {
+            "smithy.api#documentation": "Method for 2D scatter plot visualization: 'umap', 'pca', or 'tsne'\n\n* `umap` - umap\n* `pca` - pca\n* `tsne` - tsne"
+          }
+        },
+        "event_filters": {
+          "target": "com.posthog.llm_analytics#ClusteringRunRequestEventFiltersList",
+          "traits": {
+            "smithy.api#documentation": "Property filters to scope which traces are included in clustering (PostHog standard format)"
+          }
+        },
+        "clustering_job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If provided, use this clustering job's analysis_level and event_filters instead of request params",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Serializer for clustering workflow request parameters."
+      }
+    },
+    "com.posthog.llm_analytics#ClusteringRunRequestEventFiltersItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.llm_analytics#ClusteringRunRequestEventFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.llm_analytics#ClusteringRunRequestEventFiltersItemMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "Property filters to scope which traces are included in clustering (PostHog standard format)"
+      }
+    },
+    "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreateRequest"
+      },
+      "output": {
+        "target": "com.posthog.llm_analytics#ClusteringRunRequest"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/projects/{project_id}/llm_analytics/clustering_runs/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Trigger a new clustering workflow run.\n\nThis endpoint validates the request parameters and starts a Temporal workflow\nto perform trace clustering with the specified configuration."
+      }
+    },
     "com.posthog.llm_analytics#LlmAnalyticsEvaluationConfigRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -536,27 +877,6 @@
     "com.posthog.llm_analytics#EvaluationConfigOutput": {
       "type": "structure",
       "members": {
-        "trial_eval_limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Cap on trial runs — a getting-started affordance only, not for ongoing evals (use the team's own key).",
-            "smithy.api#required": {}
-          }
-        },
-        "trial_evals_used": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Trial runs consumed (getting-started affordance only).",
-            "smithy.api#required": {}
-          }
-        },
-        "trial_evals_remaining": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Trial runs remaining — a getting-started affordance only; evals should use the team's own provider key.",
-            "smithy.api#required": {}
-          }
-        },
         "active_provider_key": {
           "target": "com.posthog.llm_analytics#LLMProviderKeyOutput",
           "traits": {
@@ -682,10 +1002,22 @@
           "traits": {
             "smithy.api#enumValue": "together_ai"
           }
+        },
+        "MINIMAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "minimax"
+          }
+        },
+        "ZEABUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zeabur"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI"
+        "smithy.api#documentation": "* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI\n* `minimax` - MiniMax\n* `zeabur` - Zeabur AI Hub"
       }
     },
     "com.posthog.llm_analytics#LLMProviderKeyStateEnum": {
@@ -820,6 +1152,12 @@
             "smithy.api#enumValue": "sales"
           }
         },
+        "STUDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "student"
+          }
+        },
         "OTHER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -828,7 +1166,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `other` - Other"
+        "smithy.api#documentation": "* `engineering` - Engineering\n* `data` - Data\n* `product` - Product Management\n* `founder` - Founder\n* `leadership` - Leadership\n* `marketing` - Marketing\n* `sales` - Sales / Success\n* `student` - Student\n* `other` - Other"
       }
     },
     "com.posthog.llm_analytics#BlankEnum": {
@@ -923,6 +1261,13 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
+        "evaluation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "evaluation",
+            "smithy.api#documentation": "Only return report configs for this evaluation UUID."
+          }
+        },
         "limit": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -981,26 +1326,26 @@
         "frequency": {
           "target": "com.posthog.llm_analytics#EvaluationReportFrequencyEnum",
           "traits": {
-            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
+            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
           }
         },
         "rrule": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO'). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is 'scheduled'; ignored otherwise."
+            "smithy.api#documentation": "RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise."
           }
         },
         "starts_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Anchor datetime for the rrule (ISO 8601, UTC — must end in 'Z'). Local-time interpretation is controlled by timezone_name. Required when frequency is 'scheduled'; ignored otherwise.",
+            "smithy.api#documentation": "Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode.",
             "com.distilled.openapi#nullable": {}
           }
         },
         "timezone_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "IANA timezone name used to expand the rrule in local time so e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York'). Defaults to 'UTC'."
+            "smithy.api#documentation": "Read-only timezone used for scheduled reports. Evaluation reports use UTC."
           }
         },
         "next_delivery_date": {
@@ -1030,12 +1375,25 @@
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Set to true to soft-delete this report config."
+            "smithy.api#documentation": "Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries."
           }
         },
         "last_delivered_at": {
           "target": "smithy.api#String",
           "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "generated_report_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of reports generated from this evaluation report config."
+          }
+        },
+        "last_generated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the most recent report was generated, or null if no reports have been generated.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1048,7 +1406,7 @@
         "trigger_threshold": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
+            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1140,26 +1498,13 @@
         "frequency": {
           "target": "com.posthog.llm_analytics#EvaluationReportFrequencyEnum",
           "traits": {
-            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
+            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
           }
         },
         "rrule": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO'). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is 'scheduled'; ignored otherwise."
-          }
-        },
-        "starts_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Anchor datetime for the rrule (ISO 8601, UTC — must end in 'Z'). Local-time interpretation is controlled by timezone_name. Required when frequency is 'scheduled'; ignored otherwise.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "timezone_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "IANA timezone name used to expand the rrule in local time so e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York'). Defaults to 'UTC'."
+            "smithy.api#documentation": "RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise."
           }
         },
         "delivery_targets": {
@@ -1180,12 +1525,6 @@
             "smithy.api#documentation": "Whether report delivery is active. Disabled configs do not fire."
           }
         },
-        "deleted": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Set to true to soft-delete this report config."
-          }
-        },
         "report_prompt_guidance": {
           "target": "smithy.api#String",
           "traits": {
@@ -1195,7 +1534,7 @@
         "trigger_threshold": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
+            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1293,35 +1632,114 @@
             "smithy.api#documentation": "A UUID string identifying this evaluation report."
           }
         },
-        "evaluation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the evaluation this report config belongs to."
-          }
-        },
         "frequency": {
           "target": "com.posthog.llm_analytics#EvaluationReportFrequencyEnum",
           "traits": {
-            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
+            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
           }
         },
         "rrule": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO'). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is 'scheduled'; ignored otherwise."
+            "smithy.api#documentation": "RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise."
+          }
+        },
+        "delivery_targets": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team."
+          }
+        },
+        "max_sample_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of evaluation runs included in each report. Defaults to 200."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether report delivery is active. Disabled configs do not fire."
+          }
+        },
+        "report_prompt_guidance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt."
+          }
+        },
+        "trigger_threshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "cooldown_minutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum minutes between count-triggered reports to prevent spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60."
+          }
+        },
+        "daily_run_cap": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportUpdate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "evaluation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID of the evaluation this report config belongs to.",
+            "smithy.api#required": {}
+          }
+        },
+        "frequency": {
+          "target": "com.posthog.llm_analytics#EvaluationReportFrequencyEnum",
+          "traits": {
+            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
+          }
+        },
+        "rrule": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise."
           }
         },
         "starts_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Anchor datetime for the rrule (ISO 8601, UTC — must end in 'Z'). Local-time interpretation is controlled by timezone_name. Required when frequency is 'scheduled'; ignored otherwise.",
+            "smithy.api#documentation": "Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode.",
+            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
         "timezone_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "IANA timezone name used to expand the rrule in local time so e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York'). Defaults to 'UTC'."
+            "smithy.api#documentation": "Read-only timezone used for scheduled reports. Evaluation reports use UTC.",
+            "smithy.api#required": {}
+          }
+        },
+        "next_delivery_date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "delivery_targets": {
@@ -1345,7 +1763,30 @@
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Set to true to soft-delete this report config."
+            "smithy.api#documentation": "Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_delivered_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "generated_report_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of reports generated from this evaluation report config.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_generated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the most recent report was generated, or null if no reports have been generated.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "report_prompt_guidance": {
@@ -1357,7 +1798,7 @@
         "trigger_threshold": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
+            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1372,11 +1813,22 @@
           "traits": {
             "smithy.api#documentation": "Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10."
           }
+        },
+        "created_by": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
-      "traits": {
-        "smithy.api#input": {}
-      }
+      "traits": {}
     },
     "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsUpdate": {
       "type": "operation",
@@ -1384,7 +1836,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#EvaluationReport"
+        "target": "com.posthog.llm_analytics#EvaluationReportUpdate"
       },
       "traits": {
         "smithy.api#http": {
@@ -1414,35 +1866,16 @@
             "smithy.api#documentation": "A UUID string identifying this evaluation report."
           }
         },
-        "evaluation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the evaluation this report config belongs to."
-          }
-        },
         "frequency": {
           "target": "com.posthog.llm_analytics#EvaluationReportFrequencyEnum",
           "traits": {
-            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
+            "smithy.api#documentation": "How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule.\n\n* `scheduled` - Scheduled\n* `every_n` - Every N"
           }
         },
         "rrule": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO'). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is 'scheduled'; ignored otherwise."
-          }
-        },
-        "starts_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Anchor datetime for the rrule (ISO 8601, UTC — must end in 'Z'). Local-time interpretation is controlled by timezone_name. Required when frequency is 'scheduled'; ignored otherwise.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "timezone_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "IANA timezone name used to expand the rrule in local time so e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York'). Defaults to 'UTC'."
+            "smithy.api#documentation": "RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise."
           }
         },
         "delivery_targets": {
@@ -1463,12 +1896,6 @@
             "smithy.api#documentation": "Whether report delivery is active. Disabled configs do not fire."
           }
         },
-        "deleted": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Set to true to soft-delete this report config."
-          }
-        },
         "report_prompt_guidance": {
           "target": "smithy.api#String",
           "traits": {
@@ -1478,7 +1905,7 @@
         "trigger_threshold": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
+            "smithy.api#documentation": "Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1505,7 +1932,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#EvaluationReport"
+        "target": "com.posthog.llm_analytics#EvaluationReportUpdate"
       },
       "traits": {
         "smithy.api#http": {
@@ -1554,7 +1981,7 @@
           "uri": "/api/projects/{project_id}/llm_analytics/evaluation_reports/{id}/",
           "code": 200
         },
-        "smithy.api#documentation": "Hard delete of this model is not allowed. Use a patch API call to set \"deleted\" to true"
+        "smithy.api#documentation": "Evaluation report configs are deleted only when their evaluation is deleted. Use PATCH enabled=false to stop delivery."
       }
     },
     "com.posthog.llm_analytics#LlmAnalyticsEvaluationReportsGenerateCreateRequest": {
@@ -1676,15 +2103,16 @@
           }
         },
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.llm_analytics#EvaluationReportRunContent",
           "traits": {
-            "smithy.api#documentation": "Generated report content (markdown or structured text)."
+            "smithy.api#documentation": "Structured report narrative, citations, and metrics. Legacy runs may contain only some fields."
           }
         },
         "metadata": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.llm_analytics#EvaluationReportMetrics",
           "traits": {
-            "smithy.api#documentation": "Run metadata including model used, token counts, and generation stats."
+            "smithy.api#documentation": "Legacy mirror of content.metrics. May contain partial boolean metrics on older runs.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "period_start": {
@@ -1702,20 +2130,322 @@
         "delivery_status": {
           "target": "com.posthog.llm_analytics#DeliveryStatusEnum",
           "traits": {
-            "smithy.api#documentation": "'pending', 'delivered', or 'failed'.\n\n* `pending` - Pending\n* `delivered` - Delivered\n* `partial_failure` - Partial Failure\n* `failed` - Failed"
+            "smithy.api#documentation": "Delivery result: 'pending', 'generated', 'delivered', 'partial_failure', or 'failed'.\n\n* `pending` - Pending\n* `generated` - Generated\n* `delivered` - Delivered\n* `partial_failure` - Partial Failure\n* `failed` - Failed"
           }
         },
         "delivery_errors": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.llm_analytics#EvaluationReportRunDeliveryErrorsList",
           "traits": {
-            "smithy.api#documentation": "List of delivery error messages if delivery failed."
+            "smithy.api#documentation": "Delivery error messages. Empty when all configured deliveries succeeded."
           }
         },
         "created_at": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When this report run was created."
+          }
         }
       },
       "traits": {}
+    },
+    "com.posthog.llm_analytics#EvaluationReportRunContent": {
+      "type": "structure",
+      "members": {
+        "evaluation_target": {
+          "target": "com.posthog.llm_analytics#EvaluationTargetEnum",
+          "traits": {
+            "smithy.api#documentation": "Evaluation target analyzed by this report run. Legacy runs without this field targeted generations.\n\n* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Agent-generated report headline."
+          }
+        },
+        "sections": {
+          "target": "com.posthog.llm_analytics#EvaluationReportRunContentSectionsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered narrative sections in the report."
+          }
+        },
+        "citations": {
+          "target": "com.posthog.llm_analytics#EvaluationReportRunContentCitationsList",
+          "traits": {
+            "smithy.api#documentation": "References grounding findings in the report."
+          }
+        },
+        "generation_status": {
+          "target": "com.posthog.llm_analytics#GenerationStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "Whether report generation completed or metrics were temporarily unavailable. Legacy runs without this field completed normally.\n\n* `completed` - completed\n* `metrics_unavailable` - metrics_unavailable"
+          }
+        },
+        "metrics": {
+          "target": "com.posthog.llm_analytics#EvaluationReportMetrics",
+          "traits": {
+            "smithy.api#documentation": "Structured metrics for completed reports, or null when metrics were temporarily unavailable.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.llm_analytics#EvaluationTargetEnum": {
+      "type": "enum",
+      "members": {
+        "GENERATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generation"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trace"
+          }
+        },
+        "SESSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "session"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `generation` - Generation\n* `trace` - Trace\n* `session` - Session"
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportSection": {
+      "type": "structure",
+      "members": {
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Agent-generated section heading."
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Markdown narrative for this section."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.llm_analytics#EvaluationReportRunContentSectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.llm_analytics#EvaluationReportSection"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ordered narrative sections in the report."
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportCitation": {
+      "type": "structure",
+      "members": {
+        "generation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional generation UUID for generation-target report citations."
+          }
+        },
+        "trace_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the trace cited by this report."
+          }
+        },
+        "session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional session identifier for session-target report citations."
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Short explanation of why this example is cited."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.llm_analytics#EvaluationReportRunContentCitationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.llm_analytics#EvaluationReportCitation"
+      },
+      "traits": {
+        "smithy.api#documentation": "References grounding findings in the report."
+      }
+    },
+    "com.posthog.llm_analytics#GenerationStatusEnum": {
+      "type": "enum",
+      "members": {
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "METRICS_UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metrics_unavailable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `completed` - completed\n* `metrics_unavailable` - metrics_unavailable"
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportMetrics": {
+      "type": "structure",
+      "members": {
+        "output_type": {
+          "target": "com.posthog.llm_analytics#OutputTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Evaluation result type. Stored metrics without this field represent boolean evaluations.\n\n* `boolean` - Boolean (Pass/Fail)\n* `sentiment` - Sentiment"
+          }
+        },
+        "total_runs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of evaluation results in the report period."
+          }
+        },
+        "result_counts": {
+          "target": "com.posthog.llm_analytics#EvaluationReportMetricsResultCountsMap",
+          "traits": {
+            "smithy.api#documentation": "Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative."
+          }
+        },
+        "result_rates": {
+          "target": "com.posthog.llm_analytics#EvaluationReportMetricsResultRatesMap",
+          "traits": {
+            "smithy.api#documentation": "Percentage by output-specific result label, from 0 to 100."
+          }
+        },
+        "period_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 start of the evaluation window represented by these metrics."
+          }
+        },
+        "period_end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 end of the evaluation window represented by these metrics."
+          }
+        },
+        "previous_total_runs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of evaluation results in the previous comparison period, or null when unavailable.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "previous_result_counts": {
+          "target": "com.posthog.llm_analytics#EvaluationReportMetricsPreviousResultCountsMap",
+          "traits": {
+            "smithy.api#documentation": "Count by result label for the previous period, or null when unavailable.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "previous_result_rates": {
+          "target": "com.posthog.llm_analytics#EvaluationReportMetricsPreviousResultRatesMap",
+          "traits": {
+            "smithy.api#documentation": "Percentage by result label for the previous period, or null when unavailable.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "pass_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Boolean pass percentage, excluding results marked not applicable."
+          }
+        },
+        "previous_pass_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Boolean pass percentage for the previous period, or null when unavailable.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.llm_analytics#OutputTypeEnum": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "SENTIMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sentiment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `boolean` - Boolean (Pass/Fail)\n* `sentiment` - Sentiment"
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportMetricsResultCountsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative."
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportMetricsResultRatesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Percentage by output-specific result label, from 0 to 100."
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportMetricsPreviousResultCountsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Count by result label for the previous period, or null when unavailable."
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportMetricsPreviousResultRatesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Percentage by result label for the previous period, or null when unavailable."
+      }
     },
     "com.posthog.llm_analytics#DeliveryStatusEnum": {
       "type": "enum",
@@ -1724,6 +2454,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "pending"
+          }
+        },
+        "GENERATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generated"
           }
         },
         "DELIVERED": {
@@ -1746,7 +2482,16 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `pending` - Pending\n* `delivered` - Delivered\n* `partial_failure` - Partial Failure\n* `failed` - Failed"
+        "smithy.api#documentation": "* `pending` - Pending\n* `generated` - Generated\n* `delivered` - Delivered\n* `partial_failure` - Partial Failure\n* `failed` - Failed"
+      }
+    },
+    "com.posthog.llm_analytics#EvaluationReportRunDeliveryErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Delivery error messages. Empty when all configured deliveries succeeded."
       }
     },
     "com.posthog.llm_analytics#PaginatedEvaluationReportRunListResultsList": {
@@ -1800,6 +2545,12 @@
             "smithy.api#enumValue": "gemini"
           }
         },
+        "MINIMAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "minimax"
+          }
+        },
         "OPENAI": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1816,6 +2567,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "together_ai"
+          }
+        },
+        "ZEABUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zeabur"
           }
         }
       },
@@ -1836,15 +2593,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "key_id",
-            "smithy.api#documentation": "Optional provider key UUID. When supplied, models reachable with that specific key are returned (useful for Azure OpenAI, where the deployment list depends on the configured endpoint). Must belong to the same provider as the `provider` parameter."
+            "smithy.api#documentation": "Optional provider key UUID. When supplied, models reachable with that specific key are returned (useful for Azure OpenAI, where the deployment list depends on the configured endpoint). A key belongs to exactly one provider, so `provider` may be omitted alongside it; when both are given they must agree."
           }
         },
         "provider": {
           "target": "com.posthog.llm_analytics#LlmAnalyticsModelsRetrieveRequestProvider",
           "traits": {
             "smithy.api#httpQuery": "provider",
-            "smithy.api#required": {},
-            "smithy.api#documentation": "LLM provider to list models for. Must be one of the supported providers."
+            "smithy.api#documentation": "LLM provider to list models for. Omit it to list every supported provider and its models in one call."
           }
         }
       },
@@ -1858,7 +2614,14 @@
         "models": {
           "target": "com.posthog.llm_analytics#LLMModelsListResponseModelsList",
           "traits": {
-            "smithy.api#documentation": "Models supported for the requested provider.",
+            "smithy.api#documentation": "Models supported for the requested provider, or for every supported provider when `provider` is omitted.",
+            "smithy.api#required": {}
+          }
+        },
+        "providers": {
+          "target": "com.posthog.llm_analytics#LLMModelsListResponseProvidersList",
+          "traits": {
+            "smithy.api#documentation": "One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed.",
             "smithy.api#required": {}
           }
         }
@@ -1875,10 +2638,10 @@
             "smithy.api#required": {}
           }
         },
-        "posthog_available": {
-          "target": "smithy.api#Boolean",
+        "provider": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "True if the model can run without a provider key — for getting-started testing only; real evals should use the team's own key.",
+            "smithy.api#documentation": "Provider this model belongs to. Pass this value together with `id` when configuring an llm_judge evaluation.",
             "smithy.api#required": {}
           }
         }
@@ -1891,7 +2654,43 @@
         "target": "com.posthog.llm_analytics#LLMModelInfo"
       },
       "traits": {
-        "smithy.api#documentation": "Models supported for the requested provider."
+        "smithy.api#documentation": "Models supported for the requested provider, or for every supported provider when `provider` is omitted."
+      }
+    },
+    "com.posthog.llm_analytics#LLMProviderModelsSummary": {
+      "type": "structure",
+      "members": {
+        "provider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Supported provider value, exactly as the `provider` param accepts it.",
+            "smithy.api#required": {}
+          }
+        },
+        "model_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How many of this provider's models appear in `models`.",
+            "smithy.api#required": {}
+          }
+        },
+        "requires_provider_key": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True when this provider's models can only be listed by passing `key_id` for one of the team's provider keys. PostHog funds no models for it, so `model_count` is 0 until a key is supplied.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.llm_analytics#LLMModelsListResponseProvidersList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.llm_analytics#LLMProviderModelsSummary"
+      },
+      "traits": {
+        "smithy.api#documentation": "One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed."
       }
     },
     "com.posthog.llm_analytics#LlmAnalyticsModelsRetrieve": {
@@ -1908,7 +2707,7 @@
           "uri": "/api/projects/{project_id}/llm_analytics/models/",
           "code": 200
         },
-        "smithy.api#documentation": "List available models for a provider."
+        "smithy.api#documentation": "List available models, for one provider or for every supported provider."
       }
     },
     "com.posthog.llm_analytics#LlmAnalyticsParserRecipesListRequest": {
@@ -2627,74 +3426,6 @@
         }
       }
     },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysAssignCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A UUID string identifying this llm provider key."
-          }
-        },
-        "provider": {
-          "target": "com.posthog.llm_analytics#LLMProviderEnum"
-        },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "api_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "azure_endpoint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure OpenAI endpoint URL"
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure OpenAI API version"
-          }
-        },
-        "set_as_active": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysAssignCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysAssignCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/llm_analytics/provider_keys/{id}/assign/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Assign this key to evaluations and optionally re-enable them."
-      }
-    },
     "com.posthog.llm_analytics#LlmAnalyticsProviderKeysDependentConfigsRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -2801,39 +3532,6 @@
           "uri": "/api/projects/{project_id}/llm_analytics/provider_keys/{id}/validate/",
           "code": 200
         }
-      }
-    },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysTrialEvaluationsRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.llm_analytics#LlmAnalyticsProviderKeysTrialEvaluationsRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysTrialEvaluationsRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/llm_analytics/provider_keys/trial_evaluations/",
-          "code": 200
-        },
-        "smithy.api#documentation": "List enabled evaluations currently using trial credits for a given provider."
       }
     },
     "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsListRequest": {
@@ -4653,6 +5351,9 @@
           "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringJobsDestroy"
         },
         {
+          "target": "com.posthog.llm_analytics#LlmAnalyticsClusteringRunsCreate"
+        },
+        {
           "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationConfigRetrieve"
         },
         {
@@ -4722,16 +5423,10 @@
           "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysDestroy"
         },
         {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysAssignCreate"
-        },
-        {
           "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysDependentConfigsRetrieve"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysValidateCreate"
-        },
-        {
-          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysTrialEvaluationsRetrieve"
         },
         {
           "target": "com.posthog.llm_analytics#LlmAnalyticsReviewQueueItemsList"

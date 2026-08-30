@@ -768,15 +768,27 @@ export type MediaTailorPlaybackConfigurationsList =
 export const MediaTailorPlaybackConfigurationsList = /*@__PURE__*/ S.Array(
   MediaTailorPlaybackConfiguration,
 );
+export type AdDurationSeconds = number;
+export interface PostRollConfiguration {
+  durationSeconds: number;
+  enabled: boolean;
+}
+export const PostRollConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ durationSeconds: S.Number, enabled: S.Boolean }),
+).annotate({
+  identifier: "PostRollConfiguration",
+}) as any as S.Schema<PostRollConfiguration>;
 export interface CreateAdConfigurationRequest {
   name?: string;
   mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
+  postRollConfiguration?: PostRollConfiguration;
   tags?: { [key: string]: string | undefined };
 }
 export const CreateAdConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
+    postRollConfiguration: S.optional(PostRollConfiguration),
     tags: S.optional(Tags),
   }).pipe(
     T.all(
@@ -796,6 +808,7 @@ export interface AdConfiguration {
   arn: string;
   name?: string;
   mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
+  postRollConfiguration?: PostRollConfiguration;
   tags?: { [key: string]: string | undefined };
 }
 export const AdConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -803,6 +816,7 @@ export const AdConfiguration = /*@__PURE__*/ S.suspend(() =>
     arn: S.String,
     name: S.optional(S.String),
     mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
+    postRollConfiguration: S.optional(PostRollConfiguration),
     tags: S.optional(Tags),
   }),
 ).annotate({
@@ -1642,7 +1656,6 @@ export const ImportPlaybackKeyPairResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportPlaybackKeyPairResponse",
 }) as any as S.Schema<ImportPlaybackKeyPairResponse>;
-export type AdDurationSeconds = number;
 export interface InsertAdBreakRequest {
   channelArn: string;
   durationSeconds: number;
@@ -1697,6 +1710,7 @@ export interface AdConfigurationSummary {
   arn: string;
   name?: string;
   mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
+  postRollConfiguration?: PostRollConfiguration;
   tags?: { [key: string]: string | undefined };
 }
 export const AdConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
@@ -1704,6 +1718,7 @@ export const AdConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
     arn: S.String,
     name: S.optional(S.String),
     mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
+    postRollConfiguration: S.optional(PostRollConfiguration),
     tags: S.optional(Tags),
   }),
 ).annotate({
@@ -2286,6 +2301,7 @@ export interface UpdateAdConfigurationRequest {
   arn: string;
   name?: string;
   mediaTailorPlaybackConfigurations?: MediaTailorPlaybackConfiguration[];
+  postRollConfiguration?: PostRollConfiguration;
 }
 export const UpdateAdConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2294,6 +2310,7 @@ export const UpdateAdConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
     mediaTailorPlaybackConfigurations: S.optional(
       MediaTailorPlaybackConfigurationsList,
     ),
+    postRollConfiguration: S.optional(PostRollConfiguration),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/UpdateAdConfiguration" }),

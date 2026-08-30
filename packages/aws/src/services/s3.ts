@@ -3524,6 +3524,7 @@ export type Expiration = string;
 export type ServerSideEncryption =
   | "AES256"
   | "aws:fsx"
+  | "aws:backup"
   | "aws:kms"
   | "aws:kms:dsse"
   | (string & {});
@@ -3660,6 +3661,8 @@ export type StorageClass =
   | "EXPRESS_ONEZONE"
   | "FSX_OPENZFS"
   | "FSX_ONTAP"
+  | "AWS_BACKUP_WARM"
+  | "AWS_BACKUP_LOW_COST_WARM"
   | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
 
@@ -9558,6 +9561,8 @@ export type ObjectStorageClass =
   | "EXPRESS_ONEZONE"
   | "FSX_OPENZFS"
   | "FSX_ONTAP"
+  | "AWS_BACKUP_WARM"
+  | "AWS_BACKUP_LOW_COST_WARM"
   | (string & {});
 export const ObjectStorageClass = /*@__PURE__*/ S.String;
 
@@ -20583,8 +20588,6 @@ export type UpdateObjectEncryptionError =
  *
  * - To use the `UpdateObjectEncryption` operation, you must have the following
  * permissions:
- *
- * - `s3:PutObject`
  *
  * - `s3:UpdateObjectEncryption`
  *

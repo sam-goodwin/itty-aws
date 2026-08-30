@@ -11,34 +11,28 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface AccountsCreateRequestPropertiesCsm {
-  id: number;
-  email: string;
-}
-export const AccountsCreateRequestPropertiesCsm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    email: S.String,
-  }),
-).annotate({
-  identifier: "AccountsCreateRequestPropertiesCsm",
-}) as any as S.Schema<AccountsCreateRequestPropertiesCsm>;
+/** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
+export type AccountsCreateRequestPropertiesEmailDomainsList = Array<string>;
+export const AccountsCreateRequestPropertiesEmailDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccountsCreateRequestPropertiesEmailDomainsList>;
 
-export type AccountsCreateRequestPropertiesAccountExecutive =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountsCreateRequestPropertiesAccountExecutive =
-  AccountsCreateRequestPropertiesCsm;
+/** Individual email addresses pinned to this account, matched before the domain fallback. */
+export type AccountsCreateRequestPropertiesKnownEmailsList = Array<string>;
+export const AccountsCreateRequestPropertiesKnownEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccountsCreateRequestPropertiesKnownEmailsList>;
 
-export type AccountsCreateRequestPropertiesAccountOwner =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountsCreateRequestPropertiesAccountOwner =
-  AccountsCreateRequestPropertiesCsm;
-
-/** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
+/** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface AccountsCreateRequestProperties {
-  csm?: AccountsCreateRequestPropertiesCsm | null;
-  account_executive?: AccountsCreateRequestPropertiesCsm | null;
-  account_owner?: AccountsCreateRequestPropertiesCsm | null;
+  /** Primary company website hostname used for account identity and logo lookup. */
+  website_domain?: string | null;
+  /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
+  email_domains?: AccountsCreateRequestPropertiesEmailDomainsList;
+  /** Individual email addresses pinned to this account, matched before the domain fallback. */
+  known_emails?: AccountsCreateRequestPropertiesKnownEmailsList;
   stripe_customer_id?: string | null;
   hubspot_deal_id?: string | null;
   billing_id?: string | null;
@@ -46,12 +40,13 @@ export interface AccountsCreateRequestProperties {
   zendesk_id?: string | null;
   slack_channel_id?: string | null;
   usage_dashboard_link?: string | null;
+  metabase_link?: string | null;
 }
 export const AccountsCreateRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    csm: S.optional(S.NullOr(AccountsCreateRequestPropertiesCsm)),
-    account_executive: S.optional(S.NullOr(AccountsCreateRequestPropertiesCsm)),
-    account_owner: S.optional(S.NullOr(AccountsCreateRequestPropertiesCsm)),
+    website_domain: S.optional(S.NullOr(S.String)),
+    email_domains: S.optional(AccountsCreateRequestPropertiesEmailDomainsList),
+    known_emails: S.optional(AccountsCreateRequestPropertiesKnownEmailsList),
     stripe_customer_id: S.optional(S.NullOr(S.String)),
     hubspot_deal_id: S.optional(S.NullOr(S.String)),
     billing_id: S.optional(S.NullOr(S.String)),
@@ -59,6 +54,7 @@ export const AccountsCreateRequestProperties = /*@__PURE__*/ S.suspend(() =>
     zendesk_id: S.optional(S.NullOr(S.String)),
     slack_channel_id: S.optional(S.NullOr(S.String)),
     usage_dashboard_link: S.optional(S.NullOr(S.String)),
+    metabase_link: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "AccountsCreateRequestProperties",
@@ -70,6 +66,10 @@ export const AccountsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsCreateRequestTagsList>;
 
+/** * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+export type SlackSummaryCadenceEnum = "daily" | "weekly" | "monthly";
+export const SlackSummaryCadenceEnum = /*@__PURE__*/ S.String;
+
 export interface AccountsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -77,10 +77,14 @@ export interface AccountsCreateRequest {
   name: string;
   /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
-  /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
+  /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
   properties?: AccountsCreateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountsCreateRequestTagsList;
+  /** How often to generate an AI summary of the account's bound Slack channel (daily, weekly, or monthly). Null means summaries are off. * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  slack_summary_cadence?: SlackSummaryCadenceEnum | (string & {}) | null;
+  /** When the account churned. Null means the account has not churned. */
+  churned_at?: string | null;
 }
 export const AccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -89,6 +93,8 @@ export const AccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     external_id: S.optional(S.NullOr(S.String)),
     properties: S.optional(S.NullOr(AccountsCreateRequestProperties)),
     tags: S.optional(AccountsCreateRequestTagsList),
+    slack_summary_cadence: S.optional(S.NullOr(SlackSummaryCadenceEnum)),
+    churned_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -100,20 +106,52 @@ export const AccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsCreateRequest",
 }) as any as S.Schema<AccountsCreateRequest>;
 
-export type AccountPropertiesCsm = AccountsCreateRequestPropertiesCsm;
-export const AccountPropertiesCsm = AccountsCreateRequestPropertiesCsm;
+/** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
+export type AccountPropertiesEmailDomainsList = Array<string>;
+export const AccountPropertiesEmailDomainsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AccountPropertiesEmailDomainsList>;
 
-export type AccountPropertiesAccountExecutive =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountPropertiesAccountExecutive =
-  AccountsCreateRequestPropertiesCsm;
+/** Individual email addresses pinned to this account, matched before the domain fallback. */
+export type AccountPropertiesKnownEmailsList = Array<string>;
+export const AccountPropertiesKnownEmailsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AccountPropertiesKnownEmailsList>;
 
-export type AccountPropertiesAccountOwner = AccountsCreateRequestPropertiesCsm;
-export const AccountPropertiesAccountOwner = AccountsCreateRequestPropertiesCsm;
-
-/** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-export type AccountProperties = AccountsCreateRequestProperties;
-export const AccountProperties = AccountsCreateRequestProperties;
+/** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
+export interface AccountProperties {
+  /** Primary company website hostname used for account identity and logo lookup. */
+  website_domain?: string | null;
+  /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
+  email_domains?: AccountPropertiesEmailDomainsList;
+  /** Individual email addresses pinned to this account, matched before the domain fallback. */
+  known_emails?: AccountPropertiesKnownEmailsList;
+  stripe_customer_id?: string | null;
+  hubspot_deal_id?: string | null;
+  billing_id?: string | null;
+  sfdc_id?: string | null;
+  zendesk_id?: string | null;
+  slack_channel_id?: string | null;
+  usage_dashboard_link?: string | null;
+  metabase_link?: string | null;
+}
+export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    website_domain: S.optional(S.NullOr(S.String)),
+    email_domains: S.optional(AccountPropertiesEmailDomainsList),
+    known_emails: S.optional(AccountPropertiesKnownEmailsList),
+    stripe_customer_id: S.optional(S.NullOr(S.String)),
+    hubspot_deal_id: S.optional(S.NullOr(S.String)),
+    billing_id: S.optional(S.NullOr(S.String)),
+    sfdc_id: S.optional(S.NullOr(S.String)),
+    zendesk_id: S.optional(S.NullOr(S.String)),
+    slack_channel_id: S.optional(S.NullOr(S.String)),
+    usage_dashboard_link: S.optional(S.NullOr(S.String)),
+    metabase_link: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "AccountProperties",
+}) as any as S.Schema<AccountProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type AccountTagsList = Array<string>;
@@ -134,12 +172,18 @@ export interface Account {
   name: string;
   /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
-  /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-  properties?: AccountsCreateRequestProperties | null;
+  /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
+  properties?: AccountProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountTagsList;
   /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
   notebooks: AccountNotebooksList;
+  /** How often to generate an AI summary of the account's bound Slack channel (daily, weekly, or monthly). Null means summaries are off. * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  slack_summary_cadence?: SlackSummaryCadenceEnum | null;
+  /** When the account churned. Null means the account has not churned. */
+  churned_at?: string | null;
+  /** When Track Rules ignored the account. Null means the account is tracked. */
+  ignored_at: string | null;
   created_at: string;
   created_by: number | null;
   updated_at: string | null;
@@ -149,9 +193,12 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     name: S.String,
     external_id: S.optional(S.NullOr(S.String)),
-    properties: S.optional(S.NullOr(AccountsCreateRequestProperties)),
+    properties: S.optional(S.NullOr(AccountProperties)),
     tags: S.optional(AccountTagsList),
     notebooks: AccountNotebooksList,
+    slack_summary_cadence: S.optional(S.NullOr(SlackSummaryCadenceEnum)),
+    churned_at: S.optional(S.NullOr(S.String)),
+    ignored_at: S.NullOr(S.String),
     created_at: S.String,
     created_by: S.NullOr(S.Number),
     updated_at: S.NullOr(S.String),
@@ -186,6 +233,284 @@ export const AccountsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsDestroyResponse",
 }) as any as S.Schema<AccountsDestroyResponse>;
 
+export interface AccountsEmailThreadMessagesListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this account. */
+  id: string;
+  thread_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const AccountsEmailThreadMessagesListRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      thread_id: S.String.pipe(T.Label()),
+      limit: S.optional(S.Number.pipe(T.Query())),
+      offset: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/accounts/{id}/email_threads/{thread_id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "AccountsEmailThreadMessagesListRequest",
+}) as any as S.Schema<AccountsEmailThreadMessagesListRequest>;
+
+export interface AccountEmailThreadAddress {
+  /** Name from the email header. */
+  name: string;
+  /** Email address from the email header. */
+  email: string;
+}
+export const AccountEmailThreadAddress = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    email: S.String,
+  }),
+).annotate({
+  identifier: "AccountEmailThreadAddress",
+}) as any as S.Schema<AccountEmailThreadAddress>;
+
+/** Recipients from the email To header. */
+export type AccountEmailThreadMessageToRecipientsList =
+  Array<AccountEmailThreadAddress>;
+export const AccountEmailThreadMessageToRecipientsList = /*@__PURE__*/ S.Array(
+  AccountEmailThreadAddress,
+) as any as S.Schema<AccountEmailThreadMessageToRecipientsList>;
+
+/** Recipients from the email Cc header. */
+export type AccountEmailThreadMessageCcRecipientsList =
+  Array<AccountEmailThreadAddress>;
+export const AccountEmailThreadMessageCcRecipientsList = /*@__PURE__*/ S.Array(
+  AccountEmailThreadAddress,
+) as any as S.Schema<AccountEmailThreadMessageCcRecipientsList>;
+
+/** * `inbound` - Inbound * `outbound` - Outbound */
+export type EmailThreadMessageDirectionEnum = "inbound" | "outbound";
+export const EmailThreadMessageDirectionEnum = /*@__PURE__*/ S.String;
+
+export interface AccountEmailThreadMessage {
+  /** UUID of the captured email message. */
+  id: string;
+  /** Timestamp from the source email. */
+  sent_at: string;
+  /** Sender from the email From header. */
+  sender: AccountEmailThreadAddress;
+  /** Recipients from the email To header. */
+  to_recipients: AccountEmailThreadMessageToRecipientsList;
+  /** Recipients from the email Cc header. */
+  cc_recipients: AccountEmailThreadMessageCcRecipientsList;
+  /** Whether Mailgun authentication verified the sender domain. */
+  sender_authenticated: boolean;
+  /** Whether PostHog received or sent the message. * `inbound` - Inbound * `outbound` - Outbound */
+  direction: EmailThreadMessageDirectionEnum;
+  /** Plain-text email content. */
+  content: string;
+}
+export const AccountEmailThreadMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    sent_at: S.String,
+    sender: AccountEmailThreadAddress,
+    to_recipients: AccountEmailThreadMessageToRecipientsList,
+    cc_recipients: AccountEmailThreadMessageCcRecipientsList,
+    sender_authenticated: S.Boolean,
+    direction: EmailThreadMessageDirectionEnum,
+    content: S.String,
+  }),
+).annotate({
+  identifier: "AccountEmailThreadMessage",
+}) as any as S.Schema<AccountEmailThreadMessage>;
+
+export type PaginatedAccountEmailThreadMessageListResultsList =
+  Array<AccountEmailThreadMessage>;
+export const PaginatedAccountEmailThreadMessageListResultsList =
+  /*@__PURE__*/ S.Array(
+    AccountEmailThreadMessage,
+  ) as any as S.Schema<PaginatedAccountEmailThreadMessageListResultsList>;
+
+export interface PaginatedAccountEmailThreadMessageList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedAccountEmailThreadMessageListResultsList;
+}
+export const PaginatedAccountEmailThreadMessageList = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      count: S.Number,
+      next: S.optional(S.NullOr(S.String)),
+      previous: S.optional(S.NullOr(S.String)),
+      results: PaginatedAccountEmailThreadMessageListResultsList,
+    }),
+).annotate({
+  identifier: "PaginatedAccountEmailThreadMessageList",
+}) as any as S.Schema<PaginatedAccountEmailThreadMessageList>;
+
+export interface AccountsEmailThreadsListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this account. */
+  id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const AccountsEmailThreadsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/accounts/{id}/email_threads/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "AccountsEmailThreadsListRequest",
+}) as any as S.Schema<AccountsEmailThreadsListRequest>;
+
+export interface ConversationMessageSender {
+  /** Display name of the message sender. */
+  name: string;
+  /** Email address of the message sender, when available. */
+  email: string | null;
+  /** UUID of the matched PostHog person, when available. */
+  person_id: string | null;
+  /** Distinct ID of the sender, when available. */
+  distinct_id: string | null;
+}
+export const ConversationMessageSender = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    email: S.NullOr(S.String),
+    person_id: S.NullOr(S.String),
+    distinct_id: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "ConversationMessageSender",
+}) as any as S.Schema<ConversationMessageSender>;
+
+export interface ConversationMessageSummary {
+  /** Sender of the message. */
+  sender: ConversationMessageSender;
+  /** Timestamp from the message source. */
+  sent_at: string;
+  /** Whether PostHog received or sent the message. * `inbound` - Inbound * `outbound` - Outbound */
+  direction: EmailThreadMessageDirectionEnum;
+}
+export const ConversationMessageSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sender: ConversationMessageSender,
+    sent_at: S.String,
+    direction: EmailThreadMessageDirectionEnum,
+  }),
+).annotate({
+  identifier: "ConversationMessageSummary",
+}) as any as S.Schema<ConversationMessageSummary>;
+
+/** * `internal` - Internal * `customer` - Customer */
+export type EmailThreadParticipantKindEnum = "internal" | "customer";
+export const EmailThreadParticipantKindEnum = /*@__PURE__*/ S.String;
+
+export interface AccountEmailThreadParticipant {
+  /** Email address of the thread participant. */
+  email: string;
+  /** Display name from the captured email headers. */
+  display_name: string;
+  /** Whether the participant belongs to the PostHog organization or the customer. * `internal` - Internal * `customer` - Customer */
+  kind: EmailThreadParticipantKindEnum;
+  /** UUID of the matched PostHog person for a customer participant, when available. */
+  person_id: string | null;
+}
+export const AccountEmailThreadParticipant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    display_name: S.String,
+    kind: EmailThreadParticipantKindEnum,
+    person_id: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "AccountEmailThreadParticipant",
+}) as any as S.Schema<AccountEmailThreadParticipant>;
+
+/** Participants included in the email thread. */
+export type AccountEmailThreadParticipantsList =
+  Array<AccountEmailThreadParticipant>;
+export const AccountEmailThreadParticipantsList = /*@__PURE__*/ S.Array(
+  AccountEmailThreadParticipant,
+) as any as S.Schema<AccountEmailThreadParticipantsList>;
+
+export interface AccountEmailThread {
+  /** UUID of the captured email thread. */
+  id: string;
+  /** Email thread subject. */
+  subject: string;
+  /** Plain-text preview of the latest captured message. */
+  preview: string;
+  /** Source timestamp of the first captured message. */
+  first_message_at: string | null;
+  /** Sender, timestamp, and direction of the first captured message, when available. */
+  first_message: ConversationMessageSummary | null;
+  /** Source timestamp of the latest captured message. */
+  last_message_at: string | null;
+  /** Sender, timestamp, and direction of the latest captured message, when available. */
+  last_message: ConversationMessageSummary | null;
+  /** Number of captured messages in the thread. */
+  message_count: number;
+  /** Participants included in the email thread. */
+  participants: AccountEmailThreadParticipantsList;
+}
+export const AccountEmailThread = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    subject: S.String,
+    preview: S.String,
+    first_message_at: S.NullOr(S.String),
+    first_message: S.NullOr(ConversationMessageSummary),
+    last_message_at: S.NullOr(S.String),
+    last_message: S.NullOr(ConversationMessageSummary),
+    message_count: S.Number,
+    participants: AccountEmailThreadParticipantsList,
+  }),
+).annotate({
+  identifier: "AccountEmailThread",
+}) as any as S.Schema<AccountEmailThread>;
+
+export type PaginatedAccountEmailThreadListResultsList =
+  Array<AccountEmailThread>;
+export const PaginatedAccountEmailThreadListResultsList = /*@__PURE__*/ S.Array(
+  AccountEmailThread,
+) as any as S.Schema<PaginatedAccountEmailThreadListResultsList>;
+
+export interface PaginatedAccountEmailThreadList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedAccountEmailThreadListResultsList;
+}
+export const PaginatedAccountEmailThreadList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedAccountEmailThreadListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedAccountEmailThreadList",
+}) as any as S.Schema<PaginatedAccountEmailThreadList>;
+
 export type AccountsListRequestOrdering =
   | "-created_at"
   | "-name"
@@ -198,14 +523,12 @@ export const AccountsListRequestOrdering = /*@__PURE__*/ S.String;
 export interface AccountsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Filter by account executive. Use 'unassigned' or an integer user id. */
-  account_executive?: string;
-  /** Filter by account owner. Use 'unassigned' or an integer user id. */
-  account_owner?: string;
-  /** When true, returns only accounts where CSM, account executive, and account owner are all unset. */
+  /** When true, returns only accounts where no user actively holds any relationship. */
   all_roles_unassigned?: boolean;
-  /** Filter by CSM. Use 'unassigned' for accounts with no CSM, or an integer user id. */
-  csm?: string;
+  /** Include churned accounts. Churned accounts are hidden by default. */
+  include_churned?: boolean;
+  /** Include ignored accounts. Ignored accounts are hidden by default. */
+  include_ignored?: boolean;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -220,10 +543,9 @@ export interface AccountsListRequest {
 export const AccountsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    account_executive: S.optional(S.String.pipe(T.Query())),
-    account_owner: S.optional(S.String.pipe(T.Query())),
     all_roles_unassigned: S.optional(S.Boolean.pipe(T.Query())),
-    csm: S.optional(S.String.pipe(T.Query())),
+    include_churned: S.optional(S.Boolean.pipe(T.Query())),
+    include_ignored: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     ordering: S.optional(AccountsListRequestOrdering.pipe(T.Query())),
@@ -262,26 +584,176 @@ export const PaginatedAccountList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedAccountList",
 }) as any as S.Schema<PaginatedAccountList>;
 
-export type AccountsPartialUpdateRequestPropertiesCsm =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountsPartialUpdateRequestPropertiesCsm =
-  AccountsCreateRequestPropertiesCsm;
+export interface AccountsMeetingsListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this account. */
+  id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** Filter meetings by title or attendee email/name. */
+  search?: string;
+}
+export const AccountsMeetingsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/accounts/{id}/meetings/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "AccountsMeetingsListRequest",
+}) as any as S.Schema<AccountsMeetingsListRequest>;
 
-export type AccountsPartialUpdateRequestPropertiesAccountExecutive =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountsPartialUpdateRequestPropertiesAccountExecutive =
-  AccountsCreateRequestPropertiesCsm;
+/** One attendee of a synced calendar meeting (read-only). */
+export interface MeetingParticipant {
+  /** Email address of the attendee. */
+  email: string;
+  /** Display name from the calendar event; may be empty. */
+  display_name: string;
+  /** The attendee's RSVP: 'needs_action', 'accepted', 'declined', or 'tentative'. */
+  response_status: string;
+  /** Whether this attendee organized the meeting. */
+  is_organizer: boolean;
+  /** UUID of the PostHog person resolved for this attendee, if any. */
+  person_id: string | null;
+}
+export const MeetingParticipant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    display_name: S.String,
+    response_status: S.String,
+    is_organizer: S.Boolean,
+    person_id: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "MeetingParticipant",
+}) as any as S.Schema<MeetingParticipant>;
 
-export type AccountsPartialUpdateRequestPropertiesAccountOwner =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountsPartialUpdateRequestPropertiesAccountOwner =
-  AccountsCreateRequestPropertiesCsm;
+/** Attendees of the meeting. */
+export type MeetingParticipantsList = Array<MeetingParticipant>;
+export const MeetingParticipantsList = /*@__PURE__*/ S.Array(
+  MeetingParticipant,
+) as any as S.Schema<MeetingParticipantsList>;
 
-/** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-export type AccountsPartialUpdateRequestProperties =
-  AccountsCreateRequestProperties;
-export const AccountsPartialUpdateRequestProperties =
-  AccountsCreateRequestProperties;
+/** A calendar meeting synced from a connected employee calendar (read-only). */
+export interface Meeting {
+  /** UUID of the meeting. */
+  id: string;
+  /** Meeting title; may be empty. */
+  title: string;
+  /** Gong call URL matched through the calendar event id; null when no Gong call is available. */
+  gong_url: string | null;
+  /** When the meeting starts. */
+  start_time: string;
+  /** When the meeting ends. */
+  end_time: string | null;
+  /** Email address of the meeting organizer; may be empty. */
+  organizer_email: string;
+  /** Meeting status: 'confirmed', 'tentative', or 'cancelled'. */
+  status: string;
+  /** Attendees of the meeting. */
+  participants: MeetingParticipantsList;
+}
+export const Meeting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    title: S.String,
+    gong_url: S.NullOr(S.String),
+    start_time: S.String,
+    end_time: S.NullOr(S.String),
+    organizer_email: S.String,
+    status: S.String,
+    participants: MeetingParticipantsList,
+  }),
+).annotate({ identifier: "Meeting" }) as any as S.Schema<Meeting>;
+
+export type PaginatedMeetingListResultsList = Array<Meeting>;
+export const PaginatedMeetingListResultsList = /*@__PURE__*/ S.Array(
+  Meeting,
+) as any as S.Schema<PaginatedMeetingListResultsList>;
+
+export interface PaginatedMeetingList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedMeetingListResultsList;
+}
+export const PaginatedMeetingList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedMeetingListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedMeetingList",
+}) as any as S.Schema<PaginatedMeetingList>;
+
+/** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
+export type AccountsPartialUpdateRequestPropertiesEmailDomainsList =
+  Array<string>;
+export const AccountsPartialUpdateRequestPropertiesEmailDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccountsPartialUpdateRequestPropertiesEmailDomainsList>;
+
+/** Individual email addresses pinned to this account, matched before the domain fallback. */
+export type AccountsPartialUpdateRequestPropertiesKnownEmailsList =
+  Array<string>;
+export const AccountsPartialUpdateRequestPropertiesKnownEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccountsPartialUpdateRequestPropertiesKnownEmailsList>;
+
+/** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
+export interface AccountsPartialUpdateRequestProperties {
+  /** Primary company website hostname used for account identity and logo lookup. */
+  website_domain?: string | null;
+  /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
+  email_domains?: AccountsPartialUpdateRequestPropertiesEmailDomainsList;
+  /** Individual email addresses pinned to this account, matched before the domain fallback. */
+  known_emails?: AccountsPartialUpdateRequestPropertiesKnownEmailsList;
+  stripe_customer_id?: string | null;
+  hubspot_deal_id?: string | null;
+  billing_id?: string | null;
+  sfdc_id?: string | null;
+  zendesk_id?: string | null;
+  slack_channel_id?: string | null;
+  usage_dashboard_link?: string | null;
+  metabase_link?: string | null;
+}
+export const AccountsPartialUpdateRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      website_domain: S.optional(S.NullOr(S.String)),
+      email_domains: S.optional(
+        AccountsPartialUpdateRequestPropertiesEmailDomainsList,
+      ),
+      known_emails: S.optional(
+        AccountsPartialUpdateRequestPropertiesKnownEmailsList,
+      ),
+      stripe_customer_id: S.optional(S.NullOr(S.String)),
+      hubspot_deal_id: S.optional(S.NullOr(S.String)),
+      billing_id: S.optional(S.NullOr(S.String)),
+      sfdc_id: S.optional(S.NullOr(S.String)),
+      zendesk_id: S.optional(S.NullOr(S.String)),
+      slack_channel_id: S.optional(S.NullOr(S.String)),
+      usage_dashboard_link: S.optional(S.NullOr(S.String)),
+      metabase_link: S.optional(S.NullOr(S.String)),
+    }),
+).annotate({
+  identifier: "AccountsPartialUpdateRequestProperties",
+}) as any as S.Schema<AccountsPartialUpdateRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type AccountsPartialUpdateRequestTagsList = Array<string>;
@@ -298,10 +770,14 @@ export interface AccountsPartialUpdateRequest {
   name?: string;
   /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
-  /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-  properties?: AccountsCreateRequestProperties | null;
+  /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
+  properties?: AccountsPartialUpdateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountsPartialUpdateRequestTagsList;
+  /** How often to generate an AI summary of the account's bound Slack channel (daily, weekly, or monthly). Null means summaries are off. * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  slack_summary_cadence?: SlackSummaryCadenceEnum | (string & {}) | null;
+  /** When the account churned. Null means the account has not churned. */
+  churned_at?: string | null;
 }
 export const AccountsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -309,8 +785,10 @@ export const AccountsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
     external_id: S.optional(S.NullOr(S.String)),
-    properties: S.optional(S.NullOr(AccountsCreateRequestProperties)),
+    properties: S.optional(S.NullOr(AccountsPartialUpdateRequestProperties)),
     tags: S.optional(AccountsPartialUpdateRequestTagsList),
+    slack_summary_cadence: S.optional(S.NullOr(SlackSummaryCadenceEnum)),
+    churned_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -343,24 +821,321 @@ export const AccountsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsRetrieveRequest",
 }) as any as S.Schema<AccountsRetrieveRequest>;
 
-export type AccountsUpdateRequestPropertiesCsm =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountsUpdateRequestPropertiesCsm =
-  AccountsCreateRequestPropertiesCsm;
+export interface AccountsSummariesListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this account. */
+  id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const AccountsSummariesListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/accounts/{id}/summaries/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "AccountsSummariesListRequest",
+}) as any as S.Schema<AccountsSummariesListRequest>;
 
-export type AccountsUpdateRequestPropertiesAccountExecutive =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountsUpdateRequestPropertiesAccountExecutive =
-  AccountsCreateRequestPropertiesCsm;
+/** Metadata for one message a channel summary covered — never the message text. */
+export interface ChannelSummaryMessage {
+  /** Display name of the message author. */
+  author: string;
+  /** When the message was sent. */
+  sent_at: string;
+  /** Slack permalink to the message. */
+  permalink: string;
+}
+export const ChannelSummaryMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    author: S.String,
+    sent_at: S.String,
+    permalink: S.String,
+  }),
+).annotate({
+  identifier: "ChannelSummaryMessage",
+}) as any as S.Schema<ChannelSummaryMessage>;
 
-export type AccountsUpdateRequestPropertiesAccountOwner =
-  AccountsCreateRequestPropertiesCsm;
-export const AccountsUpdateRequestPropertiesAccountOwner =
-  AccountsCreateRequestPropertiesCsm;
+/** The messages the summary covered, in transcript order — metadata only, no message text. */
+export type AccountChannelSummaryMessagesList = Array<ChannelSummaryMessage>;
+export const AccountChannelSummaryMessagesList = /*@__PURE__*/ S.Array(
+  ChannelSummaryMessage,
+) as any as S.Schema<AccountChannelSummaryMessagesList>;
 
-/** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-export type AccountsUpdateRequestProperties = AccountsCreateRequestProperties;
-export const AccountsUpdateRequestProperties = AccountsCreateRequestProperties;
+/** An AI summary of one closed period of the account's bound Slack channel (read-only). */
+export interface AccountChannelSummary {
+  /** UUID of the summary. */
+  id: string;
+  /** Slack channel the summary covered — kept even if the account is later rebound. */
+  slack_channel_id: string;
+  /** Cadence the summarized period belongs to (daily, weekly, or monthly). * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  cadence: SlackSummaryCadenceEnum;
+  /** Start of the summarized period (inclusive). */
+  period_start: string;
+  /** End of the summarized period (exclusive). */
+  period_end: string;
+  /** Markdown summary citing the original Slack messages with permalinks. */
+  content: string;
+  /** Number of channel messages the summary covered. */
+  message_count: number;
+  /** The messages the summary covered, in transcript order — metadata only, no message text. */
+  messages: AccountChannelSummaryMessagesList;
+  /** When the summary was generated. */
+  generated_at: string;
+}
+export const AccountChannelSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    slack_channel_id: S.String,
+    cadence: SlackSummaryCadenceEnum,
+    period_start: S.String,
+    period_end: S.String,
+    content: S.String,
+    message_count: S.Number,
+    messages: AccountChannelSummaryMessagesList,
+    generated_at: S.String,
+  }),
+).annotate({
+  identifier: "AccountChannelSummary",
+}) as any as S.Schema<AccountChannelSummary>;
+
+export type PaginatedAccountChannelSummaryListResultsList =
+  Array<AccountChannelSummary>;
+export const PaginatedAccountChannelSummaryListResultsList =
+  /*@__PURE__*/ S.Array(
+    AccountChannelSummary,
+  ) as any as S.Schema<PaginatedAccountChannelSummaryListResultsList>;
+
+export interface PaginatedAccountChannelSummaryList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedAccountChannelSummaryListResultsList;
+}
+export const PaginatedAccountChannelSummaryList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedAccountChannelSummaryListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedAccountChannelSummaryList",
+}) as any as S.Schema<PaginatedAccountChannelSummaryList>;
+
+export interface AccountsSupportTicketMessagesListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this account. */
+  id: string;
+  ticket_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const AccountsSupportTicketMessagesListRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      ticket_id: S.String.pipe(T.Label()),
+      limit: S.optional(S.Number.pipe(T.Query())),
+      offset: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/accounts/{id}/support_tickets/{ticket_id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "AccountsSupportTicketMessagesListRequest",
+}) as any as S.Schema<AccountsSupportTicketMessagesListRequest>;
+
+export interface AccountSupportTicketMessage {
+  /** UUID of the support ticket message. */
+  id: string;
+  /** Plain-text message content. */
+  content: string;
+  /** Display name of the message author. */
+  author_name: string;
+  /** Whether PostHog received or sent the message. * `inbound` - Inbound * `outbound` - Outbound */
+  direction: EmailThreadMessageDirectionEnum;
+  /** Whether the message is an internal note hidden from the customer. */
+  is_private: boolean;
+  /** When the message was created. */
+  created_at: string;
+}
+export const AccountSupportTicketMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    content: S.String,
+    author_name: S.String,
+    direction: EmailThreadMessageDirectionEnum,
+    is_private: S.Boolean,
+    created_at: S.String,
+  }),
+).annotate({
+  identifier: "AccountSupportTicketMessage",
+}) as any as S.Schema<AccountSupportTicketMessage>;
+
+export type PaginatedAccountSupportTicketMessageListResultsList =
+  Array<AccountSupportTicketMessage>;
+export const PaginatedAccountSupportTicketMessageListResultsList =
+  /*@__PURE__*/ S.Array(
+    AccountSupportTicketMessage,
+  ) as any as S.Schema<PaginatedAccountSupportTicketMessageListResultsList>;
+
+export interface PaginatedAccountSupportTicketMessageList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedAccountSupportTicketMessageListResultsList;
+}
+export const PaginatedAccountSupportTicketMessageList = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      count: S.Number,
+      next: S.optional(S.NullOr(S.String)),
+      previous: S.optional(S.NullOr(S.String)),
+      results: PaginatedAccountSupportTicketMessageListResultsList,
+    }),
+).annotate({
+  identifier: "PaginatedAccountSupportTicketMessageList",
+}) as any as S.Schema<PaginatedAccountSupportTicketMessageList>;
+
+export interface AccountsSupportTicketsListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this account. */
+  id: string;
+}
+export const AccountsSupportTicketsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/accounts/{id}/support_tickets/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "AccountsSupportTicketsListRequest",
+}) as any as S.Schema<AccountsSupportTicketsListRequest>;
+
+/** A support ticket linked to an account, sourced from the conversations product (read-only). */
+export interface SupportTicket {
+  /** UUID of the support ticket. */
+  id: string;
+  /** Human-readable ticket number. */
+  ticket_number: number;
+  /** Current status of the ticket (e.g. 'new', 'open'). */
+  status: string;
+  /** When the most recent message was sent on this ticket. */
+  last_message_at: string | null;
+  /** Truncated preview of the most recent message. */
+  last_message_text: string | null;
+  /** Sender, timestamp, and direction of the latest public message, when available. */
+  last_message: ConversationMessageSummary | null;
+  /** Absolute URL to open this ticket in the app. */
+  deep_link: string;
+  /** When the ticket conversation started. */
+  created_at: string;
+  /** Display name of the customer who started the ticket. */
+  started_by: string;
+  /** Distinct ID of the customer who started the ticket. */
+  distinct_id: string;
+}
+export const SupportTicket = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    ticket_number: S.Number,
+    status: S.String,
+    last_message_at: S.NullOr(S.String),
+    last_message_text: S.NullOr(S.String),
+    last_message: S.NullOr(ConversationMessageSummary),
+    deep_link: S.String,
+    created_at: S.String,
+    started_by: S.String,
+    distinct_id: S.String,
+  }),
+).annotate({ identifier: "SupportTicket" }) as any as S.Schema<SupportTicket>;
+
+export type AccountsSupportTicketsListResponseBodyList = Array<SupportTicket>;
+export const AccountsSupportTicketsListResponseBodyList = /*@__PURE__*/ S.Array(
+  SupportTicket,
+) as any as S.Schema<AccountsSupportTicketsListResponseBodyList>;
+
+export type AccountsSupportTicketsListResponse =
+  AccountsSupportTicketsListResponseBodyList;
+export const AccountsSupportTicketsListResponse = /*@__PURE__*/ S.suspend(() =>
+  AccountsSupportTicketsListResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "AccountsSupportTicketsListResponse",
+}) as any as S.Schema<AccountsSupportTicketsListResponse>;
+
+/** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
+export type AccountsUpdateRequestPropertiesEmailDomainsList = Array<string>;
+export const AccountsUpdateRequestPropertiesEmailDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccountsUpdateRequestPropertiesEmailDomainsList>;
+
+/** Individual email addresses pinned to this account, matched before the domain fallback. */
+export type AccountsUpdateRequestPropertiesKnownEmailsList = Array<string>;
+export const AccountsUpdateRequestPropertiesKnownEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccountsUpdateRequestPropertiesKnownEmailsList>;
+
+/** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
+export interface AccountsUpdateRequestProperties {
+  /** Primary company website hostname used for account identity and logo lookup. */
+  website_domain?: string | null;
+  /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
+  email_domains?: AccountsUpdateRequestPropertiesEmailDomainsList;
+  /** Individual email addresses pinned to this account, matched before the domain fallback. */
+  known_emails?: AccountsUpdateRequestPropertiesKnownEmailsList;
+  stripe_customer_id?: string | null;
+  hubspot_deal_id?: string | null;
+  billing_id?: string | null;
+  sfdc_id?: string | null;
+  zendesk_id?: string | null;
+  slack_channel_id?: string | null;
+  usage_dashboard_link?: string | null;
+  metabase_link?: string | null;
+}
+export const AccountsUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    website_domain: S.optional(S.NullOr(S.String)),
+    email_domains: S.optional(AccountsUpdateRequestPropertiesEmailDomainsList),
+    known_emails: S.optional(AccountsUpdateRequestPropertiesKnownEmailsList),
+    stripe_customer_id: S.optional(S.NullOr(S.String)),
+    hubspot_deal_id: S.optional(S.NullOr(S.String)),
+    billing_id: S.optional(S.NullOr(S.String)),
+    sfdc_id: S.optional(S.NullOr(S.String)),
+    zendesk_id: S.optional(S.NullOr(S.String)),
+    slack_channel_id: S.optional(S.NullOr(S.String)),
+    usage_dashboard_link: S.optional(S.NullOr(S.String)),
+    metabase_link: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "AccountsUpdateRequestProperties",
+}) as any as S.Schema<AccountsUpdateRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type AccountsUpdateRequestTagsList = Array<string>;
@@ -377,10 +1152,14 @@ export interface AccountsUpdateRequest {
   name: string;
   /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
-  /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-  properties?: AccountsCreateRequestProperties | null;
+  /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
+  properties?: AccountsUpdateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountsUpdateRequestTagsList;
+  /** How often to generate an AI summary of the account's bound Slack channel (daily, weekly, or monthly). Null means summaries are off. * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
+  slack_summary_cadence?: SlackSummaryCadenceEnum | (string & {}) | null;
+  /** When the account churned. Null means the account has not churned. */
+  churned_at?: string | null;
 }
 export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -388,8 +1167,10 @@ export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     name: S.String,
     external_id: S.optional(S.NullOr(S.String)),
-    properties: S.optional(S.NullOr(AccountsCreateRequestProperties)),
+    properties: S.optional(S.NullOr(AccountsUpdateRequestProperties)),
     tags: S.optional(AccountsUpdateRequestTagsList),
+    slack_summary_cadence: S.optional(S.NullOr(SlackSummaryCadenceEnum)),
+    churned_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -429,6 +1210,34 @@ export const accountsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type AccountsEmailThreadMessagesListError = PosthogOpError;
+export const accountsEmailThreadMessagesList: API.OperationMethod<
+  AccountsEmailThreadMessagesListRequest,
+  PaginatedAccountEmailThreadMessageList,
+  AccountsEmailThreadMessagesListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccountsEmailThreadMessagesListRequest,
+  output: PaginatedAccountEmailThreadMessageList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type AccountsEmailThreadsListError = PosthogOpError;
+export const accountsEmailThreadsList: API.OperationMethod<
+  AccountsEmailThreadsListRequest,
+  PaginatedAccountEmailThreadList,
+  AccountsEmailThreadsListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccountsEmailThreadsListRequest,
+  output: PaginatedAccountEmailThreadList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type AccountsListError = PosthogOpError;
 export const accountsList: API.OperationMethod<
   AccountsListRequest,
@@ -438,6 +1247,20 @@ export const accountsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AccountsListRequest,
   output: PaginatedAccountList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type AccountsMeetingsListError = PosthogOpError;
+export const accountsMeetingsList: API.OperationMethod<
+  AccountsMeetingsListRequest,
+  PaginatedMeetingList,
+  AccountsMeetingsListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccountsMeetingsListRequest,
+  output: PaginatedMeetingList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -466,6 +1289,48 @@ export const accountsRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AccountsRetrieveRequest,
   output: Account,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type AccountsSummariesListError = PosthogOpError;
+export const accountsSummariesList: API.OperationMethod<
+  AccountsSummariesListRequest,
+  PaginatedAccountChannelSummaryList,
+  AccountsSummariesListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccountsSummariesListRequest,
+  output: PaginatedAccountChannelSummaryList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type AccountsSupportTicketMessagesListError = PosthogOpError;
+export const accountsSupportTicketMessagesList: API.OperationMethod<
+  AccountsSupportTicketMessagesListRequest,
+  PaginatedAccountSupportTicketMessageList,
+  AccountsSupportTicketMessagesListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccountsSupportTicketMessagesListRequest,
+  output: PaginatedAccountSupportTicketMessageList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type AccountsSupportTicketsListError = PosthogOpError;
+export const accountsSupportTicketsList: API.OperationMethod<
+  AccountsSupportTicketsListRequest,
+  AccountsSupportTicketsListResponse,
+  AccountsSupportTicketsListError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AccountsSupportTicketsListRequest,
+  output: AccountsSupportTicketsListResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

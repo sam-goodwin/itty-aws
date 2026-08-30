@@ -254,13 +254,19 @@ export const ConfigurationProfileAssignmentProperties = /*@__PURE__*/ S.suspend(
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -403,7 +409,10 @@ export const ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -725,13 +734,19 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -865,13 +880,19 @@ export const ConfigurationProfileHCIAssignmentsGetRequest =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -972,13 +993,19 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1112,13 +1139,19 @@ export const ConfigurationProfileHCRPAssignmentsGetRequest =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1242,13 +1275,19 @@ export const ConfigurationProfilesCreateOrUpdateResponseTagsMap =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1806,13 +1845,19 @@ export const ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1969,7 +2014,10 @@ export const ConfigurationProfilesVersionsGetResponseSystemDataCreatedByType =
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesVersionsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key";
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
 export const ConfigurationProfilesVersionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

@@ -573,7 +573,7 @@
           }
         },
         "force": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "force",
             "smithy.api#documentation": "If set to false, schedule deletion with 1-hour grace period (only when soft deletion is enabled)."
@@ -893,10 +893,10 @@
           }
         },
         "pgdelta": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "pgdelta",
-            "smithy.api#documentation": "Use pg-delta instead of Migra for diffing when true"
+            "smithy.api#documentation": "Use pg-delta instead of Migra for diffing when true. \nBoolean string.\n\nTruthy values: `true`, `1`, `yes`, `on`, `y`, `enabled`\n\nFalsy values: `false`, `0`, `no`, `off`, `n`, `disabled`"
           }
         }
       },
@@ -1715,6 +1715,18 @@
             "smithy.api#documentation": "Template URL used to create the project from the CLI."
           }
         },
+        "release_channel": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "postgres_engine": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "high_availability": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -2319,12 +2331,6 @@
             "smithy.api#enumValue": "AWS"
           }
         },
-        "FLY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FLY"
-          }
-        },
         "AWS_K8S": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2616,12 +2622,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "AWS"
-          }
-        },
-        "FLY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FLY"
           }
         },
         "AWS_K8S": {
@@ -4896,10 +4896,10 @@
           }
         },
         "reveal": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "reveal",
-            "smithy.api#documentation": "Boolean string, true or false"
+            "smithy.api#documentation": "Boolean string.\n\nTruthy values: `true`, `1`, `yes`, `on`, `y`, `enabled`\n\nFalsy values: `false`, `0`, `no`, `off`, `n`, `disabled`"
           }
         }
       },
@@ -5095,10 +5095,10 @@
           }
         },
         "reveal": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "reveal",
-            "smithy.api#documentation": "Boolean string, true or false"
+            "smithy.api#documentation": "Boolean string.\n\nTruthy values: `true`, `1`, `yes`, `on`, `y`, `enabled`\n\nFalsy values: `false`, `0`, `no`, `off`, `n`, `disabled`"
           }
         },
         "type": {
@@ -5220,11 +5220,11 @@
           }
         },
         "enabled": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "enabled",
             "smithy.api#required": {},
-            "smithy.api#documentation": "Boolean string, true or false"
+            "smithy.api#documentation": "Boolean string.\n\nTruthy values: `true`, `1`, `yes`, `on`, `y`, `enabled`\n\nFalsy values: `false`, `0`, `no`, `off`, `n`, `disabled`"
           }
         }
       },
@@ -5276,10 +5276,10 @@
           }
         },
         "reveal": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "reveal",
-            "smithy.api#documentation": "Boolean string, true or false"
+            "smithy.api#documentation": "Boolean string.\n\nTruthy values: `true`, `1`, `yes`, `on`, `y`, `enabled`\n\nFalsy values: `false`, `0`, `no`, `off`, `n`, `disabled`"
           }
         }
       },
@@ -5344,10 +5344,10 @@
           }
         },
         "reveal": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "reveal",
-            "smithy.api#documentation": "Boolean string, true or false"
+            "smithy.api#documentation": "Boolean string.\n\nTruthy values: `true`, `1`, `yes`, `on`, `y`, `enabled`\n\nFalsy values: `false`, `0`, `no`, `off`, `n`, `disabled`"
           }
         },
         "name": {
@@ -5417,14 +5417,14 @@
           }
         },
         "reveal": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "reveal",
             "smithy.api#documentation": "Boolean string, true or false"
           }
         },
         "was_compromised": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "was_compromised",
             "smithy.api#documentation": "Boolean string, true or false"
@@ -5992,17 +5992,66 @@
       },
       "traits": {}
     },
+    "com.supabase.api#UpdateCustomHostnameResponseJsonValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.supabase.api#UpdateCustomHostnameResponseJsonValueCase0"
+        },
+        "Case1": {
+          "target": "com.supabase.api#UpdateCustomHostnameResponseJsonValueCase1List"
+        },
+        "Case2": {
+          "target": "com.supabase.api#UpdateCustomHostnameResponseJsonValueCase2Map"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Any JSON-serializable value"
+      }
+    },
+    "com.supabase.api#UpdateCustomHostnameResponseJsonValueCase0": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#UpdateCustomHostnameResponseJsonValueCase1List": {
+      "type": "list",
+      "member": {
+        "target": "com.supabase.api#UpdateCustomHostnameResponseJsonValue"
+      },
+      "traits": {}
+    },
+    "com.supabase.api#UpdateCustomHostnameResponseJsonValueCase2Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.supabase.api#UpdateCustomHostnameResponseJsonValue"
+      },
+      "traits": {}
+    },
     "com.supabase.api#UpdateCustomHostnameResponseDataErrorsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.supabase.api#UpdateCustomHostnameResponseJsonValue"
       },
       "traits": {}
     },
     "com.supabase.api#UpdateCustomHostnameResponseDataMessagesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.supabase.api#UpdateCustomHostnameResponseJsonValue"
       },
       "traits": {}
     },
@@ -6214,7 +6263,7 @@
           }
         },
         "remove_addon": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "remove_addon",
             "smithy.api#documentation": "If true, also removes the custom domain add-on from the project subscription."
@@ -6395,19 +6444,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#JitStateResponse": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.supabase.api#JitStateResponseCase0"
-        },
-        "Case1": {
-          "target": "com.supabase.api#JitStateResponseCase1"
-        }
-      },
-      "traits": {}
-    },
-    "com.supabase.api#JitStateResponseCase0State": {
+    "com.supabase.api#V1GetJitAccessConfigResponseBodyCase0State": {
       "type": "enum",
       "members": {
         "ENABLED": {
@@ -6425,11 +6462,11 @@
       },
       "traits": {}
     },
-    "com.supabase.api#JitStateResponseCase0": {
+    "com.supabase.api#V1GetJitAccessConfigResponseBodyCase0": {
       "type": "structure",
       "members": {
         "state": {
-          "target": "com.supabase.api#JitStateResponseCase0State",
+          "target": "com.supabase.api#V1GetJitAccessConfigResponseBodyCase0State",
           "traits": {
             "smithy.api#required": {}
           }
@@ -6440,25 +6477,19 @@
       },
       "traits": {}
     },
-    "com.supabase.api#JitStateResponseCase1State": {
-      "type": "enum",
-      "members": {
-        "UNAVAILABLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "unavailable"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.supabase.api#JitStateResponseCase1UnavailableReason": {
+    "com.supabase.api#V1GetJitAccessConfigResponseBodyCase1UnavailableReason": {
       "type": "enum",
       "members": {
         "POSTGRES_UPGRADE_REQUIRED": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "postgres_upgrade_required"
+          }
+        },
+        "SSL_ENFORCEMENT_REQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssl_enforcement_required"
           }
         },
         "TEMPORARILY_UNAVAILABLE": {
@@ -6470,20 +6501,32 @@
       },
       "traits": {}
     },
-    "com.supabase.api#JitStateResponseCase1": {
+    "com.supabase.api#V1GetJitAccessConfigResponseBodyCase1": {
       "type": "structure",
       "members": {
         "state": {
-          "target": "com.supabase.api#JitStateResponseCase1State",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "unavailableReason": {
-          "target": "com.supabase.api#JitStateResponseCase1UnavailableReason",
+          "target": "com.supabase.api#V1GetJitAccessConfigResponseBodyCase1UnavailableReason",
           "traits": {
             "smithy.api#required": {}
           }
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#V1GetJitAccessConfigResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.supabase.api#V1GetJitAccessConfigResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.supabase.api#V1GetJitAccessConfigResponseBodyCase1"
         }
       },
       "traits": {}
@@ -6492,7 +6535,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.supabase.api#JitStateResponse",
+          "target": "com.supabase.api#V1GetJitAccessConfigResponseBody",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -6568,11 +6611,98 @@
         "smithy.api#input": {}
       }
     },
+    "com.supabase.api#V1UpdateJitAccessConfigResponseBodyCase0State": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#V1UpdateJitAccessConfigResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.supabase.api#V1UpdateJitAccessConfigResponseBodyCase0State",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "appliedSuccessfully": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason": {
+      "type": "enum",
+      "members": {
+        "POSTGRES_UPGRADE_REQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgres_upgrade_required"
+          }
+        },
+        "SSL_ENFORCEMENT_REQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssl_enforcement_required"
+          }
+        },
+        "TEMPORARILY_UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "temporarily_unavailable"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#V1UpdateJitAccessConfigResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "unavailableReason": {
+          "target": "com.supabase.api#V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#V1UpdateJitAccessConfigResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.supabase.api#V1UpdateJitAccessConfigResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.supabase.api#V1UpdateJitAccessConfigResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
     "com.supabase.api#V1UpdateJitAccessConfigResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.supabase.api#JitStateResponse",
+          "target": "com.supabase.api#V1UpdateJitAccessConfigResponseBody",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -7351,6 +7481,7 @@
         "root_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The pgsodium root key: 32 bytes, hex-encoded (64 characters).",
             "smithy.api#required": {}
           }
         }
@@ -7396,6 +7527,7 @@
         "root_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "The pgsodium root key: 32 bytes, hex-encoded (64 characters).",
             "smithy.api#required": {}
           }
         }
@@ -7474,6 +7606,14 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "db_pool_acquisition_timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If `null`, the value is automatically configured to 10.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "jwt_secret": {
           "target": "smithy.api#String",
           "traits": {
@@ -7530,6 +7670,9 @@
         },
         "db_pool": {
           "target": "smithy.api#Integer"
+        },
+        "db_pool_acquisition_timeout": {
+          "target": "smithy.api#Integer"
         }
       },
       "traits": {
@@ -7561,6 +7704,14 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "If `null`, the value is automatically configured based on compute size.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "db_pool_acquisition_timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If `null`, the value is automatically configured to 10.",
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
@@ -9014,7 +9165,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType": {
+    "com.supabase.api#ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase0": {
       "type": "enum",
       "members": {
         "TABLE": {
@@ -9022,12 +9173,30 @@
           "traits": {
             "smithy.api#enumValue": "table"
           }
-        },
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase1": {
+      "type": "enum",
+      "members": {
         "FUNCTION": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "function"
           }
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.supabase.api#ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase0"
+        },
+        "Case1": {
+          "target": "com.supabase.api#ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjTypeCase1"
         }
       },
       "traits": {}
@@ -9847,7 +10016,7 @@
         "smithy.api#documentation": "[Beta] Remove a read replica"
       }
     },
-    "com.supabase.api#V1GetServicesHealthRequestServicesItem": {
+    "com.supabase.api#V1GetServicesHealthRequestServicesCase1Item": {
       "type": "enum",
       "members": {
         "AUTH": {
@@ -9901,10 +10070,24 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetServicesHealthRequestServicesList": {
+    "com.supabase.api#V1GetServicesHealthRequestServicesCase1List": {
       "type": "list",
       "member": {
-        "target": "com.supabase.api#V1GetServicesHealthRequestServicesItem"
+        "target": "com.supabase.api#V1GetServicesHealthRequestServicesCase1Item"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of enums."
+      }
+    },
+    "com.supabase.api#V1GetServicesHealthRequestServices": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "com.supabase.api#V1GetServicesHealthRequestServicesCase1List"
+        }
       },
       "traits": {}
     },
@@ -9920,10 +10103,11 @@
           }
         },
         "services": {
-          "target": "com.supabase.api#V1GetServicesHealthRequestServicesList",
+          "target": "com.supabase.api#V1GetServicesHealthRequestServices",
           "traits": {
             "smithy.api#httpQuery": "services",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Comma-separated list of enums or array of enums."
           }
         },
         "timeout_ms": {
@@ -10227,6 +10411,7 @@
         "public_jwk": {
           "target": "smithy.api#Document",
           "traits": {
+            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -10483,6 +10668,7 @@
         "public_jwk": {
           "target": "smithy.api#Document",
           "traits": {
+            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -15708,6 +15894,55 @@
       },
       "traits": {}
     },
+    "com.supabase.api#ListProjectAddonsResponseJsonValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.supabase.api#ListProjectAddonsResponseJsonValueCase0"
+        },
+        "Case1": {
+          "target": "com.supabase.api#ListProjectAddonsResponseJsonValueCase1List"
+        },
+        "Case2": {
+          "target": "com.supabase.api#ListProjectAddonsResponseJsonValueCase2Map"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Any JSON-serializable value"
+      }
+    },
+    "com.supabase.api#ListProjectAddonsResponseJsonValueCase0": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.supabase.api#ListProjectAddonsResponseJsonValueCase1List": {
+      "type": "list",
+      "member": {
+        "target": "com.supabase.api#ListProjectAddonsResponseJsonValue"
+      },
+      "traits": {}
+    },
+    "com.supabase.api#ListProjectAddonsResponseJsonValueCase2Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.supabase.api#ListProjectAddonsResponseJsonValue"
+      },
+      "traits": {}
+    },
     "com.supabase.api#ListProjectAddonsResponseSelectedAddonsItemVariant": {
       "type": "structure",
       "members": {
@@ -15730,10 +15965,7 @@
           }
         },
         "meta": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Any JSON-serializable value"
-          }
+          "target": "com.supabase.api#ListProjectAddonsResponseJsonValue"
         }
       },
       "traits": {}
@@ -16145,10 +16377,7 @@
           }
         },
         "meta": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Any JSON-serializable value"
-          }
+          "target": "com.supabase.api#ListProjectAddonsResponseJsonValue"
         }
       },
       "traits": {}
@@ -16758,7 +16987,7 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "sql",
-            "smithy.api#documentation": "Custom SQL query to execute on the logs. See [querying logs](/docs/guides/telemetry/logs?queryGroups=product&product=postgres&queryGroups=source&source=edge_logs#querying-with-the-logs-explorer) for more details."
+            "smithy.api#documentation": "Custom SQL query to execute on the logs. See [querying logs](https://supabase.com/docs/guides/monitoring-and-debugging/logs#querying-with-the-logs-explorer) for more details."
           }
         },
         "iso_timestamp_start": {
@@ -17381,6 +17610,47 @@
         "smithy.api#documentation": "Gets a project's function combined statistics"
       }
     },
+    "com.supabase.api#V1ScrapeProjectMetricsRequest": {
+      "type": "structure",
+      "members": {
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ref"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.supabase.api#V1ScrapeProjectMetrics": {
+      "type": "operation",
+      "input": {
+        "target": "com.supabase.api#V1ScrapeProjectMetricsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.supabase.api#BadRequest"
+        },
+        {
+          "target": "com.supabase.api#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{ref}/analytics/endpoints/metrics",
+          "code": 200
+        },
+        "smithy.api#documentation": "Scrape a project's metrics\n\nPrometheus scrape endpoint. Returns metrics of a customer project in the Prometheus open exposition format."
+      }
+    },
     "com.supabase.api#V1CreateLoginRoleRequest": {
       "type": "structure",
       "members": {
@@ -17593,7 +17863,7 @@
           "uri": "/v1/projects/{ref}/database/migrations",
           "code": 200
         },
-        "smithy.api#documentation": "List applied migration versions\n\nOnly available to selected partner OAuth apps"
+        "smithy.api#documentation": "List applied migration versions"
       }
     },
     "com.supabase.api#V1ApplyAMigrationRequest": {
@@ -17646,7 +17916,7 @@
           "uri": "/v1/projects/{ref}/database/migrations",
           "code": 200
         },
-        "smithy.api#documentation": "Apply a database migration\n\nOnly available to selected partner OAuth apps"
+        "smithy.api#documentation": "Apply a database migration"
       }
     },
     "com.supabase.api#V1UpsertAMigrationRequest": {
@@ -17699,7 +17969,7 @@
           "uri": "/v1/projects/{ref}/database/migrations",
           "code": 200
         },
-        "smithy.api#documentation": "Upsert a database migration without applying\n\nOnly available to selected partner OAuth apps"
+        "smithy.api#documentation": "Upsert a database migration without applying"
       }
     },
     "com.supabase.api#V1RollbackMigrationsRequest": {
@@ -17748,7 +18018,7 @@
           "uri": "/v1/projects/{ref}/database/migrations",
           "code": 200
         },
-        "smithy.api#documentation": "Rollback database migrations and remove them from history table\n\nOnly available to selected partner OAuth apps"
+        "smithy.api#documentation": "Rollback database migrations and remove them from history table"
       }
     },
     "com.supabase.api#V1GetAMigrationRequest": {
@@ -17840,7 +18110,7 @@
           "uri": "/v1/projects/{ref}/database/migrations/{version}",
           "code": 200
         },
-        "smithy.api#documentation": "Fetch an existing entry from migration history\n\nOnly available to selected partner OAuth apps"
+        "smithy.api#documentation": "Fetch an existing entry from migration history"
       }
     },
     "com.supabase.api#V1PatchAMigrationRequest": {
@@ -17897,7 +18167,7 @@
           "uri": "/v1/projects/{ref}/database/migrations/{version}",
           "code": 200
         },
-        "smithy.api#documentation": "Patch an existing entry in migration history\n\nOnly available to selected partner OAuth apps"
+        "smithy.api#documentation": "Patch an existing entry in migration history"
       }
     },
     "com.supabase.api#V1RunAQueryRequestParametersList": {
@@ -19705,14 +19975,16 @@
           }
         },
         "bundleOnly": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "bundleOnly",
-            "smithy.api#documentation": "Boolean string, true or false"
+            "smithy.api#httpQuery": "bundleOnly"
           }
         },
         "file": {
-          "target": "com.supabase.api#V1DeployAFunctionRequestFileList"
+          "target": "com.supabase.api#V1DeployAFunctionRequestFileList",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata": {
           "target": "com.supabase.api#V1DeployAFunctionRequestMetadata",
@@ -20004,17 +20276,15 @@
           }
         },
         "verify_jwt": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "verify_jwt",
-            "smithy.api#documentation": "Boolean string, true or false"
+            "smithy.api#httpQuery": "verify_jwt"
           }
         },
         "import_map": {
-          "target": "smithy.api#Boolean",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "import_map",
-            "smithy.api#documentation": "Boolean string, true or false"
+            "smithy.api#httpQuery": "import_map"
           }
         },
         "entrypoint_path": {
@@ -21628,6 +21898,9 @@
         "max_locks_per_transaction": {
           "target": "smithy.api#Integer"
         },
+        "max_logical_replication_workers": {
+          "target": "smithy.api#Integer"
+        },
         "max_parallel_maintenance_workers": {
           "target": "smithy.api#Integer"
         },
@@ -21648,6 +21921,9 @@
         },
         "max_standby_streaming_delay": {
           "target": "smithy.api#String"
+        },
+        "max_sync_workers_per_subscription": {
+          "target": "smithy.api#Integer"
         },
         "max_wal_size": {
           "target": "smithy.api#String"
@@ -21841,6 +22117,9 @@
         "max_locks_per_transaction": {
           "target": "smithy.api#Integer"
         },
+        "max_logical_replication_workers": {
+          "target": "smithy.api#Integer"
+        },
         "max_parallel_maintenance_workers": {
           "target": "smithy.api#Integer"
         },
@@ -21861,6 +22140,9 @@
         },
         "max_standby_streaming_delay": {
           "target": "smithy.api#String"
+        },
+        "max_sync_workers_per_subscription": {
+          "target": "smithy.api#Integer"
         },
         "max_wal_size": {
           "target": "smithy.api#String"
@@ -21971,6 +22253,14 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Sets connection pool size for Realtime Authorization",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "postgres_changes_pool": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Sets connection pool size used to create Postgres Changes subscriptions",
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
@@ -22095,6 +22385,12 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Sets connection pool size for Realtime Authorization"
+          }
+        },
+        "postgres_changes_pool": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Sets connection pool size used to create Postgres Changes subscriptions"
           }
         },
         "max_concurrent_users": {
@@ -22351,12 +22647,6 @@
     "com.supabase.api#ListProvidersResponseItemsItemSaml": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -22381,12 +22671,6 @@
     "com.supabase.api#ListProvidersResponseItemsItemDomainsItem": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -22741,12 +23025,6 @@
     "com.supabase.api#CreateProviderResponseSaml": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -22771,12 +23049,6 @@
     "com.supabase.api#CreateProviderResponseDomainsItem": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -22969,12 +23241,6 @@
     "com.supabase.api#GetProviderResponseSaml": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -22999,12 +23265,6 @@
     "com.supabase.api#GetProviderResponseDomainsItem": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -23314,12 +23574,6 @@
     "com.supabase.api#UpdateProviderResponseSaml": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -23344,12 +23598,6 @@
     "com.supabase.api#UpdateProviderResponseDomainsItem": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -23542,12 +23790,6 @@
     "com.supabase.api#DeleteProviderResponseSaml": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -23572,12 +23814,6 @@
     "com.supabase.api#DeleteProviderResponseDomainsItem": {
       "type": "structure",
       "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -24577,6 +24813,12 @@
             "smithy.api#enumValue": "integrations.github_connections"
           }
         },
+        "INTEGRATIONS_GITHUB_PUSH_WEBHOOKS_LIMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integrations.github_push_webhooks_limit"
+          }
+        },
         "DEDICATED_POOLER": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -24587,6 +24829,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "observability.dashboard_advanced_metrics"
+          }
+        },
+        "API_MEMBERS_INVITATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "api.members.invitations"
           }
         },
         "API_MEMBERS_ROLES": {
@@ -26435,6 +26683,9 @@
         },
         {
           "target": "com.supabase.api#V1GetProjectFunctionCombinedStats"
+        },
+        {
+          "target": "com.supabase.api#V1ScrapeProjectMetrics"
         },
         {
           "target": "com.supabase.api#V1CreateLoginRole"

@@ -1171,7 +1171,7 @@ export interface FlowPropertiesInput {
   streamProtocol?: StreamProtocol | (string & {});
   /** The latency of the stream in milliseconds */
   streamLatency?: number;
-  /** The passphrase used for SRT streams */
+  /** The passphrase used for SRT streams (non-secret) */
   passphrase?: string;
   /** The source IP address and CIDR ranges of the stream */
   sourceAddresses?: StreamSourceAddresses;
@@ -1374,7 +1374,7 @@ export interface FlowProperties {
   streamProtocol?: StreamProtocol;
   /** The latency of the stream in milliseconds */
   streamLatency?: number;
-  /** The passphrase used for SRT streams */
+  /** The passphrase used for SRT streams (non-secret) */
   passphrase?: string;
   /** The source IP address and CIDR ranges of the stream */
   sourceAddresses?: StreamSourceAddresses;
@@ -2383,7 +2383,7 @@ export interface FlowsSetPassphraseRequest {
   connectionName: string;
   /** The name for the flow to perform the operation on. */
   flowName: string;
-  /** The passphrase used for SRT streams */
+  /** The passphrase used for SRT streams (non-secret) */
   value?: string;
 }
 export const FlowsSetPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3111,7 +3111,7 @@ export interface PendingFlow {
   streamProtocol?: StreamProtocol;
   /** The latency of the stream in milliseconds */
   streamLatency?: number;
-  /** The passphrase used for SRT streams */
+  /** The passphrase used for SRT streams (non-secret) */
   passphrase?: string;
   /** The source IP address and CIDR ranges of the stream */
   sourceAddresses?: StreamSourceAddresses;

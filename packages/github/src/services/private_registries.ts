@@ -179,21 +179,21 @@ export const CreateOrgPrivateRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The registry type. */
 export type OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType =
-    | "maven_repository"
-    | "nuget_feed"
-    | "goproxy_server"
-    | "npm_registry"
-    | "rubygems_server"
-    | "cargo_registry"
-    | "composer_repository"
-    | "docker_registry"
-    | "git_source"
-    | "helm_registry"
-    | "hex_organization"
-    | "hex_repository"
-    | "pub_repository"
-    | "python_index"
-    | "terraform_registry";
+  | "maven_repository"
+  | "nuget_feed"
+  | "goproxy_server"
+  | "npm_registry"
+  | "rubygems_server"
+  | "cargo_registry"
+  | "composer_repository"
+  | "docker_registry"
+  | "git_source"
+  | "helm_registry"
+  | "hex_organization"
+  | "hex_repository"
+  | "pub_repository"
+  | "python_index"
+  | "terraform_registry";
 export const OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType =
   /*@__PURE__*/ S.String;
 

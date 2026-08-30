@@ -25,6 +25,7 @@ const rules = T.EndpointResolver((p, _) => {
     AccountIdEndpointMode,
     ResourceArn,
     ResourceArnList,
+    IsSearchOperation,
   } = p;
   const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
     type: "endpoint" as const,
@@ -37,11 +38,14 @@ const rules = T.EndpointResolver((p, _) => {
   const _p0 = () => ({ metricValues: ["O"] });
   {
     const PartitionResult = _.partition(Region);
+    const parsedEndpoint = _.parseURL(Endpoint);
     if (
       Endpoint != null &&
       Region != null &&
       PartitionResult != null &&
-      PartitionResult !== false
+      PartitionResult !== false &&
+      parsedEndpoint != null &&
+      parsedEndpoint !== false
     ) {
       if (UseFIPS === true) {
         return err(
@@ -54,8 +58,16 @@ const rules = T.EndpointResolver((p, _) => {
         );
       }
       if (
-        Endpoint ===
-        `https://dynamodb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`
+        _.getAttr(parsedEndpoint, "authority") ===
+        `dynamodb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`
+      ) {
+        return err(
+          "Endpoint override is not supported for dual-stack endpoints. Please enable dual-stack functionality by enabling the configuration. For more details, see: https://docs.aws.amazon.com/sdkref/latest/guide/feature-endpoints.html",
+        );
+      }
+      if (
+        _.getAttr(parsedEndpoint, "authority") ===
+        `search-dynamodb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`
       ) {
         return err(
           "Endpoint override is not supported for dual-stack endpoints. Please enable dual-stack functionality by enabling the configuration. For more details, see: https://docs.aws.amazon.com/sdkref/latest/guide/feature-endpoints.html",
@@ -97,9 +109,9 @@ const rules = T.EndpointResolver((p, _) => {
             {
               authSchemes: [
                 {
+                  signingRegion: "us-east-1",
                   name: "sigv4",
                   signingName: "dynamodb",
-                  signingRegion: "us-east-1",
                 },
               ],
             },
@@ -117,6 +129,11 @@ const rules = T.EndpointResolver((p, _) => {
             ) {
               return err(
                 "Invalid Configuration: AccountIdEndpointMode is required and FIPS is enabled, but FIPS account endpoints are not supported",
+              );
+            }
+            if (IsSearchOperation != null && IsSearchOperation === true) {
+              return e(
+                `https://search-dynamodb-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
               );
             }
             return e(
@@ -138,6 +155,11 @@ const rules = T.EndpointResolver((p, _) => {
                   "Invalid Configuration: AccountIdEndpointMode is required and FIPS is enabled, but FIPS account endpoints are not supported",
                 );
               }
+              if (IsSearchOperation != null && IsSearchOperation === true) {
+                return e(
+                  `https://search-dynamodb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+                );
+              }
               return e(
                 `https://dynamodb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
               );
@@ -148,6 +170,11 @@ const rules = T.EndpointResolver((p, _) => {
             ) {
               return err(
                 "Invalid Configuration: AccountIdEndpointMode is required and FIPS is enabled, but FIPS account endpoints are not supported",
+              );
+            }
+            if (IsSearchOperation != null && IsSearchOperation === true) {
+              return e(
+                `https://search-dynamodb-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
               );
             }
             return e(
@@ -175,6 +202,13 @@ const rules = T.EndpointResolver((p, _) => {
                 _.getAttr(ParsedArn, "region") === `${Region}` &&
                 _.isValidHostLabel(_.getAttr(ParsedArn, "accountId"), false)
               ) {
+                if (IsSearchOperation != null && IsSearchOperation === true) {
+                  return e(
+                    `https://${_.getAttr(ParsedArn, "accountId")}.search-ddb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+                    _p0(),
+                    {},
+                  );
+                }
                 return e(
                   `https://${_.getAttr(ParsedArn, "accountId")}.ddb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
                   _p0(),
@@ -200,6 +234,13 @@ const rules = T.EndpointResolver((p, _) => {
                 _.getAttr(ParsedArn, "region") === `${Region}` &&
                 _.isValidHostLabel(_.getAttr(ParsedArn, "accountId"), false)
               ) {
+                if (IsSearchOperation != null && IsSearchOperation === true) {
+                  return e(
+                    `https://${_.getAttr(ParsedArn, "accountId")}.search-ddb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+                    _p0(),
+                    {},
+                  );
+                }
                 return e(
                   `https://${_.getAttr(ParsedArn, "accountId")}.ddb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
                   _p0(),
@@ -215,6 +256,13 @@ const rules = T.EndpointResolver((p, _) => {
               AccountId != null
             ) {
               if (_.isValidHostLabel(AccountId, false)) {
+                if (IsSearchOperation != null && IsSearchOperation === true) {
+                  return e(
+                    `https://${AccountId}.search-ddb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+                    _p0(),
+                    {},
+                  );
+                }
                 return e(
                   `https://${AccountId}.ddb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
                   _p0(),
@@ -241,6 +289,11 @@ const rules = T.EndpointResolver((p, _) => {
                 "Invalid Configuration: AccountIdEndpointMode is required and FIPS is enabled, but FIPS account endpoints are not supported",
               );
             }
+            if (IsSearchOperation != null && IsSearchOperation === true) {
+              return e(
+                `https://search-dynamodb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
             return e(
               `https://dynamodb.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
             );
@@ -264,6 +317,13 @@ const rules = T.EndpointResolver((p, _) => {
             _.getAttr(ParsedArn, "region") === `${Region}` &&
             _.isValidHostLabel(_.getAttr(ParsedArn, "accountId"), false)
           ) {
+            if (IsSearchOperation != null && IsSearchOperation === true) {
+              return e(
+                `https://${_.getAttr(ParsedArn, "accountId")}.search-ddb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+                _p0(),
+                {},
+              );
+            }
             return e(
               `https://${_.getAttr(ParsedArn, "accountId")}.ddb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
               _p0(),
@@ -289,6 +349,13 @@ const rules = T.EndpointResolver((p, _) => {
             _.getAttr(ParsedArn, "region") === `${Region}` &&
             _.isValidHostLabel(_.getAttr(ParsedArn, "accountId"), false)
           ) {
+            if (IsSearchOperation != null && IsSearchOperation === true) {
+              return e(
+                `https://${_.getAttr(ParsedArn, "accountId")}.search-ddb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+                _p0(),
+                {},
+              );
+            }
             return e(
               `https://${_.getAttr(ParsedArn, "accountId")}.ddb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
               _p0(),
@@ -304,6 +371,13 @@ const rules = T.EndpointResolver((p, _) => {
           AccountId != null
         ) {
           if (_.isValidHostLabel(AccountId, false)) {
+            if (IsSearchOperation != null && IsSearchOperation === true) {
+              return e(
+                `https://${AccountId}.search-ddb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+                _p0(),
+                {},
+              );
+            }
             return e(
               `https://${AccountId}.ddb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
               _p0(),
@@ -328,6 +402,11 @@ const rules = T.EndpointResolver((p, _) => {
           }
           return err(
             "Invalid Configuration: AccountIdEndpointMode is required and FIPS is enabled, but FIPS account endpoints are not supported",
+          );
+        }
+        if (IsSearchOperation != null && IsSearchOperation === true) {
+          return e(
+            `https://search-dynamodb.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
           );
         }
         return e(
@@ -855,6 +934,23 @@ export const SecondaryIndexesCapacityMap = /*@__PURE__*/ S.Record(
   S.String,
   Capacity.pipe(S.optional),
 );
+export interface VectorCapacity {
+  VectorSearchRequestBytes?: number;
+  VectorWriteRequestBytes?: number;
+}
+export const VectorCapacity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VectorSearchRequestBytes: S.optional(S.Number),
+    VectorWriteRequestBytes: S.optional(S.Number),
+  }),
+).annotate({ identifier: "VectorCapacity" }) as any as S.Schema<VectorCapacity>;
+export type VectorIndexesCapacityMap = {
+  [key: string]: VectorCapacity | undefined;
+};
+export const VectorIndexesCapacityMap = /*@__PURE__*/ S.Record(
+  S.String,
+  VectorCapacity.pipe(S.optional),
+);
 export interface ConsumedCapacity {
   TableName?: string;
   CapacityUnits?: number;
@@ -863,6 +959,7 @@ export interface ConsumedCapacity {
   Table?: Capacity;
   LocalSecondaryIndexes?: { [key: string]: Capacity | undefined };
   GlobalSecondaryIndexes?: { [key: string]: Capacity | undefined };
+  VectorIndexes?: { [key: string]: VectorCapacity | undefined };
 }
 export const ConsumedCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -873,6 +970,7 @@ export const ConsumedCapacity = /*@__PURE__*/ S.suspend(() =>
     Table: S.optional(Capacity),
     LocalSecondaryIndexes: S.optional(SecondaryIndexesCapacityMap),
     GlobalSecondaryIndexes: S.optional(SecondaryIndexesCapacityMap),
+    VectorIndexes: S.optional(VectorIndexesCapacityMap),
   }),
 ).annotate({
   identifier: "ConsumedCapacity",
@@ -1577,6 +1675,59 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type DeletionProtectionEnabled = boolean;
 export type ResourcePolicy = string;
+export type VectorAttributeName = string;
+export interface VectorAttributeDefinition {
+  AttributeName: string;
+}
+export const VectorAttributeDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AttributeName: S.String }),
+).annotate({
+  identifier: "VectorAttributeDefinition",
+}) as any as S.Schema<VectorAttributeDefinition>;
+export type SearchSchemaElementType = "HASH" | "INLINE_FILTER" | (string & {});
+export const SearchSchemaElementType = /*@__PURE__*/ S.String;
+
+export interface SearchSchemaElement {
+  AttributeName: string;
+  SearchSchemaElementType: SearchSchemaElementType;
+}
+export const SearchSchemaElement = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AttributeName: S.String,
+    SearchSchemaElementType: SearchSchemaElementType,
+  }),
+).annotate({
+  identifier: "SearchSchemaElement",
+}) as any as S.Schema<SearchSchemaElement>;
+export type SearchSchema = SearchSchemaElement[];
+export const SearchSchema = /*@__PURE__*/ S.Array(SearchSchemaElement);
+export type VectorDistanceFunction =
+  | "COSINE"
+  | "DOT_PRODUCT"
+  | "EUCLIDEAN"
+  | (string & {});
+export const VectorDistanceFunction = /*@__PURE__*/ S.String;
+
+export interface VectorIndex {
+  IndexName: string;
+  VectorAttribute: VectorAttributeDefinition;
+  SearchSchema?: SearchSchemaElement[];
+  Projection: Projection;
+  Dimensions: number;
+  DistanceFunction: VectorDistanceFunction;
+}
+export const VectorIndex = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.String,
+    VectorAttribute: VectorAttributeDefinition,
+    SearchSchema: S.optional(SearchSchema),
+    Projection: Projection,
+    Dimensions: S.Number,
+    DistanceFunction: VectorDistanceFunction,
+  }),
+).annotate({ identifier: "VectorIndex" }) as any as S.Schema<VectorIndex>;
+export type VectorIndexList = VectorIndex[];
+export const VectorIndexList = /*@__PURE__*/ S.Array(VectorIndex);
 export interface CreateTableInput {
   AttributeDefinitions?: AttributeDefinition[];
   TableName: string;
@@ -1595,6 +1746,7 @@ export interface CreateTableInput {
   OnDemandThroughput?: OnDemandThroughput;
   GlobalTableSourceArn?: string;
   GlobalTableSettingsReplicationMode?: GlobalTableSettingsReplicationMode;
+  VectorIndexes?: VectorIndex[];
 }
 export const CreateTableInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1617,6 +1769,7 @@ export const CreateTableInput = /*@__PURE__*/ S.suspend(() =>
     GlobalTableSettingsReplicationMode: S.optional(
       GlobalTableSettingsReplicationMode,
     ),
+    VectorIndexes: S.optional(VectorIndexList),
   }).pipe(
     T.all(
       ns,
@@ -1811,6 +1964,40 @@ export const ArchivalSummary = /*@__PURE__*/ S.suspend(() =>
 export type MultiRegionConsistency = "EVENTUAL" | "STRONG" | (string & {});
 export const MultiRegionConsistency = /*@__PURE__*/ S.String;
 
+export interface VectorIndexDescription {
+  IndexName?: string;
+  SearchSchema?: SearchSchemaElement[];
+  Projection?: Projection;
+  VectorAttribute?: VectorAttributeDefinition;
+  Dimensions?: number;
+  DistanceFunction?: VectorDistanceFunction;
+  IndexStatus?: IndexStatus;
+  Backfilling?: boolean;
+  IndexSizeBytes?: number;
+  ItemCount?: number;
+  IndexArn?: string;
+}
+export const VectorIndexDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.optional(S.String),
+    SearchSchema: S.optional(SearchSchema),
+    Projection: S.optional(Projection),
+    VectorAttribute: S.optional(VectorAttributeDefinition),
+    Dimensions: S.optional(S.Number),
+    DistanceFunction: S.optional(VectorDistanceFunction),
+    IndexStatus: S.optional(IndexStatus),
+    Backfilling: S.optional(S.Boolean),
+    IndexSizeBytes: S.optional(S.Number),
+    ItemCount: S.optional(S.Number),
+    IndexArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VectorIndexDescription",
+}) as any as S.Schema<VectorIndexDescription>;
+export type VectorIndexDescriptionList = VectorIndexDescription[];
+export const VectorIndexDescriptionList = /*@__PURE__*/ S.Array(
+  VectorIndexDescription,
+);
 export interface TableDescription {
   AttributeDefinitions?: AttributeDefinition[];
   TableName?: string;
@@ -1840,6 +2027,7 @@ export interface TableDescription {
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: TableWarmThroughputDescription;
   MultiRegionConsistency?: MultiRegionConsistency;
+  VectorIndexes?: VectorIndexDescription[];
 }
 export const TableDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1875,6 +2063,7 @@ export const TableDescription = /*@__PURE__*/ S.suspend(() =>
     OnDemandThroughput: S.optional(OnDemandThroughput),
     WarmThroughput: S.optional(TableWarmThroughputDescription),
     MultiRegionConsistency: S.optional(MultiRegionConsistency),
+    VectorIndexes: S.optional(VectorIndexDescriptionList),
   }),
 ).annotate({
   identifier: "TableDescription",
@@ -1996,12 +2185,35 @@ export const TimeToLiveDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TimeToLiveDescription",
 }) as any as S.Schema<TimeToLiveDescription>;
+export interface VectorIndexInfo {
+  IndexName?: string;
+  VectorAttribute?: VectorAttributeDefinition;
+  SearchSchema?: SearchSchemaElement[];
+  Projection?: Projection;
+  Dimensions?: number;
+  DistanceFunction?: VectorDistanceFunction;
+}
+export const VectorIndexInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.optional(S.String),
+    VectorAttribute: S.optional(VectorAttributeDefinition),
+    SearchSchema: S.optional(SearchSchema),
+    Projection: S.optional(Projection),
+    Dimensions: S.optional(S.Number),
+    DistanceFunction: S.optional(VectorDistanceFunction),
+  }),
+).annotate({
+  identifier: "VectorIndexInfo",
+}) as any as S.Schema<VectorIndexInfo>;
+export type VectorIndexes = VectorIndexInfo[];
+export const VectorIndexes = /*@__PURE__*/ S.Array(VectorIndexInfo);
 export interface SourceTableFeatureDetails {
   LocalSecondaryIndexes?: LocalSecondaryIndexInfo[];
   GlobalSecondaryIndexes?: GlobalSecondaryIndexInfo[];
   StreamDescription?: StreamSpecification;
   TimeToLiveDescription?: TimeToLiveDescription;
   SSEDescription?: SSEDescription;
+  VectorIndexes?: VectorIndexInfo[];
 }
 export const SourceTableFeatureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2010,6 +2222,7 @@ export const SourceTableFeatureDetails = /*@__PURE__*/ S.suspend(() =>
     StreamDescription: S.optional(StreamSpecification),
     TimeToLiveDescription: S.optional(TimeToLiveDescription),
     SSEDescription: S.optional(SSEDescription),
+    VectorIndexes: S.optional(VectorIndexes),
   }),
 ).annotate({
   identifier: "SourceTableFeatureDetails",
@@ -2809,6 +3022,7 @@ export interface TableCreationParameters {
   OnDemandThroughput?: OnDemandThroughput;
   SSESpecification?: SSESpecification;
   GlobalSecondaryIndexes?: GlobalSecondaryIndex[];
+  VectorIndexes?: VectorIndex[];
 }
 export const TableCreationParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2820,6 +3034,7 @@ export const TableCreationParameters = /*@__PURE__*/ S.suspend(() =>
     OnDemandThroughput: S.optional(OnDemandThroughput),
     SSESpecification: S.optional(SSESpecification),
     GlobalSecondaryIndexes: S.optional(GlobalSecondaryIndexList),
+    VectorIndexes: S.optional(VectorIndexList),
   }),
 ).annotate({
   identifier: "TableCreationParameters",
@@ -4036,6 +4251,7 @@ export interface RestoreTableFromBackupInput {
   ProvisionedThroughputOverride?: ProvisionedThroughput;
   OnDemandThroughputOverride?: OnDemandThroughput;
   SSESpecificationOverride?: SSESpecification;
+  VectorIndexOverride?: VectorIndex[];
 }
 export const RestoreTableFromBackupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4047,6 +4263,7 @@ export const RestoreTableFromBackupInput = /*@__PURE__*/ S.suspend(() =>
     ProvisionedThroughputOverride: S.optional(ProvisionedThroughput),
     OnDemandThroughputOverride: S.optional(OnDemandThroughput),
     SSESpecificationOverride: S.optional(SSESpecification),
+    VectorIndexOverride: S.optional(VectorIndexList),
   }).pipe(
     T.all(
       ns,
@@ -4081,6 +4298,7 @@ export interface RestoreTableToPointInTimeInput {
   ProvisionedThroughputOverride?: ProvisionedThroughput;
   OnDemandThroughputOverride?: OnDemandThroughput;
   SSESpecificationOverride?: SSESpecification;
+  VectorIndexOverride?: VectorIndex[];
 }
 export const RestoreTableToPointInTimeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4097,6 +4315,7 @@ export const RestoreTableToPointInTimeInput = /*@__PURE__*/ S.suspend(() =>
     ProvisionedThroughputOverride: S.optional(ProvisionedThroughput),
     OnDemandThroughputOverride: S.optional(OnDemandThroughput),
     SSESpecificationOverride: S.optional(SSESpecification),
+    VectorIndexOverride: S.optional(VectorIndexList),
   }).pipe(
     T.all(
       ns,
@@ -4185,6 +4404,72 @@ export const ScanOutput = /*@__PURE__*/ S.suspend(() =>
     ConsumedCapacity: S.optional(ConsumedCapacity),
   }).pipe(ns),
 ).annotate({ identifier: "ScanOutput" }) as any as S.Schema<ScanOutput>;
+export type SearchVectorList = AttributeValue[];
+export const SearchVectorList = /*@__PURE__*/ S.Array(
+  S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+);
+export type TopKInteger = number;
+export interface SearchVectorsInput {
+  TableName: string;
+  IndexName: string;
+  ReturnConsumedCapacity?: ReturnConsumedCapacity;
+  ExpressionAttributeNames?: { [key: string]: string | undefined };
+  ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
+  ProjectionExpression?: string;
+  SearchVector: AttributeValue[];
+  SearchConditionExpression?: string;
+  TopK: number;
+}
+export const SearchVectorsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TableName: S.String.pipe(T.ContextParam("ResourceArn")),
+    IndexName: S.String,
+    ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+    ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
+    ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
+    ProjectionExpression: S.optional(S.String),
+    SearchVector: SearchVectorList,
+    SearchConditionExpression: S.optional(S.String),
+    TopK: S.Number,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ IsSearchOperation: { value: true } }),
+    ),
+  ),
+).annotate({
+  identifier: "SearchVectorsInput",
+}) as any as S.Schema<SearchVectorsInput>;
+export type ScoreNumber = number;
+export interface SearchResultItem {
+  Item?: { [key: string]: AttributeValue | undefined };
+  Score?: number;
+}
+export const SearchResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Item: S.optional(AttributeMap), Score: S.optional(S.Number) }),
+).annotate({
+  identifier: "SearchResultItem",
+}) as any as S.Schema<SearchResultItem>;
+export type SearchResultList = SearchResultItem[];
+export const SearchResultList = /*@__PURE__*/ S.Array(SearchResultItem);
+export interface SearchVectorsOutput {
+  ConsumedCapacity?: VectorCapacity;
+  SearchResults?: SearchResultItem[];
+}
+export const SearchVectorsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConsumedCapacity: S.optional(VectorCapacity),
+    SearchResults: S.optional(SearchResultList),
+  }).pipe(ns),
+).annotate({
+  identifier: "SearchVectorsOutput",
+}) as any as S.Schema<SearchVectorsOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: Tag[];
@@ -5070,6 +5355,48 @@ export type GlobalTableWitnessGroupUpdateList = GlobalTableWitnessGroupUpdate[];
 export const GlobalTableWitnessGroupUpdateList = /*@__PURE__*/ S.Array(
   GlobalTableWitnessGroupUpdate,
 );
+export interface CreateVectorIndexAction {
+  IndexName: string;
+  VectorAttribute: VectorAttributeDefinition;
+  SearchSchema?: SearchSchemaElement[];
+  Projection: Projection;
+  Dimensions: number;
+  DistanceFunction: VectorDistanceFunction;
+}
+export const CreateVectorIndexAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexName: S.String,
+    VectorAttribute: VectorAttributeDefinition,
+    SearchSchema: S.optional(SearchSchema),
+    Projection: Projection,
+    Dimensions: S.Number,
+    DistanceFunction: VectorDistanceFunction,
+  }),
+).annotate({
+  identifier: "CreateVectorIndexAction",
+}) as any as S.Schema<CreateVectorIndexAction>;
+export interface DeleteVectorIndexAction {
+  IndexName: string;
+}
+export const DeleteVectorIndexAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IndexName: S.String }),
+).annotate({
+  identifier: "DeleteVectorIndexAction",
+}) as any as S.Schema<DeleteVectorIndexAction>;
+export interface VectorIndexUpdate {
+  Create?: CreateVectorIndexAction;
+  Delete?: DeleteVectorIndexAction;
+}
+export const VectorIndexUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Create: S.optional(CreateVectorIndexAction),
+    Delete: S.optional(DeleteVectorIndexAction),
+  }),
+).annotate({
+  identifier: "VectorIndexUpdate",
+}) as any as S.Schema<VectorIndexUpdate>;
+export type VectorIndexUpdateList = VectorIndexUpdate[];
+export const VectorIndexUpdateList = /*@__PURE__*/ S.Array(VectorIndexUpdate);
 export interface UpdateTableInput {
   AttributeDefinitions?: AttributeDefinition[];
   TableName: string;
@@ -5086,6 +5413,7 @@ export interface UpdateTableInput {
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: WarmThroughput;
   GlobalTableSettingsReplicationMode?: GlobalTableSettingsReplicationMode;
+  VectorIndexUpdates?: VectorIndexUpdate[];
 }
 export const UpdateTableInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5106,6 +5434,7 @@ export const UpdateTableInput = /*@__PURE__*/ S.suspend(() =>
     GlobalTableSettingsReplicationMode: S.optional(
       GlobalTableSettingsReplicationMode,
     ),
+    VectorIndexUpdates: S.optional(VectorIndexUpdateList),
   }).pipe(
     T.all(
       ns,
@@ -5455,13 +5784,12 @@ export type BatchWriteItemError =
  * items and submit a new `BatchWriteItem` request with those unprocessed items
  * until all items have been processed.
  *
- * For tables and indexes with provisioned capacity, if none of the items can be
- * processed due to insufficient provisioned throughput on all of the tables in the
- * request, then `BatchWriteItem` returns a
- * `ProvisionedThroughputExceededException`. For all tables and indexes, if
- * none of the items can be processed due to other throttling scenarios (such as exceeding
- * partition level limits), then `BatchWriteItem` returns a
- * `ThrottlingException`.
+ * If `BatchWriteItem` cannot process any items due to throttling (for
+ * example, insufficient provisioned throughput on the tables in the request, or
+ * partition-level or account-level limits), it returns a
+ * `ProvisionedThroughputExceededException` or a
+ * `ThrottlingException`. Both indicate that the request was throttled;
+ * check the `ThrottlingReason` field in the returned exception for details.
  *
  * If DynamoDB returns any unprocessed items, you should retry the batch operation on
  * those items. However, we strongly recommend that you use an exponential
@@ -7237,6 +7565,49 @@ export const scan: API.PaginatedOperationMethod<
     pageSize: "Limit",
   } as const,
 })) as any;
+
+export type SearchVectorsError =
+  | InternalServerError
+  | RequestLimitExceeded
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Performs a vector similarity search on a vector index associated with an Amazon
+ * DynamoDB table, and returns the most similar items sorted by similarity score
+ * based on the distance function configured for the index.
+ *
+ * Score interpretation depends on the distance function:
+ *
+ * - `COSINE` - Returns the items with the k
+ * smallest scores. Scores range from 0 (identical) to 2 (opposite).
+ * Lower scores indicate higher similarity.
+ *
+ * - `EUCLIDEAN` - Returns the items with the k
+ * smallest scores. Scores represent the Euclidean distance between
+ * vectors. Lower scores indicate higher similarity.
+ *
+ * - `DOT_PRODUCT` - Returns the items with the k
+ * highest scores. Higher scores indicate higher similarity.
+ */
+export const searchVectors: API.OperationMethod<
+  SearchVectorsInput,
+  SearchVectorsOutput,
+  SearchVectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SearchVectorsInput,
+  output: SearchVectorsOutput,
+  errors: [
+    InternalServerError,
+    RequestLimitExceeded,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SearchVectors",
+}));
 
 export type TagResourceError =
   | InternalServerError
