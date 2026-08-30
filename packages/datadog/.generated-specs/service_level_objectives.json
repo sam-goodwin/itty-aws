@@ -1,0 +1,3737 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.datadog.service_level_objectives#ListSLOsRequest": {
+      "type": "structure",
+      "members": {
+        "ids": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "ids",
+            "smithy.api#documentation": "A comma separated list of the IDs of the service level objectives objects."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#documentation": "The query string to filter results based on SLO names."
+          }
+        },
+        "tags_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "tags_query",
+            "smithy.api#documentation": "The query string to filter results based on a single SLO tag."
+          }
+        },
+        "metrics_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "metrics_query",
+            "smithy.api#documentation": "The query string to filter results based on SLO numerator and denominator."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "The number of SLOs to return in the response."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "The specific offset to use as the beginning of the returned response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#SLOListResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#SLOListResponseDataList",
+          "traits": {
+            "smithy.api#documentation": "An array of service level objective objects."
+          }
+        },
+        "errors": {
+          "target": "com.datadog.service_level_objectives#SLOListResponseErrorsList",
+          "traits": {
+            "smithy.api#documentation": "An array of error messages. Each endpoint documents how/whether this field is\nused."
+          }
+        },
+        "metadata": {
+          "target": "com.datadog.service_level_objectives#SLOListResponseMetadata"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A response with one or more service level objective."
+      }
+    },
+    "com.datadog.service_level_objectives#ServiceLevelObjective": {
+      "type": "structure",
+      "members": {
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Creation timestamp (UNIX time in seconds)\n\nAlways included in service level objective responses."
+          }
+        },
+        "creator": {
+          "target": "com.datadog.service_level_objectives#Creator"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user-defined description of the service level objective.\n\nAlways included in service level objective responses (but may be `null`).\nOptional in create/update requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groups": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveGroupsList",
+          "traits": {
+            "smithy.api#documentation": "A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.\n\nIncluded in service level objective responses if it is not empty. Optional in\ncreate/update requests for monitor service level objectives, but may only be\nused when then length of the `monitor_ids` field is one."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the service level objective object.\n\nAlways included in service level objective responses."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Modification timestamp (UNIX time in seconds)\n\nAlways included in service level objective responses."
+          }
+        },
+        "monitor_ids": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveMonitorIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of monitor ids that defines the scope of a monitor service level\nobjective. **Required if type is `monitor`**."
+          }
+        },
+        "monitor_tags": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveMonitorTagsList",
+          "traits": {
+            "smithy.api#documentation": "The union of monitor tags for all monitors referenced by the `monitor_ids`\nfield.\nAlways included in service level objective responses for monitor-based service level\nobjectives (but may be empty). Ignored in create/update requests. Does not\naffect which monitors are included in the service level objective (that is\ndetermined entirely by the `monitor_ids` field)."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service level objective object.",
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveQuery"
+        },
+        "sli_specification": {
+          "target": "com.datadog.service_level_objectives#SLOSliSpec"
+        },
+        "tags": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveTagsList",
+          "traits": {
+            "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty).\nOptional in create/update requests."
+          }
+        },
+        "target_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The target threshold such that when the service level indicator is above this\nthreshold over the given timeframe, the objective is being met."
+          }
+        },
+        "thresholds": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveThresholdsList",
+          "traits": {
+            "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SLOTimeframe"
+        },
+        "type": {
+          "target": "com.datadog.service_level_objectives#SLOType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "warning_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The optional warning threshold such that when the service level indicator is\nbelow this value for the given threshold, but above the target threshold, the\nobjective appears in a \"warning\" state. This value must be greater than the target\nthreshold."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service level objective object includes a service level indicator, thresholds\nfor one or more timeframes, and metadata (`name`, `description`, `tags`, etc.)."
+      }
+    },
+    "com.datadog.service_level_objectives#Creator": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the creator."
+          }
+        },
+        "handle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Handle of the creator."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object describing the creator of the shared element."
+      }
+    },
+    "com.datadog.service_level_objectives#ServiceLevelObjectiveGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.\n\nIncluded in service level objective responses if it is not empty. Optional in\ncreate/update requests for monitor service level objectives, but may only be\nused when then length of the `monitor_ids` field is one."
+      }
+    },
+    "com.datadog.service_level_objectives#ServiceLevelObjectiveMonitorIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of monitor ids that defines the scope of a monitor service level\nobjective. **Required if type is `monitor`**."
+      }
+    },
+    "com.datadog.service_level_objectives#ServiceLevelObjectiveMonitorTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The union of monitor tags for all monitors referenced by the `monitor_ids`\nfield.\nAlways included in service level objective responses for monitor-based service level\nobjectives (but may be empty). Ignored in create/update requests. Does not\naffect which monitors are included in the service level objective (that is\ndetermined entirely by the `monitor_ids` field)."
+      }
+    },
+    "com.datadog.service_level_objectives#ServiceLevelObjectiveQuery": {
+      "type": "structure",
+      "members": {
+        "denominator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Datadog metric query for total (valid) events.",
+            "smithy.api#required": {}
+          }
+        },
+        "numerator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Datadog metric query for good events.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator\nto be used because this will sum up all request counts instead of averaging them, or taking the max or\nmin of all of those requests."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOSliSpec": {
+      "type": "union",
+      "members": {
+        "SLOTimeSliceSpec": {
+          "target": "com.datadog.service_level_objectives#SLOTimeSliceSpec"
+        },
+        "SLOCountSpec": {
+          "target": "com.datadog.service_level_objectives#SLOCountSpec"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A generic SLI specification. This is used for time-slice and count-based (metric) SLOs only."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTimeSliceSpec": {
+      "type": "structure",
+      "members": {
+        "time_slice": {
+          "target": "com.datadog.service_level_objectives#SLOTimeSliceCondition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A time-slice SLI specification."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTimeSliceCondition": {
+      "type": "structure",
+      "members": {
+        "comparator": {
+          "target": "com.datadog.service_level_objectives#SLOTimeSliceComparator",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "com.datadog.service_level_objectives#SLOTimeSliceQuery",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "query_interval_seconds": {
+          "target": "com.datadog.service_level_objectives#SLOTimeSliceInterval"
+        },
+        "threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The threshold value to which each SLI value will be compared.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator,\nand 3. the threshold. Optionally, a fourth part, the query interval, can be provided."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTimeSliceComparator": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ">"
+          }
+        },
+        "VALUE_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ">="
+          }
+        },
+        "VALUE_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "<"
+          }
+        },
+        "VALUE_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "<="
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The comparator used to compare the SLI value to the threshold."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTimeSliceQuery": {
+      "type": "structure",
+      "members": {
+        "formulas": {
+          "target": "com.datadog.service_level_objectives#SLOTimeSliceQueryFormulasList",
+          "traits": {
+            "smithy.api#documentation": "A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.",
+            "smithy.api#required": {}
+          }
+        },
+        "queries": {
+          "target": "com.datadog.service_level_objectives#SLOTimeSliceQueryQueriesList",
+          "traits": {
+            "smithy.api#documentation": "A list of queries that are used to calculate the SLI value.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The queries and formula used to calculate the SLI value."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOFormula": {
+      "type": "structure",
+      "members": {
+        "formula": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The formula string, which is an expression involving named queries.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula that specifies how to combine the results of multiple queries."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTimeSliceQueryFormulasList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOFormula"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO."
+      }
+    },
+    "com.datadog.service_level_objectives#FormulaAndFunctionMetricQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "aggregator": {
+          "target": "com.datadog.service_level_objectives#FormulaAndFunctionMetricAggregation"
+        },
+        "cross_org_uuids": {
+          "target": "com.datadog.service_level_objectives#CrossOrgUuids"
+        },
+        "data_source": {
+          "target": "com.datadog.service_level_objectives#FormulaAndFunctionMetricDataSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query for use in formulas.",
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metrics query definition.",
+            "smithy.api#required": {}
+          }
+        },
+        "semantic_mode": {
+          "target": "com.datadog.service_level_objectives#FormulaAndFunctionMetricSemanticMode"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and functions metrics query."
+      }
+    },
+    "com.datadog.service_level_objectives#FormulaAndFunctionMetricAggregation": {
+      "type": "enum",
+      "members": {
+        "AVG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "avg"
+          }
+        },
+        "MIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "min"
+          }
+        },
+        "MAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "max"
+          }
+        },
+        "SUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sum"
+          }
+        },
+        "LAST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last"
+          }
+        },
+        "AREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "area"
+          }
+        },
+        "L2NORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "l2norm"
+          }
+        },
+        "PERCENTILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "percentile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The aggregation methods available for metrics queries."
+      }
+    },
+    "com.datadog.service_level_objectives#CrossOrgUuids": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The source organization UUID for cross organization queries. Feature in Private Beta."
+      }
+    },
+    "com.datadog.service_level_objectives#FormulaAndFunctionMetricDataSource": {
+      "type": "enum",
+      "members": {
+        "METRICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metrics"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source for metrics queries."
+      }
+    },
+    "com.datadog.service_level_objectives#FormulaAndFunctionMetricSemanticMode": {
+      "type": "enum",
+      "members": {
+        "COMBINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "combined"
+          }
+        },
+        "NATIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "native"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTimeSliceQueryQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#FormulaAndFunctionMetricQueryDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of queries that are used to calculate the SLI value."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTimeSliceInterval": {
+      "type": "intEnum",
+      "members": {
+        "_60": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 60
+          }
+        },
+        "_300": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 300
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The interval used when querying data, which defines the size of a time slice.\nTwo values are allowed: 60 (1 minute) and 300 (5 minutes).\nIf not provided, the value defaults to 300 (5 minutes)."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCountSpec": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "com.datadog.service_level_objectives#SLOCountDefinition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A metric SLI specification."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCountDefinition": {
+      "type": "union",
+      "members": {
+        "SLOCountDefinitionWithTotalEventsFormula": {
+          "target": "com.datadog.service_level_objectives#SLOCountDefinitionWithTotalEventsFormula"
+        },
+        "SLOCountDefinitionWithBadEventsFormula": {
+          "target": "com.datadog.service_level_objectives#SLOCountDefinitionWithBadEventsFormula"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A count-based (metric) SLI specification, composed of three parts: the good events formula,\nthe bad or total events formula, and the underlying queries.\nExactly one of `total_events_formula` or `bad_events_formula` must be provided."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCountDefinitionWithTotalEventsFormula": {
+      "type": "structure",
+      "members": {
+        "good_events_formula": {
+          "target": "com.datadog.service_level_objectives#SLOFormula",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queries": {
+          "target": "com.datadog.service_level_objectives#SLOCountDefinitionWithTotalEventsFormulaQueriesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_events_formula": {
+          "target": "com.datadog.service_level_objectives#SLOFormula",
+          "traits": {
+            "smithy.api#documentation": "The total events formula. Bad events queries can be defined using the `bad_events_formula` field as an alternative. Only one of `total_events_formula` or `bad_events_formula` must be provided.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SLO count definition using a total events formula alongside a good events formula."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCountDefinitionWithTotalEventsFormulaQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#FormulaAndFunctionMetricQueryDefinition"
+      },
+      "traits": {}
+    },
+    "com.datadog.service_level_objectives#SLOCountDefinitionWithBadEventsFormula": {
+      "type": "structure",
+      "members": {
+        "bad_events_formula": {
+          "target": "com.datadog.service_level_objectives#SLOFormula",
+          "traits": {
+            "smithy.api#documentation": "The bad events formula (recommended). Total events queries can be defined using the `total_events_formula` field as an alternative. Only one of `total_events_formula` or `bad_events_formula` must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "good_events_formula": {
+          "target": "com.datadog.service_level_objectives#SLOFormula",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queries": {
+          "target": "com.datadog.service_level_objectives#SLOCountDefinitionWithBadEventsFormulaQueriesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SLO count definition using a bad events formula alongside a good events formula."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCountDefinitionWithBadEventsFormulaQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#FormulaAndFunctionMetricQueryDefinition"
+      },
+      "traits": {}
+    },
+    "com.datadog.service_level_objectives#ServiceLevelObjectiveTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty).\nOptional in create/update requests."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOThreshold": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The target value for the service level indicator within the corresponding\ntimeframe.",
+            "smithy.api#required": {}
+          }
+        },
+        "target_display": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string representation of the target that indicates its precision.\nIt uses trailing zeros to show significant decimal places (for example `98.00`).\n\nAlways included in service level objective responses. Ignored in\ncreate/update requests."
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SLOTimeframe",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "warning": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The warning value for the service level objective."
+          }
+        },
+        "warning_display": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string representation of the warning target (see the description of\nthe `target_display` field for details).\n\nIncluded in service level objective responses if a warning target exists.\nIgnored in create/update requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SLO thresholds (target and optionally warning) for a single time window."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTimeframe": {
+      "type": "enum",
+      "members": {
+        "_7D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "7d"
+          }
+        },
+        "_30D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30d"
+          }
+        },
+        "_90D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "90d"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SLO time window options. Note that \"custom\" is not a valid option for creating\nor updating SLOs. It is only used when querying SLO history over custom timeframes."
+      }
+    },
+    "com.datadog.service_level_objectives#ServiceLevelObjectiveThresholdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOThreshold"
+      },
+      "traits": {
+        "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOType": {
+      "type": "enum",
+      "members": {
+        "METRIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metric"
+          }
+        },
+        "MONITOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monitor"
+          }
+        },
+        "TIME_SLICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "time_slice"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the service level objective."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOListResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#ServiceLevelObjective"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of service level objective objects."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOListResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of error messages. Each endpoint documents how/whether this field is\nused."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOListResponseMetadata": {
+      "type": "structure",
+      "members": {
+        "page": {
+          "target": "com.datadog.service_level_objectives#SLOListResponseMetadataPage"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata object containing additional information about the list of SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOListResponseMetadataPage": {
+      "type": "structure",
+      "members": {
+        "total_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of resources that could be retrieved ignoring the parameters and filters in the request."
+          }
+        },
+        "total_filtered_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object containing information about the pages of the list of SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#ListSLOs": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#ListSLOsRequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SLOListResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#BadRequest"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/slo",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get all SLOs\n\nGet a list of service level objective objects for your organization."
+      }
+    },
+    "com.datadog.service_level_objectives#CreateSLORequestGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.\n\nIncluded in service level objective responses if it is not empty. Optional in\ncreate/update requests for monitor service level objectives, but may only be\nused when then length of the `monitor_ids` field is one."
+      }
+    },
+    "com.datadog.service_level_objectives#CreateSLORequestMonitorIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of monitor IDs that defines the scope of a monitor service level\nobjective. **Required if type is `monitor`**."
+      }
+    },
+    "com.datadog.service_level_objectives#CreateSLORequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty).\nOptional in create/update requests."
+      }
+    },
+    "com.datadog.service_level_objectives#CreateSLORequestThresholdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOThreshold"
+      },
+      "traits": {
+        "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object."
+      }
+    },
+    "com.datadog.service_level_objectives#CreateSLORequest": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user-defined description of the service level objective.\n\nAlways included in service level objective responses (but may be `null`).\nOptional in create/update requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groups": {
+          "target": "com.datadog.service_level_objectives#CreateSLORequestGroupsList",
+          "traits": {
+            "smithy.api#documentation": "A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.\n\nIncluded in service level objective responses if it is not empty. Optional in\ncreate/update requests for monitor service level objectives, but may only be\nused when then length of the `monitor_ids` field is one."
+          }
+        },
+        "monitor_ids": {
+          "target": "com.datadog.service_level_objectives#CreateSLORequestMonitorIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of monitor IDs that defines the scope of a monitor service level\nobjective. **Required if type is `monitor`**."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service level objective object.",
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveQuery"
+        },
+        "sli_specification": {
+          "target": "com.datadog.service_level_objectives#SLOSliSpec"
+        },
+        "tags": {
+          "target": "com.datadog.service_level_objectives#CreateSLORequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty).\nOptional in create/update requests."
+          }
+        },
+        "target_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The target threshold such that when the service level indicator is above this\nthreshold over the given timeframe, the objective is being met."
+          }
+        },
+        "thresholds": {
+          "target": "com.datadog.service_level_objectives#CreateSLORequestThresholdsList",
+          "traits": {
+            "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SLOTimeframe"
+        },
+        "type": {
+          "target": "com.datadog.service_level_objectives#SLOType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "warning_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The optional warning threshold such that when the service level indicator is\nbelow this value for the given threshold, but above the target threshold, the\nobjective appears in a \"warning\" state. This value must be greater than the target\nthreshold."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#CreateSLO": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#CreateSLORequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SLOListResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#BadRequest"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/v1/slo",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create an SLO object\n\nCreate a service level objective object."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOBulkDelete": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.datadog.service_level_objectives#SLOBulkDeleteValueList"
+      },
+      "traits": {
+        "smithy.api#documentation": "A map of service level objective object IDs to arrays of timeframes,\nwhich indicate the thresholds to delete for each ID."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOBulkDeleteValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOTimeframe"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of all SLO timeframes."
+      }
+    },
+    "com.datadog.service_level_objectives#DeleteSLOTimeframeInBulkRequest": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.datadog.service_level_objectives#SLOBulkDelete",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#SLOBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#SLOBulkDeleteResponseData"
+        },
+        "errors": {
+          "target": "com.datadog.service_level_objectives#SLOBulkDeleteResponseErrorsList",
+          "traits": {
+            "smithy.api#documentation": "Array of errors object returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The bulk partial delete service level objective object endpoint\nresponse.\n\nThis endpoint operates on multiple service level objective objects, so\nit may be partially successful. In such cases, the \"data\" and \"error\"\nfields in this response indicate which deletions succeeded and failed."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOBulkDeleteResponseData": {
+      "type": "structure",
+      "members": {
+        "deleted": {
+          "target": "com.datadog.service_level_objectives#SLOBulkDeleteResponseDataDeletedList",
+          "traits": {
+            "smithy.api#documentation": "An array of service level objective object IDs that indicates\nwhich objects that were completely deleted."
+          }
+        },
+        "updated": {
+          "target": "com.datadog.service_level_objectives#SLOBulkDeleteResponseDataUpdatedList",
+          "traits": {
+            "smithy.api#documentation": "An array of service level objective object IDs that indicates\nwhich objects that were modified (objects for which at least one\nthreshold was deleted, but that were not completely deleted)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of service level objective objects."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOBulkDeleteResponseDataDeletedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of service level objective object IDs that indicates\nwhich objects that were completely deleted."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOBulkDeleteResponseDataUpdatedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of service level objective object IDs that indicates\nwhich objects that were modified (objects for which at least one\nthreshold was deleted, but that were not completely deleted)."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOBulkDeleteError": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the service level objective object associated with\nthis error.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SLOErrorTimeframe",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object describing the error."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOErrorTimeframe": {
+      "type": "enum",
+      "members": {
+        "_7D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "7d"
+          }
+        },
+        "_30D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30d"
+          }
+        },
+        "_90D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "90d"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The timeframe of the threshold associated with this error\nor \"all\" if all thresholds are affected."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOBulkDeleteResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOBulkDeleteError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of errors object returned."
+      }
+    },
+    "com.datadog.service_level_objectives#DeleteSLOTimeframeInBulk": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#DeleteSLOTimeframeInBulkRequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SLOBulkDeleteResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#BadRequest"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/v1/slo/bulk_delete",
+          "code": 200
+        },
+        "smithy.api#documentation": "Bulk Delete SLO Timeframes\n\nDelete (or partially delete) multiple service level objective objects.\n\nThis endpoint facilitates deletion of one or more thresholds for one or more\nservice level objective objects. If all thresholds are deleted, the service level\nobjective object is deleted as well."
+      }
+    },
+    "com.datadog.service_level_objectives#CheckCanDeleteSLORequest": {
+      "type": "structure",
+      "members": {
+        "ids": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "ids",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A comma separated list of the IDs of the service level objectives objects."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#CheckCanDeleteSLOResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#CheckCanDeleteSLOResponseData"
+        },
+        "errors": {
+          "target": "com.datadog.service_level_objectives#CheckCanDeleteSLOResponseErrorsMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of SLO id to it's current usages."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service level objective response containing the requested object."
+      }
+    },
+    "com.datadog.service_level_objectives#CheckCanDeleteSLOResponseData": {
+      "type": "structure",
+      "members": {
+        "ok": {
+          "target": "com.datadog.service_level_objectives#CheckCanDeleteSLOResponseDataOkList",
+          "traits": {
+            "smithy.api#documentation": "An array of SLO IDs that can be safely deleted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of service level objective objects."
+      }
+    },
+    "com.datadog.service_level_objectives#CheckCanDeleteSLOResponseDataOkList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of SLO IDs that can be safely deleted."
+      }
+    },
+    "com.datadog.service_level_objectives#CheckCanDeleteSLOResponseErrorsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A mapping of SLO id to it's current usages."
+      }
+    },
+    "com.datadog.service_level_objectives#CheckCanDeleteSLO": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#CheckCanDeleteSLORequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#CheckCanDeleteSLOResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#BadRequest"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/slo/can_delete",
+          "code": 200
+        },
+        "smithy.api#documentation": "Check if SLOs can be safely deleted\n\nCheck if an SLO can be safely deleted. For example,\nassure an SLO can be deleted without disrupting a dashboard."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLORequest": {
+      "type": "structure",
+      "members": {
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#documentation": "The query string to filter results based on SLO names.\nSome examples of queries include `service:<service-name>`\nand `<slo-name>`."
+          }
+        },
+        "page_size_": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page[size]",
+            "smithy.api#documentation": "The number of files to return in the response `[default=10]`."
+          }
+        },
+        "page_number_": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page[number]",
+            "smithy.api#documentation": "The identifier of the first page to return. This parameter is used for the pagination feature `[default=0]`."
+          }
+        },
+        "include_facets": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "include_facets",
+            "smithy.api#documentation": "Whether or not to return facet information in the response `[default=false]`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseData"
+        },
+        "links": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseLinks"
+        },
+        "meta": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseMeta"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A search SLO response containing results from the search query."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseData": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributes"
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of service level objective result."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data from search SLO response."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributes": {
+      "type": "structure",
+      "members": {
+        "facets": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacets"
+        },
+        "slos": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesSlosList",
+          "traits": {
+            "smithy.api#documentation": "SLOs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attributes"
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacets": {
+      "type": "structure",
+      "members": {
+        "all_tags": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsAllTagsList",
+          "traits": {
+            "smithy.api#documentation": "All tags associated with an SLO."
+          }
+        },
+        "creator_name": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsCreatorNameList",
+          "traits": {
+            "smithy.api#documentation": "Creator of an SLO."
+          }
+        },
+        "env_tags": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsEnvTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags with the `env` tag key."
+          }
+        },
+        "service_tags": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsServiceTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags with the `service` tag key."
+          }
+        },
+        "slo_type": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsSloTypeList",
+          "traits": {
+            "smithy.api#documentation": "Type of SLO."
+          }
+        },
+        "target": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsTargetList",
+          "traits": {
+            "smithy.api#documentation": "SLO Target"
+          }
+        },
+        "team_tags": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsTeamTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags with the `team` tag key."
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsTimeframeList",
+          "traits": {
+            "smithy.api#documentation": "Timeframes of SLOs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Facets"
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectString": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Facet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Facet"
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsAllTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectString"
+      },
+      "traits": {
+        "smithy.api#documentation": "All tags associated with an SLO."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsCreatorNameList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectString"
+      },
+      "traits": {
+        "smithy.api#documentation": "Creator of an SLO."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsEnvTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectString"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags with the `env` tag key."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsServiceTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectString"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags with the `service` tag key."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectInt": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count"
+          }
+        },
+        "name": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Facet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Facet"
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsSloTypeList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectInt"
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of SLO."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsTargetList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectInt"
+      },
+      "traits": {
+        "smithy.api#documentation": "SLO Target"
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsTeamTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectString"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags with the `team` tag key."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsTimeframeList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesFacetsObjectString"
+      },
+      "traits": {
+        "smithy.api#documentation": "Timeframes of SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjective": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveData"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service level objective data container."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveData": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributes"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the service level objective object.\n\nAlways included in service level objective responses."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the object, must be `slo`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service level objective ID and attributes."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributes": {
+      "type": "structure",
+      "members": {
+        "all_tags": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesAllTagsList",
+          "traits": {
+            "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty)."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Creation timestamp (UNIX time in seconds)\n\nAlways included in service level objective responses."
+          }
+        },
+        "creator": {
+          "target": "com.datadog.service_level_objectives#SLOCreator",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user-defined description of the service level objective.\n\nAlways included in service level objective responses (but may be `null`).\nOptional in create/update requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "env_tags": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesEnvTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags with the `env` tag key."
+          }
+        },
+        "groups": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesGroupsList",
+          "traits": {
+            "smithy.api#documentation": "A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.\nIncluded in service level objective responses if it is not empty.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Modification timestamp (UNIX time in seconds)\n\nAlways included in service level objective responses."
+          }
+        },
+        "monitor_ids": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesMonitorIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of monitor ids that defines the scope of a monitor service level\nobjective.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service level objective object."
+          }
+        },
+        "overall_status": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesOverallStatusList",
+          "traits": {
+            "smithy.api#documentation": "calculated status and error budget remaining."
+          }
+        },
+        "query": {
+          "target": "com.datadog.service_level_objectives#SearchSLOQuery",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "service_tags": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesServiceTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags with the `service` tag key."
+          }
+        },
+        "slo_type": {
+          "target": "com.datadog.service_level_objectives#SLOType"
+        },
+        "status": {
+          "target": "com.datadog.service_level_objectives#SLOStatus"
+        },
+        "team_tags": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesTeamTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags with the `team` tag key."
+          }
+        },
+        "thresholds": {
+          "target": "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesThresholdsList",
+          "traits": {
+            "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service level objective object includes a service level indicator, thresholds\nfor one or more timeframes, and metadata (`name`, `description`, and `tags`)."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesAllTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty)."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCreator": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the creator."
+          }
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "User ID of the creator."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The creator of the SLO"
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesEnvTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags with the `env` tag key."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.\nIncluded in service level objective responses if it is not empty."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesMonitorIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of monitor ids that defines the scope of a monitor service level\nobjective."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOOverallStatuses": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message if SLO status or error budget could not be calculated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "error_budget_remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Remaining error budget of the SLO in percentage.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "indexed_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "timestamp (UNIX time in seconds) of when the SLO status and error budget\nwere calculated."
+          }
+        },
+        "raw_error_budget_remaining": {
+          "target": "com.datadog.service_level_objectives#SLORawErrorBudgetRemaining",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "span_precision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of decimal places the SLI value is accurate to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.datadog.service_level_objectives#SLOState"
+        },
+        "status": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The status of the SLO.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The target of the SLO."
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SLOTimeframe"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Overall status of the SLO by timeframes."
+      }
+    },
+    "com.datadog.service_level_objectives#SLORawErrorBudgetRemaining": {
+      "type": "structure",
+      "members": {
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error budget remaining unit."
+          }
+        },
+        "value": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Error budget remaining value."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error budget remaining for an SLO."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOState": {
+      "type": "enum",
+      "members": {
+        "BREACHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "breached"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        },
+        "NO_DATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "no_data"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "State of the SLO."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesOverallStatusList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOOverallStatuses"
+      },
+      "traits": {
+        "smithy.api#documentation": "calculated status and error budget remaining."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOQuery": {
+      "type": "structure",
+      "members": {
+        "denominator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Datadog metric query for total (valid) events."
+          }
+        },
+        "metrics": {
+          "target": "com.datadog.service_level_objectives#SearchSLOQueryMetricsList",
+          "traits": {
+            "smithy.api#documentation": "Metric names used in the query's numerator and denominator.\nThis field will return null and will be implemented in the next version of this endpoint.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "numerator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Datadog metric query for good events."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator\nto be used because this will sum up all request counts instead of averaging them, or taking the max or\nmin of all of those requests."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOQueryMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metric names used in the query's numerator and denominator.\nThis field will return null and will be implemented in the next version of this endpoint."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesServiceTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags with the `service` tag key."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOStatus": {
+      "type": "structure",
+      "members": {
+        "calculation_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message if SLO status or error budget could not be calculated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "error_budget_remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Remaining error budget of the SLO in percentage.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "indexed_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "timestamp (UNIX time in seconds) of when the SLO status and error budget\nwere calculated."
+          }
+        },
+        "raw_error_budget_remaining": {
+          "target": "com.datadog.service_level_objectives#SLORawErrorBudgetRemaining",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sli": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The current service level indicator (SLI) of the SLO, also known as 'status'. This is a percentage value from 0-100 (inclusive).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "span_precision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of decimal places the SLI value is accurate to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.datadog.service_level_objectives#SLOState"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of the SLO's primary timeframe."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesTeamTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags with the `team` tag key."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOThreshold": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The target value for the service level indicator within the corresponding\ntimeframe.",
+            "smithy.api#required": {}
+          }
+        },
+        "target_display": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string representation of the target that indicates its precision.\nIt uses trailing zeros to show significant decimal places (for example `98.00`).\n\nAlways included in service level objective responses. Ignored in\ncreate/update requests."
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SearchSLOTimeframe",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "warning": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The warning value for the service level objective.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "warning_display": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string representation of the warning target (see the description of\nthe `target_display` field for details).\n\nIncluded in service level objective responses if a warning target exists.\nIgnored in create/update requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SLO thresholds (target and optionally warning) for a single time window."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOTimeframe": {
+      "type": "enum",
+      "members": {
+        "_7D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "7d"
+          }
+        },
+        "_30D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30d"
+          }
+        },
+        "_90D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "90d"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SLO time window options."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchServiceLevelObjectiveAttributesThresholdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchSLOThreshold"
+      },
+      "traits": {
+        "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseDataAttributesSlosList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SearchServiceLevelObjective"
+      },
+      "traits": {
+        "smithy.api#documentation": "SLOs"
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseLinks": {
+      "type": "structure",
+      "members": {
+        "first": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to last page."
+          }
+        },
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to first page.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to the next page."
+          }
+        },
+        "prev": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to previous page.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "self": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to current page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Pagination links."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseMeta": {
+      "type": "structure",
+      "members": {
+        "pagination": {
+          "target": "com.datadog.service_level_objectives#SearchSLOResponseMetaPage"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Searches metadata returned by the API."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLOResponseMetaPage": {
+      "type": "structure",
+      "members": {
+        "first_number": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The first number."
+          }
+        },
+        "last_number": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The last number."
+          }
+        },
+        "next_number": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The next number."
+          }
+        },
+        "number": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The page number."
+          }
+        },
+        "prev_number": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The previous page number."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size of the response."
+          }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of SLOs in the response."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of pagination."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Pagination metadata returned by the API."
+      }
+    },
+    "com.datadog.service_level_objectives#SearchSLO": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#SearchSLORequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SearchSLOResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#BadRequest"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/slo/search",
+          "code": 200
+        },
+        "smithy.api#documentation": "Search for SLOs\n\nGet a list of service level objective objects for your organization."
+      }
+    },
+    "com.datadog.service_level_objectives#GetSLORequest": {
+      "type": "structure",
+      "members": {
+        "slo_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the service level objective object."
+          }
+        },
+        "with_configured_alert_ids": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "with_configured_alert_ids",
+            "smithy.api#documentation": "Get the IDs of SLO monitors that reference this SLO."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#SLOResponseData"
+        },
+        "errors": {
+          "target": "com.datadog.service_level_objectives#SLOResponseErrorsList",
+          "traits": {
+            "smithy.api#documentation": "An array of error messages. Each endpoint documents how/whether this field is\nused."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service level objective response containing a single service level objective."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponseData": {
+      "type": "structure",
+      "members": {
+        "configured_alert_ids": {
+          "target": "com.datadog.service_level_objectives#SLOResponseDataConfiguredAlertIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Creation timestamp (UNIX time in seconds)\n\nAlways included in service level objective responses."
+          }
+        },
+        "creator": {
+          "target": "com.datadog.service_level_objectives#Creator"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user-defined description of the service level objective.\n\nAlways included in service level objective responses (but may be `null`).\nOptional in create/update requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groups": {
+          "target": "com.datadog.service_level_objectives#SLOResponseDataGroupsList",
+          "traits": {
+            "smithy.api#documentation": "A list of (up to 20) monitor groups that narrow the scope of a monitor service level objective.\n\nIncluded in service level objective responses if it is not empty. Optional in\ncreate/update requests for monitor service level objectives, but may only be\nused when then length of the `monitor_ids` field is one."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the service level objective object.\n\nAlways included in service level objective responses."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Modification timestamp (UNIX time in seconds)\n\nAlways included in service level objective responses."
+          }
+        },
+        "monitor_ids": {
+          "target": "com.datadog.service_level_objectives#SLOResponseDataMonitorIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of monitor ids that defines the scope of a monitor service level\nobjective. **Required if type is `monitor`**."
+          }
+        },
+        "monitor_tags": {
+          "target": "com.datadog.service_level_objectives#SLOResponseDataMonitorTagsList",
+          "traits": {
+            "smithy.api#documentation": "The union of monitor tags for all monitors referenced by the `monitor_ids`\nfield.\nAlways included in service level objective responses for monitor service level\nobjectives (but may be empty). Ignored in create/update requests. Does not\naffect which monitors are included in the service level objective (that is\ndetermined entirely by the `monitor_ids` field)."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service level objective object."
+          }
+        },
+        "query": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveQuery",
+          "traits": {
+            "smithy.api#documentation": "The metric query used to define a count-based SLO as the ratio of good events to total events."
+          }
+        },
+        "sli_specification": {
+          "target": "com.datadog.service_level_objectives#SLOSliSpec",
+          "traits": {
+            "smithy.api#documentation": "A generic SLI specification. This is currently used for time-slice and count-based (metric) SLOs only."
+          }
+        },
+        "tags": {
+          "target": "com.datadog.service_level_objectives#SLOResponseDataTagsList",
+          "traits": {
+            "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty).\nOptional in create/update requests."
+          }
+        },
+        "target_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The target threshold such that when the service level indicator is above this\nthreshold over the given timeframe, the objective is being met."
+          }
+        },
+        "thresholds": {
+          "target": "com.datadog.service_level_objectives#SLOResponseDataThresholdsList",
+          "traits": {
+            "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object."
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SLOTimeframe"
+        },
+        "type": {
+          "target": "com.datadog.service_level_objectives#SLOType"
+        },
+        "warning_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The optional warning threshold such that when the service level indicator is\nbelow this value for the given threshold, but above the target threshold, the\nobjective appears in a \"warning\" state. This value must be greater than the target\nthreshold."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service level objective object includes a service level indicator, thresholds\nfor one or more timeframes, and metadata (`name`, `description`, `tags`, etc.)."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponseDataConfiguredAlertIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponseDataGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of (up to 20) monitor groups that narrow the scope of a monitor service level objective.\n\nIncluded in service level objective responses if it is not empty. Optional in\ncreate/update requests for monitor service level objectives, but may only be\nused when then length of the `monitor_ids` field is one."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponseDataMonitorIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of monitor ids that defines the scope of a monitor service level\nobjective. **Required if type is `monitor`**."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponseDataMonitorTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The union of monitor tags for all monitors referenced by the `monitor_ids`\nfield.\nAlways included in service level objective responses for monitor service level\nobjectives (but may be empty). Ignored in create/update requests. Does not\naffect which monitors are included in the service level objective (that is\ndetermined entirely by the `monitor_ids` field)."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponseDataTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty).\nOptional in create/update requests."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponseDataThresholdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOThreshold"
+      },
+      "traits": {
+        "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of error messages. Each endpoint documents how/whether this field is\nused."
+      }
+    },
+    "com.datadog.service_level_objectives#GetSLO": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#GetSLORequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SLOResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/slo/{slo_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get an SLO's details\n\nGet a service level objective object."
+      }
+    },
+    "com.datadog.service_level_objectives#UpdateSLORequestGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.\n\nIncluded in service level objective responses if it is not empty. Optional in\ncreate/update requests for monitor service level objectives, but may only be\nused when then length of the `monitor_ids` field is one."
+      }
+    },
+    "com.datadog.service_level_objectives#UpdateSLORequestMonitorIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of monitor ids that defines the scope of a monitor service level\nobjective. **Required if type is `monitor`**."
+      }
+    },
+    "com.datadog.service_level_objectives#UpdateSLORequestMonitorTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The union of monitor tags for all monitors referenced by the `monitor_ids`\nfield.\nAlways included in service level objective responses for monitor-based service level\nobjectives (but may be empty). Ignored in create/update requests. Does not\naffect which monitors are included in the service level objective (that is\ndetermined entirely by the `monitor_ids` field)."
+      }
+    },
+    "com.datadog.service_level_objectives#UpdateSLORequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty).\nOptional in create/update requests."
+      }
+    },
+    "com.datadog.service_level_objectives#UpdateSLORequestThresholdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOThreshold"
+      },
+      "traits": {
+        "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object."
+      }
+    },
+    "com.datadog.service_level_objectives#UpdateSLORequest": {
+      "type": "structure",
+      "members": {
+        "slo_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the service level objective object."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user-defined description of the service level objective.\n\nAlways included in service level objective responses (but may be `null`).\nOptional in create/update requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groups": {
+          "target": "com.datadog.service_level_objectives#UpdateSLORequestGroupsList",
+          "traits": {
+            "smithy.api#documentation": "A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.\n\nIncluded in service level objective responses if it is not empty. Optional in\ncreate/update requests for monitor service level objectives, but may only be\nused when then length of the `monitor_ids` field is one."
+          }
+        },
+        "monitor_ids": {
+          "target": "com.datadog.service_level_objectives#UpdateSLORequestMonitorIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of monitor ids that defines the scope of a monitor service level\nobjective. **Required if type is `monitor`**."
+          }
+        },
+        "monitor_tags": {
+          "target": "com.datadog.service_level_objectives#UpdateSLORequestMonitorTagsList",
+          "traits": {
+            "smithy.api#documentation": "The union of monitor tags for all monitors referenced by the `monitor_ids`\nfield.\nAlways included in service level objective responses for monitor-based service level\nobjectives (but may be empty). Ignored in create/update requests. Does not\naffect which monitors are included in the service level objective (that is\ndetermined entirely by the `monitor_ids` field)."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service level objective object.",
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "com.datadog.service_level_objectives#ServiceLevelObjectiveQuery"
+        },
+        "sli_specification": {
+          "target": "com.datadog.service_level_objectives#SLOSliSpec"
+        },
+        "tags": {
+          "target": "com.datadog.service_level_objectives#UpdateSLORequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "A list of tags associated with this service level objective.\nAlways included in service level objective responses (but may be empty).\nOptional in create/update requests."
+          }
+        },
+        "target_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The target threshold such that when the service level indicator is above this\nthreshold over the given timeframe, the objective is being met."
+          }
+        },
+        "thresholds": {
+          "target": "com.datadog.service_level_objectives#UpdateSLORequestThresholdsList",
+          "traits": {
+            "smithy.api#documentation": "The thresholds (timeframes and associated targets) for this service level\nobjective object.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeframe": {
+          "target": "com.datadog.service_level_objectives#SLOTimeframe"
+        },
+        "type": {
+          "target": "com.datadog.service_level_objectives#SLOType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "warning_threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The optional warning threshold such that when the service level indicator is\nbelow this value for the given threshold, but above the target threshold, the\nobjective appears in a \"warning\" state. This value must be greater than the target\nthreshold."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#UpdateSLO": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#UpdateSLORequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SLOListResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#BadRequest"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/api/v1/slo/{slo_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update an SLO\n\nUpdate the specified service level objective object."
+      }
+    },
+    "com.datadog.service_level_objectives#DeleteSLORequest": {
+      "type": "structure",
+      "members": {
+        "slo_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the service level objective."
+          }
+        },
+        "force": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "force",
+            "smithy.api#documentation": "Delete the monitor even if it's referenced by other resources (for example SLO, composite monitor)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#SLODeleteResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#SLODeleteResponseDataList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the ID of the deleted service level objective object."
+          }
+        },
+        "errors": {
+          "target": "com.datadog.service_level_objectives#SLODeleteResponseErrorsMap",
+          "traits": {
+            "smithy.api#documentation": "An dictionary containing the ID of the SLO as key and a deletion error as value."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A response list of all service level objective deleted."
+      }
+    },
+    "com.datadog.service_level_objectives#SLODeleteResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the ID of the deleted service level objective object."
+      }
+    },
+    "com.datadog.service_level_objectives#SLODeleteResponseErrorsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An dictionary containing the ID of the SLO as key and a deletion error as value."
+      }
+    },
+    "com.datadog.service_level_objectives#DeleteSLO": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#DeleteSLORequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SLODeleteResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#NotFound"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/v1/slo/{slo_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete an SLO\n\nPermanently delete the specified service level objective object.\n\nIf an SLO is used in a dashboard, the `DELETE /v1/slo/` endpoint returns\na 409 conflict error because the SLO is referenced in a dashboard."
+      }
+    },
+    "com.datadog.service_level_objectives#GetSLOCorrectionsRequest": {
+      "type": "structure",
+      "members": {
+        "slo_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the service level objective object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCorrectionListResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#SLOCorrectionListResponseDataList",
+          "traits": {
+            "smithy.api#documentation": "The list of SLO corrections objects."
+          }
+        },
+        "meta": {
+          "target": "com.datadog.service_level_objectives#ResponseMetaAttributes"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of  SLO correction objects."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCorrection": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.datadog.service_level_objectives#SLOCorrectionResponseAttributes"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the SLO correction."
+          }
+        },
+        "type": {
+          "target": "com.datadog.service_level_objectives#SLOCorrectionType"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response object of a list of SLO corrections."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCorrectionResponseAttributes": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.datadog.service_level_objectives#SLOCorrectionCategory"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The epoch timestamp of when the correction was created at.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "creator": {
+          "target": "com.datadog.service_level_objectives#Creator"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the correction being made."
+          }
+        },
+        "duration": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Length of time (in seconds) for a specified `rrule` recurring SLO correction.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "end": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Ending time of the correction in epoch seconds.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The epoch timestamp of when the correction was modified at.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "modifier": {
+          "target": "com.datadog.service_level_objectives#SLOCorrectionResponseAttributesModifier",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "rrule": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The recurrence rules as defined in the iCalendar RFC 5545. The supported rules for SLO corrections\nare `FREQ`, `INTERVAL`, `COUNT`, `UNTIL` and `BYDAY`.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "slo_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the single SLO that this correction applies to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "slo_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query that matches the SLOs this correction applies to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Starting time of the correction in epoch seconds."
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timezone to display in the UI for the correction times (defaults to \"UTC\")."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The attribute object associated with the SLO correction."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCorrectionCategory": {
+      "type": "enum",
+      "members": {
+        "SCHEDULED_MAINTENANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Scheduled Maintenance"
+          }
+        },
+        "OUTSIDE_BUSINESS_HOURS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Outside Business Hours"
+          }
+        },
+        "DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deployment"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Other"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Category the SLO correction belongs to."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCorrectionResponseAttributesModifier": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the Modifier."
+          }
+        },
+        "handle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Handle of the Modifier."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Modifier."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Modifier of the object."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCorrectionType": {
+      "type": "enum",
+      "members": {
+        "CORRECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "correction"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SLO correction resource type."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOCorrectionListResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOCorrection"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of SLO corrections objects."
+      }
+    },
+    "com.datadog.service_level_objectives#ResponseMetaAttributes": {
+      "type": "structure",
+      "members": {
+        "page": {
+          "target": "com.datadog.service_level_objectives#Pagination"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object describing meta attributes of response."
+      }
+    },
+    "com.datadog.service_level_objectives#Pagination": {
+      "type": "structure",
+      "members": {
+        "total_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total count."
+          }
+        },
+        "total_filtered_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total count of elements matched by the filter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Pagination object."
+      }
+    },
+    "com.datadog.service_level_objectives#GetSLOCorrections": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#GetSLOCorrectionsRequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SLOCorrectionListResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#BadRequest"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/slo/{slo_id}/corrections",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Corrections For an SLO\n\nGet corrections applied to an SLO"
+      }
+    },
+    "com.datadog.service_level_objectives#GetSLOHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "slo_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the service level objective object."
+          }
+        },
+        "from_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "from_ts",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The `from` timestamp for the query window in epoch seconds."
+          }
+        },
+        "to_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "to_ts",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The `to` timestamp for the query window in epoch seconds."
+          }
+        },
+        "target": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "target",
+            "smithy.api#documentation": "The SLO target. If `target` is passed in, the response will include the remaining error budget and a timeframe value of `custom`."
+          }
+        },
+        "apply_correction": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "apply_correction",
+            "smithy.api#documentation": "Defaults to `true`. If any SLO corrections are applied and this parameter is set to `false`,\nthen the corrections will not be applied and the SLI values will not be affected."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryResponseData"
+        },
+        "errors": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryResponseErrorsList",
+          "traits": {
+            "smithy.api#documentation": "A list of errors while querying the history data for the service level objective.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service level objective history response."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponseData": {
+      "type": "structure",
+      "members": {
+        "from_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The `from` timestamp in epoch seconds."
+          }
+        },
+        "group_by": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryResponseDataGroupByList",
+          "traits": {
+            "smithy.api#documentation": "For `metric` based SLOs where the query includes a group-by clause, this represents the list of grouping parameters.\n\nThis is not included in responses for `monitor` based SLOs."
+          }
+        },
+        "groups": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryResponseDataGroupsList",
+          "traits": {
+            "smithy.api#documentation": "For grouped SLOs, this represents SLI data for specific groups.\n\nThis is not included in the responses for `metric` based SLOs."
+          }
+        },
+        "monitors": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryResponseDataMonitorsList",
+          "traits": {
+            "smithy.api#documentation": "For multi-monitor SLOs, this represents SLI data for specific monitors.\n\nThis is not included in the responses for `metric` based SLOs."
+          }
+        },
+        "overall": {
+          "target": "com.datadog.service_level_objectives#SLOHistorySLIData"
+        },
+        "series": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMetrics"
+        },
+        "thresholds": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryResponseDataThresholdsMap",
+          "traits": {
+            "smithy.api#documentation": "mapping of string timeframe to the SLO threshold."
+          }
+        },
+        "to_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The `to` timestamp in epoch seconds."
+          }
+        },
+        "type": {
+          "target": "com.datadog.service_level_objectives#SLOType"
+        },
+        "type_id": {
+          "target": "com.datadog.service_level_objectives#SLOTypeNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of service level objective objects."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponseDataGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "For `metric` based SLOs where the query includes a group-by clause, this represents the list of grouping parameters.\n\nThis is not included in responses for `monitor` based SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMonitor": {
+      "type": "structure",
+      "members": {
+        "error_budget_remaining": {
+          "target": "com.datadog.service_level_objectives#SLOErrorBudgetRemainingData"
+        },
+        "errors": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMonitorErrorsList",
+          "traits": {
+            "smithy.api#documentation": "An array of error objects returned while querying the history data for the service level objective."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For groups in a grouped SLO, this is the group name."
+          }
+        },
+        "history": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMonitorHistoryList",
+          "traits": {
+            "smithy.api#documentation": "The state transition history for the monitor. It is represented as\nan array of pairs. Each pair is an array containing the timestamp of the transition\nas an integer in Unix epoch format in the first element, and the state as an integer in the\nsecond element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data.\nPeriods of no data are counted either as uptime or downtime depending on monitor settings.\nSee [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data)\nfor detailed information."
+          }
+        },
+        "monitor_modified": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "For `monitor` based SLOs, this is the last modified timestamp in epoch seconds of the monitor."
+          }
+        },
+        "monitor_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For `monitor` based SLOs, this describes the type of monitor."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For groups in a grouped SLO, this is the group name. For monitors in a multi-monitor SLO, this is the monitor name."
+          }
+        },
+        "precision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp. Use `span_precision` instead."
+          }
+        },
+        "preview": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "For `monitor` based SLOs, when `true` this indicates that a replay is in progress to give an accurate uptime\ncalculation."
+          }
+        },
+        "sli_value": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The current SLI value of the SLO over the history window.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "span_precision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp."
+          }
+        },
+        "uptime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Use `sli_value` instead."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value.\nThis can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOErrorBudgetRemainingData": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A mapping of threshold `timeframe` to the remaining error budget."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponseErrorWithType": {
+      "type": "structure",
+      "members": {
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message with more details about the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "error_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the error.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object describing the error with error type and error message."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMonitorErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOHistoryResponseErrorWithType"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of error objects returned while querying the history data for the service level objective."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMonitorHistoryItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents an array timeseries data."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMonitorHistoryList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOHistoryMonitorHistoryItemList"
+      },
+      "traits": {
+        "smithy.api#documentation": "The state transition history for the monitor. It is represented as\nan array of pairs. Each pair is an array containing the timestamp of the transition\nas an integer in Unix epoch format in the first element, and the state as an integer in the\nsecond element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data.\nPeriods of no data are counted either as uptime or downtime depending on monitor settings.\nSee [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data)\nfor detailed information."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponseDataGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOHistoryMonitor"
+      },
+      "traits": {
+        "smithy.api#documentation": "For grouped SLOs, this represents SLI data for specific groups.\n\nThis is not included in the responses for `metric` based SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponseDataMonitorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOHistoryMonitor"
+      },
+      "traits": {
+        "smithy.api#documentation": "For multi-monitor SLOs, this represents SLI data for specific monitors.\n\nThis is not included in the responses for `metric` based SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistorySLIData": {
+      "type": "structure",
+      "members": {
+        "error_budget_remaining": {
+          "target": "com.datadog.service_level_objectives#SLOErrorBudgetRemainingData"
+        },
+        "errors": {
+          "target": "com.datadog.service_level_objectives#SLOHistorySLIDataErrorsList",
+          "traits": {
+            "smithy.api#documentation": "An array of error objects returned while querying the history data for the service level objective."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For groups in a grouped SLO, this is the group name."
+          }
+        },
+        "history": {
+          "target": "com.datadog.service_level_objectives#SLOHistorySLIDataHistoryList",
+          "traits": {
+            "smithy.api#documentation": "The state transition history for `monitor` or `time-slice` SLOs. It is represented as\nan array of pairs. Each pair is an array containing the timestamp of the transition\nas an integer in Unix epoch format in the first element, and the state as an integer in the\nsecond element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data.\nPeriods of no data count as uptime in time-slice SLOs, while for monitor SLOs, no data is counted\neither as uptime or downtime depending on monitor settings. See\n[SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data)\nfor detailed information."
+          }
+        },
+        "monitor_modified": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "For `monitor` based SLOs, this is the last modified timestamp in epoch seconds of the monitor."
+          }
+        },
+        "monitor_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For `monitor` based SLOs, this describes the type of monitor."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For groups in a grouped SLO, this is the group name. For monitors in a multi-monitor SLO, this is the monitor name."
+          }
+        },
+        "precision": {
+          "target": "com.datadog.service_level_objectives#SLOHistorySLIDataPrecisionMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of threshold `timeframe` to number of accurate decimals, regardless of the from && to timestamp."
+          }
+        },
+        "preview": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "For `monitor` based SLOs, when `true` this indicates that a replay is in progress to give an accurate uptime\ncalculation."
+          }
+        },
+        "sli_value": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The current SLI value of the SLO over the history window.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "span_precision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp."
+          }
+        },
+        "uptime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Use `sli_value` instead.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value.\nThis can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistorySLIDataErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOHistoryResponseErrorWithType"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of error objects returned while querying the history data for the service level objective."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistorySLIDataHistoryItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents an array timeseries data."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistorySLIDataHistoryList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOHistorySLIDataHistoryItemList"
+      },
+      "traits": {
+        "smithy.api#documentation": "The state transition history for `monitor` or `time-slice` SLOs. It is represented as\nan array of pairs. Each pair is an array containing the timestamp of the transition\nas an integer in Unix epoch format in the first element, and the state as an integer in the\nsecond element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data.\nPeriods of no data count as uptime in time-slice SLOs, while for monitor SLOs, no data is counted\neither as uptime or downtime depending on monitor settings. See\n[SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data)\nfor detailed information."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistorySLIDataPrecisionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A mapping of threshold `timeframe` to number of accurate decimals, regardless of the from && to timestamp."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMetrics": {
+      "type": "structure",
+      "members": {
+        "denominator": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMetricsSeries",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The aggregated query interval for the series data. It's implicit based on the query time window.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional message if there are specific query issues/warnings."
+          }
+        },
+        "numerator": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMetricsSeries",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The combined numerator and denominator query CSV.",
+            "smithy.api#required": {}
+          }
+        },
+        "res_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The series result type. This mimics `batch_query` response type.",
+            "smithy.api#required": {}
+          }
+        },
+        "resp_version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The series response version type. This mimics `batch_query` response type.",
+            "smithy.api#required": {}
+          }
+        },
+        "times": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMetricsTimesList",
+          "traits": {
+            "smithy.api#documentation": "An array of query timestamps in EPOCH milliseconds.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A `metric` based SLO history response.\n\nThis is not included in responses for `monitor` based SLOs."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMetricsSeries": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of submitted metrics.",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMetricsSeriesMetadata"
+        },
+        "sum": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total sum of the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "values": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMetricsSeriesValuesList",
+          "traits": {
+            "smithy.api#documentation": "The query values for each metric.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A representation of `metric` based SLO timeseries for the provided queries.\nThis is the same response type from `batch_query` endpoint."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMetricsSeriesMetadata": {
+      "type": "structure",
+      "members": {
+        "aggr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query aggregator function."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query expression."
+          }
+        },
+        "metric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query metric used."
+          }
+        },
+        "query_index": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Query index from original combined query."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query scope."
+          }
+        },
+        "unit": {
+          "target": "com.datadog.service_level_objectives#SLOHistoryMetricsSeriesMetadataUnitList",
+          "traits": {
+            "smithy.api#documentation": "An array of metric units that contains up to two unit objects.\nFor example, bytes represents one unit object and bytes per second represents two unit objects.\nIf a metric query only has one unit object, the second array element is null.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Query metadata."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMetricsSeriesMetadataUnit": {
+      "type": "structure",
+      "members": {
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The family of metric unit, for example `bytes` is the family for `kibibyte`, `byte`, and `bit` units."
+          }
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The ID of the metric unit."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unit of the metric, for instance `byte`."
+          }
+        },
+        "plural": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The plural Unit of metric, for instance `bytes`.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scale_factor": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The scale factor of metric unit, for instance `1.0`."
+          }
+        },
+        "short_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A shorter and abbreviated version of the metric unit, for instance `B`.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An Object of metric units."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMetricsSeriesMetadataUnitList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOHistoryMetricsSeriesMetadataUnit"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of metric units that contains up to two unit objects.\nFor example, bytes represents one unit object and bytes per second represents two unit objects.\nIf a metric query only has one unit object, the second array element is null."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMetricsSeriesValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "The query values for each metric."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryMetricsTimesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of query timestamps in EPOCH milliseconds."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponseDataThresholdsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.datadog.service_level_objectives#SLOThreshold"
+      },
+      "traits": {
+        "smithy.api#documentation": "mapping of string timeframe to the SLO threshold."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOTypeNumeric": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A numeric representation of the type of the service level objective (`0` for\nmonitor, `1` for metric). Always included in service level objective responses.\nIgnored in create/update requests."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponseError": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human readable error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of errors while querying the history data for the service level objective."
+      }
+    },
+    "com.datadog.service_level_objectives#SLOHistoryResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.service_level_objectives#SLOHistoryResponseError"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of errors while querying the history data for the service level objective."
+      }
+    },
+    "com.datadog.service_level_objectives#GetSLOHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.service_level_objectives#GetSLOHistoryRequest"
+      },
+      "output": {
+        "target": "com.datadog.service_level_objectives#SLOHistoryResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.service_level_objectives#BadRequest"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#Forbidden"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/slo/{slo_id}/history",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get an SLO's history\n\nGet a specific SLO’s history, regardless of its SLO type.\n\nThe detailed history data is structured according to the source data type.\nFor example, metric data is included for event SLOs that use\nthe metric source, and monitor SLO types include the monitor transition history.\n\n**Note:** There are different response formats for event based and time based SLOs.\nExamples of both are shown."
+      }
+    },
+    "com.datadog.service_level_objectives#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.datadog.service_level_objectives#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.datadog.service_level_objectives#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.datadog.service_level_objectives#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.datadog.service_level_objectives#ServiceLevelObjectives": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.datadog.service_level_objectives#ListSLOs"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#CreateSLO"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#DeleteSLOTimeframeInBulk"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#CheckCanDeleteSLO"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#SearchSLO"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#GetSLO"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#UpdateSLO"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#DeleteSLO"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#GetSLOCorrections"
+        },
+        {
+          "target": "com.datadog.service_level_objectives#GetSLOHistory"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Datadog API V1 Collection",
+        "smithy.api#documentation": "Collection of all Datadog Public endpoints."
+      }
+    }
+  }
+}
