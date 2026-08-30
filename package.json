@@ -12,7 +12,7 @@
     "specs:check": "bun scripts/specs.ts check",
     "typecheck": "tsc -b",
     "format": "oxfmt '.'",
-    "format:check": "pnpm format -- --check",
+    "format:check": "oxfmt '.' --check",
     "lint": "oxlint",
     "prepare": "husky",
     "publish:packages": "pnpm publish --recursive --filter './packages/*' --access public",
