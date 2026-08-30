@@ -1621,6 +1621,26 @@ export const StartRollingReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartRollingReleaseResponse",
 }) as any as S.Schema<StartRollingReleaseResponse>;
 
+/** How the rollout advances between stages: `automatic` (per-stage duration) or `manual-approval`. */
+export type UpdateRollingReleaseConfigRequestAdvancementType =
+  | "automatic"
+  | "manual-approval";
+export const UpdateRollingReleaseConfigRequestAdvancementType =
+  /*@__PURE__*/ S.String;
+
+export type UpdateRollingReleaseConfigRequestStagesItem =
+  GetRollingReleaseConfigResponseRollingReleaseStagesItem;
+export const UpdateRollingReleaseConfigRequestStagesItem =
+  GetRollingReleaseConfigResponseRollingReleaseStagesItem;
+
+/** An array of all the stages required during a deployment release. The final stage must have targetPercentage: 100. */
+export type UpdateRollingReleaseConfigRequestStagesList =
+  Array<GetRollingReleaseConfigResponseRollingReleaseStagesItem>;
+export const UpdateRollingReleaseConfigRequestStagesList =
+  /*@__PURE__*/ S.Array(
+    GetRollingReleaseConfigResponseRollingReleaseStagesItem,
+  ) as any as S.Schema<UpdateRollingReleaseConfigRequestStagesList>;
+
 export interface UpdateRollingReleaseConfigRequest {
   /** Project ID or project name (URL-encoded) */
   idOrName: string;
@@ -1628,12 +1648,28 @@ export interface UpdateRollingReleaseConfigRequest {
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
+  /** Whether rolling releases are enabled for the project. `false` clears the configuration (equivalent to DELETE). */
+  enabled: boolean;
+  /** How the rollout advances between stages: `automatic` (per-stage duration) or `manual-approval`. */
+  advancementType?:
+    | UpdateRollingReleaseConfigRequestAdvancementType
+    | (string & {});
+  /** An array of all the stages required during a deployment release. The final stage must have targetPercentage: 100. */
+  stages?: UpdateRollingReleaseConfigRequestStagesList;
+  /** Whether requests served by the canary deployment should return a header indicating a canary was served. */
+  canaryResponseHeader?: boolean;
 }
 export const UpdateRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
+    enabled: S.Boolean,
+    advancementType: S.optional(
+      UpdateRollingReleaseConfigRequestAdvancementType,
+    ),
+    stages: S.optional(UpdateRollingReleaseConfigRequestStagesList),
+    canaryResponseHeader: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",

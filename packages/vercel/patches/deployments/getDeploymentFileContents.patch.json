@@ -1,0 +1,26 @@
+{
+  "description": "getDeploymentFileContents' 200 response has NO content schema in the OpenAPI document, so the generated GetDeploymentFileContentsResponse is an empty struct and the decoded value drops the payload. The live API returns a JSON body { data: \"<base64>\" } with the file contents encoded as base64 (live-verified against a prebuilt deployment's .vc-config.json — see alchemy test/Vercel/Chains/QueueEvolution.test.ts, which reads the consumer function's experimentalTriggers out-of-band). Add the response schema so `data` survives decoding.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v8~1deployments~1{id}~1files~1{fileId}/get/responses/200",
+      "value": {
+        "description": "The file contents, base64-encoded inside a JSON envelope",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "description": "The file contents, base64-encoded"
+                }
+              },
+              "required": ["data"]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

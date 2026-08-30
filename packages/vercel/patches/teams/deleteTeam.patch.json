@@ -1,0 +1,12 @@
+{
+  "description": "teams.deleteTeam (DELETE /v1/teams/{teamId}) omits the 404 the live API returns for an already-deleted/missing team, so distilled's typed union lacks NotFound. The Team provider's idempotent delete branches on a typed NotFound tag (state persistence can fail after a successful delete, so delete must tolerate the team already being gone). Add the 404 response so the generator attaches the status-class NotFound error.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1teams~1{teamId}/delete/responses/404",
+      "value": {
+        "description": "Team not found"
+      }
+    }
+  ]
+}

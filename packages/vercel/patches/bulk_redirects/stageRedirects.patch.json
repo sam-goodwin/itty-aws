@@ -1,0 +1,14 @@
+{
+  "description": "bulk_redirects.stageRedirects (PUT /v1/bulk-redirects): (1) the live API requires `teamId` in the REQUEST BODY — a body without it fails 400 `validation_error` (\"projectId and teamId are required\") even when teamId is in the query string, and body-only teamId succeeds (both probed 2026-08-13). The spec declares teamId both as a query parameter and a required body property; the converter dedupes same-named members in favor of the query param, silently dropping the body member. Remove the query parameter so the body member survives codegen. (2) The live API returns 404 `not_found` for a deleted project — add the 404 response for a typed NotFound.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/paths/~1v1~1bulk-redirects/put/parameters/0"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1bulk-redirects/put/responses/404",
+      "value": { "description": "Project not found" }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "description": "projects.getProjectDomains (GET /v9/projects/{idOrName}/domains) omits the 404 the live API returns when the project itself is gone, so the typed union lacks NotFound. The ProjectDomain resource's read path observes domains on a possibly-deleted project and branches on a typed NotFound tag; without it the 404 surfaces as the catch-all. Add the 404 response so the generator attaches the status-class NotFound error.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v9~1projects~1{idOrName}~1domains/get/responses/404",
+      "value": {
+        "description": "Project not found"
+      }
+    }
+  ]
+}

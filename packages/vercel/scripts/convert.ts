@@ -106,10 +106,24 @@ let patchFiles = 0;
 let staleOps = 0;
 const badPatches: string[] = [];
 if (fs.existsSync(patchDir)) {
-  for (const pf of fs
-    .readdirSync(patchDir)
-    .filter((f) => f.endsWith(".patch.json"))
-    .sort((a, b) => a.localeCompare(b))) {
+  // Layout: `patches/{service}/{operation}.patch.json` — one directory per
+  // distilled service, one file per operation (multi-op additions may use a
+  // concept name, e.g. `storage/connections.patch.json`). Flat files at the
+  // root are tolerated for migration but should be filed under a service.
+  // Applied in sorted relative-path order.
+  const patchFilePaths: string[] = [];
+  for (const entry of fs.readdirSync(patchDir, { withFileTypes: true })) {
+    if (entry.isDirectory()) {
+      for (const f of fs.readdirSync(path.join(patchDir, entry.name))) {
+        if (f.endsWith(".patch.json")) {
+          patchFilePaths.push(`${entry.name}/${f}`);
+        }
+      }
+    } else if (entry.name.endsWith(".patch.json")) {
+      patchFilePaths.push(entry.name);
+    }
+  }
+  for (const pf of patchFilePaths.sort((a, b) => a.localeCompare(b))) {
     const parsed = JSON.parse(
       fs.readFileSync(path.join(patchDir, pf), "utf-8"),
     ) as PatchFile;
@@ -317,6 +331,12 @@ for (const slug of [...tagBuckets.keys()].sort()) {
       // reached). It's declared on ~95 operations and is genuinely actionable
       // per operation, unlike the boilerplate statuses below.
       "402": "PaymentRequired",
+      // 449 is declared only on certs.issueCert: the pre-issuance "pretest"
+      // that fails when the requested common names don't resolve to Vercel
+      // yet (live: code `http_pretest_domain_not_resolving_to_vercel_error`).
+      // Without this mapping the declared 449 response is silently dropped
+      // and the failure funnels into the catch-all.
+      "449": "DomainPretestFailed",
     },
     // 401/429/500/503 ride the common VercelOpError union, as does 410:
     // Vercel declares "Invalid API version" on nearly every operation, and it

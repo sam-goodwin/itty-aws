@@ -1,0 +1,12 @@
+{
+  "description": "environment.getProjectsByIdOrNameCustomEnvironments omits the 404 the live API returns when the project itself does not exist (code `not_found`, message \"Project not found.\" — live-verified 2026-08-13). The custom-environment provider's parent fan-out `list` enumerates projects and lists each project's environments; a project deleted between enumeration and listing must surface as a typed NotFound so the fan-out can skip it.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v9~1projects~1{idOrName}~1custom-environments/get/responses/404",
+      "value": {
+        "description": "Project not found"
+      }
+    }
+  ]
+}

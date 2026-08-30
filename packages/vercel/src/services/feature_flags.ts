@@ -668,8 +668,8 @@ export interface CreateFlagRequest {
   projectIdOrName: string;
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
-  /** The Team slug to perform the request on behalf of. */
-  slug?: string;
+  /** A unique (per project) key for the flag, composed of letters, numbers, dashes, and underscores */
+  slug: string;
   /** The kind of flag */
   kind: CreateFlagRequestKind | (string & {});
   /** The variants of the flag */
@@ -692,7 +692,7 @@ export const CreateFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
-    slug: S.optional(S.String.pipe(T.Query())),
+    slug: S.String,
     kind: CreateFlagRequestKind,
     variants: S.optional(CreateFlagRequestVariantsList),
     environments: CreateFlagRequestEnvironmentsMap,

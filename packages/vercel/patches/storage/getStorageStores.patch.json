@@ -1,0 +1,127 @@
+{
+  "description": "storage: the account-wide store enumeration endpoint (GET /v1/storage/stores -> {stores: [...]}) is absent from the OpenAPI document (live-verified 2026-08-13). Needed by the BlobStore provider's `list` and read-without-state recovery paths (Vercel stores have no tags; ownership is deterministic naming + state, so finding a store by name requires enumeration).",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores",
+      "value": {
+        "get": {
+          "description": "List every storage store (all types: blob, edge-config, ...) on the account or team.",
+          "operationId": "getStorageStores",
+          "security": [],
+          "summary": "List stores",
+          "tags": [
+            "storage"
+          ],
+          "parameters": [
+            {
+              "description": "The Team identifier to perform the request on behalf of.",
+              "in": "query",
+              "name": "teamId",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "description": "The Team slug to perform the request on behalf of.",
+              "in": "query",
+              "name": "slug",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "stores": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "ownerId": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "billingState": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "region": {
+                              "type": "string"
+                            },
+                            "access": {
+                              "type": "string",
+                              "enum": [
+                                "public",
+                                "private"
+                              ]
+                            },
+                            "size": {
+                              "type": "number"
+                            },
+                            "count": {
+                              "type": "number"
+                            },
+                            "isTokenExpired": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "type"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "stores"
+                    ]
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": ""
+            },
+            "401": {
+              "description": ""
+            },
+            "403": {
+              "description": ""
+            },
+            "410": {
+              "description": ""
+            },
+            "429": {
+              "description": ""
+            }
+          }
+        }
+      }
+    }
+  ]
+}

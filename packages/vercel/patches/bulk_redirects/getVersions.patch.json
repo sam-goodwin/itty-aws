@@ -1,0 +1,10 @@
+{
+  "description": "bulk_redirects.getVersions (GET /v1/bulk-redirects/versions): the live API returns 404 `not_found` (\"Project not found.\") when the project no longer exists (probed 2026-08-13), but the spec declares no 404 — add it so the reconciler's observe step gets a typed NotFound.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1bulk-redirects~1versions/get/responses/404",
+      "value": { "description": "Project not found" }
+    }
+  ]
+}

@@ -21,6 +21,15 @@ export class BadRequest
     [{ status: 400 }],
   ) {}
 
+export class DomainPretestFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<DomainPretestFailed>()("DomainPretestFailed", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 449 }],
+  ) {}
+
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
@@ -327,6 +336,7 @@ export type IssueCertError =
   | PaymentRequired
   | Forbidden
   | NotFound
+  | DomainPretestFailed
   | VercelOpError;
 /** Issue a new cert Issue a new cert */
 export const issueCert: API.OperationMethod<
@@ -337,7 +347,13 @@ export const issueCert: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: IssueCertRequest,
   output: IssueCertResponse,
-  errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
+  errors: [
+    BadRequest,
+    PaymentRequired,
+    Forbidden,
+    NotFound,
+    DomainPretestFailed,
+  ],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

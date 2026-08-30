@@ -1,0 +1,302 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "distilled.protocol": "EdgeConfigDataProtocol",
+    "note": "Hand-authored: the Vercel Edge Config READ plane (https://edge-config.vercel.com/{edgeConfigId}) is absent from the management OpenAPI document. Routes and semantics are transcribed from the probe-verified protocol contract (processes/Vercel/PROBES.md, 'EdgeConfig SDK vs localhost', cross-checked against @vercel/edge-config@1.5.1). Auth is the minted read token (the connection string's `token` query parameter) as a bearer. The endpoint is the per-call `origin` member — the connection string's origin IS the local-emulation override (http://localhost:<port>). A missing ITEM is a 404 WITH an `x-edge-config-digest` response header (typed EdgeConfigItemNotFound); a bare 404 means the config itself (or the token) is invalid (typed EdgeConfigNotFound).",
+    "suppressions": [
+      { "id": "HttpUriConflict", "namespace": "*" },
+      { "id": "HttpMethodSemantics", "namespace": "*" },
+      { "id": "UnreferencedShape", "namespace": "*" }
+    ]
+  },
+  "shapes": {
+    "com.vercel.edge_config_data#EdgeConfigItemNotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "404 WITH the `x-edge-config-digest` response header — the config exists but the item does not. (`get` callers typically map this to `undefined`, `has` callers to `false`.)",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          { "status": 404, "header": "x-edge-config-digest" }
+        ]
+      }
+    },
+    "com.vercel.edge_config_data#EdgeConfigNotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Bare 404 (no `x-edge-config-digest` header) — the Edge Config itself does not exist or the token does not resolve to one.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [{ "status": 404 }]
+      }
+    },
+    "com.vercel.edge_config_data#EdgeConfigUnauthorized": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "401 — the read token was rejected.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 401,
+        "com.distilled.openapi#errorMatchers": [{ "status": 401 }]
+      }
+    },
+    "com.vercel.edge_config_data#EdgeConfigItems": {
+      "type": "map",
+      "key": { "target": "smithy.api#String" },
+      "value": { "target": "smithy.api#Document" },
+      "traits": {
+        "smithy.api#documentation": "Items as a key → JSON value record."
+      }
+    },
+    "com.vercel.edge_config_data#EdgeConfigKeyList": {
+      "type": "list",
+      "member": { "target": "smithy.api#String" }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigItemRequest": {
+      "type": "structure",
+      "members": {
+        "origin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Read-plane origin — `https://edge-config.vercel.com` live, or the connection string's origin (local emulation hands out `http://localhost:<port>`).",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The read token (the connection string's `token` parameter) — sent as the bearer.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The Edge Config id (`ecfg_…`).", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The item key.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protocol version — pass \"1\" (what @vercel/edge-config sends).",
+            "smithy.api#httpQuery": "version"
+          }
+        }
+      }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigItemResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The item's JSON value (the whole response body — may be any JSON value, including null).",
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigItem": {
+      "type": "operation",
+      "input": { "target": "com.vercel.edge_config_data#GetEdgeConfigItemRequest" },
+      "output": { "target": "com.vercel.edge_config_data#GetEdgeConfigItemResponse" },
+      "errors": [
+        { "target": "com.vercel.edge_config_data#EdgeConfigItemNotFound" },
+        { "target": "com.vercel.edge_config_data#EdgeConfigNotFound" },
+        { "target": "com.vercel.edge_config_data#EdgeConfigUnauthorized" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "GET", "uri": "/{edgeConfigId}/item/{key}", "code": 200 },
+        "smithy.api#documentation": "Read a single item: `GET {origin}/{edgeConfigId}/item/{key}?version=1`. A missing item is the typed EdgeConfigItemNotFound (map it to `undefined`)."
+      }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigItemsRequest": {
+      "type": "structure",
+      "members": {
+        "origin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Read-plane origin — `https://edge-config.vercel.com` live, or the connection string's origin.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The read token — sent as the bearer.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The Edge Config id (`ecfg_…`).", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "keys": {
+          "target": "com.vercel.edge_config_data#EdgeConfigKeyList",
+          "traits": {
+            "smithy.api#documentation": "Optional key filter — each entry repeats as a `key=` query parameter; omit for all items.",
+            "smithy.api#httpQuery": "key"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protocol version — pass \"1\".",
+            "smithy.api#httpQuery": "version"
+          }
+        }
+      }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigItemsResponse": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.vercel.edge_config_data#EdgeConfigItems",
+          "traits": {
+            "smithy.api#documentation": "All (or the filtered) items as a record (the whole response body).",
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigItems": {
+      "type": "operation",
+      "input": { "target": "com.vercel.edge_config_data#GetEdgeConfigItemsRequest" },
+      "output": { "target": "com.vercel.edge_config_data#GetEdgeConfigItemsResponse" },
+      "errors": [
+        { "target": "com.vercel.edge_config_data#EdgeConfigNotFound" },
+        { "target": "com.vercel.edge_config_data#EdgeConfigUnauthorized" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "GET", "uri": "/{edgeConfigId}/items", "code": 200 },
+        "smithy.api#documentation": "Read all items (or a key subset): `GET {origin}/{edgeConfigId}/items?version=1[&key=…]`."
+      }
+    },
+    "com.vercel.edge_config_data#HasEdgeConfigItemRequest": {
+      "type": "structure",
+      "members": {
+        "origin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Read-plane origin — `https://edge-config.vercel.com` live, or the connection string's origin.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The read token — sent as the bearer.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The Edge Config id (`ecfg_…`).", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The item key.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protocol version — pass \"1\".",
+            "smithy.api#httpQuery": "version"
+          }
+        }
+      }
+    },
+    "com.vercel.edge_config_data#HasEdgeConfigItemResponse": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A 200 means the item exists; a missing item is the typed EdgeConfigItemNotFound (map it to `false`)."
+      }
+    },
+    "com.vercel.edge_config_data#HasEdgeConfigItem": {
+      "type": "operation",
+      "input": { "target": "com.vercel.edge_config_data#HasEdgeConfigItemRequest" },
+      "output": { "target": "com.vercel.edge_config_data#HasEdgeConfigItemResponse" },
+      "errors": [
+        { "target": "com.vercel.edge_config_data#EdgeConfigItemNotFound" },
+        { "target": "com.vercel.edge_config_data#EdgeConfigNotFound" },
+        { "target": "com.vercel.edge_config_data#EdgeConfigUnauthorized" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "HEAD", "uri": "/{edgeConfigId}/item/{key}", "code": 200 },
+        "smithy.api#documentation": "Existence check: `HEAD {origin}/{edgeConfigId}/item/{key}?version=1` — 200 exists, typed EdgeConfigItemNotFound otherwise."
+      }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigDigestRequest": {
+      "type": "structure",
+      "members": {
+        "origin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Read-plane origin — `https://edge-config.vercel.com` live, or the connection string's origin.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The read token — sent as the bearer.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The Edge Config id (`ecfg_…`).", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protocol version — pass \"1\".",
+            "smithy.api#httpQuery": "version"
+          }
+        }
+      }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigDigestResponse": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The config's content digest (the whole response body, a JSON string) — changes whenever any item changes.",
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "com.vercel.edge_config_data#GetEdgeConfigDigest": {
+      "type": "operation",
+      "input": { "target": "com.vercel.edge_config_data#GetEdgeConfigDigestRequest" },
+      "output": { "target": "com.vercel.edge_config_data#GetEdgeConfigDigestResponse" },
+      "errors": [
+        { "target": "com.vercel.edge_config_data#EdgeConfigNotFound" },
+        { "target": "com.vercel.edge_config_data#EdgeConfigUnauthorized" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "GET", "uri": "/{edgeConfigId}/digest", "code": 200 },
+        "smithy.api#documentation": "The config's content digest: `GET {origin}/{edgeConfigId}/digest?version=1`."
+      }
+    }
+  }
+}

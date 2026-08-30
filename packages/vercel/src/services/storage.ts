@@ -57,6 +57,61 @@ export class PaymentRequired
     [{ status: 402 }],
   ) {}
 
+export type CreateStorageStoreConnectionRequestEnvVarEnvironmentsItem =
+  | "development"
+  | "preview"
+  | "production";
+export const CreateStorageStoreConnectionRequestEnvVarEnvironmentsItem =
+  /*@__PURE__*/ S.String;
+
+export type CreateStorageStoreConnectionRequestEnvVarEnvironmentsList = Array<
+  CreateStorageStoreConnectionRequestEnvVarEnvironmentsItem | (string & {})
+>;
+export const CreateStorageStoreConnectionRequestEnvVarEnvironmentsList =
+  /*@__PURE__*/ S.Array(
+    CreateStorageStoreConnectionRequestEnvVarEnvironmentsItem,
+  ) as any as S.Schema<CreateStorageStoreConnectionRequestEnvVarEnvironmentsList>;
+
+export type CreateStorageStoreConnectionRequestType = "integration";
+export const CreateStorageStoreConnectionRequestType = /*@__PURE__*/ S.String;
+
+export interface CreateStorageStoreConnectionRequest {
+  storeId: string;
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
+  projectId: string;
+  envVarEnvironments: CreateStorageStoreConnectionRequestEnvVarEnvironmentsList;
+  type: CreateStorageStoreConnectionRequestType | (string & {});
+}
+export const CreateStorageStoreConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storeId: S.String.pipe(T.Label()),
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
+    projectId: S.String,
+    envVarEnvironments:
+      CreateStorageStoreConnectionRequestEnvVarEnvironmentsList,
+    type: CreateStorageStoreConnectionRequestType,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/v1/storage/stores/{storeId}/connections",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateStorageStoreConnectionRequest",
+}) as any as S.Schema<CreateStorageStoreConnectionRequest>;
+
+export interface CreateStorageStoreConnectionResponse {}
+export const CreateStorageStoreConnectionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "CreateStorageStoreConnectionResponse",
+}) as any as S.Schema<CreateStorageStoreConnectionResponse>;
+
 export type CreateStorageStoresBlobRequestRegion =
   | "arn1"
   | "bom1"
@@ -84,6 +139,10 @@ export type CreateStorageStoresBlobRequestAccess = "public" | "private";
 export const CreateStorageStoresBlobRequestAccess = /*@__PURE__*/ S.String;
 
 export interface CreateStorageStoresBlobRequest {
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
   name: string;
   region?: CreateStorageStoresBlobRequestRegion | (string & {});
   access?: CreateStorageStoresBlobRequestAccess | (string & {});
@@ -91,6 +150,8 @@ export interface CreateStorageStoresBlobRequest {
 }
 export const CreateStorageStoresBlobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
     name: S.String,
     region: S.optional(CreateStorageStoresBlobRequestRegion),
     access: S.optional(CreateStorageStoresBlobRequestAccess),
@@ -417,6 +478,12 @@ export interface CreateStorageStoresBlobResponseStore {
   count: number;
   region: CreateStorageStoresBlobResponseStoreRegion;
   isTokenExpired: boolean;
+  id: string;
+  name: string;
+  type: string;
+  createdAt?: number;
+  updatedAt?: number;
+  billingState?: string;
 }
 export const CreateStorageStoresBlobResponseStore = /*@__PURE__*/ S.suspend(
   () =>
@@ -436,6 +503,12 @@ export const CreateStorageStoresBlobResponseStore = /*@__PURE__*/ S.suspend(
       count: S.Number,
       region: CreateStorageStoresBlobResponseStoreRegion,
       isTokenExpired: S.Boolean,
+      id: S.String,
+      name: S.String,
+      type: S.String,
+      createdAt: S.optional(S.Number),
+      updatedAt: S.optional(S.Number),
+      billingState: S.optional(S.String),
     }),
 ).annotate({
   identifier: "CreateStorageStoresBlobResponseStore",
@@ -452,12 +525,50 @@ export const CreateStorageStoresBlobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateStorageStoresBlobResponse",
 }) as any as S.Schema<CreateStorageStoresBlobResponse>;
 
+export interface DeleteStorageStoreConnectionRequest {
+  storeId: string;
+  connectionId: string;
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
+}
+export const DeleteStorageStoreConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storeId: S.String.pipe(T.Label()),
+    connectionId: S.String.pipe(T.Label()),
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/v1/storage/stores/{storeId}/connections/{connectionId}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteStorageStoreConnectionRequest",
+}) as any as S.Schema<DeleteStorageStoreConnectionRequest>;
+
+export interface DeleteStorageStoreConnectionResponse {}
+export const DeleteStorageStoreConnectionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteStorageStoreConnectionResponse",
+}) as any as S.Schema<DeleteStorageStoreConnectionResponse>;
+
 export interface DeleteStorageStoresBlobByIdRequest {
   id: string;
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
 }
 export const DeleteStorageStoresBlobByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({ method: "DELETE", uri: "/storage/stores/blob/{id}", code: 200 }),
   ),
@@ -476,16 +587,182 @@ export const DeleteStorageStoresBlobByIdResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStorageStoresBlobByIdResponse",
 }) as any as S.Schema<DeleteStorageStoresBlobByIdResponse>;
 
+export interface GetStorageStoreConnectionsRequest {
+  storeId: string;
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
+}
+export const GetStorageStoreConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storeId: S.String.pipe(T.Label()),
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/v1/storage/stores/{storeId}/connections",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetStorageStoreConnectionsRequest",
+}) as any as S.Schema<GetStorageStoreConnectionsRequest>;
+
+export interface GetStorageStoreConnectionsResponseConnectionsItemProject {
+  id: string;
+  name: string;
+}
+export const GetStorageStoreConnectionsResponseConnectionsItemProject =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "GetStorageStoreConnectionsResponseConnectionsItemProject",
+  }) as any as S.Schema<GetStorageStoreConnectionsResponseConnectionsItemProject>;
+
+export type GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsItem =
+  "development" | "preview" | "production";
+export const GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsItem =
+  /*@__PURE__*/ S.String;
+
+export type GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsList =
+  Array<GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsItem>;
+export const GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsList =
+  /*@__PURE__*/ S.Array(
+    GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsItem,
+  ) as any as S.Schema<GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsList>;
+
+export interface GetStorageStoreConnectionsResponseConnectionsItem {
+  id: string;
+  projectId: string;
+  project?: GetStorageStoreConnectionsResponseConnectionsItemProject;
+  envVarPrefix?: string | null;
+  envVarEnvironments: GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsList;
+}
+export const GetStorageStoreConnectionsResponseConnectionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      projectId: S.String,
+      project: S.optional(
+        GetStorageStoreConnectionsResponseConnectionsItemProject,
+      ),
+      envVarPrefix: S.optional(S.NullOr(S.String)),
+      envVarEnvironments:
+        GetStorageStoreConnectionsResponseConnectionsItemEnvVarEnvironmentsList,
+    }),
+  ).annotate({
+    identifier: "GetStorageStoreConnectionsResponseConnectionsItem",
+  }) as any as S.Schema<GetStorageStoreConnectionsResponseConnectionsItem>;
+
+export type GetStorageStoreConnectionsResponseConnectionsList =
+  Array<GetStorageStoreConnectionsResponseConnectionsItem>;
+export const GetStorageStoreConnectionsResponseConnectionsList =
+  /*@__PURE__*/ S.Array(
+    GetStorageStoreConnectionsResponseConnectionsItem,
+  ) as any as S.Schema<GetStorageStoreConnectionsResponseConnectionsList>;
+
+export interface GetStorageStoreConnectionsResponse {
+  connections: GetStorageStoreConnectionsResponseConnectionsList;
+}
+export const GetStorageStoreConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connections: GetStorageStoreConnectionsResponseConnectionsList,
+  }),
+).annotate({
+  identifier: "GetStorageStoreConnectionsResponse",
+}) as any as S.Schema<GetStorageStoreConnectionsResponse>;
+
+export interface GetStorageStoresRequest {
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
+}
+export const GetStorageStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
+  }).pipe(T.Http({ method: "GET", uri: "/storage/stores", code: 200 })),
+).annotate({
+  identifier: "GetStorageStoresRequest",
+}) as any as S.Schema<GetStorageStoresRequest>;
+
+export type GetStorageStoresResponseStoresItemAccess = "public" | "private";
+export const GetStorageStoresResponseStoresItemAccess = /*@__PURE__*/ S.String;
+
+export interface GetStorageStoresResponseStoresItem {
+  id: string;
+  ownerId?: string;
+  createdAt?: number;
+  updatedAt?: number;
+  type: string;
+  name: string;
+  billingState?: string;
+  status?: string | null;
+  region?: string;
+  access?: GetStorageStoresResponseStoresItemAccess;
+  size?: number;
+  count?: number;
+  isTokenExpired?: boolean;
+}
+export const GetStorageStoresResponseStoresItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    ownerId: S.optional(S.String),
+    createdAt: S.optional(S.Number),
+    updatedAt: S.optional(S.Number),
+    type: S.String,
+    name: S.String,
+    billingState: S.optional(S.String),
+    status: S.optional(S.NullOr(S.String)),
+    region: S.optional(S.String),
+    access: S.optional(GetStorageStoresResponseStoresItemAccess),
+    size: S.optional(S.Number),
+    count: S.optional(S.Number),
+    isTokenExpired: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetStorageStoresResponseStoresItem",
+}) as any as S.Schema<GetStorageStoresResponseStoresItem>;
+
+export type GetStorageStoresResponseStoresList =
+  Array<GetStorageStoresResponseStoresItem>;
+export const GetStorageStoresResponseStoresList = /*@__PURE__*/ S.Array(
+  GetStorageStoresResponseStoresItem,
+) as any as S.Schema<GetStorageStoresResponseStoresList>;
+
+export interface GetStorageStoresResponse {
+  stores: GetStorageStoresResponseStoresList;
+}
+export const GetStorageStoresResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stores: GetStorageStoresResponseStoresList,
+  }),
+).annotate({
+  identifier: "GetStorageStoresResponse",
+}) as any as S.Schema<GetStorageStoresResponse>;
+
 export interface GetStorageStoresByIdRequest {
   id: string;
   skip_metadata?: boolean;
   include_guides?: boolean;
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
 }
 export const GetStorageStoresByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     skip_metadata: S.optional(S.Boolean.pipe(T.Query("skip-metadata"))),
     include_guides: S.optional(S.Boolean.pipe(T.Query("include-guides"))),
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/storage/stores/{id}", code: 200 })),
 ).annotate({
   identifier: "GetStorageStoresByIdRequest",
@@ -758,12 +1035,26 @@ export type GetStorageStoresByIdResponseStoreStatus =
   | "uninstalled";
 export const GetStorageStoresByIdResponseStoreStatus = /*@__PURE__*/ S.String;
 
+export type GetStorageStoresByIdResponseStoreAccess = "public" | "private";
+export const GetStorageStoresByIdResponseStoreAccess = /*@__PURE__*/ S.String;
+
 export interface GetStorageStoresByIdResponseStore {
   projectsMetadata: GetStorageStoresByIdResponseStoreProjectsMetadataList;
   projectFilter?: GetStorageStoresByIdResponseStoreProjectFilter;
   totalConnectedProjects?: number;
   usageQuotaExceeded: boolean;
   status: GetStorageStoresByIdResponseStoreStatus | null;
+  id: string;
+  name: string;
+  type: string;
+  createdAt?: number;
+  updatedAt?: number;
+  billingState?: string;
+  region?: string;
+  access?: GetStorageStoresByIdResponseStoreAccess;
+  size?: number;
+  count?: number;
+  isTokenExpired?: boolean;
 }
 export const GetStorageStoresByIdResponseStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -772,6 +1063,17 @@ export const GetStorageStoresByIdResponseStore = /*@__PURE__*/ S.suspend(() =>
     totalConnectedProjects: S.optional(S.Number),
     usageQuotaExceeded: S.Boolean,
     status: S.NullOr(GetStorageStoresByIdResponseStoreStatus),
+    id: S.String,
+    name: S.String,
+    type: S.String,
+    createdAt: S.optional(S.Number),
+    updatedAt: S.optional(S.Number),
+    billingState: S.optional(S.String),
+    region: S.optional(S.String),
+    access: S.optional(GetStorageStoresByIdResponseStoreAccess),
+    size: S.optional(S.Number),
+    count: S.optional(S.Number),
+    isTokenExpired: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "GetStorageStoresByIdResponseStore",
@@ -787,6 +1089,26 @@ export const GetStorageStoresByIdResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStorageStoresByIdResponse",
 }) as any as S.Schema<GetStorageStoresByIdResponse>;
+
+export type CreateStorageStoreConnectionError =
+  | BadRequest
+  | PaymentRequired
+  | Forbidden
+  | NotFound
+  | VercelOpError;
+/** Connect a store to a project Connect a storage store to a project. Injects the store's token env var (e.g. BLOB_READ_WRITE_TOKEN) into the project for the chosen environments. */
+export const createStorageStoreConnection: API.OperationMethod<
+  CreateStorageStoreConnectionRequest,
+  CreateStorageStoreConnectionResponse,
+  CreateStorageStoreConnectionError,
+  VercelOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateStorageStoreConnectionRequest,
+  output: CreateStorageStoreConnectionResponse,
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
+  protocol: VercelProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateStorageStoresBlobError =
   | BadRequest
@@ -809,6 +1131,25 @@ export const createStorageStoresBlob: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type DeleteStorageStoreConnectionError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
+/** Disconnect a store from a project Disconnect a storage store from a project. Also removes the env var the connection injected into the project. */
+export const deleteStorageStoreConnection: API.OperationMethod<
+  DeleteStorageStoreConnectionRequest,
+  DeleteStorageStoreConnectionResponse,
+  DeleteStorageStoreConnectionError,
+  VercelOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteStorageStoreConnectionRequest,
+  output: DeleteStorageStoreConnectionResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: VercelProtocol,
+  retry: Retry.Retry,
+}));
+
 export type DeleteStorageStoresBlobByIdError =
   | BadRequest
   | Forbidden
@@ -825,6 +1166,40 @@ export const deleteStorageStoresBlobById: API.OperationMethod<
   input: DeleteStorageStoresBlobByIdRequest,
   output: DeleteStorageStoresBlobByIdResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
+  protocol: VercelProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetStorageStoreConnectionsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
+/** List store connections List the projects connected to a storage store. */
+export const getStorageStoreConnections: API.OperationMethod<
+  GetStorageStoreConnectionsRequest,
+  GetStorageStoreConnectionsResponse,
+  GetStorageStoreConnectionsError,
+  VercelOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetStorageStoreConnectionsRequest,
+  output: GetStorageStoreConnectionsResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: VercelProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetStorageStoresError = BadRequest | Forbidden | VercelOpError;
+/** List stores List every storage store (all types: blob, edge-config, ...) on the account or team. */
+export const getStorageStores: API.OperationMethod<
+  GetStorageStoresRequest,
+  GetStorageStoresResponse,
+  GetStorageStoresError,
+  VercelOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetStorageStoresRequest,
+  output: GetStorageStoresResponse,
+  errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

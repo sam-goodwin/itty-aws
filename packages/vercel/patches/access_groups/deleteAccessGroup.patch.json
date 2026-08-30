@@ -1,0 +1,12 @@
+{
+  "description": "access_groups read/delete operations (GET/DELETE /v1/access-groups/{idOrName} and GET/DELETE /v1/access-groups/{accessGroupIdOrName}/projects/{projectId}) omit the 404 the live API returns for a missing access group / project attachment, so distilled's typed union lacks NotFound on all four. The reconciler's observe step (read -> missing -> create) and the idempotent deletes branch on a typed NotFound tag; without it the 404 surfaces untyped. Add the 404 responses so the generator attaches the status-class NotFound error.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1access-groups~1{idOrName}/delete/responses/404",
+      "value": {
+        "description": "Access group not found"
+      }
+    }
+  ]
+}

@@ -39,15 +39,137 @@
         "smithy.api#input": {}
       }
     },
+    "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemGroup": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fallbackEnvironment": {
+          "target": "smithy.api#String"
+        },
+        "createdAt": {
+          "target": "smithy.api#Double"
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontendsGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontends": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "groupIds": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontendsGroupIdsList"
+        },
+        "isDefaultApp": {
+          "target": "smithy.api#Boolean"
+        },
+        "defaultRoute": {
+          "target": "smithy.api#String"
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemProjectsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "microfrontends": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontends"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemProjectsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItem": {
+      "type": "structure",
+      "members": {
+        "group": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemGroup",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projects": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItemProjectsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsItem"
+      },
+      "traits": {}
+    },
     "com.vercel.microfrontends#GetMicrofrontendsGroupsResponse": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "groups": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsGroupsResponseGroupsList",
           "traits": {
-            "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
           }
+        },
+        "maxMicrofrontendsGroupsPerTeam": {
+          "target": "smithy.api#Double"
+        },
+        "maxMicrofrontendsPerGroup": {
+          "target": "smithy.api#Double"
         }
       },
       "traits": {

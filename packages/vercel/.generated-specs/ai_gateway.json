@@ -197,6 +197,9 @@
         },
         {
           "target": "com.vercel.ai_gateway#Forbidden"
+        },
+        {
+          "target": "com.vercel.ai_gateway#NotFound"
         }
       ],
       "traits": {
@@ -407,19 +410,6 @@
         ]
       }
     },
-    "com.vercel.ai_gateway#Conflict": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 409,
-        "com.distilled.openapi#errorMatchers": [
-          {
-            "status": 409
-          }
-        ]
-      }
-    },
     "com.vercel.ai_gateway#NotFound": {
       "type": "structure",
       "members": {},
@@ -429,6 +419,19 @@
         "com.distilled.openapi#errorMatchers": [
           {
             "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.ai_gateway#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
           }
         ]
       }

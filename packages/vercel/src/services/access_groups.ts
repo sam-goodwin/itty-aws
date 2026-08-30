@@ -30,6 +30,15 @@ export class Forbidden
     [{ status: 403 }],
   ) {}
 
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }).pipe(C.withBadRequestError),
+    [{ status: 404 }],
+  ) {}
+
 /** The project role that will be added to this Access Group. "null" will remove this project level role. */
 export type CreateAccessGroupRequestProjectsItemRole =
   | "ADMIN"
@@ -506,47 +515,46 @@ export const ListAccessGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccessGroupsRequest",
 }) as any as S.Schema<ListAccessGroupsRequest>;
 
-export type ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList =
-  Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList =
+export type ListAccessGroupsResponseAccessGroupsItemMembersList = Array<string>;
+export const ListAccessGroupsResponseAccessGroupsItemMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList>;
+  ) as any as S.Schema<ListAccessGroupsResponseAccessGroupsItemMembersList>;
 
-export type ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList =
+export type ListAccessGroupsResponseAccessGroupsItemProjectsList =
   Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList =
+export const ListAccessGroupsResponseAccessGroupsItemProjectsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList>;
+  ) as any as S.Schema<ListAccessGroupsResponseAccessGroupsItemProjectsList>;
 
-export type ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList =
+export type ListAccessGroupsResponseAccessGroupsItemEntitlementsList =
   Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList =
+export const ListAccessGroupsResponseAccessGroupsItemEntitlementsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList>;
+  ) as any as S.Schema<ListAccessGroupsResponseAccessGroupsItemEntitlementsList>;
 
-export type ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList =
+export type ListAccessGroupsResponseAccessGroupsItemTeamPermissionsList =
   Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList =
+export const ListAccessGroupsResponseAccessGroupsItemTeamPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList>;
+  ) as any as S.Schema<ListAccessGroupsResponseAccessGroupsItemTeamPermissionsList>;
 
 /** Roles that the team has in the access group. */
-export type ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList =
+export type ListAccessGroupsResponseAccessGroupsItemTeamRolesList =
   Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList =
+export const ListAccessGroupsResponseAccessGroupsItemTeamRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList>;
+  ) as any as S.Schema<ListAccessGroupsResponseAccessGroupsItemTeamRolesList>;
 
-export interface ListAccessGroupsResponseBodyCase1AccessGroupsItem {
-  members?: ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList;
-  projects?: ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList;
-  entitlements?: ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList;
-  teamPermissions?: ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList;
+export interface ListAccessGroupsResponseAccessGroupsItem {
+  members?: ListAccessGroupsResponseAccessGroupsItemMembersList;
+  projects?: ListAccessGroupsResponseAccessGroupsItemProjectsList;
+  entitlements?: ListAccessGroupsResponseAccessGroupsItemEntitlementsList;
+  teamPermissions?: ListAccessGroupsResponseAccessGroupsItemTeamPermissionsList;
   isDsyncManaged: boolean;
   /** The name of this access group. */
   name: string;
@@ -563,22 +571,20 @@ export interface ListAccessGroupsResponseBodyCase1AccessGroupsItem {
   /** Number of projects in the access group. */
   projectsCount: number;
   /** Roles that the team has in the access group. */
-  teamRoles?: ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList;
+  teamRoles?: ListAccessGroupsResponseAccessGroupsItemTeamRolesList;
 }
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListAccessGroupsResponseAccessGroupsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      members: S.optional(
-        ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList,
-      ),
+      members: S.optional(ListAccessGroupsResponseAccessGroupsItemMembersList),
       projects: S.optional(
-        ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList,
+        ListAccessGroupsResponseAccessGroupsItemProjectsList,
       ),
       entitlements: S.optional(
-        ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList,
+        ListAccessGroupsResponseAccessGroupsItemEntitlementsList,
       ),
       teamPermissions: S.optional(
-        ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList,
+        ListAccessGroupsResponseAccessGroupsItemTeamPermissionsList,
       ),
       isDsyncManaged: S.Boolean,
       name: S.String,
@@ -589,47 +595,33 @@ export const ListAccessGroupsResponseBodyCase1AccessGroupsItem =
       membersCount: S.Number,
       projectsCount: S.Number,
       teamRoles: S.optional(
-        ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList,
+        ListAccessGroupsResponseAccessGroupsItemTeamRolesList,
       ),
     }),
-  ).annotate({
-    identifier: "ListAccessGroupsResponseBodyCase1AccessGroupsItem",
-  }) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItem>;
+).annotate({
+  identifier: "ListAccessGroupsResponseAccessGroupsItem",
+}) as any as S.Schema<ListAccessGroupsResponseAccessGroupsItem>;
 
-export type ListAccessGroupsResponseBodyCase1AccessGroupsList =
-  Array<ListAccessGroupsResponseBodyCase1AccessGroupsItem>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsList =
-  /*@__PURE__*/ S.Array(
-    ListAccessGroupsResponseBodyCase1AccessGroupsItem,
-  ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsList>;
+export type ListAccessGroupsResponseAccessGroupsList =
+  Array<ListAccessGroupsResponseAccessGroupsItem>;
+export const ListAccessGroupsResponseAccessGroupsList = /*@__PURE__*/ S.Array(
+  ListAccessGroupsResponseAccessGroupsItem,
+) as any as S.Schema<ListAccessGroupsResponseAccessGroupsList>;
 
-export type ListAccessGroupsResponseBodyCase1Pagination =
+export type ListAccessGroupsResponsePagination =
   ListAccessGroupMembersResponsePagination;
-export const ListAccessGroupsResponseBodyCase1Pagination =
+export const ListAccessGroupsResponsePagination =
   ListAccessGroupMembersResponsePagination;
 
-export interface ListAccessGroupsResponseBodyCase1 {
-  accessGroups: ListAccessGroupsResponseBodyCase1AccessGroupsList;
+export interface ListAccessGroupsResponse {
+  accessGroups: ListAccessGroupsResponseAccessGroupsList;
   pagination: ListAccessGroupMembersResponsePagination;
 }
-export const ListAccessGroupsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
+export const ListAccessGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accessGroups: ListAccessGroupsResponseBodyCase1AccessGroupsList,
+    accessGroups: ListAccessGroupsResponseAccessGroupsList,
     pagination: ListAccessGroupMembersResponsePagination,
   }),
-).annotate({
-  identifier: "ListAccessGroupsResponseBodyCase1",
-}) as any as S.Schema<ListAccessGroupsResponseBodyCase1>;
-
-export type ListAccessGroupsResponseBody =
-  | unknown
-  | ListAccessGroupsResponseBodyCase1;
-export const ListAccessGroupsResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ListAccessGroupsResponseBody>;
-
-export type ListAccessGroupsResponse = ListAccessGroupsResponseBody;
-export const ListAccessGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListAccessGroupsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAccessGroupsResponse",
 }) as any as S.Schema<ListAccessGroupsResponse>;
@@ -1014,7 +1006,11 @@ export const createAccessGroupProject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessGroupError = BadRequest | Forbidden | VercelOpError;
+export type DeleteAccessGroupError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Deletes an access group Allows to delete an access group */
 export const deleteAccessGroup: API.OperationMethod<
   DeleteAccessGroupRequest,
@@ -1024,7 +1020,7 @@ export const deleteAccessGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessGroupRequest,
   output: DeleteAccessGroupResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -1032,6 +1028,7 @@ export const deleteAccessGroup: API.OperationMethod<
 export type DeleteAccessGroupProjectError =
   | BadRequest
   | Forbidden
+  | NotFound
   | VercelOpError;
 /** Delete an access group project Allows deletion of an access group project */
 export const deleteAccessGroupProject: API.OperationMethod<
@@ -1042,7 +1039,7 @@ export const deleteAccessGroupProject: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessGroupProjectRequest,
   output: DeleteAccessGroupProjectResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -1098,7 +1095,11 @@ export const listAccessGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReadAccessGroupError = BadRequest | Forbidden | VercelOpError;
+export type ReadAccessGroupError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Reads an access group Allows to read an access group */
 export const readAccessGroup: API.OperationMethod<
   ReadAccessGroupRequest,
@@ -1108,7 +1109,7 @@ export const readAccessGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ReadAccessGroupRequest,
   output: ReadAccessGroupResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -1116,6 +1117,7 @@ export const readAccessGroup: API.OperationMethod<
 export type ReadAccessGroupProjectError =
   | BadRequest
   | Forbidden
+  | NotFound
   | VercelOpError;
 /** Reads an access group project Allows reading an access group project */
 export const readAccessGroupProject: API.OperationMethod<
@@ -1126,7 +1128,7 @@ export const readAccessGroupProject: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ReadAccessGroupProjectRequest,
   output: ReadAccessGroupProjectResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

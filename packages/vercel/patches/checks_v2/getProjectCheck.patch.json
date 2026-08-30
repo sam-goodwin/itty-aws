@@ -1,0 +1,12 @@
+{
+  "description": "getProjectCheck (GET /v2/projects/{projectIdOrName}/checks/{checkId}) omits the 404 the live API returns for a missing check (probed 2026-08-13: status 404, code 'check_not_found', message 'Check not found for ownerId: …, projectId: …, checkId: …'), so distilled's typed union lacks NotFound. The Check provider's observe step (getProjectCheck -> missing -> recreate) branches on the typed NotFound tag; without it the 404 surfaces as the out-of-union status class. Add the 404 response so the generator attaches NotFound.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v2~1projects~1{projectIdOrName}~1checks~1{checkId}/get/responses/404",
+      "value": {
+        "description": "Check not found"
+      }
+    }
+  ]
+}

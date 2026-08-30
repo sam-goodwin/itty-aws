@@ -1,0 +1,10 @@
+{
+  "description": "access_groups.listAccessGroups (GET /v1/access-groups) models its 200 body as oneOf([{type:'object'}, {accessGroups,pagination}]). The bare untyped first arm collapses the generated union to unknown, making the typed accessGroups/pagination shape unreachable (ListAccessGroupsResponse = unknown). Promote the real second arm to be the schema so the provider's list/enumeration path gets the typed collection without casts.",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/paths/~1v1~1access-groups/get/responses/200/content/application~1json/schema/oneOf/1",
+      "path": "/paths/~1v1~1access-groups/get/responses/200/content/application~1json/schema"
+    }
+  ]
+}

@@ -366,6 +366,7 @@ export interface UploadArtifactRequest {
   xArtifactSha?: string;
   /** A hash representing uncommitted changes in the working directory when this artifact was generated. */
   xArtifactDirtyHash?: string;
+  body: Blob | Uint8Array | ArrayBuffer | string;
 }
 export const UploadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -387,7 +388,15 @@ export const UploadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
     xArtifactDirtyHash: S.optional(
       S.String.pipe(T.Header("x-Artifact-Dirty-Hash")),
     ),
-  }).pipe(T.Http({ method: "PUT", uri: "/v8/artifacts/{hash}", code: 200 })),
+    body: S.String.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/v8/artifacts/{hash}",
+      code: 200,
+      bodyMediaType: "application/octet-stream",
+    }),
+  ),
 ).annotate({
   identifier: "UploadArtifactRequest",
 }) as any as S.Schema<UploadArtifactRequest>;

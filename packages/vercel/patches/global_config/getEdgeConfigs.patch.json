@@ -1,0 +1,129 @@
+{
+  "description": "global_config.getEdgeConfigs (GET /v1/global-config) documents the 200 response as a single Edge Config object, but the live API returns a JSON array of them (live-verified: `[]` on empty team, `[{...}]` after create). Wrap the response schema in an array so GetEdgeConfigsResponse types as the list the API actually returns; needed by the provider's read fallback (find-by-slug after state loss).",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1global-config/get/responses/200/content/application~1json/schema",
+      "value": {
+        "type": "array",
+        "items": {
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "number"
+            },
+            "createdBy": {
+              "type": "string",
+              "description": "The ID of the user who created the Edge Config, optional because it is not always set."
+            },
+            "ownerId": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string",
+              "description": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores)."
+            },
+            "updatedAt": {
+              "type": "number"
+            },
+            "digest": {
+              "type": "string"
+            },
+            "purpose": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "flags"
+                      ]
+                    },
+                    "projectId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "projectId",
+                    "type"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "experimentation"
+                      ]
+                    },
+                    "resourceId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "resourceId",
+                    "type"
+                  ],
+                  "type": "object"
+                }
+              ]
+            },
+            "deletedAt": {
+              "nullable": true,
+              "type": "number"
+            },
+            "transfer": {
+              "properties": {
+                "fromAccountId": {
+                  "type": "string"
+                },
+                "startedAt": {
+                  "type": "number"
+                },
+                "doneAt": {
+                  "nullable": true,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "doneAt",
+                "fromAccountId",
+                "startedAt"
+              ],
+              "type": "object",
+              "description": "Keeps track of the current state of the Edge Config while it gets transferred."
+            },
+            "schema": {
+              "type": "object"
+            },
+            "syncedToDynamoAt": {
+              "type": "number",
+              "description": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+            },
+            "sizeInBytes": {
+              "type": "number"
+            },
+            "itemCount": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "createdAt",
+            "digest",
+            "id",
+            "itemCount",
+            "ownerId",
+            "sizeInBytes",
+            "slug",
+            "updatedAt"
+          ],
+          "type": "object",
+          "description": "List of all global configs."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "description": "getDeployment's 200 response is a 3-arm oneOf: arm 0 omits readySubstate (arms 1-2 declare it), so the generated merged GetDeploymentResponseBody loses the field even though the live API returns it (readySubstate PROMOTED observed on every promoted production deployment — see alchemy processes/Vercel/PROBES.md). Also no arm's readyState enum includes DELETED, which the live API returns for a deleted deployment (DELETE probe: 200 {state:\"DELETED\"}, subsequent GETs report the deployment with readyState DELETED). Add readySubstate to arm 0 and DELETED to every top-level readyState enum.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v13~1deployments~1{idOrUrl}/get/responses/200/content/application~1json/schema/oneOf/0/properties/readySubstate",
+      "value": {
+        "type": "string",
+        "enum": ["PROMOTED", "ROLLING", "STAGED"]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v13~1deployments~1{idOrUrl}/get/responses/200/content/application~1json/schema/oneOf/0/properties/readyState/enum/-",
+      "value": "DELETED"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v13~1deployments~1{idOrUrl}/get/responses/200/content/application~1json/schema/oneOf/1/properties/readyState/enum/-",
+      "value": "DELETED"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v13~1deployments~1{idOrUrl}/get/responses/200/content/application~1json/schema/oneOf/2/properties/readyState/enum/-",
+      "value": "DELETED"
+    }
+  ]
+}

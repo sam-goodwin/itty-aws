@@ -1,0 +1,12 @@
+{
+  "description": "Shared Environment Variable operations omit statuses the live API returns (live-verified 2026-08-13): environment.getSharedEnvVar answers 404 `id_not_found` for an unknown id; environment.updateSharedEnvVariable answers 404 `id_not_found` when any referenced id is unknown (NOT a `failed[]` envelope entry); environment.deleteSharedEnvVariable answers 404 `id_not_found` when an id is already gone (the idempotent-delete path catches this); environment.createSharedEnvVariable answers 409 `existing_key_and_target` when the key already exists for the selected targets (NOT a `failed[]` envelope entry). Add the statuses so the generator attaches typed NotFound/Conflict errors to these operations.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1env/post/responses/409",
+      "value": {
+        "description": "The Shared Environment Variable key already exists for the selected target(s)"
+      }
+    }
+  ]
+}

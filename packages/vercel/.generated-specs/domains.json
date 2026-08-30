@@ -1506,10 +1506,35 @@
             "smithy.api#documentation": "The Team slug to perform the request on behalf of."
           }
         },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name you want to add.",
+            "smithy.api#required": {}
+          }
+        },
         "method": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The domain operation to perform. It can be either `add` or `move-in`."
+            "smithy.api#documentation": "The domain operation to perform. Omit (or `add`) to add the domain; `move-in` moves a domain from another Vercel account using `token`. Live behavior: sending `method: \"add\"` together with `name` fails the server-side oneOf validation — omit `method` entirely when adding."
+          }
+        },
+        "cdnEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the domain has the Vercel Edge Network enabled or not."
+          }
+        },
+        "zone": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to create a DNS zone on Vercel. Set `true` if using Vercel nameservers (required before any DNS records can be created for the domain)."
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The move-in token from the Move Requested email. Only used with `method: \"move-in\"`."
           }
         }
       },

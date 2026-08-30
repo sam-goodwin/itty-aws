@@ -237,7 +237,11 @@ export const deleteAiGatewayRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAiGatewayRulesError = BadRequest | Forbidden | VercelOpError;
+export type ListAiGatewayRulesError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** List rules List the authenticated team's routing rules */
 export const listAiGatewayRules: API.OperationMethod<
   ListAiGatewayRulesRequest,
@@ -247,7 +251,7 @@ export const listAiGatewayRules: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListAiGatewayRulesRequest,
   output: AiGatewayRuleList,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

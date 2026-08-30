@@ -1,0 +1,29 @@
+{
+  "description": "bulk_redirects.getRedirects (GET /v1/bulk-redirects): the 200 response is a oneOf whose first branch is a bare map `{type: object}`, degrading the whole union to unknown. Collapse to the full branch (version + redirects + pagination), then reconcile with live behavior probed 2026-08-13: a project with no redirects history returns `{redirects: [], version: null}` with NO pagination — mark version nullable and relax required to redirects only.",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/paths/~1v1~1bulk-redirects/get/responses/200/content/application~1json/schema/oneOf/1",
+      "path": "/paths/~1v1~1bulk-redirects/get/responses/200/content/application~1json/keepSchema"
+    },
+    {
+      "op": "remove",
+      "path": "/paths/~1v1~1bulk-redirects/get/responses/200/content/application~1json/schema"
+    },
+    {
+      "op": "move",
+      "from": "/paths/~1v1~1bulk-redirects/get/responses/200/content/application~1json/keepSchema",
+      "path": "/paths/~1v1~1bulk-redirects/get/responses/200/content/application~1json/schema"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1bulk-redirects/get/responses/200/content/application~1json/schema/properties/version/nullable",
+      "value": true
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1bulk-redirects/get/responses/200/content/application~1json/schema/required",
+      "value": ["redirects"]
+    }
+  ]
+}

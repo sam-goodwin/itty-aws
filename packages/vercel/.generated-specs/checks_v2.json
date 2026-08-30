@@ -1462,6 +1462,9 @@
         },
         {
           "target": "com.vercel.checks_v2#Forbidden"
+        },
+        {
+          "target": "com.vercel.checks_v2#NotFound"
         }
       ],
       "traits": {

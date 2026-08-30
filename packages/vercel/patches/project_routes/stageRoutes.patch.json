@@ -1,0 +1,10 @@
+{
+  "description": "project_routes.stageRoutes (PUT /v1/projects/{projectId}/routes): the live API returns 404 `not_found` (\"Project not found.\") when the project no longer exists (probed 2026-08-13), but the spec declares no 404 — add it so the provider's delete-time reset (stage empty + promote) can treat a vanished host project as a typed NotFound.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1projects~1{projectId}~1routes/put/responses/404",
+      "value": { "description": "Project not found" }
+    }
+  ]
+}

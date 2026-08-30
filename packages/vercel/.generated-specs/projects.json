@@ -58631,6 +58631,9 @@
         },
         {
           "target": "com.vercel.projects#Forbidden"
+        },
+        {
+          "target": "com.vercel.projects#NotFound"
         }
       ],
       "traits": {
@@ -74219,6 +74222,9 @@
           "target": "com.vercel.projects#Forbidden"
         },
         {
+          "target": "com.vercel.projects#NotFound"
+        },
+        {
           "target": "com.vercel.projects#Conflict"
         }
       ],
@@ -74254,6 +74260,12 @@
           "traits": {
             "smithy.api#httpQuery": "slug",
             "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -87552,7 +87564,8 @@
         "smithy.api#http": {
           "method": "POST",
           "uri": "/v1/projects/{idOrName}/avatar",
-          "code": 200
+          "code": 200,
+          "bodyMediaType": "application/octet-stream"
         },
         "smithy.api#documentation": "Upload a project avatar\n\nUpload an image as the avatar of the project identified by `idOrName`. The request body is the raw bytes of a JPG, PNG, or SVG image; the `Content-Type` header must declare which. SVG payloads are sanitized and optimized server-side before storage. The final SHA-1 of the stored bytes becomes the project's `avatar` value. The actual upload pipeline (validation, sanitization, S3 write, conditional `updateProject`, and event emission) lives in the shared `@api/project-avatar-upload` helper so it can be reused by background workers."
       }
@@ -88157,6 +88170,9 @@
         },
         {
           "target": "com.vercel.projects#Forbidden"
+        },
+        {
+          "target": "com.vercel.projects#NotFound"
         }
       ],
       "traits": {
@@ -92251,6 +92267,9 @@
         },
         {
           "target": "com.vercel.projects#Forbidden"
+        },
+        {
+          "target": "com.vercel.projects#NotFound"
         }
       ],
       "traits": {
@@ -92262,10 +92281,262 @@
         "smithy.api#documentation": "Retrieve the environment variables of a project by id or name\n\nRetrieve the environment variables for a given project by passing either the project `id` or `name` in the URL."
       }
     },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase0Type": {
+      "type": "enum",
+      "members": {
+        "SYSTEM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "system"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypted"
+          }
+        },
+        "PLAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "plain"
+          }
+        },
+        "SENSITIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sensitive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of environment variable"
+      }
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase0TargetItem": {
+      "type": "enum",
+      "members": {
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        },
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preview"
+          }
+        },
+        "DEVELOPMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "development"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase0TargetList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase0TargetItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The target environment of the environment variable"
+      }
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase0CustomEnvironmentIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The custom environment IDs associated with the environment variable"
+      }
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase0": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the environment variable",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the environment variable",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase0Type",
+          "traits": {
+            "smithy.api#documentation": "The type of environment variable",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase0TargetList",
+          "traits": {
+            "smithy.api#documentation": "The target environment of the environment variable"
+          }
+        },
+        "gitBranch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If defined, the git branch of the environment variable (must have target=preview)",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comment to add context on what this environment variable is for"
+          }
+        },
+        "customEnvironmentIds": {
+          "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase0CustomEnvironmentIdsList",
+          "traits": {
+            "smithy.api#documentation": "The custom environment IDs associated with the environment variable"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase1ItemType": {
+      "type": "enum",
+      "members": {
+        "SYSTEM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "system"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypted"
+          }
+        },
+        "PLAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "plain"
+          }
+        },
+        "SENSITIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sensitive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of environment variable"
+      }
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase1ItemTargetItem": {
+      "type": "enum",
+      "members": {
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        },
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preview"
+          }
+        },
+        "DEVELOPMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "development"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase1ItemTargetList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase1ItemTargetItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The target environment of the environment variable"
+      }
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase1ItemCustomEnvironmentIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The custom environment IDs associated with the environment variable"
+      }
+    },
+    "com.vercel.projects#CreateProjectEnvRequestBodyCase1Item": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the environment variable",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the environment variable",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase1ItemType",
+          "traits": {
+            "smithy.api#documentation": "The type of environment variable",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase1ItemTargetList",
+          "traits": {
+            "smithy.api#documentation": "The target environment of the environment variable"
+          }
+        },
+        "gitBranch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If defined, the git branch of the environment variable (must have target=preview)",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comment to add context on what this environment variable is for"
+          }
+        },
+        "customEnvironmentIds": {
+          "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase1ItemCustomEnvironmentIdsList",
+          "traits": {
+            "smithy.api#documentation": "The custom environment IDs associated with the environment variable"
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.vercel.projects#CreateProjectEnvRequestBodyCase1List": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase1Item"
       },
       "traits": {}
     },
@@ -92273,7 +92544,7 @@
       "type": "union",
       "members": {
         "Case0": {
-          "target": "smithy.api#Document"
+          "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase0"
         },
         "Case1": {
           "target": "com.vercel.projects#CreateProjectEnvRequestBodyCase1List"

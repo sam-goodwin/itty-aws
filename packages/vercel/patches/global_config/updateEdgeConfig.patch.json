@@ -1,0 +1,9 @@
+{
+  "description": "global_config.updateEdgeConfig (PUT /v1/global-config/{edgeConfigId}) has the same query-vs-body `slug` collision as createEdgeConfig: the required body property `slug` (the new config name) is dropped from UpdateEdgeConfigRequest, leaving the rename operation with no way to send its only body field (live-verified: PUT with body slug 200s and renames). Remove the redundant `slug` query parameter so the body property survives flattening.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/paths/~1v1~1global-config~1{edgeConfigId}/put/parameters/2"
+    }
+  ]
+}

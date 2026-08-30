@@ -566,6 +566,70 @@
         "smithy.api#documentation": "The type of record, it could be one of the valid DNS records."
       }
     },
+    "com.vercel.dns#CreateRecordRequestSrv": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SRV target hostname.",
+            "smithy.api#required": {}
+          }
+        },
+        "weight": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The SRV weight.",
+            "smithy.api#required": {}
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The SRV port.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The SRV priority.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SRV record payload. Required for SRV records."
+      }
+    },
+    "com.vercel.dns#CreateRecordRequestHttps": {
+      "type": "structure",
+      "members": {
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The HTTPS priority.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The HTTPS target hostname.",
+            "smithy.api#required": {}
+          }
+        },
+        "params": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The HTTPS parameter string."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The HTTPS record payload. Required for HTTPS records."
+      }
+    },
     "com.vercel.dns#CreateRecordRequest": {
       "type": "structure",
       "members": {
@@ -596,6 +660,48 @@
           "traits": {
             "smithy.api#documentation": "The type of record, it could be one of the valid DNS records.",
             "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A subdomain name or an empty string for the root domain. Required for every record type except SRV and HTTPS, whose name is derived from srv/https."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The record value (address, hostname, or text depending on the record type). Not used for SRV and HTTPS records, which use the srv/https objects instead."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The TTL value. Must be a number between 60 and 2147483647. Default value is 60."
+          }
+        },
+        "mxPriority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The MX priority value of the DNS record. Required for MX records."
+          }
+        },
+        "srv": {
+          "target": "com.vercel.dns#CreateRecordRequestSrv",
+          "traits": {
+            "smithy.api#documentation": "The SRV record payload. Required for SRV records."
+          }
+        },
+        "https": {
+          "target": "com.vercel.dns#CreateRecordRequestHttps",
+          "traits": {
+            "smithy.api#documentation": "The HTTPS record payload. Required for HTTPS records."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comment to add context on what this DNS record is for"
           }
         }
       },

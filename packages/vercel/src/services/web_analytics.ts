@@ -30,6 +30,15 @@ export class Forbidden
     [{ status: 403 }],
   ) {}
 
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }).pipe(C.withBadRequestError),
+    [{ status: 404 }],
+  ) {}
+
 export class PaymentRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<PaymentRequired>()("PaymentRequired", {
@@ -1436,11 +1445,17 @@ export const CreateSpeedInsightsToggleResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateWebInsightsToggleRequest {
   projectId: string;
+  /** The Team identifier to perform the request on behalf of. */
+  teamId?: string;
+  /** The Team slug to perform the request on behalf of. */
+  slug?: string;
   value: boolean;
 }
 export const CreateWebInsightsToggleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
+    teamId: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String.pipe(T.Query())),
     value: S.Boolean,
   }).pipe(T.Http({ method: "POST", uri: "/web/insights/toggle", code: 200 })),
 ).annotate({
@@ -1555,6 +1570,7 @@ export const createSpeedInsightsToggle: API.OperationMethod<
 export type CreateWebInsightsToggleError =
   | BadRequest
   | Forbidden
+  | NotFound
   | VercelOpError;
 export const createWebInsightsToggle: API.OperationMethod<
   CreateWebInsightsToggleRequest,
@@ -1564,7 +1580,7 @@ export const createWebInsightsToggle: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateWebInsightsToggleRequest,
   output: CreateWebInsightsToggleResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

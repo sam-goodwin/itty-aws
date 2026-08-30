@@ -469,6 +469,13 @@
             "smithy.api#httpHeader": "x-Artifact-Dirty-Hash",
             "smithy.api#documentation": "A hash representing uncommitted changes in the working directory when this artifact was generated."
           }
+        },
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -522,7 +529,8 @@
         "smithy.api#http": {
           "method": "PUT",
           "uri": "/v8/artifacts/{hash}",
-          "code": 200
+          "code": 200,
+          "bodyMediaType": "application/octet-stream"
         },
         "smithy.api#documentation": "Upload a cache artifact\n\nUploads a cache artifact identified by the `hash` specified on the path. The cache artifact can then be downloaded with the provided `hash`."
       }

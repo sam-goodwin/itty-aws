@@ -39,7 +39,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.vercel.global_config#GetEdgeConfigsResponsePurposeCase0Type": {
+    "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurposeCase0Type": {
       "type": "enum",
       "members": {
         "FLAGS": {
@@ -51,11 +51,11 @@
       },
       "traits": {}
     },
-    "com.vercel.global_config#GetEdgeConfigsResponsePurposeCase0": {
+    "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurposeCase0": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.vercel.global_config#GetEdgeConfigsResponsePurposeCase0Type",
+          "target": "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurposeCase0Type",
           "traits": {
             "smithy.api#required": {}
           }
@@ -69,7 +69,7 @@
       },
       "traits": {}
     },
-    "com.vercel.global_config#GetEdgeConfigsResponsePurposeCase1Type": {
+    "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurposeCase1Type": {
       "type": "enum",
       "members": {
         "EXPERIMENTATION": {
@@ -81,11 +81,11 @@
       },
       "traits": {}
     },
-    "com.vercel.global_config#GetEdgeConfigsResponsePurposeCase1": {
+    "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurposeCase1": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.vercel.global_config#GetEdgeConfigsResponsePurposeCase1Type",
+          "target": "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurposeCase1Type",
           "traits": {
             "smithy.api#required": {}
           }
@@ -99,19 +99,19 @@
       },
       "traits": {}
     },
-    "com.vercel.global_config#GetEdgeConfigsResponsePurpose": {
+    "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurpose": {
       "type": "union",
       "members": {
         "Case0": {
-          "target": "com.vercel.global_config#GetEdgeConfigsResponsePurposeCase0"
+          "target": "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurposeCase0"
         },
         "Case1": {
-          "target": "com.vercel.global_config#GetEdgeConfigsResponsePurposeCase1"
+          "target": "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurposeCase1"
         }
       },
       "traits": {}
     },
-    "com.vercel.global_config#GetEdgeConfigsResponseTransfer": {
+    "com.vercel.global_config#GetEdgeConfigsResponseBodyItemTransfer": {
       "type": "structure",
       "members": {
         "fromAccountId": {
@@ -138,7 +138,7 @@
         "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
       }
     },
-    "com.vercel.global_config#GetEdgeConfigsResponse": {
+    "com.vercel.global_config#GetEdgeConfigsResponseBodyItem": {
       "type": "structure",
       "members": {
         "id": {
@@ -185,7 +185,7 @@
           }
         },
         "purpose": {
-          "target": "com.vercel.global_config#GetEdgeConfigsResponsePurpose"
+          "target": "com.vercel.global_config#GetEdgeConfigsResponseBodyItemPurpose"
         },
         "deletedAt": {
           "target": "smithy.api#Double",
@@ -194,7 +194,7 @@
           }
         },
         "transfer": {
-          "target": "com.vercel.global_config#GetEdgeConfigsResponseTransfer",
+          "target": "com.vercel.global_config#GetEdgeConfigsResponseBodyItemTransfer",
           "traits": {
             "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
           }
@@ -217,6 +217,28 @@
         "itemCount": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of all global configs."
+      }
+    },
+    "com.vercel.global_config#GetEdgeConfigsResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.global_config#GetEdgeConfigsResponseBodyItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetEdgeConfigsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.global_config#GetEdgeConfigsResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
           }
         }
@@ -273,8 +295,7 @@
         "slug": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "slug",
-            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+            "smithy.api#required": {}
           }
         },
         "items": {
@@ -762,8 +783,7 @@
         "slug": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "slug",
-            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+            "smithy.api#required": {}
           }
         }
       },
@@ -1210,21 +1230,15 @@
         "smithy.api#documentation": "Get Global Config items\n\nReturns all items of a Global Config."
       }
     },
-    "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase0": {
-      "type": "structure",
-      "members": {
-        "operation": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase1Operation": {
+    "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemOperation": {
       "type": "enum",
       "members": {
+        "CREATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "create"
+          }
+        },
         "UPDATE": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1236,78 +1250,30 @@
           "traits": {
             "smithy.api#enumValue": "upsert"
           }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase1": {
-      "type": "structure",
-      "members": {
-        "operation": {
-          "target": "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase1Operation",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase2Operation": {
-      "type": "enum",
-      "members": {
-        "UPDATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "update"
-          }
         },
-        "UPSERT": {
+        "DELETE": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "upsert"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase2": {
-      "type": "structure",
-      "members": {
-        "operation": {
-          "target": "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase2Operation",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase3": {
-      "type": "structure",
-      "members": {
-        "operation": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "delete"
           }
         }
       },
       "traits": {}
     },
     "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItem": {
-      "type": "union",
+      "type": "structure",
       "members": {
-        "Case0": {
-          "target": "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase0"
+        "operation": {
+          "target": "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemOperation"
         },
-        "Case1": {
-          "target": "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase1"
+        "key": {
+          "target": "smithy.api#String"
         },
-        "Case2": {
-          "target": "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase2"
+        "value": {
+          "target": "smithy.api#Document"
         },
-        "Case3": {
-          "target": "com.vercel.global_config#PatchEdgeConfigItemsRequestItemsItemCase3"
+        "description": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {}
@@ -1768,13 +1734,35 @@
         "smithy.api#documentation": "The Global Config."
       }
     },
+    "com.vercel.global_config#GetEdgeConfigTokensResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.global_config#EdgeConfigToken"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetEdgeConfigTokensResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.global_config#GetEdgeConfigTokensResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
     "com.vercel.global_config#GetEdgeConfigTokens": {
       "type": "operation",
       "input": {
         "target": "com.vercel.global_config#GetEdgeConfigTokensRequest"
       },
       "output": {
-        "target": "com.vercel.global_config#EdgeConfigToken"
+        "target": "com.vercel.global_config#GetEdgeConfigTokensResponse"
       },
       "errors": [
         {

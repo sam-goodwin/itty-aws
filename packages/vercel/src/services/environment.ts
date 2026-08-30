@@ -21,6 +21,15 @@ export class BadRequest
     [{ status: 400 }],
   ) {}
 
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
+      code: S.Number,
+      message: S.String,
+    }).pipe(C.withConflictError),
+    [{ status: 409 }],
+  ) {}
+
 export class Forbidden
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
@@ -78,7 +87,7 @@ export interface CreateCustomEnvironmentRequest {
   idOrName: string;
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
-  /** The Team slug to perform the request on behalf of. */
+  /** The slug of the custom environment to create. */
   slug?: string;
   /** Description of the custom environment. This is optional. */
   description?: string;
@@ -91,7 +100,7 @@ export const CreateCustomEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
-    slug: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String),
     description: S.optional(S.String),
     branchMatcher: S.optional(CreateCustomEnvironmentRequestBranchMatcher),
     copyEnvVarsFrom: S.optional(S.String),
@@ -1647,7 +1656,7 @@ export interface UpdateCustomEnvironmentRequest {
   environmentSlugOrId: string;
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
-  /** The Team slug to perform the request on behalf of. */
+  /** The slug of the custom environment. */
   slug?: string;
   /** Description of the custom environment. This is optional. */
   description?: string;
@@ -1659,7 +1668,7 @@ export const UpdateCustomEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
     idOrName: S.String.pipe(T.Label()),
     environmentSlugOrId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
-    slug: S.optional(S.String.pipe(T.Query())),
+    slug: S.optional(S.String),
     description: S.optional(S.String),
     branchMatcher: S.optional(
       S.NullOr(UpdateCustomEnvironmentRequestBranchMatcher),
@@ -2208,6 +2217,7 @@ export type CreateSharedEnvVariableError =
   | BadRequest
   | PaymentRequired
   | Forbidden
+  | Conflict
   | VercelOpError;
 /** Create one or more shared environment variables Creates shared environment variable(s) for a team. */
 export const createSharedEnvVariable: API.OperationMethod<
@@ -2218,7 +2228,7 @@ export const createSharedEnvVariable: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSharedEnvVariableRequest,
   output: CreateSharedEnvVariableResponse,
-  errors: [BadRequest, PaymentRequired, Forbidden],
+  errors: [BadRequest, PaymentRequired, Forbidden, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -2227,6 +2237,7 @@ export type DeleteSharedEnvVariableError =
   | BadRequest
   | PaymentRequired
   | Forbidden
+  | NotFound
   | VercelOpError;
 /** Delete one or more Env Var Deletes one or many Shared Environment Variables for a given team. */
 export const deleteSharedEnvVariable: API.OperationMethod<
@@ -2237,7 +2248,7 @@ export const deleteSharedEnvVariable: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSharedEnvVariableRequest,
   output: DeleteSharedEnvVariableResponse,
-  errors: [BadRequest, PaymentRequired, Forbidden],
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -2264,6 +2275,7 @@ export const getCustomEnvironment: API.OperationMethod<
 export type GetProjectsByIdOrNameCustomEnvironmentsError =
   | BadRequest
   | Forbidden
+  | NotFound
   | VercelOpError;
 /** Retrieve custom environments Retrieve custom environments for the project. Must not be named 'Production' or 'Preview'. */
 export const getProjectsByIdOrNameCustomEnvironments: API.OperationMethod<
@@ -2274,12 +2286,16 @@ export const getProjectsByIdOrNameCustomEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsByIdOrNameCustomEnvironmentsRequest,
   output: GetProjectsByIdOrNameCustomEnvironmentsResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetSharedEnvVarError = BadRequest | Forbidden | VercelOpError;
+export type GetSharedEnvVarError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Retrieve the decrypted value of a Shared Environment Variable by id. Retrieve the decrypted value of a Shared Environment Variable by id. */
 export const getSharedEnvVar: API.OperationMethod<
   GetSharedEnvVarRequest,
@@ -2289,7 +2305,7 @@ export const getSharedEnvVar: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSharedEnvVarRequest,
   output: GetSharedEnvVarResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -2316,6 +2332,7 @@ export const listSharedEnvVariable: API.OperationMethod<
 export type RemoveCustomEnvironmentError =
   | BadRequest
   | Forbidden
+  | NotFound
   | VercelOpError;
 /** Remove a custom environment Remove a custom environment for the project. Must not be named 'Production' or 'Preview'. */
 export const removeCustomEnvironment: API.OperationMethod<
@@ -2326,7 +2343,7 @@ export const removeCustomEnvironment: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RemoveCustomEnvironmentRequest,
   output: RemoveCustomEnvironmentResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -2372,6 +2389,7 @@ export type UpdateSharedEnvVariableError =
   | BadRequest
   | PaymentRequired
   | Forbidden
+  | NotFound
   | VercelOpError;
 /** Updates one or more shared environment variables Updates a given Shared Environment Variable for a Team. */
 export const updateSharedEnvVariable: API.OperationMethod<
@@ -2382,7 +2400,7 @@ export const updateSharedEnvVariable: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSharedEnvVariableRequest,
   output: UpdateSharedEnvVariableResponse,
-  errors: [BadRequest, PaymentRequired, Forbidden],
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

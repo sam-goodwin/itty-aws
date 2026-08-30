@@ -1,0 +1,12 @@
+{
+  "description": "projects.getProject and projects.deleteProject (GET/DELETE /v9/projects/{idOrName}) omit the 404 response the live API returns for a missing project, so distilled's typed union lacks NotFound on both operations. The reconciler's observe step (getProject -> missing -> create) and the idempotent delete (deleteProject catching not-found) both branch on a typed NotFound tag; without it the 404 surfaces as the catch-all. Add the 404 responses so the generator attaches the status-class NotFound error to both operations.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v9~1projects~1{idOrName}/delete/responses/404",
+      "value": {
+        "description": "Project not found"
+      }
+    }
+  ]
+}

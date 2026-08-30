@@ -61,6 +61,18 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   };
 };
 
+// The DATA-PLANE protocols (blob_data / queues_data / edge_config_data —
+// generated from manual-specs) are re-exported here because the generated
+// service headers import their protocol + op error/context types from
+// `../protocol.ts`.
+export {
+  BlobDataProtocol,
+  QueuesDataProtocol,
+  EdgeConfigDataProtocol,
+  type VercelDataOpError,
+  type VercelDataOpContext,
+} from "./data-protocol.ts";
+
 export const VercelProtocol: Layer.Layer<API.Protocol> =
   makeRestProtocol<Config>({
     // Resolved on the CALLING fiber per request (the layer is memoized per

@@ -1,0 +1,15 @@
+{
+  "description": "global_config.getEdgeConfigTokens (GET /v1/global-config/{edgeConfigId}/tokens) documents the 200 response as a single EdgeConfigToken object, but the live API returns a JSON array of them (same class of spec bug as getEdgeConfigs). Wrap the response schema in an array so GetEdgeConfigTokensResponse types as the list the API actually returns; needed to enumerate a config's tokens (e.g. test-side leak verification).",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1global-config~1{edgeConfigId}~1tokens/get/responses/200/content/application~1json/schema",
+      "value": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/EdgeConfigToken"
+        }
+      }
+    }
+  ]
+}

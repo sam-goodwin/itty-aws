@@ -1,0 +1,10 @@
+{
+  "description": "project_members.removeProjectMember (DELETE /v1/projects/{idOrName}/members/{uid}): the live API returns 404 `not_found` both for a non-member uid (\"Team Membership not found.\") and for a deleted project (\"Project not found.\") — probed 2026-08-13 — but the spec declares no 404. The provider's idempotent delete catches the typed NotFound; add the response so it exists in the union.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1projects~1{idOrName}~1members~1{uid}/delete/responses/404",
+      "value": { "description": "Project or membership not found" }
+    }
+  ]
+}

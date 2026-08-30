@@ -1,0 +1,34 @@
+{
+  "description": "web_analytics.createWebInsightsToggle (POST /web/insights/toggle) declares only the projectId query parameter — no teamId/slug scoping (every other team-scoped Vercel op has them; live-verified the endpoint accepts and honors teamId) — and omits the 404 the live API returns when the project does not exist ({\"error\":{\"code\":\"not_found\",\"message\":\"Project not found.\"}}, live-verified). The WebAnalytics provider's delete path toggles analytics off and must treat a already-deleted project as gone via a typed NotFound tag. Add teamId/slug query params and the 404 response.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1web~1insights~1toggle/post/parameters/-",
+      "value": {
+        "name": "teamId",
+        "in": "query",
+        "required": false,
+        "description": "The Team identifier to perform the request on behalf of.",
+        "schema": { "type": "string" }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1web~1insights~1toggle/post/parameters/-",
+      "value": {
+        "name": "slug",
+        "in": "query",
+        "required": false,
+        "description": "The Team slug to perform the request on behalf of.",
+        "schema": { "type": "string" }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1web~1insights~1toggle/post/responses/404",
+      "value": {
+        "description": "Project not found"
+      }
+    }
+  ]
+}

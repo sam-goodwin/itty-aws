@@ -68,14 +68,13 @@ export const CreateEdgeConfigRequestItemsMap = /*@__PURE__*/ S.Record(
 export interface CreateEdgeConfigRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
-  /** The Team slug to perform the request on behalf of. */
-  slug?: string;
+  slug: string;
   items?: CreateEdgeConfigRequestItemsMap;
 }
 export const CreateEdgeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
-    slug: S.optional(S.String.pipe(T.Query())),
+    slug: S.String,
     items: S.optional(CreateEdgeConfigRequestItemsMap),
   }).pipe(T.Http({ method: "POST", uri: "/v1/global-config", code: 200 })),
 ).annotate({
@@ -837,49 +836,56 @@ export const GetEdgeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEdgeConfigsRequest",
 }) as any as S.Schema<GetEdgeConfigsRequest>;
 
-export type GetEdgeConfigsResponsePurposeCase0Type = "flags";
-export const GetEdgeConfigsResponsePurposeCase0Type = /*@__PURE__*/ S.String;
+export type GetEdgeConfigsResponseBodyItemPurposeCase0Type = "flags";
+export const GetEdgeConfigsResponseBodyItemPurposeCase0Type =
+  /*@__PURE__*/ S.String;
 
-export interface GetEdgeConfigsResponsePurposeCase0 {
-  type: GetEdgeConfigsResponsePurposeCase0Type;
+export interface GetEdgeConfigsResponseBodyItemPurposeCase0 {
+  type: GetEdgeConfigsResponseBodyItemPurposeCase0Type;
   projectId: string;
 }
-export const GetEdgeConfigsResponsePurposeCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetEdgeConfigsResponsePurposeCase0Type,
-    projectId: S.String,
-  }),
-).annotate({
-  identifier: "GetEdgeConfigsResponsePurposeCase0",
-}) as any as S.Schema<GetEdgeConfigsResponsePurposeCase0>;
+export const GetEdgeConfigsResponseBodyItemPurposeCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: GetEdgeConfigsResponseBodyItemPurposeCase0Type,
+      projectId: S.String,
+    }),
+  ).annotate({
+    identifier: "GetEdgeConfigsResponseBodyItemPurposeCase0",
+  }) as any as S.Schema<GetEdgeConfigsResponseBodyItemPurposeCase0>;
 
-export type GetEdgeConfigsResponsePurposeCase1Type = "experimentation";
-export const GetEdgeConfigsResponsePurposeCase1Type = /*@__PURE__*/ S.String;
+export type GetEdgeConfigsResponseBodyItemPurposeCase1Type = "experimentation";
+export const GetEdgeConfigsResponseBodyItemPurposeCase1Type =
+  /*@__PURE__*/ S.String;
 
-export interface GetEdgeConfigsResponsePurposeCase1 {
-  type: GetEdgeConfigsResponsePurposeCase1Type;
+export interface GetEdgeConfigsResponseBodyItemPurposeCase1 {
+  type: GetEdgeConfigsResponseBodyItemPurposeCase1Type;
   resourceId: string;
 }
-export const GetEdgeConfigsResponsePurposeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetEdgeConfigsResponsePurposeCase1Type,
-    resourceId: S.String,
-  }),
-).annotate({
-  identifier: "GetEdgeConfigsResponsePurposeCase1",
-}) as any as S.Schema<GetEdgeConfigsResponsePurposeCase1>;
+export const GetEdgeConfigsResponseBodyItemPurposeCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: GetEdgeConfigsResponseBodyItemPurposeCase1Type,
+      resourceId: S.String,
+    }),
+  ).annotate({
+    identifier: "GetEdgeConfigsResponseBodyItemPurposeCase1",
+  }) as any as S.Schema<GetEdgeConfigsResponseBodyItemPurposeCase1>;
 
-export type GetEdgeConfigsResponsePurpose =
-  | GetEdgeConfigsResponsePurposeCase0
-  | GetEdgeConfigsResponsePurposeCase1;
-export const GetEdgeConfigsResponsePurpose =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetEdgeConfigsResponsePurpose>;
+export type GetEdgeConfigsResponseBodyItemPurpose =
+  | GetEdgeConfigsResponseBodyItemPurposeCase0
+  | GetEdgeConfigsResponseBodyItemPurposeCase1;
+export const GetEdgeConfigsResponseBodyItemPurpose =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GetEdgeConfigsResponseBodyItemPurpose>;
 
 /** Keeps track of the current state of the Edge Config while it gets transferred. */
-export type GetEdgeConfigsResponseTransfer = CreateEdgeConfigResponseTransfer;
-export const GetEdgeConfigsResponseTransfer = CreateEdgeConfigResponseTransfer;
+export type GetEdgeConfigsResponseBodyItemTransfer =
+  CreateEdgeConfigResponseTransfer;
+export const GetEdgeConfigsResponseBodyItemTransfer =
+  CreateEdgeConfigResponseTransfer;
 
-export interface GetEdgeConfigsResponse {
+/** List of all global configs. */
+export interface GetEdgeConfigsResponseBodyItem {
   id: string;
   createdAt: number;
   /** The ID of the user who created the Edge Config, optional because it is not always set. */
@@ -889,7 +895,7 @@ export interface GetEdgeConfigsResponse {
   slug: string;
   updatedAt: number;
   digest: string;
-  purpose?: GetEdgeConfigsResponsePurpose;
+  purpose?: GetEdgeConfigsResponseBodyItemPurpose;
   deletedAt?: number | null;
   /** Keeps track of the current state of the Edge Config while it gets transferred. */
   transfer?: CreateEdgeConfigResponseTransfer;
@@ -899,7 +905,7 @@ export interface GetEdgeConfigsResponse {
   sizeInBytes: number;
   itemCount: number;
 }
-export const GetEdgeConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetEdgeConfigsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.Number,
@@ -908,7 +914,7 @@ export const GetEdgeConfigsResponse = /*@__PURE__*/ S.suspend(() =>
     slug: S.String,
     updatedAt: S.Number,
     digest: S.String,
-    purpose: S.optional(GetEdgeConfigsResponsePurpose),
+    purpose: S.optional(GetEdgeConfigsResponseBodyItemPurpose),
     deletedAt: S.optional(S.NullOr(S.Number)),
     transfer: S.optional(CreateEdgeConfigResponseTransfer),
     schema: S.optional(S.Unknown),
@@ -916,6 +922,19 @@ export const GetEdgeConfigsResponse = /*@__PURE__*/ S.suspend(() =>
     sizeInBytes: S.Number,
     itemCount: S.Number,
   }),
+).annotate({
+  identifier: "GetEdgeConfigsResponseBodyItem",
+}) as any as S.Schema<GetEdgeConfigsResponseBodyItem>;
+
+export type GetEdgeConfigsResponseBodyList =
+  Array<GetEdgeConfigsResponseBodyItem>;
+export const GetEdgeConfigsResponseBodyList = /*@__PURE__*/ S.Array(
+  GetEdgeConfigsResponseBodyItem,
+) as any as S.Schema<GetEdgeConfigsResponseBodyList>;
+
+export type GetEdgeConfigsResponse = GetEdgeConfigsResponseBodyList;
+export const GetEdgeConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  GetEdgeConfigsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetEdgeConfigsResponse",
 }) as any as S.Schema<GetEdgeConfigsResponse>;
@@ -1023,66 +1042,43 @@ export const GetEdgeConfigTokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEdgeConfigTokensRequest",
 }) as any as S.Schema<GetEdgeConfigTokensRequest>;
 
-export interface PatchEdgeConfigItemsRequestItemsItemCase0 {
-  operation: unknown;
-}
-export const PatchEdgeConfigItemsRequestItemsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "PatchEdgeConfigItemsRequestItemsItemCase0",
-  }) as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase0>;
+export type GetEdgeConfigTokensResponseBodyList = Array<EdgeConfigToken>;
+export const GetEdgeConfigTokensResponseBodyList = /*@__PURE__*/ S.Array(
+  EdgeConfigToken,
+) as any as S.Schema<GetEdgeConfigTokensResponseBodyList>;
 
-export type PatchEdgeConfigItemsRequestItemsItemCase1Operation =
+export type GetEdgeConfigTokensResponse = GetEdgeConfigTokensResponseBodyList;
+export const GetEdgeConfigTokensResponse = /*@__PURE__*/ S.suspend(() =>
+  GetEdgeConfigTokensResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "GetEdgeConfigTokensResponse",
+}) as any as S.Schema<GetEdgeConfigTokensResponse>;
+
+export type PatchEdgeConfigItemsRequestItemsItemOperation =
+  | "create"
   | "update"
-  | "upsert";
-export const PatchEdgeConfigItemsRequestItemsItemCase1Operation =
+  | "upsert"
+  | "delete";
+export const PatchEdgeConfigItemsRequestItemsItemOperation =
   /*@__PURE__*/ S.String;
 
-export interface PatchEdgeConfigItemsRequestItemsItemCase1 {
-  operation: PatchEdgeConfigItemsRequestItemsItemCase1Operation | (string & {});
+export interface PatchEdgeConfigItemsRequestItemsItem {
+  operation?: PatchEdgeConfigItemsRequestItemsItemOperation | (string & {});
+  key?: string;
+  value?: unknown;
+  description?: string;
 }
-export const PatchEdgeConfigItemsRequestItemsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
+export const PatchEdgeConfigItemsRequestItemsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      operation: PatchEdgeConfigItemsRequestItemsItemCase1Operation,
+      operation: S.optional(PatchEdgeConfigItemsRequestItemsItemOperation),
+      key: S.optional(S.String),
+      value: S.optional(S.Unknown),
+      description: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "PatchEdgeConfigItemsRequestItemsItemCase1",
-  }) as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase1>;
-
-export type PatchEdgeConfigItemsRequestItemsItemCase2Operation =
-  | "update"
-  | "upsert";
-export const PatchEdgeConfigItemsRequestItemsItemCase2Operation =
-  /*@__PURE__*/ S.String;
-
-export interface PatchEdgeConfigItemsRequestItemsItemCase2 {
-  operation: PatchEdgeConfigItemsRequestItemsItemCase2Operation | (string & {});
-}
-export const PatchEdgeConfigItemsRequestItemsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: PatchEdgeConfigItemsRequestItemsItemCase2Operation,
-    }),
-  ).annotate({
-    identifier: "PatchEdgeConfigItemsRequestItemsItemCase2",
-  }) as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase2>;
-
-export type PatchEdgeConfigItemsRequestItemsItemCase3 =
-  PatchEdgeConfigItemsRequestItemsItemCase0;
-export const PatchEdgeConfigItemsRequestItemsItemCase3 =
-  PatchEdgeConfigItemsRequestItemsItemCase0;
-
-export type PatchEdgeConfigItemsRequestItemsItem =
-  | PatchEdgeConfigItemsRequestItemsItemCase0
-  | PatchEdgeConfigItemsRequestItemsItemCase1
-  | PatchEdgeConfigItemsRequestItemsItemCase2
-  | PatchEdgeConfigItemsRequestItemsItemCase0;
-export const PatchEdgeConfigItemsRequestItemsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PatchEdgeConfigItemsRequestItemsItem>;
+).annotate({
+  identifier: "PatchEdgeConfigItemsRequestItemsItem",
+}) as any as S.Schema<PatchEdgeConfigItemsRequestItemsItem>;
 
 export type PatchEdgeConfigItemsRequestItemsList =
   Array<PatchEdgeConfigItemsRequestItemsItem>;
@@ -1209,14 +1205,13 @@ export interface UpdateEdgeConfigRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
-  /** The Team slug to perform the request on behalf of. */
-  slug?: string;
+  slug: string;
 }
 export const UpdateEdgeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edgeConfigId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
-    slug: S.optional(S.String.pipe(T.Query())),
+    slug: S.String,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1572,12 +1567,12 @@ export type GetEdgeConfigTokensError =
 /** Get all tokens of a Global Config Returns all tokens of a Global Config. */
 export const getEdgeConfigTokens: API.OperationMethod<
   GetEdgeConfigTokensRequest,
-  EdgeConfigToken,
+  GetEdgeConfigTokensResponse,
   GetEdgeConfigTokensError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetEdgeConfigTokensRequest,
-  output: EdgeConfigToken,
+  output: GetEdgeConfigTokensResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,

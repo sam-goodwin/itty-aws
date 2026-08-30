@@ -276,20 +276,12 @@ export const GetRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRedirectsRequest",
 }) as any as S.Schema<GetRedirectsRequest>;
 
-export type GetRedirectsResponseBodyCase0Map = {
-  [key: string]: unknown | undefined;
-};
-export const GetRedirectsResponseBodyCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetRedirectsResponseBodyCase0Map>;
-
-export type GetRedirectsResponseBodyCase1Version =
+export type GetRedirectsResponseVersion =
   DeleteRedirectsResponseBodyCase0Version;
-export const GetRedirectsResponseBodyCase1Version =
+export const GetRedirectsResponseVersion =
   DeleteRedirectsResponseBodyCase0Version;
 
-export interface GetRedirectsResponseBodyCase1RedirectsItem {
+export interface GetRedirectsResponseRedirectsItem {
   statusCode?: number;
   permanent?: boolean;
   sensitive?: boolean;
@@ -299,105 +291,53 @@ export interface GetRedirectsResponseBodyCase1RedirectsItem {
   destination: string;
   source: string;
 }
-export const GetRedirectsResponseBodyCase1RedirectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      statusCode: S.optional(S.Number),
-      permanent: S.optional(S.Boolean),
-      sensitive: S.optional(S.Boolean),
-      caseSensitive: S.optional(S.Boolean),
-      query: S.optional(S.Boolean),
-      preserveQueryParams: S.optional(S.Boolean),
-      destination: S.String,
-      source: S.String,
-    }),
-  ).annotate({
-    identifier: "GetRedirectsResponseBodyCase1RedirectsItem",
-  }) as any as S.Schema<GetRedirectsResponseBodyCase1RedirectsItem>;
+export const GetRedirectsResponseRedirectsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    statusCode: S.optional(S.Number),
+    permanent: S.optional(S.Boolean),
+    sensitive: S.optional(S.Boolean),
+    caseSensitive: S.optional(S.Boolean),
+    query: S.optional(S.Boolean),
+    preserveQueryParams: S.optional(S.Boolean),
+    destination: S.String,
+    source: S.String,
+  }),
+).annotate({
+  identifier: "GetRedirectsResponseRedirectsItem",
+}) as any as S.Schema<GetRedirectsResponseRedirectsItem>;
 
-export type GetRedirectsResponseBodyCase1RedirectsList =
-  Array<GetRedirectsResponseBodyCase1RedirectsItem>;
-export const GetRedirectsResponseBodyCase1RedirectsList = /*@__PURE__*/ S.Array(
-  GetRedirectsResponseBodyCase1RedirectsItem,
-) as any as S.Schema<GetRedirectsResponseBodyCase1RedirectsList>;
+export type GetRedirectsResponseRedirectsList =
+  Array<GetRedirectsResponseRedirectsItem>;
+export const GetRedirectsResponseRedirectsList = /*@__PURE__*/ S.Array(
+  GetRedirectsResponseRedirectsItem,
+) as any as S.Schema<GetRedirectsResponseRedirectsList>;
 
-export interface GetRedirectsResponseBodyCase1Pagination {
+export interface GetRedirectsResponsePagination {
   page: number;
   per_page: number;
   numPages: number;
 }
-export const GetRedirectsResponseBodyCase1Pagination = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      page: S.Number,
-      per_page: S.Number,
-      numPages: S.Number,
-    }),
-).annotate({
-  identifier: "GetRedirectsResponseBodyCase1Pagination",
-}) as any as S.Schema<GetRedirectsResponseBodyCase1Pagination>;
-
-export interface GetRedirectsResponseBodyCase1 {
-  version: DeleteRedirectsResponseBodyCase0Version;
-  redirects: GetRedirectsResponseBodyCase1RedirectsList;
-  pagination: GetRedirectsResponseBodyCase1Pagination;
-}
-export const GetRedirectsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
+export const GetRedirectsResponsePagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    version: DeleteRedirectsResponseBodyCase0Version,
-    redirects: GetRedirectsResponseBodyCase1RedirectsList,
-    pagination: GetRedirectsResponseBodyCase1Pagination,
+    page: S.Number,
+    per_page: S.Number,
+    numPages: S.Number,
   }),
 ).annotate({
-  identifier: "GetRedirectsResponseBodyCase1",
-}) as any as S.Schema<GetRedirectsResponseBodyCase1>;
+  identifier: "GetRedirectsResponsePagination",
+}) as any as S.Schema<GetRedirectsResponsePagination>;
 
-export type GetRedirectsResponseBodyCase2RedirectsItem =
-  GetRedirectsResponseBodyCase1RedirectsItem;
-export const GetRedirectsResponseBodyCase2RedirectsItem =
-  GetRedirectsResponseBodyCase1RedirectsItem;
-
-export type GetRedirectsResponseBodyCase2RedirectsList =
-  Array<GetRedirectsResponseBodyCase1RedirectsItem>;
-export const GetRedirectsResponseBodyCase2RedirectsList = /*@__PURE__*/ S.Array(
-  GetRedirectsResponseBodyCase1RedirectsItem,
-) as any as S.Schema<GetRedirectsResponseBodyCase2RedirectsList>;
-
-export type GetRedirectsResponseBodyCase2Version =
-  DeleteRedirectsResponseBodyCase0Version;
-export const GetRedirectsResponseBodyCase2Version =
-  DeleteRedirectsResponseBodyCase0Version;
-
-export type GetRedirectsResponseBodyCase2Pagination =
-  GetRedirectsResponseBodyCase1Pagination;
-export const GetRedirectsResponseBodyCase2Pagination =
-  GetRedirectsResponseBodyCase1Pagination;
-
-export interface GetRedirectsResponseBodyCase2 {
-  redirects: GetRedirectsResponseBodyCase2RedirectsList;
-  version?: DeleteRedirectsResponseBodyCase0Version;
-  pagination: GetRedirectsResponseBodyCase1Pagination;
+export interface GetRedirectsResponse {
+  version?: DeleteRedirectsResponseBodyCase0Version | null;
+  redirects: GetRedirectsResponseRedirectsList;
+  pagination?: GetRedirectsResponsePagination;
 }
-export const GetRedirectsResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    redirects: GetRedirectsResponseBodyCase2RedirectsList,
-    version: S.optional(DeleteRedirectsResponseBodyCase0Version),
-    pagination: GetRedirectsResponseBodyCase1Pagination,
-  }),
-).annotate({
-  identifier: "GetRedirectsResponseBodyCase2",
-}) as any as S.Schema<GetRedirectsResponseBodyCase2>;
-
-export type GetRedirectsResponseBody =
-  | GetRedirectsResponseBodyCase0Map
-  | GetRedirectsResponseBodyCase1
-  | GetRedirectsResponseBodyCase2;
-export const GetRedirectsResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetRedirectsResponseBody>;
-
-export type GetRedirectsResponse = GetRedirectsResponseBody;
 export const GetRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetRedirectsResponseBody.pipe(T.RawResponseRoot()),
+  S.Struct({
+    version: S.optional(S.NullOr(DeleteRedirectsResponseBodyCase0Version)),
+    redirects: GetRedirectsResponseRedirectsList,
+    pagination: S.optional(GetRedirectsResponsePagination),
+  }),
 ).annotate({
   identifier: "GetRedirectsResponse",
 }) as any as S.Schema<GetRedirectsResponse>;
@@ -538,20 +478,19 @@ export const StageRedirectsRequestRedirectsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StageRedirectsRequestRedirectsList>;
 
 export interface StageRedirectsRequest {
-  /** The Team identifier to perform the request on behalf of. */
-  teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
   projectId: string;
+  teamId: string;
   overwrite?: boolean;
   name?: string;
   redirects?: StageRedirectsRequestRedirectsList;
 }
 export const StageRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
     projectId: S.String,
+    teamId: S.String,
     overwrite: S.optional(S.Boolean),
     name: S.optional(S.String),
     redirects: S.optional(StageRedirectsRequestRedirectsList),
@@ -679,7 +618,11 @@ export const getRedirects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetVersionsError = BadRequest | Forbidden | VercelOpError;
+export type GetVersionsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Get the version history for a project's redirects. Get the version history for a project's bulk redirects */
 export const getVersions: API.OperationMethod<
   GetVersionsRequest,
@@ -689,7 +632,7 @@ export const getVersions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVersionsRequest,
   output: GetVersionsResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -713,7 +656,11 @@ export const restoreRedirects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StageRedirectsError = BadRequest | Forbidden | VercelOpError;
+export type StageRedirectsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Stages new redirects for a project. Stages new redirects for a project and returns the new version. */
 export const stageRedirects: API.OperationMethod<
   StageRedirectsRequest,
@@ -723,7 +670,7 @@ export const stageRedirects: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StageRedirectsRequest,
   output: StageRedirectsResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

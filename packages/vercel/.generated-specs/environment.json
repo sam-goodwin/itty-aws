@@ -972,6 +972,9 @@
         },
         {
           "target": "com.vercel.environment#Forbidden"
+        },
+        {
+          "target": "com.vercel.environment#Conflict"
         }
       ],
       "traits": {
@@ -1635,6 +1638,9 @@
         },
         {
           "target": "com.vercel.environment#Forbidden"
+        },
+        {
+          "target": "com.vercel.environment#NotFound"
         }
       ],
       "traits": {
@@ -1938,6 +1944,9 @@
         },
         {
           "target": "com.vercel.environment#Forbidden"
+        },
+        {
+          "target": "com.vercel.environment#NotFound"
         }
       ],
       "traits": {
@@ -2204,6 +2213,9 @@
         },
         {
           "target": "com.vercel.environment#Forbidden"
+        },
+        {
+          "target": "com.vercel.environment#NotFound"
         }
       ],
       "traits": {
@@ -2681,6 +2693,9 @@
         },
         {
           "target": "com.vercel.environment#Forbidden"
+        },
+        {
+          "target": "com.vercel.environment#NotFound"
         }
       ],
       "traits": {
@@ -2761,8 +2776,7 @@
         "slug": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "slug",
-            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+            "smithy.api#documentation": "The slug of the custom environment to create."
           }
         },
         "description": {
@@ -3557,8 +3571,7 @@
         "slug": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "slug",
-            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+            "smithy.api#documentation": "The slug of the custom environment."
           }
         },
         "description": {
@@ -4263,6 +4276,9 @@
         },
         {
           "target": "com.vercel.environment#Forbidden"
+        },
+        {
+          "target": "com.vercel.environment#NotFound"
         }
       ],
       "traits": {
@@ -4322,6 +4338,19 @@
         "com.distilled.openapi#errorMatchers": [
           {
             "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.environment#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
           }
         ]
       }
