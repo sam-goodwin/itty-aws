@@ -42,9 +42,10 @@ import {
   convertOpenApiToSmithy,
   type SmithyModel,
 } from "@distilled.cloud/core/codegen/openapi";
+import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 
 const rootDir = path.resolve(import.meta.dir, "..");
-const specsRoot = path.join(
+const specsRoot = resolveSpecPath(
   rootDir,
   "specs/azure-rest-api-specs/specification",
 );

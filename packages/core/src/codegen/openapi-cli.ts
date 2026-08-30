@@ -25,6 +25,7 @@ import {
   convertOpenApiToSmithy,
   type OpenApiConvertOptions,
 } from "./openapi.ts";
+import { resolveSpecPath } from "./spec-path.ts";
 
 export interface OpenApiSpecEntry {
   /** Output model name — written to `<outDir>/<name>.json`. */
@@ -88,7 +89,8 @@ export const runOpenApiConvert = async (
   console.log(`   Output: ${outDir}`);
 
   for (const entry of o.specs) {
-    const specPath = path.resolve(o.root, entry.specPath);
+    // Production path by default; `specs/.local` under DISTILLED_SPECS_LOCAL.
+    const specPath = resolveSpecPath(o.root, entry.specPath);
     let spec: any = parse(await fs.readFile(specPath, "utf8"), specPath);
 
     // ---- RFC-6902 patch chain (applies to the OpenAPI document) ----

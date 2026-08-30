@@ -76,17 +76,26 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "workos" },
 ];
 
+/** A scaffold file: where it is read from, and where it lands in the mirror. */
+type ScaffoldEntry = readonly [source: string, target: string];
+
 /**
- * Where each source file lands in the mirror. `.meta/` holds the machinery so
- * that a consumer submoduling the repository sees `specs/` and little else.
+ * Where each file in `scaffold/` lands in the mirror. `.meta/` holds the
+ * machinery so that a consumer submoduling the repository sees `specs/` and
+ * little else.
+ *
+ * Exported alongside {@link PER_REPO} so `scripts/specs.ts` can materialise a
+ * local working copy with the identical layout: a `specs:local` tree that
+ * differed from the deployed mirror would be testing something else.
  */
-const SHARED: ReadonlyArray<readonly [source: string, target: string]> = [
+export const SHARED: readonly ScaffoldEntry[] = [
   ["gitignore", ".gitignore"],
   ["tsconfig.json", ".meta/tsconfig.json"],
   ["update-specs.yml", ".github/workflows/update-specs.yml"],
 ];
 
-const PER_REPO: ReadonlyArray<readonly [source: string, target: string]> = [
+/** Where each file in `spec-repos/<package>/` lands in the mirror. */
+export const PER_REPO: readonly ScaffoldEntry[] = [
   ["fetch-specs.ts", ".meta/fetch-specs.ts"],
   ["package.json", ".meta/package.json"],
   ["readme.md", "readme.md"],

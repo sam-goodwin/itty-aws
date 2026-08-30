@@ -38,9 +38,10 @@ import {
   type PatchFile,
 } from "@distilled.cloud/core/json-patch";
 import { convertOpenApiToSmithy } from "@distilled.cloud/core/codegen/openapi";
+import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 
 const rootDir = path.resolve(import.meta.dir, "..");
-const specPath = path.join(
+const specPath = resolveSpecPath(
   rootDir,
   "specs/rest-api-description/descriptions/api.github.com/api.github.com.json",
 );

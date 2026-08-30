@@ -75,6 +75,15 @@ jobs:
       - name: Run Typecheck
         run: pnpm --filter "./stacks/*" run typecheck
 
+      # The mirror manifest, the fetch scripts, `.gitmodules` and packages/
+      # have to agree, and the same rule runs at deploy time inside the stack
+      # — but a deploy only happens after merge. Checking it here means a PR
+      # that adds a provider fails on the PR. It also fails a package that
+      # reads its specs from the gitignored `.local` working copy, which is
+      # for local iteration only.
+      - name: Check spec mirrors
+        run: pnpm specs:check
+
   format:
     name: Check formatting
     runs-on: blacksmith-4vcpu-ubuntu-2404

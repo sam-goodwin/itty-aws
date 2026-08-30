@@ -92,6 +92,33 @@ tree never exists.
 provider and closes the selection over external `$ref`s, so the mirror is
 self-contained: 338,547 upstream paths in, 777 documents out.
 
+## Working on a mirror locally
+
+The mirrors live in an org most contributors cannot write to, and a new one
+does not exist until this stack deploys on merge to `main`. So the same fetch
+script is runnable here, into a gitignored copy of the mirror:
+
+```bash
+pnpm specs:local <package>                       # scaffold + fetch into
+                                                 # packages/<pkg>/specs/.local
+DISTILLED_SPECS_LOCAL=1 pnpm generate <package>  # generate against it
+pnpm specs:link <package>                        # add the .gitmodules entry
+pnpm specs:check                                 # the CI gate
+```
+
+`specs:local` copies the same `scaffold/` + `spec-repos/<package>/` file set
+this stack commits and runs `fetch-specs.ts` from its `.meta` directory, so
+the result is byte-identical to a checkout of the real mirror. That is the
+point: local iteration on a fetch script tests the thing that will run in the
+mirror's workflow, not an approximation of it.
+
+Local mode is an environment variable rather than an edit to the package's
+spec path. Nothing committed points at `.local` — `specs:check` fails the
+build if anything does — so there is no local-only reference to forget to
+revert, and a package that reads from a gitignored directory can never reach
+`main`. See `@distilled.cloud/core/codegen/spec-path` and
+`.claude/skills/distilled-sdk`.
+
 ## Deploying
 
 Runs automatically on every push to `main` via

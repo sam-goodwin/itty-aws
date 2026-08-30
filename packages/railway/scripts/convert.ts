@@ -33,9 +33,10 @@ import {
   PRELUDE,
   readIntrospection,
 } from "@distilled.cloud/core/codegen/graphql";
+import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 
 const ROOT = path.resolve(import.meta.dir, "..");
-const SCHEMA_PATH = path.join(
+const SCHEMA_PATH = resolveSpecPath(
   ROOT,
   "specs/distilled-spec-railway/specs/schema.json",
 );

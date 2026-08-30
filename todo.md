@@ -26,6 +26,11 @@
     workflow that refetches and commits.
   - REMAINING: rewire `.gitmodules` and each package's `specs:fetch` +
     generator spec paths onto the mirrors, once the mirrors have content.
+    Every convert script already resolves through `resolveSpecPath`, so each
+    rewire is a one-line change to the declared path. Until a package's path
+    is mirror-shaped (`specs/<mirror>/specs/<file>`), `pnpm specs:local` +
+    `DISTILLED_SPECS_LOCAL=1` cannot resolve it — that covers `aws`, `azure`,
+    `github`, `expo-eas` and `cloudflare`.
     That is the step that actually shrinks a clone.
   - cloudflare is blocked, see below.
 - cloudflare spec source is broken upstream
