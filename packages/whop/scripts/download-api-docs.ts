@@ -46,6 +46,7 @@ import { BunRuntime, BunServices } from "@effect/platform-bun";
 import { Console, Data, Effect, Schedule } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
+import type { PlatformError } from "effect/PlatformError";
 import { Command, Flag } from "effect/unstable/cli";
 
 const ORIGIN = "https://docs.whop.com";
@@ -177,9 +178,12 @@ interface PageEntry {
 const downloadPage = (
   entry: PageEntry,
   force: boolean,
+  // A failed DOWNLOAD is absorbed into "failed" below — one stale llms.txt
+  // slug must not end the crawl. A failed WRITE is not: a full disk or an
+  // unwritable output directory means every remaining page is lost too.
 ): Effect.Effect<
   "saved" | "skipped" | "failed",
-  never,
+  PlatformError,
   FileSystem.FileSystem | Path.Path
 > =>
   Effect.gen(function* () {
