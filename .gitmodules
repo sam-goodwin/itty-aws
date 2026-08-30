@@ -118,3 +118,8 @@
 	url = https://github.com/distilled-mirror/spec-mirror-workos.git
 	shallow = true
 	ignore = dirty
+[submodule "packages/whop/specs/spec-mirror-whop"]
+	path = packages/whop/specs/spec-mirror-whop
+	url = https://github.com/distilled-mirror/spec-mirror-whop.git
+	ignore = dirty
+	shallow = true
