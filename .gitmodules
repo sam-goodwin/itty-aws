@@ -128,3 +128,8 @@
 	url = https://github.com/distilled-mirror/spec-mirror-modal.git
 	ignore = dirty
 	shallow = true
+[submodule "packages/unkey/specs/spec-mirror-unkey"]
+	path = packages/unkey/specs/spec-mirror-unkey
+	url = https://github.com/distilled-mirror/spec-mirror-unkey.git
+	ignore = dirty
+	shallow = true
