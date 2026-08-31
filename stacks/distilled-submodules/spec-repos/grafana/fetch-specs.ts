@@ -51,6 +51,25 @@ const API_FILES: readonly SpecFile[] = [
   },
 ];
 
+/**
+ * These APIs publish their OpenAPI documents from Grafana's API-discovery
+ * endpoint rather than as files in the Grafana source tree.
+ */
+const RUNTIME_API_FILES: readonly SpecFile[] = [
+  {
+    path: "alertenrichment.grafana.app/v1beta1",
+    output: "alertenrichment.grafana.app-v1beta1.json",
+  },
+  {
+    path: "banners.grafana.app/v0alpha1",
+    output: "banners.grafana.app-v0alpha1.json",
+  },
+  {
+    path: "secret.grafana.app/v1beta1",
+    output: "secret.grafana.app-v1beta1.json",
+  },
+];
+
 const SPECS_DIR = "../specs";
 const DOCS_DIR = `${SPECS_DIR}/docs`;
 
@@ -112,6 +131,9 @@ const rawUrl = (path: string) =>
     .map(encodeURIComponent)
     .join("/")}`;
 
+const runtimeSpecUrl = (api: string) =>
+  `https://play.grafana.org/openapi/v3/apis/${api}`;
+
 const headers = {
   accept: "application/json, text/plain;q=0.9, */*;q=0.8",
   "user-agent": "distilled.cloud-grafana-spec-mirror",
@@ -149,6 +171,22 @@ async function main() {
 
   for (const file of API_FILES) {
     const url = rawUrl(file.path);
+    const apiSpec = (await (await fetchResponse(url)).json()) as Record<
+      string,
+      unknown
+    >;
+    if (typeof apiSpec.openapi !== "string" || apiSpec.paths === undefined) {
+      throw new Error(
+        `${url} returned JSON without \`openapi\`/\`paths\` — not an OpenAPI document`,
+      );
+    }
+    const outputPath = `${SPECS_DIR}/${file.output}`;
+    console.log(`Writing ${outputPath}...`);
+    await Bun.write(outputPath, JSON.stringify(apiSpec, null, 2) + "\n");
+  }
+
+  for (const file of RUNTIME_API_FILES) {
+    const url = runtimeSpecUrl(file.path);
     const apiSpec = (await (await fetchResponse(url)).json()) as Record<
       string,
       unknown
