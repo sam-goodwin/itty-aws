@@ -60,6 +60,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "gcp" },
   { package: "github" },
   { package: "hetzner" },
+  { package: "hostinger" },
   { package: "huggingface" },
   { package: "kubernetes" },
   { package: "mongodb-atlas" },
