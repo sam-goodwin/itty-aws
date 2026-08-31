@@ -97,7 +97,7 @@ export const AddDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
     url: S.optional(S.String),
     user: S.optional(S.String),
     withCredentials: S.optional(S.Boolean),
-  }).pipe(T.Http({ method: "POST", uri: "/datasources", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/datasources", code: 200 })),
 ).annotate({
   identifier: "AddDataSourceRequest",
 }) as any as S.Schema<AddDataSourceRequest>;
@@ -197,7 +197,7 @@ export const AddOrgInviteRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     role: S.optional(AddOrgInviteRequestRole),
     sendEmail: S.optional(S.Boolean),
-  }).pipe(T.Http({ method: "POST", uri: "/org/invites", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/org/invites", code: 200 })),
 ).annotate({
   identifier: "AddOrgInviteRequest",
 }) as any as S.Schema<AddOrgInviteRequest>;
@@ -226,7 +226,9 @@ export const AddOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
     org_id: S.Number.pipe(T.Label()),
     loginOrEmail: S.optional(S.String),
     role: S.optional(AddOrgUserRequestRole),
-  }).pipe(T.Http({ method: "POST", uri: "/orgs/{org_id}/users", code: 200 })),
+  }).pipe(
+    T.Http({ method: "POST", uri: "/api/orgs/{org_id}/users", code: 200 }),
+  ),
 ).annotate({
   identifier: "AddOrgUserRequest",
 }) as any as S.Schema<AddOrgUserRequest>;
@@ -246,7 +248,7 @@ export const AddOrgUserToCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loginOrEmail: S.optional(S.String),
     role: S.optional(AddOrgUserToCurrentOrgRequestRole),
-  }).pipe(T.Http({ method: "POST", uri: "/org/users", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/org/users", code: 200 })),
 ).annotate({
   identifier: "AddOrgUserToCurrentOrgRequest",
 }) as any as S.Schema<AddOrgUserToCurrentOrgRequest>;
@@ -259,7 +261,9 @@ export const AddTeamGroupApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.String.pipe(T.Label()),
     groupId: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/teams/{teamId}/groups", code: 200 })),
+  }).pipe(
+    T.Http({ method: "POST", uri: "/api/teams/{teamId}/groups", code: 200 }),
+  ),
 ).annotate({
   identifier: "AddTeamGroupApiRequest",
 }) as any as S.Schema<AddTeamGroupApiRequest>;
@@ -273,7 +277,7 @@ export const AddTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
     team_id: S.String.pipe(T.Label()),
     userId: S.Number,
   }).pipe(
-    T.Http({ method: "POST", uri: "/teams/{team_id}/members", code: 200 }),
+    T.Http({ method: "POST", uri: "/api/teams/{team_id}/members", code: 200 }),
   ),
 ).annotate({
   identifier: "AddTeamMemberRequest",
@@ -290,7 +294,7 @@ export const AddTeamRoleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/access-control/teams/{teamId}/roles",
+      uri: "/api/access-control/teams/{teamId}/roles",
       code: 200,
     }),
   ),
@@ -311,7 +315,7 @@ export const AddUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/access-control/users/{userId}/roles",
+      uri: "/api/access-control/users/{userId}/roles",
       code: 200,
     }),
   ),
@@ -333,7 +337,7 @@ export const AdminCreateUserRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     orgId: S.optional(S.Number),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }).pipe(T.Http({ method: "POST", uri: "/admin/users", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/admin/users", code: 200 })),
 ).annotate({
   identifier: "AdminCreateUserRequest",
 }) as any as S.Schema<AdminCreateUserRequest>;
@@ -360,7 +364,7 @@ export const AdminDeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "DELETE", uri: "/admin/users/{user_id}", code: 200 }),
+    T.Http({ method: "DELETE", uri: "/api/admin/users/{user_id}", code: 200 }),
   ),
 ).annotate({
   identifier: "AdminDeleteUserRequest",
@@ -375,7 +379,7 @@ export const AdminDisableUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/admin/users/{user_id}/disable",
+      uri: "/api/admin/users/{user_id}/disable",
       code: 200,
     }),
   ),
@@ -390,7 +394,11 @@ export const AdminEnableUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "POST", uri: "/admin/users/{user_id}/enable", code: 200 }),
+    T.Http({
+      method: "POST",
+      uri: "/api/admin/users/{user_id}/enable",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "AdminEnableUserRequest",
@@ -399,7 +407,7 @@ export const AdminEnableUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AdminGetSettingsRequest {}
 export const AdminGetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/admin/settings", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/admin/settings", code: 200 }),
   ),
 ).annotate({
   identifier: "AdminGetSettingsRequest",
@@ -426,7 +434,9 @@ export const AdminGetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface AdminGetStatsRequest {}
 export const AdminGetStatsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/stats", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/admin/stats", code: 200 }),
+  ),
 ).annotate({
   identifier: "AdminGetStatsRequest",
 }) as any as S.Schema<AdminGetStatsRequest>;
@@ -495,7 +505,7 @@ export const AdminGetUserAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/admin/users/{user_id}/auth-tokens",
+      uri: "/api/admin/users/{user_id}/auth-tokens",
       code: 200,
     }),
   ),
@@ -559,7 +569,11 @@ export const AdminLogoutUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "POST", uri: "/admin/users/{user_id}/logout", code: 200 }),
+    T.Http({
+      method: "POST",
+      uri: "/api/admin/users/{user_id}/logout",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "AdminLogoutUserRequest",
@@ -571,7 +585,7 @@ export const AdminProvisioningReloadAccessControlRequest =
     S.Struct({}).pipe(
       T.Http({
         method: "POST",
-        uri: "/admin/provisioning/access-control/reload",
+        uri: "/api/admin/provisioning/access-control/reload",
         code: 200,
       }),
     ),
@@ -591,7 +605,7 @@ export const AdminProvisioningReloadDashboardsRequest = /*@__PURE__*/ S.suspend(
     S.Struct({}).pipe(
       T.Http({
         method: "POST",
-        uri: "/admin/provisioning/dashboards/reload",
+        uri: "/api/admin/provisioning/dashboards/reload",
         code: 200,
       }),
     ),
@@ -605,7 +619,7 @@ export const AdminProvisioningReloadDatasourcesRequest =
     S.Struct({}).pipe(
       T.Http({
         method: "POST",
-        uri: "/admin/provisioning/datasources/reload",
+        uri: "/api/admin/provisioning/datasources/reload",
         code: 200,
       }),
     ),
@@ -619,7 +633,7 @@ export const AdminProvisioningReloadPluginsRequest = /*@__PURE__*/ S.suspend(
     S.Struct({}).pipe(
       T.Http({
         method: "POST",
-        uri: "/admin/provisioning/plugins/reload",
+        uri: "/api/admin/provisioning/plugins/reload",
         code: 200,
       }),
     ),
@@ -638,7 +652,7 @@ export const AdminRevokeUserAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/admin/users/{user_id}/revoke-auth-token",
+      uri: "/api/admin/users/{user_id}/revoke-auth-token",
       code: 200,
     }),
   ),
@@ -657,7 +671,7 @@ export const AdminUpdateUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/admin/users/{user_id}/password",
+      uri: "/api/admin/users/{user_id}/password",
       code: 200,
     }),
   ),
@@ -676,7 +690,7 @@ export const AdminUpdateUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/admin/users/{user_id}/permissions",
+      uri: "/api/admin/users/{user_id}/permissions",
       code: 200,
     }),
   ),
@@ -696,7 +710,7 @@ export const CallDatasourceResourceWithUIDRequest = /*@__PURE__*/ S.suspend(
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/datasources/uid/{uid}/resources/{datasource_proxy_route}",
+        uri: "/api/datasources/uid/{uid}/resources/{datasource_proxy_route}",
         code: 200,
       }),
     ),
@@ -717,7 +731,7 @@ export const CancelSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/cancel",
+      uri: "/api/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/cancel",
       code: 200,
     }),
   ),
@@ -740,7 +754,7 @@ export const ChangeUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     oldPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }).pipe(T.Http({ method: "PUT", uri: "/user/password", code: 200 })),
+  }).pipe(T.Http({ method: "PUT", uri: "/api/user/password", code: 200 })),
 ).annotate({
   identifier: "ChangeUserPasswordRequest",
 }) as any as S.Schema<ChangeUserPasswordRequest>;
@@ -752,7 +766,11 @@ export const CheckDatasourceHealthWithUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "GET", uri: "/datasources/uid/{uid}/health", code: 200 }),
+    T.Http({
+      method: "GET",
+      uri: "/api/datasources/uid/{uid}/health",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "CheckDatasourceHealthWithUIDRequest",
@@ -767,7 +785,7 @@ export const CleanDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/datasources/{dataSourceUID}/cache/clean",
+      uri: "/api/datasources/{dataSourceUID}/cache/clean",
       code: 200,
     }),
   ),
@@ -811,7 +829,7 @@ export const CacheConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCloudMigrationTokenRequest {}
 export const CreateCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "POST", uri: "/cloudmigration/token", code: 200 }),
+    T.Http({ method: "POST", uri: "/api/cloudmigration/token", code: 200 }),
   ),
 ).annotate({
   identifier: "CreateCloudMigrationTokenRequest",
@@ -902,7 +920,7 @@ export const CreateCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/datasources/uid/{sourceUID}/correlations",
+      uri: "/api/datasources/uid/{sourceUID}/correlations",
       code: 200,
     }),
   ),
@@ -1002,7 +1020,7 @@ export const CreateDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
     key: S.optional(S.String),
     kind: S.optional(S.String),
     name: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/snapshots", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/snapshots", code: 200 })),
 ).annotate({
   identifier: "CreateDashboardSnapshotRequest",
 }) as any as S.Schema<CreateDashboardSnapshotRequest>;
@@ -1054,7 +1072,7 @@ export const CreateLibraryElementRequest = /*@__PURE__*/ S.suspend(() =>
     model: S.optional(S.Unknown),
     name: S.optional(S.String),
     uid: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/library-elements", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/library-elements", code: 200 })),
 ).annotate({
   identifier: "CreateLibraryElementRequest",
 }) as any as S.Schema<CreateLibraryElementRequest>;
@@ -1150,7 +1168,7 @@ export interface CreateOrgRequest {
 export const CreateOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/orgs", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/orgs", code: 200 })),
 ).annotate({
   identifier: "CreateOrgRequest",
 }) as any as S.Schema<CreateOrgRequest>;
@@ -1191,7 +1209,7 @@ export const CreatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/dashboards/uid/{dashboardUid}/public-dashboards",
+      uri: "/api/dashboards/uid/{dashboardUid}/public-dashboards",
       code: 200,
     }),
   ),
@@ -1257,7 +1275,7 @@ export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasourceUid: S.optional(S.String),
     queries: S.Unknown,
-  }).pipe(T.Http({ method: "POST", uri: "/query-history", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/query-history", code: 200 })),
 ).annotate({
   identifier: "CreateQueryRequest",
 }) as any as S.Schema<CreateQueryRequest>;
@@ -1337,7 +1355,7 @@ export const CreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
     queries: S.optional(CreateRecordingRuleRequestQueriesList),
     range: S.optional(S.Number),
     target_ref_id: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/recording-rules", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/recording-rules", code: 200 })),
 ).annotate({
   identifier: "CreateRecordingRuleRequest",
 }) as any as S.Schema<CreateRecordingRuleRequest>;
@@ -1400,7 +1418,7 @@ export const CreateRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(
       id: S.optional(S.String),
       remote_write_path: S.optional(S.String),
     }).pipe(
-      T.Http({ method: "POST", uri: "/recording-rules/writer", code: 200 }),
+      T.Http({ method: "POST", uri: "/api/recording-rules/writer", code: 200 }),
     ),
 ).annotate({
   identifier: "CreateRecordingRuleWriteTargetRequest",
@@ -1564,7 +1582,7 @@ export const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.String),
     subject: S.optional(S.String),
     urls: S.optional(CreateReportRequestUrlsList),
-  }).pipe(T.Http({ method: "POST", uri: "/reports", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/reports", code: 200 })),
 ).annotate({
   identifier: "CreateReportRequest",
 }) as any as S.Schema<CreateReportRequest>;
@@ -1623,7 +1641,9 @@ export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     permissions: S.optional(CreateRoleRequestPermissionsList),
     uid: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/access-control/roles", code: 200 })),
+  }).pipe(
+    T.Http({ method: "POST", uri: "/api/access-control/roles", code: 200 }),
+  ),
 ).annotate({
   identifier: "CreateRoleRequest",
 }) as any as S.Schema<CreateRoleRequest>;
@@ -1683,7 +1703,7 @@ export const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
     isDisabled: S.optional(S.Boolean),
     name: S.optional(S.String),
     role: S.optional(CreateServiceAccountRequestRole),
-  }).pipe(T.Http({ method: "POST", uri: "/serviceaccounts", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/serviceaccounts", code: 200 })),
 ).annotate({
   identifier: "CreateServiceAccountRequest",
 }) as any as S.Schema<CreateServiceAccountRequest>;
@@ -1734,7 +1754,7 @@ export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authToken: S.optional(S.String),
   }).pipe(
-    T.Http({ method: "POST", uri: "/cloudmigration/migration", code: 200 }),
+    T.Http({ method: "POST", uri: "/api/cloudmigration/migration", code: 200 }),
   ),
 ).annotate({
   identifier: "CreateSessionRequest",
@@ -1790,7 +1810,7 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/cloudmigration/migration/{uid}/snapshot",
+      uri: "/api/cloudmigration/migration/{uid}/snapshot",
       code: 200,
     }),
   ),
@@ -1817,7 +1837,7 @@ export const CreateTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.String,
-  }).pipe(T.Http({ method: "POST", uri: "/teams", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/teams", code: 200 })),
 ).annotate({
   identifier: "CreateTeamRequest",
 }) as any as S.Schema<CreateTeamRequest>;
@@ -1850,7 +1870,7 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/serviceaccounts/{serviceAccountId}/tokens",
+      uri: "/api/serviceaccounts/{serviceAccountId}/tokens",
       code: 200,
     }),
   ),
@@ -1885,7 +1905,7 @@ export const DatasourceProxyDELETEByUIDcallsRequest = /*@__PURE__*/ S.suspend(
     }).pipe(
       T.Http({
         method: "DELETE",
-        uri: "/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
+        uri: "/api/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
         code: 200,
       }),
     ),
@@ -1911,7 +1931,7 @@ export const DatasourceProxyGETByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
+      uri: "/api/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
       code: 200,
     }),
   ),
@@ -1938,7 +1958,7 @@ export const DatasourceProxyPOSTByUIDcallsRequest = /*@__PURE__*/ S.suspend(
     }).pipe(
       T.Http({
         method: "POST",
-        uri: "/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
+        uri: "/api/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
         code: 200,
       }),
     ),
@@ -1962,7 +1982,7 @@ export const DeleteAnnotationByIDRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/annotations/{annotation_id}",
+      uri: "/api/annotations/{annotation_id}",
       code: 200,
     }),
   ),
@@ -1978,7 +1998,11 @@ export const DeleteCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "DELETE", uri: "/cloudmigration/token/{uid}", code: 200 }),
+    T.Http({
+      method: "DELETE",
+      uri: "/api/cloudmigration/token/{uid}",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "DeleteCloudMigrationTokenRequest",
@@ -2002,7 +2026,7 @@ export const DeleteCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/datasources/uid/{uid}/correlations/{correlationUID}",
+      uri: "/api/datasources/uid/{uid}/correlations/{correlationUID}",
       code: 200,
     }),
   ),
@@ -2027,7 +2051,7 @@ export interface DeleteDashboardSnapshotRequest {
 export const DeleteDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "DELETE", uri: "/snapshots/{key}", code: 200 })),
+  }).pipe(T.Http({ method: "DELETE", uri: "/api/snapshots/{key}", code: 200 })),
 ).annotate({
   identifier: "DeleteDashboardSnapshotRequest",
 }) as any as S.Schema<DeleteDashboardSnapshotRequest>;
@@ -2042,7 +2066,7 @@ export const DeleteDashboardSnapshotByDeleteKeyRequest =
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/snapshots-delete/{deleteKey}",
+        uri: "/api/snapshots-delete/{deleteKey}",
         code: 200,
       }),
     ),
@@ -2057,7 +2081,7 @@ export const DeleteDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "DELETE", uri: "/datasources/uid/{uid}", code: 200 }),
+    T.Http({ method: "DELETE", uri: "/api/datasources/uid/{uid}", code: 200 }),
   ),
 ).annotate({
   identifier: "DeleteDataSourceByUIDRequest",
@@ -2072,7 +2096,7 @@ export const DeleteLibraryElementByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/library-elements/{library_element_uid}",
+      uri: "/api/library-elements/{library_element_uid}",
       code: 200,
     }),
   ),
@@ -2086,7 +2110,7 @@ export interface DeleteLicenseTokenRequest {
 export const DeleteLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.optional(S.String),
-  }).pipe(T.Http({ method: "DELETE", uri: "/licensing/token", code: 200 })),
+  }).pipe(T.Http({ method: "DELETE", uri: "/api/licensing/token", code: 200 })),
 ).annotate({
   identifier: "DeleteLicenseTokenRequest",
 }) as any as S.Schema<DeleteLicenseTokenRequest>;
@@ -2104,7 +2128,7 @@ export interface DeleteOrgByIDRequest {
 export const DeleteOrgByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org_id}", code: 200 })),
+  }).pipe(T.Http({ method: "DELETE", uri: "/api/orgs/{org_id}", code: 200 })),
 ).annotate({
   identifier: "DeleteOrgByIDRequest",
 }) as any as S.Schema<DeleteOrgByIDRequest>;
@@ -2120,7 +2144,7 @@ export const DeletePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
+      uri: "/api/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
       code: 200,
     }),
   ),
@@ -2137,7 +2161,7 @@ export const DeleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/query-history/{query_history_uid}",
+      uri: "/api/query-history/{query_history_uid}",
       code: 200,
     }),
   ),
@@ -2168,7 +2192,7 @@ export const DeleteRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/recording-rules/{recordingRuleID}",
+      uri: "/api/recording-rules/{recordingRuleID}",
       code: 200,
     }),
   ),
@@ -2180,7 +2204,11 @@ export interface DeleteRecordingRuleWriteTargetRequest {}
 export const DeleteRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({}).pipe(
-      T.Http({ method: "DELETE", uri: "/recording-rules/writer", code: 200 }),
+      T.Http({
+        method: "DELETE",
+        uri: "/api/recording-rules/writer",
+        code: 200,
+      }),
     ),
 ).annotate({
   identifier: "DeleteRecordingRuleWriteTargetRequest",
@@ -2199,7 +2227,7 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/access-control/roles/{roleUID}",
+      uri: "/api/access-control/roles/{roleUID}",
       code: 200,
     }),
   ),
@@ -2216,7 +2244,7 @@ export const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/serviceaccounts/{serviceAccountId}",
+      uri: "/api/serviceaccounts/{serviceAccountId}",
       code: 200,
     }),
   ),
@@ -2234,7 +2262,7 @@ export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/cloudmigration/migration/{uid}",
+      uri: "/api/cloudmigration/migration/{uid}",
       code: 200,
     }),
   ),
@@ -2255,7 +2283,7 @@ export interface DeleteTeamByIDRequest {
 export const DeleteTeamByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "DELETE", uri: "/teams/{team_id}", code: 200 })),
+  }).pipe(T.Http({ method: "DELETE", uri: "/api/teams/{team_id}", code: 200 })),
 ).annotate({
   identifier: "DeleteTeamByIDRequest",
 }) as any as S.Schema<DeleteTeamByIDRequest>;
@@ -2271,7 +2299,7 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/serviceaccounts/{serviceAccountId}/tokens/{tokenId}",
+      uri: "/api/serviceaccounts/{serviceAccountId}/tokens/{tokenId}",
       code: 200,
     }),
   ),
@@ -2291,7 +2319,7 @@ export const DisableDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/datasources/{dataSourceUID}/cache/disable",
+      uri: "/api/datasources/{dataSourceUID}/cache/disable",
       code: 200,
     }),
   ),
@@ -2311,7 +2339,7 @@ export const EnableDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/datasources/{dataSourceUID}/cache/enable",
+      uri: "/api/datasources/{dataSourceUID}/cache/enable",
       code: 200,
     }),
   ),
@@ -2322,7 +2350,7 @@ export const EnableDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAccessControlStatusRequest {}
 export const GetAccessControlStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/access-control/status", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/access-control/status", code: 200 }),
   ),
 ).annotate({
   identifier: "GetAccessControlStatusRequest",
@@ -2346,7 +2374,11 @@ export const GetAnnotationByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation_id: S.String.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "GET", uri: "/annotations/{annotation_id}", code: 200 }),
+    T.Http({
+      method: "GET",
+      uri: "/api/annotations/{annotation_id}",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "GetAnnotationByIDRequest",
@@ -2456,7 +2488,7 @@ export const GetAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(GetAnnotationsRequestTagsList.pipe(T.Query())),
     type: S.optional(GetAnnotationsRequestType.pipe(T.Query())),
     matchAny: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/annotations", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/annotations", code: 200 })),
 ).annotate({
   identifier: "GetAnnotationsRequest",
 }) as any as S.Schema<GetAnnotationsRequest>;
@@ -2483,7 +2515,7 @@ export const GetAnnotationTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/annotations/tags", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/annotations/tags", code: 200 })),
 ).annotate({
   identifier: "GetAnnotationTagsRequest",
 }) as any as S.Schema<GetAnnotationTagsRequest>;
@@ -2527,7 +2559,7 @@ export const GetAnnotationTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCloudMigrationTokenRequest {}
 export const GetCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/cloudmigration/token", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/cloudmigration/token", code: 200 }),
   ),
 ).annotate({
   identifier: "GetCloudMigrationTokenRequest",
@@ -2565,7 +2597,7 @@ export const GetCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/datasources/uid/{sourceUID}/correlations/{correlationUID}",
+      uri: "/api/datasources/uid/{sourceUID}/correlations/{correlationUID}",
       code: 200,
     }),
   ),
@@ -2592,7 +2624,7 @@ export const GetCorrelationsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     sourceUID: S.optional(GetCorrelationsRequestSourceUIDList.pipe(T.Query())),
   }).pipe(
-    T.Http({ method: "GET", uri: "/datasources/correlations", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/datasources/correlations", code: 200 }),
   ),
 ).annotate({
   identifier: "GetCorrelationsRequest",
@@ -2619,7 +2651,7 @@ export const GetCorrelationsBySourceUIDRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/datasources/uid/{sourceUID}/correlations",
+      uri: "/api/datasources/uid/{sourceUID}/correlations",
       code: 200,
     }),
   ),
@@ -2642,7 +2674,7 @@ export const GetCorrelationsBySourceUIDResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetCurrentOrgRequest {}
 export const GetCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org", code: 200 })),
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/org", code: 200 })),
 ).annotate({
   identifier: "GetCurrentOrgRequest",
 }) as any as S.Schema<GetCurrentOrgRequest>;
@@ -2681,7 +2713,9 @@ export const OrgDetailsDTO = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetCurrentOrgQuotaRequest {}
 export const GetCurrentOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org/quotas", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/org/quotas", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetCurrentOrgQuotaRequest",
 }) as any as S.Schema<GetCurrentOrgQuotaRequest>;
@@ -2721,7 +2755,7 @@ export interface GetDashboardSnapshotRequest {
 export const GetDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/snapshots/{key}", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/snapshots/{key}", code: 200 })),
 ).annotate({
   identifier: "GetDashboardSnapshotRequest",
 }) as any as S.Schema<GetDashboardSnapshotRequest>;
@@ -2831,7 +2865,9 @@ export interface GetDataSourceByUIDRequest {
 export const GetDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/datasources/uid/{uid}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/datasources/uid/{uid}", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetDataSourceByUIDRequest",
 }) as any as S.Schema<GetDataSourceByUIDRequest>;
@@ -2848,7 +2884,7 @@ export const GetDataSourceCacheConfigRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/datasources/{dataSourceUID}/cache",
+      uri: "/api/datasources/{dataSourceUID}/cache",
       code: 200,
     }),
   ),
@@ -2858,7 +2894,9 @@ export const GetDataSourceCacheConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetDataSourcesRequest {}
 export const GetDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/datasources", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/datasources", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetDataSourcesRequest",
 }) as any as S.Schema<GetDataSourcesRequest>;
@@ -2916,7 +2954,7 @@ export const GetDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetHealthRequest {}
 export const GetHealthRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/health", code: 200 })),
 ).annotate({
   identifier: "GetHealthRequest",
 }) as any as S.Schema<GetHealthRequest>;
@@ -2941,7 +2979,7 @@ export const HealthResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetLDAPStatusRequest {}
 export const GetLDAPStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/admin/ldap/status", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/admin/ldap/status", code: 200 }),
   ),
 ).annotate({
   identifier: "GetLDAPStatusRequest",
@@ -2956,7 +2994,7 @@ export const GetLibraryElementByNameRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/library-elements/name/{library_element_name}",
+      uri: "/api/library-elements/name/{library_element_name}",
       code: 200,
     }),
   ),
@@ -2989,7 +3027,7 @@ export const GetLibraryElementByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/library-elements/{library_element_uid}",
+      uri: "/api/library-elements/{library_element_uid}",
       code: 200,
     }),
   ),
@@ -3006,7 +3044,7 @@ export const GetLibraryElementConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/library-elements/{library_element_uid}/connections/",
+      uri: "/api/library-elements/{library_element_uid}/connections/",
       code: 200,
     }),
   ),
@@ -3095,7 +3133,7 @@ export const GetLibraryElementsRequest = /*@__PURE__*/ S.suspend(() =>
     folderFilterUIDs: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/library-elements", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/library-elements", code: 200 })),
 ).annotate({
   identifier: "GetLibraryElementsRequest",
 }) as any as S.Schema<GetLibraryElementsRequest>;
@@ -3136,7 +3174,7 @@ export const LibraryElementSearchResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetLicenseTokenRequest {}
 export const GetLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/licensing/token", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/licensing/token", code: 200 }),
   ),
 ).annotate({
   identifier: "GetLicenseTokenRequest",
@@ -3205,7 +3243,7 @@ export const Token = /*@__PURE__*/ S.suspend(() =>
 export interface GetMetadataRequest {}
 export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/saml/metadata", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/saml/metadata", code: 200 }),
   ),
 ).annotate({
   identifier: "GetMetadataRequest",
@@ -3229,7 +3267,7 @@ export interface GetOrgByIDRequest {
 export const GetOrgByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/orgs/{org_id}", code: 200 })),
 ).annotate({
   identifier: "GetOrgByIDRequest",
 }) as any as S.Schema<GetOrgByIDRequest>;
@@ -3240,7 +3278,9 @@ export interface GetOrgByNameRequest {
 export const GetOrgByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_name: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/orgs/name/{org_name}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/orgs/name/{org_name}", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetOrgByNameRequest",
 }) as any as S.Schema<GetOrgByNameRequest>;
@@ -3251,7 +3291,9 @@ export interface GetOrgQuotaRequest {
 export const GetOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/quotas", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/orgs/{org_id}/quotas", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetOrgQuotaRequest",
 }) as any as S.Schema<GetOrgQuotaRequest>;
@@ -3274,7 +3316,9 @@ export interface GetOrgUsersRequest {
 export const GetOrgUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/users", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/orgs/{org_id}/users", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetOrgUsersRequest",
 }) as any as S.Schema<GetOrgUsersRequest>;
@@ -3349,7 +3393,7 @@ export const GetOrgUsersForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/org/users", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/org/users", code: 200 })),
 ).annotate({
   identifier: "GetOrgUsersForCurrentOrgRequest",
 }) as any as S.Schema<GetOrgUsersForCurrentOrgRequest>;
@@ -3376,7 +3420,7 @@ export const GetOrgUsersForCurrentOrgLookupRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       query: S.optional(S.String.pipe(T.Query())),
       limit: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(T.Http({ method: "GET", uri: "/org/users/lookup", code: 200 })),
+    }).pipe(T.Http({ method: "GET", uri: "/api/org/users/lookup", code: 200 })),
 ).annotate({
   identifier: "GetOrgUsersForCurrentOrgLookupRequest",
 }) as any as S.Schema<GetOrgUsersForCurrentOrgLookupRequest>;
@@ -3414,7 +3458,9 @@ export const GetOrgUsersForCurrentOrgLookupResponse = /*@__PURE__*/ S.suspend(
 
 export interface GetPendingOrgInvitesRequest {}
 export const GetPendingOrgInvitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org/invites", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/org/invites", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetPendingOrgInvitesRequest",
 }) as any as S.Schema<GetPendingOrgInvitesRequest>;
@@ -3475,7 +3521,9 @@ export interface GetProviderSettingsRequest {
 export const GetProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/v1/sso-settings/{key}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/v1/sso-settings/{key}", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetProviderSettingsRequest",
 }) as any as S.Schema<GetProviderSettingsRequest>;
@@ -3514,7 +3562,7 @@ export const GetPublicAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/public/dashboards/{accessToken}/annotations",
+      uri: "/api/public/dashboards/{accessToken}/annotations",
       code: 200,
     }),
   ),
@@ -3679,7 +3727,7 @@ export const GetPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/dashboards/uid/{dashboardUid}/public-dashboards",
+      uri: "/api/dashboards/uid/{dashboardUid}/public-dashboards",
       code: 200,
     }),
   ),
@@ -3690,7 +3738,7 @@ export const GetPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRecordingRuleWriteTargetRequest {}
 export const GetRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/recording-rules/writer", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/recording-rules/writer", code: 200 }),
   ),
 ).annotate({
   identifier: "GetRecordingRuleWriteTargetRequest",
@@ -3698,7 +3746,7 @@ export const GetRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetReportsRequest {}
 export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports", code: 200 })),
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/reports", code: 200 })),
 ).annotate({
   identifier: "GetReportsRequest",
 }) as any as S.Schema<GetReportsRequest>;
@@ -3784,7 +3832,7 @@ export const GetReportsByDashboardUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "GET", uri: "/reports/dashboards/{uid}", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/reports/dashboards/{uid}", code: 200 }),
   ),
 ).annotate({
   identifier: "GetReportsByDashboardUIDRequest",
@@ -3806,7 +3854,7 @@ export const GetReportsByDashboardUIDResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetReportSettingsRequest {}
 export const GetReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/reports/settings", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/reports/settings", code: 200 }),
   ),
 ).annotate({
   identifier: "GetReportSettingsRequest",
@@ -3889,7 +3937,7 @@ export const GetResourceDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
-      uri: "/cloudmigration/resources/dependencies",
+      uri: "/api/cloudmigration/resources/dependencies",
       code: 200,
     }),
   ),
@@ -3973,7 +4021,7 @@ export const GetResourceDescriptionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/access-control/{resource}/description",
+      uri: "/api/access-control/{resource}/description",
       code: 200,
     }),
   ),
@@ -4023,7 +4071,7 @@ export const GetResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/access-control/{resource}/{resourceID}",
+      uri: "/api/access-control/{resource}/{resourceID}",
       code: 200,
     }),
   ),
@@ -4100,7 +4148,7 @@ export const GetRoleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/access-control/roles/{roleUID}",
+      uri: "/api/access-control/roles/{roleUID}",
       code: 200,
     }),
   ),
@@ -4115,7 +4163,7 @@ export const GetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/access-control/roles/{roleUID}/assignments",
+      uri: "/api/access-control/roles/{roleUID}/assignments",
       code: 200,
     }),
   ),
@@ -4157,7 +4205,9 @@ export const RoleAssignmentsDTO = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetSAMLLogoutRequest {}
 export const GetSAMLLogoutRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/logout/saml", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/logout/saml", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetSAMLLogoutRequest",
 }) as any as S.Schema<GetSAMLLogoutRequest>;
@@ -4179,7 +4229,7 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/cloudmigration/migration/{uid}",
+      uri: "/api/cloudmigration/migration/{uid}",
       code: 200,
     }),
   ),
@@ -4190,7 +4240,7 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSessionListRequest {}
 export const GetSessionListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/cloudmigration/migration", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/cloudmigration/migration", code: 200 }),
   ),
 ).annotate({
   identifier: "GetSessionListRequest",
@@ -4218,7 +4268,7 @@ export const CloudMigrationSessionListResponseDTO = /*@__PURE__*/ S.suspend(
 export interface GetSettingsImageRequest {}
 export const GetSettingsImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/reports/images/:image", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/reports/images/:image", code: 200 }),
   ),
 ).annotate({
   identifier: "GetSettingsImageRequest",
@@ -4255,7 +4305,7 @@ export const GetShapshotListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/cloudmigration/migration/{uid}/snapshots",
+      uri: "/api/cloudmigration/migration/{uid}/snapshots",
       code: 200,
     }),
   ),
@@ -4313,7 +4363,7 @@ export const SnapshotListResponseDTO = /*@__PURE__*/ S.suspend(() =>
 export interface GetSharingOptionsRequest {}
 export const GetSharingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/snapshot/shared-options", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/snapshot/shared-options", code: 200 }),
   ),
 ).annotate({
   identifier: "GetSharingOptionsRequest",
@@ -4336,7 +4386,7 @@ export const GetSharingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetSignedInUserRequest {}
 export const GetSignedInUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/user", code: 200 })),
 ).annotate({
   identifier: "GetSignedInUserRequest",
 }) as any as S.Schema<GetSignedInUserRequest>;
@@ -4399,7 +4449,9 @@ export const UserProfileDTO = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetSignedInUserOrgListRequest {}
 export const GetSignedInUserOrgListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/orgs", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/user/orgs", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetSignedInUserOrgListRequest",
 }) as any as S.Schema<GetSignedInUserOrgListRequest>;
@@ -4435,7 +4487,9 @@ export const GetSignedInUserOrgListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetSignedInUserTeamListRequest {}
 export const GetSignedInUserTeamListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/teams", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/user/teams", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetSignedInUserTeamListRequest",
 }) as any as S.Schema<GetSignedInUserTeamListRequest>;
@@ -4491,7 +4545,7 @@ export const GetSignedInUserTeamListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetSLORequest {}
 export const GetSLORequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/saml/slo", code: 200 })),
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/saml/slo", code: 200 })),
 ).annotate({ identifier: "GetSLORequest" }) as any as S.Schema<GetSLORequest>;
 
 export interface GetSLOResponse {}
@@ -4527,7 +4581,7 @@ export const GetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}",
+      uri: "/api/cloudmigration/migration/{uid}/snapshot/{snapshotUid}",
       code: 200,
     }),
   ),
@@ -4672,7 +4726,7 @@ export const GetSnapshotResponseDTO = /*@__PURE__*/ S.suspend(() =>
 export interface GetStatusRequest {}
 export const GetStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/licensing/check", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/licensing/check", code: 200 }),
   ),
 ).annotate({
   identifier: "GetStatusRequest",
@@ -4688,7 +4742,7 @@ export const GetStatusResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSyncStatusRequest {}
 export const GetSyncStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/admin/ldap-sync-status", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/admin/ldap-sync-status", code: 200 }),
   ),
 ).annotate({
   identifier: "GetSyncStatusRequest",
@@ -4764,7 +4818,7 @@ export const GetTeamByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
     accesscontrol: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/teams/{team_id}", code: 200 })),
 ).annotate({
   identifier: "GetTeamByIDRequest",
 }) as any as S.Schema<GetTeamByIDRequest>;
@@ -4775,7 +4829,9 @@ export interface GetTeamGroupsApiRequest {
 export const GetTeamGroupsApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/teams/{teamId}/groups", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/teams/{teamId}/groups", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetTeamGroupsApiRequest",
 }) as any as S.Schema<GetTeamGroupsApiRequest>;
@@ -4819,7 +4875,7 @@ export const GetTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/datasources/uid/{uid}/lbac/teams",
+      uri: "/api/datasources/uid/{uid}/lbac/teams",
       code: 200,
     }),
   ),
@@ -4866,7 +4922,7 @@ export const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "GET", uri: "/teams/{team_id}/members", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/teams/{team_id}/members", code: 200 }),
   ),
 ).annotate({
   identifier: "GetTeamMembersRequest",
@@ -4929,7 +4985,11 @@ export const GetTeamPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "GET", uri: "/teams/{team_id}/preferences", code: 200 }),
+    T.Http({
+      method: "GET",
+      uri: "/api/teams/{team_id}/preferences",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "GetTeamPreferencesRequest",
@@ -4998,7 +5058,7 @@ export const PreferencesSpec = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserAuthTokensRequest {}
 export const GetUserAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/user/auth-tokens", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/user/auth-tokens", code: 200 }),
   ),
 ).annotate({
   identifier: "GetUserAuthTokensRequest",
@@ -5022,7 +5082,7 @@ export interface GetUserByIDRequest {
 export const GetUserByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/users/{user_id}", code: 200 })),
 ).annotate({
   identifier: "GetUserByIDRequest",
 }) as any as S.Schema<GetUserByIDRequest>;
@@ -5034,7 +5094,7 @@ export interface GetUserByLoginOrEmailRequest {
 export const GetUserByLoginOrEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loginOrEmail: S.String.pipe(T.Query()),
-  }).pipe(T.Http({ method: "GET", uri: "/users/lookup", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/users/lookup", code: 200 })),
 ).annotate({
   identifier: "GetUserByLoginOrEmailRequest",
 }) as any as S.Schema<GetUserByLoginOrEmailRequest>;
@@ -5045,7 +5105,9 @@ export interface GetUserFromLDAPRequest {
 export const GetUserFromLDAPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_name: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/admin/ldap/{user_name}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/admin/ldap/{user_name}", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetUserFromLDAPRequest",
 }) as any as S.Schema<GetUserFromLDAPRequest>;
@@ -5056,7 +5118,9 @@ export interface GetUserOrgListRequest {
 export const GetUserOrgListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/orgs", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/users/{user_id}/orgs", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetUserOrgListRequest",
 }) as any as S.Schema<GetUserOrgListRequest>;
@@ -5080,7 +5144,11 @@ export const GetUserQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "GET", uri: "/admin/users/{user_id}/quotas", code: 200 }),
+    T.Http({
+      method: "GET",
+      uri: "/api/admin/users/{user_id}/quotas",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "GetUserQuotaRequest",
@@ -5100,7 +5168,9 @@ export const GetUserQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetUserQuotasRequest {}
 export const GetUserQuotasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/quotas", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/user/quotas", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetUserQuotasRequest",
 }) as any as S.Schema<GetUserQuotasRequest>;
@@ -5123,7 +5193,9 @@ export interface GetUserTeamsRequest {
 export const GetUserTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/teams", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/users/{user_id}/teams", code: 200 }),
+  ),
 ).annotate({
   identifier: "GetUserTeamsRequest",
 }) as any as S.Schema<GetUserTeamsRequest>;
@@ -5181,7 +5253,7 @@ export const ImportDashboardRequest = /*@__PURE__*/ S.suspend(() =>
     overwrite: S.optional(S.Boolean),
     path: S.optional(S.String),
     pluginId: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/dashboards/import", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/dashboards/import", code: 200 })),
 ).annotate({
   identifier: "ImportDashboardRequest",
 }) as any as S.Schema<ImportDashboardRequest>;
@@ -5229,7 +5301,7 @@ export const ImportDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 export interface InterpolateDashboardRequest {}
 export const InterpolateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "POST", uri: "/dashboards/interpolate", code: 200 }),
+    T.Http({ method: "POST", uri: "/api/dashboards/interpolate", code: 200 }),
   ),
 ).annotate({
   identifier: "InterpolateDashboardRequest",
@@ -5245,7 +5317,7 @@ export const InterpolateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListAllProvidersSettingsRequest {}
 export const ListAllProvidersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/v1/sso-settings", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/v1/sso-settings", code: 200 }),
   ),
 ).annotate({
   identifier: "ListAllProvidersSettingsRequest",
@@ -5295,7 +5367,7 @@ export const ListAllProvidersSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListDevicesRequest {}
 export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/anonymous/devices", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/anonymous/devices", code: 200 }),
   ),
 ).annotate({
   identifier: "ListDevicesRequest",
@@ -5337,7 +5409,11 @@ export const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPublicDashboardsRequest {}
 export const ListPublicDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/dashboards/public-dashboards", code: 200 }),
+    T.Http({
+      method: "GET",
+      uri: "/api/dashboards/public-dashboards",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "ListPublicDashboardsRequest",
@@ -5394,7 +5470,7 @@ export const PublicDashboardListResponseWithPagination =
 export interface ListRecordingRulesRequest {}
 export const ListRecordingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/recording-rules", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/recording-rules", code: 200 }),
   ),
 ).annotate({
   identifier: "ListRecordingRulesRequest",
@@ -5422,7 +5498,9 @@ export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
     delegatable: S.optional(S.Boolean.pipe(T.Query())),
     includeHidden: S.optional(S.Boolean.pipe(T.Query())),
     targetOrgId: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/access-control/roles", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/access-control/roles", code: 200 }),
+  ),
 ).annotate({
   identifier: "ListRolesRequest",
 }) as any as S.Schema<ListRolesRequest>;
@@ -5442,7 +5520,7 @@ export const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListSortOptionsRequest {}
 export const ListSortOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/search/sorting", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/search/sorting", code: 200 }),
   ),
 ).annotate({
   identifier: "ListSortOptionsRequest",
@@ -5476,7 +5554,7 @@ export const ListTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/access-control/teams/{teamId}/roles",
+      uri: "/api/access-control/teams/{teamId}/roles",
       code: 200,
     }),
   ),
@@ -5509,7 +5587,7 @@ export const ListTeamsRolesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/access-control/teams/roles/search",
+      uri: "/api/access-control/teams/roles/search",
       code: 200,
     }),
   ),
@@ -5546,7 +5624,7 @@ export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/serviceaccounts/{serviceAccountId}/tokens",
+      uri: "/api/serviceaccounts/{serviceAccountId}/tokens",
       code: 200,
     }),
   ),
@@ -5602,7 +5680,7 @@ export const ListUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/access-control/users/{userId}/roles",
+      uri: "/api/access-control/users/{userId}/roles",
       code: 200,
     }),
   ),
@@ -5647,7 +5725,7 @@ export const ListUsersRolesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/access-control/users/roles/search",
+      uri: "/api/access-control/users/roles/search",
       code: 200,
     }),
   ),
@@ -5688,7 +5766,7 @@ export const MassDeleteAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
     dashboardUID: S.optional(S.String),
     panelId: S.optional(S.Number),
   }).pipe(
-    T.Http({ method: "POST", uri: "/annotations/mass-delete", code: 200 }),
+    T.Http({ method: "POST", uri: "/api/annotations/mass-delete", code: 200 }),
   ),
 ).annotate({
   identifier: "MassDeleteAnnotationsRequest",
@@ -5718,7 +5796,11 @@ export const PatchAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
     time: S.optional(S.Number),
     timeEnd: S.optional(S.Number),
   }).pipe(
-    T.Http({ method: "PATCH", uri: "/annotations/{annotation_id}", code: 200 }),
+    T.Http({
+      method: "PATCH",
+      uri: "/api/annotations/{annotation_id}",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "PatchAnnotationRequest",
@@ -5741,7 +5823,7 @@ export const PatchProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
     key: S.String.pipe(T.Label()),
     settings: S.optional(PatchProviderSettingsRequestSettingsMap),
   }).pipe(
-    T.Http({ method: "PATCH", uri: "/v1/sso-settings/{key}", code: 200 }),
+    T.Http({ method: "PATCH", uri: "/api/v1/sso-settings/{key}", code: 200 }),
   ),
 ).annotate({
   identifier: "PatchProviderSettingsRequest",
@@ -5759,7 +5841,7 @@ export const PatchQueryCommentRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PATCH",
-      uri: "/query-history/{query_history_uid}",
+      uri: "/api/query-history/{query_history_uid}",
       code: 200,
     }),
   ),
@@ -5773,7 +5855,7 @@ export interface PostACSRequest {
 export const PostACSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RelayState: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "POST", uri: "/saml/acs", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/saml/acs", code: 200 })),
 ).annotate({ identifier: "PostACSRequest" }) as any as S.Schema<PostACSRequest>;
 
 export interface PostACSResponse {}
@@ -5808,7 +5890,7 @@ export const PostAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
     text: S.String,
     time: S.optional(S.Number),
     timeEnd: S.optional(S.Number),
-  }).pipe(T.Http({ method: "POST", uri: "/annotations", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/annotations", code: 200 })),
 ).annotate({
   identifier: "PostAnnotationRequest",
 }) as any as S.Schema<PostAnnotationRequest>;
@@ -5840,7 +5922,9 @@ export const PostGraphiteAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(S.Unknown),
     what: S.optional(S.String),
     when: S.optional(S.Number),
-  }).pipe(T.Http({ method: "POST", uri: "/annotations/graphite", code: 200 })),
+  }).pipe(
+    T.Http({ method: "POST", uri: "/api/annotations/graphite", code: 200 }),
+  ),
 ).annotate({
   identifier: "PostGraphiteAnnotationRequest",
 }) as any as S.Schema<PostGraphiteAnnotationRequest>;
@@ -5866,7 +5950,7 @@ export interface PostLicenseTokenRequest {
 export const PostLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/licensing/token", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/licensing/token", code: 200 })),
 ).annotate({
   identifier: "PostLicenseTokenRequest",
 }) as any as S.Schema<PostLicenseTokenRequest>;
@@ -5874,7 +5958,7 @@ export const PostLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PostRenewLicenseTokenRequest {}
 export const PostRenewLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "POST", uri: "/licensing/token/renew", code: 200 }),
+    T.Http({ method: "POST", uri: "/api/licensing/token/renew", code: 200 }),
   ),
 ).annotate({
   identifier: "PostRenewLicenseTokenRequest",
@@ -5895,7 +5979,7 @@ export const PostSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SAMLRequest: S.optional(S.String.pipe(T.Query())),
     SAMLResponse: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "POST", uri: "/saml/slo", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/saml/slo", code: 200 })),
 ).annotate({ identifier: "PostSLORequest" }) as any as S.Schema<PostSLORequest>;
 
 export interface PostSLOResponse {}
@@ -5912,7 +5996,11 @@ export const PostSyncUserWithLDAPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "POST", uri: "/admin/ldap/sync/{user_id}", code: 200 }),
+    T.Http({
+      method: "POST",
+      uri: "/api/admin/ldap/sync/{user_id}",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "PostSyncUserWithLDAPRequest",
@@ -5940,7 +6028,7 @@ export const QueryMetricsWithExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
     from: S.String,
     queries: QueryMetricsWithExpressionsRequestQueriesList,
     to: S.String,
-  }).pipe(T.Http({ method: "POST", uri: "/ds/query", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/ds/query", code: 200 })),
 ).annotate({
   identifier: "QueryMetricsWithExpressionsRequest",
 }) as any as S.Schema<QueryMetricsWithExpressionsRequest>;
@@ -6442,7 +6530,7 @@ export const QueryPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/public/dashboards/{accessToken}/panels/{panelId}/query",
+      uri: "/api/public/dashboards/{accessToken}/panels/{panelId}/query",
       code: 200,
     }),
   ),
@@ -6453,7 +6541,7 @@ export const QueryPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RefreshLicenseStatsRequest {}
 export const RefreshLicenseStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/licensing/refresh-stats", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/licensing/refresh-stats", code: 200 }),
   ),
 ).annotate({
   identifier: "RefreshLicenseStatsRequest",
@@ -6479,7 +6567,7 @@ export const ActiveUserStats = /*@__PURE__*/ S.suspend(() =>
 export interface ReloadLDAPCfgRequest {}
 export const ReloadLDAPCfgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "POST", uri: "/admin/ldap/reload", code: 200 }),
+    T.Http({ method: "POST", uri: "/api/admin/ldap/reload", code: 200 }),
   ),
 ).annotate({
   identifier: "ReloadLDAPCfgRequest",
@@ -6503,7 +6591,7 @@ export const RemoveOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/orgs/{org_id}/users/{user_id}",
+      uri: "/api/orgs/{org_id}/users/{user_id}",
       code: 200,
     }),
   ),
@@ -6517,7 +6605,9 @@ export interface RemoveOrgUserForCurrentOrgRequest {
 export const RemoveOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "DELETE", uri: "/org/users/{user_id}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "/api/org/users/{user_id}", code: 200 }),
+  ),
 ).annotate({
   identifier: "RemoveOrgUserForCurrentOrgRequest",
 }) as any as S.Schema<RemoveOrgUserForCurrentOrgRequest>;
@@ -6529,7 +6619,7 @@ export const RemoveProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "DELETE", uri: "/v1/sso-settings/{key}", code: 200 }),
+    T.Http({ method: "DELETE", uri: "/api/v1/sso-settings/{key}", code: 200 }),
   ),
 ).annotate({
   identifier: "RemoveProviderSettingsRequest",
@@ -6544,7 +6634,7 @@ export const RemoveTeamGroupApiQueryRequest = /*@__PURE__*/ S.suspend(() =>
     teamId: S.String.pipe(T.Label()),
     groupId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
-    T.Http({ method: "DELETE", uri: "/teams/{teamId}/groups", code: 200 }),
+    T.Http({ method: "DELETE", uri: "/api/teams/{teamId}/groups", code: 200 }),
   ),
 ).annotate({
   identifier: "RemoveTeamGroupApiQueryRequest",
@@ -6561,7 +6651,7 @@ export const RemoveTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/teams/{team_id}/members/{user_id}",
+      uri: "/api/teams/{team_id}/members/{user_id}",
       code: 200,
     }),
   ),
@@ -6580,7 +6670,7 @@ export const RemoveTeamRoleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/access-control/teams/{teamId}/roles/{roleUID}",
+      uri: "/api/access-control/teams/{teamId}/roles/{roleUID}",
       code: 200,
     }),
   ),
@@ -6602,7 +6692,7 @@ export const RemoveUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/access-control/users/{userId}/roles/{roleUID}",
+      uri: "/api/access-control/users/{userId}/roles/{roleUID}",
       code: 200,
     }),
   ),
@@ -6618,7 +6708,9 @@ export const RenderReportCSVsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboards: S.optional(S.String.pipe(T.Query())),
     title: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/reports/render/csvs", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/reports/render/csvs", code: 200 }),
+  ),
 ).annotate({
   identifier: "RenderReportCSVsRequest",
 }) as any as S.Schema<RenderReportCSVsRequest>;
@@ -6651,7 +6743,9 @@ export const RenderReportPDFsRequest = /*@__PURE__*/ S.suspend(() =>
     title: S.optional(S.String.pipe(T.Query())),
     scaleFactor: S.optional(S.String.pipe(T.Query())),
     includeTables: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/reports/render/pdfs", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/reports/render/pdfs", code: 200 }),
+  ),
 ).annotate({
   identifier: "RenderReportPDFsRequest",
 }) as any as S.Schema<RenderReportPDFsRequest>;
@@ -6671,7 +6765,7 @@ export const RenderReportPDFsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RetrieveJWKSRequest {}
 export const RetrieveJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/signing-keys/keys", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/signing-keys/keys", code: 200 }),
   ),
 ).annotate({
   identifier: "RetrieveJWKSRequest",
@@ -7199,7 +7293,7 @@ export const RetrieveServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/serviceaccounts/{serviceAccountId}",
+      uri: "/api/serviceaccounts/{serviceAccountId}",
       code: 200,
     }),
   ),
@@ -7216,7 +7310,7 @@ export const RevokeInviteRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/org/invites/{invitation_code}/revoke",
+      uri: "/api/org/invites/{invitation_code}/revoke",
       code: 200,
     }),
   ),
@@ -7231,7 +7325,7 @@ export const RevokeUserAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authTokenId: S.optional(S.Number),
   }).pipe(
-    T.Http({ method: "POST", uri: "/user/revoke-auth-token", code: 200 }),
+    T.Http({ method: "POST", uri: "/api/user/revoke-auth-token", code: 200 }),
   ),
 ).annotate({
   identifier: "RevokeUserAuthTokenRequest",
@@ -7247,7 +7341,7 @@ export const RouteConvertPrometheusCortexDeleteNamespaceRequest =
     }).pipe(
       T.Http({
         method: "DELETE",
-        uri: "/convert/api/prom/rules/{NamespaceTitle}",
+        uri: "/api/convert/api/prom/rules/{NamespaceTitle}",
         code: 200,
       }),
     ),
@@ -7273,7 +7367,7 @@ export const RouteConvertPrometheusCortexDeleteRuleGroupRequest =
     }).pipe(
       T.Http({
         method: "DELETE",
-        uri: "/convert/api/prom/rules/{NamespaceTitle}/{Group}",
+        uri: "/api/convert/api/prom/rules/{NamespaceTitle}/{Group}",
         code: 200,
       }),
     ),
@@ -7297,7 +7391,7 @@ export const RouteConvertPrometheusCortexGetNamespaceRequest =
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/convert/api/prom/rules/{NamespaceTitle}",
+        uri: "/api/convert/api/prom/rules/{NamespaceTitle}",
         code: 200,
       }),
     ),
@@ -7323,7 +7417,7 @@ export const RouteConvertPrometheusCortexGetRuleGroupRequest =
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/convert/api/prom/rules/{NamespaceTitle}/{Group}",
+        uri: "/api/convert/api/prom/rules/{NamespaceTitle}/{Group}",
         code: 200,
       }),
     ),
@@ -7341,7 +7435,7 @@ export interface RouteConvertPrometheusCortexGetRulesRequest {}
 export const RouteConvertPrometheusCortexGetRulesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.Http({ method: "GET", uri: "/convert/api/prom/rules", code: 200 }),
+      T.Http({ method: "GET", uri: "/api/convert/api/prom/rules", code: 200 }),
     ),
   ).annotate({
     identifier: "RouteConvertPrometheusCortexGetRulesRequest",
@@ -7363,7 +7457,7 @@ export const RouteConvertPrometheusCortexPostRuleGroupRequest =
     }).pipe(
       T.Http({
         method: "POST",
-        uri: "/convert/api/prom/rules/{NamespaceTitle}",
+        uri: "/api/convert/api/prom/rules/{NamespaceTitle}",
         code: 200,
       }),
     ),
@@ -7381,7 +7475,7 @@ export interface RouteConvertPrometheusCortexPostRuleGroupsRequest {}
 export const RouteConvertPrometheusCortexPostRuleGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.Http({ method: "POST", uri: "/convert/api/prom/rules", code: 200 }),
+      T.Http({ method: "POST", uri: "/api/convert/api/prom/rules", code: 200 }),
     ),
   ).annotate({
     identifier: "RouteConvertPrometheusCortexPostRuleGroupsRequest",
@@ -7403,7 +7497,7 @@ export const RouteConvertPrometheusDeleteNamespaceRequest =
     }).pipe(
       T.Http({
         method: "DELETE",
-        uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+        uri: "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}",
         code: 200,
       }),
     ),
@@ -7429,7 +7523,7 @@ export const RouteConvertPrometheusDeleteRuleGroupRequest =
     }).pipe(
       T.Http({
         method: "DELETE",
-        uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
+        uri: "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
         code: 200,
       }),
     ),
@@ -7453,7 +7547,7 @@ export const RouteConvertPrometheusGetNamespaceRequest =
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+        uri: "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}",
         code: 200,
       }),
     ),
@@ -7479,7 +7573,7 @@ export const RouteConvertPrometheusGetRuleGroupRequest =
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
+        uri: "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
         code: 200,
       }),
     ),
@@ -7499,7 +7593,7 @@ export const RouteConvertPrometheusGetRulesRequest = /*@__PURE__*/ S.suspend(
     S.Struct({}).pipe(
       T.Http({
         method: "GET",
-        uri: "/convert/prometheus/config/v1/rules",
+        uri: "/api/convert/prometheus/config/v1/rules",
         code: 200,
       }),
     ),
@@ -7524,7 +7618,7 @@ export const RouteConvertPrometheusPostRuleGroupRequest =
     }).pipe(
       T.Http({
         method: "POST",
-        uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+        uri: "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}",
         code: 200,
       }),
     ),
@@ -7544,7 +7638,7 @@ export const RouteConvertPrometheusPostRuleGroupsRequest =
     S.Struct({}).pipe(
       T.Http({
         method: "POST",
-        uri: "/convert/prometheus/config/v1/rules",
+        uri: "/api/convert/prometheus/config/v1/rules",
         code: 200,
       }),
     ),
@@ -7577,7 +7671,7 @@ export const RouteExportMuteTimingRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/v1/provisioning/mute-timings/{name}/export",
+      uri: "/api/v1/provisioning/mute-timings/{name}/export",
       code: 200,
     }),
   ),
@@ -8071,7 +8165,7 @@ export const RouteExportMuteTimingsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/v1/provisioning/mute-timings/export",
+      uri: "/api/v1/provisioning/mute-timings/export",
       code: 200,
     }),
   ),
@@ -8098,7 +8192,7 @@ export const RouteGetAlertRuleExportRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/v1/provisioning/alert-rules/{UID}/export",
+      uri: "/api/v1/provisioning/alert-rules/{UID}/export",
       code: 200,
     }),
   ),
@@ -8128,7 +8222,7 @@ export const RouteGetAlertRuleGroupExportRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/v1/provisioning/folder/{FolderUID}/rule-groups/{Group}/export",
+      uri: "/api/v1/provisioning/folder/{FolderUID}/rule-groups/{Group}/export",
       code: 200,
     }),
   ),
@@ -8169,7 +8263,7 @@ export const RouteGetAlertRulesExportRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/v1/provisioning/alert-rules/export",
+      uri: "/api/v1/provisioning/alert-rules/export",
       code: 200,
     }),
   ),
@@ -8201,7 +8295,7 @@ export const RouteGetContactpointsExportRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/v1/provisioning/contact-points/export",
+      uri: "/api/v1/provisioning/contact-points/export",
       code: 200,
     }),
   ),
@@ -8214,7 +8308,7 @@ export const RouteGetPolicyTreeExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
-      uri: "/v1/provisioning/policies/export",
+      uri: "/api/v1/provisioning/policies/export",
       code: 200,
     }),
   ),
@@ -8253,7 +8347,7 @@ export const SaveReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
     pdfTheme: S.optional(S.String),
     pdfTimeRangeEnabled: S.optional(S.Boolean),
     userId: S.optional(S.Number),
-  }).pipe(T.Http({ method: "POST", uri: "/reports/settings", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/reports/settings", code: 200 })),
 ).annotate({
   identifier: "SaveReportSettingsRequest",
 }) as any as S.Schema<SaveReportSettingsRequest>;
@@ -8335,7 +8429,7 @@ export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
     permission: S.optional(SearchRequestPermission.pipe(T.Query())),
     sort: S.optional(SearchRequestSort.pipe(T.Query())),
     deleted: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/search", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/search", code: 200 })),
 ).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
 
 export type HitTagsList = Array<string>;
@@ -8406,7 +8500,9 @@ export const SearchDashboardSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/dashboard/snapshots", code: 200 })),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/api/dashboard/snapshots", code: 200 }),
+  ),
 ).annotate({
   identifier: "SearchDashboardSnapshotsRequest",
 }) as any as S.Schema<SearchDashboardSnapshotsRequest>;
@@ -8452,7 +8548,7 @@ export const SearchDashboardSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SearchDevicesRequest {}
 export const SearchDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/anonymous/search", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/anonymous/search", code: 200 }),
   ),
 ).annotate({
   identifier: "SearchDevicesRequest",
@@ -8515,7 +8611,7 @@ export const SearchOrgsRequest = /*@__PURE__*/ S.suspend(() =>
     perpage: S.optional(S.Number.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/orgs", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/orgs", code: 200 })),
 ).annotate({
   identifier: "SearchOrgsRequest",
 }) as any as S.Schema<SearchOrgsRequest>;
@@ -8562,7 +8658,7 @@ export const SearchOrgServiceAccountsWithPagingRequest =
       perpage: S.optional(S.Number.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
-      T.Http({ method: "GET", uri: "/serviceaccounts/search", code: 200 }),
+      T.Http({ method: "GET", uri: "/api/serviceaccounts/search", code: 200 }),
     ),
   ).annotate({
     identifier: "SearchOrgServiceAccountsWithPagingRequest",
@@ -8602,7 +8698,11 @@ export const SearchOrgUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
   }).pipe(
-    T.Http({ method: "GET", uri: "/orgs/{org_id}/users/search", code: 200 }),
+    T.Http({
+      method: "GET",
+      uri: "/api/orgs/{org_id}/users/search",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "SearchOrgUsersRequest",
@@ -8668,7 +8768,7 @@ export const SearchQueriesRequest = /*@__PURE__*/ S.suspend(() =>
     limit: S.optional(S.Number.pipe(T.Query())),
     from: S.optional(S.Number.pipe(T.Query())),
     to: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/query-history", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/query-history", code: 200 })),
 ).annotate({
   identifier: "SearchQueriesRequest",
 }) as any as S.Schema<SearchQueriesRequest>;
@@ -8724,7 +8824,11 @@ export const SearchTeamGroupsRequest = /*@__PURE__*/ S.suspend(() =>
     query: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
   }).pipe(
-    T.Http({ method: "GET", uri: "/teams/{teamId}/groups/search", code: 200 }),
+    T.Http({
+      method: "GET",
+      uri: "/api/teams/{teamId}/groups/search",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "SearchTeamGroupsRequest",
@@ -8783,7 +8887,7 @@ export const SearchTeamsRequest = /*@__PURE__*/ S.suspend(() =>
     query: S.optional(S.String.pipe(T.Query())),
     accesscontrol: S.optional(S.Boolean.pipe(T.Query())),
     sort: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/teams/search", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/teams/search", code: 200 })),
 ).annotate({
   identifier: "SearchTeamsRequest",
 }) as any as S.Schema<SearchTeamsRequest>;
@@ -8820,7 +8924,7 @@ export const SearchUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     perpage: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
+  }).pipe(T.Http({ method: "GET", uri: "/api/users", code: 200 })),
 ).annotate({
   identifier: "SearchUsersRequest",
 }) as any as S.Schema<SearchUsersRequest>;
@@ -8891,7 +8995,9 @@ export const SearchUsersResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SearchUsersWithPagingRequest {}
 export const SearchUsersWithPagingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/search", code: 200 })),
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/api/users/search", code: 200 }),
+  ),
 ).annotate({
   identifier: "SearchUsersWithPagingRequest",
 }) as any as S.Schema<SearchUsersWithPagingRequest>;
@@ -8931,7 +9037,7 @@ export const SendReportRequest = /*@__PURE__*/ S.suspend(() =>
     emails: S.optional(S.String),
     id: S.optional(S.String),
     useEmailsFromReport: S.optional(S.Boolean),
-  }).pipe(T.Http({ method: "POST", uri: "/reports/email", code: 200 })),
+  }).pipe(T.Http({ method: "POST", uri: "/api/reports/email", code: 200 })),
 ).annotate({
   identifier: "SendReportRequest",
 }) as any as S.Schema<SendReportRequest>;
@@ -8983,7 +9089,9 @@ export const SendTestEmailRequest = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.String),
     subject: S.optional(S.String),
     urls: S.optional(SendTestEmailRequestUrlsList),
-  }).pipe(T.Http({ method: "POST", uri: "/reports/test-email", code: 200 })),
+  }).pipe(
+    T.Http({ method: "POST", uri: "/api/reports/test-email", code: 200 }),
+  ),
 ).annotate({
   identifier: "SendTestEmailRequest",
 }) as any as S.Schema<SendTestEmailRequest>;
@@ -9012,7 +9120,7 @@ export const SetDataSourceCacheConfigRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/datasources/{dataSourceUID}/cache",
+      uri: "/api/datasources/{dataSourceUID}/cache",
       code: 200,
     }),
   ),
@@ -9057,7 +9165,7 @@ export const SetResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/access-control/{resource}/{resourceID}",
+      uri: "/api/access-control/{resource}/{resourceID}",
       code: 200,
     }),
   ),
@@ -9081,7 +9189,7 @@ export const SetResourcePermissionsForBuiltInRoleRequest =
     }).pipe(
       T.Http({
         method: "POST",
-        uri: "/access-control/{resource}/{resourceID}/builtInRoles/{builtInRole}",
+        uri: "/api/access-control/{resource}/{resourceID}/builtInRoles/{builtInRole}",
         code: 200,
       }),
     ),
@@ -9105,7 +9213,7 @@ export const SetResourcePermissionsForTeamRequest = /*@__PURE__*/ S.suspend(
     }).pipe(
       T.Http({
         method: "POST",
-        uri: "/access-control/{resource}/{resourceID}/teams/{teamID}",
+        uri: "/api/access-control/{resource}/{resourceID}/teams/{teamID}",
         code: 200,
       }),
     ),
@@ -9129,7 +9237,7 @@ export const SetResourcePermissionsForUserRequest = /*@__PURE__*/ S.suspend(
     }).pipe(
       T.Http({
         method: "POST",
-        uri: "/access-control/{resource}/{resourceID}/users/{userID}",
+        uri: "/api/access-control/{resource}/{resourceID}/users/{userID}",
         code: 200,
       }),
     ),
@@ -9168,7 +9276,7 @@ export const SetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/access-control/roles/{roleUID}/assignments",
+      uri: "/api/access-control/roles/{roleUID}/assignments",
       code: 200,
     }),
   ),
@@ -9197,7 +9305,7 @@ export const SetTeamMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
     admins: S.optional(SetTeamMembershipsRequestAdminsList),
     members: S.optional(SetTeamMembershipsRequestMembersList),
   }).pipe(
-    T.Http({ method: "PUT", uri: "/teams/{team_id}/members", code: 200 }),
+    T.Http({ method: "PUT", uri: "/api/teams/{team_id}/members", code: 200 }),
   ),
 ).annotate({
   identifier: "SetTeamMembershipsRequest",
@@ -9223,7 +9331,7 @@ export const SetTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/access-control/teams/{teamId}/roles",
+      uri: "/api/access-control/teams/{teamId}/roles",
       code: 200,
     }),
   ),
@@ -9253,7 +9361,7 @@ export const SetUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/access-control/users/{userId}/roles",
+      uri: "/api/access-control/users/{userId}/roles",
       code: 200,
     }),
   ),
@@ -9270,7 +9378,7 @@ export const StarQueryRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/query-history/star/{query_history_uid}",
+      uri: "/api/query-history/star/{query_history_uid}",
       code: 200,
     }),
   ),
@@ -9319,7 +9427,9 @@ export const TestCreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
     queries: S.optional(TestCreateRecordingRuleRequestQueriesList),
     range: S.optional(S.Number),
     target_ref_id: S.optional(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/recording-rules/test", code: 200 })),
+  }).pipe(
+    T.Http({ method: "POST", uri: "/api/recording-rules/test", code: 200 }),
+  ),
 ).annotate({
   identifier: "TestCreateRecordingRuleRequest",
 }) as any as S.Schema<TestCreateRecordingRuleRequest>;
@@ -9333,7 +9443,7 @@ export const UnstarQueryRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/query-history/star/{query_history_uid}",
+      uri: "/api/query-history/star/{query_history_uid}",
       code: 200,
     }),
   ),
@@ -9365,7 +9475,11 @@ export const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
     time: S.optional(S.Number),
     timeEnd: S.optional(S.Number),
   }).pipe(
-    T.Http({ method: "PUT", uri: "/annotations/{annotation_id}", code: 200 }),
+    T.Http({
+      method: "PUT",
+      uri: "/api/annotations/{annotation_id}",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "UpdateAnnotationRequest",
@@ -9427,7 +9541,7 @@ export const UpdateCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PATCH",
-      uri: "/datasources/uid/{sourceUID}/correlations/{correlationUID}",
+      uri: "/api/datasources/uid/{sourceUID}/correlations/{correlationUID}",
       code: 200,
     }),
   ),
@@ -9454,7 +9568,7 @@ export interface UpdateCurrentOrgRequest {
 export const UpdateCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-  }).pipe(T.Http({ method: "PUT", uri: "/org", code: 200 })),
+  }).pipe(T.Http({ method: "PUT", uri: "/api/org", code: 200 })),
 ).annotate({
   identifier: "UpdateCurrentOrgRequest",
 }) as any as S.Schema<UpdateCurrentOrgRequest>;
@@ -9475,7 +9589,7 @@ export const UpdateCurrentOrgAddressRequest = /*@__PURE__*/ S.suspend(() =>
     country: S.optional(S.String),
     state: S.optional(S.String),
     zipcode: S.optional(S.String),
-  }).pipe(T.Http({ method: "PUT", uri: "/org/address", code: 200 })),
+  }).pipe(T.Http({ method: "PUT", uri: "/api/org/address", code: 200 })),
 ).annotate({
   identifier: "UpdateCurrentOrgAddressRequest",
 }) as any as S.Schema<UpdateCurrentOrgAddressRequest>;
@@ -9522,7 +9636,9 @@ export const UpdateDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
     user: S.optional(S.String),
     version: S.optional(S.Number),
     withCredentials: S.optional(S.Boolean),
-  }).pipe(T.Http({ method: "PUT", uri: "/datasources/uid/{uid}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "PUT", uri: "/api/datasources/uid/{uid}", code: 200 }),
+  ),
 ).annotate({
   identifier: "UpdateDataSourceByUIDRequest",
 }) as any as S.Schema<UpdateDataSourceByUIDRequest>;
@@ -9584,7 +9700,7 @@ export const UpdateFolderPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/folders/{folder_uid}/permissions",
+      uri: "/api/folders/{folder_uid}/permissions",
       code: 200,
     }),
   ),
@@ -9625,7 +9741,7 @@ export const UpdateLibraryElementRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PATCH",
-      uri: "/library-elements/{library_element_uid}",
+      uri: "/api/library-elements/{library_element_uid}",
       code: 200,
     }),
   ),
@@ -9641,7 +9757,7 @@ export const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
-  }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org_id}", code: 200 })),
+  }).pipe(T.Http({ method: "PUT", uri: "/api/orgs/{org_id}", code: 200 })),
 ).annotate({
   identifier: "UpdateOrgRequest",
 }) as any as S.Schema<UpdateOrgRequest>;
@@ -9664,7 +9780,9 @@ export const UpdateOrgAddressRequest = /*@__PURE__*/ S.suspend(() =>
     country: S.optional(S.String),
     state: S.optional(S.String),
     zipcode: S.optional(S.String),
-  }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org_id}/address", code: 200 })),
+  }).pipe(
+    T.Http({ method: "PUT", uri: "/api/orgs/{org_id}/address", code: 200 }),
+  ),
 ).annotate({
   identifier: "UpdateOrgAddressRequest",
 }) as any as S.Schema<UpdateOrgAddressRequest>;
@@ -9684,7 +9802,7 @@ export const UpdateOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/orgs/{org_id}/quotas/{quota_target}",
+      uri: "/api/orgs/{org_id}/quotas/{quota_target}",
       code: 200,
     }),
   ),
@@ -9708,7 +9826,7 @@ export const UpdateOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PATCH",
-      uri: "/orgs/{org_id}/users/{user_id}",
+      uri: "/api/orgs/{org_id}/users/{user_id}",
       code: 200,
     }),
   ),
@@ -9731,7 +9849,9 @@ export const UpdateOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     role: S.optional(UpdateOrgUserForCurrentOrgRequestRole),
-  }).pipe(T.Http({ method: "PATCH", uri: "/org/users/{user_id}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "PATCH", uri: "/api/org/users/{user_id}", code: 200 }),
+  ),
 ).annotate({
   identifier: "UpdateOrgUserForCurrentOrgRequest",
 }) as any as S.Schema<UpdateOrgUserForCurrentOrgRequest>;
@@ -9756,7 +9876,9 @@ export const UpdateProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     provider: S.optional(S.String),
     settings: S.optional(UpdateProviderSettingsRequestSettingsMap),
-  }).pipe(T.Http({ method: "PUT", uri: "/v1/sso-settings/{key}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "PUT", uri: "/api/v1/sso-settings/{key}", code: 200 }),
+  ),
 ).annotate({
   identifier: "UpdateProviderSettingsRequest",
 }) as any as S.Schema<UpdateProviderSettingsRequest>;
@@ -9782,7 +9904,7 @@ export const UpdatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PATCH",
-      uri: "/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
+      uri: "/api/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
       code: 200,
     }),
   ),
@@ -9830,7 +9952,7 @@ export const UpdateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
     queries: S.optional(UpdateRecordingRuleRequestQueriesList),
     range: S.optional(S.Number),
     target_ref_id: S.optional(S.String),
-  }).pipe(T.Http({ method: "PUT", uri: "/recording-rules", code: 200 })),
+  }).pipe(T.Http({ method: "PUT", uri: "/api/recording-rules", code: 200 })),
 ).annotate({
   identifier: "UpdateRecordingRuleRequest",
 }) as any as S.Schema<UpdateRecordingRuleRequest>;
@@ -9863,7 +9985,7 @@ export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/access-control/roles/{roleUID}",
+      uri: "/api/access-control/roles/{roleUID}",
       code: 200,
     }),
   ),
@@ -9893,7 +10015,7 @@ export const UpdateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PATCH",
-      uri: "/serviceaccounts/{serviceAccountId}",
+      uri: "/api/serviceaccounts/{serviceAccountId}",
       code: 200,
     }),
   ),
@@ -9982,7 +10104,7 @@ export const UpdateSignedInUserRequest = /*@__PURE__*/ S.suspend(() =>
     login: S.optional(S.String),
     name: S.optional(S.String),
     theme: S.optional(S.String),
-  }).pipe(T.Http({ method: "PUT", uri: "/user", code: 200 })),
+  }).pipe(T.Http({ method: "PUT", uri: "/api/user", code: 200 })),
 ).annotate({
   identifier: "UpdateSignedInUserRequest",
 }) as any as S.Schema<UpdateSignedInUserRequest>;
@@ -9997,7 +10119,7 @@ export const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
     team_id: S.String.pipe(T.Label()),
     email: S.optional(S.String),
     name: S.optional(S.String),
-  }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}", code: 200 })),
+  }).pipe(T.Http({ method: "PUT", uri: "/api/teams/{team_id}", code: 200 })),
 ).annotate({
   identifier: "UpdateTeamRequest",
 }) as any as S.Schema<UpdateTeamRequest>;
@@ -10018,7 +10140,7 @@ export const UpdateTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/datasources/uid/{uid}/lbac/teams",
+      uri: "/api/datasources/uid/{uid}/lbac/teams",
       code: 200,
     }),
   ),
@@ -10063,7 +10185,7 @@ export const UpdateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/teams/{team_id}/members/{user_id}",
+      uri: "/api/teams/{team_id}/members/{user_id}",
       code: 200,
     }),
   ),
@@ -10126,7 +10248,11 @@ export const UpdateTeamPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
     timezone: S.optional(S.String),
     weekStart: S.optional(S.String),
   }).pipe(
-    T.Http({ method: "PUT", uri: "/teams/{team_id}/preferences", code: 200 }),
+    T.Http({
+      method: "PUT",
+      uri: "/api/teams/{team_id}/preferences",
+      code: 200,
+    }),
   ),
 ).annotate({
   identifier: "UpdateTeamPreferencesRequest",
@@ -10146,7 +10272,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
     login: S.optional(S.String),
     name: S.optional(S.String),
     theme: S.optional(S.String),
-  }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}", code: 200 })),
+  }).pipe(T.Http({ method: "PUT", uri: "/api/users/{user_id}", code: 200 })),
 ).annotate({
   identifier: "UpdateUserRequest",
 }) as any as S.Schema<UpdateUserRequest>;
@@ -10154,7 +10280,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUserEmailRequest {}
 export const UpdateUserEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/user/email/update", code: 200 }),
+    T.Http({ method: "GET", uri: "/api/user/email/update", code: 200 }),
   ),
 ).annotate({
   identifier: "UpdateUserEmailRequest",
@@ -10182,7 +10308,7 @@ export const UpdateUserQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/admin/users/{user_id}/quotas/{quota_target}",
+      uri: "/api/admin/users/{user_id}/quotas/{quota_target}",
       code: 200,
     }),
   ),
@@ -10203,7 +10329,7 @@ export const UploadSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/upload",
+      uri: "/api/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/upload",
       code: 200,
     }),
   ),
@@ -10224,7 +10350,9 @@ export interface UserSetUsingOrgRequest {
 export const UserSetUsingOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
-  }).pipe(T.Http({ method: "POST", uri: "/user/using/{org_id}", code: 200 })),
+  }).pipe(
+    T.Http({ method: "POST", uri: "/api/user/using/{org_id}", code: 200 }),
+  ),
 ).annotate({
   identifier: "UserSetUsingOrgRequest",
 }) as any as S.Schema<UserSetUsingOrgRequest>;
@@ -10238,7 +10366,7 @@ export const ViewPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/public/dashboards/{accessToken}",
+      uri: "/api/public/dashboards/{accessToken}",
       code: 200,
     }),
   ),

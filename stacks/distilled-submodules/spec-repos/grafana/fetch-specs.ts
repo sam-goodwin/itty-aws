@@ -12,6 +12,7 @@
  *
  * Specs are saved to:
  *   ../specs/openapi3.json
+ *   ../specs/*.grafana.app-*.json
  *   ../specs/docs/*.md
  */
 
@@ -19,8 +20,36 @@ import { mkdirSync } from "fs";
 
 /** Upstream repository, as `<owner>/<repo>`. */
 const REPO = "grafana/grafana";
-/** Branch (or tag/commit) to mirror. */
+/** Upstream branch mirrored by the existing Grafana SDK. */
 const REF = "main";
+
+interface SpecFile {
+  readonly path: string;
+  readonly output: string;
+}
+
+const API_FILES: readonly SpecFile[] = [
+  {
+    path: "packages/grafana-openapi/src/apis/dashboard.grafana.app-v2.json",
+    output: "dashboard.grafana.app-v2.json",
+  },
+  {
+    path: "packages/grafana-openapi/src/apis/folder.grafana.app-v1.json",
+    output: "folder.grafana.app-v1.json",
+  },
+  {
+    path: "packages/grafana-openapi/src/apis/playlist.grafana.app-v1.json",
+    output: "playlist.grafana.app-v1.json",
+  },
+  {
+    path: "packages/grafana-openapi/src/apis/rules.alerting.grafana.app-v0alpha1.json",
+    output: "rules.alerting.grafana.app-v0alpha1.json",
+  },
+  {
+    path: "packages/grafana-openapi/src/apis/notifications.alerting.grafana.app-v1beta1.json",
+    output: "notifications.alerting.grafana.app-v1beta1.json",
+  },
+];
 
 const SPECS_DIR = "../specs";
 const DOCS_DIR = `${SPECS_DIR}/docs`;
@@ -117,6 +146,22 @@ async function main() {
   const outputPath = `${SPECS_DIR}/openapi3.json`;
   console.log(`Writing ${outputPath}...`);
   await Bun.write(outputPath, JSON.stringify(spec, null, 2) + "\n");
+
+  for (const file of API_FILES) {
+    const url = rawUrl(file.path);
+    const apiSpec = (await (await fetchResponse(url)).json()) as Record<
+      string,
+      unknown
+    >;
+    if (typeof apiSpec.openapi !== "string" || apiSpec.paths === undefined) {
+      throw new Error(
+        `${url} returned JSON without \`openapi\`/\`paths\` — not an OpenAPI document`,
+      );
+    }
+    const outputPath = `${SPECS_DIR}/${file.output}`;
+    console.log(`Writing ${outputPath}...`);
+    await Bun.write(outputPath, JSON.stringify(apiSpec, null, 2) + "\n");
+  }
 
   for (const file of DOC_FILES) {
     const url = rawUrl(file.path);

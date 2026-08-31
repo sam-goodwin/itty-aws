@@ -7,8 +7,8 @@
  *
  *   request:  credentials → `Authorization: Bearer <token>` + optional
  *             `X-Grafana-Org-Id`, resolved from the calling fiber on every
- *             request. Paths in the spec are relative to `/api`, so the
- *             instance origin is joined with that prefix.
+ *             request. The generated models contain their full `/api` or
+ *             `/apis` path, so requests start at the instance origin.
  *
  *   response: 2xx JSON is the payload (sensitive members delivered as
  *             `Redacted`); non-2xx `{ message?, status? }` bodies map to the
@@ -41,11 +41,8 @@ export type GrafanaOpError =
 /** Context (requirements) shared by every generated Grafana operation. */
 export type GrafanaOpContext = Credentials | HttpClient.HttpClient;
 
-/** Join the instance origin with `/api` unless the caller already included it. */
-const apiBaseUrl = (origin: string): string => {
-  const trimmed = origin.replace(/\/+$/, "");
-  return trimmed.endsWith("/api") ? trimmed : `${trimmed}/api`;
-};
+/** The models own their route prefix, so credentials only provide an origin. */
+const apiBaseUrl = (origin: string): string => origin.replace(/\/+$/, "");
 
 export const GrafanaProtocol: Layer.Layer<API.Protocol> =
   makeRestProtocol<Config>({
