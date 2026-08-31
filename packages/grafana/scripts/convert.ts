@@ -31,29 +31,19 @@ const structuredApi = (group: string, version: string) => (spec: ApiSpec) => {
   const paths: Record<string, Record<string, unknown>> = {};
 
   for (const [route, pathItem] of Object.entries(spec.paths ?? {})) {
-    const publishedPath = route.startsWith("/apis/");
-    const uri = publishedPath
-      ? route
-      : route === "/"
-        ? prefix
-        : `${prefix}/namespaces/{namespace}${route}`;
+    const uri =
+      route === "/" ? prefix : `${prefix}/namespaces/{namespace}${route}`;
     paths[uri] = {
       ...pathItem,
-      ...(publishedPath
-        ? {}
-        : {
-            parameters: [
-              ...(Array.isArray(pathItem.parameters)
-                ? pathItem.parameters
-                : []),
-              {
-                name: "namespace",
-                in: "path",
-                required: true,
-                schema: { type: "string" },
-              },
-            ],
-          }),
+      parameters: [
+        ...(Array.isArray(pathItem.parameters) ? pathItem.parameters : []),
+        {
+          name: "namespace",
+          in: "path",
+          required: true,
+          schema: { type: "string" },
+        },
+      ],
     };
   }
 
@@ -116,36 +106,6 @@ await runOpenApiConvert({
       options: {
         namespace: "com.grafana.alerting.notifications",
         serviceName: "AlertingNotifications",
-      },
-    },
-    {
-      name: "alertEnrichment",
-      specPath:
-        "specs/spec-mirror-grafana/specs/alertenrichment.grafana.app-v1beta1.json",
-      preprocess: structuredApi("alertenrichment.grafana.app", "v1beta1"),
-      options: {
-        namespace: "com.grafana.alerting.enrichment",
-        serviceName: "AlertEnrichment",
-      },
-    },
-    {
-      name: "banners",
-      specPath:
-        "specs/spec-mirror-grafana/specs/banners.grafana.app-v0alpha1.json",
-      preprocess: structuredApi("banners.grafana.app", "v0alpha1"),
-      options: {
-        namespace: "com.grafana.banners",
-        serviceName: "Banners",
-      },
-    },
-    {
-      name: "secrets",
-      specPath:
-        "specs/spec-mirror-grafana/specs/secret.grafana.app-v1beta1.json",
-      preprocess: structuredApi("secret.grafana.app", "v1beta1"),
-      options: {
-        namespace: "com.grafana.secrets",
-        serviceName: "Secrets",
       },
     },
   ],
