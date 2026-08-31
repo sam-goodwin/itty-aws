@@ -55,6 +55,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   },
   { package: "coinbase" },
   { package: "discord" },
+  { package: "doppler" },
   { package: "expo-eas" },
   { package: "fly-io" },
   { package: "gcp" },
