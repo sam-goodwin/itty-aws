@@ -76,6 +76,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "vercel" },
   { package: "whop" },
   { package: "workos" },
+  { package: "zendesk" },
 ];
 
 /** A scaffold file: where it is read from, and where it lands in the mirror. */
