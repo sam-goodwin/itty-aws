@@ -128,3 +128,8 @@
 	url = https://github.com/distilled-mirror/spec-mirror-modal.git
 	ignore = dirty
 	shallow = true
+[submodule "packages/datadog/specs/spec-mirror-datadog"]
+	path = packages/datadog/specs/spec-mirror-datadog
+	url = https://github.com/distilled-mirror/spec-mirror-datadog.git
+	ignore = dirty
+	shallow = true
