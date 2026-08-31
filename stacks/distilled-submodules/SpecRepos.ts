@@ -69,6 +69,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "posthog" },
   { package: "prisma-postgres" },
   { package: "railway" },
+  { package: "sentry" },
   { package: "stripe" },
   { package: "supabase" },
   { package: "turso" },
