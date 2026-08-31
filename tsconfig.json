@@ -30,6 +30,8 @@
     { "path": "./packages/kubernetes/tsconfig.scripts.json" },
     { "path": "./packages/mongodb-atlas/tsconfig.json" },
     { "path": "./packages/mongodb-atlas/tsconfig.scripts.json" },
+    { "path": "./packages/modal/tsconfig.json" },
+    { "path": "./packages/modal/tsconfig.scripts.json" },
     { "path": "./packages/neon/tsconfig.json" },
     { "path": "./packages/neon/tsconfig.scripts.json" },
     { "path": "./packages/planetscale/tsconfig.json" },

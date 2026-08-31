@@ -1,0 +1,143 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.modal.cluster#ClusterGetRequest": {
+      "type": "structure",
+      "members": {
+        "clusterId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.cluster#ClusterStats": {
+      "type": "structure",
+      "members": {
+        "appId": {
+          "target": "smithy.api#String"
+        },
+        "taskIds": {
+          "target": "com.modal.cluster#StringList"
+        },
+        "clusterId": {
+          "target": "smithy.api#String"
+        },
+        "startedAt": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.modal.cluster#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.modal.cluster#ClusterGetResponse": {
+      "type": "structure",
+      "members": {
+        "cluster": {
+          "target": "com.modal.cluster#ClusterStats"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.cluster#ClusterGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.cluster#ClusterGetRequest"
+      },
+      "output": {
+        "target": "com.modal.cluster#ClusterGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/ClusterGet",
+          "code": 200
+        },
+        "smithy.api#documentation": "Clusters"
+      }
+    },
+    "com.modal.cluster#ClusterListRequest": {
+      "type": "structure",
+      "members": {
+        "environmentName": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.cluster#ClusterStatsList": {
+      "type": "list",
+      "member": {
+        "target": "com.modal.cluster#ClusterStats"
+      }
+    },
+    "com.modal.cluster#ClusterListResponse": {
+      "type": "structure",
+      "members": {
+        "clusters": {
+          "target": "com.modal.cluster#ClusterStatsList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.cluster#ClusterList": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.cluster#ClusterListRequest"
+      },
+      "output": {
+        "target": "com.modal.cluster#ClusterListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/ClusterList",
+          "code": 200
+        }
+      }
+    },
+    "com.modal.cluster#ClusterService": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.modal.cluster#ClusterGet"
+        },
+        {
+          "target": "com.modal.cluster#ClusterList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Modal Cluster",
+        "smithy.api#documentation": "modal.client.ModalClient RPCs whose names start with `Cluster`. Each operation is POST /modal.client.ModalClient/<Method> with a proto3 JSON body."
+      }
+    }
+  }
+}
