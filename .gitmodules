@@ -123,3 +123,8 @@
 	url = https://github.com/distilled-mirror/spec-mirror-whop.git
 	ignore = dirty
 	shallow = true
+[submodule "packages/modal/specs/spec-mirror-modal"]
+	path = packages/modal/specs/spec-mirror-modal
+	url = https://github.com/distilled-mirror/spec-mirror-modal.git
+	ignore = dirty
+	shallow = true

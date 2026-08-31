@@ -1,0 +1,316 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.modal.webhook#WebhookTokenCreateRequest": {
+      "type": "structure",
+      "members": {
+        "scoped": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenCreateResponse": {
+      "type": "structure",
+      "members": {
+        "tokenId": {
+          "target": "smithy.api#String"
+        },
+        "tokenSecret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.webhook#WebhookTokenCreateRequest"
+      },
+      "output": {
+        "target": "com.modal.webhook#WebhookTokenCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/WebhookTokenCreate",
+          "code": 200
+        },
+        "smithy.api#documentation": "Webhook tokens (proxy tokens)"
+      }
+    },
+    "com.modal.webhook#WebhookTokenDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "tokenId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.webhook#WebhookTokenDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/WebhookTokenDelete",
+          "code": 200
+        }
+      }
+    },
+    "com.modal.webhook#WebhookTokenEnvironmentAddRequest": {
+      "type": "structure",
+      "members": {
+        "tokenId": {
+          "target": "smithy.api#String"
+        },
+        "environmentId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenEnvironmentAdd": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.webhook#WebhookTokenEnvironmentAddRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/WebhookTokenEnvironmentAdd",
+          "code": 200
+        }
+      }
+    },
+    "com.modal.webhook#WebhookTokenEnvironmentListRequest": {
+      "type": "structure",
+      "members": {
+        "tokenId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.webhook#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.modal.webhook#WebhookTokenEnvironmentListResponse": {
+      "type": "structure",
+      "members": {
+        "environmentIds": {
+          "target": "com.modal.webhook#StringList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenEnvironmentList": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.webhook#WebhookTokenEnvironmentListRequest"
+      },
+      "output": {
+        "target": "com.modal.webhook#WebhookTokenEnvironmentListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/WebhookTokenEnvironmentList",
+          "code": 200
+        }
+      }
+    },
+    "com.modal.webhook#WebhookTokenEnvironmentRemoveRequest": {
+      "type": "structure",
+      "members": {
+        "tokenId": {
+          "target": "smithy.api#String"
+        },
+        "environmentId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenEnvironmentRemove": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.webhook#WebhookTokenEnvironmentRemoveRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/WebhookTokenEnvironmentRemove",
+          "code": 200
+        }
+      }
+    },
+    "com.modal.webhook#WebhookToken": {
+      "type": "structure",
+      "members": {
+        "tokenId": {
+          "target": "smithy.api#String"
+        },
+        "createdAt": {
+          "target": "smithy.api#Double"
+        },
+        "scoped": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional URL suffix added for ephemeral Apps"
+      }
+    },
+    "com.modal.webhook#WebhookTokenList2": {
+      "type": "list",
+      "member": {
+        "target": "com.modal.webhook#WebhookToken"
+      }
+    },
+    "com.modal.webhook#WebhookTokenListResponse": {
+      "type": "structure",
+      "members": {
+        "tokens": {
+          "target": "com.modal.webhook#WebhookTokenList2"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenList": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "output": {
+        "target": "com.modal.webhook#WebhookTokenListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/WebhookTokenList",
+          "code": 200
+        }
+      }
+    },
+    "com.modal.webhook#WebhookTokenListForEnvironmentRequest": {
+      "type": "structure",
+      "members": {
+        "environmentName": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenListForEnvironmentResponse": {
+      "type": "structure",
+      "members": {
+        "tokens": {
+          "target": "com.modal.webhook#WebhookTokenList2"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.webhook#WebhookTokenListForEnvironment": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.webhook#WebhookTokenListForEnvironmentRequest"
+      },
+      "output": {
+        "target": "com.modal.webhook#WebhookTokenListForEnvironmentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/WebhookTokenListForEnvironment",
+          "code": 200
+        }
+      }
+    },
+    "com.modal.webhook#WebhookService": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.modal.webhook#WebhookTokenCreate"
+        },
+        {
+          "target": "com.modal.webhook#WebhookTokenDelete"
+        },
+        {
+          "target": "com.modal.webhook#WebhookTokenEnvironmentAdd"
+        },
+        {
+          "target": "com.modal.webhook#WebhookTokenEnvironmentList"
+        },
+        {
+          "target": "com.modal.webhook#WebhookTokenEnvironmentRemove"
+        },
+        {
+          "target": "com.modal.webhook#WebhookTokenList"
+        },
+        {
+          "target": "com.modal.webhook#WebhookTokenListForEnvironment"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Modal Webhook",
+        "smithy.api#documentation": "modal.client.ModalClient RPCs whose names start with `Webhook`. Each operation is POST /modal.client.ModalClient/<Method> with a proto3 JSON body."
+      }
+    }
+  }
+}

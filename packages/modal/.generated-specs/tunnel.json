@@ -1,0 +1,146 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.modal.tunnel#TunnelType": {
+      "type": "enum",
+      "members": {
+        "TUNNEL_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TUNNEL_TYPE_UNSPECIFIED"
+          }
+        },
+        "TUNNEL_TYPE_H2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TUNNEL_TYPE_H2"
+          }
+        }
+      }
+    },
+    "com.modal.tunnel#TunnelStartRequest": {
+      "type": "structure",
+      "members": {
+        "port": {
+          "target": "smithy.api#Integer"
+        },
+        "unencrypted": {
+          "target": "smithy.api#Boolean"
+        },
+        "tunnelType": {
+          "target": "com.modal.tunnel#TunnelType"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.tunnel#TunnelStartResponse": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String"
+        },
+        "port": {
+          "target": "smithy.api#Integer"
+        },
+        "unencryptedHost": {
+          "target": "smithy.api#String"
+        },
+        "unencryptedPort": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.tunnel#TunnelStart": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.tunnel#TunnelStartRequest"
+      },
+      "output": {
+        "target": "com.modal.tunnel#TunnelStartResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/TunnelStart",
+          "code": 200
+        },
+        "smithy.api#documentation": "Tunnels"
+      }
+    },
+    "com.modal.tunnel#TunnelStopRequest": {
+      "type": "structure",
+      "members": {
+        "port": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.tunnel#TunnelStopResponse": {
+      "type": "structure",
+      "members": {
+        "exists": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.tunnel#TunnelStop": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.tunnel#TunnelStopRequest"
+      },
+      "output": {
+        "target": "com.modal.tunnel#TunnelStopResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/TunnelStop",
+          "code": 200
+        }
+      }
+    },
+    "com.modal.tunnel#TunnelService": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.modal.tunnel#TunnelStart"
+        },
+        {
+          "target": "com.modal.tunnel#TunnelStop"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Modal Tunnel",
+        "smithy.api#documentation": "modal.client.ModalClient RPCs whose names start with `Tunnel`. Each operation is POST /modal.client.ModalClient/<Method> with a proto3 JSON body."
+      }
+    }
+  }
+}

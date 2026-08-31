@@ -1,0 +1,89 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.modal.template#TemplateListRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.modal.template#TemplateListResponseTemplateListItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "repo": {
+          "target": "smithy.api#String"
+        },
+        "ref": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.modal.template#TemplateListResponseTemplateListItemList": {
+      "type": "list",
+      "member": {
+        "target": "com.modal.template#TemplateListResponseTemplateListItem"
+      }
+    },
+    "com.modal.template#TemplateListResponse": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.modal.template#TemplateListResponseTemplateListItemList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.modal.template#TemplateList": {
+      "type": "operation",
+      "input": {
+        "target": "com.modal.template#TemplateListRequest"
+      },
+      "output": {
+        "target": "com.modal.template#TemplateListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/modal.client.ModalClient/TemplateList",
+          "code": 200
+        },
+        "smithy.api#documentation": "Templates"
+      }
+    },
+    "com.modal.template#TemplateService": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.modal.template#TemplateList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Modal Template",
+        "smithy.api#documentation": "modal.client.ModalClient RPCs whose names start with `Template`. Each operation is POST /modal.client.ModalClient/<Method> with a proto3 JSON body."
+      }
+    }
+  }
+}
