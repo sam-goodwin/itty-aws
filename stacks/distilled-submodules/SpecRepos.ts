@@ -41,18 +41,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "aws" },
   { package: "axiom" },
   { package: "azure" },
-  {
-    package: "cloudflare",
-    // developers.cloudflare.com migrated to Astro/Starlight and now serves the
-    // full HTML page at every `<page>/index.md` URL — including the ones its
-    // own /api/llms.txt still advertises as markdown. The generator reads
-    // `specs/api/resources/**\/methods/**\/index.md`, so until upstream serves
-    // markdown again (or the generator moves to cloudflare/api-schemas, which
-    // publishes a real 24 MB openapi.json) there is nothing correct to mirror.
-    // packages/cloudflare/scripts/download-api-docs.ts has the same problem.
-    blocked:
-      "developers.cloudflare.com no longer serves markdown at <page>/index.md",
-  },
+  { package: "cloudflare" },
   { package: "coinbase" },
   { package: "discord" },
   { package: "expo-eas" },

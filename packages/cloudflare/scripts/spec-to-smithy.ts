@@ -3,8 +3,9 @@
  * spec-to-smithy — convert the downloaded Cloudflare API markdown specs into
  * Smithy 2.0 JSON models.
  *
- * Input:  specs/api/resources/**\/methods/**\/index.md
- *         (the per-method markdown pages produced by download-api-docs.ts)
+ * Input:  specs/spec-mirror-cloudflare/specs/api/resources/**\/methods/**\/index.md
+ *         (the per-method markdown pages the spec-mirror fetch script
+ *         downloads from developers.cloudflare.com)
  * Output: .generated-specs/*.json  (one Smithy JSON model per top-level
  *         resource, plus a shared protocol model)
  *
@@ -34,9 +35,10 @@
  *   bun scripts/spec-to-smithy.ts
  *   bun scripts/spec-to-smithy.ts --resource ai          # one top-level resource
  *   bun scripts/spec-to-smithy.ts --limit 50             # first N operations
- *   bun scripts/spec-to-smithy.ts --specs specs/api/resources --out .generated-specs
+ *   bun scripts/spec-to-smithy.ts --specs specs/spec-mirror-cloudflare/specs/api/resources --out .generated-specs
  */
 
+import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 import { BunRuntime, BunServices } from "@effect/platform-bun";
 import { Console, Effect } from "effect";
 import * as FileSystem from "effect/FileSystem";
@@ -239,7 +241,7 @@ const parseFieldTree = (lines: string[]): FieldNode[] => {
   return roots;
 };
 
-const parseMarkdown = (md: string): ParsedOp | null => {
+const parseLegacyMarkdown = (md: string): ParsedOp | null => {
   const lines = md.split(/\r?\n/);
 
   let title = "";
@@ -308,6 +310,254 @@ const parseMarkdown = (md: string): ParsedOp | null => {
     returns: section("Returns"),
   };
 };
+
+// ============================================================================
+// Starlight markdown (developers.cloudflare.com since the Astro migration)
+// ============================================================================
+
+/** Envelope keys that belong at the Returns root, never nested under `result`. */
+const RETURNS_ROOT_KEYS = new Set([
+  "success",
+  "errors",
+  "messages",
+  "result",
+  "result_info",
+]);
+
+const unescapeMd = (s: string): string =>
+  s.replace(/\\([\\`*_~[\]()#+\-.!_>])/g, "$1");
+
+const stripLinks = (s: string): string =>
+  s.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1");
+
+const tidyType = (s: string): string =>
+  stripLinks(unescapeMd(s)).replace(/\s+/g, " ").trim();
+
+const SECTION_HEADING = /^(#{2,6})\s+(.+?)(?:\s*Expand Collapse)?\s*$/;
+
+const FIELD_LINE = /^("[\w$.-]+"|[\w$.-]+)\s*:\s+(.+)$/;
+const ARM_LINE = /^("(?:[^"\\]|\\.)+"|\d+(?:\.\d+)?)$/;
+const MORE_CHILDREN = /^\d+\s+more$/i;
+
+const skipSection = (name: string): boolean => {
+  const n = name.toLowerCase();
+  return (
+    n.startsWith("security") ||
+    n.startsWith("accepted permissions") ||
+    n.includes("example") ||
+    n === "http" ||
+    n === "typescript" ||
+    n === "python" ||
+    n === "go" ||
+    n === "terraform"
+  );
+};
+
+const canonicalSection = (raw: string): string | undefined => {
+  const name = raw.replace(/JSON$/i, "").trim();
+  if (/^path parameters$/i.test(name)) return "Path Parameters";
+  if (/^query parameters$/i.test(name)) return "Query Parameters";
+  if (/^header parameters$/i.test(name)) return "Header Parameters";
+  if (/^body parameters$/i.test(name)) return "Body Parameters";
+  if (/^returns$/i.test(name)) return "Returns";
+  return undefined;
+};
+
+/** Child names declared in `object { a, b, 3 more }`. */
+const declaredChildren = (
+  typeStr: string,
+): { names: Set<string>; openEnded: boolean } | undefined => {
+  const start = typeStr.lastIndexOf("{");
+  const end = typeStr.lastIndexOf("}");
+  if (start < 0 || end < start) return undefined;
+  const names = new Set<string>();
+  let openEnded = false;
+  for (const part of typeStr.slice(start + 1, end).split(",")) {
+    const token = part.trim();
+    if (!token) continue;
+    if (MORE_CHILDREN.test(token)) {
+      openEnded = true;
+      continue;
+    }
+    names.add(token);
+  }
+  if (names.size === 0 && !openEnded) return undefined;
+  return { names, openEnded };
+};
+
+/**
+ * Starlight's markdown dump loses bullet indentation: nested fields follow
+ * their parent as sibling paragraphs. Rebuild the tree from the `{ a, b }`
+ * previews (and treat truncated `N more` lists as open-ended until an
+ * envelope key or a sibling declared on an ancestor shows up).
+ */
+const parseStarlightFieldTree = (
+  lines: string[],
+  section: string,
+): FieldNode[] => {
+  const roots: FieldNode[] = [];
+  const stack: {
+    node: FieldNode;
+    declared?: { names: Set<string>; openEnded: boolean };
+  }[] = [];
+
+  const attach = (node: FieldNode) => {
+    const isReturnRoot =
+      section === "Returns" && RETURNS_ROOT_KEYS.has(node.name);
+    if (isReturnRoot) {
+      roots.push(node);
+      stack.length = 0;
+      const declared = declaredChildren(node.typeStr);
+      stack.push({ node, declared });
+      return;
+    }
+    while (stack.length) {
+      const top = stack[stack.length - 1]!;
+      if (!top.declared) {
+        stack.pop();
+        continue;
+      }
+      if (
+        top.declared.names.has(node.name) ||
+        (top.declared.openEnded && !RETURNS_ROOT_KEYS.has(node.name))
+      ) {
+        top.node.children.push(node);
+        const declared = declaredChildren(node.typeStr);
+        stack.push({ node, declared });
+        return;
+      }
+      stack.pop();
+    }
+    roots.push(node);
+    const declared = declaredChildren(node.typeStr);
+    stack.push({ node, declared });
+  };
+
+  let expectingArms = false;
+  for (const raw of lines) {
+    const line = stripLinks(unescapeMd(raw)).trim();
+    if (!line) continue;
+    if (line.startsWith("```")) continue;
+
+    if (/^one of the following:?$/i.test(line)) {
+      expectingArms = true;
+      continue;
+    }
+
+    const field = line.match(FIELD_LINE);
+    if (field) {
+      expectingArms = false;
+      let name = field[1]!;
+      if (name.length >= 2 && name.startsWith('"') && name.endsWith('"')) {
+        name = name.slice(1, -1);
+      }
+      attach({
+        name,
+        typeStr: tidyType(field[2]!),
+        sep: ":",
+        children: [],
+      });
+      continue;
+    }
+
+    const arm = expectingArms ? line.match(ARM_LINE) : null;
+    if (arm && stack.length) {
+      stack[stack.length - 1]!.node.children.push({
+        name: "",
+        typeStr: arm[1]!,
+        sep: "bare",
+        children: [],
+      });
+      continue;
+    }
+
+    // `* equal` / constraint lines (`maxLength32`, `minimum1`) → docs.
+    const text = line.replace(/^\*\s+/, "");
+    if (text && stack.length) {
+      const node = stack[stack.length - 1]!.node;
+      if (!node.doc) node.doc = text;
+    }
+  }
+
+  return roots;
+};
+
+const parseStarlightMarkdown = (md: string): ParsedOp | null => {
+  const lines = md.split(/\r?\n/);
+
+  let title = "";
+  let method = "";
+  let uri = "";
+  const descLines: string[] = [];
+  const sections = new Map<string, string[]>();
+
+  let i = 0;
+  for (; i < lines.length; i++) {
+    const h = unescapeMd(lines[i]!).match(/^#\s+(.+?)\s*$/);
+    if (h) {
+      title = h[1]!;
+      i++;
+      break;
+    }
+  }
+
+  for (; i < lines.length; i++) {
+    const line = unescapeMd(lines[i]!).trim();
+    if (SECTION_HEADING.test(line)) break;
+    const mm = line.match(/^(GET|POST|PUT|PATCH|DELETE)\s*(\/.*)$/i);
+    if (mm) {
+      method = mm[1]!.toUpperCase();
+      uri = mm[2]!.trim();
+      continue;
+    }
+    if (method && line && !line.startsWith("**") && line !== "---") {
+      descLines.push(line);
+    }
+  }
+
+  if (!method || !uri) return null;
+
+  let current: string | null = null;
+  for (; i < lines.length; i++) {
+    const raw = unescapeMd(lines[i]!);
+    const h = raw.match(SECTION_HEADING);
+    if (h) {
+      const canonical = canonicalSection(h[2]!.trim());
+      if (canonical) {
+        current = canonical;
+        if (!sections.has(current)) sections.set(current, []);
+        continue;
+      }
+      if (skipSection(h[2]!.trim()) || h[1] === "#" || h[1] === "##") {
+        current = null;
+      }
+      continue;
+    }
+    if (current) sections.get(current)!.push(raw);
+  }
+
+  const section = (name: string): FieldNode[] => {
+    const l = sections.get(name);
+    return l ? parseStarlightFieldTree(l, name) : [];
+  };
+
+  return {
+    title,
+    method,
+    uri: uri.split(/[?#]/)[0],
+    doc: descLines.join(" ").trim() || undefined,
+    pathParams: section("Path Parameters"),
+    queryParams: section("Query Parameters"),
+    headerParams: section("Header Parameters"),
+    bodyParams: section("Body Parameters"),
+    returns: section("Returns"),
+  };
+};
+
+const parseMarkdown = (md: string): ParsedOp | null =>
+  /^\*\*(get|post|put|patch|delete)\*\*/im.test(md)
+    ? parseLegacyMarkdown(md)
+    : parseStarlightMarkdown(md);
 
 // ============================================================================
 // Smithy shape construction
@@ -1219,7 +1469,10 @@ const splitDualScope = (
         } as FieldNode,
         ...parsed.pathParams.filter(
           (p) =>
-            p.name !== "accounts_or_zones" && p.name !== "account_or_zone_id",
+            p.name !== "accounts_or_zones" &&
+            p.name !== "account_or_zone_id" &&
+            p.name !== "account_id" &&
+            p.name !== "zone_id",
         ),
       ],
     },
@@ -1605,7 +1858,7 @@ const command = Command.make(
   "spec-to-smithy",
   {
     specs: Flag.string("specs").pipe(
-      Flag.withDefault("specs/api/resources"),
+      Flag.withDefault("specs/spec-mirror-cloudflare/specs/api/resources"),
       Flag.withDescription("Directory of downloaded markdown specs"),
     ),
     out: Flag.string("out").pipe(
@@ -1626,7 +1879,7 @@ const command = Command.make(
       const fs = yield* FileSystem.FileSystem;
       const path = yield* Path.Path;
       const root = path.resolve(import.meta.dir, "..");
-      const specsDir = path.resolve(root, config.specs);
+      const specsDir = resolveSpecPath(root, config.specs);
       const outDir = path.resolve(root, config.out);
 
       yield* Console.log("🛠️  spec-to-smithy");
