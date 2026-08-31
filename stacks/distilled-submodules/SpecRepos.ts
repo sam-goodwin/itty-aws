@@ -65,6 +65,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "mongodb-atlas" },
   { package: "modal" },
   { package: "neon" },
+  { package: "ovh" },
   { package: "planetscale" },
   { package: "posthog" },
   { package: "prisma-postgres" },
