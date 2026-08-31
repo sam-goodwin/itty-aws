@@ -71,6 +71,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "railway" },
   { package: "stripe" },
   { package: "supabase" },
+  { package: "surrealdb" },
   { package: "turso" },
   { package: "typesense" },
   { package: "vercel" },
