@@ -128,3 +128,8 @@
 	url = https://github.com/distilled-mirror/spec-mirror-modal.git
 	ignore = dirty
 	shallow = true
+[submodule "packages/chronosphere/specs/spec-mirror-chronosphere"]
+	path = packages/chronosphere/specs/spec-mirror-chronosphere
+	url = https://github.com/distilled-mirror/spec-mirror-chronosphere.git
+	ignore = dirty
+	shallow = true
