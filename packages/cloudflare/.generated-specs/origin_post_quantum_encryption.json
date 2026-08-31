@@ -201,6 +201,17 @@
         }
       }
     },
+    "com.cloudflare.origin_post_quantum_encryption#UpdateResponseValue2": {
+      "type": "enum",
+      "members": {
+        "PREFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preferred"
+          }
+        }
+      }
+    },
     "com.cloudflare.origin_post_quantum_encryption#UpdateResponse": {
       "type": "structure",
       "members": {
@@ -229,6 +240,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Last time this setting was modified."
+          }
+        },
+        "value_2": {
+          "target": "com.cloudflare.origin_post_quantum_encryption#UpdateResponseValue2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
           }
         }
       },

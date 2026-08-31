@@ -61,6 +61,7 @@
         "upstream_ips": {
           "target": "com.cloudflare.dns_firewall#CreateRequestUpstreamIpsList",
           "traits": {
+            "smithy.api#documentation": "minLength1",
             "smithy.api#required": {}
           }
         },
@@ -91,19 +92,19 @@
         "maximum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as"
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting."
           }
         },
         "minimum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as"
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting."
           }
         },
         "negative_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative"
+            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers."
           }
         },
         "ratelimit": {
@@ -152,6 +153,17 @@
         }
       }
     },
+    "com.cloudflare.dns_firewall#CreateResponseRetries": {
+      "type": "intEnum",
+      "members": {
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        }
+      }
+    },
     "com.cloudflare.dns_firewall#CreateResponse": {
       "type": "structure",
       "members": {
@@ -185,14 +197,14 @@
         "maximum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as",
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting.",
             "smithy.api#required": {}
           }
         },
         "minimum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as",
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting.",
             "smithy.api#required": {}
           }
         },
@@ -213,7 +225,7 @@
         "negative_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative",
+            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
             "smithy.api#required": {}
           }
         },
@@ -234,6 +246,7 @@
         "upstream_ips": {
           "target": "com.cloudflare.dns_firewall#CreateResponseUpstreamIpsList",
           "traits": {
+            "smithy.api#documentation": "minLength1",
             "smithy.api#required": {}
           }
         },
@@ -241,6 +254,70 @@
           "target": "com.cloudflare.dns_firewall#CreateResponseAttackMitigation",
           "traits": {
             "smithy.api#documentation": "Attack mitigation settings"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "upstream_ips_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"192.0.2.1\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "upstream_ips"
+          }
+        },
+        "deprecate_any_requests_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "deprecate_any_requests"
+          }
+        },
+        "dns_firewall_ip_count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "maximum_cache_ttl_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "maximum_cache_ttl"
+          }
+        },
+        "minimum_cache_ttl_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "minimum_cache_ttl"
+          }
+        },
+        "negative_cache_ttl_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "negative_cache_ttl"
+          }
+        },
+        "ratelimit_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ratelimit"
+          }
+        },
+        "retries_2": {
+          "target": "com.cloudflare.dns_firewall#CreateResponseRetries",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "retries"
           }
         }
       },
@@ -386,13 +463,13 @@
         "maximum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as"
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting."
           }
         },
         "minimum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as"
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting."
           }
         },
         "name": {
@@ -404,7 +481,7 @@
         "negative_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative"
+            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers."
           }
         },
         "ratelimit": {
@@ -420,7 +497,10 @@
           }
         },
         "upstream_ips": {
-          "target": "com.cloudflare.dns_firewall#EditRequestUpstreamIpsList"
+          "target": "com.cloudflare.dns_firewall#EditRequestUpstreamIpsList",
+          "traits": {
+            "smithy.api#documentation": "minLength1"
+          }
         }
       },
       "traits": {
@@ -489,14 +569,14 @@
         "maximum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as",
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting.",
             "smithy.api#required": {}
           }
         },
         "minimum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as",
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting.",
             "smithy.api#required": {}
           }
         },
@@ -517,7 +597,7 @@
         "negative_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative",
+            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
             "smithy.api#required": {}
           }
         },
@@ -538,6 +618,7 @@
         "upstream_ips": {
           "target": "com.cloudflare.dns_firewall#EditResponseUpstreamIpsList",
           "traits": {
+            "smithy.api#documentation": "minLength1",
             "smithy.api#required": {}
           }
         },
@@ -545,6 +626,63 @@
           "target": "com.cloudflare.dns_firewall#EditResponseAttackMitigation",
           "traits": {
             "smithy.api#documentation": "Attack mitigation settings"
+          }
+        },
+        "deprecate_any_requests_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "deprecate_any_requests"
+          }
+        },
+        "maximum_cache_ttl_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "maximum_cache_ttl"
+          }
+        },
+        "minimum_cache_ttl_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "minimum_cache_ttl"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "negative_cache_ttl_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "negative_cache_ttl"
+          }
+        },
+        "ratelimit_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ratelimit"
+          }
+        },
+        "retries_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "retries"
+          }
+        },
+        "upstream_ips_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"192.0.2.1\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "upstream_ips"
           }
         }
       },
@@ -656,14 +794,14 @@
         "maximum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as",
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting.",
             "smithy.api#required": {}
           }
         },
         "minimum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as",
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting.",
             "smithy.api#required": {}
           }
         },
@@ -684,7 +822,7 @@
         "negative_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative",
+            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
             "smithy.api#required": {}
           }
         },
@@ -705,6 +843,7 @@
         "upstream_ips": {
           "target": "com.cloudflare.dns_firewall#GetResponseUpstreamIpsList",
           "traits": {
+            "smithy.api#documentation": "minLength1",
             "smithy.api#required": {}
           }
         },
@@ -830,14 +969,14 @@
         "maximum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as",
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting.",
             "smithy.api#required": {}
           }
         },
         "minimum_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as",
+            "smithy.api#documentation": "By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting.",
             "smithy.api#required": {}
           }
         },
@@ -858,7 +997,7 @@
         "negative_cache_ttl": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative",
+            "smithy.api#documentation": "This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
             "smithy.api#required": {}
           }
         },
@@ -879,6 +1018,7 @@
         "upstream_ips": {
           "target": "com.cloudflare.dns_firewall#ListResultItemUpstreamIpsList",
           "traits": {
+            "smithy.api#documentation": "minLength1",
             "smithy.api#required": {}
           }
         },
@@ -958,7 +1098,7 @@
         "filters": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Segmentation filter in 'attribute operator value' format.",
+            "smithy.api#documentation": "Segmentation filter in ‘attribute operator value’ format.",
             "smithy.api#httpQuery": "filters"
           }
         },
@@ -1098,13 +1238,27 @@
         "filters": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Segmentation filter in 'attribute operator value' format."
+            "smithy.api#documentation": "Segmentation filter in ‘attribute operator value’ format."
           }
         },
         "sort": {
           "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQuerySortList",
           "traits": {
             "smithy.api#documentation": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending)."
+          }
+        },
+        "rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total number of rows in the result.",
+            "smithy.api#required": {}
+          }
+        },
+        "totals": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Total results for metrics across all data (object mapping metric names to values).",
+            "smithy.api#required": {}
           }
         }
       }
@@ -1143,20 +1297,6 @@
         "query": {
           "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQuery",
           "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "rows": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Total number of rows in the result.",
-            "smithy.api#required": {}
-          }
-        },
-        "totals": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Total results for metrics across all data (object mapping metric names to values).",
             "smithy.api#required": {}
           }
         }
@@ -1278,7 +1418,7 @@
         "filters": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Segmentation filter in 'attribute operator value' format.",
+            "smithy.api#documentation": "Segmentation filter in ‘attribute operator value’ format.",
             "smithy.api#httpQuery": "filters"
           }
         },
@@ -1455,6 +1595,18 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryTimeIntervalsItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryTimeIntervalsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryTimeIntervalsItemList"
+      }
+    },
     "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQuery": {
       "type": "structure",
       "members": {
@@ -1503,7 +1655,7 @@
         "filters": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Segmentation filter in 'attribute operator value' format."
+            "smithy.api#documentation": "Segmentation filter in ‘attribute operator value’ format."
           }
         },
         "sort": {
@@ -1511,19 +1663,28 @@
           "traits": {
             "smithy.api#documentation": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending)."
           }
+        },
+        "rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total number of rows in the result.",
+            "smithy.api#required": {}
+          }
+        },
+        "time_intervals": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryTimeIntervalsList",
+          "traits": {
+            "smithy.api#documentation": "Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time.",
+            "smithy.api#required": {}
+          }
+        },
+        "totals": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Total results for metrics across all data (object mapping metric names to values).",
+            "smithy.api#required": {}
+          }
         }
-      }
-    },
-    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsItemList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsItemList"
       }
     },
     "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponse": {
@@ -1560,27 +1721,6 @@
         "query": {
           "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQuery",
           "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "rows": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Total number of rows in the result.",
-            "smithy.api#required": {}
-          }
-        },
-        "time_intervals": {
-          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsList",
-          "traits": {
-            "smithy.api#documentation": "Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time.",
-            "smithy.api#required": {}
-          }
-        },
-        "totals": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Total results for metrics across all data (object mapping metric names to values).",
             "smithy.api#required": {}
           }
         }

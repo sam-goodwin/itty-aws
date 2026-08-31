@@ -17,6 +17,54 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.r2_data_catalog#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use this to identify the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 bucket name.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Remove child metadata before deleting the catalog.",
+            "smithy.api#httpQuery": "force"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.r2_data_catalog#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.r2_data_catalog#DeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/r2-catalog/{bucket_name}/delete",
+          "code": 200
+        },
+        "smithy.api#documentation": "Removes the catalog from the control plane without deleting R2 bucket objects. Set force=true to remove catalog namespaces, tables, views, and maintenance metadata. Force deletion is limited to a configured catalog object count."
+      }
+    },
     "com.cloudflare.r2_data_catalog#DisableRequest": {
       "type": "structure",
       "members": {
@@ -239,7 +287,7 @@
         "target_size_mb": {
           "target": "com.cloudflare.r2_data_catalog#GetResponseMaintenanceConfigCompactionTargetSizeMb",
           "traits": {
-            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to “128”.",
             "smithy.api#required": {}
           }
         }
@@ -268,7 +316,7 @@
         "max_snapshot_age": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.",
+            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format:  where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: “7d” (7 days), “48h” (48 hours), “2880m” (2,880 minutes). Defaults to “7d”.",
             "smithy.api#required": {}
           }
         },
@@ -481,7 +529,7 @@
         "target_size_mb": {
           "target": "com.cloudflare.r2_data_catalog#ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb",
           "traits": {
-            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to “128”.",
             "smithy.api#required": {}
           }
         }
@@ -510,7 +558,7 @@
         "max_snapshot_age": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.",
+            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format:  where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: “7d” (7 days), “48h” (48 hours), “2880m” (2,880 minutes). Defaults to “7d”.",
             "smithy.api#required": {}
           }
         },
@@ -795,7 +843,7 @@
         "target_size_mb": {
           "target": "com.cloudflare.r2_data_catalog#MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb",
           "traits": {
-            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to “128”.",
             "smithy.api#required": {}
           }
         }
@@ -824,7 +872,7 @@
         "max_snapshot_age": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.",
+            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format:  where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: “7d” (7 days), “48h” (48 hours), “2880m” (2,880 minutes). Defaults to “7d”.",
             "smithy.api#required": {}
           }
         },
@@ -1100,7 +1148,7 @@
         "target_size_mb": {
           "target": "com.cloudflare.r2_data_catalog#MaintenanceConfigsUpdateResponseCompactionTargetSizeMb",
           "traits": {
-            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to “128”.",
             "smithy.api#required": {}
           }
         }
@@ -1129,7 +1177,7 @@
         "max_snapshot_age": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.",
+            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format:  where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: “7d” (7 days), “48h” (48 hours), “2880m” (2,880 minutes). Defaults to “7d”.",
             "smithy.api#required": {}
           }
         },
@@ -1209,35 +1257,35 @@
         "page_size": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Maximum number of namespaces to return per page.",
+            "smithy.api#documentation": "Maximum number of namespaces to return per page. Defaults to 100, maximum 1000.",
             "smithy.api#httpQuery": "page_size"
           }
         },
         "page_token": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Opaque pagination token from a previous response.",
+            "smithy.api#documentation": "Opaque pagination token from a previous response. Use this to fetch the next page of results.",
             "smithy.api#httpQuery": "page_token"
           }
         },
         "parent": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Parent namespace to filter by. Only returns direct children of this namespace.",
+            "smithy.api#documentation": "Parent namespace to filter by. Only returns direct children of this namespace. For nested namespaces, use %1F as separator (e.g., “bronze%1Fanalytics”). Omit this parameter to list top-level namespaces.",
             "smithy.api#httpQuery": "parent"
           }
         },
         "return_details": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether to include additional metadata (timestamps).",
+            "smithy.api#documentation": "Whether to include additional metadata (timestamps). When true, response includes created_at and updated_at arrays.",
             "smithy.api#httpQuery": "return_details"
           }
         },
         "return_uuids": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether to include namespace UUIDs in the response.",
+            "smithy.api#documentation": "Whether to include namespace UUIDs in the response. Set to true to receive the namespace_uuids array.",
             "smithy.api#httpQuery": "return_uuids"
           }
         }
@@ -1270,7 +1318,7 @@
         "namespace": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesListResponseDetailsItemNamespaceList",
           "traits": {
-            "smithy.api#documentation": "Specifies the hierarchical namespace parts as an array of strings.",
+            "smithy.api#documentation": "Specifies the hierarchical namespace parts as an array of strings. For example, [“bronze”, “analytics”] represents the namespace “bronze.analytics”.",
             "smithy.api#required": {}
           }
         },
@@ -1320,19 +1368,19 @@
         "details": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesListResponseDetailsList",
           "traits": {
-            "smithy.api#documentation": "Contains detailed metadata for each namespace when return_details is true."
+            "smithy.api#documentation": "Contains detailed metadata for each namespace when return_details is true. Each object includes the namespace, UUID, and timestamps."
           }
         },
         "namespace_uuids": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesListResponseNamespaceUuidsList",
           "traits": {
-            "smithy.api#documentation": "Contains UUIDs for each namespace when return_uuids is true."
+            "smithy.api#documentation": "Contains UUIDs for each namespace when return_uuids is true. The order corresponds to the namespaces array."
           }
         },
         "next_page_token": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Use this opaque token to fetch the next page of results."
+            "smithy.api#documentation": "Use this opaque token to fetch the next page of results. A null or absent value indicates the last page."
           }
         }
       },
@@ -1388,28 +1436,28 @@
         "page_size": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Maximum number of tables to return per page.",
+            "smithy.api#documentation": "Maximum number of tables to return per page. Defaults to 100, maximum 1000.",
             "smithy.api#httpQuery": "page_size"
           }
         },
         "page_token": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Opaque pagination token from a previous response.",
+            "smithy.api#documentation": "Opaque pagination token from a previous response. Use this to fetch the next page of results.",
             "smithy.api#httpQuery": "page_token"
           }
         },
         "return_details": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether to include additional metadata (timestamps, locations).",
+            "smithy.api#documentation": "Whether to include additional metadata (timestamps, locations). When true, response includes created_at, updated_at, metadata_locations, and locations arrays.",
             "smithy.api#httpQuery": "return_details"
           }
         },
         "return_uuids": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether to include table UUIDs in the response.",
+            "smithy.api#documentation": "Whether to include table UUIDs in the response. Set to true to receive the table_uuids array.",
             "smithy.api#httpQuery": "return_uuids"
           }
         }
@@ -1437,7 +1485,7 @@
         "namespace": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseIdentifiersItemNamespaceList",
           "traits": {
-            "smithy.api#documentation": "Specifies the hierarchical namespace parts as an array of strings.",
+            "smithy.api#documentation": "Specifies the hierarchical namespace parts as an array of strings. For example, [“bronze”, “analytics”] represents the namespace “bronze.analytics”.",
             "smithy.api#required": {}
           }
         }
@@ -1468,10 +1516,16 @@
         "namespace": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseDetailsItemIdentifierNamespaceList",
           "traits": {
-            "smithy.api#documentation": "Specifies the hierarchical namespace parts as an array of strings.",
+            "smithy.api#documentation": "Specifies the hierarchical namespace parts as an array of strings. For example, [“bronze”, “analytics”] represents the namespace “bronze.analytics”.",
             "smithy.api#required": {}
           }
         }
+      }
+    },
+    "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseDetailsItemTableUuidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseDetailsItem": {
@@ -1514,6 +1568,18 @@
           "traits": {
             "smithy.api#documentation": "Shows the last update timestamp in ISO 8601 format. Null if never updated."
           }
+        },
+        "next_page_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use this opaque token to fetch the next page of results. A null or absent value indicates the last page."
+          }
+        },
+        "table_uuids": {
+          "target": "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseDetailsItemTableUuidsList",
+          "traits": {
+            "smithy.api#documentation": "Contains UUIDs for each table when return_uuids is true. The order corresponds to the identifiers array."
+          }
         }
       }
     },
@@ -1521,12 +1587,6 @@
       "type": "list",
       "member": {
         "target": "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseDetailsItem"
-      }
-    },
-    "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseTableUuidsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.r2_data_catalog#NamespacesTablesListResponse": {
@@ -1542,19 +1602,7 @@
         "details": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseDetailsList",
           "traits": {
-            "smithy.api#documentation": "Contains detailed metadata for each table when return_details is true."
-          }
-        },
-        "next_page_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Use this opaque token to fetch the next page of results."
-          }
-        },
-        "table_uuids": {
-          "target": "com.cloudflare.r2_data_catalog#NamespacesTablesListResponseTableUuidsList",
-          "traits": {
-            "smithy.api#documentation": "Contains UUIDs for each table when return_uuids is true."
+            "smithy.api#documentation": "Contains detailed metadata for each table when return_details is true. Each object includes identifier, UUID, timestamps, and locations."
           }
         }
       },
@@ -1678,7 +1726,7 @@
         "target_size_mb": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb",
           "traits": {
-            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to “128”.",
             "smithy.api#required": {}
           }
         }
@@ -1707,7 +1755,7 @@
         "max_snapshot_age": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.",
+            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format:  where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: “7d” (7 days), “48h” (48 hours), “2880m” (2,880 minutes). Defaults to “7d”.",
             "smithy.api#required": {}
           }
         },
@@ -1830,13 +1878,13 @@
         "state": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState",
           "traits": {
-            "smithy.api#documentation": "Updates the state optionally."
+            "smithy.api#documentation": "Specifies the state of maintenance operations."
           }
         },
         "target_size_mb": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb",
           "traits": {
-            "smithy.api#documentation": "Updates the target file size optionally."
+            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to “128”."
           }
         }
       }
@@ -1917,7 +1965,7 @@
         "compaction": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesTablesMaintenanceConfigsUpdateRequestCompaction",
           "traits": {
-            "smithy.api#documentation": "Updates compaction configuration (all fields optional)."
+            "smithy.api#documentation": "Updates table compaction configuration; all fields are optional."
           }
         },
         "snapshot_expiration": {
@@ -1990,7 +2038,7 @@
         "target_size_mb": {
           "target": "com.cloudflare.r2_data_catalog#NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb",
           "traits": {
-            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+            "smithy.api#documentation": "Sets the target file size for compaction in megabytes. Defaults to “128”.",
             "smithy.api#required": {}
           }
         }
@@ -2019,7 +2067,7 @@
         "max_snapshot_age": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.",
+            "smithy.api#documentation": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format:  where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: “7d” (7 days), “48h” (48 hours), “2880m” (2,880 minutes). Defaults to “7d”.",
             "smithy.api#required": {}
           }
         },
@@ -2081,6 +2129,9 @@
       "type": "service",
       "version": "4.0",
       "operations": [
+        {
+          "target": "com.cloudflare.r2_data_catalog#Delete"
+        },
         {
           "target": "com.cloudflare.r2_data_catalog#Disable"
         },

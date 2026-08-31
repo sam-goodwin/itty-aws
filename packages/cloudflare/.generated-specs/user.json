@@ -29,19 +29,19 @@
         "first_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's first name"
+            "smithy.api#documentation": "User’s first name"
           }
         },
         "last_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's last name"
+            "smithy.api#documentation": "User’s last name"
           }
         },
         "telephone": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's telephone number"
+            "smithy.api#documentation": "User’s telephone number"
           }
         },
         "zipcode": {
@@ -90,6 +90,17 @@
         }
       }
     },
+    "com.cloudflare.user#EditResponseOrganizationsItemZipcode": {
+      "type": "enum",
+      "members": {
+        "_12345": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "12345"
+          }
+        }
+      }
+    },
     "com.cloudflare.user#EditResponseOrganizationsItem": {
       "type": "structure",
       "members": {
@@ -121,6 +132,69 @@
           "target": "com.cloudflare.user#EditResponseOrganizationsItemStatus",
           "traits": {
             "smithy.api#documentation": "Whether the user is a member of the organization or has an invitation pending."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether user has been suspended"
+          }
+        },
+        "telephone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User’s telephone number"
+          }
+        },
+        "two_factor_authentication_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication."
+          }
+        },
+        "two_factor_authentication_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether two-factor authentication is required by one of the accounts that the user is a member of."
+          }
+        },
+        "zipcode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The zipcode or postal code where the user lives."
+          }
+        },
+        "country": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "first_name": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_name": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "telephone_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "telephone"
+          }
+        },
+        "zipcode_2": {
+          "target": "com.cloudflare.user#EditResponseOrganizationsItemZipcode",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "zipcode"
           }
         }
       }
@@ -163,7 +237,7 @@
         "first_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's first name"
+            "smithy.api#documentation": "User’s first name"
           }
         },
         "has_business_zones": {
@@ -187,41 +261,11 @@
         "last_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's last name"
+            "smithy.api#documentation": "User’s last name"
           }
         },
         "organizations": {
           "target": "com.cloudflare.user#EditResponseOrganizationsList"
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether user has been suspended"
-          }
-        },
-        "telephone": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "User's telephone number"
-          }
-        },
-        "two_factor_authentication_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication."
-          }
-        },
-        "two_factor_authentication_locked": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether two-factor authentication is required by one of the accounts that the user is a member of."
-          }
-        },
-        "zipcode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The zipcode or postal code where the user lives."
-          }
         }
       },
       "traits": {
@@ -313,6 +357,36 @@
           "traits": {
             "smithy.api#documentation": "Whether the user is a member of the organization or has an invitation pending."
           }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether user has been suspended"
+          }
+        },
+        "telephone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User’s telephone number"
+          }
+        },
+        "two_factor_authentication_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication."
+          }
+        },
+        "two_factor_authentication_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether two-factor authentication is required by one of the accounts that the user is a member of."
+          }
+        },
+        "zipcode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The zipcode or postal code where the user lives."
+          }
         }
       }
     },
@@ -354,7 +428,7 @@
         "first_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's first name"
+            "smithy.api#documentation": "User’s first name"
           }
         },
         "has_business_zones": {
@@ -378,41 +452,11 @@
         "last_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "User's last name"
+            "smithy.api#documentation": "User’s last name"
           }
         },
         "organizations": {
           "target": "com.cloudflare.user#GetResponseOrganizationsList"
-        },
-        "suspended": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether user has been suspended"
-          }
-        },
-        "telephone": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "User's telephone number"
-          }
-        },
-        "two_factor_authentication_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication."
-          }
-        },
-        "two_factor_authentication_locked": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether two-factor authentication is required by one of the accounts that the user is a member of."
-          }
-        },
-        "zipcode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The zipcode or postal code where the user lives."
-          }
         }
       },
       "traits": {
@@ -576,103 +620,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.user#AuditLogsListResultItemAction": {
-      "type": "structure",
-      "members": {
-        "result": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "A boolean that indicates if the action attempted was successful."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A short string that describes the action that was performed."
-          }
-        }
-      }
-    },
-    "com.cloudflare.user#AuditLogsListResultItemActorType": {
-      "type": "enum",
-      "members": {
-        "USER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "user"
-          }
-        },
-        "ADMIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "admin"
-          }
-        },
-        "CLOUDFLARE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Cloudflare"
-          }
-        }
-      }
-    },
-    "com.cloudflare.user#AuditLogsListResultItemActor": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID."
-          }
-        },
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The email of the user that performed the action."
-          }
-        },
-        "ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The IP address of the request that performed the action."
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.user#AuditLogsListResultItemActorType",
-          "traits": {
-            "smithy.api#documentation": "The type of actor, whether a User, Cloudflare Admin, or an Automated System."
-          }
-        }
-      }
-    },
-    "com.cloudflare.user#AuditLogsListResultItemOwner": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier"
-          }
-        }
-      }
-    },
-    "com.cloudflare.user#AuditLogsListResultItemResource": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "An identifier for the resource that was affected by the action."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A short string that describes the resource that was affected by the action."
-          }
-        }
-      }
-    },
     "com.cloudflare.user#AuditLogsListResultItem": {
       "type": "structure",
       "members": {
@@ -683,46 +630,7 @@
           }
         },
         "action": {
-          "target": "com.cloudflare.user#AuditLogsListResultItemAction"
-        },
-        "actor": {
-          "target": "com.cloudflare.user#AuditLogsListResultItemActor"
-        },
-        "interface": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The source of the event."
-          }
-        },
-        "metadata": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions."
-          }
-        },
-        "newValue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The new value of the resource that was modified."
-          }
-        },
-        "oldValue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The value of the resource before it was modified."
-          }
-        },
-        "owner": {
-          "target": "com.cloudflare.user#AuditLogsListResultItemOwner"
-        },
-        "resource": {
-          "target": "com.cloudflare.user#AuditLogsListResultItemResource"
-        },
-        "when": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A UTC RFC3339 timestamp that specifies when the action being logged occured."
-          }
+          "target": "smithy.api#Document"
         }
       }
     },
@@ -985,13 +893,19 @@
           "target": "smithy.api#String"
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "device_data": {
           "target": "smithy.api#String"
         },
         "edited_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "enterprise_billing_email": {
           "target": "smithy.api#String"
@@ -1009,7 +923,10 @@
           "target": "smithy.api#String"
         },
         "next_bill_date": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "payment_address": {
           "target": "smithy.api#String"
@@ -1055,9 +972,6 @@
         },
         "telephone": {
           "target": "smithy.api#String"
-        },
-        "use_legacy": {
-          "target": "smithy.api#Boolean"
         },
         "validation_code": {
           "target": "smithy.api#String"
@@ -1167,6 +1081,17 @@
         }
       }
     },
+    "com.cloudflare.user#InvitesEditResponseStatus2": {
+      "type": "enum",
+      "members": {
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        }
+      }
+    },
     "com.cloudflare.user#InvitesEditResponse": {
       "type": "structure",
       "members": {
@@ -1233,6 +1158,14 @@
           "target": "com.cloudflare.user#InvitesEditResponseStatus",
           "traits": {
             "smithy.api#documentation": "Current status of the invitation."
+          }
+        },
+        "status_2": {
+          "target": "com.cloudflare.user#InvitesEditResponseStatus2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "status"
           }
         }
       },
@@ -1561,6 +1494,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.user#OrganizationsDeleteResponseId": {
+      "type": "enum",
+      "members": {
+        "_023E105F4ECEF8AD9CA31A8372D0C353": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "023e105f4ecef8ad9ca31a8372d0c353"
+          }
+        }
+      }
+    },
     "com.cloudflare.user#OrganizationsDeleteResponse": {
       "type": "structure",
       "members": {
@@ -1568,6 +1512,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Identifier"
+          }
+        },
+        "id_2": {
+          "target": "com.cloudflare.user#OrganizationsDeleteResponseId",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "id"
           }
         }
       },
@@ -1893,6 +1845,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.user#SubscriptionsDeleteResponseSubscriptionId": {
+      "type": "enum",
+      "members": {
+        "_506E3185E9C882D175A2D0CB0093D9F2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "506e3185e9c882d175a2d0cb0093d9f2"
+          }
+        }
+      }
+    },
     "com.cloudflare.user#SubscriptionsDeleteResponse": {
       "type": "structure",
       "members": {
@@ -1900,6 +1863,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Subscription identifier tag."
+          }
+        },
+        "subscription_id_2": {
+          "target": "com.cloudflare.user#SubscriptionsDeleteResponseSubscriptionId",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "subscription_id"
           }
         }
       },
@@ -1922,7 +1893,7 @@
           "uri": "/user/subscriptions/{identifier}",
           "code": 200
         },
-        "smithy.api#documentation": "Deletes a user's subscription.",
+        "smithy.api#documentation": "Deletes a user’s subscription.",
         "smithy.api#idempotent": {}
       }
     },
@@ -2026,6 +1997,53 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.user#SubscriptionsGetResultItemRatePlanState": {
+      "type": "enum",
+      "members": {
+        "TRIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Trial"
+          }
+        },
+        "PROVISIONED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Provisioned"
+          }
+        },
+        "PAID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Paid"
+          }
+        },
+        "AWAITINGPAYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AwaitingPayment"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cancelled"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Expired"
+          }
+        }
+      }
+    },
     "com.cloudflare.user#SubscriptionsGetResultItemRatePlan": {
       "type": "structure",
       "members": {
@@ -2070,52 +2088,11 @@
           "traits": {
             "smithy.api#documentation": "The list of sets this rate plan applies to. Returns array of strings."
           }
-        }
-      }
-    },
-    "com.cloudflare.user#SubscriptionsGetResultItemState": {
-      "type": "enum",
-      "members": {
-        "TRIAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Trial"
-          }
         },
-        "PROVISIONED": {
-          "target": "smithy.api#Unit",
+        "state": {
+          "target": "com.cloudflare.user#SubscriptionsGetResultItemRatePlanState",
           "traits": {
-            "smithy.api#enumValue": "Provisioned"
-          }
-        },
-        "PAID": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Paid"
-          }
-        },
-        "AWAITINGPAYMENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AwaitingPayment"
-          }
-        },
-        "CANCELLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Cancelled"
-          }
-        },
-        "FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Failed"
-          }
-        },
-        "EXPIRED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Expired"
+            "smithy.api#documentation": "The state that the subscription is in."
           }
         }
       }
@@ -2164,12 +2141,6 @@
           "traits": {
             "smithy.api#documentation": "The rate plan applied to the subscription."
           }
-        },
-        "state": {
-          "target": "com.cloudflare.user#SubscriptionsGetResultItemState",
-          "traits": {
-            "smithy.api#documentation": "The state that the subscription is in."
-          }
         }
       }
     },
@@ -2208,7 +2179,7 @@
           "uri": "/user/subscriptions",
           "code": 200
         },
-        "smithy.api#documentation": "Lists all of a user's subscriptions.",
+        "smithy.api#documentation": "Lists all of a user’s subscriptions.",
         "smithy.api#readonly": {}
       }
     },
@@ -2416,43 +2387,8 @@
           "uri": "/user/subscriptions/{identifier}",
           "code": 200
         },
-        "smithy.api#documentation": "Updates a user's subscriptions.",
+        "smithy.api#documentation": "Updates a user’s subscriptions.",
         "smithy.api#idempotent": {}
-      }
-    },
-    "com.cloudflare.user#TenantsListResultItemMetaFlags": {
-      "type": "structure",
-      "members": {
-        "account_creation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "account_deletion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "account_migration": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "account_mobility": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "sub_org_creation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
       }
     },
     "com.cloudflare.user#TenantsListResultItemMetaHierarchyTagsList": {
@@ -2461,27 +2397,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TenantsListResultItemMeta": {
-      "type": "structure",
-      "members": {
-        "flags": {
-          "target": "com.cloudflare.user#TenantsListResultItemMetaFlags",
-          "traits": {
-            "smithy.api#documentation": "Enable features for Organizations."
-          }
-        },
-        "hierarchy_tags": {
-          "target": "com.cloudflare.user#TenantsListResultItemMetaHierarchyTagsList",
-          "traits": {
-            "smithy.api#documentation": "Ordered chain of organization tags from the root organization down to"
-          }
-        },
-        "managed_by": {
-          "target": "smithy.api#String"
-        }
-      }
-    },
-    "com.cloudflare.user#TenantsListResultItemParent": {
+    "com.cloudflare.user#TenantsListResultItemMetaTenantFlagsParent": {
       "type": "structure",
       "members": {
         "id": {
@@ -2498,7 +2414,7 @@
         }
       }
     },
-    "com.cloudflare.user#TenantsListResultItemProfile": {
+    "com.cloudflare.user#TenantsListResultItemMetaTenantFlagsProfile": {
       "type": "structure",
       "members": {
         "business_address": {
@@ -2533,6 +2449,91 @@
         }
       }
     },
+    "com.cloudflare.user#TenantsListResultItemMetaTenantFlags": {
+      "type": "structure",
+      "members": {
+        "account_creation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "account_creation_applies_tenant_defaults": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "account_deletion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "account_migration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "account_mobility": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enterprise_capability": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "member_management": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sub_org_creation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "parent": {
+          "target": "com.cloudflare.user#TenantsListResultItemMetaTenantFlagsParent"
+        },
+        "profile": {
+          "target": "com.cloudflare.user#TenantsListResultItemMetaTenantFlagsProfile"
+        }
+      }
+    },
+    "com.cloudflare.user#TenantsListResultItemMeta": {
+      "type": "structure",
+      "members": {
+        "hierarchy_tags": {
+          "target": "com.cloudflare.user#TenantsListResultItemMetaHierarchyTagsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered chain of organization tags from the root organization down to (and including) this organization itself. Root organizations return a single-element array containing their own tag; sub-organizations return `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for constructing authorization scopes that need to cover every ancestor in the hierarchy."
+          }
+        },
+        "managed_by": {
+          "target": "smithy.api#String"
+        },
+        "tenant_flags": {
+          "target": "com.cloudflare.user#TenantsListResultItemMetaTenantFlags",
+          "traits": {
+            "smithy.api#documentation": "Enable features for Organizations."
+          }
+        }
+      }
+    },
     "com.cloudflare.user#TenantsListResultItem": {
       "type": "structure",
       "members": {
@@ -2545,6 +2546,7 @@
         "create_time": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -2553,18 +2555,6 @@
           "traits": {
             "smithy.api#required": {}
           }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "parent": {
-          "target": "com.cloudflare.user#TenantsListResultItemParent"
-        },
-        "profile": {
-          "target": "com.cloudflare.user#TenantsListResultItemProfile"
         }
       }
     },
@@ -2665,7 +2655,7 @@
         "target": "com.cloudflare.user#TokensCreateRequestPoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectStringMap": {
+    "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesCase0Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2674,7 +2664,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
+    "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesCase1ValueMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2683,13 +2673,13 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedMap": {
+    "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesCase1Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "target": "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesCase1ValueMap"
       }
     },
     "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesValue": {
@@ -2698,8 +2688,8 @@
         "String": {
           "target": "smithy.api#String"
         },
-        "TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
-          "target": "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "TokensCreateRequestPoliciesItemResourcesCase1ValueMap": {
+          "target": "com.cloudflare.user#TokensCreateRequestPoliciesItemResourcesCase1ValueMap"
         }
       }
     },
@@ -2926,7 +2916,7 @@
         "target": "com.cloudflare.user#TokensCreateResponsePoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectStringMap": {
+    "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesCase0Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2935,7 +2925,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
+    "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesCase1ValueMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2944,13 +2934,13 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedMap": {
+    "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesCase1Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "target": "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesCase1ValueMap"
       }
     },
     "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesValue": {
@@ -2959,8 +2949,8 @@
         "String": {
           "target": "smithy.api#String"
         },
-        "TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
-          "target": "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "TokensCreateResponsePoliciesItemResourcesCase1ValueMap": {
+          "target": "com.cloudflare.user#TokensCreateResponsePoliciesItemResourcesCase1ValueMap"
         }
       }
     },
@@ -3035,6 +3025,28 @@
         }
       }
     },
+    "com.cloudflare.user#TokensCreateResponseFoo": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#TokensCreateResponseNotBefore": {
+      "type": "enum",
+      "members": {
+        "_2018_07_01T05_20_00Z": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2018-07-01T05:20:00Z"
+          }
+        }
+      }
+    },
     "com.cloudflare.user#TokensCreateResponse": {
       "type": "structure",
       "members": {
@@ -3099,6 +3111,91 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "The token value."
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "policies_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "policies"
+          }
+        },
+        "effect": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "permission_groups": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {}
+          }
+        },
+        "id_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "id"
+          }
+        },
+        "meta": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {}
+          }
+        },
+        "id_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "id"
+          }
+        },
+        "meta_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "meta"
+          }
+        },
+        "resources": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "foo": {
+          "target": "com.cloudflare.user#TokensCreateResponseFoo",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "expires_on_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "expires_on"
+          }
+        },
+        "not_before_2": {
+          "target": "com.cloudflare.user#TokensCreateResponseNotBefore",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "not_before"
           }
         }
       },
@@ -3288,7 +3385,7 @@
         "target": "com.cloudflare.user#TokensGetResponsePoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectStringMap": {
+    "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesCase0Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3297,7 +3394,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
+    "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesCase1ValueMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3306,13 +3403,13 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedMap": {
+    "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesCase1Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "target": "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesCase1ValueMap"
       }
     },
     "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesValue": {
@@ -3321,8 +3418,8 @@
         "String": {
           "target": "smithy.api#String"
         },
-        "TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
-          "target": "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "TokensGetResponsePoliciesItemResourcesCase1ValueMap": {
+          "target": "com.cloudflare.user#TokensGetResponsePoliciesItemResourcesCase1ValueMap"
         }
       }
     },
@@ -3508,6 +3605,13 @@
             "smithy.api#httpQuery": "direction"
           }
         },
+        "include_expired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, includes recently-expired tokens in the response.",
+            "smithy.api#httpQuery": "include_expired"
+          }
+        },
         "page": {
           "target": "smithy.api#Double",
           "traits": {
@@ -3625,7 +3729,7 @@
         "target": "com.cloudflare.user#TokensListResultItemPoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectStringMap": {
+    "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesCase0Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3634,7 +3738,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
+    "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesCase1ValueMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3643,13 +3747,13 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedMap": {
+    "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesCase1Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "target": "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesCase1ValueMap"
       }
     },
     "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesValue": {
@@ -3658,8 +3762,8 @@
         "String": {
           "target": "smithy.api#String"
         },
-        "TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
-          "target": "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "TokensListResultItemPoliciesItemResourcesCase1ValueMap": {
+          "target": "com.cloudflare.user#TokensListResultItemPoliciesItemResourcesCase1ValueMap"
         }
       }
     },
@@ -3831,7 +3935,7 @@
           "uri": "/user/tokens",
           "code": 200
         },
-        "smithy.api#documentation": "List all access tokens you created.",
+        "smithy.api#documentation": "List all access tokens you created. Results include active, disabled, and recently-expired tokens when include_expired is set to true.",
         "smithy.api#readonly": {}
       }
     },
@@ -3893,7 +3997,7 @@
         "target": "com.cloudflare.user#TokensUpdateRequestPoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectStringMap": {
+    "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesCase0Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3902,7 +4006,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
+    "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesCase1ValueMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3911,13 +4015,13 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedMap": {
+    "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesCase1Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "target": "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesCase1ValueMap"
       }
     },
     "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesValue": {
@@ -3926,8 +4030,8 @@
         "String": {
           "target": "smithy.api#String"
         },
-        "TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
-          "target": "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "TokensUpdateRequestPoliciesItemResourcesCase1ValueMap": {
+          "target": "com.cloudflare.user#TokensUpdateRequestPoliciesItemResourcesCase1ValueMap"
         }
       }
     },
@@ -4191,7 +4295,7 @@
         "target": "com.cloudflare.user#TokensUpdateResponsePoliciesItemPermissionGroupsItem"
       }
     },
-    "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectStringMap": {
+    "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesCase0Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4200,7 +4304,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
+    "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesCase1ValueMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4209,13 +4313,13 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedMap": {
+    "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesCase1Map": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "target": "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesCase1ValueMap"
       }
     },
     "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesValue": {
@@ -4224,8 +4328,8 @@
         "String": {
           "target": "smithy.api#String"
         },
-        "TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap": {
-          "target": "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap"
+        "TokensUpdateResponsePoliciesItemResourcesCase1ValueMap": {
+          "target": "com.cloudflare.user#TokensUpdateResponsePoliciesItemResourcesCase1ValueMap"
         }
       }
     },
@@ -4300,6 +4404,28 @@
         }
       }
     },
+    "com.cloudflare.user#TokensUpdateResponseFoo": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#TokensUpdateResponseStatus2": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      }
+    },
     "com.cloudflare.user#TokensUpdateResponse": {
       "type": "structure",
       "members": {
@@ -4358,6 +4484,98 @@
           "target": "com.cloudflare.user#TokensUpdateResponseStatus",
           "traits": {
             "smithy.api#documentation": "Status of the token."
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "policies_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "policies"
+          }
+        },
+        "effect": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "permission_groups": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "{",
+            "smithy.api#required": {}
+          }
+        },
+        "id_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "id"
+          }
+        },
+        "meta": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {}
+          }
+        },
+        "id_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "id"
+          }
+        },
+        "meta_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "meta"
+          }
+        },
+        "resources": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "foo": {
+          "target": "com.cloudflare.user#TokensUpdateResponseFoo",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "expires_on_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "expires_on"
+          }
+        },
+        "not_before_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "not_before"
+          }
+        },
+        "status_2": {
+          "target": "com.cloudflare.user#TokensUpdateResponseStatus2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "status"
           }
         }
       },
@@ -4466,14 +4684,14 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Filter by the name of the permission group.",
+            "smithy.api#documentation": "Filter by the name of the permission group. The value must be URL-encoded.",
             "smithy.api#httpQuery": "name"
           }
         },
         "scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Filter by the scope of the permission group.",
+            "smithy.api#documentation": "Filter by the scope of the permission group. The value must be URL-encoded.",
             "smithy.api#httpQuery": "scope"
           }
         }

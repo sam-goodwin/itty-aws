@@ -88,7 +88,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -136,13 +136,19 @@
           "target": "smithy.api#String"
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String"
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "preview_target": {
           "target": "smithy.api#String"
@@ -257,7 +263,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -305,13 +311,19 @@
           "target": "smithy.api#String"
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String"
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "preview_target": {
           "target": "smithy.api#String"
@@ -361,7 +373,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -401,13 +413,19 @@
           "target": "smithy.api#String"
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String"
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "preview_target": {
           "target": "smithy.api#String"
@@ -474,7 +492,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -514,13 +532,19 @@
           "target": "smithy.api#String"
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String"
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "preview_target": {
           "target": "smithy.api#String"
@@ -669,7 +693,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -724,6 +748,17 @@
         }
       }
     },
+    "com.cloudflare.custom_pages#UpdateForAccountResponseUrl": {
+      "type": "enum",
+      "members": {
+        "HTTP_WWW_EXAMPLE_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http://www.example.com"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_pages#UpdateForAccountResponse": {
       "type": "structure",
       "members": {
@@ -731,13 +766,19 @@
           "target": "smithy.api#String"
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String"
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "preview_target": {
           "target": "smithy.api#String"
@@ -755,6 +796,21 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL associated with the custom page."
+          }
+        },
+        "state_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "state"
+          }
+        },
+        "url_2": {
+          "target": "com.cloudflare.custom_pages#UpdateForAccountResponseUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "url"
           }
         }
       },
@@ -869,7 +925,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -924,6 +980,17 @@
         }
       }
     },
+    "com.cloudflare.custom_pages#UpdateForZoneResponseUrl": {
+      "type": "enum",
+      "members": {
+        "HTTP_WWW_EXAMPLE_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http://www.example.com"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_pages#UpdateForZoneResponse": {
       "type": "structure",
       "members": {
@@ -931,13 +998,19 @@
           "target": "smithy.api#String"
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String"
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "preview_target": {
           "target": "smithy.api#String"
@@ -955,6 +1028,21 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL associated with the custom page."
+          }
+        },
+        "state_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "state"
+          }
+        },
+        "url_2": {
+          "target": "com.cloudflare.custom_pages#UpdateForZoneResponseUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "url"
           }
         }
       },
@@ -987,7 +1075,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1018,6 +1106,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.custom_pages#AssetsCreateForAccountResponseUrl": {
+      "type": "enum",
+      "members": {
+        "HTTPS_EXAMPLE_COM_ERROR_HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https://example.com/error.html"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_pages#AssetsCreateForAccountResponse": {
       "type": "structure",
       "members": {
@@ -1028,7 +1127,10 @@
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -1046,6 +1148,28 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL where the asset content is fetched from."
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "url_2": {
+          "target": "com.cloudflare.custom_pages#AssetsCreateForAccountResponseUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "url"
           }
         }
       },
@@ -1077,7 +1201,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1108,6 +1232,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.custom_pages#AssetsCreateForZoneResponseUrl": {
+      "type": "enum",
+      "members": {
+        "HTTPS_EXAMPLE_COM_ERROR_HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https://example.com/error.html"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_pages#AssetsCreateForZoneResponse": {
       "type": "structure",
       "members": {
@@ -1118,7 +1253,10 @@
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -1136,6 +1274,28 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL where the asset content is fetched from."
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "url_2": {
+          "target": "com.cloudflare.custom_pages#AssetsCreateForZoneResponseUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "url"
           }
         }
       },
@@ -1167,7 +1327,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1209,7 +1369,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1251,7 +1411,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1279,7 +1439,10 @@
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -1329,7 +1492,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1357,7 +1520,10 @@
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -1407,7 +1573,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1415,12 +1581,14 @@
         "page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "minimum1",
             "smithy.api#httpQuery": "page"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "maximum200",
             "smithy.api#httpQuery": "per_page"
           }
         }
@@ -1439,7 +1607,10 @@
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -1506,7 +1677,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1514,12 +1685,14 @@
         "page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "minimum1",
             "smithy.api#httpQuery": "page"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "maximum200",
             "smithy.api#httpQuery": "per_page"
           }
         }
@@ -1538,7 +1711,10 @@
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -1605,7 +1781,7 @@
         "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1637,6 +1813,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.custom_pages#AssetsUpdateForAccountResponseUrl": {
+      "type": "enum",
+      "members": {
+        "HTTPS_EXAMPLE_COM_ERROR_HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https://example.com/error.html"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_pages#AssetsUpdateForAccountResponse": {
       "type": "structure",
       "members": {
@@ -1647,7 +1834,10 @@
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -1665,6 +1855,21 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL where the asset content is fetched from."
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "url_2": {
+          "target": "com.cloudflare.custom_pages#AssetsUpdateForAccountResponseUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "url"
           }
         }
       },
@@ -1697,7 +1902,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1729,6 +1934,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.custom_pages#AssetsUpdateForZoneResponseUrl": {
+      "type": "enum",
+      "members": {
+        "HTTPS_EXAMPLE_COM_ERROR_HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https://example.com/error.html"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_pages#AssetsUpdateForZoneResponse": {
       "type": "structure",
       "members": {
@@ -1739,7 +1955,10 @@
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -1757,6 +1976,21 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The URL where the asset content is fetched from."
+          }
+        },
+        "description_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "description"
+          }
+        },
+        "url_2": {
+          "target": "com.cloudflare.custom_pages#AssetsUpdateForZoneResponseUrl",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "url"
           }
         }
       },

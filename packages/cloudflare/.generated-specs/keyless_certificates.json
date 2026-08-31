@@ -73,7 +73,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's SSL certificate or SSL certificate and intermediate(s).",
+            "smithy.api#documentation": "The zone’s SSL certificate or SSL certificate and intermediate(s).",
             "smithy.api#required": {}
           }
         },
@@ -87,7 +87,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -156,6 +156,17 @@
         }
       }
     },
+    "com.cloudflare.keyless_certificates#CreateResponseName": {
+      "type": "enum",
+      "members": {
+        "EXAMPLE_COM_KEYLESS_SSL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "example.com Keyless SSL"
+          }
+        }
+      }
+    },
     "com.cloudflare.keyless_certificates#CreateResponse": {
       "type": "structure",
       "members": {
@@ -211,7 +222,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -226,6 +237,40 @@
           "target": "com.cloudflare.keyless_certificates#CreateResponseTunnel",
           "traits": {
             "smithy.api#documentation": "Configuration for using Keyless SSL through a Cloudflare Tunnel."
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "host_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "host"
+          }
+        },
+        "port_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "port"
+          }
+        },
+        "bundle_method": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.keyless_certificates#CreateResponseName",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
           }
         }
       },
@@ -346,7 +391,7 @@
             "smithy.api#required": {}
           }
         },
-        "enabled": {
+        "Deprecatedenabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether or not the Keyless SSL is on or off."
@@ -367,7 +412,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server."
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server."
           }
         },
         "tunnel": {
@@ -419,6 +464,17 @@
           "traits": {
             "smithy.api#documentation": "Cloudflare Tunnel Virtual Network ID.",
             "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.keyless_certificates#EditResponsePort": {
+      "type": "intEnum",
+      "members": {
+        "_24008": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 24008
           }
         }
       }
@@ -478,7 +534,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -493,6 +549,28 @@
           "target": "com.cloudflare.keyless_certificates#EditResponseTunnel",
           "traits": {
             "smithy.api#documentation": "Configuration for using Keyless SSL through a Cloudflare Tunnel."
+          }
+        },
+        "host_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "host"
+          }
+        },
+        "name_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
+          }
+        },
+        "port_2": {
+          "target": "com.cloudflare.keyless_certificates#EditResponsePort",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "port"
           }
         }
       },
@@ -515,7 +593,7 @@
           "uri": "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
           "code": 200
         },
-        "smithy.api#documentation": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port."
+        "smithy.api#documentation": "This will update attributes of a Keyless SSL. Consists of one or more of the following: host,name,port."
       }
     },
     "com.cloudflare.keyless_certificates#GetRequest": {
@@ -639,7 +717,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -793,7 +871,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },

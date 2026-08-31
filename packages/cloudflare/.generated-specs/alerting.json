@@ -290,13 +290,72 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.alerting#DestinationsPagerdutyDeleteResponseCode": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#DestinationsPagerdutyDeleteResponseCode2": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#DestinationsPagerdutyDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "code": {
+          "target": "com.cloudflare.alerting#DestinationsPagerdutyDeleteResponseCode",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "code_2": {
+          "target": "com.cloudflare.alerting#DestinationsPagerdutyDeleteResponseCode2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.alerting#DestinationsPagerdutyDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.alerting#DestinationsPagerdutyDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.alerting#DestinationsPagerdutyDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -529,13 +588,72 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.alerting#DestinationsWebhooksDeleteResponseCode": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#DestinationsWebhooksDeleteResponseCode2": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#DestinationsWebhooksDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "code": {
+          "target": "com.cloudflare.alerting#DestinationsWebhooksDeleteResponseCode",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "code_2": {
+          "target": "com.cloudflare.alerting#DestinationsWebhooksDeleteResponseCode2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.alerting#DestinationsWebhooksDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.alerting#DestinationsWebhooksDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.alerting#DestinationsWebhooksDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2265,13 +2383,108 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.alerting#PoliciesDeleteResponseCode": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesDeleteResponseCode2": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesDeleteResponseTotalCount": {
+      "type": "intEnum",
+      "members": {
+        "_2000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "code": {
+          "target": "com.cloudflare.alerting#PoliciesDeleteResponseCode",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "code_2": {
+          "target": "com.cloudflare.alerting#PoliciesDeleteResponseCode2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_count": {
+          "target": "com.cloudflare.alerting#PoliciesDeleteResponseTotalCount",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.alerting#PoliciesDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.alerting#PoliciesDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.alerting#PoliciesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2305,425 +2518,6 @@
       },
       "traits": {
         "smithy.api#input": {}
-      }
-    },
-    "com.cloudflare.alerting#PoliciesGetResponseAlertType": {
-      "type": "enum",
-      "members": {
-        "ABUSE_REPORT_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "abuse_report_alert"
-          }
-        },
-        "ACCESS_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "access_custom_certificate_expiration_type"
-          }
-        },
-        "ADVANCED_DDOS_ATTACK_L4_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "advanced_ddos_attack_l4_alert"
-          }
-        },
-        "ADVANCED_DDOS_ATTACK_L7_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "advanced_ddos_attack_l7_alert"
-          }
-        },
-        "ADVANCED_HTTP_ALERT_ERROR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "advanced_http_alert_error"
-          }
-        },
-        "BGP_HIJACK_NOTIFICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "bgp_hijack_notification"
-          }
-        },
-        "BILLING_USAGE_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "billing_usage_alert"
-          }
-        },
-        "BLOCK_NOTIFICATION_BLOCK_REMOVED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block_notification_block_removed"
-          }
-        },
-        "BLOCK_NOTIFICATION_NEW_BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block_notification_new_block"
-          }
-        },
-        "BLOCK_NOTIFICATION_REVIEW_REJECTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block_notification_review_rejected"
-          }
-        },
-        "BOT_TRAFFIC_BASIC_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "bot_traffic_basic_alert"
-          }
-        },
-        "BRAND_PROTECTION_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "brand_protection_alert"
-          }
-        },
-        "BRAND_PROTECTION_DIGEST": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "brand_protection_digest"
-          }
-        },
-        "CLICKHOUSE_ALERT_FW_ANOMALY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "clickhouse_alert_fw_anomaly"
-          }
-        },
-        "CLICKHOUSE_ALERT_FW_ENT_ANOMALY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "clickhouse_alert_fw_ent_anomaly"
-          }
-        },
-        "CLOUDFORCE_ONE_REQUEST_NOTIFICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cloudforce_one_request_notification"
-          }
-        },
-        "CNI_MAINTENANCE_NOTIFICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cni_maintenance_notification"
-          }
-        },
-        "CUSTOM_ANALYTICS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "custom_analytics"
-          }
-        },
-        "CUSTOM_BOT_DETECTION_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "custom_bot_detection_alert"
-          }
-        },
-        "CUSTOM_SSL_CERTIFICATE_EVENT_TYPE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "custom_ssl_certificate_event_type"
-          }
-        },
-        "DEDICATED_SSL_CERTIFICATE_EVENT_TYPE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "dedicated_ssl_certificate_event_type"
-          }
-        },
-        "DEVICE_CONNECTIVITY_ANOMALY_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "device_connectivity_anomaly_alert"
-          }
-        },
-        "DOS_ATTACK_L4": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "dos_attack_l4"
-          }
-        },
-        "DOS_ATTACK_L7": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "dos_attack_l7"
-          }
-        },
-        "EXPIRING_SERVICE_TOKEN_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "expiring_service_token_alert"
-          }
-        },
-        "FAILING_LOGPUSH_JOB_DISABLED_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "failing_logpush_job_disabled_alert"
-          }
-        },
-        "FBM_AUTO_ADVERTISEMENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "fbm_auto_advertisement"
-          }
-        },
-        "FBM_DOSD_ATTACK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "fbm_dosd_attack"
-          }
-        },
-        "FBM_VOLUMETRIC_ATTACK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "fbm_volumetric_attack"
-          }
-        },
-        "HEALTH_CHECK_STATUS_NOTIFICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "health_check_status_notification"
-          }
-        },
-        "HOSTNAME_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "hostname_aop_custom_certificate_expiration_type"
-          }
-        },
-        "HTTP_ALERT_EDGE_ERROR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http_alert_edge_error"
-          }
-        },
-        "HTTP_ALERT_ORIGIN_ERROR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http_alert_origin_error"
-          }
-        },
-        "IMAGE_NOTIFICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "image_notification"
-          }
-        },
-        "IMAGE_RESIZING_NOTIFICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "image_resizing_notification"
-          }
-        },
-        "INCIDENT_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "incident_alert"
-          }
-        },
-        "LOAD_BALANCING_HEALTH_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "load_balancing_health_alert"
-          }
-        },
-        "LOAD_BALANCING_POOL_ENABLEMENT_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "load_balancing_pool_enablement_alert"
-          }
-        },
-        "LOGO_MATCH_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "logo_match_alert"
-          }
-        },
-        "MAGIC_TUNNEL_HEALTH_CHECK_EVENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "magic_tunnel_health_check_event"
-          }
-        },
-        "MAGIC_WAN_TUNNEL_HEALTH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "magic_wan_tunnel_health"
-          }
-        },
-        "MAINTENANCE_EVENT_NOTIFICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "maintenance_event_notification"
-          }
-        },
-        "MTLS_CERTIFICATE_STORE_CERTIFICATE_EXPIRATION_TYPE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "mtls_certificate_store_certificate_expiration_type"
-          }
-        },
-        "PAGES_EVENT_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "pages_event_alert"
-          }
-        },
-        "RADAR_NOTIFICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "radar_notification"
-          }
-        },
-        "REAL_ORIGIN_MONITORING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "real_origin_monitoring"
-          }
-        },
-        "SCRIPTMONITOR_ALERT_NEW_CODE_CHANGE_DETECTIONS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "scriptmonitor_alert_new_code_change_detections"
-          }
-        },
-        "SCRIPTMONITOR_ALERT_NEW_HOSTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "scriptmonitor_alert_new_hosts"
-          }
-        },
-        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_HOSTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_hosts"
-          }
-        },
-        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_SCRIPTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_scripts"
-          }
-        },
-        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_URL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_url"
-          }
-        },
-        "SCRIPTMONITOR_ALERT_NEW_MAX_LENGTH_RESOURCE_URL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "scriptmonitor_alert_new_max_length_resource_url"
-          }
-        },
-        "SCRIPTMONITOR_ALERT_NEW_RESOURCES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "scriptmonitor_alert_new_resources"
-          }
-        },
-        "SECONDARY_DNS_ALL_PRIMARIES_FAILING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "secondary_dns_all_primaries_failing"
-          }
-        },
-        "SECONDARY_DNS_PRIMARIES_FAILING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "secondary_dns_primaries_failing"
-          }
-        },
-        "SECONDARY_DNS_WARNING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "secondary_dns_warning"
-          }
-        },
-        "SECONDARY_DNS_ZONE_SUCCESSFULLY_UPDATED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "secondary_dns_zone_successfully_updated"
-          }
-        },
-        "SECONDARY_DNS_ZONE_VALIDATION_WARNING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "secondary_dns_zone_validation_warning"
-          }
-        },
-        "SECURITY_INSIGHTS_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "security_insights_alert"
-          }
-        },
-        "SENTINEL_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sentinel_alert"
-          }
-        },
-        "STREAM_LIVE_NOTIFICATIONS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "stream_live_notifications"
-          }
-        },
-        "SYNTHETIC_TEST_LATENCY_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "synthetic_test_latency_alert"
-          }
-        },
-        "SYNTHETIC_TEST_LOW_AVAILABILITY_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "synthetic_test_low_availability_alert"
-          }
-        },
-        "TRAFFIC_ANOMALIES_ALERT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "traffic_anomalies_alert"
-          }
-        },
-        "TUNNEL_HEALTH_EVENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "tunnel_health_event"
-          }
-        },
-        "TUNNEL_UPDATE_EVENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "tunnel_update_event"
-          }
-        },
-        "UNIVERSAL_SSL_EVENT_TYPE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "universal_ssl_event_type"
-          }
-        },
-        "WEB_ANALYTICS_METRICS_UPDATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "web_analytics_metrics_update"
-          }
-        },
-        "ZONE_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
-          }
-        }
       }
     },
     "com.cloudflare.alerting#PoliciesGetResponseFiltersActionsList": {
@@ -3342,13 +3136,22 @@
       "type": "structure",
       "members": {
         "email": {
-          "target": "com.cloudflare.alerting#PoliciesGetResponseMechanismsEmailList"
+          "target": "com.cloudflare.alerting#PoliciesGetResponseMechanismsEmailList",
+          "traits": {
+            "smithy.api#documentation": "The email address"
+          }
         },
         "pagerduty": {
-          "target": "com.cloudflare.alerting#PoliciesGetResponseMechanismsPagerdutyList"
+          "target": "com.cloudflare.alerting#PoliciesGetResponseMechanismsPagerdutyList",
+          "traits": {
+            "smithy.api#documentation": "UUID"
+          }
         },
         "webhooks": {
-          "target": "com.cloudflare.alerting#PoliciesGetResponseMechanismsWebhooksList"
+          "target": "com.cloudflare.alerting#PoliciesGetResponseMechanismsWebhooksList",
+          "traits": {
+            "smithy.api#documentation": "UUID"
+          }
         }
       }
     },
@@ -3368,7 +3171,7 @@
           }
         },
         "alert_type": {
-          "target": "com.cloudflare.alerting#PoliciesGetResponseAlertType",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values."
           }
@@ -4166,6 +3969,71 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsEmailItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address"
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsEmailList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsEmailItem"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsPagerdutyItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID"
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsPagerdutyList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsPagerdutyItem"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsWebhooksItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID"
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsWebhooksList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsWebhooksItem"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanisms": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsEmailList"
+        },
+        "pagerduty": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsPagerdutyList"
+        },
+        "webhooks": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanismsWebhooksList"
+        }
+      }
+    },
     "com.cloudflare.alerting#PoliciesListResultItemFilters": {
       "type": "structure",
       "members": {
@@ -4426,71 +4294,24 @@
           "traits": {
             "smithy.api#documentation": "Usage depends on specific alert type"
           }
-        }
-      }
-    },
-    "com.cloudflare.alerting#PoliciesListResultItemMechanismsEmailItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The email address"
-          }
-        }
-      }
-    },
-    "com.cloudflare.alerting#PoliciesListResultItemMechanismsEmailList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.alerting#PoliciesListResultItemMechanismsEmailItem"
-      }
-    },
-    "com.cloudflare.alerting#PoliciesListResultItemMechanismsPagerdutyItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID"
-          }
-        }
-      }
-    },
-    "com.cloudflare.alerting#PoliciesListResultItemMechanismsPagerdutyList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.alerting#PoliciesListResultItemMechanismsPagerdutyItem"
-      }
-    },
-    "com.cloudflare.alerting#PoliciesListResultItemMechanismsWebhooksItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID"
-          }
-        }
-      }
-    },
-    "com.cloudflare.alerting#PoliciesListResultItemMechanismsWebhooksList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.alerting#PoliciesListResultItemMechanismsWebhooksItem"
-      }
-    },
-    "com.cloudflare.alerting#PoliciesListResultItemMechanisms": {
-      "type": "structure",
-      "members": {
-        "email": {
-          "target": "com.cloudflare.alerting#PoliciesListResultItemMechanismsEmailList"
         },
-        "pagerduty": {
-          "target": "com.cloudflare.alerting#PoliciesListResultItemMechanismsPagerdutyList"
+        "mechanisms": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersMechanisms",
+          "traits": {
+            "smithy.api#documentation": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address."
+          }
         },
-        "webhooks": {
-          "target": "com.cloudflare.alerting#PoliciesListResultItemMechanismsWebhooksList"
+        "modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the policy."
+          }
         }
       }
     },
@@ -4516,7 +4337,10 @@
           }
         },
         "created": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -4534,21 +4358,6 @@
           "target": "com.cloudflare.alerting#PoliciesListResultItemFilters",
           "traits": {
             "smithy.api#documentation": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details."
-          }
-        },
-        "mechanisms": {
-          "target": "com.cloudflare.alerting#PoliciesListResultItemMechanisms",
-          "traits": {
-            "smithy.api#documentation": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address."
-          }
-        },
-        "modified": {
-          "target": "smithy.api#String"
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the policy."
           }
         }
       }
@@ -5309,6 +5118,71 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsEmailItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address"
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsEmailList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsEmailItem"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsPagerdutyItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID"
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsPagerdutyList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsPagerdutyItem"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsWebhooksItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID"
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsWebhooksList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsWebhooksItem"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanisms": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsEmailList"
+        },
+        "pagerduty": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsPagerdutyList"
+        },
+        "webhooks": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanismsWebhooksList"
+        }
+      }
+    },
     "com.cloudflare.alerting#PoliciesUpdateRequestFilters": {
       "type": "structure",
       "members": {
@@ -5569,71 +5443,18 @@
           "traits": {
             "smithy.api#documentation": "Usage depends on specific alert type"
           }
-        }
-      }
-    },
-    "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsEmailItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The email address"
-          }
-        }
-      }
-    },
-    "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsEmailList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsEmailItem"
-      }
-    },
-    "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsPagerdutyItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID"
-          }
-        }
-      }
-    },
-    "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsPagerdutyList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsPagerdutyItem"
-      }
-    },
-    "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsWebhooksItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID"
-          }
-        }
-      }
-    },
-    "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsWebhooksList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsWebhooksItem"
-      }
-    },
-    "com.cloudflare.alerting#PoliciesUpdateRequestMechanisms": {
-      "type": "structure",
-      "members": {
-        "email": {
-          "target": "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsEmailList"
         },
-        "pagerduty": {
-          "target": "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsPagerdutyList"
+        "mechanisms": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersMechanisms",
+          "traits": {
+            "smithy.api#documentation": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address."
+          }
         },
-        "webhooks": {
-          "target": "com.cloudflare.alerting#PoliciesUpdateRequestMechanismsWebhooksList"
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the policy."
+          }
         }
       }
     },
@@ -5684,18 +5505,6 @@
           "target": "com.cloudflare.alerting#PoliciesUpdateRequestFilters",
           "traits": {
             "smithy.api#documentation": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details."
-          }
-        },
-        "mechanisms": {
-          "target": "com.cloudflare.alerting#PoliciesUpdateRequestMechanisms",
-          "traits": {
-            "smithy.api#documentation": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the policy."
           }
         }
       },
@@ -5788,13 +5597,102 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.alerting#SilencesCreateResponseStartTime": {
+      "type": "enum",
+      "members": {
+        "_2022_01_01T00_00_00Z": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2022-01-01T00:00:00Z"
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#SilencesCreateResponseCode": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#SilencesCreateResponseCode2": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#SilencesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "end_time": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policy_id": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "start_time": {
+          "target": "com.cloudflare.alerting#SilencesCreateResponseStartTime",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "code": {
+          "target": "com.cloudflare.alerting#SilencesCreateResponseCode",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "code_2": {
+          "target": "com.cloudflare.alerting#SilencesCreateResponseCode2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.alerting#SilencesCreate": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.alerting#SilencesCreateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.alerting#SilencesCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5829,13 +5727,72 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.alerting#SilencesDeleteResponseCode": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#SilencesDeleteResponseCode2": {
+      "type": "intEnum",
+      "members": {
+        "_1000": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1000
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#SilencesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "code": {
+          "target": "com.cloudflare.alerting#SilencesDeleteResponseCode",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "code_2": {
+          "target": "com.cloudflare.alerting#SilencesDeleteResponseCode2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.alerting#SilencesDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.alerting#SilencesDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.alerting#SilencesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6082,6 +6039,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.alerting#SilencesUpdateResultItemStartTime": {
+      "type": "enum",
+      "members": {
+        "_2022_01_01T00_00_00Z": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2022-01-01T00:00:00Z"
+          }
+        }
+      }
+    },
     "com.cloudflare.alerting#SilencesUpdateResultItem": {
       "type": "structure",
       "members": {
@@ -6119,6 +6087,28 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the silence was modified."
+          }
+        },
+        "id_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "id"
+          }
+        },
+        "end_time_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "end_time"
+          }
+        },
+        "start_time_2": {
+          "target": "com.cloudflare.alerting#SilencesUpdateResultItemStartTime",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "start_time"
           }
         }
       }

@@ -45,7 +45,7 @@
         "region_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Region key from managed regions (e.g., \"us\", \"eu\").",
+            "smithy.api#documentation": "Region key from managed regions (e.g., “us”, “eu”).",
             "smithy.api#required": {}
           }
         }
@@ -132,13 +132,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.dls#RegionalServicesPrefixBindingsDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dls#RegionalServicesPrefixBindingsDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dls#RegionalServicesPrefixBindingsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.dls#RegionalServicesPrefixBindingsDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.dls#RegionalServicesPrefixBindingsDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.dls#RegionalServicesPrefixBindingsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.dls#RegionalServicesPrefixBindingsDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.dls#RegionalServicesPrefixBindingsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -172,7 +270,7 @@
         "region_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "New region key to assign (e.g., \"us\", \"eu\", \"cfcanary\").",
+            "smithy.api#documentation": "New region key to assign (e.g., “us”, “eu”, “cfcanary”).",
             "smithy.api#required": {}
           }
         }
@@ -335,6 +433,7 @@
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "maximum100",
             "smithy.api#httpQuery": "per_page"
           }
         }
@@ -451,12 +550,14 @@
         "created_on": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
         "modified_on": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -469,6 +570,7 @@
         "region_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength128",
             "smithy.api#required": {}
           }
         },
@@ -481,6 +583,7 @@
         "version_created_on": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         }
@@ -546,6 +649,7 @@
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "maximum100",
             "smithy.api#httpQuery": "per_page"
           }
         },
@@ -573,12 +677,14 @@
         "created_on": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
         "modified_on": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         },
@@ -591,6 +697,7 @@
         "region_key": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength128",
             "smithy.api#required": {}
           }
         },
@@ -603,6 +710,7 @@
         "version_created_on": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#required": {}
           }
         }

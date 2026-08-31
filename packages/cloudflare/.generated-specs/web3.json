@@ -144,7 +144,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -159,7 +162,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -170,7 +176,7 @@
         "status": {
           "target": "com.cloudflare.web3#HostnamesCreateResponseStatus",
           "traits": {
-            "smithy.api#documentation": "Specifies the status of the hostname's activation."
+            "smithy.api#documentation": "Specifies the status of the hostname’s activation."
           }
         },
         "target": {
@@ -358,7 +364,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -373,7 +382,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -384,7 +396,7 @@
         "status": {
           "target": "com.cloudflare.web3#HostnamesEditResponseStatus",
           "traits": {
-            "smithy.api#documentation": "Specifies the status of the hostname's activation."
+            "smithy.api#documentation": "Specifies the status of the hostname’s activation."
           }
         },
         "target": {
@@ -502,7 +514,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -517,7 +532,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -528,7 +546,7 @@
         "status": {
           "target": "com.cloudflare.web3#HostnamesGetResponseStatus",
           "traits": {
-            "smithy.api#documentation": "Specifies the status of the hostname's activation."
+            "smithy.api#documentation": "Specifies the status of the hostname’s activation."
           }
         },
         "target": {
@@ -639,7 +657,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -654,7 +675,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "name": {
           "target": "smithy.api#String",
@@ -665,7 +689,7 @@
         "status": {
           "target": "com.cloudflare.web3#HostnamesListResultItemStatus",
           "traits": {
-            "smithy.api#documentation": "Specifies the status of the hostname's activation."
+            "smithy.api#documentation": "Specifies the status of the hostname’s activation."
           }
         },
         "target": {
@@ -827,7 +851,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -836,7 +863,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "type": {
           "target": "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType",
@@ -1028,7 +1058,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -1037,7 +1070,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "type": {
           "target": "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType",
@@ -1199,7 +1235,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -1208,7 +1247,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "type": {
           "target": "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType",
@@ -1297,7 +1339,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -1306,7 +1351,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "type": {
           "target": "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType",
@@ -1457,7 +1505,10 @@
           }
         },
         "created_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -1466,7 +1517,10 @@
           }
         },
         "modified_on": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "type": {
           "target": "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType",

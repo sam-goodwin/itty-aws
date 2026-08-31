@@ -149,7 +149,7 @@
         "authentication_settings": {
           "target": "com.cloudflare.fraud#GetResponseAuthenticationSettings",
           "traits": {
-            "smithy.api#documentation": "Configuration for classifying login authentication outcomes based on the origin response."
+            "smithy.api#documentation": "Configuration for classifying login authentication outcomes based on the origin response. Requires `user_profiles` to be enabled."
           }
         },
         "user_profiles": {
@@ -312,7 +312,7 @@
         "authentication_settings": {
           "target": "com.cloudflare.fraud#UpdateRequestAuthenticationSettings",
           "traits": {
-            "smithy.api#documentation": "Configuration for classifying login authentication outcomes based on the origin response."
+            "smithy.api#documentation": "Configuration for classifying login authentication outcomes based on the origin response. Requires `user_profiles` to be enabled."
           }
         },
         "user_profiles": {
@@ -448,7 +448,7 @@
         "authentication_settings": {
           "target": "com.cloudflare.fraud#UpdateResponseAuthenticationSettings",
           "traits": {
-            "smithy.api#documentation": "Configuration for classifying login authentication outcomes based on the origin response."
+            "smithy.api#documentation": "Configuration for classifying login authentication outcomes based on the origin response. Requires `user_profiles` to be enabled."
           }
         },
         "user_profiles": {
@@ -461,6 +461,21 @@
           "target": "com.cloudflare.fraud#UpdateResponseUsernameExpressionsList",
           "traits": {
             "smithy.api#documentation": "List of expressions to detect usernames in write HTTP requests."
+          }
+        },
+        "user_profiles_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "user_profiles"
+          }
+        },
+        "username_expressions_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"string\"",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "username_expressions"
           }
         }
       },
@@ -483,7 +498,7 @@
           "uri": "/zones/{zone_id}/fraud_detection/settings",
           "code": 200
         },
-        "smithy.api#documentation": "Update Fraud Detection settings for a zone. Notes on `username_expressions` behavior: - If omitted or set to null, expressions are not modified. - If provided as an empty array `[]`, all expressions will be cleared.",
+        "smithy.api#documentation": "Update Fraud Detection settings for a zone. Notes on `username_expressions` behavior: * If omitted or set to null, expressions are not modified. * If provided as an empty array `[]`, all expressions will be cleared.",
         "smithy.api#idempotent": {}
       }
     },

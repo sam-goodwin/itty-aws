@@ -39,42 +39,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#CreateResponseConsumersItemWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
+    "com.cloudflare.queues#CreateResponseConsumersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#CreateResponseConsumersItemWorkerType": {
+    "com.cloudflare.queues#CreateResponseSettingsType": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -85,42 +56,7 @@
         }
       }
     },
-    "com.cloudflare.queues#CreateResponseConsumersItemWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#CreateResponseConsumersItemWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#CreateResponseConsumersItemWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#CreateResponseConsumersItemHTTPPullSettings": {
+    "com.cloudflare.queues#CreateResponseSettingsSettings": {
       "type": "structure",
       "members": {
         "batch_size": {
@@ -149,7 +85,7 @@
         }
       }
     },
-    "com.cloudflare.queues#CreateResponseConsumersItemHTTPPullType": {
+    "com.cloudflare.queues#CreateResponseSettingsType2": {
       "type": "enum",
       "members": {
         "HTTP_PULL": {
@@ -160,53 +96,13 @@
         }
       }
     },
-    "com.cloudflare.queues#CreateResponseConsumersItemHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#CreateResponseConsumersItemHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#CreateResponseConsumersItemHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#CreateResponseConsumersItem": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#CreateResponseConsumersItemWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#CreateResponseConsumersItemHTTPPull"
-        }
-      }
-    },
-    "com.cloudflare.queues#CreateResponseConsumersList": {
+    "com.cloudflare.queues#CreateResponseSettingsProducersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.queues#CreateResponseConsumersItem"
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#CreateResponseProducersItemMqWorkerProducerType": {
+    "com.cloudflare.queues#CreateResponseSettingsType3": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -217,18 +113,7 @@
         }
       }
     },
-    "com.cloudflare.queues#CreateResponseProducersItemMqWorkerProducer": {
-      "type": "structure",
-      "members": {
-        "script": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#CreateResponseProducersItemMqWorkerProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#CreateResponseProducersItemMqR2ProducerType": {
+    "com.cloudflare.queues#CreateResponseSettingsType4": {
       "type": "enum",
       "members": {
         "R2_BUCKET": {
@@ -239,35 +124,7 @@
         }
       }
     },
-    "com.cloudflare.queues#CreateResponseProducersItemMqR2Producer": {
-      "type": "structure",
-      "members": {
-        "bucket_name": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#CreateResponseProducersItemMqR2ProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#CreateResponseProducersItem": {
-      "type": "union",
-      "members": {
-        "MqWorkerProducer": {
-          "target": "com.cloudflare.queues#CreateResponseProducersItemMqWorkerProducer"
-        },
-        "MqR2Producer": {
-          "target": "com.cloudflare.queues#CreateResponseProducersItemMqR2Producer"
-        }
-      }
-    },
-    "com.cloudflare.queues#CreateResponseProducersList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.queues#CreateResponseProducersItem"
-      }
-    },
-    "com.cloudflare.queues#CreateResponseSettings": {
+    "com.cloudflare.queues#CreateResponseSettingsSettings2": {
       "type": "structure",
       "members": {
         "delivery_delay": {
@@ -290,23 +147,111 @@
         }
       }
     },
-    "com.cloudflare.queues#CreateResponse": {
+    "com.cloudflare.queues#CreateResponseSettings": {
       "type": "structure",
       "members": {
-        "consumers": {
-          "target": "com.cloudflare.queues#CreateResponseConsumersList"
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
+        },
+        "max_concurrency": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform’s maximum (recommended)."
+          }
+        },
+        "max_retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of retries"
+          }
+        },
+        "max_wait_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
+          }
+        },
+        "retry_delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#CreateResponseSettingsType",
+          "traits": {
+            "smithy.api#documentation": "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
+        "queue_name": {
+          "target": "smithy.api#String"
+        },
+        "settings": {
+          "target": "com.cloudflare.queues#CreateResponseSettingsSettings"
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#CreateResponseSettingsType2",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "consumers_total_count": {
           "target": "smithy.api#Double"
         },
-        "created_on": {
-          "target": "smithy.api#String"
+        "created_on_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "created_on"
+          }
         },
         "modified_on": {
           "target": "smithy.api#String"
         },
         "producers": {
-          "target": "com.cloudflare.queues#CreateResponseProducersList"
+          "target": "com.cloudflare.queues#CreateResponseSettingsProducersList",
+          "traits": {
+            "smithy.api#documentation": "MqWorkerProducer object { script, type }"
+          }
+        },
+        "script": {
+          "target": "smithy.api#String"
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#CreateResponseSettingsType3",
+          "traits": {
+            "smithy.api#documentation": "MqR2Producer object { bucket_name, type }",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String"
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#CreateResponseSettingsType4",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "producers_total_count": {
           "target": "smithy.api#Double"
@@ -314,8 +259,55 @@
         "queue_id": {
           "target": "smithy.api#String"
         },
+        "queue_name_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "queue_name"
+          }
+        },
+        "settings_2": {
+          "target": "com.cloudflare.queues#CreateResponseSettingsSettings2",
+          "traits": {
+            "smithy.api#jsonName": "settings"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "consumers": {
+          "target": "com.cloudflare.queues#CreateResponseConsumersList",
+          "traits": {
+            "smithy.api#documentation": "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
         "queue_name": {
           "target": "smithy.api#String"
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Worker"
+          }
         },
         "settings": {
           "target": "com.cloudflare.queues#CreateResponseSettings"
@@ -367,13 +359,64 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.queues#DeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.queues#DeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.queues#Delete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.queues#DeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.queues#DeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -438,42 +481,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#EditResponseConsumersItemWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
+    "com.cloudflare.queues#EditResponseConsumersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#EditResponseConsumersItemWorkerType": {
+    "com.cloudflare.queues#EditResponseSettingsType": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -484,42 +498,7 @@
         }
       }
     },
-    "com.cloudflare.queues#EditResponseConsumersItemWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#EditResponseConsumersItemWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#EditResponseConsumersItemWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#EditResponseConsumersItemHTTPPullSettings": {
+    "com.cloudflare.queues#EditResponseSettingsSettings": {
       "type": "structure",
       "members": {
         "batch_size": {
@@ -548,7 +527,7 @@
         }
       }
     },
-    "com.cloudflare.queues#EditResponseConsumersItemHTTPPullType": {
+    "com.cloudflare.queues#EditResponseSettingsType2": {
       "type": "enum",
       "members": {
         "HTTP_PULL": {
@@ -559,53 +538,13 @@
         }
       }
     },
-    "com.cloudflare.queues#EditResponseConsumersItemHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#EditResponseConsumersItemHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#EditResponseConsumersItemHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#EditResponseConsumersItem": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#EditResponseConsumersItemWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#EditResponseConsumersItemHTTPPull"
-        }
-      }
-    },
-    "com.cloudflare.queues#EditResponseConsumersList": {
+    "com.cloudflare.queues#EditResponseSettingsProducersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.queues#EditResponseConsumersItem"
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#EditResponseProducersItemMqWorkerProducerType": {
+    "com.cloudflare.queues#EditResponseSettingsType3": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -616,18 +555,7 @@
         }
       }
     },
-    "com.cloudflare.queues#EditResponseProducersItemMqWorkerProducer": {
-      "type": "structure",
-      "members": {
-        "script": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#EditResponseProducersItemMqWorkerProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#EditResponseProducersItemMqR2ProducerType": {
+    "com.cloudflare.queues#EditResponseSettingsType4": {
       "type": "enum",
       "members": {
         "R2_BUCKET": {
@@ -638,35 +566,7 @@
         }
       }
     },
-    "com.cloudflare.queues#EditResponseProducersItemMqR2Producer": {
-      "type": "structure",
-      "members": {
-        "bucket_name": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#EditResponseProducersItemMqR2ProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#EditResponseProducersItem": {
-      "type": "union",
-      "members": {
-        "MqWorkerProducer": {
-          "target": "com.cloudflare.queues#EditResponseProducersItemMqWorkerProducer"
-        },
-        "MqR2Producer": {
-          "target": "com.cloudflare.queues#EditResponseProducersItemMqR2Producer"
-        }
-      }
-    },
-    "com.cloudflare.queues#EditResponseProducersList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.queues#EditResponseProducersItem"
-      }
-    },
-    "com.cloudflare.queues#EditResponseSettings": {
+    "com.cloudflare.queues#EditResponseSettingsSettings2": {
       "type": "structure",
       "members": {
         "delivery_delay": {
@@ -689,23 +589,111 @@
         }
       }
     },
-    "com.cloudflare.queues#EditResponse": {
+    "com.cloudflare.queues#EditResponseSettings": {
       "type": "structure",
       "members": {
-        "consumers": {
-          "target": "com.cloudflare.queues#EditResponseConsumersList"
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
+        },
+        "max_concurrency": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform’s maximum (recommended)."
+          }
+        },
+        "max_retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of retries"
+          }
+        },
+        "max_wait_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
+          }
+        },
+        "retry_delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#EditResponseSettingsType",
+          "traits": {
+            "smithy.api#documentation": "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
+        "queue_name": {
+          "target": "smithy.api#String"
+        },
+        "settings": {
+          "target": "com.cloudflare.queues#EditResponseSettingsSettings"
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#EditResponseSettingsType2",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "consumers_total_count": {
           "target": "smithy.api#Double"
         },
-        "created_on": {
-          "target": "smithy.api#String"
+        "created_on_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "created_on"
+          }
         },
         "modified_on": {
           "target": "smithy.api#String"
         },
         "producers": {
-          "target": "com.cloudflare.queues#EditResponseProducersList"
+          "target": "com.cloudflare.queues#EditResponseSettingsProducersList",
+          "traits": {
+            "smithy.api#documentation": "MqWorkerProducer object { script, type }"
+          }
+        },
+        "script": {
+          "target": "smithy.api#String"
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#EditResponseSettingsType3",
+          "traits": {
+            "smithy.api#documentation": "MqR2Producer object { bucket_name, type }",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String"
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#EditResponseSettingsType4",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "producers_total_count": {
           "target": "smithy.api#Double"
@@ -713,8 +701,55 @@
         "queue_id": {
           "target": "smithy.api#String"
         },
+        "queue_name_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "queue_name"
+          }
+        },
+        "settings_2": {
+          "target": "com.cloudflare.queues#EditResponseSettingsSettings2",
+          "traits": {
+            "smithy.api#jsonName": "settings"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#EditResponse": {
+      "type": "structure",
+      "members": {
+        "consumers": {
+          "target": "com.cloudflare.queues#EditResponseConsumersList",
+          "traits": {
+            "smithy.api#documentation": "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
         "queue_name": {
           "target": "smithy.api#String"
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Worker"
+          }
         },
         "settings": {
           "target": "com.cloudflare.queues#EditResponseSettings"
@@ -766,42 +801,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#GetResponseConsumersItemWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
+    "com.cloudflare.queues#GetResponseConsumersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#GetResponseConsumersItemWorkerType": {
+    "com.cloudflare.queues#GetResponseSettingsType": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -812,42 +818,7 @@
         }
       }
     },
-    "com.cloudflare.queues#GetResponseConsumersItemWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#GetResponseConsumersItemWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#GetResponseConsumersItemWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#GetResponseConsumersItemHTTPPullSettings": {
+    "com.cloudflare.queues#GetResponseSettingsSettings": {
       "type": "structure",
       "members": {
         "batch_size": {
@@ -876,7 +847,7 @@
         }
       }
     },
-    "com.cloudflare.queues#GetResponseConsumersItemHTTPPullType": {
+    "com.cloudflare.queues#GetResponseSettingsType2": {
       "type": "enum",
       "members": {
         "HTTP_PULL": {
@@ -887,53 +858,13 @@
         }
       }
     },
-    "com.cloudflare.queues#GetResponseConsumersItemHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#GetResponseConsumersItemHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#GetResponseConsumersItemHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#GetResponseConsumersItem": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#GetResponseConsumersItemWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#GetResponseConsumersItemHTTPPull"
-        }
-      }
-    },
-    "com.cloudflare.queues#GetResponseConsumersList": {
+    "com.cloudflare.queues#GetResponseSettingsProducersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.queues#GetResponseConsumersItem"
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#GetResponseProducersItemMqWorkerProducerType": {
+    "com.cloudflare.queues#GetResponseSettingsType3": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -944,18 +875,7 @@
         }
       }
     },
-    "com.cloudflare.queues#GetResponseProducersItemMqWorkerProducer": {
-      "type": "structure",
-      "members": {
-        "script": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#GetResponseProducersItemMqWorkerProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#GetResponseProducersItemMqR2ProducerType": {
+    "com.cloudflare.queues#GetResponseSettingsType4": {
       "type": "enum",
       "members": {
         "R2_BUCKET": {
@@ -966,35 +886,7 @@
         }
       }
     },
-    "com.cloudflare.queues#GetResponseProducersItemMqR2Producer": {
-      "type": "structure",
-      "members": {
-        "bucket_name": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#GetResponseProducersItemMqR2ProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#GetResponseProducersItem": {
-      "type": "union",
-      "members": {
-        "MqWorkerProducer": {
-          "target": "com.cloudflare.queues#GetResponseProducersItemMqWorkerProducer"
-        },
-        "MqR2Producer": {
-          "target": "com.cloudflare.queues#GetResponseProducersItemMqR2Producer"
-        }
-      }
-    },
-    "com.cloudflare.queues#GetResponseProducersList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.queues#GetResponseProducersItem"
-      }
-    },
-    "com.cloudflare.queues#GetResponseSettings": {
+    "com.cloudflare.queues#GetResponseSettingsSettings2": {
       "type": "structure",
       "members": {
         "delivery_delay": {
@@ -1017,23 +909,111 @@
         }
       }
     },
-    "com.cloudflare.queues#GetResponse": {
+    "com.cloudflare.queues#GetResponseSettings": {
       "type": "structure",
       "members": {
-        "consumers": {
-          "target": "com.cloudflare.queues#GetResponseConsumersList"
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
+        },
+        "max_concurrency": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform’s maximum (recommended)."
+          }
+        },
+        "max_retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of retries"
+          }
+        },
+        "max_wait_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
+          }
+        },
+        "retry_delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#GetResponseSettingsType",
+          "traits": {
+            "smithy.api#documentation": "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
+        "queue_name": {
+          "target": "smithy.api#String"
+        },
+        "settings": {
+          "target": "com.cloudflare.queues#GetResponseSettingsSettings"
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#GetResponseSettingsType2",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "consumers_total_count": {
           "target": "smithy.api#Double"
         },
-        "created_on": {
-          "target": "smithy.api#String"
+        "created_on_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "created_on"
+          }
         },
         "modified_on": {
           "target": "smithy.api#String"
         },
         "producers": {
-          "target": "com.cloudflare.queues#GetResponseProducersList"
+          "target": "com.cloudflare.queues#GetResponseSettingsProducersList",
+          "traits": {
+            "smithy.api#documentation": "MqWorkerProducer object { script, type }"
+          }
+        },
+        "script": {
+          "target": "smithy.api#String"
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#GetResponseSettingsType3",
+          "traits": {
+            "smithy.api#documentation": "MqR2Producer object { bucket_name, type }",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String"
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#GetResponseSettingsType4",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "producers_total_count": {
           "target": "smithy.api#Double"
@@ -1041,8 +1021,55 @@
         "queue_id": {
           "target": "smithy.api#String"
         },
+        "queue_name_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "queue_name"
+          }
+        },
+        "settings_2": {
+          "target": "com.cloudflare.queues#GetResponseSettingsSettings2",
+          "traits": {
+            "smithy.api#jsonName": "settings"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#GetResponse": {
+      "type": "structure",
+      "members": {
+        "consumers": {
+          "target": "com.cloudflare.queues#GetResponseConsumersList",
+          "traits": {
+            "smithy.api#documentation": "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
         "queue_name": {
           "target": "smithy.api#String"
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Worker"
+          }
         },
         "settings": {
           "target": "com.cloudflare.queues#GetResponseSettings"
@@ -1159,42 +1186,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#ListResultItemConsumersItemWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
+    "com.cloudflare.queues#ListResultItemConsumersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#ListResultItemConsumersItemWorkerType": {
+    "com.cloudflare.queues#ListResultItemSettingsType": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -1205,42 +1203,7 @@
         }
       }
     },
-    "com.cloudflare.queues#ListResultItemConsumersItemWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ListResultItemConsumersItemWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ListResultItemConsumersItemWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ListResultItemConsumersItemHTTPPullSettings": {
+    "com.cloudflare.queues#ListResultItemSettingsSettings": {
       "type": "structure",
       "members": {
         "batch_size": {
@@ -1269,7 +1232,7 @@
         }
       }
     },
-    "com.cloudflare.queues#ListResultItemConsumersItemHTTPPullType": {
+    "com.cloudflare.queues#ListResultItemSettingsType2": {
       "type": "enum",
       "members": {
         "HTTP_PULL": {
@@ -1280,53 +1243,13 @@
         }
       }
     },
-    "com.cloudflare.queues#ListResultItemConsumersItemHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ListResultItemConsumersItemHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ListResultItemConsumersItemHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ListResultItemConsumersItem": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#ListResultItemConsumersItemWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#ListResultItemConsumersItemHTTPPull"
-        }
-      }
-    },
-    "com.cloudflare.queues#ListResultItemConsumersList": {
+    "com.cloudflare.queues#ListResultItemSettingsProducersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.queues#ListResultItemConsumersItem"
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#ListResultItemProducersItemMqWorkerProducerType": {
+    "com.cloudflare.queues#ListResultItemSettingsType3": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -1337,18 +1260,7 @@
         }
       }
     },
-    "com.cloudflare.queues#ListResultItemProducersItemMqWorkerProducer": {
-      "type": "structure",
-      "members": {
-        "script": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ListResultItemProducersItemMqWorkerProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ListResultItemProducersItemMqR2ProducerType": {
+    "com.cloudflare.queues#ListResultItemSettingsType4": {
       "type": "enum",
       "members": {
         "R2_BUCKET": {
@@ -1359,35 +1271,7 @@
         }
       }
     },
-    "com.cloudflare.queues#ListResultItemProducersItemMqR2Producer": {
-      "type": "structure",
-      "members": {
-        "bucket_name": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ListResultItemProducersItemMqR2ProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ListResultItemProducersItem": {
-      "type": "union",
-      "members": {
-        "MqWorkerProducer": {
-          "target": "com.cloudflare.queues#ListResultItemProducersItemMqWorkerProducer"
-        },
-        "MqR2Producer": {
-          "target": "com.cloudflare.queues#ListResultItemProducersItemMqR2Producer"
-        }
-      }
-    },
-    "com.cloudflare.queues#ListResultItemProducersList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.queues#ListResultItemProducersItem"
-      }
-    },
-    "com.cloudflare.queues#ListResultItemSettings": {
+    "com.cloudflare.queues#ListResultItemSettingsSettings2": {
       "type": "structure",
       "members": {
         "delivery_delay": {
@@ -1410,23 +1294,111 @@
         }
       }
     },
-    "com.cloudflare.queues#ListResultItem": {
+    "com.cloudflare.queues#ListResultItemSettings": {
       "type": "structure",
       "members": {
-        "consumers": {
-          "target": "com.cloudflare.queues#ListResultItemConsumersList"
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
+        },
+        "max_concurrency": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform’s maximum (recommended)."
+          }
+        },
+        "max_retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of retries"
+          }
+        },
+        "max_wait_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
+          }
+        },
+        "retry_delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#ListResultItemSettingsType",
+          "traits": {
+            "smithy.api#documentation": "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
+        "queue_name": {
+          "target": "smithy.api#String"
+        },
+        "settings": {
+          "target": "com.cloudflare.queues#ListResultItemSettingsSettings"
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#ListResultItemSettingsType2",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "consumers_total_count": {
           "target": "smithy.api#Double"
         },
-        "created_on": {
-          "target": "smithy.api#String"
+        "created_on_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "created_on"
+          }
         },
         "modified_on": {
           "target": "smithy.api#String"
         },
         "producers": {
-          "target": "com.cloudflare.queues#ListResultItemProducersList"
+          "target": "com.cloudflare.queues#ListResultItemSettingsProducersList",
+          "traits": {
+            "smithy.api#documentation": "MqWorkerProducer object { script, type }"
+          }
+        },
+        "script": {
+          "target": "smithy.api#String"
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#ListResultItemSettingsType3",
+          "traits": {
+            "smithy.api#documentation": "MqR2Producer object { bucket_name, type }",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String"
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#ListResultItemSettingsType4",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "producers_total_count": {
           "target": "smithy.api#Double"
@@ -1434,8 +1406,55 @@
         "queue_id": {
           "target": "smithy.api#String"
         },
+        "queue_name_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "queue_name"
+          }
+        },
+        "settings_2": {
+          "target": "com.cloudflare.queues#ListResultItemSettingsSettings2",
+          "traits": {
+            "smithy.api#jsonName": "settings"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#ListResultItem": {
+      "type": "structure",
+      "members": {
+        "consumers": {
+          "target": "com.cloudflare.queues#ListResultItemConsumersList",
+          "traits": {
+            "smithy.api#documentation": "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
         "queue_name": {
           "target": "smithy.api#String"
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Worker"
+          }
         },
         "settings": {
           "target": "com.cloudflare.queues#ListResultItemSettings"
@@ -1534,42 +1553,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#UpdateResponseConsumersItemWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
+    "com.cloudflare.queues#UpdateResponseConsumersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#UpdateResponseConsumersItemWorkerType": {
+    "com.cloudflare.queues#UpdateResponseSettingsType": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -1580,42 +1570,7 @@
         }
       }
     },
-    "com.cloudflare.queues#UpdateResponseConsumersItemWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#UpdateResponseConsumersItemWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#UpdateResponseConsumersItemWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#UpdateResponseConsumersItemHTTPPullSettings": {
+    "com.cloudflare.queues#UpdateResponseSettingsSettings": {
       "type": "structure",
       "members": {
         "batch_size": {
@@ -1644,7 +1599,7 @@
         }
       }
     },
-    "com.cloudflare.queues#UpdateResponseConsumersItemHTTPPullType": {
+    "com.cloudflare.queues#UpdateResponseSettingsType2": {
       "type": "enum",
       "members": {
         "HTTP_PULL": {
@@ -1655,53 +1610,13 @@
         }
       }
     },
-    "com.cloudflare.queues#UpdateResponseConsumersItemHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#UpdateResponseConsumersItemHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#UpdateResponseConsumersItemHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#UpdateResponseConsumersItem": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#UpdateResponseConsumersItemWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#UpdateResponseConsumersItemHTTPPull"
-        }
-      }
-    },
-    "com.cloudflare.queues#UpdateResponseConsumersList": {
+    "com.cloudflare.queues#UpdateResponseSettingsProducersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.queues#UpdateResponseConsumersItem"
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#UpdateResponseProducersItemMqWorkerProducerType": {
+    "com.cloudflare.queues#UpdateResponseSettingsType3": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -1712,18 +1627,7 @@
         }
       }
     },
-    "com.cloudflare.queues#UpdateResponseProducersItemMqWorkerProducer": {
-      "type": "structure",
-      "members": {
-        "script": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#UpdateResponseProducersItemMqWorkerProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#UpdateResponseProducersItemMqR2ProducerType": {
+    "com.cloudflare.queues#UpdateResponseSettingsType4": {
       "type": "enum",
       "members": {
         "R2_BUCKET": {
@@ -1734,35 +1638,7 @@
         }
       }
     },
-    "com.cloudflare.queues#UpdateResponseProducersItemMqR2Producer": {
-      "type": "structure",
-      "members": {
-        "bucket_name": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#UpdateResponseProducersItemMqR2ProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#UpdateResponseProducersItem": {
-      "type": "union",
-      "members": {
-        "MqWorkerProducer": {
-          "target": "com.cloudflare.queues#UpdateResponseProducersItemMqWorkerProducer"
-        },
-        "MqR2Producer": {
-          "target": "com.cloudflare.queues#UpdateResponseProducersItemMqR2Producer"
-        }
-      }
-    },
-    "com.cloudflare.queues#UpdateResponseProducersList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.queues#UpdateResponseProducersItem"
-      }
-    },
-    "com.cloudflare.queues#UpdateResponseSettings": {
+    "com.cloudflare.queues#UpdateResponseSettingsSettings2": {
       "type": "structure",
       "members": {
         "delivery_delay": {
@@ -1785,23 +1661,111 @@
         }
       }
     },
-    "com.cloudflare.queues#UpdateResponse": {
+    "com.cloudflare.queues#UpdateResponseSettings": {
       "type": "structure",
       "members": {
-        "consumers": {
-          "target": "com.cloudflare.queues#UpdateResponseConsumersList"
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
+        },
+        "max_concurrency": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform’s maximum (recommended)."
+          }
+        },
+        "max_retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of retries"
+          }
+        },
+        "max_wait_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
+          }
+        },
+        "retry_delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#UpdateResponseSettingsType",
+          "traits": {
+            "smithy.api#documentation": "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
+        "queue_name": {
+          "target": "smithy.api#String"
+        },
+        "settings": {
+          "target": "com.cloudflare.queues#UpdateResponseSettingsSettings"
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#UpdateResponseSettingsType2",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "consumers_total_count": {
           "target": "smithy.api#Double"
         },
-        "created_on": {
-          "target": "smithy.api#String"
+        "created_on_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "created_on"
+          }
         },
         "modified_on": {
           "target": "smithy.api#String"
         },
         "producers": {
-          "target": "com.cloudflare.queues#UpdateResponseProducersList"
+          "target": "com.cloudflare.queues#UpdateResponseSettingsProducersList",
+          "traits": {
+            "smithy.api#documentation": "MqWorkerProducer object { script, type }"
+          }
+        },
+        "script": {
+          "target": "smithy.api#String"
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#UpdateResponseSettingsType3",
+          "traits": {
+            "smithy.api#documentation": "MqR2Producer object { bucket_name, type }",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String"
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#UpdateResponseSettingsType4",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "producers_total_count": {
           "target": "smithy.api#Double"
@@ -1809,8 +1773,55 @@
         "queue_id": {
           "target": "smithy.api#String"
         },
+        "queue_name_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "queue_name"
+          }
+        },
+        "settings_2": {
+          "target": "com.cloudflare.queues#UpdateResponseSettingsSettings2",
+          "traits": {
+            "smithy.api#jsonName": "settings"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "consumers": {
+          "target": "com.cloudflare.queues#UpdateResponseConsumersList",
+          "traits": {
+            "smithy.api#documentation": "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
         "queue_name": {
           "target": "smithy.api#String"
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Worker"
+          }
         },
         "settings": {
           "target": "com.cloudflare.queues#UpdateResponseSettings"
@@ -1835,7 +1846,7 @@
           "uri": "/accounts/{account_id}/queues/{queue_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Updates a Queue. Note that this endpoint does not support partial updates. If successful, the Queue's configuration is overwritten with the supplied configuration.",
+        "smithy.api#documentation": "Updates a Queue. Note that this endpoint does not support partial updates. If successful, the Queue’s configuration is overwritten with the supplied configuration.",
         "smithy.api#idempotent": {}
       }
     },
@@ -1847,7 +1858,12 @@
           "traits": {
             "smithy.api#enumValue": "worker"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.queues#ConsumersCreateRequestSettingsType": {
+      "type": "enum",
+      "members": {
         "HTTP_PULL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1856,42 +1872,7 @@
         }
       }
     },
-    "com.cloudflare.queues#ConsumersCreateRequestSettingsWorker": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersCreateRequestSettingsHTTPPull": {
+    "com.cloudflare.queues#ConsumersCreateRequestSettingsSettings": {
       "type": "structure",
       "members": {
         "batch_size": {
@@ -1921,13 +1902,49 @@
       }
     },
     "com.cloudflare.queues#ConsumersCreateRequestSettings": {
-      "type": "union",
+      "type": "structure",
       "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#ConsumersCreateRequestSettingsWorker"
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
         },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#ConsumersCreateRequestSettingsHTTPPull"
+        "max_concurrency": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform’s maximum (recommended)."
+          }
+        },
+        "max_retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of retries"
+          }
+        },
+        "max_wait_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
+          }
+        },
+        "retry_delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#ConsumersCreateRequestSettingsType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String"
+        },
+        "settings": {
+          "target": "com.cloudflare.queues#ConsumersCreateRequestSettingsSettings"
         }
       }
     },
@@ -1950,10 +1967,18 @@
             "smithy.api#required": {}
           }
         },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Request body for creating or updating a consumer",
+            "smithy.api#required": {}
+          }
+        },
         "script_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Name of a Worker"
+            "smithy.api#documentation": "Name of a Worker",
+            "smithy.api#required": {}
           }
         },
         "type": {
@@ -1973,172 +1998,11 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#ConsumersCreateResultWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersCreateResultWorkerType": {
-      "type": "enum",
-      "members": {
-        "WORKER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "worker"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersCreateResultWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ConsumersCreateResultWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ConsumersCreateResultWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersCreateResultHTTPPullSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        },
-        "visibility_timeout_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersCreateResultHTTPPullType": {
-      "type": "enum",
-      "members": {
-        "HTTP_PULL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http_pull"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersCreateResultHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ConsumersCreateResultHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ConsumersCreateResultHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersCreateResult": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#ConsumersCreateResultWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#ConsumersCreateResultHTTPPull"
-        }
-      }
-    },
     "com.cloudflare.queues#ConsumersCreateResponse": {
       "type": "structure",
       "members": {
         "result": {
-          "target": "com.cloudflare.queues#ConsumersCreateResult",
+          "target": "smithy.api#Document",
           "traits": {
             "com.cloudflare.protocols#envelopePayload": {},
             "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
@@ -2198,13 +2062,64 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.queues#ConsumersDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#ConsumersDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.queues#ConsumersDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.queues#ConsumersDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.queues#ConsumersDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.queues#ConsumersDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2248,172 +2163,11 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#ConsumersGetResultWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersGetResultWorkerType": {
-      "type": "enum",
-      "members": {
-        "WORKER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "worker"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersGetResultWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ConsumersGetResultWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ConsumersGetResultWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersGetResultHTTPPullSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        },
-        "visibility_timeout_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersGetResultHTTPPullType": {
-      "type": "enum",
-      "members": {
-        "HTTP_PULL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http_pull"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersGetResultHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ConsumersGetResultHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ConsumersGetResultHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersGetResult": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#ConsumersGetResultWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#ConsumersGetResultHTTPPull"
-        }
-      }
-    },
     "com.cloudflare.queues#ConsumersGetResponse": {
       "type": "structure",
       "members": {
         "result": {
-          "target": "com.cloudflare.queues#ConsumersGetResult",
+          "target": "smithy.api#Document",
           "traits": {
             "com.cloudflare.protocols#envelopePayload": {},
             "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
@@ -2466,171 +2220,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#ConsumersListResultItemWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersListResultItemWorkerType": {
-      "type": "enum",
-      "members": {
-        "WORKER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "worker"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersListResultItemWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ConsumersListResultItemWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ConsumersListResultItemWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersListResultItemHTTPPullSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        },
-        "visibility_timeout_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersListResultItemHTTPPullType": {
-      "type": "enum",
-      "members": {
-        "HTTP_PULL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http_pull"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersListResultItemHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ConsumersListResultItemHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ConsumersListResultItemHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersListResultItem": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#ConsumersListResultItemWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#ConsumersListResultItemHTTPPull"
-        }
-      }
-    },
     "com.cloudflare.queues#ConsumersListResultList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.queues#ConsumersListResultItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.queues#ConsumersListResponse": {
@@ -2674,7 +2267,12 @@
           "traits": {
             "smithy.api#enumValue": "worker"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.queues#ConsumersUpdateRequestSettingsType": {
+      "type": "enum",
+      "members": {
         "HTTP_PULL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2683,42 +2281,7 @@
         }
       }
     },
-    "com.cloudflare.queues#ConsumersUpdateRequestSettingsWorker": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersUpdateRequestSettingsHTTPPull": {
+    "com.cloudflare.queues#ConsumersUpdateRequestSettingsSettings": {
       "type": "structure",
       "members": {
         "batch_size": {
@@ -2748,13 +2311,49 @@
       }
     },
     "com.cloudflare.queues#ConsumersUpdateRequestSettings": {
-      "type": "union",
+      "type": "structure",
       "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#ConsumersUpdateRequestSettingsWorker"
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
         },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#ConsumersUpdateRequestSettingsHTTPPull"
+        "max_concurrency": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform’s maximum (recommended)."
+          }
+        },
+        "max_retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of retries"
+          }
+        },
+        "max_wait_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
+          }
+        },
+        "retry_delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#ConsumersUpdateRequestSettingsType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String"
+        },
+        "settings": {
+          "target": "com.cloudflare.queues#ConsumersUpdateRequestSettingsSettings"
         }
       }
     },
@@ -2785,10 +2384,18 @@
             "smithy.api#required": {}
           }
         },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Request body for creating or updating a consumer",
+            "smithy.api#required": {}
+          }
+        },
         "script_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Name of a Worker"
+            "smithy.api#documentation": "Name of a Worker",
+            "smithy.api#required": {}
           }
         },
         "type": {
@@ -2808,172 +2415,11 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#ConsumersUpdateResultWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersUpdateResultWorkerType": {
-      "type": "enum",
-      "members": {
-        "WORKER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "worker"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersUpdateResultWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ConsumersUpdateResultWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ConsumersUpdateResultWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersUpdateResultHTTPPullSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        },
-        "visibility_timeout_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt."
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersUpdateResultHTTPPullType": {
-      "type": "enum",
-      "members": {
-        "HTTP_PULL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http_pull"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersUpdateResultHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#ConsumersUpdateResultHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#ConsumersUpdateResultHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#ConsumersUpdateResult": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#ConsumersUpdateResultWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#ConsumersUpdateResultHTTPPull"
-        }
-      }
-    },
     "com.cloudflare.queues#ConsumersUpdateResponse": {
       "type": "structure",
       "members": {
         "result": {
-          "target": "com.cloudflare.queues#ConsumersUpdateResult",
+          "target": "smithy.api#Document",
           "traits": {
             "com.cloudflare.protocols#envelopePayload": {},
             "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
@@ -3008,7 +2454,7 @@
         "lease_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message."
+            "smithy.api#documentation": "An ID that represents an “in-flight” message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message."
           }
         }
       }
@@ -3031,7 +2477,7 @@
         "lease_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message."
+            "smithy.api#documentation": "An ID that represents an “in-flight” message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message."
           }
         }
       }
@@ -3125,7 +2571,7 @@
         "smithy.api#documentation": "Acknowledge + Retry messages from a Queue"
       }
     },
-    "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType": {
+    "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemContentType": {
       "type": "enum",
       "members": {
         "TEXT": {
@@ -3136,24 +2582,7 @@
         }
       }
     },
-    "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemMqQueueMessageText": {
-      "type": "structure",
-      "members": {
-        "body": {
-          "target": "smithy.api#String"
-        },
-        "content_type": {
-          "target": "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType"
-        },
-        "delay_seconds": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to wait for attempting to deliver this message to consumers"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType": {
+    "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemContentType2": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -3164,31 +2593,39 @@
         }
       }
     },
-    "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemMqQueueMessageJson": {
+    "com.cloudflare.queues#MessagesBulkPushRequestMessagesItem": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document"
+          "target": "smithy.api#String"
         },
         "content_type": {
-          "target": "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType"
+          "target": "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemContentType"
         },
         "delay_seconds": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The number of seconds to wait for attempting to deliver this message to consumers"
           }
-        }
-      }
-    },
-    "com.cloudflare.queues#MessagesBulkPushRequestMessagesItem": {
-      "type": "union",
-      "members": {
-        "MqQueueMessageText": {
-          "target": "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemMqQueueMessageText"
         },
-        "MqQueueMessageJson": {
-          "target": "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemMqQueueMessageJson"
+        "body_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "body"
+          }
+        },
+        "content_type_2": {
+          "target": "com.cloudflare.queues#MessagesBulkPushRequestMessagesItemContentType2",
+          "traits": {
+            "smithy.api#jsonName": "content_type"
+          }
+        },
+        "delay_seconds_2": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to wait for attempting to deliver this message to consumers",
+            "smithy.api#jsonName": "delay_seconds"
+          }
         }
       }
     },
@@ -3224,7 +2661,10 @@
           }
         },
         "messages": {
-          "target": "com.cloudflare.queues#MessagesBulkPushRequestMessagesList"
+          "target": "com.cloudflare.queues#MessagesBulkPushRequestMessagesList",
+          "traits": {
+            "smithy.api#documentation": "MqQueueMessageText object { body, content_type, delay_seconds }"
+          }
         }
       },
       "traits": {
@@ -3297,6 +2737,53 @@
         "smithy.api#documentation": "Push a batch of message to a Queue"
       }
     },
+    "com.cloudflare.queues#MessagesPeekRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "queue_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.queues#MessagesPeek": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.queues#MessagesPeekRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/queues/{queue_id}/messages/peek",
+          "code": 200
+        },
+        "smithy.api#documentation": "Peek messages from a Queue without leasing them. Messages remain available for subsequent peek or pull operations."
+      }
+    },
     "com.cloudflare.queues#MessagesPullRequest": {
       "type": "structure",
       "members": {
@@ -3333,75 +2820,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#MessagesPullResponseMessagesItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "attempts": {
-          "target": "smithy.api#Double"
-        },
-        "body": {
-          "target": "smithy.api#String"
-        },
-        "lease_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message."
-          }
-        },
-        "metadata": {
-          "target": "smithy.api#Document"
-        },
-        "timestamp_ms": {
-          "target": "smithy.api#Double"
-        }
-      }
-    },
-    "com.cloudflare.queues#MessagesPullResponseMessagesList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.queues#MessagesPullResponseMessagesItem"
-      }
-    },
-    "com.cloudflare.queues#MessagesPullResponseMetadataMetrics": {
-      "type": "structure",
-      "members": {
-        "backlog_bytes": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The size in bytes of unacknowledged messages in the queue.",
-            "smithy.api#required": {}
-          }
-        },
-        "backlog_count": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of unacknowledged messages in the queue.",
-            "smithy.api#required": {}
-          }
-        },
-        "oldest_message_timestamp_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown.",
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#MessagesPullResponseMetadata": {
-      "type": "structure",
-      "members": {
-        "metrics": {
-          "target": "com.cloudflare.queues#MessagesPullResponseMetadataMetrics",
-          "traits": {
-            "smithy.api#documentation": "Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues."
-          }
-        }
-      }
-    },
     "com.cloudflare.queues#MessagesPullResponse": {
       "type": "structure",
       "members": {
@@ -3410,12 +2828,6 @@
           "traits": {
             "smithy.api#documentation": "The number of unacknowledged messages in the queue."
           }
-        },
-        "messages": {
-          "target": "com.cloudflare.queues#MessagesPullResponseMessagesList"
-        },
-        "metadata": {
-          "target": "com.cloudflare.queues#MessagesPullResponseMetadata"
         }
       },
       "traits": {
@@ -3440,7 +2852,72 @@
         "smithy.api#documentation": "Pull a batch of messages from a Queue"
       }
     },
-    "com.cloudflare.queues#MessagesPushRequestContentType": {
+    "com.cloudflare.queues#MessagesPurgeRequestRefsItem": {
+      "type": "structure",
+      "members": {
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An opaque reference to a peeked message. You must hold on to this value and use it to purge the message.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#MessagesPurgeRequestRefsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.queues#MessagesPurgeRequestRefsItem"
+      }
+    },
+    "com.cloudflare.queues#MessagesPurgeRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "queue_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "refs": {
+          "target": "com.cloudflare.queues#MessagesPurgeRequestRefsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.queues#MessagesPurge": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.queues#MessagesPurgeRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/queues/{queue_id}/messages/purge",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete peeked messages from a Queue by their ref. Purged messages aren’t considered delivered, they are instantly deleted from this queue and do not affect metrics."
+      }
+    },
+    "com.cloudflare.queues#MessagesPushRequestBodyContentType": {
       "type": "enum",
       "members": {
         "TEXT": {
@@ -3448,11 +2925,52 @@
           "traits": {
             "smithy.api#enumValue": "text"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.queues#MessagesPushRequestBodyContentType2": {
+      "type": "enum",
+      "members": {
         "JSON": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#MessagesPushRequestBody": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#String"
+        },
+        "content_type": {
+          "target": "com.cloudflare.queues#MessagesPushRequestBodyContentType"
+        },
+        "delay_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to wait for attempting to deliver this message to consumers"
+          }
+        },
+        "body_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#jsonName": "body"
+          }
+        },
+        "content_type_2": {
+          "target": "com.cloudflare.queues#MessagesPushRequestBodyContentType2",
+          "traits": {
+            "smithy.api#jsonName": "content_type"
+          }
+        },
+        "delay_seconds_2": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to wait for attempting to deliver this message to consumers",
+            "smithy.api#jsonName": "delay_seconds"
           }
         }
       }
@@ -3477,15 +2995,10 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document"
-        },
-        "content_type": {
-          "target": "com.cloudflare.queues#MessagesPushRequestContentType"
-        },
-        "delay_seconds": {
-          "target": "smithy.api#Double",
+          "target": "com.cloudflare.queues#MessagesPushRequestBody",
           "traits": {
-            "smithy.api#documentation": "The number of seconds to wait for attempting to deliver this message to consumers"
+            "smithy.api#documentation": "MqQueueMessageText object { body, content_type, delay_seconds }",
+            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -3589,42 +3102,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.queues#PurgeStartResponseConsumersItemWorkerSettings": {
-      "type": "structure",
-      "members": {
-        "batch_size": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of messages to include in a batch."
-          }
-        },
-        "max_concurrency": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
-          }
-        },
-        "max_retries": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of retries"
-          }
-        },
-        "max_wait_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
-          }
-        },
-        "retry_delay": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
-          }
-        }
+    "com.cloudflare.queues#PurgeStartResponseConsumersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#PurgeStartResponseConsumersItemWorkerType": {
+    "com.cloudflare.queues#PurgeStartResponseSettingsType": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -3635,42 +3119,7 @@
         }
       }
     },
-    "com.cloudflare.queues#PurgeStartResponseConsumersItemWorker": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "script_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of a Worker"
-          }
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#PurgeStartResponseConsumersItemWorkerSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#PurgeStartResponseConsumersItemWorkerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#PurgeStartResponseConsumersItemHTTPPullSettings": {
+    "com.cloudflare.queues#PurgeStartResponseSettingsSettings": {
       "type": "structure",
       "members": {
         "batch_size": {
@@ -3699,7 +3148,7 @@
         }
       }
     },
-    "com.cloudflare.queues#PurgeStartResponseConsumersItemHTTPPullType": {
+    "com.cloudflare.queues#PurgeStartResponseSettingsType2": {
       "type": "enum",
       "members": {
         "HTTP_PULL": {
@@ -3710,53 +3159,13 @@
         }
       }
     },
-    "com.cloudflare.queues#PurgeStartResponseConsumersItemHTTPPull": {
-      "type": "structure",
-      "members": {
-        "consumer_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Resource identifier."
-          }
-        },
-        "created_on": {
-          "target": "smithy.api#String"
-        },
-        "dead_letter_queue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
-          }
-        },
-        "queue_name": {
-          "target": "smithy.api#String"
-        },
-        "settings": {
-          "target": "com.cloudflare.queues#PurgeStartResponseConsumersItemHTTPPullSettings"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#PurgeStartResponseConsumersItemHTTPPullType"
-        }
-      }
-    },
-    "com.cloudflare.queues#PurgeStartResponseConsumersItem": {
-      "type": "union",
-      "members": {
-        "Worker": {
-          "target": "com.cloudflare.queues#PurgeStartResponseConsumersItemWorker"
-        },
-        "HTTPPull": {
-          "target": "com.cloudflare.queues#PurgeStartResponseConsumersItemHTTPPull"
-        }
-      }
-    },
-    "com.cloudflare.queues#PurgeStartResponseConsumersList": {
+    "com.cloudflare.queues#PurgeStartResponseSettingsProducersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.queues#PurgeStartResponseConsumersItem"
+        "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.queues#PurgeStartResponseProducersItemMqWorkerProducerType": {
+    "com.cloudflare.queues#PurgeStartResponseSettingsType3": {
       "type": "enum",
       "members": {
         "WORKER": {
@@ -3767,18 +3176,7 @@
         }
       }
     },
-    "com.cloudflare.queues#PurgeStartResponseProducersItemMqWorkerProducer": {
-      "type": "structure",
-      "members": {
-        "script": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#PurgeStartResponseProducersItemMqWorkerProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#PurgeStartResponseProducersItemMqR2ProducerType": {
+    "com.cloudflare.queues#PurgeStartResponseSettingsType4": {
       "type": "enum",
       "members": {
         "R2_BUCKET": {
@@ -3789,35 +3187,7 @@
         }
       }
     },
-    "com.cloudflare.queues#PurgeStartResponseProducersItemMqR2Producer": {
-      "type": "structure",
-      "members": {
-        "bucket_name": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "com.cloudflare.queues#PurgeStartResponseProducersItemMqR2ProducerType"
-        }
-      }
-    },
-    "com.cloudflare.queues#PurgeStartResponseProducersItem": {
-      "type": "union",
-      "members": {
-        "MqWorkerProducer": {
-          "target": "com.cloudflare.queues#PurgeStartResponseProducersItemMqWorkerProducer"
-        },
-        "MqR2Producer": {
-          "target": "com.cloudflare.queues#PurgeStartResponseProducersItemMqR2Producer"
-        }
-      }
-    },
-    "com.cloudflare.queues#PurgeStartResponseProducersList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.queues#PurgeStartResponseProducersItem"
-      }
-    },
-    "com.cloudflare.queues#PurgeStartResponseSettings": {
+    "com.cloudflare.queues#PurgeStartResponseSettingsSettings2": {
       "type": "structure",
       "members": {
         "delivery_delay": {
@@ -3840,23 +3210,111 @@
         }
       }
     },
-    "com.cloudflare.queues#PurgeStartResponse": {
+    "com.cloudflare.queues#PurgeStartResponseSettings": {
       "type": "structure",
       "members": {
-        "consumers": {
-          "target": "com.cloudflare.queues#PurgeStartResponseConsumersList"
+        "batch_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of messages to include in a batch."
+          }
+        },
+        "max_concurrency": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform’s maximum (recommended)."
+          }
+        },
+        "max_retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of retries"
+          }
+        },
+        "max_wait_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it"
+          }
+        },
+        "retry_delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of seconds to delay before making the message available for another attempt."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#PurgeStartResponseSettingsType",
+          "traits": {
+            "smithy.api#documentation": "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
+        "queue_name": {
+          "target": "smithy.api#String"
+        },
+        "settings": {
+          "target": "com.cloudflare.queues#PurgeStartResponseSettingsSettings"
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#PurgeStartResponseSettingsType2",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "consumers_total_count": {
           "target": "smithy.api#Double"
         },
-        "created_on": {
-          "target": "smithy.api#String"
+        "created_on_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "created_on"
+          }
         },
         "modified_on": {
           "target": "smithy.api#String"
         },
         "producers": {
-          "target": "com.cloudflare.queues#PurgeStartResponseProducersList"
+          "target": "com.cloudflare.queues#PurgeStartResponseSettingsProducersList",
+          "traits": {
+            "smithy.api#documentation": "MqWorkerProducer object { script, type }"
+          }
+        },
+        "script": {
+          "target": "smithy.api#String"
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#PurgeStartResponseSettingsType3",
+          "traits": {
+            "smithy.api#documentation": "MqR2Producer object { bucket_name, type }",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String"
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#PurgeStartResponseSettingsType4",
+          "traits": {
+            "smithy.api#jsonName": "type"
+          }
         },
         "producers_total_count": {
           "target": "smithy.api#Double"
@@ -3864,8 +3322,55 @@
         "queue_id": {
           "target": "smithy.api#String"
         },
+        "queue_name_2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "queue_name"
+          }
+        },
+        "settings_2": {
+          "target": "com.cloudflare.queues#PurgeStartResponseSettingsSettings2",
+          "traits": {
+            "smithy.api#jsonName": "settings"
+          }
+        }
+      }
+    },
+    "com.cloudflare.queues#PurgeStartResponse": {
+      "type": "structure",
+      "members": {
+        "consumers": {
+          "target": "com.cloudflare.queues#PurgeStartResponseConsumersList",
+          "traits": {
+            "smithy.api#documentation": "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }"
+          }
+        },
+        "consumer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Resource identifier."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
+        },
+        "dead_letter_queue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the dead letter queue, or empty string if not configured"
+          }
+        },
         "queue_name": {
           "target": "smithy.api#String"
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Worker"
+          }
         },
         "settings": {
           "target": "com.cloudflare.queues#PurgeStartResponseSettings"
@@ -3952,7 +3457,7 @@
           "uri": "/accounts/{account_id}/queues/{queue_id}/purge",
           "code": 200
         },
-        "smithy.api#documentation": "Get details about a Queue's purge status.",
+        "smithy.api#documentation": "Get details about a Queue’s purge status.",
         "smithy.api#readonly": {}
       }
     },
@@ -3992,7 +3497,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceImagesType": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestSourceType": {
       "type": "enum",
       "members": {
         "IMAGES": {
@@ -4003,18 +3508,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceImages": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceImagesType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceKVType": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestSourceType2": {
       "type": "enum",
       "members": {
         "KV": {
@@ -4025,18 +3519,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceKV": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceKVType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceR2Type": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestSourceType3": {
       "type": "enum",
       "members": {
         "R2": {
@@ -4047,18 +3530,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceR2": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceR2Type",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestSourceType4": {
       "type": "enum",
       "members": {
         "SUPERSLURPER": {
@@ -4069,18 +3541,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceVectorizeType": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestSourceType5": {
       "type": "enum",
       "members": {
         "VECTORIZE": {
@@ -4091,18 +3552,46 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceVectorize": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestSource": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceVectorizeType",
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceType",
           "traits": {
             "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_5": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceType5",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestType": {
       "type": "enum",
       "members": {
         "WORKERSAI_MODEL": {
@@ -4113,24 +3602,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel": {
-      "type": "structure",
-      "members": {
-        "model_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the Workers AI model"
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestType2": {
       "type": "enum",
       "members": {
         "WORKERSBUILDS_WORKER": {
@@ -4141,24 +3613,18 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker": {
-      "type": "structure",
+    "com.cloudflare.queues#SubscriptionsCreateRequestType3": {
+      "type": "enum",
       "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType",
+        "WORKERS_SCRIPT": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "worker_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the worker"
+            "smithy.api#enumValue": "workers.script"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType": {
+    "com.cloudflare.queues#SubscriptionsCreateRequestType4": {
       "type": "enum",
       "members": {
         "WORKFLOWS_WORKFLOW": {
@@ -4166,52 +3632,6 @@
           "traits": {
             "smithy.api#enumValue": "workflows.workflow"
           }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "workflow_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the workflow"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateRequestSource": {
-      "type": "union",
-      "members": {
-        "MqEventSourceImages": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceImages"
-        },
-        "MqEventSourceKV": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceKV"
-        },
-        "MqEventSourceR2": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceR2"
-        },
-        "MqEventSourceSuperSlurper": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper"
-        },
-        "MqEventSourceVectorize": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceVectorize"
-        },
-        "MqEventSourceWorkersAIModel": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel"
-        },
-        "MqEventSourceWorkersBuildsWorker": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker"
-        },
-        "MqEventSourceWorkflowsWorkflow": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow"
         }
       }
     },
@@ -4255,6 +3675,57 @@
           "traits": {
             "smithy.api#documentation": "Source configuration for the subscription"
           }
+        },
+        "model_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workers AI model"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestType",
+          "traits": {
+            "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "worker_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the worker"
+          }
+        },
+        "script_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag of the Worker script"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateRequestType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the workflow"
+          }
         }
       },
       "traits": {
@@ -4297,7 +3768,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceImagesType": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseSourceType": {
       "type": "enum",
       "members": {
         "IMAGES": {
@@ -4308,18 +3779,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceImages": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceImagesType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceKVType": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseSourceType2": {
       "type": "enum",
       "members": {
         "KV": {
@@ -4330,18 +3790,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceKV": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceKVType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceR2Type": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseSourceType3": {
       "type": "enum",
       "members": {
         "R2": {
@@ -4352,18 +3801,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceR2": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceR2Type",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseSourceType4": {
       "type": "enum",
       "members": {
         "SUPERSLURPER": {
@@ -4374,18 +3812,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceVectorizeType": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseSourceType5": {
       "type": "enum",
       "members": {
         "VECTORIZE": {
@@ -4396,18 +3823,46 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceVectorize": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseSource": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceVectorizeType",
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceType",
           "traits": {
             "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_5": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceType5",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseType": {
       "type": "enum",
       "members": {
         "WORKERSAI_MODEL": {
@@ -4418,24 +3873,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel": {
-      "type": "structure",
-      "members": {
-        "model_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the Workers AI model"
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseType2": {
       "type": "enum",
       "members": {
         "WORKERSBUILDS_WORKER": {
@@ -4446,24 +3884,18 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker": {
-      "type": "structure",
+    "com.cloudflare.queues#SubscriptionsCreateResponseType3": {
+      "type": "enum",
       "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType",
+        "WORKERS_SCRIPT": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "worker_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the worker"
+            "smithy.api#enumValue": "workers.script"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType": {
+    "com.cloudflare.queues#SubscriptionsCreateResponseType4": {
       "type": "enum",
       "members": {
         "WORKFLOWS_WORKFLOW": {
@@ -4471,52 +3903,6 @@
           "traits": {
             "smithy.api#enumValue": "workflows.workflow"
           }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "workflow_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the workflow"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsCreateResponseSource": {
-      "type": "union",
-      "members": {
-        "MqEventSourceImages": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceImages"
-        },
-        "MqEventSourceKV": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceKV"
-        },
-        "MqEventSourceR2": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceR2"
-        },
-        "MqEventSourceSuperSlurper": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper"
-        },
-        "MqEventSourceVectorize": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceVectorize"
-        },
-        "MqEventSourceWorkersAIModel": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel"
-        },
-        "MqEventSourceWorkersBuildsWorker": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker"
-        },
-        "MqEventSourceWorkflowsWorkflow": {
-          "target": "com.cloudflare.queues#SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow"
         }
       }
     },
@@ -4577,6 +3963,57 @@
           "traits": {
             "smithy.api#documentation": "Source configuration for the subscription",
             "smithy.api#required": {}
+          }
+        },
+        "model_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workers AI model"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseType",
+          "traits": {
+            "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "worker_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the worker"
+          }
+        },
+        "script_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag of the Worker script"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsCreateResponseType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the workflow"
           }
         }
       },
@@ -4662,7 +4099,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceImagesType": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType": {
       "type": "enum",
       "members": {
         "IMAGES": {
@@ -4673,18 +4110,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceImages": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceImagesType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceKVType": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType2": {
       "type": "enum",
       "members": {
         "KV": {
@@ -4695,18 +4121,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceKV": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceKVType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceR2Type": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType3": {
       "type": "enum",
       "members": {
         "R2": {
@@ -4717,18 +4132,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceR2": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceR2Type",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType4": {
       "type": "enum",
       "members": {
         "SUPERSLURPER": {
@@ -4739,18 +4143,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType5": {
       "type": "enum",
       "members": {
         "VECTORIZE": {
@@ -4761,18 +4154,46 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceVectorize": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseSource": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType",
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType",
           "traits": {
             "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_5": {
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceType5",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseType": {
       "type": "enum",
       "members": {
         "WORKERSAI_MODEL": {
@@ -4783,24 +4204,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel": {
-      "type": "structure",
-      "members": {
-        "model_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the Workers AI model"
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseType2": {
       "type": "enum",
       "members": {
         "WORKERSBUILDS_WORKER": {
@@ -4811,24 +4215,18 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker": {
-      "type": "structure",
+    "com.cloudflare.queues#SubscriptionsDeleteResponseType3": {
+      "type": "enum",
       "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType",
+        "WORKERS_SCRIPT": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "worker_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the worker"
+            "smithy.api#enumValue": "workers.script"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType": {
+    "com.cloudflare.queues#SubscriptionsDeleteResponseType4": {
       "type": "enum",
       "members": {
         "WORKFLOWS_WORKFLOW": {
@@ -4836,52 +4234,6 @@
           "traits": {
             "smithy.api#enumValue": "workflows.workflow"
           }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "workflow_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the workflow"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsDeleteResponseSource": {
-      "type": "union",
-      "members": {
-        "MqEventSourceImages": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceImages"
-        },
-        "MqEventSourceKV": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceKV"
-        },
-        "MqEventSourceR2": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceR2"
-        },
-        "MqEventSourceSuperSlurper": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper"
-        },
-        "MqEventSourceVectorize": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceVectorize"
-        },
-        "MqEventSourceWorkersAIModel": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel"
-        },
-        "MqEventSourceWorkersBuildsWorker": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker"
-        },
-        "MqEventSourceWorkflowsWorkflow": {
-          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow"
         }
       }
     },
@@ -4942,6 +4294,57 @@
           "traits": {
             "smithy.api#documentation": "Source configuration for the subscription",
             "smithy.api#required": {}
+          }
+        },
+        "model_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workers AI model"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseType",
+          "traits": {
+            "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "worker_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the worker"
+          }
+        },
+        "script_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag of the Worker script"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsDeleteResponseType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the workflow"
           }
         }
       },
@@ -5028,7 +4431,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceImagesType": {
+    "com.cloudflare.queues#SubscriptionsGetResponseSourceType": {
       "type": "enum",
       "members": {
         "IMAGES": {
@@ -5039,18 +4442,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceImages": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceImagesType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceKVType": {
+    "com.cloudflare.queues#SubscriptionsGetResponseSourceType2": {
       "type": "enum",
       "members": {
         "KV": {
@@ -5061,18 +4453,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceKV": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceKVType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceR2Type": {
+    "com.cloudflare.queues#SubscriptionsGetResponseSourceType3": {
       "type": "enum",
       "members": {
         "R2": {
@@ -5083,18 +4464,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceR2": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceR2Type",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType": {
+    "com.cloudflare.queues#SubscriptionsGetResponseSourceType4": {
       "type": "enum",
       "members": {
         "SUPERSLURPER": {
@@ -5105,18 +4475,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceSuperSlurper": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceVectorizeType": {
+    "com.cloudflare.queues#SubscriptionsGetResponseSourceType5": {
       "type": "enum",
       "members": {
         "VECTORIZE": {
@@ -5127,18 +4486,46 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceVectorize": {
+    "com.cloudflare.queues#SubscriptionsGetResponseSource": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceVectorizeType",
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceType",
           "traits": {
             "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_5": {
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceType5",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType": {
+    "com.cloudflare.queues#SubscriptionsGetResponseType": {
       "type": "enum",
       "members": {
         "WORKERSAI_MODEL": {
@@ -5149,24 +4536,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel": {
-      "type": "structure",
-      "members": {
-        "model_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the Workers AI model"
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType": {
+    "com.cloudflare.queues#SubscriptionsGetResponseType2": {
       "type": "enum",
       "members": {
         "WORKERSBUILDS_WORKER": {
@@ -5177,24 +4547,18 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker": {
-      "type": "structure",
+    "com.cloudflare.queues#SubscriptionsGetResponseType3": {
+      "type": "enum",
       "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType",
+        "WORKERS_SCRIPT": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "worker_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the worker"
+            "smithy.api#enumValue": "workers.script"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType": {
+    "com.cloudflare.queues#SubscriptionsGetResponseType4": {
       "type": "enum",
       "members": {
         "WORKFLOWS_WORKFLOW": {
@@ -5202,52 +4566,6 @@
           "traits": {
             "smithy.api#enumValue": "workflows.workflow"
           }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "workflow_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the workflow"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsGetResponseSource": {
-      "type": "union",
-      "members": {
-        "MqEventSourceImages": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceImages"
-        },
-        "MqEventSourceKV": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceKV"
-        },
-        "MqEventSourceR2": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceR2"
-        },
-        "MqEventSourceSuperSlurper": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceSuperSlurper"
-        },
-        "MqEventSourceVectorize": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceVectorize"
-        },
-        "MqEventSourceWorkersAIModel": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel"
-        },
-        "MqEventSourceWorkersBuildsWorker": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker"
-        },
-        "MqEventSourceWorkflowsWorkflow": {
-          "target": "com.cloudflare.queues#SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow"
         }
       }
     },
@@ -5308,6 +4626,57 @@
           "traits": {
             "smithy.api#documentation": "Source configuration for the subscription",
             "smithy.api#required": {}
+          }
+        },
+        "model_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workers AI model"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseType",
+          "traits": {
+            "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "worker_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the worker"
+          }
+        },
+        "script_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag of the Worker script"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsGetResponseType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the workflow"
           }
         }
       },
@@ -5460,7 +4829,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceImagesType": {
+    "com.cloudflare.queues#SubscriptionsListResultItemSourceType": {
       "type": "enum",
       "members": {
         "IMAGES": {
@@ -5471,18 +4840,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceImages": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceImagesType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceKVType": {
+    "com.cloudflare.queues#SubscriptionsListResultItemSourceType2": {
       "type": "enum",
       "members": {
         "KV": {
@@ -5493,18 +4851,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceKV": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceKVType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceR2Type": {
+    "com.cloudflare.queues#SubscriptionsListResultItemSourceType3": {
       "type": "enum",
       "members": {
         "R2": {
@@ -5515,18 +4862,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceR2": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceR2Type",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType": {
+    "com.cloudflare.queues#SubscriptionsListResultItemSourceType4": {
       "type": "enum",
       "members": {
         "SUPERSLURPER": {
@@ -5537,18 +4873,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceSuperSlurper": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceVectorizeType": {
+    "com.cloudflare.queues#SubscriptionsListResultItemSourceType5": {
       "type": "enum",
       "members": {
         "VECTORIZE": {
@@ -5559,18 +4884,46 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceVectorize": {
+    "com.cloudflare.queues#SubscriptionsListResultItemSource": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceVectorizeType",
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceType",
           "traits": {
             "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_5": {
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceType5",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType": {
+    "com.cloudflare.queues#SubscriptionsListResultItemType": {
       "type": "enum",
       "members": {
         "WORKERSAI_MODEL": {
@@ -5581,24 +4934,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel": {
-      "type": "structure",
-      "members": {
-        "model_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the Workers AI model"
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType": {
+    "com.cloudflare.queues#SubscriptionsListResultItemType2": {
       "type": "enum",
       "members": {
         "WORKERSBUILDS_WORKER": {
@@ -5609,24 +4945,18 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker": {
-      "type": "structure",
+    "com.cloudflare.queues#SubscriptionsListResultItemType3": {
+      "type": "enum",
       "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType",
+        "WORKERS_SCRIPT": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "worker_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the worker"
+            "smithy.api#enumValue": "workers.script"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType": {
+    "com.cloudflare.queues#SubscriptionsListResultItemType4": {
       "type": "enum",
       "members": {
         "WORKFLOWS_WORKFLOW": {
@@ -5634,52 +4964,6 @@
           "traits": {
             "smithy.api#enumValue": "workflows.workflow"
           }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "workflow_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the workflow"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsListResultItemSource": {
-      "type": "union",
-      "members": {
-        "MqEventSourceImages": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceImages"
-        },
-        "MqEventSourceKV": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceKV"
-        },
-        "MqEventSourceR2": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceR2"
-        },
-        "MqEventSourceSuperSlurper": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceSuperSlurper"
-        },
-        "MqEventSourceVectorize": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceVectorize"
-        },
-        "MqEventSourceWorkersAIModel": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel"
-        },
-        "MqEventSourceWorkersBuildsWorker": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker"
-        },
-        "MqEventSourceWorkflowsWorkflow": {
-          "target": "com.cloudflare.queues#SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow"
         }
       }
     },
@@ -5740,6 +5024,57 @@
           "traits": {
             "smithy.api#documentation": "Source configuration for the subscription",
             "smithy.api#required": {}
+          }
+        },
+        "model_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workers AI model"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemType",
+          "traits": {
+            "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "worker_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the worker"
+          }
+        },
+        "script_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag of the Worker script"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsListResultItemType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the workflow"
           }
         }
       }
@@ -5903,7 +5238,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceImagesType": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType": {
       "type": "enum",
       "members": {
         "IMAGES": {
@@ -5914,18 +5249,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceImages": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceImagesType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceKVType": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType2": {
       "type": "enum",
       "members": {
         "KV": {
@@ -5936,18 +5260,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceKV": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceKVType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceR2Type": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType3": {
       "type": "enum",
       "members": {
         "R2": {
@@ -5958,18 +5271,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceR2": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceR2Type",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType4": {
       "type": "enum",
       "members": {
         "SUPERSLURPER": {
@@ -5980,18 +5282,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType5": {
       "type": "enum",
       "members": {
         "VECTORIZE": {
@@ -6002,18 +5293,46 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceVectorize": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseSource": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType",
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType",
           "traits": {
             "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_5": {
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceType5",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseType": {
       "type": "enum",
       "members": {
         "WORKERSAI_MODEL": {
@@ -6024,24 +5343,7 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel": {
-      "type": "structure",
-      "members": {
-        "model_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the Workers AI model"
-          }
-        },
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseType2": {
       "type": "enum",
       "members": {
         "WORKERSBUILDS_WORKER": {
@@ -6052,24 +5354,18 @@
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker": {
-      "type": "structure",
+    "com.cloudflare.queues#SubscriptionsUpdateResponseType3": {
+      "type": "enum",
       "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType",
+        "WORKERS_SCRIPT": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "worker_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the worker"
+            "smithy.api#enumValue": "workers.script"
           }
         }
       }
     },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType": {
+    "com.cloudflare.queues#SubscriptionsUpdateResponseType4": {
       "type": "enum",
       "members": {
         "WORKFLOWS_WORKFLOW": {
@@ -6077,52 +5373,6 @@
           "traits": {
             "smithy.api#enumValue": "workflows.workflow"
           }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType",
-          "traits": {
-            "smithy.api#documentation": "Type of source"
-          }
-        },
-        "workflow_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the workflow"
-          }
-        }
-      }
-    },
-    "com.cloudflare.queues#SubscriptionsUpdateResponseSource": {
-      "type": "union",
-      "members": {
-        "MqEventSourceImages": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceImages"
-        },
-        "MqEventSourceKV": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceKV"
-        },
-        "MqEventSourceR2": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceR2"
-        },
-        "MqEventSourceSuperSlurper": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper"
-        },
-        "MqEventSourceVectorize": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceVectorize"
-        },
-        "MqEventSourceWorkersAIModel": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel"
-        },
-        "MqEventSourceWorkersBuildsWorker": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker"
-        },
-        "MqEventSourceWorkflowsWorkflow": {
-          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow"
         }
       }
     },
@@ -6183,6 +5433,57 @@
           "traits": {
             "smithy.api#documentation": "Source configuration for the subscription",
             "smithy.api#required": {}
+          }
+        },
+        "model_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Workers AI model"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseType",
+          "traits": {
+            "smithy.api#documentation": "Type of source"
+          }
+        },
+        "type_2": {
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseType2",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "worker_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the worker"
+          }
+        },
+        "script_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag of the Worker script"
+          }
+        },
+        "type_3": {
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseType3",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "type_4": {
+          "target": "com.cloudflare.queues#SubscriptionsUpdateResponseType4",
+          "traits": {
+            "smithy.api#documentation": "Type of source",
+            "smithy.api#jsonName": "type"
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the workflow"
           }
         }
       },
@@ -6255,7 +5556,13 @@
           "target": "com.cloudflare.queues#MessagesBulkPush"
         },
         {
+          "target": "com.cloudflare.queues#MessagesPeek"
+        },
+        {
           "target": "com.cloudflare.queues#MessagesPull"
+        },
+        {
+          "target": "com.cloudflare.queues#MessagesPurge"
         },
         {
           "target": "com.cloudflare.queues#MessagesPush"

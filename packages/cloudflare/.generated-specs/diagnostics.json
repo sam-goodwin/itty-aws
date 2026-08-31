@@ -75,6 +75,17 @@
         }
       }
     },
+    "com.cloudflare.diagnostics#EndpointHealthchecksCreateResponseName": {
+      "type": "enum",
+      "members": {
+        "MY_ENDPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "My Endpoint"
+          }
+        }
+      }
+    },
     "com.cloudflare.diagnostics#EndpointHealthchecksCreateResponse": {
       "type": "structure",
       "members": {
@@ -102,6 +113,28 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Optional name associated with this check"
+          }
+        },
+        "check_type_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "check_type"
+          }
+        },
+        "endpoint_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "endpoint"
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.diagnostics#EndpointHealthchecksCreateResponseName",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
           }
         }
       },
@@ -151,13 +184,111 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.diagnostics#EndpointHealthchecksDeleteResponsePointer": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#EndpointHealthchecksDeleteResponsePointer2": {
+      "type": "enum",
+      "members": {
+        "POINTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pointer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#EndpointHealthchecksDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pointer": {
+          "target": "com.cloudflare.diagnostics#EndpointHealthchecksDeleteResponsePointer",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        },
+        "code_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "code"
+          }
+        },
+        "message_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "message"
+          }
+        },
+        "documentation_url_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "documentation_url"
+          }
+        },
+        "source_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "source"
+          }
+        },
+        "pointer_2": {
+          "target": "com.cloudflare.diagnostics#EndpointHealthchecksDeleteResponsePointer2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "pointer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
     "com.cloudflare.diagnostics#EndpointHealthchecksDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.diagnostics#EndpointHealthchecksDeleteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.cloudflare.diagnostics#EndpointHealthchecksDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -403,6 +534,17 @@
         }
       }
     },
+    "com.cloudflare.diagnostics#EndpointHealthchecksUpdateResponseName": {
+      "type": "enum",
+      "members": {
+        "MY_ENDPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "My Endpoint"
+          }
+        }
+      }
+    },
     "com.cloudflare.diagnostics#EndpointHealthchecksUpdateResponse": {
       "type": "structure",
       "members": {
@@ -430,6 +572,28 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Optional name associated with this check"
+          }
+        },
+        "check_type_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "check_type"
+          }
+        },
+        "endpoint_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "endpoint"
+          }
+        },
+        "name_2": {
+          "target": "com.cloudflare.diagnostics#EndpointHealthchecksUpdateResponseName",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "name"
           }
         }
       },
@@ -552,6 +716,7 @@
         "targets": {
           "target": "com.cloudflare.diagnostics#TraceroutesCreateRequestTargetsList",
           "traits": {
+            "smithy.api#documentation": "maxLength10",
             "smithy.api#required": {}
           }
         },
@@ -589,12 +754,6 @@
     "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemError": {
       "type": "enum",
       "members": {
-        "VALUE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": ""
-          }
-        },
         "COULD_NOT_GATHER_TRACEROUTE_DATA_CODE_1": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -625,6 +784,17 @@
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItemPacketType": {
+      "type": "enum",
+      "members": {
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
       }
     },
     "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItem": {
@@ -683,23 +853,6 @@
           "traits": {
             "smithy.api#documentation": "Standard deviation of the RTTs in ms."
           }
-        }
-      }
-    },
-    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItem"
-      }
-    },
-    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItem": {
-      "type": "structure",
-      "members": {
-        "nodes": {
-          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesList",
-          "traits": {
-            "smithy.api#documentation": "An array of node objects."
-          }
         },
         "packets_lost": {
           "target": "smithy.api#Double",
@@ -717,6 +870,74 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The time to live (TTL)."
+          }
+        },
+        "target_summary": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Aggregated statistics from all hops about the target."
+          }
+        },
+        "traceroute_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total time of traceroute in ms."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target hostname, IPv6, or IPv6 address."
+          }
+        },
+        "targets": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"203.0.113.1\",",
+            "smithy.api#required": {}
+          }
+        },
+        "colos": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"den\",",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "max_ttl": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "packet_type": {
+          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItemPacketType",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItem"
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItem": {
+      "type": "structure",
+      "members": {
+        "nodes": {
+          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesList",
+          "traits": {
+            "smithy.api#documentation": "An array of node objects."
           }
         }
       }
@@ -741,18 +962,6 @@
         },
         "hops": {
           "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsList"
-        },
-        "target_summary": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Aggregated statistics from all hops about the target."
-          }
-        },
-        "traceroute_time_ms": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Total time of traceroute in ms."
-          }
         }
       }
     },
@@ -767,12 +976,6 @@
       "members": {
         "colos": {
           "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosList"
-        },
-        "target": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The target hostname, IPv6, or IPv6 address."
-          }
         }
       }
     },

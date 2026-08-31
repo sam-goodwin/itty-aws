@@ -38,6 +38,7 @@
         "date": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "formatdate-time",
             "smithy.api#httpQuery": "date"
           }
         }
@@ -53,10 +54,16 @@
           "target": "smithy.api#String"
         },
         "date": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "offense_count": {
-          "target": "smithy.api#Double"
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "HTTP"
+          }
         }
       },
       "traits": {
@@ -112,10 +119,16 @@
           "target": "smithy.api#String"
         },
         "date": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "formatdate-time"
+          }
         },
         "offense_count": {
-          "target": "smithy.api#Double"
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "HTTP"
+          }
         }
       },
       "traits": {
@@ -168,7 +181,10 @@
       "type": "structure",
       "members": {
         "asn": {
-          "target": "smithy.api#Double"
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "HTTP"
+          }
         }
       },
       "traits": {
@@ -214,7 +230,10 @@
       "type": "structure",
       "members": {
         "asn": {
-          "target": "smithy.api#Double"
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "HTTP"
+          }
         }
       },
       "traits": {

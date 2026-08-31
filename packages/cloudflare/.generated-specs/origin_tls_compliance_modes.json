@@ -87,7 +87,7 @@
           "uri": "/zones/{zone_id}/settings/origin_tls_compliance_modes",
           "code": 200
         },
-        "smithy.api#documentation": "Delete the Origin TLS Compliance Modes setting for the zone, removing any configured compliance constraint. After deletion, Cloudflare's default behavior applies (no compliance filtering of the key-exchange algorithm list sent to the origin).",
+        "smithy.api#documentation": "Delete the Origin TLS Compliance Modes setting for the zone, removing any configured compliance constraint. After deletion, Cloudflare’s default behavior applies (no compliance filtering of the key-exchange algorithm list sent to the origin).",
         "smithy.api#idempotent": {}
       }
     },
@@ -111,7 +111,7 @@
         "value": {
           "target": "com.cloudflare.origin_tls_compliance_modes#EditRequestValueList",
           "traits": {
-            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
+            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone’s origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
             "smithy.api#required": {}
           }
         }
@@ -157,7 +157,7 @@
         "value": {
           "target": "com.cloudflare.origin_tls_compliance_modes#EditResponseValueList",
           "traits": {
-            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
+            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone’s origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
             "smithy.api#required": {}
           }
         },
@@ -165,6 +165,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Last time this setting was modified."
+          }
+        },
+        "value_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"fips\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
           }
         }
       },
@@ -243,7 +251,7 @@
         "value": {
           "target": "com.cloudflare.origin_tls_compliance_modes#GetResponseValueList",
           "traits": {
-            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
+            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone’s origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
             "smithy.api#required": {}
           }
         },
@@ -273,7 +281,7 @@
           "uri": "/zones/{zone_id}/settings/origin_tls_compliance_modes",
           "code": 200
         },
-        "smithy.api#documentation": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists. An empty list (or no rule configured) means no compliance constraint is applied.",
+        "smithy.api#documentation": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone’s origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists. An empty list (or no rule configured) means no compliance constraint is applied.",
         "smithy.api#readonly": {}
       }
     },
@@ -297,7 +305,7 @@
         "value": {
           "target": "com.cloudflare.origin_tls_compliance_modes#UpdateRequestValueList",
           "traits": {
-            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
+            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone’s origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
             "smithy.api#required": {}
           }
         }
@@ -343,7 +351,7 @@
         "value": {
           "target": "com.cloudflare.origin_tls_compliance_modes#UpdateResponseValueList",
           "traits": {
-            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
+            "smithy.api#documentation": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone’s origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
             "smithy.api#required": {}
           }
         },
@@ -351,6 +359,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Last time this setting was modified."
+          }
+        },
+        "value_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "\"fips\",",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
           }
         }
       },

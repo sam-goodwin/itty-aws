@@ -81,6 +81,17 @@
         }
       }
     },
+    "com.cloudflare.acm#CustomTrustStoreCreateResponseCertificate": {
+      "type": "enum",
+      "members": {
+        "BEGIN_CERTIFICATE_MIIDDJCCAL6GAWIBAGIJAPNMG0FS_B0MA0GCSQGSIB3DQEBCWUAMFSX_END_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#CustomTrustStoreCreateResponse": {
       "type": "structure",
       "members": {
@@ -122,7 +133,7 @@
         "status": {
           "target": "com.cloudflare.acm#CustomTrustStoreCreateResponseStatus",
           "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL.",
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
             "smithy.api#required": {}
           }
         },
@@ -138,6 +149,14 @@
           "traits": {
             "smithy.api#documentation": "When the certificate was uploaded to Cloudflare.",
             "smithy.api#required": {}
+          }
+        },
+        "certificate_2": {
+          "target": "com.cloudflare.acm#CustomTrustStoreCreateResponseCertificate",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "certificate"
           }
         }
       },
@@ -326,7 +345,7 @@
         "status": {
           "target": "com.cloudflare.acm#CustomTrustStoreGetResponseStatus",
           "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL.",
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
             "smithy.api#required": {}
           }
         },
@@ -494,7 +513,7 @@
         "status": {
           "target": "com.cloudflare.acm#CustomTrustStoreListResultItemStatus",
           "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL.",
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
             "smithy.api#required": {}
           }
         },
@@ -639,6 +658,17 @@
         }
       }
     },
+    "com.cloudflare.acm#TotalTlsEditResponseCertificateAuthority2": {
+      "type": "enum",
+      "members": {
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsEditResponse": {
       "type": "structure",
       "members": {
@@ -658,6 +688,21 @@
           "target": "com.cloudflare.acm#TotalTlsEditResponseValidityPeriod",
           "traits": {
             "smithy.api#documentation": "The validity period in days for the certificates ordered via Total TLS."
+          }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
+          }
+        },
+        "certificate_authority_2": {
+          "target": "com.cloudflare.acm#TotalTlsEditResponseCertificateAuthority2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "certificate_authority"
           }
         }
       },
@@ -864,6 +909,17 @@
         }
       }
     },
+    "com.cloudflare.acm#TotalTlsUpdateResponseCertificateAuthority2": {
+      "type": "enum",
+      "members": {
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsUpdateResponse": {
       "type": "structure",
       "members": {
@@ -883,6 +939,21 @@
           "target": "com.cloudflare.acm#TotalTlsUpdateResponseValidityPeriod",
           "traits": {
             "smithy.api#documentation": "The validity period in days for the certificates ordered via Total TLS."
+          }
+        },
+        "enabled_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "enabled"
+          }
+        },
+        "certificate_authority_2": {
+          "target": "com.cloudflare.acm#TotalTlsUpdateResponseCertificateAuthority2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "certificate_authority"
           }
         }
       },

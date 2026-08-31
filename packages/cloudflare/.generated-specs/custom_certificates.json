@@ -119,7 +119,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's SSL certificate or certificate and the intermediate(s).",
+            "smithy.api#documentation": "The zone’s SSL certificate or certificate and the intermediate(s).",
             "smithy.api#required": {}
           }
         },
@@ -150,19 +150,19 @@
         "policy": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected."
+            "smithy.api#documentation": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (<https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2#Officially%5Fassigned%5Fcode%5Felements>) can be chosen, such as ‘country: IN’, as well as ‘region: EU’ which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. Note: The API accepts this field as either “policy” or “policy_restrictions” in requests. Responses return this field as “policy_restrictions”."
           }
         },
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare."
+            "smithy.api#documentation": "The zone’s private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare."
           }
         },
         "type": {
           "target": "com.cloudflare.custom_certificates#CreateRequestType",
           "traits": {
-            "smithy.api#documentation": "The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake."
+            "smithy.api#documentation": "The type ‘legacy_custom’ enables support for legacy clients which do not include SNI in the TLS handshake."
           }
         }
       },
@@ -272,6 +272,52 @@
         }
       }
     },
+    "com.cloudflare.custom_certificates#CreateResponseKeylessServerStatus2": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_certificates#CreateResponseKeylessServerType": {
+      "type": "enum",
+      "members": {
+        "SNI_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sni_custom"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_certificates#CreateResponseKeylessServer": {
       "type": "structure",
       "members": {
@@ -327,7 +373,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -343,40 +389,86 @@
           "traits": {
             "smithy.api#documentation": "Configuration for using Keyless SSL through a Cloudflare Tunnel."
           }
-        }
-      }
-    },
-    "com.cloudflare.custom_certificates#CreateResponseStatus": {
-      "type": "enum",
-      "members": {
-        "ACTIVE": {
-          "target": "smithy.api#Unit",
+        },
+        "modified_on_2": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "active"
+            "smithy.api#documentation": "When the certificate was last modified.",
+            "smithy.api#jsonName": "modified_on"
           }
         },
-        "EXPIRED": {
-          "target": "smithy.api#Unit",
+        "policy_restrictions": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "expired"
+            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses."
           }
         },
-        "DELETED": {
-          "target": "smithy.api#Unit",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#enumValue": "deleted"
+            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates."
           }
         },
-        "PENDING": {
-          "target": "smithy.api#Unit",
+        "signature": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "pending"
+            "smithy.api#documentation": "The type of hash used for the certificate."
           }
         },
-        "INITIALIZING": {
-          "target": "smithy.api#Unit",
+        "status_2": {
+          "target": "com.cloudflare.custom_certificates#CreateResponseKeylessServerStatus2",
           "traits": {
-            "smithy.api#enumValue": "initializing"
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
+            "smithy.api#jsonName": "status"
+          }
+        },
+        "uploaded_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "bundle_method": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "custom_csr_id": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deploy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "private_key": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.custom_certificates#CreateResponseKeylessServerType",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
           }
         }
       }
@@ -433,42 +525,6 @@
         },
         "keyless_server": {
           "target": "com.cloudflare.custom_certificates#CreateResponseKeylessServer"
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was last modified."
-          }
-        },
-        "policy_restrictions": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses"
-          }
-        },
-        "priority": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates."
-          }
-        },
-        "signature": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of hash used for the certificate."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.custom_certificates#CreateResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL."
-          }
-        },
-        "uploaded_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
-          }
         }
       },
       "traits": {
@@ -649,7 +705,7 @@
         "certificate": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's SSL certificate or certificate and the intermediate(s)."
+            "smithy.api#documentation": "The zone’s SSL certificate or certificate and the intermediate(s)."
           }
         },
         "custom_csr_id": {
@@ -673,13 +729,13 @@
         "policy": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected."
+            "smithy.api#documentation": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (<https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2#Officially%5Fassigned%5Fcode%5Felements>) can be chosen, such as ‘country: IN’, as well as ‘region: EU’ which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. Note: The API accepts this field as either “policy” or “policy_restrictions” in requests. Responses return this field as “policy_restrictions”."
           }
         },
         "private_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare."
+            "smithy.api#documentation": "The zone’s private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare."
           }
         }
       },
@@ -789,6 +845,52 @@
         }
       }
     },
+    "com.cloudflare.custom_certificates#EditResponseKeylessServerStatus2": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_certificates#EditResponseKeylessServerPrivateKey": {
+      "type": "enum",
+      "members": {
+        "BEGIN_RSA_PRIVATE_KEY_MIIEOWIBAAKCAQEAWQHOETCL9_5IKGZV6CMZWTWPJHQXT3WPBEKRU9YZ7LGVDDMG_DTCGBG_1CGZU0JJGKMOPPOUO4C3DTS3IWQRYMBIKUP77WWY2QGMDZW2FVKJCJLKN_ABIRUGVBKWZESIXGKK2016ATP6_DAJEHYO6SEOK8LKIYSUVK0FYOVLSIESCMOPID_TNKX_A_50GJB79CJH4ER2LLVZNHEPFR_ZUOYPXZQQ4NAHF7YU_B5JHO0F8FWT_PY_FXIXJBEIDZLIWRKRMTZRHOJIHRMJ2A1J7IORIRBBWILLWJJNVUWPF3IJ3M12S9PE_EWOOAEO2IZNTERCG9HZAACBVRN2Y2SWIYT_18QIDAQABAOIBACBHTYXBZYKMYPCB_HBR1IBLCQA2NLGF0QRUJNJZG5IEZXOWS_6TC8YYMZKQE7NOLAPWSQ_UPK2Y5XDP_AXIUPRIS9JZKYK8OX0R_DLWCG1KSW_UABX0BQ_QUQLSTVU6MUVUMP8VZYHXJ3WMB_UFRBKZTPTQ_RYWAYQCGC0RWI20HTFBMXLTAYNXYNWZX7RKFKGVVYB9RSATMCC8G_J4ODOSBFNOJPS0HEIFNPAZNDFHKDXDK2YC1TV6RHBRC1YNYLE9_TAFLIADO2MVV_KLMLQ51GQYKTGJFILBRPQQKOYXDZ3FGVXRTKF_WY9QNQ0J1VK5EREPZ54MN8IZB7_9LWY_AKCGYEA6FXZOSXSWAJ2WQLEOYC7CEAWEX_SWTVXHGXZRYJIIT0EJWGX13WO_WA3IZIIMSJF6QE_SI_8LAXPP2A86VMAIT3Z3MJN_CQSVGW8LK2AQST_OWDPYDMU_IACE8LJ_IFGC8MWNUAB9CZGU3JPU4PXXGFJS_EMTGERXCWKK4NE_G08CGYEA1KP9_N2JRVLQUZ_GAX_LPME9OEMAS9WQSQSFCHGOGIFDGGCNF7_UWBM7GAASJIP01ZCOE_VAGWDZXCV3FLHSAZOJ6RYLOLAY5PHBU1IATR4UNYM5WTYTZMZQH8L1_MFFDL9XDB_VULUCIIRGLM5MES_QNSG1UMOH2OVPJ9TVST_IR8CGYEAXRI7WS9ZC4BT70N1AS_U_LYSJAEVZCMKQVHJ6TCUVZFFQOE0R0WHDLDRLU2PSLFP_Q7QAEZQQGBANSKEVCDYR_9B_NY_JOMQOPEWPVSP_VQTCNE_R81SPU0MP0YI6CIHET1Z9ZAY322SVCC43JAWB7_MEBEQYLOP4Z4QSOCMGHZBSECGYACVR9XS0DGN_WCSW4VZE_2EI77MD4OQVEPPIFX_DFZTLBY5ADCGE9Z0CUVB6CIL8DBDK5KWY9PGNR8HUCI03IHKW6ZS_0L0YMIHFEVE_PG19PSZK9CADDHD9KFZSBLYVFMWFXOT50H7YRTTIPMGJYFPFI5J2Q348YVT0TEQS_FHRQAQKBGACWPOKMJ7EBYQGEMBS7HC8EWO_RYAMLNSFFDCDSC7UE3ZDVJXPAKQ8W_QU80PEIF6RAIQFAF8MXIIZ7AUFOSNHQTXUBHCPVDLKI0MWQ3G8PL07L_2S6DQG6T_LV6XTQAMYF6N1YJZL_FZDRH3QXMXHMO_B13EEPXPDMPY7HQPOLDI_END_RSA_PRIVATE_KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_certificates#EditResponseKeylessServer": {
       "type": "structure",
       "members": {
@@ -844,7 +946,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -860,40 +962,80 @@
           "traits": {
             "smithy.api#documentation": "Configuration for using Keyless SSL through a Cloudflare Tunnel."
           }
-        }
-      }
-    },
-    "com.cloudflare.custom_certificates#EditResponseStatus": {
-      "type": "enum",
-      "members": {
-        "ACTIVE": {
-          "target": "smithy.api#Unit",
+        },
+        "modified_on_2": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "active"
+            "smithy.api#documentation": "When the certificate was last modified.",
+            "smithy.api#jsonName": "modified_on"
           }
         },
-        "EXPIRED": {
-          "target": "smithy.api#Unit",
+        "policy_restrictions": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "expired"
+            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses."
           }
         },
-        "DELETED": {
-          "target": "smithy.api#Unit",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#enumValue": "deleted"
+            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates."
           }
         },
-        "PENDING": {
-          "target": "smithy.api#Unit",
+        "signature": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "pending"
+            "smithy.api#documentation": "The type of hash used for the certificate."
           }
         },
-        "INITIALIZING": {
-          "target": "smithy.api#Unit",
+        "status_2": {
+          "target": "com.cloudflare.custom_certificates#EditResponseKeylessServerStatus2",
           "traits": {
-            "smithy.api#enumValue": "initializing"
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
+            "smithy.api#jsonName": "status"
+          }
+        },
+        "uploaded_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
+          }
+        },
+        "bundle_method": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "custom_csr_id": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deploy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "private_key": {
+          "target": "com.cloudflare.custom_certificates#EditResponseKeylessServerPrivateKey",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
           }
         }
       }
@@ -950,42 +1092,6 @@
         },
         "keyless_server": {
           "target": "com.cloudflare.custom_certificates#EditResponseKeylessServer"
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was last modified."
-          }
-        },
-        "policy_restrictions": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses"
-          }
-        },
-        "priority": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates."
-          }
-        },
-        "signature": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of hash used for the certificate."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.custom_certificates#EditResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL."
-          }
-        },
-        "uploaded_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
-          }
         }
       },
       "traits": {
@@ -1136,6 +1242,41 @@
         }
       }
     },
+    "com.cloudflare.custom_certificates#GetResponseKeylessServerStatus2": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_certificates#GetResponseKeylessServer": {
       "type": "structure",
       "members": {
@@ -1191,7 +1332,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -1207,40 +1348,43 @@
           "traits": {
             "smithy.api#documentation": "Configuration for using Keyless SSL through a Cloudflare Tunnel."
           }
-        }
-      }
-    },
-    "com.cloudflare.custom_certificates#GetResponseStatus": {
-      "type": "enum",
-      "members": {
-        "ACTIVE": {
-          "target": "smithy.api#Unit",
+        },
+        "modified_on_2": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "active"
+            "smithy.api#documentation": "When the certificate was last modified.",
+            "smithy.api#jsonName": "modified_on"
           }
         },
-        "EXPIRED": {
-          "target": "smithy.api#Unit",
+        "policy_restrictions": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "expired"
+            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses."
           }
         },
-        "DELETED": {
-          "target": "smithy.api#Unit",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#enumValue": "deleted"
+            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates."
           }
         },
-        "PENDING": {
-          "target": "smithy.api#Unit",
+        "signature": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "pending"
+            "smithy.api#documentation": "The type of hash used for the certificate."
           }
         },
-        "INITIALIZING": {
-          "target": "smithy.api#Unit",
+        "status_2": {
+          "target": "com.cloudflare.custom_certificates#GetResponseKeylessServerStatus2",
           "traits": {
-            "smithy.api#enumValue": "initializing"
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
+            "smithy.api#jsonName": "status"
+          }
+        },
+        "uploaded_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
           }
         }
       }
@@ -1297,42 +1441,6 @@
         },
         "keyless_server": {
           "target": "com.cloudflare.custom_certificates#GetResponseKeylessServer"
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was last modified."
-          }
-        },
-        "policy_restrictions": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses"
-          }
-        },
-        "priority": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates."
-          }
-        },
-        "signature": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of hash used for the certificate."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.custom_certificates#GetResponseStatus",
-          "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL."
-          }
-        },
-        "uploaded_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
-          }
         }
       },
       "traits": {
@@ -1445,7 +1553,7 @@
         "status": {
           "target": "com.cloudflare.custom_certificates#ListRequestStatus",
           "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL.",
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
             "smithy.api#httpQuery": "status"
           }
         }
@@ -1556,6 +1664,41 @@
         }
       }
     },
+    "com.cloudflare.custom_certificates#ListResultItemKeylessServerStatus2": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_certificates#ListResultItemKeylessServer": {
       "type": "structure",
       "members": {
@@ -1611,7 +1754,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -1627,40 +1770,43 @@
           "traits": {
             "smithy.api#documentation": "Configuration for using Keyless SSL through a Cloudflare Tunnel."
           }
-        }
-      }
-    },
-    "com.cloudflare.custom_certificates#ListResultItemStatus": {
-      "type": "enum",
-      "members": {
-        "ACTIVE": {
-          "target": "smithy.api#Unit",
+        },
+        "modified_on_2": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "active"
+            "smithy.api#documentation": "When the certificate was last modified.",
+            "smithy.api#jsonName": "modified_on"
           }
         },
-        "EXPIRED": {
-          "target": "smithy.api#Unit",
+        "policy_restrictions": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "expired"
+            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses."
           }
         },
-        "DELETED": {
-          "target": "smithy.api#Unit",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#enumValue": "deleted"
+            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates."
           }
         },
-        "PENDING": {
-          "target": "smithy.api#Unit",
+        "signature": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "pending"
+            "smithy.api#documentation": "The type of hash used for the certificate."
           }
         },
-        "INITIALIZING": {
-          "target": "smithy.api#Unit",
+        "status_2": {
+          "target": "com.cloudflare.custom_certificates#ListResultItemKeylessServerStatus2",
           "traits": {
-            "smithy.api#enumValue": "initializing"
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
+            "smithy.api#jsonName": "status"
+          }
+        },
+        "uploaded_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
           }
         }
       }
@@ -1717,42 +1863,6 @@
         },
         "keyless_server": {
           "target": "com.cloudflare.custom_certificates#ListResultItemKeylessServer"
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was last modified."
-          }
-        },
-        "policy_restrictions": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses"
-          }
-        },
-        "priority": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates."
-          }
-        },
-        "signature": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of hash used for the certificate."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.custom_certificates#ListResultItemStatus",
-          "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL."
-          }
-        },
-        "uploaded_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
-          }
         }
       }
     },
@@ -1791,7 +1901,7 @@
           "uri": "/zones/{zone_id}/custom_certificates",
           "code": 200
         },
-        "smithy.api#documentation": "List, search, and filter all of your custom SSL certificates. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+        "smithy.api#documentation": "List, search, and filter all of your custom SSL certificates. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates.",
         "smithy.api#readonly": {}
       }
     },
@@ -1807,7 +1917,7 @@
         "priority": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates."
+            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates."
           }
         }
       }
@@ -1943,6 +2053,41 @@
         }
       }
     },
+    "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemKeylessServerStatus2": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemKeylessServer": {
       "type": "structure",
       "members": {
@@ -1998,7 +2143,7 @@
         "port": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+            "smithy.api#documentation": "The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server.",
             "smithy.api#required": {}
           }
         },
@@ -2014,40 +2159,43 @@
           "traits": {
             "smithy.api#documentation": "Configuration for using Keyless SSL through a Cloudflare Tunnel."
           }
-        }
-      }
-    },
-    "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemStatus": {
-      "type": "enum",
-      "members": {
-        "ACTIVE": {
-          "target": "smithy.api#Unit",
+        },
+        "modified_on_2": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "active"
+            "smithy.api#documentation": "When the certificate was last modified.",
+            "smithy.api#jsonName": "modified_on"
           }
         },
-        "EXPIRED": {
-          "target": "smithy.api#Unit",
+        "policy_restrictions": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "expired"
+            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses when a policy has been set. The API accepts the “policy” field in requests but returns this field as “policy_restrictions” in responses."
           }
         },
-        "DELETED": {
-          "target": "smithy.api#Unit",
+        "priority": {
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#enumValue": "deleted"
+            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates, but ‘legacy_custom’ certificates will always supercede ‘sni_custom’ certificates."
           }
         },
-        "PENDING": {
-          "target": "smithy.api#Unit",
+        "signature": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "pending"
+            "smithy.api#documentation": "The type of hash used for the certificate."
           }
         },
-        "INITIALIZING": {
-          "target": "smithy.api#Unit",
+        "status_2": {
+          "target": "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemKeylessServerStatus2",
           "traits": {
-            "smithy.api#enumValue": "initializing"
+            "smithy.api#documentation": "Status of the zone’s custom SSL.",
+            "smithy.api#jsonName": "status"
+          }
+        },
+        "uploaded_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
           }
         }
       }
@@ -2104,42 +2252,6 @@
         },
         "keyless_server": {
           "target": "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemKeylessServer"
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was last modified."
-          }
-        },
-        "policy_restrictions": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy restrictions returned by the API. This field is returned in responses"
-          }
-        },
-        "priority": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates."
-          }
-        },
-        "signature": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of hash used for the certificate."
-          }
-        },
-        "status": {
-          "target": "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemStatus",
-          "traits": {
-            "smithy.api#documentation": "Status of the zone's custom SSL."
-          }
-        },
-        "uploaded_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare."
-          }
         }
       }
     },
@@ -2178,7 +2290,7 @@
           "uri": "/zones/{zone_id}/custom_certificates/prioritize",
           "code": 200
         },
-        "smithy.api#documentation": "If a zone has multiple SSL certificates, you can set the order in which they should be used during a request. The higher priority will break ties across overlapping 'legacy_custom' certificates.",
+        "smithy.api#documentation": "If a zone has multiple SSL certificates, you can set the order in which they should be used during a request. The higher priority will break ties across overlapping ‘legacy_custom’ certificates.",
         "smithy.api#idempotent": {}
       }
     },

@@ -70,7 +70,7 @@
           "uri": "/zones/{zone_id}/snippets/{snippet_name}",
           "code": 200
         },
-        "smithy.api#documentation": "Deletes a snippet belonging to the zone.",
+        "smithy.api#documentation": "Deletes a snippet belonging to the zone. Returns a 4XX response if the zone or snippet no longer exists.",
         "smithy.api#idempotent": {}
       }
     },

@@ -35,13 +35,13 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileList": {
+    "com.cloudflare.cache#PurgeRequestFilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap": {
+    "com.cloudflare.cache#PurgeRequestFilesItemHeadersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -50,32 +50,21 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem": {
+    "com.cloudflare.cache#PurgeRequestFilesItem": {
       "type": "structure",
       "members": {
         "headers": {
-          "target": "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap"
+          "target": "com.cloudflare.cache#PurgeRequestFilesItemHeadersMap"
         },
         "url": {
           "target": "smithy.api#String"
         }
       }
     },
-    "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList": {
+    "com.cloudflare.cache#PurgeRequestFilesList2": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem"
-      }
-    },
-    "com.cloudflare.cache#PurgeRequestFiles": {
-      "type": "union",
-      "members": {
-        "CachePurgeSingleFile": {
-          "target": "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileList"
-        },
-        "CachePurgeSingleFileWithURLAndHeaders": {
-          "target": "com.cloudflare.cache#PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersList"
-        }
+        "target": "com.cloudflare.cache#PurgeRequestFilesItem"
       }
     },
     "com.cloudflare.cache#PurgeRequest": {
@@ -84,38 +73,53 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength32",
             "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "CachePurgeFlexPurgeByTags object { tags }",
             "smithy.api#required": {}
           }
         },
         "tags": {
           "target": "com.cloudflare.cache#PurgeRequestTagsList",
           "traits": {
-            "smithy.api#documentation": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)."
+            "smithy.api#documentation": "For more information on cache tags and purging by tags, please refer to purge by cache-tags documentation page."
           }
         },
         "hosts": {
           "target": "com.cloudflare.cache#PurgeRequestHostsList",
           "traits": {
-            "smithy.api#documentation": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)."
+            "smithy.api#documentation": "For more information purging by hostnames, please refer to purge by hostname documentation page."
           }
         },
         "prefixes": {
           "target": "com.cloudflare.cache#PurgeRequestPrefixesList",
           "traits": {
-            "smithy.api#documentation": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/)."
+            "smithy.api#documentation": "For more information on purging by prefixes, please refer to purge by prefix documentation page."
           }
         },
         "purge_everything": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)."
+            "smithy.api#documentation": "For more information, please refer to purge everything documentation page."
           }
         },
         "files": {
-          "target": "com.cloudflare.cache#PurgeRequestFiles",
+          "target": "com.cloudflare.cache#PurgeRequestFilesList",
           "traits": {
-            "smithy.api#documentation": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)."
+            "smithy.api#documentation": "For more information on purging files, please refer to purge by single-file documentation page."
+          }
+        },
+        "files_2": {
+          "target": "com.cloudflare.cache#PurgeRequestFilesList2",
+          "traits": {
+            "smithy.api#documentation": "For more information on purging files with URL and headers, please refer to purge by single-file documentation page.",
+            "smithy.api#jsonName": "files"
           }
         }
       },
@@ -129,6 +133,7 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength32",
             "smithy.api#required": {}
           }
         }
@@ -172,13 +177,13 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileList": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFilesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFilesItemHeadersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -187,32 +192,21 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFilesItem": {
       "type": "structure",
       "members": {
         "headers": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap"
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesItemHeadersMap"
         },
         "url": {
           "target": "smithy.api#String"
         }
       }
     },
-    "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList": {
+    "com.cloudflare.cache#PurgeEnvironmentRequestFilesList2": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem"
-      }
-    },
-    "com.cloudflare.cache#PurgeEnvironmentRequestFiles": {
-      "type": "union",
-      "members": {
-        "CachePurgeSingleFile": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileList"
-        },
-        "CachePurgeSingleFileWithURLAndHeaders": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList"
-        }
+        "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesItem"
       }
     },
     "com.cloudflare.cache#PurgeEnvironmentRequest": {
@@ -221,6 +215,7 @@
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength32",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -228,38 +223,53 @@
         "environment_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength32",
             "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "CachePurgeFlexPurgeByTags object { tags }",
             "smithy.api#required": {}
           }
         },
         "tags": {
           "target": "com.cloudflare.cache#PurgeEnvironmentRequestTagsList",
           "traits": {
-            "smithy.api#documentation": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)."
+            "smithy.api#documentation": "For more information on cache tags and purging by tags, please refer to purge by cache-tags documentation page."
           }
         },
         "hosts": {
           "target": "com.cloudflare.cache#PurgeEnvironmentRequestHostsList",
           "traits": {
-            "smithy.api#documentation": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)."
+            "smithy.api#documentation": "For more information purging by hostnames, please refer to purge by hostname documentation page."
           }
         },
         "prefixes": {
           "target": "com.cloudflare.cache#PurgeEnvironmentRequestPrefixesList",
           "traits": {
-            "smithy.api#documentation": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/)."
+            "smithy.api#documentation": "For more information on purging by prefixes, please refer to purge by prefix documentation page."
           }
         },
         "purge_everything": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)."
+            "smithy.api#documentation": "For more information, please refer to purge everything documentation page."
           }
         },
         "files": {
-          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFiles",
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesList",
           "traits": {
-            "smithy.api#documentation": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)."
+            "smithy.api#documentation": "For more information on purging files, please refer to purge by single-file documentation page."
+          }
+        },
+        "files_2": {
+          "target": "com.cloudflare.cache#PurgeEnvironmentRequestFilesList2",
+          "traits": {
+            "smithy.api#documentation": "For more information on purging files with URL and headers, please refer to purge by single-file documentation page.",
+            "smithy.api#jsonName": "files"
           }
         }
       },
@@ -273,6 +283,7 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "maxLength32",
             "smithy.api#required": {}
           }
         }
@@ -315,17 +326,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.cache#CacheReserveClearResponseId": {
-      "type": "enum",
-      "members": {
-        "CACHE_RESERVE_CLEAR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cache_reserve_clear"
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#CacheReserveClearResponseState": {
       "type": "enum",
       "members": {
@@ -347,7 +347,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "com.cloudflare.cache#CacheReserveClearResponseId",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "ID of the zone setting.",
             "smithy.api#required": {}
@@ -442,17 +442,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.cache#CacheReserveEditResponseId": {
-      "type": "enum",
-      "members": {
-        "CACHE_RESERVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cache_reserve"
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#CacheReserveEditResponseValue": {
       "type": "enum",
       "members": {
@@ -470,11 +459,22 @@
         }
       }
     },
+    "com.cloudflare.cache#CacheReserveEditResponseValue2": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#CacheReserveEditResponse": {
       "type": "structure",
       "members": {
         "id": {
-          "target": "com.cloudflare.cache#CacheReserveEditResponseId",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "The identifier of the caching setting.",
             "smithy.api#required": {}
@@ -499,6 +499,14 @@
           "traits": {
             "smithy.api#documentation": "Last time this setting was modified."
           }
+        },
+        "value_2": {
+          "target": "com.cloudflare.cache#CacheReserveEditResponseValue2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
+          }
         }
       },
       "traits": {
@@ -520,7 +528,7 @@
           "uri": "/zones/{zone_id}/cache/cache_reserve",
           "code": 200
         },
-        "smithy.api#documentation": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information."
+        "smithy.api#documentation": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare’s persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information."
       }
     },
     "com.cloudflare.cache#CacheReserveGetRequest": {
@@ -537,17 +545,6 @@
       },
       "traits": {
         "smithy.api#input": {}
-      }
-    },
-    "com.cloudflare.cache#CacheReserveGetResponseId": {
-      "type": "enum",
-      "members": {
-        "CACHE_RESERVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cache_reserve"
-          }
-        }
       }
     },
     "com.cloudflare.cache#CacheReserveGetResponseValue": {
@@ -571,7 +568,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "com.cloudflare.cache#CacheReserveGetResponseId",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "The identifier of the caching setting.",
             "smithy.api#required": {}
@@ -617,7 +614,7 @@
           "uri": "/zones/{zone_id}/cache/cache_reserve",
           "code": 200
         },
-        "smithy.api#documentation": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
+        "smithy.api#documentation": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare’s persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
         "smithy.api#readonly": {}
       }
     },
@@ -635,17 +632,6 @@
       },
       "traits": {
         "smithy.api#input": {}
-      }
-    },
-    "com.cloudflare.cache#CacheReserveStatusResponseId": {
-      "type": "enum",
-      "members": {
-        "CACHE_RESERVE_CLEAR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cache_reserve_clear"
-          }
-        }
       }
     },
     "com.cloudflare.cache#CacheReserveStatusResponseState": {
@@ -669,7 +655,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "com.cloudflare.cache#CacheReserveStatusResponseId",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "ID of the zone setting.",
             "smithy.api#required": {}
@@ -881,78 +867,10 @@
         }
       }
     },
-    "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address for this item.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error message explaining why the item failed. Present only on failed items."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier. Present on succeeded items for patch operations."
-          }
-        },
-        "vendor": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor identifier. Present on succeeded items for patch operations."
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueFailedList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem"
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address for this item.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error message explaining why the item failed. Present only on failed items."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier. Present on succeeded items for patch operations."
-          }
-        },
-        "vendor": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor identifier. Present on succeeded items for patch operations."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValue": {
@@ -962,13 +880,6 @@
           "target": "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueFailedList",
           "traits": {
             "smithy.api#documentation": "Items that could not be applied, with error details.",
-            "smithy.api#required": {}
-          }
-        },
-        "succeeded": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList",
-          "traits": {
-            "smithy.api#documentation": "Items that were successfully applied.",
             "smithy.api#required": {}
           }
         }
@@ -994,12 +905,6 @@
           "target": "com.cloudflare.cache#OriginCloudRegionsBulkDeleteV1ResponseValue",
           "traits": {
             "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time the mapping set was last modified. Null when no items were successfully applied."
           }
         }
       },
@@ -1121,78 +1026,10 @@
         }
       }
     },
-    "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueFailedItem": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address for this item.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error message explaining why the item failed. Present only on failed items."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier. Present on succeeded items for patch operations."
-          }
-        },
-        "vendor": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor identifier. Present on succeeded items for patch operations."
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueFailedList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueFailedItem"
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueSucceededItem": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address for this item.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error message explaining why the item failed. Present only on failed items."
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier. Present on succeeded items for patch operations."
-          }
-        },
-        "vendor": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor identifier. Present on succeeded items for patch operations."
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueSucceededList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueSucceededItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValue": {
@@ -1202,13 +1039,6 @@
           "target": "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueFailedList",
           "traits": {
             "smithy.api#documentation": "Items that could not be applied, with error details.",
-            "smithy.api#required": {}
-          }
-        },
-        "succeeded": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValueSucceededList",
-          "traits": {
-            "smithy.api#documentation": "Items that were successfully applied.",
             "smithy.api#required": {}
           }
         }
@@ -1234,12 +1064,6 @@
           "target": "com.cloudflare.cache#OriginCloudRegionsBulkEditV1ResponseValue",
           "traits": {
             "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time the mapping set was last modified. Null when no items were successfully applied."
           }
         }
       },
@@ -1385,6 +1209,28 @@
         "target": "com.cloudflare.cache#OriginCloudRegionsBulkUpdateResponseFailedItem"
       }
     },
+    "com.cloudflare.cache#OriginCloudRegionsBulkUpdateResponseSucceededItemVendor": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cache#OriginCloudRegionsBulkUpdateResponseSucceededItemVendor2": {
+      "type": "enum",
+      "members": {
+        "GCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcp"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#OriginCloudRegionsBulkUpdateResponseSucceededItem": {
       "type": "structure",
       "members": {
@@ -1411,6 +1257,50 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Cloud vendor identifier. Present on succeeded items (the new value for upsert, the deleted value for delete)."
+          }
+        },
+        "origin_ip_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "origin_ip"
+          }
+        },
+        "region_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "region"
+          }
+        },
+        "vendor_2": {
+          "target": "com.cloudflare.cache#OriginCloudRegionsBulkUpdateResponseSucceededItemVendor",
+          "traits": {
+            "smithy.api#documentation": "},",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "vendor"
+          }
+        },
+        "origin_ip_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "origin_ip"
+          }
+        },
+        "region_3": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "region"
+          }
+        },
+        "vendor_3": {
+          "target": "com.cloudflare.cache#OriginCloudRegionsBulkUpdateResponseSucceededItemVendor2",
+          "traits": {
+            "smithy.api#documentation": "}",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "vendor"
           }
         }
       }
@@ -1539,68 +1429,6 @@
         }
       }
     },
-    "com.cloudflare.cache#OriginCloudRegionsCreateV1ResponseValueVendor": {
-      "type": "enum",
-      "members": {
-        "AWS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "aws"
-          }
-        },
-        "AZURE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "azure"
-          }
-        },
-        "GCP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gcp"
-          }
-        },
-        "OCI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "oci"
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsCreateV1ResponseValue": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier.",
-            "smithy.api#required": {}
-          }
-        },
-        "vendor": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsCreateV1ResponseValueVendor",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor hosting the origin.",
-            "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time this mapping was last modified."
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#OriginCloudRegionsCreateV1Response": {
       "type": "structure",
       "members": {
@@ -1618,16 +1446,10 @@
           }
         },
         "value": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsCreateV1ResponseValue",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "A single origin IP-to-cloud-region mapping.",
             "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time the mapping was last modified."
           }
         }
       },
@@ -1744,68 +1566,6 @@
         }
       }
     },
-    "com.cloudflare.cache#OriginCloudRegionsDeleteV1ResponseValueVendor": {
-      "type": "enum",
-      "members": {
-        "AWS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "aws"
-          }
-        },
-        "AZURE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "azure"
-          }
-        },
-        "GCP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gcp"
-          }
-        },
-        "OCI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "oci"
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsDeleteV1ResponseValue": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier.",
-            "smithy.api#required": {}
-          }
-        },
-        "vendor": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsDeleteV1ResponseValueVendor",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor hosting the origin.",
-            "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time this mapping was last modified."
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#OriginCloudRegionsDeleteV1Response": {
       "type": "structure",
       "members": {
@@ -1823,16 +1583,10 @@
           }
         },
         "value": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsDeleteV1ResponseValue",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "A single origin IP-to-cloud-region mapping.",
             "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time the mapping was last modified."
           }
         }
       },
@@ -1936,72 +1690,10 @@
         }
       }
     },
-    "com.cloudflare.cache#OriginCloudRegionsEditV1ResponseValueItemVendor": {
-      "type": "enum",
-      "members": {
-        "AWS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "aws"
-          }
-        },
-        "AZURE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "azure"
-          }
-        },
-        "GCP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gcp"
-          }
-        },
-        "OCI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "oci"
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsEditV1ResponseValueItem": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier.",
-            "smithy.api#required": {}
-          }
-        },
-        "vendor": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsEditV1ResponseValueItemVendor",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor hosting the origin.",
-            "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time this mapping was last modified."
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#OriginCloudRegionsEditV1ResponseValueList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.cache#OriginCloudRegionsEditV1ResponseValueItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsEditV1Response": {
@@ -2024,12 +1716,6 @@
           "target": "com.cloudflare.cache#OriginCloudRegionsEditV1ResponseValueList",
           "traits": {
             "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time the mapping set was last modified. Null when no mappings exist."
           }
         }
       },
@@ -2195,68 +1881,6 @@
         }
       }
     },
-    "com.cloudflare.cache#OriginCloudRegionsGetV1ResponseValueVendor": {
-      "type": "enum",
-      "members": {
-        "AWS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "aws"
-          }
-        },
-        "AZURE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "azure"
-          }
-        },
-        "GCP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gcp"
-          }
-        },
-        "OCI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "oci"
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsGetV1ResponseValue": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier.",
-            "smithy.api#required": {}
-          }
-        },
-        "vendor": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsGetV1ResponseValueVendor",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor hosting the origin.",
-            "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time this mapping was last modified."
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#OriginCloudRegionsGetV1Response": {
       "type": "structure",
       "members": {
@@ -2274,16 +1898,10 @@
           }
         },
         "value": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsGetV1ResponseValue",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "A single origin IP-to-cloud-region mapping.",
             "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time the mapping was last modified."
           }
         }
       },
@@ -2467,72 +2085,10 @@
         }
       }
     },
-    "com.cloudflare.cache#OriginCloudRegionsListV1ResponseValueItemVendor": {
-      "type": "enum",
-      "members": {
-        "AWS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "aws"
-          }
-        },
-        "AZURE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "azure"
-          }
-        },
-        "GCP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gcp"
-          }
-        },
-        "OCI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "oci"
-          }
-        }
-      }
-    },
-    "com.cloudflare.cache#OriginCloudRegionsListV1ResponseValueItem": {
-      "type": "structure",
-      "members": {
-        "origin_ip": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The origin IP address (IPv4 or IPv6, canonicalized).",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "origin-ip"
-          }
-        },
-        "region": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor region identifier.",
-            "smithy.api#required": {}
-          }
-        },
-        "vendor": {
-          "target": "com.cloudflare.cache#OriginCloudRegionsListV1ResponseValueItemVendor",
-          "traits": {
-            "smithy.api#documentation": "Cloud vendor hosting the origin.",
-            "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time this mapping was last modified."
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#OriginCloudRegionsListV1ResponseValueList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.cache#OriginCloudRegionsListV1ResponseValueItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsListV1Response": {
@@ -2555,12 +2111,6 @@
           "target": "com.cloudflare.cache#OriginCloudRegionsListV1ResponseValueList",
           "traits": {
             "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Time the mapping set was last modified. Null when no mappings exist."
           }
         }
       },
@@ -2884,6 +2434,17 @@
         }
       }
     },
+    "com.cloudflare.cache#OriginCloudRegionsUpdateResponseVendor2": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#OriginCloudRegionsUpdateResponse": {
       "type": "structure",
       "members": {
@@ -2912,6 +2473,28 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Time this mapping was last modified."
+          }
+        },
+        "origin_ip_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "origin_ip"
+          }
+        },
+        "region_2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "region"
+          }
+        },
+        "vendor_2": {
+          "target": "com.cloudflare.cache#OriginCloudRegionsUpdateResponseVendor2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "vendor"
           }
         }
       },
@@ -2978,17 +2561,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.cache#RegionalTieredCacheEditResponseId": {
-      "type": "enum",
-      "members": {
-        "TC_REGIONAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "tc_regional"
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#RegionalTieredCacheEditResponseValue": {
       "type": "enum",
       "members": {
@@ -3006,11 +2578,22 @@
         }
       }
     },
+    "com.cloudflare.cache#RegionalTieredCacheEditResponseValue2": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#RegionalTieredCacheEditResponse": {
       "type": "structure",
       "members": {
         "id": {
-          "target": "com.cloudflare.cache#RegionalTieredCacheEditResponseId",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "The identifier of the caching setting.",
             "smithy.api#required": {}
@@ -3034,6 +2617,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Last time this setting was modified."
+          }
+        },
+        "value_2": {
+          "target": "com.cloudflare.cache#RegionalTieredCacheEditResponseValue2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
           }
         }
       },
@@ -3075,17 +2666,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.cache#RegionalTieredCacheGetResponseId": {
-      "type": "enum",
-      "members": {
-        "TC_REGIONAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "tc_regional"
-          }
-        }
-      }
-    },
     "com.cloudflare.cache#RegionalTieredCacheGetResponseValue": {
       "type": "enum",
       "members": {
@@ -3107,7 +2687,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "com.cloudflare.cache#RegionalTieredCacheGetResponseId",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "The identifier of the caching setting.",
             "smithy.api#required": {}
@@ -3225,6 +2805,17 @@
         }
       }
     },
+    "com.cloudflare.cache#SmartTieredCacheCreateResponseValue2": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#SmartTieredCacheCreateResponse": {
       "type": "structure",
       "members": {
@@ -3254,6 +2845,14 @@
           "traits": {
             "smithy.api#documentation": "Last time this setting was modified."
           }
+        },
+        "value_2": {
+          "target": "com.cloudflare.cache#SmartTieredCacheCreateResponseValue2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
+          }
         }
       },
       "traits": {
@@ -3275,7 +2874,7 @@
           "uri": "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
           "code": 200
         },
-        "smithy.api#documentation": "Smart Tiered Cache dynamically selects the single closest upper tier for each of your website's origins with no configuration required, using our in-house performance and routing data. Cloudflare collects latency data for each request to an origin, and uses the latency data to determine how well any upper-tier data center is connected with an origin. As a result, Cloudflare can select the data center with the lowest latency to be the upper-tier for an origin."
+        "smithy.api#documentation": "Smart Tiered Cache dynamically selects the single closest upper tier for each of your website’s origins with no configuration required, using our in-house performance and routing data. Cloudflare collects latency data for each request to an origin, and uses the latency data to determine how well any upper-tier data center is connected with an origin. As a result, Cloudflare can select the data center with the lowest latency to be the upper-tier for an origin."
       }
     },
     "com.cloudflare.cache#SmartTieredCacheDeleteRequest": {
@@ -3420,6 +3019,17 @@
         }
       }
     },
+    "com.cloudflare.cache#SmartTieredCacheEditResponseValue2": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#SmartTieredCacheEditResponse": {
       "type": "structure",
       "members": {
@@ -3448,6 +3058,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Last time this setting was modified."
+          }
+        },
+        "value_2": {
+          "target": "com.cloudflare.cache#SmartTieredCacheEditResponseValue2",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "value"
           }
         }
       },
@@ -3641,7 +3259,7 @@
           "uri": "/zones/{zone_id}/cache/variants",
           "code": 200
         },
-        "smithy.api#documentation": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
+        "smithy.api#documentation": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the ‘Vary: Accept’ response header. If the origin server sends ‘Vary: Accept’ but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
         "smithy.api#idempotent": {}
       }
     },
@@ -3950,6 +3568,19 @@
           "traits": {
             "smithy.api#documentation": "List of strings with the MIME types of all the variants that should be served for webp."
           }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time this setting was modified."
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "}'",
+            "smithy.api#required": {}
+          }
         }
       }
     },
@@ -3976,12 +3607,6 @@
             "smithy.api#documentation": "Value of the zone setting.",
             "smithy.api#required": {}
           }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Last time this setting was modified."
-          }
         }
       },
       "traits": {
@@ -4003,7 +3628,7 @@
           "uri": "/zones/{zone_id}/cache/variants",
           "code": 200
         },
-        "smithy.api#documentation": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers."
+        "smithy.api#documentation": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the ‘Vary: Accept’ response header. If the origin server sends ‘Vary: Accept’ but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers."
       }
     },
     "com.cloudflare.cache#VariantsGetRequest": {
@@ -4167,6 +3792,12 @@
           "traits": {
             "smithy.api#documentation": "List of strings with the MIME types of all the variants that should be served for webp."
           }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time this setting was modified."
+          }
         }
       }
     },
@@ -4193,12 +3824,6 @@
             "smithy.api#documentation": "Value of the zone setting.",
             "smithy.api#required": {}
           }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Last time this setting was modified."
-          }
         }
       },
       "traits": {
@@ -4220,7 +3845,7 @@
           "uri": "/zones/{zone_id}/cache/variants",
           "code": 200
         },
-        "smithy.api#documentation": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
+        "smithy.api#documentation": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the ‘Vary: Accept’ response header. If the origin server sends ‘Vary: Accept’ but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
         "smithy.api#readonly": {}
       }
     },
