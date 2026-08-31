@@ -9,9 +9,8 @@
  * (`Authorization: Bearer <token>`). The optional `X-Grafana-Org-Id` header
  * selects the organization the action applies to.
  *
- * The published OpenAPI document's server URL is `/api` and every path is
- * relative to that prefix, so the protocol appends `/api` to the instance
- * origin (`apiBaseUrl`).
+ * Generated operations include their own `/api` or `/apis` prefix, so
+ * `apiBaseUrl` is always the Grafana instance origin.
  */
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
@@ -19,7 +18,7 @@ import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
-/** Grafana OSS default listen address (the instance origin, not `/api`). */
+/** Grafana OSS default listen address (the instance origin). */
 export const DEFAULT_API_BASE_URL = "http://localhost:3000";
 
 export interface Config {

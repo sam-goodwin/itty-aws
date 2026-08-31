@@ -1,9 +1,10 @@
 # spec-mirror-grafana
 
-A git mirror of Grafana's [HTTP API OpenAPI description](https://github.com/grafana/grafana/blob/main/public/openapi3.json), reduced to exactly the files the
+A git mirror of Grafana's [HTTP API OpenAPI description](https://github.com/grafana/grafana/blob/main/public/openapi3.json) and structured API descriptions, reduced to exactly the files the
 [`@distilled.cloud/grafana`](https://github.com/alchemy-run/distilled) generator reads:
 
 - `specs/openapi3.json` — `public/openapi3.json`
+- `specs/*.grafana.app-*.json` — Dashboard, Folder, Playlist, and Alerting API descriptions
 - `specs/docs/*.md` — vendor HTTP API markdown under `docs/sources/developer-resources/api-reference/http-api/`
 
 Nothing else from `grafana/grafana` is mirrored, so this repository stays small

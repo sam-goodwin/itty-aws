@@ -177,7 +177,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/access-control/roles",
+          "uri": "/api/access-control/roles",
           "code": 200
         },
         "smithy.api#documentation": "Get all roles.\n\nGets all existing roles. The response contains all global and organization local roles, for the organization which user is signed in.\n\nYou need to have a permission with action `roles:read` and scope `roles:*`.\n\nThe `delegatable` flag reduces the set of roles to only those for which the signed-in user has permissions to assign."
@@ -241,7 +241,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/roles",
+          "uri": "/api/access-control/roles",
           "code": 200
         },
         "smithy.api#documentation": "Create a new custom role.\n\nCreates a new custom role and maps given permissions to that role. Note that roles with the same prefix as Fixed Roles can’t be created.\n\nYou need to have a permission with action `roles:write` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only create custom roles with the same, or a subset of permissions which the user has.\nFor example, if a user does not have required permissions for creating users, they won’t be able to create a custom role which allows to do that. This is done to prevent escalation of privileges."
@@ -278,7 +278,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/access-control/roles/{roleUID}",
+          "uri": "/api/access-control/roles/{roleUID}",
           "code": 200
         },
         "smithy.api#documentation": "Get a role.\n\nGet a role for the given UID.\n\nYou need to have a permission with action `roles:read` and scope `roles:*`."
@@ -358,7 +358,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/access-control/roles/{roleUID}",
+          "uri": "/api/access-control/roles/{roleUID}",
           "code": 200
         },
         "smithy.api#documentation": "Update a custom role.\n\nYou need to have a permission with action `roles:write` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only create custom roles with the same, or a subset of permissions which the user has."
@@ -419,7 +419,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/access-control/roles/{roleUID}",
+          "uri": "/api/access-control/roles/{roleUID}",
           "code": 200
         },
         "smithy.api#documentation": "Delete a custom role.\n\nDelete a role with the given UID, and it’s permissions. If the role is assigned to a built-in role, the deletion operation will fail, unless force query param is set to true, and in that case all assignments will also be deleted.\n\nYou need to have a permission with action `roles:delete` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only delete a custom role with the same, or a subset of permissions which the user has. For example, if a user does not have required permissions for creating users, they won’t be able to delete a custom role which allows to do that."
@@ -498,7 +498,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/access-control/roles/{roleUID}/assignments",
+          "uri": "/api/access-control/roles/{roleUID}/assignments",
           "code": 200
         },
         "smithy.api#documentation": "Get role assignments.\n\nGet role assignments for the role with the given UID.\nDoes not include role assignments mapped through group attribute sync.\n\nYou need to have a permission with action `teams.roles:list` and scope `teams:id:*` and `users.roles:list` and scope `users:id:*`."
@@ -568,7 +568,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/access-control/roles/{roleUID}/assignments",
+          "uri": "/api/access-control/roles/{roleUID}/assignments",
           "code": 200
         },
         "smithy.api#documentation": "Set role assignments.\n\nSet role assignments for the role with the given UID.\n\nYou need to have a permission with action `teams.roles:add` and `teams.roles:remove` and scope `permissions:type:delegate`, and `users.roles:add` and `users.roles:remove` and scope `permissions:type:delegate`."
@@ -602,7 +602,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/access-control/status",
+          "uri": "/api/access-control/status",
           "code": 200
         },
         "smithy.api#documentation": "Get status.\n\nReturns an indicator to check if fine-grained access control is enabled or not.\n\nYou need to have a permission with action `status:accesscontrol` and scope `services:accesscontrol`."
@@ -693,7 +693,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/teams/roles/search",
+          "uri": "/api/access-control/teams/roles/search",
           "code": 200
         },
         "smithy.api#documentation": "List roles assigned to multiple teams.\n\nLists the roles that have been directly assigned to the given teams.\n\nYou need to have a permission with action `teams.roles:read` and scope `teams:id:*`."
@@ -739,7 +739,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/access-control/teams/{teamId}/roles",
+          "uri": "/api/access-control/teams/{teamId}/roles",
           "code": 200
         },
         "smithy.api#documentation": "Get team roles.\n\nYou need to have a permission with action `teams.roles:read` and scope `teams:id:<team ID>`."
@@ -785,7 +785,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/teams/{teamId}/roles",
+          "uri": "/api/access-control/teams/{teamId}/roles",
           "code": 200
         },
         "smithy.api#documentation": "Add team role.\n\nYou need to have a permission with action `teams.roles:add` and scope `permissions:type:delegate`."
@@ -847,7 +847,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/access-control/teams/{teamId}/roles",
+          "uri": "/api/access-control/teams/{teamId}/roles",
           "code": 200
         },
         "smithy.api#documentation": "Update team role.\n\nYou need to have a permission with action `teams.roles:add` and `teams.roles:remove` and scope `permissions:type:delegate` for each."
@@ -897,7 +897,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/access-control/teams/{teamId}/roles/{roleUID}",
+          "uri": "/api/access-control/teams/{teamId}/roles/{roleUID}",
           "code": 200
         },
         "smithy.api#documentation": "Remove team role.\n\nYou need to have a permission with action `teams.roles:remove` and scope `permissions:type:delegate`."
@@ -988,7 +988,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/users/roles/search",
+          "uri": "/api/access-control/users/roles/search",
           "code": 200
         },
         "smithy.api#documentation": "List roles assigned to multiple users.\n\nLists the roles that have been directly assigned to the given users. The list does not include built-in roles (Viewer, Editor, Admin or Grafana Admin), and it does not include roles that have been inherited from a team.\n\nYou need to have a permission with action `users.roles:read` and scope `users:id:*`."
@@ -1062,7 +1062,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/access-control/users/{userId}/roles",
+          "uri": "/api/access-control/users/{userId}/roles",
           "code": 200
         },
         "smithy.api#documentation": "List roles assigned to a user.\n\nLists the roles that have been directly assigned to a given user. The list does not include built-in roles (Viewer, Editor, Admin or Grafana Admin), and it does not include roles that have been inherited from a team.\n\nYou need to have a permission with action `users.roles:read` and scope `users:id:<user ID>`."
@@ -1108,7 +1108,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/users/{userId}/roles",
+          "uri": "/api/access-control/users/{userId}/roles",
           "code": 200
         },
         "smithy.api#documentation": "Add a user role assignment.\n\nAssign a role to a specific user. For bulk updates consider Set user role assignments.\n\nYou need to have a permission with action `users.roles:add` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only assign roles which have same, or a subset of permissions which the user has. For example, if a user does not have required permissions for creating users, they won’t be able to assign a role which will allow to do that. This is done to prevent escalation of privileges."
@@ -1173,7 +1173,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/access-control/users/{userId}/roles",
+          "uri": "/api/access-control/users/{userId}/roles",
           "code": 200
         },
         "smithy.api#documentation": "Set user role assignments.\n\nUpdate the user’s role assignments to match the provided set of UIDs. This will remove any assigned roles that aren’t in the request and add roles that are in the set but are not already assigned to the user.\nRoles mapped through group attribute sync are not impacted.\nIf you want to add or remove a single role, consider using Add a user role assignment or Remove a user role assignment instead.\n\nYou need to have a permission with action `users.roles:add` and `users.roles:remove` and scope `permissions:type:delegate` for each. `permissions:type:delegate`  scope ensures that users can only assign or unassign roles which have same, or a subset of permissions which the user has. For example, if a user does not have required permissions for creating users, they won’t be able to assign or unassign a role which will allow to do that. This is done to prevent escalation of privileges."
@@ -1230,7 +1230,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/access-control/users/{userId}/roles/{roleUID}",
+          "uri": "/api/access-control/users/{userId}/roles/{roleUID}",
           "code": 200
         },
         "smithy.api#documentation": "Remove a user role assignment.\n\nRevoke a role from a user. For bulk updates consider Set user role assignments.\n\nYou need to have a permission with action `users.roles:remove` and scope `permissions:type:delegate`. `permissions:type:delegate` scope ensures that users can only unassign roles which have same, or a subset of permissions which the user has. For example, if a user does not have required permissions for creating users, they won’t be able to unassign a role which will allow to do that. This is done to prevent escalation of privileges."
@@ -1304,7 +1304,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/access-control/{resource}/description",
+          "uri": "/api/access-control/{resource}/description",
           "code": 200
         },
         "smithy.api#documentation": "Get a description of a resource's access control properties."
@@ -1434,7 +1434,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/access-control/{resource}/{resourceID}",
+          "uri": "/api/access-control/{resource}/{resourceID}",
           "code": 200
         },
         "smithy.api#documentation": "Get permissions for a resource."
@@ -1512,7 +1512,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/{resource}/{resourceID}",
+          "uri": "/api/access-control/{resource}/{resourceID}",
           "code": 200
         },
         "smithy.api#documentation": "Set resource permissions.\n\nAssigns permissions for a resource by a given type (`:resource`) and `:resourceID` to one or many\nassignment types. Allowed resources are `datasources`, `teams`, `dashboards`, `folders`, and `serviceaccounts`.\nRefer to the `/access-control/{resource}/description` endpoint for allowed Permissions."
@@ -1572,7 +1572,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/{resource}/{resourceID}/builtInRoles/{builtInRole}",
+          "uri": "/api/access-control/{resource}/{resourceID}/builtInRoles/{builtInRole}",
           "code": 200
         },
         "smithy.api#documentation": "Set resource permissions for a built-in role.\n\nAssigns permissions for a resource by a given type (`:resource`) and `:resourceID` to a built-in role.\nAllowed resources are `datasources`, `teams`, `dashboards`, `folders`, and `serviceaccounts`.\nRefer to the `/access-control/{resource}/description` endpoint for allowed Permissions."
@@ -1632,7 +1632,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/{resource}/{resourceID}/teams/{teamID}",
+          "uri": "/api/access-control/{resource}/{resourceID}/teams/{teamID}",
           "code": 200
         },
         "smithy.api#documentation": "Set resource permissions for a team.\n\nAssigns permissions for a resource by a given type (`:resource`) and `:resourceID` to a team.\nAllowed resources are `datasources`, `teams`, `dashboards`, `folders`, and `serviceaccounts`.\nRefer to the `/access-control/{resource}/description` endpoint for allowed Permissions."
@@ -1692,7 +1692,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/access-control/{resource}/{resourceID}/users/{userID}",
+          "uri": "/api/access-control/{resource}/{resourceID}/users/{userID}",
           "code": 200
         },
         "smithy.api#documentation": "Set resource permissions for a user.\n\nAssigns permissions for a resource by a given type (`:resource`) and `:resourceID` to a user or a service account.\nAllowed resources are `datasources`, `teams`, `dashboards`, `folders`, and `serviceaccounts`.\nRefer to the `/access-control/{resource}/description` endpoint for allowed Permissions."
@@ -1790,7 +1790,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/admin/ldap-sync-status",
+          "uri": "/api/admin/ldap-sync-status",
           "code": 200
         },
         "smithy.api#documentation": "Returns the current state of the LDAP background sync integration.\n\nYou need to have a permission with action `ldap.status:read`."
@@ -1807,7 +1807,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/ldap/reload",
+          "uri": "/api/admin/ldap/reload",
           "code": 200
         },
         "smithy.api#documentation": "Reloads the LDAP configuration.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `ldap.config:reload`."
@@ -1829,7 +1829,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/admin/ldap/status",
+          "uri": "/api/admin/ldap/status",
           "code": 200
         },
         "smithy.api#documentation": "Attempts to connect to all the configured LDAP servers and returns information on whenever they're available or not.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `ldap.status:read`."
@@ -1866,7 +1866,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/ldap/sync/{user_id}",
+          "uri": "/api/admin/ldap/sync/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Enables a single Grafana user to be synchronized against LDAP.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `ldap.user:sync`."
@@ -1903,7 +1903,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/admin/ldap/{user_name}",
+          "uri": "/api/admin/ldap/{user_name}",
           "code": 200
         },
         "smithy.api#documentation": "Finds an user based on a username in LDAP. This helps illustrate how would the particular user be mapped in Grafana when synced.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `ldap.user:read`."
@@ -1925,7 +1925,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/provisioning/access-control/reload",
+          "uri": "/api/admin/provisioning/access-control/reload",
           "code": 200
         },
         "smithy.api#documentation": "You need to have a permission with action `provisioning:reload` with scope `provisioners:accesscontrol`."
@@ -1947,7 +1947,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/provisioning/dashboards/reload",
+          "uri": "/api/admin/provisioning/dashboards/reload",
           "code": 200
         },
         "smithy.api#documentation": "Reload dashboard provisioning configurations.\n\nReloads the provisioning config files for dashboards again. It won’t return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning.\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:dashboards`."
@@ -1969,7 +1969,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/provisioning/datasources/reload",
+          "uri": "/api/admin/provisioning/datasources/reload",
           "code": 200
         },
         "smithy.api#documentation": "Reload datasource provisioning configurations.\n\nReloads the provisioning config files for datasources again. It won’t return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning.\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:datasources`."
@@ -1991,7 +1991,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/provisioning/plugins/reload",
+          "uri": "/api/admin/provisioning/plugins/reload",
           "code": 200
         },
         "smithy.api#documentation": "Reload plugin provisioning configurations.\n\nReloads the provisioning config files for plugins again. It won’t return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning.\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `provisioning:reload` and scope `provisioners:plugin`."
@@ -2048,7 +2048,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/admin/settings",
+          "uri": "/api/admin/settings",
           "code": 200
         },
         "smithy.api#documentation": "Fetch settings.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `settings:read` and scopes: `settings:*`, `settings:auth.saml:` and `settings:auth.saml:enabled` (property level)."
@@ -2148,7 +2148,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/admin/stats",
+          "uri": "/api/admin/stats",
           "code": 200
         },
         "smithy.api#documentation": "Fetch Grafana Stats.\n\nOnly works with Basic Authentication (username and password). See introduction for an explanation.\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `server:stats:read`."
@@ -2214,7 +2214,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/users",
+          "uri": "/api/admin/users",
           "code": 200
         },
         "smithy.api#documentation": "Create new user.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users:create`.\nNote that OrgId is an optional parameter that can be used to assign a new user to a different organization when `auto_assign_org` is set to `true`."
@@ -2254,7 +2254,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/admin/users/{user_id}",
+          "uri": "/api/admin/users/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Delete global User.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users:delete` and scope `global.users:*`."
@@ -2363,7 +2363,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/admin/users/{user_id}/auth-tokens",
+          "uri": "/api/admin/users/{user_id}/auth-tokens",
           "code": 200
         },
         "smithy.api#documentation": "Return a list of all auth tokens (devices) that the user currently have logged in from.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users.authtoken:list` and scope `global.users:*`."
@@ -2403,7 +2403,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/users/{user_id}/disable",
+          "uri": "/api/admin/users/{user_id}/disable",
           "code": 200
         },
         "smithy.api#documentation": "Disable user.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users:disable` and scope `global.users:1` (userIDScope)."
@@ -2443,7 +2443,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/users/{user_id}/enable",
+          "uri": "/api/admin/users/{user_id}/enable",
           "code": 200
         },
         "smithy.api#documentation": "Enable user.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users:enable` and scope `global.users:1` (userIDScope)."
@@ -2486,7 +2486,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/users/{user_id}/logout",
+          "uri": "/api/admin/users/{user_id}/logout",
           "code": 200
         },
         "smithy.api#documentation": "Logout user revokes all auth tokens (devices) for the user. User of issued auth tokens (devices) will no longer be logged in and will be required to authenticate again upon next activity.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users.logout` and scope `global.users:*`."
@@ -2532,7 +2532,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/admin/users/{user_id}/password",
+          "uri": "/api/admin/users/{user_id}/password",
           "code": 200
         },
         "smithy.api#documentation": "Set password for user.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users.password:update` and scope `global.users:*`."
@@ -2575,7 +2575,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/admin/users/{user_id}/permissions",
+          "uri": "/api/admin/users/{user_id}/permissions",
           "code": 200
         },
         "smithy.api#documentation": "Set permissions for user.\n\nOnly works with Basic Authentication (username and password). See introduction for an explanation.\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users.permissions:update` and scope `global.users:*`."
@@ -2658,7 +2658,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/admin/users/{user_id}/quotas",
+          "uri": "/api/admin/users/{user_id}/quotas",
           "code": 200
         },
         "smithy.api#documentation": "Fetch user quota.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users.quotas:list` and scope `global.users:1` (userIDScope)."
@@ -2711,7 +2711,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/admin/users/{user_id}/quotas/{quota_target}",
+          "uri": "/api/admin/users/{user_id}/quotas/{quota_target}",
           "code": 200
         },
         "smithy.api#documentation": "Update user quota.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users.quotas:update` and scope `global.users:1` (userIDScope)."
@@ -2757,7 +2757,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/admin/users/{user_id}/revoke-auth-token",
+          "uri": "/api/admin/users/{user_id}/revoke-auth-token",
           "code": 200
         },
         "smithy.api#documentation": "Revoke auth token for user.\n\nRevokes the given auth token (device) for the user. User of issued auth token (device) will no longer be logged in and will be required to authenticate again upon next activity.\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `users.authtoken:update` and scope `global.users:*`."
@@ -2996,7 +2996,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/annotations",
+          "uri": "/api/annotations",
           "code": 200
         },
         "smithy.api#documentation": "Find Annotations.\n\nStarting in Grafana v6.4 regions annotations are now returned in one entity that now includes the timeEnd property."
@@ -3085,7 +3085,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/annotations",
+          "uri": "/api/annotations",
           "code": 200
         },
         "smithy.api#documentation": "Create Annotation.\n\nCreates an annotation in the Grafana database. The dashboardId and panelId fields are optional. If they are not specified then an organization annotation is created and can be queried in any dashboard that adds the Grafana annotations data source. When creating a region annotation include the timeEnd property.\nThe format for `time` and `timeEnd` should be epoch numbers in millisecond resolution.\nThe response for this HTTP request is slightly different in versions prior to v6.4. In prior versions you would also get an endId if you where creating a region. But in 6.4 regions are represented using a single event with time and timeEnd properties."
@@ -3152,7 +3152,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/annotations/graphite",
+          "uri": "/api/annotations/graphite",
           "code": 200
         },
         "smithy.api#documentation": "Create Annotation in Graphite format.\n\nCreates an annotation by using Graphite-compatible event format. The `when` and `data` fields are optional. If `when` is not specified then the current time will be used as annotation’s timestamp. The `tags` field can also be in prior to Graphite `0.10.0` format (string with multiple tags being separated by a space)."
@@ -3189,7 +3189,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/annotations/mass-delete",
+          "uri": "/api/annotations/mass-delete",
           "code": 200
         },
         "smithy.api#documentation": "Delete multiple annotations."
@@ -3265,7 +3265,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/annotations/tags",
+          "uri": "/api/annotations/tags",
           "code": 200
         },
         "smithy.api#documentation": "Find Annotations Tags.\n\nFind all the event tags created in the annotations."
@@ -3297,7 +3297,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/annotations/{annotation_id}",
+          "uri": "/api/annotations/{annotation_id}",
           "code": 200
         },
         "smithy.api#documentation": "Get Annotation by ID."
@@ -3362,7 +3362,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/annotations/{annotation_id}",
+          "uri": "/api/annotations/{annotation_id}",
           "code": 200
         },
         "smithy.api#documentation": "Update Annotation.\n\nUpdates all properties of an annotation that matches the specified id. To only update certain property, consider using the Patch Annotation operation."
@@ -3427,7 +3427,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/annotations/{annotation_id}",
+          "uri": "/api/annotations/{annotation_id}",
           "code": 200
         },
         "smithy.api#documentation": "Patch Annotation.\n\nUpdates one or more properties of an annotation that matches the specified ID.\nThis operation currently supports updating of the `text`, `tags`, `time` and `timeEnd` properties.\nThis is available in Grafana 6.0.0-beta2 and above."
@@ -3464,7 +3464,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/annotations/{annotation_id}",
+          "uri": "/api/annotations/{annotation_id}",
           "code": 200
         },
         "smithy.api#documentation": "Delete Annotation By ID.\n\nDeletes the annotation that matches the specified ID."
@@ -3538,7 +3538,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/anonymous/devices",
+          "uri": "/api/anonymous/devices",
           "code": 200
         },
         "smithy.api#documentation": "Lists all devices within the last 30 days"
@@ -3612,7 +3612,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/anonymous/search",
+          "uri": "/api/anonymous/search",
           "code": 200
         },
         "smithy.api#documentation": "Lists all devices within the last 30 days"
@@ -3668,7 +3668,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/cloudmigration/migration",
+          "uri": "/api/cloudmigration/migration",
           "code": 200
         },
         "smithy.api#documentation": "Get a list of all cloud migration sessions that have been created."
@@ -3704,7 +3704,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/cloudmigration/migration",
+          "uri": "/api/cloudmigration/migration",
           "code": 200
         },
         "smithy.api#documentation": "Create a migration session."
@@ -3745,7 +3745,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/cloudmigration/migration/{uid}",
+          "uri": "/api/cloudmigration/migration/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "Get a cloud migration session by its uid."
@@ -3786,7 +3786,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/cloudmigration/migration/{uid}",
+          "uri": "/api/cloudmigration/migration/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "Delete a migration session by its uid."
@@ -3918,7 +3918,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/cloudmigration/migration/{uid}/snapshot",
+          "uri": "/api/cloudmigration/migration/{uid}/snapshot",
           "code": 200
         },
         "smithy.api#documentation": "Trigger the creation of an instance snapshot associated with the provided session.\n\nIf the snapshot initialization is successful, the snapshot uid is returned."
@@ -4365,7 +4365,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}",
+          "uri": "/api/cloudmigration/migration/{uid}/snapshot/{snapshotUid}",
           "code": 200
         },
         "smithy.api#documentation": "Get metadata about a snapshot, including where it is in its processing and final results."
@@ -4414,7 +4414,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/cancel",
+          "uri": "/api/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/cancel",
           "code": 200
         },
         "smithy.api#documentation": "Cancel a snapshot, wherever it is in its processing chain.\n\nTODO: Implement"
@@ -4463,7 +4463,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/upload",
+          "uri": "/api/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/upload",
           "code": 200
         },
         "smithy.api#documentation": "Upload a snapshot to the Grafana Migration Service for processing."
@@ -4630,7 +4630,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/cloudmigration/migration/{uid}/snapshots",
+          "uri": "/api/cloudmigration/migration/{uid}/snapshots",
           "code": 200
         },
         "smithy.api#documentation": "Get a list of snapshots for a session."
@@ -4826,7 +4826,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/cloudmigration/resources/dependencies",
+          "uri": "/api/cloudmigration/resources/dependencies",
           "code": 200
         },
         "smithy.api#documentation": "Get the resource dependencies graph for the current set of migratable resources."
@@ -4875,7 +4875,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/cloudmigration/token",
+          "uri": "/api/cloudmigration/token",
           "code": 200
         },
         "smithy.api#documentation": "Fetch the cloud migration token if it exists."
@@ -4906,7 +4906,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/cloudmigration/token",
+          "uri": "/api/cloudmigration/token",
           "code": 200
         },
         "smithy.api#documentation": "Create gcom access token."
@@ -4947,7 +4947,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/cloudmigration/token/{uid}",
+          "uri": "/api/cloudmigration/token/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "Deletes a cloud migration token."
@@ -4972,7 +4972,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/convert/api/prom/rules",
+          "uri": "/api/convert/api/prom/rules",
           "code": 200
         },
         "smithy.api#documentation": "Gets all Grafana-managed alert rules that were imported from Prometheus-compatible sources, grouped by namespace."
@@ -4994,7 +4994,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/convert/api/prom/rules",
+          "uri": "/api/convert/api/prom/rules",
           "code": 200
         },
         "smithy.api#documentation": "Converts the submitted rule groups into Grafana-Managed Rules."
@@ -5034,7 +5034,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/convert/api/prom/rules/{NamespaceTitle}",
+          "uri": "/api/convert/api/prom/rules/{NamespaceTitle}",
           "code": 200
         },
         "smithy.api#documentation": "Gets Grafana-managed alert rules that were imported from Prometheus-compatible sources for a specified namespace (folder)."
@@ -5071,7 +5071,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/convert/api/prom/rules/{NamespaceTitle}",
+          "uri": "/api/convert/api/prom/rules/{NamespaceTitle}",
           "code": 200
         },
         "smithy.api#documentation": "Converts a Prometheus rule group into a Grafana rule group and creates or updates it within the specified namespace.\n\nIf the group already exists and was not imported from a Prometheus-compatible source initially,\nit will not be replaced and an error will be returned."
@@ -5108,7 +5108,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/convert/api/prom/rules/{NamespaceTitle}",
+          "uri": "/api/convert/api/prom/rules/{NamespaceTitle}",
           "code": 200
         },
         "smithy.api#documentation": "Deletes all rule groups that were imported from Prometheus-compatible sources within the specified namespace."
@@ -5155,7 +5155,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/convert/api/prom/rules/{NamespaceTitle}/{Group}",
+          "uri": "/api/convert/api/prom/rules/{NamespaceTitle}/{Group}",
           "code": 200
         },
         "smithy.api#documentation": "Gets a single rule group in Prometheus-compatible format if it was imported from a Prometheus-compatible source."
@@ -5199,7 +5199,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/convert/api/prom/rules/{NamespaceTitle}/{Group}",
+          "uri": "/api/convert/api/prom/rules/{NamespaceTitle}/{Group}",
           "code": 200
         },
         "smithy.api#documentation": "Deletes a specific rule group if it was imported from a Prometheus-compatible source."
@@ -5224,7 +5224,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/convert/prometheus/config/v1/rules",
+          "uri": "/api/convert/prometheus/config/v1/rules",
           "code": 200
         },
         "smithy.api#documentation": "Gets all Grafana-managed alert rules that were imported from Prometheus-compatible sources, grouped by namespace."
@@ -5246,7 +5246,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/convert/prometheus/config/v1/rules",
+          "uri": "/api/convert/prometheus/config/v1/rules",
           "code": 200
         },
         "smithy.api#documentation": "Converts the submitted rule groups into Grafana-Managed Rules."
@@ -5286,7 +5286,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+          "uri": "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}",
           "code": 200
         },
         "smithy.api#documentation": "Gets Grafana-managed alert rules that were imported from Prometheus-compatible sources for a specified namespace (folder)."
@@ -5323,7 +5323,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+          "uri": "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}",
           "code": 200
         },
         "smithy.api#documentation": "Converts a Prometheus rule group into a Grafana rule group and creates or updates it within the specified namespace.\n\nIf the group already exists and was not imported from a Prometheus-compatible source initially,\nit will not be replaced and an error will be returned."
@@ -5360,7 +5360,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+          "uri": "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}",
           "code": 200
         },
         "smithy.api#documentation": "Deletes all rule groups that were imported from Prometheus-compatible sources within the specified namespace."
@@ -5407,7 +5407,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
+          "uri": "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
           "code": 200
         },
         "smithy.api#documentation": "Gets a single rule group in Prometheus-compatible format if it was imported from a Prometheus-compatible source."
@@ -5451,7 +5451,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
+          "uri": "/api/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
           "code": 200
         },
         "smithy.api#documentation": "Deletes a specific rule group if it was imported from a Prometheus-compatible source."
@@ -5541,7 +5541,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/dashboard/snapshots",
+          "uri": "/api/dashboard/snapshots",
           "code": 200
         },
         "smithy.api#documentation": "List snapshots."
@@ -5677,7 +5677,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/dashboards/import",
+          "uri": "/api/dashboards/import",
           "code": 200
         },
         "smithy.api#documentation": "Import dashboard."
@@ -5717,7 +5717,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/dashboards/interpolate",
+          "uri": "/api/dashboards/interpolate",
           "code": 200
         },
         "smithy.api#documentation": "Interpolate dashboard. This is an experimental endpoint under dashboardLibrary or suggestedDashboards feature flags and is subject to change."
@@ -5791,7 +5791,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/dashboards/public-dashboards",
+          "uri": "/api/dashboards/public-dashboards",
           "code": 200
         },
         "smithy.api#documentation": "Get list of public dashboards"
@@ -5898,7 +5898,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/dashboards/uid/{dashboardUid}/public-dashboards",
+          "uri": "/api/dashboards/uid/{dashboardUid}/public-dashboards",
           "code": 200
         },
         "smithy.api#documentation": "Get public dashboard by dashboardUid"
@@ -5959,7 +5959,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/dashboards/uid/{dashboardUid}/public-dashboards",
+          "uri": "/api/dashboards/uid/{dashboardUid}/public-dashboards",
           "code": 200
         },
         "smithy.api#documentation": "Create public dashboard for a dashboard"
@@ -6024,7 +6024,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
+          "uri": "/api/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "Update public dashboard for a dashboard"
@@ -6071,7 +6071,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
+          "uri": "/api/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "Delete public dashboard for a dashboard"
@@ -6166,7 +6166,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources",
+          "uri": "/api/datasources",
           "code": 200
         },
         "smithy.api#documentation": "Get all data sources.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `datasources:read` and scope: `datasources:*`."
@@ -6368,7 +6368,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/datasources",
+          "uri": "/api/datasources",
           "code": 200
         },
         "smithy.api#documentation": "Create a data source.\n\nBy defining `password` and `basicAuthPassword` under secureJsonData property\nGrafana encrypts them securely as an encrypted blob in the database.\nThe response then lists the encrypted fields under secureJsonFields.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `datasources:create`"
@@ -6585,7 +6585,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/correlations",
+          "uri": "/api/datasources/correlations",
           "code": 200
         },
         "smithy.api#documentation": "Gets all correlations."
@@ -6635,7 +6635,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
+          "uri": "/api/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
           "code": 200
         },
         "smithy.api#documentation": "Data source proxy GET calls.\n\nProxies all calls to the actual data source."
@@ -6685,7 +6685,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
+          "uri": "/api/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
           "code": 200
         },
         "smithy.api#documentation": "Data source proxy POST calls.\n\nProxies all calls to the actual data source. The data source should support POST methods for the specific path and role as defined"
@@ -6735,7 +6735,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
+          "uri": "/api/datasources/proxy/uid/{uid}/{datasource_proxy_route}",
           "code": 200
         },
         "smithy.api#documentation": "Data source proxy DELETE calls.\n\nProxies all calls to the actual data source."
@@ -6794,7 +6794,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/uid/{sourceUID}/correlations",
+          "uri": "/api/datasources/uid/{sourceUID}/correlations",
           "code": 200
         },
         "smithy.api#documentation": "Gets all correlations originating from the given data source."
@@ -6881,7 +6881,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/datasources/uid/{sourceUID}/correlations",
+          "uri": "/api/datasources/uid/{sourceUID}/correlations",
           "code": 200
         },
         "smithy.api#documentation": "Add correlation."
@@ -6925,7 +6925,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/uid/{sourceUID}/correlations/{correlationUID}",
+          "uri": "/api/datasources/uid/{sourceUID}/correlations/{correlationUID}",
           "code": 200
         },
         "smithy.api#documentation": "Gets a correlation."
@@ -7050,7 +7050,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/datasources/uid/{sourceUID}/correlations/{correlationUID}",
+          "uri": "/api/datasources/uid/{sourceUID}/correlations/{correlationUID}",
           "code": 200
         },
         "smithy.api#documentation": "Updates a correlation."
@@ -7093,7 +7093,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/uid/{uid}",
+          "uri": "/api/datasources/uid/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "Get a single data source by UID.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `datasources:read` and scopes: `datasources:*`, `datasources:uid:*` and `datasources:uid:kLtEtcRGk` (single data source)."
@@ -7220,7 +7220,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/datasources/uid/{uid}",
+          "uri": "/api/datasources/uid/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "Update an existing data source.\n\nSimilar to creating a data source, `password` and `basicAuthPassword` should be defined under\nsecureJsonData in order to be stored securely as an encrypted blob in the database. Then, the\nencrypted fields are listed under secureJsonFields section in the response.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `datasources:write` and scopes: `datasources:*`, `datasources:uid:*` and `datasources:uid:1` (single data source)."
@@ -7260,7 +7260,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/datasources/uid/{uid}",
+          "uri": "/api/datasources/uid/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "Delete an existing data source by UID.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `datasources:delete` and scopes: `datasources:*`, `datasources:uid:*` and `datasources:uid:kLtEtcRGk` (single data source)."
@@ -7316,7 +7316,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/datasources/uid/{uid}/correlations/{correlationUID}",
+          "uri": "/api/datasources/uid/{uid}/correlations/{correlationUID}",
           "code": 200
         },
         "smithy.api#documentation": "Delete a correlation."
@@ -7356,7 +7356,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/uid/{uid}/health",
+          "uri": "/api/datasources/uid/{uid}/health",
           "code": 200
         },
         "smithy.api#documentation": "Sends a health check request to the plugin datasource identified by the UID."
@@ -7437,7 +7437,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/uid/{uid}/lbac/teams",
+          "uri": "/api/datasources/uid/{uid}/lbac/teams",
           "code": 200
         },
         "smithy.api#documentation": "Retrieves LBAC rules for a team."
@@ -7520,7 +7520,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/datasources/uid/{uid}/lbac/teams",
+          "uri": "/api/datasources/uid/{uid}/lbac/teams",
           "code": 200
         },
         "smithy.api#documentation": "Updates LBAC rules for a team."
@@ -7570,7 +7570,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/uid/{uid}/resources/{datasource_proxy_route}",
+          "uri": "/api/datasources/uid/{uid}/resources/{datasource_proxy_route}",
           "code": 200
         },
         "smithy.api#documentation": "Fetch data source resources."
@@ -7657,7 +7657,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/datasources/{dataSourceUID}/cache",
+          "uri": "/api/datasources/{dataSourceUID}/cache",
           "code": 200
         },
         "smithy.api#documentation": "get cache config for a single data source"
@@ -7722,7 +7722,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/datasources/{dataSourceUID}/cache",
+          "uri": "/api/datasources/{dataSourceUID}/cache",
           "code": 200
         },
         "smithy.api#documentation": "set cache config for a single data source"
@@ -7754,7 +7754,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/datasources/{dataSourceUID}/cache/clean",
+          "uri": "/api/datasources/{dataSourceUID}/cache/clean",
           "code": 200
         },
         "smithy.api#documentation": "clean cache for a single data source"
@@ -7793,7 +7793,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/datasources/{dataSourceUID}/cache/disable",
+          "uri": "/api/datasources/{dataSourceUID}/cache/disable",
           "code": 200
         },
         "smithy.api#documentation": "disable cache for a single data source"
@@ -7832,7 +7832,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/datasources/{dataSourceUID}/cache/enable",
+          "uri": "/api/datasources/{dataSourceUID}/cache/enable",
           "code": 200
         },
         "smithy.api#documentation": "enable cache for a single data source"
@@ -8632,7 +8632,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/ds/query",
+          "uri": "/api/ds/query",
           "code": 200
         },
         "smithy.api#documentation": "DataSource query metrics with expressions.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `datasources:query`."
@@ -8730,7 +8730,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/folders/{folder_uid}/permissions",
+          "uri": "/api/folders/{folder_uid}/permissions",
           "code": 200
         },
         "smithy.api#documentation": "Updates permissions for a folder. This operation will remove existing permissions if they’re not included in the request."
@@ -8768,7 +8768,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/health",
+          "uri": "/api/health",
           "code": 200
         },
         "smithy.api#documentation": "apiHealthHandler will return ok if Grafana's web server is running and it\ncan access the database. If the database cannot be accessed it will return\nhttp status code 503."
@@ -9010,7 +9010,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/library-elements",
+          "uri": "/api/library-elements",
           "code": 200
         },
         "smithy.api#documentation": "Get all library elements.\n\nReturns a list of all library elements the authenticated user has permission to view.\nUse the `perPage` query parameter to control the maximum number of library elements returned; the default limit is `100`.\nYou can also use the `page` query parameter to fetch library elements from any page other than the first one."
@@ -9102,7 +9102,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/library-elements",
+          "uri": "/api/library-elements",
           "code": 200
         },
         "smithy.api#documentation": "Create library element.\n\nCreates a new library element."
@@ -9155,7 +9155,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/library-elements/name/{library_element_name}",
+          "uri": "/api/library-elements/name/{library_element_name}",
           "code": 200
         },
         "smithy.api#documentation": "Get library element by name.\n\nReturns a library element with the given name."
@@ -9195,7 +9195,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/library-elements/{library_element_uid}",
+          "uri": "/api/library-elements/{library_element_uid}",
           "code": 200
         },
         "smithy.api#documentation": "Get library element by UID.\n\nReturns a library element with the given UID."
@@ -9291,7 +9291,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/library-elements/{library_element_uid}",
+          "uri": "/api/library-elements/{library_element_uid}",
           "code": 200
         },
         "smithy.api#documentation": "Update library element.\n\nUpdates an existing library element identified by uid."
@@ -9334,7 +9334,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/library-elements/{library_element_uid}",
+          "uri": "/api/library-elements/{library_element_uid}",
           "code": 200
         },
         "smithy.api#documentation": "Delete library element.\n\nDeletes an existing library element as specified by the UID. This operation cannot be reverted.\nYou cannot delete a library element that is connected. This operation cannot be reverted."
@@ -9420,7 +9420,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/library-elements/{library_element_uid}/connections/",
+          "uri": "/api/library-elements/{library_element_uid}/connections/",
           "code": 200
         },
         "smithy.api#documentation": "Get library element connections.\n\nReturns a list of connections for a library element based on the UID specified."
@@ -9452,7 +9452,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/licensing/check",
+          "uri": "/api/licensing/check",
           "code": 200
         },
         "smithy.api#documentation": "Check license availability."
@@ -9487,7 +9487,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/licensing/refresh-stats",
+          "uri": "/api/licensing/refresh-stats",
           "code": 200
         },
         "smithy.api#documentation": "Refresh license stats.\n\nYou need to have a permission with action `licensing:read`."
@@ -9589,7 +9589,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/licensing/token",
+          "uri": "/api/licensing/token",
           "code": 200
         },
         "smithy.api#documentation": "Get license token.\n\nYou need to have a permission with action `licensing:read`."
@@ -9622,7 +9622,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/licensing/token",
+          "uri": "/api/licensing/token",
           "code": 200
         },
         "smithy.api#documentation": "Create license token.\n\nYou need to have a permission with action `licensing:write`."
@@ -9661,7 +9661,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/licensing/token",
+          "uri": "/api/licensing/token",
           "code": 200
         },
         "smithy.api#documentation": "Remove license from database.\n\nRemoves the license stored in the Grafana database. Available in Grafana Enterprise v7.4+.\n\nYou need to have a permission with action `licensing:delete`."
@@ -9698,7 +9698,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/licensing/token/renew",
+          "uri": "/api/licensing/token/renew",
           "code": 200
         },
         "smithy.api#documentation": "Manually force license refresh.\n\nManually ask license issuer for a new token. Available in Grafana Enterprise v7.4+.\n\nYou need to have a permission with action `licensing:write`."
@@ -9720,7 +9720,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/logout/saml",
+          "uri": "/api/logout/saml",
           "code": 200
         },
         "smithy.api#documentation": "GetLogout initiates single logout process."
@@ -9781,7 +9781,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/org",
+          "uri": "/api/org",
           "code": 200
         },
         "smithy.api#documentation": "Get current Organization."
@@ -9817,7 +9817,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/org",
+          "uri": "/api/org",
           "code": 200
         },
         "smithy.api#documentation": "Update current Organization."
@@ -9868,7 +9868,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/org/address",
+          "uri": "/api/org/address",
           "code": 200
         },
         "smithy.api#documentation": "Update current Organization's address."
@@ -9990,7 +9990,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/org/invites",
+          "uri": "/api/org/invites",
           "code": 200
         },
         "smithy.api#documentation": "Get pending invites."
@@ -10065,7 +10065,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/org/invites",
+          "uri": "/api/org/invites",
           "code": 200
         },
         "smithy.api#documentation": "Add invite."
@@ -10105,7 +10105,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/org/invites/{invitation_code}/revoke",
+          "uri": "/api/org/invites/{invitation_code}/revoke",
           "code": 200
         },
         "smithy.api#documentation": "Revoke invite."
@@ -10152,7 +10152,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/org/quotas",
+          "uri": "/api/org/quotas",
           "code": 200
         },
         "smithy.api#documentation": "Fetch Organization quota.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `orgs.quotas:read` and scope `org:id:1` (orgIDScope)."
@@ -10287,7 +10287,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/org/users",
+          "uri": "/api/org/users",
           "code": 200
         },
         "smithy.api#documentation": "Get all users within the current organization.\n\nReturns all org users within the current organization. Accessible to users with org admin role.\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users:read` with scope `users:*`."
@@ -10353,7 +10353,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/org/users",
+          "uri": "/api/org/users",
           "code": 200
         },
         "smithy.api#documentation": "Add a new user to the current organization.\n\nAdds a global user to the current organization.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users:add` with scope `users:*`."
@@ -10435,7 +10435,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/org/users/lookup",
+          "uri": "/api/org/users/lookup",
           "code": 200
         },
         "smithy.api#documentation": "Get all users within the current organization (lookup)\n\nReturns all org users within the current organization, but with less detailed information.\nAccessible to users with org admin role, admin in any folder or admin of any team.\nMainly used by Grafana UI for providing list of users when adding team members and when editing folder/dashboard permissions."
@@ -10508,7 +10508,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/org/users/{user_id}",
+          "uri": "/api/org/users/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Updates the given user.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users.role:update` with scope `users:*`."
@@ -10548,7 +10548,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/org/users/{user_id}",
+          "uri": "/api/org/users/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Delete user in current organization.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users:remove` with scope `users:*`."
@@ -10641,7 +10641,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/orgs",
+          "uri": "/api/orgs",
           "code": 200
         },
         "smithy.api#documentation": "Search all Organizations."
@@ -10699,7 +10699,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/orgs",
+          "uri": "/api/orgs",
           "code": 200
         },
         "smithy.api#documentation": "Create Organization.\n\nOnly works if [users.allow_org_create](https://grafana.com/docs/grafana/latest/administration/configuration/#allow_org_create) is set."
@@ -10736,7 +10736,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/orgs/name/{org_name}",
+          "uri": "/api/orgs/name/{org_name}",
           "code": 200
         },
         "smithy.api#documentation": "Get Organization by Name."
@@ -10773,7 +10773,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/orgs/{org_id}",
+          "uri": "/api/orgs/{org_id}",
           "code": 200
         },
         "smithy.api#documentation": "Get Organization by ID."
@@ -10816,7 +10816,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/orgs/{org_id}",
+          "uri": "/api/orgs/{org_id}",
           "code": 200
         },
         "smithy.api#documentation": "Update Organization."
@@ -10859,7 +10859,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/orgs/{org_id}",
+          "uri": "/api/orgs/{org_id}",
           "code": 200
         },
         "smithy.api#documentation": "Delete Organization."
@@ -10917,7 +10917,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/orgs/{org_id}/address",
+          "uri": "/api/orgs/{org_id}/address",
           "code": 200
         },
         "smithy.api#documentation": "Update Organization's address."
@@ -10979,7 +10979,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/orgs/{org_id}/quotas",
+          "uri": "/api/orgs/{org_id}/quotas",
           "code": 200
         },
         "smithy.api#documentation": "Fetch Organization quota.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `orgs.quotas:read` and scope `org:id:1` (orgIDScope)."
@@ -11032,7 +11032,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/orgs/{org_id}/quotas/{quota_target}",
+          "uri": "/api/orgs/{org_id}/quotas/{quota_target}",
           "code": 200
         },
         "smithy.api#documentation": "Update user quota.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled, you need to have a permission with action `orgs.quotas:write` and scope `org:id:1` (orgIDScope)."
@@ -11091,7 +11091,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/orgs/{org_id}/users",
+          "uri": "/api/orgs/{org_id}/users",
           "code": 200
         },
         "smithy.api#documentation": "Get Users in Organization.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users:read` with scope `users:*`."
@@ -11164,7 +11164,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/orgs/{org_id}/users",
+          "uri": "/api/orgs/{org_id}/users",
           "code": 200
         },
         "smithy.api#documentation": "Add a new user to the current organization.\n\nAdds a global user to the current organization.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users:add` with scope `users:*`."
@@ -11226,7 +11226,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/orgs/{org_id}/users/search",
+          "uri": "/api/orgs/{org_id}/users/search",
           "code": 200
         },
         "smithy.api#documentation": "Search Users in Organization.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users:read` with scope `users:*`."
@@ -11306,7 +11306,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/orgs/{org_id}/users/{user_id}",
+          "uri": "/api/orgs/{org_id}/users/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Update Users in Organization.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users.role:update` with scope `users:*`."
@@ -11353,7 +11353,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/orgs/{org_id}/users/{user_id}",
+          "uri": "/api/orgs/{org_id}/users/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Delete user in current organization.\n\nIf you are running Grafana Enterprise and have Fine-grained access control enabled\nyou need to have a permission with action: `org.users:remove` with scope `users:*`."
@@ -11519,7 +11519,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/public/dashboards/{accessToken}",
+          "uri": "/api/public/dashboards/{accessToken}",
           "code": 200
         },
         "smithy.api#documentation": "Get public dashboard for view"
@@ -11777,7 +11777,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/public/dashboards/{accessToken}/annotations",
+          "uri": "/api/public/dashboards/{accessToken}/annotations",
           "code": 200
         },
         "smithy.api#documentation": "Get annotations for a public dashboard"
@@ -11827,7 +11827,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/public/dashboards/{accessToken}/panels/{panelId}/query",
+          "uri": "/api/public/dashboards/{accessToken}/panels/{panelId}/query",
           "code": 200
         },
         "smithy.api#documentation": "Get results for a given panel on a public dashboard"
@@ -11994,7 +11994,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/query-history",
+          "uri": "/api/query-history",
           "code": 200
         },
         "smithy.api#documentation": "Query history search.\n\nReturns a list of queries in the query history that matches the search criteria.\nQuery history search supports pagination. Use the `limit` parameter to control the maximum number of queries returned; the default limit is 100.\nYou can also use the `page` query parameter to fetch queries from any page other than the first one."
@@ -12047,7 +12047,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/query-history",
+          "uri": "/api/query-history",
           "code": 200
         },
         "smithy.api#documentation": "Add query to query history.\n\nAdds new query to query history."
@@ -12079,7 +12079,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/query-history/star/{query_history_uid}",
+          "uri": "/api/query-history/star/{query_history_uid}",
           "code": 200
         },
         "smithy.api#documentation": "Add star to query in query history.\n\nAdds star to query in query history as specified by the UID."
@@ -12111,7 +12111,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/query-history/star/{query_history_uid}",
+          "uri": "/api/query-history/star/{query_history_uid}",
           "code": 200
         },
         "smithy.api#documentation": "Remove star to query in query history.\n\nRemoves star from query in query history as specified by the UID."
@@ -12154,7 +12154,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/query-history/{query_history_uid}",
+          "uri": "/api/query-history/{query_history_uid}",
           "code": 200
         },
         "smithy.api#documentation": "Update comment for query in query history.\n\nUpdates comment for query in query history as specified by the UID."
@@ -12200,7 +12200,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/query-history/{query_history_uid}",
+          "uri": "/api/query-history/{query_history_uid}",
           "code": 200
         },
         "smithy.api#documentation": "Delete query in query history.\n\nDeletes an existing query in query history as specified by the UID. This operation cannot be reverted."
@@ -12305,7 +12305,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/recording-rules",
+          "uri": "/api/recording-rules",
           "code": 200
         },
         "smithy.api#documentation": "Lists all rules in the database: active or deleted."
@@ -12388,7 +12388,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/recording-rules",
+          "uri": "/api/recording-rules",
           "code": 200
         },
         "smithy.api#documentation": "Create a recording rule that is then registered and started."
@@ -12471,7 +12471,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/recording-rules",
+          "uri": "/api/recording-rules",
           "code": 200
         },
         "smithy.api#documentation": "Update the active status of a rule."
@@ -12557,7 +12557,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/recording-rules/test",
+          "uri": "/api/recording-rules/test",
           "code": 200
         },
         "smithy.api#documentation": "Test a recording rule."
@@ -12597,7 +12597,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/recording-rules/writer",
+          "uri": "/api/recording-rules/writer",
           "code": 200
         },
         "smithy.api#documentation": "Return the prometheus remote write target."
@@ -12642,7 +12642,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/recording-rules/writer",
+          "uri": "/api/recording-rules/writer",
           "code": 200
         },
         "smithy.api#documentation": "Create a remote write target.\n\nIt returns a 422 if there is not an existing prometheus data source configured."
@@ -12667,7 +12667,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/recording-rules/writer",
+          "uri": "/api/recording-rules/writer",
           "code": 200
         },
         "smithy.api#documentation": "Delete the remote write target."
@@ -12707,7 +12707,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/recording-rules/{recordingRuleID}",
+          "uri": "/api/recording-rules/{recordingRuleID}",
           "code": 200
         },
         "smithy.api#documentation": "Delete removes the rule from the registry and stops it."
@@ -12946,7 +12946,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/reports",
+          "uri": "/api/reports",
           "code": 200
         },
         "smithy.api#documentation": "List reports.\n\nAvailable to org admins only and with a valid or expired license.\n\nYou need to have a permission with action `reports:read` with scope `reports:*`."
@@ -13059,7 +13059,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/reports",
+          "uri": "/api/reports",
           "code": 200
         },
         "smithy.api#documentation": "Create a report.\n\nAvailable to org admins only and with a valid license.\n\nYou need to have a permission with action `reports.admin:create`."
@@ -13118,7 +13118,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/reports/dashboards/{uid}",
+          "uri": "/api/reports/dashboards/{uid}",
           "code": 200
         },
         "smithy.api#documentation": "List reports by dashboard uid.\n\nAvailable to org admins only and with a valid or expired license.\n\nYou need to have a permission with action `reports:read` with scope `reports:*`."
@@ -13172,7 +13172,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/reports/email",
+          "uri": "/api/reports/email",
           "code": 200
         },
         "smithy.api#documentation": "Send a report.\n\nGenerate and send a report. This API waits for the report to be generated before returning. We recommend that you set the client’s timeout to at least 60 seconds. Available to org admins only and with a valid license.\n\nOnly available in Grafana Enterprise v7.0+.\nThis API endpoint is experimental and may be deprecated in a future release. On deprecation, a migration strategy will be provided and the endpoint will remain functional until the next major release of Grafana.\n\nYou need to have a permission with action `reports:send`."
@@ -13219,7 +13219,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/reports/images/:image",
+          "uri": "/api/reports/images/:image",
           "code": 200
         },
         "smithy.api#documentation": "Get custom branding report image.\n\nAvailable to org admins only and with a valid or expired license.\n\nYou need to have a permission with action `reports.settings:read`."
@@ -13283,7 +13283,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/reports/render/csvs",
+          "uri": "/api/reports/render/csvs",
           "code": 200
         },
         "smithy.api#documentation": "Download a CSV report.\n\nAvailable to all users and with a valid license."
@@ -13371,7 +13371,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/reports/render/pdfs",
+          "uri": "/api/reports/render/pdfs",
           "code": 200
         },
         "smithy.api#documentation": "Render report for multiple dashboards.\n\nAvailable to all users and with a valid license."
@@ -13484,7 +13484,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/reports/settings",
+          "uri": "/api/reports/settings",
           "code": 200
         },
         "smithy.api#documentation": "Get report settings.\n\nAvailable to org admins only and with a valid or expired license.\n\nYou need to have a permission with action `reports.settings:read`x."
@@ -13557,7 +13557,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/reports/settings",
+          "uri": "/api/reports/settings",
           "code": 200
         },
         "smithy.api#documentation": "Save settings.\n\nAvailable to org admins only and with a valid or expired license.\n\nYou need to have a permission with action `reports.settings:write`xx."
@@ -13656,7 +13656,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/reports/test-email",
+          "uri": "/api/reports/test-email",
           "code": 200
         },
         "smithy.api#documentation": "Send test report via email.\n\nAvailable to org admins only and with a valid license.\n\nYou need to have a permission with action `reports:send`."
@@ -13692,7 +13692,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/saml/acs",
+          "uri": "/api/saml/acs",
           "code": 200
         },
         "smithy.api#documentation": "It performs Assertion Consumer Service (ACS)."
@@ -13731,7 +13731,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/saml/metadata",
+          "uri": "/api/saml/metadata",
           "code": 200
         },
         "smithy.api#documentation": "It exposes the SP (Grafana's) metadata for the IdP's consumption."
@@ -13756,7 +13756,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/saml/slo",
+          "uri": "/api/saml/slo",
           "code": 200
         },
         "smithy.api#documentation": "It performs Single Logout (SLO) callback.\n\nThere might be two possible requests:\n1. Logout response (callback) when Grafana initiates single logout and IdP returns response to logout request.\n2. Logout request when another SP initiates single logout and IdP sends logout request to the Grafana,\nor in case of IdP-initiated logout."
@@ -13801,7 +13801,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/saml/slo",
+          "uri": "/api/saml/slo",
           "code": 200
         },
         "smithy.api#documentation": "It performs Single Logout (SLO) callback.\n\nThere might be two possible requests:\n1. Logout response (callback) when Grafana initiates single logout and IdP returns response to logout request.\n2. Logout request when another SP initiates single logout and IdP sends logout request to the Grafana,\nor in case of IdP-initiated logout."
@@ -14103,7 +14103,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/search",
+          "uri": "/api/search",
           "code": 200
         }
       }
@@ -14139,7 +14139,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/search/sorting",
+          "uri": "/api/search/sorting",
           "code": 200
         },
         "smithy.api#documentation": "List search sorting options."
@@ -14260,7 +14260,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/serviceaccounts",
+          "uri": "/api/serviceaccounts",
           "code": 200
         },
         "smithy.api#documentation": "Create service account\n\nRequired permissions (See note in the [introduction](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api) for an explanation):\naction: `serviceaccounts:write` scope: `serviceaccounts:*`\n\nRequires basic authentication and that the authenticated user is a Grafana Admin."
@@ -14351,7 +14351,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/serviceaccounts/search",
+          "uri": "/api/serviceaccounts/search",
           "code": 200
         },
         "smithy.api#documentation": "Search service accounts with paging\n\nRequired permissions (See note in the [introduction](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api) for an explanation):\naction: `serviceaccounts:read` scope: `serviceaccounts:*`"
@@ -14394,7 +14394,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/serviceaccounts/{serviceAccountId}",
+          "uri": "/api/serviceaccounts/{serviceAccountId}",
           "code": 200
         },
         "smithy.api#documentation": "Get single serviceaccount by Id\n\nRequired permissions (See note in the [introduction](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api) for an explanation):\naction: `serviceaccounts:read` scope: `serviceaccounts:id:1` (single service account)"
@@ -14564,7 +14564,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/serviceaccounts/{serviceAccountId}",
+          "uri": "/api/serviceaccounts/{serviceAccountId}",
           "code": 200
         },
         "smithy.api#documentation": "Update service account\n\nRequired permissions (See note in the [introduction](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api) for an explanation):\naction: `serviceaccounts:write` scope: `serviceaccounts:id:1` (single service account)"
@@ -14607,7 +14607,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/serviceaccounts/{serviceAccountId}",
+          "uri": "/api/serviceaccounts/{serviceAccountId}",
           "code": 200
         },
         "smithy.api#documentation": "Delete service account\n\nRequired permissions (See note in the [introduction](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api) for an explanation):\naction: `serviceaccounts:delete` scope: `serviceaccounts:id:1` (single service account)"
@@ -14699,7 +14699,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/serviceaccounts/{serviceAccountId}/tokens",
+          "uri": "/api/serviceaccounts/{serviceAccountId}/tokens",
           "code": 200
         },
         "smithy.api#documentation": "Get service account tokens\n\nRequired permissions (See note in the [introduction](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api) for an explanation):\naction: `serviceaccounts:read` scope: `global:serviceaccounts:id:1` (single service account)\n\nRequires basic authentication and that the authenticated user is a Grafana Admin."
@@ -14766,7 +14766,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/serviceaccounts/{serviceAccountId}/tokens",
+          "uri": "/api/serviceaccounts/{serviceAccountId}/tokens",
           "code": 200
         },
         "smithy.api#documentation": "CreateNewToken adds a token to a service account\n\nRequired permissions (See note in the [introduction](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api) for an explanation):\naction: `serviceaccounts:write` scope: `serviceaccounts:id:1` (single service account)"
@@ -14816,7 +14816,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/serviceaccounts/{serviceAccountId}/tokens/{tokenId}",
+          "uri": "/api/serviceaccounts/{serviceAccountId}/tokens/{tokenId}",
           "code": 200
         },
         "smithy.api#documentation": "DeleteToken deletes service account tokens\n\nRequired permissions (See note in the [introduction](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api) for an explanation):\naction: `serviceaccounts:write` scope: `serviceaccounts:id:1` (single service account)\n\nRequires basic authentication and that the authenticated user is a Grafana Admin."
@@ -15583,7 +15583,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/signing-keys/keys",
+          "uri": "/api/signing-keys/keys",
           "code": 200
         },
         "smithy.api#documentation": "Get JSON Web Key Set (JWKS) with all the keys that can be used to verify tokens (public keys)\n\nRequired permissions\nNone"
@@ -15617,7 +15617,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/snapshot/shared-options",
+          "uri": "/api/snapshot/shared-options",
           "code": 200
         },
         "smithy.api#documentation": "Get snapshot sharing settings."
@@ -15753,7 +15753,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/snapshots",
+          "uri": "/api/snapshots",
           "code": 200
         },
         "smithy.api#documentation": "When creating a snapshot using the API, you have to provide the full dashboard payload including the snapshot data. This endpoint is designed for the Grafana UI.\n\nSnapshot public mode should be enabled or authentication is required."
@@ -15793,7 +15793,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/snapshots-delete/{deleteKey}",
+          "uri": "/api/snapshots-delete/{deleteKey}",
           "code": 200
         },
         "smithy.api#documentation": "Delete Snapshot by deleteKey.\n\nSnapshot public mode should be enabled or authentication is required."
@@ -15833,7 +15833,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/snapshots/{key}",
+          "uri": "/api/snapshots/{key}",
           "code": 200
         },
         "smithy.api#documentation": "Get Snapshot by Key."
@@ -15873,7 +15873,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/snapshots/{key}",
+          "uri": "/api/snapshots/{key}",
           "code": 200
         },
         "smithy.api#documentation": "Delete Snapshot by Key."
@@ -15932,7 +15932,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/teams",
+          "uri": "/api/teams",
           "code": 200
         },
         "smithy.api#documentation": "Add Team."
@@ -16093,7 +16093,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/teams/search",
+          "uri": "/api/teams/search",
           "code": 200
         },
         "smithy.api#documentation": "Team Search With Paging."
@@ -16182,7 +16182,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/teams/{teamId}/groups",
+          "uri": "/api/teams/{teamId}/groups",
           "code": 200
         },
         "smithy.api#documentation": "Get External Groups."
@@ -16228,7 +16228,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/teams/{teamId}/groups",
+          "uri": "/api/teams/{teamId}/groups",
           "code": 200
         },
         "smithy.api#documentation": "Add External Group."
@@ -16277,7 +16277,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/teams/{teamId}/groups",
+          "uri": "/api/teams/{teamId}/groups",
           "code": 200
         },
         "smithy.api#documentation": "Remove External Group."
@@ -16391,7 +16391,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/teams/{teamId}/groups/search",
+          "uri": "/api/teams/{teamId}/groups/search",
           "code": 200
         },
         "smithy.api#documentation": "Search for team groups with optional filtering and pagination."
@@ -16437,7 +16437,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/teams/{team_id}",
+          "uri": "/api/teams/{team_id}",
           "code": 200
         },
         "smithy.api#documentation": "Get Team By ID."
@@ -16486,7 +16486,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/teams/{team_id}",
+          "uri": "/api/teams/{team_id}",
           "code": 200
         },
         "smithy.api#documentation": "Update Team."
@@ -16529,7 +16529,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/teams/{team_id}",
+          "uri": "/api/teams/{team_id}",
           "code": 200
         },
         "smithy.api#documentation": "Delete Team By ID."
@@ -16643,7 +16643,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/teams/{team_id}/members",
+          "uri": "/api/teams/{team_id}/members",
           "code": 200
         },
         "smithy.api#documentation": "Get Team Members."
@@ -16689,7 +16689,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/teams/{team_id}/members",
+          "uri": "/api/teams/{team_id}/members",
           "code": 200
         },
         "smithy.api#documentation": "Add Team Member."
@@ -16749,7 +16749,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/teams/{team_id}/members",
+          "uri": "/api/teams/{team_id}/members",
           "code": 200
         },
         "smithy.api#documentation": "Set team memberships.\n\nTakes user emails, and updates team members and admins to the provided lists of users.\nAny current team members and admins not in the provided lists will be removed."
@@ -16799,7 +16799,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/teams/{team_id}/members/{user_id}",
+          "uri": "/api/teams/{team_id}/members/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Update Team Member."
@@ -16846,7 +16846,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/teams/{team_id}/members/{user_id}",
+          "uri": "/api/teams/{team_id}/members/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Remove Member From Team."
@@ -16954,7 +16954,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/teams/{team_id}/preferences",
+          "uri": "/api/teams/{team_id}/preferences",
           "code": 200
         },
         "smithy.api#documentation": "Get Team Preferences."
@@ -17070,7 +17070,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/teams/{team_id}/preferences",
+          "uri": "/api/teams/{team_id}/preferences",
           "code": 200
         },
         "smithy.api#documentation": "Update Team Preferences."
@@ -17172,7 +17172,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/user",
+          "uri": "/api/user",
           "code": 200
         },
         "smithy.api#documentation": "Get (current authenticated user)"
@@ -17217,7 +17217,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/user",
+          "uri": "/api/user",
           "code": 200
         },
         "smithy.api#documentation": "Update signed in User."
@@ -17261,7 +17261,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/user/auth-tokens",
+          "uri": "/api/user/auth-tokens",
           "code": 200
         },
         "smithy.api#documentation": "Auth tokens of the actual User.\n\nReturn a list of all auth tokens (devices) that the actual user currently have logged in from."
@@ -17278,7 +17278,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/user/email/update",
+          "uri": "/api/user/email/update",
           "code": 200
         },
         "smithy.api#documentation": "Update user email.\n\nUpdate the email of user given a verification code."
@@ -17367,7 +17367,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/user/orgs",
+          "uri": "/api/user/orgs",
           "code": 200
         },
         "smithy.api#documentation": "Organizations of the actual User.\n\nReturn a list of all organizations of the current user."
@@ -17412,7 +17412,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/user/password",
+          "uri": "/api/user/password",
           "code": 200
         },
         "smithy.api#documentation": "Change Password.\n\nChanges the password for the user."
@@ -17459,7 +17459,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/user/quotas",
+          "uri": "/api/user/quotas",
           "code": 200
         },
         "smithy.api#documentation": "Fetch user quota."
@@ -17495,7 +17495,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/user/revoke-auth-token",
+          "uri": "/api/user/revoke-auth-token",
           "code": 200
         },
         "smithy.api#documentation": "Revoke an auth token of the actual User.\n\nRevokes the given auth token (device) for the actual user. User of issued auth token (device) will no longer be logged in and will be required to authenticate again upon next activity."
@@ -17539,7 +17539,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/user/teams",
+          "uri": "/api/user/teams",
           "code": 200
         },
         "smithy.api#documentation": "Teams that the actual User is member of.\n\nReturn a list of all teams that the current user is member of."
@@ -17579,7 +17579,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "/user/using/{org_id}",
+          "uri": "/api/user/using/{org_id}",
           "code": 200
         },
         "smithy.api#documentation": "Switch user context for signed in user.\n\nSwitch user context to the given organization."
@@ -17713,7 +17713,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/users",
+          "uri": "/api/users",
           "code": 200
         },
         "smithy.api#documentation": "Get users.\n\nReturns all users that the authenticated user has permission to view, admin permission required."
@@ -17754,7 +17754,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/users/lookup",
+          "uri": "/api/users/lookup",
           "code": 200
         },
         "smithy.api#documentation": "Get user by login or email."
@@ -17804,7 +17804,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/users/search",
+          "uri": "/api/users/search",
           "code": 200
         },
         "smithy.api#documentation": "Get users with paging."
@@ -17844,7 +17844,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/users/{user_id}",
+          "uri": "/api/users/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Get user by id."
@@ -17899,7 +17899,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/users/{user_id}",
+          "uri": "/api/users/{user_id}",
           "code": 200
         },
         "smithy.api#documentation": "Update user.\n\nUpdate the user identified by id."
@@ -17961,7 +17961,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/users/{user_id}/orgs",
+          "uri": "/api/users/{user_id}/orgs",
           "code": 200
         },
         "smithy.api#documentation": "Get organizations for user.\n\nGet organizations for user identified by id."
@@ -18023,7 +18023,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/users/{user_id}/teams",
+          "uri": "/api/users/{user_id}/teams",
           "code": 200
         },
         "smithy.api#documentation": "Get teams for user.\n\nGet teams for user identified by id."
@@ -18744,7 +18744,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/provisioning/alert-rules/export",
+          "uri": "/api/v1/provisioning/alert-rules/export",
           "code": 200
         },
         "smithy.api#documentation": "Export all alert rules in provisioning file format."
@@ -18823,7 +18823,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/provisioning/alert-rules/{UID}/export",
+          "uri": "/api/v1/provisioning/alert-rules/{UID}/export",
           "code": 200
         },
         "smithy.api#documentation": "Export an alert rule in provisioning file format."
@@ -18905,7 +18905,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/provisioning/contact-points/export",
+          "uri": "/api/v1/provisioning/contact-points/export",
           "code": 200
         },
         "smithy.api#documentation": "Export all contact points in provisioning file format."
@@ -18990,7 +18990,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/provisioning/folder/{FolderUID}/rule-groups/{Group}/export",
+          "uri": "/api/v1/provisioning/folder/{FolderUID}/rule-groups/{Group}/export",
           "code": 200
         },
         "smithy.api#documentation": "Export an alert rule group in provisioning file format."
@@ -19058,7 +19058,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/provisioning/mute-timings/export",
+          "uri": "/api/v1/provisioning/mute-timings/export",
           "code": 200
         },
         "smithy.api#documentation": "Export all mute timings in provisioning format."
@@ -19134,7 +19134,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/provisioning/mute-timings/{name}/export",
+          "uri": "/api/v1/provisioning/mute-timings/{name}/export",
           "code": 200
         },
         "smithy.api#documentation": "Export a mute timing in provisioning format."
@@ -19159,7 +19159,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/provisioning/policies/export",
+          "uri": "/api/v1/provisioning/policies/export",
           "code": 200
         },
         "smithy.api#documentation": "Export the notification policy tree in provisioning file format."
@@ -19234,7 +19234,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/sso-settings",
+          "uri": "/api/v1/sso-settings",
           "code": 200
         },
         "smithy.api#documentation": "List all SSO Settings entries\n\nYou need to have a permission with action `settings:read` with scope `settings:auth.<provider>:*`."
@@ -19307,7 +19307,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/v1/sso-settings/{key}",
+          "uri": "/api/v1/sso-settings/{key}",
           "code": 200
         },
         "smithy.api#documentation": "Get an SSO Settings entry by Key\n\nYou need to have a permission with action `settings:read` with scope `settings:auth.<provider>:*`."
@@ -19366,7 +19366,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
-          "uri": "/v1/sso-settings/{key}",
+          "uri": "/api/v1/sso-settings/{key}",
           "code": 200
         },
         "smithy.api#documentation": "Update SSO Settings\n\nInserts or updates the SSO Settings for a provider.\n\nYou need to have a permission with action `settings:write` and scope `settings:auth.<provider>:*`."
@@ -19419,7 +19419,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
-          "uri": "/v1/sso-settings/{key}",
+          "uri": "/api/v1/sso-settings/{key}",
           "code": 200
         },
         "smithy.api#documentation": "Patch SSO Settings\n\nPartially updates the SSO Settings for a provider. Only provided fields are updated.\n\nYou need to have a permission with action `settings:write` and scope `settings:auth.<provider>:*`."
@@ -19462,7 +19462,7 @@
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
-          "uri": "/v1/sso-settings/{key}",
+          "uri": "/api/v1/sso-settings/{key}",
           "code": 200
         },
         "smithy.api#documentation": "Remove SSO Settings\n\nRemoves the SSO Settings for a provider.\n\nYou need to have a permission with action `settings:write` and scope `settings:auth.<provider>:*`."
