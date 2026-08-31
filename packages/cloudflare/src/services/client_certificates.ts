@@ -111,6 +111,9 @@ export type CreateResponseStatus =
   | "revoked";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
+export type CreateResponseValidityDays = 3650;
+export const CreateResponseValidityDays = /*@__PURE__*/ S.Number;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateClientCertificateResponse {
   /** Identifier. */
@@ -149,6 +152,9 @@ export interface CreateClientCertificateResponse {
   status?: CreateResponseStatus | null;
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
+  csr_2: unknown;
+  /** }' */
+  validity_days_2: CreateResponseValidityDays;
 }
 export const CreateClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -178,6 +184,8 @@ export const CreateClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(CreateResponseStatus)),
     validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
+    csr_2: S.Unknown.pipe(T.Body("csr")),
+    validity_days_2: CreateResponseValidityDays.pipe(T.Body("validity_days")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateClientCertificateResponse",
@@ -616,6 +624,8 @@ export interface PatchClientCertificateResponse {
   status?: EditResponseStatus | null;
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
+  /** }' */
+  reactivate: boolean;
 }
 export const PatchClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -645,6 +655,7 @@ export const PatchClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(EditResponseStatus)),
     validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
+    reactivate: S.Boolean,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchClientCertificateResponse",
@@ -714,7 +725,7 @@ export const getClientCertificate: API.OperationMethod<
 }));
 
 export type ListClientCertificatesError = Forbidden | CloudflareOpError;
-/** List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination. */
+/** List all of your Zone’s API Shield mTLS Client Certificates by Status and/or using Pagination. */
 export const listClientCertificates: API.PaginatedOperationMethod<
   ListClientCertificatesRequest,
   ListClientCertificatesResponse,

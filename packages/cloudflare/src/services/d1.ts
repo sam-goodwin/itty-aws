@@ -133,7 +133,7 @@ export class UnknownError
     [{ code: 0 }],
   ) {}
 
-export type DatabaseCreateRequestJurisdiction = "eu" | "fedramp";
+export type DatabaseCreateRequestJurisdiction = "eu" | "fedramp" | "us";
 export const DatabaseCreateRequestJurisdiction = /*@__PURE__*/ S.String;
 
 export type DatabaseCreateRequestPrimaryLocationHint =
@@ -149,7 +149,7 @@ export type DatabaseCreateRequestReadReplicationMode = "auto" | "disabled";
 export const DatabaseCreateRequestReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseCreateRequestReadReplication {
-  /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
+  /** The read replication mode for the database. Use ‘auto’ to create replicas and allow D1 automatically place them around the world, or ‘disabled’ to not use any database replicas (it can take a few hours for all replicas to be deleted). */
   mode: DatabaseCreateRequestReadReplicationMode | (string & {});
 }
 export const DatabaseCreateRequestReadReplication = /*@__PURE__*/ S.suspend(
@@ -201,14 +201,14 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDatabaseRequest",
 }) as any as S.Schema<CreateDatabaseRequest>;
 
-export type DatabaseCreateResponseJurisdiction = "eu" | "fedramp";
+export type DatabaseCreateResponseJurisdiction = "eu" | "fedramp" | "us";
 export const DatabaseCreateResponseJurisdiction = /*@__PURE__*/ S.String;
 
 export type DatabaseCreateResponseReadReplicationMode = "auto" | "disabled";
 export const DatabaseCreateResponseReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseCreateResponseReadReplication {
-  /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
+  /** The read replication mode for the database. Mode ‘auto’ denotes that D1 creates replicas and automatically places them around the world. Mode ‘disabled’ denotes that no database replicas are used. */
   mode: DatabaseCreateResponseReadReplicationMode;
 }
 export const DatabaseCreateResponseReadReplication = /*@__PURE__*/ S.suspend(
@@ -224,7 +224,7 @@ export const DatabaseCreateResponseReadReplication = /*@__PURE__*/ S.suspend(
 export interface CreateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdAt?: string | null;
-  /** The D1 database's size, in bytes. */
+  /** The D1 database’s size, in bytes. */
   fileSize?: number | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
   jurisdiction?: DatabaseCreateResponseJurisdiction | null;
@@ -297,7 +297,7 @@ export const DatabaseExportRequestDumpOptionsTablesList = /*@__PURE__*/ S.Array(
 export interface DatabaseExportRequestDumpOptions {
   /** Export only the table definitions, not their contents */
   noData?: boolean;
-  /** Export only each table's contents, not its definition */
+  /** Export only each table’s contents, not its definition */
   noSchema?: boolean;
   /** Filter the export to just one or more tables. Passing an empty array is the same as not passing anything and means: export all tables. */
   tables?: DatabaseExportRequestDumpOptionsTablesList;
@@ -347,55 +347,17 @@ export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportDatabaseRequest",
 }) as any as S.Schema<ExportDatabaseRequest>;
 
-export type DatabaseExportResponseMessagesList = Array<string>;
-export const DatabaseExportResponseMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseExportResponseMessagesList>;
-
-export interface DatabaseExportResponseResult {
-  /** The generated SQL filename. */
-  filename?: string | null;
-  /** The URL to download the exported SQL. Available for one hour. */
-  signedUrl?: string | null;
-}
-export const DatabaseExportResponseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filename: S.optional(S.NullOr(S.String)),
-    signedUrl: S.optional(S.NullOr(S.String).pipe(T.Body("signed_url"))),
-  }),
-).annotate({
-  identifier: "DatabaseExportResponseResult",
-}) as any as S.Schema<DatabaseExportResponseResult>;
-
-export type DatabaseExportResponseStatus = "complete" | "error";
-export const DatabaseExportResponseStatus = /*@__PURE__*/ S.String;
-
-export type DatabaseExportResponseType = "export";
-export const DatabaseExportResponseType = /*@__PURE__*/ S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ExportDatabaseResponse {
   /** The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task. */
   atBookmark?: string | null;
-  /** Only present when status = 'error'. Contains the error message. */
+  /** Only present when status = ‘error’. Contains the error message. */
   error?: string | null;
-  /** Logs since the last time you polled */
-  messages?: DatabaseExportResponseMessagesList | null;
-  /** Only present when status = 'complete' */
-  result?: DatabaseExportResponseResult | null;
-  status?: DatabaseExportResponseStatus | null;
-  success?: boolean | null;
-  type?: DatabaseExportResponseType | null;
 }
 export const ExportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
     error: S.optional(S.NullOr(S.String)),
-    messages: S.optional(S.NullOr(DatabaseExportResponseMessagesList)),
-    result: S.optional(S.NullOr(DatabaseExportResponseResult)),
-    status: S.optional(S.NullOr(DatabaseExportResponseStatus)),
-    success: S.optional(S.NullOr(S.Boolean)),
-    type: S.optional(S.NullOr(DatabaseExportResponseType)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ExportDatabaseResponse",
@@ -466,7 +428,7 @@ export interface GetDatabaseRequest {
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
-  /** Comma-separated list of fields to include in the response. When omitted, */
+  /** Comma-separated list of fields to include in the response. When omitted, all fields are returned. */
   fields?: DatabaseGetRequestFieldsList;
 }
 export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
@@ -487,14 +449,14 @@ export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatabaseRequest",
 }) as any as S.Schema<GetDatabaseRequest>;
 
-export type DatabaseGetResponseJurisdiction = "eu" | "fedramp";
+export type DatabaseGetResponseJurisdiction = "eu" | "fedramp" | "us";
 export const DatabaseGetResponseJurisdiction = /*@__PURE__*/ S.String;
 
 export type DatabaseGetResponseReadReplicationMode = "auto" | "disabled";
 export const DatabaseGetResponseReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseGetResponseReadReplication {
-  /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
+  /** The read replication mode for the database. Mode ‘auto’ denotes that D1 creates replicas and automatically places them around the world. Mode ‘disabled’ denotes that no database replicas are used. */
   mode: DatabaseGetResponseReadReplicationMode;
 }
 export const DatabaseGetResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
@@ -509,7 +471,7 @@ export const DatabaseGetResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdAt?: string | null;
-  /** The D1 database's size, in bytes. */
+  /** The D1 database’s size, in bytes. */
   fileSize?: number | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
   jurisdiction?: DatabaseGetResponseJurisdiction | null;
@@ -541,31 +503,58 @@ export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDatabaseResponse",
 }) as any as S.Schema<GetDatabaseResponse>;
 
-export type DatabaseImportRequestAction = "init" | "ingest" | "poll";
+export type DatabaseImportRequestBodyAction = "init";
+export const DatabaseImportRequestBodyAction = /*@__PURE__*/ S.String;
+
+export interface DatabaseImportRequestBody {
+  /** Indicates you have a new SQL file to upload. */
+  action: DatabaseImportRequestBodyAction | (string & {});
+}
+export const DatabaseImportRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: DatabaseImportRequestBodyAction,
+  }),
+).annotate({
+  identifier: "DatabaseImportRequestBody",
+}) as any as S.Schema<DatabaseImportRequestBody>;
+
+export type DatabaseImportRequestAction = "ingest";
 export const DatabaseImportRequestAction = /*@__PURE__*/ S.String;
+
+export type DatabaseImportRequestAction2 = "poll";
+export const DatabaseImportRequestAction2 = /*@__PURE__*/ S.String;
 
 export interface ImportDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
-  /** Indicates you have a new SQL file to upload. */
+  /** Init object { action, etag } */
+  body: DatabaseImportRequestBody;
+  /** Required when action is ‘init’ or ‘ingest’. An md5 hash of the file you’re uploading. Used to check if it already exists, and validate its contents before ingesting. */
+  etag: string;
+  /** Indicates you’ve finished uploading to tell the D1 to start consuming it */
   action: DatabaseImportRequestAction | (string & {});
-  /** Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting. */
-  etag?: string;
+  /** An md5 hash of the file you’re uploading. Used to check if it already exists, and validate its contents before ingesting. */
+  etag_2: string;
   /** The filename you have successfully uploaded. */
-  filename?: string;
+  filename: string;
+  /** Indicates you’ve finished uploading to tell the D1 to start consuming it */
+  action_2: DatabaseImportRequestAction2 | (string & {});
   /** This identifies the currently-running import, checking its status. */
-  currentBookmark?: string;
+  currentBookmark: string;
 }
 export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
+    body: DatabaseImportRequestBody,
+    etag: S.String,
     action: DatabaseImportRequestAction,
-    etag: S.optional(S.String),
-    filename: S.optional(S.String),
-    currentBookmark: S.optional(S.String.pipe(T.Body("current_bookmark"))),
+    etag_2: S.String.pipe(T.Body("etag")),
+    filename: S.String,
+    action_2: DatabaseImportRequestAction2.pipe(T.Body("action")),
+    currentBookmark: S.String.pipe(T.Body("current_bookmark")),
   })
     .pipe(
       T.Http({
@@ -579,138 +568,20 @@ export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportDatabaseRequest",
 }) as any as S.Schema<ImportDatabaseRequest>;
 
-export type DatabaseImportResponseMessagesList = Array<string>;
-export const DatabaseImportResponseMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseImportResponseMessagesList>;
-
-export type DatabaseImportResponseResultMetaServedByRegion =
-  | "WNAM"
-  | "ENAM"
-  | "WEUR"
-  | "EEUR"
-  | "APAC"
-  | "OC";
-export const DatabaseImportResponseResultMetaServedByRegion =
-  /*@__PURE__*/ S.String;
-
-export interface DatabaseImportResponseResultMetaTimings {
-  /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  sqlDurationMs?: number | null;
-}
-export const DatabaseImportResponseResultMetaTimings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sqlDurationMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("sql_duration_ms")),
-      ),
-    }),
-).annotate({
-  identifier: "DatabaseImportResponseResultMetaTimings",
-}) as any as S.Schema<DatabaseImportResponseResultMetaTimings>;
-
-export interface DatabaseImportResponseResultMeta {
-  /** Denotes if the database has been altered in some way, like deleting rows. */
-  changedDb?: boolean | null;
-  /** Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`. */
-  changes?: number | null;
-  /** The duration of the SQL query execution inside the database. Does not include any network communication. */
-  duration?: number | null;
-  /** The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this. */
-  lastRowId?: number | null;
-  /** Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned). */
-  rowsRead?: number | null;
-  /** Number of rows written during the SQL query execution, including indices. */
-  rowsWritten?: number | null;
-  /** The three letters airport code of the colo that handled the query. */
-  servedByColo?: string | null;
-  /** Denotes if the query has been handled by the database primary instance. */
-  servedByPrimary?: boolean | null;
-  /** Region location hint of the database instance that handled the query. */
-  servedByRegion?: DatabaseImportResponseResultMetaServedByRegion | null;
-  /** Size of the database after the query committed, in bytes. */
-  sizeAfter?: number | null;
-  /** Various durations for the query. */
-  timings?: DatabaseImportResponseResultMetaTimings | null;
-}
-export const DatabaseImportResponseResultMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changedDb: S.optional(S.NullOr(S.Boolean).pipe(T.Body("changed_db"))),
-    changes: S.optional(S.NullOr(S.Number)),
-    duration: S.optional(S.NullOr(S.Number)),
-    lastRowId: S.optional(S.NullOr(S.Number).pipe(T.Body("last_row_id"))),
-    rowsRead: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_read"))),
-    rowsWritten: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_written"))),
-    servedByColo: S.optional(S.NullOr(S.String).pipe(T.Body("served_by_colo"))),
-    servedByPrimary: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("served_by_primary")),
-    ),
-    servedByRegion: S.optional(
-      S.NullOr(DatabaseImportResponseResultMetaServedByRegion).pipe(
-        T.Body("served_by_region"),
-      ),
-    ),
-    sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
-    timings: S.optional(S.NullOr(DatabaseImportResponseResultMetaTimings)),
-  }),
-).annotate({
-  identifier: "DatabaseImportResponseResultMeta",
-}) as any as S.Schema<DatabaseImportResponseResultMeta>;
-
-export interface DatabaseImportResponseResult {
-  /** The time-travel bookmark if you need restore your D1 to directly after the import succeeded. */
-  finalBookmark?: string | null;
-  meta?: DatabaseImportResponseResultMeta | null;
-  /** The total number of queries that were executed during the import. */
-  numQueries?: number | null;
-}
-export const DatabaseImportResponseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    finalBookmark: S.optional(
-      S.NullOr(S.String).pipe(T.Body("final_bookmark")),
-    ),
-    meta: S.optional(S.NullOr(DatabaseImportResponseResultMeta)),
-    numQueries: S.optional(S.NullOr(S.Number).pipe(T.Body("num_queries"))),
-  }),
-).annotate({
-  identifier: "DatabaseImportResponseResult",
-}) as any as S.Schema<DatabaseImportResponseResult>;
-
-export type DatabaseImportResponseStatus = "complete" | "error";
-export const DatabaseImportResponseStatus = /*@__PURE__*/ S.String;
-
-export type DatabaseImportResponseType = "import";
-export const DatabaseImportResponseType = /*@__PURE__*/ S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ImportDatabaseResponse {
   /** The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import. Only returned if an import process is currently running or recently finished. */
   atBookmark?: string | null;
-  /** Only present when status = 'error'. Contains the error message that prevented the import from succeeding. */
+  /** Only present when status = ‘error’. Contains the error message that prevented the import from succeeding. */
   error?: string | null;
-  /** Derived from the database ID and etag, to use in avoiding repeated uploads. Only returned when for the 'init' action. */
+  /** Derived from the database ID and etag, to use in avoiding repeated uploads. Only returned when for the ‘init’ action. */
   filename?: string | null;
-  /** Logs since the last time you polled */
-  messages?: DatabaseImportResponseMessagesList | null;
-  /** Only present when status = 'complete' */
-  result?: DatabaseImportResponseResult | null;
-  status?: DatabaseImportResponseStatus | null;
-  success?: boolean | null;
-  type?: DatabaseImportResponseType | null;
-  /** The R2 presigned URL to use for uploading. Only returned when for the 'init' action. */
-  uploadUrl?: string | null;
 }
 export const ImportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
     error: S.optional(S.NullOr(S.String)),
     filename: S.optional(S.NullOr(S.String)),
-    messages: S.optional(S.NullOr(DatabaseImportResponseMessagesList)),
-    result: S.optional(S.NullOr(DatabaseImportResponseResult)),
-    status: S.optional(S.NullOr(DatabaseImportResponseStatus)),
-    success: S.optional(S.NullOr(S.Boolean)),
-    type: S.optional(S.NullOr(DatabaseImportResponseType)),
-    uploadUrl: S.optional(S.NullOr(S.String).pipe(T.Body("upload_url"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ImportDatabaseResponse",
@@ -745,7 +616,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatabasesRequest",
 }) as any as S.Schema<ListDatabasesRequest>;
 
-export type DatabaseListResultItemJurisdiction = "eu" | "fedramp";
+export type DatabaseListResultItemJurisdiction = "eu" | "fedramp" | "us";
 export const DatabaseListResultItemJurisdiction = /*@__PURE__*/ S.String;
 
 export interface DatabaseListResultItem {
@@ -795,7 +666,7 @@ export type DatabaseEditRequestReadReplicationMode = "auto" | "disabled";
 export const DatabaseEditRequestReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseEditRequestReadReplication {
-  /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
+  /** The read replication mode for the database. Use ‘auto’ to create replicas and allow D1 automatically place them around the world, or ‘disabled’ to not use any database replicas (it can take a few hours for all replicas to be deleted). */
   mode: DatabaseEditRequestReadReplicationMode | (string & {});
 }
 export const DatabaseEditRequestReadReplication = /*@__PURE__*/ S.suspend(() =>
@@ -834,14 +705,14 @@ export const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDatabaseRequest",
 }) as any as S.Schema<PatchDatabaseRequest>;
 
-export type DatabaseEditResponseJurisdiction = "eu" | "fedramp";
+export type DatabaseEditResponseJurisdiction = "eu" | "fedramp" | "us";
 export const DatabaseEditResponseJurisdiction = /*@__PURE__*/ S.String;
 
 export type DatabaseEditResponseReadReplicationMode = "auto" | "disabled";
 export const DatabaseEditResponseReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseEditResponseReadReplication {
-  /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
+  /** The read replication mode for the database. Mode ‘auto’ denotes that D1 creates replicas and automatically places them around the world. Mode ‘disabled’ denotes that no database replicas are used. */
   mode: DatabaseEditResponseReadReplicationMode;
 }
 export const DatabaseEditResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
@@ -856,7 +727,7 @@ export const DatabaseEditResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
 export interface PatchDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdAt?: string | null;
-  /** The D1 database's size, in bytes. */
+  /** The D1 database’s size, in bytes. */
   fileSize?: number | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
   jurisdiction?: DatabaseEditResponseJurisdiction | null;
@@ -923,18 +794,22 @@ export interface QueryDatabaseRequest {
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
+  /** A single query object or a batch query object */
+  body: unknown;
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql?: string;
+  sql: string;
+  /** MultipleQueries object { batch } */
   params?: DatabaseQueryRequestParamsList;
-  batch?: DatabaseQueryRequestBatchList;
+  batch: DatabaseQueryRequestBatchList;
 }
 export const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    sql: S.optional(S.String),
+    body: S.Unknown,
+    sql: S.String,
     params: S.optional(DatabaseQueryRequestParamsList),
-    batch: S.optional(DatabaseQueryRequestBatchList),
+    batch: DatabaseQueryRequestBatchList,
   })
     .pipe(
       T.Http({
@@ -957,15 +832,29 @@ export type DatabaseQueryResultItemMetaServedByRegion =
   | "OC";
 export const DatabaseQueryResultItemMetaServedByRegion = /*@__PURE__*/ S.String;
 
-export type DatabaseQueryResultItemMetaTimings =
-  DatabaseImportResponseResultMetaTimings;
-export const DatabaseQueryResultItemMetaTimings =
-  DatabaseImportResponseResultMetaTimings;
+export interface DatabaseQueryResultItemMetaTimings {
+  /** The duration of the SQL query execution inside the database. Does not include any network communication. */
+  sqlDurationMs?: number | null;
+}
+export const DatabaseQueryResultItemMetaTimings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sqlDurationMs: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("sql_duration_ms")),
+    ),
+  }),
+).annotate({
+  identifier: "DatabaseQueryResultItemMetaTimings",
+}) as any as S.Schema<DatabaseQueryResultItemMetaTimings>;
+
+export type DatabaseQueryResultItemMetaResultsList = Array<unknown>;
+export const DatabaseQueryResultItemMetaResultsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DatabaseQueryResultItemMetaResultsList>;
 
 export interface DatabaseQueryResultItemMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
   changedDb?: boolean | null;
-  /** Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`. */
+  /** Rough indication of how many rows were modified by the query, as provided by SQLite’s `sqlite3_total_changes()`. */
   changes?: number | null;
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
   duration?: number | null;
@@ -984,7 +873,8 @@ export interface DatabaseQueryResultItemMeta {
   /** Size of the database after the query committed, in bytes. */
   sizeAfter?: number | null;
   /** Various durations for the query. */
-  timings?: DatabaseImportResponseResultMetaTimings | null;
+  timings?: DatabaseQueryResultItemMetaTimings | null;
+  results?: DatabaseQueryResultItemMetaResultsList | null;
 }
 export const DatabaseQueryResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1004,27 +894,19 @@ export const DatabaseQueryResultItemMeta = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
-    timings: S.optional(S.NullOr(DatabaseImportResponseResultMetaTimings)),
+    timings: S.optional(S.NullOr(DatabaseQueryResultItemMetaTimings)),
+    results: S.optional(S.NullOr(DatabaseQueryResultItemMetaResultsList)),
   }),
 ).annotate({
   identifier: "DatabaseQueryResultItemMeta",
 }) as any as S.Schema<DatabaseQueryResultItemMeta>;
 
-export type DatabaseQueryResultItemResultsList = Array<unknown>;
-export const DatabaseQueryResultItemResultsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatabaseQueryResultItemResultsList>;
-
 export interface DatabaseQueryResultItem {
   meta?: DatabaseQueryResultItemMeta | null;
-  results?: DatabaseQueryResultItemResultsList | null;
-  success?: boolean | null;
 }
 export const DatabaseQueryResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: S.optional(S.NullOr(DatabaseQueryResultItemMeta)),
-    results: S.optional(S.NullOr(DatabaseQueryResultItemResultsList)),
-    success: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "DatabaseQueryResultItem",
@@ -1084,18 +966,22 @@ export interface RawDatabaseRequest {
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
+  /** A single query object or a batch query object */
+  body: unknown;
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql?: string;
+  sql: string;
+  /** MultipleQueries object { batch } */
   params?: DatabaseRawRequestParamsList;
-  batch?: DatabaseRawRequestBatchList;
+  batch: DatabaseRawRequestBatchList;
 }
 export const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    sql: S.optional(S.String),
+    body: S.Unknown,
+    sql: S.String,
     params: S.optional(DatabaseRawRequestParamsList),
-    batch: S.optional(DatabaseRawRequestBatchList),
+    batch: DatabaseRawRequestBatchList,
   })
     .pipe(
       T.Http({
@@ -1119,14 +1005,39 @@ export type DatabaseRawResultItemMetaServedByRegion =
 export const DatabaseRawResultItemMetaServedByRegion = /*@__PURE__*/ S.String;
 
 export type DatabaseRawResultItemMetaTimings =
-  DatabaseImportResponseResultMetaTimings;
+  DatabaseQueryResultItemMetaTimings;
 export const DatabaseRawResultItemMetaTimings =
-  DatabaseImportResponseResultMetaTimings;
+  DatabaseQueryResultItemMetaTimings;
+
+export type DatabaseRawResultItemMetaResultsColumnsList = Array<string>;
+export const DatabaseRawResultItemMetaResultsColumnsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DatabaseRawResultItemMetaResultsColumnsList>;
+
+export type DatabaseRawResultItemMetaResultsRowsList = Array<unknown>;
+export const DatabaseRawResultItemMetaResultsRowsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DatabaseRawResultItemMetaResultsRowsList>;
+
+export interface DatabaseRawResultItemMetaResults {
+  columns?: DatabaseRawResultItemMetaResultsColumnsList | null;
+  /** number */
+  rows?: DatabaseRawResultItemMetaResultsRowsList | null;
+}
+export const DatabaseRawResultItemMetaResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    columns: S.optional(S.NullOr(DatabaseRawResultItemMetaResultsColumnsList)),
+    rows: S.optional(S.NullOr(DatabaseRawResultItemMetaResultsRowsList)),
+  }),
+).annotate({
+  identifier: "DatabaseRawResultItemMetaResults",
+}) as any as S.Schema<DatabaseRawResultItemMetaResults>;
 
 export interface DatabaseRawResultItemMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
   changedDb?: boolean | null;
-  /** Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`. */
+  /** Rough indication of how many rows were modified by the query, as provided by SQLite’s `sqlite3_total_changes()`. */
   changes?: number | null;
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
   duration?: number | null;
@@ -1145,7 +1056,8 @@ export interface DatabaseRawResultItemMeta {
   /** Size of the database after the query committed, in bytes. */
   sizeAfter?: number | null;
   /** Various durations for the query. */
-  timings?: DatabaseImportResponseResultMetaTimings | null;
+  timings?: DatabaseQueryResultItemMetaTimings | null;
+  results?: DatabaseRawResultItemMetaResults | null;
 }
 export const DatabaseRawResultItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1165,45 +1077,19 @@ export const DatabaseRawResultItemMeta = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
-    timings: S.optional(S.NullOr(DatabaseImportResponseResultMetaTimings)),
+    timings: S.optional(S.NullOr(DatabaseQueryResultItemMetaTimings)),
+    results: S.optional(S.NullOr(DatabaseRawResultItemMetaResults)),
   }),
 ).annotate({
   identifier: "DatabaseRawResultItemMeta",
 }) as any as S.Schema<DatabaseRawResultItemMeta>;
 
-export type DatabaseRawResultItemResultsColumnsList = Array<string>;
-export const DatabaseRawResultItemResultsColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseRawResultItemResultsColumnsList>;
-
-export type DatabaseRawResultItemResultsRowsList = Array<unknown>;
-export const DatabaseRawResultItemResultsRowsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatabaseRawResultItemResultsRowsList>;
-
-export interface DatabaseRawResultItemResults {
-  columns?: DatabaseRawResultItemResultsColumnsList | null;
-  rows?: DatabaseRawResultItemResultsRowsList | null;
-}
-export const DatabaseRawResultItemResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(S.NullOr(DatabaseRawResultItemResultsColumnsList)),
-    rows: S.optional(S.NullOr(DatabaseRawResultItemResultsRowsList)),
-  }),
-).annotate({
-  identifier: "DatabaseRawResultItemResults",
-}) as any as S.Schema<DatabaseRawResultItemResults>;
-
 export interface DatabaseRawResultItem {
   meta?: DatabaseRawResultItemMeta | null;
-  results?: DatabaseRawResultItemResults | null;
-  success?: boolean | null;
 }
 export const DatabaseRawResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: S.optional(S.NullOr(DatabaseRawResultItemMeta)),
-    results: S.optional(S.NullOr(DatabaseRawResultItemResults)),
-    success: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "DatabaseRawResultItem",
@@ -1283,7 +1169,7 @@ export type DatabaseUpdateRequestReadReplicationMode = "auto" | "disabled";
 export const DatabaseUpdateRequestReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseUpdateRequestReadReplication {
-  /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
+  /** The read replication mode for the database. Use ‘auto’ to create replicas and allow D1 automatically place them around the world, or ‘disabled’ to not use any database replicas (it can take a few hours for all replicas to be deleted). */
   mode: DatabaseUpdateRequestReadReplicationMode | (string & {});
 }
 export const DatabaseUpdateRequestReadReplication = /*@__PURE__*/ S.suspend(
@@ -1323,14 +1209,14 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDatabaseRequest",
 }) as any as S.Schema<UpdateDatabaseRequest>;
 
-export type DatabaseUpdateResponseJurisdiction = "eu" | "fedramp";
+export type DatabaseUpdateResponseJurisdiction = "eu" | "fedramp" | "us";
 export const DatabaseUpdateResponseJurisdiction = /*@__PURE__*/ S.String;
 
 export type DatabaseUpdateResponseReadReplicationMode = "auto" | "disabled";
 export const DatabaseUpdateResponseReadReplicationMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseUpdateResponseReadReplication {
-  /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
+  /** The read replication mode for the database. Mode ‘auto’ denotes that D1 creates replicas and automatically places them around the world. Mode ‘disabled’ denotes that no database replicas are used. */
   mode: DatabaseUpdateResponseReadReplicationMode;
 }
 export const DatabaseUpdateResponseReadReplication = /*@__PURE__*/ S.suspend(
@@ -1346,7 +1232,7 @@ export const DatabaseUpdateResponseReadReplication = /*@__PURE__*/ S.suspend(
 export interface UpdateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdAt?: string | null;
-  /** The D1 database's size, in bytes. */
+  /** The D1 database’s size, in bytes. */
   fileSize?: number | null;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
   jurisdiction?: DatabaseUpdateResponseJurisdiction | null;

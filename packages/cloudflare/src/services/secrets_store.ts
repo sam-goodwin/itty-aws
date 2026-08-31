@@ -120,9 +120,9 @@ export class StoreNotFound
   ) {}
 
 export interface BulkDeleteStoreSecretsRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
 }
 export const BulkDeleteStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -150,9 +150,9 @@ export const BulkDeleteStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteStoreSecretsResponse>;
 
 export interface CreateStoreRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** The name of the store */
+  /** The name of the store. */
   name: string;
 }
 export const CreateStoreRequest = /*@__PURE__*/ S.suspend(() =>
@@ -174,15 +174,15 @@ export const CreateStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateStoreResponse {
-  /** Store Identifier */
+  /** Store Identifier. */
   id: string;
-  /** Whenthe secret was created. */
+  /** When the secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the store */
+  /** The name of the store. */
   name: string;
-  /** Account Identifier */
+  /** Account Identifier. */
   accountId?: string | null;
 }
 export const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
@@ -197,20 +197,32 @@ export const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateStoreResponse",
 }) as any as S.Schema<CreateStoreResponse>;
 
-export type StoresSecretsCreateRequestBodyItemScopesList = Array<string>;
+export type StoresSecretsCreateRequestBodyItemScopesItem =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsCreateRequestBodyItemScopesItem =
+  /*@__PURE__*/ S.String;
+
+export type StoresSecretsCreateRequestBodyItemScopesList = Array<
+  StoresSecretsCreateRequestBodyItemScopesItem | (string & {})
+>;
 export const StoresSecretsCreateRequestBodyItemScopesList =
   /*@__PURE__*/ S.Array(
-    S.String,
+    StoresSecretsCreateRequestBodyItemScopesItem,
   ) as any as S.Schema<StoresSecretsCreateRequestBodyItemScopesList>;
 
 export interface StoresSecretsCreateRequestBodyItem {
-  /** The name of the secret */
+  /** The name of the secret. */
   name: string;
   /** The list of services that can use this secret. */
   scopes: StoresSecretsCreateRequestBodyItemScopesList;
-  /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
+  /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is ‘write only’ - the API never returns this value; it exists only to create or modify secrets. */
   value: string;
-  /** Freeform text describing the secret */
+  /** Freeform text describing the secret. */
   comment?: string;
 }
 export const StoresSecretsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -231,9 +243,9 @@ export const StoresSecretsCreateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsCreateRequestBodyList>;
 
 export interface CreateStoreSecretRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
   body: StoresSecretsCreateRequestBodyList;
 }
@@ -261,24 +273,34 @@ export type StoresSecretsCreateResultItemStatus =
   | "deleted";
 export const StoresSecretsCreateResultItemStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsCreateResultItemScopesList = Array<string>;
+export type StoresSecretsCreateResultItemScopesItem =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsCreateResultItemScopesItem = /*@__PURE__*/ S.String;
+
+export type StoresSecretsCreateResultItemScopesList =
+  Array<StoresSecretsCreateResultItemScopesItem>;
 export const StoresSecretsCreateResultItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
+  StoresSecretsCreateResultItemScopesItem,
 ) as any as S.Schema<StoresSecretsCreateResultItemScopesList>;
 
 export interface StoresSecretsCreateResultItem {
   /** Secret identifier tag. */
   id: string;
-  /** Whenthe secret was created. */
+  /** When the secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the secret */
+  /** The name of the secret. */
   name: string;
   status: StoresSecretsCreateResultItemStatus;
-  /** Store Identifier */
+  /** Store Identifier. */
   storeId: string;
-  /** Freeform text describing the secret */
+  /** Freeform text describing the secret. */
   comment?: string | null;
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsCreateResultItemScopesList | null;
@@ -320,11 +342,11 @@ export const CreateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateStoreSecretResponse>;
 
 export interface DeleteStoreRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
-  /** When true, cascade-deletes all secrets in the store before deleting */
+  /** When true, cascade-deletes all secrets in the store before deleting the store itself. Required when deleting a non-empty store. Without this parameter, attempting to delete a non-empty store returns 409. */
   force?: boolean;
 }
 export const DeleteStoreRequest = /*@__PURE__*/ S.suspend(() =>
@@ -353,11 +375,11 @@ export const DeleteStoreResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStoreResponse>;
 
 export interface DeleteStoreSecretRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
-  /** Secret identifier tag. */
+  /** maxLength32 */
   secretId: string;
 }
 export const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
@@ -385,23 +407,34 @@ export const DeleteStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStoreSecretResponse",
 }) as any as S.Schema<DeleteStoreSecretResponse>;
 
-export type StoresSecretsDuplicateRequestScopesList = Array<string>;
+export type StoresSecretsDuplicateRequestScopesItem =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsDuplicateRequestScopesItem = /*@__PURE__*/ S.String;
+
+export type StoresSecretsDuplicateRequestScopesList = Array<
+  StoresSecretsDuplicateRequestScopesItem | (string & {})
+>;
 export const StoresSecretsDuplicateRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
+  StoresSecretsDuplicateRequestScopesItem,
 ) as any as S.Schema<StoresSecretsDuplicateRequestScopesList>;
 
 export interface DuplicateStoreSecretRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
-  /** Secret identifier tag. */
+  /** maxLength32 */
   secretId: string;
-  /** The name of the secret */
+  /** The name of the secret. */
   name: string;
   /** The list of services that can use this secret. */
   scopes: StoresSecretsDuplicateRequestScopesList;
-  /** Freeform text describing the secret */
+  /** Freeform text describing the secret. */
   comment?: string;
 }
 export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
@@ -431,28 +464,46 @@ export type StoresSecretsDuplicateResponseStatus =
   | "deleted";
 export const StoresSecretsDuplicateResponseStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsDuplicateResponseScopesList = Array<string>;
+export type StoresSecretsDuplicateResponseScopesItem =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsDuplicateResponseScopesItem = /*@__PURE__*/ S.String;
+
+export type StoresSecretsDuplicateResponseScopesList =
+  Array<StoresSecretsDuplicateResponseScopesItem>;
 export const StoresSecretsDuplicateResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
+  StoresSecretsDuplicateResponseScopesItem,
 ) as any as S.Schema<StoresSecretsDuplicateResponseScopesList>;
+
+export type StoresSecretsDuplicateResponseComment = "info about my secret";
+export const StoresSecretsDuplicateResponseComment = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DuplicateStoreSecretResponse {
   /** Secret identifier tag. */
   id: string;
-  /** Whenthe secret was created. */
+  /** When the secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the secret */
+  /** The name of the secret. */
   name: string;
   status: StoresSecretsDuplicateResponseStatus;
-  /** Store Identifier */
+  /** Store Identifier. */
   storeId: string;
-  /** Freeform text describing the secret */
+  /** Freeform text describing the secret. */
   comment?: string | null;
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsDuplicateResponseScopesList | null;
+  name_2: unknown;
+  /** "workers", */
+  scopes_2: unknown;
+  /** }' */
+  comment_2: StoresSecretsDuplicateResponseComment;
 }
 export const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -464,13 +515,16 @@ export const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
     storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.NullOr(S.String)),
     scopes: S.optional(S.NullOr(StoresSecretsDuplicateResponseScopesList)),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    scopes_2: S.Unknown.pipe(T.Body("scopes")),
+    comment_2: StoresSecretsDuplicateResponseComment.pipe(T.Body("comment")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DuplicateStoreSecretResponse",
 }) as any as S.Schema<DuplicateStoreSecretResponse>;
 
 export interface GetQuotaRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
 }
 export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
@@ -490,9 +544,9 @@ export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQuotaRequest>;
 
 export interface QuotaGetResponseSecrets {
-  /** The number of secrets the account is entitlted to use */
+  /** The number of secrets the account is entitled to use. */
   quota: number;
-  /** The number of secrets the account is currently using */
+  /** The number of secrets the account is currently using. */
   usage: number;
 }
 export const QuotaGetResponseSecrets = /*@__PURE__*/ S.suspend(() =>
@@ -517,9 +571,9 @@ export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQuotaResponse>;
 
 export interface GetStoreRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
 }
 export const GetStoreRequest = /*@__PURE__*/ S.suspend(() =>
@@ -541,15 +595,15 @@ export const GetStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStoreResponse {
-  /** Store Identifier */
+  /** Store Identifier. */
   id: string;
-  /** Whenthe secret was created. */
+  /** When the secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the store */
+  /** The name of the store. */
   name: string;
-  /** Account Identifier */
+  /** Account Identifier. */
   accountId?: string | null;
 }
 export const GetStoreResponse = /*@__PURE__*/ S.suspend(() =>
@@ -565,11 +619,11 @@ export const GetStoreResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetStoreResponse>;
 
 export interface GetStoreSecretRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
-  /** Secret identifier tag. */
+  /** maxLength32 */
   secretId: string;
 }
 export const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
@@ -593,25 +647,35 @@ export const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 export type StoresSecretsGetResponseStatus = "pending" | "active" | "deleted";
 export const StoresSecretsGetResponseStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsGetResponseScopesList = Array<string>;
+export type StoresSecretsGetResponseScopesItem =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsGetResponseScopesItem = /*@__PURE__*/ S.String;
+
+export type StoresSecretsGetResponseScopesList =
+  Array<StoresSecretsGetResponseScopesItem>;
 export const StoresSecretsGetResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
+  StoresSecretsGetResponseScopesItem,
 ) as any as S.Schema<StoresSecretsGetResponseScopesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStoreSecretResponse {
   /** Secret identifier tag. */
   id: string;
-  /** Whenthe secret was created. */
+  /** When the secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the secret */
+  /** The name of the secret. */
   name: string;
   status: StoresSecretsGetResponseStatus;
-  /** Store Identifier */
+  /** Store Identifier. */
   storeId: string;
-  /** Freeform text describing the secret */
+  /** Freeform text describing the secret. */
   comment?: string | null;
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsGetResponseScopesList | null;
@@ -634,24 +698,19 @@ export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
 export type StoresListRequestDirection = "asc" | "desc";
 export const StoresListRequestDirection = /*@__PURE__*/ S.String;
 
-export type StoresListRequestOrder =
-  | "name"
-  | "comment"
-  | "created"
-  | "modified"
-  | "status";
+export type StoresListRequestOrder = "name" | "created" | "modified";
 export const StoresListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListStoresRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Direction to sort objects */
+  /** Direction to sort objects. */
   direction?: StoresListRequestDirection | (string & {});
-  /** Order secrets by values in the given field */
+  /** Order stores by values in the given field. */
   order?: StoresListRequestOrder | (string & {});
-  /** Page number */
+  /** Page number. */
   page?: number;
-  /** Number of objects to return per page */
+  /** Number of objects to return per page. */
   perPage?: number;
 }
 export const ListStoresRequest = /*@__PURE__*/ S.suspend(() =>
@@ -675,15 +734,15 @@ export const ListStoresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStoresRequest>;
 
 export interface StoresListResultItem {
-  /** Store Identifier */
+  /** Store Identifier. */
   id: string;
-  /** Whenthe secret was created. */
+  /** When the secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the store */
+  /** The name of the store. */
   name: string;
-  /** Account Identifier */
+  /** Account Identifier. */
   accountId?: string | null;
 }
 export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -729,27 +788,38 @@ export type StoresSecretsListRequestOrder =
   | "status";
 export const StoresSecretsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type StoresSecretsListRequestScopesList = Array<string>;
+export type StoresSecretsListRequestScopes =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsListRequestScopes = /*@__PURE__*/ S.String;
+
+export type StoresSecretsListRequestScopesList = Array<
+  StoresSecretsListRequestScopes | (string & {})
+>;
 export const StoresSecretsListRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
+  StoresSecretsListRequestScopes,
 ) as any as S.Schema<StoresSecretsListRequestScopesList>;
 
 export interface ListStoreSecretsRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
-  /** Direction to sort objects */
+  /** Direction to sort objects. */
   direction?: StoresSecretsListRequestDirection | (string & {});
-  /** Order secrets by values in the given field */
+  /** Order secrets by values in the given field. */
   order?: StoresSecretsListRequestOrder | (string & {});
-  /** Page number */
+  /** Page number. */
   page?: number;
-  /** Number of objects to return per page */
+  /** Number of objects to return per page. */
   perPage?: number;
-  /** Only secrets with the given scopes will be returned */
+  /** Only secrets with the given scopes will be returned. */
   scopes?: StoresSecretsListRequestScopesList;
-  /** Search secrets using a filter string, filtering across name and comment */
+  /** Search secrets using a filter string, filtering across name and comment. */
   search?: string;
 }
 export const ListStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -781,24 +851,34 @@ export type StoresSecretsListResultItemStatus =
   | "deleted";
 export const StoresSecretsListResultItemStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsListResultItemScopesList = Array<string>;
+export type StoresSecretsListResultItemScopesItem =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsListResultItemScopesItem = /*@__PURE__*/ S.String;
+
+export type StoresSecretsListResultItemScopesList =
+  Array<StoresSecretsListResultItemScopesItem>;
 export const StoresSecretsListResultItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
+  StoresSecretsListResultItemScopesItem,
 ) as any as S.Schema<StoresSecretsListResultItemScopesList>;
 
 export interface StoresSecretsListResultItem {
   /** Secret identifier tag. */
   id: string;
-  /** Whenthe secret was created. */
+  /** When the secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the secret */
+  /** The name of the secret. */
   name: string;
   status: StoresSecretsListResultItemStatus;
-  /** Store Identifier */
+  /** Store Identifier. */
   storeId: string;
-  /** Freeform text describing the secret */
+  /** Freeform text describing the secret. */
   comment?: string | null;
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsListResultItemScopesList | null;
@@ -838,23 +918,34 @@ export const ListStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStoreSecretsResponse",
 }) as any as S.Schema<ListStoreSecretsResponse>;
 
-export type StoresSecretsEditRequestScopesList = Array<string>;
+export type StoresSecretsEditRequestScopesItem =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsEditRequestScopesItem = /*@__PURE__*/ S.String;
+
+export type StoresSecretsEditRequestScopesList = Array<
+  StoresSecretsEditRequestScopesItem | (string & {})
+>;
 export const StoresSecretsEditRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
+  StoresSecretsEditRequestScopesItem,
 ) as any as S.Schema<StoresSecretsEditRequestScopesList>;
 
 export interface PatchStoreSecretRequest {
-  /** Account Identifier */
+  /** maxLength32 */
   accountId: string;
-  /** Store Identifier */
+  /** maxLength32 */
   storeId: string;
-  /** Secret identifier tag. */
+  /** maxLength32 */
   secretId: string;
-  /** Freeform text describing the secret */
+  /** Freeform text describing the secret. */
   comment?: string;
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsEditRequestScopesList;
-  /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
+  /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is ‘write only’ - the API never returns this value; it exists only to create or modify secrets. */
   value?: string;
 }
 export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
@@ -881,28 +972,46 @@ export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 export type StoresSecretsEditResponseStatus = "pending" | "active" | "deleted";
 export const StoresSecretsEditResponseStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsEditResponseScopesList = Array<string>;
+export type StoresSecretsEditResponseScopesItem =
+  | "workers"
+  | "ai_gateway"
+  | "dex"
+  | "access"
+  | "containers"
+  | "websearch";
+export const StoresSecretsEditResponseScopesItem = /*@__PURE__*/ S.String;
+
+export type StoresSecretsEditResponseScopesList =
+  Array<StoresSecretsEditResponseScopesItem>;
 export const StoresSecretsEditResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
+  StoresSecretsEditResponseScopesItem,
 ) as any as S.Schema<StoresSecretsEditResponseScopesList>;
+
+export type StoresSecretsEditResponseValue = "api-token-secret-123";
+export const StoresSecretsEditResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchStoreSecretResponse {
   /** Secret identifier tag. */
   id: string;
-  /** Whenthe secret was created. */
+  /** When the secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the secret */
+  /** The name of the secret. */
   name: string;
   status: StoresSecretsEditResponseStatus;
-  /** Store Identifier */
+  /** Store Identifier. */
   storeId: string;
-  /** Freeform text describing the secret */
+  /** Freeform text describing the secret. */
   comment?: string | null;
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsEditResponseScopesList | null;
+  comment_2: unknown;
+  /** "workers", */
+  scopes_2: unknown;
+  /** }' */
+  value: StoresSecretsEditResponseValue;
 }
 export const PatchStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -914,6 +1023,9 @@ export const PatchStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
     storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.NullOr(S.String)),
     scopes: S.optional(S.NullOr(StoresSecretsEditResponseScopesList)),
+    comment_2: S.Unknown.pipe(T.Body("comment")),
+    scopes_2: S.Unknown.pipe(T.Body("scopes")),
+    value: StoresSecretsEditResponseValue,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchStoreSecretResponse",
@@ -924,7 +1036,7 @@ export type BulkDeleteStoreSecretsError =
   | InvalidAccountId
   | InvalidJsonBody
   | CloudflareOpError;
-/** Deletes one or more secrets */
+/** Deletes one or more secrets. */
 export const bulkDeleteStoreSecrets: API.OperationMethod<
   BulkDeleteStoreSecretsRequest,
   BulkDeleteStoreSecretsResponse,
@@ -948,7 +1060,7 @@ export type CreateStoreError =
   | InvalidAccountId
   | MaximumStoresExceeded
   | CloudflareOpError;
-/** Creates a store in the account */
+/** Creates a store in the account. */
 export const createStore: API.OperationMethod<
   CreateStoreRequest,
   CreateStoreResponse,
@@ -974,7 +1086,7 @@ export type CreateStoreSecretError =
   | SecretNameAlreadyExists
   | SecretScopeInvalid
   | CloudflareOpError;
-/** Creates a secret in the account */
+/** Creates a secret in the account. */
 export const createStoreSecret: API.PaginatedOperationMethod<
   CreateStoreSecretRequest,
   CreateStoreSecretResponse,
@@ -1006,7 +1118,7 @@ export type DeleteStoreError =
   | InvalidAccountId
   | NotFound
   | CloudflareOpError;
-/** Deletes a single store. By default, a store that still contains secrets cannot be deleted and returns HTTP 409 (Conflict) with the "store_not_empty" error. Pass `force=true` to cascade-delete all secrets in the store. Empty stores are always deleted regardless of the force parameter. */
+/** Deletes a single store. By default, a store that still contains secrets cannot be deleted and returns HTTP 409 (Conflict) with the “store_not_empty” error. Pass `force=true` to cascade-delete all secrets in the store. Empty stores are always deleted regardless of the force parameter. */
 export const deleteStore: API.OperationMethod<
   DeleteStoreRequest,
   DeleteStoreResponse,
@@ -1032,7 +1144,7 @@ export type DeleteStoreSecretError =
   | InvalidAccountId
   | NotFound
   | CloudflareOpError;
-/** Deletes a single secret */
+/** Deletes a single secret. */
 export const deleteStoreSecret: API.OperationMethod<
   DeleteStoreSecretRequest,
   DeleteStoreSecretResponse,
@@ -1062,7 +1174,7 @@ export type DuplicateStoreSecretError =
   | InvalidAccountId
   | SecretScopeInvalid
   | CloudflareOpError;
-/** Duplicates the secret, keeping the value */
+/** Creates a duplicate of the secret, keeping the value. */
 export const duplicateStoreSecret: API.OperationMethod<
   DuplicateStoreSecretRequest,
   DuplicateStoreSecretResponse,
@@ -1102,7 +1214,7 @@ export const getQuota: API.OperationMethod<
 }));
 
 export type GetStoreError = CloudflareOpError;
-/** Returns details of a single store */
+/** Returns details of a single store. */
 export const getStore: API.OperationMethod<
   GetStoreRequest,
   GetStoreResponse,
@@ -1122,7 +1234,7 @@ export type GetStoreSecretError =
   | InvalidAccountId
   | NotFound
   | CloudflareOpError;
-/** Returns details of a single secret */
+/** Returns details of a single secret. */
 export const getStoreSecret: API.OperationMethod<
   GetStoreSecretRequest,
   GetStoreSecretResponse,
@@ -1144,7 +1256,7 @@ export const getStoreSecret: API.OperationMethod<
 }));
 
 export type ListStoresError = InvalidAccountId | CloudflareOpError;
-/** Lists all the stores in an account */
+/** Lists all the stores in an account. */
 export const listStores: API.PaginatedOperationMethod<
   ListStoresRequest,
   ListStoresResponse,
@@ -1173,7 +1285,7 @@ export type ListStoreSecretsError =
   | StoreNotFound
   | InvalidAccountId
   | CloudflareOpError;
-/** Lists all store secrets */
+/** Lists all store secrets. */
 export const listStoreSecrets: API.PaginatedOperationMethod<
   ListStoreSecretsRequest,
   ListStoreSecretsResponse,
@@ -1209,7 +1321,7 @@ export type PatchStoreSecretError =
   | InvalidAccountId
   | SecretScopeInvalid
   | CloudflareOpError;
-/** Updates a single secret */
+/** Updates a single secret. */
 export const patchStoreSecret: API.OperationMethod<
   PatchStoreSecretRequest,
   PatchStoreSecretResponse,

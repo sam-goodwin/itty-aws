@@ -54,13 +54,15 @@ export interface ScansBulkCreateRequestBodyItem {
   url: string;
   /** Enable agent readiness checks. */
   agentReadiness?: boolean;
+  /** maxLength4096 */
   customagent?: string;
   /** Set custom headers. */
   customHeaders?: ScansBulkCreateRequestBodyItemCustomHeadersMap;
+  /** maxLength4096 */
   referer?: string;
   /** Take multiple screenshots targeting different device types. */
   screenshotsResolutions?: ScansBulkCreateRequestBodyItemScreenshotsResolutionsList;
-  /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
+  /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan’s ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
   visibility?: ScansBulkCreateRequestBodyItemVisibility | (string & {});
 }
 export const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -347,13 +349,15 @@ export interface CreateScanRequest {
   agentReadiness?: boolean;
   /** Country to geo egress from */
   country?: ScansCreateRequestCountry | (string & {});
+  /** maxLength4096 */
   customagent?: string;
   /** Set custom headers. */
   customHeaders?: ScansCreateRequestCustomHeadersMap;
+  /** maxLength4096 */
   referer?: string;
   /** Take multiple screenshots targeting different device types. */
   screenshotsResolutions?: ScansCreateRequestScreenshotsResolutionsList;
-  /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
+  /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan’s ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
   visibility?: ScansCreateRequestVisibility | (string & {});
 }
 export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2029,6 +2033,58 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
       "ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility>;
 
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList =
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList =
+  /*@__PURE__*/ S.Array(
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
+  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList>;
+
+export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid {
+  status: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList | null;
+  message?: string | null;
+}
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.String,
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
+      evidence: S.optional(
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList,
+        ),
+      ),
+      message: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier:
+      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid",
+  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid>;
+
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding =
@@ -2186,6 +2242,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySi
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability {
+  dnsAid: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid;
   linkHeaders: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders;
   robotsTxt: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt;
   sitemap: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap;
@@ -2193,6 +2250,8 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
 export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      dnsAid:
+        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid,
       linkHeaders:
         ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders,
       robotsTxt:
@@ -2360,6 +2419,110 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatal
     identifier:
       "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog",
   }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog>;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList =
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList =
+  /*@__PURE__*/ S.Array(
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
+  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList>;
+
+export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd {
+  status: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList | null;
+  message?: string | null;
+}
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.String,
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
+      evidence: S.optional(
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList,
+        ),
+      ),
+      message: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier:
+      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd",
+  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd>;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemFinding =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemRequest =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemResponse =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItem =
+  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
+
+export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList =
+  Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList =
+  /*@__PURE__*/ S.Array(
+    ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
+  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList>;
+
+export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd {
+  status: string;
+  details?: unknown | null;
+  durationMs?: number | null;
+  evidence?: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList | null;
+  message?: string | null;
+}
+export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.String,
+      details: S.optional(S.NullOr(S.Unknown)),
+      durationMs: S.optional(S.NullOr(S.Number)),
+      evidence: S.optional(
+        S.NullOr(
+          ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList,
+        ),
+      ),
+      message: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier:
+      "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd",
+  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
@@ -2573,6 +2736,8 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery {
   a2aAgentCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard;
   agentSkills: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills;
   apiCatalog: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog;
+  ard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd;
+  authMd: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd;
   mcpServerCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard;
   oauthDiscovery: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery;
   oauthProtectedResource: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource;
@@ -2587,6 +2752,8 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery =
         ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills,
       apiCatalog:
         ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog,
+      ard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd,
+      authMd: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd,
       mcpServerCard:
         ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard,
       oauthDiscovery:
@@ -3449,6 +3616,7 @@ export interface ScansGetResponseTask {
   domain: string;
   domURL: string;
   method: string;
+  /** Custom headers set. */
   options: ScansGetResponseTaskOptions;
   reportURL: string;
   screenshotURL: string;
@@ -3526,6 +3694,7 @@ export interface GetScanResponse {
   page: ScansGetResponsePage;
   scanner: ScansGetResponseScanner;
   stats: ScansGetResponseStats;
+  /** Custom headers set. */
   task: ScansGetResponseTask;
   verdicts: ScansGetResponseVerdicts;
 }
@@ -3592,6 +3761,271 @@ export const ScansHarResponseLogEntriesItemRequestHeadersList =
     ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
   ) as any as S.Schema<ScansHarResponseLogEntriesItemRequestHeadersList>;
 
+export interface ScansHarResponseLogEntriesItemRequestResponseContent {
+  mimeType: string;
+  size: number;
+  compression?: number | null;
+}
+export const ScansHarResponseLogEntriesItemRequestResponseContent =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mimeType: S.String,
+      size: S.Number,
+      compression: S.optional(S.NullOr(S.Number)),
+    }),
+  ).annotate({
+    identifier: "ScansHarResponseLogEntriesItemRequestResponseContent",
+  }) as any as S.Schema<ScansHarResponseLogEntriesItemRequestResponseContent>;
+
+export type ScansHarResponseLogEntriesItemRequestResponseHeadersItem =
+  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
+export const ScansHarResponseLogEntriesItemRequestResponseHeadersItem =
+  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
+
+export type ScansHarResponseLogEntriesItemRequestResponseHeadersList =
+  Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
+export const ScansHarResponseLogEntriesItemRequestResponseHeadersList =
+  /*@__PURE__*/ S.Array(
+    ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
+  ) as any as S.Schema<ScansHarResponseLogEntriesItemRequestResponseHeadersList>;
+
+export interface ScansHarResponseLogEntriesItemRequestResponsePagesItemPageTimings {
+  onContentLoad: number;
+  onLoad: number;
+}
+export const ScansHarResponseLogEntriesItemRequestResponsePagesItemPageTimings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      onContentLoad: S.Number,
+      onLoad: S.Number,
+    }),
+  ).annotate({
+    identifier:
+      "ScansHarResponseLogEntriesItemRequestResponsePagesItemPageTimings",
+  }) as any as S.Schema<ScansHarResponseLogEntriesItemRequestResponsePagesItemPageTimings>;
+
+export interface ScansHarResponseLogEntriesItemRequestResponsePagesItem {
+  id: string;
+  pageTimings: ScansHarResponseLogEntriesItemRequestResponsePagesItemPageTimings;
+  startedDateTime: string;
+  title: string;
+}
+export const ScansHarResponseLogEntriesItemRequestResponsePagesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      pageTimings:
+        ScansHarResponseLogEntriesItemRequestResponsePagesItemPageTimings,
+      startedDateTime: S.String,
+      title: S.String,
+    }),
+  ).annotate({
+    identifier: "ScansHarResponseLogEntriesItemRequestResponsePagesItem",
+  }) as any as S.Schema<ScansHarResponseLogEntriesItemRequestResponsePagesItem>;
+
+export type ScansHarResponseLogEntriesItemRequestResponsePagesList =
+  Array<ScansHarResponseLogEntriesItemRequestResponsePagesItem>;
+export const ScansHarResponseLogEntriesItemRequestResponsePagesList =
+  /*@__PURE__*/ S.Array(
+    ScansHarResponseLogEntriesItemRequestResponsePagesItem,
+  ) as any as S.Schema<ScansHarResponseLogEntriesItemRequestResponsePagesList>;
+
+export type ScansHarResponseLogEntriesItemRequestResponseVersion = "0.13.1";
+export const ScansHarResponseLogEntriesItemRequestResponseVersion =
+  /*@__PURE__*/ S.String;
+
+export type ScansHarResponseLogEntriesItemRequestResponseValue = "1";
+export const ScansHarResponseLogEntriesItemRequestResponseValue =
+  /*@__PURE__*/ S.String;
+
+export type ScansHarResponseLogEntriesItemRequestResponseUrl =
+  "http://example.com/";
+export const ScansHarResponseLogEntriesItemRequestResponseUrl =
+  /*@__PURE__*/ S.String;
+
+export type ScansHarResponseLogEntriesItemRequestResponseCompression = 608;
+export const ScansHarResponseLogEntriesItemRequestResponseCompression =
+  /*@__PURE__*/ S.Number;
+
+export type ScansHarResponseLogEntriesItemRequestResponseValue2 = "gzip";
+export const ScansHarResponseLogEntriesItemRequestResponseValue2 =
+  /*@__PURE__*/ S.String;
+
+export type ScansHarResponseLogEntriesItemRequestResponseStatusText = "OK";
+export const ScansHarResponseLogEntriesItemRequestResponseStatusText =
+  /*@__PURE__*/ S.String;
+
+export type ScansHarResponseLogEntriesItemRequestResponseTitle =
+  "http://example.com/";
+export const ScansHarResponseLogEntriesItemRequestResponseTitle =
+  /*@__PURE__*/ S.String;
+
+export type ScansHarResponseLogEntriesItemRequestResponseVersion2 = "1.2";
+export const ScansHarResponseLogEntriesItemRequestResponseVersion2 =
+  /*@__PURE__*/ S.String;
+
+export interface ScansHarResponseLogEntriesItemRequestResponse {
+  transferSize: number;
+  bodySize: number;
+  content: ScansHarResponseLogEntriesItemRequestResponseContent;
+  headers: ScansHarResponseLogEntriesItemRequestResponseHeadersList;
+  headersSize: number;
+  httpVersion: string;
+  redirectURL: string;
+  status: number;
+  statusText: string;
+  serverIPAddress: string;
+  startedDateTime: string;
+  time: number;
+  pages: ScansHarResponseLogEntriesItemRequestResponsePagesList;
+  /** HTTP */
+  version: string;
+  log: unknown;
+  creator: unknown;
+  comment: unknown;
+  name: unknown;
+  /** }, */
+  version_2: ScansHarResponseLogEntriesItemRequestResponseVersion;
+  /** { */
+  entries: unknown;
+  initialPriority: unknown;
+  initiatorType: unknown;
+  priority: unknown;
+  requestId: unknown;
+  requestTime: unknown;
+  resourceType: unknown;
+  cache: unknown;
+  connection: unknown;
+  pageref: unknown;
+  request: unknown;
+  bodySize_2: unknown;
+  /** { */
+  headers_2: unknown;
+  name_2: unknown;
+  /** } */
+  value: ScansHarResponseLogEntriesItemRequestResponseValue;
+  headersSize_2: unknown;
+  httpVersion_2: unknown;
+  method: unknown;
+  /** }, */
+  url: ScansHarResponseLogEntriesItemRequestResponseUrl;
+  response: unknown;
+  transferSize_2: unknown;
+  bodySize_3: unknown;
+  content_2: unknown;
+  mimeType: unknown;
+  size: unknown;
+  /** }, */
+  compression: ScansHarResponseLogEntriesItemRequestResponseCompression;
+  /** { */
+  headers_3: unknown;
+  name_3: unknown;
+  /** } */
+  value_2: ScansHarResponseLogEntriesItemRequestResponseValue2;
+  headersSize_3: unknown;
+  httpVersion_3: unknown;
+  redirectURL_2: unknown;
+  status_2: unknown;
+  /** }, */
+  statusText_2: ScansHarResponseLogEntriesItemRequestResponseStatusText;
+  serverIPAddress_2: unknown;
+  startedDateTime_2: unknown;
+  /** } */
+  time_2: number;
+  /** { */
+  pages_2: unknown;
+  id: unknown;
+  pageTimings: unknown;
+  onContentLoad: unknown;
+  /** }, */
+  onLoad: number;
+  startedDateTime_3: unknown;
+  /** } */
+  title: ScansHarResponseLogEntriesItemRequestResponseTitle;
+  /** } */
+  version_3: ScansHarResponseLogEntriesItemRequestResponseVersion2;
+}
+export const ScansHarResponseLogEntriesItemRequestResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      transferSize: S.Number.pipe(T.Body("_transferSize")),
+      bodySize: S.Number,
+      content: ScansHarResponseLogEntriesItemRequestResponseContent,
+      headers: ScansHarResponseLogEntriesItemRequestResponseHeadersList,
+      headersSize: S.Number,
+      httpVersion: S.String,
+      redirectURL: S.String,
+      status: S.Number,
+      statusText: S.String,
+      serverIPAddress: S.String,
+      startedDateTime: S.String,
+      time: S.Number,
+      pages: ScansHarResponseLogEntriesItemRequestResponsePagesList,
+      version: S.String,
+      log: S.Unknown,
+      creator: S.Unknown,
+      comment: S.Unknown,
+      name: S.Unknown,
+      version_2: ScansHarResponseLogEntriesItemRequestResponseVersion.pipe(
+        T.Body("version"),
+      ),
+      entries: S.Unknown,
+      initialPriority: S.Unknown.pipe(T.Body("_initialPriority")),
+      initiatorType: S.Unknown.pipe(T.Body("_initiator_type")),
+      priority: S.Unknown.pipe(T.Body("_priority")),
+      requestId: S.Unknown.pipe(T.Body("_requestId")),
+      requestTime: S.Unknown.pipe(T.Body("_requestTime")),
+      resourceType: S.Unknown.pipe(T.Body("_resourceType")),
+      cache: S.Unknown,
+      connection: S.Unknown,
+      pageref: S.Unknown,
+      request: S.Unknown,
+      bodySize_2: S.Unknown.pipe(T.Body("bodySize")),
+      headers_2: S.Unknown.pipe(T.Body("headers")),
+      name_2: S.Unknown.pipe(T.Body("name")),
+      value: ScansHarResponseLogEntriesItemRequestResponseValue,
+      headersSize_2: S.Unknown.pipe(T.Body("headersSize")),
+      httpVersion_2: S.Unknown.pipe(T.Body("httpVersion")),
+      method: S.Unknown,
+      url: ScansHarResponseLogEntriesItemRequestResponseUrl,
+      response: S.Unknown,
+      transferSize_2: S.Unknown.pipe(T.Body("_transferSize")),
+      bodySize_3: S.Unknown.pipe(T.Body("bodySize")),
+      content_2: S.Unknown.pipe(T.Body("content")),
+      mimeType: S.Unknown,
+      size: S.Unknown,
+      compression: ScansHarResponseLogEntriesItemRequestResponseCompression,
+      headers_3: S.Unknown.pipe(T.Body("headers")),
+      name_3: S.Unknown.pipe(T.Body("name")),
+      value_2: ScansHarResponseLogEntriesItemRequestResponseValue2.pipe(
+        T.Body("value"),
+      ),
+      headersSize_3: S.Unknown.pipe(T.Body("headersSize")),
+      httpVersion_3: S.Unknown.pipe(T.Body("httpVersion")),
+      redirectURL_2: S.Unknown.pipe(T.Body("redirectURL")),
+      status_2: S.Unknown.pipe(T.Body("status")),
+      statusText_2:
+        ScansHarResponseLogEntriesItemRequestResponseStatusText.pipe(
+          T.Body("statusText"),
+        ),
+      serverIPAddress_2: S.Unknown.pipe(T.Body("serverIPAddress")),
+      startedDateTime_2: S.Unknown.pipe(T.Body("startedDateTime")),
+      time_2: S.Number.pipe(T.Body("time")),
+      pages_2: S.Unknown.pipe(T.Body("pages")),
+      id: S.Unknown,
+      pageTimings: S.Unknown,
+      onContentLoad: S.Unknown,
+      onLoad: S.Number,
+      startedDateTime_3: S.Unknown.pipe(T.Body("startedDateTime")),
+      title: ScansHarResponseLogEntriesItemRequestResponseTitle,
+      version_3: ScansHarResponseLogEntriesItemRequestResponseVersion2.pipe(
+        T.Body("version"),
+      ),
+    }),
+  ).annotate({
+    identifier: "ScansHarResponseLogEntriesItemRequestResponse",
+  }) as any as S.Schema<ScansHarResponseLogEntriesItemRequestResponse>;
+
 export interface ScansHarResponseLogEntriesItemRequest {
   bodySize: number;
   headers: ScansHarResponseLogEntriesItemRequestHeadersList;
@@ -3599,6 +4033,7 @@ export interface ScansHarResponseLogEntriesItemRequest {
   httpVersion: string;
   method: string;
   url: string;
+  response: ScansHarResponseLogEntriesItemRequestResponse;
 }
 export const ScansHarResponseLogEntriesItemRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3609,66 +4044,11 @@ export const ScansHarResponseLogEntriesItemRequest = /*@__PURE__*/ S.suspend(
       httpVersion: S.String,
       method: S.String,
       url: S.String,
+      response: ScansHarResponseLogEntriesItemRequestResponse,
     }),
 ).annotate({
   identifier: "ScansHarResponseLogEntriesItemRequest",
 }) as any as S.Schema<ScansHarResponseLogEntriesItemRequest>;
-
-export interface ScansHarResponseLogEntriesItemResponseContent {
-  mimeType: string;
-  size: number;
-  compression?: number | null;
-}
-export const ScansHarResponseLogEntriesItemResponseContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mimeType: S.String,
-      size: S.Number,
-      compression: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "ScansHarResponseLogEntriesItemResponseContent",
-  }) as any as S.Schema<ScansHarResponseLogEntriesItemResponseContent>;
-
-export type ScansHarResponseLogEntriesItemResponseHeadersItem =
-  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
-export const ScansHarResponseLogEntriesItemResponseHeadersItem =
-  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
-
-export type ScansHarResponseLogEntriesItemResponseHeadersList =
-  Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-export const ScansHarResponseLogEntriesItemResponseHeadersList =
-  /*@__PURE__*/ S.Array(
-    ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
-  ) as any as S.Schema<ScansHarResponseLogEntriesItemResponseHeadersList>;
-
-export interface ScansHarResponseLogEntriesItemResponse {
-  transferSize: number;
-  bodySize: number;
-  content: ScansHarResponseLogEntriesItemResponseContent;
-  headers: ScansHarResponseLogEntriesItemResponseHeadersList;
-  headersSize: number;
-  httpVersion: string;
-  redirectURL: string;
-  status: number;
-  statusText: string;
-}
-export const ScansHarResponseLogEntriesItemResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      transferSize: S.Number.pipe(T.Body("_transferSize")),
-      bodySize: S.Number,
-      content: ScansHarResponseLogEntriesItemResponseContent,
-      headers: ScansHarResponseLogEntriesItemResponseHeadersList,
-      headersSize: S.Number,
-      httpVersion: S.String,
-      redirectURL: S.String,
-      status: S.Number,
-      statusText: S.String,
-    }),
-).annotate({
-  identifier: "ScansHarResponseLogEntriesItemResponse",
-}) as any as S.Schema<ScansHarResponseLogEntriesItemResponse>;
 
 export interface ScansHarResponseLogEntriesItem {
   initialPriority: string;
@@ -3681,10 +4061,6 @@ export interface ScansHarResponseLogEntriesItem {
   connection: string;
   pageref: string;
   request: ScansHarResponseLogEntriesItemRequest;
-  response: ScansHarResponseLogEntriesItemResponse;
-  serverIPAddress: string;
-  startedDateTime: string;
-  time: number;
 }
 export const ScansHarResponseLogEntriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3698,10 +4074,6 @@ export const ScansHarResponseLogEntriesItem = /*@__PURE__*/ S.suspend(() =>
     connection: S.String,
     pageref: S.String,
     request: ScansHarResponseLogEntriesItemRequest,
-    response: ScansHarResponseLogEntriesItemResponse,
-    serverIPAddress: S.String,
-    startedDateTime: S.String,
-    time: S.Number,
   }),
 ).annotate({
   identifier: "ScansHarResponseLogEntriesItem",
@@ -3713,54 +4085,14 @@ export const ScansHarResponseLogEntriesList = /*@__PURE__*/ S.Array(
   ScansHarResponseLogEntriesItem,
 ) as any as S.Schema<ScansHarResponseLogEntriesList>;
 
-export interface ScansHarResponseLogPagesItemPageTimings {
-  onContentLoad: number;
-  onLoad: number;
-}
-export const ScansHarResponseLogPagesItemPageTimings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      onContentLoad: S.Number,
-      onLoad: S.Number,
-    }),
-).annotate({
-  identifier: "ScansHarResponseLogPagesItemPageTimings",
-}) as any as S.Schema<ScansHarResponseLogPagesItemPageTimings>;
-
-export interface ScansHarResponseLogPagesItem {
-  id: string;
-  pageTimings: ScansHarResponseLogPagesItemPageTimings;
-  startedDateTime: string;
-  title: string;
-}
-export const ScansHarResponseLogPagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    pageTimings: ScansHarResponseLogPagesItemPageTimings,
-    startedDateTime: S.String,
-    title: S.String,
-  }),
-).annotate({
-  identifier: "ScansHarResponseLogPagesItem",
-}) as any as S.Schema<ScansHarResponseLogPagesItem>;
-
-export type ScansHarResponseLogPagesList = Array<ScansHarResponseLogPagesItem>;
-export const ScansHarResponseLogPagesList = /*@__PURE__*/ S.Array(
-  ScansHarResponseLogPagesItem,
-) as any as S.Schema<ScansHarResponseLogPagesList>;
-
 export interface ScansHarResponseLog {
   creator: ScansHarResponseLogCreator;
   entries: ScansHarResponseLogEntriesList;
-  pages: ScansHarResponseLogPagesList;
-  version: string;
 }
 export const ScansHarResponseLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creator: ScansHarResponseLogCreator,
     entries: ScansHarResponseLogEntriesList,
-    pages: ScansHarResponseLogPagesList,
-    version: S.String,
   }),
 ).annotate({
   identifier: "ScansHarResponseLog",
@@ -3804,103 +4136,9 @@ export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScansRequest",
 }) as any as S.Schema<ListScansRequest>;
 
-export interface ScansListResponseResultsItemPage {
-  asn: string;
-  country: string;
-  ip: string;
-  url: string;
-}
-export const ScansListResponseResultsItemPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asn: S.String,
-    country: S.String,
-    ip: S.String,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "ScansListResponseResultsItemPage",
-}) as any as S.Schema<ScansListResponseResultsItemPage>;
-
-export interface ScansListResponseResultsItemStats {
-  dataLength: number;
-  requests: number;
-  uniqCountries: number;
-  uniqIPs: number;
-}
-export const ScansListResponseResultsItemStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataLength: S.Number,
-    requests: S.Number,
-    uniqCountries: S.Number,
-    uniqIPs: S.Number,
-  }),
-).annotate({
-  identifier: "ScansListResponseResultsItemStats",
-}) as any as S.Schema<ScansListResponseResultsItemStats>;
-
-export interface ScansListResponseResultsItemTask {
-  time: string;
-  url: string;
-  uuid: string;
-  visibility: string;
-}
-export const ScansListResponseResultsItemTask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    time: S.String,
-    url: S.String,
-    uuid: S.String,
-    visibility: S.String,
-  }),
-).annotate({
-  identifier: "ScansListResponseResultsItemTask",
-}) as any as S.Schema<ScansListResponseResultsItemTask>;
-
-export interface ScansListResponseResultsItemVerdicts {
-  malicious: boolean;
-}
-export const ScansListResponseResultsItemVerdicts = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      malicious: S.Boolean,
-    }),
-).annotate({
-  identifier: "ScansListResponseResultsItemVerdicts",
-}) as any as S.Schema<ScansListResponseResultsItemVerdicts>;
-
-export interface ScansListResponseResultsItem {
-  id: string;
-  page: ScansListResponseResultsItemPage;
-  result: string;
-  stats: ScansListResponseResultsItemStats;
-  task: ScansListResponseResultsItemTask;
-  verdicts: ScansListResponseResultsItemVerdicts;
-}
-export const ScansListResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String.pipe(T.Body("_id")),
-    page: ScansListResponseResultsItemPage,
-    result: S.String,
-    stats: ScansListResponseResultsItemStats,
-    task: ScansListResponseResultsItemTask,
-    verdicts: ScansListResponseResultsItemVerdicts,
-  }),
-).annotate({
-  identifier: "ScansListResponseResultsItem",
-}) as any as S.Schema<ScansListResponseResultsItem>;
-
-export type ScansListResponseResultsList = Array<ScansListResponseResultsItem>;
-export const ScansListResponseResultsList = /*@__PURE__*/ S.Array(
-  ScansListResponseResultsItem,
-) as any as S.Schema<ScansListResponseResultsList>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListScansResponse {
-  results: ScansListResponseResultsList;
-}
+export type ListScansResponse = string;
 export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: ScansListResponseResultsList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListScansResponse",
 }) as any as S.Schema<ListScansResponse>;
@@ -3942,7 +4180,7 @@ export const ScreenshotScanResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScreenshotScanResponse>;
 
 export type BulkCreateScansError = CloudflareOpError;
-/** Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish. */
+/** Submit URLs to scan. Check limits at <https://developers.cloudflare.com/security-center/investigate/scan-limits/> and take into account scans submitted in bulk have lower priority and may take longer to finish. */
 export const bulkCreateScans: API.OperationMethod<
   BulkCreateScansRequest,
   BulkCreateScansResponse,
@@ -3957,7 +4195,7 @@ export const bulkCreateScans: API.OperationMethod<
 }));
 
 export type CreateScanError = CloudflareOpError;
-/** Submit a URL to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/. */
+/** Submit a URL to scan. Check limits at <https://developers.cloudflare.com/security-center/investigate/scan-limits/>. */
 export const createScan: API.OperationMethod<
   CreateScanRequest,
   CreateScanResponse,
@@ -3972,7 +4210,7 @@ export const createScan: API.OperationMethod<
 }));
 
 export type DomScanError = CloudflareOpError;
-/** Returns a plain text response, with the scan's DOM content as rendered by Chrome. */
+/** Returns a plain text response, with the scan’s DOM content as rendered by Chrome. */
 export const domScan: API.OperationMethod<
   DomScanRequest,
   DomScanResponse,
@@ -4017,7 +4255,7 @@ export const getScan: API.OperationMethod<
 }));
 
 export type HarScanError = CloudflareOpError;
-/** Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/. */
+/** Get a URL scan’s HAR file. See HAR spec at <http://www.softwareishard.com/blog/har-12-spec/>. */
 export const harScan: API.OperationMethod<
   HarScanRequest,
   HarScanResponse,
@@ -4032,7 +4270,7 @@ export const harScan: API.OperationMethod<
 }));
 
 export type ListScansError = CloudflareOpError;
-/** Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'path:"/bundles/jquery.js"': Searches for scans who requested resources with the given path.<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.<br/>- 'page.domain:microsoft* AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with "microsoft".<br/>- 'apikey:me AND date:[2025-01 TO 2025-02]': my scans from 2025 January to 2025 February. */
+/** Use a subset of ElasticSearch Query syntax to filter scans. Some example queries: - ‘path:“/bundles/jquery.js”’: Searches for scans who requested resources with the given path. - ‘page.asn:AS24940 AND hash:xxx’: Websites hosted in AS24940 where a resource with the given hash was downloaded. - ‘page.domain:microsoft* AND verdicts.malicious:true AND NOT page.domain:microsoft.com’: malicious scans whose hostname starts with “microsoft”. - ‘apikey:me AND date:[2025-01 TO 2025-02]’: my scans from 2025 January to 2025 February. */
 export const listScans: API.OperationMethod<
   ListScansRequest,
   ListScansResponse,
@@ -4047,7 +4285,7 @@ export const listScans: API.OperationMethod<
 }));
 
 export type ScreenshotScanError = CloudflareOpError;
-/** Get scan's screenshot by resolution (desktop/mobile/tablet). */
+/** Get scan’s screenshot by resolution (desktop/mobile/tablet). */
 export const screenshotScan: API.OperationMethod<
   ScreenshotScanRequest,
   ScreenshotScanResponse,

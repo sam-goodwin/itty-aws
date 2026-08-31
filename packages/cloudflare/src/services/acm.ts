@@ -124,6 +124,10 @@ export type CustomTrustStoreCreateResponseStatus =
   | "expired";
 export const CustomTrustStoreCreateResponseStatus = /*@__PURE__*/ S.String;
 
+export type CustomTrustStoreCreateResponseCertificate =
+  "-----BEGIN CERTIFICATE-----\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n-----END CERTIFICATE-----\n";
+export const CustomTrustStoreCreateResponseCertificate = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomTrustStoreResponse {
   /** Identifier. */
@@ -136,12 +140,14 @@ export interface CreateCustomTrustStoreResponse {
   issuer: string;
   /** The type of hash used for the certificate. */
   signature: string;
-  /** Status of the zone's custom SSL. */
+  /** Status of the zone’s custom SSL. */
   status: CustomTrustStoreCreateResponseStatus;
   /** When the certificate was last modified. */
   updatedAt: string;
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn: string;
+  /** }' */
+  certificate_2: CustomTrustStoreCreateResponseCertificate;
 }
 export const CreateCustomTrustStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -153,6 +159,9 @@ export const CreateCustomTrustStoreResponse = /*@__PURE__*/ S.suspend(() =>
     status: CustomTrustStoreCreateResponseStatus,
     updatedAt: S.String.pipe(T.Body("updated_at")),
     uploadedOn: S.String.pipe(T.Body("uploaded_on")),
+    certificate_2: CustomTrustStoreCreateResponseCertificate.pipe(
+      T.Body("certificate"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCustomTrustStoreResponse",
@@ -242,7 +251,7 @@ export interface GetCustomTrustStoreResponse {
   issuer: string;
   /** The type of hash used for the certificate. */
   signature: string;
-  /** Status of the zone's custom SSL. */
+  /** Status of the zone’s custom SSL. */
   status: CustomTrustStoreGetResponseStatus;
   /** When the certificate was last modified. */
   updatedAt: string;
@@ -372,7 +381,7 @@ export interface CustomTrustStoreListResultItem {
   issuer: string;
   /** The type of hash used for the certificate. */
   signature: string;
-  /** Status of the zone's custom SSL. */
+  /** Status of the zone’s custom SSL. */
   status: CustomTrustStoreListResultItemStatus;
   /** When the certificate was last modified. */
   updatedAt: string;
@@ -463,6 +472,10 @@ export const TotalTlsUpdateResponseCertificateAuthority =
 export type TotalTlsUpdateResponseValidityPeriod = 90;
 export const TotalTlsUpdateResponseValidityPeriod = /*@__PURE__*/ S.Number;
 
+export type TotalTlsUpdateResponseCertificateAuthority2 = "google";
+export const TotalTlsUpdateResponseCertificateAuthority2 =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TotalTlsUpdateResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
@@ -471,6 +484,9 @@ export interface TotalTlsUpdateResponse {
   enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
   validityPeriod?: TotalTlsUpdateResponseValidityPeriod | null;
+  enabled_2: unknown;
+  /** }' */
+  certificate_authority_2: TotalTlsUpdateResponseCertificateAuthority2;
 }
 export const TotalTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -484,6 +500,10 @@ export const TotalTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(TotalTlsUpdateResponseValidityPeriod).pipe(
         T.Body("validity_period"),
       ),
+    ),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    certificate_authority_2: TotalTlsUpdateResponseCertificateAuthority2.pipe(
+      T.Body("certificate_authority"),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -537,6 +557,9 @@ export const TotalTlsEditResponseCertificateAuthority = /*@__PURE__*/ S.String;
 export type TotalTlsEditResponseValidityPeriod = 90;
 export const TotalTlsEditResponseValidityPeriod = /*@__PURE__*/ S.Number;
 
+export type TotalTlsEditResponseCertificateAuthority2 = "google";
+export const TotalTlsEditResponseCertificateAuthority2 = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
@@ -545,6 +568,9 @@ export interface UpdateTotalTlResponse {
   enabled?: boolean | null;
   /** The validity period in days for the certificates ordered via Total TLS. */
   validityPeriod?: TotalTlsEditResponseValidityPeriod | null;
+  enabled_2: unknown;
+  /** }' */
+  certificate_authority_2: TotalTlsEditResponseCertificateAuthority2;
 }
 export const UpdateTotalTlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -558,6 +584,10 @@ export const UpdateTotalTlResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(TotalTlsEditResponseValidityPeriod).pipe(
         T.Body("validity_period"),
       ),
+    ),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    certificate_authority_2: TotalTlsEditResponseCertificateAuthority2.pipe(
+      T.Body("certificate_authority"),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

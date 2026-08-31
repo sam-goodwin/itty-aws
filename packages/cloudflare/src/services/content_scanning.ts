@@ -88,7 +88,7 @@ export const CreateContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContentScanningResponse>;
 
 export interface PayloadsCreateRequestBodyItem {
-  /** Defines the ruleset expression to use in matching content objects. */
+  /** Defines the custom content extraction expression used to reach content objects in the request. */
   payload: string;
 }
 export const PayloadsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -126,9 +126,9 @@ export const CreatePayloadRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePayloadRequest>;
 
 export interface PayloadsCreateResultItem {
-  /** defines the unique ID for this custom scan expression. */
+  /** Defines the unique ID for this Content Scanning custom expression. */
   id?: string | null;
-  /** Defines the ruleset expression to use in matching content objects. */
+  /** Defines the custom content extraction expression used to reach content objects in the request. */
   payload?: string | null;
 }
 export const PayloadsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -163,7 +163,7 @@ export const CreatePayloadResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePayloadRequest {
   /** Defines an identifier. */
   zoneId: string;
-  /** defines the unique ID for this custom scan expression. */
+  /** Defines the unique ID for this Content Scanning custom expression. */
   expressionId: string;
 }
 export const DeletePayloadRequest = /*@__PURE__*/ S.suspend(() =>
@@ -403,7 +403,7 @@ export type CreateContentScanningError =
   | ContentScanningNotEntitled
   | Forbidden
   | CloudflareOpError;
-/** Update the Content Scanning status. */
+/** Update the Content Scanning status by setting the status value to `enabled` or `disabled`. This is equivalent to calling the dedicated enable and disable endpoints. */
 export const createContentScanning: API.OperationMethod<
   CreateContentScanningRequest,
   CreateContentScanningResponse,
@@ -427,7 +427,7 @@ export type CreatePayloadError =
   | ContentScanningNotEntitled
   | Forbidden
   | CloudflareOpError;
-/** Add custom scan expressions for Content Scanning. */
+/** Create one or more Content Scanning custom expressions, appending them to the existing list of the zone, and return the updated list. Each expression reaches content objects the scanner cannot find automatically, for example `lookup_json_string(http.request.body.raw, "file")`. */
 export const createPayload: API.PaginatedOperationMethod<
   CreatePayloadRequest,
   CreatePayloadResponse,
@@ -456,7 +456,7 @@ export type DeletePayloadError =
   | ContentScanningNotEnabled
   | Forbidden
   | CloudflareOpError;
-/** Delete a Content Scan Custom Expression. */
+/** Delete the Content Scanning custom expression with the given identifier and return the expressions that remain. Content objects reached only by the deleted expression are no longer scanned. */
 export const deletePayload: API.PaginatedOperationMethod<
   DeletePayloadRequest,
   DeletePayloadResponse,
@@ -481,7 +481,7 @@ export const deletePayload: API.PaginatedOperationMethod<
 ) as any;
 
 export type DisableContentScanningError = CloudflareOpError;
-/** Disable Content Scanning. */
+/** Disable Content Scanning for a zone. The `cf.waf.content_scan.*` fields are no longer populated, so rules that reference them stop matching. */
 export const disableContentScanning: API.OperationMethod<
   DisableContentScanningRequest,
   DisableContentScanningResponse,
@@ -496,7 +496,7 @@ export const disableContentScanning: API.OperationMethod<
 }));
 
 export type EnableContentScanningError = CloudflareOpError;
-/** Enable Content Scanning. */
+/** Enable Content Scanning for a zone, so that Cloudflare inspects content objects uploaded to the zone and checks them for malware. Scan results populate the `cf.waf.content_scan.*` fields, which you can reference in custom rules and rate limiting rules. */
 export const enableContentScanning: API.OperationMethod<
   EnableContentScanningRequest,
   EnableContentScanningResponse,
@@ -511,7 +511,7 @@ export const enableContentScanning: API.OperationMethod<
 }));
 
 export type GetContentScanningError = Forbidden | CloudflareOpError;
-/** Retrieve the current status of Content Scanning. */
+/** Get the current Content Scanning status for the zone, together with the date the status was last modified. */
 export const getContentScanning: API.OperationMethod<
   GetContentScanningRequest,
   GetContentScanningResponse,
@@ -529,7 +529,7 @@ export type ListPayloadsError =
   | ContentScanningNotEnabled
   | Forbidden
   | CloudflareOpError;
-/** Get a list of existing custom scan expressions for Content Scanning. */
+/** List the Content Scanning custom expressions configured for the zone, each with its own identifier. A custom expression tells the scanner how to reach content objects in a request it cannot parse on its own, such as files Base64-encoded inside a JSON body. */
 export const listPayloads: API.PaginatedOperationMethod<
   ListPayloadsRequest,
   ListPayloadsResponse,
@@ -554,7 +554,7 @@ export const listPayloads: API.PaginatedOperationMethod<
 ) as any;
 
 export type SettingsGetError = Forbidden | CloudflareOpError;
-/** Retrieve the current status of Content Scanning. */
+/** Get the current Content Scanning status for the zone, together with the date the status was last modified. */
 export const settingsGet: API.OperationMethod<
   SettingsGetRequest,
   SettingsGetResponse,
@@ -572,7 +572,7 @@ export type UpdateError =
   | ContentScanningNotEntitled
   | Forbidden
   | CloudflareOpError;
-/** Update the Content Scanning status. */
+/** Update the Content Scanning status by setting the status value to `enabled` or `disabled`. This is equivalent to calling the dedicated enable and disable endpoints. */
 export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,

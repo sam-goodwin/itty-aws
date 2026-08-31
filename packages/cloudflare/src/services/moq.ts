@@ -46,31 +46,14 @@ export const CreateRelayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRelayRequest",
 }) as any as S.Schema<CreateRelayRequest>;
 
-export interface RelaysCreateResponseConfigLingeringSubscribe {
-  enabled?: boolean | null;
-  /** Relay-level ceiling on lingering subscribe timeout (ms). Default 30000. */
-  maxTimeoutMs?: number | null;
-}
-export const RelaysCreateResponseConfigLingeringSubscribe =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      maxTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_timeout_ms")),
-      ),
-    }),
-  ).annotate({
-    identifier: "RelaysCreateResponseConfigLingeringSubscribe",
-  }) as any as S.Schema<RelaysCreateResponseConfigLingeringSubscribe>;
-
 export interface RelaysCreateResponseConfigUpstreamsUpstreamsItem {
-  /** Upstream MOQT server publisher URL. */
-  url?: string | null;
+  /** Upstream MOQT server publisher URL. Must be an absolute URL with a host and a scheme the relay can dial: moqt:// (raw QUIC) or https:// (WebTransport). Validated on update (PUT); rejected with 21013. */
+  url: string;
 }
 export const RelaysCreateResponseConfigUpstreamsUpstreamsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      url: S.optional(S.NullOr(S.String)),
+      url: S.String,
     }),
   ).annotate({
     identifier: "RelaysCreateResponseConfigUpstreamsUpstreamsItem",
@@ -85,7 +68,7 @@ export const RelaysCreateResponseConfigUpstreamsUpstreamsList =
 
 export interface RelaysCreateResponseConfigUpstreams {
   enabled?: boolean | null;
-  /** Ordered list of upstream MOQT server publishers. Each entry is an */
+  /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysCreateResponseConfigUpstreamsUpstreamsList | null;
 }
 export const RelaysCreateResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
@@ -100,46 +83,131 @@ export const RelaysCreateResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelaysCreateResponseConfigUpstreams>;
 
 export interface RelaysCreateResponseConfig {
-  lingeringSubscribe?: RelaysCreateResponseConfigLingeringSubscribe | null;
-  /** Upstreams are external MOQT server publishers that a relay falls back */
+  /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysCreateResponseConfigUpstreams | null;
 }
 export const RelaysCreateResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lingeringSubscribe: S.optional(
-      S.NullOr(RelaysCreateResponseConfigLingeringSubscribe).pipe(
-        T.Body("lingering_subscribe"),
-      ),
-    ),
     upstreams: S.optional(S.NullOr(RelaysCreateResponseConfigUpstreams)),
   }),
 ).annotate({
   identifier: "RelaysCreateResponseConfig",
 }) as any as S.Schema<RelaysCreateResponseConfig>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateRelayResponse {
-  /** upstreams and lingering_subscribe are mutually exclusive. */
-  config: RelaysCreateResponseConfig;
+export type RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsItem =
+  | "publish"
+  | "subscribe";
+export const RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsItem =
+  /*@__PURE__*/ S.String;
+
+export type RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList =
+  Array<RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsItem>;
+export const RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList =
+  /*@__PURE__*/ S.Array(
+    RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsItem,
+  ) as any as S.Schema<RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList>;
+
+export type RelaysCreateResponseIssuersItemCloudflareTokensItemIssuer =
+  "cloudflare";
+export const RelaysCreateResponseIssuersItemCloudflareTokensItemIssuer =
+  /*@__PURE__*/ S.String;
+
+export type RelaysCreateResponseIssuersItemCloudflareTokensItemType =
+  "cloudflare_jwt";
+export const RelaysCreateResponseIssuersItemCloudflareTokensItemType =
+  /*@__PURE__*/ S.String;
+
+export type RelaysCreateResponseIssuersItemCloudflareTokensItemName =
+  "Production Live Stream";
+export const RelaysCreateResponseIssuersItemCloudflareTokensItemName =
+  /*@__PURE__*/ S.String;
+
+export interface RelaysCreateResponseIssuersItemCloudflareTokensItem {
+  /** formatdate-time */
   created: string;
+  /** Mandatory; no more than 1 year after `created`. */
+  expires: string;
+  /** Token identity and registry key (32 hex chars). */
+  jti: string;
+  /** Signed allowlist of what the token may do. V1 coarse roles; the array form extends to fine-grained MoQT message names later without a breaking change. */
+  operations: RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList;
+  /** Optional, customer-set. */
+  label?: string | null;
+  /** The signed JWT. Present ONLY in create / auto-create responses (shown once); never returned by list, never stored. */
+  secret?: string | null;
+  issuer: RelaysCreateResponseIssuersItemCloudflareTokensItemIssuer;
+  type: RelaysCreateResponseIssuersItemCloudflareTokensItemType;
+  /** formatdate-time */
   modified: string;
   name: string;
-  /** Full access token (publish + subscribe). Treat as sensitive. */
-  tokenPublishSubscribe: string;
-  /** Subscribe-only token. Treat as sensitive. */
-  tokenSubscribe: string;
   /** Server-generated unique identifier (32 hex chars). */
   uid: string;
+  /** }' */
+  name_2: RelaysCreateResponseIssuersItemCloudflareTokensItemName;
+}
+export const RelaysCreateResponseIssuersItemCloudflareTokensItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      created: S.String,
+      expires: S.String,
+      jti: S.String,
+      operations:
+        RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList,
+      label: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      issuer: RelaysCreateResponseIssuersItemCloudflareTokensItemIssuer,
+      type: RelaysCreateResponseIssuersItemCloudflareTokensItemType,
+      modified: S.String,
+      name: S.String,
+      uid: S.String,
+      name_2: RelaysCreateResponseIssuersItemCloudflareTokensItemName.pipe(
+        T.Body("name"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RelaysCreateResponseIssuersItemCloudflareTokensItem",
+  }) as any as S.Schema<RelaysCreateResponseIssuersItemCloudflareTokensItem>;
+
+export type RelaysCreateResponseIssuersItemCloudflareTokensList =
+  Array<RelaysCreateResponseIssuersItemCloudflareTokensItem>;
+export const RelaysCreateResponseIssuersItemCloudflareTokensList =
+  /*@__PURE__*/ S.Array(
+    RelaysCreateResponseIssuersItemCloudflareTokensItem,
+  ) as any as S.Schema<RelaysCreateResponseIssuersItemCloudflareTokensList>;
+
+export interface RelaysCreateResponseIssuersItem {
+  /** Always present ([] when empty). */
+  cloudflareTokens: RelaysCreateResponseIssuersItemCloudflareTokensList;
+}
+export const RelaysCreateResponseIssuersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudflareTokens: RelaysCreateResponseIssuersItemCloudflareTokensList.pipe(
+      T.Body("cloudflare_tokens"),
+    ),
+  }),
+).annotate({
+  identifier: "RelaysCreateResponseIssuersItem",
+}) as any as S.Schema<RelaysCreateResponseIssuersItem>;
+
+export type RelaysCreateResponseIssuersList =
+  Array<RelaysCreateResponseIssuersItem>;
+export const RelaysCreateResponseIssuersList = /*@__PURE__*/ S.Array(
+  RelaysCreateResponseIssuersItem,
+) as any as S.Schema<RelaysCreateResponseIssuersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateRelayResponse {
+  config: RelaysCreateResponseConfig;
+  /** formatdate-time */
+  created: string;
+  /** Token collection (discriminated union on `type`). On create this holds the auto-created default pair, each including its one-time secret. */
+  issuers: RelaysCreateResponseIssuersList;
 }
 export const CreateRelayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: RelaysCreateResponseConfig,
     created: S.String,
-    modified: S.String,
-    name: S.String,
-    tokenPublishSubscribe: S.String.pipe(T.Body("token_publish_subscribe")),
-    tokenSubscribe: S.String.pipe(T.Body("token_subscribe")),
-    uid: S.String,
+    issuers: RelaysCreateResponseIssuersList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateRelayResponse",
@@ -196,11 +264,6 @@ export const GetRelayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRelayRequest",
 }) as any as S.Schema<GetRelayRequest>;
 
-export type RelaysGetResponseConfigLingeringSubscribe =
-  RelaysCreateResponseConfigLingeringSubscribe;
-export const RelaysGetResponseConfigLingeringSubscribe =
-  RelaysCreateResponseConfigLingeringSubscribe;
-
 export type RelaysGetResponseConfigUpstreamsUpstreamsItem =
   RelaysCreateResponseConfigUpstreamsUpstreamsItem;
 export const RelaysGetResponseConfigUpstreamsUpstreamsItem =
@@ -215,7 +278,7 @@ export const RelaysGetResponseConfigUpstreamsUpstreamsList =
 
 export interface RelaysGetResponseConfigUpstreams {
   enabled?: boolean | null;
-  /** Ordered list of upstream MOQT server publishers. Each entry is an */
+  /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysGetResponseConfigUpstreamsUpstreamsList | null;
 }
 export const RelaysGetResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
@@ -230,17 +293,11 @@ export const RelaysGetResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelaysGetResponseConfigUpstreams>;
 
 export interface RelaysGetResponseConfig {
-  lingeringSubscribe?: RelaysCreateResponseConfigLingeringSubscribe | null;
-  /** Upstreams are external MOQT server publishers that a relay falls back */
+  /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysGetResponseConfigUpstreams | null;
 }
 export const RelaysGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lingeringSubscribe: S.optional(
-      S.NullOr(RelaysCreateResponseConfigLingeringSubscribe).pipe(
-        T.Body("lingering_subscribe"),
-      ),
-    ),
     upstreams: S.optional(S.NullOr(RelaysGetResponseConfigUpstreams)),
   }),
 ).annotate({
@@ -252,13 +309,14 @@ export const RelaysGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRelayResponse {
-  /** upstreams and lingering_subscribe are mutually exclusive. */
   config: RelaysGetResponseConfig;
+  /** formatdate-time */
   created: string;
+  /** formatdate-time */
   modified: string;
   name: string;
   uid: string;
-  /** "connected" when active, omitted otherwise. */
+  /** “connected” when active, omitted otherwise. */
   status?: RelaysGetResponseStatus | null;
 }
 export const GetRelayResponse = /*@__PURE__*/ S.suspend(() =>
@@ -277,13 +335,13 @@ export const GetRelayResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListRelaysRequest {
   /** Cloudflare account identifier. */
   accountId: string;
-  /** Sort order by `created`. When true, results are returned oldest-first */
+  /** Sort order by `created`. When true, results are returned oldest-first (ascending); otherwise newest-first (descending, the default). */
   asc?: boolean;
-  /** Cursor for pagination. Returns relays created strictly after this */
+  /** Cursor for pagination. Returns relays created strictly after this RFC 3339 timestamp (typically the `created` value of the last item on the current page, to fetch the next page). */
   createdAfter?: string;
-  /** Cursor for pagination. Returns relays created strictly before this */
+  /** Cursor for pagination. Returns relays created strictly before this RFC 3339 timestamp (typically the `created` value of the first item on the current page, to fetch the previous page). */
   createdBefore?: string;
-  /** Maximum number of relays to return per page. */
+  /** Maximum number of relays to return per page. Values above the maximum are clamped to it rather than rejected. */
   perPage?: number;
 }
 export const ListRelaysRequest = /*@__PURE__*/ S.suspend(() =>
@@ -307,7 +365,9 @@ export const ListRelaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRelaysRequest>;
 
 export interface RelaysListResultItem {
+  /** formatdate-time */
   created: string;
+  /** formatdate-time */
   modified: string;
   name: string;
   uid: string;
@@ -343,90 +403,345 @@ export const ListRelaysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRelaysResponse",
 }) as any as S.Schema<ListRelaysResponse>;
 
-export type RelaysTokensRotateRequestType = "publish_subscribe" | "subscribe";
-export const RelaysTokensRotateRequestType = /*@__PURE__*/ S.String;
+export type RelaysTokensCreateRequestOperationsItem = "publish" | "subscribe";
+export const RelaysTokensCreateRequestOperationsItem = /*@__PURE__*/ S.String;
 
-export interface RotateRelayTokenRequest {
+export type RelaysTokensCreateRequestOperationsList = Array<
+  RelaysTokensCreateRequestOperationsItem | (string & {})
+>;
+export const RelaysTokensCreateRequestOperationsList = /*@__PURE__*/ S.Array(
+  RelaysTokensCreateRequestOperationsItem,
+) as any as S.Schema<RelaysTokensCreateRequestOperationsList>;
+
+export interface RelaysTokensCreateRequest {
   /** Cloudflare account identifier. */
   accountId: string;
   relayId: string;
-  /** Which token type to rotate. */
-  type: RelaysTokensRotateRequestType | (string & {});
+  /** Non-empty subset of the V1 roles the token is allowed to perform. Signed into the token. */
+  operations: RelaysTokensCreateRequestOperationsList;
+  /** Optional expiry (RFC 3339). Defaults to 1 year from creation; rejected if more than 1 year in the future. */
+  expires?: string;
+  /** Optional, customer-set label. */
+  label?: string;
 }
-export const RotateRelayTokenRequest = /*@__PURE__*/ S.suspend(() =>
+export const RelaysTokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     relayId: S.String.pipe(T.Label("relay_id")),
-    type: RelaysTokensRotateRequestType,
+    operations: RelaysTokensCreateRequestOperationsList,
+    expires: S.optional(S.String),
+    label: S.optional(S.String),
   })
     .pipe(
       T.Http({
         method: "POST",
-        uri: "/accounts/{account_id}/moq/relays/{relay_id}/tokens/rotate",
+        uri: "/accounts/{account_id}/moq/relays/{relay_id}/tokens",
         code: 200,
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "RotateRelayTokenRequest",
-}) as any as S.Schema<RotateRelayTokenRequest>;
+  identifier: "RelaysTokensCreateRequest",
+}) as any as S.Schema<RelaysTokensCreateRequest>;
 
-export type RelaysTokensRotateResponseType = "publish_subscribe" | "subscribe";
-export const RelaysTokensRotateResponseType = /*@__PURE__*/ S.String;
+export type RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsItem =
+  | "publish"
+  | "subscribe";
+export const RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsItem =
+  /*@__PURE__*/ S.String;
+
+export type RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsList =
+  Array<RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsItem>;
+export const RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsList =
+  /*@__PURE__*/ S.Array(
+    RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsItem,
+  ) as any as S.Schema<RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsList>;
+
+export type RelaysTokensCreateResponseIssuersItemCloudflareTokensItemIssuer =
+  "cloudflare";
+export const RelaysTokensCreateResponseIssuersItemCloudflareTokensItemIssuer =
+  /*@__PURE__*/ S.String;
+
+export type RelaysTokensCreateResponseIssuersItemCloudflareTokensItemType =
+  "cloudflare_jwt";
+export const RelaysTokensCreateResponseIssuersItemCloudflareTokensItemType =
+  /*@__PURE__*/ S.String;
+
+export type RelaysTokensCreateResponseIssuersItemCloudflareTokensItemLabel =
+  "primary-encoder";
+export const RelaysTokensCreateResponseIssuersItemCloudflareTokensItemLabel =
+  /*@__PURE__*/ S.String;
+
+export interface RelaysTokensCreateResponseIssuersItemCloudflareTokensItem {
+  /** formatdate-time */
+  created: string;
+  /** Mandatory; no more than 1 year after `created`. */
+  expires: string;
+  /** Token identity and registry key (32 hex chars). */
+  jti: string;
+  /** Signed allowlist of what the token may do. V1 coarse roles; the array form extends to fine-grained MoQT message names later without a breaking change. */
+  operations: RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsList;
+  /** Optional, customer-set. */
+  label?: string | null;
+  /** The signed JWT. Present ONLY in create / auto-create responses (shown once); never returned by list, never stored. */
+  secret?: string | null;
+  issuer: RelaysTokensCreateResponseIssuersItemCloudflareTokensItemIssuer;
+  /** HTTP */
+  type: RelaysTokensCreateResponseIssuersItemCloudflareTokensItemType;
+  /** "publish", */
+  operations_2: unknown;
+  expires_2: unknown;
+  /** }' */
+  label_2: RelaysTokensCreateResponseIssuersItemCloudflareTokensItemLabel;
+}
+export const RelaysTokensCreateResponseIssuersItemCloudflareTokensItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      created: S.String,
+      expires: S.String,
+      jti: S.String,
+      operations:
+        RelaysTokensCreateResponseIssuersItemCloudflareTokensItemOperationsList,
+      label: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      issuer: RelaysTokensCreateResponseIssuersItemCloudflareTokensItemIssuer,
+      type: RelaysTokensCreateResponseIssuersItemCloudflareTokensItemType,
+      operations_2: S.Unknown.pipe(T.Body("operations")),
+      expires_2: S.Unknown.pipe(T.Body("expires")),
+      label_2:
+        RelaysTokensCreateResponseIssuersItemCloudflareTokensItemLabel.pipe(
+          T.Body("label"),
+        ),
+    }),
+  ).annotate({
+    identifier: "RelaysTokensCreateResponseIssuersItemCloudflareTokensItem",
+  }) as any as S.Schema<RelaysTokensCreateResponseIssuersItemCloudflareTokensItem>;
+
+export type RelaysTokensCreateResponseIssuersItemCloudflareTokensList =
+  Array<RelaysTokensCreateResponseIssuersItemCloudflareTokensItem>;
+export const RelaysTokensCreateResponseIssuersItemCloudflareTokensList =
+  /*@__PURE__*/ S.Array(
+    RelaysTokensCreateResponseIssuersItemCloudflareTokensItem,
+  ) as any as S.Schema<RelaysTokensCreateResponseIssuersItemCloudflareTokensList>;
+
+export interface RelaysTokensCreateResponseIssuersItem {
+  /** Always present ([] when empty). */
+  cloudflareTokens: RelaysTokensCreateResponseIssuersItemCloudflareTokensList;
+}
+export const RelaysTokensCreateResponseIssuersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cloudflareTokens:
+        RelaysTokensCreateResponseIssuersItemCloudflareTokensList.pipe(
+          T.Body("cloudflare_tokens"),
+        ),
+    }),
+).annotate({
+  identifier: "RelaysTokensCreateResponseIssuersItem",
+}) as any as S.Schema<RelaysTokensCreateResponseIssuersItem>;
+
+export type RelaysTokensCreateResponseIssuersList =
+  Array<RelaysTokensCreateResponseIssuersItem>;
+export const RelaysTokensCreateResponseIssuersList = /*@__PURE__*/ S.Array(
+  RelaysTokensCreateResponseIssuersItem,
+) as any as S.Schema<RelaysTokensCreateResponseIssuersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RotateRelayTokenResponse {
-  /** New token value (shown once). Treat as sensitive. */
-  token: string;
-  type: RelaysTokensRotateResponseType;
+export interface RelaysTokensCreateResponse {
+  issuers: RelaysTokensCreateResponseIssuersList;
 }
-export const RotateRelayTokenResponse = /*@__PURE__*/ S.suspend(() =>
+export const RelaysTokensCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    token: S.String,
-    type: RelaysTokensRotateResponseType,
+    issuers: RelaysTokensCreateResponseIssuersList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "RotateRelayTokenResponse",
-}) as any as S.Schema<RotateRelayTokenResponse>;
+  identifier: "RelaysTokensCreateResponse",
+}) as any as S.Schema<RelaysTokensCreateResponse>;
 
-export interface RelaysUpdateRequestConfigLingeringSubscribe {
-  enabled?: boolean;
-  /** Relay-level ceiling on lingering subscribe timeout (ms). Default 30000. */
-  maxTimeoutMs?: number;
+export interface RelaysTokensDeleteRequest {
+  /** Cloudflare account identifier. */
+  accountId: string;
+  relayId: string;
+  jti: string;
 }
-export const RelaysUpdateRequestConfigLingeringSubscribe =
+export const RelaysTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    relayId: S.String.pipe(T.Label("relay_id")),
+    jti: S.String.pipe(T.Label()),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/moq/relays/{relay_id}/tokens/{jti}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "RelaysTokensDeleteRequest",
+}) as any as S.Schema<RelaysTokensDeleteRequest>;
+
+export type RelaysTokensDeleteResponseMessage = "message";
+export const RelaysTokensDeleteResponseMessage = /*@__PURE__*/ S.String;
+
+export type RelaysTokensDeleteResponseMessage2 = "message";
+export const RelaysTokensDeleteResponseMessage2 = /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface RelaysTokensDeleteResponse {
+  code: unknown;
+  /** } */
+  message: RelaysTokensDeleteResponseMessage;
+  code_2: unknown;
+  /** } */
+  message_2: RelaysTokensDeleteResponseMessage2;
+}
+export const RelaysTokensDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Unknown,
+    message: RelaysTokensDeleteResponseMessage,
+    code_2: S.Unknown.pipe(T.Body("code")),
+    message_2: RelaysTokensDeleteResponseMessage2.pipe(T.Body("message")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "RelaysTokensDeleteResponse",
+}) as any as S.Schema<RelaysTokensDeleteResponse>;
+
+export interface RelaysTokensListRequest {
+  /** Cloudflare account identifier. */
+  accountId: string;
+  relayId: string;
+}
+export const RelaysTokensListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    relayId: S.String.pipe(T.Label("relay_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/moq/relays/{relay_id}/tokens",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "RelaysTokensListRequest",
+}) as any as S.Schema<RelaysTokensListRequest>;
+
+export type RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsItem =
+  | "publish"
+  | "subscribe";
+export const RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsItem =
+  /*@__PURE__*/ S.String;
+
+export type RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsList =
+  Array<RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsItem>;
+export const RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsList =
+  /*@__PURE__*/ S.Array(
+    RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsItem,
+  ) as any as S.Schema<RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsList>;
+
+export type RelaysTokensListResponseIssuersItemCloudflareTokensItemIssuer =
+  "cloudflare";
+export const RelaysTokensListResponseIssuersItemCloudflareTokensItemIssuer =
+  /*@__PURE__*/ S.String;
+
+export type RelaysTokensListResponseIssuersItemCloudflareTokensItemType =
+  "cloudflare_jwt";
+export const RelaysTokensListResponseIssuersItemCloudflareTokensItemType =
+  /*@__PURE__*/ S.String;
+
+export interface RelaysTokensListResponseIssuersItemCloudflareTokensItem {
+  /** formatdate-time */
+  created: string;
+  /** Mandatory; no more than 1 year after `created`. */
+  expires: string;
+  /** Token identity and registry key (32 hex chars). */
+  jti: string;
+  /** Signed allowlist of what the token may do. V1 coarse roles; the array form extends to fine-grained MoQT message names later without a breaking change. */
+  operations: RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsList;
+  /** Optional, customer-set. */
+  label?: string | null;
+  /** The signed JWT. Present ONLY in create / auto-create responses (shown once); never returned by list, never stored. */
+  secret?: string | null;
+  issuer: RelaysTokensListResponseIssuersItemCloudflareTokensItemIssuer;
+  /** HTTP */
+  type: RelaysTokensListResponseIssuersItemCloudflareTokensItemType;
+}
+export const RelaysTokensListResponseIssuersItemCloudflareTokensItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.Boolean),
-      maxTimeoutMs: S.optional(S.Number.pipe(T.Body("max_timeout_ms"))),
+      created: S.String,
+      expires: S.String,
+      jti: S.String,
+      operations:
+        RelaysTokensListResponseIssuersItemCloudflareTokensItemOperationsList,
+      label: S.optional(S.NullOr(S.String)),
+      secret: S.optional(S.NullOr(S.String)),
+      issuer: RelaysTokensListResponseIssuersItemCloudflareTokensItemIssuer,
+      type: RelaysTokensListResponseIssuersItemCloudflareTokensItemType,
     }),
   ).annotate({
-    identifier: "RelaysUpdateRequestConfigLingeringSubscribe",
-  }) as any as S.Schema<RelaysUpdateRequestConfigLingeringSubscribe>;
+    identifier: "RelaysTokensListResponseIssuersItemCloudflareTokensItem",
+  }) as any as S.Schema<RelaysTokensListResponseIssuersItemCloudflareTokensItem>;
 
-export interface RelaysUpdateRequestConfigUpstreamsUpstreamsItem {
-  /** Upstream MOQT server publisher URL. */
-  url?: string;
+export type RelaysTokensListResponseIssuersItemCloudflareTokensList =
+  Array<RelaysTokensListResponseIssuersItemCloudflareTokensItem>;
+export const RelaysTokensListResponseIssuersItemCloudflareTokensList =
+  /*@__PURE__*/ S.Array(
+    RelaysTokensListResponseIssuersItemCloudflareTokensItem,
+  ) as any as S.Schema<RelaysTokensListResponseIssuersItemCloudflareTokensList>;
+
+export interface RelaysTokensListResponseIssuersItem {
+  /** Always present ([] when empty). */
+  cloudflareTokens: RelaysTokensListResponseIssuersItemCloudflareTokensList;
 }
+export const RelaysTokensListResponseIssuersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudflareTokens:
+      RelaysTokensListResponseIssuersItemCloudflareTokensList.pipe(
+        T.Body("cloudflare_tokens"),
+      ),
+  }),
+).annotate({
+  identifier: "RelaysTokensListResponseIssuersItem",
+}) as any as S.Schema<RelaysTokensListResponseIssuersItem>;
+
+export type RelaysTokensListResponseIssuersList =
+  Array<RelaysTokensListResponseIssuersItem>;
+export const RelaysTokensListResponseIssuersList = /*@__PURE__*/ S.Array(
+  RelaysTokensListResponseIssuersItem,
+) as any as S.Schema<RelaysTokensListResponseIssuersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface RelaysTokensListResponse {
+  issuers: RelaysTokensListResponseIssuersList;
+}
+export const RelaysTokensListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    issuers: RelaysTokensListResponseIssuersList,
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "RelaysTokensListResponse",
+}) as any as S.Schema<RelaysTokensListResponse>;
+
+export type RelaysUpdateRequestConfigUpstreamsUpstreamsItem =
+  RelaysCreateResponseConfigUpstreamsUpstreamsItem;
 export const RelaysUpdateRequestConfigUpstreamsUpstreamsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RelaysUpdateRequestConfigUpstreamsUpstreamsItem",
-  }) as any as S.Schema<RelaysUpdateRequestConfigUpstreamsUpstreamsItem>;
+  RelaysCreateResponseConfigUpstreamsUpstreamsItem;
 
 export type RelaysUpdateRequestConfigUpstreamsUpstreamsList =
-  Array<RelaysUpdateRequestConfigUpstreamsUpstreamsItem>;
+  Array<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
 export const RelaysUpdateRequestConfigUpstreamsUpstreamsList =
   /*@__PURE__*/ S.Array(
-    RelaysUpdateRequestConfigUpstreamsUpstreamsItem,
+    RelaysCreateResponseConfigUpstreamsUpstreamsItem,
   ) as any as S.Schema<RelaysUpdateRequestConfigUpstreamsUpstreamsList>;
 
 export interface RelaysUpdateRequestConfigUpstreams {
   enabled?: boolean;
-  /** Ordered list of upstream MOQT server publishers. Each entry is an */
+  /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysUpdateRequestConfigUpstreamsUpstreamsList;
 }
 export const RelaysUpdateRequestConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
@@ -439,17 +754,11 @@ export const RelaysUpdateRequestConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelaysUpdateRequestConfigUpstreams>;
 
 export interface RelaysUpdateRequestConfig {
-  lingeringSubscribe?: RelaysUpdateRequestConfigLingeringSubscribe;
-  /** Upstreams are external MOQT server publishers that a relay falls back */
+  /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysUpdateRequestConfigUpstreams;
 }
 export const RelaysUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lingeringSubscribe: S.optional(
-      RelaysUpdateRequestConfigLingeringSubscribe.pipe(
-        T.Body("lingering_subscribe"),
-      ),
-    ),
     upstreams: S.optional(RelaysUpdateRequestConfigUpstreams),
   }),
 ).annotate({
@@ -460,7 +769,6 @@ export interface UpdateRelayRequest {
   /** Cloudflare account identifier. */
   accountId: string;
   relayId: string;
-  /** upstreams and lingering_subscribe are mutually exclusive. */
   config?: RelaysUpdateRequestConfig;
   name?: string;
 }
@@ -483,11 +791,6 @@ export const UpdateRelayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRelayRequest",
 }) as any as S.Schema<UpdateRelayRequest>;
 
-export type RelaysUpdateResponseConfigLingeringSubscribe =
-  RelaysCreateResponseConfigLingeringSubscribe;
-export const RelaysUpdateResponseConfigLingeringSubscribe =
-  RelaysCreateResponseConfigLingeringSubscribe;
-
 export type RelaysUpdateResponseConfigUpstreamsUpstreamsItem =
   RelaysCreateResponseConfigUpstreamsUpstreamsItem;
 export const RelaysUpdateResponseConfigUpstreamsUpstreamsItem =
@@ -502,7 +805,7 @@ export const RelaysUpdateResponseConfigUpstreamsUpstreamsList =
 
 export interface RelaysUpdateResponseConfigUpstreams {
   enabled?: boolean | null;
-  /** Ordered list of upstream MOQT server publishers. Each entry is an */
+  /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysUpdateResponseConfigUpstreamsUpstreamsList | null;
 }
 export const RelaysUpdateResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
@@ -517,17 +820,11 @@ export const RelaysUpdateResponseConfigUpstreams = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelaysUpdateResponseConfigUpstreams>;
 
 export interface RelaysUpdateResponseConfig {
-  lingeringSubscribe?: RelaysCreateResponseConfigLingeringSubscribe | null;
-  /** Upstreams are external MOQT server publishers that a relay falls back */
+  /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysUpdateResponseConfigUpstreams | null;
 }
 export const RelaysUpdateResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lingeringSubscribe: S.optional(
-      S.NullOr(RelaysCreateResponseConfigLingeringSubscribe).pipe(
-        T.Body("lingering_subscribe"),
-      ),
-    ),
     upstreams: S.optional(S.NullOr(RelaysUpdateResponseConfigUpstreams)),
   }),
 ).annotate({
@@ -539,13 +836,14 @@ export const RelaysUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRelayResponse {
-  /** upstreams and lingering_subscribe are mutually exclusive. */
   config: RelaysUpdateResponseConfig;
+  /** formatdate-time */
   created: string;
+  /** formatdate-time */
   modified: string;
   name: string;
   uid: string;
-  /** "connected" when active, omitted otherwise. */
+  /** “connected” when active, omitted otherwise. */
   status?: RelaysUpdateResponseStatus | null;
 }
 export const UpdateRelayResponse = /*@__PURE__*/ S.suspend(() =>
@@ -562,7 +860,7 @@ export const UpdateRelayResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRelayResponse>;
 
 export type CreateRelayError = CloudflareOpError;
-/** Provisions a new MoQ relay instance. Auto-creates a publish+subscribe token and a subscribe-only token. Token values are included in the response (shown once). Config is set to defaults (lingering subscribe enabled, 30s ceiling, upstreams off). Use PUT to modify. */
+/** Provisions a new MoQ relay instance. Auto-creates a publish+subscribe token and a subscribe-only token. Token values are included in the response (shown once). Config is always set to defaults (upstreams off) and cannot be supplied here — sending a non-empty `config` is rejected (21014); `null` or `{}` is accepted as absent. Use PUT to configure the relay after it exists. */
 export const createRelay: API.OperationMethod<
   CreateRelayRequest,
   CreateRelayResponse,
@@ -577,7 +875,7 @@ export const createRelay: API.OperationMethod<
 }));
 
 export type DeleteRelayError = CloudflareOpError;
-/** Soft-deletes a MoQ relay. */
+/** Soft-deletes a MoQ relay. The relay ID goes in the URL path — `DELETE /accounts/{account_id}/moq/relays/{relay_id}` — not the request body; there is no collection-level delete endpoint. */
 export const deleteRelay: API.OperationMethod<
   DeleteRelayRequest,
   DeleteRelayResponse,
@@ -607,7 +905,7 @@ export const getRelay: API.OperationMethod<
 }));
 
 export type ListRelaysError = CloudflareOpError;
-/** Lists all MoQ relays for the account. Returns only metadata. Config, status, and tokens are omitted. Results are cursor-paginated (keyset on the `created` timestamp). Use `created_before` / `created_after` with the `created` value of the first/last item in a page to fetch the adjacent page. `result_info` reports the page `count` and the `total` matching the cursor filters. */
+/** Lists all MoQ relays for the account. Returns only metadata. Config, status, and tokens are omitted. Results are cursor-paginated (keyset on the `created` timestamp). Use `created_before` / `created_after` with the `created` value of the first/last item in a page to fetch the adjacent page. `result_info`reports the page `count` and the `total` matching the cursor filters. */
 export const listRelays: API.PaginatedOperationMethod<
   ListRelaysRequest,
   ListRelaysResponse,
@@ -626,23 +924,53 @@ export const listRelays: API.PaginatedOperationMethod<
   cloudflarePaginate,
 ) as any;
 
-export type RotateRelayTokenError = CloudflareOpError;
-/** Generates a new token for the specified type. The old token is immediately invalidated. Token value is shown once in the response. */
-export const rotateRelayToken: API.OperationMethod<
-  RotateRelayTokenRequest,
-  RotateRelayTokenResponse,
-  RotateRelayTokenError,
+export type RelaysTokensCreateError = CloudflareOpError;
+/** Mints a new relay-scoped token and adds it to the relay’s accepted-auth registry. The token value (secret) is shown once in the response. A relay may hold up to 10 tokens; creating an 11th is rejected. */
+export const relaysTokensCreate: API.OperationMethod<
+  RelaysTokensCreateRequest,
+  RelaysTokensCreateResponse,
+  RelaysTokensCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateRelayTokenRequest,
-  output: RotateRelayTokenResponse,
+  input: RelaysTokensCreateRequest,
+  output: RelaysTokensCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RelaysTokensDeleteError = CloudflareOpError;
+/** Revokes a token by removing it from the set the relay accepts. Relays cache that set, so revocation takes effect within seconds rather than instantly, and connections already established with the token are not closed. Revoking an unknown token succeeds, so the call is idempotent. */
+export const relaysTokensDelete: API.OperationMethod<
+  RelaysTokensDeleteRequest,
+  RelaysTokensDeleteResponse,
+  RelaysTokensDeleteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RelaysTokensDeleteRequest,
+  output: RelaysTokensDeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RelaysTokensListError = CloudflareOpError;
+/** Returns metadata for every token the relay accepts. Secrets are never returned, so a token that has been lost cannot be recovered here. There is no expiry filter: compare each token’s `expires` to the current time to tell which ones have lapsed. */
+export const relaysTokensList: API.OperationMethod<
+  RelaysTokensListRequest,
+  RelaysTokensListResponse,
+  RelaysTokensListError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RelaysTokensListRequest,
+  output: RelaysTokensListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
 export type UpdateRelayError = CloudflareOpError;
-/** Updates a relay's name and/or configuration. Partial updates: omitted fields are preserved. Config sub-objects replace as whole objects when present. upstreams and lingering_subscribe are mutually exclusive. */
+/** Updates a relay’s name and/or configuration. The relay ID goes in the URL path — `PUT /accounts/{account_id}/moq/relays/{relay_id}` — not the request body; there is no collection-level update endpoint. This is also the only way to set a relay’s config (config cannot be set at create time). Partial updates: omitted fields are preserved; config sub-objects replace as whole objects when present. */
 export const updateRelay: API.OperationMethod<
   UpdateRelayRequest,
   UpdateRelayResponse,

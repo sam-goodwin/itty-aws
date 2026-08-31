@@ -56,12 +56,41 @@ export const DeleteSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSecurityTxtRequest",
 }) as any as S.Schema<DeleteSecurityTxtRequest>;
 
-export interface DeleteSecurityTxtResponse {}
-export const DeleteSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteSecurityTxtResponse",
-}) as any as S.Schema<DeleteSecurityTxtResponse>;
+export type DeleteResponsePointer = "pointer";
+export const DeleteResponsePointer = /*@__PURE__*/ S.String;
+
+export type DeleteResponsePointer2 = "pointer";
+export const DeleteResponsePointer2 = /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: DeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: DeleteResponsePointer2;
+}
+export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Unknown,
+    message: S.Unknown,
+    documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+    source: S.Unknown,
+    pointer: DeleteResponsePointer,
+    code_2: S.Unknown.pipe(T.Body("code")),
+    message_2: S.Unknown.pipe(T.Body("message")),
+    documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+    source_2: S.Unknown.pipe(T.Body("source")),
+    pointer_2: DeleteResponsePointer2.pipe(T.Body("pointer")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetSecurityTxtRequest {
   /** Identifier. */
@@ -120,9 +149,11 @@ export interface SecurityTxtFile {
   contact?: GetResponseContactList | null;
   enabled?: boolean | null;
   encryption?: GetResponseEncryptionList | null;
+  /** formatdate-time */
   expires?: string | null;
   hiring?: GetResponseHiringList | null;
   policy?: GetResponsePolicyList | null;
+  /** HTTP */
   preferredLanguages?: string | null;
 }
 export const SecurityTxtFile = /*@__PURE__*/ S.suspend(() =>
@@ -191,6 +222,7 @@ export interface PutSecurityTxtRequest {
   contact?: UpdateRequestContactList;
   enabled?: boolean;
   encryption?: UpdateRequestEncryptionList;
+  /** formatdate-time */
   expires?: string;
   hiring?: UpdateRequestHiringList;
   policy?: UpdateRequestPolicyList;
@@ -223,23 +255,80 @@ export const PutSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutSecurityTxtRequest",
 }) as any as S.Schema<PutSecurityTxtRequest>;
 
-export interface PutSecurityTxtResponse {}
-export const PutSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutSecurityTxtResponse",
-}) as any as S.Schema<PutSecurityTxtResponse>;
+export type UpdateResponsePreferredLanguages = "en, es, fr";
+export const UpdateResponsePreferredLanguages = /*@__PURE__*/ S.String;
+
+export type UpdateResponsePointer = "pointer";
+export const UpdateResponsePointer = /*@__PURE__*/ S.String;
+
+export type UpdateResponsePointer2 = "pointer";
+export const UpdateResponsePointer2 = /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface UpdateResponse {
+  /** "https://example.com/hall-of-fame.html" */
+  acknowledgments: unknown;
+  /** "https://www.example.com/.well-known/security.txt" */
+  canonical: unknown;
+  /** "mailto:security@example.com", */
+  contact: unknown;
+  enabled: unknown;
+  /** "https://example.com/pgp-key.txt", */
+  encryption: unknown;
+  /** "https://example.com/jobs.html" */
+  hiring: unknown;
+  /** "https://example.com/disclosure-policy.html" */
+  policy: unknown;
+  /** }' */
+  preferredLanguages: UpdateResponsePreferredLanguages;
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: UpdateResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: UpdateResponsePointer2;
+}
+export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    acknowledgments: S.Unknown,
+    canonical: S.Unknown,
+    contact: S.Unknown,
+    enabled: S.Unknown,
+    encryption: S.Unknown,
+    hiring: S.Unknown,
+    policy: S.Unknown,
+    preferredLanguages: UpdateResponsePreferredLanguages.pipe(
+      T.Body("preferred_languages"),
+    ),
+    code: S.Unknown,
+    message: S.Unknown,
+    documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+    source: S.Unknown,
+    pointer: UpdateResponsePointer,
+    code_2: S.Unknown.pipe(T.Body("code")),
+    message_2: S.Unknown.pipe(T.Body("message")),
+    documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+    source_2: S.Unknown.pipe(T.Body("source")),
+    pointer_2: UpdateResponsePointer2.pipe(T.Body("pointer")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
 export type DeleteSecurityTxtError = Forbidden | CloudflareOpError;
 /** Removes the security.txt file configuration for a zone. The /.well-known/security.txt endpoint will no longer be served. */
 export const deleteSecurityTxt: API.OperationMethod<
   DeleteSecurityTxtRequest,
-  DeleteSecurityTxtResponse,
+  DeleteResponse,
   DeleteSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSecurityTxtRequest,
-  output: DeleteSecurityTxtResponse,
+  output: DeleteResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -267,12 +356,12 @@ export type PutSecurityTxtError =
 /** Updates the security.txt file configuration for a zone, which provides security researchers with vulnerability reporting information. */
 export const putSecurityTxt: API.OperationMethod<
   PutSecurityTxtRequest,
-  PutSecurityTxtResponse,
+  UpdateResponse,
   PutSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PutSecurityTxtRequest,
-  output: PutSecurityTxtResponse,
+  output: UpdateResponse,
   errors: [
     Forbidden,
     SecurityTxtInvalid,

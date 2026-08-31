@@ -92,6 +92,7 @@ export interface CreateDnsFirewallRequest {
   accountId: string;
   /** DNS Firewall cluster name */
   name: string;
+  /** minLength1 */
   upstreamIps: CreateRequestUpstreamIpsList;
   /** Attack mitigation settings */
   attackMitigation?: CreateRequestAttackMitigation;
@@ -101,11 +102,11 @@ export interface CreateDnsFirewallRequest {
   dnsFirewallIpCount?: number;
   /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
   ecsFallback?: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting. */
   maximumCacheTtl?: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting. */
   minimumCacheTtl?: number;
-  /** This setting controls how long DNS Firewall should cache negative */
+  /** This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers. */
   negativeCacheTtl?: number | null;
   /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
   ratelimit?: number | null;
@@ -174,6 +175,9 @@ export const CreateResponseAttackMitigation = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseAttackMitigation",
 }) as any as S.Schema<CreateResponseAttackMitigation>;
 
+export type CreateResponseRetries = 2;
+export const CreateResponseRetries = /*@__PURE__*/ S.Number;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDnsFirewallResponse {
   /** Identifier. */
@@ -183,23 +187,35 @@ export interface CreateDnsFirewallResponse {
   dnsFirewallIps: CreateResponseDnsFirewallIpsList;
   /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
   ecsFallback: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting. */
   maximumCacheTtl: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting. */
   minimumCacheTtl: number;
   /** Last modification of DNS Firewall cluster */
   modifiedOn: string;
   /** DNS Firewall cluster name */
   name: string;
-  /** This setting controls how long DNS Firewall should cache negative */
+  /** This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers. */
   negativeCacheTtl: number;
   /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
   ratelimit: number;
   /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
   retries: number;
+  /** minLength1 */
   upstreamIps: CreateResponseUpstreamIpsList;
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
+  name_2: unknown;
+  /** "192.0.2.1", */
+  upstream_ips_2: unknown;
+  deprecate_any_requests_2: unknown;
+  dnsFirewallIpCount: unknown;
+  maximum_cache_ttl_2: unknown;
+  minimum_cache_ttl_2: unknown;
+  negative_cache_ttl_2: unknown;
+  ratelimit_2: unknown;
+  /** }' */
+  retries_2: CreateResponseRetries;
 }
 export const CreateDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -222,6 +238,15 @@ export const CreateDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("attack_mitigation"),
       ),
     ),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    upstream_ips_2: S.Unknown.pipe(T.Body("upstream_ips")),
+    deprecate_any_requests_2: S.Unknown.pipe(T.Body("deprecate_any_requests")),
+    dnsFirewallIpCount: S.Unknown.pipe(T.Body("dns_firewall_ip_count")),
+    maximum_cache_ttl_2: S.Unknown.pipe(T.Body("maximum_cache_ttl")),
+    minimum_cache_ttl_2: S.Unknown.pipe(T.Body("minimum_cache_ttl")),
+    negative_cache_ttl_2: S.Unknown.pipe(T.Body("negative_cache_ttl")),
+    ratelimit_2: S.Unknown.pipe(T.Body("ratelimit")),
+    retries_2: CreateResponseRetries.pipe(T.Body("retries")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDnsFirewallResponse",
@@ -270,7 +295,7 @@ export interface GetAnalyticReportRequest {
   dnsFirewallId: string;
   /** A comma-separated list of dimensions to group results by. */
   dimensions?: string;
-  /** Segmentation filter in 'attribute operator value' format. */
+  /** Segmentation filter in ‘attribute operator value’ format. */
   filters?: string;
   /** Limit number of returned metrics. */
   limit?: number;
@@ -368,10 +393,14 @@ export interface AnalyticsReportsGetResponseQuery {
   since: string;
   /** End date and time of requesting data period in ISO 8601 format. */
   until: string;
-  /** Segmentation filter in 'attribute operator value' format. */
+  /** Segmentation filter in ‘attribute operator value’ format. */
   filters?: string | null;
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: AnalyticsReportsGetResponseQuerySortList | null;
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
 }
 export const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -382,6 +411,8 @@ export const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
     until: S.String,
     filters: S.optional(S.NullOr(S.String)),
     sort: S.optional(S.NullOr(AnalyticsReportsGetResponseQuerySortList)),
+    rows: S.Number,
+    totals: S.Unknown,
   }),
 ).annotate({
   identifier: "AnalyticsReportsGetResponseQuery",
@@ -398,10 +429,6 @@ export interface GetAnalyticReportResponse {
   /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
   min: unknown;
   query: AnalyticsReportsGetResponseQuery;
-  /** Total number of rows in the result. */
-  rows: number;
-  /** Total results for metrics across all data (object mapping metric names to values). */
-  totals: unknown;
 }
 export const GetAnalyticReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -410,8 +437,6 @@ export const GetAnalyticReportResponse = /*@__PURE__*/ S.suspend(() =>
     max: S.Unknown,
     min: S.Unknown,
     query: AnalyticsReportsGetResponseQuery,
-    rows: S.Number,
-    totals: S.Unknown,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportResponse",
@@ -438,7 +463,7 @@ export interface GetAnalyticReportBytimeRequest {
   dnsFirewallId: string;
   /** A comma-separated list of dimensions to group results by. */
   dimensions?: string;
-  /** Segmentation filter in 'attribute operator value' format. */
+  /** Segmentation filter in ‘attribute operator value’ format. */
   filters?: string;
   /** Limit number of returned metrics. */
   limit?: number;
@@ -556,6 +581,20 @@ export const AnalyticsReportsBytimesGetResponseQuerySortList =
     S.String,
   ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuerySortList>;
 
+export type AnalyticsReportsBytimesGetResponseQueryTimeIntervalsItemList =
+  Array<string>;
+export const AnalyticsReportsBytimesGetResponseQueryTimeIntervalsItemList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryTimeIntervalsItemList>;
+
+export type AnalyticsReportsBytimesGetResponseQueryTimeIntervalsList =
+  Array<AnalyticsReportsBytimesGetResponseQueryTimeIntervalsItemList>;
+export const AnalyticsReportsBytimesGetResponseQueryTimeIntervalsList =
+  /*@__PURE__*/ S.Array(
+    AnalyticsReportsBytimesGetResponseQueryTimeIntervalsItemList,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryTimeIntervalsList>;
+
 export interface AnalyticsReportsBytimesGetResponseQuery {
   /** Array of dimension names. */
   dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList;
@@ -569,10 +608,16 @@ export interface AnalyticsReportsBytimesGetResponseQuery {
   timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta;
   /** End date and time of requesting data period in ISO 8601 format. */
   until: string;
-  /** Segmentation filter in 'attribute operator value' format. */
+  /** Segmentation filter in ‘attribute operator value’ format. */
   filters?: string | null;
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: AnalyticsReportsBytimesGetResponseQuerySortList | null;
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time. */
+  timeIntervals: AnalyticsReportsBytimesGetResponseQueryTimeIntervalsList;
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
 }
 export const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(
   () =>
@@ -589,24 +634,16 @@ export const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(
       sort: S.optional(
         S.NullOr(AnalyticsReportsBytimesGetResponseQuerySortList),
       ),
+      rows: S.Number,
+      timeIntervals:
+        AnalyticsReportsBytimesGetResponseQueryTimeIntervalsList.pipe(
+          T.Body("time_intervals"),
+        ),
+      totals: S.Unknown,
     }),
 ).annotate({
   identifier: "AnalyticsReportsBytimesGetResponseQuery",
 }) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuery>;
-
-export type AnalyticsReportsBytimesGetResponseTimeIntervalsItemList =
-  Array<string>;
-export const AnalyticsReportsBytimesGetResponseTimeIntervalsItemList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
-
-export type AnalyticsReportsBytimesGetResponseTimeIntervalsList =
-  Array<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
-export const AnalyticsReportsBytimesGetResponseTimeIntervalsList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsReportsBytimesGetResponseTimeIntervalsItemList,
-  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAnalyticReportBytimeResponse {
@@ -619,12 +656,6 @@ export interface GetAnalyticReportBytimeResponse {
   /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
   min: unknown;
   query: AnalyticsReportsBytimesGetResponseQuery;
-  /** Total number of rows in the result. */
-  rows: number;
-  /** Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time. */
-  timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList;
-  /** Total results for metrics across all data (object mapping metric names to values). */
-  totals: unknown;
 }
 export const GetAnalyticReportBytimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -633,11 +664,6 @@ export const GetAnalyticReportBytimeResponse = /*@__PURE__*/ S.suspend(() =>
     max: S.Unknown,
     min: S.Unknown,
     query: AnalyticsReportsBytimesGetResponseQuery,
-    rows: S.Number,
-    timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList.pipe(
-      T.Body("time_intervals"),
-    ),
-    totals: S.Unknown,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetAnalyticReportBytimeResponse",
@@ -688,20 +714,21 @@ export interface GetDnsFirewallResponse {
   dnsFirewallIps: GetResponseDnsFirewallIpsList;
   /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
   ecsFallback: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting. */
   maximumCacheTtl: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting. */
   minimumCacheTtl: number;
   /** Last modification of DNS Firewall cluster */
   modifiedOn: string;
   /** DNS Firewall cluster name */
   name: string;
-  /** This setting controls how long DNS Firewall should cache negative */
+  /** This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers. */
   negativeCacheTtl: number;
   /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
   ratelimit: number;
   /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
   retries: number;
+  /** minLength1 */
   upstreamIps: GetResponseUpstreamIpsList;
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
@@ -821,20 +848,21 @@ export interface ListResultItem {
   dnsFirewallIps: ListResultItemDnsFirewallIpsList;
   /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
   ecsFallback: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting. */
   maximumCacheTtl: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting. */
   minimumCacheTtl: number;
   /** Last modification of DNS Firewall cluster */
   modifiedOn: string;
   /** DNS Firewall cluster name */
   name: string;
-  /** This setting controls how long DNS Firewall should cache negative */
+  /** This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers. */
   negativeCacheTtl: number;
   /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
   ratelimit: number;
   /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
   retries: number;
+  /** minLength1 */
   upstreamIps: ListResultItemUpstreamIpsList;
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
@@ -902,18 +930,19 @@ export interface PatchDnsFirewallRequest {
   deprecateAnyRequests?: boolean;
   /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
   ecsFallback?: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting. */
   maximumCacheTtl?: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting. */
   minimumCacheTtl?: number;
   /** DNS Firewall cluster name */
   name?: string;
-  /** This setting controls how long DNS Firewall should cache negative */
+  /** This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers. */
   negativeCacheTtl?: number | null;
   /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
   ratelimit?: number | null;
   /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
   retries?: number;
+  /** minLength1 */
   upstreamIps?: EditRequestUpstreamIpsList;
 }
 export const PatchDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
@@ -973,23 +1002,33 @@ export interface PatchDnsFirewallResponse {
   dnsFirewallIps: EditResponseDnsFirewallIpsList;
   /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
   ecsFallback: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets an upper bound on this duration. For caching purposes, higher TTLs will be decreased to the maximum value defined by this setting. */
   maximumCacheTtl: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
+  /** By default, Cloudflare attempts to cache responses for as long as indicated by the TTL received from upstream nameservers. This setting sets a lower bound on this duration. For caching purposes, lower TTLs will be increased to the minimum value defined by this setting. */
   minimumCacheTtl: number;
   /** Last modification of DNS Firewall cluster */
   modifiedOn: string;
   /** DNS Firewall cluster name */
   name: string;
-  /** This setting controls how long DNS Firewall should cache negative */
+  /** This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers. */
   negativeCacheTtl: number;
   /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
   ratelimit: number;
   /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
   retries: number;
+  /** minLength1 */
   upstreamIps: EditResponseUpstreamIpsList;
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
+  deprecate_any_requests_2: unknown;
+  maximum_cache_ttl_2: unknown;
+  minimum_cache_ttl_2: unknown;
+  name_2: unknown;
+  negative_cache_ttl_2: unknown;
+  ratelimit_2: unknown;
+  retries_2: unknown;
+  /** "192.0.2.1", */
+  upstream_ips_2: unknown;
 }
 export const PatchDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1012,6 +1051,14 @@ export const PatchDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("attack_mitigation"),
       ),
     ),
+    deprecate_any_requests_2: S.Unknown.pipe(T.Body("deprecate_any_requests")),
+    maximum_cache_ttl_2: S.Unknown.pipe(T.Body("maximum_cache_ttl")),
+    minimum_cache_ttl_2: S.Unknown.pipe(T.Body("minimum_cache_ttl")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    negative_cache_ttl_2: S.Unknown.pipe(T.Body("negative_cache_ttl")),
+    ratelimit_2: S.Unknown.pipe(T.Body("ratelimit")),
+    retries_2: S.Unknown.pipe(T.Body("retries")),
+    upstream_ips_2: S.Unknown.pipe(T.Body("upstream_ips")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchDnsFirewallResponse",

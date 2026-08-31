@@ -62,7 +62,7 @@ export class SendingSubdomainNotFound
 export interface CreateSubdomainRequest {
   /** Identifier. */
   zoneId: string;
-  /** The subdomain name. Must be within the zone. */
+  /** The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. */
   name: string;
 }
 export const CreateSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -82,24 +82,31 @@ export const CreateSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSubdomainRequest",
 }) as any as S.Schema<CreateSubdomainRequest>;
 
+export type SubdomainsCreateResponseName = "sub.example.com";
+export const SubdomainsCreateResponseName = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSubdomainResponse {
   /** Whether Email Sending is enabled on this subdomain. */
   enabled: boolean;
-  /** The subdomain domain name. */
+  /** The exact domain name or a leftmost wildcard such as `*.example.com`. */
   name: string;
   /** Sending subdomain identifier. */
   tag: string;
   /** The date and time the destination address has been created. */
   created?: string | null;
-  /** The DKIM selector used for email signing. */
+  /** The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`. */
   dkimSelector?: string | null;
+  /** Whether a send request that includes a recipient suppressed on this subdomain drops that recipient and still delivers to the rest, instead of failing the entire request. */
+  dropSuppressedRecipients?: boolean | null;
   /** The date and time the destination address was last modified. */
   modified?: string | null;
   /** Whether sent messages from this subdomain can be previewed in the activity log. */
   previewEnabled?: boolean | null;
-  /** The return-path domain used for bounce handling. */
+  /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`. */
   returnPathDomain?: string | null;
+  /** }' */
+  name_2: SubdomainsCreateResponseName;
 }
 export const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -108,6 +115,9 @@ export const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
     tag: S.String,
     created: S.optional(S.NullOr(S.String)),
     dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
+    dropSuppressedRecipients: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("drop_suppressed_recipients")),
+    ),
     modified: S.optional(S.NullOr(S.String)),
     previewEnabled: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("preview_enabled")),
@@ -115,6 +125,7 @@ export const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
     returnPathDomain: S.optional(
       S.NullOr(S.String).pipe(T.Body("return_path_domain")),
     ),
+    name_2: SubdomainsCreateResponseName.pipe(T.Body("name")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSubdomainResponse",
@@ -143,12 +154,43 @@ export const DeleteSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSubdomainRequest",
 }) as any as S.Schema<DeleteSubdomainRequest>;
 
-export interface DeleteSubdomainResponse {}
-export const DeleteSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+export type SubdomainsDeleteResponsePointer = "pointer";
+export const SubdomainsDeleteResponsePointer = /*@__PURE__*/ S.String;
+
+export type SubdomainsDeleteResponsePointer2 = "pointer";
+export const SubdomainsDeleteResponsePointer2 = /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface SubdomainsDeleteResponse {
+  code: unknown;
+  message: unknown;
+  documentationUrl: unknown;
+  source: unknown;
+  /** } */
+  pointer: SubdomainsDeleteResponsePointer;
+  code_2: unknown;
+  message_2: unknown;
+  documentation_url_2: unknown;
+  source_2: unknown;
+  /** } */
+  pointer_2: SubdomainsDeleteResponsePointer2;
+}
+export const SubdomainsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Unknown,
+    message: S.Unknown,
+    documentationUrl: S.Unknown.pipe(T.Body("documentation_url")),
+    source: S.Unknown,
+    pointer: SubdomainsDeleteResponsePointer,
+    code_2: S.Unknown.pipe(T.Body("code")),
+    message_2: S.Unknown.pipe(T.Body("message")),
+    documentation_url_2: S.Unknown.pipe(T.Body("documentation_url")),
+    source_2: S.Unknown.pipe(T.Body("source")),
+    pointer_2: SubdomainsDeleteResponsePointer2.pipe(T.Body("pointer")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
-  identifier: "DeleteSubdomainResponse",
-}) as any as S.Schema<DeleteSubdomainResponse>;
+  identifier: "SubdomainsDeleteResponse",
+}) as any as S.Schema<SubdomainsDeleteResponse>;
 
 export interface GetSubdomainRequest {
   /** Identifier. */
@@ -177,19 +219,21 @@ export const GetSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSubdomainResponse {
   /** Whether Email Sending is enabled on this subdomain. */
   enabled: boolean;
-  /** The subdomain domain name. */
+  /** The exact domain name or a leftmost wildcard such as `*.example.com`. */
   name: string;
   /** Sending subdomain identifier. */
   tag: string;
   /** The date and time the destination address has been created. */
   created?: string | null;
-  /** The DKIM selector used for email signing. */
+  /** The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`. */
   dkimSelector?: string | null;
+  /** Whether a send request that includes a recipient suppressed on this subdomain drops that recipient and still delivers to the rest, instead of failing the entire request. */
+  dropSuppressedRecipients?: boolean | null;
   /** The date and time the destination address was last modified. */
   modified?: string | null;
   /** Whether sent messages from this subdomain can be previewed in the activity log. */
   previewEnabled?: boolean | null;
-  /** The return-path domain used for bounce handling. */
+  /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`. */
   returnPathDomain?: string | null;
 }
 export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
@@ -199,6 +243,9 @@ export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
     tag: S.String,
     created: S.optional(S.NullOr(S.String)),
     dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
+    dropSuppressedRecipients: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("drop_suppressed_recipients")),
+    ),
     modified: S.optional(S.NullOr(S.String)),
     previewEnabled: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("preview_enabled")),
@@ -234,6 +281,9 @@ export const GetSubdomainDnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubdomainDnsRequest",
 }) as any as S.Schema<GetSubdomainDnsRequest>;
 
+export type SubdomainsDnsGetResultItemTtl = 1;
+export const SubdomainsDnsGetResultItemTtl = /*@__PURE__*/ S.Number;
+
 export type SubdomainsDnsGetResultItemType =
   | "A"
   | "AAAA"
@@ -262,8 +312,8 @@ export interface SubdomainsDnsGetResultItem {
   name?: string | null;
   /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
   priority?: number | null;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  ttl?: number | null;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for ‘automatic’. */
+  ttl?: SubdomainsDnsGetResultItemTtl | null;
   /** DNS record type. */
   type?: SubdomainsDnsGetResultItemType | null;
 }
@@ -272,7 +322,7 @@ export const SubdomainsDnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
     content: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
     priority: S.optional(S.NullOr(S.Number)),
-    ttl: S.optional(S.NullOr(S.Number)),
+    ttl: S.optional(S.NullOr(SubdomainsDnsGetResultItemTtl)),
     type: S.optional(S.NullOr(SubdomainsDnsGetResultItemType)),
   }),
 ).annotate({
@@ -322,19 +372,21 @@ export const ListSubdomainsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SubdomainsListResultItem {
   /** Whether Email Sending is enabled on this subdomain. */
   enabled: boolean;
-  /** The subdomain domain name. */
+  /** The exact domain name or a leftmost wildcard such as `*.example.com`. */
   name: string;
   /** Sending subdomain identifier. */
   tag: string;
   /** The date and time the destination address has been created. */
   created?: string | null;
-  /** The DKIM selector used for email signing. */
+  /** The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`. */
   dkimSelector?: string | null;
+  /** Whether a send request that includes a recipient suppressed on this subdomain drops that recipient and still delivers to the rest, instead of failing the entire request. */
+  dropSuppressedRecipients?: boolean | null;
   /** The date and time the destination address was last modified. */
   modified?: string | null;
   /** Whether sent messages from this subdomain can be previewed in the activity log. */
   previewEnabled?: boolean | null;
-  /** The return-path domain used for bounce handling. */
+  /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`. */
   returnPathDomain?: string | null;
 }
 export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -344,6 +396,9 @@ export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
     tag: S.String,
     created: S.optional(S.NullOr(S.String)),
     dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
+    dropSuppressedRecipients: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("drop_suppressed_recipients")),
+    ),
     modified: S.optional(S.NullOr(S.String)),
     previewEnabled: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("preview_enabled")),
@@ -376,156 +431,89 @@ export const ListSubdomainsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubdomainsResponse",
 }) as any as S.Schema<ListSubdomainsResponse>;
 
-export interface SendRequestFromEmailSendingEmailAddressObject {
-  /** Email address (e.g., 'user@example.com'). */
+export interface SendRequestFrom {
+  /** Email address (e.g., ‘user@example.com’). */
   address: string;
-  /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
+  /** Display name for the email address (e.g., ‘John Doe’). Optional; set to null or leave it unset to send the address on its own. */
   name?: string;
 }
-export const SendRequestFromEmailSendingEmailAddressObject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SendRequestFromEmailSendingEmailAddressObject",
-  }) as any as S.Schema<SendRequestFromEmailSendingEmailAddressObject>;
+export const SendRequestFrom = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.String,
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SendRequestFrom",
+}) as any as S.Schema<SendRequestFrom>;
 
-export type SendRequestFrom =
-  | string
-  | SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestFrom = /*@__PURE__*/ S.Unknown.pipe(
+export type SendRequestFrom2 = string | SendRequestFrom;
+export const SendRequestFrom2 = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
 
-export type SendRequestAttachmentsItemInlineDisposition = "inline";
-export const SendRequestAttachmentsItemInlineDisposition =
-  /*@__PURE__*/ S.String;
-
-export interface SendRequestAttachmentsItemInline {
+export interface SendRequestAttachmentsItem {
   /** Base64-encoded content of the attachment. */
   content: string;
-  /** Content ID used to reference this attachment in HTML via cid: URI (e.g., <img src="cid:logo">). */
-  contentId: string;
-  /** Must be 'inline'. Indicates the attachment is embedded in the email body. */
-  disposition: SendRequestAttachmentsItemInlineDisposition;
-  /** Filename for the attachment. */
-  filename: string;
-  /** MIME type of the attachment (e.g., 'image/png', 'text/plain'). */
-  type: string;
 }
-export const SendRequestAttachmentsItemInline = /*@__PURE__*/ S.suspend(() =>
+export const SendRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
-    contentId: S.String.pipe(T.Body("content_id")),
-    disposition: SendRequestAttachmentsItemInlineDisposition,
-    filename: S.String,
-    type: S.String,
   }),
 ).annotate({
-  identifier: "SendRequestAttachmentsItemInline",
-}) as any as S.Schema<SendRequestAttachmentsItemInline>;
-
-export type SendRequestAttachmentsItemAttachmentDisposition = "attachment";
-export const SendRequestAttachmentsItemAttachmentDisposition =
-  /*@__PURE__*/ S.String;
-
-export interface SendRequestAttachmentsItemAttachment {
-  /** Base64-encoded content of the attachment. */
-  content: string;
-  /** Must be 'attachment'. Indicates a standard file attachment. */
-  disposition: SendRequestAttachmentsItemAttachmentDisposition;
-  /** Filename for the attachment. */
-  filename: string;
-  /** MIME type of the attachment (e.g., 'application/pdf', 'text/plain'). */
-  type: string;
-}
-export const SendRequestAttachmentsItemAttachment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      content: S.String,
-      disposition: SendRequestAttachmentsItemAttachmentDisposition,
-      filename: S.String,
-      type: S.String,
-    }),
-).annotate({
-  identifier: "SendRequestAttachmentsItemAttachment",
-}) as any as S.Schema<SendRequestAttachmentsItemAttachment>;
-
-export type SendRequestAttachmentsItem =
-  | SendRequestAttachmentsItemInline
-  | SendRequestAttachmentsItemAttachment;
-export const SendRequestAttachmentsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["content", "contentId", "disposition", "filename", "type"],
-    ["content", "disposition", "filename", "type"],
-  ]),
-);
+  identifier: "SendRequestAttachmentsItem",
+}) as any as S.Schema<SendRequestAttachmentsItem>;
 
 export type SendRequestAttachmentsList = Array<SendRequestAttachmentsItem>;
 export const SendRequestAttachmentsList = /*@__PURE__*/ S.Array(
   SendRequestAttachmentsItem,
 ) as any as S.Schema<SendRequestAttachmentsList>;
 
-export type SendRequestBccEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestBccEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
+export type SendRequestDisposition = "inline";
+export const SendRequestDisposition = /*@__PURE__*/ S.String;
 
-export type SendRequestBccCase2ItemEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestBccCase2ItemEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
+export type SendRequestDisposition2 = "attachment";
+export const SendRequestDisposition2 = /*@__PURE__*/ S.String;
 
-export type SendRequestBccCase2Item =
-  | string
-  | SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestBccCase2Item = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["address", "name"]]),
-);
+export interface SendRequestBcc {
+  /** Email address (e.g., ‘user@example.com’). */
+  address: string;
+  /** Display name for the email address (e.g., ‘John Doe’). Optional; set to null or leave it unset to send the address on its own. */
+  name?: string;
+  /** Email address (e.g., ‘user@example.com’). */
+  address_2: string;
+  /** Display name for the email address (e.g., ‘John Doe’). Optional; set to null or leave it unset to send the address on its own. */
+  name_2?: string;
+}
+export const SendRequestBcc = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.String,
+    name: S.optional(S.String),
+    address_2: S.String.pipe(T.Body("address")),
+    name_2: S.optional(S.String.pipe(T.Body("name"))),
+  }),
+).annotate({ identifier: "SendRequestBcc" }) as any as S.Schema<SendRequestBcc>;
 
-export type SendRequestBccCase2List = Array<SendRequestBccCase2Item>;
+export type SendRequestBccCase2List = Array<string>;
 export const SendRequestBccCase2List = /*@__PURE__*/ S.Array(
-  SendRequestBccCase2Item,
+  S.String,
 ) as any as S.Schema<SendRequestBccCase2List>;
 
-export type SendRequestBcc =
-  | string
-  | SendRequestFromEmailSendingEmailAddressObject
-  | SendRequestBccCase2List;
-export const SendRequestBcc = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["address", "name"], []]),
+export type SendRequestBcc2 = string | SendRequestBcc | SendRequestBccCase2List;
+export const SendRequestBcc2 = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], ["address", "name", "address_2", "name_2"], []]),
 );
 
-export type SendRequestCcEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestCcEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
+export type SendRequestCc = SendRequestBcc;
+export const SendRequestCc = SendRequestBcc;
 
-export type SendRequestCcCase2ItemEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestCcCase2ItemEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-
-export type SendRequestCcCase2Item =
-  | string
-  | SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestCcCase2Item = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["address", "name"]]),
-);
-
-export type SendRequestCcCase2List = Array<SendRequestCcCase2Item>;
+export type SendRequestCcCase2List = Array<string>;
 export const SendRequestCcCase2List = /*@__PURE__*/ S.Array(
-  SendRequestCcCase2Item,
+  S.String,
 ) as any as S.Schema<SendRequestCcCase2List>;
 
-export type SendRequestCc =
-  | string
-  | SendRequestFromEmailSendingEmailAddressObject
-  | SendRequestCcCase2List;
-export const SendRequestCc = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["address", "name"], []]),
+export type SendRequestCc2 = string | SendRequestBcc | SendRequestCcCase2List;
+export const SendRequestCc2 = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], ["address", "name", "address_2", "name_2"], []]),
 );
 
 export type SendRequestHeadersMap = { [key: string]: string | undefined };
@@ -534,85 +522,88 @@ export const SendRequestHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SendRequestHeadersMap>;
 
-export type SendRequestReplyToEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestReplyToEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
+export type SendRequestReplyTo = SendRequestFrom;
+export const SendRequestReplyTo = SendRequestFrom;
 
-export type SendRequestReplyTo =
-  | string
-  | SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestReplyTo = /*@__PURE__*/ S.Unknown.pipe(
+export type SendRequestReplyTo2 = string | SendRequestFrom;
+export const SendRequestReplyTo2 = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], ["address", "name"]]),
 );
 
-export type SendRequestToEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestToEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
+export type SendRequestTo = SendRequestBcc;
+export const SendRequestTo = SendRequestBcc;
 
-export type SendRequestToCase2ItemEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestToCase2ItemEmailSendingEmailAddressObject =
-  SendRequestFromEmailSendingEmailAddressObject;
-
-export type SendRequestToCase2Item =
-  | string
-  | SendRequestFromEmailSendingEmailAddressObject;
-export const SendRequestToCase2Item = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["address", "name"]]),
-);
-
-export type SendRequestToCase2List = Array<SendRequestToCase2Item>;
+export type SendRequestToCase2List = Array<string>;
 export const SendRequestToCase2List = /*@__PURE__*/ S.Array(
-  SendRequestToCase2Item,
+  S.String,
 ) as any as S.Schema<SendRequestToCase2List>;
 
-export type SendRequestTo =
-  | string
-  | SendRequestFromEmailSendingEmailAddressObject
-  | SendRequestToCase2List;
-export const SendRequestTo = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([[], ["address", "name"], []]),
+export type SendRequestTo2 = string | SendRequestBcc | SendRequestToCase2List;
+export const SendRequestTo2 = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], ["address", "name", "address_2", "name_2"], []]),
 );
 
 export interface SendEmailSendingRequest {
   /** Identifier of the account. */
   accountId: string;
   /** Sender email address. Either a plain string or an object with address and name. */
-  from: SendRequestFrom;
+  from: SendRequestFrom2;
   /** Email subject line. */
   subject: string;
   /** File attachments and inline images. */
   attachments?: SendRequestAttachmentsList;
-  /** BCC recipient(s). A single email string, a named address object, or an array of either. */
-  bcc?: SendRequestBcc;
-  /** CC recipient(s). A single email string, a named address object, or an array of either. */
-  cc?: SendRequestCc;
+  /** Content ID used to reference this attachment in HTML via cid: URI (e.g., ![](cid:logo)). */
+  contentId: string;
+  /** Use ‘inline’ to embed the attachment in the email body. */
+  disposition: SendRequestDisposition | (string & {});
+  /** Filename for the attachment. */
+  filename: string;
+  /** MIME type of the attachment (e.g., ‘image/png’, ‘text/plain’). */
+  type: string;
+  /** Base64-encoded content of the attachment. */
+  content: string;
+  /** Use ‘attachment’ for a standard file attachment. */
+  disposition_2: SendRequestDisposition2 | (string & {});
+  /** Filename for the attachment. */
+  filename_2: string;
+  /** MIME type of the attachment (e.g., ‘application/pdf’, ‘text/plain’). */
+  type_2: string;
+  /** Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either. */
+  bcc?: SendRequestBcc2;
+  /** Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either. */
+  cc?: SendRequestCc2;
   /** Custom email headers as key-value pairs. */
   headers?: SendRequestHeadersMap;
-  /** HTML body of the email. At least one of text or html must be provided (non-empty). */
+  /** HTML body of the email. Provide at least one of text or html (non-empty). */
   html?: string;
   /** Reply-to address. Either a plain string or an object with address and name. */
-  replyTo?: SendRequestReplyTo;
-  /** Plain text body of the email. At least one of text or html must be provided (non-empty). */
+  replyTo?: SendRequestReplyTo2;
+  /** Plain text body of the email. Provide at least one of text or html (non-empty). */
   text?: string;
   /** Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either. */
-  to?: SendRequestTo;
+  to?: SendRequestTo2;
 }
 export const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    from: SendRequestFrom,
+    from: SendRequestFrom2,
     subject: S.String,
     attachments: S.optional(SendRequestAttachmentsList),
-    bcc: S.optional(SendRequestBcc),
-    cc: S.optional(SendRequestCc),
+    contentId: S.String.pipe(T.Body("content_id")),
+    disposition: SendRequestDisposition,
+    filename: S.String,
+    type: S.String,
+    content: S.String,
+    disposition_2: SendRequestDisposition2.pipe(T.Body("disposition")),
+    filename_2: S.String.pipe(T.Body("filename")),
+    type_2: S.String.pipe(T.Body("type")),
+    bcc: S.optional(SendRequestBcc2),
+    cc: S.optional(SendRequestCc2),
     headers: S.optional(SendRequestHeadersMap),
     html: S.optional(S.String),
-    replyTo: S.optional(SendRequestReplyTo.pipe(T.Body("reply_to"))),
+    replyTo: S.optional(SendRequestReplyTo2.pipe(T.Body("reply_to"))),
     text: S.optional(S.String),
-    to: S.optional(SendRequestTo),
+    to: S.optional(SendRequestTo2),
   })
     .pipe(
       T.Http({
@@ -675,7 +666,7 @@ export interface SendRawEmailSendingRequest {
   accountId: string;
   /** Sender email address. */
   from: string;
-  /** The full MIME-encoded email message. Should include standard RFC 5322 headers such as From, To, Subject, and Content-Type. The from and recipients fields in the request body control SMTP envelope routing; the From and To headers in the MIME message control what the recipient's email client displays. */
+  /** The full MIME-encoded email message. Should include standard RFC 5322 headers such as From, To, Subject, and Content-Type. The from and recipients fields in the request body control SMTP envelope routing; the From and To headers in the MIME message control what the recipient’s email client displays. */
   mimeMessage: string;
   /** List of recipient email addresses. */
   recipients: SendRawRequestRecipientsList;
@@ -738,11 +729,416 @@ export const SendRawEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendRawEmailSendingResponse",
 }) as any as S.Schema<SendRawEmailSendingResponse>;
 
+export interface SubdomainsEditRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Sending subdomain identifier. */
+  subdomainId: string;
+  /** Whether a send request that includes a recipient suppressed on this subdomain drops that recipient and still delivers to the rest, instead of failing the entire request. */
+  dropSuppressedRecipients?: boolean;
+  /** Whether sent messages from this subdomain can be previewed in the activity log. */
+  previewEnabled?: boolean;
+}
+export const SubdomainsEditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    subdomainId: S.String.pipe(T.Label("subdomain_id")),
+    dropSuppressedRecipients: S.optional(
+      S.Boolean.pipe(T.Body("drop_suppressed_recipients")),
+    ),
+    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SubdomainsEditRequest",
+}) as any as S.Schema<SubdomainsEditRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SubdomainsEditResponse {
+  /** Whether Email Sending is enabled on this subdomain. */
+  enabled: boolean;
+  /** The exact domain name or a leftmost wildcard such as `*.example.com`. */
+  name: string;
+  /** Sending subdomain identifier. */
+  tag: string;
+  /** The date and time the destination address has been created. */
+  created?: string | null;
+  /** The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`. */
+  dkimSelector?: string | null;
+  /** Whether a send request that includes a recipient suppressed on this subdomain drops that recipient and still delivers to the rest, instead of failing the entire request. */
+  dropSuppressedRecipients?: boolean | null;
+  /** The date and time the destination address was last modified. */
+  modified?: string | null;
+  /** Whether sent messages from this subdomain can be previewed in the activity log. */
+  previewEnabled?: boolean | null;
+  /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`. */
+  returnPathDomain?: string | null;
+  drop_suppressed_recipients_2: unknown;
+  /** }' */
+  preview_enabled_2: boolean;
+}
+export const SubdomainsEditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    name: S.String,
+    tag: S.String,
+    created: S.optional(S.NullOr(S.String)),
+    dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
+    dropSuppressedRecipients: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("drop_suppressed_recipients")),
+    ),
+    modified: S.optional(S.NullOr(S.String)),
+    previewEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("preview_enabled")),
+    ),
+    returnPathDomain: S.optional(
+      S.NullOr(S.String).pipe(T.Body("return_path_domain")),
+    ),
+    drop_suppressed_recipients_2: S.Unknown.pipe(
+      T.Body("drop_suppressed_recipients"),
+    ),
+    preview_enabled_2: S.Boolean.pipe(T.Body("preview_enabled")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SubdomainsEditResponse",
+}) as any as S.Schema<SubdomainsEditResponse>;
+
+export interface SuppressionsCreateRequest {
+  accountId: string;
+  /** formatemail */
+  email: string;
+  /** formatdate-time */
+  expiresAt?: string;
+  /** maxLength1000 */
+  note?: string;
+}
+export const SuppressionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    email: S.String,
+    expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
+    note: S.optional(S.String),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email/sending/suppressions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsCreateRequest",
+}) as any as S.Schema<SuppressionsCreateRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SuppressionsCreateResponse {
+  /** formatuuid */
+  id: string;
+}
+export const SuppressionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsCreateResponse",
+}) as any as S.Schema<SuppressionsCreateResponse>;
+
+export interface SuppressionsDeleteRequest {
+  accountId: string;
+  /** formatuuid */
+  suppressionId: string;
+}
+export const SuppressionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    suppressionId: S.String.pipe(T.Label("suppression_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email/sending/suppressions/{suppression_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsDeleteRequest",
+}) as any as S.Schema<SuppressionsDeleteRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SuppressionsDeleteResponse {
+  /** formatuuid */
+  id: string;
+}
+export const SuppressionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsDeleteResponse",
+}) as any as S.Schema<SuppressionsDeleteResponse>;
+
+export interface SuppressionsEditRequest {
+  accountId: string;
+  /** formatuuid */
+  suppressionId: string;
+  /** New expiry. Send `null` to make the suppression permanent; omit to leave it unchanged. */
+  expiresAt?: string;
+  /** Replacement advisory note. Send an empty string to clear it; omit to leave it unchanged. */
+  note?: string;
+}
+export const SuppressionsEditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    suppressionId: S.String.pipe(T.Label("suppression_id")),
+    expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
+    note: S.optional(S.String),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email/sending/suppressions/{suppression_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsEditRequest",
+}) as any as S.Schema<SuppressionsEditRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SuppressionsEditResponse {
+  /** formatuuid */
+  id: string;
+  /** formatdate-time */
+  createdAt: string;
+  /** formatemail */
+  email: string;
+  /** formatdate-time */
+  expiresAt: string;
+  /** Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`. */
+  readOnly: boolean;
+  reason: string;
+  note?: string | null;
+}
+export const SuppressionsEditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    email: S.String,
+    expiresAt: S.String.pipe(T.Body("expires_at")),
+    readOnly: S.Boolean.pipe(T.Body("read_only")),
+    reason: S.String,
+    note: S.optional(S.NullOr(S.String)),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsEditResponse",
+}) as any as S.Schema<SuppressionsEditResponse>;
+
+export interface SuppressionsGetRequest {
+  accountId: string;
+  /** formatuuid */
+  suppressionId: string;
+}
+export const SuppressionsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    suppressionId: S.String.pipe(T.Label("suppression_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email/sending/suppressions/{suppression_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsGetRequest",
+}) as any as S.Schema<SuppressionsGetRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SuppressionsGetResponse {
+  /** formatuuid */
+  id: string;
+  /** formatdate-time */
+  createdAt: string;
+  /** formatemail */
+  email: string;
+  /** formatdate-time */
+  expiresAt: string;
+  /** Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`. */
+  readOnly: boolean;
+  reason: string;
+  note?: string | null;
+}
+export const SuppressionsGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    email: S.String,
+    expiresAt: S.String.pipe(T.Body("expires_at")),
+    readOnly: S.Boolean.pipe(T.Body("read_only")),
+    reason: S.String,
+    note: S.optional(S.NullOr(S.String)),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsGetResponse",
+}) as any as S.Schema<SuppressionsGetResponse>;
+
+export interface SuppressionsImportRequestItemsItem {
+  email: string;
+  /** formatdate-time */
+  expiresAt?: string;
+  /** maxLength1000 */
+  note?: string;
+}
+export const SuppressionsImportRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
+    note: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SuppressionsImportRequestItemsItem",
+}) as any as S.Schema<SuppressionsImportRequestItemsItem>;
+
+export type SuppressionsImportRequestItemsList =
+  Array<SuppressionsImportRequestItemsItem>;
+export const SuppressionsImportRequestItemsList = /*@__PURE__*/ S.Array(
+  SuppressionsImportRequestItemsItem,
+) as any as S.Schema<SuppressionsImportRequestItemsList>;
+
+export interface SuppressionsImportRequest {
+  accountId: string;
+  items: SuppressionsImportRequestItemsList;
+}
+export const SuppressionsImportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    items: SuppressionsImportRequestItemsList,
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email/sending/suppressions/bulk",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsImportRequest",
+}) as any as S.Schema<SuppressionsImportRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SuppressionsImportResponse {
+  deduplicated: number;
+}
+export const SuppressionsImportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deduplicated: S.Number,
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsImportResponse",
+}) as any as S.Schema<SuppressionsImportResponse>;
+
+export type SuppressionsListRequestReason =
+  | "manual"
+  | "complaint"
+  | "hard_bounce"
+  | "soft_bounce"
+  | "policy";
+export const SuppressionsListRequestReason = /*@__PURE__*/ S.String;
+
+export interface SuppressionsListRequest {
+  accountId: string;
+  /** Opaque pagination cursor returned as `result_info.next_cursor`. It carries the filters that produced it. */
+  cursor?: string;
+  /** Exact email-address filter. */
+  email?: string;
+  /** maximum1000 */
+  perPage?: number;
+  reason?: SuppressionsListRequestReason | (string & {});
+  /** A complete address is an exact match; a value ending in `@` matches that username across every domain. Prefix searches may return short intermediate pages while the bounded account scan advances. */
+  search?: string;
+}
+export const SuppressionsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cursor: S.optional(S.String.pipe(T.Query())),
+    email: S.optional(S.String.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    reason: S.optional(SuppressionsListRequestReason.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email/sending/suppressions",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SuppressionsListRequest",
+}) as any as S.Schema<SuppressionsListRequest>;
+
+export interface SuppressionsListResultItem {
+  /** formatuuid */
+  id: string;
+  /** formatdate-time */
+  createdAt: string;
+  /** formatemail */
+  email: string;
+  /** formatdate-time */
+  expiresAt: string;
+  /** Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`. */
+  readOnly: boolean;
+  reason: string;
+  note?: string | null;
+}
+export const SuppressionsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    email: S.String,
+    expiresAt: S.String.pipe(T.Body("expires_at")),
+    readOnly: S.Boolean.pipe(T.Body("read_only")),
+    reason: S.String,
+    note: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "SuppressionsListResultItem",
+}) as any as S.Schema<SuppressionsListResultItem>;
+
+export type SuppressionsListResultList = Array<SuppressionsListResultItem>;
+export const SuppressionsListResultList = /*@__PURE__*/ S.Array(
+  SuppressionsListResultItem,
+) as any as S.Schema<SuppressionsListResultList>;
+
+export type SuppressionsListResponse = SuppressionsListResultList;
+export const SuppressionsListResponse = /*@__PURE__*/ S.suspend(() =>
+  SuppressionsListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "SuppressionsListResponse",
+}) as any as S.Schema<SuppressionsListResponse>;
+
 export type CreateSubdomainError =
   | Forbidden
   | SendingSubdomainAlreadyExists
   | CloudflareOpError;
-/** Creates a new sending subdomain or re-enables sending on an existing subdomain that had it disabled. If zone-level Email Sending has not been enabled yet, the zone flag is automatically set when the entitlement is present. */
+/** Creates a new sending subdomain or re-enables sending on an existing subdomain that had it disabled. If zone-level Email Sending has not been enabled yet, the zone flag is automatically set when the entitlement is present. A leftmost wildcard such as `*.example.com` is accepted only for accounts with wildcard Email Sending enabled. Wildcard senders share the base domain’s DKIM signing identity and `cf-bounce.<base>` return path. */
 export const createSubdomain: API.OperationMethod<
   CreateSubdomainRequest,
   CreateSubdomainResponse,
@@ -768,12 +1164,12 @@ export type DeleteSubdomainError =
 /** Disables sending on a subdomain and removes its DNS records. If routing is still active on the subdomain, only sending is disabled. */
 export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainRequest,
-  DeleteSubdomainResponse,
+  SubdomainsDeleteResponse,
   DeleteSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubdomainRequest,
-  output: DeleteSubdomainResponse,
+  output: SubdomainsDeleteResponse,
   errors: [
     Forbidden,
     SendingSubdomainNotFound,
@@ -848,7 +1244,7 @@ export const listSubdomains: API.PaginatedOperationMethod<
 ) as any;
 
 export type SendEmailSendingError = CloudflareOpError;
-/** Send an email */
+/** Send an email for the specified account using the structured builder. Provide the sender, recipients, subject, and at least one of text or html; attachments are optional. */
 export const sendEmailSending: API.OperationMethod<
   SendEmailSendingRequest,
   SendEmailSendingResponse,
@@ -863,7 +1259,7 @@ export const sendEmailSending: API.OperationMethod<
 }));
 
 export type SendRawEmailSendingError = CloudflareOpError;
-/** Send a raw MIME email */
+/** Send a raw RFC 5322 (MIME) email for the specified account. Provide the full MIME message plus the SMTP envelope (from and recipients). */
 export const sendRawEmailSending: API.OperationMethod<
   SendRawEmailSendingRequest,
   SendRawEmailSendingResponse,
@@ -872,6 +1268,111 @@ export const sendRawEmailSending: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SendRawEmailSendingRequest,
   output: SendRawEmailSendingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SubdomainsEditError = CloudflareOpError;
+/** Updates the activity-log preview preference for a sending subdomain. */
+export const subdomainsEdit: API.OperationMethod<
+  SubdomainsEditRequest,
+  SubdomainsEditResponse,
+  SubdomainsEditError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SubdomainsEditRequest,
+  output: SubdomainsEditResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SuppressionsCreateError = CloudflareOpError;
+/** Creates an account-wide suppression. If a mutable legacy zone-linked row already exists, it is promoted without changing its identifier. */
+export const suppressionsCreate: API.OperationMethod<
+  SuppressionsCreateRequest,
+  SuppressionsCreateResponse,
+  SuppressionsCreateError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SuppressionsCreateRequest,
+  output: SuppressionsCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SuppressionsDeleteError = CloudflareOpError;
+/** Deletes the suppression, its note, and every legacy internal zone membership, allowing future delivery attempts to the address. */
+export const suppressionsDelete: API.OperationMethod<
+  SuppressionsDeleteRequest,
+  SuppressionsDeleteResponse,
+  SuppressionsDeleteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SuppressionsDeleteRequest,
+  output: SuppressionsDeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SuppressionsEditError = CloudflareOpError;
+/** Updates expiry or advisory note fields without changing legacy internal zone memberships. */
+export const suppressionsEdit: API.OperationMethod<
+  SuppressionsEditRequest,
+  SuppressionsEditResponse,
+  SuppressionsEditError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SuppressionsEditRequest,
+  output: SuppressionsEditResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SuppressionsGetError = CloudflareOpError;
+/** Gets an Email Sending suppression owned by the account. */
+export const suppressionsGet: API.OperationMethod<
+  SuppressionsGetRequest,
+  SuppressionsGetResponse,
+  SuppressionsGetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SuppressionsGetRequest,
+  output: SuppressionsGetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SuppressionsImportError = CloudflareOpError;
+/** Imports up to 1,000 account-level Email Sending suppressions in one request. */
+export const suppressionsImport: API.OperationMethod<
+  SuppressionsImportRequest,
+  SuppressionsImportResponse,
+  SuppressionsImportError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SuppressionsImportRequest,
+  output: SuppressionsImportResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SuppressionsListError = CloudflareOpError;
+/** Lists every active Email Sending suppression owned by the account, including legacy rows with internal zone memberships. */
+export const suppressionsList: API.OperationMethod<
+  SuppressionsListRequest,
+  SuppressionsListResponse,
+  SuppressionsListError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SuppressionsListRequest,
+  output: SuppressionsListResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

@@ -69,6 +69,9 @@ export const CreateSfuRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSfuRequest",
 }) as any as S.Schema<CreateSfuRequest>;
 
+export type SfuCreateResponseName = "production-realtime-app";
+export const SfuCreateResponseName = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSfuResponse {
   /** The date and time the item was created. */
@@ -81,6 +84,8 @@ export interface CreateSfuResponse {
   secret?: string | null;
   /** A Cloudflare-generated unique identifier for a item. */
   uid?: string | null;
+  /** }' */
+  name_2: SfuCreateResponseName;
 }
 export const CreateSfuResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -89,6 +94,7 @@ export const CreateSfuResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.NullOr(S.String)),
     secret: S.optional(S.NullOr(S.String)),
     uid: S.optional(S.NullOr(S.String)),
+    name_2: SfuCreateResponseName.pipe(T.Body("name")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSfuResponse",
@@ -117,6 +123,9 @@ export const CreateTurnRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTurnRequest",
 }) as any as S.Schema<CreateTurnRequest>;
 
+export type TurnCreateResponseName = "my-turn-key";
+export const TurnCreateResponseName = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTurnResponse {
   /** The date and time the item was created. */
@@ -129,6 +138,8 @@ export interface CreateTurnResponse {
   name?: string | null;
   /** A Cloudflare-generated unique identifier for a item. */
   uid?: string | null;
+  /** }' */
+  name_2: TurnCreateResponseName;
 }
 export const CreateTurnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -137,6 +148,7 @@ export const CreateTurnResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
     uid: S.optional(S.NullOr(S.String)),
+    name_2: TurnCreateResponseName.pipe(T.Body("name")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTurnResponse",
@@ -446,6 +458,9 @@ export const UpdateSfuRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSfuRequest",
 }) as any as S.Schema<UpdateSfuRequest>;
 
+export type SfuUpdateResponseName = "production-realtime-app";
+export const SfuUpdateResponseName = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSfuResponse {
   /** The date and time the item was created. */
@@ -456,6 +471,8 @@ export interface UpdateSfuResponse {
   name?: string | null;
   /** A Cloudflare-generated unique identifier for a item. */
   uid?: string | null;
+  /** }' */
+  name_2: SfuUpdateResponseName;
 }
 export const UpdateSfuResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -463,6 +480,7 @@ export const UpdateSfuResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
     uid: S.optional(S.NullOr(S.String)),
+    name_2: SfuUpdateResponseName.pipe(T.Body("name")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateSfuResponse",
@@ -494,6 +512,9 @@ export const UpdateTurnRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTurnRequest",
 }) as any as S.Schema<UpdateTurnRequest>;
 
+export type TurnUpdateResponseName = "my-turn-key";
+export const TurnUpdateResponseName = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTurnResponse {
   /** The date and time the item was created. */
@@ -504,6 +525,8 @@ export interface UpdateTurnResponse {
   name?: string | null;
   /** A Cloudflare-generated unique identifier for a item. */
   uid?: string | null;
+  /** }' */
+  name_2: TurnUpdateResponseName;
 }
 export const UpdateTurnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -511,6 +534,7 @@ export const UpdateTurnResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
     uid: S.optional(S.NullOr(S.String)),
+    name_2: TurnUpdateResponseName.pipe(T.Body("name")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateTurnResponse",

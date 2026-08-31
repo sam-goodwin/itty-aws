@@ -180,156 +180,75 @@ export const ConfigGetResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigGetResponseAnalytics",
 }) as any as S.Schema<ConfigGetResponseAnalytics>;
 
-export type ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap>;
-
-export type ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  { [key: string]: string | undefined };
-export const ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
-
-export type ConfigGetResponseConsentButtonTextTranslationsRejectAllMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigGetResponseConsentButtonTextTranslationsRejectAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsRejectAllMap>;
-
 export interface ConfigGetResponseConsentButtonTextTranslations {
   /** Object where keys are language codes. */
-  acceptAll: ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap;
+  acceptAll: unknown;
   /** Object where keys are language codes. */
-  confirmMyChoices: ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
+  confirmMyChoices: unknown;
   /** Object where keys are language codes. */
-  rejectAll: ConfigGetResponseConsentButtonTextTranslationsRejectAllMap;
+  rejectAll: unknown;
 }
 export const ConfigGetResponseConsentButtonTextTranslations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      acceptAll:
-        ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
-          T.Body("accept_all"),
-        ),
-      confirmMyChoices:
-        ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
-          T.Body("confirm_my_choices"),
-        ),
-      rejectAll:
-        ConfigGetResponseConsentButtonTextTranslationsRejectAllMap.pipe(
-          T.Body("reject_all"),
-        ),
+      acceptAll: S.Unknown.pipe(T.Body("accept_all")),
+      confirmMyChoices: S.Unknown.pipe(T.Body("confirm_my_choices")),
+      rejectAll: S.Unknown.pipe(T.Body("reject_all")),
     }),
   ).annotate({
     identifier: "ConfigGetResponseConsentButtonTextTranslations",
   }) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslations>;
 
-export type ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
-
-export interface ConfigGetResponseConsentPurposesValue {
+export interface ConfigGetResponseConsentPurposes {
   description: string;
   name: string;
 }
-export const ConfigGetResponseConsentPurposesValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      description: S.String,
-      name: S.String,
-    }),
+export const ConfigGetResponseConsentPurposes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    name: S.String,
+  }),
 ).annotate({
-  identifier: "ConfigGetResponseConsentPurposesValue",
-}) as any as S.Schema<ConfigGetResponseConsentPurposesValue>;
+  identifier: "ConfigGetResponseConsentPurposes",
+}) as any as S.Schema<ConfigGetResponseConsentPurposes>;
 
-export type ConfigGetResponseConsentPurposesMap = {
-  [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
-};
-export const ConfigGetResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConfigGetResponseConsentPurposesValue,
-) as any as S.Schema<ConfigGetResponseConsentPurposesMap>;
-
-export type ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap =
-  { [key: string]: string | undefined };
-export const ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap>;
-
-export type ConfigGetResponseConsentPurposesWithTranslationsValueNameMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigGetResponseConsentPurposesWithTranslationsValueNameMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsValueNameMap>;
-
-export interface ConfigGetResponseConsentPurposesWithTranslationsValue {
+export interface ConfigGetResponseConsentPurposesWithTranslations {
   /** Object where keys are language codes. */
-  description: ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap;
+  description: unknown;
   /** Object where keys are language codes. */
-  name: ConfigGetResponseConsentPurposesWithTranslationsValueNameMap;
+  name: unknown;
   order: number;
 }
-export const ConfigGetResponseConsentPurposesWithTranslationsValue =
+export const ConfigGetResponseConsentPurposesWithTranslations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      description:
-        ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap,
-      name: ConfigGetResponseConsentPurposesWithTranslationsValueNameMap,
+      description: S.Unknown,
+      name: S.Unknown,
       order: S.Number,
     }),
   ).annotate({
-    identifier: "ConfigGetResponseConsentPurposesWithTranslationsValue",
-  }) as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsValue>;
-
-export type ConfigGetResponseConsentPurposesWithTranslationsMap = {
-  [key: string]:
-    | ConfigGetResponseConsentPurposesWithTranslationsValue
-    | undefined;
-};
-export const ConfigGetResponseConsentPurposesWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ConfigGetResponseConsentPurposesWithTranslationsValue,
-  ) as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsMap>;
+    identifier: "ConfigGetResponseConsentPurposesWithTranslations",
+  }) as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslations>;
 
 export interface ConfigGetResponseConsent {
   enabled: boolean;
+  /** Object where keys are language codes. */
   buttonTextTranslations?: ConfigGetResponseConsentButtonTextTranslations | null;
   companyEmail?: string | null;
   companyName?: string | null;
   companyStreetAddress?: string | null;
   consentModalIntroHTML?: string | null;
   /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap | null;
+  consentModalIntroHTMLWithTranslations?: unknown | null;
   cookieName?: string | null;
   customCSS?: string | null;
   customIntroDisclaimerDismissed?: boolean | null;
   defaultLanguage?: string | null;
   hideModal?: boolean | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: ConfigGetResponseConsentPurposesMap | null;
+  purposes?: ConfigGetResponseConsentPurposes | null;
   /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: ConfigGetResponseConsentPurposesWithTranslationsMap | null;
+  purposesWithTranslations?: ConfigGetResponseConsentPurposesWithTranslations | null;
   tcfCompliant?: boolean | null;
 }
 export const ConfigGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
@@ -342,19 +261,15 @@ export const ConfigGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
     companyName: S.optional(S.NullOr(S.String)),
     companyStreetAddress: S.optional(S.NullOr(S.String)),
     consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-    consentModalIntroHTMLWithTranslations: S.optional(
-      S.NullOr(
-        ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
-      ),
-    ),
+    consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(S.Unknown)),
     cookieName: S.optional(S.NullOr(S.String)),
     customCSS: S.optional(S.NullOr(S.String)),
     customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
     defaultLanguage: S.optional(S.NullOr(S.String)),
     hideModal: S.optional(S.NullOr(S.Boolean)),
-    purposes: S.optional(S.NullOr(ConfigGetResponseConsentPurposesMap)),
+    purposes: S.optional(S.NullOr(ConfigGetResponseConsentPurposes)),
     purposesWithTranslations: S.optional(
-      S.NullOr(ConfigGetResponseConsentPurposesWithTranslationsMap),
+      S.NullOr(ConfigGetResponseConsentPurposesWithTranslations),
     ),
     tcfCompliant: S.optional(S.NullOr(S.Boolean)),
   }),
@@ -433,177 +348,23 @@ export const DefaultGetResponseSettings = ConfigGetResponseSettings;
 export type DefaultGetResponseAnalytics = ConfigGetResponseAnalytics;
 export const DefaultGetResponseAnalytics = ConfigGetResponseAnalytics;
 
-export type DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap = {
-  [key: string]: string | undefined;
-};
-export const DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap>;
-
-export type DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  { [key: string]: string | undefined };
-export const DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
-
-export type DefaultGetResponseConsentButtonTextTranslationsRejectAllMap = {
-  [key: string]: string | undefined;
-};
-export const DefaultGetResponseConsentButtonTextTranslationsRejectAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsRejectAllMap>;
-
-export interface DefaultGetResponseConsentButtonTextTranslations {
-  /** Object where keys are language codes. */
-  acceptAll: DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap;
-  /** Object where keys are language codes. */
-  confirmMyChoices: DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
-  /** Object where keys are language codes. */
-  rejectAll: DefaultGetResponseConsentButtonTextTranslationsRejectAllMap;
-}
+export type DefaultGetResponseConsentButtonTextTranslations =
+  ConfigGetResponseConsentButtonTextTranslations;
 export const DefaultGetResponseConsentButtonTextTranslations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acceptAll:
-        DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
-          T.Body("accept_all"),
-        ),
-      confirmMyChoices:
-        DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
-          T.Body("confirm_my_choices"),
-        ),
-      rejectAll:
-        DefaultGetResponseConsentButtonTextTranslationsRejectAllMap.pipe(
-          T.Body("reject_all"),
-        ),
-    }),
-  ).annotate({
-    identifier: "DefaultGetResponseConsentButtonTextTranslations",
-  }) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslations>;
+  ConfigGetResponseConsentButtonTextTranslations;
 
-export type DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  { [key: string]: string | undefined };
-export const DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+export type DefaultGetResponseConsentPurposes =
+  ConfigGetResponseConsentPurposes;
+export const DefaultGetResponseConsentPurposes =
+  ConfigGetResponseConsentPurposes;
 
-export type DefaultGetResponseConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
-export const DefaultGetResponseConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
+export type DefaultGetResponseConsentPurposesWithTranslations =
+  ConfigGetResponseConsentPurposesWithTranslations;
+export const DefaultGetResponseConsentPurposesWithTranslations =
+  ConfigGetResponseConsentPurposesWithTranslations;
 
-export type DefaultGetResponseConsentPurposesMap = {
-  [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
-};
-export const DefaultGetResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConfigGetResponseConsentPurposesValue,
-) as any as S.Schema<DefaultGetResponseConsentPurposesMap>;
-
-export type DefaultGetResponseConsentPurposesWithTranslationsValueDescriptionMap =
-  { [key: string]: string | undefined };
-export const DefaultGetResponseConsentPurposesWithTranslationsValueDescriptionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DefaultGetResponseConsentPurposesWithTranslationsValueDescriptionMap>;
-
-export type DefaultGetResponseConsentPurposesWithTranslationsValueNameMap = {
-  [key: string]: string | undefined;
-};
-export const DefaultGetResponseConsentPurposesWithTranslationsValueNameMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DefaultGetResponseConsentPurposesWithTranslationsValueNameMap>;
-
-export interface DefaultGetResponseConsentPurposesWithTranslationsValue {
-  /** Object where keys are language codes. */
-  description: DefaultGetResponseConsentPurposesWithTranslationsValueDescriptionMap;
-  /** Object where keys are language codes. */
-  name: DefaultGetResponseConsentPurposesWithTranslationsValueNameMap;
-  order: number;
-}
-export const DefaultGetResponseConsentPurposesWithTranslationsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description:
-        DefaultGetResponseConsentPurposesWithTranslationsValueDescriptionMap,
-      name: DefaultGetResponseConsentPurposesWithTranslationsValueNameMap,
-      order: S.Number,
-    }),
-  ).annotate({
-    identifier: "DefaultGetResponseConsentPurposesWithTranslationsValue",
-  }) as any as S.Schema<DefaultGetResponseConsentPurposesWithTranslationsValue>;
-
-export type DefaultGetResponseConsentPurposesWithTranslationsMap = {
-  [key: string]:
-    | DefaultGetResponseConsentPurposesWithTranslationsValue
-    | undefined;
-};
-export const DefaultGetResponseConsentPurposesWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    DefaultGetResponseConsentPurposesWithTranslationsValue,
-  ) as any as S.Schema<DefaultGetResponseConsentPurposesWithTranslationsMap>;
-
-export interface DefaultGetResponseConsent {
-  enabled: boolean;
-  buttonTextTranslations?: DefaultGetResponseConsentButtonTextTranslations | null;
-  companyEmail?: string | null;
-  companyName?: string | null;
-  companyStreetAddress?: string | null;
-  consentModalIntroHTML?: string | null;
-  /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap | null;
-  cookieName?: string | null;
-  customCSS?: string | null;
-  customIntroDisclaimerDismissed?: boolean | null;
-  defaultLanguage?: string | null;
-  hideModal?: boolean | null;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: DefaultGetResponseConsentPurposesMap | null;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: DefaultGetResponseConsentPurposesWithTranslationsMap | null;
-  tcfCompliant?: boolean | null;
-}
-export const DefaultGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    buttonTextTranslations: S.optional(
-      S.NullOr(DefaultGetResponseConsentButtonTextTranslations),
-    ),
-    companyEmail: S.optional(S.NullOr(S.String)),
-    companyName: S.optional(S.NullOr(S.String)),
-    companyStreetAddress: S.optional(S.NullOr(S.String)),
-    consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-    consentModalIntroHTMLWithTranslations: S.optional(
-      S.NullOr(
-        DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
-      ),
-    ),
-    cookieName: S.optional(S.NullOr(S.String)),
-    customCSS: S.optional(S.NullOr(S.String)),
-    customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
-    defaultLanguage: S.optional(S.NullOr(S.String)),
-    hideModal: S.optional(S.NullOr(S.Boolean)),
-    purposes: S.optional(S.NullOr(DefaultGetResponseConsentPurposesMap)),
-    purposesWithTranslations: S.optional(
-      S.NullOr(DefaultGetResponseConsentPurposesWithTranslationsMap),
-    ),
-    tcfCompliant: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "DefaultGetResponseConsent",
-}) as any as S.Schema<DefaultGetResponseConsent>;
+export type DefaultGetResponseConsent = ConfigGetResponseConsent;
+export const DefaultGetResponseConsent = ConfigGetResponseConsent;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDefaultResponse {
@@ -624,7 +385,7 @@ export interface GetDefaultResponse {
   /** Cloudflare Monitoring settings. */
   analytics?: ConfigGetResponseAnalytics | null;
   /** Consent management configuration. */
-  consent?: DefaultGetResponseConsent | null;
+  consent?: ConfigGetResponseConsent | null;
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
@@ -638,7 +399,7 @@ export const GetDefaultResponse = /*@__PURE__*/ S.suspend(() =>
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
     analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
-    consent: S.optional(S.NullOr(DefaultGetResponseConsent)),
+    consent: S.optional(S.NullOr(ConfigGetResponseConsent)),
     historyChange: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -665,29 +426,13 @@ export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetExportRequest",
 }) as any as S.Schema<GetExportRequest>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetExportResponse {}
-export const GetExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetExportResponse",
-}) as any as S.Schema<GetExportResponse>;
-
-export type HistoryConfigsGetRequestIdsList = Array<number>;
-export const HistoryConfigsGetRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<HistoryConfigsGetRequestIdsList>;
-
 export interface GetHistoryConfigRequest {
   /** Identifier. */
   zoneId: string;
-  /** Comma separated list of Zaraz configuration IDs. */
-  ids: HistoryConfigsGetRequestIdsList;
 }
 export const GetHistoryConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    ids: HistoryConfigsGetRequestIdsList.pipe(T.Query()),
   })
     .pipe(
       T.Http({
@@ -701,202 +446,83 @@ export const GetHistoryConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHistoryConfigRequest",
 }) as any as S.Schema<GetHistoryConfigRequest>;
 
-export type HistoryConfigsGetResultValueConfigSettingsContextEnricher =
+export type HistoryConfigsGetResponseConfigSettingsContextEnricher =
   ConfigGetResponseSettingsContextEnricher;
-export const HistoryConfigsGetResultValueConfigSettingsContextEnricher =
+export const HistoryConfigsGetResponseConfigSettingsContextEnricher =
   ConfigGetResponseSettingsContextEnricher;
 
-export type HistoryConfigsGetResultValueConfigSettings =
+export type HistoryConfigsGetResponseConfigSettings = ConfigGetResponseSettings;
+export const HistoryConfigsGetResponseConfigSettings =
   ConfigGetResponseSettings;
-export const HistoryConfigsGetResultValueConfigSettings =
-  ConfigGetResponseSettings;
 
-export type HistoryConfigsGetResultValueConfigAnalytics =
+export type HistoryConfigsGetResponseConfigTriggersExcludeRulesList =
+  Array<unknown>;
+export const HistoryConfigsGetResponseConfigTriggersExcludeRulesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<HistoryConfigsGetResponseConfigTriggersExcludeRulesList>;
+
+export type HistoryConfigsGetResponseConfigTriggersLoadRulesList =
+  Array<unknown>;
+export const HistoryConfigsGetResponseConfigTriggersLoadRulesList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<HistoryConfigsGetResponseConfigTriggersLoadRulesList>;
+
+export type HistoryConfigsGetResponseConfigTriggersSystem = "pageload";
+export const HistoryConfigsGetResponseConfigTriggersSystem =
+  /*@__PURE__*/ S.String;
+
+export interface HistoryConfigsGetResponseConfigTriggers {
+  /** Rules defining when the trigger is not fired. */
+  excludeRules: HistoryConfigsGetResponseConfigTriggersExcludeRulesList;
+  /** Rules defining when the trigger is fired. */
+  loadRules: HistoryConfigsGetResponseConfigTriggersLoadRulesList;
+  /** Trigger name. */
+  name: string;
+  /** Trigger description. */
+  description?: string | null;
+  system?: HistoryConfigsGetResponseConfigTriggersSystem | null;
+}
+export const HistoryConfigsGetResponseConfigTriggers = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      excludeRules: HistoryConfigsGetResponseConfigTriggersExcludeRulesList,
+      loadRules: HistoryConfigsGetResponseConfigTriggersLoadRulesList,
+      name: S.String,
+      description: S.optional(S.NullOr(S.String)),
+      system: S.optional(
+        S.NullOr(HistoryConfigsGetResponseConfigTriggersSystem),
+      ),
+    }),
+).annotate({
+  identifier: "HistoryConfigsGetResponseConfigTriggers",
+}) as any as S.Schema<HistoryConfigsGetResponseConfigTriggers>;
+
+export type HistoryConfigsGetResponseConfigAnalytics =
   ConfigGetResponseAnalytics;
-export const HistoryConfigsGetResultValueConfigAnalytics =
+export const HistoryConfigsGetResponseConfigAnalytics =
   ConfigGetResponseAnalytics;
 
-export type HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap =
-  { [key: string]: string | undefined };
-export const HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap>;
+export type HistoryConfigsGetResponseConfigConsentButtonTextTranslations =
+  ConfigGetResponseConsentButtonTextTranslations;
+export const HistoryConfigsGetResponseConfigConsentButtonTextTranslations =
+  ConfigGetResponseConsentButtonTextTranslations;
 
-export type HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap =
-  { [key: string]: string | undefined };
-export const HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap>;
+export type HistoryConfigsGetResponseConfigConsentPurposes =
+  ConfigGetResponseConsentPurposes;
+export const HistoryConfigsGetResponseConfigConsentPurposes =
+  ConfigGetResponseConsentPurposes;
 
-export type HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap =
-  { [key: string]: string | undefined };
-export const HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap>;
+export type HistoryConfigsGetResponseConfigConsentPurposesWithTranslations =
+  ConfigGetResponseConsentPurposesWithTranslations;
+export const HistoryConfigsGetResponseConfigConsentPurposesWithTranslations =
+  ConfigGetResponseConsentPurposesWithTranslations;
 
-export interface HistoryConfigsGetResultValueConfigConsentButtonTextTranslations {
-  /** Object where keys are language codes. */
-  acceptAll: HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap;
-  /** Object where keys are language codes. */
-  confirmMyChoices: HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap;
-  /** Object where keys are language codes. */
-  rejectAll: HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap;
-}
-export const HistoryConfigsGetResultValueConfigConsentButtonTextTranslations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acceptAll:
-        HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap.pipe(
-          T.Body("accept_all"),
-        ),
-      confirmMyChoices:
-        HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
-          T.Body("confirm_my_choices"),
-        ),
-      rejectAll:
-        HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap.pipe(
-          T.Body("reject_all"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "HistoryConfigsGetResultValueConfigConsentButtonTextTranslations",
-  }) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentButtonTextTranslations>;
+export type HistoryConfigsGetResponseConfigConsent = ConfigGetResponseConsent;
+export const HistoryConfigsGetResponseConfigConsent = ConfigGetResponseConsent;
 
-export type HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap =
-  { [key: string]: string | undefined };
-export const HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap>;
-
-export type HistoryConfigsGetResultValueConfigConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
-export const HistoryConfigsGetResultValueConfigConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
-
-export type HistoryConfigsGetResultValueConfigConsentPurposesMap = {
-  [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
-};
-export const HistoryConfigsGetResultValueConfigConsentPurposesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ConfigGetResponseConsentPurposesValue,
-  ) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesMap>;
-
-export type HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap =
-  { [key: string]: string | undefined };
-export const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap>;
-
-export type HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap =
-  { [key: string]: string | undefined };
-export const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap>;
-
-export interface HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue {
-  /** Object where keys are language codes. */
-  description: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap;
-  /** Object where keys are language codes. */
-  name: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap;
-  order: number;
-}
-export const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description:
-        HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap,
-      name: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap,
-      order: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue",
-  }) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue>;
-
-export type HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap =
-  {
-    [key: string]:
-      | HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue
-      | undefined;
-  };
-export const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue,
-  ) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap>;
-
-export interface HistoryConfigsGetResultValueConfigConsent {
-  enabled: boolean;
-  buttonTextTranslations?: HistoryConfigsGetResultValueConfigConsentButtonTextTranslations | null;
-  companyEmail?: string | null;
-  companyName?: string | null;
-  companyStreetAddress?: string | null;
-  consentModalIntroHTML?: string | null;
-  /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap | null;
-  cookieName?: string | null;
-  customCSS?: string | null;
-  customIntroDisclaimerDismissed?: boolean | null;
-  defaultLanguage?: string | null;
-  hideModal?: boolean | null;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: HistoryConfigsGetResultValueConfigConsentPurposesMap | null;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap | null;
-  tcfCompliant?: boolean | null;
-}
-export const HistoryConfigsGetResultValueConfigConsent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      buttonTextTranslations: S.optional(
-        S.NullOr(
-          HistoryConfigsGetResultValueConfigConsentButtonTextTranslations,
-        ),
-      ),
-      companyEmail: S.optional(S.NullOr(S.String)),
-      companyName: S.optional(S.NullOr(S.String)),
-      companyStreetAddress: S.optional(S.NullOr(S.String)),
-      consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-      consentModalIntroHTMLWithTranslations: S.optional(
-        S.NullOr(
-          HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap,
-        ),
-      ),
-      cookieName: S.optional(S.NullOr(S.String)),
-      customCSS: S.optional(S.NullOr(S.String)),
-      customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
-      defaultLanguage: S.optional(S.NullOr(S.String)),
-      hideModal: S.optional(S.NullOr(S.Boolean)),
-      purposes: S.optional(
-        S.NullOr(HistoryConfigsGetResultValueConfigConsentPurposesMap),
-      ),
-      purposesWithTranslations: S.optional(
-        S.NullOr(
-          HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap,
-        ),
-      ),
-      tcfCompliant: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "HistoryConfigsGetResultValueConfigConsent",
-  }) as any as S.Schema<HistoryConfigsGetResultValueConfigConsent>;
-
-export interface HistoryConfigsGetResultValueConfig {
+export interface HistoryConfigsGetResponseConfig {
   /** Data layer compatibility mode enabled. */
   dataLayer: boolean;
   /** The key for Zaraz debug mode. */
@@ -904,42 +530,43 @@ export interface HistoryConfigsGetResultValueConfig {
   /** General Zaraz settings. */
   settings: ConfigGetResponseSettings;
   /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
-  tools: UntypedConfigMap;
+  tools: unknown;
   /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
-  triggers: UntypedConfigMap;
+  triggers: HistoryConfigsGetResponseConfigTriggers;
   /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
-  variables: UntypedConfigMap;
+  variables: unknown;
   /** Zaraz internal version of the config. */
   zarazVersion: number;
   /** Cloudflare Monitoring settings. */
   analytics?: ConfigGetResponseAnalytics | null;
   /** Consent management configuration. */
-  consent?: HistoryConfigsGetResultValueConfigConsent | null;
+  consent?: ConfigGetResponseConsent | null;
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
-export const HistoryConfigsGetResultValueConfig = /*@__PURE__*/ S.suspend(() =>
+export const HistoryConfigsGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataLayer: S.Boolean,
     debugKey: S.String,
     settings: ConfigGetResponseSettings,
-    tools: UntypedConfigMap,
-    triggers: UntypedConfigMap,
-    variables: UntypedConfigMap,
+    tools: S.Unknown,
+    triggers: HistoryConfigsGetResponseConfigTriggers,
+    variables: S.Unknown,
     zarazVersion: S.Number,
     analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
-    consent: S.optional(S.NullOr(HistoryConfigsGetResultValueConfigConsent)),
+    consent: S.optional(S.NullOr(ConfigGetResponseConsent)),
     historyChange: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
-  identifier: "HistoryConfigsGetResultValueConfig",
-}) as any as S.Schema<HistoryConfigsGetResultValueConfig>;
+  identifier: "HistoryConfigsGetResponseConfig",
+}) as any as S.Schema<HistoryConfigsGetResponseConfig>;
 
-export interface HistoryConfigsGetResultValue {
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetHistoryConfigResponse {
   /** ID of the configuration. */
   id: number;
   /** Zaraz configuration. */
-  config: HistoryConfigsGetResultValueConfig;
+  config: HistoryConfigsGetResponseConfig;
   /** Date and time the configuration was created. */
   createdAt: string;
   /** Date and time the configuration was last updated. */
@@ -947,32 +574,14 @@ export interface HistoryConfigsGetResultValue {
   /** Alpha-numeric ID of the account user who published the configuration. */
   userId: string;
 }
-export const HistoryConfigsGetResultValue = /*@__PURE__*/ S.suspend(() =>
+export const GetHistoryConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
-    config: HistoryConfigsGetResultValueConfig,
+    config: HistoryConfigsGetResponseConfig,
     createdAt: S.String,
     updatedAt: S.String,
     userId: S.String,
-  }),
-).annotate({
-  identifier: "HistoryConfigsGetResultValue",
-}) as any as S.Schema<HistoryConfigsGetResultValue>;
-
-export type HistoryConfigsGetResultMap = {
-  [key: string]: HistoryConfigsGetResultValue | undefined;
-};
-export const HistoryConfigsGetResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  HistoryConfigsGetResultValue,
-) as any as S.Schema<HistoryConfigsGetResultMap>;
-
-export type GetHistoryConfigResponse = HistoryConfigsGetResultMap;
-export const GetHistoryConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  HistoryConfigsGetResultMap.pipe(
-    T.EnvelopePayloadRoot(),
-    T.KeyDictionary(KEY_DICTIONARY),
-  ),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetHistoryConfigResponse",
 }) as any as S.Schema<GetHistoryConfigResponse>;
@@ -1097,287 +706,13 @@ export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListHistoriesResponse",
 }) as any as S.Schema<ListHistoriesResponse>;
 
-export type ConfigUpdateRequestSettingsContextEnricher =
-  ConfigGetResponseSettingsContextEnricher;
-export const ConfigUpdateRequestSettingsContextEnricher =
-  ConfigGetResponseSettingsContextEnricher;
-
-export interface ConfigUpdateRequestSettings {
-  /** Automatic injection of Zaraz scripts enabled. */
-  autoInjectScript: boolean;
-  /** Details of the worker that receives and edits Zaraz Context object. */
-  contextEnricher?: ConfigGetResponseSettingsContextEnricher;
-  /** The domain Zaraz will use for writing and reading its cookies. */
-  cookieDomain?: string;
-  /** Ecommerce API enabled. */
-  ecommerce?: boolean;
-  /** Custom endpoint for server-side track events. */
-  eventsApiPath?: string;
-  /** Hiding external referrer URL enabled. */
-  hideExternalReferer?: boolean;
-  /** Trimming IP address enabled. */
-  hideIPAddress?: boolean;
-  /** Removing URL query params enabled. */
-  hideQueryParams?: boolean;
-  /** Removing sensitive data from User Agent string enabled. */
-  hideUserAgent?: boolean;
-  /** Custom endpoint for Zaraz init script. */
-  initPath?: string;
-  /** Injection of Zaraz scripts into iframes enabled. */
-  injectIframes?: boolean;
-  /** Custom path for Managed Components server functionalities. */
-  mcRootPath?: string;
-  /** Custom endpoint for Zaraz main script. */
-  scriptPath?: string;
-  /** Custom endpoint for Zaraz tracking requests. */
-  trackPath?: string;
-}
-export const ConfigUpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoInjectScript: S.Boolean,
-    contextEnricher: S.optional(ConfigGetResponseSettingsContextEnricher),
-    cookieDomain: S.optional(S.String),
-    ecommerce: S.optional(S.Boolean),
-    eventsApiPath: S.optional(S.String),
-    hideExternalReferer: S.optional(S.Boolean),
-    hideIPAddress: S.optional(S.Boolean),
-    hideQueryParams: S.optional(S.Boolean),
-    hideUserAgent: S.optional(S.Boolean),
-    initPath: S.optional(S.String),
-    injectIframes: S.optional(S.Boolean),
-    mcRootPath: S.optional(S.String),
-    scriptPath: S.optional(S.String),
-    trackPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigUpdateRequestSettings",
-}) as any as S.Schema<ConfigUpdateRequestSettings>;
-
-export interface ConfigUpdateRequestAnalytics {
-  /** Consent purpose assigned to Monitoring. */
-  defaultPurpose?: string;
-  /** Whether Advanced Monitoring reports are enabled. */
-  enabled?: boolean;
-  /** Session expiration time (seconds). */
-  sessionExpTime?: number;
-}
-export const ConfigUpdateRequestAnalytics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPurpose: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    sessionExpTime: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ConfigUpdateRequestAnalytics",
-}) as any as S.Schema<ConfigUpdateRequestAnalytics>;
-
-export type ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap>;
-
-export type ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap =
-  { [key: string]: string | undefined };
-export const ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap>;
-
-export type ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap>;
-
-export interface ConfigUpdateRequestConsentButtonTextTranslations {
-  /** Object where keys are language codes. */
-  acceptAll: ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap;
-  /** Object where keys are language codes. */
-  confirmMyChoices: ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap;
-  /** Object where keys are language codes. */
-  rejectAll: ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap;
-}
-export const ConfigUpdateRequestConsentButtonTextTranslations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acceptAll:
-        ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap.pipe(
-          T.Body("accept_all"),
-        ),
-      confirmMyChoices:
-        ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
-          T.Body("confirm_my_choices"),
-        ),
-      rejectAll:
-        ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap.pipe(
-          T.Body("reject_all"),
-        ),
-    }),
-  ).annotate({
-    identifier: "ConfigUpdateRequestConsentButtonTextTranslations",
-  }) as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslations>;
-
-export type ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap =
-  { [key: string]: string | undefined };
-export const ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap>;
-
-export type ConfigUpdateRequestConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
-export const ConfigUpdateRequestConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
-
-export type ConfigUpdateRequestConsentPurposesMap = {
-  [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
-};
-export const ConfigUpdateRequestConsentPurposesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConfigGetResponseConsentPurposesValue,
-) as any as S.Schema<ConfigUpdateRequestConsentPurposesMap>;
-
-export type ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap =
-  { [key: string]: string | undefined };
-export const ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap>;
-
-export type ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap>;
-
-export interface ConfigUpdateRequestConsentPurposesWithTranslationsValue {
-  /** Object where keys are language codes. */
-  description: ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap;
-  /** Object where keys are language codes. */
-  name: ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap;
-  order: number;
-}
-export const ConfigUpdateRequestConsentPurposesWithTranslationsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description:
-        ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap,
-      name: ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap,
-      order: S.Number,
-    }),
-  ).annotate({
-    identifier: "ConfigUpdateRequestConsentPurposesWithTranslationsValue",
-  }) as any as S.Schema<ConfigUpdateRequestConsentPurposesWithTranslationsValue>;
-
-export type ConfigUpdateRequestConsentPurposesWithTranslationsMap = {
-  [key: string]:
-    | ConfigUpdateRequestConsentPurposesWithTranslationsValue
-    | undefined;
-};
-export const ConfigUpdateRequestConsentPurposesWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ConfigUpdateRequestConsentPurposesWithTranslationsValue,
-  ) as any as S.Schema<ConfigUpdateRequestConsentPurposesWithTranslationsMap>;
-
-export interface ConfigUpdateRequestConsent {
-  enabled: boolean;
-  buttonTextTranslations?: ConfigUpdateRequestConsentButtonTextTranslations;
-  companyEmail?: string;
-  companyName?: string;
-  companyStreetAddress?: string;
-  consentModalIntroHTML?: string;
-  /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap;
-  cookieName?: string;
-  customCSS?: string;
-  customIntroDisclaimerDismissed?: boolean;
-  defaultLanguage?: string;
-  hideModal?: boolean;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: ConfigUpdateRequestConsentPurposesMap;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: ConfigUpdateRequestConsentPurposesWithTranslationsMap;
-  tcfCompliant?: boolean;
-}
-export const ConfigUpdateRequestConsent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    buttonTextTranslations: S.optional(
-      ConfigUpdateRequestConsentButtonTextTranslations,
-    ),
-    companyEmail: S.optional(S.String),
-    companyName: S.optional(S.String),
-    companyStreetAddress: S.optional(S.String),
-    consentModalIntroHTML: S.optional(S.String),
-    consentModalIntroHTMLWithTranslations: S.optional(
-      ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap,
-    ),
-    cookieName: S.optional(S.String),
-    customCSS: S.optional(S.String),
-    customIntroDisclaimerDismissed: S.optional(S.Boolean),
-    defaultLanguage: S.optional(S.String),
-    hideModal: S.optional(S.Boolean),
-    purposes: S.optional(ConfigUpdateRequestConsentPurposesMap),
-    purposesWithTranslations: S.optional(
-      ConfigUpdateRequestConsentPurposesWithTranslationsMap,
-    ),
-    tcfCompliant: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConfigUpdateRequestConsent",
-}) as any as S.Schema<ConfigUpdateRequestConsent>;
-
 export interface PutConfigRequest {
   /** Identifier. */
   zoneId: string;
-  /** Data layer compatibility mode enabled. */
-  dataLayer: boolean;
-  /** The key for Zaraz debug mode. */
-  debugKey: string;
-  /** General Zaraz settings. */
-  settings: ConfigUpdateRequestSettings;
-  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
-  tools: UntypedConfigMap;
-  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
-  triggers: UntypedConfigMap;
-  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
-  variables: UntypedConfigMap;
-  /** Zaraz internal version of the config. */
-  zarazVersion: number;
-  /** Cloudflare Monitoring settings. */
-  analytics?: ConfigUpdateRequestAnalytics;
-  /** Consent management configuration. */
-  consent?: ConfigUpdateRequestConsent;
-  /** Single Page Application support enabled. */
-  historyChange?: boolean;
 }
 export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    dataLayer: S.Boolean,
-    debugKey: S.String,
-    settings: ConfigUpdateRequestSettings,
-    tools: UntypedConfigMap,
-    triggers: UntypedConfigMap,
-    variables: UntypedConfigMap,
-    zarazVersion: S.Number,
-    analytics: S.optional(ConfigUpdateRequestAnalytics),
-    consent: S.optional(ConfigUpdateRequestConsent),
-    historyChange: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -1402,177 +737,23 @@ export const ConfigUpdateResponseSettings = ConfigGetResponseSettings;
 export type ConfigUpdateResponseAnalytics = ConfigGetResponseAnalytics;
 export const ConfigUpdateResponseAnalytics = ConfigGetResponseAnalytics;
 
-export type ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap>;
-
-export type ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  { [key: string]: string | undefined };
-export const ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
-
-export type ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap>;
-
-export interface ConfigUpdateResponseConsentButtonTextTranslations {
-  /** Object where keys are language codes. */
-  acceptAll: ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap;
-  /** Object where keys are language codes. */
-  confirmMyChoices: ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
-  /** Object where keys are language codes. */
-  rejectAll: ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap;
-}
+export type ConfigUpdateResponseConsentButtonTextTranslations =
+  ConfigGetResponseConsentButtonTextTranslations;
 export const ConfigUpdateResponseConsentButtonTextTranslations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acceptAll:
-        ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
-          T.Body("accept_all"),
-        ),
-      confirmMyChoices:
-        ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
-          T.Body("confirm_my_choices"),
-        ),
-      rejectAll:
-        ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap.pipe(
-          T.Body("reject_all"),
-        ),
-    }),
-  ).annotate({
-    identifier: "ConfigUpdateResponseConsentButtonTextTranslations",
-  }) as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslations>;
+  ConfigGetResponseConsentButtonTextTranslations;
 
-export type ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  { [key: string]: string | undefined };
-export const ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+export type ConfigUpdateResponseConsentPurposes =
+  ConfigGetResponseConsentPurposes;
+export const ConfigUpdateResponseConsentPurposes =
+  ConfigGetResponseConsentPurposes;
 
-export type ConfigUpdateResponseConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
-export const ConfigUpdateResponseConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
+export type ConfigUpdateResponseConsentPurposesWithTranslations =
+  ConfigGetResponseConsentPurposesWithTranslations;
+export const ConfigUpdateResponseConsentPurposesWithTranslations =
+  ConfigGetResponseConsentPurposesWithTranslations;
 
-export type ConfigUpdateResponseConsentPurposesMap = {
-  [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
-};
-export const ConfigUpdateResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConfigGetResponseConsentPurposesValue,
-) as any as S.Schema<ConfigUpdateResponseConsentPurposesMap>;
-
-export type ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap =
-  { [key: string]: string | undefined };
-export const ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap>;
-
-export type ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap = {
-  [key: string]: string | undefined;
-};
-export const ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap>;
-
-export interface ConfigUpdateResponseConsentPurposesWithTranslationsValue {
-  /** Object where keys are language codes. */
-  description: ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap;
-  /** Object where keys are language codes. */
-  name: ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap;
-  order: number;
-}
-export const ConfigUpdateResponseConsentPurposesWithTranslationsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description:
-        ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap,
-      name: ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap,
-      order: S.Number,
-    }),
-  ).annotate({
-    identifier: "ConfigUpdateResponseConsentPurposesWithTranslationsValue",
-  }) as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsValue>;
-
-export type ConfigUpdateResponseConsentPurposesWithTranslationsMap = {
-  [key: string]:
-    | ConfigUpdateResponseConsentPurposesWithTranslationsValue
-    | undefined;
-};
-export const ConfigUpdateResponseConsentPurposesWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ConfigUpdateResponseConsentPurposesWithTranslationsValue,
-  ) as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsMap>;
-
-export interface ConfigUpdateResponseConsent {
-  enabled: boolean;
-  buttonTextTranslations?: ConfigUpdateResponseConsentButtonTextTranslations | null;
-  companyEmail?: string | null;
-  companyName?: string | null;
-  companyStreetAddress?: string | null;
-  consentModalIntroHTML?: string | null;
-  /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap | null;
-  cookieName?: string | null;
-  customCSS?: string | null;
-  customIntroDisclaimerDismissed?: boolean | null;
-  defaultLanguage?: string | null;
-  hideModal?: boolean | null;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: ConfigUpdateResponseConsentPurposesMap | null;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: ConfigUpdateResponseConsentPurposesWithTranslationsMap | null;
-  tcfCompliant?: boolean | null;
-}
-export const ConfigUpdateResponseConsent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    buttonTextTranslations: S.optional(
-      S.NullOr(ConfigUpdateResponseConsentButtonTextTranslations),
-    ),
-    companyEmail: S.optional(S.NullOr(S.String)),
-    companyName: S.optional(S.NullOr(S.String)),
-    companyStreetAddress: S.optional(S.NullOr(S.String)),
-    consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-    consentModalIntroHTMLWithTranslations: S.optional(
-      S.NullOr(
-        ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap,
-      ),
-    ),
-    cookieName: S.optional(S.NullOr(S.String)),
-    customCSS: S.optional(S.NullOr(S.String)),
-    customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
-    defaultLanguage: S.optional(S.NullOr(S.String)),
-    hideModal: S.optional(S.NullOr(S.Boolean)),
-    purposes: S.optional(S.NullOr(ConfigUpdateResponseConsentPurposesMap)),
-    purposesWithTranslations: S.optional(
-      S.NullOr(ConfigUpdateResponseConsentPurposesWithTranslationsMap),
-    ),
-    tcfCompliant: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ConfigUpdateResponseConsent",
-}) as any as S.Schema<ConfigUpdateResponseConsent>;
+export type ConfigUpdateResponseConsent = ConfigGetResponseConsent;
+export const ConfigUpdateResponseConsent = ConfigGetResponseConsent;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutConfigResponse {
@@ -1593,7 +774,7 @@ export interface PutConfigResponse {
   /** Cloudflare Monitoring settings. */
   analytics?: ConfigGetResponseAnalytics | null;
   /** Consent management configuration. */
-  consent?: ConfigUpdateResponseConsent | null;
+  consent?: ConfigGetResponseConsent | null;
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
@@ -1607,7 +788,7 @@ export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
     analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
-    consent: S.optional(S.NullOr(ConfigUpdateResponseConsent)),
+    consent: S.optional(S.NullOr(ConfigGetResponseConsent)),
     historyChange: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1617,13 +798,10 @@ export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutHistoryRequest {
   /** Identifier. */
   zoneId: string;
-  /** ID of the Zaraz configuration to restore. */
-  body: number;
 }
 export const PutHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Number.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1648,177 +826,23 @@ export const HistoryUpdateResponseSettings = ConfigGetResponseSettings;
 export type HistoryUpdateResponseAnalytics = ConfigGetResponseAnalytics;
 export const HistoryUpdateResponseAnalytics = ConfigGetResponseAnalytics;
 
-export type HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap = {
-  [key: string]: string | undefined;
-};
-export const HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap>;
-
-export type HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  { [key: string]: string | undefined };
-export const HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
-
-export type HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap = {
-  [key: string]: string | undefined;
-};
-export const HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap>;
-
-export interface HistoryUpdateResponseConsentButtonTextTranslations {
-  /** Object where keys are language codes. */
-  acceptAll: HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap;
-  /** Object where keys are language codes. */
-  confirmMyChoices: HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
-  /** Object where keys are language codes. */
-  rejectAll: HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap;
-}
+export type HistoryUpdateResponseConsentButtonTextTranslations =
+  ConfigGetResponseConsentButtonTextTranslations;
 export const HistoryUpdateResponseConsentButtonTextTranslations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acceptAll:
-        HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
-          T.Body("accept_all"),
-        ),
-      confirmMyChoices:
-        HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
-          T.Body("confirm_my_choices"),
-        ),
-      rejectAll:
-        HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap.pipe(
-          T.Body("reject_all"),
-        ),
-    }),
-  ).annotate({
-    identifier: "HistoryUpdateResponseConsentButtonTextTranslations",
-  }) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslations>;
+  ConfigGetResponseConsentButtonTextTranslations;
 
-export type HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  { [key: string]: string | undefined };
-export const HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+export type HistoryUpdateResponseConsentPurposes =
+  ConfigGetResponseConsentPurposes;
+export const HistoryUpdateResponseConsentPurposes =
+  ConfigGetResponseConsentPurposes;
 
-export type HistoryUpdateResponseConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
-export const HistoryUpdateResponseConsentPurposesValue =
-  ConfigGetResponseConsentPurposesValue;
+export type HistoryUpdateResponseConsentPurposesWithTranslations =
+  ConfigGetResponseConsentPurposesWithTranslations;
+export const HistoryUpdateResponseConsentPurposesWithTranslations =
+  ConfigGetResponseConsentPurposesWithTranslations;
 
-export type HistoryUpdateResponseConsentPurposesMap = {
-  [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
-};
-export const HistoryUpdateResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConfigGetResponseConsentPurposesValue,
-) as any as S.Schema<HistoryUpdateResponseConsentPurposesMap>;
-
-export type HistoryUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap =
-  { [key: string]: string | undefined };
-export const HistoryUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap>;
-
-export type HistoryUpdateResponseConsentPurposesWithTranslationsValueNameMap = {
-  [key: string]: string | undefined;
-};
-export const HistoryUpdateResponseConsentPurposesWithTranslationsValueNameMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<HistoryUpdateResponseConsentPurposesWithTranslationsValueNameMap>;
-
-export interface HistoryUpdateResponseConsentPurposesWithTranslationsValue {
-  /** Object where keys are language codes. */
-  description: HistoryUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap;
-  /** Object where keys are language codes. */
-  name: HistoryUpdateResponseConsentPurposesWithTranslationsValueNameMap;
-  order: number;
-}
-export const HistoryUpdateResponseConsentPurposesWithTranslationsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description:
-        HistoryUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap,
-      name: HistoryUpdateResponseConsentPurposesWithTranslationsValueNameMap,
-      order: S.Number,
-    }),
-  ).annotate({
-    identifier: "HistoryUpdateResponseConsentPurposesWithTranslationsValue",
-  }) as any as S.Schema<HistoryUpdateResponseConsentPurposesWithTranslationsValue>;
-
-export type HistoryUpdateResponseConsentPurposesWithTranslationsMap = {
-  [key: string]:
-    | HistoryUpdateResponseConsentPurposesWithTranslationsValue
-    | undefined;
-};
-export const HistoryUpdateResponseConsentPurposesWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    HistoryUpdateResponseConsentPurposesWithTranslationsValue,
-  ) as any as S.Schema<HistoryUpdateResponseConsentPurposesWithTranslationsMap>;
-
-export interface HistoryUpdateResponseConsent {
-  enabled: boolean;
-  buttonTextTranslations?: HistoryUpdateResponseConsentButtonTextTranslations | null;
-  companyEmail?: string | null;
-  companyName?: string | null;
-  companyStreetAddress?: string | null;
-  consentModalIntroHTML?: string | null;
-  /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap | null;
-  cookieName?: string | null;
-  customCSS?: string | null;
-  customIntroDisclaimerDismissed?: boolean | null;
-  defaultLanguage?: string | null;
-  hideModal?: boolean | null;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: HistoryUpdateResponseConsentPurposesMap | null;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: HistoryUpdateResponseConsentPurposesWithTranslationsMap | null;
-  tcfCompliant?: boolean | null;
-}
-export const HistoryUpdateResponseConsent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    buttonTextTranslations: S.optional(
-      S.NullOr(HistoryUpdateResponseConsentButtonTextTranslations),
-    ),
-    companyEmail: S.optional(S.NullOr(S.String)),
-    companyName: S.optional(S.NullOr(S.String)),
-    companyStreetAddress: S.optional(S.NullOr(S.String)),
-    consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-    consentModalIntroHTMLWithTranslations: S.optional(
-      S.NullOr(
-        HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap,
-      ),
-    ),
-    cookieName: S.optional(S.NullOr(S.String)),
-    customCSS: S.optional(S.NullOr(S.String)),
-    customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
-    defaultLanguage: S.optional(S.NullOr(S.String)),
-    hideModal: S.optional(S.NullOr(S.Boolean)),
-    purposes: S.optional(S.NullOr(HistoryUpdateResponseConsentPurposesMap)),
-    purposesWithTranslations: S.optional(
-      S.NullOr(HistoryUpdateResponseConsentPurposesWithTranslationsMap),
-    ),
-    tcfCompliant: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "HistoryUpdateResponseConsent",
-}) as any as S.Schema<HistoryUpdateResponseConsent>;
+export type HistoryUpdateResponseConsent = ConfigGetResponseConsent;
+export const HistoryUpdateResponseConsent = ConfigGetResponseConsent;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutHistoryResponse {
@@ -1839,7 +863,7 @@ export interface PutHistoryResponse {
   /** Cloudflare Monitoring settings. */
   analytics?: ConfigGetResponseAnalytics | null;
   /** Consent management configuration. */
-  consent?: HistoryUpdateResponseConsent | null;
+  consent?: ConfigGetResponseConsent | null;
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
@@ -1853,7 +877,7 @@ export const PutHistoryResponse = /*@__PURE__*/ S.suspend(() =>
     variables: UntypedConfigMap,
     zarazVersion: S.Number,
     analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
-    consent: S.optional(S.NullOr(HistoryUpdateResponseConsent)),
+    consent: S.optional(S.NullOr(ConfigGetResponseConsent)),
     historyChange: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

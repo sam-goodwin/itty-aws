@@ -235,10 +235,11 @@ export const InvestigateMoveBulkRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateMoveBulkRequestIdsList>;
 
-export type InvestigateMoveBulkRequestPostfixIdsList = Array<string>;
-export const InvestigateMoveBulkRequestPostfixIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestigateMoveBulkRequestPostfixIdsList>;
+export type InvestigateMoveBulkRequestDeprecatedpostfixIdsList = Array<string>;
+export const InvestigateMoveBulkRequestDeprecatedpostfixIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InvestigateMoveBulkRequestDeprecatedpostfixIdsList>;
 
 export interface BulkInvestigateMoveRequest {
   /** Identifier. */
@@ -247,10 +248,10 @@ export interface BulkInvestigateMoveRequest {
   expectedDisposition?:
     | InvestigateMoveBulkRequestExpectedDisposition
     | (string & {});
-  /** List of message IDs to move */
+  /** List of message IDs to move. */
   ids?: InvestigateMoveBulkRequestIdsList;
-  /** Deprecated, use `ids` instead. End of life: November 1, 2026. List of message IDs to move. */
-  postfixIds?: InvestigateMoveBulkRequestPostfixIdsList;
+  /** Use `ids` instead. */
+  deprecatedpostfixIds?: InvestigateMoveBulkRequestDeprecatedpostfixIdsList;
 }
 export const BulkInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -262,8 +263,10 @@ export const BulkInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     ids: S.optional(InvestigateMoveBulkRequestIdsList),
-    postfixIds: S.optional(
-      InvestigateMoveBulkRequestPostfixIdsList.pipe(T.Body("postfix_ids")),
+    deprecatedpostfixIds: S.optional(
+      InvestigateMoveBulkRequestDeprecatedpostfixIdsList.pipe(
+        T.Body("Deprecatedpostfix_ids"),
+      ),
     ),
   })
     .pipe(
@@ -278,48 +281,9 @@ export const BulkInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkInvestigateMoveRequest",
 }) as any as S.Schema<BulkInvestigateMoveRequest>;
 
-export interface InvestigateMoveBulkResultItem {
-  /** Whether the operation succeeded */
-  success: boolean;
-  /** When the move operation completed (UTC) */
-  completedAt?: string | null;
-  /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
-  completedTimestamp?: string | null;
-  /** Destination folder for the message */
-  destination?: string | null;
-  /** Number of items moved. End of life: November 1, 2026. */
-  itemCount?: number | null;
-  /** Message identifier */
-  messageId?: string | null;
-  /** Type of operation performed */
-  operation?: string | null;
-  /** Recipient email address */
-  recipient?: string | null;
-  /** Operation status */
-  status?: string | null;
-}
-export const InvestigateMoveBulkResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
-    completedTimestamp: S.optional(
-      S.NullOr(S.String).pipe(T.Body("completed_timestamp")),
-    ),
-    destination: S.optional(S.NullOr(S.String)),
-    itemCount: S.optional(S.NullOr(S.Number).pipe(T.Body("item_count"))),
-    messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
-    operation: S.optional(S.NullOr(S.String)),
-    recipient: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InvestigateMoveBulkResultItem",
-}) as any as S.Schema<InvestigateMoveBulkResultItem>;
-
-export type InvestigateMoveBulkResultList =
-  Array<InvestigateMoveBulkResultItem>;
+export type InvestigateMoveBulkResultList = Array<unknown>;
 export const InvestigateMoveBulkResultList = /*@__PURE__*/ S.Array(
-  InvestigateMoveBulkResultItem,
+  S.Unknown,
 ) as any as S.Schema<InvestigateMoveBulkResultList>;
 
 export interface BulkInvestigateMoveResponse {
@@ -382,12 +346,12 @@ export const InvestigateReleaseBulkResultItemUndeliveredList =
   ) as any as S.Schema<InvestigateReleaseBulkResultItemUndeliveredList>;
 
 export interface InvestigateReleaseBulkResultItem {
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   id: string;
   delivered?: InvestigateReleaseBulkResultItemDeliveredList | null;
   failed?: InvestigateReleaseBulkResultItemFailedList | null;
-  /** Deprecated, use `id` instead. End of life: November 1, 2026. */
-  postfixId?: string | null;
+  /** Use `id` instead. */
+  deprecatedpostfixId?: string | null;
   undelivered?: InvestigateReleaseBulkResultItemUndeliveredList | null;
 }
 export const InvestigateReleaseBulkResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -397,7 +361,9 @@ export const InvestigateReleaseBulkResultItem = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(InvestigateReleaseBulkResultItemDeliveredList),
     ),
     failed: S.optional(S.NullOr(InvestigateReleaseBulkResultItemFailedList)),
-    postfixId: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id"))),
+    deprecatedpostfixId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedpostfix_id")),
+    ),
     undelivered: S.optional(
       S.NullOr(InvestigateReleaseBulkResultItemUndeliveredList),
     ),
@@ -427,154 +393,13 @@ export const BulkInvestigateReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkInvestigateReleaseResponse",
 }) as any as S.Schema<BulkInvestigateReleaseResponse>;
 
-export type InvestigateBulkCreateRequestAction = "MOVE" | "RELEASE";
-export const InvestigateBulkCreateRequestAction = /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | "rejected"
-  | "deferred"
-  | "bounced"
-  | "queued";
-export const InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateRequestSearchParamsFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateBulkCreateRequestSearchParamsFinalDisposition =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateRequestSearchParamsMessageAction =
-  | "PREVIEW"
-  | "QUARANTINE_RELEASED"
-  | "MOVED";
-export const InvestigateBulkCreateRequestSearchParamsMessageAction =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkCreateRequestSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean;
-  alertId?: string;
-  /** Delivery status of the message. */
-  deliveryStatus?:
-    | InvestigateBulkCreateRequestSearchParamsDeliveryStatus
-    | (string & {});
-  detectionsOnly?: boolean;
-  domain?: string;
-  /** End of search date range */
-  end?: string;
-  exactSubject?: string;
-  finalDisposition?:
-    | InvestigateBulkCreateRequestSearchParamsFinalDisposition
-    | (string & {});
-  messageAction?:
-    | InvestigateBulkCreateRequestSearchParamsMessageAction
-    | (string & {});
-  messageId?: string;
-  metric?: string;
-  query?: string;
-  recipient?: string;
-  sender?: string;
-  /** Beginning of search date range */
-  start?: string;
-  subject?: string;
-  submissions?: boolean;
-}
-export const InvestigateBulkCreateRequestSearchParams = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
-      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
-      deliveryStatus: S.optional(
-        InvestigateBulkCreateRequestSearchParamsDeliveryStatus.pipe(
-          T.Body("delivery_status"),
-        ),
-      ),
-      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
-      domain: S.optional(S.String),
-      end: S.optional(S.String),
-      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
-      finalDisposition: S.optional(
-        InvestigateBulkCreateRequestSearchParamsFinalDisposition.pipe(
-          T.Body("final_disposition"),
-        ),
-      ),
-      messageAction: S.optional(
-        InvestigateBulkCreateRequestSearchParamsMessageAction.pipe(
-          T.Body("message_action"),
-        ),
-      ),
-      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
-      metric: S.optional(S.String),
-      query: S.optional(S.String),
-      recipient: S.optional(S.String),
-      sender: S.optional(S.String),
-      start: S.optional(S.String),
-      subject: S.optional(S.String),
-      submissions: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "InvestigateBulkCreateRequestSearchParams",
-}) as any as S.Schema<InvestigateBulkCreateRequestSearchParams>;
-
-export type InvestigateBulkCreateRequestDestination =
-  | "Inbox"
-  | "JunkEmail"
-  | "DeletedItems"
-  | "RecoverableItemsDeletions"
-  | "RecoverableItemsPurges";
-export const InvestigateBulkCreateRequestDestination = /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateRequestExpectedDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateBulkCreateRequestExpectedDisposition =
-  /*@__PURE__*/ S.String;
-
 export interface CreateInvestigateBulkRequest {
   /** Identifier. */
   accountId: string;
-  action: InvestigateBulkCreateRequestAction | (string & {});
-  searchParams: InvestigateBulkCreateRequestSearchParams;
-  comment?: string;
-  destination?: InvestigateBulkCreateRequestDestination | (string & {});
-  expectedDisposition?:
-    | InvestigateBulkCreateRequestExpectedDisposition
-    | (string & {});
 }
 export const CreateInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    action: InvestigateBulkCreateRequestAction,
-    searchParams: InvestigateBulkCreateRequestSearchParams.pipe(
-      T.Body("search_params"),
-    ),
-    comment: S.optional(S.String),
-    destination: S.optional(InvestigateBulkCreateRequestDestination),
-    expectedDisposition: S.optional(
-      InvestigateBulkCreateRequestExpectedDisposition.pipe(
-        T.Body("expected_disposition"),
-      ),
-    ),
   })
     .pipe(
       T.Http({
@@ -588,104 +413,8 @@ export const CreateInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInvestigateBulkRequest",
 }) as any as S.Schema<CreateInvestigateBulkRequest>;
 
-export type InvestigateBulkCreateResponseActionParamsMoveDestination =
-  | "Inbox"
-  | "JunkEmail"
-  | "DeletedItems"
-  | "RecoverableItemsDeletions"
-  | "RecoverableItemsPurges";
-export const InvestigateBulkCreateResponseActionParamsMoveDestination =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateResponseActionParamsMoveType = "MOVE";
-export const InvestigateBulkCreateResponseActionParamsMoveType =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkCreateResponseActionParamsMove {
-  destination: InvestigateBulkCreateResponseActionParamsMoveDestination;
-  type: InvestigateBulkCreateResponseActionParamsMoveType;
-  expectedDisposition?: InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition | null;
-}
-export const InvestigateBulkCreateResponseActionParamsMove =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: InvestigateBulkCreateResponseActionParamsMoveDestination,
-      type: InvestigateBulkCreateResponseActionParamsMoveType,
-      expectedDisposition: S.optional(
-        S.NullOr(
-          InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition,
-        ).pipe(T.Body("expected_disposition")),
-      ),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkCreateResponseActionParamsMove",
-  }) as any as S.Schema<InvestigateBulkCreateResponseActionParamsMove>;
-
-export type InvestigateBulkCreateResponseActionParamsReleaseType = "RELEASE";
-export const InvestigateBulkCreateResponseActionParamsReleaseType =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkCreateResponseActionParamsRelease {
-  type: InvestigateBulkCreateResponseActionParamsReleaseType;
-}
-export const InvestigateBulkCreateResponseActionParamsRelease =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: InvestigateBulkCreateResponseActionParamsReleaseType,
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkCreateResponseActionParamsRelease",
-  }) as any as S.Schema<InvestigateBulkCreateResponseActionParamsRelease>;
-
-export type InvestigateBulkCreateResponseActionParams =
-  | InvestigateBulkCreateResponseActionParamsMove
-  | InvestigateBulkCreateResponseActionParamsRelease;
-export const InvestigateBulkCreateResponseActionParams =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]]),
-  );
-
 export type InvestigateBulkCreateResponseActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkCreateResponseActionType = /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | "rejected"
-  | "deferred"
-  | "bounced"
-  | "queued";
-export const InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateResponseSearchParamsFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateBulkCreateResponseSearchParamsFinalDisposition =
-  /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCreateResponseSearchParamsMessageAction =
   | "PREVIEW"
@@ -695,24 +424,24 @@ export const InvestigateBulkCreateResponseSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
 export interface InvestigateBulkCreateResponseSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean | null;
+  /** Deprecated, use GET /investigate/{investigate_id}/action_log instead. End of life: November 1, 2026. */
+  deprecatedActionLog?: boolean | null;
   alertId?: string | null;
   /** Delivery status of the message. */
-  deliveryStatus?: InvestigateBulkCreateResponseSearchParamsDeliveryStatus | null;
+  deliveryStatus?: string | null;
   detectionsOnly?: boolean | null;
   domain?: string | null;
-  /** End of search date range */
+  /** End of search date range. */
   end?: string | null;
   exactSubject?: string | null;
-  finalDisposition?: InvestigateBulkCreateResponseSearchParamsFinalDisposition | null;
+  finalDisposition?: string | null;
   messageAction?: InvestigateBulkCreateResponseSearchParamsMessageAction | null;
   messageId?: string | null;
   metric?: string | null;
   query?: string | null;
   recipient?: string | null;
   sender?: string | null;
-  /** Beginning of search date range */
+  /** Beginning of search date range. */
   start?: string | null;
   subject?: string | null;
   submissions?: boolean | null;
@@ -720,12 +449,12 @@ export interface InvestigateBulkCreateResponseSearchParams {
 export const InvestigateBulkCreateResponseSearchParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
+      deprecatedActionLog: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("Deprecated action_log")),
+      ),
       alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
       deliveryStatus: S.optional(
-        S.NullOr(InvestigateBulkCreateResponseSearchParamsDeliveryStatus).pipe(
-          T.Body("delivery_status"),
-        ),
+        S.NullOr(S.String).pipe(T.Body("delivery_status")),
       ),
       detectionsOnly: S.optional(
         S.NullOr(S.Boolean).pipe(T.Body("detections_only")),
@@ -736,9 +465,7 @@ export const InvestigateBulkCreateResponseSearchParams =
         S.NullOr(S.String).pipe(T.Body("exact_subject")),
       ),
       finalDisposition: S.optional(
-        S.NullOr(
-          InvestigateBulkCreateResponseSearchParamsFinalDisposition,
-        ).pipe(T.Body("final_disposition")),
+        S.NullOr(S.String).pipe(T.Body("final_disposition")),
       ),
       messageAction: S.optional(
         S.NullOr(InvestigateBulkCreateResponseSearchParamsMessageAction).pipe(
@@ -758,27 +485,18 @@ export const InvestigateBulkCreateResponseSearchParams =
     identifier: "InvestigateBulkCreateResponseSearchParams",
   }) as any as S.Schema<InvestigateBulkCreateResponseSearchParams>;
 
-export type InvestigateBulkCreateResponseStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | "COMPLETED"
-  | "FAILED"
-  | "CANCELLED"
-  | "SKIPPED";
-export const InvestigateBulkCreateResponseStatus = /*@__PURE__*/ S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateInvestigateBulkResponse {
-  actionParams: InvestigateBulkCreateResponseActionParams;
+  actionParams: unknown;
   actionType: InvestigateBulkCreateResponseActionType;
   createdAt: string;
   jobId: string;
   messagesFailed: number;
   messagesPending: number;
   messagesSuccessful: number;
+  /** Deprecated, use GET /investigate/{investigate_id}/action_log instead. End of life: November 1, 2026. */
   searchParams: InvestigateBulkCreateResponseSearchParams;
-  status: InvestigateBulkCreateResponseStatus;
+  status: string;
   totalMessagesDiscovered: number;
   comment?: string | null;
   completedAt?: string | null;
@@ -787,9 +505,7 @@ export interface CreateInvestigateBulkResponse {
 }
 export const CreateInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actionParams: InvestigateBulkCreateResponseActionParams.pipe(
-      T.Body("action_params"),
-    ),
+    actionParams: S.Unknown.pipe(T.Body("action_params")),
     actionType: InvestigateBulkCreateResponseActionType.pipe(
       T.Body("action_type"),
     ),
@@ -801,7 +517,7 @@ export const CreateInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
     searchParams: InvestigateBulkCreateResponseSearchParams.pipe(
       T.Body("search_params"),
     ),
-    status: InvestigateBulkCreateResponseStatus,
+    status: S.String,
     totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
     comment: S.optional(S.NullOr(S.String)),
     completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
@@ -817,6 +533,7 @@ export const CreateInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInvestigateBulkCancelRequest {
   /** Identifier. */
   accountId: string;
+  /** formatuuid */
   jobId: string;
 }
 export const CreateInvestigateBulkCancelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -836,20 +553,19 @@ export const CreateInvestigateBulkCancelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInvestigateBulkCancelRequest",
 }) as any as S.Schema<CreateInvestigateBulkCancelRequest>;
 
-export type InvestigateBulkCancelCreateResponseActionParamsMoveDestination =
+export type InvestigateBulkCancelCreateResponseDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | "RecoverableItemsDeletions"
   | "RecoverableItemsPurges";
-export const InvestigateBulkCancelCreateResponseActionParamsMoveDestination =
+export const InvestigateBulkCancelCreateResponseDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCancelCreateResponseActionParamsMoveType = "MOVE";
-export const InvestigateBulkCancelCreateResponseActionParamsMoveType =
-  /*@__PURE__*/ S.String;
+export type InvestigateBulkCancelCreateResponseType = "MOVE";
+export const InvestigateBulkCancelCreateResponseType = /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition =
+export type InvestigateBulkCancelCreateResponseExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
@@ -860,54 +576,11 @@ export type InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDispositi
   | "EXTERNAL"
   | "UNKNOWN"
   | "NONE";
-export const InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition =
+export const InvestigateBulkCancelCreateResponseExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkCancelCreateResponseActionParamsMove {
-  destination: InvestigateBulkCancelCreateResponseActionParamsMoveDestination;
-  type: InvestigateBulkCancelCreateResponseActionParamsMoveType;
-  expectedDisposition?: InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition | null;
-}
-export const InvestigateBulkCancelCreateResponseActionParamsMove =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination:
-        InvestigateBulkCancelCreateResponseActionParamsMoveDestination,
-      type: InvestigateBulkCancelCreateResponseActionParamsMoveType,
-      expectedDisposition: S.optional(
-        S.NullOr(
-          InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition,
-        ).pipe(T.Body("expected_disposition")),
-      ),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkCancelCreateResponseActionParamsMove",
-  }) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsMove>;
-
-export type InvestigateBulkCancelCreateResponseActionParamsReleaseType =
-  "RELEASE";
-export const InvestigateBulkCancelCreateResponseActionParamsReleaseType =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkCancelCreateResponseActionParamsRelease {
-  type: InvestigateBulkCancelCreateResponseActionParamsReleaseType;
-}
-export const InvestigateBulkCancelCreateResponseActionParamsRelease =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: InvestigateBulkCancelCreateResponseActionParamsReleaseType,
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkCancelCreateResponseActionParamsRelease",
-  }) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsRelease>;
-
-export type InvestigateBulkCancelCreateResponseActionParams =
-  | InvestigateBulkCancelCreateResponseActionParamsMove
-  | InvestigateBulkCancelCreateResponseActionParamsRelease;
-export const InvestigateBulkCancelCreateResponseActionParams =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]]),
-  );
+export type InvestigateBulkCancelCreateResponseType2 = "RELEASE";
+export const InvestigateBulkCancelCreateResponseType2 = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCancelCreateResponseActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkCancelCreateResponseActionType =
@@ -920,7 +593,8 @@ export type InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus =
   | "rejected"
   | "deferred"
   | "bounced"
-  | "queued";
+  | "queued"
+  | "move_failed";
 export const InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -945,15 +619,26 @@ export type InvestigateBulkCancelCreateResponseSearchParamsMessageAction =
 export const InvestigateBulkCancelCreateResponseSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
+export type InvestigateBulkCancelCreateResponseSearchParamsStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
+export const InvestigateBulkCancelCreateResponseSearchParamsStatus =
+  /*@__PURE__*/ S.String;
+
 export interface InvestigateBulkCancelCreateResponseSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean | null;
+  /** Use GET /investigate/{investigate_id}/action_log instead. */
+  deprecatedactionLog?: boolean | null;
   alertId?: string | null;
   /** Delivery status of the message. */
   deliveryStatus?: InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus | null;
   detectionsOnly?: boolean | null;
   domain?: string | null;
-  /** End of search date range */
+  /** End of search date range. */
   end?: string | null;
   exactSubject?: string | null;
   finalDisposition?: InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition | null;
@@ -963,15 +648,25 @@ export interface InvestigateBulkCancelCreateResponseSearchParams {
   query?: string | null;
   recipient?: string | null;
   sender?: string | null;
-  /** Beginning of search date range */
+  /** Beginning of search date range. */
   start?: string | null;
   subject?: string | null;
   submissions?: boolean | null;
+  status: InvestigateBulkCancelCreateResponseSearchParamsStatus;
+  totalMessagesDiscovered: number;
+  comment?: string | null;
+  /** formatdate-time */
+  completedAt?: string | null;
+  /** formatdate-time */
+  startedAt?: string | null;
+  statusMessage?: string | null;
 }
 export const InvestigateBulkCancelCreateResponseSearchParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
+      deprecatedactionLog: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("Deprecatedaction_log")),
+      ),
       alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
       deliveryStatus: S.optional(
         S.NullOr(
@@ -1004,43 +699,51 @@ export const InvestigateBulkCancelCreateResponseSearchParams =
       start: S.optional(S.NullOr(S.String)),
       subject: S.optional(S.NullOr(S.String)),
       submissions: S.optional(S.NullOr(S.Boolean)),
+      status: InvestigateBulkCancelCreateResponseSearchParamsStatus,
+      totalMessagesDiscovered: S.Number.pipe(
+        T.Body("total_messages_discovered"),
+      ),
+      comment: S.optional(S.NullOr(S.String)),
+      completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
+      startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
+      statusMessage: S.optional(
+        S.NullOr(S.String).pipe(T.Body("status_message")),
+      ),
     }),
   ).annotate({
     identifier: "InvestigateBulkCancelCreateResponseSearchParams",
   }) as any as S.Schema<InvestigateBulkCancelCreateResponseSearchParams>;
 
-export type InvestigateBulkCancelCreateResponseStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | "COMPLETED"
-  | "FAILED"
-  | "CANCELLED"
-  | "SKIPPED";
-export const InvestigateBulkCancelCreateResponseStatus = /*@__PURE__*/ S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateInvestigateBulkCancelResponse {
-  actionParams: InvestigateBulkCancelCreateResponseActionParams;
+  /** Move object { destination, type, expected_disposition } */
+  actionParams: unknown;
+  destination: InvestigateBulkCancelCreateResponseDestination;
+  type: InvestigateBulkCancelCreateResponseType;
+  /** Release object { type } */
+  expectedDisposition?: InvestigateBulkCancelCreateResponseExpectedDisposition | null;
+  type_2: InvestigateBulkCancelCreateResponseType2;
   actionType: InvestigateBulkCancelCreateResponseActionType;
+  /** formatdate-time */
   createdAt: string;
+  /** formatuuid */
   jobId: string;
   messagesFailed: number;
   messagesPending: number;
   messagesSuccessful: number;
   searchParams: InvestigateBulkCancelCreateResponseSearchParams;
-  status: InvestigateBulkCancelCreateResponseStatus;
-  totalMessagesDiscovered: number;
-  comment?: string | null;
-  completedAt?: string | null;
-  startedAt?: string | null;
-  statusMessage?: string | null;
 }
 export const CreateInvestigateBulkCancelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actionParams: InvestigateBulkCancelCreateResponseActionParams.pipe(
-      T.Body("action_params"),
+    actionParams: S.Unknown.pipe(T.Body("action_params")),
+    destination: InvestigateBulkCancelCreateResponseDestination,
+    type: InvestigateBulkCancelCreateResponseType,
+    expectedDisposition: S.optional(
+      S.NullOr(InvestigateBulkCancelCreateResponseExpectedDisposition).pipe(
+        T.Body("expected_disposition"),
+      ),
     ),
+    type_2: InvestigateBulkCancelCreateResponseType2.pipe(T.Body("type")),
     actionType: InvestigateBulkCancelCreateResponseActionType.pipe(
       T.Body("action_type"),
     ),
@@ -1051,14 +754,6 @@ export const CreateInvestigateBulkCancelResponse = /*@__PURE__*/ S.suspend(() =>
     messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
     searchParams: InvestigateBulkCancelCreateResponseSearchParams.pipe(
       T.Body("search_params"),
-    ),
-    status: InvestigateBulkCancelCreateResponseStatus,
-    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
-    comment: S.optional(S.NullOr(S.String)),
-    completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-    statusMessage: S.optional(
-      S.NullOr(S.String).pipe(T.Body("status_message")),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1090,7 +785,7 @@ export const InvestigateMoveCreateRequestExpectedDisposition =
 export interface CreateInvestigateMoveRequest {
   /** Identifier. */
   accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   investigateId: string;
   destination: InvestigateMoveCreateRequestDestination | (string & {});
   expectedDisposition?:
@@ -1120,13 +815,9 @@ export const CreateInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInvestigateMoveRequest",
 }) as any as S.Schema<CreateInvestigateMoveRequest>;
 
-export type InvestigateMoveCreateResultItem = InvestigateMoveBulkResultItem;
-export const InvestigateMoveCreateResultItem = InvestigateMoveBulkResultItem;
-
-export type InvestigateMoveCreateResultList =
-  Array<InvestigateMoveBulkResultItem>;
+export type InvestigateMoveCreateResultList = Array<unknown>;
 export const InvestigateMoveCreateResultList = /*@__PURE__*/ S.Array(
-  InvestigateMoveBulkResultItem,
+  S.Unknown,
 ) as any as S.Schema<InvestigateMoveCreateResultList>;
 
 export interface CreateInvestigateMoveResponse {
@@ -1147,7 +838,7 @@ export const CreateInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInvestigatePreviewRequest {
   /** Identifier. */
   accountId: string;
-  /** The identifier of the message */
+  /** The identifier of the message. */
   postfixId: string;
 }
 export const CreateInvestigatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1193,7 +884,7 @@ export const InvestigateReclassifyCreateRequestExpectedDisposition =
 export interface CreateInvestigateReclassifyRequest {
   /** Identifier. */
   accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   investigateId: string;
   expectedDisposition:
     | InvestigateReclassifyCreateRequestExpectedDisposition
@@ -1245,25 +936,27 @@ export const SettingsAllowPoliciesCreateRequestPatternType =
 export interface CreateSettingAllowPolicyRequest {
   /** Identifier. */
   accountId: string;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender: boolean;
-  /** Messages to this recipient will bypass all detections */
+  /** Bypasses all detections for messages to this recipient. */
   isExemptRecipient: boolean;
   isRegex: boolean;
-  /** Messages from this sender will bypass all detections and link following */
+  /** Bypasses all detections and link following for messages from this sender. */
   isTrustedSender: boolean;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern: string;
   /** Type of pattern matching. */
   patternType: SettingsAllowPoliciesCreateRequestPatternType | (string & {});
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender: boolean;
+  /** maxLength1024 */
   comments?: string;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean;
+  /** Use `is_exempt_recipient` instead. */
+  deprecatedisRecipient?: boolean;
+  /** Use `is_trusted_sender` instead. */
+  deprecatedisSender?: boolean;
+  /** Use `is_acceptable_sender` instead. */
+  deprecatedisSpoof?: boolean;
 }
 export const CreateSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1278,9 +971,13 @@ export const CreateSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     verifySender: S.Boolean.pipe(T.Body("verify_sender")),
     comments: S.optional(S.String),
-    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
-    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
+    deprecatedisRecipient: S.optional(
+      S.Boolean.pipe(T.Body("Deprecatedis_recipient")),
+    ),
+    deprecatedisSender: S.optional(
+      S.Boolean.pipe(T.Body("Deprecatedis_sender")),
+    ),
+    deprecatedisSpoof: S.optional(S.Boolean.pipe(T.Body("Deprecatedis_spoof"))),
   })
     .pipe(
       T.Http({
@@ -1304,37 +1001,51 @@ export const SettingsAllowPoliciesCreateResponsePatternType =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSettingAllowPolicyResponse {
-  /** Allow policy identifier */
+  /** Allow policy identifier. */
   id: string;
+  /** formatdate-time */
   createdAt: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified: string;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified: string;
+  /** maxLength1024 */
   comments?: string | null;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
-  /** Messages to this recipient will bypass all detections */
+  /** Bypasses all detections for messages to this recipient. */
   isExemptRecipient?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean | null;
+  /** Use `is_exempt_recipient` instead. */
+  deprecatedisRecipient?: boolean | null;
   isRegex?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean | null;
-  /** Messages from this sender will bypass all detections and link following */
+  /** Use `is_trusted_sender` instead. */
+  deprecatedisSender?: boolean | null;
+  /** Use `is_acceptable_sender` instead. */
+  deprecatedisSpoof?: boolean | null;
+  /** Bypasses all detections and link following for messages from this sender. */
   isTrustedSender?: boolean | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string | null;
   /** Type of pattern matching. */
   patternType?: SettingsAllowPoliciesCreateResponsePatternType | null;
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender?: boolean | null;
+  is_acceptable_sender_2: unknown;
+  is_exempt_recipient_2: unknown;
+  is_regex_2: unknown;
+  is_trusted_sender_2: unknown;
+  pattern_2: unknown;
+  pattern_type_2: unknown;
+  verify_sender_2: unknown;
+  comments_2: unknown;
+  /** }' */
+  isSender: boolean;
 }
 export const CreateSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
+    deprecatedlastModified: S.String.pipe(T.Body("Deprecatedlast_modified")),
     comments: S.optional(S.NullOr(S.String)),
     isAcceptableSender: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender")),
@@ -1342,10 +1053,16 @@ export const CreateSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     isExemptRecipient: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient")),
     ),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
+    deprecatedisRecipient: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_recipient")),
+    ),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
+    deprecatedisSender: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_sender")),
+    ),
+    deprecatedisSpoof: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_spoof")),
+    ),
     isTrustedSender: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender")),
     ),
@@ -1357,6 +1074,15 @@ export const CreateSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     verifySender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("verify_sender"))),
+    is_acceptable_sender_2: S.Unknown.pipe(T.Body("is_acceptable_sender")),
+    is_exempt_recipient_2: S.Unknown.pipe(T.Body("is_exempt_recipient")),
+    is_regex_2: S.Unknown.pipe(T.Body("is_regex")),
+    is_trusted_sender_2: S.Unknown.pipe(T.Body("is_trusted_sender")),
+    pattern_2: S.Unknown.pipe(T.Body("pattern")),
+    pattern_type_2: S.Unknown.pipe(T.Body("pattern_type")),
+    verify_sender_2: S.Unknown.pipe(T.Body("verify_sender")),
+    comments_2: S.Unknown.pipe(T.Body("comments")),
+    isSender: S.Boolean.pipe(T.Body("is_sender")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingAllowPolicyResponse",
@@ -1374,9 +1100,11 @@ export interface CreateSettingBlockSenderRequest {
   /** Identifier. */
   accountId: string;
   isRegex: boolean;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern: string;
   /** Type of pattern matching. */
   patternType: SettingsBlockSendersCreateRequestPatternType | (string & {});
+  /** maxLength1024 */
   comments?: string;
 }
 export const CreateSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1409,19 +1137,33 @@ export type SettingsBlockSendersCreateResponsePatternType =
 export const SettingsBlockSendersCreateResponsePatternType =
   /*@__PURE__*/ S.String;
 
+export type SettingsBlockSendersCreateResponseComments =
+  "Block sender with email test@example.com";
+export const SettingsBlockSendersCreateResponseComments =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSettingBlockSenderResponse {
-  /** Blocked sender pattern identifier */
+  /** Blocked sender pattern identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   isRegex?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string | null;
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersCreateResponsePatternType | null;
+  is_regex_2: unknown;
+  pattern_2: unknown;
+  pattern_type_2: unknown;
+  /** }' */
+  comments_2: SettingsBlockSendersCreateResponseComments;
 }
 export const CreateSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1429,13 +1171,21 @@ export const CreateSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
     comments: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     pattern: S.optional(S.NullOr(S.String)),
     patternType: S.optional(
       S.NullOr(SettingsBlockSendersCreateResponsePatternType).pipe(
         T.Body("pattern_type"),
       ),
+    ),
+    is_regex_2: S.Unknown.pipe(T.Body("is_regex")),
+    pattern_2: S.Unknown.pipe(T.Body("pattern")),
+    pattern_type_2: S.Unknown.pipe(T.Body("pattern_type")),
+    comments_2: SettingsBlockSendersCreateResponseComments.pipe(
+      T.Body("comments"),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1455,11 +1205,13 @@ export interface CreateSettingImpersonationRegistryRequest {
   accountId: string;
   email: string;
   isEmailRegex: boolean;
+  /** maxLength1024 */
   name: string;
   comments?: string;
   directoryId?: number;
   directoryNodeId?: number;
-  externalDirectoryNodeId?: string;
+  /** This field is deprecated. */
+  deprecatedexternalDirectoryNodeId?: string;
   provenance?:
     | SettingsImpersonationRegistryCreateRequestProvenance
     | (string & {});
@@ -1474,8 +1226,8 @@ export const CreateSettingImpersonationRegistryRequest =
       comments: S.optional(S.String),
       directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
       directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
-      externalDirectoryNodeId: S.optional(
-        S.String.pipe(T.Body("external_directory_node_id")),
+      deprecatedexternalDirectoryNodeId: S.optional(
+        S.String.pipe(T.Body("Deprecatedexternal_directory_node_id")),
       ),
       provenance: S.optional(
         SettingsImpersonationRegistryCreateRequestProvenance,
@@ -1501,22 +1253,35 @@ export type SettingsImpersonationRegistryCreateResponseProvenance =
 export const SettingsImpersonationRegistryCreateResponseProvenance =
   /*@__PURE__*/ S.String;
 
+export type SettingsImpersonationRegistryCreateResponseName = "John Doe";
+export const SettingsImpersonationRegistryCreateResponseName =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSettingImpersonationRegistryResponse {
-  /** Impersonation registry entry identifier */
+  /** Impersonation registry entry identifier. */
   id?: string | null;
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   directoryId?: number | null;
   directoryNodeId?: number | null;
   email?: string | null;
-  externalDirectoryNodeId?: string | null;
+  /** This field is deprecated. */
+  deprecatedexternalDirectoryNodeId?: string | null;
   isEmailRegex?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** maxLength1024 */
   name?: string | null;
+  /** HTTP */
   provenance?: SettingsImpersonationRegistryCreateResponseProvenance | null;
+  email_2: unknown;
+  is_email_regex_2: unknown;
+  /** }' */
+  name_2: SettingsImpersonationRegistryCreateResponseName;
 }
 export const CreateSettingImpersonationRegistryResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1529,19 +1294,24 @@ export const CreateSettingImpersonationRegistryResponse =
         S.NullOr(S.Number).pipe(T.Body("directory_node_id")),
       ),
       email: S.optional(S.NullOr(S.String)),
-      externalDirectoryNodeId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("external_directory_node_id")),
+      deprecatedexternalDirectoryNodeId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedexternal_directory_node_id")),
       ),
       isEmailRegex: S.optional(
         S.NullOr(S.Boolean).pipe(T.Body("is_email_regex")),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
       name: S.optional(S.NullOr(S.String)),
       provenance: S.optional(
         S.NullOr(SettingsImpersonationRegistryCreateResponseProvenance),
+      ),
+      email_2: S.Unknown.pipe(T.Body("email")),
+      is_email_regex_2: S.Unknown.pipe(T.Body("is_email_regex")),
+      name_2: SettingsImpersonationRegistryCreateResponseName.pipe(
+        T.Body("name"),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -1560,8 +1330,9 @@ export interface CreateSettingSendingDomainRestrictionRequest {
   accountId: string;
   /** Domain that requires TLS enforcement. */
   domain: string;
-  /** Excluded subdomains that are exempt from TLS requirements. */
+  /** Subdomains to exempt from TLS requirements. */
   exclude: SettingsSendingDomainRestrictionsCreateRequestExcludeList;
+  /** maxLength1024 */
   comments?: string;
 }
 export const CreateSettingSendingDomainRestrictionRequest =
@@ -1591,19 +1362,32 @@ export const SettingsSendingDomainRestrictionsCreateResponseExcludeList =
     S.String,
   ) as any as S.Schema<SettingsSendingDomainRestrictionsCreateResponseExcludeList>;
 
+export type SettingsSendingDomainRestrictionsCreateResponseComments =
+  "Enforce TLS for all mail from this domain";
+export const SettingsSendingDomainRestrictionsCreateResponseComments =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSettingSendingDomainRestrictionResponse {
   /** Sending domain restriction identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   /** Domain that requires TLS enforcement. */
   domain?: string | null;
-  /** Excluded subdomains that are exempt from TLS requirements. */
+  /** Subdomains to exempt from TLS requirements. */
   exclude?: SettingsSendingDomainRestrictionsCreateResponseExcludeList | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  domain_2: unknown;
+  /** "subdomain.example.com" */
+  exclude_2: unknown;
+  /** }' */
+  comments_2: SettingsSendingDomainRestrictionsCreateResponseComments;
 }
 export const CreateSettingSendingDomainRestrictionResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1615,10 +1399,15 @@ export const CreateSettingSendingDomainRestrictionResponse =
       exclude: S.optional(
         S.NullOr(SettingsSendingDomainRestrictionsCreateResponseExcludeList),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      domain_2: S.Unknown.pipe(T.Body("domain")),
+      exclude_2: S.Unknown.pipe(T.Body("exclude")),
+      comments_2: SettingsSendingDomainRestrictionsCreateResponseComments.pipe(
+        T.Body("comments"),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "CreateSettingSendingDomainRestrictionResponse",
@@ -1632,7 +1421,9 @@ export interface CreateSettingTrustedDomainRequest {
   isRegex: boolean;
   /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
   isSimilarity: boolean;
+  /** maxLength1024 */
   pattern: string;
+  /** maxLength1024 */
   comments?: string;
 }
 export const CreateSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1656,21 +1447,36 @@ export const CreateSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSettingTrustedDomainRequest",
 }) as any as S.Schema<CreateSettingTrustedDomainRequest>;
 
+export type SettingsTrustedDomainsCreateResponseComments =
+  "Trusted partner domain";
+export const SettingsTrustedDomainsCreateResponseComments =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSettingTrustedDomainResponse {
-  /** Trusted domain identifier */
+  /** Trusted domain identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
   isRecent?: boolean | null;
   isRegex?: boolean | null;
   /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
   isSimilarity?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** maxLength1024 */
   pattern?: string | null;
+  is_recent_2: unknown;
+  is_regex_2: unknown;
+  is_similarity_2: unknown;
+  pattern_2: unknown;
+  /** }' */
+  comments_2: SettingsTrustedDomainsCreateResponseComments;
 }
 export const CreateSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1680,9 +1486,18 @@ export const CreateSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
     isRecent: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recent"))),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
     isSimilarity: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_similarity"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     pattern: S.optional(S.NullOr(S.String)),
+    is_recent_2: S.Unknown.pipe(T.Body("is_recent")),
+    is_regex_2: S.Unknown.pipe(T.Body("is_regex")),
+    is_similarity_2: S.Unknown.pipe(T.Body("is_similarity")),
+    pattern_2: S.Unknown.pipe(T.Body("pattern")),
+    comments_2: SettingsTrustedDomainsCreateResponseComments.pipe(
+      T.Body("comments"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingTrustedDomainResponse",
@@ -1691,7 +1506,7 @@ export const CreateSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSettingUrlIgnorePatternRequest {
   /** Identifier. */
   accountId: string;
-  /** Regular expression matching URLs that should not be rewritten. */
+  /** Regular expression identifying URLs to exempt from rewriting. */
   pattern: string;
   /** Optional note describing the reason for the ignore pattern. */
   comments?: string;
@@ -1715,18 +1530,28 @@ export const CreateSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateSettingUrlIgnorePatternRequest",
 }) as any as S.Schema<CreateSettingUrlIgnorePatternRequest>;
 
+export type SettingsUrlIgnorePatternsCreateResponseComments =
+  "Trusted internal redirect service";
+export const SettingsUrlIgnorePatternsCreateResponseComments =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSettingUrlIgnorePatternResponse {
-  /** URL ignore pattern identifier */
+  /** URL ignore pattern identifier. */
   id: string;
+  /** formatdate-time */
   createdAt: string;
-  /** Regular expression matching URLs that should not be rewritten. */
+  /** Regular expression identifying URLs to exempt from rewriting. */
   pattern: string;
   /** Optional note describing the reason for the ignore pattern. */
   comments?: string | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  pattern_2: unknown;
+  /** }' */
+  comments_2: SettingsUrlIgnorePatternsCreateResponseComments;
 }
 export const CreateSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -1735,10 +1560,14 @@ export const CreateSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
       createdAt: S.String.pipe(T.Body("created_at")),
       pattern: S.String,
       comments: S.optional(S.NullOr(S.String)),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      pattern_2: S.Unknown.pipe(T.Body("pattern")),
+      comments_2: SettingsUrlIgnorePatternsCreateResponseComments.pipe(
+        T.Body("comments"),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateSettingUrlIgnorePatternResponse",
@@ -1747,6 +1576,7 @@ export const CreateSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
 export interface DeleteInvestigateBulkRequest {
   /** Identifier. */
   accountId: string;
+  /** formatuuid */
   jobId: string;
 }
 export const DeleteInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1768,6 +1598,7 @@ export const DeleteInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteInvestigateBulkResponse {
+  /** formatuuid */
   id: string;
 }
 export const DeleteInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1781,7 +1612,7 @@ export const DeleteInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSettingAllowPolicyRequest {
   /** Identifier. */
   accountId: string;
-  /** Allow policy identifier */
+  /** Allow policy identifier. */
   policyId: string;
 }
 export const DeleteSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1803,7 +1634,7 @@ export const DeleteSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingAllowPolicyResponse {
-  /** Allow policy identifier */
+  /** Allow policy identifier. */
   id: string;
 }
 export const DeleteSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1817,7 +1648,7 @@ export const DeleteSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSettingBlockSenderRequest {
   /** Identifier. */
   accountId: string;
-  /** Blocked sender pattern identifier */
+  /** Blocked sender pattern identifier. */
   patternId: string;
 }
 export const DeleteSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1839,7 +1670,7 @@ export const DeleteSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingBlockSenderResponse {
-  /** Blocked sender pattern identifier */
+  /** Blocked sender pattern identifier. */
   id: string;
 }
 export const DeleteSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1853,7 +1684,7 @@ export const DeleteSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSettingDomainRequest {
   /** Identifier. */
   accountId: string;
-  /** Domain identifier */
+  /** Domain identifier. */
   domainId: string;
 }
 export const DeleteSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1875,7 +1706,7 @@ export const DeleteSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingDomainResponse {
-  /** Domain identifier */
+  /** Domain identifier. */
   id: string;
 }
 export const DeleteSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1889,7 +1720,7 @@ export const DeleteSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSettingImpersonationRegistryRequest {
   /** Identifier. */
   accountId: string;
-  /** Impersonation registry entry identifier */
+  /** Impersonation registry entry identifier. */
   impersonationRegistryId: string;
 }
 export const DeleteSettingImpersonationRegistryRequest =
@@ -1914,7 +1745,7 @@ export const DeleteSettingImpersonationRegistryRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingImpersonationRegistryResponse {
-  /** Impersonation registry entry identifier */
+  /** Impersonation registry entry identifier. */
   id: string;
 }
 export const DeleteSettingImpersonationRegistryResponse =
@@ -1969,7 +1800,7 @@ export const DeleteSettingSendingDomainRestrictionResponse =
 export interface DeleteSettingTrustedDomainRequest {
   /** Identifier. */
   accountId: string;
-  /** Trusted domain identifier */
+  /** Trusted domain identifier. */
   trustedDomainId: string;
 }
 export const DeleteSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1991,7 +1822,7 @@ export const DeleteSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingTrustedDomainResponse {
-  /** Trusted domain identifier */
+  /** Trusted domain identifier. */
   id: string;
 }
 export const DeleteSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2005,7 +1836,7 @@ export const DeleteSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSettingUrlIgnorePatternRequest {
   /** Identifier. */
   accountId: string;
-  /** URL ignore pattern identifier */
+  /** URL ignore pattern identifier. */
   patternId: string;
 }
 export const DeleteSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(
@@ -2028,7 +1859,7 @@ export const DeleteSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingUrlIgnorePatternResponse {
-  /** URL ignore pattern identifier */
+  /** URL ignore pattern identifier. */
   id: string;
 }
 export const DeleteSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
@@ -2043,16 +1874,13 @@ export const DeleteSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
 export interface GetInvestigateRequest {
   /** Identifier. */
   accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   investigateId: string;
-  /** When true, search the submissions datastore only. When false or omitted, search the */
-  submission?: boolean;
 }
 export const GetInvestigateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     investigateId: S.String.pipe(T.Label("investigate_id")),
-    submission: S.optional(S.Boolean.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -2066,65 +1894,57 @@ export const GetInvestigateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvestigateRequest",
 }) as any as S.Schema<GetInvestigateRequest>;
 
-export type InvestigateGetResponseActionLogItemOperation =
-  | "MOVE"
-  | "RELEASE"
-  | "RECLASSIFY"
-  | "SUBMISSION"
-  | "QUARANTINE_RELEASE"
-  | "PREVIEW";
-export const InvestigateGetResponseActionLogItemOperation =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateGetResponseActionLogItemProperties {
-  /** Target folder for move operations */
+export interface InvestigateGetResponseDeprecatedActionLogItemProperties {
+  /** Target folder for move operations. */
   folder?: string | null;
-  /** User who requested the action */
+  /** User who requested the action. */
   requestedBy?: string | null;
 }
-export const InvestigateGetResponseActionLogItemProperties =
+export const InvestigateGetResponseDeprecatedActionLogItemProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       folder: S.optional(S.NullOr(S.String)),
       requestedBy: S.optional(S.NullOr(S.String).pipe(T.Body("requested_by"))),
     }),
   ).annotate({
-    identifier: "InvestigateGetResponseActionLogItemProperties",
-  }) as any as S.Schema<InvestigateGetResponseActionLogItemProperties>;
+    identifier: "InvestigateGetResponseDeprecatedActionLogItemProperties",
+  }) as any as S.Schema<InvestigateGetResponseDeprecatedActionLogItemProperties>;
 
-export interface InvestigateGetResponseActionLogItem {
-  /** Timestamp when action completed */
+export interface InvestigateGetResponseDeprecatedActionLogItem {
+  /** Timestamp when action completed. */
   completedAt: string;
-  /** Type of action performed */
-  operation: InvestigateGetResponseActionLogItemOperation;
-  /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
-  completedTimestamp?: string | null;
-  /** Additional properties for the action */
-  properties?: InvestigateGetResponseActionLogItemProperties | null;
-  /** Status of the action */
+  /** Type of action performed. */
+  operation: string;
+  /** Deprecated, use completed_at instead. End of life: November 1, 2026. */
+  deprecatedCompletedTimestamp?: string | null;
+  /** Additional properties for the action. */
+  properties?: InvestigateGetResponseDeprecatedActionLogItemProperties | null;
+  /** Status of the action. */
   status?: string | null;
 }
-export const InvestigateGetResponseActionLogItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completedAt: S.String.pipe(T.Body("completed_at")),
-    operation: InvestigateGetResponseActionLogItemOperation,
-    completedTimestamp: S.optional(
-      S.NullOr(S.String).pipe(T.Body("completed_timestamp")),
-    ),
-    properties: S.optional(
-      S.NullOr(InvestigateGetResponseActionLogItemProperties),
-    ),
-    status: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InvestigateGetResponseActionLogItem",
-}) as any as S.Schema<InvestigateGetResponseActionLogItem>;
+export const InvestigateGetResponseDeprecatedActionLogItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      completedAt: S.String.pipe(T.Body("completed_at")),
+      operation: S.String,
+      deprecatedCompletedTimestamp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecated completed_timestamp")),
+      ),
+      properties: S.optional(
+        S.NullOr(InvestigateGetResponseDeprecatedActionLogItemProperties),
+      ),
+      status: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "InvestigateGetResponseDeprecatedActionLogItem",
+  }) as any as S.Schema<InvestigateGetResponseDeprecatedActionLogItem>;
 
-export type InvestigateGetResponseActionLogList =
-  Array<InvestigateGetResponseActionLogItem>;
-export const InvestigateGetResponseActionLogList = /*@__PURE__*/ S.Array(
-  InvestigateGetResponseActionLogItem,
-) as any as S.Schema<InvestigateGetResponseActionLogList>;
+export type InvestigateGetResponseDeprecatedActionLogList =
+  Array<InvestigateGetResponseDeprecatedActionLogItem>;
+export const InvestigateGetResponseDeprecatedActionLogList =
+  /*@__PURE__*/ S.Array(
+    InvestigateGetResponseDeprecatedActionLogItem,
+  ) as any as S.Schema<InvestigateGetResponseDeprecatedActionLogList>;
 
 export type InvestigateGetResponseClientRecipientsList = Array<string>;
 export const InvestigateGetResponseClientRecipientsList = /*@__PURE__*/ S.Array(
@@ -2136,41 +1956,17 @@ export const InvestigateGetResponseDetectionReasonsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseDetectionReasonsList>;
 
-export type InvestigateGetResponsePropertiesAllowlistedPatternType =
-  | "quarantine_release"
-  | "acceptable_sender"
-  | "allowed_sender"
-  | "allowed_recipient"
-  | "domain_similarity"
-  | "domain_recency"
-  | "managed_acceptable_sender"
-  | "outbound_ndr";
-export const InvestigateGetResponsePropertiesAllowlistedPatternType =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateGetResponsePropertiesWhitelistedPatternType =
-  | "quarantine_release"
-  | "acceptable_sender"
-  | "allowed_sender"
-  | "allowed_recipient"
-  | "domain_similarity"
-  | "domain_recency"
-  | "managed_acceptable_sender"
-  | "outbound_ndr";
-export const InvestigateGetResponsePropertiesWhitelistedPatternType =
-  /*@__PURE__*/ S.String;
-
 export interface InvestigateGetResponseProperties {
-  /** Pattern that allowlisted this message */
+  /** Pattern that allowlisted this message. */
   allowlistedPattern?: string | null;
-  /** Type of allowlist pattern */
-  allowlistedPatternType?: InvestigateGetResponsePropertiesAllowlistedPatternType | null;
-  /** Whether message was blocklisted */
+  /** Type of allowlist pattern. */
+  allowlistedPatternType?: string | null;
+  /** Whether message was blocklisted. */
   blocklistedMessage?: boolean | null;
-  /** Pattern that blocklisted this message */
+  /** Pattern that blocklisted this message. */
   blocklistedPattern?: string | null;
-  /** Legacy field for allowlist pattern type */
-  whitelistedPatternType?: InvestigateGetResponsePropertiesWhitelistedPatternType | null;
+  /** Legacy field for allowlist pattern type. */
+  whitelistedPatternType?: string | null;
 }
 export const InvestigateGetResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2178,9 +1974,7 @@ export const InvestigateGetResponseProperties = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("allowlisted_pattern")),
     ),
     allowlistedPatternType: S.optional(
-      S.NullOr(InvestigateGetResponsePropertiesAllowlistedPatternType).pipe(
-        T.Body("allowlisted_pattern_type"),
-      ),
+      S.NullOr(S.String).pipe(T.Body("allowlisted_pattern_type")),
     ),
     blocklistedMessage: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("blocklisted_message")),
@@ -2189,43 +1983,16 @@ export const InvestigateGetResponseProperties = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("blocklisted_pattern")),
     ),
     whitelistedPatternType: S.optional(
-      S.NullOr(InvestigateGetResponsePropertiesWhitelistedPatternType).pipe(
-        T.Body("whitelisted_pattern_type"),
-      ),
+      S.NullOr(S.String).pipe(T.Body("whitelisted_pattern_type")),
     ),
   }),
 ).annotate({
   identifier: "InvestigateGetResponseProperties",
 }) as any as S.Schema<InvestigateGetResponseProperties>;
 
-export type InvestigateGetResponseDeliveryMode =
-  | "DIRECT"
-  | "BCC"
-  | "JOURNAL"
-  | "REVIEW_SUBMISSION"
-  | "DMARC_UNVERIFIED"
-  | "DMARC_FAILURE_REPORT"
-  | "DMARC_AGGREGATE_REPORT"
-  | "THREAT_INTEL_SUBMISSION"
-  | "SIMULATION_SUBMISSION"
-  | "API"
-  | "RETRO_SCAN";
-export const InvestigateGetResponseDeliveryMode = /*@__PURE__*/ S.String;
-
-export type InvestigateGetResponseDeliveryStatusItem =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | "rejected"
-  | "deferred"
-  | "bounced"
-  | "queued";
-export const InvestigateGetResponseDeliveryStatusItem = /*@__PURE__*/ S.String;
-
-export type InvestigateGetResponseDeliveryStatusList =
-  Array<InvestigateGetResponseDeliveryStatusItem>;
+export type InvestigateGetResponseDeliveryStatusList = Array<string>;
 export const InvestigateGetResponseDeliveryStatusList = /*@__PURE__*/ S.Array(
-  InvestigateGetResponseDeliveryStatusItem,
+  S.String,
 ) as any as S.Schema<InvestigateGetResponseDeliveryStatusList>;
 
 export type InvestigateGetResponseEnvelopeToList = Array<string>;
@@ -2233,37 +2000,10 @@ export const InvestigateGetResponseEnvelopeToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseEnvelopeToList>;
 
-export type InvestigateGetResponseFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateGetResponseFinalDisposition = /*@__PURE__*/ S.String;
-
-export type InvestigateGetResponseFindingsItemDetection =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateGetResponseFindingsItemDetection =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateGetResponseFindingsItem {
+export interface InvestigateGetResponseDeprecatedFindingsItem {
   attachment?: string | null;
   detail?: string | null;
-  detection?: InvestigateGetResponseFindingsItemDetection | null;
+  detection?: string | null;
   field?: string | null;
   name?: string | null;
   portion?: string | null;
@@ -2271,29 +2011,29 @@ export interface InvestigateGetResponseFindingsItem {
   score?: number | null;
   value?: string | null;
 }
-export const InvestigateGetResponseFindingsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachment: S.optional(S.NullOr(S.String)),
-    detail: S.optional(S.NullOr(S.String)),
-    detection: S.optional(
-      S.NullOr(InvestigateGetResponseFindingsItemDetection),
-    ),
-    field: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    portion: S.optional(S.NullOr(S.String)),
-    reason: S.optional(S.NullOr(S.String)),
-    score: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InvestigateGetResponseFindingsItem",
-}) as any as S.Schema<InvestigateGetResponseFindingsItem>;
+export const InvestigateGetResponseDeprecatedFindingsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attachment: S.optional(S.NullOr(S.String)),
+      detail: S.optional(S.NullOr(S.String)),
+      detection: S.optional(S.NullOr(S.String)),
+      field: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
+      portion: S.optional(S.NullOr(S.String)),
+      reason: S.optional(S.NullOr(S.String)),
+      score: S.optional(S.NullOr(S.Number)),
+      value: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "InvestigateGetResponseDeprecatedFindingsItem",
+  }) as any as S.Schema<InvestigateGetResponseDeprecatedFindingsItem>;
 
-export type InvestigateGetResponseFindingsList =
-  Array<InvestigateGetResponseFindingsItem>;
-export const InvestigateGetResponseFindingsList = /*@__PURE__*/ S.Array(
-  InvestigateGetResponseFindingsItem,
-) as any as S.Schema<InvestigateGetResponseFindingsList>;
+export type InvestigateGetResponseDeprecatedFindingsList =
+  Array<InvestigateGetResponseDeprecatedFindingsItem>;
+export const InvestigateGetResponseDeprecatedFindingsList =
+  /*@__PURE__*/ S.Array(
+    InvestigateGetResponseDeprecatedFindingsItem,
+  ) as any as S.Schema<InvestigateGetResponseDeprecatedFindingsList>;
 
 export type InvestigateGetResponsePostDeliveryOperationsItem =
   | "PREVIEW"
@@ -2325,42 +2065,18 @@ export const InvestigateGetResponseToNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseToNameList>;
 
-export type InvestigateGetResponseValidationDkim =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateGetResponseValidationDkim = /*@__PURE__*/ S.String;
-
-export type InvestigateGetResponseValidationDmarc =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateGetResponseValidationDmarc = /*@__PURE__*/ S.String;
-
-export type InvestigateGetResponseValidationSpf =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateGetResponseValidationSpf = /*@__PURE__*/ S.String;
-
 export interface InvestigateGetResponseValidation {
   comment?: string | null;
-  dkim?: InvestigateGetResponseValidationDkim | null;
-  dmarc?: InvestigateGetResponseValidationDmarc | null;
-  spf?: InvestigateGetResponseValidationSpf | null;
+  dkim?: string | null;
+  dmarc?: string | null;
+  spf?: string | null;
 }
 export const InvestigateGetResponseValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.NullOr(S.String)),
-    dkim: S.optional(S.NullOr(InvestigateGetResponseValidationDkim)),
-    dmarc: S.optional(S.NullOr(InvestigateGetResponseValidationDmarc)),
-    spf: S.optional(S.NullOr(InvestigateGetResponseValidationSpf)),
+    dkim: S.optional(S.NullOr(S.String)),
+    dmarc: S.optional(S.NullOr(S.String)),
+    spf: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "InvestigateGetResponseValidation",
@@ -2368,40 +2084,40 @@ export const InvestigateGetResponseValidation = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetInvestigateResponse {
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   id: string;
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog: InvestigateGetResponseActionLogList;
+  /** Deprecated, use GET /investigate/{investigate_id}/action_log instead. End of life: November 1, 2026. */
+  deprecatedActionLog: InvestigateGetResponseDeprecatedActionLogList;
   clientRecipients: InvestigateGetResponseClientRecipientsList;
   detectionReasons: InvestigateGetResponseDetectionReasonsList;
   isPhishSubmission: boolean;
   isQuarantined: boolean;
-  /** The identifier of the message */
+  /** The identifier of the message. */
   postfixId: string;
-  /** Message processing properties */
+  /** Message processing properties. */
   properties: InvestigateGetResponseProperties;
-  /** Deprecated, use `scanned_at` instead. End of life: November 1, 2026. */
-  ts: string;
+  /** Deprecated, use scanned_at instead. End of life: November 1, 2026. */
+  deprecatedTs: string;
   alertId?: string | null;
-  deliveryMode?: InvestigateGetResponseDeliveryMode | null;
+  deliveryMode?: string | null;
   deliveryStatus?: InvestigateGetResponseDeliveryStatusList | null;
   edfHash?: string | null;
   envelopeFrom?: string | null;
   envelopeTo?: InvestigateGetResponseEnvelopeToList | null;
-  finalDisposition?: InvestigateGetResponseFinalDisposition | null;
-  /** Deprecated, use the `findings` field from `GET /investigate/{investigate_id}/detections` instead. End of life: November 1, 2026. Detection findings for this message. */
-  findings?: InvestigateGetResponseFindingsList | null;
+  finalDisposition?: string | null;
+  /** Deprecated, use the findings field from GET /investigate/{investigate_id}/detections instead. End of life: November 1, 2026. Detection findings for this message. */
+  deprecatedFindings?: InvestigateGetResponseDeprecatedFindingsList | null;
   from?: string | null;
   fromName?: string | null;
   htmltextStructureHash?: string | null;
   messageId?: string | null;
-  /** Post-delivery operations performed on this message */
+  /** Post-delivery operations performed on this message. */
   postDeliveryOperations?: InvestigateGetResponsePostDeliveryOperationsList | null;
   postfixIdOutbound?: string | null;
   replyto?: string | null;
-  /** When the message was scanned (UTC) */
+  /** When the message was scanned (UTC). */
   scannedAt?: string | null;
-  /** When the message was sent (UTC) */
+  /** When the message was sent (UTC). */
   sentAt?: string | null;
   sentDate?: string | null;
   smtpHeloServerIp?: string | null;
@@ -2416,7 +2132,9 @@ export interface GetInvestigateResponse {
 export const GetInvestigateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    actionLog: InvestigateGetResponseActionLogList.pipe(T.Body("action_log")),
+    deprecatedActionLog: InvestigateGetResponseDeprecatedActionLogList.pipe(
+      T.Body("Deprecated action_log"),
+    ),
     clientRecipients: InvestigateGetResponseClientRecipientsList.pipe(
       T.Body("client_recipients"),
     ),
@@ -2427,13 +2145,9 @@ export const GetInvestigateResponse = /*@__PURE__*/ S.suspend(() =>
     isQuarantined: S.Boolean.pipe(T.Body("is_quarantined")),
     postfixId: S.String.pipe(T.Body("postfix_id")),
     properties: InvestigateGetResponseProperties,
-    ts: S.String,
+    deprecatedTs: S.String.pipe(T.Body("Deprecated ts")),
     alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
-    deliveryMode: S.optional(
-      S.NullOr(InvestigateGetResponseDeliveryMode).pipe(
-        T.Body("delivery_mode"),
-      ),
-    ),
+    deliveryMode: S.optional(S.NullOr(S.String).pipe(T.Body("delivery_mode"))),
     deliveryStatus: S.optional(
       S.NullOr(InvestigateGetResponseDeliveryStatusList).pipe(
         T.Body("delivery_status"),
@@ -2447,11 +2161,13 @@ export const GetInvestigateResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     finalDisposition: S.optional(
-      S.NullOr(InvestigateGetResponseFinalDisposition).pipe(
-        T.Body("final_disposition"),
+      S.NullOr(S.String).pipe(T.Body("final_disposition")),
+    ),
+    deprecatedFindings: S.optional(
+      S.NullOr(InvestigateGetResponseDeprecatedFindingsList).pipe(
+        T.Body("Deprecated findings"),
       ),
     ),
-    findings: S.optional(S.NullOr(InvestigateGetResponseFindingsList)),
     from: S.optional(S.NullOr(S.String)),
     fromName: S.optional(S.NullOr(S.String).pipe(T.Body("from_name"))),
     htmltextStructureHash: S.optional(
@@ -2498,6 +2214,7 @@ export const GetInvestigateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetInvestigateBulkRequest {
   /** Identifier. */
   accountId: string;
+  /** formatuuid */
   jobId: string;
 }
 export const GetInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2517,20 +2234,18 @@ export const GetInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvestigateBulkRequest",
 }) as any as S.Schema<GetInvestigateBulkRequest>;
 
-export type InvestigateBulkGetResponseActionParamsMoveDestination =
+export type InvestigateBulkGetResponseDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | "RecoverableItemsDeletions"
   | "RecoverableItemsPurges";
-export const InvestigateBulkGetResponseActionParamsMoveDestination =
-  /*@__PURE__*/ S.String;
+export const InvestigateBulkGetResponseDestination = /*@__PURE__*/ S.String;
 
-export type InvestigateBulkGetResponseActionParamsMoveType = "MOVE";
-export const InvestigateBulkGetResponseActionParamsMoveType =
-  /*@__PURE__*/ S.String;
+export type InvestigateBulkGetResponseType = "MOVE";
+export const InvestigateBulkGetResponseType = /*@__PURE__*/ S.String;
 
-export type InvestigateBulkGetResponseActionParamsMoveExpectedDisposition =
+export type InvestigateBulkGetResponseExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
@@ -2541,52 +2256,11 @@ export type InvestigateBulkGetResponseActionParamsMoveExpectedDisposition =
   | "EXTERNAL"
   | "UNKNOWN"
   | "NONE";
-export const InvestigateBulkGetResponseActionParamsMoveExpectedDisposition =
+export const InvestigateBulkGetResponseExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkGetResponseActionParamsMove {
-  destination: InvestigateBulkGetResponseActionParamsMoveDestination;
-  type: InvestigateBulkGetResponseActionParamsMoveType;
-  expectedDisposition?: InvestigateBulkGetResponseActionParamsMoveExpectedDisposition | null;
-}
-export const InvestigateBulkGetResponseActionParamsMove =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: InvestigateBulkGetResponseActionParamsMoveDestination,
-      type: InvestigateBulkGetResponseActionParamsMoveType,
-      expectedDisposition: S.optional(
-        S.NullOr(
-          InvestigateBulkGetResponseActionParamsMoveExpectedDisposition,
-        ).pipe(T.Body("expected_disposition")),
-      ),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkGetResponseActionParamsMove",
-  }) as any as S.Schema<InvestigateBulkGetResponseActionParamsMove>;
-
-export type InvestigateBulkGetResponseActionParamsReleaseType = "RELEASE";
-export const InvestigateBulkGetResponseActionParamsReleaseType =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkGetResponseActionParamsRelease {
-  type: InvestigateBulkGetResponseActionParamsReleaseType;
-}
-export const InvestigateBulkGetResponseActionParamsRelease =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: InvestigateBulkGetResponseActionParamsReleaseType,
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkGetResponseActionParamsRelease",
-  }) as any as S.Schema<InvestigateBulkGetResponseActionParamsRelease>;
-
-export type InvestigateBulkGetResponseActionParams =
-  | InvestigateBulkGetResponseActionParamsMove
-  | InvestigateBulkGetResponseActionParamsRelease;
-export const InvestigateBulkGetResponseActionParams =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]]),
-  );
+export type InvestigateBulkGetResponseType2 = "RELEASE";
+export const InvestigateBulkGetResponseType2 = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkGetResponseActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkGetResponseActionType = /*@__PURE__*/ S.String;
@@ -2598,7 +2272,8 @@ export type InvestigateBulkGetResponseSearchParamsDeliveryStatus =
   | "rejected"
   | "deferred"
   | "bounced"
-  | "queued";
+  | "queued"
+  | "move_failed";
 export const InvestigateBulkGetResponseSearchParamsDeliveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -2623,15 +2298,26 @@ export type InvestigateBulkGetResponseSearchParamsMessageAction =
 export const InvestigateBulkGetResponseSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
+export type InvestigateBulkGetResponseSearchParamsStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
+export const InvestigateBulkGetResponseSearchParamsStatus =
+  /*@__PURE__*/ S.String;
+
 export interface InvestigateBulkGetResponseSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean | null;
+  /** Use GET /investigate/{investigate_id}/action_log instead. */
+  deprecatedactionLog?: boolean | null;
   alertId?: string | null;
   /** Delivery status of the message. */
   deliveryStatus?: InvestigateBulkGetResponseSearchParamsDeliveryStatus | null;
   detectionsOnly?: boolean | null;
   domain?: string | null;
-  /** End of search date range */
+  /** End of search date range. */
   end?: string | null;
   exactSubject?: string | null;
   finalDisposition?: InvestigateBulkGetResponseSearchParamsFinalDisposition | null;
@@ -2641,15 +2327,25 @@ export interface InvestigateBulkGetResponseSearchParams {
   query?: string | null;
   recipient?: string | null;
   sender?: string | null;
-  /** Beginning of search date range */
+  /** Beginning of search date range. */
   start?: string | null;
   subject?: string | null;
   submissions?: boolean | null;
+  status: InvestigateBulkGetResponseSearchParamsStatus;
+  totalMessagesDiscovered: number;
+  comment?: string | null;
+  /** formatdate-time */
+  completedAt?: string | null;
+  /** formatdate-time */
+  startedAt?: string | null;
+  statusMessage?: string | null;
 }
 export const InvestigateBulkGetResponseSearchParams = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
+      deprecatedactionLog: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("Deprecatedaction_log")),
+      ),
       alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
       deliveryStatus: S.optional(
         S.NullOr(InvestigateBulkGetResponseSearchParamsDeliveryStatus).pipe(
@@ -2682,43 +2378,51 @@ export const InvestigateBulkGetResponseSearchParams = /*@__PURE__*/ S.suspend(
       start: S.optional(S.NullOr(S.String)),
       subject: S.optional(S.NullOr(S.String)),
       submissions: S.optional(S.NullOr(S.Boolean)),
+      status: InvestigateBulkGetResponseSearchParamsStatus,
+      totalMessagesDiscovered: S.Number.pipe(
+        T.Body("total_messages_discovered"),
+      ),
+      comment: S.optional(S.NullOr(S.String)),
+      completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
+      startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
+      statusMessage: S.optional(
+        S.NullOr(S.String).pipe(T.Body("status_message")),
+      ),
     }),
 ).annotate({
   identifier: "InvestigateBulkGetResponseSearchParams",
 }) as any as S.Schema<InvestigateBulkGetResponseSearchParams>;
 
-export type InvestigateBulkGetResponseStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | "COMPLETED"
-  | "FAILED"
-  | "CANCELLED"
-  | "SKIPPED";
-export const InvestigateBulkGetResponseStatus = /*@__PURE__*/ S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetInvestigateBulkResponse {
-  actionParams: InvestigateBulkGetResponseActionParams;
+  /** Move object { destination, type, expected_disposition } */
+  actionParams: unknown;
+  destination: InvestigateBulkGetResponseDestination;
+  type: InvestigateBulkGetResponseType;
+  /** Release object { type } */
+  expectedDisposition?: InvestigateBulkGetResponseExpectedDisposition | null;
+  type_2: InvestigateBulkGetResponseType2;
   actionType: InvestigateBulkGetResponseActionType;
+  /** formatdate-time */
   createdAt: string;
+  /** formatuuid */
   jobId: string;
   messagesFailed: number;
   messagesPending: number;
   messagesSuccessful: number;
   searchParams: InvestigateBulkGetResponseSearchParams;
-  status: InvestigateBulkGetResponseStatus;
-  totalMessagesDiscovered: number;
-  comment?: string | null;
-  completedAt?: string | null;
-  startedAt?: string | null;
-  statusMessage?: string | null;
 }
 export const GetInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actionParams: InvestigateBulkGetResponseActionParams.pipe(
-      T.Body("action_params"),
+    actionParams: S.Unknown.pipe(T.Body("action_params")),
+    destination: InvestigateBulkGetResponseDestination,
+    type: InvestigateBulkGetResponseType,
+    expectedDisposition: S.optional(
+      S.NullOr(InvestigateBulkGetResponseExpectedDisposition).pipe(
+        T.Body("expected_disposition"),
+      ),
     ),
+    type_2: InvestigateBulkGetResponseType2.pipe(T.Body("type")),
     actionType: InvestigateBulkGetResponseActionType.pipe(
       T.Body("action_type"),
     ),
@@ -2730,14 +2434,6 @@ export const GetInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
     searchParams: InvestigateBulkGetResponseSearchParams.pipe(
       T.Body("search_params"),
     ),
-    status: InvestigateBulkGetResponseStatus,
-    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
-    comment: S.optional(S.NullOr(S.String)),
-    completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-    statusMessage: S.optional(
-      S.NullOr(S.String).pipe(T.Body("status_message")),
-    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateBulkResponse",
@@ -2746,7 +2442,7 @@ export const GetInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetInvestigateDetectionRequest {
   /** Identifier. */
   accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   investigateId: string;
 }
 export const GetInvestigateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2780,25 +2476,269 @@ export type InvestigateDetectionsGetResponseAttachmentsItemDetection =
 export const InvestigateDetectionsGetResponseAttachmentsItemDetection =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateDetectionsGetResponseAttachmentsItem {
-  /** Size of the attachment in bytes */
-  size: number;
-  /** MIME type of the attachment */
-  contentType?: string | null;
-  /** Detection result for this attachment */
-  detection?: InvestigateDetectionsGetResponseAttachmentsItemDetection | null;
-  /** Whether the attachment is encrypted */
-  encrypted?: boolean | null;
-  /** Name of the attached file */
-  filename?: string | null;
-  /** MD5 hash of the attachment */
-  md5?: string | null;
-  /** Attachment name (alternative to filename) */
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsItemDetection =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemDetection =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersItem {
+  name: string;
+  value: string;
+}
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersItem>;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersList =
+  Array<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersItem>;
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersList =
+  /*@__PURE__*/ S.Array(
+    InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersItem,
+  ) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersList>;
+
+export interface InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksItem {
+  href: string;
+  text?: string | null;
+}
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      href: S.String,
+      text: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier:
+      "InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksItem>;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksList =
+  Array<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksItem>;
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksList =
+  /*@__PURE__*/ S.Array(
+    InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksItem,
+  ) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksList>;
+
+export interface InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesItem {
+  id?: number | null;
+  description?: string | null;
   name?: string | null;
-  /** SHA1 hash of the attachment */
+}
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.Number)),
+      description: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier:
+      "InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesItem>;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesList =
+  Array<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesItem>;
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesList =
+  /*@__PURE__*/ S.Array(
+    InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesItem,
+  ) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesList>;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationDkim =
+  | "pass"
+  | "neutral"
+  | "fail"
+  | "error"
+  | "none";
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationDkim =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationDmarc =
+  | "pass"
+  | "neutral"
+  | "fail"
+  | "error"
+  | "none";
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationDmarc =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationSpf =
+  | "pass"
+  | "neutral"
+  | "fail"
+  | "error"
+  | "none";
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationSpf =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidation {
+  comment?: string | null;
+  dkim?: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationDkim | null;
+  dmarc?: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationDmarc | null;
+  spf?: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationSpf | null;
+}
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      comment: S.optional(S.NullOr(S.String)),
+      dkim: S.optional(
+        S.NullOr(
+          InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationDkim,
+        ),
+      ),
+      dmarc: S.optional(
+        S.NullOr(
+          InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationDmarc,
+        ),
+      ),
+      spf: S.optional(
+        S.NullOr(
+          InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidationSpf,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidation",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidation>;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfo {
+  /** The name of the autonomous system. */
+  asName?: string | null;
+  /** The number of the autonomous system. */
+  asNumber?: number | null;
+  geo?: string | null;
+  ip?: string | null;
+  pld?: string | null;
+  threatCategories: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesList;
+  validation: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidation;
+  finalDisposition?: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoFinalDisposition | null;
+}
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      asName: S.optional(S.NullOr(S.String).pipe(T.Body("as_name"))),
+      asNumber: S.optional(S.NullOr(S.Number).pipe(T.Body("as_number"))),
+      geo: S.optional(S.NullOr(S.String)),
+      ip: S.optional(S.NullOr(S.String)),
+      pld: S.optional(S.NullOr(S.String)),
+      threatCategories:
+        InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoThreatCategoriesList.pipe(
+          T.Body("threat_categories"),
+        ),
+      validation:
+        InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoValidation,
+      finalDisposition: S.optional(
+        S.NullOr(
+          InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfoFinalDisposition,
+        ).pipe(T.Body("final_disposition")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfo",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfo>;
+
+export interface InvestigateDetectionsGetResponseAttachmentsItemFindingsItem {
+  attachment?: string | null;
+  detail?: string | null;
+  /** Detection result associated with this finding. */
+  detection?: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemDetection | null;
+  field?: string | null;
+  name?: string | null;
+  portion?: string | null;
+  reason?: string | null;
+  /** formatdouble */
+  score?: number | null;
+  value?: string | null;
+  headers: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersList;
+  links: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksList;
+  senderInfo: InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfo;
+}
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attachment: S.optional(S.NullOr(S.String)),
+      detail: S.optional(S.NullOr(S.String)),
+      detection: S.optional(
+        S.NullOr(
+          InvestigateDetectionsGetResponseAttachmentsItemFindingsItemDetection,
+        ),
+      ),
+      field: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.NullOr(S.String)),
+      portion: S.optional(S.NullOr(S.String)),
+      reason: S.optional(S.NullOr(S.String)),
+      score: S.optional(S.NullOr(S.Number)),
+      value: S.optional(S.NullOr(S.String)),
+      headers:
+        InvestigateDetectionsGetResponseAttachmentsItemFindingsItemHeadersList,
+      links:
+        InvestigateDetectionsGetResponseAttachmentsItemFindingsItemLinksList,
+      senderInfo:
+        InvestigateDetectionsGetResponseAttachmentsItemFindingsItemSenderInfo.pipe(
+          T.Body("sender_info"),
+        ),
+    }),
+  ).annotate({
+    identifier: "InvestigateDetectionsGetResponseAttachmentsItemFindingsItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsItem>;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemFindingsList =
+  Array<InvestigateDetectionsGetResponseAttachmentsItemFindingsItem>;
+export const InvestigateDetectionsGetResponseAttachmentsItemFindingsList =
+  /*@__PURE__*/ S.Array(
+    InvestigateDetectionsGetResponseAttachmentsItemFindingsItem,
+  ) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItemFindingsList>;
+
+export interface InvestigateDetectionsGetResponseAttachmentsItem {
+  /** Size of the attachment in bytes. */
+  size: number;
+  /** MIME type of the attachment. */
+  contentType?: string | null;
+  /** Detection result for this attachment. */
+  detection?: InvestigateDetectionsGetResponseAttachmentsItemDetection | null;
+  /** Whether the attachment is encrypted. */
+  encrypted?: boolean | null;
+  /** Name of the attached file. */
+  filename?: string | null;
+  /** MD5 hash of the attachment. */
+  md5?: string | null;
+  /** Attachment name (alternative to filename). */
+  name?: string | null;
+  /** SHA1 hash of the attachment. */
   sha1?: string | null;
-  /** SHA256 hash of the attachment */
+  /** SHA256 hash of the attachment. */
   sha256?: string | null;
+  findings: InvestigateDetectionsGetResponseAttachmentsItemFindingsList;
 }
 export const InvestigateDetectionsGetResponseAttachmentsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2814,6 +2754,7 @@ export const InvestigateDetectionsGetResponseAttachmentsItem =
       name: S.optional(S.NullOr(S.String)),
       sha1: S.optional(S.NullOr(S.String)),
       sha256: S.optional(S.NullOr(S.String)),
+      findings: InvestigateDetectionsGetResponseAttachmentsItemFindingsList,
     }),
   ).annotate({
     identifier: "InvestigateDetectionsGetResponseAttachmentsItem",
@@ -2826,237 +2767,15 @@ export const InvestigateDetectionsGetResponseAttachmentsList =
     InvestigateDetectionsGetResponseAttachmentsItem,
   ) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsList>;
 
-export type InvestigateDetectionsGetResponseFindingsItemDetection =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateDetectionsGetResponseFindingsItemDetection =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateDetectionsGetResponseFindingsItem {
-  attachment?: string | null;
-  detail?: string | null;
-  detection?: InvestigateDetectionsGetResponseFindingsItemDetection | null;
-  field?: string | null;
-  name?: string | null;
-  portion?: string | null;
-  reason?: string | null;
-  score?: number | null;
-  value?: string | null;
-}
-export const InvestigateDetectionsGetResponseFindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attachment: S.optional(S.NullOr(S.String)),
-      detail: S.optional(S.NullOr(S.String)),
-      detection: S.optional(
-        S.NullOr(InvestigateDetectionsGetResponseFindingsItemDetection),
-      ),
-      field: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      portion: S.optional(S.NullOr(S.String)),
-      reason: S.optional(S.NullOr(S.String)),
-      score: S.optional(S.NullOr(S.Number)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseFindingsItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseFindingsItem>;
-
-export type InvestigateDetectionsGetResponseFindingsList =
-  Array<InvestigateDetectionsGetResponseFindingsItem>;
-export const InvestigateDetectionsGetResponseFindingsList =
-  /*@__PURE__*/ S.Array(
-    InvestigateDetectionsGetResponseFindingsItem,
-  ) as any as S.Schema<InvestigateDetectionsGetResponseFindingsList>;
-
-export interface InvestigateDetectionsGetResponseHeadersItem {
-  name: string;
-  value: string;
-}
-export const InvestigateDetectionsGetResponseHeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseHeadersItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseHeadersItem>;
-
-export type InvestigateDetectionsGetResponseHeadersList =
-  Array<InvestigateDetectionsGetResponseHeadersItem>;
-export const InvestigateDetectionsGetResponseHeadersList =
-  /*@__PURE__*/ S.Array(
-    InvestigateDetectionsGetResponseHeadersItem,
-  ) as any as S.Schema<InvestigateDetectionsGetResponseHeadersList>;
-
-export interface InvestigateDetectionsGetResponseLinksItem {
-  href: string;
-  text?: string | null;
-}
-export const InvestigateDetectionsGetResponseLinksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      href: S.String,
-      text: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseLinksItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseLinksItem>;
-
-export type InvestigateDetectionsGetResponseLinksList =
-  Array<InvestigateDetectionsGetResponseLinksItem>;
-export const InvestigateDetectionsGetResponseLinksList = /*@__PURE__*/ S.Array(
-  InvestigateDetectionsGetResponseLinksItem,
-) as any as S.Schema<InvestigateDetectionsGetResponseLinksList>;
-
-export interface InvestigateDetectionsGetResponseSenderInfo {
-  /** The name of the autonomous system. */
-  asName?: string | null;
-  /** The number of the autonomous system. */
-  asNumber?: number | null;
-  geo?: string | null;
-  ip?: string | null;
-  pld?: string | null;
-}
-export const InvestigateDetectionsGetResponseSenderInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      asName: S.optional(S.NullOr(S.String).pipe(T.Body("as_name"))),
-      asNumber: S.optional(S.NullOr(S.Number).pipe(T.Body("as_number"))),
-      geo: S.optional(S.NullOr(S.String)),
-      ip: S.optional(S.NullOr(S.String)),
-      pld: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseSenderInfo",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseSenderInfo>;
-
-export interface InvestigateDetectionsGetResponseThreatCategoriesItem {
-  id?: number | null;
-  description?: string | null;
-  name?: string | null;
-}
-export const InvestigateDetectionsGetResponseThreatCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.Number)),
-      description: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseThreatCategoriesItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseThreatCategoriesItem>;
-
-export type InvestigateDetectionsGetResponseThreatCategoriesList =
-  Array<InvestigateDetectionsGetResponseThreatCategoriesItem>;
-export const InvestigateDetectionsGetResponseThreatCategoriesList =
-  /*@__PURE__*/ S.Array(
-    InvestigateDetectionsGetResponseThreatCategoriesItem,
-  ) as any as S.Schema<InvestigateDetectionsGetResponseThreatCategoriesList>;
-
-export type InvestigateDetectionsGetResponseValidationDkim =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateDetectionsGetResponseValidationDkim =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateDetectionsGetResponseValidationDmarc =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateDetectionsGetResponseValidationDmarc =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateDetectionsGetResponseValidationSpf =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateDetectionsGetResponseValidationSpf =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateDetectionsGetResponseValidation {
-  comment?: string | null;
-  dkim?: InvestigateDetectionsGetResponseValidationDkim | null;
-  dmarc?: InvestigateDetectionsGetResponseValidationDmarc | null;
-  spf?: InvestigateDetectionsGetResponseValidationSpf | null;
-}
-export const InvestigateDetectionsGetResponseValidation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      comment: S.optional(S.NullOr(S.String)),
-      dkim: S.optional(
-        S.NullOr(InvestigateDetectionsGetResponseValidationDkim),
-      ),
-      dmarc: S.optional(
-        S.NullOr(InvestigateDetectionsGetResponseValidationDmarc),
-      ),
-      spf: S.optional(S.NullOr(InvestigateDetectionsGetResponseValidationSpf)),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseValidation",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseValidation>;
-
-export type InvestigateDetectionsGetResponseFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateDetectionsGetResponseFinalDisposition =
-  /*@__PURE__*/ S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetInvestigateDetectionResponse {
   action: string;
   attachments: InvestigateDetectionsGetResponseAttachmentsList;
-  findings: InvestigateDetectionsGetResponseFindingsList;
-  headers: InvestigateDetectionsGetResponseHeadersList;
-  links: InvestigateDetectionsGetResponseLinksList;
-  senderInfo: InvestigateDetectionsGetResponseSenderInfo;
-  threatCategories: InvestigateDetectionsGetResponseThreatCategoriesList;
-  validation: InvestigateDetectionsGetResponseValidation;
-  finalDisposition?: InvestigateDetectionsGetResponseFinalDisposition | null;
 }
 export const GetInvestigateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     attachments: InvestigateDetectionsGetResponseAttachmentsList,
-    findings: InvestigateDetectionsGetResponseFindingsList,
-    headers: InvestigateDetectionsGetResponseHeadersList,
-    links: InvestigateDetectionsGetResponseLinksList,
-    senderInfo: InvestigateDetectionsGetResponseSenderInfo.pipe(
-      T.Body("sender_info"),
-    ),
-    threatCategories: InvestigateDetectionsGetResponseThreatCategoriesList.pipe(
-      T.Body("threat_categories"),
-    ),
-    validation: InvestigateDetectionsGetResponseValidation,
-    finalDisposition: S.optional(
-      S.NullOr(InvestigateDetectionsGetResponseFinalDisposition).pipe(
-        T.Body("final_disposition"),
-      ),
-    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateDetectionResponse",
@@ -3065,7 +2784,7 @@ export const GetInvestigateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetInvestigatePreviewRequest {
   /** Identifier. */
   accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   investigateId: string;
 }
 export const GetInvestigatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3101,7 +2820,7 @@ export const GetInvestigatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetInvestigateRawRequest {
   /** Identifier. */
   accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   investigateId: string;
 }
 export const GetInvestigateRawRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3137,7 +2856,7 @@ export const GetInvestigateRawResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetInvestigateTraceRequest {
   /** Identifier. */
   accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   investigateId: string;
 }
 export const GetInvestigateTraceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3158,12 +2877,11 @@ export const GetInvestigateTraceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInvestigateTraceRequest>;
 
 export interface InvestigateTraceGetResponseInboundLinesItem {
-  /** Line number in the trace log */
+  /** Line number in the trace log. */
   lineno?: number | null;
+  /** formatdate-time */
   loggedAt?: string | null;
   message?: string | null;
-  /** Deprecated, use `logged_at` instead. End of life: November 1, 2026. */
-  ts?: string | null;
 }
 export const InvestigateTraceGetResponseInboundLinesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3171,7 +2889,6 @@ export const InvestigateTraceGetResponseInboundLinesItem =
       lineno: S.optional(S.NullOr(S.Number)),
       loggedAt: S.optional(S.NullOr(S.String).pipe(T.Body("logged_at"))),
       message: S.optional(S.NullOr(S.String)),
-      ts: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "InvestigateTraceGetResponseInboundLinesItem",
@@ -3186,51 +2903,22 @@ export const InvestigateTraceGetResponseInboundLinesList =
 
 export interface InvestigateTraceGetResponseInbound {
   lines?: InvestigateTraceGetResponseInboundLinesList | null;
-  pending?: boolean | null;
 }
 export const InvestigateTraceGetResponseInbound = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lines: S.optional(S.NullOr(InvestigateTraceGetResponseInboundLinesList)),
-    pending: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "InvestigateTraceGetResponseInbound",
 }) as any as S.Schema<InvestigateTraceGetResponseInbound>;
 
-export type InvestigateTraceGetResponseOutboundLinesItem =
-  InvestigateTraceGetResponseInboundLinesItem;
-export const InvestigateTraceGetResponseOutboundLinesItem =
-  InvestigateTraceGetResponseInboundLinesItem;
-
-export type InvestigateTraceGetResponseOutboundLinesList =
-  Array<InvestigateTraceGetResponseInboundLinesItem>;
-export const InvestigateTraceGetResponseOutboundLinesList =
-  /*@__PURE__*/ S.Array(
-    InvestigateTraceGetResponseInboundLinesItem,
-  ) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesList>;
-
-export interface InvestigateTraceGetResponseOutbound {
-  lines?: InvestigateTraceGetResponseOutboundLinesList | null;
-  pending?: boolean | null;
-}
-export const InvestigateTraceGetResponseOutbound = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lines: S.optional(S.NullOr(InvestigateTraceGetResponseOutboundLinesList)),
-    pending: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "InvestigateTraceGetResponseOutbound",
-}) as any as S.Schema<InvestigateTraceGetResponseOutbound>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetInvestigateTraceResponse {
   inbound: InvestigateTraceGetResponseInbound;
-  outbound: InvestigateTraceGetResponseOutbound;
 }
 export const GetInvestigateTraceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inbound: InvestigateTraceGetResponseInbound,
-    outbound: InvestigateTraceGetResponseOutbound,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInvestigateTraceResponse",
@@ -3239,7 +2927,7 @@ export const GetInvestigateTraceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSettingAllowPolicyRequest {
   /** Identifier. */
   accountId: string;
-  /** Allow policy identifier */
+  /** Allow policy identifier. */
   policyId: string;
 }
 export const GetSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3269,26 +2957,30 @@ export const SettingsAllowPoliciesGetResponsePatternType =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingAllowPolicyResponse {
-  /** Allow policy identifier */
+  /** Allow policy identifier. */
   id: string;
+  /** formatdate-time */
   createdAt: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified: string;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified: string;
+  /** maxLength1024 */
   comments?: string | null;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
-  /** Messages to this recipient will bypass all detections */
+  /** Bypasses all detections for messages to this recipient. */
   isExemptRecipient?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean | null;
+  /** Use `is_exempt_recipient` instead. */
+  deprecatedisRecipient?: boolean | null;
   isRegex?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean | null;
-  /** Messages from this sender will bypass all detections and link following */
+  /** Use `is_trusted_sender` instead. */
+  deprecatedisSender?: boolean | null;
+  /** Use `is_acceptable_sender` instead. */
+  deprecatedisSpoof?: boolean | null;
+  /** Bypasses all detections and link following for messages from this sender. */
   isTrustedSender?: boolean | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string | null;
   /** Type of pattern matching. */
   patternType?: SettingsAllowPoliciesGetResponsePatternType | null;
@@ -3299,7 +2991,7 @@ export const GetSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
+    deprecatedlastModified: S.String.pipe(T.Body("Deprecatedlast_modified")),
     comments: S.optional(S.NullOr(S.String)),
     isAcceptableSender: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender")),
@@ -3307,10 +2999,16 @@ export const GetSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     isExemptRecipient: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient")),
     ),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
+    deprecatedisRecipient: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_recipient")),
+    ),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
+    deprecatedisSender: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_sender")),
+    ),
+    deprecatedisSpoof: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_spoof")),
+    ),
     isTrustedSender: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender")),
     ),
@@ -3330,7 +3028,7 @@ export const GetSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSettingBlockSenderRequest {
   /** Identifier. */
   accountId: string;
-  /** Blocked sender pattern identifier */
+  /** Blocked sender pattern identifier. */
   patternId: string;
 }
 export const GetSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3360,14 +3058,18 @@ export const SettingsBlockSendersGetResponsePatternType =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingBlockSenderResponse {
-  /** Blocked sender pattern identifier */
+  /** Blocked sender pattern identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   isRegex?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string | null;
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersGetResponsePatternType | null;
@@ -3378,7 +3080,9 @@ export const GetSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
     comments: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     pattern: S.optional(S.NullOr(S.String)),
     patternType: S.optional(
@@ -3394,7 +3098,7 @@ export const GetSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSettingDomainRequest {
   /** Identifier. */
   accountId: string;
-  /** Domain identifier */
+  /** Domain identifier. */
   domainId: string;
 }
 export const GetSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3432,6 +3136,7 @@ export const SettingsDomainsGetResponseAllowedDeliveryModesList =
 
 export interface SettingsDomainsGetResponseAuthorization {
   authorized: boolean;
+  /** formatdate-time */
   timestamp: string;
   statusMessage?: string | null;
 }
@@ -3473,8 +3178,11 @@ export const SettingsDomainsGetResponseDropDispositionsList =
   ) as any as S.Schema<SettingsDomainsGetResponseDropDispositionsList>;
 
 export interface SettingsDomainsGetResponseEmailsProcessed {
+  /** formatdate-time */
   timestamp: string;
+  /** minimum0 */
   totalEmailsProcessed: number;
+  /** minimum0 */
   totalEmailsProcessedPrevious: number;
 }
 export const SettingsDomainsGetResponseEmailsProcessed =
@@ -3533,10 +3241,11 @@ export const SettingsDomainsGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingDomainResponse {
-  /** Domain identifier */
+  /** Domain identifier. */
   id?: string | null;
   allowedDeliveryModes?: SettingsDomainsGetResponseAllowedDeliveryModesList | null;
   authorization?: SettingsDomainsGetResponseAuthorization | null;
+  /** formatdate-time */
   createdAt?: string | null;
   dmarcStatus?: SettingsDomainsGetResponseDmarcStatus | null;
   domain?: string | null;
@@ -3544,11 +3253,13 @@ export interface GetSettingDomainResponse {
   emailsProcessed?: SettingsDomainsGetResponseEmailsProcessed | null;
   folder?: SettingsDomainsGetResponseFolder | null;
   inboxProvider?: SettingsDomainsGetResponseInboxProvider | null;
+  /** formatuuid */
   integrationId?: string | null;
   ipRestrictions?: SettingsDomainsGetResponseIpRestrictionsList | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
   lookbackHops?: number | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
   o365TenantId?: string | null;
   regions?: SettingsDomainsGetResponseRegionsList | null;
@@ -3556,6 +3267,7 @@ export interface GetSettingDomainResponse {
   requireTlsOutbound?: boolean | null;
   spfStatus?: SettingsDomainsGetResponseSpfStatus | null;
   status?: SettingsDomainsGetResponseStatus | null;
+  /** HTTP */
   transport?: string | null;
 }
 export const GetSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3600,7 +3312,9 @@ export const GetSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("ip_restrictions"),
       ),
     ),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
@@ -3624,7 +3338,7 @@ export const GetSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSettingImpersonationRegistryRequest {
   /** Identifier. */
   accountId: string;
-  /** Impersonation registry entry identifier */
+  /** Impersonation registry entry identifier. */
   impersonationRegistryId: string;
 }
 export const GetSettingImpersonationRegistryRequest = /*@__PURE__*/ S.suspend(
@@ -3657,19 +3371,24 @@ export const SettingsImpersonationRegistryGetResponseProvenance =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingImpersonationRegistryResponse {
-  /** Impersonation registry entry identifier */
+  /** Impersonation registry entry identifier. */
   id?: string | null;
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   directoryId?: number | null;
   directoryNodeId?: number | null;
   email?: string | null;
-  externalDirectoryNodeId?: string | null;
+  /** This field is deprecated. */
+  deprecatedexternalDirectoryNodeId?: string | null;
   isEmailRegex?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** maxLength1024 */
   name?: string | null;
+  /** HTTP */
   provenance?: SettingsImpersonationRegistryGetResponseProvenance | null;
 }
 export const GetSettingImpersonationRegistryResponse = /*@__PURE__*/ S.suspend(
@@ -3683,14 +3402,14 @@ export const GetSettingImpersonationRegistryResponse = /*@__PURE__*/ S.suspend(
         S.NullOr(S.Number).pipe(T.Body("directory_node_id")),
       ),
       email: S.optional(S.NullOr(S.String)),
-      externalDirectoryNodeId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("external_directory_node_id")),
+      deprecatedexternalDirectoryNodeId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedexternal_directory_node_id")),
       ),
       isEmailRegex: S.optional(
         S.NullOr(S.Boolean).pipe(T.Body("is_email_regex")),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
       name: S.optional(S.NullOr(S.String)),
@@ -3739,14 +3458,17 @@ export const SettingsSendingDomainRestrictionsGetResponseExcludeList =
 export interface GetSettingSendingDomainRestrictionResponse {
   /** Sending domain restriction identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   /** Domain that requires TLS enforcement. */
   domain?: string | null;
-  /** Excluded subdomains that are exempt from TLS requirements. */
+  /** Subdomains to exempt from TLS requirements. */
   exclude?: SettingsSendingDomainRestrictionsGetResponseExcludeList | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
 }
 export const GetSettingSendingDomainRestrictionResponse =
@@ -3759,8 +3481,8 @@ export const GetSettingSendingDomainRestrictionResponse =
       exclude: S.optional(
         S.NullOr(SettingsSendingDomainRestrictionsGetResponseExcludeList),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3771,7 +3493,7 @@ export const GetSettingSendingDomainRestrictionResponse =
 export interface GetSettingTrustedDomainRequest {
   /** Identifier. */
   accountId: string;
-  /** Trusted domain identifier */
+  /** Trusted domain identifier. */
   trustedDomainId: string;
 }
 export const GetSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3793,18 +3515,22 @@ export const GetSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingTrustedDomainResponse {
-  /** Trusted domain identifier */
+  /** Trusted domain identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
   isRecent?: boolean | null;
   isRegex?: boolean | null;
   /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
   isSimilarity?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** maxLength1024 */
   pattern?: string | null;
 }
 export const GetSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3815,7 +3541,9 @@ export const GetSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
     isRecent: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recent"))),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
     isSimilarity: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_similarity"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     pattern: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3826,7 +3554,7 @@ export const GetSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSettingUrlIgnorePatternRequest {
   /** Identifier. */
   accountId: string;
-  /** URL ignore pattern identifier */
+  /** URL ignore pattern identifier. */
   patternId: string;
 }
 export const GetSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3848,15 +3576,17 @@ export const GetSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingUrlIgnorePatternResponse {
-  /** URL ignore pattern identifier */
+  /** URL ignore pattern identifier. */
   id: string;
+  /** formatdate-time */
   createdAt: string;
-  /** Regular expression matching URLs that should not be rewritten. */
+  /** Regular expression identifying URLs to exempt from rewriting. */
   pattern: string;
   /** Optional note describing the reason for the ignore pattern. */
   comments?: string | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
 }
 export const GetSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3865,7 +3595,9 @@ export const GetSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     pattern: S.String,
     comments: S.optional(S.NullOr(S.String)),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -3885,6 +3617,7 @@ export const InvestigateBulkMessagesListRequestStatus = /*@__PURE__*/ S.String;
 export interface ListInvestigateBulkMessagesRequest {
   /** Identifier. */
   accountId: string;
+  /** formatuuid */
   jobId: string;
   /** Current page within paginated list of results. */
   page?: number;
@@ -3914,20 +3647,31 @@ export const ListInvestigateBulkMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvestigateBulkMessagesRequest",
 }) as any as S.Schema<ListInvestigateBulkMessagesRequest>;
 
-export type InvestigateBulkMessagesListResultItemActionParamsMoveDestination =
+export interface InvestigateBulkMessagesListResultItemActionParams {
+  clientRecipient: string;
+}
+export const InvestigateBulkMessagesListResultItemActionParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientRecipient: S.String.pipe(T.Body("client_recipient")),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkMessagesListResultItemActionParams",
+  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParams>;
+
+export type InvestigateBulkMessagesListResultItemDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | "RecoverableItemsDeletions"
   | "RecoverableItemsPurges";
-export const InvestigateBulkMessagesListResultItemActionParamsMoveDestination =
+export const InvestigateBulkMessagesListResultItemDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkMessagesListResultItemActionParamsMoveType = "MOVE";
-export const InvestigateBulkMessagesListResultItemActionParamsMoveType =
-  /*@__PURE__*/ S.String;
+export type InvestigateBulkMessagesListResultItemType = "MOVE";
+export const InvestigateBulkMessagesListResultItemType = /*@__PURE__*/ S.String;
 
-export type InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition =
+export type InvestigateBulkMessagesListResultItemExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
@@ -3938,61 +3682,12 @@ export type InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposi
   | "EXTERNAL"
   | "UNKNOWN"
   | "NONE";
-export const InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition =
+export const InvestigateBulkMessagesListResultItemExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkMessagesListResultItemActionParamsMove {
-  clientRecipient: string;
-  destination: InvestigateBulkMessagesListResultItemActionParamsMoveDestination;
-  type: InvestigateBulkMessagesListResultItemActionParamsMoveType;
-  expectedDisposition?: InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition | null;
-}
-export const InvestigateBulkMessagesListResultItemActionParamsMove =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientRecipient: S.String.pipe(T.Body("client_recipient")),
-      destination:
-        InvestigateBulkMessagesListResultItemActionParamsMoveDestination,
-      type: InvestigateBulkMessagesListResultItemActionParamsMoveType,
-      expectedDisposition: S.optional(
-        S.NullOr(
-          InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition,
-        ).pipe(T.Body("expected_disposition")),
-      ),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkMessagesListResultItemActionParamsMove",
-  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParamsMove>;
-
-export type InvestigateBulkMessagesListResultItemActionParamsReleaseType =
-  "RELEASE";
-export const InvestigateBulkMessagesListResultItemActionParamsReleaseType =
+export type InvestigateBulkMessagesListResultItemType2 = "RELEASE";
+export const InvestigateBulkMessagesListResultItemType2 =
   /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkMessagesListResultItemActionParamsRelease {
-  clientRecipient: string;
-  type: InvestigateBulkMessagesListResultItemActionParamsReleaseType;
-}
-export const InvestigateBulkMessagesListResultItemActionParamsRelease =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientRecipient: S.String.pipe(T.Body("client_recipient")),
-      type: InvestigateBulkMessagesListResultItemActionParamsReleaseType,
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkMessagesListResultItemActionParamsRelease",
-  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParamsRelease>;
-
-export type InvestigateBulkMessagesListResultItemActionParams =
-  | InvestigateBulkMessagesListResultItemActionParamsMove
-  | InvestigateBulkMessagesListResultItemActionParamsRelease;
-export const InvestigateBulkMessagesListResultItemActionParams =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["clientRecipient", "destination", "type", "expectedDisposition"],
-      ["clientRecipient", "type"],
-    ]),
-  );
 
 export type InvestigateBulkMessagesListResultItemActionType =
   | "MOVE"
@@ -4012,17 +3707,27 @@ export const InvestigateBulkMessagesListResultItemStatus =
   /*@__PURE__*/ S.String;
 
 export interface InvestigateBulkMessagesListResultItem {
+  /** Move object { client_recipient, destination, type, expected_disposition } */
   actionParams: InvestigateBulkMessagesListResultItemActionParams;
+  destination: InvestigateBulkMessagesListResultItemDestination;
+  type: InvestigateBulkMessagesListResultItemType;
+  /** Release object { client_recipient, type } */
+  expectedDisposition?: InvestigateBulkMessagesListResultItemExpectedDisposition | null;
+  clientRecipient: string;
+  type_2: InvestigateBulkMessagesListResultItemType2;
   actionType: InvestigateBulkMessagesListResultItemActionType;
+  /** formatdate-time */
   createdAt: string;
+  /** formatuuid */
   messageId: string;
   postfixId: string;
   retryCount: number;
   status: InvestigateBulkMessagesListResultItemStatus;
   alertId?: string | null;
   emailMessageId?: string | null;
+  /** formatdate-time */
   processedAt?: string | null;
-  /** When to retry the action if it failed */
+  /** When to retry the action if it failed. */
   retryAfter?: string | null;
   statusMessage?: string | null;
 }
@@ -4032,6 +3737,15 @@ export const InvestigateBulkMessagesListResultItem = /*@__PURE__*/ S.suspend(
       actionParams: InvestigateBulkMessagesListResultItemActionParams.pipe(
         T.Body("action_params"),
       ),
+      destination: InvestigateBulkMessagesListResultItemDestination,
+      type: InvestigateBulkMessagesListResultItemType,
+      expectedDisposition: S.optional(
+        S.NullOr(InvestigateBulkMessagesListResultItemExpectedDisposition).pipe(
+          T.Body("expected_disposition"),
+        ),
+      ),
+      clientRecipient: S.String.pipe(T.Body("client_recipient")),
+      type_2: InvestigateBulkMessagesListResultItemType2.pipe(T.Body("type")),
       actionType: InvestigateBulkMessagesListResultItemActionType.pipe(
         T.Body("action_type"),
       ),
@@ -4120,20 +3834,18 @@ export const ListInvestigateBulksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvestigateBulksRequest",
 }) as any as S.Schema<ListInvestigateBulksRequest>;
 
-export type InvestigateBulkListResultItemActionParamsMoveDestination =
+export type InvestigateBulkListResultItemDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | "RecoverableItemsDeletions"
   | "RecoverableItemsPurges";
-export const InvestigateBulkListResultItemActionParamsMoveDestination =
-  /*@__PURE__*/ S.String;
+export const InvestigateBulkListResultItemDestination = /*@__PURE__*/ S.String;
 
-export type InvestigateBulkListResultItemActionParamsMoveType = "MOVE";
-export const InvestigateBulkListResultItemActionParamsMoveType =
-  /*@__PURE__*/ S.String;
+export type InvestigateBulkListResultItemType = "MOVE";
+export const InvestigateBulkListResultItemType = /*@__PURE__*/ S.String;
 
-export type InvestigateBulkListResultItemActionParamsMoveExpectedDisposition =
+export type InvestigateBulkListResultItemExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
@@ -4144,52 +3856,11 @@ export type InvestigateBulkListResultItemActionParamsMoveExpectedDisposition =
   | "EXTERNAL"
   | "UNKNOWN"
   | "NONE";
-export const InvestigateBulkListResultItemActionParamsMoveExpectedDisposition =
+export const InvestigateBulkListResultItemExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkListResultItemActionParamsMove {
-  destination: InvestigateBulkListResultItemActionParamsMoveDestination;
-  type: InvestigateBulkListResultItemActionParamsMoveType;
-  expectedDisposition?: InvestigateBulkListResultItemActionParamsMoveExpectedDisposition | null;
-}
-export const InvestigateBulkListResultItemActionParamsMove =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: InvestigateBulkListResultItemActionParamsMoveDestination,
-      type: InvestigateBulkListResultItemActionParamsMoveType,
-      expectedDisposition: S.optional(
-        S.NullOr(
-          InvestigateBulkListResultItemActionParamsMoveExpectedDisposition,
-        ).pipe(T.Body("expected_disposition")),
-      ),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkListResultItemActionParamsMove",
-  }) as any as S.Schema<InvestigateBulkListResultItemActionParamsMove>;
-
-export type InvestigateBulkListResultItemActionParamsReleaseType = "RELEASE";
-export const InvestigateBulkListResultItemActionParamsReleaseType =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkListResultItemActionParamsRelease {
-  type: InvestigateBulkListResultItemActionParamsReleaseType;
-}
-export const InvestigateBulkListResultItemActionParamsRelease =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: InvestigateBulkListResultItemActionParamsReleaseType,
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkListResultItemActionParamsRelease",
-  }) as any as S.Schema<InvestigateBulkListResultItemActionParamsRelease>;
-
-export type InvestigateBulkListResultItemActionParams =
-  | InvestigateBulkListResultItemActionParamsMove
-  | InvestigateBulkListResultItemActionParamsRelease;
-export const InvestigateBulkListResultItemActionParams =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]]),
-  );
+export type InvestigateBulkListResultItemType2 = "RELEASE";
+export const InvestigateBulkListResultItemType2 = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkListResultItemActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkListResultItemActionType = /*@__PURE__*/ S.String;
@@ -4201,7 +3872,8 @@ export type InvestigateBulkListResultItemSearchParamsDeliveryStatus =
   | "rejected"
   | "deferred"
   | "bounced"
-  | "queued";
+  | "queued"
+  | "move_failed";
 export const InvestigateBulkListResultItemSearchParamsDeliveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -4226,15 +3898,26 @@ export type InvestigateBulkListResultItemSearchParamsMessageAction =
 export const InvestigateBulkListResultItemSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
+export type InvestigateBulkListResultItemSearchParamsStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
+export const InvestigateBulkListResultItemSearchParamsStatus =
+  /*@__PURE__*/ S.String;
+
 export interface InvestigateBulkListResultItemSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean | null;
+  /** Use GET /investigate/{investigate_id}/action_log instead. */
+  deprecatedactionLog?: boolean | null;
   alertId?: string | null;
   /** Delivery status of the message. */
   deliveryStatus?: InvestigateBulkListResultItemSearchParamsDeliveryStatus | null;
   detectionsOnly?: boolean | null;
   domain?: string | null;
-  /** End of search date range */
+  /** End of search date range. */
   end?: string | null;
   exactSubject?: string | null;
   finalDisposition?: InvestigateBulkListResultItemSearchParamsFinalDisposition | null;
@@ -4244,15 +3927,25 @@ export interface InvestigateBulkListResultItemSearchParams {
   query?: string | null;
   recipient?: string | null;
   sender?: string | null;
-  /** Beginning of search date range */
+  /** Beginning of search date range. */
   start?: string | null;
   subject?: string | null;
   submissions?: boolean | null;
+  status: InvestigateBulkListResultItemSearchParamsStatus;
+  totalMessagesDiscovered: number;
+  comment?: string | null;
+  /** formatdate-time */
+  completedAt?: string | null;
+  /** formatdate-time */
+  startedAt?: string | null;
+  statusMessage?: string | null;
 }
 export const InvestigateBulkListResultItemSearchParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
+      deprecatedactionLog: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("Deprecatedaction_log")),
+      ),
       alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
       deliveryStatus: S.optional(
         S.NullOr(InvestigateBulkListResultItemSearchParamsDeliveryStatus).pipe(
@@ -4285,42 +3978,50 @@ export const InvestigateBulkListResultItemSearchParams =
       start: S.optional(S.NullOr(S.String)),
       subject: S.optional(S.NullOr(S.String)),
       submissions: S.optional(S.NullOr(S.Boolean)),
+      status: InvestigateBulkListResultItemSearchParamsStatus,
+      totalMessagesDiscovered: S.Number.pipe(
+        T.Body("total_messages_discovered"),
+      ),
+      comment: S.optional(S.NullOr(S.String)),
+      completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
+      startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
+      statusMessage: S.optional(
+        S.NullOr(S.String).pipe(T.Body("status_message")),
+      ),
     }),
   ).annotate({
     identifier: "InvestigateBulkListResultItemSearchParams",
   }) as any as S.Schema<InvestigateBulkListResultItemSearchParams>;
 
-export type InvestigateBulkListResultItemStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | "COMPLETED"
-  | "FAILED"
-  | "CANCELLED"
-  | "SKIPPED";
-export const InvestigateBulkListResultItemStatus = /*@__PURE__*/ S.String;
-
 export interface InvestigateBulkListResultItem {
-  actionParams: InvestigateBulkListResultItemActionParams;
+  /** Move object { destination, type, expected_disposition } */
+  actionParams: unknown;
+  destination: InvestigateBulkListResultItemDestination;
+  type: InvestigateBulkListResultItemType;
+  /** Release object { type } */
+  expectedDisposition?: InvestigateBulkListResultItemExpectedDisposition | null;
+  type_2: InvestigateBulkListResultItemType2;
   actionType: InvestigateBulkListResultItemActionType;
+  /** formatdate-time */
   createdAt: string;
+  /** formatuuid */
   jobId: string;
   messagesFailed: number;
   messagesPending: number;
   messagesSuccessful: number;
   searchParams: InvestigateBulkListResultItemSearchParams;
-  status: InvestigateBulkListResultItemStatus;
-  totalMessagesDiscovered: number;
-  comment?: string | null;
-  completedAt?: string | null;
-  startedAt?: string | null;
-  statusMessage?: string | null;
 }
 export const InvestigateBulkListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actionParams: InvestigateBulkListResultItemActionParams.pipe(
-      T.Body("action_params"),
+    actionParams: S.Unknown.pipe(T.Body("action_params")),
+    destination: InvestigateBulkListResultItemDestination,
+    type: InvestigateBulkListResultItemType,
+    expectedDisposition: S.optional(
+      S.NullOr(InvestigateBulkListResultItemExpectedDisposition).pipe(
+        T.Body("expected_disposition"),
+      ),
     ),
+    type_2: InvestigateBulkListResultItemType2.pipe(T.Body("type")),
     actionType: InvestigateBulkListResultItemActionType.pipe(
       T.Body("action_type"),
     ),
@@ -4331,14 +4032,6 @@ export const InvestigateBulkListResultItem = /*@__PURE__*/ S.suspend(() =>
     messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
     searchParams: InvestigateBulkListResultItemSearchParams.pipe(
       T.Body("search_params"),
-    ),
-    status: InvestigateBulkListResultItemStatus,
-    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
-    comment: S.optional(S.NullOr(S.String)),
-    completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-    statusMessage: S.optional(
-      S.NullOr(S.String).pipe(T.Body("status_message")),
     ),
   }),
 ).annotate({
@@ -4366,88 +4059,13 @@ export const ListInvestigateBulksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvestigateBulksResponse",
 }) as any as S.Schema<ListInvestigateBulksResponse>;
 
-export type InvestigateListRequestDeliveryStatus =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | "rejected"
-  | "deferred"
-  | "bounced"
-  | "queued";
-export const InvestigateListRequestDeliveryStatus = /*@__PURE__*/ S.String;
-
-export type InvestigateListRequestFinalDisposition =
-  | "MALICIOUS"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "NONE";
-export const InvestigateListRequestFinalDisposition = /*@__PURE__*/ S.String;
-
-export type InvestigateListRequestMessageAction =
-  | "PREVIEW"
-  | "QUARANTINE_RELEASED"
-  | "MOVED";
-export const InvestigateListRequestMessageAction = /*@__PURE__*/ S.String;
-
 export interface ListInvestigatesRequest {
   /** Identifier. */
   accountId: string;
-  alertId?: string;
-  cursor?: string;
-  /** Delivery status to filter by. */
-  deliveryStatus?: InvestigateListRequestDeliveryStatus | (string & {});
-  /** Whether to include only detections in search results. */
-  detectionsOnly?: boolean;
-  /** Sender domains to filter by. */
-  domain?: string;
-  /** The end of the search date range. Defaults to `now`. */
-  end?: string;
-  /** Dispositions to filter by. */
-  finalDisposition?: InvestigateListRequestFinalDisposition | (string & {});
-  /** Message actions to filter by. */
-  messageAction?: InvestigateListRequestMessageAction | (string & {});
-  messageId?: string;
-  metric?: string;
-  /** Deprecated: Use cursor pagination instead. End of life: November 1, 2026. */
-  page?: number;
-  /** The number of results per page. Maximum value is 1000. */
-  perPage?: number;
-  /** Space-delimited search term. Case-insensitive. */
-  query?: string;
-  recipient?: string;
-  sender?: string;
-  /** The beginning of the search date range. Defaults to `now - 30 days`. */
-  start?: string;
-  subject?: string;
 }
 export const ListInvestigatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    alertId: S.optional(S.String.pipe(T.Query("alert_id"))),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    deliveryStatus: S.optional(
-      InvestigateListRequestDeliveryStatus.pipe(T.Query("delivery_status")),
-    ),
-    detectionsOnly: S.optional(S.Boolean.pipe(T.Query("detections_only"))),
-    domain: S.optional(S.String.pipe(T.Query())),
-    end: S.optional(S.String.pipe(T.Query())),
-    finalDisposition: S.optional(
-      InvestigateListRequestFinalDisposition.pipe(T.Query("final_disposition")),
-    ),
-    messageAction: S.optional(
-      InvestigateListRequestMessageAction.pipe(T.Query("message_action")),
-    ),
-    messageId: S.optional(S.String.pipe(T.Query("message_id"))),
-    metric: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    query: S.optional(S.String.pipe(T.Query())),
-    recipient: S.optional(S.String.pipe(T.Query())),
-    sender: S.optional(S.String.pipe(T.Query())),
-    start: S.optional(S.String.pipe(T.Query())),
-    subject: S.optional(S.String.pipe(T.Query())),
   })
     .pipe(
       T.Http({
@@ -4461,55 +4079,22 @@ export const ListInvestigatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvestigatesRequest",
 }) as any as S.Schema<ListInvestigatesRequest>;
 
-export type InvestigateListResultItemActionLogItemOperation =
-  | "MOVE"
-  | "RELEASE"
-  | "RECLASSIFY"
-  | "SUBMISSION"
-  | "QUARANTINE_RELEASE"
-  | "PREVIEW";
-export const InvestigateListResultItemActionLogItemOperation =
-  /*@__PURE__*/ S.String;
+export type InvestigateListResultItemDeprecatedActionLogItemProperties =
+  InvestigateGetResponseDeprecatedActionLogItemProperties;
+export const InvestigateListResultItemDeprecatedActionLogItemProperties =
+  InvestigateGetResponseDeprecatedActionLogItemProperties;
 
-export type InvestigateListResultItemActionLogItemProperties =
-  InvestigateGetResponseActionLogItemProperties;
-export const InvestigateListResultItemActionLogItemProperties =
-  InvestigateGetResponseActionLogItemProperties;
+export type InvestigateListResultItemDeprecatedActionLogItem =
+  InvestigateGetResponseDeprecatedActionLogItem;
+export const InvestigateListResultItemDeprecatedActionLogItem =
+  InvestigateGetResponseDeprecatedActionLogItem;
 
-export interface InvestigateListResultItemActionLogItem {
-  /** Timestamp when action completed */
-  completedAt: string;
-  /** Type of action performed */
-  operation: InvestigateListResultItemActionLogItemOperation;
-  /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
-  completedTimestamp?: string | null;
-  /** Additional properties for the action */
-  properties?: InvestigateGetResponseActionLogItemProperties | null;
-  /** Status of the action */
-  status?: string | null;
-}
-export const InvestigateListResultItemActionLogItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      completedAt: S.String.pipe(T.Body("completed_at")),
-      operation: InvestigateListResultItemActionLogItemOperation,
-      completedTimestamp: S.optional(
-        S.NullOr(S.String).pipe(T.Body("completed_timestamp")),
-      ),
-      properties: S.optional(
-        S.NullOr(InvestigateGetResponseActionLogItemProperties),
-      ),
-      status: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "InvestigateListResultItemActionLogItem",
-}) as any as S.Schema<InvestigateListResultItemActionLogItem>;
-
-export type InvestigateListResultItemActionLogList =
-  Array<InvestigateListResultItemActionLogItem>;
-export const InvestigateListResultItemActionLogList = /*@__PURE__*/ S.Array(
-  InvestigateListResultItemActionLogItem,
-) as any as S.Schema<InvestigateListResultItemActionLogList>;
+export type InvestigateListResultItemDeprecatedActionLogList =
+  Array<InvestigateGetResponseDeprecatedActionLogItem>;
+export const InvestigateListResultItemDeprecatedActionLogList =
+  /*@__PURE__*/ S.Array(
+    InvestigateGetResponseDeprecatedActionLogItem,
+  ) as any as S.Schema<InvestigateListResultItemDeprecatedActionLogList>;
 
 export type InvestigateListResultItemClientRecipientsList = Array<string>;
 export const InvestigateListResultItemClientRecipientsList =
@@ -4523,98 +4108,15 @@ export const InvestigateListResultItemDetectionReasonsList =
     S.String,
   ) as any as S.Schema<InvestigateListResultItemDetectionReasonsList>;
 
-export type InvestigateListResultItemPropertiesAllowlistedPatternType =
-  | "quarantine_release"
-  | "acceptable_sender"
-  | "allowed_sender"
-  | "allowed_recipient"
-  | "domain_similarity"
-  | "domain_recency"
-  | "managed_acceptable_sender"
-  | "outbound_ndr";
-export const InvestigateListResultItemPropertiesAllowlistedPatternType =
-  /*@__PURE__*/ S.String;
+export type InvestigateListResultItemProperties =
+  InvestigateGetResponseProperties;
+export const InvestigateListResultItemProperties =
+  InvestigateGetResponseProperties;
 
-export type InvestigateListResultItemPropertiesWhitelistedPatternType =
-  | "quarantine_release"
-  | "acceptable_sender"
-  | "allowed_sender"
-  | "allowed_recipient"
-  | "domain_similarity"
-  | "domain_recency"
-  | "managed_acceptable_sender"
-  | "outbound_ndr";
-export const InvestigateListResultItemPropertiesWhitelistedPatternType =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateListResultItemProperties {
-  /** Pattern that allowlisted this message */
-  allowlistedPattern?: string | null;
-  /** Type of allowlist pattern */
-  allowlistedPatternType?: InvestigateListResultItemPropertiesAllowlistedPatternType | null;
-  /** Whether message was blocklisted */
-  blocklistedMessage?: boolean | null;
-  /** Pattern that blocklisted this message */
-  blocklistedPattern?: string | null;
-  /** Legacy field for allowlist pattern type */
-  whitelistedPatternType?: InvestigateListResultItemPropertiesWhitelistedPatternType | null;
-}
-export const InvestigateListResultItemProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowlistedPattern: S.optional(
-      S.NullOr(S.String).pipe(T.Body("allowlisted_pattern")),
-    ),
-    allowlistedPatternType: S.optional(
-      S.NullOr(InvestigateListResultItemPropertiesAllowlistedPatternType).pipe(
-        T.Body("allowlisted_pattern_type"),
-      ),
-    ),
-    blocklistedMessage: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("blocklisted_message")),
-    ),
-    blocklistedPattern: S.optional(
-      S.NullOr(S.String).pipe(T.Body("blocklisted_pattern")),
-    ),
-    whitelistedPatternType: S.optional(
-      S.NullOr(InvestigateListResultItemPropertiesWhitelistedPatternType).pipe(
-        T.Body("whitelisted_pattern_type"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateListResultItemProperties",
-}) as any as S.Schema<InvestigateListResultItemProperties>;
-
-export type InvestigateListResultItemDeliveryMode =
-  | "DIRECT"
-  | "BCC"
-  | "JOURNAL"
-  | "REVIEW_SUBMISSION"
-  | "DMARC_UNVERIFIED"
-  | "DMARC_FAILURE_REPORT"
-  | "DMARC_AGGREGATE_REPORT"
-  | "THREAT_INTEL_SUBMISSION"
-  | "SIMULATION_SUBMISSION"
-  | "API"
-  | "RETRO_SCAN";
-export const InvestigateListResultItemDeliveryMode = /*@__PURE__*/ S.String;
-
-export type InvestigateListResultItemDeliveryStatusItem =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | "rejected"
-  | "deferred"
-  | "bounced"
-  | "queued";
-export const InvestigateListResultItemDeliveryStatusItem =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateListResultItemDeliveryStatusList =
-  Array<InvestigateListResultItemDeliveryStatusItem>;
+export type InvestigateListResultItemDeliveryStatusList = Array<string>;
 export const InvestigateListResultItemDeliveryStatusList =
   /*@__PURE__*/ S.Array(
-    InvestigateListResultItemDeliveryStatusItem,
+    S.String,
   ) as any as S.Schema<InvestigateListResultItemDeliveryStatusList>;
 
 export type InvestigateListResultItemEnvelopeToList = Array<string>;
@@ -4622,68 +4124,17 @@ export const InvestigateListResultItemEnvelopeToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateListResultItemEnvelopeToList>;
 
-export type InvestigateListResultItemFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateListResultItemFinalDisposition = /*@__PURE__*/ S.String;
+export type InvestigateListResultItemDeprecatedFindingsItem =
+  InvestigateGetResponseDeprecatedFindingsItem;
+export const InvestigateListResultItemDeprecatedFindingsItem =
+  InvestigateGetResponseDeprecatedFindingsItem;
 
-export type InvestigateListResultItemFindingsItemDetection =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | "SPOOF"
-  | "SPAM"
-  | "BULK"
-  | "ENCRYPTED"
-  | "EXTERNAL"
-  | "UNKNOWN"
-  | "NONE";
-export const InvestigateListResultItemFindingsItemDetection =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateListResultItemFindingsItem {
-  attachment?: string | null;
-  detail?: string | null;
-  detection?: InvestigateListResultItemFindingsItemDetection | null;
-  field?: string | null;
-  name?: string | null;
-  portion?: string | null;
-  reason?: string | null;
-  score?: number | null;
-  value?: string | null;
-}
-export const InvestigateListResultItemFindingsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attachment: S.optional(S.NullOr(S.String)),
-      detail: S.optional(S.NullOr(S.String)),
-      detection: S.optional(
-        S.NullOr(InvestigateListResultItemFindingsItemDetection),
-      ),
-      field: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      portion: S.optional(S.NullOr(S.String)),
-      reason: S.optional(S.NullOr(S.String)),
-      score: S.optional(S.NullOr(S.Number)),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "InvestigateListResultItemFindingsItem",
-}) as any as S.Schema<InvestigateListResultItemFindingsItem>;
-
-export type InvestigateListResultItemFindingsList =
-  Array<InvestigateListResultItemFindingsItem>;
-export const InvestigateListResultItemFindingsList = /*@__PURE__*/ S.Array(
-  InvestigateListResultItemFindingsItem,
-) as any as S.Schema<InvestigateListResultItemFindingsList>;
+export type InvestigateListResultItemDeprecatedFindingsList =
+  Array<InvestigateGetResponseDeprecatedFindingsItem>;
+export const InvestigateListResultItemDeprecatedFindingsList =
+  /*@__PURE__*/ S.Array(
+    InvestigateGetResponseDeprecatedFindingsItem,
+  ) as any as S.Schema<InvestigateListResultItemDeprecatedFindingsList>;
 
 export type InvestigateListResultItemPostDeliveryOperationsItem =
   | "PREVIEW"
@@ -4716,82 +4167,46 @@ export const InvestigateListResultItemToNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateListResultItemToNameList>;
 
-export type InvestigateListResultItemValidationDkim =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateListResultItemValidationDkim = /*@__PURE__*/ S.String;
-
-export type InvestigateListResultItemValidationDmarc =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateListResultItemValidationDmarc = /*@__PURE__*/ S.String;
-
-export type InvestigateListResultItemValidationSpf =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export const InvestigateListResultItemValidationSpf = /*@__PURE__*/ S.String;
-
-export interface InvestigateListResultItemValidation {
-  comment?: string | null;
-  dkim?: InvestigateListResultItemValidationDkim | null;
-  dmarc?: InvestigateListResultItemValidationDmarc | null;
-  spf?: InvestigateListResultItemValidationSpf | null;
-}
-export const InvestigateListResultItemValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comment: S.optional(S.NullOr(S.String)),
-    dkim: S.optional(S.NullOr(InvestigateListResultItemValidationDkim)),
-    dmarc: S.optional(S.NullOr(InvestigateListResultItemValidationDmarc)),
-    spf: S.optional(S.NullOr(InvestigateListResultItemValidationSpf)),
-  }),
-).annotate({
-  identifier: "InvestigateListResultItemValidation",
-}) as any as S.Schema<InvestigateListResultItemValidation>;
+export type InvestigateListResultItemValidation =
+  InvestigateGetResponseValidation;
+export const InvestigateListResultItemValidation =
+  InvestigateGetResponseValidation;
 
 export interface InvestigateListResultItem {
-  /** Unique identifier for a message retrieved from investigation */
+  /** Unique identifier for a message retrieved from investigation. */
   id: string;
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog: InvestigateListResultItemActionLogList;
+  /** Deprecated, use GET /investigate/{investigate_id}/action_log instead. End of life: November 1, 2026. */
+  deprecatedActionLog: InvestigateListResultItemDeprecatedActionLogList;
   clientRecipients: InvestigateListResultItemClientRecipientsList;
   detectionReasons: InvestigateListResultItemDetectionReasonsList;
   isPhishSubmission: boolean;
   isQuarantined: boolean;
-  /** The identifier of the message */
+  /** The identifier of the message. */
   postfixId: string;
-  /** Message processing properties */
-  properties: InvestigateListResultItemProperties;
-  /** Deprecated, use `scanned_at` instead. End of life: November 1, 2026. */
-  ts: string;
+  /** Message processing properties. */
+  properties: InvestigateGetResponseProperties;
+  /** Deprecated, use scanned_at instead. End of life: November 1, 2026. */
+  deprecatedTs: string;
   alertId?: string | null;
-  deliveryMode?: InvestigateListResultItemDeliveryMode | null;
+  deliveryMode?: string | null;
   deliveryStatus?: InvestigateListResultItemDeliveryStatusList | null;
   edfHash?: string | null;
   envelopeFrom?: string | null;
   envelopeTo?: InvestigateListResultItemEnvelopeToList | null;
-  finalDisposition?: InvestigateListResultItemFinalDisposition | null;
-  /** Deprecated, use the `findings` field from `GET /investigate/{investigate_id}/detections` instead. End of life: November 1, 2026. Detection findings for this message. */
-  findings?: InvestigateListResultItemFindingsList | null;
+  finalDisposition?: string | null;
+  /** Deprecated, use the findings field from GET /investigate/{investigate_id}/detections instead. End of life: November 1, 2026. Detection findings for this message. */
+  deprecatedFindings?: InvestigateListResultItemDeprecatedFindingsList | null;
   from?: string | null;
   fromName?: string | null;
   htmltextStructureHash?: string | null;
   messageId?: string | null;
-  /** Post-delivery operations performed on this message */
+  /** Post-delivery operations performed on this message. */
   postDeliveryOperations?: InvestigateListResultItemPostDeliveryOperationsList | null;
   postfixIdOutbound?: string | null;
   replyto?: string | null;
-  /** When the message was scanned (UTC) */
+  /** When the message was scanned (UTC). */
   scannedAt?: string | null;
-  /** When the message was sent (UTC) */
+  /** When the message was sent (UTC). */
   sentAt?: string | null;
   sentDate?: string | null;
   smtpHeloServerIp?: string | null;
@@ -4800,14 +4215,14 @@ export interface InvestigateListResultItem {
   threatCategories?: InvestigateListResultItemThreatCategoriesList | null;
   to?: InvestigateListResultItemToList | null;
   toName?: InvestigateListResultItemToNameList | null;
-  validation?: InvestigateListResultItemValidation | null;
+  validation?: InvestigateGetResponseValidation | null;
   xOriginatingIp?: string | null;
 }
 export const InvestigateListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    actionLog: InvestigateListResultItemActionLogList.pipe(
-      T.Body("action_log"),
+    deprecatedActionLog: InvestigateListResultItemDeprecatedActionLogList.pipe(
+      T.Body("Deprecated action_log"),
     ),
     clientRecipients: InvestigateListResultItemClientRecipientsList.pipe(
       T.Body("client_recipients"),
@@ -4818,14 +4233,10 @@ export const InvestigateListResultItem = /*@__PURE__*/ S.suspend(() =>
     isPhishSubmission: S.Boolean.pipe(T.Body("is_phish_submission")),
     isQuarantined: S.Boolean.pipe(T.Body("is_quarantined")),
     postfixId: S.String.pipe(T.Body("postfix_id")),
-    properties: InvestigateListResultItemProperties,
-    ts: S.String,
+    properties: InvestigateGetResponseProperties,
+    deprecatedTs: S.String.pipe(T.Body("Deprecated ts")),
     alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
-    deliveryMode: S.optional(
-      S.NullOr(InvestigateListResultItemDeliveryMode).pipe(
-        T.Body("delivery_mode"),
-      ),
-    ),
+    deliveryMode: S.optional(S.NullOr(S.String).pipe(T.Body("delivery_mode"))),
     deliveryStatus: S.optional(
       S.NullOr(InvestigateListResultItemDeliveryStatusList).pipe(
         T.Body("delivery_status"),
@@ -4839,11 +4250,13 @@ export const InvestigateListResultItem = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     finalDisposition: S.optional(
-      S.NullOr(InvestigateListResultItemFinalDisposition).pipe(
-        T.Body("final_disposition"),
+      S.NullOr(S.String).pipe(T.Body("final_disposition")),
+    ),
+    deprecatedFindings: S.optional(
+      S.NullOr(InvestigateListResultItemDeprecatedFindingsList).pipe(
+        T.Body("Deprecated findings"),
       ),
     ),
-    findings: S.optional(S.NullOr(InvestigateListResultItemFindingsList)),
     from: S.optional(S.NullOr(S.String)),
     fromName: S.optional(S.NullOr(S.String).pipe(T.Body("from_name"))),
     htmltextStructureHash: S.optional(
@@ -4878,7 +4291,7 @@ export const InvestigateListResultItem = /*@__PURE__*/ S.suspend(() =>
     toName: S.optional(
       S.NullOr(InvestigateListResultItemToNameList).pipe(T.Body("to_name")),
     ),
-    validation: S.optional(S.NullOr(InvestigateListResultItemValidation)),
+    validation: S.optional(S.NullOr(InvestigateGetResponseValidation)),
     xOriginatingIp: S.optional(
       S.NullOr(S.String).pipe(T.Body("x_originating_ip")),
     ),
@@ -4892,17 +4305,12 @@ export const InvestigateListResultList = /*@__PURE__*/ S.Array(
   InvestigateListResultItem,
 ) as any as S.Schema<InvestigateListResultList>;
 
-export interface ListInvestigatesResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result: InvestigateListResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
+export type ListInvestigatesResponse = InvestigateListResultList;
 export const ListInvestigatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: InvestigateListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  InvestigateListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
 ).annotate({
   identifier: "ListInvestigatesResponse",
 }) as any as S.Schema<ListInvestigatesResponse>;
@@ -4959,13 +4367,44 @@ export const PhishguardReportsListResultItemFieldsToList =
     S.String,
   ) as any as S.Schema<PhishguardReportsListResultItemFieldsToList>;
 
+export interface PhishguardReportsListResultItemFieldsTagsItem {
+  category: string;
+  value: string;
+}
+export const PhishguardReportsListResultItemFieldsTagsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      category: S.String,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "PhishguardReportsListResultItemFieldsTagsItem",
+  }) as any as S.Schema<PhishguardReportsListResultItemFieldsTagsItem>;
+
+export type PhishguardReportsListResultItemFieldsTagsList =
+  Array<PhishguardReportsListResultItemFieldsTagsItem>;
+export const PhishguardReportsListResultItemFieldsTagsList =
+  /*@__PURE__*/ S.Array(
+    PhishguardReportsListResultItemFieldsTagsItem,
+  ) as any as S.Schema<PhishguardReportsListResultItemFieldsTagsList>;
+
 export interface PhishguardReportsListResultItemFields {
   to: PhishguardReportsListResultItemFieldsToList;
   from?: string | null;
+  /** formatdate-time */
   occurredAt?: string | null;
   postfixId?: string | null;
-  /** Deprecated, use `occurred_at` instead */
-  ts?: string | null;
+  /** Use `occurred_at` instead. */
+  deprecatedts?: string | null;
+  priority: string;
+  title: string;
+  /** formatdate-time */
+  createdAt?: string | null;
+  tags?: PhishguardReportsListResultItemFieldsTagsList | null;
+  /** Use `created_at` instead. */
+  Deprecatedts_2?: string | null;
+  /** formatdate-time */
+  updatedAt?: string | null;
 }
 export const PhishguardReportsListResultItemFields = /*@__PURE__*/ S.suspend(
   () =>
@@ -4974,44 +4413,25 @@ export const PhishguardReportsListResultItemFields = /*@__PURE__*/ S.suspend(
       from: S.optional(S.NullOr(S.String)),
       occurredAt: S.optional(S.NullOr(S.String).pipe(T.Body("occurred_at"))),
       postfixId: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id"))),
-      ts: S.optional(S.NullOr(S.String)),
+      deprecatedts: S.optional(S.NullOr(S.String).pipe(T.Body("Deprecatedts"))),
+      priority: S.String,
+      title: S.String,
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      tags: S.optional(S.NullOr(PhishguardReportsListResultItemFieldsTagsList)),
+      Deprecatedts_2: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedts")),
+      ),
+      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
     }),
 ).annotate({
   identifier: "PhishguardReportsListResultItemFields",
 }) as any as S.Schema<PhishguardReportsListResultItemFields>;
-
-export interface PhishguardReportsListResultItemTagsItem {
-  category: string;
-  value: string;
-}
-export const PhishguardReportsListResultItemTagsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      category: S.String,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "PhishguardReportsListResultItemTagsItem",
-}) as any as S.Schema<PhishguardReportsListResultItemTagsItem>;
-
-export type PhishguardReportsListResultItemTagsList =
-  Array<PhishguardReportsListResultItemTagsItem>;
-export const PhishguardReportsListResultItemTagsList = /*@__PURE__*/ S.Array(
-  PhishguardReportsListResultItemTagsItem,
-) as any as S.Schema<PhishguardReportsListResultItemTagsList>;
 
 export interface PhishguardReportsListResultItem {
   id: number;
   content: string;
   disposition: PhishguardReportsListResultItemDisposition;
   fields: PhishguardReportsListResultItemFields;
-  priority: string;
-  title: string;
-  createdAt?: string | null;
-  tags?: PhishguardReportsListResultItemTagsList | null;
-  /** Deprecated, use `created_at` instead */
-  ts?: string | null;
-  updatedAt?: string | null;
 }
 export const PhishguardReportsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5019,12 +4439,6 @@ export const PhishguardReportsListResultItem = /*@__PURE__*/ S.suspend(() =>
     content: S.String,
     disposition: PhishguardReportsListResultItemDisposition,
     fields: PhishguardReportsListResultItemFields,
-    priority: S.String,
-    title: S.String,
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    tags: S.optional(S.NullOr(PhishguardReportsListResultItemTagsList)),
-    ts: S.optional(S.NullOr(S.String)),
-    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "PhishguardReportsListResultItem",
@@ -5134,26 +4548,30 @@ export const SettingsAllowPoliciesListResultItemPatternType =
   /*@__PURE__*/ S.String;
 
 export interface SettingsAllowPoliciesListResultItem {
-  /** Allow policy identifier */
+  /** Allow policy identifier. */
   id: string;
+  /** formatdate-time */
   createdAt: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified: string;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified: string;
+  /** maxLength1024 */
   comments?: string | null;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
-  /** Messages to this recipient will bypass all detections */
+  /** Bypasses all detections for messages to this recipient. */
   isExemptRecipient?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean | null;
+  /** Use `is_exempt_recipient` instead. */
+  deprecatedisRecipient?: boolean | null;
   isRegex?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean | null;
-  /** Messages from this sender will bypass all detections and link following */
+  /** Use `is_trusted_sender` instead. */
+  deprecatedisSender?: boolean | null;
+  /** Use `is_acceptable_sender` instead. */
+  deprecatedisSpoof?: boolean | null;
+  /** Bypasses all detections and link following for messages from this sender. */
   isTrustedSender?: boolean | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string | null;
   /** Type of pattern matching. */
   patternType?: SettingsAllowPoliciesListResultItemPatternType | null;
@@ -5164,7 +4582,7 @@ export const SettingsAllowPoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
+    deprecatedlastModified: S.String.pipe(T.Body("Deprecatedlast_modified")),
     comments: S.optional(S.NullOr(S.String)),
     isAcceptableSender: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender")),
@@ -5172,10 +4590,16 @@ export const SettingsAllowPoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
     isExemptRecipient: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient")),
     ),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
+    deprecatedisRecipient: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_recipient")),
+    ),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
+    deprecatedisSender: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_sender")),
+    ),
+    deprecatedisSpoof: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_spoof")),
+    ),
     isTrustedSender: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender")),
     ),
@@ -5281,14 +4705,18 @@ export const SettingsBlockSendersListResultItemPatternType =
   /*@__PURE__*/ S.String;
 
 export interface SettingsBlockSendersListResultItem {
-  /** Blocked sender pattern identifier */
+  /** Blocked sender pattern identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   isRegex?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string | null;
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersListResultItemPatternType | null;
@@ -5299,7 +4727,9 @@ export const SettingsBlockSendersListResultItem = /*@__PURE__*/ S.suspend(() =>
     comments: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     pattern: S.optional(S.NullOr(S.String)),
     patternType: S.optional(
@@ -5527,10 +4957,11 @@ export type SettingsDomainsListResultItemStatus =
 export const SettingsDomainsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface SettingsDomainsListResultItem {
-  /** Domain identifier */
+  /** Domain identifier. */
   id?: string | null;
   allowedDeliveryModes?: SettingsDomainsListResultItemAllowedDeliveryModesList | null;
   authorization?: SettingsDomainsGetResponseAuthorization | null;
+  /** formatdate-time */
   createdAt?: string | null;
   dmarcStatus?: SettingsDomainsListResultItemDmarcStatus | null;
   domain?: string | null;
@@ -5538,11 +4969,13 @@ export interface SettingsDomainsListResultItem {
   emailsProcessed?: SettingsDomainsGetResponseEmailsProcessed | null;
   folder?: SettingsDomainsListResultItemFolder | null;
   inboxProvider?: SettingsDomainsListResultItemInboxProvider | null;
+  /** formatuuid */
   integrationId?: string | null;
   ipRestrictions?: SettingsDomainsListResultItemIpRestrictionsList | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
   lookbackHops?: number | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
   o365TenantId?: string | null;
   regions?: SettingsDomainsListResultItemRegionsList | null;
@@ -5594,7 +5027,9 @@ export const SettingsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
         T.Body("ip_restrictions"),
       ),
     ),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
@@ -5712,18 +5147,22 @@ export const SettingsImpersonationRegistryListResultItemProvenance =
   /*@__PURE__*/ S.String;
 
 export interface SettingsImpersonationRegistryListResultItem {
-  /** Impersonation registry entry identifier */
+  /** Impersonation registry entry identifier. */
   id?: string | null;
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   directoryId?: number | null;
   directoryNodeId?: number | null;
   email?: string | null;
-  externalDirectoryNodeId?: string | null;
+  /** This field is deprecated. */
+  deprecatedexternalDirectoryNodeId?: string | null;
   isEmailRegex?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** maxLength1024 */
   name?: string | null;
   provenance?: SettingsImpersonationRegistryListResultItemProvenance | null;
 }
@@ -5738,14 +5177,14 @@ export const SettingsImpersonationRegistryListResultItem =
         S.NullOr(S.Number).pipe(T.Body("directory_node_id")),
       ),
       email: S.optional(S.NullOr(S.String)),
-      externalDirectoryNodeId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("external_directory_node_id")),
+      deprecatedexternalDirectoryNodeId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedexternal_directory_node_id")),
       ),
       isEmailRegex: S.optional(
         S.NullOr(S.Boolean).pipe(T.Body("is_email_regex")),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
       name: S.optional(S.NullOr(S.String)),
@@ -5846,14 +5285,17 @@ export const SettingsSendingDomainRestrictionsListResultItemExcludeList =
 export interface SettingsSendingDomainRestrictionsListResultItem {
   /** Sending domain restriction identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   /** Domain that requires TLS enforcement. */
   domain?: string | null;
-  /** Excluded subdomains that are exempt from TLS requirements. */
+  /** Subdomains to exempt from TLS requirements. */
   exclude?: SettingsSendingDomainRestrictionsListResultItemExcludeList | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
 }
 export const SettingsSendingDomainRestrictionsListResultItem =
@@ -5866,8 +5308,8 @@ export const SettingsSendingDomainRestrictionsListResultItem =
       exclude: S.optional(
         S.NullOr(SettingsSendingDomainRestrictionsListResultItemExcludeList),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     }),
@@ -5953,18 +5395,22 @@ export const ListSettingTrustedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSettingTrustedDomainsRequest>;
 
 export interface SettingsTrustedDomainsListResultItem {
-  /** Trusted domain identifier */
+  /** Trusted domain identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
   isRecent?: boolean | null;
   isRegex?: boolean | null;
   /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
   isSimilarity?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** maxLength1024 */
   pattern?: string | null;
 }
 export const SettingsTrustedDomainsListResultItem = /*@__PURE__*/ S.suspend(
@@ -5978,8 +5424,8 @@ export const SettingsTrustedDomainsListResultItem = /*@__PURE__*/ S.suspend(
       isSimilarity: S.optional(
         S.NullOr(S.Boolean).pipe(T.Body("is_similarity")),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
       pattern: S.optional(S.NullOr(S.String)),
@@ -6036,15 +5482,17 @@ export const ListSettingUrlIgnorePatternsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSettingUrlIgnorePatternsRequest>;
 
 export interface SettingsUrlIgnorePatternsListResultItem {
-  /** URL ignore pattern identifier */
+  /** URL ignore pattern identifier. */
   id: string;
+  /** formatdate-time */
   createdAt: string;
-  /** Regular expression matching URLs that should not be rewritten. */
+  /** Regular expression identifying URLs to exempt from rewriting. */
   pattern: string;
   /** Optional note describing the reason for the ignore pattern. */
   comments?: string | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
 }
 export const SettingsUrlIgnorePatternsListResultItem = /*@__PURE__*/ S.suspend(
@@ -6054,8 +5502,8 @@ export const SettingsUrlIgnorePatternsListResultItem = /*@__PURE__*/ S.suspend(
       createdAt: S.String.pipe(T.Body("created_at")),
       pattern: S.String,
       comments: S.optional(S.NullOr(S.String)),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     }),
@@ -6084,6 +5532,18 @@ export const ListSettingUrlIgnorePatternsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListSettingUrlIgnorePatternsResponse",
 }) as any as S.Schema<ListSettingUrlIgnorePatternsResponse>;
+
+export type SubmissionsListRequestDirection = "asc" | "desc";
+export const SubmissionsListRequestDirection = /*@__PURE__*/ S.String;
+
+export type SubmissionsListRequestOrder =
+  | "submission_id"
+  | "subject"
+  | "original_disposition"
+  | "requested_disposition"
+  | "outcome_disposition"
+  | "requested_at";
+export const SubmissionsListRequestOrder = /*@__PURE__*/ S.String;
 
 export type SubmissionsListRequestOriginalDisposition =
   | "MALICIOUS"
@@ -6119,10 +5579,14 @@ export const SubmissionsListRequestType = /*@__PURE__*/ S.String;
 export interface ListSubmissionsRequest {
   /** Identifier. */
   accountId: string;
+  /** The sorting direction. */
+  direction?: SubmissionsListRequestDirection | (string & {});
   /** The end of the search date range. Defaults to `now`. */
   end?: string;
   /** When true, return only submissions that were escalated by an end user (vs. by the security team). When false, return only submissions that were not escalated by an end user. When omitted, no filter is applied. */
   escalatedFromUser?: boolean;
+  /** Field to sort by. */
+  order?: SubmissionsListRequestOrder | (string & {});
   originalDisposition?:
     | SubmissionsListRequestOriginalDisposition
     | (string & {});
@@ -6144,10 +5608,12 @@ export interface ListSubmissionsRequest {
 export const ListSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
+    direction: S.optional(SubmissionsListRequestDirection.pipe(T.Query())),
     end: S.optional(S.String.pipe(T.Query())),
     escalatedFromUser: S.optional(
       S.Boolean.pipe(T.Query("escalated_from_user")),
     ),
+    order: S.optional(SubmissionsListRequestOrder.pipe(T.Query())),
     originalDisposition: S.optional(
       SubmissionsListRequestOriginalDisposition.pipe(
         T.Query("original_disposition"),
@@ -6237,22 +5703,23 @@ export interface SubmissionsListResultItem {
   submissionId: string;
   customerStatus?: SubmissionsListResultItemCustomerStatus | null;
   escalatedAs?: SubmissionsListResultItemEscalatedAs | null;
+  /** formatdate-time */
   escalatedAt?: string | null;
   escalatedBy?: string | null;
   escalatedSubmissionId?: string | null;
   originalDisposition?: SubmissionsListResultItemOriginalDisposition | null;
   originalEdfHash?: string | null;
-  /** The postfix ID of the original message that was submitted */
+  /** The postfix ID of the original message that was submitted. */
   originalPostfixId?: string | null;
   outcome?: string | null;
   outcomeDisposition?: SubmissionsListResultItemOutcomeDisposition | null;
   requestedBy?: string | null;
   requestedDisposition?: SubmissionsListResultItemRequestedDisposition | null;
-  /** Deprecated, use `requested_at` instead */
-  requestedTs?: string | null;
+  /** Use `requested_at` instead. */
+  deprecatedrequestedTs?: string | null;
   status?: string | null;
   subject?: string | null;
-  /** Whether the submission was created by a team member or an end user. */
+  /** Indicates whether a team member or an end user created the submission. */
   type?: SubmissionsListResultItemType | null;
 }
 export const SubmissionsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -6297,7 +5764,9 @@ export const SubmissionsListResultItem = /*@__PURE__*/ S.suspend(() =>
         T.Body("requested_disposition"),
       ),
     ),
-    requestedTs: S.optional(S.NullOr(S.String).pipe(T.Body("requested_ts"))),
+    deprecatedrequestedTs: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedrequested_ts")),
+    ),
     status: S.optional(S.NullOr(S.String)),
     subject: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(SubmissionsListResultItemType)),
@@ -6337,22 +5806,24 @@ export const SettingsAllowPoliciesEditRequestPatternType =
 export interface PatchSettingAllowPolicyRequest {
   /** Identifier. */
   accountId: string;
-  /** Allow policy identifier */
+  /** Allow policy identifier. */
   policyId: string;
+  /** maxLength1024 */
   comments?: string;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean;
-  /** Messages to this recipient will bypass all detections */
+  /** Bypasses all detections for messages to this recipient. */
   isExemptRecipient?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean;
+  /** Use `is_exempt_recipient` instead. */
+  deprecatedisRecipient?: boolean;
   isRegex?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean;
-  /** Messages from this sender will bypass all detections and link following */
+  /** Use `is_trusted_sender` instead. */
+  deprecatedisSender?: boolean;
+  /** Use `is_acceptable_sender` instead. */
+  deprecatedisSpoof?: boolean;
+  /** Bypasses all detections and link following for messages from this sender. */
   isTrustedSender?: boolean;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string;
   /** Type of pattern matching. */
   patternType?: SettingsAllowPoliciesEditRequestPatternType | (string & {});
@@ -6370,10 +5841,14 @@ export const PatchSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
     isExemptRecipient: S.optional(
       S.Boolean.pipe(T.Body("is_exempt_recipient")),
     ),
-    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
+    deprecatedisRecipient: S.optional(
+      S.Boolean.pipe(T.Body("Deprecatedis_recipient")),
+    ),
     isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
+    deprecatedisSender: S.optional(
+      S.Boolean.pipe(T.Body("Deprecatedis_sender")),
+    ),
+    deprecatedisSpoof: S.optional(S.Boolean.pipe(T.Body("Deprecatedis_spoof"))),
     isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
     pattern: S.optional(S.String),
     patternType: S.optional(
@@ -6403,37 +5878,48 @@ export const SettingsAllowPoliciesEditResponsePatternType =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingAllowPolicyResponse {
-  /** Allow policy identifier */
+  /** Allow policy identifier. */
   id: string;
+  /** formatdate-time */
   createdAt: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified: string;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified: string;
+  /** maxLength1024 */
   comments?: string | null;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
-  /** Messages to this recipient will bypass all detections */
+  /** Bypasses all detections for messages to this recipient. */
   isExemptRecipient?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean | null;
+  /** Use `is_exempt_recipient` instead. */
+  deprecatedisRecipient?: boolean | null;
   isRegex?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean | null;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean | null;
-  /** Messages from this sender will bypass all detections and link following */
+  /** Use `is_trusted_sender` instead. */
+  deprecatedisSender?: boolean | null;
+  /** Use `is_acceptable_sender` instead. */
+  deprecatedisSpoof?: boolean | null;
+  /** Bypasses all detections and link following for messages from this sender. */
   isTrustedSender?: boolean | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string | null;
   /** Type of pattern matching. */
   patternType?: SettingsAllowPoliciesEditResponsePatternType | null;
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender?: boolean | null;
+  comments_2: unknown;
+  isSender: unknown;
+  is_trusted_sender_2: unknown;
+  pattern_2: unknown;
+  pattern_type_2: unknown;
+  /** }' */
+  verify_sender_2: boolean;
 }
 export const PatchSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
+    deprecatedlastModified: S.String.pipe(T.Body("Deprecatedlast_modified")),
     comments: S.optional(S.NullOr(S.String)),
     isAcceptableSender: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender")),
@@ -6441,10 +5927,16 @@ export const PatchSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
     isExemptRecipient: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient")),
     ),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
+    deprecatedisRecipient: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_recipient")),
+    ),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
+    deprecatedisSender: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_sender")),
+    ),
+    deprecatedisSpoof: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("Deprecatedis_spoof")),
+    ),
     isTrustedSender: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender")),
     ),
@@ -6456,6 +5948,12 @@ export const PatchSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     verifySender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("verify_sender"))),
+    comments_2: S.Unknown.pipe(T.Body("comments")),
+    isSender: S.Unknown.pipe(T.Body("is_sender")),
+    is_trusted_sender_2: S.Unknown.pipe(T.Body("is_trusted_sender")),
+    pattern_2: S.Unknown.pipe(T.Body("pattern")),
+    pattern_type_2: S.Unknown.pipe(T.Body("pattern_type")),
+    verify_sender_2: S.Boolean.pipe(T.Body("verify_sender")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingAllowPolicyResponse",
@@ -6472,10 +5970,12 @@ export const SettingsBlockSendersEditRequestPatternType =
 export interface PatchSettingBlockSenderRequest {
   /** Identifier. */
   accountId: string;
-  /** Blocked sender pattern identifier */
+  /** Blocked sender pattern identifier. */
   patternId: string;
+  /** maxLength1024 */
   comments?: string;
   isRegex?: boolean;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string;
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersEditRequestPatternType | (string & {});
@@ -6511,19 +6011,31 @@ export type SettingsBlockSendersEditResponsePatternType =
 export const SettingsBlockSendersEditResponsePatternType =
   /*@__PURE__*/ S.String;
 
+export type SettingsBlockSendersEditResponsePatternType2 = "EMAIL";
+export const SettingsBlockSendersEditResponsePatternType2 =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingBlockSenderResponse {
-  /** Blocked sender pattern identifier */
+  /** Blocked sender pattern identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   isRegex?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses. */
   pattern?: string | null;
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersEditResponsePatternType | null;
+  comments_2: unknown;
+  pattern_2: unknown;
+  /** }' */
+  pattern_type_2: SettingsBlockSendersEditResponsePatternType2;
 }
 export const PatchSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6531,13 +6043,20 @@ export const PatchSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
     comments: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     pattern: S.optional(S.NullOr(S.String)),
     patternType: S.optional(
       S.NullOr(SettingsBlockSendersEditResponsePatternType).pipe(
         T.Body("pattern_type"),
       ),
+    ),
+    comments_2: S.Unknown.pipe(T.Body("comments")),
+    pattern_2: S.Unknown.pipe(T.Body("pattern")),
+    pattern_type_2: SettingsBlockSendersEditResponsePatternType2.pipe(
+      T.Body("pattern_type"),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -6610,14 +6129,15 @@ export const SettingsDomainsEditRequestRegionsList = /*@__PURE__*/ S.Array(
 export interface PatchSettingDomainRequest {
   /** Identifier. */
   accountId: string;
-  /** Domain identifier */
+  /** Domain identifier. */
   domainId: string;
   allowedDeliveryModes?: SettingsDomainsEditRequestAllowedDeliveryModesList;
-  domain?: string;
   dropDispositions?: SettingsDomainsEditRequestDropDispositionsList;
   folder?: SettingsDomainsEditRequestFolder | (string & {});
+  /** formatuuid */
   integrationId?: string;
   ipRestrictions?: SettingsDomainsEditRequestIpRestrictionsList;
+  /** maximum20 */
   lookbackHops?: number;
   regions?: SettingsDomainsEditRequestRegionsList;
   requireTlsInbound?: boolean;
@@ -6633,7 +6153,6 @@ export const PatchSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("allowed_delivery_modes"),
       ),
     ),
-    domain: S.optional(S.String),
     dropDispositions: S.optional(
       SettingsDomainsEditRequestDropDispositionsList.pipe(
         T.Body("drop_dispositions"),
@@ -6764,10 +6283,11 @@ export const SettingsDomainsEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingDomainResponse {
-  /** Domain identifier */
+  /** Domain identifier. */
   id?: string | null;
   allowedDeliveryModes?: SettingsDomainsEditResponseAllowedDeliveryModesList | null;
   authorization?: SettingsDomainsGetResponseAuthorization | null;
+  /** formatdate-time */
   createdAt?: string | null;
   dmarcStatus?: SettingsDomainsEditResponseDmarcStatus | null;
   domain?: string | null;
@@ -6775,11 +6295,13 @@ export interface PatchSettingDomainResponse {
   emailsProcessed?: SettingsDomainsGetResponseEmailsProcessed | null;
   folder?: SettingsDomainsEditResponseFolder | null;
   inboxProvider?: SettingsDomainsEditResponseInboxProvider | null;
+  /** formatuuid */
   integrationId?: string | null;
   ipRestrictions?: SettingsDomainsEditResponseIpRestrictionsList | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
   lookbackHops?: number | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
   o365TenantId?: string | null;
   regions?: SettingsDomainsEditResponseRegionsList | null;
@@ -6787,7 +6309,10 @@ export interface PatchSettingDomainResponse {
   requireTlsOutbound?: boolean | null;
   spfStatus?: SettingsDomainsEditResponseSpfStatus | null;
   status?: SettingsDomainsEditResponseStatus | null;
+  /** HTTP */
   transport?: string | null;
+  /** "192.0.2.0/24", */
+  ip_restrictions_2: unknown;
 }
 export const PatchSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6831,7 +6356,9 @@ export const PatchSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("ip_restrictions"),
       ),
     ),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
@@ -6847,6 +6374,7 @@ export const PatchSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     status: S.optional(S.NullOr(SettingsDomainsEditResponseStatus)),
     transport: S.optional(S.NullOr(S.String)),
+    ip_restrictions_2: S.Unknown.pipe(T.Body("ip_restrictions")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingDomainResponse",
@@ -6863,14 +6391,16 @@ export const SettingsImpersonationRegistryEditRequestProvenance =
 export interface PatchSettingImpersonationRegistryRequest {
   /** Identifier. */
   accountId: string;
-  /** Impersonation registry entry identifier */
+  /** Impersonation registry entry identifier. */
   impersonationRegistryId: string;
   comments?: string;
   directoryId?: number;
   directoryNodeId?: number;
   email?: string;
-  externalDirectoryNodeId?: string;
+  /** This field is deprecated. */
+  deprecatedexternalDirectoryNodeId?: string;
   isEmailRegex?: boolean;
+  /** maxLength1024 */
   name?: string;
   provenance?:
     | SettingsImpersonationRegistryEditRequestProvenance
@@ -6887,8 +6417,8 @@ export const PatchSettingImpersonationRegistryRequest = /*@__PURE__*/ S.suspend(
       directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
       directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
       email: S.optional(S.String),
-      externalDirectoryNodeId: S.optional(
-        S.String.pipe(T.Body("external_directory_node_id")),
+      deprecatedexternalDirectoryNodeId: S.optional(
+        S.String.pipe(T.Body("Deprecatedexternal_directory_node_id")),
       ),
       isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
       name: S.optional(S.String),
@@ -6916,22 +6446,34 @@ export type SettingsImpersonationRegistryEditResponseProvenance =
 export const SettingsImpersonationRegistryEditResponseProvenance =
   /*@__PURE__*/ S.String;
 
+export type SettingsImpersonationRegistryEditResponseName = "John Doe";
+export const SettingsImpersonationRegistryEditResponseName =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingImpersonationRegistryResponse {
-  /** Impersonation registry entry identifier */
+  /** Impersonation registry entry identifier. */
   id?: string | null;
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   directoryId?: number | null;
   directoryNodeId?: number | null;
   email?: string | null;
-  externalDirectoryNodeId?: string | null;
+  /** This field is deprecated. */
+  deprecatedexternalDirectoryNodeId?: string | null;
   isEmailRegex?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** maxLength1024 */
   name?: string | null;
+  /** HTTP */
   provenance?: SettingsImpersonationRegistryEditResponseProvenance | null;
+  email_2: unknown;
+  /** }' */
+  name_2: SettingsImpersonationRegistryEditResponseName;
 }
 export const PatchSettingImpersonationRegistryResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -6944,19 +6486,23 @@ export const PatchSettingImpersonationRegistryResponse =
         S.NullOr(S.Number).pipe(T.Body("directory_node_id")),
       ),
       email: S.optional(S.NullOr(S.String)),
-      externalDirectoryNodeId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("external_directory_node_id")),
+      deprecatedexternalDirectoryNodeId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedexternal_directory_node_id")),
       ),
       isEmailRegex: S.optional(
         S.NullOr(S.Boolean).pipe(T.Body("is_email_regex")),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
       name: S.optional(S.NullOr(S.String)),
       provenance: S.optional(
         S.NullOr(SettingsImpersonationRegistryEditResponseProvenance),
+      ),
+      email_2: S.Unknown.pipe(T.Body("email")),
+      name_2: SettingsImpersonationRegistryEditResponseName.pipe(
+        T.Body("name"),
       ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
@@ -6975,10 +6521,11 @@ export interface PatchSettingSendingDomainRestrictionRequest {
   accountId: string;
   /** Sending domain restriction identifier. */
   sendingDomainRestrictionId: string;
+  /** maxLength1024 */
   comments?: string;
   /** Domain that requires TLS enforcement. */
   domain?: string;
-  /** Excluded subdomains that are exempt from TLS requirements. */
+  /** Subdomains to exempt from TLS requirements. */
   exclude?: SettingsSendingDomainRestrictionsEditRequestExcludeList;
 }
 export const PatchSettingSendingDomainRestrictionRequest =
@@ -7017,15 +6564,22 @@ export const SettingsSendingDomainRestrictionsEditResponseExcludeList =
 export interface PatchSettingSendingDomainRestrictionResponse {
   /** Sending domain restriction identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   /** Domain that requires TLS enforcement. */
   domain?: string | null;
-  /** Excluded subdomains that are exempt from TLS requirements. */
+  /** Subdomains to exempt from TLS requirements. */
   exclude?: SettingsSendingDomainRestrictionsEditResponseExcludeList | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  comments_2: unknown;
+  domain_2: unknown;
+  /** "subdomain.example.com" */
+  exclude_2: unknown;
 }
 export const PatchSettingSendingDomainRestrictionResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -7037,10 +6591,13 @@ export const PatchSettingSendingDomainRestrictionResponse =
       exclude: S.optional(
         S.NullOr(SettingsSendingDomainRestrictionsEditResponseExcludeList),
       ),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      comments_2: S.Unknown.pipe(T.Body("comments")),
+      domain_2: S.Unknown.pipe(T.Body("domain")),
+      exclude_2: S.Unknown.pipe(T.Body("exclude")),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "PatchSettingSendingDomainRestrictionResponse",
@@ -7049,14 +6606,16 @@ export const PatchSettingSendingDomainRestrictionResponse =
 export interface PatchSettingTrustedDomainRequest {
   /** Identifier. */
   accountId: string;
-  /** Trusted domain identifier */
+  /** Trusted domain identifier. */
   trustedDomainId: string;
+  /** maxLength1024 */
   comments?: string;
   /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
   isRecent?: boolean;
   isRegex?: boolean;
   /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
   isSimilarity?: boolean;
+  /** maxLength1024 */
   pattern?: string;
 }
 export const PatchSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7081,21 +6640,32 @@ export const PatchSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingTrustedDomainRequest",
 }) as any as S.Schema<PatchSettingTrustedDomainRequest>;
 
+export type SettingsTrustedDomainsEditResponsePattern = "example.com";
+export const SettingsTrustedDomainsEditResponsePattern = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingTrustedDomainResponse {
-  /** Trusted domain identifier */
+  /** Trusted domain identifier. */
   id?: string | null;
+  /** maxLength1024 */
   comments?: string | null;
+  /** formatdate-time */
   createdAt?: string | null;
   /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
   isRecent?: boolean | null;
   isRegex?: boolean | null;
   /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
   isSimilarity?: boolean | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  /** maxLength1024 */
   pattern?: string | null;
+  comments_2: unknown;
+  is_recent_2: unknown;
+  /** }' */
+  pattern_2: SettingsTrustedDomainsEditResponsePattern;
 }
 export const PatchSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7105,9 +6675,16 @@ export const PatchSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
     isRecent: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recent"))),
     isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
     isSimilarity: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_similarity"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+    deprecatedlastModified: S.optional(
+      S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
+    ),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
     pattern: S.optional(S.NullOr(S.String)),
+    comments_2: S.Unknown.pipe(T.Body("comments")),
+    is_recent_2: S.Unknown.pipe(T.Body("is_recent")),
+    pattern_2: SettingsTrustedDomainsEditResponsePattern.pipe(
+      T.Body("pattern"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingTrustedDomainResponse",
@@ -7116,11 +6693,11 @@ export const PatchSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PatchSettingUrlIgnorePatternRequest {
   /** Identifier. */
   accountId: string;
-  /** URL ignore pattern identifier */
+  /** URL ignore pattern identifier. */
   patternId: string;
   /** Optional note describing the reason for the ignore pattern. */
   comments?: string;
-  /** Regular expression matching URLs that should not be rewritten. */
+  /** Regular expression identifying URLs to exempt from rewriting. */
   pattern?: string;
 }
 export const PatchSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7142,18 +6719,28 @@ export const PatchSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingUrlIgnorePatternRequest",
 }) as any as S.Schema<PatchSettingUrlIgnorePatternRequest>;
 
+export type SettingsUrlIgnorePatternsEditResponsePattern =
+  "https://example.com/.*";
+export const SettingsUrlIgnorePatternsEditResponsePattern =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingUrlIgnorePatternResponse {
-  /** URL ignore pattern identifier */
+  /** URL ignore pattern identifier. */
   id: string;
+  /** formatdate-time */
   createdAt: string;
-  /** Regular expression matching URLs that should not be rewritten. */
+  /** Regular expression identifying URLs to exempt from rewriting. */
   pattern: string;
   /** Optional note describing the reason for the ignore pattern. */
   comments?: string | null;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string | null;
+  /** Use `modified_at` instead. */
+  deprecatedlastModified?: string | null;
+  /** formatdate-time */
   modifiedAt?: string | null;
+  comments_2: unknown;
+  /** }' */
+  pattern_2: SettingsUrlIgnorePatternsEditResponsePattern;
 }
 export const PatchSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -7162,14 +6749,972 @@ export const PatchSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
       createdAt: S.String.pipe(T.Body("created_at")),
       pattern: S.String,
       comments: S.optional(S.NullOr(S.String)),
-      lastModified: S.optional(
-        S.NullOr(S.String).pipe(T.Body("last_modified")),
+      deprecatedlastModified: S.optional(
+        S.NullOr(S.String).pipe(T.Body("Deprecatedlast_modified")),
       ),
       modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      comments_2: S.Unknown.pipe(T.Body("comments")),
+      pattern_2: SettingsUrlIgnorePatternsEditResponsePattern.pipe(
+        T.Body("pattern"),
+      ),
     }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingUrlIgnorePatternResponse",
 }) as any as S.Schema<PatchSettingUrlIgnorePatternResponse>;
+
+export interface SettingsContentPoliciesBatchRequestDeletesItem {
+  /** Content policy identifier. */
+  id: string;
+}
+export const SettingsContentPoliciesBatchRequestDeletesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "SettingsContentPoliciesBatchRequestDeletesItem",
+  }) as any as S.Schema<SettingsContentPoliciesBatchRequestDeletesItem>;
+
+export type SettingsContentPoliciesBatchRequestDeletesList =
+  Array<SettingsContentPoliciesBatchRequestDeletesItem>;
+export const SettingsContentPoliciesBatchRequestDeletesList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchRequestDeletesItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchRequestDeletesList>;
+
+export type SettingsContentPoliciesBatchRequestPatchesItemTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesBatchRequestPatchesItemTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesBatchRequestPatchesItemTargetsList = Array<
+  SettingsContentPoliciesBatchRequestPatchesItemTargetsItem | (string & {})
+>;
+export const SettingsContentPoliciesBatchRequestPatchesItemTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchRequestPatchesItemTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemTargetsList>;
+
+export type SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsList =
+  Array<
+    | SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsItem
+    | (string & {})
+  >;
+export const SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsList>;
+
+export type SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsList =
+  Array<
+    | SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsItem
+    | (string & {})
+  >;
+export const SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsList>;
+
+export interface SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItem {
+  /** Content policy identifier. */
+  id: string;
+  enabled: boolean;
+  /** maxLength256 */
+  name: string;
+  /** maxLength2048 */
+  pattern: string;
+  targets: SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsList;
+  /** formatdate-time */
+  createdAt?: string;
+  /** formatdate-time */
+  modifiedAt?: string;
+  /** maxLength4096 */
+  notes?: string;
+}
+export const SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      enabled: S.Boolean,
+      name: S.String,
+      pattern: S.String,
+      targets:
+        SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItemTargetsList,
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      notes: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItem",
+  }) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItem>;
+
+export type SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsList =
+  Array<SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItem>;
+export const SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsList>;
+
+export interface SettingsContentPoliciesBatchRequestPatchesItemPostsItem {
+  enabled: boolean;
+  /** maxLength256 */
+  name: string;
+  /** maxLength2048 */
+  pattern: string;
+  targets: SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsList;
+  /** Content policy identifier. */
+  id?: string;
+  /** formatdate-time */
+  createdAt?: string;
+  /** formatdate-time */
+  modifiedAt?: string;
+  /** maxLength4096 */
+  notes?: string;
+  puts: SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsList;
+}
+export const SettingsContentPoliciesBatchRequestPatchesItemPostsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+      pattern: S.String,
+      targets:
+        SettingsContentPoliciesBatchRequestPatchesItemPostsItemTargetsList,
+      id: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      notes: S.optional(S.String),
+      puts: SettingsContentPoliciesBatchRequestPatchesItemPostsItemPutsList,
+    }),
+  ).annotate({
+    identifier: "SettingsContentPoliciesBatchRequestPatchesItemPostsItem",
+  }) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemPostsItem>;
+
+export type SettingsContentPoliciesBatchRequestPatchesItemPostsList =
+  Array<SettingsContentPoliciesBatchRequestPatchesItemPostsItem>;
+export const SettingsContentPoliciesBatchRequestPatchesItemPostsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchRequestPatchesItemPostsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemPostsList>;
+
+export interface SettingsContentPoliciesBatchRequestPatchesItem {
+  /** Content policy identifier. */
+  id: string;
+  /** formatdate-time */
+  createdAt?: string;
+  enabled?: boolean;
+  /** formatdate-time */
+  modifiedAt?: string;
+  /** maxLength256 */
+  name?: string;
+  /** maxLength4096 */
+  notes?: string;
+  /** maxLength2048 */
+  pattern?: string;
+  targets?: SettingsContentPoliciesBatchRequestPatchesItemTargetsList;
+  posts: SettingsContentPoliciesBatchRequestPatchesItemPostsList;
+}
+export const SettingsContentPoliciesBatchRequestPatchesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      enabled: S.optional(S.Boolean),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      name: S.optional(S.String),
+      notes: S.optional(S.String),
+      pattern: S.optional(S.String),
+      targets: S.optional(
+        SettingsContentPoliciesBatchRequestPatchesItemTargetsList,
+      ),
+      posts: SettingsContentPoliciesBatchRequestPatchesItemPostsList,
+    }),
+  ).annotate({
+    identifier: "SettingsContentPoliciesBatchRequestPatchesItem",
+  }) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItem>;
+
+export type SettingsContentPoliciesBatchRequestPatchesList =
+  Array<SettingsContentPoliciesBatchRequestPatchesItem>;
+export const SettingsContentPoliciesBatchRequestPatchesList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchRequestPatchesItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesList>;
+
+export interface SettingsContentPoliciesBatchRequest {
+  /** Identifier. */
+  accountId: string;
+  deletes: SettingsContentPoliciesBatchRequestDeletesList;
+  patches: SettingsContentPoliciesBatchRequestPatchesList;
+}
+export const SettingsContentPoliciesBatchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    deletes: SettingsContentPoliciesBatchRequestDeletesList,
+    patches: SettingsContentPoliciesBatchRequestPatchesList,
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/settings/content_policies/batch",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesBatchRequest",
+}) as any as S.Schema<SettingsContentPoliciesBatchRequest>;
+
+export type SettingsContentPoliciesBatchResponseDeletesItem =
+  SettingsContentPoliciesBatchRequestDeletesItem;
+export const SettingsContentPoliciesBatchResponseDeletesItem =
+  SettingsContentPoliciesBatchRequestDeletesItem;
+
+export type SettingsContentPoliciesBatchResponseDeletesList =
+  Array<SettingsContentPoliciesBatchRequestDeletesItem>;
+export const SettingsContentPoliciesBatchResponseDeletesList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchRequestDeletesItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchResponseDeletesList>;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesBatchResponsePatchesItemTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemTargetsList =
+  Array<SettingsContentPoliciesBatchResponsePatchesItemTargetsItem>;
+export const SettingsContentPoliciesBatchResponsePatchesItemTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchResponsePatchesItemTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemTargetsList>;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsList =
+  Array<SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsItem>;
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsList>;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsList =
+  Array<SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsItem>;
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsList>;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemId =
+  "f174e90a-fafe-4643-bbbc-4a0ed4fc8415";
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemId =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItem {
+  /** Content policy identifier. */
+  id?: string | null;
+  /** formatdate-time */
+  createdAt?: string | null;
+  enabled?: boolean | null;
+  /** formatdate-time */
+  modifiedAt?: string | null;
+  /** maxLength256 */
+  name?: string | null;
+  /** maxLength4096 */
+  notes?: string | null;
+  /** maxLength2048 */
+  pattern?: string | null;
+  /** HTTP */
+  targets?: SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsList | null;
+  /** { */
+  deletes: unknown;
+  /** } */
+  id_2: SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemId;
+  /** {} */
+  patches: unknown;
+  /** { */
+  posts: unknown;
+  enabled_2: unknown;
+  name_2: unknown;
+  pattern_2: unknown;
+  /** "SUBJECT" */
+  targets_2: unknown;
+  /** { */
+  puts: unknown;
+  enabled_3: unknown;
+  name_3: unknown;
+  pattern_3: unknown;
+  /** "SUBJECT" */
+  targets_3: unknown;
+}
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      name: S.optional(S.NullOr(S.String)),
+      notes: S.optional(S.NullOr(S.String)),
+      pattern: S.optional(S.NullOr(S.String)),
+      targets: S.optional(
+        S.NullOr(
+          SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemTargetsList,
+        ),
+      ),
+      deletes: S.Unknown,
+      id_2: SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItemId.pipe(
+        T.Body("id"),
+      ),
+      patches: S.Unknown,
+      posts: S.Unknown,
+      enabled_2: S.Unknown.pipe(T.Body("enabled")),
+      name_2: S.Unknown.pipe(T.Body("name")),
+      pattern_2: S.Unknown.pipe(T.Body("pattern")),
+      targets_2: S.Unknown.pipe(T.Body("targets")),
+      puts: S.Unknown,
+      enabled_3: S.Unknown.pipe(T.Body("enabled")),
+      name_3: S.Unknown.pipe(T.Body("name")),
+      pattern_3: S.Unknown.pipe(T.Body("pattern")),
+      targets_3: S.Unknown.pipe(T.Body("targets")),
+    }),
+  ).annotate({
+    identifier:
+      "SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItem",
+  }) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItem>;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsList =
+  Array<SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItem>;
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsList>;
+
+export interface SettingsContentPoliciesBatchResponsePatchesItemPostsItem {
+  /** Content policy identifier. */
+  id?: string | null;
+  /** formatdate-time */
+  createdAt?: string | null;
+  enabled?: boolean | null;
+  /** formatdate-time */
+  modifiedAt?: string | null;
+  /** maxLength256 */
+  name?: string | null;
+  /** maxLength4096 */
+  notes?: string | null;
+  /** maxLength2048 */
+  pattern?: string | null;
+  targets?: SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsList | null;
+  puts?: SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsList | null;
+}
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      name: S.optional(S.NullOr(S.String)),
+      notes: S.optional(S.NullOr(S.String)),
+      pattern: S.optional(S.NullOr(S.String)),
+      targets: S.optional(
+        S.NullOr(
+          SettingsContentPoliciesBatchResponsePatchesItemPostsItemTargetsList,
+        ),
+      ),
+      puts: S.optional(
+        S.NullOr(
+          SettingsContentPoliciesBatchResponsePatchesItemPostsItemPutsList,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SettingsContentPoliciesBatchResponsePatchesItemPostsItem",
+  }) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemPostsItem>;
+
+export type SettingsContentPoliciesBatchResponsePatchesItemPostsList =
+  Array<SettingsContentPoliciesBatchResponsePatchesItemPostsItem>;
+export const SettingsContentPoliciesBatchResponsePatchesItemPostsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchResponsePatchesItemPostsItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemPostsList>;
+
+export interface SettingsContentPoliciesBatchResponsePatchesItem {
+  /** Content policy identifier. */
+  id?: string | null;
+  /** formatdate-time */
+  createdAt?: string | null;
+  enabled?: boolean | null;
+  /** formatdate-time */
+  modifiedAt?: string | null;
+  /** maxLength256 */
+  name?: string | null;
+  /** maxLength4096 */
+  notes?: string | null;
+  /** maxLength2048 */
+  pattern?: string | null;
+  targets?: SettingsContentPoliciesBatchResponsePatchesItemTargetsList | null;
+  posts?: SettingsContentPoliciesBatchResponsePatchesItemPostsList | null;
+}
+export const SettingsContentPoliciesBatchResponsePatchesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      name: S.optional(S.NullOr(S.String)),
+      notes: S.optional(S.NullOr(S.String)),
+      pattern: S.optional(S.NullOr(S.String)),
+      targets: S.optional(
+        S.NullOr(SettingsContentPoliciesBatchResponsePatchesItemTargetsList),
+      ),
+      posts: S.optional(
+        S.NullOr(SettingsContentPoliciesBatchResponsePatchesItemPostsList),
+      ),
+    }),
+  ).annotate({
+    identifier: "SettingsContentPoliciesBatchResponsePatchesItem",
+  }) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItem>;
+
+export type SettingsContentPoliciesBatchResponsePatchesList =
+  Array<SettingsContentPoliciesBatchResponsePatchesItem>;
+export const SettingsContentPoliciesBatchResponsePatchesList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesBatchResponsePatchesItem,
+  ) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SettingsContentPoliciesBatchResponse {
+  deletes?: SettingsContentPoliciesBatchResponseDeletesList | null;
+  patches?: SettingsContentPoliciesBatchResponsePatchesList | null;
+}
+export const SettingsContentPoliciesBatchResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deletes: S.optional(
+        S.NullOr(SettingsContentPoliciesBatchResponseDeletesList),
+      ),
+      patches: S.optional(
+        S.NullOr(SettingsContentPoliciesBatchResponsePatchesList),
+      ),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesBatchResponse",
+}) as any as S.Schema<SettingsContentPoliciesBatchResponse>;
+
+export type SettingsContentPoliciesCreateRequestTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesCreateRequestTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesCreateRequestTargetsList = Array<
+  SettingsContentPoliciesCreateRequestTargetsItem | (string & {})
+>;
+export const SettingsContentPoliciesCreateRequestTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesCreateRequestTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesCreateRequestTargetsList>;
+
+export interface SettingsContentPoliciesCreateRequest {
+  /** Identifier. */
+  accountId: string;
+  enabled: boolean;
+  /** maxLength256 */
+  name: string;
+  /** maxLength2048 */
+  pattern: string;
+  targets: SettingsContentPoliciesCreateRequestTargetsList;
+  /** maxLength4096 */
+  notes?: string;
+}
+export const SettingsContentPoliciesCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      enabled: S.Boolean,
+      name: S.String,
+      pattern: S.String,
+      targets: SettingsContentPoliciesCreateRequestTargetsList,
+      notes: S.optional(S.String),
+    })
+      .pipe(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{account_id}/email-security/settings/content_policies",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesCreateRequest",
+}) as any as S.Schema<SettingsContentPoliciesCreateRequest>;
+
+export type SettingsContentPoliciesCreateResponseTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesCreateResponseTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesCreateResponseTargetsList =
+  Array<SettingsContentPoliciesCreateResponseTargetsItem>;
+export const SettingsContentPoliciesCreateResponseTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesCreateResponseTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesCreateResponseTargetsList>;
+
+export type SettingsContentPoliciesCreateResponseNotes =
+  "Blocks common phishing subject lines";
+export const SettingsContentPoliciesCreateResponseNotes =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SettingsContentPoliciesCreateResponse {
+  /** Content policy identifier. */
+  id?: string | null;
+  /** formatdate-time */
+  createdAt?: string | null;
+  enabled?: boolean | null;
+  /** formatdate-time */
+  modifiedAt?: string | null;
+  /** maxLength256 */
+  name?: string | null;
+  /** maxLength4096 */
+  notes?: string | null;
+  /** maxLength2048 */
+  pattern?: string | null;
+  /** HTTP */
+  targets?: SettingsContentPoliciesCreateResponseTargetsList | null;
+  enabled_2: unknown;
+  name_2: unknown;
+  pattern_2: unknown;
+  /** "SUBJECT" */
+  targets_2: unknown;
+  /** }' */
+  notes_2: SettingsContentPoliciesCreateResponseNotes;
+}
+export const SettingsContentPoliciesCreateResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      name: S.optional(S.NullOr(S.String)),
+      notes: S.optional(S.NullOr(S.String)),
+      pattern: S.optional(S.NullOr(S.String)),
+      targets: S.optional(
+        S.NullOr(SettingsContentPoliciesCreateResponseTargetsList),
+      ),
+      enabled_2: S.Unknown.pipe(T.Body("enabled")),
+      name_2: S.Unknown.pipe(T.Body("name")),
+      pattern_2: S.Unknown.pipe(T.Body("pattern")),
+      targets_2: S.Unknown.pipe(T.Body("targets")),
+      notes_2: SettingsContentPoliciesCreateResponseNotes.pipe(T.Body("notes")),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesCreateResponse",
+}) as any as S.Schema<SettingsContentPoliciesCreateResponse>;
+
+export interface SettingsContentPoliciesDeleteRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Content policy identifier. */
+  policyId: string;
+}
+export const SettingsContentPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      policyId: S.String.pipe(T.Label("policy_id")),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/email-security/settings/content_policies/{policy_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesDeleteRequest",
+}) as any as S.Schema<SettingsContentPoliciesDeleteRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SettingsContentPoliciesDeleteResponse {
+  /** Content policy identifier. */
+  id: string;
+}
+export const SettingsContentPoliciesDeleteResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesDeleteResponse",
+}) as any as S.Schema<SettingsContentPoliciesDeleteResponse>;
+
+export type SettingsContentPoliciesEditRequestTargetsItem = "SUBJECT" | "BODY";
+export const SettingsContentPoliciesEditRequestTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesEditRequestTargetsList = Array<
+  SettingsContentPoliciesEditRequestTargetsItem | (string & {})
+>;
+export const SettingsContentPoliciesEditRequestTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesEditRequestTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesEditRequestTargetsList>;
+
+export interface SettingsContentPoliciesEditRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Content policy identifier. */
+  policyId: string;
+  enabled?: boolean;
+  /** maxLength256 */
+  name?: string;
+  /** maxLength4096 */
+  notes?: string;
+  /** maxLength2048 */
+  pattern?: string;
+  targets?: SettingsContentPoliciesEditRequestTargetsList;
+}
+export const SettingsContentPoliciesEditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
+    enabled: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    notes: S.optional(S.String),
+    pattern: S.optional(S.String),
+    targets: S.optional(SettingsContentPoliciesEditRequestTargetsList),
+  })
+    .pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email-security/settings/content_policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesEditRequest",
+}) as any as S.Schema<SettingsContentPoliciesEditRequest>;
+
+export type SettingsContentPoliciesEditResponseTargetsItem = "SUBJECT" | "BODY";
+export const SettingsContentPoliciesEditResponseTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesEditResponseTargetsList =
+  Array<SettingsContentPoliciesEditResponseTargetsItem>;
+export const SettingsContentPoliciesEditResponseTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesEditResponseTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesEditResponseTargetsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SettingsContentPoliciesEditResponse {
+  /** Content policy identifier. */
+  id?: string | null;
+  /** formatdate-time */
+  createdAt?: string | null;
+  enabled?: boolean | null;
+  /** formatdate-time */
+  modifiedAt?: string | null;
+  /** maxLength256 */
+  name?: string | null;
+  /** maxLength4096 */
+  notes?: string | null;
+  /** maxLength2048 */
+  pattern?: string | null;
+  /** HTTP */
+  targets?: SettingsContentPoliciesEditResponseTargetsList | null;
+  enabled_2: unknown;
+  name_2: unknown;
+  notes_2: unknown;
+  pattern_2: unknown;
+  /** "SUBJECT" */
+  targets_2: unknown;
+}
+export const SettingsContentPoliciesEditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+    name: S.optional(S.NullOr(S.String)),
+    notes: S.optional(S.NullOr(S.String)),
+    pattern: S.optional(S.NullOr(S.String)),
+    targets: S.optional(
+      S.NullOr(SettingsContentPoliciesEditResponseTargetsList),
+    ),
+    enabled_2: S.Unknown.pipe(T.Body("enabled")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    notes_2: S.Unknown.pipe(T.Body("notes")),
+    pattern_2: S.Unknown.pipe(T.Body("pattern")),
+    targets_2: S.Unknown.pipe(T.Body("targets")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesEditResponse",
+}) as any as S.Schema<SettingsContentPoliciesEditResponse>;
+
+export interface SettingsContentPoliciesGetRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Content policy identifier. */
+  policyId: string;
+}
+export const SettingsContentPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/content_policies/{policy_id}",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesGetRequest",
+}) as any as S.Schema<SettingsContentPoliciesGetRequest>;
+
+export type SettingsContentPoliciesGetResponseTargetsItem = "SUBJECT" | "BODY";
+export const SettingsContentPoliciesGetResponseTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesGetResponseTargetsList =
+  Array<SettingsContentPoliciesGetResponseTargetsItem>;
+export const SettingsContentPoliciesGetResponseTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesGetResponseTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesGetResponseTargetsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface SettingsContentPoliciesGetResponse {
+  /** Content policy identifier. */
+  id?: string | null;
+  /** formatdate-time */
+  createdAt?: string | null;
+  enabled?: boolean | null;
+  /** formatdate-time */
+  modifiedAt?: string | null;
+  /** maxLength256 */
+  name?: string | null;
+  /** maxLength4096 */
+  notes?: string | null;
+  /** maxLength2048 */
+  pattern?: string | null;
+  /** HTTP */
+  targets?: SettingsContentPoliciesGetResponseTargetsList | null;
+}
+export const SettingsContentPoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+    name: S.optional(S.NullOr(S.String)),
+    notes: S.optional(S.NullOr(S.String)),
+    pattern: S.optional(S.NullOr(S.String)),
+    targets: S.optional(
+      S.NullOr(SettingsContentPoliciesGetResponseTargetsList),
+    ),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesGetResponse",
+}) as any as S.Schema<SettingsContentPoliciesGetResponse>;
+
+export type SettingsContentPoliciesListRequestDirection = "asc" | "desc";
+export const SettingsContentPoliciesListRequestDirection =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesListRequestOrder = "name" | "created_at";
+export const SettingsContentPoliciesListRequestOrder = /*@__PURE__*/ S.String;
+
+export interface SettingsContentPoliciesListRequest {
+  /** Identifier. */
+  accountId: string;
+  /** The sorting direction. */
+  direction?: SettingsContentPoliciesListRequestDirection | (string & {});
+  /** Filter by enabled status. */
+  enabled?: boolean;
+  /** Filter by exact policy name. */
+  name?: string;
+  /** Field to sort by. */
+  order?: SettingsContentPoliciesListRequestOrder | (string & {});
+  /** Current page within paginated list of results. */
+  page?: number;
+  /** The number of results per page. Maximum value is 1000. */
+  perPage?: number;
+  /** Search term for filtering records. Behavior may change. */
+  search?: string;
+}
+export const SettingsContentPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    direction: S.optional(
+      SettingsContentPoliciesListRequestDirection.pipe(T.Query()),
+    ),
+    enabled: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    order: S.optional(SettingsContentPoliciesListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/content_policies",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsContentPoliciesListRequest",
+}) as any as S.Schema<SettingsContentPoliciesListRequest>;
+
+export type SettingsContentPoliciesListResultItemTargetsItem =
+  | "SUBJECT"
+  | "BODY";
+export const SettingsContentPoliciesListResultItemTargetsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsContentPoliciesListResultItemTargetsList =
+  Array<SettingsContentPoliciesListResultItemTargetsItem>;
+export const SettingsContentPoliciesListResultItemTargetsList =
+  /*@__PURE__*/ S.Array(
+    SettingsContentPoliciesListResultItemTargetsItem,
+  ) as any as S.Schema<SettingsContentPoliciesListResultItemTargetsList>;
+
+export interface SettingsContentPoliciesListResultItem {
+  /** Content policy identifier. */
+  id?: string | null;
+  /** formatdate-time */
+  createdAt?: string | null;
+  enabled?: boolean | null;
+  /** formatdate-time */
+  modifiedAt?: string | null;
+  /** maxLength256 */
+  name?: string | null;
+  /** maxLength4096 */
+  notes?: string | null;
+  /** maxLength2048 */
+  pattern?: string | null;
+  targets?: SettingsContentPoliciesListResultItemTargetsList | null;
+}
+export const SettingsContentPoliciesListResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.NullOr(S.String)),
+      createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+      enabled: S.optional(S.NullOr(S.Boolean)),
+      modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+      name: S.optional(S.NullOr(S.String)),
+      notes: S.optional(S.NullOr(S.String)),
+      pattern: S.optional(S.NullOr(S.String)),
+      targets: S.optional(
+        S.NullOr(SettingsContentPoliciesListResultItemTargetsList),
+      ),
+    }),
+).annotate({
+  identifier: "SettingsContentPoliciesListResultItem",
+}) as any as S.Schema<SettingsContentPoliciesListResultItem>;
+
+export type SettingsContentPoliciesListResultList =
+  Array<SettingsContentPoliciesListResultItem>;
+export const SettingsContentPoliciesListResultList = /*@__PURE__*/ S.Array(
+  SettingsContentPoliciesListResultItem,
+) as any as S.Schema<SettingsContentPoliciesListResultList>;
+
+export type SettingsContentPoliciesListResponse =
+  SettingsContentPoliciesListResultList;
+export const SettingsContentPoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
+  SettingsContentPoliciesListResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "SettingsContentPoliciesListResponse",
+}) as any as S.Schema<SettingsContentPoliciesListResponse>;
+
+export interface SettingsDomainsBulkDeleteRequest {
+  /** Identifier. */
+  accountId: string;
+}
+export const SettingsDomainsBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/settings/domains",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "SettingsDomainsBulkDeleteRequest",
+}) as any as S.Schema<SettingsDomainsBulkDeleteRequest>;
+
+export interface SettingsDomainsBulkDeleteResultItem {
+  /** Domain identifier. */
+  id: string;
+}
+export const SettingsDomainsBulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "SettingsDomainsBulkDeleteResultItem",
+}) as any as S.Schema<SettingsDomainsBulkDeleteResultItem>;
+
+export type SettingsDomainsBulkDeleteResultList =
+  Array<SettingsDomainsBulkDeleteResultItem>;
+export const SettingsDomainsBulkDeleteResultList = /*@__PURE__*/ S.Array(
+  SettingsDomainsBulkDeleteResultItem,
+) as any as S.Schema<SettingsDomainsBulkDeleteResultList>;
+
+export type SettingsDomainsBulkDeleteResponse =
+  SettingsDomainsBulkDeleteResultList;
+export const SettingsDomainsBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  SettingsDomainsBulkDeleteResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "SettingsDomainsBulkDeleteResponse",
+}) as any as S.Schema<SettingsDomainsBulkDeleteResponse>;
 
 export type BulkInvestigateMoveError = CloudflareOpError;
 /** Moves multiple messages to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration. */
@@ -7178,7 +7723,7 @@ export const bulkInvestigateMove: API.PaginatedOperationMethod<
   BulkInvestigateMoveResponse,
   BulkInvestigateMoveError,
   CloudflareOpContext,
-  InvestigateMoveBulkResultItem
+  unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkInvestigateMoveRequest,
@@ -7192,7 +7737,7 @@ export const bulkInvestigateMove: API.PaginatedOperationMethod<
 ) as any;
 
 export type BulkInvestigateReleaseError = CloudflareOpError;
-/** Releases one or more quarantined messages, delivering them to the intended recipients. Use when a message was incorrectly quarantined. Returns delivery status for each recipient. */
+/** Delivers one or more quarantined messages to their intended recipients, for cases where a message was incorrectly quarantined. The response includes delivery status for each recipient. */
 export const bulkInvestigateRelease: API.PaginatedOperationMethod<
   BulkInvestigateReleaseRequest,
   BulkInvestigateReleaseResponse,
@@ -7212,7 +7757,7 @@ export const bulkInvestigateRelease: API.PaginatedOperationMethod<
 ) as any;
 
 export type CreateInvestigateBulkError = CloudflareOpError;
-/** Create a bulk action job */
+/** Creates a new bulk action job to move or release messages that match the provided search parameters. */
 export const createInvestigateBulk: API.OperationMethod<
   CreateInvestigateBulkRequest,
   CreateInvestigateBulkResponse,
@@ -7227,7 +7772,7 @@ export const createInvestigateBulk: API.OperationMethod<
 }));
 
 export type CreateInvestigateBulkCancelError = CloudflareOpError;
-/** Marks the job as cancelled and stops any pending message processing. The job record remains visible in list and detail endpoints. */
+/** Cancels the job, marking it as cancelled and stopping any pending message processing. The job record remains visible in list and detail endpoints. */
 export const createInvestigateBulkCancel: API.OperationMethod<
   CreateInvestigateBulkCancelRequest,
   CreateInvestigateBulkCancelResponse,
@@ -7248,7 +7793,7 @@ export const createInvestigateMove: API.PaginatedOperationMethod<
   CreateInvestigateMoveResponse,
   CreateInvestigateMoveError,
   CloudflareOpContext,
-  InvestigateMoveBulkResultItem
+  unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateInvestigateMoveRequest,
@@ -7277,7 +7822,7 @@ export const createInvestigatePreview: API.OperationMethod<
 }));
 
 export type CreateInvestigateReclassifyError = CloudflareOpError;
-/** Submits a request to reclassify an email's disposition. Use for reporting false positives or false negatives. Optionally provide the raw EML content for reanalysis. The reclassification is processed asynchronously. */
+/** Submits a request to reclassify an email’s disposition. Use for reporting false positives or false negatives. Optionally provide the raw EML content for reanalysis. The reclassification is processed asynchronously. */
 export const createInvestigateReclassify: API.OperationMethod<
   CreateInvestigateReclassifyRequest,
   CreateInvestigateReclassifyResponse,
@@ -7599,7 +8144,7 @@ export const getInvestigate: API.OperationMethod<
 }));
 
 export type GetInvestigateBulkError = CloudflareOpError;
-/** Get bulk action job details */
+/** Returns the status and details of a specific bulk action job. */
 export const getInvestigateBulk: API.OperationMethod<
   GetInvestigateBulkRequest,
   GetInvestigateBulkResponse,
@@ -7829,7 +8374,7 @@ export const getSettingUrlIgnorePattern: API.OperationMethod<
 }));
 
 export type ListInvestigateBulkMessagesError = CloudflareOpError;
-/** List messages for a bulk action job */
+/** Returns the individual messages associated with a bulk action job, including their processing status. */
 export const listInvestigateBulkMessages: API.PaginatedOperationMethod<
   ListInvestigateBulkMessagesRequest,
   ListInvestigateBulkMessagesResponse,
@@ -7855,7 +8400,7 @@ export const listInvestigateBulkMessages: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListInvestigateBulksError = CloudflareOpError;
-/** List bulk action jobs */
+/** Returns a paginated list of bulk action jobs for the account. */
 export const listInvestigateBulks: API.PaginatedOperationMethod<
   ListInvestigateBulksRequest,
   ListInvestigateBulksResponse,
@@ -7882,29 +8427,18 @@ export const listInvestigateBulks: API.PaginatedOperationMethod<
 
 export type ListInvestigatesError = CloudflareOpError;
 /** Returns information for each email that matches the search parameter(s). */
-export const listInvestigates: API.PaginatedOperationMethod<
+export const listInvestigates: API.OperationMethod<
   ListInvestigatesRequest,
   ListInvestigatesResponse,
   ListInvestigatesError,
-  CloudflareOpContext,
-  InvestigateListResultItem
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListInvestigatesRequest,
-    output: ListInvestigatesResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
-    protocol: CloudflarePaginatedProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "resultInfo.page",
-      items: "result",
-      pageSize: "perPage",
-    } as const,
-  }),
-  cloudflarePaginate,
-) as any;
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInvestigatesRequest,
+  output: ListInvestigatesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListPhishguardReportsError = CloudflareOpError;
 /** Retrieves PhishGuard security alert reports for a specified date range. Reports include detected threats, dispositions, and contextual information. Use for security monitoring and threat analysis. */
@@ -8254,7 +8788,7 @@ export type PatchSettingImpersonationRegistryError =
   | EmailSecurityNotEntitled
   | Forbidden
   | CloudflareOpError;
-/** Updates an existing impersonation registry entry. Only provided fields will be modified. Directory-synced entries can't be updated. */
+/** Updates an existing impersonation registry entry. Only provided fields will be modified. Directory-synced entries can’t be updated. */
 export const patchSettingImpersonationRegistry: API.OperationMethod<
   PatchSettingImpersonationRegistryRequest,
   PatchSettingImpersonationRegistryResponse,
@@ -8324,6 +8858,111 @@ export const patchSettingUrlIgnorePattern: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingUrlIgnorePatternRequest,
   output: PatchSettingUrlIgnorePatternResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SettingsContentPoliciesBatchError = CloudflareOpError;
+/** Executes multiple operations atomically. All four operation arrays (deletes, patches, puts, posts) are required and executed in order. Send empty arrays for unused operations. */
+export const settingsContentPoliciesBatch: API.OperationMethod<
+  SettingsContentPoliciesBatchRequest,
+  SettingsContentPoliciesBatchResponse,
+  SettingsContentPoliciesBatchError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SettingsContentPoliciesBatchRequest,
+  output: SettingsContentPoliciesBatchResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SettingsContentPoliciesCreateError = CloudflareOpError;
+/** Creates a new content policy. Emails whose subject or body matches the pattern will be subject to the configured action. */
+export const settingsContentPoliciesCreate: API.OperationMethod<
+  SettingsContentPoliciesCreateRequest,
+  SettingsContentPoliciesCreateResponse,
+  SettingsContentPoliciesCreateError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SettingsContentPoliciesCreateRequest,
+  output: SettingsContentPoliciesCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SettingsContentPoliciesDeleteError = CloudflareOpError;
+/** Removes a content policy. After deletion, emails will no longer be evaluated against this pattern. */
+export const settingsContentPoliciesDelete: API.OperationMethod<
+  SettingsContentPoliciesDeleteRequest,
+  SettingsContentPoliciesDeleteResponse,
+  SettingsContentPoliciesDeleteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SettingsContentPoliciesDeleteRequest,
+  output: SettingsContentPoliciesDeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SettingsContentPoliciesEditError = CloudflareOpError;
+/** Updates an existing content policy. Only provided fields will be modified. */
+export const settingsContentPoliciesEdit: API.OperationMethod<
+  SettingsContentPoliciesEditRequest,
+  SettingsContentPoliciesEditResponse,
+  SettingsContentPoliciesEditError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SettingsContentPoliciesEditRequest,
+  output: SettingsContentPoliciesEditResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SettingsContentPoliciesGetError = CloudflareOpError;
+/** Retrieves details for a specific content policy including its pattern, targets, and metadata. */
+export const settingsContentPoliciesGet: API.OperationMethod<
+  SettingsContentPoliciesGetRequest,
+  SettingsContentPoliciesGetResponse,
+  SettingsContentPoliciesGetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SettingsContentPoliciesGetRequest,
+  output: SettingsContentPoliciesGetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SettingsContentPoliciesListError = CloudflareOpError;
+/** Returns a paginated list of content policies. These policies match against the subject or body of emails using a pattern. Supports filtering by name or enabled status, and searching across name and pattern fields. */
+export const settingsContentPoliciesList: API.OperationMethod<
+  SettingsContentPoliciesListRequest,
+  SettingsContentPoliciesListResponse,
+  SettingsContentPoliciesListError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SettingsContentPoliciesListRequest,
+  output: SettingsContentPoliciesListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SettingsDomainsBulkDeleteError = CloudflareOpError;
+/** Removes protection from multiple email domains. Deprecated; use the batch endpoint instead. */
+export const settingsDomainsBulkDelete: API.OperationMethod<
+  SettingsDomainsBulkDeleteRequest,
+  SettingsDomainsBulkDeleteResponse,
+  SettingsDomainsBulkDeleteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SettingsDomainsBulkDeleteRequest,
+  output: SettingsDomainsBulkDeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

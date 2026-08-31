@@ -28,7 +28,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 };
 
 export interface CreateAssetForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** A short description of the custom asset. */
   description: string;
@@ -56,10 +56,14 @@ export const CreateAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAssetForAccountRequest",
 }) as any as S.Schema<CreateAssetForAccountRequest>;
 
+export type AssetsCreateResponseUrl = "https://example.com/error.html";
+export const AssetsCreateResponseUrl = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAssetResponse {
   /** A short description of the custom asset. */
   description?: string | null;
+  /** formatdate-time */
   lastUpdated?: string | null;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name?: string | null;
@@ -67,6 +71,10 @@ export interface CreateAssetResponse {
   sizeBytes?: number | null;
   /** The URL where the asset content is fetched from. */
   url?: string | null;
+  description_2: unknown;
+  name_2: unknown;
+  /** }' */
+  url_2: AssetsCreateResponseUrl;
 }
 export const CreateAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -75,13 +83,16 @@ export const CreateAssetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.NullOr(S.String)),
     sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
     url: S.optional(S.NullOr(S.String)),
+    description_2: S.Unknown.pipe(T.Body("description")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    url_2: AssetsCreateResponseUrl.pipe(T.Body("url")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAssetResponse",
 }) as any as S.Schema<CreateAssetResponse>;
 
 export interface CreateAssetForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** A short description of the custom asset. */
   description: string;
@@ -110,7 +121,7 @@ export const CreateAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAssetForZoneRequest>;
 
 export interface DeleteAssetForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
@@ -140,7 +151,7 @@ export const DeleteAssetForAccountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAssetForAccountResponse>;
 
 export interface DeleteAssetForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
@@ -170,7 +181,7 @@ export const DeleteAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAssetForZoneResponse>;
 
 export interface GetAssetForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
@@ -196,6 +207,7 @@ export const GetAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAssetResponse {
   /** A short description of the custom asset. */
   description?: string | null;
+  /** formatdate-time */
   lastUpdated?: string | null;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name?: string | null;
@@ -217,7 +229,7 @@ export const GetAssetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAssetResponse>;
 
 export interface GetAssetForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
@@ -253,7 +265,7 @@ export type GetRequestIdentifier =
 export const GetRequestIdentifier = /*@__PURE__*/ S.String;
 
 export interface GetCustomPageForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** Error Page Types */
   identifier: GetRequestIdentifier | (string & {});
@@ -286,8 +298,10 @@ export const GetResponseState = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomPageResponse {
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   description?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   previewTarget?: string | null;
   requiredTokens?: GetResponseRequiredTokensList | null;
@@ -316,7 +330,7 @@ export const GetCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomPageResponse>;
 
 export interface GetCustomPageForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** Error Page Types */
   identifier: GetRequestIdentifier | (string & {});
@@ -339,9 +353,11 @@ export const GetCustomPageForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomPageForZoneRequest>;
 
 export interface ListAssetsForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
+  /** minimum1 */
   page?: number;
+  /** maximum200 */
   perPage?: number;
 }
 export const ListAssetsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
@@ -365,6 +381,7 @@ export const ListAssetsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AssetsListResultItem {
   /** A short description of the custom asset. */
   description?: string | null;
+  /** formatdate-time */
   lastUpdated?: string | null;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name?: string | null;
@@ -406,9 +423,11 @@ export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssetsResponse>;
 
 export interface ListAssetsForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
+  /** minimum1 */
   page?: number;
+  /** maximum200 */
   perPage?: number;
 }
 export const ListAssetsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
@@ -430,7 +449,7 @@ export const ListAssetsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssetsForZoneRequest>;
 
 export interface ListCustomPagesForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
 }
 export const ListCustomPagesForAccountRequest = /*@__PURE__*/ S.suspend(() =>
@@ -459,8 +478,10 @@ export const ListResultItemState = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   description?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   previewTarget?: string | null;
   requiredTokens?: ListResultItemRequiredTokensList | null;
@@ -509,7 +530,7 @@ export const ListCustomPagesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomPagesResponse>;
 
 export interface ListCustomPagesForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
 }
 export const ListCustomPagesForZoneRequest = /*@__PURE__*/ S.suspend(() =>
@@ -545,7 +566,7 @@ export type UpdateRequestState = "default" | "customized";
 export const UpdateRequestState = /*@__PURE__*/ S.String;
 
 export interface PutCustomPageForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** Error Page Types */
   identifier: UpdateRequestIdentifier | (string & {});
@@ -581,11 +602,16 @@ export const UpdateResponseRequiredTokensList = /*@__PURE__*/ S.Array(
 export type UpdateResponseState = "default" | "customized";
 export const UpdateResponseState = /*@__PURE__*/ S.String;
 
+export type UpdateResponseUrl = "http://www.example.com";
+export const UpdateResponseUrl = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutCustomPageResponse {
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   description?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   previewTarget?: string | null;
   requiredTokens?: UpdateResponseRequiredTokensList | null;
@@ -593,6 +619,9 @@ export interface PutCustomPageResponse {
   state?: UpdateResponseState | null;
   /** The URL associated with the custom page. */
   url?: string | null;
+  state_2: unknown;
+  /** }' */
+  url_2: UpdateResponseUrl;
 }
 export const PutCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -610,13 +639,15 @@ export const PutCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     state: S.optional(S.NullOr(UpdateResponseState)),
     url: S.optional(S.NullOr(S.String)),
+    state_2: S.Unknown.pipe(T.Body("state")),
+    url_2: UpdateResponseUrl.pipe(T.Body("url")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutCustomPageResponse",
 }) as any as S.Schema<PutCustomPageResponse>;
 
 export interface PutCustomPageForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** Error Page Types */
   identifier: UpdateRequestIdentifier | (string & {});
@@ -645,7 +676,7 @@ export const PutCustomPageForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCustomPageForZoneRequest>;
 
 export interface UpdateAssetForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
@@ -673,10 +704,14 @@ export const UpdateAssetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAssetForAccountRequest",
 }) as any as S.Schema<UpdateAssetForAccountRequest>;
 
+export type AssetsUpdateResponseUrl = "https://example.com/error.html";
+export const AssetsUpdateResponseUrl = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateAssetResponse {
   /** A short description of the custom asset. */
   description?: string | null;
+  /** formatdate-time */
   lastUpdated?: string | null;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name?: string | null;
@@ -684,6 +719,9 @@ export interface UpdateAssetResponse {
   sizeBytes?: number | null;
   /** The URL where the asset content is fetched from. */
   url?: string | null;
+  description_2: unknown;
+  /** }' */
+  url_2: AssetsUpdateResponseUrl;
 }
 export const UpdateAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -692,13 +730,15 @@ export const UpdateAssetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.NullOr(S.String)),
     sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
     url: S.optional(S.NullOr(S.String)),
+    description_2: S.Unknown.pipe(T.Body("description")),
+    url_2: AssetsUpdateResponseUrl.pipe(T.Body("url")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateAssetResponse",
 }) as any as S.Schema<UpdateAssetResponse>;
 
 export interface UpdateAssetForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;

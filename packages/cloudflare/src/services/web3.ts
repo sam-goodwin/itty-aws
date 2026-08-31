@@ -120,15 +120,17 @@ export const HostnamesCreateResponseTarget = /*@__PURE__*/ S.String;
 export interface CreateHostnameResponse {
   /** Specify the identifier of the hostname. */
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Specify an optional description of the hostname. */
   description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
   dnslink?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Specify the hostname that points to the target gateway via CNAME. */
   name?: string | null;
-  /** Specifies the status of the hostname's activation. */
+  /** Specifies the status of the hostname’s activation. */
   status?: HostnamesCreateResponseStatus | null;
   /** Specify the target gateway of the hostname. */
   target?: HostnamesCreateResponseTarget | null;
@@ -201,9 +203,11 @@ export interface CreateHostnameIpfsUniversalPathContentListEntryResponse {
   id?: string | null;
   /** Specify the CID or content path of content to block. */
   content?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
   description?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
   type?: HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType | null;
@@ -345,15 +349,17 @@ export const HostnamesGetResponseTarget = /*@__PURE__*/ S.String;
 export interface GetHostnameResponse {
   /** Specify the identifier of the hostname. */
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Specify an optional description of the hostname. */
   description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
   dnslink?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Specify the hostname that points to the target gateway via CNAME. */
   name?: string | null;
-  /** Specifies the status of the hostname's activation. */
+  /** Specifies the status of the hostname’s activation. */
   status?: HostnamesGetResponseStatus | null;
   /** Specify the target gateway of the hostname. */
   target?: HostnamesGetResponseTarget | null;
@@ -458,9 +464,11 @@ export interface GetHostnameIpfsUniversalPathContentListEntryResponse {
   id?: string | null;
   /** Specify the CID or content path of content to block. */
   content?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
   description?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
   type?: HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType | null;
@@ -516,9 +524,11 @@ export interface HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntri
   id?: string | null;
   /** Specify the CID or content path of content to block. */
   content?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
   description?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
   type?: HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType | null;
@@ -603,15 +613,17 @@ export const HostnamesListResultItemTarget = /*@__PURE__*/ S.String;
 export interface HostnamesListResultItem {
   /** Specify the identifier of the hostname. */
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Specify an optional description of the hostname. */
   description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
   dnslink?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Specify the hostname that points to the target gateway via CNAME. */
   name?: string | null;
-  /** Specifies the status of the hostname's activation. */
+  /** Specifies the status of the hostname’s activation. */
   status?: HostnamesListResultItemStatus | null;
   /** Specify the target gateway of the hostname. */
   target?: HostnamesListResultItemTarget | null;
@@ -697,15 +709,17 @@ export const HostnamesEditResponseTarget = /*@__PURE__*/ S.String;
 export interface PatchHostnameResponse {
   /** Specify the identifier of the hostname. */
   id?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Specify an optional description of the hostname. */
   description?: string | null;
   /** Specify the DNSLink value used if the target is ipfs. */
   dnslink?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Specify the hostname that points to the target gateway via CNAME. */
   name?: string | null;
-  /** Specifies the status of the hostname's activation. */
+  /** Specifies the status of the hostname’s activation. */
   status?: HostnamesEditResponseStatus | null;
   /** Specify the target gateway of the hostname. */
   target?: HostnamesEditResponseTarget | null;
@@ -741,9 +755,11 @@ export interface HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem
   id?: string;
   /** Specify the CID or content path of content to block. */
   content?: string;
+  /** formatdate-time */
   createdOn?: string;
   /** Specify an optional description of the content list entry. */
   description?: string;
+  /** formatdate-time */
   modifiedOn?: string;
   /** Specify the type of content list entry to block. */
   type?:
@@ -885,9 +901,11 @@ export interface UpdateHostnameIpfsUniversalPathContentListEntryResponse {
   id?: string | null;
   /** Specify the CID or content path of content to block. */
   content?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Specify an optional description of the content list entry. */
   description?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Specify the type of content list entry to block. */
   type?: HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType | null;

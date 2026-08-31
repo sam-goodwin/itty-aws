@@ -82,6 +82,7 @@ export class Forbidden
   ) {}
 
 export interface AutomaticUpgraderGetRequest {
+  /** maxLength32 */
   zoneId: string;
 }
 export const AutomaticUpgraderGetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -133,6 +134,7 @@ export type AutomaticUpgraderPatchRequestValue = "auto" | "custom";
 export const AutomaticUpgraderPatchRequestValue = /*@__PURE__*/ S.String;
 
 export interface AutomaticUpgraderPatchRequest {
+  /** maxLength32 */
   zoneId: string;
   /** Controls enablement of Automatic SSL/TLS. */
   value: AutomaticUpgraderPatchRequestValue | (string & {});
@@ -194,7 +196,7 @@ export interface CreateAnalyzeRequest {
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
   bundleMethod?: AnalyzeCreateRequestBundleMethod | (string & {});
-  /** The zone's SSL certificate or certificate and the intermediate(s). */
+  /** The zone’s SSL certificate or certificate and the intermediate(s). */
   certificate?: string;
 }
 export const CreateAnalyzeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -252,7 +254,7 @@ export const CertificatePacksCreateRequestValidityDays = /*@__PURE__*/ S.Number;
 export interface CreateCertificatePackRequest {
   /** Identifier. */
   zoneId: string;
-  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions see this page for more details. */
   certificateAuthority:
     | CertificatePacksCreateRequestCertificateAuthority
     | (string & {});
@@ -330,6 +332,252 @@ export const CertificatePacksCreateResponseCertificatesItemGeoRestrictions =
     identifier: "CertificatePacksCreateResponseCertificatesItemGeoRestrictions",
   }) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemGeoRestrictions>;
 
+export type CertificatePacksCreateResponseCertificatesItemHostsList2 =
+  Array<string>;
+export const CertificatePacksCreateResponseCertificatesItemHostsList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemHostsList2>;
+
+export type CertificatePacksCreateResponseCertificatesItemStatus =
+  | "initializing"
+  | "pending_validation"
+  | "deleted"
+  | "pending_issuance"
+  | "pending_deployment"
+  | "pending_deletion"
+  | "pending_expiration"
+  | "expired"
+  | "active"
+  | "initializing_timed_out"
+  | "validation_timed_out"
+  | "issuance_timed_out"
+  | "deployment_timed_out"
+  | "deletion_timed_out"
+  | "pending_cleanup"
+  | "staging_deployment"
+  | "staging_active"
+  | "deactivating"
+  | "inactive"
+  | "backup_issued"
+  | "holding_deployment";
+export const CertificatePacksCreateResponseCertificatesItemStatus =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksCreateResponseCertificatesItemType =
+  | "mh_custom"
+  | "managed_hostname"
+  | "sni_custom"
+  | "universal"
+  | "advanced"
+  | "total_tls"
+  | "keyless"
+  | "legacy_custom";
+export const CertificatePacksCreateResponseCertificatesItemType =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksCreateResponseCertificatesItemCertificateAuthority =
+  | "google"
+  | "lets_encrypt"
+  | "ssl_com";
+export const CertificatePacksCreateResponseCertificatesItemCertificateAuthority =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemEmailsList =
+  Array<string>;
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemEmailsList>;
+
+export interface CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem {
+  /** A domain validation error. */
+  message?: string | null;
+}
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      message: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem",
+  }) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem>;
+
+export type CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList =
+  Array<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem>;
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem,
+  ) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList>;
+
+export type CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationMethod =
+  | "txt"
+  | "http"
+  | "email";
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationMethod =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList =
+  Array<string>;
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList>;
+
+export type CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays =
+  | 14
+  | 30
+  | 90
+  | 365;
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays =
+  /*@__PURE__*/ S.Number;
+
+export type CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays2 =
+  14;
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays2 =
+  /*@__PURE__*/ S.Number;
+
+export interface CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
+  cname?: string | null;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string | null;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
+  emails?: CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList | null;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string | null;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string | null;
+  /** Status of the validation record. */
+  status?: string | null;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string | null;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string | null;
+  /** Validity Days selected for the order. */
+  validityDays?: CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays | null;
+  certificateAuthority: unknown;
+  /** "example.com", */
+  hosts: unknown;
+  type: unknown;
+  validationMethod: unknown;
+  /** }' */
+  validity_days_2: CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays2;
+}
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cname: S.optional(S.NullOr(S.String)),
+      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+      emails: S.optional(
+        S.NullOr(
+          CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList,
+        ),
+      ),
+      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+      status: S.optional(S.NullOr(S.String)),
+      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+      validityDays: S.optional(
+        S.NullOr(
+          CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays,
+        ).pipe(T.Body("validity_days")),
+      ),
+      certificateAuthority: S.Unknown.pipe(T.Body("certificate_authority")),
+      hosts: S.Unknown,
+      type: S.Unknown,
+      validationMethod: S.Unknown.pipe(T.Body("validation_method")),
+      validity_days_2:
+        CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays2.pipe(
+          T.Body("validity_days"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem",
+  }) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem>;
+
+export type CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList =
+  Array<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem>;
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem,
+  ) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList>;
+
+export interface CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
+  cname?: string | null;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string | null;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
+  emails?: CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemEmailsList | null;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string | null;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string | null;
+  /** Status of the validation record. */
+  status?: string | null;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string | null;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string | null;
+  /** Identifier of the primary certificate in a pack. */
+  primaryCertificate?: string | null;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList | null;
+  /** Validation Method selected for the order. */
+  validationMethod?: CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationMethod | null;
+  /** Certificates’ validation records. */
+  validationRecords?: CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList | null;
+}
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cname: S.optional(S.NullOr(S.String)),
+      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+      emails: S.optional(
+        S.NullOr(
+          CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemEmailsList,
+        ),
+      ),
+      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+      status: S.optional(S.NullOr(S.String)),
+      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+      primaryCertificate: S.optional(
+        S.NullOr(S.String).pipe(T.Body("primary_certificate")),
+      ),
+      validationErrors: S.optional(
+        S.NullOr(
+          CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList,
+        ).pipe(T.Body("validation_errors")),
+      ),
+      validationMethod: S.optional(
+        S.NullOr(
+          CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationMethod,
+        ).pipe(T.Body("validation_method")),
+      ),
+      validationRecords: S.optional(
+        S.NullOr(
+          CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList,
+        ).pipe(T.Body("validation_records")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItem",
+  }) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItem>;
+
+export type CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsList =
+  Array<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItem>;
+export const CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItem,
+  ) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsList>;
+
 export interface CertificatePacksCreateResponseCertificatesItem {
   /** Certificate identifier. */
   id: string;
@@ -355,6 +603,18 @@ export interface CertificatePacksCreateResponseCertificatesItem {
   uploadedOn?: string | null;
   /** Identifier. */
   zoneId?: string | null;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
+  hosts_2: CertificatePacksCreateResponseCertificatesItemHostsList2;
+  /** Status of certificate pack. */
+  status_2: CertificatePacksCreateResponseCertificatesItemStatus;
+  /** Type of certificate pack. */
+  type: CertificatePacksCreateResponseCertificatesItemType;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions see this page for more details. */
+  certificateAuthority?: CertificatePacksCreateResponseCertificatesItemCertificateAuthority | null;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean | null;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsList | null;
 }
 export const CertificatePacksCreateResponseCertificatesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -377,6 +637,26 @@ export const CertificatePacksCreateResponseCertificatesItem =
       signature: S.optional(S.NullOr(S.String)),
       uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
       zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
+      hosts_2: CertificatePacksCreateResponseCertificatesItemHostsList2.pipe(
+        T.Body("hosts"),
+      ),
+      status_2: CertificatePacksCreateResponseCertificatesItemStatus.pipe(
+        T.Body("status"),
+      ),
+      type: CertificatePacksCreateResponseCertificatesItemType,
+      certificateAuthority: S.optional(
+        S.NullOr(
+          CertificatePacksCreateResponseCertificatesItemCertificateAuthority,
+        ).pipe(T.Body("certificate_authority")),
+      ),
+      cloudflareBranding: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
+      ),
+      dcvDelegationRecords: S.optional(
+        S.NullOr(
+          CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsList,
+        ).pipe(T.Body("dcv_delegation_records")),
+      ),
     }),
   ).annotate({
     identifier: "CertificatePacksCreateResponseCertificatesItem",
@@ -389,258 +669,17 @@ export const CertificatePacksCreateResponseCertificatesList =
     CertificatePacksCreateResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksCreateResponseCertificatesList>;
 
-export type CertificatePacksCreateResponseHostsList = Array<string>;
-export const CertificatePacksCreateResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksCreateResponseHostsList>;
-
-export type CertificatePacksCreateResponseStatus =
-  | "initializing"
-  | "pending_validation"
-  | "deleted"
-  | "pending_issuance"
-  | "pending_deployment"
-  | "pending_deletion"
-  | "pending_expiration"
-  | "expired"
-  | "active"
-  | "initializing_timed_out"
-  | "validation_timed_out"
-  | "issuance_timed_out"
-  | "deployment_timed_out"
-  | "deletion_timed_out"
-  | "pending_cleanup"
-  | "staging_deployment"
-  | "staging_active"
-  | "deactivating"
-  | "inactive"
-  | "backup_issued"
-  | "holding_deployment";
-export const CertificatePacksCreateResponseStatus = /*@__PURE__*/ S.String;
-
-export type CertificatePacksCreateResponseType =
-  | "mh_custom"
-  | "managed_hostname"
-  | "sni_custom"
-  | "universal"
-  | "advanced"
-  | "total_tls"
-  | "keyless"
-  | "legacy_custom";
-export const CertificatePacksCreateResponseType = /*@__PURE__*/ S.String;
-
-export type CertificatePacksCreateResponseCertificateAuthority =
-  | "google"
-  | "lets_encrypt"
-  | "ssl_com";
-export const CertificatePacksCreateResponseCertificateAuthority =
-  /*@__PURE__*/ S.String;
-
-export type CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList =
-  Array<string>;
-export const CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList>;
-
-export interface CertificatePacksCreateResponseDcvDelegationRecordsItem {
-  /** The CNAME record hostname for DCV delegation. */
-  cname?: string | null;
-  /** The CNAME record target value for DCV delegation. */
-  cnameTarget?: string | null;
-  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
-  emails?: CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList | null;
-  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
-  httpBody?: string | null;
-  /** The url that will be checked during domain validation. */
-  httpUrl?: string | null;
-  /** Status of the validation record. */
-  status?: string | null;
-  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
-  txtName?: string | null;
-  /** The TXT record that the certificate authority (CA) will check during domain validation. */
-  txtValue?: string | null;
-}
-export const CertificatePacksCreateResponseDcvDelegationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(
-          CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList,
-        ),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksCreateResponseDcvDelegationRecordsItem",
-  }) as any as S.Schema<CertificatePacksCreateResponseDcvDelegationRecordsItem>;
-
-export type CertificatePacksCreateResponseDcvDelegationRecordsList =
-  Array<CertificatePacksCreateResponseDcvDelegationRecordsItem>;
-export const CertificatePacksCreateResponseDcvDelegationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksCreateResponseDcvDelegationRecordsItem,
-  ) as any as S.Schema<CertificatePacksCreateResponseDcvDelegationRecordsList>;
-
-export interface CertificatePacksCreateResponseValidationErrorsItem {
-  /** A domain validation error. */
-  message?: string | null;
-}
-export const CertificatePacksCreateResponseValidationErrorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksCreateResponseValidationErrorsItem",
-  }) as any as S.Schema<CertificatePacksCreateResponseValidationErrorsItem>;
-
-export type CertificatePacksCreateResponseValidationErrorsList =
-  Array<CertificatePacksCreateResponseValidationErrorsItem>;
-export const CertificatePacksCreateResponseValidationErrorsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksCreateResponseValidationErrorsItem,
-  ) as any as S.Schema<CertificatePacksCreateResponseValidationErrorsList>;
-
-export type CertificatePacksCreateResponseValidationMethod =
-  | "txt"
-  | "http"
-  | "email";
-export const CertificatePacksCreateResponseValidationMethod =
-  /*@__PURE__*/ S.String;
-
-export type CertificatePacksCreateResponseValidationRecordsItemEmailsList =
-  Array<string>;
-export const CertificatePacksCreateResponseValidationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsItemEmailsList>;
-
-export interface CertificatePacksCreateResponseValidationRecordsItem {
-  /** The CNAME record hostname for DCV delegation. */
-  cname?: string | null;
-  /** The CNAME record target value for DCV delegation. */
-  cnameTarget?: string | null;
-  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
-  emails?: CertificatePacksCreateResponseValidationRecordsItemEmailsList | null;
-  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
-  httpBody?: string | null;
-  /** The url that will be checked during domain validation. */
-  httpUrl?: string | null;
-  /** Status of the validation record. */
-  status?: string | null;
-  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
-  txtName?: string | null;
-  /** The TXT record that the certificate authority (CA) will check during domain validation. */
-  txtValue?: string | null;
-}
-export const CertificatePacksCreateResponseValidationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(CertificatePacksCreateResponseValidationRecordsItemEmailsList),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksCreateResponseValidationRecordsItem",
-  }) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsItem>;
-
-export type CertificatePacksCreateResponseValidationRecordsList =
-  Array<CertificatePacksCreateResponseValidationRecordsItem>;
-export const CertificatePacksCreateResponseValidationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksCreateResponseValidationRecordsItem,
-  ) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsList>;
-
-export type CertificatePacksCreateResponseValidityDays = 14 | 30 | 90 | 365;
-export const CertificatePacksCreateResponseValidityDays =
-  /*@__PURE__*/ S.Number;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCertificatePackResponse {
   /** Identifier. */
   id: string;
   /** Array of certificates in this pack. */
   certificates: CertificatePacksCreateResponseCertificatesList;
-  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
-  hosts: CertificatePacksCreateResponseHostsList;
-  /** Status of certificate pack. */
-  status: CertificatePacksCreateResponseStatus;
-  /** Type of certificate pack. */
-  type: CertificatePacksCreateResponseType;
-  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
-  certificateAuthority?: CertificatePacksCreateResponseCertificateAuthority | null;
-  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
-  cloudflareBranding?: boolean | null;
-  /** DCV Delegation records for domain validation. */
-  dcvDelegationRecords?: CertificatePacksCreateResponseDcvDelegationRecordsList | null;
-  /** Identifier of the primary certificate in a pack. */
-  primaryCertificate?: string | null;
-  /** Domain validation errors that have been received by the certificate authority (CA). */
-  validationErrors?: CertificatePacksCreateResponseValidationErrorsList | null;
-  /** Validation Method selected for the order. */
-  validationMethod?: CertificatePacksCreateResponseValidationMethod | null;
-  /** Certificates' validation records. */
-  validationRecords?: CertificatePacksCreateResponseValidationRecordsList | null;
-  /** Validity Days selected for the order. */
-  validityDays?: CertificatePacksCreateResponseValidityDays | null;
 }
 export const CreateCertificatePackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     certificates: CertificatePacksCreateResponseCertificatesList,
-    hosts: CertificatePacksCreateResponseHostsList,
-    status: CertificatePacksCreateResponseStatus,
-    type: CertificatePacksCreateResponseType,
-    certificateAuthority: S.optional(
-      S.NullOr(CertificatePacksCreateResponseCertificateAuthority).pipe(
-        T.Body("certificate_authority"),
-      ),
-    ),
-    cloudflareBranding: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
-    ),
-    dcvDelegationRecords: S.optional(
-      S.NullOr(CertificatePacksCreateResponseDcvDelegationRecordsList).pipe(
-        T.Body("dcv_delegation_records"),
-      ),
-    ),
-    primaryCertificate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("primary_certificate")),
-    ),
-    validationErrors: S.optional(
-      S.NullOr(CertificatePacksCreateResponseValidationErrorsList).pipe(
-        T.Body("validation_errors"),
-      ),
-    ),
-    validationMethod: S.optional(
-      S.NullOr(CertificatePacksCreateResponseValidationMethod).pipe(
-        T.Body("validation_method"),
-      ),
-    ),
-    validationRecords: S.optional(
-      S.NullOr(CertificatePacksCreateResponseValidationRecordsList).pipe(
-        T.Body("validation_records"),
-      ),
-    ),
-    validityDays: S.optional(
-      S.NullOr(CertificatePacksCreateResponseValidityDays).pipe(
-        T.Body("validity_days"),
-      ),
-    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateCertificatePackResponse",
@@ -683,6 +722,7 @@ export const DeleteCertificatePackResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCertificatePackResponse>;
 
 export interface GetAutoOriginTlsKexRequest {
+  /** maxLength32 */
   zoneId: string;
 }
 export const GetAutoOriginTlsKexRequest = /*@__PURE__*/ S.suspend(() =>
@@ -772,6 +812,223 @@ export const CertificatePacksGetResponseCertificatesItemGeoRestrictions =
     identifier: "CertificatePacksGetResponseCertificatesItemGeoRestrictions",
   }) as any as S.Schema<CertificatePacksGetResponseCertificatesItemGeoRestrictions>;
 
+export type CertificatePacksGetResponseCertificatesItemHostsList2 =
+  Array<string>;
+export const CertificatePacksGetResponseCertificatesItemHostsList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksGetResponseCertificatesItemHostsList2>;
+
+export type CertificatePacksGetResponseCertificatesItemStatus =
+  | "initializing"
+  | "pending_validation"
+  | "deleted"
+  | "pending_issuance"
+  | "pending_deployment"
+  | "pending_deletion"
+  | "pending_expiration"
+  | "expired"
+  | "active"
+  | "initializing_timed_out"
+  | "validation_timed_out"
+  | "issuance_timed_out"
+  | "deployment_timed_out"
+  | "deletion_timed_out"
+  | "pending_cleanup"
+  | "staging_deployment"
+  | "staging_active"
+  | "deactivating"
+  | "inactive"
+  | "backup_issued"
+  | "holding_deployment";
+export const CertificatePacksGetResponseCertificatesItemStatus =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksGetResponseCertificatesItemType =
+  | "mh_custom"
+  | "managed_hostname"
+  | "sni_custom"
+  | "universal"
+  | "advanced"
+  | "total_tls"
+  | "keyless"
+  | "legacy_custom";
+export const CertificatePacksGetResponseCertificatesItemType =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksGetResponseCertificatesItemCertificateAuthority =
+  | "google"
+  | "lets_encrypt"
+  | "ssl_com";
+export const CertificatePacksGetResponseCertificatesItemCertificateAuthority =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemEmailsList =
+  Array<string>;
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemEmailsList>;
+
+export type CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem =
+  CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem;
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem =
+  CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem;
+
+export type CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList =
+  Array<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem>;
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem,
+  ) as any as S.Schema<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList>;
+
+export type CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationMethod =
+  | "txt"
+  | "http"
+  | "email";
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationMethod =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList =
+  Array<string>;
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList>;
+
+export type CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays =
+  | 14
+  | 30
+  | 90
+  | 365;
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays =
+  /*@__PURE__*/ S.Number;
+
+export interface CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
+  cname?: string | null;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string | null;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
+  emails?: CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList | null;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string | null;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string | null;
+  /** Status of the validation record. */
+  status?: string | null;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string | null;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string | null;
+  /** Validity Days selected for the order. */
+  validityDays?: CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays | null;
+}
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cname: S.optional(S.NullOr(S.String)),
+      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+      emails: S.optional(
+        S.NullOr(
+          CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList,
+        ),
+      ),
+      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+      status: S.optional(S.NullOr(S.String)),
+      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+      validityDays: S.optional(
+        S.NullOr(
+          CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays,
+        ).pipe(T.Body("validity_days")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem",
+  }) as any as S.Schema<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem>;
+
+export type CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList =
+  Array<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem>;
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem,
+  ) as any as S.Schema<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList>;
+
+export interface CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
+  cname?: string | null;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string | null;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
+  emails?: CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemEmailsList | null;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string | null;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string | null;
+  /** Status of the validation record. */
+  status?: string | null;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string | null;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string | null;
+  /** Identifier of the primary certificate in a pack. */
+  primaryCertificate?: string | null;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList | null;
+  /** Validation Method selected for the order. */
+  validationMethod?: CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationMethod | null;
+  /** Certificates’ validation records. */
+  validationRecords?: CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList | null;
+}
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cname: S.optional(S.NullOr(S.String)),
+      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+      emails: S.optional(
+        S.NullOr(
+          CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemEmailsList,
+        ),
+      ),
+      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+      status: S.optional(S.NullOr(S.String)),
+      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+      primaryCertificate: S.optional(
+        S.NullOr(S.String).pipe(T.Body("primary_certificate")),
+      ),
+      validationErrors: S.optional(
+        S.NullOr(
+          CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList,
+        ).pipe(T.Body("validation_errors")),
+      ),
+      validationMethod: S.optional(
+        S.NullOr(
+          CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationMethod,
+        ).pipe(T.Body("validation_method")),
+      ),
+      validationRecords: S.optional(
+        S.NullOr(
+          CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList,
+        ).pipe(T.Body("validation_records")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItem",
+  }) as any as S.Schema<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItem>;
+
+export type CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsList =
+  Array<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItem>;
+export const CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsItem,
+  ) as any as S.Schema<CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsList>;
+
 export interface CertificatePacksGetResponseCertificatesItem {
   /** Certificate identifier. */
   id: string;
@@ -797,6 +1054,18 @@ export interface CertificatePacksGetResponseCertificatesItem {
   uploadedOn?: string | null;
   /** Identifier. */
   zoneId?: string | null;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
+  hosts_2: CertificatePacksGetResponseCertificatesItemHostsList2;
+  /** Status of certificate pack. */
+  status_2: CertificatePacksGetResponseCertificatesItemStatus;
+  /** Type of certificate pack. */
+  type: CertificatePacksGetResponseCertificatesItemType;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions see this page for more details. */
+  certificateAuthority?: CertificatePacksGetResponseCertificatesItemCertificateAuthority | null;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean | null;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsList | null;
 }
 export const CertificatePacksGetResponseCertificatesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -819,6 +1088,26 @@ export const CertificatePacksGetResponseCertificatesItem =
       signature: S.optional(S.NullOr(S.String)),
       uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
       zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
+      hosts_2: CertificatePacksGetResponseCertificatesItemHostsList2.pipe(
+        T.Body("hosts"),
+      ),
+      status_2: CertificatePacksGetResponseCertificatesItemStatus.pipe(
+        T.Body("status"),
+      ),
+      type: CertificatePacksGetResponseCertificatesItemType,
+      certificateAuthority: S.optional(
+        S.NullOr(
+          CertificatePacksGetResponseCertificatesItemCertificateAuthority,
+        ).pipe(T.Body("certificate_authority")),
+      ),
+      cloudflareBranding: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
+      ),
+      dcvDelegationRecords: S.optional(
+        S.NullOr(
+          CertificatePacksGetResponseCertificatesItemDcvDelegationRecordsList,
+        ).pipe(T.Body("dcv_delegation_records")),
+      ),
     }),
   ).annotate({
     identifier: "CertificatePacksGetResponseCertificatesItem",
@@ -831,248 +1120,17 @@ export const CertificatePacksGetResponseCertificatesList =
     CertificatePacksGetResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksGetResponseCertificatesList>;
 
-export type CertificatePacksGetResponseHostsList = Array<string>;
-export const CertificatePacksGetResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksGetResponseHostsList>;
-
-export type CertificatePacksGetResponseStatus =
-  | "initializing"
-  | "pending_validation"
-  | "deleted"
-  | "pending_issuance"
-  | "pending_deployment"
-  | "pending_deletion"
-  | "pending_expiration"
-  | "expired"
-  | "active"
-  | "initializing_timed_out"
-  | "validation_timed_out"
-  | "issuance_timed_out"
-  | "deployment_timed_out"
-  | "deletion_timed_out"
-  | "pending_cleanup"
-  | "staging_deployment"
-  | "staging_active"
-  | "deactivating"
-  | "inactive"
-  | "backup_issued"
-  | "holding_deployment";
-export const CertificatePacksGetResponseStatus = /*@__PURE__*/ S.String;
-
-export type CertificatePacksGetResponseType =
-  | "mh_custom"
-  | "managed_hostname"
-  | "sni_custom"
-  | "universal"
-  | "advanced"
-  | "total_tls"
-  | "keyless"
-  | "legacy_custom";
-export const CertificatePacksGetResponseType = /*@__PURE__*/ S.String;
-
-export type CertificatePacksGetResponseCertificateAuthority =
-  | "google"
-  | "lets_encrypt"
-  | "ssl_com";
-export const CertificatePacksGetResponseCertificateAuthority =
-  /*@__PURE__*/ S.String;
-
-export type CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList =
-  Array<string>;
-export const CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList>;
-
-export interface CertificatePacksGetResponseDcvDelegationRecordsItem {
-  /** The CNAME record hostname for DCV delegation. */
-  cname?: string | null;
-  /** The CNAME record target value for DCV delegation. */
-  cnameTarget?: string | null;
-  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
-  emails?: CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList | null;
-  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
-  httpBody?: string | null;
-  /** The url that will be checked during domain validation. */
-  httpUrl?: string | null;
-  /** Status of the validation record. */
-  status?: string | null;
-  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
-  txtName?: string | null;
-  /** The TXT record that the certificate authority (CA) will check during domain validation. */
-  txtValue?: string | null;
-}
-export const CertificatePacksGetResponseDcvDelegationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksGetResponseDcvDelegationRecordsItem",
-  }) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItem>;
-
-export type CertificatePacksGetResponseDcvDelegationRecordsList =
-  Array<CertificatePacksGetResponseDcvDelegationRecordsItem>;
-export const CertificatePacksGetResponseDcvDelegationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksGetResponseDcvDelegationRecordsItem,
-  ) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsList>;
-
-export type CertificatePacksGetResponseValidationErrorsItem =
-  CertificatePacksCreateResponseValidationErrorsItem;
-export const CertificatePacksGetResponseValidationErrorsItem =
-  CertificatePacksCreateResponseValidationErrorsItem;
-
-export type CertificatePacksGetResponseValidationErrorsList =
-  Array<CertificatePacksCreateResponseValidationErrorsItem>;
-export const CertificatePacksGetResponseValidationErrorsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksCreateResponseValidationErrorsItem,
-  ) as any as S.Schema<CertificatePacksGetResponseValidationErrorsList>;
-
-export type CertificatePacksGetResponseValidationMethod =
-  | "txt"
-  | "http"
-  | "email"
-  | "cname";
-export const CertificatePacksGetResponseValidationMethod =
-  /*@__PURE__*/ S.String;
-
-export type CertificatePacksGetResponseValidationRecordsItemEmailsList =
-  Array<string>;
-export const CertificatePacksGetResponseValidationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksGetResponseValidationRecordsItemEmailsList>;
-
-export interface CertificatePacksGetResponseValidationRecordsItem {
-  /** The CNAME record hostname for DCV delegation. */
-  cname?: string | null;
-  /** The CNAME record target value for DCV delegation. */
-  cnameTarget?: string | null;
-  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
-  emails?: CertificatePacksGetResponseValidationRecordsItemEmailsList | null;
-  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
-  httpBody?: string | null;
-  /** The url that will be checked during domain validation. */
-  httpUrl?: string | null;
-  /** Status of the validation record. */
-  status?: string | null;
-  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
-  txtName?: string | null;
-  /** The TXT record that the certificate authority (CA) will check during domain validation. */
-  txtValue?: string | null;
-}
-export const CertificatePacksGetResponseValidationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(CertificatePacksGetResponseValidationRecordsItemEmailsList),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksGetResponseValidationRecordsItem",
-  }) as any as S.Schema<CertificatePacksGetResponseValidationRecordsItem>;
-
-export type CertificatePacksGetResponseValidationRecordsList =
-  Array<CertificatePacksGetResponseValidationRecordsItem>;
-export const CertificatePacksGetResponseValidationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksGetResponseValidationRecordsItem,
-  ) as any as S.Schema<CertificatePacksGetResponseValidationRecordsList>;
-
-export type CertificatePacksGetResponseValidityDays = 14 | 30 | 90 | 365;
-export const CertificatePacksGetResponseValidityDays = /*@__PURE__*/ S.Number;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCertificatePackResponse {
   /** Identifier. */
   id: string;
   /** Array of certificates in this pack. */
   certificates: CertificatePacksGetResponseCertificatesList;
-  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
-  hosts: CertificatePacksGetResponseHostsList;
-  /** Status of certificate pack. */
-  status: CertificatePacksGetResponseStatus;
-  /** Type of certificate pack. */
-  type: CertificatePacksGetResponseType;
-  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
-  certificateAuthority?: CertificatePacksGetResponseCertificateAuthority | null;
-  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
-  cloudflareBranding?: boolean | null;
-  /** DCV Delegation records for domain validation. */
-  dcvDelegationRecords?: CertificatePacksGetResponseDcvDelegationRecordsList | null;
-  /** Identifier of the primary certificate in a pack. */
-  primaryCertificate?: string | null;
-  /** Domain validation errors that have been received by the certificate authority (CA). */
-  validationErrors?: CertificatePacksGetResponseValidationErrorsList | null;
-  /** Validation Method selected for the order. */
-  validationMethod?: CertificatePacksGetResponseValidationMethod | null;
-  /** Certificates' validation records. */
-  validationRecords?: CertificatePacksGetResponseValidationRecordsList | null;
-  /** Validity Days selected for the order. */
-  validityDays?: CertificatePacksGetResponseValidityDays | null;
 }
 export const GetCertificatePackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     certificates: CertificatePacksGetResponseCertificatesList,
-    hosts: CertificatePacksGetResponseHostsList,
-    status: CertificatePacksGetResponseStatus,
-    type: CertificatePacksGetResponseType,
-    certificateAuthority: S.optional(
-      S.NullOr(CertificatePacksGetResponseCertificateAuthority).pipe(
-        T.Body("certificate_authority"),
-      ),
-    ),
-    cloudflareBranding: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
-    ),
-    dcvDelegationRecords: S.optional(
-      S.NullOr(CertificatePacksGetResponseDcvDelegationRecordsList).pipe(
-        T.Body("dcv_delegation_records"),
-      ),
-    ),
-    primaryCertificate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("primary_certificate")),
-    ),
-    validationErrors: S.optional(
-      S.NullOr(CertificatePacksGetResponseValidationErrorsList).pipe(
-        T.Body("validation_errors"),
-      ),
-    ),
-    validationMethod: S.optional(
-      S.NullOr(CertificatePacksGetResponseValidationMethod).pipe(
-        T.Body("validation_method"),
-      ),
-    ),
-    validationRecords: S.optional(
-      S.NullOr(CertificatePacksGetResponseValidationRecordsList).pipe(
-        T.Body("validation_records"),
-      ),
-    ),
-    validityDays: S.optional(
-      S.NullOr(CertificatePacksGetResponseValidityDays).pipe(
-        T.Body("validity_days"),
-      ),
-    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCertificatePackResponse",
@@ -1255,11 +1313,11 @@ export interface VerificationGetResultItem {
   brandCheck?: boolean | null;
   /** Certificate Pack UUID. */
   certPackUuid?: string | null;
-  /** Certificate's signature algorithm. */
+  /** Certificate’s signature algorithm. */
   signature?: VerificationGetResultItemSignature | null;
   /** Validation method in use for a certificate pack order. */
   validationMethod?: VerificationGetResultItemValidationMethod | null;
-  /** Certificate's required verification information. */
+  /** Certificate’s required verification information. */
   verificationInfo?: VerificationGetResultItemVerificationInfo | null;
   /** Status of the required verification information, omitted if verification status is unknown. */
   verificationStatus?: boolean | null;
@@ -1380,6 +1438,223 @@ export const CertificatePacksListResultItemCertificatesItemGeoRestrictions =
     identifier: "CertificatePacksListResultItemCertificatesItemGeoRestrictions",
   }) as any as S.Schema<CertificatePacksListResultItemCertificatesItemGeoRestrictions>;
 
+export type CertificatePacksListResultItemCertificatesItemHostsList2 =
+  Array<string>;
+export const CertificatePacksListResultItemCertificatesItemHostsList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksListResultItemCertificatesItemHostsList2>;
+
+export type CertificatePacksListResultItemCertificatesItemStatus =
+  | "initializing"
+  | "pending_validation"
+  | "deleted"
+  | "pending_issuance"
+  | "pending_deployment"
+  | "pending_deletion"
+  | "pending_expiration"
+  | "expired"
+  | "active"
+  | "initializing_timed_out"
+  | "validation_timed_out"
+  | "issuance_timed_out"
+  | "deployment_timed_out"
+  | "deletion_timed_out"
+  | "pending_cleanup"
+  | "staging_deployment"
+  | "staging_active"
+  | "deactivating"
+  | "inactive"
+  | "backup_issued"
+  | "holding_deployment";
+export const CertificatePacksListResultItemCertificatesItemStatus =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksListResultItemCertificatesItemType =
+  | "mh_custom"
+  | "managed_hostname"
+  | "sni_custom"
+  | "universal"
+  | "advanced"
+  | "total_tls"
+  | "keyless"
+  | "legacy_custom";
+export const CertificatePacksListResultItemCertificatesItemType =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksListResultItemCertificatesItemCertificateAuthority =
+  | "google"
+  | "lets_encrypt"
+  | "ssl_com";
+export const CertificatePacksListResultItemCertificatesItemCertificateAuthority =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemEmailsList =
+  Array<string>;
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemEmailsList>;
+
+export type CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationErrorsItem =
+  CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem;
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationErrorsItem =
+  CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem;
+
+export type CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationErrorsList =
+  Array<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem>;
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationErrorsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem,
+  ) as any as S.Schema<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationErrorsList>;
+
+export type CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationMethod =
+  | "txt"
+  | "http"
+  | "email";
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationMethod =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList =
+  Array<string>;
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList>;
+
+export type CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays =
+  | 14
+  | 30
+  | 90
+  | 365;
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays =
+  /*@__PURE__*/ S.Number;
+
+export interface CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
+  cname?: string | null;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string | null;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
+  emails?: CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList | null;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string | null;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string | null;
+  /** Status of the validation record. */
+  status?: string | null;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string | null;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string | null;
+  /** Validity Days selected for the order. */
+  validityDays?: CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays | null;
+}
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cname: S.optional(S.NullOr(S.String)),
+      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+      emails: S.optional(
+        S.NullOr(
+          CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList,
+        ),
+      ),
+      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+      status: S.optional(S.NullOr(S.String)),
+      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+      validityDays: S.optional(
+        S.NullOr(
+          CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays,
+        ).pipe(T.Body("validity_days")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItem",
+  }) as any as S.Schema<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItem>;
+
+export type CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsList =
+  Array<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItem>;
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsItem,
+  ) as any as S.Schema<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsList>;
+
+export interface CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
+  cname?: string | null;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string | null;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
+  emails?: CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemEmailsList | null;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string | null;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string | null;
+  /** Status of the validation record. */
+  status?: string | null;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string | null;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string | null;
+  /** Identifier of the primary certificate in a pack. */
+  primaryCertificate?: string | null;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationErrorsList | null;
+  /** Validation Method selected for the order. */
+  validationMethod?: CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationMethod | null;
+  /** Certificates’ validation records. */
+  validationRecords?: CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsList | null;
+}
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cname: S.optional(S.NullOr(S.String)),
+      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+      emails: S.optional(
+        S.NullOr(
+          CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemEmailsList,
+        ),
+      ),
+      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+      status: S.optional(S.NullOr(S.String)),
+      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+      primaryCertificate: S.optional(
+        S.NullOr(S.String).pipe(T.Body("primary_certificate")),
+      ),
+      validationErrors: S.optional(
+        S.NullOr(
+          CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationErrorsList,
+        ).pipe(T.Body("validation_errors")),
+      ),
+      validationMethod: S.optional(
+        S.NullOr(
+          CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationMethod,
+        ).pipe(T.Body("validation_method")),
+      ),
+      validationRecords: S.optional(
+        S.NullOr(
+          CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItemValidationRecordsList,
+        ).pipe(T.Body("validation_records")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItem",
+  }) as any as S.Schema<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItem>;
+
+export type CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsList =
+  Array<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItem>;
+export const CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsItem,
+  ) as any as S.Schema<CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsList>;
+
 export interface CertificatePacksListResultItemCertificatesItem {
   /** Certificate identifier. */
   id: string;
@@ -1405,6 +1680,18 @@ export interface CertificatePacksListResultItemCertificatesItem {
   uploadedOn?: string | null;
   /** Identifier. */
   zoneId?: string | null;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
+  hosts_2: CertificatePacksListResultItemCertificatesItemHostsList2;
+  /** Status of certificate pack. */
+  status_2: CertificatePacksListResultItemCertificatesItemStatus;
+  /** Type of certificate pack. */
+  type: CertificatePacksListResultItemCertificatesItemType;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions see this page for more details. */
+  certificateAuthority?: CertificatePacksListResultItemCertificatesItemCertificateAuthority | null;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean | null;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsList | null;
 }
 export const CertificatePacksListResultItemCertificatesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1427,6 +1714,26 @@ export const CertificatePacksListResultItemCertificatesItem =
       signature: S.optional(S.NullOr(S.String)),
       uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
       zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
+      hosts_2: CertificatePacksListResultItemCertificatesItemHostsList2.pipe(
+        T.Body("hosts"),
+      ),
+      status_2: CertificatePacksListResultItemCertificatesItemStatus.pipe(
+        T.Body("status"),
+      ),
+      type: CertificatePacksListResultItemCertificatesItemType,
+      certificateAuthority: S.optional(
+        S.NullOr(
+          CertificatePacksListResultItemCertificatesItemCertificateAuthority,
+        ).pipe(T.Body("certificate_authority")),
+      ),
+      cloudflareBranding: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
+      ),
+      dcvDelegationRecords: S.optional(
+        S.NullOr(
+          CertificatePacksListResultItemCertificatesItemDcvDelegationRecordsList,
+        ).pipe(T.Body("dcv_delegation_records")),
+      ),
     }),
   ).annotate({
     identifier: "CertificatePacksListResultItemCertificatesItem",
@@ -1439,249 +1746,16 @@ export const CertificatePacksListResultItemCertificatesList =
     CertificatePacksListResultItemCertificatesItem,
   ) as any as S.Schema<CertificatePacksListResultItemCertificatesList>;
 
-export type CertificatePacksListResultItemHostsList = Array<string>;
-export const CertificatePacksListResultItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksListResultItemHostsList>;
-
-export type CertificatePacksListResultItemStatus =
-  | "initializing"
-  | "pending_validation"
-  | "deleted"
-  | "pending_issuance"
-  | "pending_deployment"
-  | "pending_deletion"
-  | "pending_expiration"
-  | "expired"
-  | "active"
-  | "initializing_timed_out"
-  | "validation_timed_out"
-  | "issuance_timed_out"
-  | "deployment_timed_out"
-  | "deletion_timed_out"
-  | "pending_cleanup"
-  | "staging_deployment"
-  | "staging_active"
-  | "deactivating"
-  | "inactive"
-  | "backup_issued"
-  | "holding_deployment";
-export const CertificatePacksListResultItemStatus = /*@__PURE__*/ S.String;
-
-export type CertificatePacksListResultItemType =
-  | "mh_custom"
-  | "managed_hostname"
-  | "sni_custom"
-  | "universal"
-  | "advanced"
-  | "total_tls"
-  | "keyless"
-  | "legacy_custom";
-export const CertificatePacksListResultItemType = /*@__PURE__*/ S.String;
-
-export type CertificatePacksListResultItemCertificateAuthority =
-  | "google"
-  | "lets_encrypt"
-  | "ssl_com";
-export const CertificatePacksListResultItemCertificateAuthority =
-  /*@__PURE__*/ S.String;
-
-export type CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList =
-  Array<string>;
-export const CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList>;
-
-export interface CertificatePacksListResultItemDcvDelegationRecordsItem {
-  /** The CNAME record hostname for DCV delegation. */
-  cname?: string | null;
-  /** The CNAME record target value for DCV delegation. */
-  cnameTarget?: string | null;
-  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
-  emails?: CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList | null;
-  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
-  httpBody?: string | null;
-  /** The url that will be checked during domain validation. */
-  httpUrl?: string | null;
-  /** Status of the validation record. */
-  status?: string | null;
-  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
-  txtName?: string | null;
-  /** The TXT record that the certificate authority (CA) will check during domain validation. */
-  txtValue?: string | null;
-}
-export const CertificatePacksListResultItemDcvDelegationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(
-          CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList,
-        ),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksListResultItemDcvDelegationRecordsItem",
-  }) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItem>;
-
-export type CertificatePacksListResultItemDcvDelegationRecordsList =
-  Array<CertificatePacksListResultItemDcvDelegationRecordsItem>;
-export const CertificatePacksListResultItemDcvDelegationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksListResultItemDcvDelegationRecordsItem,
-  ) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsList>;
-
-export type CertificatePacksListResultItemValidationErrorsItem =
-  CertificatePacksCreateResponseValidationErrorsItem;
-export const CertificatePacksListResultItemValidationErrorsItem =
-  CertificatePacksCreateResponseValidationErrorsItem;
-
-export type CertificatePacksListResultItemValidationErrorsList =
-  Array<CertificatePacksCreateResponseValidationErrorsItem>;
-export const CertificatePacksListResultItemValidationErrorsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksCreateResponseValidationErrorsItem,
-  ) as any as S.Schema<CertificatePacksListResultItemValidationErrorsList>;
-
-export type CertificatePacksListResultItemValidationMethod =
-  | "txt"
-  | "http"
-  | "email";
-export const CertificatePacksListResultItemValidationMethod =
-  /*@__PURE__*/ S.String;
-
-export type CertificatePacksListResultItemValidationRecordsItemEmailsList =
-  Array<string>;
-export const CertificatePacksListResultItemValidationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksListResultItemValidationRecordsItemEmailsList>;
-
-export interface CertificatePacksListResultItemValidationRecordsItem {
-  /** The CNAME record hostname for DCV delegation. */
-  cname?: string | null;
-  /** The CNAME record target value for DCV delegation. */
-  cnameTarget?: string | null;
-  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
-  emails?: CertificatePacksListResultItemValidationRecordsItemEmailsList | null;
-  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
-  httpBody?: string | null;
-  /** The url that will be checked during domain validation. */
-  httpUrl?: string | null;
-  /** Status of the validation record. */
-  status?: string | null;
-  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
-  txtName?: string | null;
-  /** The TXT record that the certificate authority (CA) will check during domain validation. */
-  txtValue?: string | null;
-}
-export const CertificatePacksListResultItemValidationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(CertificatePacksListResultItemValidationRecordsItemEmailsList),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksListResultItemValidationRecordsItem",
-  }) as any as S.Schema<CertificatePacksListResultItemValidationRecordsItem>;
-
-export type CertificatePacksListResultItemValidationRecordsList =
-  Array<CertificatePacksListResultItemValidationRecordsItem>;
-export const CertificatePacksListResultItemValidationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksListResultItemValidationRecordsItem,
-  ) as any as S.Schema<CertificatePacksListResultItemValidationRecordsList>;
-
-export type CertificatePacksListResultItemValidityDays = 14 | 30 | 90 | 365;
-export const CertificatePacksListResultItemValidityDays =
-  /*@__PURE__*/ S.Number;
-
 export interface CertificatePacksListResultItem {
   /** Identifier. */
   id: string;
   /** Array of certificates in this pack. */
   certificates: CertificatePacksListResultItemCertificatesList;
-  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
-  hosts: CertificatePacksListResultItemHostsList;
-  /** Status of certificate pack. */
-  status: CertificatePacksListResultItemStatus;
-  /** Type of certificate pack. */
-  type: CertificatePacksListResultItemType;
-  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
-  certificateAuthority?: CertificatePacksListResultItemCertificateAuthority | null;
-  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
-  cloudflareBranding?: boolean | null;
-  /** DCV Delegation records for domain validation. */
-  dcvDelegationRecords?: CertificatePacksListResultItemDcvDelegationRecordsList | null;
-  /** Identifier of the primary certificate in a pack. */
-  primaryCertificate?: string | null;
-  /** Domain validation errors that have been received by the certificate authority (CA). */
-  validationErrors?: CertificatePacksListResultItemValidationErrorsList | null;
-  /** Validation Method selected for the order. */
-  validationMethod?: CertificatePacksListResultItemValidationMethod | null;
-  /** Certificates' validation records. */
-  validationRecords?: CertificatePacksListResultItemValidationRecordsList | null;
-  /** Validity Days selected for the order. */
-  validityDays?: CertificatePacksListResultItemValidityDays | null;
 }
 export const CertificatePacksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     certificates: CertificatePacksListResultItemCertificatesList,
-    hosts: CertificatePacksListResultItemHostsList,
-    status: CertificatePacksListResultItemStatus,
-    type: CertificatePacksListResultItemType,
-    certificateAuthority: S.optional(
-      S.NullOr(CertificatePacksListResultItemCertificateAuthority).pipe(
-        T.Body("certificate_authority"),
-      ),
-    ),
-    cloudflareBranding: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
-    ),
-    dcvDelegationRecords: S.optional(
-      S.NullOr(CertificatePacksListResultItemDcvDelegationRecordsList).pipe(
-        T.Body("dcv_delegation_records"),
-      ),
-    ),
-    primaryCertificate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("primary_certificate")),
-    ),
-    validationErrors: S.optional(
-      S.NullOr(CertificatePacksListResultItemValidationErrorsList).pipe(
-        T.Body("validation_errors"),
-      ),
-    ),
-    validationMethod: S.optional(
-      S.NullOr(CertificatePacksListResultItemValidationMethod).pipe(
-        T.Body("validation_method"),
-      ),
-    ),
-    validationRecords: S.optional(
-      S.NullOr(CertificatePacksListResultItemValidationRecordsList).pipe(
-        T.Body("validation_records"),
-      ),
-    ),
-    validityDays: S.optional(
-      S.NullOr(CertificatePacksListResultItemValidityDays).pipe(
-        T.Body("validity_days"),
-      ),
-    ),
   }),
 ).annotate({
   identifier: "CertificatePacksListResultItem",
@@ -1709,6 +1783,7 @@ export const ListCertificatePacksResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCertificatePacksResponse>;
 
 export interface PatchAutoOriginTlsKexRequest {
+  /** maxLength32 */
   zoneId: string;
   /** Controls enablement of Auto-Origin TLS KEX selection for the zone. */
   enabled: boolean;
@@ -1806,6 +1881,223 @@ export const CertificatePacksEditResponseCertificatesItemGeoRestrictions =
     identifier: "CertificatePacksEditResponseCertificatesItemGeoRestrictions",
   }) as any as S.Schema<CertificatePacksEditResponseCertificatesItemGeoRestrictions>;
 
+export type CertificatePacksEditResponseCertificatesItemHostsList2 =
+  Array<string>;
+export const CertificatePacksEditResponseCertificatesItemHostsList2 =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksEditResponseCertificatesItemHostsList2>;
+
+export type CertificatePacksEditResponseCertificatesItemStatus =
+  | "initializing"
+  | "pending_validation"
+  | "deleted"
+  | "pending_issuance"
+  | "pending_deployment"
+  | "pending_deletion"
+  | "pending_expiration"
+  | "expired"
+  | "active"
+  | "initializing_timed_out"
+  | "validation_timed_out"
+  | "issuance_timed_out"
+  | "deployment_timed_out"
+  | "deletion_timed_out"
+  | "pending_cleanup"
+  | "staging_deployment"
+  | "staging_active"
+  | "deactivating"
+  | "inactive"
+  | "backup_issued"
+  | "holding_deployment";
+export const CertificatePacksEditResponseCertificatesItemStatus =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksEditResponseCertificatesItemType =
+  | "mh_custom"
+  | "managed_hostname"
+  | "sni_custom"
+  | "universal"
+  | "advanced"
+  | "total_tls"
+  | "keyless"
+  | "legacy_custom";
+export const CertificatePacksEditResponseCertificatesItemType =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksEditResponseCertificatesItemCertificateAuthority =
+  | "google"
+  | "lets_encrypt"
+  | "ssl_com";
+export const CertificatePacksEditResponseCertificatesItemCertificateAuthority =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemEmailsList =
+  Array<string>;
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemEmailsList>;
+
+export type CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem =
+  CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem;
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem =
+  CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem;
+
+export type CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList =
+  Array<CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem>;
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksCreateResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsItem,
+  ) as any as S.Schema<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList>;
+
+export type CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationMethod =
+  | "txt"
+  | "http"
+  | "email";
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationMethod =
+  /*@__PURE__*/ S.String;
+
+export type CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList =
+  Array<string>;
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList>;
+
+export type CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays =
+  | 14
+  | 30
+  | 90
+  | 365;
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays =
+  /*@__PURE__*/ S.Number;
+
+export interface CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
+  cname?: string | null;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string | null;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
+  emails?: CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList | null;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string | null;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string | null;
+  /** Status of the validation record. */
+  status?: string | null;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string | null;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string | null;
+  /** Validity Days selected for the order. */
+  validityDays?: CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays | null;
+}
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cname: S.optional(S.NullOr(S.String)),
+      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+      emails: S.optional(
+        S.NullOr(
+          CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemEmailsList,
+        ),
+      ),
+      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+      status: S.optional(S.NullOr(S.String)),
+      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+      validityDays: S.optional(
+        S.NullOr(
+          CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItemValidityDays,
+        ).pipe(T.Body("validity_days")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem",
+  }) as any as S.Schema<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem>;
+
+export type CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList =
+  Array<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem>;
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsItem,
+  ) as any as S.Schema<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList>;
+
+export interface CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
+  cname?: string | null;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string | null;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
+  emails?: CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemEmailsList | null;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string | null;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string | null;
+  /** Status of the validation record. */
+  status?: string | null;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string | null;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string | null;
+  /** Identifier of the primary certificate in a pack. */
+  primaryCertificate?: string | null;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList | null;
+  /** Validation Method selected for the order. */
+  validationMethod?: CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationMethod | null;
+  /** Certificates’ validation records. */
+  validationRecords?: CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList | null;
+}
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cname: S.optional(S.NullOr(S.String)),
+      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+      emails: S.optional(
+        S.NullOr(
+          CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemEmailsList,
+        ),
+      ),
+      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+      status: S.optional(S.NullOr(S.String)),
+      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+      primaryCertificate: S.optional(
+        S.NullOr(S.String).pipe(T.Body("primary_certificate")),
+      ),
+      validationErrors: S.optional(
+        S.NullOr(
+          CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationErrorsList,
+        ).pipe(T.Body("validation_errors")),
+      ),
+      validationMethod: S.optional(
+        S.NullOr(
+          CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationMethod,
+        ).pipe(T.Body("validation_method")),
+      ),
+      validationRecords: S.optional(
+        S.NullOr(
+          CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItemValidationRecordsList,
+        ).pipe(T.Body("validation_records")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItem",
+  }) as any as S.Schema<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItem>;
+
+export type CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsList =
+  Array<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItem>;
+export const CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsList =
+  /*@__PURE__*/ S.Array(
+    CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsItem,
+  ) as any as S.Schema<CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsList>;
+
 export interface CertificatePacksEditResponseCertificatesItem {
   /** Certificate identifier. */
   id: string;
@@ -1831,6 +2123,18 @@ export interface CertificatePacksEditResponseCertificatesItem {
   uploadedOn?: string | null;
   /** Identifier. */
   zoneId?: string | null;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
+  hosts_2: CertificatePacksEditResponseCertificatesItemHostsList2;
+  /** Status of certificate pack. */
+  status_2: CertificatePacksEditResponseCertificatesItemStatus;
+  /** Type of certificate pack. */
+  type: CertificatePacksEditResponseCertificatesItemType;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions see this page for more details. */
+  certificateAuthority?: CertificatePacksEditResponseCertificatesItemCertificateAuthority | null;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean | null;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsList | null;
 }
 export const CertificatePacksEditResponseCertificatesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1853,6 +2157,26 @@ export const CertificatePacksEditResponseCertificatesItem =
       signature: S.optional(S.NullOr(S.String)),
       uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
       zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
+      hosts_2: CertificatePacksEditResponseCertificatesItemHostsList2.pipe(
+        T.Body("hosts"),
+      ),
+      status_2: CertificatePacksEditResponseCertificatesItemStatus.pipe(
+        T.Body("status"),
+      ),
+      type: CertificatePacksEditResponseCertificatesItemType,
+      certificateAuthority: S.optional(
+        S.NullOr(
+          CertificatePacksEditResponseCertificatesItemCertificateAuthority,
+        ).pipe(T.Body("certificate_authority")),
+      ),
+      cloudflareBranding: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
+      ),
+      dcvDelegationRecords: S.optional(
+        S.NullOr(
+          CertificatePacksEditResponseCertificatesItemDcvDelegationRecordsList,
+        ).pipe(T.Body("dcv_delegation_records")),
+      ),
     }),
   ).annotate({
     identifier: "CertificatePacksEditResponseCertificatesItem",
@@ -1865,249 +2189,17 @@ export const CertificatePacksEditResponseCertificatesList =
     CertificatePacksEditResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksEditResponseCertificatesList>;
 
-export type CertificatePacksEditResponseHostsList = Array<string>;
-export const CertificatePacksEditResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePacksEditResponseHostsList>;
-
-export type CertificatePacksEditResponseStatus =
-  | "initializing"
-  | "pending_validation"
-  | "deleted"
-  | "pending_issuance"
-  | "pending_deployment"
-  | "pending_deletion"
-  | "pending_expiration"
-  | "expired"
-  | "active"
-  | "initializing_timed_out"
-  | "validation_timed_out"
-  | "issuance_timed_out"
-  | "deployment_timed_out"
-  | "deletion_timed_out"
-  | "pending_cleanup"
-  | "staging_deployment"
-  | "staging_active"
-  | "deactivating"
-  | "inactive"
-  | "backup_issued"
-  | "holding_deployment";
-export const CertificatePacksEditResponseStatus = /*@__PURE__*/ S.String;
-
-export type CertificatePacksEditResponseType =
-  | "mh_custom"
-  | "managed_hostname"
-  | "sni_custom"
-  | "universal"
-  | "advanced"
-  | "total_tls"
-  | "keyless"
-  | "legacy_custom";
-export const CertificatePacksEditResponseType = /*@__PURE__*/ S.String;
-
-export type CertificatePacksEditResponseCertificateAuthority =
-  | "google"
-  | "lets_encrypt"
-  | "ssl_com";
-export const CertificatePacksEditResponseCertificateAuthority =
-  /*@__PURE__*/ S.String;
-
-export type CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList =
-  Array<string>;
-export const CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList>;
-
-export interface CertificatePacksEditResponseDcvDelegationRecordsItem {
-  /** The CNAME record hostname for DCV delegation. */
-  cname?: string | null;
-  /** The CNAME record target value for DCV delegation. */
-  cnameTarget?: string | null;
-  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
-  emails?: CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList | null;
-  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
-  httpBody?: string | null;
-  /** The url that will be checked during domain validation. */
-  httpUrl?: string | null;
-  /** Status of the validation record. */
-  status?: string | null;
-  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
-  txtName?: string | null;
-  /** The TXT record that the certificate authority (CA) will check during domain validation. */
-  txtValue?: string | null;
-}
-export const CertificatePacksEditResponseDcvDelegationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(
-          CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList,
-        ),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksEditResponseDcvDelegationRecordsItem",
-  }) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItem>;
-
-export type CertificatePacksEditResponseDcvDelegationRecordsList =
-  Array<CertificatePacksEditResponseDcvDelegationRecordsItem>;
-export const CertificatePacksEditResponseDcvDelegationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksEditResponseDcvDelegationRecordsItem,
-  ) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsList>;
-
-export type CertificatePacksEditResponseValidationErrorsItem =
-  CertificatePacksCreateResponseValidationErrorsItem;
-export const CertificatePacksEditResponseValidationErrorsItem =
-  CertificatePacksCreateResponseValidationErrorsItem;
-
-export type CertificatePacksEditResponseValidationErrorsList =
-  Array<CertificatePacksCreateResponseValidationErrorsItem>;
-export const CertificatePacksEditResponseValidationErrorsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksCreateResponseValidationErrorsItem,
-  ) as any as S.Schema<CertificatePacksEditResponseValidationErrorsList>;
-
-export type CertificatePacksEditResponseValidationMethod =
-  | "txt"
-  | "http"
-  | "email";
-export const CertificatePacksEditResponseValidationMethod =
-  /*@__PURE__*/ S.String;
-
-export type CertificatePacksEditResponseValidationRecordsItemEmailsList =
-  Array<string>;
-export const CertificatePacksEditResponseValidationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePacksEditResponseValidationRecordsItemEmailsList>;
-
-export interface CertificatePacksEditResponseValidationRecordsItem {
-  /** The CNAME record hostname for DCV delegation. */
-  cname?: string | null;
-  /** The CNAME record target value for DCV delegation. */
-  cnameTarget?: string | null;
-  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
-  emails?: CertificatePacksEditResponseValidationRecordsItemEmailsList | null;
-  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
-  httpBody?: string | null;
-  /** The url that will be checked during domain validation. */
-  httpUrl?: string | null;
-  /** Status of the validation record. */
-  status?: string | null;
-  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
-  txtName?: string | null;
-  /** The TXT record that the certificate authority (CA) will check during domain validation. */
-  txtValue?: string | null;
-}
-export const CertificatePacksEditResponseValidationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(CertificatePacksEditResponseValidationRecordsItemEmailsList),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksEditResponseValidationRecordsItem",
-  }) as any as S.Schema<CertificatePacksEditResponseValidationRecordsItem>;
-
-export type CertificatePacksEditResponseValidationRecordsList =
-  Array<CertificatePacksEditResponseValidationRecordsItem>;
-export const CertificatePacksEditResponseValidationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePacksEditResponseValidationRecordsItem,
-  ) as any as S.Schema<CertificatePacksEditResponseValidationRecordsList>;
-
-export type CertificatePacksEditResponseValidityDays = 14 | 30 | 90 | 365;
-export const CertificatePacksEditResponseValidityDays = /*@__PURE__*/ S.Number;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCertificatePackResponse {
   /** Identifier. */
   id: string;
   /** Array of certificates in this pack. */
   certificates: CertificatePacksEditResponseCertificatesList;
-  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
-  hosts: CertificatePacksEditResponseHostsList;
-  /** Status of certificate pack. */
-  status: CertificatePacksEditResponseStatus;
-  /** Type of certificate pack. */
-  type: CertificatePacksEditResponseType;
-  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
-  certificateAuthority?: CertificatePacksEditResponseCertificateAuthority | null;
-  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
-  cloudflareBranding?: boolean | null;
-  /** DCV Delegation records for domain validation. */
-  dcvDelegationRecords?: CertificatePacksEditResponseDcvDelegationRecordsList | null;
-  /** Identifier of the primary certificate in a pack. */
-  primaryCertificate?: string | null;
-  /** Domain validation errors that have been received by the certificate authority (CA). */
-  validationErrors?: CertificatePacksEditResponseValidationErrorsList | null;
-  /** Validation Method selected for the order. */
-  validationMethod?: CertificatePacksEditResponseValidationMethod | null;
-  /** Certificates' validation records. */
-  validationRecords?: CertificatePacksEditResponseValidationRecordsList | null;
-  /** Validity Days selected for the order. */
-  validityDays?: CertificatePacksEditResponseValidityDays | null;
 }
 export const PatchCertificatePackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     certificates: CertificatePacksEditResponseCertificatesList,
-    hosts: CertificatePacksEditResponseHostsList,
-    status: CertificatePacksEditResponseStatus,
-    type: CertificatePacksEditResponseType,
-    certificateAuthority: S.optional(
-      S.NullOr(CertificatePacksEditResponseCertificateAuthority).pipe(
-        T.Body("certificate_authority"),
-      ),
-    ),
-    cloudflareBranding: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
-    ),
-    dcvDelegationRecords: S.optional(
-      S.NullOr(CertificatePacksEditResponseDcvDelegationRecordsList).pipe(
-        T.Body("dcv_delegation_records"),
-      ),
-    ),
-    primaryCertificate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("primary_certificate")),
-    ),
-    validationErrors: S.optional(
-      S.NullOr(CertificatePacksEditResponseValidationErrorsList).pipe(
-        T.Body("validation_errors"),
-      ),
-    ),
-    validationMethod: S.optional(
-      S.NullOr(CertificatePacksEditResponseValidationMethod).pipe(
-        T.Body("validation_method"),
-      ),
-    ),
-    validationRecords: S.optional(
-      S.NullOr(CertificatePacksEditResponseValidationRecordsList).pipe(
-        T.Body("validation_records"),
-      ),
-    ),
-    validityDays: S.optional(
-      S.NullOr(CertificatePacksEditResponseValidityDays).pipe(
-        T.Body("validity_days"),
-      ),
-    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchCertificatePackResponse",
@@ -2140,10 +2232,13 @@ export const PatchUniversalSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchUniversalSettingResponse {
   /** Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS. */
   enabled?: boolean | null;
+  /** }' */
+  enabled_2: boolean;
 }
 export const PatchUniversalSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled_2: S.Boolean.pipe(T.Body("enabled")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchUniversalSettingResponse",
@@ -2191,12 +2286,17 @@ export type VerificationEditResponseValidationMethod =
   | "email";
 export const VerificationEditResponseValidationMethod = /*@__PURE__*/ S.String;
 
+export type VerificationEditResponseValidationMethod2 = "txt";
+export const VerificationEditResponseValidationMethod2 = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchVerificationResponse {
   /** Result status. */
   status?: string | null;
   /** Desired validation method. */
   validationMethod?: VerificationEditResponseValidationMethod | null;
+  /** }' */
+  validation_method_2: VerificationEditResponseValidationMethod2;
 }
 export const PatchVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2206,13 +2306,65 @@ export const PatchVerificationResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_method"),
       ),
     ),
+    validation_method_2: VerificationEditResponseValidationMethod2.pipe(
+      T.Body("validation_method"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchVerificationResponse",
 }) as any as S.Schema<PatchVerificationResponse>;
 
+export interface RecommendationsGetRequest {
+  /** maxLength32 */
+  zoneId: string;
+}
+export const RecommendationsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/ssl/recommendation",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "RecommendationsGetRequest",
+}) as any as S.Schema<RecommendationsGetRequest>;
+
+export type RecommendationsGetResponseValue = "auto" | "custom";
+export const RecommendationsGetResponseValue = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface RecommendationsGetResponse {
+  id: string;
+  /** Whether this setting can be updated or not. */
+  editable: boolean;
+  /** Last time this setting was modified. */
+  modifiedOn: string;
+  /** Current setting of the automatic SSL/TLS. */
+  value: RecommendationsGetResponseValue;
+  /** Next time this zone will be scanned by the Automatic SSL/TLS. */
+  nextScheduledScan?: string | null;
+}
+export const RecommendationsGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    editable: S.Boolean,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    value: RecommendationsGetResponseValue,
+    nextScheduledScan: S.optional(
+      S.NullOr(S.String).pipe(T.Body("next_scheduled_scan")),
+    ),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "RecommendationsGetResponse",
+}) as any as S.Schema<RecommendationsGetResponse>;
+
 export type AutomaticUpgraderGetError = CloudflareOpError;
-/** If the system is enabled, the response will include next_scheduled_scan, representing the next time this zone will be scanned and the zone's ssl/tls encryption mode is potentially upgraded by the system. If the system is disabled, next_scheduled_scan will not be present in the response body. */
+/** If the system is enabled, the response will include next_scheduled_scan, representing the next time this zone will be scanned and the zone’s ssl/tls encryption mode is potentially upgraded by the system. If the system is disabled, next_scheduled_scan will not be present in the response body. */
 export const automaticUpgraderGet: API.OperationMethod<
   AutomaticUpgraderGetRequest,
   AutomaticUpgraderGetResponse,
@@ -2227,7 +2379,7 @@ export const automaticUpgraderGet: API.OperationMethod<
 }));
 
 export type AutomaticUpgraderPatchError = CloudflareOpError;
-/** The automatic system is enabled when this endpoint is hit with value in the request body is set to "auto", and disabled when the request body value is set to "custom". */
+/** The automatic system is enabled when this endpoint is hit with value in the request body is set to “auto”, and disabled when the request body value is set to “custom”. */
 export const automaticUpgraderPatch: API.OperationMethod<
   AutomaticUpgraderPatchRequest,
   AutomaticUpgraderPatchResponse,
@@ -2303,7 +2455,7 @@ export const deleteCertificatePack: API.OperationMethod<
 }));
 
 export type GetAutoOriginTlsKexError = CloudflareOpError;
-/** When enabled, Cloudflare automatically selects the preferred TLS key-exchange algorithm to use when establishing the TLS connection to the zone's origin, picking from the algorithms permitted by the zone's `origin_tls_compliance_modes` setting. When disabled, the default key-exchange ordering is used. */
+/** When enabled, Cloudflare automatically selects the preferred TLS key-exchange algorithm to use when establishing the TLS connection to the zone’s origin, picking from the algorithms permitted by the zone’s `origin_tls_compliance_modes` setting. When disabled, the default key-exchange ordering is used. */
 export const getAutoOriginTlsKex: API.OperationMethod<
   GetAutoOriginTlsKexRequest,
   GetAutoOriginTlsKexResponse,
@@ -2412,7 +2564,7 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
 ) as any;
 
 export type PatchAutoOriginTlsKexError = CloudflareOpError;
-/** Enable or disable Auto-Origin TLS KEX selection for the zone by sending `{"enabled": true}` or `{"enabled": false}`. When enabled, Cloudflare runs a periodic scan of the zone's origins to determine the preferred key-exchange algorithm and writes that preference to the edge so it is sent first in the TLS ClientHello to the origin. */
+/** Enable or disable Auto-Origin TLS KEX selection for the zone by sending `{"enabled": true}` or `{"enabled": false}`. When enabled, Cloudflare runs a periodic scan of the zone’s origins to determine the preferred key-exchange algorithm and writes that preference to the edge so it is sent first in the TLS ClientHello to the origin. */
 export const patchAutoOriginTlsKex: API.OperationMethod<
   PatchAutoOriginTlsKexRequest,
   PatchAutoOriginTlsKexResponse,
@@ -2474,6 +2626,21 @@ export const patchVerification: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PatchVerificationRequest,
   output: PatchVerificationResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RecommendationsGetError = CloudflareOpError;
+/** Retrieve the SSL/TLS Recommender’s recommendation for a zone. */
+export const recommendationsGet: API.OperationMethod<
+  RecommendationsGetRequest,
+  RecommendationsGetResponse,
+  RecommendationsGetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RecommendationsGetRequest,
+  output: RecommendationsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

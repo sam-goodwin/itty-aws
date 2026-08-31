@@ -201,7 +201,7 @@ export interface CreateHostnameCertificateRequest {
   zoneId: string;
   /** The hostname certificate. */
   certificate: string;
-  /** The hostname certificate's private key. */
+  /** The hostname certificate’s private key. */
   privateKey: string;
 }
 export const CreateHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -232,6 +232,11 @@ export type HostnameCertificatesCreateResponseStatus =
   | "deletion_timed_out";
 export const HostnameCertificatesCreateResponseStatus = /*@__PURE__*/ S.String;
 
+export type HostnameCertificatesCreateResponsePrivateKey =
+  "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n";
+export const HostnameCertificatesCreateResponsePrivateKey =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateHostnameCertificateResponse {
   /** Identifier. */
@@ -250,6 +255,9 @@ export interface CreateHostnameCertificateResponse {
   status?: HostnameCertificatesCreateResponseStatus | null;
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
+  certificate_2: unknown;
+  /** }' */
+  privateKey: HostnameCertificatesCreateResponsePrivateKey;
 }
 export const CreateHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -261,6 +269,10 @@ export const CreateHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(HostnameCertificatesCreateResponseStatus)),
     uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
+    certificate_2: S.Unknown.pipe(T.Body("certificate")),
+    privateKey: HostnameCertificatesCreateResponsePrivateKey.pipe(
+      T.Body("private_key"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateHostnameCertificateResponse",
@@ -269,9 +281,9 @@ export const CreateHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateOriginTlsClientAuthRequest {
   /** Identifier. */
   zoneId: string;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate: string;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey: string;
 }
 export const CreateOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
@@ -292,16 +304,23 @@ export const CreateOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOriginTlsClientAuthRequest",
 }) as any as S.Schema<CreateOriginTlsClientAuthRequest>;
 
+export type CreateResponsePrivateKey =
+  "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n";
+export const CreateResponsePrivateKey = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOriginTlsClientAuthResponse {
   /** Identifier. */
   id?: string | null;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey?: string | null;
+  certificate_2: unknown;
+  /** }' */
+  private_key_2: CreateResponsePrivateKey;
   expiresOn?: string | null;
   issuer?: string | null;
   signature?: string | null;
@@ -314,6 +333,8 @@ export const CreateOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
     privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+    certificate_2: S.Unknown.pipe(T.Body("certificate")),
+    private_key_2: CreateResponsePrivateKey.pipe(T.Body("private_key")),
     expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
     issuer: S.optional(S.NullOr(S.String)),
     signature: S.optional(S.NullOr(S.String)),
@@ -418,11 +439,11 @@ export const DeleteOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteOriginTlsClientAuthResponse {
   /** Identifier. */
   id?: string | null;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey?: string | null;
 }
 export const DeleteOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
@@ -631,11 +652,11 @@ export const GetOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetOriginTlsClientAuthResponse {
   /** Identifier. */
   id?: string | null;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey?: string | null;
   expiresOn?: string | null;
   issuer?: string | null;
@@ -799,11 +820,11 @@ export const ListOriginTlsClientAuthsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListResultItem {
   /** Identifier. */
   id?: string | null;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey?: string | null;
   expiresOn?: string | null;
   issuer?: string | null;
@@ -902,7 +923,7 @@ export interface HostnamesUpdateResultItem {
   enabled?: boolean | null;
   /** The hostname on the origin for which the client certificate uploaded will be used. */
   hostname?: string | null;
-  /** The hostname certificate's private key. */
+  /** The hostname certificate’s private key. */
   privateKey?: string | null;
 }
 export const HostnamesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -965,10 +986,13 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutSettingResponse {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
+  /** }' */
+  enabled_2: boolean;
 }
 export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled_2: S.Boolean.pipe(T.Body("enabled")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingResponse",
@@ -977,9 +1001,9 @@ export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ZoneCertificatesCreateRequest {
   /** Identifier. */
   zoneId: string;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate: string;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey: string;
 }
 export const ZoneCertificatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1000,16 +1024,23 @@ export const ZoneCertificatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneCertificatesCreateRequest",
 }) as any as S.Schema<ZoneCertificatesCreateRequest>;
 
+export type ZoneCertificatesCreateResponsePrivateKey =
+  "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n";
+export const ZoneCertificatesCreateResponsePrivateKey = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneCertificatesCreateResponse {
   /** Identifier. */
   id?: string | null;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey?: string | null;
+  certificate_2: unknown;
+  /** }' */
+  private_key_2: ZoneCertificatesCreateResponsePrivateKey;
 }
 export const ZoneCertificatesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1017,6 +1048,10 @@ export const ZoneCertificatesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
     privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+    certificate_2: S.Unknown.pipe(T.Body("certificate")),
+    private_key_2: ZoneCertificatesCreateResponsePrivateKey.pipe(
+      T.Body("private_key"),
+    ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ZoneCertificatesCreateResponse",
@@ -1049,11 +1084,11 @@ export const ZoneCertificatesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ZoneCertificatesDeleteResponse {
   /** Identifier. */
   id?: string | null;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey?: string | null;
 }
 export const ZoneCertificatesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1094,11 +1129,11 @@ export const ZoneCertificatesGetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ZoneCertificatesGetResponse {
   /** Identifier. */
   id?: string | null;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey?: string | null;
 }
 export const ZoneCertificatesGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1135,11 +1170,11 @@ export const ZoneCertificatesListRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ZoneCertificatesListResultItem {
   /** Identifier. */
   id?: string | null;
-  /** The zone's leaf certificate. */
+  /** The zone’s leaf certificate. */
   certificate?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
-  /** The zone's private key. */
+  /** The zone’s private key. */
   privateKey?: string | null;
 }
 export const ZoneCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1415,7 +1450,7 @@ export type PutHostnameError =
   | InvalidHostnameConfig
   | Forbidden
   | CloudflareOpError;
-/** Associate a hostname to a certificate and enable, disable or invalidate the association. If disabled, client certificate will not be sent to the hostname even if activated at the zone level. 100 maximum associations on a single certificate are allowed. Note: Use a null value for parameter *enabled* to invalidate the association. */
+/** Associate a hostname to a certificate and enable, disable or invalidate the association. If disabled, client certificate will not be sent to the hostname even if activated at the zone level. 100 maximum associations on a single certificate are allowed. Note: Use a null value for parameter _enabled_ to invalidate the association. */
 export const putHostname: API.PaginatedOperationMethod<
   PutHostnameRequest,
   PutHostnameResponse,
@@ -1441,7 +1476,7 @@ export const putHostname: API.PaginatedOperationMethod<
 ) as any;
 
 export type PutSettingError = Forbidden | CloudflareOpError;
-/** Enable or disable zone-level authenticated origin pulls. 'enabled' should be set true either before/after the certificate is uploaded to see the certificate in use. */
+/** Enable or disable zone-level authenticated origin pulls. ‘enabled’ should be set true either before/after the certificate is uploaded to see the certificate in use. */
 export const putSetting: API.OperationMethod<
   PutSettingRequest,
   PutSettingResponse,

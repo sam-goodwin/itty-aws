@@ -53,7 +53,7 @@ export const GetResponseValueSourcesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GetResponseValueSourcesMap>;
 
 export interface GetResponseValue {
-  /** Notification email address for CSAM scan results. Masked in */
+  /** Notification email address for CSAM scan results. Masked in responses unless explicitly unmasked via admin endpoint. */
   email?: string | null;
   /** Current verification state of the notification email. */
   emailState?: GetResponseValueEmailState | null;
@@ -61,7 +61,7 @@ export interface GetResponseValue {
   enabled?: boolean | null;
   /** Map of scanning sources and their enabled state. */
   sources?: GetResponseValueSourcesMap | null;
-  /** The zone's plan level. */
+  /** The zone’s plan level. */
   zonePlan?: string | null;
 }
 export const GetResponseValue = /*@__PURE__*/ S.suspend(() =>
@@ -82,11 +82,11 @@ export const GetResponseValue = /*@__PURE__*/ S.suspend(() =>
 export interface GetCsamScannerResponse {
   /** The feature identifier. */
   id?: GetResponseId | null;
-  /** Whether the feature state can be changed. When false, the zone */
+  /** Whether the feature state can be changed. When false, the zone or account may be locked by Trust & Safety. */
   editable?: boolean | null;
-  /** When the setting was last modified. Currently always null as the */
+  /** When the setting was last modified. Currently always null as the server does not populate this field. */
   modifiedOn?: string | null;
-  /** The CSAM Scanner feature configuration values. Contains the */
+  /** The CSAM Scanner feature configuration values. Contains the notification email and scanning enablement settings. */
   value?: GetResponseValue | null;
 }
 export const GetCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>
@@ -110,11 +110,11 @@ export const EditRequestValueSourcesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EditRequestValueSourcesMap>;
 
 export interface EditRequestValue {
-  /** Notification email address for CSAM scan results. When changed, */
+  /** Notification email address for CSAM scan results. When changed, email verification is triggered automatically. */
   email?: string;
   /** Whether CSAM scanning is enabled for this zone. */
   enabled?: boolean;
-  /** Set to true to trigger re-sending the email verification. */
+  /** Set to true to trigger re-sending the email verification. Write-only; never appears in responses (omitted when false). */
   resendEmail?: boolean;
   /** Map of scanning sources and their enabled state. */
   sources?: EditRequestValueSourcesMap;
@@ -170,8 +170,11 @@ export const EditResponseValueSourcesMap = /*@__PURE__*/ S.Record(
   S.Boolean,
 ) as any as S.Schema<EditResponseValueSourcesMap>;
 
+export type EditResponseValueId = "csam_scanner";
+export const EditResponseValueId = /*@__PURE__*/ S.String;
+
 export interface EditResponseValue {
-  /** Notification email address for CSAM scan results. Masked in */
+  /** Notification email address for CSAM scan results. Masked in responses unless explicitly unmasked via admin endpoint. */
   email?: string | null;
   /** Current verification state of the notification email. */
   emailState?: EditResponseValueEmailState | null;
@@ -179,8 +182,10 @@ export interface EditResponseValue {
   enabled?: boolean | null;
   /** Map of scanning sources and their enabled state. */
   sources?: EditResponseValueSourcesMap | null;
-  /** The zone's plan level. */
+  /** The zone’s plan level. */
   zonePlan?: string | null;
+  /** }' */
+  id: EditResponseValueId;
 }
 export const EditResponseValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -191,6 +196,7 @@ export const EditResponseValue = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.NullOr(S.Boolean)),
     sources: S.optional(S.NullOr(EditResponseValueSourcesMap)),
     zonePlan: S.optional(S.NullOr(S.String).pipe(T.Body("zone_plan"))),
+    id: EditResponseValueId,
   }),
 ).annotate({
   identifier: "EditResponseValue",
@@ -200,11 +206,11 @@ export const EditResponseValue = /*@__PURE__*/ S.suspend(() =>
 export interface PatchCsamScannerResponse {
   /** The feature identifier. */
   id?: EditResponseId | null;
-  /** Whether the feature state can be changed. When false, the zone */
+  /** Whether the feature state can be changed. When false, the zone or account may be locked by Trust & Safety. */
   editable?: boolean | null;
-  /** When the setting was last modified. Currently always null as the */
+  /** When the setting was last modified. Currently always null as the server does not populate this field. */
   modifiedOn?: string | null;
-  /** The CSAM Scanner feature configuration values. Contains the */
+  /** The CSAM Scanner feature configuration values. Contains the notification email and scanning enablement settings. */
   value?: EditResponseValue | null;
 }
 export const PatchCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>

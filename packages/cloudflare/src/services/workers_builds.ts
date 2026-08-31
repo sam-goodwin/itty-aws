@@ -46,6 +46,7 @@ export interface BuildsCancelResponse {
   buildOutcome?: BuildsCancelResponseBuildOutcome | null;
   /** Build UUID. */
   buildUuid?: string | null;
+  /** formatdate-time */
   stoppedOn?: string | null;
 }
 export const BuildsCancelResponse = /*@__PURE__*/ S.suspend(() =>
@@ -113,6 +114,187 @@ export type BuildsGetResponseBuildTriggerMetadataProviderType =
 export const BuildsGetResponseBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
+export interface BuildsGetResponseBuildTriggerMetadataPullRequest {
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formaturi */
+  pullRequestUrl?: string | null;
+}
+export const BuildsGetResponseBuildTriggerMetadataPullRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      pullRequestUrl: S.optional(
+        S.NullOr(S.String).pipe(T.Body("pull_request_url")),
+      ),
+    }),
+  ).annotate({
+    identifier: "BuildsGetResponseBuildTriggerMetadataPullRequest",
+  }) as any as S.Schema<BuildsGetResponseBuildTriggerMetadataPullRequest>;
+
+export type BuildsGetResponseBuildTriggerMetadataStatus =
+  | "queued"
+  | "initializing"
+  | "running"
+  | "stopped";
+export const BuildsGetResponseBuildTriggerMetadataStatus =
+  /*@__PURE__*/ S.String;
+
+export type BuildsGetResponseBuildTriggerMetadataTriggerBranchExcludesList =
+  Array<string>;
+export const BuildsGetResponseBuildTriggerMetadataTriggerBranchExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsGetResponseBuildTriggerMetadataTriggerBranchExcludesList>;
+
+export type BuildsGetResponseBuildTriggerMetadataTriggerBranchIncludesList =
+  Array<string>;
+export const BuildsGetResponseBuildTriggerMetadataTriggerBranchIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsGetResponseBuildTriggerMetadataTriggerBranchIncludesList>;
+
+export type BuildsGetResponseBuildTriggerMetadataTriggerPathExcludesList =
+  Array<string>;
+export const BuildsGetResponseBuildTriggerMetadataTriggerPathExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsGetResponseBuildTriggerMetadataTriggerPathExcludesList>;
+
+export type BuildsGetResponseBuildTriggerMetadataTriggerPathIncludesList =
+  Array<string>;
+export const BuildsGetResponseBuildTriggerMetadataTriggerPathIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsGetResponseBuildTriggerMetadataTriggerPathIncludesList>;
+
+export type BuildsGetResponseBuildTriggerMetadataTriggerRepoConnectionProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const BuildsGetResponseBuildTriggerMetadataTriggerRepoConnectionProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface BuildsGetResponseBuildTriggerMetadataTriggerRepoConnection {
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  deletedOn?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** Provider account identifier. */
+  providerAccountId?: string | null;
+  providerAccountName?: string | null;
+  providerType?: BuildsGetResponseBuildTriggerMetadataTriggerRepoConnectionProviderType | null;
+  /** Repository connection UUID. */
+  repoConnectionUuid?: string | null;
+  /** Repository identifier. */
+  repoId?: string | null;
+  repoName?: string | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
+}
+export const BuildsGetResponseBuildTriggerMetadataTriggerRepoConnection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      providerAccountId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
+      ),
+      providerAccountName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
+      ),
+      providerType: S.optional(
+        S.NullOr(
+          BuildsGetResponseBuildTriggerMetadataTriggerRepoConnectionProviderType,
+        ).pipe(T.Body("provider_type")),
+      ),
+      repoConnectionUuid: S.optional(
+        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
+      ),
+      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
+      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+      rootDirectory: S.optional(
+        S.NullOr(S.String).pipe(T.Body("root_directory")),
+      ),
+      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
+    }),
+  ).annotate({
+    identifier: "BuildsGetResponseBuildTriggerMetadataTriggerRepoConnection",
+  }) as any as S.Schema<BuildsGetResponseBuildTriggerMetadataTriggerRepoConnection>;
+
+export interface BuildsGetResponseBuildTriggerMetadataTrigger {
+  branchExcludes?: BuildsGetResponseBuildTriggerMetadataTriggerBranchExcludesList | null;
+  branchIncludes?: BuildsGetResponseBuildTriggerMetadataTriggerBranchIncludesList | null;
+  buildCachingEnabled?: boolean | null;
+  buildCommand?: string | null;
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  deletedOn?: string | null;
+  deployCommand?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  pathExcludes?: BuildsGetResponseBuildTriggerMetadataTriggerPathExcludesList | null;
+  pathIncludes?: BuildsGetResponseBuildTriggerMetadataTriggerPathIncludesList | null;
+  repoConnection?: BuildsGetResponseBuildTriggerMetadataTriggerRepoConnection | null;
+}
+export const BuildsGetResponseBuildTriggerMetadataTrigger =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      branchExcludes: S.optional(
+        S.NullOr(
+          BuildsGetResponseBuildTriggerMetadataTriggerBranchExcludesList,
+        ).pipe(T.Body("branch_excludes")),
+      ),
+      branchIncludes: S.optional(
+        S.NullOr(
+          BuildsGetResponseBuildTriggerMetadataTriggerBranchIncludesList,
+        ).pipe(T.Body("branch_includes")),
+      ),
+      buildCachingEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+      ),
+      buildCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("build_command")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      deployCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("deploy_command")),
+      ),
+      externalScriptId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("external_script_id")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pathExcludes: S.optional(
+        S.NullOr(
+          BuildsGetResponseBuildTriggerMetadataTriggerPathExcludesList,
+        ).pipe(T.Body("path_excludes")),
+      ),
+      pathIncludes: S.optional(
+        S.NullOr(
+          BuildsGetResponseBuildTriggerMetadataTriggerPathIncludesList,
+        ).pipe(T.Body("path_includes")),
+      ),
+      repoConnection: S.optional(
+        S.NullOr(
+          BuildsGetResponseBuildTriggerMetadataTriggerRepoConnection,
+        ).pipe(T.Body("repo_connection")),
+      ),
+    }),
+  ).annotate({
+    identifier: "BuildsGetResponseBuildTriggerMetadataTrigger",
+  }) as any as S.Schema<BuildsGetResponseBuildTriggerMetadataTrigger>;
+
 export interface BuildsGetResponseBuildTriggerMetadata {
   author?: string | null;
   /** Git branch name. */
@@ -132,6 +314,22 @@ export interface BuildsGetResponseBuildTriggerMetadata {
   repoName?: string | null;
   /** Root directory path. */
   rootDirectory?: string | null;
+  /** Build UUID. */
+  buildUuid?: string | null;
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  initializingOn?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  pullRequest?: BuildsGetResponseBuildTriggerMetadataPullRequest | null;
+  /** formatdate-time */
+  runningOn?: string | null;
+  status?: BuildsGetResponseBuildTriggerMetadataStatus | null;
+  /** formatdate-time */
+  stoppedOn?: string | null;
+  /** Trigger information without build_token_uuid */
+  trigger?: BuildsGetResponseBuildTriggerMetadataTrigger | null;
 }
 export const BuildsGetResponseBuildTriggerMetadata = /*@__PURE__*/ S.suspend(
   () =>
@@ -176,186 +374,32 @@ export const BuildsGetResponseBuildTriggerMetadata = /*@__PURE__*/ S.suspend(
       rootDirectory: S.optional(
         S.NullOr(S.String).pipe(T.Body("root_directory")),
       ),
+      buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      initializingOn: S.optional(
+        S.NullOr(S.String).pipe(T.Body("initializing_on")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pullRequest: S.optional(
+        S.NullOr(BuildsGetResponseBuildTriggerMetadataPullRequest).pipe(
+          T.Body("pull_request"),
+        ),
+      ),
+      runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
+      status: S.optional(S.NullOr(BuildsGetResponseBuildTriggerMetadataStatus)),
+      stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
+      trigger: S.optional(
+        S.NullOr(BuildsGetResponseBuildTriggerMetadataTrigger),
+      ),
     }),
 ).annotate({
   identifier: "BuildsGetResponseBuildTriggerMetadata",
 }) as any as S.Schema<BuildsGetResponseBuildTriggerMetadata>;
 
-export interface BuildsGetResponsePullRequest {
-  createdOn?: string | null;
-  pullRequestUrl?: string | null;
-}
-export const BuildsGetResponsePullRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    pullRequestUrl: S.optional(
-      S.NullOr(S.String).pipe(T.Body("pull_request_url")),
-    ),
-  }),
-).annotate({
-  identifier: "BuildsGetResponsePullRequest",
-}) as any as S.Schema<BuildsGetResponsePullRequest>;
-
-export type BuildsGetResponseStatus =
-  | "queued"
-  | "initializing"
-  | "running"
-  | "stopped";
-export const BuildsGetResponseStatus = /*@__PURE__*/ S.String;
-
-export type BuildsGetResponseTriggerBranchExcludesList = Array<string>;
-export const BuildsGetResponseTriggerBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildsGetResponseTriggerBranchExcludesList>;
-
-export type BuildsGetResponseTriggerBranchIncludesList = Array<string>;
-export const BuildsGetResponseTriggerBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildsGetResponseTriggerBranchIncludesList>;
-
-export type BuildsGetResponseTriggerPathExcludesList = Array<string>;
-export const BuildsGetResponseTriggerPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildsGetResponseTriggerPathExcludesList>;
-
-export type BuildsGetResponseTriggerPathIncludesList = Array<string>;
-export const BuildsGetResponseTriggerPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuildsGetResponseTriggerPathIncludesList>;
-
-export type BuildsGetResponseTriggerRepoConnectionProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const BuildsGetResponseTriggerRepoConnectionProviderType =
-  /*@__PURE__*/ S.String;
-
-export interface BuildsGetResponseTriggerRepoConnection {
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  modifiedOn?: string | null;
-  /** Provider account identifier. */
-  providerAccountId?: string | null;
-  providerAccountName?: string | null;
-  providerType?: BuildsGetResponseTriggerRepoConnectionProviderType | null;
-  /** Repository connection UUID. */
-  repoConnectionUuid?: string | null;
-  /** Repository identifier. */
-  repoId?: string | null;
-  repoName?: string | null;
-}
-export const BuildsGetResponseTriggerRepoConnection = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      providerAccountId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
-      ),
-      providerAccountName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
-      ),
-      providerType: S.optional(
-        S.NullOr(BuildsGetResponseTriggerRepoConnectionProviderType).pipe(
-          T.Body("provider_type"),
-        ),
-      ),
-      repoConnectionUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
-      ),
-      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-    }),
-).annotate({
-  identifier: "BuildsGetResponseTriggerRepoConnection",
-}) as any as S.Schema<BuildsGetResponseTriggerRepoConnection>;
-
-export interface BuildsGetResponseTrigger {
-  branchExcludes?: BuildsGetResponseTriggerBranchExcludesList | null;
-  branchIncludes?: BuildsGetResponseTriggerBranchIncludesList | null;
-  buildCachingEnabled?: boolean | null;
-  buildCommand?: string | null;
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  deployCommand?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-  pathExcludes?: BuildsGetResponseTriggerPathExcludesList | null;
-  pathIncludes?: BuildsGetResponseTriggerPathIncludesList | null;
-  repoConnection?: BuildsGetResponseTriggerRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
-}
-export const BuildsGetResponseTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchExcludes: S.optional(
-      S.NullOr(BuildsGetResponseTriggerBranchExcludesList).pipe(
-        T.Body("branch_excludes"),
-      ),
-    ),
-    branchIncludes: S.optional(
-      S.NullOr(BuildsGetResponseTriggerBranchIncludesList).pipe(
-        T.Body("branch_includes"),
-      ),
-    ),
-    buildCachingEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-    ),
-    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    deployCommand: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_command")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pathExcludes: S.optional(
-      S.NullOr(BuildsGetResponseTriggerPathExcludesList).pipe(
-        T.Body("path_excludes"),
-      ),
-    ),
-    pathIncludes: S.optional(
-      S.NullOr(BuildsGetResponseTriggerPathIncludesList).pipe(
-        T.Body("path_includes"),
-      ),
-    ),
-    repoConnection: S.optional(
-      S.NullOr(BuildsGetResponseTriggerRepoConnection).pipe(
-        T.Body("repo_connection"),
-      ),
-    ),
-    rootDirectory: S.optional(
-      S.NullOr(S.String).pipe(T.Body("root_directory")),
-    ),
-    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-  }),
-).annotate({
-  identifier: "BuildsGetResponseTrigger",
-}) as any as S.Schema<BuildsGetResponseTrigger>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BuildsGetResponse {
   buildOutcome?: BuildsGetResponseBuildOutcome | null;
   buildTriggerMetadata?: BuildsGetResponseBuildTriggerMetadata | null;
-  /** Build UUID. */
-  buildUuid?: string | null;
-  createdOn?: string | null;
-  initializingOn?: string | null;
-  modifiedOn?: string | null;
-  pullRequest?: BuildsGetResponsePullRequest | null;
-  runningOn?: string | null;
-  status?: BuildsGetResponseStatus | null;
-  stoppedOn?: string | null;
-  /** Trigger information without build_token_uuid */
-  trigger?: BuildsGetResponseTrigger | null;
 }
 export const BuildsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -367,19 +411,6 @@ export const BuildsGetResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("build_trigger_metadata"),
       ),
     ),
-    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    initializingOn: S.optional(
-      S.NullOr(S.String).pipe(T.Body("initializing_on")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pullRequest: S.optional(
-      S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
-    ),
-    runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
-    status: S.optional(S.NullOr(BuildsGetResponseStatus)),
-    stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-    trigger: S.optional(S.NullOr(BuildsGetResponseTrigger)),
   }),
 ).annotate({
   identifier: "BuildsGetResponse",
@@ -444,6 +475,174 @@ export type BuildsListResultItemBuildTriggerMetadataProviderType =
 export const BuildsListResultItemBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
+export type BuildsListResultItemBuildTriggerMetadataPullRequest =
+  BuildsGetResponseBuildTriggerMetadataPullRequest;
+export const BuildsListResultItemBuildTriggerMetadataPullRequest =
+  BuildsGetResponseBuildTriggerMetadataPullRequest;
+
+export type BuildsListResultItemBuildTriggerMetadataStatus =
+  | "queued"
+  | "initializing"
+  | "running"
+  | "stopped";
+export const BuildsListResultItemBuildTriggerMetadataStatus =
+  /*@__PURE__*/ S.String;
+
+export type BuildsListResultItemBuildTriggerMetadataTriggerBranchExcludesList =
+  Array<string>;
+export const BuildsListResultItemBuildTriggerMetadataTriggerBranchExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemBuildTriggerMetadataTriggerBranchExcludesList>;
+
+export type BuildsListResultItemBuildTriggerMetadataTriggerBranchIncludesList =
+  Array<string>;
+export const BuildsListResultItemBuildTriggerMetadataTriggerBranchIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemBuildTriggerMetadataTriggerBranchIncludesList>;
+
+export type BuildsListResultItemBuildTriggerMetadataTriggerPathExcludesList =
+  Array<string>;
+export const BuildsListResultItemBuildTriggerMetadataTriggerPathExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemBuildTriggerMetadataTriggerPathExcludesList>;
+
+export type BuildsListResultItemBuildTriggerMetadataTriggerPathIncludesList =
+  Array<string>;
+export const BuildsListResultItemBuildTriggerMetadataTriggerPathIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemBuildTriggerMetadataTriggerPathIncludesList>;
+
+export type BuildsListResultItemBuildTriggerMetadataTriggerRepoConnectionProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const BuildsListResultItemBuildTriggerMetadataTriggerRepoConnectionProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface BuildsListResultItemBuildTriggerMetadataTriggerRepoConnection {
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  deletedOn?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** Provider account identifier. */
+  providerAccountId?: string | null;
+  providerAccountName?: string | null;
+  providerType?: BuildsListResultItemBuildTriggerMetadataTriggerRepoConnectionProviderType | null;
+  /** Repository connection UUID. */
+  repoConnectionUuid?: string | null;
+  /** Repository identifier. */
+  repoId?: string | null;
+  repoName?: string | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
+}
+export const BuildsListResultItemBuildTriggerMetadataTriggerRepoConnection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      providerAccountId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
+      ),
+      providerAccountName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
+      ),
+      providerType: S.optional(
+        S.NullOr(
+          BuildsListResultItemBuildTriggerMetadataTriggerRepoConnectionProviderType,
+        ).pipe(T.Body("provider_type")),
+      ),
+      repoConnectionUuid: S.optional(
+        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
+      ),
+      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
+      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+      rootDirectory: S.optional(
+        S.NullOr(S.String).pipe(T.Body("root_directory")),
+      ),
+      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
+    }),
+  ).annotate({
+    identifier: "BuildsListResultItemBuildTriggerMetadataTriggerRepoConnection",
+  }) as any as S.Schema<BuildsListResultItemBuildTriggerMetadataTriggerRepoConnection>;
+
+export interface BuildsListResultItemBuildTriggerMetadataTrigger {
+  branchExcludes?: BuildsListResultItemBuildTriggerMetadataTriggerBranchExcludesList | null;
+  branchIncludes?: BuildsListResultItemBuildTriggerMetadataTriggerBranchIncludesList | null;
+  buildCachingEnabled?: boolean | null;
+  buildCommand?: string | null;
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  deletedOn?: string | null;
+  deployCommand?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  pathExcludes?: BuildsListResultItemBuildTriggerMetadataTriggerPathExcludesList | null;
+  pathIncludes?: BuildsListResultItemBuildTriggerMetadataTriggerPathIncludesList | null;
+  repoConnection?: BuildsListResultItemBuildTriggerMetadataTriggerRepoConnection | null;
+}
+export const BuildsListResultItemBuildTriggerMetadataTrigger =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      branchExcludes: S.optional(
+        S.NullOr(
+          BuildsListResultItemBuildTriggerMetadataTriggerBranchExcludesList,
+        ).pipe(T.Body("branch_excludes")),
+      ),
+      branchIncludes: S.optional(
+        S.NullOr(
+          BuildsListResultItemBuildTriggerMetadataTriggerBranchIncludesList,
+        ).pipe(T.Body("branch_includes")),
+      ),
+      buildCachingEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+      ),
+      buildCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("build_command")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      deployCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("deploy_command")),
+      ),
+      externalScriptId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("external_script_id")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pathExcludes: S.optional(
+        S.NullOr(
+          BuildsListResultItemBuildTriggerMetadataTriggerPathExcludesList,
+        ).pipe(T.Body("path_excludes")),
+      ),
+      pathIncludes: S.optional(
+        S.NullOr(
+          BuildsListResultItemBuildTriggerMetadataTriggerPathIncludesList,
+        ).pipe(T.Body("path_includes")),
+      ),
+      repoConnection: S.optional(
+        S.NullOr(
+          BuildsListResultItemBuildTriggerMetadataTriggerRepoConnection,
+        ).pipe(T.Body("repo_connection")),
+      ),
+    }),
+  ).annotate({
+    identifier: "BuildsListResultItemBuildTriggerMetadataTrigger",
+  }) as any as S.Schema<BuildsListResultItemBuildTriggerMetadataTrigger>;
+
 export interface BuildsListResultItemBuildTriggerMetadata {
   author?: string | null;
   /** Git branch name. */
@@ -463,6 +662,22 @@ export interface BuildsListResultItemBuildTriggerMetadata {
   repoName?: string | null;
   /** Root directory path. */
   rootDirectory?: string | null;
+  /** Build UUID. */
+  buildUuid?: string | null;
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  initializingOn?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  pullRequest?: BuildsGetResponseBuildTriggerMetadataPullRequest | null;
+  /** formatdate-time */
+  runningOn?: string | null;
+  status?: BuildsListResultItemBuildTriggerMetadataStatus | null;
+  /** formatdate-time */
+  stoppedOn?: string | null;
+  /** Trigger information without build_token_uuid */
+  trigger?: BuildsListResultItemBuildTriggerMetadataTrigger | null;
 }
 export const BuildsListResultItemBuildTriggerMetadata = /*@__PURE__*/ S.suspend(
   () =>
@@ -507,177 +722,33 @@ export const BuildsListResultItemBuildTriggerMetadata = /*@__PURE__*/ S.suspend(
       rootDirectory: S.optional(
         S.NullOr(S.String).pipe(T.Body("root_directory")),
       ),
+      buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      initializingOn: S.optional(
+        S.NullOr(S.String).pipe(T.Body("initializing_on")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pullRequest: S.optional(
+        S.NullOr(BuildsGetResponseBuildTriggerMetadataPullRequest).pipe(
+          T.Body("pull_request"),
+        ),
+      ),
+      runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
+      status: S.optional(
+        S.NullOr(BuildsListResultItemBuildTriggerMetadataStatus),
+      ),
+      stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
+      trigger: S.optional(
+        S.NullOr(BuildsListResultItemBuildTriggerMetadataTrigger),
+      ),
     }),
 ).annotate({
   identifier: "BuildsListResultItemBuildTriggerMetadata",
 }) as any as S.Schema<BuildsListResultItemBuildTriggerMetadata>;
 
-export type BuildsListResultItemPullRequest = BuildsGetResponsePullRequest;
-export const BuildsListResultItemPullRequest = BuildsGetResponsePullRequest;
-
-export type BuildsListResultItemStatus =
-  | "queued"
-  | "initializing"
-  | "running"
-  | "stopped";
-export const BuildsListResultItemStatus = /*@__PURE__*/ S.String;
-
-export type BuildsListResultItemTriggerBranchExcludesList = Array<string>;
-export const BuildsListResultItemTriggerBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemTriggerBranchExcludesList>;
-
-export type BuildsListResultItemTriggerBranchIncludesList = Array<string>;
-export const BuildsListResultItemTriggerBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemTriggerBranchIncludesList>;
-
-export type BuildsListResultItemTriggerPathExcludesList = Array<string>;
-export const BuildsListResultItemTriggerPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemTriggerPathExcludesList>;
-
-export type BuildsListResultItemTriggerPathIncludesList = Array<string>;
-export const BuildsListResultItemTriggerPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemTriggerPathIncludesList>;
-
-export type BuildsListResultItemTriggerRepoConnectionProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const BuildsListResultItemTriggerRepoConnectionProviderType =
-  /*@__PURE__*/ S.String;
-
-export interface BuildsListResultItemTriggerRepoConnection {
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  modifiedOn?: string | null;
-  /** Provider account identifier. */
-  providerAccountId?: string | null;
-  providerAccountName?: string | null;
-  providerType?: BuildsListResultItemTriggerRepoConnectionProviderType | null;
-  /** Repository connection UUID. */
-  repoConnectionUuid?: string | null;
-  /** Repository identifier. */
-  repoId?: string | null;
-  repoName?: string | null;
-}
-export const BuildsListResultItemTriggerRepoConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      providerAccountId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
-      ),
-      providerAccountName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
-      ),
-      providerType: S.optional(
-        S.NullOr(BuildsListResultItemTriggerRepoConnectionProviderType).pipe(
-          T.Body("provider_type"),
-        ),
-      ),
-      repoConnectionUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
-      ),
-      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-    }),
-  ).annotate({
-    identifier: "BuildsListResultItemTriggerRepoConnection",
-  }) as any as S.Schema<BuildsListResultItemTriggerRepoConnection>;
-
-export interface BuildsListResultItemTrigger {
-  branchExcludes?: BuildsListResultItemTriggerBranchExcludesList | null;
-  branchIncludes?: BuildsListResultItemTriggerBranchIncludesList | null;
-  buildCachingEnabled?: boolean | null;
-  buildCommand?: string | null;
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  deployCommand?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-  pathExcludes?: BuildsListResultItemTriggerPathExcludesList | null;
-  pathIncludes?: BuildsListResultItemTriggerPathIncludesList | null;
-  repoConnection?: BuildsListResultItemTriggerRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
-}
-export const BuildsListResultItemTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchExcludes: S.optional(
-      S.NullOr(BuildsListResultItemTriggerBranchExcludesList).pipe(
-        T.Body("branch_excludes"),
-      ),
-    ),
-    branchIncludes: S.optional(
-      S.NullOr(BuildsListResultItemTriggerBranchIncludesList).pipe(
-        T.Body("branch_includes"),
-      ),
-    ),
-    buildCachingEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-    ),
-    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    deployCommand: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_command")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pathExcludes: S.optional(
-      S.NullOr(BuildsListResultItemTriggerPathExcludesList).pipe(
-        T.Body("path_excludes"),
-      ),
-    ),
-    pathIncludes: S.optional(
-      S.NullOr(BuildsListResultItemTriggerPathIncludesList).pipe(
-        T.Body("path_includes"),
-      ),
-    ),
-    repoConnection: S.optional(
-      S.NullOr(BuildsListResultItemTriggerRepoConnection).pipe(
-        T.Body("repo_connection"),
-      ),
-    ),
-    rootDirectory: S.optional(
-      S.NullOr(S.String).pipe(T.Body("root_directory")),
-    ),
-    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-  }),
-).annotate({
-  identifier: "BuildsListResultItemTrigger",
-}) as any as S.Schema<BuildsListResultItemTrigger>;
-
 export interface BuildsListResultItem {
   buildOutcome?: BuildsListResultItemBuildOutcome | null;
   buildTriggerMetadata?: BuildsListResultItemBuildTriggerMetadata | null;
-  /** Build UUID. */
-  buildUuid?: string | null;
-  createdOn?: string | null;
-  initializingOn?: string | null;
-  modifiedOn?: string | null;
-  pullRequest?: BuildsGetResponsePullRequest | null;
-  runningOn?: string | null;
-  status?: BuildsListResultItemStatus | null;
-  stoppedOn?: string | null;
-  /** Trigger information without build_token_uuid */
-  trigger?: BuildsListResultItemTrigger | null;
 }
 export const BuildsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -689,19 +760,6 @@ export const BuildsListResultItem = /*@__PURE__*/ S.suspend(() =>
         T.Body("build_trigger_metadata"),
       ),
     ),
-    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    initializingOn: S.optional(
-      S.NullOr(S.String).pipe(T.Body("initializing_on")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pullRequest: S.optional(
-      S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
-    ),
-    runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
-    status: S.optional(S.NullOr(BuildsListResultItemStatus)),
-    stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-    trigger: S.optional(S.NullOr(BuildsListResultItemTrigger)),
   }),
 ).annotate({
   identifier: "BuildsListResultItem",
@@ -743,7 +801,14 @@ export const BuildsLogsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BuildsLogsGetRequest",
 }) as any as S.Schema<BuildsLogsGetRequest>;
 
-export type BuildsLogsGetResponseLinesItem = string | number;
+export type BuildsLogsGetResponseLinesItemCase0List = Array<number>;
+export const BuildsLogsGetResponseLinesItemCase0List = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<BuildsLogsGetResponseLinesItemCase0List>;
+
+export type BuildsLogsGetResponseLinesItem =
+  | string
+  | BuildsLogsGetResponseLinesItemCase0List;
 export const BuildsLogsGetResponseLinesItem = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([[], []]),
 );
@@ -758,6 +823,7 @@ export const BuildsLogsGetResponseLinesList = /*@__PURE__*/ S.Array(
 export interface BuildsLogsGetResponse {
   /** Pagination cursor for log retrieval. */
   cursor?: string | null;
+  /** number */
   lines?: BuildsLogsGetResponseLinesList | null;
   truncated?: boolean | null;
 }
@@ -802,6 +868,7 @@ export const DeployHooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeployHooksCreateResponse {
   /** Git branch name. */
   branch?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Deploy hook name (1-58 characters). */
   deployHookName?: string | null;
@@ -809,6 +876,7 @@ export interface DeployHooksCreateResponse {
   deployHookUuid?: string | null;
   /** System-generated worker script tag. */
   externalScriptId?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const DeployHooksCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -858,6 +926,7 @@ export const DeployHooksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeployHooksDeleteResponse {
   /** Git branch name. */
   branch?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Deploy hook name (1-58 characters). */
   deployHookName?: string | null;
@@ -865,6 +934,7 @@ export interface DeployHooksDeleteResponse {
   deployHookUuid?: string | null;
   /** System-generated worker script tag. */
   externalScriptId?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const DeployHooksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -914,6 +984,7 @@ export const DeployHooksGetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeployHooksGetResponse {
   /** Git branch name. */
   branch?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Deploy hook name (1-58 characters). */
   deployHookName?: string | null;
@@ -921,6 +992,7 @@ export interface DeployHooksGetResponse {
   deployHookUuid?: string | null;
   /** System-generated worker script tag. */
   externalScriptId?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const DeployHooksGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -964,6 +1036,7 @@ export const DeployHooksListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeployHooksListRequest>;
 
 export interface DeployHooksListResultItemLatestBuild {
+  /** formatdate-time */
   createdOn?: string | null;
 }
 export const DeployHooksListResultItemLatestBuild = /*@__PURE__*/ S.suspend(
@@ -978,6 +1051,7 @@ export const DeployHooksListResultItemLatestBuild = /*@__PURE__*/ S.suspend(
 export interface DeployHooksListResultItem {
   /** Git branch name. */
   branch?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Deploy hook name (1-58 characters). */
   deployHookName?: string | null;
@@ -986,6 +1060,7 @@ export interface DeployHooksListResultItem {
   /** System-generated worker script tag. */
   externalScriptId?: string | null;
   latestBuild?: DeployHooksListResultItemLatestBuild | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const DeployHooksListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1055,6 +1130,7 @@ export interface DeployHooksTriggerResponse {
   alreadyExists?: boolean | null;
   /** Build UUID. */
   buildUuid?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   status?: DeployHooksTriggerResponseStatus | null;
 }
@@ -1105,6 +1181,7 @@ export const DeployHooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeployHooksUpdateResponse {
   /** Git branch name. */
   branch?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   /** Deploy hook name (1-58 characters). */
   deployHookName?: string | null;
@@ -1112,6 +1189,7 @@ export interface DeployHooksUpdateResponse {
   deployHookUuid?: string | null;
   /** System-generated worker script tag. */
   externalScriptId?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
 }
 export const DeployHooksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1224,6 +1302,176 @@ export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataProviderTyp
 export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
+export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataPullRequest =
+  BuildsGetResponseBuildTriggerMetadataPullRequest;
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataPullRequest =
+  BuildsGetResponseBuildTriggerMetadataPullRequest;
+
+export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataStatus =
+  | "queued"
+  | "initializing"
+  | "running"
+  | "stopped";
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataStatus =
+  /*@__PURE__*/ S.String;
+
+export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList =
+  Array<string>;
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList>;
+
+export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList =
+  Array<string>;
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList>;
+
+export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList =
+  Array<string>;
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList>;
+
+export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList =
+  Array<string>;
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList>;
+
+export type GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnectionProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnectionProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection {
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  deletedOn?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** Provider account identifier. */
+  providerAccountId?: string | null;
+  providerAccountName?: string | null;
+  providerType?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnectionProviderType | null;
+  /** Repository connection UUID. */
+  repoConnectionUuid?: string | null;
+  /** Repository identifier. */
+  repoId?: string | null;
+  repoName?: string | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
+}
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      providerAccountId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
+      ),
+      providerAccountName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
+      ),
+      providerType: S.optional(
+        S.NullOr(
+          GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnectionProviderType,
+        ).pipe(T.Body("provider_type")),
+      ),
+      repoConnectionUuid: S.optional(
+        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
+      ),
+      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
+      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+      rootDirectory: S.optional(
+        S.NullOr(S.String).pipe(T.Body("root_directory")),
+      ),
+      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
+    }),
+  ).annotate({
+    identifier:
+      "GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection",
+  }) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection>;
+
+export interface GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTrigger {
+  branchExcludes?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList | null;
+  branchIncludes?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList | null;
+  buildCachingEnabled?: boolean | null;
+  buildCommand?: string | null;
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  deletedOn?: string | null;
+  deployCommand?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  pathExcludes?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList | null;
+  pathIncludes?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList | null;
+  repoConnection?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection | null;
+}
+export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTrigger =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      branchExcludes: S.optional(
+        S.NullOr(
+          GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList,
+        ).pipe(T.Body("branch_excludes")),
+      ),
+      branchIncludes: S.optional(
+        S.NullOr(
+          GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList,
+        ).pipe(T.Body("branch_includes")),
+      ),
+      buildCachingEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+      ),
+      buildCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("build_command")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      deployCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("deploy_command")),
+      ),
+      externalScriptId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("external_script_id")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pathExcludes: S.optional(
+        S.NullOr(
+          GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList,
+        ).pipe(T.Body("path_excludes")),
+      ),
+      pathIncludes: S.optional(
+        S.NullOr(
+          GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList,
+        ).pipe(T.Body("path_includes")),
+      ),
+      repoConnection: S.optional(
+        S.NullOr(
+          GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection,
+        ).pipe(T.Body("repo_connection")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTrigger",
+  }) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTrigger>;
+
 export interface GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata {
   author?: string | null;
   /** Git branch name. */
@@ -1243,6 +1491,22 @@ export interface GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata {
   repoName?: string | null;
   /** Root directory path. */
   rootDirectory?: string | null;
+  /** Build UUID. */
+  buildUuid?: string | null;
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  initializingOn?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  pullRequest?: BuildsGetResponseBuildTriggerMetadataPullRequest | null;
+  /** formatdate-time */
+  runningOn?: string | null;
+  status?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataStatus | null;
+  /** formatdate-time */
+  stoppedOn?: string | null;
+  /** Trigger information without build_token_uuid */
+  trigger?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTrigger | null;
 }
 export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata =
   /*@__PURE__*/ S.suspend(() =>
@@ -1287,187 +1551,37 @@ export const GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata =
       rootDirectory: S.optional(
         S.NullOr(S.String).pipe(T.Body("root_directory")),
       ),
+      buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      initializingOn: S.optional(
+        S.NullOr(S.String).pipe(T.Body("initializing_on")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pullRequest: S.optional(
+        S.NullOr(BuildsGetResponseBuildTriggerMetadataPullRequest).pipe(
+          T.Body("pull_request"),
+        ),
+      ),
+      runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
+      status: S.optional(
+        S.NullOr(
+          GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataStatus,
+        ),
+      ),
+      stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
+      trigger: S.optional(
+        S.NullOr(
+          GetBuildsByVersionResponseBuildsValueBuildTriggerMetadataTrigger,
+        ),
+      ),
     }),
   ).annotate({
     identifier: "GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata",
   }) as any as S.Schema<GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata>;
 
-export type GetBuildsByVersionResponseBuildsValuePullRequest =
-  BuildsGetResponsePullRequest;
-export const GetBuildsByVersionResponseBuildsValuePullRequest =
-  BuildsGetResponsePullRequest;
-
-export type GetBuildsByVersionResponseBuildsValueStatus =
-  | "queued"
-  | "initializing"
-  | "running"
-  | "stopped";
-export const GetBuildsByVersionResponseBuildsValueStatus =
-  /*@__PURE__*/ S.String;
-
-export type GetBuildsByVersionResponseBuildsValueTriggerBranchExcludesList =
-  Array<string>;
-export const GetBuildsByVersionResponseBuildsValueTriggerBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerBranchExcludesList>;
-
-export type GetBuildsByVersionResponseBuildsValueTriggerBranchIncludesList =
-  Array<string>;
-export const GetBuildsByVersionResponseBuildsValueTriggerBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerBranchIncludesList>;
-
-export type GetBuildsByVersionResponseBuildsValueTriggerPathExcludesList =
-  Array<string>;
-export const GetBuildsByVersionResponseBuildsValueTriggerPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerPathExcludesList>;
-
-export type GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList =
-  Array<string>;
-export const GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList>;
-
-export type GetBuildsByVersionResponseBuildsValueTriggerRepoConnectionProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const GetBuildsByVersionResponseBuildsValueTriggerRepoConnectionProviderType =
-  /*@__PURE__*/ S.String;
-
-export interface GetBuildsByVersionResponseBuildsValueTriggerRepoConnection {
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  modifiedOn?: string | null;
-  /** Provider account identifier. */
-  providerAccountId?: string | null;
-  providerAccountName?: string | null;
-  providerType?: GetBuildsByVersionResponseBuildsValueTriggerRepoConnectionProviderType | null;
-  /** Repository connection UUID. */
-  repoConnectionUuid?: string | null;
-  /** Repository identifier. */
-  repoId?: string | null;
-  repoName?: string | null;
-}
-export const GetBuildsByVersionResponseBuildsValueTriggerRepoConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      providerAccountId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
-      ),
-      providerAccountName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
-      ),
-      providerType: S.optional(
-        S.NullOr(
-          GetBuildsByVersionResponseBuildsValueTriggerRepoConnectionProviderType,
-        ).pipe(T.Body("provider_type")),
-      ),
-      repoConnectionUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
-      ),
-      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-    }),
-  ).annotate({
-    identifier: "GetBuildsByVersionResponseBuildsValueTriggerRepoConnection",
-  }) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTriggerRepoConnection>;
-
-export interface GetBuildsByVersionResponseBuildsValueTrigger {
-  branchExcludes?: GetBuildsByVersionResponseBuildsValueTriggerBranchExcludesList | null;
-  branchIncludes?: GetBuildsByVersionResponseBuildsValueTriggerBranchIncludesList | null;
-  buildCachingEnabled?: boolean | null;
-  buildCommand?: string | null;
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  deployCommand?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-  pathExcludes?: GetBuildsByVersionResponseBuildsValueTriggerPathExcludesList | null;
-  pathIncludes?: GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList | null;
-  repoConnection?: GetBuildsByVersionResponseBuildsValueTriggerRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
-}
-export const GetBuildsByVersionResponseBuildsValueTrigger =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      branchExcludes: S.optional(
-        S.NullOr(
-          GetBuildsByVersionResponseBuildsValueTriggerBranchExcludesList,
-        ).pipe(T.Body("branch_excludes")),
-      ),
-      branchIncludes: S.optional(
-        S.NullOr(
-          GetBuildsByVersionResponseBuildsValueTriggerBranchIncludesList,
-        ).pipe(T.Body("branch_includes")),
-      ),
-      buildCachingEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-      ),
-      buildCommand: S.optional(
-        S.NullOr(S.String).pipe(T.Body("build_command")),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-      deployCommand: S.optional(
-        S.NullOr(S.String).pipe(T.Body("deploy_command")),
-      ),
-      externalScriptId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("external_script_id")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      pathExcludes: S.optional(
-        S.NullOr(
-          GetBuildsByVersionResponseBuildsValueTriggerPathExcludesList,
-        ).pipe(T.Body("path_excludes")),
-      ),
-      pathIncludes: S.optional(
-        S.NullOr(
-          GetBuildsByVersionResponseBuildsValueTriggerPathIncludesList,
-        ).pipe(T.Body("path_includes")),
-      ),
-      repoConnection: S.optional(
-        S.NullOr(
-          GetBuildsByVersionResponseBuildsValueTriggerRepoConnection,
-        ).pipe(T.Body("repo_connection")),
-      ),
-      rootDirectory: S.optional(
-        S.NullOr(S.String).pipe(T.Body("root_directory")),
-      ),
-      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-    }),
-  ).annotate({
-    identifier: "GetBuildsByVersionResponseBuildsValueTrigger",
-  }) as any as S.Schema<GetBuildsByVersionResponseBuildsValueTrigger>;
-
 export interface GetBuildsByVersionResponseBuildsValue {
   buildOutcome?: GetBuildsByVersionResponseBuildsValueBuildOutcome | null;
   buildTriggerMetadata?: GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata | null;
-  /** Build UUID. */
-  buildUuid?: string | null;
-  createdOn?: string | null;
-  initializingOn?: string | null;
-  modifiedOn?: string | null;
-  pullRequest?: BuildsGetResponsePullRequest | null;
-  runningOn?: string | null;
-  status?: GetBuildsByVersionResponseBuildsValueStatus | null;
-  stoppedOn?: string | null;
-  /** Trigger information without build_token_uuid */
-  trigger?: GetBuildsByVersionResponseBuildsValueTrigger | null;
 }
 export const GetBuildsByVersionResponseBuildsValue = /*@__PURE__*/ S.suspend(
   () =>
@@ -1481,21 +1595,6 @@ export const GetBuildsByVersionResponseBuildsValue = /*@__PURE__*/ S.suspend(
         S.NullOr(
           GetBuildsByVersionResponseBuildsValueBuildTriggerMetadata,
         ).pipe(T.Body("build_trigger_metadata")),
-      ),
-      buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      initializingOn: S.optional(
-        S.NullOr(S.String).pipe(T.Body("initializing_on")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      pullRequest: S.optional(
-        S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
-      ),
-      runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
-      status: S.optional(S.NullOr(GetBuildsByVersionResponseBuildsValueStatus)),
-      stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-      trigger: S.optional(
-        S.NullOr(GetBuildsByVersionResponseBuildsValueTrigger),
       ),
     }),
 ).annotate({
@@ -1575,6 +1674,175 @@ export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataProviderType =
 export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataProviderType =
   /*@__PURE__*/ S.String;
 
+export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataPullRequest =
+  BuildsGetResponseBuildTriggerMetadataPullRequest;
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataPullRequest =
+  BuildsGetResponseBuildTriggerMetadataPullRequest;
+
+export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataStatus =
+  | "queued"
+  | "initializing"
+  | "running"
+  | "stopped";
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataStatus =
+  /*@__PURE__*/ S.String;
+
+export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList =
+  Array<string>;
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList>;
+
+export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList =
+  Array<string>;
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList>;
+
+export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList =
+  Array<string>;
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList>;
+
+export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList =
+  Array<string>;
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList>;
+
+export type GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnectionProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnectionProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection {
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  deletedOn?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  /** Provider account identifier. */
+  providerAccountId?: string | null;
+  providerAccountName?: string | null;
+  providerType?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnectionProviderType | null;
+  /** Repository connection UUID. */
+  repoConnectionUuid?: string | null;
+  /** Repository identifier. */
+  repoId?: string | null;
+  repoName?: string | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
+}
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      providerAccountId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
+      ),
+      providerAccountName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
+      ),
+      providerType: S.optional(
+        S.NullOr(
+          GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnectionProviderType,
+        ).pipe(T.Body("provider_type")),
+      ),
+      repoConnectionUuid: S.optional(
+        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
+      ),
+      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
+      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+      rootDirectory: S.optional(
+        S.NullOr(S.String).pipe(T.Body("root_directory")),
+      ),
+      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
+    }),
+  ).annotate({
+    identifier:
+      "GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection",
+  }) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection>;
+
+export interface GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTrigger {
+  branchExcludes?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList | null;
+  branchIncludes?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList | null;
+  buildCachingEnabled?: boolean | null;
+  buildCommand?: string | null;
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  deletedOn?: string | null;
+  deployCommand?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  pathExcludes?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList | null;
+  pathIncludes?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList | null;
+  repoConnection?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection | null;
+}
+export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTrigger =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      branchExcludes: S.optional(
+        S.NullOr(
+          GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchExcludesList,
+        ).pipe(T.Body("branch_excludes")),
+      ),
+      branchIncludes: S.optional(
+        S.NullOr(
+          GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerBranchIncludesList,
+        ).pipe(T.Body("branch_includes")),
+      ),
+      buildCachingEnabled: S.optional(
+        S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+      ),
+      buildCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("build_command")),
+      ),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      deployCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("deploy_command")),
+      ),
+      externalScriptId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("external_script_id")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pathExcludes: S.optional(
+        S.NullOr(
+          GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathExcludesList,
+        ).pipe(T.Body("path_excludes")),
+      ),
+      pathIncludes: S.optional(
+        S.NullOr(
+          GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerPathIncludesList,
+        ).pipe(T.Body("path_includes")),
+      ),
+      repoConnection: S.optional(
+        S.NullOr(
+          GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTriggerRepoConnection,
+        ).pipe(T.Body("repo_connection")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTrigger",
+  }) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTrigger>;
+
 export interface GetLatestBuildsResponseBuildsValueBuildTriggerMetadata {
   author?: string | null;
   /** Git branch name. */
@@ -1594,6 +1862,22 @@ export interface GetLatestBuildsResponseBuildsValueBuildTriggerMetadata {
   repoName?: string | null;
   /** Root directory path. */
   rootDirectory?: string | null;
+  /** Build UUID. */
+  buildUuid?: string | null;
+  /** formatdate-time */
+  createdOn?: string | null;
+  /** formatdate-time */
+  initializingOn?: string | null;
+  /** formatdate-time */
+  modifiedOn?: string | null;
+  pullRequest?: BuildsGetResponseBuildTriggerMetadataPullRequest | null;
+  /** formatdate-time */
+  runningOn?: string | null;
+  status?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadataStatus | null;
+  /** formatdate-time */
+  stoppedOn?: string | null;
+  /** Trigger information without build_token_uuid */
+  trigger?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTrigger | null;
 }
 export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadata =
   /*@__PURE__*/ S.suspend(() =>
@@ -1638,186 +1922,33 @@ export const GetLatestBuildsResponseBuildsValueBuildTriggerMetadata =
       rootDirectory: S.optional(
         S.NullOr(S.String).pipe(T.Body("root_directory")),
       ),
+      buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      initializingOn: S.optional(
+        S.NullOr(S.String).pipe(T.Body("initializing_on")),
+      ),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      pullRequest: S.optional(
+        S.NullOr(BuildsGetResponseBuildTriggerMetadataPullRequest).pipe(
+          T.Body("pull_request"),
+        ),
+      ),
+      runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
+      status: S.optional(
+        S.NullOr(GetLatestBuildsResponseBuildsValueBuildTriggerMetadataStatus),
+      ),
+      stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
+      trigger: S.optional(
+        S.NullOr(GetLatestBuildsResponseBuildsValueBuildTriggerMetadataTrigger),
+      ),
     }),
   ).annotate({
     identifier: "GetLatestBuildsResponseBuildsValueBuildTriggerMetadata",
   }) as any as S.Schema<GetLatestBuildsResponseBuildsValueBuildTriggerMetadata>;
 
-export type GetLatestBuildsResponseBuildsValuePullRequest =
-  BuildsGetResponsePullRequest;
-export const GetLatestBuildsResponseBuildsValuePullRequest =
-  BuildsGetResponsePullRequest;
-
-export type GetLatestBuildsResponseBuildsValueStatus =
-  | "queued"
-  | "initializing"
-  | "running"
-  | "stopped";
-export const GetLatestBuildsResponseBuildsValueStatus = /*@__PURE__*/ S.String;
-
-export type GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList =
-  Array<string>;
-export const GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList>;
-
-export type GetLatestBuildsResponseBuildsValueTriggerBranchIncludesList =
-  Array<string>;
-export const GetLatestBuildsResponseBuildsValueTriggerBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerBranchIncludesList>;
-
-export type GetLatestBuildsResponseBuildsValueTriggerPathExcludesList =
-  Array<string>;
-export const GetLatestBuildsResponseBuildsValueTriggerPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerPathExcludesList>;
-
-export type GetLatestBuildsResponseBuildsValueTriggerPathIncludesList =
-  Array<string>;
-export const GetLatestBuildsResponseBuildsValueTriggerPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerPathIncludesList>;
-
-export type GetLatestBuildsResponseBuildsValueTriggerRepoConnectionProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const GetLatestBuildsResponseBuildsValueTriggerRepoConnectionProviderType =
-  /*@__PURE__*/ S.String;
-
-export interface GetLatestBuildsResponseBuildsValueTriggerRepoConnection {
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  modifiedOn?: string | null;
-  /** Provider account identifier. */
-  providerAccountId?: string | null;
-  providerAccountName?: string | null;
-  providerType?: GetLatestBuildsResponseBuildsValueTriggerRepoConnectionProviderType | null;
-  /** Repository connection UUID. */
-  repoConnectionUuid?: string | null;
-  /** Repository identifier. */
-  repoId?: string | null;
-  repoName?: string | null;
-}
-export const GetLatestBuildsResponseBuildsValueTriggerRepoConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      providerAccountId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
-      ),
-      providerAccountName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
-      ),
-      providerType: S.optional(
-        S.NullOr(
-          GetLatestBuildsResponseBuildsValueTriggerRepoConnectionProviderType,
-        ).pipe(T.Body("provider_type")),
-      ),
-      repoConnectionUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
-      ),
-      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-    }),
-  ).annotate({
-    identifier: "GetLatestBuildsResponseBuildsValueTriggerRepoConnection",
-  }) as any as S.Schema<GetLatestBuildsResponseBuildsValueTriggerRepoConnection>;
-
-export interface GetLatestBuildsResponseBuildsValueTrigger {
-  branchExcludes?: GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList | null;
-  branchIncludes?: GetLatestBuildsResponseBuildsValueTriggerBranchIncludesList | null;
-  buildCachingEnabled?: boolean | null;
-  buildCommand?: string | null;
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  deployCommand?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-  pathExcludes?: GetLatestBuildsResponseBuildsValueTriggerPathExcludesList | null;
-  pathIncludes?: GetLatestBuildsResponseBuildsValueTriggerPathIncludesList | null;
-  repoConnection?: GetLatestBuildsResponseBuildsValueTriggerRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
-}
-export const GetLatestBuildsResponseBuildsValueTrigger =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      branchExcludes: S.optional(
-        S.NullOr(
-          GetLatestBuildsResponseBuildsValueTriggerBranchExcludesList,
-        ).pipe(T.Body("branch_excludes")),
-      ),
-      branchIncludes: S.optional(
-        S.NullOr(
-          GetLatestBuildsResponseBuildsValueTriggerBranchIncludesList,
-        ).pipe(T.Body("branch_includes")),
-      ),
-      buildCachingEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-      ),
-      buildCommand: S.optional(
-        S.NullOr(S.String).pipe(T.Body("build_command")),
-      ),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-      deployCommand: S.optional(
-        S.NullOr(S.String).pipe(T.Body("deploy_command")),
-      ),
-      externalScriptId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("external_script_id")),
-      ),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      pathExcludes: S.optional(
-        S.NullOr(
-          GetLatestBuildsResponseBuildsValueTriggerPathExcludesList,
-        ).pipe(T.Body("path_excludes")),
-      ),
-      pathIncludes: S.optional(
-        S.NullOr(
-          GetLatestBuildsResponseBuildsValueTriggerPathIncludesList,
-        ).pipe(T.Body("path_includes")),
-      ),
-      repoConnection: S.optional(
-        S.NullOr(GetLatestBuildsResponseBuildsValueTriggerRepoConnection).pipe(
-          T.Body("repo_connection"),
-        ),
-      ),
-      rootDirectory: S.optional(
-        S.NullOr(S.String).pipe(T.Body("root_directory")),
-      ),
-      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-    }),
-  ).annotate({
-    identifier: "GetLatestBuildsResponseBuildsValueTrigger",
-  }) as any as S.Schema<GetLatestBuildsResponseBuildsValueTrigger>;
-
 export interface GetLatestBuildsResponseBuildsValue {
   buildOutcome?: GetLatestBuildsResponseBuildsValueBuildOutcome | null;
   buildTriggerMetadata?: GetLatestBuildsResponseBuildsValueBuildTriggerMetadata | null;
-  /** Build UUID. */
-  buildUuid?: string | null;
-  createdOn?: string | null;
-  initializingOn?: string | null;
-  modifiedOn?: string | null;
-  pullRequest?: BuildsGetResponsePullRequest | null;
-  runningOn?: string | null;
-  status?: GetLatestBuildsResponseBuildsValueStatus | null;
-  stoppedOn?: string | null;
-  /** Trigger information without build_token_uuid */
-  trigger?: GetLatestBuildsResponseBuildsValueTrigger | null;
 }
 export const GetLatestBuildsResponseBuildsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1831,19 +1962,6 @@ export const GetLatestBuildsResponseBuildsValue = /*@__PURE__*/ S.suspend(() =>
         T.Body("build_trigger_metadata"),
       ),
     ),
-    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    initializingOn: S.optional(
-      S.NullOr(S.String).pipe(T.Body("initializing_on")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pullRequest: S.optional(
-      S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
-    ),
-    runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
-    status: S.optional(S.NullOr(GetLatestBuildsResponseBuildsValueStatus)),
-    stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-    trigger: S.optional(S.NullOr(GetLatestBuildsResponseBuildsValueTrigger)),
   }),
 ).annotate({
   identifier: "GetLatestBuildsResponseBuildsValue",
@@ -2040,8 +2158,11 @@ export const ReposConnectionsUpsertResponseProviderType =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ReposConnectionsUpsertResponse {
+  /** formatdate-time */
   createdOn?: string | null;
+  /** formatdate-time */
   deletedOn?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Provider account identifier. */
   providerAccountId?: string | null;
@@ -2320,8 +2441,11 @@ export const TriggersCreateResponseRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
 export interface TriggersCreateResponseRepoConnection {
+  /** formatdate-time */
   createdOn?: string | null;
+  /** formatdate-time */
   deletedOn?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Provider account identifier. */
   providerAccountId?: string | null;
@@ -2332,6 +2456,11 @@ export interface TriggersCreateResponseRepoConnection {
   /** Repository identifier. */
   repoId?: string | null;
   repoName?: string | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
 }
 export const TriggersCreateResponseRepoConnection = /*@__PURE__*/ S.suspend(
   () =>
@@ -2355,6 +2484,11 @@ export const TriggersCreateResponseRepoConnection = /*@__PURE__*/ S.suspend(
       ),
       repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
       repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+      rootDirectory: S.optional(
+        S.NullOr(S.String).pipe(T.Body("root_directory")),
+      ),
+      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
     }),
 ).annotate({
   identifier: "TriggersCreateResponseRepoConnection",
@@ -2369,20 +2503,18 @@ export interface TriggersCreateResponse {
   buildTokenName?: string | null;
   /** Build token UUID. */
   buildTokenUuid?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
+  /** formatdate-time */
   deletedOn?: string | null;
   deployCommand?: string | null;
   /** System-generated worker script tag. */
   externalScriptId?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   pathExcludes?: TriggersCreateResponsePathExcludesList | null;
   pathIncludes?: TriggersCreateResponsePathIncludesList | null;
   repoConnection?: TriggersCreateResponseRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
 }
 export const TriggersCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2430,11 +2562,6 @@ export const TriggersCreateResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("repo_connection"),
       ),
     ),
-    rootDirectory: S.optional(
-      S.NullOr(S.String).pipe(T.Body("root_directory")),
-    ),
-    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
   }),
 ).annotate({
   identifier: "TriggersCreateResponse",
@@ -2530,6 +2657,7 @@ export const TriggersCreateBuildRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TriggersCreateBuildResponse {
   /** Build UUID. */
   buildUuid?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
 }
 export const TriggersCreateBuildResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2627,6 +2755,7 @@ export const TriggersEnvironmentVariablesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TriggersEnvironmentVariablesListRequest>;
 
 export interface TriggersEnvironmentVariablesListResultValue {
+  /** formatdate-time */
   createdOn: string;
   isSecret: boolean;
   /** Value is null for secret environment variables */
@@ -2778,8 +2907,11 @@ export const TriggersListResultItemRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
 export interface TriggersListResultItemRepoConnection {
+  /** formatdate-time */
   createdOn?: string | null;
+  /** formatdate-time */
   deletedOn?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Provider account identifier. */
   providerAccountId?: string | null;
@@ -2790,6 +2922,11 @@ export interface TriggersListResultItemRepoConnection {
   /** Repository identifier. */
   repoId?: string | null;
   repoName?: string | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
 }
 export const TriggersListResultItemRepoConnection = /*@__PURE__*/ S.suspend(
   () =>
@@ -2813,6 +2950,11 @@ export const TriggersListResultItemRepoConnection = /*@__PURE__*/ S.suspend(
       ),
       repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
       repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+      rootDirectory: S.optional(
+        S.NullOr(S.String).pipe(T.Body("root_directory")),
+      ),
+      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
     }),
 ).annotate({
   identifier: "TriggersListResultItemRepoConnection",
@@ -2826,20 +2968,18 @@ export interface TriggersListResultItem {
   buildTokenName?: string | null;
   /** Build token UUID. */
   buildTokenUuid?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
+  /** formatdate-time */
   deletedOn?: string | null;
   deployCommand?: string | null;
   /** System-generated worker script tag. */
   externalScriptId?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   pathExcludes?: TriggersListResultItemPathExcludesList | null;
   pathIncludes?: TriggersListResultItemPathIncludesList | null;
   repoConnection?: TriggersListResultItemRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
 }
 export const TriggersListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2887,11 +3027,6 @@ export const TriggersListResultItem = /*@__PURE__*/ S.suspend(() =>
         T.Body("repo_connection"),
       ),
     ),
-    rootDirectory: S.optional(
-      S.NullOr(S.String).pipe(T.Body("root_directory")),
-    ),
-    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
   }),
 ).annotate({
   identifier: "TriggersListResultItem",
@@ -3038,8 +3173,11 @@ export const TriggersUpdateResponseRepoConnectionProviderType =
   /*@__PURE__*/ S.String;
 
 export interface TriggersUpdateResponseRepoConnection {
+  /** formatdate-time */
   createdOn?: string | null;
+  /** formatdate-time */
   deletedOn?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   /** Provider account identifier. */
   providerAccountId?: string | null;
@@ -3050,6 +3188,11 @@ export interface TriggersUpdateResponseRepoConnection {
   /** Repository identifier. */
   repoId?: string | null;
   repoName?: string | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
 }
 export const TriggersUpdateResponseRepoConnection = /*@__PURE__*/ S.suspend(
   () =>
@@ -3073,6 +3216,11 @@ export const TriggersUpdateResponseRepoConnection = /*@__PURE__*/ S.suspend(
       ),
       repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
       repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+      rootDirectory: S.optional(
+        S.NullOr(S.String).pipe(T.Body("root_directory")),
+      ),
+      triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+      triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
     }),
 ).annotate({
   identifier: "TriggersUpdateResponseRepoConnection",
@@ -3087,20 +3235,18 @@ export interface TriggersUpdateResponse {
   buildTokenName?: string | null;
   /** Build token UUID. */
   buildTokenUuid?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
+  /** formatdate-time */
   deletedOn?: string | null;
   deployCommand?: string | null;
   /** System-generated worker script tag. */
   externalScriptId?: string | null;
+  /** formatdate-time */
   modifiedOn?: string | null;
   pathExcludes?: TriggersUpdateResponsePathExcludesList | null;
   pathIncludes?: TriggersUpdateResponsePathIncludesList | null;
   repoConnection?: TriggersUpdateResponseRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
 }
 export const TriggersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3148,11 +3294,6 @@ export const TriggersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
         T.Body("repo_connection"),
       ),
     ),
-    rootDirectory: S.optional(
-      S.NullOr(S.String).pipe(T.Body("root_directory")),
-    ),
-    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
   }),
 ).annotate({
   identifier: "TriggersUpdateResponse",

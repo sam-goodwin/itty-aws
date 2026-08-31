@@ -21,6 +21,7 @@ export interface DayReportAsnRequest {
   /** Identifier. */
   accountId: string;
   asnId: number;
+  /** formatdate-time */
   date?: string;
 }
 export const DayReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
@@ -44,7 +45,9 @@ export const DayReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DayReportAsnResponse {
   cidr?: string | null;
+  /** formatdate-time */
   date?: string | null;
+  /** HTTP */
   offenseCount?: number | null;
 }
 export const DayReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
@@ -81,6 +84,7 @@ export const DeleteConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteConfigAsnResponse {
+  /** HTTP */
   asn?: number | null;
 }
 export const DeleteConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>
@@ -116,7 +120,9 @@ export const FullReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface FullReportAsnResponse {
   cidr?: string | null;
+  /** formatdate-time */
   date?: string | null;
+  /** HTTP */
   offenseCount?: number | null;
 }
 export const FullReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
@@ -151,6 +157,7 @@ export const GetConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigAsnResponse {
+  /** HTTP */
   asn?: number | null;
 }
 export const GetConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>

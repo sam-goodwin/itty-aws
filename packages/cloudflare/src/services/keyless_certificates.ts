@@ -77,11 +77,11 @@ export const CreateRequestTunnel = /*@__PURE__*/ S.suspend(() =>
 export interface CreateKeylessCertificateRequest {
   /** Identifier. */
   zoneId: string;
-  /** The zone's SSL certificate or SSL certificate and intermediate(s). */
+  /** The zone’s SSL certificate or SSL certificate and intermediate(s). */
   certificate: string;
   /** The keyless SSL name. */
   host: string;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
   bundleMethod?: CreateRequestBundleMethod | (string & {});
@@ -125,6 +125,9 @@ export const CreateResponseStatus = /*@__PURE__*/ S.String;
 export type CreateResponseTunnel = CreateRequestTunnel;
 export const CreateResponseTunnel = CreateRequestTunnel;
 
+export type CreateResponseName = "example.com Keyless SSL";
+export const CreateResponseName = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
@@ -141,12 +144,18 @@ export interface CreateKeylessCertificateResponse {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: CreateResponsePermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: CreateResponseStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
+  certificate: unknown;
+  host_2: unknown;
+  port_2: unknown;
+  bundleMethod: unknown;
+  /** }' */
+  name_2: CreateResponseName;
 }
 export const CreateKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -160,6 +169,11 @@ export const CreateKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: CreateResponseStatus,
     tunnel: S.optional(S.NullOr(CreateRequestTunnel)),
+    certificate: S.Unknown,
+    host_2: S.Unknown.pipe(T.Body("host")),
+    port_2: S.Unknown.pipe(T.Body("port")),
+    bundleMethod: S.Unknown.pipe(T.Body("bundle_method")),
+    name_2: CreateResponseName.pipe(T.Body("name")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateKeylessCertificateResponse",
@@ -251,7 +265,7 @@ export interface GetKeylessCertificateResponse {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: GetResponsePermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: GetResponseStatus;
@@ -321,7 +335,7 @@ export interface ListResultItem {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: ListResultItemPermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: ListResultItemStatus;
@@ -372,12 +386,12 @@ export interface PatchKeylessCertificateRequest {
   /** Identifier. */
   keylessCertificateId: string;
   /** Whether or not the Keyless SSL is on or off. */
-  enabled?: boolean;
+  deprecatedenabled?: boolean;
   /** The keyless SSL name. */
   host?: string;
   /** The keyless SSL name. */
   name?: string;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port?: number;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel;
@@ -386,7 +400,7 @@ export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
-    enabled: S.optional(S.Boolean),
+    deprecatedenabled: S.optional(S.Boolean.pipe(T.Body("Deprecatedenabled"))),
     host: S.optional(S.String),
     name: S.optional(S.String),
     port: S.optional(S.Number),
@@ -415,6 +429,9 @@ export const EditResponseStatus = /*@__PURE__*/ S.String;
 export type EditResponseTunnel = CreateRequestTunnel;
 export const EditResponseTunnel = CreateRequestTunnel;
 
+export type EditResponsePort = 24008;
+export const EditResponsePort = /*@__PURE__*/ S.Number;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
@@ -431,12 +448,16 @@ export interface PatchKeylessCertificateResponse {
   name: string;
   /** Available permissions for the Keyless SSL for the current user requesting the item. */
   permissions: EditResponsePermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  /** The keyless SSL port used to communicate between Cloudflare and the client’s Keyless SSL server. */
   port: number;
   /** Status of the Keyless SSL. */
   status: EditResponseStatus;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
+  host_2: unknown;
+  name_2: unknown;
+  /** }' */
+  port_2: EditResponsePort;
 }
 export const PatchKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -450,6 +471,9 @@ export const PatchKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     port: S.Number,
     status: EditResponseStatus,
     tunnel: S.optional(S.NullOr(CreateRequestTunnel)),
+    host_2: S.Unknown.pipe(T.Body("host")),
+    name_2: S.Unknown.pipe(T.Body("name")),
+    port_2: EditResponsePort.pipe(T.Body("port")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchKeylessCertificateResponse",

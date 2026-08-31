@@ -103,9 +103,9 @@ export const CreateRequestRequestedValidity = /*@__PURE__*/ S.Number;
 export interface CreateOriginCaCertificateRequest {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
-  /** Array of hostnames or wildcard names bound to the certificate. */
+  /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode. */
   hostnames: CreateRequestHostnamesList;
-  /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
+  /** Signature type desired on certificate (“origin-rsa” (rsa), “origin-ecc” (ecdsa), or “keyless-certificate” (for Keyless SSL servers). */
   requestType: CreateRequestRequestType | (string & {});
   /** The number of days for which the certificate should be valid. */
   requestedValidity?: CreateRequestRequestedValidity | (number & {});
@@ -146,13 +146,16 @@ export type CreateResponseRequestedValidity =
   | 5475;
 export const CreateResponseRequestedValidity = /*@__PURE__*/ S.Number;
 
+export type CreateResponseRequestedValidity2 = 5475;
+export const CreateResponseRequestedValidity2 = /*@__PURE__*/ S.Number;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
-  /** Array of hostnames or wildcard names bound to the certificate. */
+  /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode. */
   hostnames: CreateResponseHostnamesList;
-  /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
+  /** Signature type desired on certificate (“origin-rsa” (rsa), “origin-ecc” (ecdsa), or “keyless-certificate” (for Keyless SSL servers). */
   requestType: CreateResponseRequestType;
   /** The number of days for which the certificate should be valid. */
   requestedValidity: CreateResponseRequestedValidity;
@@ -162,6 +165,12 @@ export interface CreateOriginCaCertificateResponse {
   certificate?: string | null;
   /** When the certificate will expire. */
   expiresOn?: string | null;
+  csr_2: unknown;
+  /** "example.com", */
+  hostnames_2: unknown;
+  request_type_2: unknown;
+  /** }' */
+  requested_validity_2: CreateResponseRequestedValidity2;
   /** When the certificate was revoked; absent while the certificate is live. */
   revokedAt?: string | null;
 }
@@ -176,6 +185,12 @@ export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
     expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+    csr_2: S.Unknown.pipe(T.Body("csr")),
+    hostnames_2: S.Unknown.pipe(T.Body("hostnames")),
+    request_type_2: S.Unknown.pipe(T.Body("request_type")),
+    requested_validity_2: CreateResponseRequestedValidity2.pipe(
+      T.Body("requested_validity"),
+    ),
     revokedAt: S.optional(S.NullOr(S.String).pipe(T.Body("revoked_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -263,9 +278,9 @@ export const GetResponseRequestedValidity = /*@__PURE__*/ S.Number;
 export interface GetOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
-  /** Array of hostnames or wildcard names bound to the certificate. */
+  /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode. */
   hostnames: GetResponseHostnamesList;
-  /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
+  /** Signature type desired on certificate (“origin-rsa” (rsa), “origin-ecc” (ecdsa), or “keyless-certificate” (for Keyless SSL servers). */
   requestType: GetResponseRequestType;
   /** The number of days for which the certificate should be valid. */
   requestedValidity: GetResponseRequestedValidity;
@@ -345,9 +360,9 @@ export const ListResultItemRequestedValidity = /*@__PURE__*/ S.Number;
 export interface ListResultItem {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
-  /** Array of hostnames or wildcard names bound to the certificate. */
+  /** Array of hostnames or wildcard names bound to the certificate. Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode. */
   hostnames: ListResultItemHostnamesList;
-  /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
+  /** Signature type desired on certificate (“origin-rsa” (rsa), “origin-ecc” (ecdsa), or “keyless-certificate” (for Keyless SSL servers). */
   requestType: ListResultItemRequestType;
   /** The number of days for which the certificate should be valid. */
   requestedValidity: ListResultItemRequestedValidity;

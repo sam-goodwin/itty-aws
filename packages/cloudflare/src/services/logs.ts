@@ -83,12 +83,17 @@ export const CreateControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateControlCmbConfigRequest",
 }) as any as S.Schema<CreateControlCmbConfigRequest>;
 
+export type ControlCmbConfigCreateResponseRegions = "eu";
+export const ControlCmbConfigCreateResponseRegions = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateControlCmbConfigResponse {
   /** Allow out of region access */
   allowOutOfRegionAccess?: boolean | null;
   /** Name of the region. */
   regions?: string | null;
+  /** }' */
+  regions_2: ControlCmbConfigCreateResponseRegions;
 }
 export const CreateControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -96,6 +101,7 @@ export const CreateControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.Boolean).pipe(T.Body("allow_out_of_region_access")),
     ),
     regions: S.optional(S.NullOr(S.String)),
+    regions_2: ControlCmbConfigCreateResponseRegions.pipe(T.Body("regions")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateControlCmbConfigResponse",
@@ -128,10 +134,13 @@ export const CreateControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateControlRetentionResponse {
   /** The log retention flag for Logpull API. */
   flag?: boolean | null;
+  /** }' */
+  flag_2: boolean;
 }
 export const CreateControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flag: S.optional(S.NullOr(S.Boolean)),
+    flag_2: S.Boolean.pipe(T.Body("flag")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateControlRetentionResponse",
@@ -160,12 +169,14 @@ export const LogExplorerDatasetsCreateRequestFieldsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsList>;
 
 export interface CreateLogExplorerDatasetForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** Dataset type name to create (e.g. `http_requests`). */
   dataset: string;
-  /** Controls which fields the API ingests. Defaults to all available */
+  /** Controls which fields the API ingests. Defaults to all available fields when absent. */
   fields?: LogExplorerDatasetsCreateRequestFieldsList;
+  /** Optional Logpush filter predicate to restrict which events are ingested. If provided, replaces the dataset’s default filter entirely. See Logpush filtersfor syntax and examples. */
+  filter?: string;
 }
 export const CreateLogExplorerDatasetForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -173,6 +184,7 @@ export const CreateLogExplorerDatasetForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       dataset: S.String,
       fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
+      filter: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -186,10 +198,6 @@ export const CreateLogExplorerDatasetForAccountRequest =
     identifier: "CreateLogExplorerDatasetForAccountRequest",
   }) as any as S.Schema<CreateLogExplorerDatasetForAccountRequest>;
 
-export type LogExplorerDatasetsCreateResponseObjectType = "account" | "zone";
-export const LogExplorerDatasetsCreateResponseObjectType =
-  /*@__PURE__*/ S.String;
-
 export type LogExplorerDatasetsCreateResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
 export const LogExplorerDatasetsCreateResponseFieldsItem =
@@ -202,6 +210,13 @@ export const LogExplorerDatasetsCreateResponseFieldsList =
     LogExplorerDatasetsCreateRequestFieldsItem,
   ) as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsList>;
 
+export type LogExplorerDatasetsCreateResponseObjectType = "account" | "zone";
+export const LogExplorerDatasetsCreateResponseObjectType =
+  /*@__PURE__*/ S.String;
+
+export type LogExplorerDatasetsCreateResponseDataset = "dataset";
+export const LogExplorerDatasetsCreateResponseDataset = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API created this dataset. */
@@ -210,41 +225,52 @@ export interface CreateLogExplorerDatasetResponse {
   dataset: string;
   /** Unique dataset ID. */
   datasetId: string;
+  /** Whether deletion is blocked. Set to `false` before deleting the dataset. */
+  deletionProtection: boolean;
   /** Whether log ingest is currently active for this dataset. */
   enabled: boolean;
+  /** The field configuration for this dataset. */
+  fields: LogExplorerDatasetsCreateResponseFieldsList;
   /** Public ID of the account or zone that owns this dataset. */
   objectId: string;
   /** Whether this dataset belongs to an account or a zone. */
   objectType: LogExplorerDatasetsCreateResponseObjectType;
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
-  /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsCreateResponseFieldsList | null;
+  /** The Logpush filter predicate applied to this dataset. Omitted when no filter is set. */
+  filter?: string | null;
+  /** }' */
+  dataset_2: LogExplorerDatasetsCreateResponseDataset;
 }
 export const CreateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
     datasetId: S.String.pipe(T.Body("dataset_id")),
+    deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
     enabled: S.Boolean,
+    fields: LogExplorerDatasetsCreateResponseFieldsList,
     objectId: S.String.pipe(T.Body("object_id")),
     objectType: LogExplorerDatasetsCreateResponseObjectType.pipe(
       T.Body("object_type"),
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(S.NullOr(LogExplorerDatasetsCreateResponseFieldsList)),
+    filter: S.optional(S.NullOr(S.String)),
+    dataset_2: LogExplorerDatasetsCreateResponseDataset.pipe(T.Body("dataset")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateLogExplorerDatasetResponse",
 }) as any as S.Schema<CreateLogExplorerDatasetResponse>;
 
 export interface CreateLogExplorerDatasetForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** Dataset type name to create (e.g. `http_requests`). */
   dataset: string;
-  /** Controls which fields the API ingests. Defaults to all available */
+  /** Controls which fields the API ingests. Defaults to all available fields when absent. */
   fields?: LogExplorerDatasetsCreateRequestFieldsList;
+  /** Optional Logpush filter predicate to restrict which events are ingested. If provided, replaces the dataset’s default filter entirely. See Logpush filtersfor syntax and examples. */
+  filter?: string;
 }
 export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -252,6 +278,7 @@ export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       dataset: S.String,
       fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
+      filter: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -364,7 +391,7 @@ export const GetControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetControlRetentionResponse>;
 
 export interface GetLogExplorerDatasetForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   datasetId: string;
 }
@@ -386,9 +413,6 @@ export const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetLogExplorerDatasetForAccountRequest",
 }) as any as S.Schema<GetLogExplorerDatasetForAccountRequest>;
 
-export type LogExplorerDatasetsGetResponseObjectType = "account" | "zone";
-export const LogExplorerDatasetsGetResponseObjectType = /*@__PURE__*/ S.String;
-
 export type LogExplorerDatasetsGetResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
 export const LogExplorerDatasetsGetResponseFieldsItem =
@@ -400,6 +424,9 @@ export const LogExplorerDatasetsGetResponseFieldsList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsCreateRequestFieldsItem,
 ) as any as S.Schema<LogExplorerDatasetsGetResponseFieldsList>;
 
+export type LogExplorerDatasetsGetResponseObjectType = "account" | "zone";
+export const LogExplorerDatasetsGetResponseObjectType = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API created this dataset. */
@@ -408,36 +435,42 @@ export interface GetLogExplorerDatasetResponse {
   dataset: string;
   /** Unique dataset ID. */
   datasetId: string;
+  /** Whether deletion is blocked. Set to `false` before deleting the dataset. */
+  deletionProtection: boolean;
   /** Whether log ingest is currently active for this dataset. */
   enabled: boolean;
+  /** The field configuration for this dataset. */
+  fields: LogExplorerDatasetsGetResponseFieldsList;
   /** Public ID of the account or zone that owns this dataset. */
   objectId: string;
   /** Whether this dataset belongs to an account or a zone. */
   objectType: LogExplorerDatasetsGetResponseObjectType;
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
-  /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsGetResponseFieldsList | null;
+  /** The Logpush filter predicate applied to this dataset. Omitted when no filter is set. */
+  filter?: string | null;
 }
 export const GetLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
     datasetId: S.String.pipe(T.Body("dataset_id")),
+    deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
     enabled: S.Boolean,
+    fields: LogExplorerDatasetsGetResponseFieldsList,
     objectId: S.String.pipe(T.Body("object_id")),
     objectType: LogExplorerDatasetsGetResponseObjectType.pipe(
       T.Body("object_type"),
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(S.NullOr(LogExplorerDatasetsGetResponseFieldsList)),
+    filter: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetLogExplorerDatasetResponse",
 }) as any as S.Schema<GetLogExplorerDatasetResponse>;
 
 export interface GetLogExplorerDatasetForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   datasetId: string;
 }
@@ -490,14 +523,6 @@ export const GetRayidRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRayidRequest",
 }) as any as S.Schema<GetRayidRequest>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetRayidResponse {}
-export const GetRayidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetRayidResponse",
-}) as any as S.Schema<GetRayidResponse>;
-
 export type ReceivedGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
 export const ReceivedGetRequestTimestamps = /*@__PURE__*/ S.String;
 
@@ -539,14 +564,6 @@ export const GetReceivedRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReceivedRequest",
 }) as any as S.Schema<GetReceivedRequest>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetReceivedResponse {}
-export const GetReceivedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetReceivedResponse",
-}) as any as S.Schema<GetReceivedResponse>;
-
 export interface GetReceivedFieldRequest {
   /** Identifier. */
   zoneId: string;
@@ -567,20 +584,27 @@ export const GetReceivedFieldRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReceivedFieldRequest",
 }) as any as S.Schema<GetReceivedFieldRequest>;
 
+export type ReceivedFieldsGetResponseKey = "value";
+export const ReceivedFieldsGetResponseKey = /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetReceivedFieldResponse {
+  /** HTTP */
   key?: string | null;
+  /** } */
+  key_2: ReceivedFieldsGetResponseKey;
 }
 export const GetReceivedFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.NullOr(S.String)),
+    key_2: ReceivedFieldsGetResponseKey.pipe(T.Body("key")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReceivedFieldResponse",
 }) as any as S.Schema<GetReceivedFieldResponse>;
 
 export interface ListLogExplorerDatasetAvailablesForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
 }
 export const ListLogExplorerDatasetAvailablesForAccountRequest =
@@ -697,7 +721,7 @@ export const ListLogExplorerDatasetAvailablesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>;
 
 export interface ListLogExplorerDatasetAvailablesForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
 }
 export const ListLogExplorerDatasetAvailablesForZoneRequest =
@@ -718,7 +742,7 @@ export const ListLogExplorerDatasetAvailablesForZoneRequest =
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>;
 
 export interface ListLogExplorerDatasetsForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   /** Set to true to include zone-scoped datasets belonging to this account. */
   includeZones?: boolean;
@@ -752,6 +776,8 @@ export interface LogExplorerDatasetsListResultItem {
   dataset: string;
   /** Unique dataset ID. */
   datasetId: string;
+  /** Whether deletion is blocked. Set to `false` before deleting the dataset. */
+  deletionProtection: boolean;
   /** Whether log ingest is currently active for this dataset. */
   enabled: boolean;
   /** Public ID of the account or zone that owns this dataset. */
@@ -766,6 +792,7 @@ export const LogExplorerDatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
     datasetId: S.String.pipe(T.Body("dataset_id")),
+    deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
     enabled: S.Boolean,
     objectId: S.String.pipe(T.Body("object_id")),
     objectType: LogExplorerDatasetsListResultItemObjectType.pipe(
@@ -799,7 +826,7 @@ export const ListLogExplorerDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLogExplorerDatasetsResponse>;
 
 export interface ListLogExplorerDatasetsForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   /** Set to true to include zone-scoped datasets belonging to this account. */
   includeZones?: boolean;
@@ -822,8 +849,112 @@ export const ListLogExplorerDatasetsForZoneRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListLogExplorerDatasetsForZoneRequest",
 }) as any as S.Schema<ListLogExplorerDatasetsForZoneRequest>;
 
+export interface LogExplorerDatasetsDeleteForAccountRequest {
+  /** Identifier. */
+  accountId: string;
+  datasetId: string;
+}
+export const LogExplorerDatasetsDeleteForAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      datasetId: S.String.pipe(T.Label("dataset_id")),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  ).annotate({
+    identifier: "LogExplorerDatasetsDeleteForAccountRequest",
+  }) as any as S.Schema<LogExplorerDatasetsDeleteForAccountRequest>;
+
+export type LogExplorerDatasetsDeleteResponseFieldsItem =
+  LogExplorerDatasetsCreateRequestFieldsItem;
+export const LogExplorerDatasetsDeleteResponseFieldsItem =
+  LogExplorerDatasetsCreateRequestFieldsItem;
+
+export type LogExplorerDatasetsDeleteResponseFieldsList =
+  Array<LogExplorerDatasetsCreateRequestFieldsItem>;
+export const LogExplorerDatasetsDeleteResponseFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsCreateRequestFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsDeleteResponseFieldsList>;
+
+export type LogExplorerDatasetsDeleteResponseObjectType = "account" | "zone";
+export const LogExplorerDatasetsDeleteResponseObjectType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface LogExplorerDatasetsDeleteResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether deletion is blocked. Set to `false` before deleting the dataset. */
+  deletionProtection: boolean;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** The field configuration for this dataset. */
+  fields: LogExplorerDatasetsDeleteResponseFieldsList;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: LogExplorerDatasetsDeleteResponseObjectType;
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The Logpush filter predicate applied to this dataset. Omitted when no filter is set. */
+  filter?: string | null;
+}
+export const LogExplorerDatasetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String.pipe(T.Body("created_at")),
+    dataset: S.String,
+    datasetId: S.String.pipe(T.Body("dataset_id")),
+    deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
+    enabled: S.Boolean,
+    fields: LogExplorerDatasetsDeleteResponseFieldsList,
+    objectId: S.String.pipe(T.Body("object_id")),
+    objectType: LogExplorerDatasetsDeleteResponseObjectType.pipe(
+      T.Body("object_type"),
+    ),
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    filter: S.optional(S.NullOr(S.String)),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "LogExplorerDatasetsDeleteResponse",
+}) as any as S.Schema<LogExplorerDatasetsDeleteResponse>;
+
+export interface LogExplorerDatasetsDeleteForZoneRequest {
+  /** Identifier. */
+  zoneId: string;
+  datasetId: string;
+}
+export const LogExplorerDatasetsDeleteForZoneRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      datasetId: S.String.pipe(T.Label("dataset_id")),
+    })
+      .pipe(
+        T.Http({
+          method: "DELETE",
+          uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
+          code: 200,
+        }),
+      )
+      .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "LogExplorerDatasetsDeleteForZoneRequest",
+}) as any as S.Schema<LogExplorerDatasetsDeleteForZoneRequest>;
+
 export interface SqlLogExplorerQueryForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
 }
 export const SqlLogExplorerQueryForAccountRequest = /*@__PURE__*/ S.suspend(
@@ -873,7 +1004,7 @@ export const SqlLogExplorerQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlLogExplorerQueryResponse>;
 
 export interface SqlLogExplorerQueryForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
 }
 export const SqlLogExplorerQueryForZoneRequest = /*@__PURE__*/ S.suspend(() =>
@@ -904,13 +1035,17 @@ export const LogExplorerDatasetsUpdateRequestFieldsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
 
 export interface UpdateLogExplorerDatasetForAccountRequest {
-  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  /** Identifier. */
   accountId: string;
   datasetId: string;
   /** Whether to enable or disable log ingest for this dataset. */
   enabled: boolean;
-  /** Controls which fields the API ingests after the update. Defaults */
+  /** Set to `false` to allow deletion of this dataset. */
+  deletionProtection?: boolean;
+  /** Controls which fields the API ingests after the update. Defaults to all available fields when absent. */
   fields?: LogExplorerDatasetsUpdateRequestFieldsList;
+  /** Optional Logpush filter predicate to restrict which events are ingested. If omitted, the existing filter is left unchanged. Set to an empty string (`""`) to clear the filter. Otherwise, replaces the dataset’s filter entirely. See Logpush filtersfor syntax and examples. */
+  filter?: string;
 }
 export const UpdateLogExplorerDatasetForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -918,7 +1053,11 @@ export const UpdateLogExplorerDatasetForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       datasetId: S.String.pipe(T.Label("dataset_id")),
       enabled: S.Boolean,
+      deletionProtection: S.optional(
+        S.Boolean.pipe(T.Body("deletion_protection")),
+      ),
       fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
+      filter: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -932,10 +1071,6 @@ export const UpdateLogExplorerDatasetForAccountRequest =
     identifier: "UpdateLogExplorerDatasetForAccountRequest",
   }) as any as S.Schema<UpdateLogExplorerDatasetForAccountRequest>;
 
-export type LogExplorerDatasetsUpdateResponseObjectType = "account" | "zone";
-export const LogExplorerDatasetsUpdateResponseObjectType =
-  /*@__PURE__*/ S.String;
-
 export type LogExplorerDatasetsUpdateResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
 export const LogExplorerDatasetsUpdateResponseFieldsItem =
@@ -948,6 +1083,10 @@ export const LogExplorerDatasetsUpdateResponseFieldsList =
     LogExplorerDatasetsCreateRequestFieldsItem,
   ) as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsList>;
 
+export type LogExplorerDatasetsUpdateResponseObjectType = "account" | "zone";
+export const LogExplorerDatasetsUpdateResponseObjectType =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateLogExplorerDatasetResponse {
   /** RFC3339 timestamp recording when the API created this dataset. */
@@ -956,42 +1095,55 @@ export interface UpdateLogExplorerDatasetResponse {
   dataset: string;
   /** Unique dataset ID. */
   datasetId: string;
+  /** Whether deletion is blocked. Set to `false` before deleting the dataset. */
+  deletionProtection: boolean;
   /** Whether log ingest is currently active for this dataset. */
   enabled: boolean;
+  /** The field configuration for this dataset. */
+  fields: LogExplorerDatasetsUpdateResponseFieldsList;
   /** Public ID of the account or zone that owns this dataset. */
   objectId: string;
   /** Whether this dataset belongs to an account or a zone. */
   objectType: LogExplorerDatasetsUpdateResponseObjectType;
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
-  /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsUpdateResponseFieldsList | null;
+  /** The Logpush filter predicate applied to this dataset. Omitted when no filter is set. */
+  filter?: string | null;
+  /** }' */
+  enabled_2: boolean;
 }
 export const UpdateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
     datasetId: S.String.pipe(T.Body("dataset_id")),
+    deletionProtection: S.Boolean.pipe(T.Body("deletion_protection")),
     enabled: S.Boolean,
+    fields: LogExplorerDatasetsUpdateResponseFieldsList,
     objectId: S.String.pipe(T.Body("object_id")),
     objectType: LogExplorerDatasetsUpdateResponseObjectType.pipe(
       T.Body("object_type"),
     ),
     updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(S.NullOr(LogExplorerDatasetsUpdateResponseFieldsList)),
+    filter: S.optional(S.NullOr(S.String)),
+    enabled_2: S.Boolean.pipe(T.Body("enabled")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UpdateLogExplorerDatasetResponse",
 }) as any as S.Schema<UpdateLogExplorerDatasetResponse>;
 
 export interface UpdateLogExplorerDatasetForZoneRequest {
-  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  /** Identifier. */
   zoneId: string;
   datasetId: string;
   /** Whether to enable or disable log ingest for this dataset. */
   enabled: boolean;
-  /** Controls which fields the API ingests after the update. Defaults */
+  /** Set to `false` to allow deletion of this dataset. */
+  deletionProtection?: boolean;
+  /** Controls which fields the API ingests after the update. Defaults to all available fields when absent. */
   fields?: LogExplorerDatasetsUpdateRequestFieldsList;
+  /** Optional Logpush filter predicate to restrict which events are ingested. If omitted, the existing filter is left unchanged. Set to an empty string (`""`) to clear the filter. Otherwise, replaces the dataset’s filter entirely. See Logpush filtersfor syntax and examples. */
+  filter?: string;
 }
 export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -999,7 +1151,11 @@ export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       datasetId: S.String.pipe(T.Label("dataset_id")),
       enabled: S.Boolean,
+      deletionProtection: S.optional(
+        S.Boolean.pipe(T.Body("deletion_protection")),
+      ),
       fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
+      filter: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -1060,7 +1216,7 @@ export const createControlRetention: API.OperationMethod<
 }));
 
 export type CreateLogExplorerDatasetForAccountError = CloudflareOpError;
-/** Create a new Log Explorer dataset for the account or zone. Use the `/account or zones/{account or zone_id}/logs/explorer/datasets/available` endpoint to list dataset types you can create along with their available fields. The `fields` property is optional. If not specified, all available fields will be enabled. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets For dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+/** Create a new Log Explorer dataset for the account or zone. List available account or zone datasets to see the dataset types and fields you can use. The `fields` property is optional. If not specified, all available fields will be enabled. For dataset field definitions, see: <https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/> */
 export const createLogExplorerDatasetForAccount: API.OperationMethod<
   CreateLogExplorerDatasetForAccountRequest,
   CreateLogExplorerDatasetResponse,
@@ -1075,7 +1231,7 @@ export const createLogExplorerDatasetForAccount: API.OperationMethod<
 }));
 
 export type CreateLogExplorerDatasetForZoneError = CloudflareOpError;
-/** Create a new Log Explorer dataset for the account or zone. Use the `/account or zones/{account or zone_id}/logs/explorer/datasets/available` endpoint to list dataset types you can create along with their available fields. The `fields` property is optional. If not specified, all available fields will be enabled. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets For dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+/** Create a new Log Explorer dataset for the account or zone. List available account or zone datasets to see the dataset types and fields you can use. The `fields` property is optional. If not specified, all available fields will be enabled. For dataset field definitions, see: <https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/> */
 export const createLogExplorerDatasetForZone: API.OperationMethod<
   CreateLogExplorerDatasetForZoneRequest,
   CreateLogExplorerDatasetResponse,
@@ -1208,7 +1364,7 @@ export const getRayid: API.OperationMethod<
 }));
 
 export type GetReceivedError = CloudflareOpError;
-/** The `/received` api route allows customers to retrieve their edge HTTP logs. The basic access pattern is "give me all the logs for zone Z for minute M", where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the overlap will be handled properly. */
+/** The `/received` api route allows customers to retrieve their edge HTTP logs. The basic access pattern is “give me all the logs for zone Z for minute M”, where the minute M refers to the time records were received at Cloudflare’s central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the overlap will be handled properly. */
 export const getReceived: API.OperationMethod<
   GetReceivedRequest,
   GetReceivedResponse,
@@ -1317,8 +1473,38 @@ export const listLogExplorerDatasetsForZone: API.PaginatedOperationMethod<
   cloudflarePaginate,
 ) as any;
 
+export type LogExplorerDatasetsDeleteForAccountError = CloudflareOpError;
+/** Deletes a Log Explorer dataset for the account or zone. Dataset deletion must not be protected. */
+export const logExplorerDatasetsDeleteForAccount: API.OperationMethod<
+  LogExplorerDatasetsDeleteForAccountRequest,
+  LogExplorerDatasetsDeleteResponse,
+  LogExplorerDatasetsDeleteForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LogExplorerDatasetsDeleteForAccountRequest,
+  output: LogExplorerDatasetsDeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type LogExplorerDatasetsDeleteForZoneError = CloudflareOpError;
+/** Deletes a Log Explorer dataset for the account or zone. Dataset deletion must not be protected. */
+export const logExplorerDatasetsDeleteForZone: API.OperationMethod<
+  LogExplorerDatasetsDeleteForZoneRequest,
+  LogExplorerDatasetsDeleteResponse,
+  LogExplorerDatasetsDeleteForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LogExplorerDatasetsDeleteForZoneRequest,
+  output: LogExplorerDatasetsDeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type SqlLogExplorerQueryForAccountError = CloudflareOpError;
-/** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL '30' DAY WHERE {timestamp_field} >= '2026-04-01T00:00:00Z' WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z' Check /account or zones/{account or zone_id}/logs/explorer/datasets to see enabled account or zone level datasets. Zone-level datasets will not appear here. Check /account or zones/{account or zone_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql For more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+/** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL ‘30’ DAY WHERE {timestamp_field} >= ‘2026-04-01T00:00:00Z’ WHERE {timestamp_field} BETWEEN ‘2026-04-01T00:00:00Z’ AND ‘2026-04-30T23:59:59Z’ List configured account or zone datasets to see enabled account or zone-level datasets. Zone-level datasets will not appear here. List available account or zone datasets to inspect their schemas and timestamp fields. For more information about the datasets, and the meaning of each field, check out <https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/> */
 export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
   SqlLogExplorerQueryForAccountRequest,
   SqlLogExplorerQueryResponse,
@@ -1338,7 +1524,7 @@ export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
 ) as any;
 
 export type SqlLogExplorerQueryForZoneError = CloudflareOpError;
-/** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL '30' DAY WHERE {timestamp_field} >= '2026-04-01T00:00:00Z' WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z' Check /account or zones/{account or zone_id}/logs/explorer/datasets to see enabled account or zone level datasets. Zone-level datasets will not appear here. Check /account or zones/{account or zone_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql For more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+/** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL ‘30’ DAY WHERE {timestamp_field} >= ‘2026-04-01T00:00:00Z’ WHERE {timestamp_field} BETWEEN ‘2026-04-01T00:00:00Z’ AND ‘2026-04-30T23:59:59Z’ List configured account or zone datasets to see enabled account or zone-level datasets. Zone-level datasets will not appear here. List available account or zone datasets to inspect their schemas and timestamp fields. For more information about the datasets, and the meaning of each field, check out <https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/> */
 export const sqlLogExplorerQueryForZone: API.PaginatedOperationMethod<
   SqlLogExplorerQueryForZoneRequest,
   SqlLogExplorerQueryResponse,

@@ -118,14 +118,17 @@ export interface GetProfileResponse {
   city?: string | null;
   company?: string | null;
   country?: string | null;
+  /** formatdate-time */
   createdOn?: string | null;
   deviceData?: string | null;
+  /** formatdate-time */
   editedOn?: string | null;
   enterpriseBillingEmail?: string | null;
   enterprisePrimaryEmail?: string | null;
   firstName?: string | null;
   isPartner?: boolean | null;
   lastName?: string | null;
+  /** formatdate-time */
   nextBillDate?: string | null;
   paymentAddress?: string | null;
   paymentAddress2?: string | null;
@@ -142,7 +145,6 @@ export interface GetProfileResponse {
   state?: string | null;
   taxIdType?: string | null;
   telephone?: string | null;
-  useLegacy?: boolean | null;
   validationCode?: string | null;
   vat?: string | null;
   zipcode?: string | null;
@@ -206,7 +208,6 @@ export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(S.NullOr(S.String)),
     taxIdType: S.optional(S.NullOr(S.String).pipe(T.Body("tax_id_type"))),
     telephone: S.optional(S.NullOr(S.String)),
-    useLegacy: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_legacy"))),
     validationCode: S.optional(
       S.NullOr(S.String).pipe(T.Body("validation_code")),
     ),
@@ -222,8 +223,6 @@ export interface GetUsageRequest {
   accountId: string;
   /** Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   from?: string;
-  /** Filter results by billable metric id (e.g., workers_standard_requests). */
-  metric?: string;
   /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
@@ -231,7 +230,6 @@ export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
-    metric: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
   })
     .pipe(
@@ -260,11 +258,11 @@ export interface UsageGetResultItem {
   billingAccountId: string;
   /** Display name of the Cloudflare account. */
   billingAccountName: string;
-  /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only "Usage" is supported. */
+  /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only “Usage” is supported. */
   chargeCategory: UsageGetResultItemChargeCategory;
-  /** Self-contained summary of the charge's purpose and price. */
+  /** Self-contained summary of the charge’s purpose and price. */
   chargeDescription: string;
-  /** Indicates how often a charge occurs. Currently only "Usage-Based" is supported. */
+  /** Indicates how often a charge occurs. Currently only “Usage-Based” is supported. */
   chargeFrequency: UsageGetResultItemChargeFrequency;
   /** Exclusive end of the time interval during which the usage was consumed. */
   chargePeriodEnd: string;
@@ -272,7 +270,7 @@ export interface UsageGetResultItem {
   chargePeriodStart: string;
   /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
   consumedQuantity: number;
-  /** Unit of measure for the consumed quantity (e.g., "GB", "Requests", "vCPU-Hours"). */
+  /** Unit of measure for the consumed quantity (e.g., “GB”, “Requests”, “vCPU-Hours”). */
   consumedUnit: string;
   /** Name of the entity providing the underlying infrastructure or platform. */
   hostProviderName: string;
@@ -280,6 +278,8 @@ export interface UsageGetResultItem {
   invoiceIssuerName: string;
   /** Name of the entity that made the services available for purchase. */
   serviceProviderName: string;
+  /** The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId. */
+  xBillableMetricId: string;
   /** The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter. */
   xBillableMetricName: string;
   /** A charge serving as the basis for invoicing, inclusive of all reduced rates and discounts while excluding the amortization of upfront charges (one-time or recurring). */
@@ -314,9 +314,11 @@ export interface UsageGetResultItem {
   subAccountId?: string | null;
   /** Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name. */
   subAccountName?: string | null;
-  /** The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId. */
-  xBillableMetricId?: string | null;
-  /** The product family the charge belongs to (e.g., "R2", "Workers"). Cloudflare extension; replaces FOCUS ServiceName. */
+  /** The product category the charge belongs to (e.g., “Developer”, “Cloudflare One”). Cloudflare extension; replaces FOCUS ServiceCategory. */
+  xProductCategoryName?: string | null;
+  /** The unique identifier for the product family in the Cloudflare catalog. Cloudflare extension; replaces FOCUS ServiceId. */
+  xProductFamilyId?: string | null;
+  /** The product family the charge belongs to (e.g., “R2”, “Workers”). Cloudflare extension; replaces FOCUS ServiceName. */
   xProductFamilyName?: string | null;
   /** The identifier for the Cloudflare zone (zone tag). Cloudflare extension. */
   xZoneId?: string | null;
@@ -341,6 +343,7 @@ export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
     hostProviderName: S.String.pipe(T.Body("HostProviderName")),
     invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
     serviceProviderName: S.String.pipe(T.Body("ServiceProviderName")),
+    xBillableMetricId: S.String.pipe(T.Body("x_BillableMetricId")),
     xBillableMetricName: S.String.pipe(T.Body("x_BillableMetricName")),
     billedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("BilledCost"))),
     billingCurrency: S.optional(
@@ -374,8 +377,11 @@ export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
     subAccountName: S.optional(
       S.NullOr(S.String).pipe(T.Body("SubAccountName")),
     ),
-    xBillableMetricId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("x_BillableMetricId")),
+    xProductCategoryName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
+    ),
+    xProductFamilyId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("x_ProductFamilyId")),
     ),
     xProductFamilyName: S.optional(
       S.NullOr(S.String).pipe(T.Body("x_ProductFamilyName")),
@@ -405,7 +411,7 @@ export const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PaygoUsageRequest {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
-  /** Start date for the usage query (ISO 8601). */
+  /** Start date for the usage query (ISO 8601). The provided time range must include the subscription billing cycle anchor day, otherwise no usage data is returned. Use the info endpoint to retrieve the subscription anchor day. */
   from?: string;
   /** End date for the usage query (ISO 8601). */
   to?: string;
@@ -419,7 +425,7 @@ export const PaygoUsageRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.Http({
         method: "GET",
-        uri: "/accounts/{account_id}/paygo-usage",
+        uri: "/accounts/{account_id}/billable-usage",
         code: 200,
       }),
     )
@@ -428,29 +434,56 @@ export const PaygoUsageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaygoUsageRequest",
 }) as any as S.Schema<PaygoUsageRequest>;
 
+export type UsagePaygoResultItemChargeCategory = "Usage";
+export const UsagePaygoResultItemChargeCategory = /*@__PURE__*/ S.String;
+
 export interface UsagePaygoResultItem {
+  /** The amount invoiced for this charge. PayGo is billed directly by Cloudflare, so this equals ContractedCost. */
+  billedCost: number;
+  /** The identifier of the account the charge is billed to (account tag). */
+  billingAccountId: string;
+  /** The display name of the billing account. Null when the name could not be resolved. */
+  billingAccountName: string;
   /** Specifies the billing currency code (ISO 4217). */
   billingCurrency: string;
-  /** Indicates the start of the billing period. */
+  /** Indicates the start of the billing period. There is no `BillingPeriodEnd` counterpart; see the known gaps described on this schema. */
   billingPeriodStart: string;
+  /** Describes the nature of the charge. Always “Usage” for this endpoint, which only returns metered usage. */
+  chargeCategory: UsagePaygoResultItemChargeCategory;
+  /** Indicates whether the row corrects a previously invoiced billing period. Always null for this endpoint, which does not return corrections. */
+  chargeClass: string;
+  /** A human-readable summary of the charge. */
+  chargeDescription: string;
   /** Indicates the end of the charge period. */
   chargePeriodEnd: string;
   /** Indicates the start of the charge period. */
   chargePeriodStart: string;
   /** Specifies the quantity consumed during this charge period. */
   consumedQuantity: number;
-  /** A display name for the unit of measurement used for the product (for example, "GB-months", "GB-seconds"). May be empty when the unit is implicit in the service name. */
+  /** A display name for the unit of measurement used for the product (for example, “GB-months”, “GB-seconds”). May be empty when the unit is implicit in the service name. */
   consumedUnit: string;
   /** Specifies the cost for this charge period in the billing currency. */
   contractedCost: number;
   /** Specifies the cumulated cost for the billing period in the billing currency. */
   cumulatedContractedCost: number;
-  /** Specifies the cumulated pricing quantity for the billing period. */
+  /** Specifies the portion of usage that is actually subject to a unit price. */
   cumulatedPricingQuantity: number;
+  /** The amortized cost of the charge. PayGo has no upfront commitments, so this equals ContractedCost. */
+  effectiveCost: number;
+  /** The provider that hosts the infrastructure or platform the service runs on. */
+  hostProviderName: string;
+  /** The entity that issues the invoice for this charge. */
+  invoiceIssuerName: string;
+  /** The cost at published list prices, before any discount. PayGo has no commitment discounts, so this equals ContractedCost. */
+  listCost: number;
   /** Specifies the pricing quantity for this charge period. */
   pricingQuantity: number;
+  /** The unit that PricingQuantity is expressed in. Unlike ConsumedUnit this is never empty; it falls back to “Count” when the service has no explicit unit. */
+  pricingUnit: string;
   /** Identifies the Cloudflare service. */
   serviceName: string;
+  /** The provider of the purchased service. */
+  serviceProviderName: string;
   /** Identifies the product family for the Cloudflare service. */
   serviceFamilyName?: string | null;
   /** The identifier for the Cloudflare subscription. */
@@ -462,8 +495,16 @@ export interface UsagePaygoResultItem {
 }
 export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    billedCost: S.Number.pipe(T.Body("BilledCost")),
+    billingAccountId: S.String.pipe(T.Body("BillingAccountId")),
+    billingAccountName: S.String.pipe(T.Body("BillingAccountName")),
     billingCurrency: S.String.pipe(T.Body("BillingCurrency")),
     billingPeriodStart: S.String.pipe(T.Body("BillingPeriodStart")),
+    chargeCategory: UsagePaygoResultItemChargeCategory.pipe(
+      T.Body("ChargeCategory"),
+    ),
+    chargeClass: S.String.pipe(T.Body("ChargeClass")),
+    chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
     chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
     chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
     consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
@@ -471,8 +512,14 @@ export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
     contractedCost: S.Number.pipe(T.Body("ContractedCost")),
     cumulatedContractedCost: S.Number.pipe(T.Body("CumulatedContractedCost")),
     cumulatedPricingQuantity: S.Number.pipe(T.Body("CumulatedPricingQuantity")),
+    effectiveCost: S.Number.pipe(T.Body("EffectiveCost")),
+    hostProviderName: S.String.pipe(T.Body("HostProviderName")),
+    invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
+    listCost: S.Number.pipe(T.Body("ListCost")),
     pricingQuantity: S.Number.pipe(T.Body("PricingQuantity")),
+    pricingUnit: S.String.pipe(T.Body("PricingUnit")),
     serviceName: S.String.pipe(T.Body("ServiceName")),
+    serviceProviderName: S.String.pipe(T.Body("ServiceProviderName")),
     serviceFamilyName: S.optional(
       S.NullOr(S.String).pipe(T.Body("ServiceFamilyName")),
     ),
@@ -501,6 +548,460 @@ export const PaygoUsageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaygoUsageResponse",
 }) as any as S.Schema<PaygoUsageResponse>;
 
+export interface UsageGetAccountUsageInfoV1Request {
+  /** Represents a Cloudflare resource identifier tag. */
+  accountId: string;
+}
+export const UsageGetAccountUsageInfoV1Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/billable-usage/info",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "UsageGetAccountUsageInfoV1Request",
+}) as any as S.Schema<UsageGetAccountUsageInfoV1Request>;
+
+export interface UsageGetAccountUsageInfoV1ResponseSubscriptionsItem {
+  /** The identifier for the Cloudflare subscription. */
+  id: string;
+  /** The subscription billing cycle anchor timestamp. */
+  billingCycleAnchorTimestamp: string;
+  /** The subscription start timestamp. */
+  startTimestamp: string;
+  /** The subscription end timestamp. Omitted for active subscriptions; present only when the subscription has been cancelled. */
+  endTimestamp?: string | null;
+}
+export const UsageGetAccountUsageInfoV1ResponseSubscriptionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      billingCycleAnchorTimestamp: S.String.pipe(
+        T.Body("billing_cycle_anchor_timestamp"),
+      ),
+      startTimestamp: S.String.pipe(T.Body("start_timestamp")),
+      endTimestamp: S.optional(
+        S.NullOr(S.String).pipe(T.Body("end_timestamp")),
+      ),
+    }),
+  ).annotate({
+    identifier: "UsageGetAccountUsageInfoV1ResponseSubscriptionsItem",
+  }) as any as S.Schema<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
+
+export type UsageGetAccountUsageInfoV1ResponseSubscriptionsList =
+  Array<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
+export const UsageGetAccountUsageInfoV1ResponseSubscriptionsList =
+  /*@__PURE__*/ S.Array(
+    UsageGetAccountUsageInfoV1ResponseSubscriptionsItem,
+  ) as any as S.Schema<UsageGetAccountUsageInfoV1ResponseSubscriptionsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UsageGetAccountUsageInfoV1Response {
+  /** Indicates whether the account is covered. */
+  covered: boolean;
+  /** List of subscriptions for the account. */
+  subscriptions: UsageGetAccountUsageInfoV1ResponseSubscriptionsList;
+}
+export const UsageGetAccountUsageInfoV1Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    covered: S.Boolean,
+    subscriptions: UsageGetAccountUsageInfoV1ResponseSubscriptionsList,
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "UsageGetAccountUsageInfoV1Response",
+}) as any as S.Schema<UsageGetAccountUsageInfoV1Response>;
+
+export interface UsageGetAccountUsageV1Request {
+  /** Represents a Cloudflare resource identifier tag. */
+  accountId: string;
+  /** Start date for the usage query (ISO 8601). The provided time range must include the subscription billing cycle anchor day, otherwise no usage data is returned. Use the info endpoint to retrieve the subscription anchor day. */
+  from?: string;
+  /** End date for the usage query (ISO 8601). */
+  to?: string;
+}
+export const UsageGetAccountUsageV1Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    from: S.optional(S.String.pipe(T.Query())),
+    to: S.optional(S.String.pipe(T.Query())),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/billable-usage",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "UsageGetAccountUsageV1Request",
+}) as any as S.Schema<UsageGetAccountUsageV1Request>;
+
+export type UsageGetAccountUsageV1ResultItemChargeCategory = "Usage";
+export const UsageGetAccountUsageV1ResultItemChargeCategory =
+  /*@__PURE__*/ S.String;
+
+export interface UsageGetAccountUsageV1ResultItem {
+  /** The amount invoiced for this charge. PayGo is billed directly by Cloudflare, so this equals ContractedCost. */
+  billedCost: number;
+  /** The identifier of the account the charge is billed to (account tag). */
+  billingAccountId: string;
+  /** The display name of the billing account. Null when the name could not be resolved. */
+  billingAccountName: string;
+  /** Specifies the billing currency code (ISO 4217). */
+  billingCurrency: string;
+  /** Indicates the start of the billing period. There is no `BillingPeriodEnd` counterpart; see the known gaps described on this schema. */
+  billingPeriodStart: string;
+  /** Describes the nature of the charge. Always “Usage” for this endpoint, which only returns metered usage. */
+  chargeCategory: UsageGetAccountUsageV1ResultItemChargeCategory;
+  /** Indicates whether the row corrects a previously invoiced billing period. Always null for this endpoint, which does not return corrections. */
+  chargeClass: string;
+  /** A human-readable summary of the charge. */
+  chargeDescription: string;
+  /** Indicates the end of the charge period. */
+  chargePeriodEnd: string;
+  /** Indicates the start of the charge period. */
+  chargePeriodStart: string;
+  /** Specifies the quantity consumed during this charge period. */
+  consumedQuantity: number;
+  /** A display name for the unit of measurement used for the product (for example, “GB-months”, “GB-seconds”). May be empty when the unit is implicit in the service name. */
+  consumedUnit: string;
+  /** Specifies the cost for this charge period in the billing currency. */
+  contractedCost: number;
+  /** Specifies the cumulated cost for the billing period in the billing currency. */
+  cumulatedContractedCost: number;
+  /** Specifies the portion of usage that is actually subject to a unit price. */
+  cumulatedPricingQuantity: number;
+  /** The amortized cost of the charge. PayGo has no upfront commitments, so this equals ContractedCost. */
+  effectiveCost: number;
+  /** The provider that hosts the infrastructure or platform the service runs on. */
+  hostProviderName: string;
+  /** The entity that issues the invoice for this charge. */
+  invoiceIssuerName: string;
+  /** The cost at published list prices, before any discount. PayGo has no commitment discounts, so this equals ContractedCost. */
+  listCost: number;
+  /** Specifies the pricing quantity for this charge period. */
+  pricingQuantity: number;
+  /** The unit that PricingQuantity is expressed in. Unlike ConsumedUnit this is never empty; it falls back to “Count” when the service has no explicit unit. */
+  pricingUnit: string;
+  /** Identifies the Cloudflare service. */
+  serviceName: string;
+  /** The provider of the purchased service. */
+  serviceProviderName: string;
+  /** Identifies the product family for the Cloudflare service. */
+  serviceFamilyName?: string | null;
+  /** The identifier for the Cloudflare subscription. */
+  subscriptionId?: string | null;
+  /** The identifier for the Cloudflare zone (zone tag). */
+  zoneId?: string | null;
+  /** The display name of the Cloudflare zone. */
+  zoneName?: string | null;
+}
+export const UsageGetAccountUsageV1ResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billedCost: S.Number.pipe(T.Body("BilledCost")),
+    billingAccountId: S.String.pipe(T.Body("BillingAccountId")),
+    billingAccountName: S.String.pipe(T.Body("BillingAccountName")),
+    billingCurrency: S.String.pipe(T.Body("BillingCurrency")),
+    billingPeriodStart: S.String.pipe(T.Body("BillingPeriodStart")),
+    chargeCategory: UsageGetAccountUsageV1ResultItemChargeCategory.pipe(
+      T.Body("ChargeCategory"),
+    ),
+    chargeClass: S.String.pipe(T.Body("ChargeClass")),
+    chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
+    chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
+    chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
+    consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
+    consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
+    contractedCost: S.Number.pipe(T.Body("ContractedCost")),
+    cumulatedContractedCost: S.Number.pipe(T.Body("CumulatedContractedCost")),
+    cumulatedPricingQuantity: S.Number.pipe(T.Body("CumulatedPricingQuantity")),
+    effectiveCost: S.Number.pipe(T.Body("EffectiveCost")),
+    hostProviderName: S.String.pipe(T.Body("HostProviderName")),
+    invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
+    listCost: S.Number.pipe(T.Body("ListCost")),
+    pricingQuantity: S.Number.pipe(T.Body("PricingQuantity")),
+    pricingUnit: S.String.pipe(T.Body("PricingUnit")),
+    serviceName: S.String.pipe(T.Body("ServiceName")),
+    serviceProviderName: S.String.pipe(T.Body("ServiceProviderName")),
+    serviceFamilyName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("ServiceFamilyName")),
+    ),
+    subscriptionId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("SubscriptionId")),
+    ),
+    zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("ZoneId"))),
+    zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("ZoneName"))),
+  }),
+).annotate({
+  identifier: "UsageGetAccountUsageV1ResultItem",
+}) as any as S.Schema<UsageGetAccountUsageV1ResultItem>;
+
+export type UsageGetAccountUsageV1ResultList =
+  Array<UsageGetAccountUsageV1ResultItem>;
+export const UsageGetAccountUsageV1ResultList = /*@__PURE__*/ S.Array(
+  UsageGetAccountUsageV1ResultItem,
+) as any as S.Schema<UsageGetAccountUsageV1ResultList>;
+
+export type UsageGetAccountUsageV1Response = UsageGetAccountUsageV1ResultList;
+export const UsageGetAccountUsageV1Response = /*@__PURE__*/ S.suspend(() =>
+  UsageGetAccountUsageV1ResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "UsageGetAccountUsageV1Response",
+}) as any as S.Schema<UsageGetAccountUsageV1Response>;
+
+export interface UsageGetAccountUsageV2Request {
+  /** Represents a Cloudflare resource identifier tag. */
+  accountId: string;
+  /** Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
+  from?: string;
+  /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
+  to?: string;
+}
+export const UsageGetAccountUsageV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    from: S.optional(S.String.pipe(T.Query())),
+    to: S.optional(S.String.pipe(T.Query())),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/billable/usage",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "UsageGetAccountUsageV2Request",
+}) as any as S.Schema<UsageGetAccountUsageV2Request>;
+
+export type UsageGetAccountUsageV2ResultItemChargeCategory = "Usage";
+export const UsageGetAccountUsageV2ResultItemChargeCategory =
+  /*@__PURE__*/ S.String;
+
+export type UsageGetAccountUsageV2ResultItemChargeFrequency = "Usage-Based";
+export const UsageGetAccountUsageV2ResultItemChargeFrequency =
+  /*@__PURE__*/ S.String;
+
+export type UsageGetAccountUsageV2ResultItemChargeClass = "Correction";
+export const UsageGetAccountUsageV2ResultItemChargeClass =
+  /*@__PURE__*/ S.String;
+
+export interface UsageGetAccountUsageV2ResultItem {
+  /** Public identifier of the Cloudflare account (account tag). */
+  billingAccountId: string;
+  /** Display name of the Cloudflare account. */
+  billingAccountName: string;
+  /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only “Usage” is supported. */
+  chargeCategory: UsageGetAccountUsageV2ResultItemChargeCategory;
+  /** Self-contained summary of the charge’s purpose and price. */
+  chargeDescription: string;
+  /** Indicates how often a charge occurs. Currently only “Usage-Based” is supported. */
+  chargeFrequency: UsageGetAccountUsageV2ResultItemChargeFrequency;
+  /** Exclusive end of the time interval during which the usage was consumed. */
+  chargePeriodEnd: string;
+  /** Inclusive start of the time interval during which the usage was consumed. */
+  chargePeriodStart: string;
+  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
+  consumedQuantity: number;
+  /** Unit of measure for the consumed quantity (e.g., “GB”, “Requests”, “vCPU-Hours”). */
+  consumedUnit: string;
+  /** Name of the entity providing the underlying infrastructure or platform. */
+  hostProviderName: string;
+  /** Name of the entity responsible for invoicing for the services consumed. */
+  invoiceIssuerName: string;
+  /** Name of the entity that made the services available for purchase. */
+  serviceProviderName: string;
+  /** The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId. */
+  xBillableMetricId: string;
+  /** The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter. */
+  xBillableMetricName: string;
+  /** A charge serving as the basis for invoicing, inclusive of all reduced rates and discounts while excluding the amortization of upfront charges (one-time or recurring). */
+  billedCost?: number | null;
+  /** Currency that a charge was billed in (ISO 4217). */
+  billingCurrency?: string | null;
+  /** Exclusive end of the billing cycle that contains this usage record. */
+  billingPeriodEnd?: string | null;
+  /** Inclusive start of the billing cycle that contains this usage record. */
+  billingPeriodStart?: string | null;
+  /** Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period. */
+  chargeClass?: UsageGetAccountUsageV2ResultItemChargeClass | null;
+  /** Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity. */
+  contractedCost?: number | null;
+  /** The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts. */
+  contractedUnitPrice?: number | null;
+  /** The amortized cost of the charge after applying all reduced rates, discounts, and the applicable portion of relevant, prepaid purchases (one-time or recurring) that covered the charge. */
+  effectiveCost?: number | null;
+  /** Cost calculated by multiplying ListUnitPrice and the corresponding PricingQuantity. */
+  listCost?: number | null;
+  /** Suggested provider-published unit price for a single PricingUnit of the associated billable metric, exclusive of any discounts. */
+  listUnitPrice?: number | null;
+  /** Volume of a given service used or purchased, based on the PricingUnit. */
+  pricingQuantity?: number | null;
+  /** Provider-specified measurement unit for determining unit prices, indicating how the provider rates measured usage after applying pricing rules like block pricing. */
+  pricingUnit?: string | null;
+  /** Provider-assigned identifier for an isolated geographic area where a service is provided. */
+  regionId?: string | null;
+  /** Name of an isolated geographic area where a service is provided. */
+  regionName?: string | null;
+  /** Unique identifier assigned to a grouping of services. For Cloudflare, this is the subscription or contract ID. */
+  subAccountId?: string | null;
+  /** Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name. */
+  subAccountName?: string | null;
+  /** The product category the charge belongs to (e.g., “Developer”, “Cloudflare One”). Cloudflare extension; replaces FOCUS ServiceCategory. */
+  xProductCategoryName?: string | null;
+  /** The unique identifier for the product family in the Cloudflare catalog. Cloudflare extension; replaces FOCUS ServiceId. */
+  xProductFamilyId?: string | null;
+  /** The product family the charge belongs to (e.g., “R2”, “Workers”). Cloudflare extension; replaces FOCUS ServiceName. */
+  xProductFamilyName?: string | null;
+  /** The identifier for the Cloudflare zone (zone tag). Cloudflare extension. */
+  xZoneId?: string | null;
+  /** The display name of the Cloudflare zone. Cloudflare extension. */
+  xZoneName?: string | null;
+}
+export const UsageGetAccountUsageV2ResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Body("BillingAccountId")),
+    billingAccountName: S.String.pipe(T.Body("BillingAccountName")),
+    chargeCategory: UsageGetAccountUsageV2ResultItemChargeCategory.pipe(
+      T.Body("ChargeCategory"),
+    ),
+    chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
+    chargeFrequency: UsageGetAccountUsageV2ResultItemChargeFrequency.pipe(
+      T.Body("ChargeFrequency"),
+    ),
+    chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
+    chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
+    consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
+    consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
+    hostProviderName: S.String.pipe(T.Body("HostProviderName")),
+    invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
+    serviceProviderName: S.String.pipe(T.Body("ServiceProviderName")),
+    xBillableMetricId: S.String.pipe(T.Body("x_BillableMetricId")),
+    xBillableMetricName: S.String.pipe(T.Body("x_BillableMetricName")),
+    billedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("BilledCost"))),
+    billingCurrency: S.optional(
+      S.NullOr(S.String).pipe(T.Body("BillingCurrency")),
+    ),
+    billingPeriodEnd: S.optional(
+      S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd")),
+    ),
+    billingPeriodStart: S.optional(
+      S.NullOr(S.String).pipe(T.Body("BillingPeriodStart")),
+    ),
+    chargeClass: S.optional(
+      S.NullOr(UsageGetAccountUsageV2ResultItemChargeClass).pipe(
+        T.Body("ChargeClass"),
+      ),
+    ),
+    contractedCost: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("ContractedCost")),
+    ),
+    contractedUnitPrice: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice")),
+    ),
+    effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),
+    listCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ListCost"))),
+    listUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ListUnitPrice"))),
+    pricingQuantity: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("PricingQuantity")),
+    ),
+    pricingUnit: S.optional(S.NullOr(S.String).pipe(T.Body("PricingUnit"))),
+    regionId: S.optional(S.NullOr(S.String).pipe(T.Body("RegionId"))),
+    regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
+    subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
+    subAccountName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("SubAccountName")),
+    ),
+    xProductCategoryName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
+    ),
+    xProductFamilyId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("x_ProductFamilyId")),
+    ),
+    xProductFamilyName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("x_ProductFamilyName")),
+    ),
+    xZoneId: S.optional(S.NullOr(S.String).pipe(T.Body("x_ZoneId"))),
+    xZoneName: S.optional(S.NullOr(S.String).pipe(T.Body("x_ZoneName"))),
+  }),
+).annotate({
+  identifier: "UsageGetAccountUsageV2ResultItem",
+}) as any as S.Schema<UsageGetAccountUsageV2ResultItem>;
+
+export type UsageGetAccountUsageV2ResultList =
+  Array<UsageGetAccountUsageV2ResultItem>;
+export const UsageGetAccountUsageV2ResultList = /*@__PURE__*/ S.Array(
+  UsageGetAccountUsageV2ResultItem,
+) as any as S.Schema<UsageGetAccountUsageV2ResultList>;
+
+export type UsageGetAccountUsageV2Response = UsageGetAccountUsageV2ResultList;
+export const UsageGetAccountUsageV2Response = /*@__PURE__*/ S.suspend(() =>
+  UsageGetAccountUsageV2ResultList.pipe(
+    T.EnvelopePayloadRoot(),
+    T.KeyDictionary(KEY_DICTIONARY),
+  ),
+).annotate({
+  identifier: "UsageGetAccountUsageV2Response",
+}) as any as S.Schema<UsageGetAccountUsageV2Response>;
+
+export interface UsagePaygoInfoRequest {
+  /** Represents a Cloudflare resource identifier tag. */
+  accountId: string;
+}
+export const UsagePaygoInfoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/billable-usage/info",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "UsagePaygoInfoRequest",
+}) as any as S.Schema<UsagePaygoInfoRequest>;
+
+export type UsagePaygoInfoResponseSubscriptionsItem =
+  UsageGetAccountUsageInfoV1ResponseSubscriptionsItem;
+export const UsagePaygoInfoResponseSubscriptionsItem =
+  UsageGetAccountUsageInfoV1ResponseSubscriptionsItem;
+
+export type UsagePaygoInfoResponseSubscriptionsList =
+  Array<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
+export const UsagePaygoInfoResponseSubscriptionsList = /*@__PURE__*/ S.Array(
+  UsageGetAccountUsageInfoV1ResponseSubscriptionsItem,
+) as any as S.Schema<UsagePaygoInfoResponseSubscriptionsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UsagePaygoInfoResponse {
+  /** Indicates whether the account is covered. */
+  covered: boolean;
+  /** List of subscriptions for the account. */
+  subscriptions: UsagePaygoInfoResponseSubscriptionsList;
+}
+export const UsagePaygoInfoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    covered: S.Boolean,
+    subscriptions: UsagePaygoInfoResponseSubscriptionsList,
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "UsagePaygoInfoResponse",
+}) as any as S.Schema<UsagePaygoInfoResponse>;
+
 export type GetProfileError = CloudflareOpError;
 /** Gets the current billing profile for the account. */
 export const getProfile: API.OperationMethod<
@@ -517,7 +1018,7 @@ export const getProfile: API.OperationMethod<
 }));
 
 export type GetUsageError = CloudflareOpError;
-/** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
+/** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
 export const getUsage: API.OperationMethod<
   GetUsageRequest,
   GetUsageResponse,
@@ -532,7 +1033,7 @@ export const getUsage: API.OperationMethod<
 }));
 
 export type PaygoUsageError = CloudflareOpError;
-/** Returns billable usage data for PayGo (self-serve) accounts. When no query parameters are provided, returns usage for the current billing period. This endpoint is currently in alpha and access is restricted to select accounts. While in alpha, the endpoint may get breaking changes. */
+/** Returns billable usage data for the account. When no query parameters are provided, returns usage for the current billing period. */
 export const paygoUsage: API.OperationMethod<
   PaygoUsageRequest,
   PaygoUsageResponse,
@@ -541,6 +1042,66 @@ export const paygoUsage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PaygoUsageRequest,
   output: PaygoUsageResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UsageGetAccountUsageInfoV1Error = CloudflareOpError;
+/** Returns high-level usage information for the account, including coverage, and subscription metadata. */
+export const usageGetAccountUsageInfoV1: API.OperationMethod<
+  UsageGetAccountUsageInfoV1Request,
+  UsageGetAccountUsageInfoV1Response,
+  UsageGetAccountUsageInfoV1Error,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UsageGetAccountUsageInfoV1Request,
+  output: UsageGetAccountUsageInfoV1Response,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UsageGetAccountUsageV1Error = CloudflareOpError;
+/** Returns billable usage data for the account. When no query parameters are provided, returns usage for the current billing period. */
+export const usageGetAccountUsageV1: API.OperationMethod<
+  UsageGetAccountUsageV1Request,
+  UsageGetAccountUsageV1Response,
+  UsageGetAccountUsageV1Error,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UsageGetAccountUsageV1Request,
+  output: UsageGetAccountUsageV1Response,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UsageGetAccountUsageV2Error = CloudflareOpError;
+/** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/)Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
+export const usageGetAccountUsageV2: API.OperationMethod<
+  UsageGetAccountUsageV2Request,
+  UsageGetAccountUsageV2Response,
+  UsageGetAccountUsageV2Error,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UsageGetAccountUsageV2Request,
+  output: UsageGetAccountUsageV2Response,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UsagePaygoInfoError = CloudflareOpError;
+/** Returns high-level usage information for the account, including coverage, and subscription metadata. */
+export const usagePaygoInfo: API.OperationMethod<
+  UsagePaygoInfoRequest,
+  UsagePaygoInfoResponse,
+  UsagePaygoInfoError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UsagePaygoInfoRequest,
+  output: UsagePaygoInfoResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
