@@ -128,3 +128,8 @@
 	url = https://github.com/distilled-mirror/spec-mirror-modal.git
 	ignore = dirty
 	shallow = true
+[submodule "packages/metabase/specs/spec-mirror-metabase"]
+	path = packages/metabase/specs/spec-mirror-metabase
+	url = https://github.com/distilled-mirror/spec-mirror-metabase.git
+	ignore = dirty
+	shallow = true

@@ -62,6 +62,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "hetzner" },
   { package: "huggingface" },
   { package: "kubernetes" },
+  { package: "metabase" },
   { package: "mongodb-atlas" },
   { package: "modal" },
   { package: "neon" },
