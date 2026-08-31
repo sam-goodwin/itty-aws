@@ -73,6 +73,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "supabase" },
   { package: "turso" },
   { package: "typesense" },
+  { package: "vanta" },
   { package: "vercel" },
   { package: "whop" },
   { package: "workos" },
