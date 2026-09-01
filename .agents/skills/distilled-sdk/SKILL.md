@@ -153,10 +153,13 @@ patches that do run in `generate.ts` are written back into `.generated-specs`.
 how Fly's whole chain vanished after the spec-mirror prefixed paths with
 `/v1`). Pass `onStalePatch: "warn"` only if you truly want skip.
 
-To rename operations, prefer `rewriteOperationIds` on `runOpenApiConvert`
-(lookup by the spec's current `operationId`, optionally method + path) over
-JSON pointers at `/paths/~1foo/get/operationId` — those break when upstream
-adds a prefix. Patch the spec, not the generated TypeScript.
+Operation **names** are convert policy, not patches. Pass
+`operationNaming: "verbNoun"` on `runOpenApiConvert` so go-swagger
+`Apps_list` / `Apps_show` become `listApps` / `getApp` in the Smithy model
+(and the SDK). Irregulars go in `operationNames` (lookup by `"METHOD path"`,
+then operationId) — PUT vs PATCH that share an upstream id need the path
+key. Do not RFC-6902-patch `/paths/~1foo/get/operationId`; those break when
+upstream adds a prefix. Patch the spec, not the generated TypeScript.
 
 ## Step 6 — wire the submodule
 

@@ -8044,7 +8044,7 @@
         "smithy.api#documentation": "Get Regions\n\nList all regions on the platform with their details."
       }
     },
-    "com.flyio.machines#PostgresListRequest": {
+    "com.flyio.machines#ListPostgresRequest": {
       "type": "structure",
       "members": {
         "org_slug": {
@@ -8240,10 +8240,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresList": {
+    "com.flyio.machines#ListPostgres": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresListRequest"
+        "target": "com.flyio.machines#ListPostgresRequest"
       },
       "output": {
         "target": "com.flyio.machines#ListPostgresClustersResponse"
@@ -8265,7 +8265,7 @@
         "smithy.api#documentation": "List Postgres Clusters\n\nList Managed Postgres clusters for an organization."
       }
     },
-    "com.flyio.machines#PostgresCreateRequestPgMajorVersion": {
+    "com.flyio.machines#CreatePostgresRequestPgMajorVersion": {
       "type": "enum",
       "members": {
         "_16": {
@@ -8285,7 +8285,7 @@
         "smithy.api#documentation": "Postgres major version."
       }
     },
-    "com.flyio.machines#PostgresCreateRequestPlan": {
+    "com.flyio.machines#CreatePostgresRequestPlan": {
       "type": "enum",
       "members": {
         "BASIC": {
@@ -8323,7 +8323,7 @@
         "smithy.api#documentation": "Plan slug selecting CPU, memory, and disk sizing."
       }
     },
-    "com.flyio.machines#PostgresCreateRequestPoolMode": {
+    "com.flyio.machines#CreatePostgresRequestPoolMode": {
       "type": "enum",
       "members": {
         "SESSION": {
@@ -8343,7 +8343,7 @@
         "smithy.api#documentation": "Connection pooler mode."
       }
     },
-    "com.flyio.machines#PostgresCreateRequest": {
+    "com.flyio.machines#CreatePostgresRequest": {
       "type": "structure",
       "members": {
         "disk_size_gb": {
@@ -8366,20 +8366,20 @@
           }
         },
         "pg_major_version": {
-          "target": "com.flyio.machines#PostgresCreateRequestPgMajorVersion",
+          "target": "com.flyio.machines#CreatePostgresRequestPgMajorVersion",
           "traits": {
             "smithy.api#documentation": "Postgres major version."
           }
         },
         "plan": {
-          "target": "com.flyio.machines#PostgresCreateRequestPlan",
+          "target": "com.flyio.machines#CreatePostgresRequestPlan",
           "traits": {
             "smithy.api#documentation": "Plan slug selecting CPU, memory, and disk sizing.",
             "smithy.api#required": {}
           }
         },
         "pool_mode": {
-          "target": "com.flyio.machines#PostgresCreateRequestPoolMode",
+          "target": "com.flyio.machines#CreatePostgresRequestPoolMode",
           "traits": {
             "smithy.api#documentation": "Connection pooler mode."
           }
@@ -8707,10 +8707,10 @@
         "smithy.api#documentation": "Current lifecycle status."
       }
     },
-    "com.flyio.machines#PostgresCreate": {
+    "com.flyio.machines#CreatePostgres": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresCreateRequest"
+        "target": "com.flyio.machines#CreatePostgresRequest"
       },
       "output": {
         "target": "com.flyio.machines#ShowPostgresClusterResponse"
@@ -8735,7 +8735,7 @@
         "smithy.api#documentation": "Create Postgres Cluster\n\nCreate a Managed Postgres cluster for the organization named in the request body. Provisioning is asynchronous, and a name is generated when one is not supplied."
       }
     },
-    "com.flyio.machines#PostgresShowRequest": {
+    "com.flyio.machines#GetPostgresRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -8751,10 +8751,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresShow": {
+    "com.flyio.machines#GetPostgres": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresShowRequest"
+        "target": "com.flyio.machines#GetPostgresRequest"
       },
       "output": {
         "target": "com.flyio.machines#ShowPostgresClusterResponse"
@@ -8773,7 +8773,7 @@
         "smithy.api#documentation": "Get Postgres Cluster\n\nGet details of a specific Managed Postgres cluster."
       }
     },
-    "com.flyio.machines#PostgresDeleteRequest": {
+    "com.flyio.machines#DeletePostgresRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -8789,10 +8789,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresDelete": {
+    "com.flyio.machines#DeletePostgres": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresDeleteRequest"
+        "target": "com.flyio.machines#DeletePostgresRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8811,7 +8811,7 @@
         "smithy.api#documentation": "Delete Postgres Cluster\n\nDelete a Managed Postgres cluster. The cluster is marked for deletion and removed asynchronously."
       }
     },
-    "com.flyio.machines#PostgresAttachmentsCreateRequest": {
+    "com.flyio.machines#CreatePostgresAttachmentRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -8867,10 +8867,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresAttachmentsCreate": {
+    "com.flyio.machines#CreatePostgresAttachment": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresAttachmentsCreateRequest"
+        "target": "com.flyio.machines#CreatePostgresAttachmentRequest"
       },
       "output": {
         "target": "com.flyio.machines#CreatePostgresAttachmentResponse"
@@ -8889,7 +8889,7 @@
         "smithy.api#documentation": "Attach Cluster to App\n\nAttach a specific cluster to a Fly app. The attachment is created if it does not already exist."
       }
     },
-    "com.flyio.machines#PostgresAttachmentsDeleteRequest": {
+    "com.flyio.machines#DeletePostgresAttachmentRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -8913,10 +8913,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresAttachmentsDelete": {
+    "com.flyio.machines#DeletePostgresAttachment": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresAttachmentsDeleteRequest"
+        "target": "com.flyio.machines#DeletePostgresAttachmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8935,7 +8935,7 @@
         "smithy.api#documentation": "Detach Cluster from App\n\nDetach a specific cluster from a Fly app."
       }
     },
-    "com.flyio.machines#PostgresBackupsListRequest": {
+    "com.flyio.machines#ListPostgresBackupsRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9035,10 +9035,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresBackupsList": {
+    "com.flyio.machines#ListPostgresBackups": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresBackupsListRequest"
+        "target": "com.flyio.machines#ListPostgresBackupsRequest"
       },
       "output": {
         "target": "com.flyio.machines#ListPostgresBackupsResponse"
@@ -9057,7 +9057,7 @@
         "smithy.api#documentation": "List Backups\n\nList all backups associated with a specific cluster."
       }
     },
-    "com.flyio.machines#PostgresBackupsCreateRequestType": {
+    "com.flyio.machines#CreatePostgresBackupRequestType": {
       "type": "enum",
       "members": {
         "FULL": {
@@ -9083,7 +9083,7 @@
         "smithy.api#documentation": "Backup type."
       }
     },
-    "com.flyio.machines#PostgresBackupsCreateRequest": {
+    "com.flyio.machines#CreatePostgresBackupRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9095,7 +9095,7 @@
           }
         },
         "type": {
-          "target": "com.flyio.machines#PostgresBackupsCreateRequestType",
+          "target": "com.flyio.machines#CreatePostgresBackupRequestType",
           "traits": {
             "smithy.api#documentation": "Backup type.",
             "smithy.api#required": {}
@@ -9106,10 +9106,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresBackupsCreate": {
+    "com.flyio.machines#CreatePostgresBackup": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresBackupsCreateRequest"
+        "target": "com.flyio.machines#CreatePostgresBackupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9131,7 +9131,7 @@
         "smithy.api#documentation": "Create Backup\n\nCreate a backup for a specific cluster. The backup runs asynchronously and is rejected if one is already in progress."
       }
     },
-    "com.flyio.machines#PostgresDatabasesListRequest": {
+    "com.flyio.machines#ListPostgresDatabasesRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9175,10 +9175,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresDatabasesList": {
+    "com.flyio.machines#ListPostgresDatabases": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresDatabasesListRequest"
+        "target": "com.flyio.machines#ListPostgresDatabasesRequest"
       },
       "output": {
         "target": "com.flyio.machines#ListPostgresDatabasesResponse"
@@ -9197,7 +9197,7 @@
         "smithy.api#documentation": "List Databases\n\nList all databases within a specific cluster."
       }
     },
-    "com.flyio.machines#PostgresDatabasesCreateRequest": {
+    "com.flyio.machines#CreatePostgresDatabaseRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9229,10 +9229,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresDatabasesCreate": {
+    "com.flyio.machines#CreatePostgresDatabase": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresDatabasesCreateRequest"
+        "target": "com.flyio.machines#CreatePostgresDatabaseRequest"
       },
       "output": {
         "target": "com.flyio.machines#PostgresDatabaseResponse"
@@ -9257,7 +9257,7 @@
         "smithy.api#documentation": "Create Database\n\nCreate a database within a specific cluster."
       }
     },
-    "com.flyio.machines#PostgresDatabasesDeleteRequest": {
+    "com.flyio.machines#DeletePostgresDatabaseRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9281,10 +9281,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresDatabasesDelete": {
+    "com.flyio.machines#DeletePostgresDatabase": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresDatabasesDeleteRequest"
+        "target": "com.flyio.machines#DeletePostgresDatabaseRequest"
       },
       "output": {
         "target": "com.flyio.machines#PostgresDatabaseResponse"
@@ -9306,7 +9306,7 @@
         "smithy.api#documentation": "Drop Database\n\nDelete a specific database within a cluster, along with objects that depend on it."
       }
     },
-    "com.flyio.machines#PostgresExtensionsListRequest": {
+    "com.flyio.machines#ListPostgresExtensionsRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9400,10 +9400,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresExtensionsList": {
+    "com.flyio.machines#ListPostgresExtensions": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresExtensionsListRequest"
+        "target": "com.flyio.machines#ListPostgresExtensionsRequest"
       },
       "output": {
         "target": "com.flyio.machines#ListPostgresExtensionsResponse"
@@ -9425,7 +9425,7 @@
         "smithy.api#documentation": "List Extensions\n\nList all extensions available within a specific database, indicating which are installed."
       }
     },
-    "com.flyio.machines#PostgresExtensionsEnableRequest": {
+    "com.flyio.machines#EnablePostgresExtensionRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9468,10 +9468,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresExtensionsEnable": {
+    "com.flyio.machines#EnablePostgresExtension": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresExtensionsEnableRequest"
+        "target": "com.flyio.machines#EnablePostgresExtensionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9499,7 +9499,7 @@
         "smithy.api#documentation": "Enable Extension\n\nEnable a Postgres extension within a specific database. PostGIS extensions require a PostGIS-enabled cluster."
       }
     },
-    "com.flyio.machines#PostgresExtensionsDisableRequest": {
+    "com.flyio.machines#DisablePostgresExtensionRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9538,10 +9538,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresExtensionsDisable": {
+    "com.flyio.machines#DisablePostgresExtension": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresExtensionsDisableRequest"
+        "target": "com.flyio.machines#DisablePostgresExtensionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9566,7 +9566,7 @@
         "smithy.api#documentation": "Disable Extension\n\nDisable a specific Postgres extension within a database, optionally dropping objects that depend on it. System extensions cannot be disabled."
       }
     },
-    "com.flyio.machines#PostgresForkRequest": {
+    "com.flyio.machines#ForkPostgresRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9588,10 +9588,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresFork": {
+    "com.flyio.machines#ForkPostgres": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresForkRequest"
+        "target": "com.flyio.machines#ForkPostgresRequest"
       },
       "output": {
         "target": "com.flyio.machines#ShowPostgresClusterResponse"
@@ -9619,7 +9619,7 @@
         "smithy.api#documentation": "Fork Cluster to New Cluster\n\nFork a ready Managed Postgres cluster into a new cluster that inherits the source's settings. The source cluster is left unchanged, and the fork is provisioned asynchronously."
       }
     },
-    "com.flyio.machines#PostgresRestoreRequest": {
+    "com.flyio.machines#RestorePostgresRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9653,10 +9653,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresRestore": {
+    "com.flyio.machines#RestorePostgres": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresRestoreRequest"
+        "target": "com.flyio.machines#RestorePostgresRequest"
       },
       "output": {
         "target": "com.flyio.machines#ShowPostgresClusterResponse"
@@ -9681,7 +9681,7 @@
         "smithy.api#documentation": "Restore Backup or Point in Time to New Cluster\n\nRestore a backup, or a point in time within the cluster's PITR recovery window, into a new Managed Postgres cluster. The source cluster is left unchanged, and a new cluster is provisioned asynchronously."
       }
     },
-    "com.flyio.machines#PostgresUsersListRequest": {
+    "com.flyio.machines#ListPostgresUsersRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9757,10 +9757,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresUsersList": {
+    "com.flyio.machines#ListPostgresUsers": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresUsersListRequest"
+        "target": "com.flyio.machines#ListPostgresUsersRequest"
       },
       "output": {
         "target": "com.flyio.machines#ListPostgresUsersResponse"
@@ -9779,7 +9779,7 @@
         "smithy.api#documentation": "List Users\n\nList all Postgres users within a specific cluster."
       }
     },
-    "com.flyio.machines#PostgresUsersCreateRequestRole": {
+    "com.flyio.machines#CreatePostgresUserRequestRole": {
       "type": "enum",
       "members": {
         "SCHEMA_ADMIN": {
@@ -9805,7 +9805,7 @@
         "smithy.api#documentation": "Role to grant the user."
       }
     },
-    "com.flyio.machines#PostgresUsersCreateRequest": {
+    "com.flyio.machines#CreatePostgresUserRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9817,7 +9817,7 @@
           }
         },
         "role": {
-          "target": "com.flyio.machines#PostgresUsersCreateRequestRole",
+          "target": "com.flyio.machines#CreatePostgresUserRequestRole",
           "traits": {
             "smithy.api#documentation": "Role to grant the user.",
             "smithy.api#required": {}
@@ -9844,10 +9844,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresUsersCreate": {
+    "com.flyio.machines#CreatePostgresUser": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresUsersCreateRequest"
+        "target": "com.flyio.machines#CreatePostgresUserRequest"
       },
       "output": {
         "target": "com.flyio.machines#CreatePostgresUserResponse"
@@ -9875,7 +9875,7 @@
         "smithy.api#documentation": "Create User\n\nCreate a Postgres user within a specific cluster. Fetch the generated password from the credentials endpoint."
       }
     },
-    "com.flyio.machines#PostgresUsersUpdateRoleRequestRole": {
+    "com.flyio.machines#UpdatePostgresUserRoleRequestRole": {
       "type": "enum",
       "members": {
         "SCHEMA_ADMIN": {
@@ -9901,7 +9901,7 @@
         "smithy.api#documentation": "New role for the user."
       }
     },
-    "com.flyio.machines#PostgresUsersUpdateRoleRequest": {
+    "com.flyio.machines#UpdatePostgresUserRoleRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9921,7 +9921,7 @@
           }
         },
         "role": {
-          "target": "com.flyio.machines#PostgresUsersUpdateRoleRequestRole",
+          "target": "com.flyio.machines#UpdatePostgresUserRoleRequestRole",
           "traits": {
             "smithy.api#documentation": "New role for the user.",
             "smithy.api#required": {}
@@ -9932,10 +9932,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresUsersUpdateRole": {
+    "com.flyio.machines#UpdatePostgresUserRole": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresUsersUpdateRoleRequest"
+        "target": "com.flyio.machines#UpdatePostgresUserRoleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9960,7 +9960,7 @@
         "smithy.api#documentation": "Update User Role\n\nUpdate a specific Postgres user's role within a cluster."
       }
     },
-    "com.flyio.machines#PostgresUsersDeleteRequest": {
+    "com.flyio.machines#DeletePostgresUserRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -9984,10 +9984,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#PostgresUsersDelete": {
+    "com.flyio.machines#DeletePostgresUser": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresUsersDeleteRequest"
+        "target": "com.flyio.machines#DeletePostgresUserRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10086,7 +10086,7 @@
         "smithy.api#documentation": "Get User Credentials\n\nGet the connection credentials for a specific Postgres user within a cluster."
       }
     },
-    "com.flyio.machines#PostgresUsersRotatePasswordRequest": {
+    "com.flyio.machines#RotatePostgresUserPasswordRequest": {
       "type": "structure",
       "members": {
         "postgres_cluster_id": {
@@ -10125,10 +10125,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PostgresUsersRotatePassword": {
+    "com.flyio.machines#RotatePostgresUserPassword": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PostgresUsersRotatePasswordRequest"
+        "target": "com.flyio.machines#RotatePostgresUserPasswordRequest"
       },
       "output": {
         "target": "com.flyio.machines#RotatePostgresPasswordResponse"
@@ -10966,70 +10966,70 @@
           "target": "com.flyio.machines#GetRegions"
         },
         {
-          "target": "com.flyio.machines#PostgresList"
+          "target": "com.flyio.machines#ListPostgres"
         },
         {
-          "target": "com.flyio.machines#PostgresCreate"
+          "target": "com.flyio.machines#CreatePostgres"
         },
         {
-          "target": "com.flyio.machines#PostgresShow"
+          "target": "com.flyio.machines#GetPostgres"
         },
         {
-          "target": "com.flyio.machines#PostgresDelete"
+          "target": "com.flyio.machines#DeletePostgres"
         },
         {
-          "target": "com.flyio.machines#PostgresAttachmentsCreate"
+          "target": "com.flyio.machines#CreatePostgresAttachment"
         },
         {
-          "target": "com.flyio.machines#PostgresAttachmentsDelete"
+          "target": "com.flyio.machines#DeletePostgresAttachment"
         },
         {
-          "target": "com.flyio.machines#PostgresBackupsList"
+          "target": "com.flyio.machines#ListPostgresBackups"
         },
         {
-          "target": "com.flyio.machines#PostgresBackupsCreate"
+          "target": "com.flyio.machines#CreatePostgresBackup"
         },
         {
-          "target": "com.flyio.machines#PostgresDatabasesList"
+          "target": "com.flyio.machines#ListPostgresDatabases"
         },
         {
-          "target": "com.flyio.machines#PostgresDatabasesCreate"
+          "target": "com.flyio.machines#CreatePostgresDatabase"
         },
         {
-          "target": "com.flyio.machines#PostgresDatabasesDelete"
+          "target": "com.flyio.machines#DeletePostgresDatabase"
         },
         {
-          "target": "com.flyio.machines#PostgresExtensionsList"
+          "target": "com.flyio.machines#ListPostgresExtensions"
         },
         {
-          "target": "com.flyio.machines#PostgresExtensionsEnable"
+          "target": "com.flyio.machines#EnablePostgresExtension"
         },
         {
-          "target": "com.flyio.machines#PostgresExtensionsDisable"
+          "target": "com.flyio.machines#DisablePostgresExtension"
         },
         {
-          "target": "com.flyio.machines#PostgresFork"
+          "target": "com.flyio.machines#ForkPostgres"
         },
         {
-          "target": "com.flyio.machines#PostgresRestore"
+          "target": "com.flyio.machines#RestorePostgres"
         },
         {
-          "target": "com.flyio.machines#PostgresUsersList"
+          "target": "com.flyio.machines#ListPostgresUsers"
         },
         {
-          "target": "com.flyio.machines#PostgresUsersCreate"
+          "target": "com.flyio.machines#CreatePostgresUser"
         },
         {
-          "target": "com.flyio.machines#PostgresUsersUpdateRole"
+          "target": "com.flyio.machines#UpdatePostgresUserRole"
         },
         {
-          "target": "com.flyio.machines#PostgresUsersDelete"
+          "target": "com.flyio.machines#DeletePostgresUser"
         },
         {
           "target": "com.flyio.machines#PostgresUsersCredentials"
         },
         {
-          "target": "com.flyio.machines#PostgresUsersRotatePassword"
+          "target": "com.flyio.machines#RotatePostgresUserPassword"
         },
         {
           "target": "com.flyio.machines#AuthenticateToken"

@@ -5,8 +5,9 @@
  * spec file, apply the RFC-6902 patch chain to the OpenAPI document (v0
  * semantics: `*.patch.json` files in sorted name order, `{ description,
  * patches }` shape; stale targets fail the run unless `onStalePatch: "warn"`),
- * run the optional preprocess hook, rewrite operationIds, convert with
- * {@link convertOpenApiToSmithy}, and write `.generated-specs/<name>.json`.
+ * run the optional preprocess hook, optionally rewrite OpenAPI operationIds,
+ * convert with {@link convertOpenApiToSmithy} (which owns verbNoun naming),
+ * and write `.generated-specs/<name>.json`.
  *
  * A provider's `scripts/convert.ts` is: a `runOpenApiConvert` call. The
  * separate `scripts/generate.ts` (an SdkSpec + `runGeneratorCli`) then
@@ -42,9 +43,11 @@ export interface OpenApiSpecEntry {
    */
   readonly preprocess?: (spec: any) => unknown | void;
   /**
-   * Rewrite OpenAPI `operationId`s after the RFC-6902 chain and
-   * {@link preprocess}. Prefer this over JSON-pointer patches that target
-   * `/paths/~1…/operationId` — those go stale when upstream prefixes paths.
+   * Mutate OpenAPI `operationId`s after the RFC-6902 chain and
+   * {@link preprocess}. Prefer {@link OpenApiConvertOptions.operationNaming}
+   * (`"verbNoun"`) plus {@link OpenApiConvertOptions.operationNames} — naming
+   * is a convert policy, not a spec edit. Keep this for a later step that
+   * still reads the OpenAPI id.
    */
   readonly rewriteOperationIds?: OperationIdRewrite;
   /** Per-spec converter option overrides (merged over the shared options). */

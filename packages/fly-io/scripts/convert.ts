@@ -5,7 +5,7 @@
  *   machines  OpenAPI  specs/spec-mirror-fly-io/specs/openapi.json
  *             → .generated-specs/machines.json
  *             patches: patches/*.patch.json then patches/machines/*.patch.json
- *             operationIds: rewriteMachinesOperationId (not JSON pointers)
+ *             operationNaming: verbNoun (not JSON-pointer patches)
  *
  *   sprites   OpenAPI  specs/sprites/openapi.json (hand-authored; no
  *             published OpenAPI at api.sprites.dev)
@@ -39,7 +39,7 @@ import {
   isStaleTargetError,
   type PatchFile,
 } from "@distilled.cloud/core/json-patch";
-import { rewriteMachinesOperationId } from "./machines-operation-ids.ts";
+import { MACHINES_OPERATION_NAMES } from "./machines-operation-ids.ts";
 
 const root = `${import.meta.dir}/..`;
 const patchesRoot = path.join(root, "patches");
@@ -91,7 +91,6 @@ await runOpenApiConvert({
     {
       name: "machines",
       specPath: "specs/spec-mirror-fly-io/specs/openapi.json",
-      rewriteOperationIds: rewriteMachinesOperationId,
       preprocess: (spec) => {
         const badPatches: string[] = [];
         for (const { file, parsed } of machinesPatches) {
@@ -134,6 +133,8 @@ await runOpenApiConvert({
     statusToErrorClass: STATUS_TO_ERROR,
     defaultErrorStatuses: DEFAULT_ERROR_STATUSES,
     skipDeprecated: true,
+    operationNaming: "verbNoun",
+    operationNames: MACHINES_OPERATION_NAMES,
   },
 });
 
