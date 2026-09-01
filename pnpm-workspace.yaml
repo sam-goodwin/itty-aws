@@ -17,8 +17,8 @@ catalogs:
   build:
     typescript: ^7.0.2
   effect:
-    "@effect/platform-bun": ">=4.0.0-rc.111 || >=4.0.0"
-    effect: ">=4.0.0-rc.111 || >=4.0.0"
+    "@effect/platform-bun": ">=4.0.0-rc.112 || >=4.0.0"
+    effect: ">=4.0.0-rc.112 || >=4.0.0"
   shared:
     fast-xml-parser: ^5.3.4
   tooling:
@@ -31,6 +31,6 @@ catalogs:
     pathe: ^2.0.3
 
 minimumReleaseAgeExclude:
-  - "@effect/platform-bun@4.0.0-rc.111"
-  - "@effect/platform-node-shared@4.0.0-rc.111"
-  - effect@4.0.0-rc.111
+  - "@effect/platform-bun@4.0.0-rc.112"
+  - "@effect/platform-node-shared@4.0.0-rc.112"
+  - effect@4.0.0-rc.112

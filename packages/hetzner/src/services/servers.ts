@@ -14,6 +14,29 @@ import * as Retry from "../retry.ts";
 
 export type { HetznerOpError, HetznerOpContext };
 
+/** The project has no remaining Server quota (Hetzner `resource_limit_exceeded`, HTTP 403). Often a race after a delete — retry. */
+export class ServerLimitExceeded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<ServerLimitExceeded>()("ServerLimitExceeded", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403, message: { includes: "server limit" } }],
+  ) {}
+
+/** The Server could not be placed (Hetzner `resource_unavailable` / `placement_error`, HTTP 412). Spread groups and location capacity recover — retry. */
+export class ServerPlacementError
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<ServerPlacementError>()(
+      "ServerPlacementError",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 412, message: { includes: "placement" } }],
+  ) {}
+
 export type CreateServerRequestSshKeysItem = number | string;
 export const CreateServerRequestSshKeysItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateServerRequestSshKeysItem>;
@@ -3233,7 +3256,10 @@ export const UpdateServerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateServerResponse",
 }) as any as S.Schema<UpdateServerResponse>;
 
-export type CreateServerError = HetznerOpError;
+export type CreateServerError =
+  | ServerLimitExceeded
+  | ServerPlacementError
+  | HetznerOpError;
 /** Create a Server Creates a new Server. Returns preliminary information about the Server as well as an Action that covers progress of creation. #### Operation specific errors */
 export const createServer: API.OperationMethod<
   CreateServerRequest,
@@ -3243,7 +3269,7 @@ export const createServer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateServerRequest,
   output: CreateServerResponse,
-  errors: [UnknownHetznerError],
+  errors: [ServerLimitExceeded, ServerPlacementError, UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
 }));

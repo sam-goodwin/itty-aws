@@ -25,6 +25,18 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.email_routing#GetRule/output/target",
       "value": "com.cloudflare.email_routing#GetRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_routing#GetRule/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.email_routing#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.email_routing#EmailRoutingRuleNotFound"
+        }
+      ]
     }
   ]
 }

@@ -35,6 +35,9 @@
         },
         {
           "target": "com.cloudflare.email_routing#DestinationNotVerified"
+        },
+        {
+          "target": "com.cloudflare.email_routing#WorkerScriptNotFound"
         }
       ]
     }

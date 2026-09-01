@@ -15,7 +15,9 @@ export type { HetznerOpError, HetznerOpContext };
 
 /** [Transaction signature (TSIG)](https://en.wikipedia.org/wiki/TSIG) algorithm used to generate the TSIG key. */
 export type ChangeZonePrimaryNameserversRequestPrimaryNameserversItemTsigAlgorithm =
-  "hmac-md5" | "hmac-sha1" | "hmac-sha256";
+  | "hmac-md5"
+  | "hmac-sha1"
+  | "hmac-sha256";
 export const ChangeZonePrimaryNameserversRequestPrimaryNameserversItemTsigAlgorithm =
   /*@__PURE__*/ S.String;
 

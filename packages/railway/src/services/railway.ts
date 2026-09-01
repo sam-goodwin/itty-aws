@@ -597,7 +597,7 @@ export const AuditLogRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query auditLog($id: String!, $workspaceId: String!) {\n  auditLog(id: $id, workspaceId: $workspaceId) {\n    context\n    createdAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    eventType\n    id\n    payload\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    workspaceId\n  }\n}",
+          "query auditLog($id: String!, $workspaceId: String!) {\n  auditLog(id: $id, workspaceId: $workspaceId) {\n    context\n    createdAt\n    environmentId\n    eventType\n    id\n    payload\n    projectId\n    workspaceId\n  }\n}",
         operationName: "auditLog",
         type: "query",
       }),
@@ -606,80 +606,14 @@ export const AuditLogRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuditLogRequest",
 }) as any as S.Schema<AuditLogRequest>;
 
-export type AuditLogResponseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const AuditLogResponseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-
-export type ActiveProjectFeatureFlag = "PLACEHOLDER";
-export const ActiveProjectFeatureFlag = /*@__PURE__*/ S.String;
-
-export type AuditLogResponseProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const AuditLogResponseProjectFeatureFlagsList = /*@__PURE__*/ S.Array(
-  ActiveProjectFeatureFlag,
-) as any as S.Schema<AuditLogResponseProjectFeatureFlagsList>;
-
-export type SubscriptionPlanType = "free" | "hobby" | "pro" | "trial";
-export const SubscriptionPlanType = /*@__PURE__*/ S.String;
-
-export interface AuditLogResponseProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: AuditLogResponseProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const AuditLogResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: AuditLogResponseProjectFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AuditLogResponseProject",
-}) as any as S.Schema<AuditLogResponseProject>;
-
 /** Selection set for `auditLog` (unwrapped from the GraphQL `data` envelope). */
 export interface AuditLogResponse {
   context: unknown | null;
   createdAt: string;
-  environment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
   environmentId: string | null;
   eventType: string;
   id: string;
   payload: unknown | null;
-  project: AuditLogResponseProject | null;
   projectId: string | null;
   workspaceId: string | null;
 }
@@ -687,12 +621,10 @@ export const AuditLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.NullOr(S.Unknown),
     createdAt: S.String,
-    environment: S.NullOr(AdminVolumeInstancesForVolumeResultItemEnvironment),
     environmentId: S.NullOr(S.String),
     eventType: S.String,
     id: S.String,
     payload: S.NullOr(S.Unknown),
-    project: S.NullOr(AuditLogResponseProject),
     projectId: S.NullOr(S.String),
     workspaceId: S.NullOr(S.String),
   }).pipe(T.ResponsePath("auditLog")),
@@ -800,7 +732,7 @@ export const AuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query auditLogs($after: String, $before: String, $filter: AuditLogFilterInput, $first: Int, $last: Int, $sort: SortOrder, $workspaceId: String!) {\n  auditLogs(after: $after, before: $before, filter: $filter, first: $first, last: $last, sort: $sort, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        context\n        createdAt\n        environment {\n          canAccess\n          canvasGroupRefs\n          configEtag\n          createdAt\n          deletedAt\n          id\n          isEphemeral\n          name\n          projectId\n          unmergedChangesCount\n          updatedAt\n        }\n        environmentId\n        eventType\n        id\n        payload\n        project {\n          baseEnvironmentId\n          botPrEnvironments\n          createdAt\n          deletedAt\n          description\n          expiredAt\n          featureFlags\n          focusedPrEnvironments\n          id\n          isPublic\n          isTempProject\n          name\n          prDeploys\n          primaryEnvironmentId\n          subscriptionPlanLimit\n          subscriptionType\n          teamId\n          updatedAt\n          workspaceId\n        }\n        projectId\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
+          "query auditLogs($after: String, $before: String, $filter: AuditLogFilterInput, $first: Int, $last: Int, $sort: SortOrder, $workspaceId: String!) {\n  auditLogs(after: $after, before: $before, filter: $filter, first: $first, last: $last, sort: $sort, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        context\n        createdAt\n        environmentId\n        eventType\n        id\n        payload\n        projectId\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
         operationName: "auditLogs",
         type: "query",
       }),
@@ -809,75 +741,13 @@ export const AuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuditLogsRequest",
 }) as any as S.Schema<AuditLogsRequest>;
 
-export type AuditLogsResponseEdgesItemNodeEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const AuditLogsResponseEdgesItemNodeEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-
-export type AuditLogsResponseEdgesItemNodeProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const AuditLogsResponseEdgesItemNodeProjectFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<AuditLogsResponseEdgesItemNodeProjectFeatureFlagsList>;
-
-export interface AuditLogsResponseEdgesItemNodeProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: AuditLogsResponseEdgesItemNodeProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const AuditLogsResponseEdgesItemNodeProject = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      baseEnvironmentId: S.NullOr(S.String),
-      botPrEnvironments: S.Boolean,
-      createdAt: S.String,
-      deletedAt: S.NullOr(S.String),
-      description: S.NullOr(S.String),
-      expiredAt: S.NullOr(S.String),
-      featureFlags: AuditLogsResponseEdgesItemNodeProjectFeatureFlagsList,
-      focusedPrEnvironments: S.Boolean,
-      id: S.String,
-      isPublic: S.Boolean,
-      isTempProject: S.Boolean,
-      name: S.String,
-      prDeploys: S.Boolean,
-      primaryEnvironmentId: S.NullOr(S.String),
-      subscriptionPlanLimit: S.Unknown,
-      subscriptionType: SubscriptionPlanType,
-      teamId: S.NullOr(S.String),
-      updatedAt: S.String,
-      workspaceId: S.NullOr(S.String),
-    }),
-).annotate({
-  identifier: "AuditLogsResponseEdgesItemNodeProject",
-}) as any as S.Schema<AuditLogsResponseEdgesItemNodeProject>;
-
 export interface AuditLogsResponseEdgesItemNode {
   context: unknown | null;
   createdAt: string;
-  environment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
   environmentId: string | null;
   eventType: string;
   id: string;
   payload: unknown | null;
-  project: AuditLogsResponseEdgesItemNodeProject | null;
   projectId: string | null;
   workspaceId: string | null;
 }
@@ -885,12 +755,10 @@ export const AuditLogsResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.NullOr(S.Unknown),
     createdAt: S.String,
-    environment: S.NullOr(AdminVolumeInstancesForVolumeResultItemEnvironment),
     environmentId: S.NullOr(S.String),
     eventType: S.String,
     id: S.String,
     payload: S.NullOr(S.Unknown),
-    project: S.NullOr(AuditLogsResponseEdgesItemNodeProject),
     projectId: S.NullOr(S.String),
     workspaceId: S.NullOr(S.String),
   }),
@@ -1100,12 +968,18 @@ export const BucketCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketCreateRequest",
 }) as any as S.Schema<BucketCreateRequest>;
 
+export type ActiveProjectFeatureFlag = "PLACEHOLDER";
+export const ActiveProjectFeatureFlag = /*@__PURE__*/ S.String;
+
 export type BucketCreateResponseProjectFeatureFlagsList =
   Array<ActiveProjectFeatureFlag>;
 export const BucketCreateResponseProjectFeatureFlagsList =
   /*@__PURE__*/ S.Array(
     ActiveProjectFeatureFlag,
   ) as any as S.Schema<BucketCreateResponseProjectFeatureFlagsList>;
+
+export type SubscriptionPlanType = "free" | "hobby" | "pro" | "trial";
+export const SubscriptionPlanType = /*@__PURE__*/ S.String;
 
 export interface BucketCreateResponseProject {
   baseEnvironmentId: string | null;
@@ -1554,7 +1428,7 @@ export const CanvasViewMergeRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation canvasViewMerge($sourceEnvironmentId: String!, $targetEnvironmentId: String!) {\n  canvasViewMerge(sourceEnvironmentId: $sourceEnvironmentId, targetEnvironmentId: $targetEnvironmentId) {\n    __typename\n  }\n}",
+          "mutation canvasViewMerge($sourceEnvironmentId: String!, $targetEnvironmentId: String!) {\n  canvasViewMerge(sourceEnvironmentId: $sourceEnvironmentId, targetEnvironmentId: $targetEnvironmentId)\n}",
         operationName: "canvasViewMerge",
         type: "mutation",
       }),
@@ -2095,7 +1969,7 @@ export const CloudAgentDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation cloudAgentDelete($id: ID!) {\n  cloudAgentDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation cloudAgentDelete($id: ID!) {\n  cloudAgentDelete(id: $id)\n}",
         operationName: "cloudAgentDelete",
         type: "mutation",
       }),
@@ -2329,7 +2203,7 @@ export const CloudAgentStateReportRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation cloudAgentStateReport($input: CloudAgentStateReportInput!) {\n  cloudAgentStateReport(input: $input) {\n    __typename\n  }\n}",
+          "mutation cloudAgentStateReport($input: CloudAgentStateReportInput!) {\n  cloudAgentStateReport(input: $input)\n}",
         operationName: "cloudAgentStateReport",
         type: "mutation",
       }),
@@ -2746,7 +2620,7 @@ export const CustomDomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id)\n}",
         operationName: "customDomainDelete",
         type: "mutation",
       }),
@@ -2773,7 +2647,7 @@ export const CustomDomainIssueCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation customDomainIssueCertificate($id: String!) {\n  customDomainIssueCertificate(id: $id) {\n    __typename\n  }\n}",
+          "mutation customDomainIssueCertificate($id: String!) {\n  customDomainIssueCertificate(id: $id)\n}",
         operationName: "customDomainIssueCertificate",
         type: "mutation",
       }),
@@ -2808,7 +2682,7 @@ export const CustomDomainUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort) {\n    __typename\n  }\n}",
+          "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort)\n}",
         operationName: "customDomainUpdate",
         type: "mutation",
       }),
@@ -3149,7 +3023,7 @@ export const DeploymentCancelRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation deploymentCancel($id: String!) {\n  deploymentCancel(id: $id) {\n    __typename\n  }\n}",
+          "mutation deploymentCancel($id: String!) {\n  deploymentCancel(id: $id)\n}",
         operationName: "deploymentCancel",
         type: "mutation",
       }),
@@ -3676,7 +3550,7 @@ export const DeploymentRemoveRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation deploymentRemove($id: String!) {\n  deploymentRemove(id: $id) {\n    __typename\n  }\n}",
+          "mutation deploymentRemove($id: String!) {\n  deploymentRemove(id: $id)\n}",
         operationName: "deploymentRemove",
         type: "mutation",
       }),
@@ -3703,7 +3577,7 @@ export const DeploymentRestartRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id) {\n    __typename\n  }\n}",
+          "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id)\n}",
         operationName: "deploymentRestart",
         type: "mutation",
       }),
@@ -4092,7 +3966,7 @@ export const DeploymentStopRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id) {\n    __typename\n  }\n}",
+          "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id)\n}",
         operationName: "deploymentStop",
         type: "mutation",
       }),
@@ -5277,7 +5151,7 @@ export const EnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    canvasGroupRefs\n    configEtag\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}",
+          "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    canvasGroupRefs\n    config\n    configEtag\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n    volumeInstances(first: 200) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
         operationName: "environment",
         type: "query",
       }),
@@ -5311,6 +5185,72 @@ export const EnvironmentResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentResponseMeta",
 }) as any as S.Schema<EnvironmentResponseMeta>;
 
+export interface EnvironmentResponseVolumeInstancesEdgesItemNode {
+  createdAt: string;
+  currentSizeMB: number;
+  deletedAt: string | null;
+  environmentId: string;
+  id: string;
+  isPendingDeletion: boolean;
+  mountPath: string;
+  region: string | null;
+  serviceId: string | null;
+  sizeMB: number;
+  state: VolumeState | null;
+  volume: AdminVolumeInstancesForVolumeResultItemVolume;
+  volumeId: string;
+}
+export const EnvironmentResponseVolumeInstancesEdgesItemNode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String,
+      currentSizeMB: S.Number,
+      deletedAt: S.NullOr(S.String),
+      environmentId: S.String,
+      id: S.String,
+      isPendingDeletion: S.Boolean,
+      mountPath: S.String,
+      region: S.NullOr(S.String),
+      serviceId: S.NullOr(S.String),
+      sizeMB: S.Number,
+      state: S.NullOr(VolumeState),
+      volume: AdminVolumeInstancesForVolumeResultItemVolume,
+      volumeId: S.String,
+    }),
+  ).annotate({
+    identifier: "EnvironmentResponseVolumeInstancesEdgesItemNode",
+  }) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesItemNode>;
+
+export interface EnvironmentResponseVolumeInstancesEdgesItem {
+  node: EnvironmentResponseVolumeInstancesEdgesItemNode;
+}
+export const EnvironmentResponseVolumeInstancesEdgesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      node: EnvironmentResponseVolumeInstancesEdgesItemNode,
+    }),
+  ).annotate({
+    identifier: "EnvironmentResponseVolumeInstancesEdgesItem",
+  }) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesItem>;
+
+export type EnvironmentResponseVolumeInstancesEdgesList =
+  Array<EnvironmentResponseVolumeInstancesEdgesItem>;
+export const EnvironmentResponseVolumeInstancesEdgesList =
+  /*@__PURE__*/ S.Array(
+    EnvironmentResponseVolumeInstancesEdgesItem,
+  ) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesList>;
+
+export interface EnvironmentResponseVolumeInstances {
+  edges: EnvironmentResponseVolumeInstancesEdgesList;
+}
+export const EnvironmentResponseVolumeInstances = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edges: EnvironmentResponseVolumeInstancesEdgesList,
+  }),
+).annotate({
+  identifier: "EnvironmentResponseVolumeInstances",
+}) as any as S.Schema<EnvironmentResponseVolumeInstances>;
+
 /** Selection set for `environment` (unwrapped from the GraphQL `data` envelope). */
 export interface EnvironmentResponse {
   canAccess: boolean;
@@ -5325,6 +5265,8 @@ export interface EnvironmentResponse {
   projectId: string;
   unmergedChangesCount: number | null;
   updatedAt: string;
+  volumeInstances: EnvironmentResponseVolumeInstances;
+  config: unknown;
 }
 export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5340,6 +5282,8 @@ export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
     projectId: S.String,
     unmergedChangesCount: S.NullOr(S.Number),
     updatedAt: S.String,
+    volumeInstances: EnvironmentResponseVolumeInstances,
+    config: S.Unknown,
   }).pipe(T.ResponsePath("environment")),
 ).annotate({
   identifier: "EnvironmentResponse",
@@ -5575,7 +5519,7 @@ export const EnvironmentDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id)\n}",
         operationName: "environmentDelete",
         type: "mutation",
       }),
@@ -5801,7 +5745,7 @@ export const EnvironmentPatchCommitRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation environmentPatchCommit($commitMessage: String, $environmentId: String!, $patch: EnvironmentConfig) {\n  environmentPatchCommit(commitMessage: $commitMessage, environmentId: $environmentId, patch: $patch) {\n    __typename\n  }\n}",
+          "mutation environmentPatchCommit($commitMessage: String, $environmentId: String!, $patch: EnvironmentConfig) {\n  environmentPatchCommit(commitMessage: $commitMessage, environmentId: $environmentId, patch: $patch)\n}",
         operationName: "environmentPatchCommit",
         type: "mutation",
       }),
@@ -5836,7 +5780,7 @@ export const EnvironmentPatchCommitStagedRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation environmentPatchCommitStaged($commitMessage: String, $environmentId: String!, $skipDeploys: Boolean) {\n  environmentPatchCommitStaged(commitMessage: $commitMessage, environmentId: $environmentId, skipDeploys: $skipDeploys) {\n    __typename\n  }\n}",
+          "mutation environmentPatchCommitStaged($commitMessage: String, $environmentId: String!, $skipDeploys: Boolean) {\n  environmentPatchCommitStaged(commitMessage: $commitMessage, environmentId: $environmentId, skipDeploys: $skipDeploys)\n}",
         operationName: "environmentPatchCommitStaged",
         type: "mutation",
       }),
@@ -6081,7 +6025,7 @@ export const EnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query environments($after: String, $before: String, $first: Int, $isEphemeral: Boolean, $last: Int, $projectId: String!) {\n  environments(after: $after, before: $before, first: $first, isEphemeral: $isEphemeral, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        canAccess\n        canvasGroupRefs\n        configEtag\n        createdAt\n        deletedAt\n        id\n        isEphemeral\n        meta {\n          baseBranch\n          branch\n          latestSuccessfulGitHubDeploymentId\n          prCommentId\n          prNumber\n          prRepo\n          prTitle\n          skippedResourceIds\n        }\n        name\n        projectId\n        unmergedChangesCount\n        updatedAt\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
+          "query environments($after: String, $before: String, $first: Int, $isEphemeral: Boolean, $last: Int, $projectId: String!) {\n  environments(after: $after, before: $before, first: $first, isEphemeral: $isEphemeral, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        deletedAt\n        id\n        isEphemeral\n        name\n        projectId\n        updatedAt\n        volumeInstances(first: 200) {\n          edges {\n            node {\n              createdAt\n              currentSizeMB\n              deletedAt\n              environmentId\n              id\n              isPendingDeletion\n              mountPath\n              region\n              serviceId\n              sizeMB\n              state\n              volume {\n                createdAt\n                id\n                name\n                projectId\n              }\n              volumeId\n            }\n          }\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
         operationName: "environments",
         type: "query",
       }),
@@ -6090,37 +6034,26 @@ export const EnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsRequest",
 }) as any as S.Schema<EnvironmentsRequest>;
 
-export type EnvironmentsResponseEdgesItemNodeMeta = EnvironmentResponseMeta;
-export const EnvironmentsResponseEdgesItemNodeMeta = EnvironmentResponseMeta;
-
 export interface EnvironmentsResponseEdgesItemNode {
-  canAccess: boolean;
-  canvasGroupRefs: unknown;
-  configEtag: string;
   createdAt: string;
   deletedAt: string | null;
   id: string;
   isEphemeral: boolean;
-  meta: EnvironmentResponseMeta | null;
   name: string;
   projectId: string;
-  unmergedChangesCount: number | null;
   updatedAt: string;
+  volumeInstances: EnvironmentResponseVolumeInstances;
 }
 export const EnvironmentsResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    canAccess: S.Boolean,
-    canvasGroupRefs: S.Unknown,
-    configEtag: S.String,
     createdAt: S.String,
     deletedAt: S.NullOr(S.String),
     id: S.String,
     isEphemeral: S.Boolean,
-    meta: S.NullOr(EnvironmentResponseMeta),
     name: S.String,
     projectId: S.String,
-    unmergedChangesCount: S.NullOr(S.Number),
     updatedAt: S.String,
+    volumeInstances: EnvironmentResponseVolumeInstances,
   }),
 ).annotate({
   identifier: "EnvironmentsResponseEdgesItemNode",
@@ -8668,7 +8601,7 @@ export const LoginSessionAuthRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation loginSessionAuth($input: LoginSessionAuthInput!) {\n  loginSessionAuth(input: $input) {\n    __typename\n  }\n}",
+          "mutation loginSessionAuth($input: LoginSessionAuthInput!) {\n  loginSessionAuth(input: $input)\n}",
         operationName: "loginSessionAuth",
         type: "mutation",
       }),
@@ -8695,7 +8628,7 @@ export const LoginSessionCancelRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation loginSessionCancel($code: String!) {\n  loginSessionCancel(code: $code) {\n    __typename\n  }\n}",
+          "mutation loginSessionCancel($code: String!) {\n  loginSessionCancel(code: $code)\n}",
         operationName: "loginSessionCancel",
         type: "mutation",
       }),
@@ -8722,7 +8655,7 @@ export const LoginSessionConsumeRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation loginSessionConsume($code: String!) {\n  loginSessionConsume(code: $code) {\n    __typename\n  }\n}",
+          "mutation loginSessionConsume($code: String!) {\n  loginSessionConsume(code: $code)\n}",
         operationName: "loginSessionConsume",
         type: "mutation",
       }),
@@ -8747,8 +8680,7 @@ export const LoginSessionCreateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
       T.GraphQLOp({
-        query:
-          "mutation loginSessionCreate {\n  loginSessionCreate {\n    __typename\n  }\n}",
+        query: "mutation loginSessionCreate {\n  loginSessionCreate\n}",
         operationName: "loginSessionCreate",
         type: "mutation",
       }),
@@ -8775,7 +8707,7 @@ export const LoginSessionVerifyRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation loginSessionVerify($code: String!) {\n  loginSessionVerify(code: $code) {\n    __typename\n  }\n}",
+          "mutation loginSessionVerify($code: String!) {\n  loginSessionVerify(code: $code)\n}",
         operationName: "loginSessionVerify",
         type: "mutation",
       }),
@@ -10665,8 +10597,7 @@ export const PrivateNetworkEndpointResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateNetworkEndpointResponseTagsList>;
 
-/** Selection set for `privateNetworkEndpoint` (unwrapped from the GraphQL `data` envelope). */
-export interface PrivateNetworkEndpointResponse {
+export interface PrivateNetworkEndpointValue {
   createdAt: string | null;
   deletedAt: string | null;
   dnsName: string;
@@ -10677,7 +10608,7 @@ export interface PrivateNetworkEndpointResponse {
   syncStatus: PrivateNetworkEndpointSyncStatus;
   tags: PrivateNetworkEndpointResponseTagsList;
 }
-export const PrivateNetworkEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+export const PrivateNetworkEndpointValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.NullOr(S.String),
     deletedAt: S.NullOr(S.String),
@@ -10688,7 +10619,18 @@ export const PrivateNetworkEndpointResponse = /*@__PURE__*/ S.suspend(() =>
     serviceInstanceId: S.String,
     syncStatus: PrivateNetworkEndpointSyncStatus,
     tags: PrivateNetworkEndpointResponseTagsList,
-  }).pipe(T.ResponsePath("privateNetworkEndpoint")),
+  }),
+).annotate({
+  identifier: "PrivateNetworkEndpointValue",
+}) as any as S.Schema<PrivateNetworkEndpointValue>;
+
+/** Selection set for `privateNetworkEndpoint` (unwrapped from the GraphQL `data` envelope). */
+export type PrivateNetworkEndpointResponse = PrivateNetworkEndpointValue | null;
+export const PrivateNetworkEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.NullOr(PrivateNetworkEndpointValue).pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("privateNetworkEndpoint"),
+  ),
 ).annotate({
   identifier: "PrivateNetworkEndpointResponse",
 }) as any as S.Schema<PrivateNetworkEndpointResponse>;
@@ -10787,7 +10729,7 @@ export const PrivateNetworkEndpointDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation privateNetworkEndpointDelete($id: String!) {\n  privateNetworkEndpointDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation privateNetworkEndpointDelete($id: String!) {\n  privateNetworkEndpointDelete(id: $id)\n}",
         operationName: "privateNetworkEndpointDelete",
         type: "mutation",
       }),
@@ -10823,7 +10765,7 @@ export const PrivateNetworkEndpointNameAvailableRequest =
       .pipe(
         T.GraphQLOp({
           query:
-            "query privateNetworkEndpointNameAvailable($environmentId: String!, $prefix: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointNameAvailable(environmentId: $environmentId, prefix: $prefix, privateNetworkId: $privateNetworkId) {\n    __typename\n  }\n}",
+            "query privateNetworkEndpointNameAvailable($environmentId: String!, $prefix: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointNameAvailable(environmentId: $environmentId, prefix: $prefix, privateNetworkId: $privateNetworkId)\n}",
           operationName: "privateNetworkEndpointNameAvailable",
           type: "query",
         }),
@@ -10858,7 +10800,7 @@ export const PrivateNetworkEndpointRenameRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation privateNetworkEndpointRename($dnsName: String!, $id: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointRename(dnsName: $dnsName, id: $id, privateNetworkId: $privateNetworkId) {\n    __typename\n  }\n}",
+          "mutation privateNetworkEndpointRename($dnsName: String!, $id: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointRename(dnsName: $dnsName, id: $id, privateNetworkId: $privateNetworkId)\n}",
         operationName: "privateNetworkEndpointRename",
         type: "mutation",
       }),
@@ -10957,7 +10899,7 @@ export const PrivateNetworksForEnvironmentDeleteRequest =
       .pipe(
         T.GraphQLOp({
           query:
-            "mutation privateNetworksForEnvironmentDelete($environmentId: String!) {\n  privateNetworksForEnvironmentDelete(environmentId: $environmentId) {\n    __typename\n  }\n}",
+            "mutation privateNetworksForEnvironmentDelete($environmentId: String!) {\n  privateNetworksForEnvironmentDelete(environmentId: $environmentId)\n}",
           operationName: "privateNetworksForEnvironmentDelete",
           type: "mutation",
         }),
@@ -10988,147 +10930,194 @@ export const ProjectRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
+          "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironmentId\n    createdAt\n    deletedAt\n    description\n    id\n    name\n    primaryEnvironmentId\n    updatedAt\n    workspaceId\n    services(first: 50) {\n      edges {\n        node {\n          createdAt\n          deletedAt\n          groupId\n          id\n          name\n          projectId\n          templateId\n        }\n      }\n    }\n    buckets(first: 50) {\n      edges {\n        node {\n          createdAt\n          groupId\n          id\n          name\n          projectId\n          updatedAt\n        }\n      }\n    }\n    groups(first: 50) {\n      edges {\n        node {\n          color\n          groupId\n          icon\n          id\n          isCollapsed\n          name\n          projectId\n        }\n      }\n    }\n  }\n}",
         operationName: "project",
         type: "query",
       }),
     ),
 ).annotate({ identifier: "ProjectRequest" }) as any as S.Schema<ProjectRequest>;
 
-export type ProjectResponseBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const ProjectResponseBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-
-export type ProjectResponseFeatureFlagsList = Array<ActiveProjectFeatureFlag>;
-export const ProjectResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
-  ActiveProjectFeatureFlag,
-) as any as S.Schema<ProjectResponseFeatureFlagsList>;
-
-export type ProjectResponseMembersItem = InviteCodeUseResponseMembersItem;
-export const ProjectResponseMembersItem = InviteCodeUseResponseMembersItem;
-
-export type ProjectResponseMembersList =
-  Array<InviteCodeUseResponseMembersItem>;
-export const ProjectResponseMembersList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
-) as any as S.Schema<ProjectResponseMembersList>;
-
-export type ProjectResponseTeam = InviteCodeUseResponseTeam;
-export const ProjectResponseTeam = InviteCodeUseResponseTeam;
-
-export type ProjectResponseWorkspaceUsersWithout2FAList = Array<string>;
-export const ProjectResponseWorkspaceUsersWithout2FAList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectResponseWorkspaceUsersWithout2FAList>;
-
-export interface ProjectResponseWorkspace {
-  adoptionLevel: number;
-  allowDeprecatedRegions: boolean | null;
-  avatar: string | null;
-  banReason: string | null;
+export interface ProjectResponseServicesEdgesItemNode {
   createdAt: string;
-  discordRole: string | null;
-  has2FAEnforcement: boolean;
-  hasAutomaticDiagnosis: boolean;
-  hasGuardrailsAccess: boolean;
-  hasHipaaBAA: boolean;
-  hasSAML: boolean;
+  deletedAt: string | null;
   id: string;
   name: string;
-  plan: Plan;
-  preferredRegion: string | null;
-  redactedDueTo2FAPending: boolean;
-  slackChannelId: string | null;
-  subscriptionModel: SubscriptionModel;
-  subscriptionPlanLimit: unknown | null;
-  supportTierOverride: SupportTierOverride | null;
-  updatedAt: string;
-  usersWithout2FA: ProjectResponseWorkspaceUsersWithout2FAList;
+  projectId: string;
+  groupId: string | null;
+  templateId: string | null;
 }
-export const ProjectResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
+export const ProjectResponseServicesEdgesItemNode = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdAt: S.String,
+      deletedAt: S.NullOr(S.String),
+      id: S.String,
+      name: S.String,
+      projectId: S.String,
+      groupId: S.NullOr(S.String),
+      templateId: S.NullOr(S.String),
+    }),
+).annotate({
+  identifier: "ProjectResponseServicesEdgesItemNode",
+}) as any as S.Schema<ProjectResponseServicesEdgesItemNode>;
+
+export interface ProjectResponseServicesEdgesItem {
+  node: ProjectResponseServicesEdgesItemNode;
+}
+export const ProjectResponseServicesEdgesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adoptionLevel: S.Number,
-    allowDeprecatedRegions: S.NullOr(S.Boolean),
-    avatar: S.NullOr(S.String),
-    banReason: S.NullOr(S.String),
-    createdAt: S.String,
-    discordRole: S.NullOr(S.String),
-    has2FAEnforcement: S.Boolean,
-    hasAutomaticDiagnosis: S.Boolean,
-    hasGuardrailsAccess: S.Boolean,
-    hasHipaaBAA: S.Boolean,
-    hasSAML: S.Boolean,
-    id: S.String,
-    name: S.String,
-    plan: Plan,
-    preferredRegion: S.NullOr(S.String),
-    redactedDueTo2FAPending: S.Boolean,
-    slackChannelId: S.NullOr(S.String),
-    subscriptionModel: SubscriptionModel,
-    subscriptionPlanLimit: S.NullOr(S.Unknown),
-    supportTierOverride: S.NullOr(SupportTierOverride),
-    updatedAt: S.String,
-    usersWithout2FA: ProjectResponseWorkspaceUsersWithout2FAList,
+    node: ProjectResponseServicesEdgesItemNode,
   }),
 ).annotate({
-  identifier: "ProjectResponseWorkspace",
-}) as any as S.Schema<ProjectResponseWorkspace>;
+  identifier: "ProjectResponseServicesEdgesItem",
+}) as any as S.Schema<ProjectResponseServicesEdgesItem>;
+
+export type ProjectResponseServicesEdgesList =
+  Array<ProjectResponseServicesEdgesItem>;
+export const ProjectResponseServicesEdgesList = /*@__PURE__*/ S.Array(
+  ProjectResponseServicesEdgesItem,
+) as any as S.Schema<ProjectResponseServicesEdgesList>;
+
+export interface ProjectResponseServices {
+  edges: ProjectResponseServicesEdgesList;
+}
+export const ProjectResponseServices = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edges: ProjectResponseServicesEdgesList,
+  }),
+).annotate({
+  identifier: "ProjectResponseServices",
+}) as any as S.Schema<ProjectResponseServices>;
+
+export interface ProjectResponseBucketsEdgesItemNode {
+  createdAt: string;
+  groupId: string | null;
+  id: string;
+  name: string;
+  projectId: string;
+  updatedAt: string;
+}
+export const ProjectResponseBucketsEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    groupId: S.NullOr(S.String),
+    id: S.String,
+    name: S.String,
+    projectId: S.String,
+    updatedAt: S.String,
+  }),
+).annotate({
+  identifier: "ProjectResponseBucketsEdgesItemNode",
+}) as any as S.Schema<ProjectResponseBucketsEdgesItemNode>;
+
+export interface ProjectResponseBucketsEdgesItem {
+  node: ProjectResponseBucketsEdgesItemNode;
+}
+export const ProjectResponseBucketsEdgesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    node: ProjectResponseBucketsEdgesItemNode,
+  }),
+).annotate({
+  identifier: "ProjectResponseBucketsEdgesItem",
+}) as any as S.Schema<ProjectResponseBucketsEdgesItem>;
+
+export type ProjectResponseBucketsEdgesList =
+  Array<ProjectResponseBucketsEdgesItem>;
+export const ProjectResponseBucketsEdgesList = /*@__PURE__*/ S.Array(
+  ProjectResponseBucketsEdgesItem,
+) as any as S.Schema<ProjectResponseBucketsEdgesList>;
+
+export interface ProjectResponseBuckets {
+  edges: ProjectResponseBucketsEdgesList;
+}
+export const ProjectResponseBuckets = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edges: ProjectResponseBucketsEdgesList,
+  }),
+).annotate({
+  identifier: "ProjectResponseBuckets",
+}) as any as S.Schema<ProjectResponseBuckets>;
+
+export interface ProjectResponseGroupsEdgesItemNode {
+  color: string | null;
+  groupId: string | null;
+  icon: string | null;
+  id: string;
+  isCollapsed: boolean | null;
+  name: string | null;
+  projectId: string;
+}
+export const ProjectResponseGroupsEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    color: S.NullOr(S.String),
+    groupId: S.NullOr(S.String),
+    icon: S.NullOr(S.String),
+    id: S.String,
+    isCollapsed: S.NullOr(S.Boolean),
+    name: S.NullOr(S.String),
+    projectId: S.String,
+  }),
+).annotate({
+  identifier: "ProjectResponseGroupsEdgesItemNode",
+}) as any as S.Schema<ProjectResponseGroupsEdgesItemNode>;
+
+export interface ProjectResponseGroupsEdgesItem {
+  node: ProjectResponseGroupsEdgesItemNode;
+}
+export const ProjectResponseGroupsEdgesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    node: ProjectResponseGroupsEdgesItemNode,
+  }),
+).annotate({
+  identifier: "ProjectResponseGroupsEdgesItem",
+}) as any as S.Schema<ProjectResponseGroupsEdgesItem>;
+
+export type ProjectResponseGroupsEdgesList =
+  Array<ProjectResponseGroupsEdgesItem>;
+export const ProjectResponseGroupsEdgesList = /*@__PURE__*/ S.Array(
+  ProjectResponseGroupsEdgesItem,
+) as any as S.Schema<ProjectResponseGroupsEdgesList>;
+
+export interface ProjectResponseGroups {
+  edges: ProjectResponseGroupsEdgesList;
+}
+export const ProjectResponseGroups = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edges: ProjectResponseGroupsEdgesList,
+  }),
+).annotate({
+  identifier: "ProjectResponseGroups",
+}) as any as S.Schema<ProjectResponseGroups>;
 
 /** Selection set for `project` (unwrapped from the GraphQL `data` envelope). */
 export interface ProjectResponse {
-  baseEnvironment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
   baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
   createdAt: string;
   deletedAt: string | null;
   description: string | null;
-  expiredAt: string | null;
-  featureFlags: ProjectResponseFeatureFlagsList;
-  focusedPrEnvironments: boolean;
   id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  members: ProjectResponseMembersList;
   name: string;
-  prDeploys: boolean;
   primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  team: InviteCodeUseResponseTeam | null;
-  teamId: string | null;
   updatedAt: string;
-  workspace: ProjectResponseWorkspace | null;
   workspaceId: string | null;
+  services: ProjectResponseServices;
+  buckets: ProjectResponseBuckets;
+  groups: ProjectResponseGroups;
 }
 export const ProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    baseEnvironment: S.NullOr(
-      AdminVolumeInstancesForVolumeResultItemEnvironment,
-    ),
     baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
     createdAt: S.String,
     deletedAt: S.NullOr(S.String),
     description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: ProjectResponseFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
     id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    members: ProjectResponseMembersList,
     name: S.String,
-    prDeploys: S.Boolean,
     primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    team: S.NullOr(InviteCodeUseResponseTeam),
-    teamId: S.NullOr(S.String),
     updatedAt: S.String,
-    workspace: S.NullOr(ProjectResponseWorkspace),
     workspaceId: S.NullOr(S.String),
+    services: ProjectResponseServices,
+    buckets: ProjectResponseBuckets,
+    groups: ProjectResponseGroups,
   }).pipe(T.ResponsePath("project")),
 ).annotate({
   identifier: "ProjectResponse",
@@ -11645,7 +11634,7 @@ export const ProjectDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation projectDelete($id: String!) {\n  projectDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation projectDelete($id: String!) {\n  projectDelete(id: $id)\n}",
         operationName: "projectDelete",
         type: "mutation",
       }),
@@ -12486,7 +12475,7 @@ export const ProjectsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query projects($after: String, $before: String, $first: Int, $includeDeleted: Boolean, $last: Int, $orderBy: ProjectsOrderBy, $userId: String, $workspaceId: String) {\n  projects(after: $after, before: $before, first: $first, includeDeleted: $includeDeleted, last: $last, orderBy: $orderBy, userId: $userId, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironment {\n          canAccess\n          canvasGroupRefs\n          configEtag\n          createdAt\n          deletedAt\n          id\n          isEphemeral\n          name\n          projectId\n          unmergedChangesCount\n          updatedAt\n        }\n        baseEnvironmentId\n        botPrEnvironments\n        createdAt\n        deletedAt\n        description\n        expiredAt\n        featureFlags\n        focusedPrEnvironments\n        id\n        isPublic\n        isTempProject\n        members {\n          avatar\n          email\n          id\n          name\n          role\n        }\n        name\n        prDeploys\n        primaryEnvironmentId\n        subscriptionPlanLimit\n        subscriptionType\n        team {\n          adoptionLevel\n          avatar\n          createdAt\n          id\n          name\n          preferredRegion\n          slackChannelId\n          supportTierOverride\n          updatedAt\n        }\n        teamId\n        updatedAt\n        workspace {\n          adoptionLevel\n          allowDeprecatedRegions\n          avatar\n          banReason\n          createdAt\n          discordRole\n          has2FAEnforcement\n          hasAutomaticDiagnosis\n          hasGuardrailsAccess\n          hasHipaaBAA\n          hasSAML\n          id\n          name\n          plan\n          preferredRegion\n          redactedDueTo2FAPending\n          slackChannelId\n          subscriptionModel\n          subscriptionPlanLimit\n          supportTierOverride\n          updatedAt\n          usersWithout2FA\n        }\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
+          "query projects($after: String, $before: String, $first: Int, $includeDeleted: Boolean, $last: Int, $orderBy: ProjectsOrderBy, $userId: String, $workspaceId: String) {\n  projects(after: $after, before: $before, first: $first, includeDeleted: $includeDeleted, last: $last, orderBy: $orderBy, userId: $userId, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironmentId\n        createdAt\n        deletedAt\n        description\n        id\n        name\n        primaryEnvironmentId\n        updatedAt\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
         operationName: "projects",
         type: "query",
       }),
@@ -12495,145 +12484,27 @@ export const ProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsRequest",
 }) as any as S.Schema<ProjectsRequest>;
 
-export type ProjectsResponseEdgesItemNodeBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const ProjectsResponseEdgesItemNodeBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-
-export type ProjectsResponseEdgesItemNodeFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const ProjectsResponseEdgesItemNodeFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<ProjectsResponseEdgesItemNodeFeatureFlagsList>;
-
-export type ProjectsResponseEdgesItemNodeMembersItem =
-  InviteCodeUseResponseMembersItem;
-export const ProjectsResponseEdgesItemNodeMembersItem =
-  InviteCodeUseResponseMembersItem;
-
-export type ProjectsResponseEdgesItemNodeMembersList =
-  Array<InviteCodeUseResponseMembersItem>;
-export const ProjectsResponseEdgesItemNodeMembersList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
-) as any as S.Schema<ProjectsResponseEdgesItemNodeMembersList>;
-
-export type ProjectsResponseEdgesItemNodeTeam = InviteCodeUseResponseTeam;
-export const ProjectsResponseEdgesItemNodeTeam = InviteCodeUseResponseTeam;
-
-export type ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList =
-  Array<string>;
-export const ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList>;
-
-export interface ProjectsResponseEdgesItemNodeWorkspace {
-  adoptionLevel: number;
-  allowDeprecatedRegions: boolean | null;
-  avatar: string | null;
-  banReason: string | null;
-  createdAt: string;
-  discordRole: string | null;
-  has2FAEnforcement: boolean;
-  hasAutomaticDiagnosis: boolean;
-  hasGuardrailsAccess: boolean;
-  hasHipaaBAA: boolean;
-  hasSAML: boolean;
-  id: string;
-  name: string;
-  plan: Plan;
-  preferredRegion: string | null;
-  redactedDueTo2FAPending: boolean;
-  slackChannelId: string | null;
-  subscriptionModel: SubscriptionModel;
-  subscriptionPlanLimit: unknown | null;
-  supportTierOverride: SupportTierOverride | null;
-  updatedAt: string;
-  usersWithout2FA: ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList;
-}
-export const ProjectsResponseEdgesItemNodeWorkspace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      adoptionLevel: S.Number,
-      allowDeprecatedRegions: S.NullOr(S.Boolean),
-      avatar: S.NullOr(S.String),
-      banReason: S.NullOr(S.String),
-      createdAt: S.String,
-      discordRole: S.NullOr(S.String),
-      has2FAEnforcement: S.Boolean,
-      hasAutomaticDiagnosis: S.Boolean,
-      hasGuardrailsAccess: S.Boolean,
-      hasHipaaBAA: S.Boolean,
-      hasSAML: S.Boolean,
-      id: S.String,
-      name: S.String,
-      plan: Plan,
-      preferredRegion: S.NullOr(S.String),
-      redactedDueTo2FAPending: S.Boolean,
-      slackChannelId: S.NullOr(S.String),
-      subscriptionModel: SubscriptionModel,
-      subscriptionPlanLimit: S.NullOr(S.Unknown),
-      supportTierOverride: S.NullOr(SupportTierOverride),
-      updatedAt: S.String,
-      usersWithout2FA:
-        ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList,
-    }),
-).annotate({
-  identifier: "ProjectsResponseEdgesItemNodeWorkspace",
-}) as any as S.Schema<ProjectsResponseEdgesItemNodeWorkspace>;
-
 export interface ProjectsResponseEdgesItemNode {
-  baseEnvironment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
   baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
   createdAt: string;
   deletedAt: string | null;
   description: string | null;
-  expiredAt: string | null;
-  featureFlags: ProjectsResponseEdgesItemNodeFeatureFlagsList;
-  focusedPrEnvironments: boolean;
   id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  members: ProjectsResponseEdgesItemNodeMembersList;
   name: string;
-  prDeploys: boolean;
   primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  team: InviteCodeUseResponseTeam | null;
-  teamId: string | null;
   updatedAt: string;
-  workspace: ProjectsResponseEdgesItemNodeWorkspace | null;
   workspaceId: string | null;
 }
 export const ProjectsResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    baseEnvironment: S.NullOr(
-      AdminVolumeInstancesForVolumeResultItemEnvironment,
-    ),
     baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
     createdAt: S.String,
     deletedAt: S.NullOr(S.String),
     description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: ProjectsResponseEdgesItemNodeFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
     id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    members: ProjectsResponseEdgesItemNodeMembersList,
     name: S.String,
-    prDeploys: S.Boolean,
     primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    team: S.NullOr(InviteCodeUseResponseTeam),
-    teamId: S.NullOr(S.String),
     updatedAt: S.String,
-    workspace: S.NullOr(ProjectsResponseEdgesItemNodeWorkspace),
     workspaceId: S.NullOr(S.String),
   }),
 ).annotate({
@@ -15961,7 +15832,7 @@ export const ServiceDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceDelete($environmentId: String, $id: String!) {\n  serviceDelete(environmentId: $environmentId, id: $id) {\n    __typename\n  }\n}",
+          "mutation serviceDelete($environmentId: String, $id: String!) {\n  serviceDelete(environmentId: $environmentId, id: $id)\n}",
         operationName: "serviceDelete",
         type: "mutation",
       }),
@@ -16217,7 +16088,7 @@ export const ServiceDomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id)\n}",
         operationName: "serviceDomainDelete",
         type: "mutation",
       }),
@@ -16263,7 +16134,7 @@ export const ServiceDomainUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceDomainUpdate($input: ServiceDomainUpdateInput!) {\n  serviceDomainUpdate(input: $input) {\n    __typename\n  }\n}",
+          "mutation serviceDomainUpdate($input: ServiceDomainUpdateInput!) {\n  serviceDomainUpdate(input: $input)\n}",
         operationName: "serviceDomainUpdate",
         type: "mutation",
       }),
@@ -16746,7 +16617,7 @@ export const ServiceInstanceDeployV2Request = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}",
+          "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId)\n}",
         operationName: "serviceInstanceDeployV2",
         type: "mutation",
       }),
@@ -17014,7 +16885,7 @@ export const ServiceInstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId) {\n    __typename\n  }\n}",
+          "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId)\n}",
         operationName: "serviceInstanceUpdate",
         type: "mutation",
       }),
@@ -18831,6 +18702,71 @@ export const TcpProxiesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpProxiesResponse",
 }) as any as S.Schema<TcpProxiesResponse>;
 
+export interface TCPProxyCreateInput {
+  applicationPort: number;
+  environmentId: string;
+  serviceId: string;
+}
+export const TCPProxyCreateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationPort: S.Number,
+    environmentId: S.String,
+    serviceId: S.String,
+  }),
+).annotate({
+  identifier: "TCPProxyCreateInput",
+}) as any as S.Schema<TCPProxyCreateInput>;
+
+export interface TcpProxyCreateRequest {
+  input: TCPProxyCreateInput;
+}
+export const TcpProxyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: TCPProxyCreateInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation tcpProxyCreate($input: TCPProxyCreateInput!) {\n  tcpProxyCreate(input: $input) {\n    applicationPort\n    createdAt\n    deletedAt\n    domain\n    environmentId\n    id\n    proxyPort\n    serviceId\n    syncStatus\n    updatedAt\n  }\n}",
+        operationName: "tcpProxyCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "TcpProxyCreateRequest",
+}) as any as S.Schema<TcpProxyCreateRequest>;
+
+/** Selection set for `tcpProxyCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface TcpProxyCreateResponse {
+  applicationPort: number;
+  createdAt: string | null;
+  deletedAt: string | null;
+  domain: string;
+  environmentId: string;
+  id: string;
+  proxyPort: number;
+  serviceId: string;
+  syncStatus: TCPProxySyncStatus;
+  updatedAt: string | null;
+}
+export const TcpProxyCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationPort: S.Number,
+    createdAt: S.NullOr(S.String),
+    deletedAt: S.NullOr(S.String),
+    domain: S.String,
+    environmentId: S.String,
+    id: S.String,
+    proxyPort: S.Number,
+    serviceId: S.String,
+    syncStatus: TCPProxySyncStatus,
+    updatedAt: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("tcpProxyCreate")),
+).annotate({
+  identifier: "TcpProxyCreateResponse",
+}) as any as S.Schema<TcpProxyCreateResponse>;
+
 export interface TcpProxyDeleteRequest {
   id: string;
 }
@@ -18842,7 +18778,7 @@ export const TcpProxyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id)\n}",
         operationName: "tcpProxyDelete",
         type: "mutation",
       }),
@@ -20918,7 +20854,7 @@ export const UsageLimitRemoveRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation usageLimitRemove($input: UsageLimitRemoveInput!) {\n  usageLimitRemove(input: $input) {\n    __typename\n  }\n}",
+          "mutation usageLimitRemove($input: UsageLimitRemoveInput!) {\n  usageLimitRemove(input: $input)\n}",
         operationName: "usageLimitRemove",
         type: "mutation",
       }),
@@ -20960,7 +20896,7 @@ export const UsageLimitSetRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation usageLimitSet($input: UsageLimitSetInput!) {\n  usageLimitSet(input: $input) {\n    __typename\n  }\n}",
+          "mutation usageLimitSet($input: UsageLimitSetInput!) {\n  usageLimitSet(input: $input)\n}",
         operationName: "usageLimitSet",
         type: "mutation",
       }),
@@ -21540,7 +21476,7 @@ export const VariableDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input) {\n    __typename\n  }\n}",
+          "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input)\n}",
         operationName: "variableDelete",
         type: "mutation",
       }),
@@ -21574,7 +21510,7 @@ export const VariablesRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query variables($environmentId: String!, $projectId: String!, $serviceId: String, $unrendered: Boolean) {\n  variables(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId, unrendered: $unrendered) {\n    __typename\n  }\n}",
+          "query variables($environmentId: String!, $projectId: String!, $serviceId: String, $unrendered: Boolean) {\n  variables(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId, unrendered: $unrendered)\n}",
         operationName: "variables",
         type: "query",
       }),
@@ -21659,7 +21595,7 @@ export const VariableUpsertRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input) {\n    __typename\n  }\n}",
+          "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input)\n}",
         operationName: "variableUpsert",
         type: "mutation",
       }),
@@ -21763,7 +21699,7 @@ export const VolumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation volumeCreate($input: VolumeCreateInput!) {\n  volumeCreate(input: $input) {\n    createdAt\n    id\n    name\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n  }\n}",
+          "mutation volumeCreate($input: VolumeCreateInput!) {\n  volumeCreate(input: $input) {\n    createdAt\n    id\n    name\n    projectId\n    volumeInstances(first: 10) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
         operationName: "volumeCreate",
         type: "mutation",
       }),
@@ -21772,75 +21708,21 @@ export const VolumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeCreateRequest",
 }) as any as S.Schema<VolumeCreateRequest>;
 
-export type VolumeCreateResponseProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const VolumeCreateResponseProjectFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<VolumeCreateResponseProjectFeatureFlagsList>;
-
-export interface VolumeCreateResponseProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: VolumeCreateResponseProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const VolumeCreateResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: VolumeCreateResponseProjectFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "VolumeCreateResponseProject",
-}) as any as S.Schema<VolumeCreateResponseProject>;
-
 /** Selection set for `volumeCreate` (unwrapped from the GraphQL `data` envelope). */
 export interface VolumeCreateResponse {
   createdAt: string;
   id: string;
   name: string;
-  project: VolumeCreateResponseProject;
   projectId: string;
+  volumeInstances: EnvironmentResponseVolumeInstances;
 }
 export const VolumeCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     id: S.String,
     name: S.String,
-    project: VolumeCreateResponseProject,
     projectId: S.String,
+    volumeInstances: EnvironmentResponseVolumeInstances,
   }).pipe(T.ResponsePath("volumeCreate")),
 ).annotate({
   identifier: "VolumeCreateResponse",
@@ -21857,7 +21739,7 @@ export const VolumeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId) {\n    __typename\n  }\n}",
+          "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId)\n}",
         operationName: "volumeDelete",
         type: "mutation",
       }),
@@ -21884,7 +21766,7 @@ export const VolumeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query volumeInstance($id: String!) {\n  volumeInstance(id: $id) {\n    createdAt\n    currentSizeMB\n    deletedAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    externalId\n    id\n    isPendingDeletion\n    mountPath\n    region\n    service {\n      createdAt\n      deletedAt\n      featureFlags\n      groupId\n      hasHiddenRegistryCredentialsFromTemplate\n      icon\n      id\n      isRestricted\n      name\n      projectId\n      templateId\n      templateServiceId\n      templateThreadSlug\n      updatedAt\n    }\n    serviceId\n    sizeMB\n    state\n    volume {\n      createdAt\n      id\n      name\n      projectId\n    }\n    volumeId\n  }\n}",
+          "query volumeInstance($id: String!) {\n  volumeInstance(id: $id) {\n    createdAt\n    currentSizeMB\n    deletedAt\n    environmentId\n    externalId\n    id\n    isPendingDeletion\n    mountPath\n    region\n    serviceId\n    sizeMB\n    state\n    volume {\n      createdAt\n      id\n      name\n      projectId\n    }\n    volumeId\n  }\n}",
         operationName: "volumeInstance",
         type: "query",
       }),
@@ -21892,11 +21774,6 @@ export const VolumeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VolumeInstanceRequest",
 }) as any as S.Schema<VolumeInstanceRequest>;
-
-export type VolumeInstanceResponseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const VolumeInstanceResponseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
 
 export type VolumeInstanceResponseServiceFeatureFlagsList =
   Array<ActiveServiceFeatureFlag>;
@@ -21952,14 +21829,13 @@ export interface VolumeInstanceResponse {
   createdAt: string;
   currentSizeMB: number;
   deletedAt: string | null;
-  environment: AdminVolumeInstancesForVolumeResultItemEnvironment;
   environmentId: string;
   externalId: string | null;
   id: string;
   isPendingDeletion: boolean;
   mountPath: string;
   region: string | null;
-  service: VolumeInstanceResponseService;
+  service?: VolumeInstanceResponseService | null;
   serviceId: string | null;
   sizeMB: number;
   state: VolumeState | null;
@@ -21971,14 +21847,13 @@ export const VolumeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String,
     currentSizeMB: S.Number,
     deletedAt: S.NullOr(S.String),
-    environment: AdminVolumeInstancesForVolumeResultItemEnvironment,
     environmentId: S.String,
     externalId: S.NullOr(S.String),
     id: S.String,
     isPendingDeletion: S.Boolean,
     mountPath: S.String,
     region: S.NullOr(S.String),
-    service: VolumeInstanceResponseService,
+    service: S.optional(S.NullOr(VolumeInstanceResponseService)),
     serviceId: S.NullOr(S.String),
     sizeMB: S.Number,
     state: S.NullOr(VolumeState),
@@ -22143,7 +22018,7 @@ export const VolumeInstanceBackupLockRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation volumeInstanceBackupLock($volumeInstanceBackupId: String!, $volumeInstanceId: String!) {\n  volumeInstanceBackupLock(volumeInstanceBackupId: $volumeInstanceBackupId, volumeInstanceId: $volumeInstanceId) {\n    __typename\n  }\n}",
+          "mutation volumeInstanceBackupLock($volumeInstanceBackupId: String!, $volumeInstanceId: String!) {\n  volumeInstanceBackupLock(volumeInstanceBackupId: $volumeInstanceBackupId, volumeInstanceId: $volumeInstanceId)\n}",
         operationName: "volumeInstanceBackupLock",
         type: "mutation",
       }),
@@ -22283,7 +22158,7 @@ export const VolumeInstanceBackupScheduleUpdateRequest =
       .pipe(
         T.GraphQLOp({
           query:
-            "mutation volumeInstanceBackupScheduleUpdate($kinds: [VolumeInstanceBackupScheduleKind!]!, $volumeInstanceId: String!) {\n  volumeInstanceBackupScheduleUpdate(kinds: $kinds, volumeInstanceId: $volumeInstanceId) {\n    __typename\n  }\n}",
+            "mutation volumeInstanceBackupScheduleUpdate($kinds: [VolumeInstanceBackupScheduleKind!]!, $volumeInstanceId: String!) {\n  volumeInstanceBackupScheduleUpdate(kinds: $kinds, volumeInstanceId: $volumeInstanceId)\n}",
           operationName: "volumeInstanceBackupScheduleUpdate",
           type: "mutation",
         }),
@@ -22380,7 +22255,7 @@ export const VolumeInstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation volumeInstanceUpdate($environmentId: String, $input: VolumeInstanceUpdateInput!, $volumeId: String!) {\n  volumeInstanceUpdate(environmentId: $environmentId, input: $input, volumeId: $volumeId) {\n    __typename\n  }\n}",
+          "mutation volumeInstanceUpdate($environmentId: String, $input: VolumeInstanceUpdateInput!, $volumeId: String!) {\n  volumeInstanceUpdate(environmentId: $environmentId, input: $input, volumeId: $volumeId)\n}",
         operationName: "volumeInstanceUpdate",
         type: "mutation",
       }),
@@ -22584,7 +22459,7 @@ export const WorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query workspace($workspaceId: String!) {\n  workspace(workspaceId: $workspaceId) {\n    adoptionHistory {\n      adoptionLevel\n      createdAt\n      deltaLevel\n      id\n      matchedIcpEmail\n      monthlyEstimatedUsage\n      numConfigFile\n      numCronSchedule\n      numDeploys\n      numEnvs\n      numFailedDeploys\n      numHealthcheck\n      numIconConfig\n      numRegion\n      numReplicas\n      numRootDirectory\n      numSeats\n      numServices\n      numVariables\n      numWatchPatterns\n      totalCores\n      totalDisk\n      totalNetwork\n      updatedAt\n    }\n    adoptionLevel\n    allowDeprecatedRegions\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    customer {\n      appliedCredits\n      billingEmail\n      creditBalance\n      currentUsage\n      defaultPaymentMethodId\n      hasExhaustedFreePlan\n      id\n      isPrepaying\n      isTrialing\n      isUsageSubscriber\n      isWithdrawingToCredits\n      remainingUsageCreditBalance\n      state\n      stripeCustomerId\n      supportedWithdrawalPlatforms\n      trialDaysRemaining\n    }\n    discordRole\n    has2FAEnforcement\n    hasAutomaticDiagnosis\n    hasGuardrailsAccess\n    hasHipaaBAA\n    hasSAML\n    id\n    members {\n      avatar\n      email\n      featureFlags\n      id\n      name\n      role\n      twoFactorAuthEnabled\n    }\n    name\n    partnerProfile {\n      category\n      description\n      slug\n      type\n      website\n    }\n    plan\n    preferredRegion\n    redactedDueTo2FAPending\n    referredUsers {\n      code\n      id\n      status\n    }\n    slackChannelId\n    subscriptionModel\n    subscriptionPlanLimit\n    supportTierOverride\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    updatedAt\n    usersWithout2FA\n  }\n}",
+          "query workspace($workspaceId: String!) {\n  workspace(workspaceId: $workspaceId) {\n    adoptionHistory {\n      adoptionLevel\n      createdAt\n      deltaLevel\n      id\n      matchedIcpEmail\n      monthlyEstimatedUsage\n      numConfigFile\n      numCronSchedule\n      numDeploys\n      numEnvs\n      numFailedDeploys\n      numHealthcheck\n      numIconConfig\n      numRegion\n      numReplicas\n      numRootDirectory\n      numSeats\n      numServices\n      numVariables\n      numWatchPatterns\n      totalCores\n      totalDisk\n      totalNetwork\n      updatedAt\n    }\n    adoptionLevel\n    allowDeprecatedRegions\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    customer {\n      appliedCredits\n      billingEmail\n      creditBalance\n      currentUsage\n      defaultPaymentMethodId\n      hasExhaustedFreePlan\n      id\n      isPrepaying\n      isTrialing\n      isUsageSubscriber\n      isWithdrawingToCredits\n      remainingUsageCreditBalance\n      state\n      stripeCustomerId\n      supportedWithdrawalPlatforms\n      trialDaysRemaining\n      usageLimit {\n        agentHardLimitCents\n        agentSoftLimitCents\n        customerId\n        hardLimit\n        id\n        isOverLimit\n        softLimit\n      }\n    }\n    discordRole\n    has2FAEnforcement\n    hasAutomaticDiagnosis\n    hasGuardrailsAccess\n    hasHipaaBAA\n    hasSAML\n    id\n    members {\n      avatar\n      email\n      featureFlags\n      id\n      name\n      role\n      twoFactorAuthEnabled\n    }\n    name\n    partnerProfile {\n      category\n      description\n      slug\n      type\n      website\n    }\n    plan\n    preferredRegion\n    redactedDueTo2FAPending\n    referredUsers {\n      code\n      id\n      status\n    }\n    slackChannelId\n    subscriptionModel\n    subscriptionPlanLimit\n    supportTierOverride\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    updatedAt\n    usersWithout2FA\n  }\n}",
         operationName: "workspace",
         type: "query",
       }),
@@ -22674,6 +22549,29 @@ export const WorkspaceResponseCustomerSupportedWithdrawalPlatformsList =
     WithdrawalPlatformTypes,
   ) as any as S.Schema<WorkspaceResponseCustomerSupportedWithdrawalPlatformsList>;
 
+export interface WorkspaceResponseCustomerUsageLimit {
+  agentHardLimitCents: number | null;
+  agentSoftLimitCents: number | null;
+  customerId: string;
+  hardLimit: number | null;
+  id: string;
+  isOverLimit: boolean;
+  softLimit: number;
+}
+export const WorkspaceResponseCustomerUsageLimit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentHardLimitCents: S.NullOr(S.Number),
+    agentSoftLimitCents: S.NullOr(S.Number),
+    customerId: S.String,
+    hardLimit: S.NullOr(S.Number),
+    id: S.String,
+    isOverLimit: S.Boolean,
+    softLimit: S.Number,
+  }),
+).annotate({
+  identifier: "WorkspaceResponseCustomerUsageLimit",
+}) as any as S.Schema<WorkspaceResponseCustomerUsageLimit>;
+
 export interface WorkspaceResponseCustomer {
   appliedCredits: number;
   billingEmail: string | null;
@@ -22691,6 +22589,7 @@ export interface WorkspaceResponseCustomer {
   stripeCustomerId: string;
   supportedWithdrawalPlatforms: WorkspaceResponseCustomerSupportedWithdrawalPlatformsList;
   trialDaysRemaining: number;
+  usageLimit: WorkspaceResponseCustomerUsageLimit | null;
 }
 export const WorkspaceResponseCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22711,6 +22610,7 @@ export const WorkspaceResponseCustomer = /*@__PURE__*/ S.suspend(() =>
     supportedWithdrawalPlatforms:
       WorkspaceResponseCustomerSupportedWithdrawalPlatformsList,
     trialDaysRemaining: S.Number,
+    usageLimit: S.NullOr(WorkspaceResponseCustomerUsageLimit),
   }),
 ).annotate({
   identifier: "WorkspaceResponseCustomer",
@@ -22893,7 +22793,7 @@ export const WorkspaceByCodeRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query workspaceByCode($code: String!) {\n  workspaceByCode(code: $code) {\n    adoptionHistory {\n      adoptionLevel\n      createdAt\n      deltaLevel\n      id\n      matchedIcpEmail\n      monthlyEstimatedUsage\n      numConfigFile\n      numCronSchedule\n      numDeploys\n      numEnvs\n      numFailedDeploys\n      numHealthcheck\n      numIconConfig\n      numRegion\n      numReplicas\n      numRootDirectory\n      numSeats\n      numServices\n      numVariables\n      numWatchPatterns\n      totalCores\n      totalDisk\n      totalNetwork\n      updatedAt\n    }\n    adoptionLevel\n    allowDeprecatedRegions\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    customer {\n      appliedCredits\n      billingEmail\n      creditBalance\n      currentUsage\n      defaultPaymentMethodId\n      hasExhaustedFreePlan\n      id\n      isPrepaying\n      isTrialing\n      isUsageSubscriber\n      isWithdrawingToCredits\n      remainingUsageCreditBalance\n      state\n      stripeCustomerId\n      supportedWithdrawalPlatforms\n      trialDaysRemaining\n    }\n    discordRole\n    has2FAEnforcement\n    hasAutomaticDiagnosis\n    hasGuardrailsAccess\n    hasHipaaBAA\n    hasSAML\n    id\n    members {\n      avatar\n      email\n      featureFlags\n      id\n      name\n      role\n      twoFactorAuthEnabled\n    }\n    name\n    partnerProfile {\n      category\n      description\n      slug\n      type\n      website\n    }\n    plan\n    preferredRegion\n    redactedDueTo2FAPending\n    referredUsers {\n      code\n      id\n      status\n    }\n    slackChannelId\n    subscriptionModel\n    subscriptionPlanLimit\n    supportTierOverride\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    updatedAt\n    usersWithout2FA\n  }\n}",
+          "query workspaceByCode($code: String!) {\n  workspaceByCode(code: $code) {\n    adoptionHistory {\n      adoptionLevel\n      createdAt\n      deltaLevel\n      id\n      matchedIcpEmail\n      monthlyEstimatedUsage\n      numConfigFile\n      numCronSchedule\n      numDeploys\n      numEnvs\n      numFailedDeploys\n      numHealthcheck\n      numIconConfig\n      numRegion\n      numReplicas\n      numRootDirectory\n      numSeats\n      numServices\n      numVariables\n      numWatchPatterns\n      totalCores\n      totalDisk\n      totalNetwork\n      updatedAt\n    }\n    adoptionLevel\n    allowDeprecatedRegions\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    customer {\n      appliedCredits\n      billingEmail\n      creditBalance\n      currentUsage\n      defaultPaymentMethodId\n      hasExhaustedFreePlan\n      id\n      isPrepaying\n      isTrialing\n      isUsageSubscriber\n      isWithdrawingToCredits\n      remainingUsageCreditBalance\n      state\n      stripeCustomerId\n      supportedWithdrawalPlatforms\n      trialDaysRemaining\n      usageLimit {\n        agentHardLimitCents\n        agentSoftLimitCents\n        customerId\n        hardLimit\n        id\n        isOverLimit\n        softLimit\n      }\n    }\n    discordRole\n    has2FAEnforcement\n    hasAutomaticDiagnosis\n    hasGuardrailsAccess\n    hasHipaaBAA\n    hasSAML\n    id\n    members {\n      avatar\n      email\n      featureFlags\n      id\n      name\n      role\n      twoFactorAuthEnabled\n    }\n    name\n    partnerProfile {\n      category\n      description\n      slug\n      type\n      website\n    }\n    plan\n    preferredRegion\n    redactedDueTo2FAPending\n    referredUsers {\n      code\n      id\n      status\n    }\n    slackChannelId\n    subscriptionModel\n    subscriptionPlanLimit\n    supportTierOverride\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    updatedAt\n    usersWithout2FA\n  }\n}",
         operationName: "workspaceByCode",
         type: "query",
       }),
@@ -22942,6 +22842,7 @@ export interface WorkspaceByCodeResponseCustomer {
   stripeCustomerId: string;
   supportedWithdrawalPlatforms: WorkspaceByCodeResponseCustomerSupportedWithdrawalPlatformsList;
   trialDaysRemaining: number;
+  usageLimit: WorkspaceResponseCustomerUsageLimit | null;
 }
 export const WorkspaceByCodeResponseCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22962,6 +22863,7 @@ export const WorkspaceByCodeResponseCustomer = /*@__PURE__*/ S.suspend(() =>
     supportedWithdrawalPlatforms:
       WorkspaceByCodeResponseCustomerSupportedWithdrawalPlatformsList,
     trialDaysRemaining: S.Number,
+    usageLimit: S.NullOr(WorkspaceResponseCustomerUsageLimit),
   }),
 ).annotate({
   identifier: "WorkspaceByCodeResponseCustomer",
@@ -28707,6 +28609,21 @@ export const tcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TcpProxiesRequest,
   output: TcpProxiesResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type TcpProxyCreateError = RailwayOpError;
+/** Creates a new TCP proxy for a service instance. */
+export const tcpProxyCreate: API.OperationMethod<
+  TcpProxyCreateRequest,
+  TcpProxyCreateResponse,
+  TcpProxyCreateError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: TcpProxyCreateRequest,
+  output: TcpProxyCreateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
