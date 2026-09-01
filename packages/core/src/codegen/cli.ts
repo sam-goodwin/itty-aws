@@ -88,6 +88,12 @@ export interface GeneratorCliOptions {
   /** RFC-6902 patch chain root. Default `patches`; `false` disables. */
   readonly patchesDir?: string | false;
   /**
+   * What to do when a Smithy-model patch JSON pointer does not resolve.
+   * Default `"fail"` — silent skip is how a whole chain can vanish after
+   * upstream drift. `"warn"` restores skip-and-continue.
+   */
+  readonly onStalePatch?: "fail" | "warn";
+  /**
    * Model transform applied AFTER the patch chain, before generation —
    * for whole-model rewrites that must see post-patch shape names (e.g.
    * cloudflare's scope-twin structural dedup). May mutate the model;
@@ -225,9 +231,12 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
                   const msg = e instanceof Error ? e.message : String(e);
                   if (isStaleTargetError(msg)) {
                     staleOps++;
-                    yield* Console.warn(
-                      `   ⚠️  stale: ${resource}/${pf} [${patchOp.op} ${patchOp.path}]`,
-                    );
+                    const line = `${resource}/${pf} [${patchOp.op} ${patchOp.path}]`;
+                    if ((options.onStalePatch ?? "fail") === "fail") {
+                      badPatches.push(`${line}: stale target (${msg})`);
+                    } else {
+                      yield* Console.warn(`   ⚠️  stale: ${line}`);
+                    }
                   } else {
                     badPatches.push(
                       `${resource}/${pf} [${patchOp.op} ${patchOp.path}]: ${msg}`,
@@ -242,6 +251,19 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           if (options.transformModel) {
             const note = options.transformModel(model, resource);
             if (note) yield* Console.log(`   ${note}`);
+          }
+
+          // Persist so `.generated-specs` is the patched (and transformed)
+          // Smithy model, not the pre-patch convert output.
+          const patchDirAfter = patchRoot && path.join(patchRoot, resource);
+          if (
+            (patchDirAfter && (yield* fs.exists(patchDirAfter))) ||
+            options.transformModel
+          ) {
+            yield* fs.writeFileString(
+              path.join(dir, file),
+              `${JSON.stringify(model, null, 2)}\n`,
+            );
           }
 
           // `generateService` and the provider spec are synchronous and

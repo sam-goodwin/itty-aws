@@ -4,8 +4,8 @@
  * Owns the spec-side pipeline every OpenAPI-sourced provider shares: read the
  * spec file, apply the RFC-6902 patch chain to the OpenAPI document (v0
  * semantics: `*.patch.json` files in sorted name order, `{ description,
- * patches }` shape; stale targets warn+skip, malformed patches fail the run),
- * run the optional preprocess hook, convert with
+ * patches }` shape; stale targets fail the run unless `onStalePatch: "warn"`),
+ * run the optional preprocess hook, rewrite operationIds, convert with
  * {@link convertOpenApiToSmithy}, and write `.generated-specs/<name>.json`.
  *
  * A provider's `scripts/convert.ts` is: a `runOpenApiConvert` call. The
@@ -26,6 +26,10 @@ import {
   type OpenApiConvertOptions,
 } from "./openapi.ts";
 import { resolveSpecPath } from "./spec-path.ts";
+import {
+  rewriteOpenApiOperationIds,
+  type OperationIdRewrite,
+} from "./rewrite-operation-ids.ts";
 
 export interface OpenApiSpecEntry {
   /** Output model name — written to `<outDir>/<name>.json`. */
@@ -37,6 +41,12 @@ export interface OpenApiSpecEntry {
    * rewrites). May mutate the spec in place or return a replacement.
    */
   readonly preprocess?: (spec: any) => unknown | void;
+  /**
+   * Rewrite OpenAPI `operationId`s after the RFC-6902 chain and
+   * {@link preprocess}. Prefer this over JSON-pointer patches that target
+   * `/paths/~1…/operationId` — those go stale when upstream prefixes paths.
+   */
+  readonly rewriteOperationIds?: OperationIdRewrite;
   /** Per-spec converter option overrides (merged over the shared options). */
   readonly options?: Partial<OpenApiConvertOptions>;
 }
@@ -61,6 +71,12 @@ export interface RunOpenApiConvertOptions {
   readonly parse?: (text: string, specPath: string) => unknown;
   /** Shared converter options (per-spec `options` merge over these). */
   readonly options: OpenApiConvertOptions;
+  /**
+   * What to do when a patch JSON pointer does not resolve. Default `"fail"`:
+   * silent skip is how a whole patch chain can vanish after an upstream path
+   * prefix change. `"warn"` restores the old skip-and-continue behaviour.
+   */
+  readonly onStalePatch?: "fail" | "warn";
 }
 
 const exists = async (p: string): Promise<boolean> => {
@@ -82,6 +98,7 @@ export const runOpenApiConvert = async (
       ? undefined
       : path.resolve(o.root, o.patchesDir ?? "patches");
   const parse = o.parse ?? ((text: string) => JSON.parse(text));
+  const onStalePatch = o.onStalePatch ?? "fail";
 
   await fs.mkdir(outDir, { recursive: true });
 
@@ -120,11 +137,13 @@ export const runOpenApiConvert = async (
           } catch (e) {
             const msg = e instanceof Error ? e.message : String(e);
             if (isStaleTargetError(msg)) {
-              // Spec drift — the patch target no longer exists upstream.
               staleOps++;
-              console.warn(
-                `   ⚠️  stale: ${entry.name}/${pf} [${patchOp.op} ${patchOp.path}]`,
-              );
+              const line = `${entry.name}/${pf} [${patchOp.op} ${patchOp.path}]`;
+              if (onStalePatch === "fail") {
+                badPatches.push(`${line}: stale target (${msg})`);
+              } else {
+                console.warn(`   ⚠️  stale: ${line}`);
+              }
             } else {
               badPatches.push(
                 `${entry.name}/${pf} [${patchOp.op} ${patchOp.path}]: ${msg}`,
@@ -138,7 +157,7 @@ export const runOpenApiConvert = async (
     if (badPatches.length) {
       for (const b of badPatches) console.error(`❌ bad patch: ${b}`);
       throw new Error(
-        `${badPatches.length} malformed patch operation(s) — fix or remove them`,
+        `${badPatches.length} patch operation(s) failed — fix the pointers, rewrite operationIds via rewriteOperationIds, or delete the patch`,
       );
     }
 
@@ -146,6 +165,16 @@ export const runOpenApiConvert = async (
     if (entry.preprocess) {
       const replaced = entry.preprocess(spec);
       if (replaced !== undefined) spec = replaced;
+    }
+
+    if (entry.rewriteOperationIds) {
+      const { renamed } = rewriteOpenApiOperationIds(
+        spec,
+        entry.rewriteOperationIds,
+      );
+      if (renamed > 0) {
+        console.log(`   rewrote ${renamed} operationId(s) (${entry.name})`);
+      }
     }
 
     // ---- Convert + write ----
