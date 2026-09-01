@@ -1,0 +1,10 @@
+{
+  "description": "Type serviceInstance.preDeployCommand as the string list returned by Railway's JSON scalar.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/shapes/com.railway.api#ServiceInstanceResponse/members/preDeployCommand/target",
+      "value": "com.railway.api#StringList"
+    }
+  ]
+}

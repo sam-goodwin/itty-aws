@@ -22075,7 +22075,7 @@
           }
         },
         "preDeployCommand": {
-          "target": "smithy.api#Document",
+          "target": "com.railway.api#StringList",
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}

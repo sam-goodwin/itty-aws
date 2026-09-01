@@ -16412,7 +16412,7 @@ export interface ServiceInstanceResponse {
   nixpacksPlan: unknown | null;
   numReplicas: number | null;
   overlapSeconds: number | null;
-  preDeployCommand: unknown | null;
+  preDeployCommand: StringList | null;
   railpackInfo: unknown | null;
   railwayConfigFile: string | null;
   region: string | null;
@@ -16451,7 +16451,7 @@ export const ServiceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     nixpacksPlan: S.NullOr(S.Unknown),
     numReplicas: S.NullOr(S.Number),
     overlapSeconds: S.NullOr(S.Number),
-    preDeployCommand: S.NullOr(S.Unknown),
+    preDeployCommand: S.NullOr(StringList),
     railpackInfo: S.NullOr(S.Unknown),
     railwayConfigFile: S.NullOr(S.String),
     region: S.NullOr(S.String),
