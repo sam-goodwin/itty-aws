@@ -202,7 +202,7 @@ export const AccessGroupMemberAddRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation accessGroupMemberAdd($input: AccessGroupMemberInput!) {\n  accessGroupMemberAdd(input: $input) {\n    accessGroup {\n      createdAt\n      id\n      name\n      role\n      source\n      updatedAt\n      workspaceId\n    }\n    accessGroupId\n    createdAt\n    id\n    updatedAt\n    user {\n      agreedFairUse\n      avatar\n      banReason\n      createdAt\n      email\n      featureFlags\n      flags\n      githubProviderId\n      githubUsername\n      has2FA\n      hasPasskeys\n      id\n      isAdmin\n      isConductor\n      isVerified\n      lastLogin\n      name\n      platformFeatureFlags\n      registrationStatus\n      riskLevel\n      termsAgreedOn\n      username\n    }\n    userId\n  }\n}",
+          "mutation accessGroupMemberAdd($input: AccessGroupMemberInput!) {\n  accessGroupMemberAdd(input: $input) {\n    accessGroup {\n      createdAt\n      id\n      name\n      role\n      source\n      updatedAt\n      workspaceId\n    }\n    accessGroupId\n    createdAt\n    id\n    updatedAt\n    user {\n      agreedFairUse\n      avatar\n      banReason\n      createdAt\n      email\n      featureFlags\n      flags\n      githubProviderId\n      githubUsername\n      has2FA\n      hasPasskeys\n      id\n      isAdmin\n      isConductor\n      isVerified\n      lastLogin\n      name\n      registrationStatus\n      riskLevel\n      termsAgreedOn\n      username\n    }\n    userId\n  }\n}",
         operationName: "accessGroupMemberAdd",
         type: "mutation",
       }),
@@ -272,46 +272,6 @@ export const AccessGroupMemberAddResponseUserFlagsList = /*@__PURE__*/ S.Array(
   UserFlag,
 ) as any as S.Schema<AccessGroupMemberAddResponseUserFlagsList>;
 
-export type ActivePlatformFlag =
-  | "AGENT_USAGE_WARNINGS"
-  | "ALERT_SUS_USERS_CRON_KILLSWITCH"
-  | "BUILD_DEPLOY_QUEUE_V2"
-  | "CAC_T0_KILLSWITCH"
-  | "CANVAS_CROSS_ENV_GUARD_ENFORCE"
-  | "CHAT_SANDBOX"
-  | "CLICKHOUSE_WORKSPACE_LIMIT_ENFORCE"
-  | "CS_MCP"
-  | "CTRD_IMAGE_STORE_ROLLOUT"
-  | "DEFAULT_USAGE_ALERTS"
-  | "DEMO_PERCENTAGE_ROLLOUT"
-  | "DEPLOYMENT_DIAGNOSIS_KILLSWITCH"
-  | "DEPLOY_SUPERSEDE_ON_PUSH"
-  | "DEV_STUDIO"
-  | "DEV_STUDIO_ANON_PROVISIONS"
-  | "DOMAIN_RECONCILE_KILLSWITCH"
-  | "IN_DASHBOARD_SUPPORT"
-  | "KAFKA_EPHEMERAL_ENVIRONMENT_UPDATES"
-  | "LOGS_LONG_WINDOW_CHUNKING"
-  | "NEW_STRIPE_WEBHOOK_VERSION_ROLLOUT"
-  | "OAUTH_DCR_KILLSWITCH"
-  | "PRE_DEPLOY_TIMEOUT_KILLSWITCH"
-  | "PROJECT_FAVORITES"
-  | "REMOVE_DEPLOYMENT_COMPACT"
-  | "SERVICEINSTANCE_DATALOADER_FOR_STATIC_URL"
-  | "SPLIT_USAGE_QUERIES"
-  | "STRIPE_METERS_NEW_ACCOUNTS"
-  | "STRIPE_METERS_SHADOW_ENABLED"
-  | "UPDATED_VM_QUERIES"
-  | "WORKSPACE_MCP_KILLSWITCH";
-export const ActivePlatformFlag = /*@__PURE__*/ S.String;
-
-export type AccessGroupMemberAddResponseUserPlatformFeatureFlagsList =
-  Array<ActivePlatformFlag>;
-export const AccessGroupMemberAddResponseUserPlatformFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActivePlatformFlag,
-  ) as any as S.Schema<AccessGroupMemberAddResponseUserPlatformFeatureFlagsList>;
-
 export type RegistrationStatus = "ONBOARDED" | "REGISTERED" | "WAITLISTED";
 export const RegistrationStatus = /*@__PURE__*/ S.String;
 
@@ -333,7 +293,6 @@ export interface AccessGroupMemberAddResponseUser {
   isVerified: boolean;
   lastLogin: string;
   name: string | null;
-  platformFeatureFlags: AccessGroupMemberAddResponseUserPlatformFeatureFlagsList;
   registrationStatus: RegistrationStatus;
   riskLevel: number | null;
   termsAgreedOn: string | null;
@@ -358,8 +317,6 @@ export const AccessGroupMemberAddResponseUser = /*@__PURE__*/ S.suspend(() =>
     isVerified: S.Boolean,
     lastLogin: S.String,
     name: S.NullOr(S.String),
-    platformFeatureFlags:
-      AccessGroupMemberAddResponseUserPlatformFeatureFlagsList,
     registrationStatus: RegistrationStatus,
     riskLevel: S.NullOr(S.Number),
     termsAgreedOn: S.NullOr(S.String),
@@ -9667,7 +9624,7 @@ export const MeRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query me {\n  me {\n    agreedFairUse\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    email\n    featureFlags\n    flags\n    githubProviderId\n    githubUsername\n    has2FA\n    hasPasskeys\n    id\n    isAdmin\n    isConductor\n    isVerified\n    lastLogin\n    name\n    platformFeatureFlags\n    profile {\n      bio\n      isPublic\n      website\n    }\n    registrationStatus\n    riskLevel\n    termsAgreedOn\n    username\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaces {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n  }\n}",
+          "query me {\n  me {\n    agreedFairUse\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    email\n    featureFlags\n    flags\n    githubProviderId\n    githubUsername\n    has2FA\n    hasPasskeys\n    id\n    isAdmin\n    isConductor\n    isVerified\n    lastLogin\n    name\n    profile {\n      bio\n      isPublic\n      website\n    }\n    registrationStatus\n    riskLevel\n    termsAgreedOn\n    username\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaces {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n  }\n}",
         operationName: "me",
         type: "query",
       }),
@@ -9696,11 +9653,6 @@ export type MeResponseFlagsList = Array<UserFlag>;
 export const MeResponseFlagsList = /*@__PURE__*/ S.Array(
   UserFlag,
 ) as any as S.Schema<MeResponseFlagsList>;
-
-export type MeResponsePlatformFeatureFlagsList = Array<ActivePlatformFlag>;
-export const MeResponsePlatformFeatureFlagsList = /*@__PURE__*/ S.Array(
-  ActivePlatformFlag,
-) as any as S.Schema<MeResponsePlatformFeatureFlagsList>;
 
 export interface MeResponseProfile {
   bio: string | null;
@@ -9863,7 +9815,6 @@ export interface MeResponse {
   isVerified: boolean;
   lastLogin: string;
   name: string | null;
-  platformFeatureFlags: MeResponsePlatformFeatureFlagsList;
   profile: MeResponseProfile | null;
   registrationStatus: RegistrationStatus;
   riskLevel: number | null;
@@ -9892,7 +9843,6 @@ export const MeResponse = /*@__PURE__*/ S.suspend(() =>
     isVerified: S.Boolean,
     lastLogin: S.String,
     name: S.NullOr(S.String),
-    platformFeatureFlags: MeResponsePlatformFeatureFlagsList,
     profile: S.NullOr(MeResponseProfile),
     registrationStatus: RegistrationStatus,
     riskLevel: S.NullOr(S.Number),
@@ -22661,7 +22611,7 @@ export const UserTermsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation userTermsUpdate {\n  userTermsUpdate {\n    agreedFairUse\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    email\n    featureFlags\n    flags\n    githubProviderId\n    githubUsername\n    has2FA\n    hasPasskeys\n    id\n    isAdmin\n    isConductor\n    isVerified\n    lastLogin\n    name\n    platformFeatureFlags\n    profile {\n      bio\n      isPublic\n      website\n    }\n    registrationStatus\n    riskLevel\n    termsAgreedOn\n    username\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaces {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n  }\n}",
+          "mutation userTermsUpdate {\n  userTermsUpdate {\n    agreedFairUse\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    email\n    featureFlags\n    flags\n    githubProviderId\n    githubUsername\n    has2FA\n    hasPasskeys\n    id\n    isAdmin\n    isConductor\n    isVerified\n    lastLogin\n    name\n    profile {\n      bio\n      isPublic\n      website\n    }\n    registrationStatus\n    riskLevel\n    termsAgreedOn\n    username\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaces {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n  }\n}",
         operationName: "userTermsUpdate",
         type: "mutation",
       }),
@@ -22684,13 +22634,6 @@ export type UserTermsUpdateResponseFlagsList = Array<UserFlag>;
 export const UserTermsUpdateResponseFlagsList = /*@__PURE__*/ S.Array(
   UserFlag,
 ) as any as S.Schema<UserTermsUpdateResponseFlagsList>;
-
-export type UserTermsUpdateResponsePlatformFeatureFlagsList =
-  Array<ActivePlatformFlag>;
-export const UserTermsUpdateResponsePlatformFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActivePlatformFlag,
-  ) as any as S.Schema<UserTermsUpdateResponsePlatformFeatureFlagsList>;
 
 export type UserTermsUpdateResponseProfile = MeResponseProfile;
 export const UserTermsUpdateResponseProfile = MeResponseProfile;
@@ -22845,7 +22788,6 @@ export interface UserTermsUpdateResponse {
   isVerified: boolean;
   lastLogin: string;
   name: string | null;
-  platformFeatureFlags: UserTermsUpdateResponsePlatformFeatureFlagsList;
   profile: MeResponseProfile | null;
   registrationStatus: RegistrationStatus;
   riskLevel: number | null;
@@ -22874,7 +22816,6 @@ export const UserTermsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     isVerified: S.Boolean,
     lastLogin: S.String,
     name: S.NullOr(S.String),
-    platformFeatureFlags: UserTermsUpdateResponsePlatformFeatureFlagsList,
     profile: S.NullOr(MeResponseProfile),
     registrationStatus: RegistrationStatus,
     riskLevel: S.NullOr(S.Number),
@@ -25169,7 +25110,7 @@ export const WorkspacePolicyDeploySourceAllowlistAddRequest =
       .pipe(
         T.GraphQLOp({
           query:
-            "mutation workspacePolicyDeploySourceAllowlistAdd($sourceId: String!, $sourceType: WorkspacePolicyDeploySourceType!, $workspaceId: String!) {\n  workspacePolicyDeploySourceAllowlistAdd(sourceId: $sourceId, sourceType: $sourceType, workspaceId: $workspaceId) {\n    addedBy {\n      agreedFairUse\n      avatar\n      banReason\n      createdAt\n      email\n      featureFlags\n      flags\n      githubProviderId\n      githubUsername\n      has2FA\n      hasPasskeys\n      id\n      isAdmin\n      isConductor\n      isVerified\n      lastLogin\n      name\n      platformFeatureFlags\n      registrationStatus\n      riskLevel\n      termsAgreedOn\n      username\n    }\n    createdAt\n    id\n    sourceIcon\n    sourceId\n    sourceName\n    sourceType\n  }\n}",
+            "mutation workspacePolicyDeploySourceAllowlistAdd($sourceId: String!, $sourceType: WorkspacePolicyDeploySourceType!, $workspaceId: String!) {\n  workspacePolicyDeploySourceAllowlistAdd(sourceId: $sourceId, sourceType: $sourceType, workspaceId: $workspaceId) {\n    addedBy {\n      agreedFairUse\n      avatar\n      banReason\n      createdAt\n      email\n      featureFlags\n      flags\n      githubProviderId\n      githubUsername\n      has2FA\n      hasPasskeys\n      id\n      isAdmin\n      isConductor\n      isVerified\n      lastLogin\n      name\n      registrationStatus\n      riskLevel\n      termsAgreedOn\n      username\n    }\n    createdAt\n    id\n    sourceIcon\n    sourceId\n    sourceName\n    sourceType\n  }\n}",
           operationName: "workspacePolicyDeploySourceAllowlistAdd",
           type: "mutation",
         }),
@@ -25192,13 +25133,6 @@ export const WorkspacePolicyDeploySourceAllowlistAddResponseAddedByFlagsList =
     UserFlag,
   ) as any as S.Schema<WorkspacePolicyDeploySourceAllowlistAddResponseAddedByFlagsList>;
 
-export type WorkspacePolicyDeploySourceAllowlistAddResponseAddedByPlatformFeatureFlagsList =
-  Array<ActivePlatformFlag>;
-export const WorkspacePolicyDeploySourceAllowlistAddResponseAddedByPlatformFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActivePlatformFlag,
-  ) as any as S.Schema<WorkspacePolicyDeploySourceAllowlistAddResponseAddedByPlatformFeatureFlagsList>;
-
 export interface WorkspacePolicyDeploySourceAllowlistAddResponseAddedBy {
   agreedFairUse: boolean;
   avatar: string | null;
@@ -25217,7 +25151,6 @@ export interface WorkspacePolicyDeploySourceAllowlistAddResponseAddedBy {
   isVerified: boolean;
   lastLogin: string;
   name: string | null;
-  platformFeatureFlags: WorkspacePolicyDeploySourceAllowlistAddResponseAddedByPlatformFeatureFlagsList;
   registrationStatus: RegistrationStatus;
   riskLevel: number | null;
   termsAgreedOn: string | null;
@@ -25244,8 +25177,6 @@ export const WorkspacePolicyDeploySourceAllowlistAddResponseAddedBy =
       isVerified: S.Boolean,
       lastLogin: S.String,
       name: S.NullOr(S.String),
-      platformFeatureFlags:
-        WorkspacePolicyDeploySourceAllowlistAddResponseAddedByPlatformFeatureFlagsList,
       registrationStatus: RegistrationStatus,
       riskLevel: S.NullOr(S.Number),
       termsAgreedOn: S.NullOr(S.String),
