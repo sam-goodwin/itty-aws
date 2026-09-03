@@ -2,30 +2,27 @@
  * OpenAPI → Smithy pipeline helper (dev-time only, provider-agnostic).
  *
  * Owns the spec-side pipeline every OpenAPI-sourced provider shares: read the
- * spec file, apply the RFC-6902 patch chain to the OpenAPI document (v0
- * semantics: `*.patch.json` files in sorted name order, `{ description,
- * patches }` shape; stale targets fail the run unless `onStalePatch: "warn"`),
- * run the optional preprocess hook, optionally rewrite OpenAPI operationIds,
- * convert with {@link convertOpenApiToSmithy} (which owns verbNoun naming),
- * and write `.generated-specs/<name>.json`.
+ * spec file, apply OpenAPI RFC-6902 ops to the document, convert with
+ * {@link convertOpenApiToSmithy} (which owns verbNoun naming), apply Smithy
+ * RFC-6902 ops (`/shapes`, `/metadata`) to the model, and write
+ * `.generated-specs/<name>.json`. Stale targets fail unless
+ * `onStalePatch: "warn"`.
  *
- * A provider's `scripts/convert.ts` is: a `runOpenApiConvert` call. The
- * separate `scripts/generate.ts` (an SdkSpec + `runGeneratorCli`) then
- * compiles the written models. Note: providers whose OpenAPI patches live in
- * `patches/` should pass `patchesDir: false` to `runGeneratorCli` — the
- * patch chain applies HERE, to the OpenAPI document, not to the Smithy model.
+ * A provider's `scripts/convert.ts` is: a `runOpenApiConvert` call.
+ * `scripts/generate.ts` compiles the already-patched models and does not
+ * apply patches.
  */
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import {
-  applyOperation,
-  isStaleTargetError,
-  type PatchFile,
-} from "../json-patch.ts";
-import {
   convertOpenApiToSmithy,
   type OpenApiConvertOptions,
 } from "./openapi.ts";
+import {
+  applyRfc6902Files,
+  isSmithyPatchPath,
+  listRfc6902PatchFiles,
+} from "./patches.ts";
 import { resolveSpecPath } from "./spec-path.ts";
 import {
   rewriteOpenApiOperationIds,
@@ -60,9 +57,10 @@ export interface RunOpenApiConvertOptions {
   readonly specs: readonly OpenApiSpecEntry[];
   /**
    * RFC-6902 patch chain root, relative to `root`. Default `"patches"`;
-   * `false` disables. Layout: `<patchesDir>/<name>/*.patch.json` when the
+   * `false` disables. Layout: `<patchesDir>/<name>/*.json` when the
    * per-spec directory exists; for single-spec providers a flat
-   * `<patchesDir>/*.patch.json` also works.
+   * `<patchesDir>/*.json` also works. Ops under `/shapes` or `/metadata`
+   * apply to the Smithy model after conversion; the rest apply to OpenAPI.
    */
   readonly patchesDir?: string | false;
   /** Output directory, relative to `root`. Default `".generated-specs"`. */
@@ -113,7 +111,7 @@ export const runOpenApiConvert = async (
     const specPath = resolveSpecPath(o.root, entry.specPath);
     let spec: any = parse(await fs.readFile(specPath, "utf8"), specPath);
 
-    // ---- RFC-6902 patch chain (applies to the OpenAPI document) ----
+    // ---- RFC-6902: OpenAPI ops before convert, Smithy ops after ----
     let patchDir: string | undefined;
     if (patchRoot && (await exists(patchRoot))) {
       const perSpec = path.join(patchRoot, entry.name);
@@ -123,44 +121,18 @@ export const runOpenApiConvert = async (
         patchDir = patchRoot;
       }
     }
-    let patchFileCount = 0;
-    let staleOps = 0;
-    const badPatches: string[] = [];
-    if (patchDir) {
-      const files = (await fs.readdir(patchDir))
-        .filter((f) => f.endsWith(".patch.json"))
-        .sort((a, b) => a.localeCompare(b));
-      for (const pf of files) {
-        const parsed = JSON.parse(
-          await fs.readFile(path.join(patchDir, pf), "utf8"),
-        ) as PatchFile;
-        for (const patchOp of parsed.patches ?? []) {
-          try {
-            applyOperation(spec, patchOp);
-          } catch (e) {
-            const msg = e instanceof Error ? e.message : String(e);
-            if (isStaleTargetError(msg)) {
-              staleOps++;
-              const line = `${entry.name}/${pf} [${patchOp.op} ${patchOp.path}]`;
-              if (onStalePatch === "fail") {
-                badPatches.push(`${line}: stale target (${msg})`);
-              } else {
-                console.warn(`   ⚠️  stale: ${line}`);
-              }
-            } else {
-              badPatches.push(
-                `${entry.name}/${pf} [${patchOp.op} ${patchOp.path}]: ${msg}`,
-              );
-            }
-          }
-        }
-        patchFileCount++;
-      }
-    }
-    if (badPatches.length) {
-      for (const b of badPatches) console.error(`❌ bad patch: ${b}`);
+    const patchFiles = patchDir ? await listRfc6902PatchFiles(patchDir) : [];
+    const patchLabel = (file: string) => `${entry.name}/${path.basename(file)}`;
+    const openapiPatches = await applyRfc6902Files(spec, patchFiles, {
+      onStalePatch,
+      include: (op) => !isSmithyPatchPath(op.path),
+      label: patchLabel,
+    });
+    if (openapiPatches.errors.length) {
+      for (const b of openapiPatches.errors)
+        console.error(`❌ bad patch: ${b}`);
       throw new Error(
-        `${badPatches.length} patch operation(s) failed — fix the pointers, rewrite operationIds via rewriteOperationIds, or delete the patch`,
+        `${openapiPatches.errors.length} patch operation(s) failed — fix the pointers, rewrite operationIds via rewriteOperationIds, or delete the patch`,
       );
     }
 
@@ -180,20 +152,32 @@ export const runOpenApiConvert = async (
       }
     }
 
-    // ---- Convert + write ----
+    // ---- Convert, Smithy patches, write ----
     const model = convertOpenApiToSmithy(spec, {
       ...o.options,
       ...entry.options,
     });
+    const smithyPatches = await applyRfc6902Files(model, patchFiles, {
+      onStalePatch,
+      include: (op) => isSmithyPatchPath(op.path),
+      label: patchLabel,
+    });
+    if (smithyPatches.errors.length) {
+      for (const b of smithyPatches.errors) console.error(`❌ bad patch: ${b}`);
+      throw new Error(
+        `${smithyPatches.errors.length} Smithy patch operation(s) failed — fix the pointers or delete the patch`,
+      );
+    }
     const opCount = Object.values(model.shapes).filter(
       (s: any) => s.type === "operation",
     ).length;
     const outPath = path.join(outDir, `${entry.name}.json`);
     await fs.writeFile(outPath, JSON.stringify(model, null, 2) + "\n");
+    const staleOps = openapiPatches.stale + smithyPatches.stale;
     console.log(
       `   ✅ ${entry.name}: ${opCount} operations, ${Object.keys(model.shapes).length} shapes` +
-        (patchFileCount
-          ? ` (${patchFileCount} patch file(s) applied${staleOps ? `, ${staleOps} stale op(s) skipped` : ""})`
+        (patchFiles.length
+          ? ` (${patchFiles.length} patch file(s) applied${staleOps ? `, ${staleOps} stale op(s) skipped` : ""})`
           : ""),
     );
   }

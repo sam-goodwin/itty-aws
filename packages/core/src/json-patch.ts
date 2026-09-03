@@ -1,11 +1,11 @@
 /**
  * JSON Patch (RFC 6902) Implementation
  *
- * Provides a unified spec patching system for all SDKs. OpenAPI patches apply
- * in `convert` so `.generated-specs` is the patched Smithy model; leftover
- * Smithy-model patches in `generate` are written back into that directory.
- * Prefer `rewriteOpenApiOperationIds` for operationId renames — JSON pointers
- * at `/paths/~1foo/operationId` go stale when upstream prefixes paths.
+ * Provides a unified spec patching system for all SDKs. Patches apply in
+ * `convert` so `.generated-specs` is the patched Smithy model. generate does
+ * not patch. Prefer `operationNaming: "verbNoun"` for operationId renames —
+ * JSON pointers at `/paths/~1foo/operationId` go stale when upstream prefixes
+ * paths.
  *
  * Pure functions only — callers load patch files themselves (the generators
  * use Effect's FileSystem) and hand the parsed operations to `applyPatch`.

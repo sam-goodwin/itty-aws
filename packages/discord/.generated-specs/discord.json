@@ -2070,9 +2070,10 @@
           }
         },
         "file": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.discord#formDataFile": {}
           }
         }
       },
@@ -30939,9 +30940,10 @@
           }
         },
         "file": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.discord#formDataFile": {}
           }
         }
       },
@@ -34011,9 +34013,10 @@
           }
         },
         "target_users_file": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.discord#formDataFile": {}
           }
         }
       },

@@ -144,11 +144,11 @@ Iterate on `convert.ts` (spec → Smithy) and `generate.ts` (Smithy → TS)
 separately: `pnpm --filter @distilled.cloud/<pkg> run convert` stops after the
 Smithy models, which is usually where the interesting bugs are.
 
-Patches go in `packages/<pkg>/patches/` as RFC-6902 `*.patch.json` and apply
-to the **OpenAPI document**, before conversion, so `.generated-specs` is the
-patched Smithy model. A package that patches there passes `patchesDir: false`
-to `runGeneratorCli` so the Smithy-model patch chain stays off. Smithy-side
-patches that do run in `generate.ts` are written back into `.generated-specs`.
+Patches go in `packages/<pkg>/patches/` as RFC-6902 `*.json` and apply in
+**convert**, so `.generated-specs` is the patched Smithy model. OpenAPI
+pointers (`/paths`, `/components`) run on the spec before conversion;
+Smithy pointers (`/shapes`, `/metadata`) run on the model after. generate
+does not patch — it only compiles the committed models.
 **Stale patch pointers fail the run** (they used to warn-and-skip, which is
 how Fly's whole chain vanished after the spec-mirror prefixed paths with
 `/v1`). Pass `onStalePatch: "warn"` only if you truly want skip.

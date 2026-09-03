@@ -321,6 +321,24 @@ const addonsResult = convertGraphQLToSmithy({
       }
     }
   }
+  let sensitive = 0;
+  for (const def of Object.values(addonsResult.model.shapes ?? {}) as any[]) {
+    if (def?.type !== "structure") continue;
+    for (const [name, member] of Object.entries(def.members ?? {}) as any[]) {
+      if (name === "password" || name === "publicUrl") {
+        member.traits = {
+          ...(member.traits ?? {}),
+          "smithy.api#sensitive": {},
+        };
+        sensitive++;
+      }
+    }
+  }
+  if (sensitive) {
+    console.log(
+      `   stamped smithy.api#sensitive on ${sensitive} add-on secret member(s)`,
+    );
+  }
 }
 
 const addonsOut = path.join(generatedDir, "addons.json");
