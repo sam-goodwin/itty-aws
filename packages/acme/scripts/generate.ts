@@ -1,12 +1,10 @@
 #!/usr/bin/env bun
 /**
- * generate — turn the Smithy JSON model in .generated-specs into the Effect
- * ACME SDK.
+ * generate — turn the hand-authored Smithy model into the Effect ACME SDK.
  *
- * Input:  .generated-specs/acme.json  (written by scripts/convert.ts)
- * Patches: patches/acme/*.json — typed problem-document errors, one shape per
- *          `urn:ietf:params:acme:error:*` type, attached to the operations
- *          that raise them (RFC 6902 against the Smithy model)
+ * Input:  specs/acme.json — written by hand from RFC 8555 (no vendor spec
+ *         exists for a protocol), typed errors included, so there is no
+ *         conversion step and no patch chain.
  * Output: src/services/acme.ts  +  src/services/index.ts
  */
 import { type SdkSpec } from "@distilled.cloud/core/codegen/generator";
@@ -31,7 +29,7 @@ const spec: SdkSpec = {
   memberTraitPipes: {
     "smithy.api#sensitive": "T.SensitiveValue",
   },
-  sourceNote: ".generated-specs (hand-authored RFC 8555 OpenAPI → smithy)",
+  sourceNote: "specs/acme.json (hand-authored Smithy, RFC 8555)",
   operationDecl: {
     contextType: "AcmeOpContext",
     commonErrorType: "AcmeOpError",
@@ -46,6 +44,7 @@ const spec: SdkSpec = {
 runGeneratorCli({
   description: "Generate the ACME Effect SDK from the Smithy model",
   root: `${import.meta.dir}/..`,
-  patchesDir: "patches",
+  smithyDir: "specs",
+  patchesDir: false,
   spec: () => spec,
 });

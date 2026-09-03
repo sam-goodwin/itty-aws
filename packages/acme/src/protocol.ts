@@ -168,7 +168,7 @@ const takeNonce = (directory: Directory) =>
 
 /**
  * The generated operations carry no name at runtime; the input's `T.Http`
- * uri (from the OpenAPI document) identifies which ACME resource an
+ * uri (from the Smithy model) identifies which ACME resource an
  * operation addresses.
  */
 const OPERATIONS_BY_URI: Record<string, string> = {
