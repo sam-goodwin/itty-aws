@@ -779,6 +779,7 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAccountRequest>;
 
 export type DeactivateAuthorizationError =
+  | AcmeAccountDoesNotExist
   | AcmeBadNonce
   | AcmeMalformed
   | AcmeRateLimited
@@ -795,6 +796,7 @@ export const deactivateAuthorization: API.OperationMethod<
   input: DeactivateAuthorizationRequest,
   output: Authorization,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeBadNonce,
     AcmeMalformed,
     AcmeRateLimited,
@@ -806,6 +808,7 @@ export const deactivateAuthorization: API.OperationMethod<
 }));
 
 export type DownloadCertificateError =
+  | AcmeAccountDoesNotExist
   | AcmeBadNonce
   | AcmeMalformed
   | AcmeRateLimited
@@ -822,6 +825,7 @@ export const downloadCertificate: API.OperationMethod<
   input: DownloadCertificateRequest,
   output: CertificateChain,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeBadNonce,
     AcmeMalformed,
     AcmeRateLimited,
@@ -833,6 +837,7 @@ export const downloadCertificate: API.OperationMethod<
 }));
 
 export type FinalizeOrderError =
+  | AcmeAccountDoesNotExist
   | AcmeBadCsr
   | AcmeBadNonce
   | AcmeMalformed
@@ -851,6 +856,7 @@ export const finalizeOrder: API.OperationMethod<
   input: FinalizeOrderRequest,
   output: OrderResponse,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeBadCsr,
     AcmeBadNonce,
     AcmeMalformed,
@@ -864,6 +870,7 @@ export const finalizeOrder: API.OperationMethod<
 }));
 
 export type GetAuthorizationError =
+  | AcmeAccountDoesNotExist
   | AcmeBadNonce
   | AcmeMalformed
   | AcmeRateLimited
@@ -880,6 +887,7 @@ export const getAuthorization: API.OperationMethod<
   input: GetAuthorizationRequest,
   output: Authorization,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeBadNonce,
     AcmeMalformed,
     AcmeRateLimited,
@@ -906,6 +914,7 @@ export const getDirectory: API.OperationMethod<
 }));
 
 export type GetOrderError =
+  | AcmeAccountDoesNotExist
   | AcmeBadNonce
   | AcmeMalformed
   | AcmeRateLimited
@@ -922,6 +931,7 @@ export const getOrder: API.OperationMethod<
   input: GetOrderRequest,
   output: OrderResponse,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeBadNonce,
     AcmeMalformed,
     AcmeRateLimited,
@@ -989,6 +999,7 @@ export const newNonce: API.OperationMethod<
 }));
 
 export type NewOrderError =
+  | AcmeAccountDoesNotExist
   | AcmeBadNonce
   | AcmeMalformed
   | AcmeRateLimited
@@ -1008,6 +1019,7 @@ export const newOrder: API.OperationMethod<
   input: NewOrderRequest,
   output: OrderResponse,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeBadNonce,
     AcmeMalformed,
     AcmeRateLimited,
@@ -1022,6 +1034,7 @@ export const newOrder: API.OperationMethod<
 }));
 
 export type RespondChallengeError =
+  | AcmeAccountDoesNotExist
   | AcmeBadNonce
   | AcmeCaa
   | AcmeConnection
@@ -1043,6 +1056,7 @@ export const respondChallenge: API.OperationMethod<
   input: RespondChallengeRequest2,
   output: Challenge,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeBadNonce,
     AcmeCaa,
     AcmeConnection,
@@ -1059,6 +1073,7 @@ export const respondChallenge: API.OperationMethod<
 }));
 
 export type RevokeCertificateError =
+  | AcmeAccountDoesNotExist
   | AcmeAlreadyRevoked
   | AcmeBadNonce
   | AcmeBadRevocationReason
@@ -1077,6 +1092,7 @@ export const revokeCertificate: API.OperationMethod<
   input: RevokeCertificateRequest,
   output: RevokeCertificateResponse,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeAlreadyRevoked,
     AcmeBadNonce,
     AcmeBadRevocationReason,
@@ -1090,6 +1106,7 @@ export const revokeCertificate: API.OperationMethod<
 }));
 
 export type UpdateAccountError =
+  | AcmeAccountDoesNotExist
   | AcmeBadNonce
   | AcmeInvalidContact
   | AcmeMalformed
@@ -1108,6 +1125,7 @@ export const updateAccount: API.OperationMethod<
   input: UpdateAccountRequest,
   output: AccountResponse,
   errors: [
+    AcmeAccountDoesNotExist,
     AcmeBadNonce,
     AcmeInvalidContact,
     AcmeMalformed,
