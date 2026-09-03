@@ -1,0 +1,45 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ZeroSSL REST API",
+    "version": "v1",
+    "description": "Hand-authored from https://zerossl.com/documentation/api/. Auth is the account's access key, sent as the `access_key` query parameter by the protocol (never modeled as an input). Failures come back as `{ success: false, error: { code, type, info } }`, usually with HTTP 200 — the protocol treats `success: false` as an error and matches on `error.type`."
+  },
+  "servers": [{ "url": "https://api.zerossl.com" }],
+  "paths": {
+    "/acme/eab-credentials": {
+      "post": {
+        "operationId": "generateEabCredentials",
+        "summary": "Mint ACME External Account Binding credentials for this account",
+        "description": "Returns an EAB key id and HMAC key to bind a new ACME account to this ZeroSSL account (`newAccount` with `externalAccountBinding`). Each pair binds exactly one ACME account.",
+        "responses": {
+          "200": {
+            "description": "EAB credentials",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/EabCredentials" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EabCredentials": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean" },
+          "eab_kid": { "type": "string", "description": "The EAB key id." },
+          "eab_hmac_key": {
+            "type": "string",
+            "description": "The base64url HMAC key.",
+            "x-sensitive": true
+          }
+        },
+        "required": ["success", "eab_kid", "eab_hmac_key"]
+      }
+    }
+  }
+}

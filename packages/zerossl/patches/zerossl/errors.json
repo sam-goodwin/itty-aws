@@ -1,0 +1,50 @@
+{
+  "description": "Typed ZeroSSL error-envelope errors, matched on `error.type` (the protocol passes it as the matcher's message).",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.zerossl.api#InvalidAccessKey",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": { "target": "smithy.api#Integer" },
+          "message": { "target": "smithy.api#String" }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "smithy.api#documentation": "The access key is missing or wrong (`invalid_access_key`, code 101).",
+          "com.distilled.openapi#errorMatchers": [
+            { "message": "invalid_access_key" },
+            { "code": 101 }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.zerossl.api#RateLimitExceeded",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": { "target": "smithy.api#Integer" },
+          "message": { "target": "smithy.api#String" }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "smithy.api#retryable": { "throttling": true },
+          "com.distilled.openapi#errorMatchers": [
+            { "message": { "includes": "rate_limit" } }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.zerossl.api#GenerateEabCredentials/errors",
+      "value": [
+        { "target": "com.zerossl.api#InvalidAccessKey" },
+        { "target": "com.zerossl.api#RateLimitExceeded" }
+      ]
+    }
+  ]
+}
